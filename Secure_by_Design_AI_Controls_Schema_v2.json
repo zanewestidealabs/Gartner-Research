@@ -1,0 +1,2355 @@
+{
+  "secure_by_design_ai_controls_v2.0": {
+    "schema_lineage": {
+      "parent": "Secure_by_Design_AI_Controls_Schema.json",
+      "parent_version": "1.0",
+      "source_documents": [
+        "AI_Adoption_Controls_NIST.md",
+        "AIUC-1 Standard (https://www.aiuc-1.com/)"
+      ],
+      "purpose": "Extended maturity self-assessment framework for secure-by-design AI technology and service capabilities — incorporating full AIUC-1 compliance requirements for AI agent security, safety, reliability, accountability, societal risk, and data privacy. Targeting Chief Product Officers (CPOs), product security leaders, and compliance teams responsible for embedding security, trust, and accountability into AI-powered products and services.",
+      "changelog": "v2.0 extends v1.0 by mapping all 44 AIUC-1 requirements across 6 AIUC-1 categories (Data & Privacy, Security, Safety, Reliability, Accountability, Society) into the existing 5-pillar structure and adding 2 new pillars (SAF — AI Output Safety, REL — AI Reliability & Tool Safety). Sub-pillar count increased from 25 to 40. Every AIUC-1 requirement is traceable to at least one sub-pillar via the aiuc1_mapping field."
+    },
+    "intent": "Assess organizational maturity across 40 control dimensions spanning infrastructure, identity, network/data, DevSecOps/MLSecOps, AI TRiSM, output safety, and reliability. Each sub-pillar is scored 1–5 on a maturity scale. The framework extends v1.0 with AIUC-1 compliance coverage — adding explicit controls for AI output safety (harmful outputs, out-of-scope, output vulnerabilities), data consent and IP protection, AI disclosure mechanisms, third-party testing mandates, hallucination prevention, tool call safety, societal risk guardrails, and accountability structures. Every AIUC-1 requirement (A001–F002) maps to one or more sub-pillars.",
+    "metadata": {
+      "framework_alignment": "NIST AI RMF 1.0 + AI 600-1 (GenAI Profile) + AI RMF Playbook + COSAiS (SP 800-53 Overlays for AI) + AIUC-1 (AI Agent Security, Safety & Reliability Standard) + MITRE ATLAS + ISO 42001 + EU AI Act + OWASP Top 10 for LLM/GenAI",
+      "target_audience": "Chief Product Officers (CPOs), VP Product Security, AI/ML Engineering Leads, GRC Teams, Compliance Officers",
+      "scoring_scale": {
+        "min": 1,
+        "max": 5,
+        "type": "maturity_self_assessment",
+        "scoring_logic": {
+          "1": "Not Started — No controls, processes, or awareness in this area. The organization has not begun addressing this dimension.",
+          "2": "Ad Hoc / Initial — Informal, reactive, or person-dependent practices exist. No documented policy or repeatable process. Controls may be applied inconsistently.",
+          "3": "Defined / Repeatable — Documented policies and procedures exist. Controls are applied consistently across most AI workloads but measurement is limited. Some tooling in place.",
+          "4": "Managed / Measured — Controls are enforced via automation or tooling, with defined metrics and KPIs. Evidence is collected systematically. Regular reviews occur. Exceptions are tracked.",
+          "5": "Optimized / Adaptive — Continuous improvement driven by metrics, threat intelligence, and lessons learned. Controls self-adapt or are proactively tuned. Full auditability, cross-framework mapping, and executive reporting in place."
+        }
+      },
+      "evidence_expectations": {
+        "description": "Each maturity level should be supported by evidence artifacts appropriate to the level.",
+        "by_level": {
+          "1": "N/A",
+          "2": "Informal notes, tribal knowledge, ad hoc procedures",
+          "3": "Documented policies, architecture diagrams, runbooks, tool configurations",
+          "4": "Automated dashboards, audit logs, KPI reports, test results, control validation records",
+          "5": "Continuous assurance reports, executive dashboards, cross-framework crosswalks, improvement trend data, third-party attestations"
+        }
+      },
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of sub-pillars scoring ≥3 (Defined or above)",
+        "scale": {
+          "A": "34–40 sub-pillars at ≥3 (85–100%)",
+          "B": "26–33 sub-pillars at ≥3 (65–82%)",
+          "C": "18–25 sub-pillars at ≥3 (45–62%)",
+          "D": "10–17 sub-pillars at ≥3 (25–42%)",
+          "F": "0–9 sub-pillars at ≥3 (0–22%)"
+        }
+      },
+      "aiuc1_compliance_summary": {
+        "description": "AIUC-1 compliance tracking — maps each AIUC-1 requirement to the sub-pillar(s) that address it.",
+        "total_requirements": 44,
+        "merged_requirements": [
+          "E007 (merged with E004)",
+          "E014 (merged with E017)"
+        ],
+        "active_requirements": 42,
+        "categories": {
+          "A_data_privacy": {
+            "count": 7,
+            "label": "Data & Privacy",
+            "mandatory": [
+              "A001",
+              "A002",
+              "A003",
+              "A004",
+              "A005",
+              "A006",
+              "A007"
+            ]
+          },
+          "B_security": {
+            "count": 9,
+            "label": "Security",
+            "mandatory": [
+              "B001",
+              "B004",
+              "B006",
+              "B007",
+              "B008",
+              "B009"
+            ],
+            "optional": [
+              "B002",
+              "B003",
+              "B005"
+            ]
+          },
+          "C_safety": {
+            "count": 12,
+            "label": "Safety",
+            "mandatory": [
+              "C001",
+              "C002",
+              "C003",
+              "C004",
+              "C005",
+              "C006",
+              "C010",
+              "C011",
+              "C012"
+            ],
+            "optional": [
+              "C007",
+              "C008",
+              "C009"
+            ]
+          },
+          "D_reliability": {
+            "count": 4,
+            "label": "Reliability",
+            "mandatory": [
+              "D001",
+              "D002",
+              "D003",
+              "D004"
+            ]
+          },
+          "E_accountability": {
+            "count": 17,
+            "label": "Accountability",
+            "mandatory": [
+              "E001",
+              "E002",
+              "E003",
+              "E004",
+              "E005",
+              "E006",
+              "E008",
+              "E010",
+              "E011",
+              "E012",
+              "E015",
+              "E016"
+            ],
+            "optional": [
+              "E009",
+              "E013",
+              "E017"
+            ]
+          },
+          "F_society": {
+            "count": 2,
+            "label": "Society",
+            "mandatory": [
+              "F001",
+              "F002"
+            ]
+          }
+        }
+      }
+    },
+    "pillars": {
+      "INF": {
+        "name": "Infrastructure for AI",
+        "focus": "Hardened, isolated, and cryptographically protected compute and runtime environments for AI training, fine-tuning, and inference — with supply-chain assurance, vendor due diligence, and deployment environment security for all AI components.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Secure & Resilient, Operation & Monitoring",
+          "COSAiS — isolation overlays for LLM/predictive/agent"
+        ],
+        "aiuc1_categories": [
+          "B. Security",
+          "E. Accountability"
+        ],
+        "maturity_signals": [
+          "Dedicated VNETs/VPCs with private endpoints for AI workloads",
+          "Auditable GPU/TPU provisioning with RBAC",
+          "AES-256 or equivalent encryption at rest for models, weights, datasets",
+          "TLS 1.3+ encryption in transit for all model-serving and pipeline traffic",
+          "SBOM and provenance tracking for AI frameworks, pretrained models, and agents",
+          "Documented cloud vs. on-premises processing criteria for AI workloads",
+          "Vendor due diligence covering data handling, PII controls, and compliance"
+        ],
+        "aiuc1_requirements": {
+          "B008": {
+            "requirement": "Protect model deployment environment",
+            "mandatory": true,
+            "category": "B. Security",
+            "sub_pillars": [
+              "INF-01",
+              "INF-03",
+              "INF-04"
+            ]
+          },
+          "E005": {
+            "requirement": "Assess cloud vs on-prem processing",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "INF-01"
+            ]
+          },
+          "E006": {
+            "requirement": "Conduct vendor due diligence",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "INF-05"
+            ]
+          }
+        },
+        "aiuc1_coverage": {
+          "total_requirements": 3,
+          "mandatory": 3,
+          "optional": 0
+        }
+      },
+      "IAM": {
+        "name": "Identity, Access & Disclosure for AI",
+        "focus": "Fine-grained identity, authentication, and authorization controls for AI workspaces, APIs, agents, and human-in-the-loop approval workflows — plus AI disclosure mechanisms and controls against technical over-disclosure.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Governance & Secure/Resilient",
+          "AI 600-1 — safeguards for high-impact genAI"
+        ],
+        "aiuc1_categories": [
+          "B. Security",
+          "E. Accountability"
+        ],
+        "maturity_signals": [
+          "RBAC/ABAC enforced across AI workspaces, model registries, and datasets",
+          "Managed identities and scoped tokens for all AI API endpoints",
+          "HITL approval gates for high-risk AI actions",
+          "Policy-aware prompt/response guardrails with role-based redaction",
+          "Non-human identity lifecycle management for AI agents",
+          "AI disclosure mechanisms informing users of AI interaction",
+          "Controls preventing over-disclosure of system architecture details"
+        ],
+        "aiuc1_requirements": {
+          "A003": {
+            "requirement": "Limit AI agent data collection",
+            "mandatory": true,
+            "category": "A. Data & Privacy",
+            "sub_pillars": [
+              "IAM-04"
+            ]
+          },
+          "B003": {
+            "requirement": "Manage public release of technical details",
+            "mandatory": false,
+            "category": "B. Security",
+            "sub_pillars": [
+              "IAM-05"
+            ]
+          },
+          "B005": {
+            "requirement": "Implement real-time input filtering",
+            "mandatory": false,
+            "category": "B. Security",
+            "sub_pillars": [
+              "IAM-03"
+            ]
+          },
+          "B006": {
+            "requirement": "Prevent unauthorized AI agent actions",
+            "mandatory": true,
+            "category": "B. Security",
+            "sub_pillars": [
+              "IAM-04"
+            ]
+          },
+          "B007": {
+            "requirement": "Enforce user access privileges to AI systems",
+            "mandatory": true,
+            "category": "B. Security",
+            "sub_pillars": [
+              "IAM-01"
+            ]
+          },
+          "E009": {
+            "requirement": "Monitor third-party access",
+            "mandatory": false,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "IAM-02"
+            ]
+          },
+          "E016": {
+            "requirement": "Implement AI disclosure mechanisms",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "IAM-05"
+            ]
+          }
+        },
+        "aiuc1_coverage": {
+          "total_requirements": 7,
+          "mandatory": 4,
+          "optional": 3
+        }
+      },
+      "NDS": {
+        "name": "Network, Data Security & Privacy for AI",
+        "focus": "Network isolation, boundary defenses, secure data pipelines, inference monitoring, data sovereignty, consent-based data policies, cross-customer isolation, and intellectual property safeguards purpose-built for AI workloads.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Map",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Secure Operations, Data & Drift",
+          "AI 600-1 — genAI abuse mitigations",
+          "COSAiS — component-level controls for training/test data"
+        ],
+        "aiuc1_categories": [
+          "A. Data & Privacy",
+          "B. Security",
+          "E. Accountability"
+        ],
+        "maturity_signals": [
+          "Air-gapped or broker-mediated training networks",
+          "WAF + rate limiting + prompt-injection filtering at inference endpoints",
+          "Data provenance, integrity hashing, and poisoning/drift monitoring",
+          "Inference request/response logging with exfiltration detection",
+          "Data residency and sovereignty enforcement for AI datasets",
+          "Published AI input/output data policies with customer consent mechanisms",
+          "Multi-tenant data isolation preventing cross-customer exposure",
+          "IP and copyright safeguards in AI output generation"
+        ],
+        "aiuc1_requirements": {
+          "A001": {
+            "requirement": "Establish input data policy",
+            "mandatory": true,
+            "category": "A. Data & Privacy",
+            "sub_pillars": [
+              "NDS-06"
+            ]
+          },
+          "A002": {
+            "requirement": "Establish output data policy",
+            "mandatory": true,
+            "category": "A. Data & Privacy",
+            "sub_pillars": [
+              "NDS-06"
+            ]
+          },
+          "A004": {
+            "requirement": "Protect IP & trade secrets",
+            "mandatory": true,
+            "category": "A. Data & Privacy",
+            "sub_pillars": [
+              "NDS-08"
+            ]
+          },
+          "A005": {
+            "requirement": "Prevent cross-customer data exposure",
+            "mandatory": true,
+            "category": "A. Data & Privacy",
+            "sub_pillars": [
+              "NDS-07"
+            ]
+          },
+          "A006": {
+            "requirement": "Prevent PII leakage",
+            "mandatory": true,
+            "category": "A. Data & Privacy",
+            "sub_pillars": [
+              "NDS-04"
+            ]
+          },
+          "A007": {
+            "requirement": "Prevent IP violations",
+            "mandatory": true,
+            "category": "A. Data & Privacy",
+            "sub_pillars": [
+              "NDS-08"
+            ]
+          },
+          "B002": {
+            "requirement": "Detect adversarial input",
+            "mandatory": false,
+            "category": "B. Security",
+            "sub_pillars": [
+              "NDS-02"
+            ]
+          },
+          "B004": {
+            "requirement": "Prevent AI endpoint scraping",
+            "mandatory": true,
+            "category": "B. Security",
+            "sub_pillars": [
+              "NDS-02"
+            ]
+          },
+          "E011": {
+            "requirement": "Record processing locations",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "NDS-05"
+            ]
+          },
+          "E012": {
+            "requirement": "Document regulatory compliance",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "NDS-05"
+            ]
+          },
+          "E015": {
+            "requirement": "Log model activity",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "NDS-04"
+            ]
+          }
+        },
+        "aiuc1_coverage": {
+          "total_requirements": 11,
+          "mandatory": 10,
+          "optional": 1
+        }
+      },
+      "DSO": {
+        "name": "DevSecOps for AI (MLSecOps)",
+        "focus": "Secure ML CI/CD, model/dataset lineage and versioning, pre-release testing and validation (TEVV), risk-gated deployment, production auditability through lineage graphs, and mandated independent third-party testing programs.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Map",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — TEVV, Governance & Documentation",
+          "AI 600-1 — release safeguards & contingency"
+        ],
+        "aiuc1_categories": [
+          "B. Security",
+          "C. Safety",
+          "D. Reliability",
+          "E. Accountability"
+        ],
+        "maturity_signals": [
+          "Dependency scanning and model signing in ML CI/CD pipelines",
+          "Immutable model/dataset versioning with rollback capability",
+          "Red-team, adversarial, bias, and safety testing before every release",
+          "Staged rollout with kill-switch and HITL escalation",
+          "Graph-based audit trail linking code → data → model → decision → outcome",
+          "Quarterly third-party testing across safety, security, and reliability risk categories"
+        ],
+        "aiuc1_requirements": {
+          "B001": {
+            "requirement": "Third-party testing of adversarial robustness",
+            "mandatory": true,
+            "category": "B. Security",
+            "sub_pillars": [
+              "DSO-03"
+            ]
+          },
+          "C002": {
+            "requirement": "Conduct pre-deployment testing",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "DSO-03"
+            ]
+          },
+          "C010": {
+            "requirement": "Third-party testing for harmful outputs",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "DSO-06"
+            ]
+          },
+          "C011": {
+            "requirement": "Third-party testing for out-of-scope outputs",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "DSO-06"
+            ]
+          },
+          "C012": {
+            "requirement": "Third-party testing for customer-defined risk",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "DSO-06"
+            ]
+          },
+          "D002": {
+            "requirement": "Third-party testing for hallucinations",
+            "mandatory": true,
+            "category": "D. Reliability",
+            "sub_pillars": [
+              "DSO-06"
+            ]
+          },
+          "D004": {
+            "requirement": "Third-party testing of tool calls",
+            "mandatory": true,
+            "category": "D. Reliability",
+            "sub_pillars": [
+              "DSO-06"
+            ]
+          },
+          "E004": {
+            "requirement": "Assign accountability",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "DSO-04"
+            ]
+          },
+          "E007": {
+            "requirement": "Document system change approvals (merged with E004)",
+            "mandatory": false,
+            "category": "E. Accountability",
+            "note": "Merged with E004 in Q1 2026 update",
+            "sub_pillars": [
+              "DSO-04"
+            ]
+          }
+        },
+        "aiuc1_coverage": {
+          "total_requirements": 9,
+          "mandatory": 8,
+          "optional": 1
+        }
+      },
+      "TRM": {
+        "name": "AI TRiSM (Trust, Risk & Security Management)",
+        "focus": "Model governance, use-case risk assessment, trustworthiness controls, AI-specific incident response with failure plans, lineage and accountability graph, quality management systems, enterprise framework crosswalks, and societal risk prevention.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Map",
+          "Measure",
+          "Manage"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Governance & Oversight, Explainability, Fairness & Bias, Privacy",
+          "AI 600-1 — genAI monitoring & response",
+          "AI RMF Crosswalks"
+        ],
+        "aiuc1_categories": [
+          "E. Accountability",
+          "F. Society"
+        ],
+        "maturity_signals": [
+          "Formal model approval, ownership, lifecycle, and retirement processes with acceptable use policies",
+          "Per-use-case AI risk assessments with stakeholder impact mapping",
+          "Bias, explainability, privacy, and robustness controls with metrics and transparency reports",
+          "AI-specific incident response runbooks and documented failure plans for security breaches, harmful outputs, and hallucinations",
+          "Accountability graph connecting model decisions to governance artifacts and outcomes",
+          "Maintained crosswalk to NIST CSF, ISO 42001, EU AI Act, AIUC-1",
+          "Quality management system for AI processes proportionate to organization size",
+          "Societal risk guardrails preventing AI-enabled cyber misuse and CBRN exploitation"
+        ],
+        "aiuc1_requirements": {
+          "C001": {
+            "requirement": "Define AI risk taxonomy",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "TRM-02"
+            ]
+          },
+          "E001": {
+            "requirement": "AI failure plan for security breaches",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-04"
+            ]
+          },
+          "E002": {
+            "requirement": "AI failure plan for harmful outputs",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-04"
+            ]
+          },
+          "E003": {
+            "requirement": "AI failure plan for hallucinations",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-04"
+            ]
+          },
+          "E004": {
+            "requirement": "Assign accountability",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-01"
+            ]
+          },
+          "E008": {
+            "requirement": "Review internal processes",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-07"
+            ]
+          },
+          "E010": {
+            "requirement": "Establish AI acceptable use policy",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-01"
+            ]
+          },
+          "E012": {
+            "requirement": "Document regulatory compliance",
+            "mandatory": true,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-06"
+            ]
+          },
+          "E013": {
+            "requirement": "Implement quality management system",
+            "mandatory": false,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-07"
+            ]
+          },
+          "E014": {
+            "requirement": "Share transparency reports (merged with E017)",
+            "mandatory": false,
+            "category": "E. Accountability",
+            "note": "Merged with E017 in Q1 2026 update",
+            "sub_pillars": [
+              "TRM-03"
+            ]
+          },
+          "E017": {
+            "requirement": "Document system transparency policy",
+            "mandatory": false,
+            "category": "E. Accountability",
+            "sub_pillars": [
+              "TRM-03"
+            ]
+          },
+          "F001": {
+            "requirement": "Prevent AI cyber misuse",
+            "mandatory": true,
+            "category": "F. Society",
+            "sub_pillars": [
+              "TRM-08"
+            ]
+          },
+          "F002": {
+            "requirement": "Prevent catastrophic misuse",
+            "mandatory": true,
+            "category": "F. Society",
+            "sub_pillars": [
+              "TRM-08"
+            ]
+          }
+        },
+        "aiuc1_coverage": {
+          "total_requirements": 13,
+          "mandatory": 10,
+          "optional": 3
+        }
+      },
+      "SAF": {
+        "name": "AI Output Safety",
+        "focus": "Systematic prevention, detection, and escalation of harmful, out-of-scope, and vulnerable AI outputs — covering risk taxonomy definition, output safety controls, scope boundary enforcement, monitoring with human escalation, and output limitation mechanisms. Primary alignment with AIUC-1 Category C (Safety) and B009.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Trustworthy Characteristics (Safety, Fairness, Explainability)",
+          "AI 600-1 — genAI safety & content filtering",
+          "OWASP Top 10 for LLM — Output Handling"
+        ],
+        "aiuc1_categories": [
+          "C. Safety",
+          "B. Security"
+        ],
+        "maturity_signals": [
+          "Published AI risk taxonomy covering harmful, out-of-scope, and hallucinated output categories with severity ratings",
+          "Technical controls preventing harmful outputs (distressed, angry, offensive, biased, deceptive)",
+          "Scope boundary enforcement preventing out-of-scope and policy-violating outputs",
+          "Automated flagging of high-risk outputs for human review with real-time intervention",
+          "Output limitation and obfuscation preventing information leakage and adversarial exploitation"
+        ],
+        "aiuc1_requirements": {
+          "B009": {
+            "requirement": "Limit output over-exposure",
+            "mandatory": true,
+            "category": "B. Security",
+            "sub_pillars": [
+              "SAF-05"
+            ]
+          },
+          "C001": {
+            "requirement": "Define AI risk taxonomy",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "SAF-01"
+            ]
+          },
+          "C003": {
+            "requirement": "Prevent harmful outputs",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "SAF-02"
+            ]
+          },
+          "C004": {
+            "requirement": "Prevent out-of-scope outputs",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "SAF-03"
+            ]
+          },
+          "C005": {
+            "requirement": "Prevent customer-defined high risk outputs",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "SAF-02"
+            ]
+          },
+          "C006": {
+            "requirement": "Prevent output vulnerabilities",
+            "mandatory": true,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "SAF-03"
+            ]
+          },
+          "C007": {
+            "requirement": "Flag high risk outputs",
+            "mandatory": false,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "SAF-04"
+            ]
+          },
+          "C008": {
+            "requirement": "Monitor AI risk categories",
+            "mandatory": false,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "SAF-04"
+            ]
+          },
+          "C009": {
+            "requirement": "Enable real-time feedback and intervention",
+            "mandatory": false,
+            "category": "C. Safety",
+            "sub_pillars": [
+              "SAF-04"
+            ]
+          }
+        },
+        "aiuc1_coverage": {
+          "total_requirements": 9,
+          "mandatory": 6,
+          "optional": 3
+        }
+      },
+      "REL": {
+        "name": "AI Reliability & Tool Safety",
+        "focus": "Prevention and detection of hallucinated outputs and unsafe tool calls — ensuring AI systems produce factually grounded responses and that agentic tool interactions remain within authorized scope. Primary alignment with AIUC-1 Category D (Reliability).",
+        "ai_rmf_functions": [
+          "Manage",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Reliable & Robust",
+          "AI 600-1 — genAI reliability & grounding",
+          "OWASP Top 10 for LLM — Hallucinations, Tool/Plugin Risks"
+        ],
+        "aiuc1_categories": [
+          "D. Reliability"
+        ],
+        "maturity_signals": [
+          "Technical controls preventing hallucinated outputs (grounding, RAG, verification chains)",
+          "Safeguards restricting AI tool calls to authorized actions, scopes, and information",
+          "Independent third-party testing for hallucination rates and tool call safety"
+        ],
+        "aiuc1_requirements": {
+          "D001": {
+            "requirement": "Prevent hallucinated outputs",
+            "mandatory": true,
+            "category": "D. Reliability",
+            "sub_pillars": [
+              "REL-01"
+            ]
+          },
+          "D002": {
+            "requirement": "Third-party testing for hallucinations",
+            "mandatory": true,
+            "category": "D. Reliability",
+            "sub_pillars": [
+              "REL-03"
+            ]
+          },
+          "D003": {
+            "requirement": "Restrict unsafe tool calls",
+            "mandatory": true,
+            "category": "D. Reliability",
+            "sub_pillars": [
+              "REL-02"
+            ]
+          },
+          "D004": {
+            "requirement": "Third-party testing of tool calls",
+            "mandatory": true,
+            "category": "D. Reliability",
+            "sub_pillars": [
+              "REL-03"
+            ]
+          }
+        },
+        "aiuc1_coverage": {
+          "total_requirements": 4,
+          "mandatory": 4,
+          "optional": 0
+        }
+      }
+    },
+    "sub_pillars": {
+      "INF-01": {
+        "name": "Hardened AI Runtime Isolation",
+        "expanded_definition": "Dedicated, hardened compute environments for AI training, fine-tuning, and inference — using VNETs, VPCs, private endpoints, and container/VM isolation to minimize blast radius and lateral movement risk. Includes deployment environment protection with encryption, access controls, and authorization.",
+        "ai_rmf_mapping": "Govern / Manage / Measure — governance of deployment patterns, managed risk treatments, continuous evaluation of infrastructure risk.",
+        "aiuc1_mapping": {
+          "B008": {
+            "requirement": "Protect model deployment environment",
+            "mandatory": true,
+            "category": "B. Security"
+          },
+          "E005": {
+            "requirement": "Assess cloud vs on-prem processing",
+            "mandatory": true,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "Dedicated VNETs/VPCs for AI workloads separate from general compute",
+          "Private endpoints for model registries, training clusters, and inference APIs",
+          "Container and VM hardening (CIS benchmarks, minimal images, runtime security)",
+          "Network micro-segmentation between training, staging, and production AI environments",
+          "Automated drift detection for infrastructure configuration",
+          "Documented criteria for cloud vs. on-premises AI processing based on data sensitivity, regulatory requirements, and security controls (AIUC-1 E005)",
+          "Encryption, access controls, and authorization hardening for model deployment environments (AIUC-1 B008)"
+        ]
+      },
+      "INF-02": {
+        "name": "Compute Access Governance",
+        "expanded_definition": "Controlled, auditable access to high-value AI compute resources (GPU/TPU clusters) with least-privilege provisioning, cost controls, and usage accountability.",
+        "ai_rmf_mapping": "Govern / Manage / Measure — role clarity and least privilege with effectiveness checks.",
+        "aiuc1_mapping": {},
+        "maturity_criteria": [
+          "RBAC for GPU/TPU cluster provisioning and scheduling",
+          "Auditable request/approval workflow for compute allocation",
+          "Cost and usage monitoring with anomaly alerting",
+          "Time-bounded and project-scoped compute reservations",
+          "Automated deprovisioning of idle or expired compute resources"
+        ]
+      },
+      "INF-03": {
+        "name": "Encryption at Rest",
+        "expanded_definition": "Cryptographic protection of all AI artifacts at rest — including trained models, model weights, training datasets, evaluation datasets, configuration files, and intermediate artifacts — using enterprise key management.",
+        "ai_rmf_mapping": "Manage / Measure — secure & resilient outcomes and verification.",
+        "aiuc1_mapping": {
+          "B008": {
+            "requirement": "Protect model deployment environment",
+            "mandatory": true,
+            "category": "B. Security"
+          }
+        },
+        "maturity_criteria": [
+          "AES-256 (or equivalent) encryption for all stored models and weights",
+          "Encryption of training and evaluation datasets in object storage and databases",
+          "Hardware Security Module (HSM) or cloud KMS for key management",
+          "Key rotation policies enforced automatically on a defined schedule",
+          "Encryption coverage audit and gap reporting"
+        ]
+      },
+      "INF-04": {
+        "name": "Encryption in Transit",
+        "expanded_definition": "Cryptographic protection of all AI-related data in motion — including model-serving API traffic, training data pipeline transfers, model distribution, and inter-service communication — using modern transport security.",
+        "ai_rmf_mapping": "Manage / Measure — secure & resilient outcomes and verification.",
+        "aiuc1_mapping": {
+          "B008": {
+            "requirement": "Protect model deployment environment",
+            "mandatory": true,
+            "category": "B. Security"
+          }
+        },
+        "maturity_criteria": [
+          "TLS 1.3+ enforced on all model-serving and inference API endpoints",
+          "Encrypted data pipelines for training data ingestion and transfer",
+          "mTLS (mutual TLS) between AI microservices and internal endpoints",
+          "Certificate lifecycle management with automated renewal",
+          "Network traffic inspection confirming no plaintext AI data in transit"
+        ]
+      },
+      "INF-05": {
+        "name": "AI Supply Chain & Vendor Assurance",
+        "expanded_definition": "Verification, provenance tracking, and risk assessment for all AI supply-chain components — including ML frameworks, pretrained models, third-party agents, training data sources, and open-source dependencies. Extended with AIUC-1 vendor due diligence processes for foundation model providers.",
+        "ai_rmf_mapping": "Map / Govern / Manage — dependency mapping, policy setting, risk treatment.",
+        "aiuc1_mapping": {
+          "E006": {
+            "requirement": "Conduct vendor due diligence",
+            "mandatory": true,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "SBOM (Software Bill of Materials) for all AI pipeline components",
+          "Provenance verification for pretrained models and foundation models",
+          "Vulnerability scanning of ML frameworks and dependencies",
+          "Vendor/source risk assessment for third-party AI components",
+          "Automated alerting on supply-chain compromise indicators",
+          "AI vendor due diligence process for foundation and upstream model providers covering data handling, PII controls, security, and compliance (AIUC-1 E006)",
+          "Open-source AI component risk assessment with license and provenance review"
+        ]
+      },
+      "IAM-01": {
+        "name": "Fine-Grained AI Workspace IAM",
+        "expanded_definition": "Role-based (RBAC) and attribute-based (ABAC) access controls applied to AI workspaces, model registries, datasets, feature stores, and inference endpoints — enforcing least privilege across the AI lifecycle. Includes enforcement of user access controls and admin privileges per organizational policy.",
+        "ai_rmf_mapping": "Govern / Manage — role definitions, least privilege, operational enforcement.",
+        "aiuc1_mapping": {
+          "B007": {
+            "requirement": "Enforce user access privileges to AI systems",
+            "mandatory": true,
+            "category": "B. Security"
+          }
+        },
+        "maturity_criteria": [
+          "RBAC policies defined for AI platform roles (data scientist, ML engineer, reviewer, admin)",
+          "ABAC policies incorporating project, data classification, and environment attributes",
+          "Separation of duties between model development, approval, and deployment",
+          "Access reviews and recertification on a defined cadence",
+          "Integration with enterprise IdP (SSO, MFA) for all AI platform access",
+          "User access controls and admin privileges established and maintained in line with organizational AI policy (AIUC-1 B007)"
+        ]
+      },
+      "IAM-02": {
+        "name": "AI API Authorization & HITL Approvals",
+        "expanded_definition": "Strong authentication and authorization for AI APIs using managed identities, scoped tokens, and API keys — combined with human-in-the-loop (HITL) approval gates for high-risk or high-impact AI actions. Includes monitoring of third-party access to AI systems.",
+        "ai_rmf_mapping": "Manage / Measure — operational controls plus control-efficacy review.",
+        "aiuc1_mapping": {
+          "E009": {
+            "requirement": "Monitor third-party access",
+            "mandatory": false,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "Managed identities or service principals for all AI API endpoints",
+          "Scoped API keys with expiration and usage limits per consumer",
+          "HITL approval workflows for model deployments, retraining triggers, and data access",
+          "Token-based authentication with short-lived access tokens (OAuth 2.0 / OIDC)",
+          "Audit logging of all API authorization decisions including denials",
+          "Systems to monitor and audit third-party access to AI systems and APIs (AIUC-1 E009)"
+        ]
+      },
+      "IAM-03": {
+        "name": "Prompt & Response Guardrails by Role",
+        "expanded_definition": "Policy-aware input/output controls that filter, redact, or block AI interactions based on the requester's role, data classification of the context, and organizational content policies. Extended with real-time input filtering using automated moderation tools.",
+        "ai_rmf_mapping": "Manage / Measure — TEVV and monitoring for harmful outputs.",
+        "aiuc1_mapping": {
+          "B005": {
+            "requirement": "Implement real-time input filtering",
+            "mandatory": false,
+            "category": "B. Security"
+          }
+        },
+        "maturity_criteria": [
+          "Role-based prompt policies (e.g., restricting PII queries for non-privileged users)",
+          "Automated response redaction based on data classification",
+          "Content safety filters for harmful, biased, or policy-violating outputs",
+          "Jailbreak and prompt-injection detection with alert/block actions",
+          "Policy versioning and audit trail for guardrail rule changes",
+          "Real-time input filtering using automated moderation tools for prompt injection, jailbreak, and adversarial input protection (AIUC-1 B005)"
+        ]
+      },
+      "IAM-04": {
+        "name": "AI Agent Identity, Delegation & Scope",
+        "expanded_definition": "Identity management for non-human AI agents — including unique agent identities, scoped delegation of authority, action boundaries, revocable trust chains for agentic AI workflows, and data collection limitations ensuring agents access only task-relevant information.",
+        "ai_rmf_mapping": "Govern / Manage — role definitions and operational enforcement for autonomous agents.",
+        "aiuc1_mapping": {
+          "B006": {
+            "requirement": "Prevent unauthorized AI agent actions",
+            "mandatory": true,
+            "category": "B. Security"
+          },
+          "A003": {
+            "requirement": "Limit AI agent data collection",
+            "mandatory": true,
+            "category": "A. Data & Privacy"
+          }
+        },
+        "maturity_criteria": [
+          "Unique, auditable identities assigned to each AI agent instance",
+          "Scoped delegation policies defining what actions agents may perform",
+          "Action boundary enforcement (resource limits, allowed APIs, data scopes)",
+          "Revocable trust chains with real-time suspension capability",
+          "Agent activity logging with attribution to originating user or workflow",
+          "Safeguards preventing AI agents from performing actions beyond intended scope and authorized privileges (AIUC-1 B006)",
+          "Data collection limitations ensuring AI agent access is restricted to task-relevant information based on user roles and context (AIUC-1 A003)"
+        ]
+      },
+      "IAM-05": {
+        "name": "AI Disclosure & Technical Exposure Controls",
+        "expanded_definition": "Controls ensuring users are informed when they interact with AI systems rather than humans, and preventing over-disclosure of technical implementation details that could enable adversarial targeting. Covers AI labeling, transparency notifications, and information security for system architecture details.",
+        "ai_rmf_mapping": "Govern / Manage — transparency obligations and information security.",
+        "aiuc1_mapping": {
+          "E016": {
+            "requirement": "Implement AI disclosure mechanisms",
+            "mandatory": true,
+            "category": "E. Accountability"
+          },
+          "B003": {
+            "requirement": "Manage public release of technical details",
+            "mandatory": false,
+            "category": "B. Security"
+          }
+        },
+        "maturity_criteria": [
+          "Clear disclosure mechanisms informing users when they interact with AI systems rather than humans (AIUC-1 E016)",
+          "AI interaction labeling applied consistently across all customer-facing AI touchpoints",
+          "Controls preventing over-disclosure of AI system architecture, model details, and organizational information that could enable adversarial targeting (AIUC-1 B003)",
+          "Policy governing public release of AI technical details (research papers, blog posts, open-source) with security review",
+          "Disclosure and labeling audit trail demonstrating consistent application"
+        ]
+      },
+      "NDS-01": {
+        "name": "Segregated Training Networks",
+        "expanded_definition": "Network isolation for AI training environments — no direct internet egress, brokered or air-gapped data transfer, and dedicated network segments to prevent data leakage and supply-chain injection during training.",
+        "ai_rmf_mapping": "Govern / Manage — policy-driven isolation and operational guardrails.",
+        "aiuc1_mapping": {},
+        "maturity_criteria": [
+          "Training environments on isolated network segments with no direct internet access",
+          "Brokered data transfer via approved gateways with integrity checks",
+          "Egress filtering and DLP controls on training network boundaries",
+          "Separate DNS and proxy configurations for training vs. production",
+          "Network flow logging and anomaly detection for training segments"
+        ]
+      },
+      "NDS-02": {
+        "name": "Model Boundary Defenses",
+        "expanded_definition": "Perimeter and application-layer defenses purpose-built for AI inference endpoints — including web application firewalls, rate limiting, abuse detection, prompt-injection/jailbreak filtering, endpoint scraping prevention, and adversarial input detection.",
+        "ai_rmf_mapping": "Manage / Measure — resilience and adversarial testing outcomes.",
+        "aiuc1_mapping": {
+          "B004": {
+            "requirement": "Prevent AI endpoint scraping",
+            "mandatory": true,
+            "category": "B. Security"
+          },
+          "B002": {
+            "requirement": "Detect adversarial input",
+            "mandatory": false,
+            "category": "B. Security"
+          }
+        },
+        "maturity_criteria": [
+          "WAF rules tuned for LLM endpoint attack patterns",
+          "Rate limiting and throttling per consumer, API key, and IP",
+          "Prompt-injection and jailbreak detection with real-time blocking",
+          "Model extraction and model-stealing defense mechanisms",
+          "Adversarial input detection (e.g., perturbation attacks on classification models)",
+          "Safeguards preventing probing or scraping of external AI endpoints including query quotas and zero-trust policies (AIUC-1 B004)",
+          "Monitoring capabilities to detect and respond to adversarial inputs and prompt injection attempts in real time (AIUC-1 B002)"
+        ]
+      },
+      "NDS-03": {
+        "name": "Secure Data Pipelines",
+        "expanded_definition": "End-to-end security for AI data pipelines — covering data provenance, integrity verification, labeling governance, and monitoring for data poisoning and distribution drift.",
+        "ai_rmf_mapping": "Map / Measure / Manage — context, continuous measurement, risk response.",
+        "aiuc1_mapping": {},
+        "maturity_criteria": [
+          "Data provenance tracking from source to training/evaluation usage",
+          "Cryptographic integrity checks (hashing) on datasets at each pipeline stage",
+          "Data labeling governance with quality assurance and reviewer audit trails",
+          "Automated monitoring for data poisoning, contamination, and anomalous inputs",
+          "Distribution drift detection with alerting and retraining triggers"
+        ]
+      },
+      "NDS-04": {
+        "name": "Inference Logging, PII Protection & Exfiltration Monitoring",
+        "expanded_definition": "Comprehensive logging of AI inference requests and responses — with monitoring for data exfiltration attempts, anomalous usage patterns, unauthorized knowledge extraction, and specific safeguards against PII leakage through AI outputs and logs.",
+        "ai_rmf_mapping": "Measure / Manage — ongoing risk monitoring and response.",
+        "aiuc1_mapping": {
+          "A006": {
+            "requirement": "Prevent PII leakage",
+            "mandatory": true,
+            "category": "A. Data & Privacy"
+          },
+          "E015": {
+            "requirement": "Log model activity",
+            "mandatory": true,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "Structured logging of all inference requests and responses (or representative samples)",
+          "Anomaly detection on query patterns (volume spikes, systematic probing, enumeration)",
+          "Data exfiltration monitoring for PII, trade secrets, or training data leakage in outputs",
+          "Integration with SIEM/SOAR for automated alert and response workflows",
+          "Retention policies aligned with compliance and forensic requirements",
+          "Safeguards preventing personal data (PII) leakage through AI outputs and logs with automated detection and redaction (AIUC-1 A006)",
+          "Comprehensive logging of AI system processes, actions, and model outputs to support incident investigation, auditing, and explanation of AI behavior (AIUC-1 E015)"
+        ]
+      },
+      "NDS-05": {
+        "name": "Data Sovereignty, Privacy & Regulatory Controls",
+        "expanded_definition": "Controls ensuring AI training data, model artifacts, and inference data comply with data residency, sovereignty, and privacy regulations — including GDPR, sector-specific mandates, cross-border transfer restrictions, and documented processing locations.",
+        "ai_rmf_mapping": "Govern / Manage — policy-driven data governance and compliance.",
+        "aiuc1_mapping": {
+          "E011": {
+            "requirement": "Record processing locations",
+            "mandatory": true,
+            "category": "E. Accountability"
+          },
+          "E012": {
+            "requirement": "Document regulatory compliance",
+            "mandatory": true,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "Data residency enforcement for AI datasets and model storage by jurisdiction",
+          "Cross-border data transfer controls with legal basis documentation",
+          "Privacy impact assessments (PIAs) for AI workloads processing personal data",
+          "Data minimization and purpose limitation enforced in training data selection",
+          "Right-to-erasure and data subject request workflows for AI training data",
+          "Documented AI data processing locations with maintained records of where data is stored and processed (AIUC-1 E011)",
+          "Documentation of applicable AI laws and standards, required data protections, and compliance strategies (AIUC-1 E012)"
+        ]
+      },
+      "NDS-06": {
+        "name": "AI Data Use & Consent Policies",
+        "expanded_definition": "Formal policies governing how customer data is used for AI model training, inference processing, and output generation — covering input data rights, output ownership, data retention, opt-out mechanisms, and transparent communication to customers.",
+        "ai_rmf_mapping": "Govern / Manage — data governance policies and customer rights.",
+        "aiuc1_mapping": {
+          "A001": {
+            "requirement": "Establish input data policy",
+            "mandatory": true,
+            "category": "A. Data & Privacy"
+          },
+          "A002": {
+            "requirement": "Establish output data policy",
+            "mandatory": true,
+            "category": "A. Data & Privacy"
+          }
+        },
+        "maturity_criteria": [
+          "Published AI input data policy covering how customer data is used for model training, inference processing, and data retention periods (AIUC-1 A001)",
+          "Published AI output data policy covering output ownership, usage rights, opt-out, and deletion rights (AIUC-1 A002)",
+          "Customer consent mechanisms for AI data processing with clear opt-in/opt-out controls",
+          "Data retention schedules specific to AI training data, inference logs, and generated outputs",
+          "Regular review and communication of data use policies to customers and stakeholders"
+        ]
+      },
+      "NDS-07": {
+        "name": "Cross-Customer Data Isolation",
+        "expanded_definition": "Multi-tenant data isolation controls preventing cross-customer data exposure when AI systems process or combine data from multiple customers — including model isolation, inference context separation, and training data segregation.",
+        "ai_rmf_mapping": "Govern / Manage / Measure — tenant isolation governance and verification.",
+        "aiuc1_mapping": {
+          "A005": {
+            "requirement": "Prevent cross-customer data exposure",
+            "mandatory": true,
+            "category": "A. Data & Privacy"
+          }
+        },
+        "maturity_criteria": [
+          "Safeguards preventing cross-customer data exposure when combining data from multiple sources (AIUC-1 A005)",
+          "Tenant-isolated model fine-tuning preventing data leakage between customer workloads",
+          "Inference context isolation ensuring one customer's data does not influence another's outputs",
+          "Training data segregation controls with verified isolation for multi-tenant model training",
+          "Regular testing and validation of cross-customer isolation boundaries"
+        ]
+      },
+      "NDS-08": {
+        "name": "Intellectual Property & Copyright Safeguards",
+        "expanded_definition": "Controls preventing AI systems from leaking organizational intellectual property and confidential information, and preventing AI outputs from violating copyrights, trademarks, or other third-party IP rights.",
+        "ai_rmf_mapping": "Govern / Manage — IP governance and output content controls.",
+        "aiuc1_mapping": {
+          "A004": {
+            "requirement": "Protect IP & trade secrets",
+            "mandatory": true,
+            "category": "A. Data & Privacy"
+          },
+          "A007": {
+            "requirement": "Prevent IP violations",
+            "mandatory": true,
+            "category": "A. Data & Privacy"
+          }
+        },
+        "maturity_criteria": [
+          "Safeguards preventing AI systems from leaking company intellectual property or confidential information (AIUC-1 A004)",
+          "Controls preventing AI outputs from violating copyrights, trademarks, or third-party intellectual property rights (AIUC-1 A007)",
+          "Content filtering mechanisms detecting potential IP-infringing output patterns",
+          "Training data provenance verification to identify and exclude copyrighted material where required",
+          "IP risk assessment process for new AI use cases and output types"
+        ]
+      },
+      "DSO-01": {
+        "name": "Secure ML CI/CD",
+        "expanded_definition": "Security-integrated ML CI/CD pipelines — including dependency scanning, model signing, reproducible build environments, and automated security gates before model artifacts are published.",
+        "ai_rmf_mapping": "Manage / Measure / Govern — integrate trustworthy characteristics in SDLC and verify.",
+        "aiuc1_mapping": {},
+        "maturity_criteria": [
+          "Dependency scanning (SCA) for all ML pipeline packages and libraries",
+          "Model signing with cryptographic verification before registry publication",
+          "Reproducible training environments (pinned dependencies, deterministic builds)",
+          "Static analysis and linting for ML pipeline code (notebooks, scripts, configs)",
+          "Automated security gates that block pipeline promotion on policy violations"
+        ]
+      },
+      "DSO-02": {
+        "name": "Model & Dataset Lineage / Versioning",
+        "expanded_definition": "Immutable versioning and lineage tracking for all models and datasets — enabling full traceability from training data through model artifacts to production deployments, with rollback capability.",
+        "ai_rmf_mapping": "Map / Manage — lifecycle traceability and controlled change.",
+        "aiuc1_mapping": {},
+        "maturity_criteria": [
+          "Immutable versioning for all model artifacts (weights, configs, code snapshots)",
+          "Dataset versioning with diff capability and change attribution",
+          "Lineage graph linking data sources → training runs → model versions → deployments",
+          "One-click rollback to any previous model version in production",
+          "Retention and archival policies for deprecated model/dataset versions"
+        ]
+      },
+      "DSO-03": {
+        "name": "TEVV & Adversarial Testing Before Release",
+        "expanded_definition": "Robust Testing, Evaluation, Verification, and Validation (TEVV) applied before any model or AI feature is released — including adversarial robustness testing, bias evaluation, safety checks, reliability testing, red-team exercises, and pre-deployment internal testing aligned with AIUC-1 mandates.",
+        "ai_rmf_mapping": "Measure / Manage — testing and risk treatment.",
+        "aiuc1_mapping": {
+          "B001": {
+            "requirement": "Third-party testing of adversarial robustness",
+            "mandatory": true,
+            "category": "B. Security"
+          },
+          "C002": {
+            "requirement": "Conduct pre-deployment testing",
+            "mandatory": true,
+            "category": "C. Safety"
+          }
+        },
+        "maturity_criteria": [
+          "Adversarial robustness testing against known attack vectors including prompt injection and jailbreak attempts aligned with adversarial threat taxonomy (AIUC-1 B001)",
+          "Bias and fairness evaluation across protected demographic groups",
+          "Safety and toxicity testing for generative AI outputs",
+          "Reliability and performance regression testing against baseline metrics",
+          "Red-team exercises simulating realistic adversarial scenarios",
+          "Internal pre-deployment testing across all risk categories for system changes requiring formal review or approval (AIUC-1 C002)"
+        ]
+      },
+      "DSO-04": {
+        "name": "Risk-Gated Promotion to Production",
+        "expanded_definition": "Controlled promotion of AI models to production through risk-based gates — including HITL approvals, staged rollouts (canary/blue-green), kill-switch mechanisms, automatic rollback triggers, and documented accountability for system change approvals.",
+        "ai_rmf_mapping": "Govern / Manage — decision rights and operational controls.",
+        "aiuc1_mapping": {
+          "E004": {
+            "requirement": "Assign accountability",
+            "mandatory": true,
+            "category": "E. Accountability"
+          },
+          "E007": {
+            "requirement": "Document system change approvals (merged with E004)",
+            "mandatory": false,
+            "category": "E. Accountability",
+            "note": "Merged with E004 in Q1 2026 update"
+          }
+        },
+        "maturity_criteria": [
+          "HITL approval required before production deployment of high-risk models",
+          "Staged rollout (canary, blue-green, shadow) with traffic percentage controls",
+          "Kill-switch capability for immediate production model disablement",
+          "Automatic rollback triggers based on performance/safety metric thresholds",
+          "Deployment approval audit trail with approver identity and justification",
+          "Documented accountability for AI system changes requiring formal review, with assigned leads and approval evidence for each change (AIUC-1 E004)"
+        ]
+      },
+      "DSO-05": {
+        "name": "Auditability & Lineage Graph",
+        "expanded_definition": "Graph-based audit trail for production AI systems — linking source code, training data, model versions, configuration changes, inference decisions, and downstream outcomes into a queryable accountability structure for regulatory and forensic purposes.",
+        "ai_rmf_mapping": "Map / Govern / Measure — lifecycle traceability, governance, and continuous assurance.",
+        "aiuc1_mapping": {},
+        "maturity_criteria": [
+          "Graph structure linking: code commit → dataset version → training run → model artifact → deployment → inference decision → outcome",
+          "Queryable lineage for any production decision (trace back to training data and code)",
+          "Tamper-evident or immutable storage of graph nodes and edges",
+          "Timeline reconstruction capability for incident investigation and root-cause analysis",
+          "Integration with GRC/compliance platforms for automated evidence export"
+        ]
+      },
+      "DSO-06": {
+        "name": "Independent Third-Party Testing Programs",
+        "expanded_definition": "Mandated engagement of expert third parties to evaluate AI system robustness at minimum quarterly intervals — covering harmful output testing, out-of-scope output testing, customer-defined risk testing, hallucination testing, and tool call safety testing. Aligns with AIUC-1's testing-based assurance model.",
+        "ai_rmf_mapping": "Measure / Govern — external assurance and continuous evaluation.",
+        "aiuc1_mapping": {
+          "C010": {
+            "requirement": "Third-party testing for harmful outputs",
+            "mandatory": true,
+            "category": "C. Safety"
+          },
+          "C011": {
+            "requirement": "Third-party testing for out-of-scope outputs",
+            "mandatory": true,
+            "category": "C. Safety"
+          },
+          "C012": {
+            "requirement": "Third-party testing for customer-defined risk",
+            "mandatory": true,
+            "category": "C. Safety"
+          },
+          "D002": {
+            "requirement": "Third-party testing for hallucinations",
+            "mandatory": true,
+            "category": "D. Reliability"
+          },
+          "D004": {
+            "requirement": "Third-party testing of tool calls",
+            "mandatory": true,
+            "category": "D. Reliability"
+          }
+        },
+        "maturity_criteria": [
+          "Expert third-party evaluation of system robustness to harmful outputs (distressed, angry, offensive, biased, deceptive) at least every 3 months (AIUC-1 C010)",
+          "Expert third-party evaluation of system robustness to out-of-scope outputs (political discussion, healthcare advice) at least every 3 months (AIUC-1 C011)",
+          "Expert third-party evaluation of system robustness to customer-defined high-risk outputs per risk taxonomy at least every 3 months (AIUC-1 C012)",
+          "Expert third-party evaluation of hallucinated outputs at least every 3 months (AIUC-1 D002)",
+          "Expert third-party evaluation of tool call safety (unauthorized actions, restricted information access, scope violations) at least every 3 months (AIUC-1 D004)"
+        ]
+      },
+      "TRM-01": {
+        "name": "Model Governance & Acceptable Use",
+        "expanded_definition": "Formal governance processes for AI models — covering approval workflows, ownership assignment, lifecycle state management, decommission procedures, and an organizational AI acceptable use policy defining permitted and prohibited AI behaviors.",
+        "ai_rmf_mapping": "Govern — clear roles, policies, and oversight.",
+        "aiuc1_mapping": {
+          "E010": {
+            "requirement": "Establish AI acceptable use policy",
+            "mandatory": true,
+            "category": "E. Accountability"
+          },
+          "E004": {
+            "requirement": "Assign accountability",
+            "mandatory": true,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "Model approval workflow with defined decision criteria and authority levels",
+          "Named model owner and accountable executive for each production model",
+          "Lifecycle state tracking (draft, approved, production, deprecated, retired)",
+          "Scheduled model reviews with revalidation or retirement decisions",
+          "Decommission procedures with data retention and stakeholder notification",
+          "Established and implemented AI acceptable use policy defining permitted uses, prohibited behaviors, and breach consequences (AIUC-1 E010)"
+        ]
+      },
+      "TRM-02": {
+        "name": "AI Risk Assessment & Taxonomy",
+        "expanded_definition": "Structured risk assessment for each AI use case — evaluating impact, context, affected stakeholders, failure modes, and risk appetite. Extended with formal risk taxonomy covering harmful, out-of-scope, and hallucinated output categories with severity ratings.",
+        "ai_rmf_mapping": "Map / Govern — context & impact mapping with policy alignment.",
+        "aiuc1_mapping": {
+          "C001": {
+            "requirement": "Define AI risk taxonomy",
+            "mandatory": true,
+            "category": "C. Safety"
+          }
+        },
+        "maturity_criteria": [
+          "Risk assessment template applied before any new AI use case is approved",
+          "Impact classification (low/medium/high/critical) with defined criteria",
+          "Stakeholder impact mapping identifying affected parties and harm scenarios",
+          "Failure mode analysis with probability and severity estimation",
+          "Risk appetite alignment with documented accept/mitigate/transfer decisions",
+          "AI risk taxonomy categorizing risks across harmful outputs, out-of-scope outputs, hallucinated outputs, tool call risks, and other application-specific risks with severity ratings (AIUC-1 C001)"
+        ]
+      },
+      "TRM-03": {
+        "name": "Trustworthiness & Transparency Controls",
+        "expanded_definition": "Technical and procedural controls ensuring AI trustworthiness across multiple dimensions — including fairness/bias mitigation, explainability/interpretability, privacy preservation, robustness/reliability guarantees, and system transparency through model cards, datasheets, and interpretability reports.",
+        "ai_rmf_mapping": "Measure / Manage — trustworthy characteristics implementation & evaluation.",
+        "aiuc1_mapping": {
+          "E017": {
+            "requirement": "Document system transparency policy",
+            "mandatory": false,
+            "category": "E. Accountability"
+          },
+          "E014": {
+            "requirement": "Share transparency reports (merged with E017)",
+            "mandatory": false,
+            "category": "E. Accountability",
+            "note": "Merged with E017 in Q1 2026 update"
+          }
+        },
+        "maturity_criteria": [
+          "Bias measurement and mitigation across protected attributes with defined fairness metrics",
+          "Explainability methods appropriate to model type (SHAP, LIME, attention visualization, etc.)",
+          "Privacy-preserving techniques (differential privacy, federated learning, data anonymization)",
+          "Robustness testing against distribution shift, adversarial inputs, and edge cases",
+          "Published model cards or transparency reports for externally facing AI features",
+          "System transparency policy maintained with a repository of model cards, datasheets, and interpretability reports for major AI systems (AIUC-1 E017)"
+        ]
+      },
+      "TRM-04": {
+        "name": "AI Incident Response, Failure Plans & Monitoring",
+        "expanded_definition": "Operational monitoring and incident response capabilities purpose-built for AI-specific failure modes — including hallucinations, jailbreaks, data leakage, model drift, and adversarial exploitation. Extended with documented AI failure plans covering security breaches, harmful outputs, and hallucinations with assigned accountability and remediation procedures.",
+        "ai_rmf_mapping": "Measure / Manage — continuous monitoring and incident handling.",
+        "aiuc1_mapping": {
+          "E001": {
+            "requirement": "AI failure plan for security breaches",
+            "mandatory": true,
+            "category": "E. Accountability"
+          },
+          "E002": {
+            "requirement": "AI failure plan for harmful outputs",
+            "mandatory": true,
+            "category": "E. Accountability"
+          },
+          "E003": {
+            "requirement": "AI failure plan for hallucinations",
+            "mandatory": true,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "AI-specific incident response runbooks covering hallucinations, jailbreaks, and data leakage",
+          "Real-time monitoring dashboards for model performance, drift, and safety metrics",
+          "Automated alerting on anomalous AI behavior with severity classification",
+          "Post-incident review process with root-cause analysis and control improvement",
+          "Integration with enterprise SOC workflows and escalation procedures",
+          "Documented AI failure plan for security and privacy breaches with accountable owners, notification procedures, and remediation with third-party support (legal, PR, insurers) (AIUC-1 E001)",
+          "Documented AI failure plan for harmful AI outputs causing significant customer harm with accountable owners and remediation procedures (AIUC-1 E002)",
+          "Documented AI failure plan for hallucinated AI outputs causing substantial customer financial loss with accountable owners and remediation procedures (AIUC-1 E003)"
+        ]
+      },
+      "TRM-05": {
+        "name": "Lineage & Accountability Graph",
+        "expanded_definition": "Governance-layer accountability graph that connects AI model decisions to organizational governance artifacts — linking risk assessments, approval records, policy versions, audit findings, and stakeholder impact analyses into a unified accountability structure. Complements the production lineage graph (DSO-05) by adding the governance and compliance dimension.",
+        "ai_rmf_mapping": "Govern / Map / Measure — assurance, attestation, and continuous governance traceability.",
+        "aiuc1_mapping": {},
+        "maturity_criteria": [
+          "Graph linking: risk assessment → approval record → policy version → model deployment → monitoring finding → remediation action",
+          "Accountability chain from any AI decision to the governance artifacts that authorized it",
+          "Artifact versioning so the policy/approval state at time-of-decision is reconstructable",
+          "Board/executive-level accountability dashboards derived from graph data",
+          "Cross-referencing with DSO-05 production lineage for end-to-end traceability"
+        ]
+      },
+      "TRM-06": {
+        "name": "Enterprise & AIUC-1 Framework Crosswalk",
+        "expanded_definition": "Maintained mapping from this framework's controls to enterprise and regulatory frameworks — including NIST CSF, ISO/IEC 42001, EU AI Act, NIST AI RMF, AIUC-1, MITRE ATLAS, OWASP Top 10 for LLM, and sector-specific requirements — enabling unified compliance reporting.",
+        "ai_rmf_mapping": "Govern — assurance & attestations through standards mapping.",
+        "aiuc1_mapping": {
+          "E012": {
+            "requirement": "Document regulatory compliance",
+            "mandatory": true,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "Control-level crosswalk to NIST CSF 2.0 and NIST AI RMF",
+          "Mapping to ISO/IEC 42001 (AI Management System) requirements",
+          "EU AI Act risk-tier alignment with compliance gap analysis",
+          "AIUC-1 requirement-level crosswalk mapping each A001–F002 requirement to framework sub-pillars",
+          "Sector-specific regulatory mapping (healthcare, financial services, defense, etc.)",
+          "Crosswalk maintained as a living document with change tracking and review cadence"
+        ]
+      },
+      "TRM-07": {
+        "name": "AI Quality Management System",
+        "expanded_definition": "Establishes a quality management system for AI systems proportionate to organizational size — covering regular internal process reviews, documentation standards, approval workflows, and continuous improvement cycles for AI operations.",
+        "ai_rmf_mapping": "Govern / Manage — process quality and internal oversight.",
+        "aiuc1_mapping": {
+          "E013": {
+            "requirement": "Implement quality management system",
+            "mandatory": false,
+            "category": "E. Accountability"
+          },
+          "E008": {
+            "requirement": "Review internal processes",
+            "mandatory": true,
+            "category": "E. Accountability"
+          }
+        },
+        "maturity_criteria": [
+          "Quality management system for AI systems proportionate to organizational size and complexity (AIUC-1 E013)",
+          "Regular internal reviews of key AI processes with documented review records and approvals (AIUC-1 E008)",
+          "Defined quality metrics and KPIs for AI development, deployment, and operations",
+          "Continuous improvement cycle incorporating lessons learned from incidents, testing, and reviews",
+          "Documentation standards for AI system changes, processes, and approvals"
+        ]
+      },
+      "TRM-08": {
+        "name": "Societal Risk & Misuse Prevention",
+        "expanded_definition": "Controls and guardrails preventing AI systems from being used or exploited for societal harm — including AI-enabled cyber attacks, exploitation, and catastrophic misuse involving chemical, biological, radiological, or nuclear (CBRN) threats.",
+        "ai_rmf_mapping": "Govern / Manage — societal risk governance and safety controls.",
+        "aiuc1_mapping": {
+          "F001": {
+            "requirement": "Prevent AI cyber misuse",
+            "mandatory": true,
+            "category": "F. Society"
+          },
+          "F002": {
+            "requirement": "Prevent catastrophic misuse",
+            "mandatory": true,
+            "category": "F. Society"
+          }
+        },
+        "maturity_criteria": [
+          "Guardrails preventing AI-enabled misuse for cyber attacks and exploitation (AIUC-1 F001)",
+          "Guardrails preventing AI-enabled catastrophic misuse: chemical, biological, radiological, nuclear (CBRN) threats (AIUC-1 F002)",
+          "Dual-use risk assessment for AI capabilities with potential for misuse",
+          "Monitoring for adversarial attempts to repurpose AI systems for harmful activities",
+          "Incident reporting and coordination with law enforcement or national security agencies when misuse is detected"
+        ]
+      },
+      "SAF-01": {
+        "name": "AI Risk Taxonomy & Output Classification",
+        "expanded_definition": "Establishment and maintenance of a comprehensive AI risk taxonomy that categorizes risks within harmful, out-of-scope, and hallucinated outputs, tool calls, and other application-specific risks — with severity ratings and classification criteria informing all downstream safety controls.",
+        "ai_rmf_mapping": "Govern / Map — risk categorization and context mapping.",
+        "aiuc1_mapping": {
+          "C001": {
+            "requirement": "Define AI risk taxonomy",
+            "mandatory": true,
+            "category": "C. Safety"
+          }
+        },
+        "maturity_criteria": [
+          "AI risk taxonomy established covering harmful outputs, out-of-scope outputs, hallucinated outputs, and tool call risks with severity ratings (AIUC-1 C001)",
+          "Application-specific risk categories defined based on business context and user population",
+          "Severity rating system with clear escalation thresholds (info, warning, critical, emergency)",
+          "Taxonomy reviewed and updated at least quarterly to reflect emerging risk patterns",
+          "Taxonomy integrated into testing, monitoring, and incident response processes"
+        ]
+      },
+      "SAF-02": {
+        "name": "Harmful Output Prevention",
+        "expanded_definition": "Technical controls and safeguards preventing AI systems from generating harmful outputs — including distressed outputs, angry responses, high-risk advice, offensive content, bias, deception, and customer-defined high-risk outputs per the established risk taxonomy.",
+        "ai_rmf_mapping": "Manage / Measure — output safety enforcement and evaluation.",
+        "aiuc1_mapping": {
+          "C003": {
+            "requirement": "Prevent harmful outputs",
+            "mandatory": true,
+            "category": "C. Safety"
+          },
+          "C005": {
+            "requirement": "Prevent customer-defined high risk outputs",
+            "mandatory": true,
+            "category": "C. Safety"
+          }
+        },
+        "maturity_criteria": [
+          "Safeguards preventing harmful outputs including distressed outputs, angry responses, high-risk advice, offensive content, bias, and deception (AIUC-1 C003)",
+          "Safeguards preventing additional high-risk outputs as defined in the organization's AI risk taxonomy (AIUC-1 C005)",
+          "Multi-layer content safety filters (input validation, output scanning, post-generation review)",
+          "Contextual awareness controls adjusting safety thresholds based on use case and user population",
+          "Measurable harmful output rate tracking with defined reduction targets"
+        ]
+      },
+      "SAF-03": {
+        "name": "Scope Boundary & Output Vulnerability Prevention",
+        "expanded_definition": "Controls preventing AI systems from generating out-of-scope outputs (e.g., political discussion, healthcare advice beyond authorized scope) and preventing security vulnerabilities in outputs that could impact users — including code injection, data exfiltration, and other output-mediated attacks.",
+        "ai_rmf_mapping": "Manage / Measure — scope governance and output security.",
+        "aiuc1_mapping": {
+          "C004": {
+            "requirement": "Prevent out-of-scope outputs",
+            "mandatory": true,
+            "category": "C. Safety"
+          },
+          "C006": {
+            "requirement": "Prevent output vulnerabilities",
+            "mandatory": true,
+            "category": "C. Safety"
+          }
+        },
+        "maturity_criteria": [
+          "Safeguards preventing out-of-scope outputs such as political discussion, healthcare advice, or other topics outside the system's authorized domain (AIUC-1 C004)",
+          "Safeguards preventing security vulnerabilities in outputs from impacting users, including code injection and data exfiltration via output payloads (AIUC-1 C006)",
+          "Defined scope boundaries for each AI deployment with explicit permitted and prohibited topic lists",
+          "Output sanitization pipeline preventing injection attacks through AI-generated content",
+          "Scope violation tracking and reporting with drift analysis over time"
+        ]
+      },
+      "SAF-04": {
+        "name": "Safety Monitoring, Flagging & Human Escalation",
+        "expanded_definition": "Real-time monitoring of AI outputs across risk categories with automated flagging of high-risk outputs for human review, continuous monitoring dashboards, and mechanisms for user feedback and intervention — enabling rapid detection and response to safety violations.",
+        "ai_rmf_mapping": "Measure / Manage — continuous safety monitoring and response.",
+        "aiuc1_mapping": {
+          "C007": {
+            "requirement": "Flag high risk outputs",
+            "mandatory": false,
+            "category": "C. Safety"
+          },
+          "C008": {
+            "requirement": "Monitor AI risk categories",
+            "mandatory": false,
+            "category": "C. Safety"
+          },
+          "C009": {
+            "requirement": "Enable real-time feedback and intervention",
+            "mandatory": false,
+            "category": "C. Safety"
+          }
+        },
+        "maturity_criteria": [
+          "Alerting system that flags high-risk outputs for human review with prioritized escalation queues (AIUC-1 C007)",
+          "Monitoring of AI systems across all defined risk categories with dashboards and trend analysis (AIUC-1 C008)",
+          "Mechanisms enabling real-time user feedback collection and intervention (pause, override, report) during AI interactions (AIUC-1 C009)",
+          "Safety incident response SLAs defining maximum time-to-review for flagged outputs by severity",
+          "Feedback loop from monitoring findings back to safety control tuning and risk taxonomy updates"
+        ]
+      },
+      "SAF-05": {
+        "name": "Output Limitation & Information Leakage Prevention",
+        "expanded_definition": "Controls limiting AI output fidelity and applying obfuscation techniques to safeguard against information leakage — preventing AI systems from exposing sensitive data, system internals, or other information that could be used for adversarial purposes through output manipulation.",
+        "ai_rmf_mapping": "Manage / Measure — output information security.",
+        "aiuc1_mapping": {
+          "B009": {
+            "requirement": "Limit output over-exposure",
+            "mandatory": true,
+            "category": "B. Security"
+          }
+        },
+        "maturity_criteria": [
+          "Output limitation and obfuscation techniques safeguarding against information leakage through AI outputs (AIUC-1 B009)",
+          "Response filtering preventing exposure of system prompts, configurations, or internal data",
+          "Fidelity reduction controls for sensitive output categories (financial data, personal data, proprietary information)",
+          "Output length and detail controls preventing exhaustive data extraction through iterative querying",
+          "Testing and validation of output limitation controls against known extraction techniques"
+        ]
+      },
+      "REL-01": {
+        "name": "Hallucination Prevention & Detection",
+        "expanded_definition": "Technical controls and safeguards preventing AI systems from generating hallucinated outputs — including factual grounding mechanisms, retrieval-augmented generation (RAG), output verification chains, confidence scoring, and citation requirements.",
+        "ai_rmf_mapping": "Manage / Measure — reliability enforcement and evaluation.",
+        "aiuc1_mapping": {
+          "D001": {
+            "requirement": "Prevent hallucinated outputs",
+            "mandatory": true,
+            "category": "D. Reliability"
+          }
+        },
+        "maturity_criteria": [
+          "Safeguards or technical controls preventing hallucinated outputs (AIUC-1 D001)",
+          "Factual grounding mechanisms (RAG, knowledge base verification, citation requirements)",
+          "Confidence scoring for AI outputs with low-confidence flagging or suppression",
+          "Hallucination detection in output pipeline (fact-checking, self-consistency checks)",
+          "Measurable hallucination rate tracking with defined thresholds and improvement targets"
+        ]
+      },
+      "REL-02": {
+        "name": "Tool Call Safety & Scope Control",
+        "expanded_definition": "Controls ensuring AI agent tool calls remain within authorized scope — preventing execution of unauthorized actions, access to restricted information, and decisions beyond the agent's intended boundaries. Covers tool selection validation, parameter sanitization, and execution monitoring.",
+        "ai_rmf_mapping": "Manage / Measure — operational safety for agentic tool interactions.",
+        "aiuc1_mapping": {
+          "D003": {
+            "requirement": "Restrict unsafe tool calls",
+            "mandatory": true,
+            "category": "D. Reliability"
+          }
+        },
+        "maturity_criteria": [
+          "Safeguards preventing tool calls from executing unauthorized actions, accessing restricted information, or making decisions beyond intended scope (AIUC-1 D003)",
+          "Tool allowlist with explicit definition of permitted tools and authorized parameters per agent context",
+          "Parameter validation and sanitization before tool execution",
+          "Real-time tool call monitoring with automatic blocking of out-of-scope requests",
+          "Tool call audit logging with full parameter capture and execution results"
+        ]
+      },
+      "REL-03": {
+        "name": "Reliability Assurance Testing",
+        "expanded_definition": "Independent testing programs for AI reliability — covering hallucination evaluation and tool call safety testing performed by expert third parties at regular intervals to provide external assurance of output reliability.",
+        "ai_rmf_mapping": "Measure — external assurance of reliability characteristics.",
+        "aiuc1_mapping": {
+          "D002": {
+            "requirement": "Third-party testing for hallucinations",
+            "mandatory": true,
+            "category": "D. Reliability"
+          },
+          "D004": {
+            "requirement": "Third-party testing of tool calls",
+            "mandatory": true,
+            "category": "D. Reliability"
+          }
+        },
+        "maturity_criteria": [
+          "Expert third-party evaluation of hallucinated outputs at least every 3 months (AIUC-1 D002)",
+          "Expert third-party evaluation of tool call safety at least every 3 months (AIUC-1 D004)",
+          "Defined reliability benchmarks and acceptance criteria for third-party test results",
+          "Remediation tracking for reliability issues identified through third-party testing",
+          "Trend analysis of reliability metrics across testing cycles"
+        ]
+      }
+    },
+    "aiuc1_crosswalk": {
+      "description": "Complete mapping of AIUC-1 requirements to SbD-AI v2.0 sub-pillars. Every active AIUC-1 requirement maps to at least one sub-pillar.",
+      "A001": {
+        "requirement": "Establish input data policy",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-06"
+        ],
+        "category": "A. Data & Privacy"
+      },
+      "A002": {
+        "requirement": "Establish output data policy",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-06"
+        ],
+        "category": "A. Data & Privacy"
+      },
+      "A003": {
+        "requirement": "Limit AI agent data collection",
+        "mandatory": true,
+        "sub_pillars": [
+          "IAM-04"
+        ],
+        "category": "A. Data & Privacy"
+      },
+      "A004": {
+        "requirement": "Protect IP & trade secrets",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-08"
+        ],
+        "category": "A. Data & Privacy"
+      },
+      "A005": {
+        "requirement": "Prevent cross-customer data exposure",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-07"
+        ],
+        "category": "A. Data & Privacy"
+      },
+      "A006": {
+        "requirement": "Prevent PII leakage",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-04"
+        ],
+        "category": "A. Data & Privacy"
+      },
+      "A007": {
+        "requirement": "Prevent IP violations",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-08"
+        ],
+        "category": "A. Data & Privacy"
+      },
+      "B001": {
+        "requirement": "Third-party testing of adversarial robustness",
+        "mandatory": true,
+        "sub_pillars": [
+          "DSO-03"
+        ],
+        "category": "B. Security"
+      },
+      "B002": {
+        "requirement": "Detect adversarial input",
+        "mandatory": false,
+        "sub_pillars": [
+          "NDS-02"
+        ],
+        "category": "B. Security"
+      },
+      "B003": {
+        "requirement": "Manage public release of technical details",
+        "mandatory": false,
+        "sub_pillars": [
+          "IAM-05"
+        ],
+        "category": "B. Security"
+      },
+      "B004": {
+        "requirement": "Prevent AI endpoint scraping",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-02"
+        ],
+        "category": "B. Security"
+      },
+      "B005": {
+        "requirement": "Implement real-time input filtering",
+        "mandatory": false,
+        "sub_pillars": [
+          "IAM-03"
+        ],
+        "category": "B. Security"
+      },
+      "B006": {
+        "requirement": "Prevent unauthorized AI agent actions",
+        "mandatory": true,
+        "sub_pillars": [
+          "IAM-04"
+        ],
+        "category": "B. Security"
+      },
+      "B007": {
+        "requirement": "Enforce user access privileges to AI systems",
+        "mandatory": true,
+        "sub_pillars": [
+          "IAM-01"
+        ],
+        "category": "B. Security"
+      },
+      "B008": {
+        "requirement": "Protect model deployment environment",
+        "mandatory": true,
+        "sub_pillars": [
+          "INF-01",
+          "INF-03",
+          "INF-04"
+        ],
+        "category": "B. Security"
+      },
+      "B009": {
+        "requirement": "Limit output over-exposure",
+        "mandatory": true,
+        "sub_pillars": [
+          "SAF-05"
+        ],
+        "category": "B. Security"
+      },
+      "C001": {
+        "requirement": "Define AI risk taxonomy",
+        "mandatory": true,
+        "sub_pillars": [
+          "SAF-01",
+          "TRM-02"
+        ],
+        "category": "C. Safety"
+      },
+      "C002": {
+        "requirement": "Conduct pre-deployment testing",
+        "mandatory": true,
+        "sub_pillars": [
+          "DSO-03"
+        ],
+        "category": "C. Safety"
+      },
+      "C003": {
+        "requirement": "Prevent harmful outputs",
+        "mandatory": true,
+        "sub_pillars": [
+          "SAF-02"
+        ],
+        "category": "C. Safety"
+      },
+      "C004": {
+        "requirement": "Prevent out-of-scope outputs",
+        "mandatory": true,
+        "sub_pillars": [
+          "SAF-03"
+        ],
+        "category": "C. Safety"
+      },
+      "C005": {
+        "requirement": "Prevent customer-defined high risk outputs",
+        "mandatory": true,
+        "sub_pillars": [
+          "SAF-02"
+        ],
+        "category": "C. Safety"
+      },
+      "C006": {
+        "requirement": "Prevent output vulnerabilities",
+        "mandatory": true,
+        "sub_pillars": [
+          "SAF-03"
+        ],
+        "category": "C. Safety"
+      },
+      "C007": {
+        "requirement": "Flag high risk outputs",
+        "mandatory": false,
+        "sub_pillars": [
+          "SAF-04"
+        ],
+        "category": "C. Safety"
+      },
+      "C008": {
+        "requirement": "Monitor AI risk categories",
+        "mandatory": false,
+        "sub_pillars": [
+          "SAF-04"
+        ],
+        "category": "C. Safety"
+      },
+      "C009": {
+        "requirement": "Enable real-time feedback and intervention",
+        "mandatory": false,
+        "sub_pillars": [
+          "SAF-04"
+        ],
+        "category": "C. Safety"
+      },
+      "C010": {
+        "requirement": "Third-party testing for harmful outputs",
+        "mandatory": true,
+        "sub_pillars": [
+          "DSO-06"
+        ],
+        "category": "C. Safety"
+      },
+      "C011": {
+        "requirement": "Third-party testing for out-of-scope outputs",
+        "mandatory": true,
+        "sub_pillars": [
+          "DSO-06"
+        ],
+        "category": "C. Safety"
+      },
+      "C012": {
+        "requirement": "Third-party testing for customer-defined risk",
+        "mandatory": true,
+        "sub_pillars": [
+          "DSO-06"
+        ],
+        "category": "C. Safety"
+      },
+      "D001": {
+        "requirement": "Prevent hallucinated outputs",
+        "mandatory": true,
+        "sub_pillars": [
+          "REL-01"
+        ],
+        "category": "D. Reliability"
+      },
+      "D002": {
+        "requirement": "Third-party testing for hallucinations",
+        "mandatory": true,
+        "sub_pillars": [
+          "REL-03",
+          "DSO-06"
+        ],
+        "category": "D. Reliability"
+      },
+      "D003": {
+        "requirement": "Restrict unsafe tool calls",
+        "mandatory": true,
+        "sub_pillars": [
+          "REL-02"
+        ],
+        "category": "D. Reliability"
+      },
+      "D004": {
+        "requirement": "Third-party testing of tool calls",
+        "mandatory": true,
+        "sub_pillars": [
+          "REL-03",
+          "DSO-06"
+        ],
+        "category": "D. Reliability"
+      },
+      "E001": {
+        "requirement": "AI failure plan for security breaches",
+        "mandatory": true,
+        "sub_pillars": [
+          "TRM-04"
+        ],
+        "category": "E. Accountability"
+      },
+      "E002": {
+        "requirement": "AI failure plan for harmful outputs",
+        "mandatory": true,
+        "sub_pillars": [
+          "TRM-04"
+        ],
+        "category": "E. Accountability"
+      },
+      "E003": {
+        "requirement": "AI failure plan for hallucinations",
+        "mandatory": true,
+        "sub_pillars": [
+          "TRM-04"
+        ],
+        "category": "E. Accountability"
+      },
+      "E004": {
+        "requirement": "Assign accountability",
+        "mandatory": true,
+        "sub_pillars": [
+          "DSO-04",
+          "TRM-01"
+        ],
+        "category": "E. Accountability"
+      },
+      "E005": {
+        "requirement": "Assess cloud vs on-prem processing",
+        "mandatory": true,
+        "sub_pillars": [
+          "INF-01"
+        ],
+        "category": "E. Accountability"
+      },
+      "E006": {
+        "requirement": "Conduct vendor due diligence",
+        "mandatory": true,
+        "sub_pillars": [
+          "INF-05"
+        ],
+        "category": "E. Accountability"
+      },
+      "E007": {
+        "requirement": "Document system change approvals (merged with E004)",
+        "mandatory": false,
+        "sub_pillars": [
+          "DSO-04"
+        ],
+        "category": "E. Accountability",
+        "note": "Merged with E004 in Q1 2026 update"
+      },
+      "E008": {
+        "requirement": "Review internal processes",
+        "mandatory": true,
+        "sub_pillars": [
+          "TRM-07"
+        ],
+        "category": "E. Accountability"
+      },
+      "E009": {
+        "requirement": "Monitor third-party access",
+        "mandatory": false,
+        "sub_pillars": [
+          "IAM-02"
+        ],
+        "category": "E. Accountability"
+      },
+      "E010": {
+        "requirement": "Establish AI acceptable use policy",
+        "mandatory": true,
+        "sub_pillars": [
+          "TRM-01"
+        ],
+        "category": "E. Accountability"
+      },
+      "E011": {
+        "requirement": "Record processing locations",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-05"
+        ],
+        "category": "E. Accountability"
+      },
+      "E012": {
+        "requirement": "Document regulatory compliance",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-05",
+          "TRM-06"
+        ],
+        "category": "E. Accountability"
+      },
+      "E013": {
+        "requirement": "Implement quality management system",
+        "mandatory": false,
+        "sub_pillars": [
+          "TRM-07"
+        ],
+        "category": "E. Accountability"
+      },
+      "E014": {
+        "requirement": "Share transparency reports (merged with E017)",
+        "mandatory": false,
+        "sub_pillars": [
+          "TRM-03"
+        ],
+        "category": "E. Accountability",
+        "note": "Merged with E017 in Q1 2026 update"
+      },
+      "E015": {
+        "requirement": "Log model activity",
+        "mandatory": true,
+        "sub_pillars": [
+          "NDS-04"
+        ],
+        "category": "E. Accountability"
+      },
+      "E016": {
+        "requirement": "Implement AI disclosure mechanisms",
+        "mandatory": true,
+        "sub_pillars": [
+          "IAM-05"
+        ],
+        "category": "E. Accountability"
+      },
+      "E017": {
+        "requirement": "Document system transparency policy",
+        "mandatory": false,
+        "sub_pillars": [
+          "TRM-03"
+        ],
+        "category": "E. Accountability"
+      },
+      "F001": {
+        "requirement": "Prevent AI cyber misuse",
+        "mandatory": true,
+        "sub_pillars": [
+          "TRM-08"
+        ],
+        "category": "F. Society"
+      },
+      "F002": {
+        "requirement": "Prevent catastrophic misuse",
+        "mandatory": true,
+        "sub_pillars": [
+          "TRM-08"
+        ],
+        "category": "F. Society"
+      }
+    },
+    "assessment_fields": {
+      "organization": {
+        "type": "string",
+        "description": "Name of the organization being assessed"
+      },
+      "assessment_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the assessment (YYYY-MM-DD)"
+      },
+      "assessor": {
+        "type": "string",
+        "description": "Name or role of the person conducting the assessment"
+      },
+      "business_unit": {
+        "type": "string",
+        "description": "Business unit or product line being assessed"
+      },
+      "ai_workload_types": {
+        "type": "array",
+        "description": "Types of AI workloads in scope: genAI, predictive, agentic, multi-agent, fine-tuning, RAG, voice-generation, image-generation, automation"
+      },
+      "aiuc1_capability_scope": {
+        "type": "array",
+        "description": "AIUC-1 capability types in scope: Universal, Text-generation, Voice-generation, Image-generation, Automation, External-facing"
+      },
+      "overall_maturity_score": {
+        "type": "number",
+        "description": "Average across all 40 sub-pillar scores (1.00–5.00)"
+      },
+      "pillar_scores": {
+        "type": "object",
+        "description": "Average maturity score per pillar (INF, IAM, NDS, DSO, TRM, SAF, REL)",
+        "properties": {
+          "INF": {
+            "type": "number"
+          },
+          "IAM": {
+            "type": "number"
+          },
+          "NDS": {
+            "type": "number"
+          },
+          "DSO": {
+            "type": "number"
+          },
+          "TRM": {
+            "type": "number"
+          },
+          "SAF": {
+            "type": "number"
+          },
+          "REL": {
+            "type": "number"
+          }
+        }
+      },
+      "sub_pillar_scores": {
+        "type": "object",
+        "description": "Maturity score (1–5) for each of the 40 sub-pillars, keyed by sub-pillar code"
+      },
+      "sub_pillar_evidence": {
+        "type": "object",
+        "description": "Evidence notes or artifact references supporting each sub-pillar score, keyed by sub-pillar code"
+      },
+      "sub_pillar_gaps": {
+        "type": "object",
+        "description": "Identified gaps and recommended actions per sub-pillar, keyed by sub-pillar code"
+      },
+      "coverage_grade": {
+        "type": "string",
+        "description": "Letter grade (A–F) based on count of sub-pillars scoring ≥3"
+      },
+      "aiuc1_compliance_status": {
+        "type": "object",
+        "description": "Per-requirement compliance status for AIUC-1, keyed by requirement code (A001–F002). Values: compliant, partial, non-compliant, not-applicable"
+      },
+      "priority_remediation": {
+        "type": "array",
+        "description": "Ordered list of sub-pillar codes to prioritize for maturity improvement"
+      }
+    },
+    "90_day_adoption_plan": {
+      "description": "Phased adoption roadmap aligned to NIST AI RMF functions and AIUC-1 compliance, derived from source documents.",
+      "self_assessment_schedule": "Conduct baseline self-assessment in Phase 1 (W1–3) and re-score at milestones W5, W8, and W12.",
+      "milestones": [
+        {
+          "week": 3,
+          "label": "Baseline Self-Assessment Complete (40 sub-pillars)",
+          "type": "self-assessment"
+        },
+        {
+          "week": 5,
+          "label": "Inventory Validated & AIUC-1 Gap Analysis Complete",
+          "type": "checkpoint"
+        },
+        {
+          "week": 8,
+          "label": "Mid-Point Maturity Re-Score",
+          "type": "self-assessment"
+        },
+        {
+          "week": 12,
+          "label": "Final Assessment & AIUC-1 Compliance Evidence Pack",
+          "type": "self-assessment"
+        }
+      ],
+      "phases": {
+        "weeks_1_3": {
+          "name": "Stand Up Governance & AIUC-1 Gap Analysis",
+          "activities": [
+            "Charter an AI Risk Council; define roles for model owners, product owners, security, privacy, legal",
+            "Publish acceptable-use policy for AI (data classes allowed/blocked, HITL requirements) (AIUC-1 E010)",
+            "Establish AI risk taxonomy covering harmful, out-of-scope, and hallucinated output categories (AIUC-1 C001)",
+            "Baseline current state: score all 40 sub-pillars at Level 1–5",
+            "Map AIUC-1 requirements to current controls and identify gaps",
+            "Document AI data use and consent policies (AIUC-1 A001, A002)"
+          ],
+          "ai_rmf_functions": [
+            "Govern"
+          ],
+          "target_sub_pillars": [
+            "IAM-01",
+            "TRM-01",
+            "TRM-02",
+            "TRM-06",
+            "SAF-01",
+            "NDS-06"
+          ]
+        },
+        "weeks_2_5": {
+          "name": "Inventory, Risk-Map & Data Privacy",
+          "activities": [
+            "Create system of record for all AI models, agents, and vendor AI features",
+            "Complete context & impact mapping per AI RMF Map function",
+            "Tag genAI vs. predictive vs. agentic workloads for COSAiS alignment",
+            "Implement AI disclosure mechanisms (AIUC-1 E016)",
+            "Establish cross-customer data isolation controls (AIUC-1 A005)",
+            "Implement IP and copyright safeguards (AIUC-1 A004, A007)",
+            "Conduct vendor due diligence for foundation model providers (AIUC-1 E006)"
+          ],
+          "ai_rmf_functions": [
+            "Map",
+            "Govern"
+          ],
+          "target_sub_pillars": [
+            "TRM-02",
+            "DSO-02",
+            "INF-05",
+            "IAM-04",
+            "IAM-05",
+            "NDS-07",
+            "NDS-08"
+          ]
+        },
+        "weeks_4_8": {
+          "name": "Foundational Protections & Safety Controls",
+          "activities": [
+            "Enforce least-privilege IAM on AI workspaces and endpoints (AIUC-1 B007)",
+            "Network-isolate training environments; apply WAF/rate-limit at inference endpoints (AIUC-1 B004)",
+            "Enable encryption at rest and in transit for all AI artifacts (AIUC-1 B008)",
+            "Implement TEVV gates with adversarial robustness testing (AIUC-1 B001, C002)",
+            "Deploy harmful output prevention safeguards (AIUC-1 C003, C005)",
+            "Deploy scope boundary enforcement (AIUC-1 C004, C006)",
+            "Implement hallucination prevention controls (AIUC-1 D001)",
+            "Implement tool call safety controls (AIUC-1 D003)",
+            "Deploy output limitation and obfuscation controls (AIUC-1 B009)",
+            "Implement PII leakage prevention safeguards (AIUC-1 A006)"
+          ],
+          "ai_rmf_functions": [
+            "Manage",
+            "Measure"
+          ],
+          "target_sub_pillars": [
+            "INF-01",
+            "INF-03",
+            "INF-04",
+            "IAM-02",
+            "IAM-03",
+            "NDS-01",
+            "NDS-02",
+            "NDS-04",
+            "DSO-03",
+            "SAF-02",
+            "SAF-03",
+            "SAF-05",
+            "REL-01",
+            "REL-02"
+          ]
+        },
+        "weeks_6_12": {
+          "name": "Measure, Monitor, Third-Party Testing & Compliance",
+          "activities": [
+            "Stand up model telemetry for drift, jailbreak attempts, and leakage",
+            "Deploy safety monitoring with human escalation (AIUC-1 C007, C008, C009)",
+            "Define AI failure plans for security breaches, harmful outputs, and hallucinations (AIUC-1 E001, E002, E003)",
+            "Deploy auditability & lineage graph (DSO-05) and accountability graph (TRM-05)",
+            "Establish quality management system (AIUC-1 E013, E008)",
+            "Implement societal risk guardrails (AIUC-1 F001, F002)",
+            "Engage expert third parties for quarterly testing program (AIUC-1 C010, C011, C012, D002, D004)",
+            "Prepare AIUC-1 compliance evidence packs and re-score all 40 sub-pillars",
+            "Document processing locations and regulatory compliance (AIUC-1 E011, E012)"
+          ],
+          "ai_rmf_functions": [
+            "Measure",
+            "Manage"
+          ],
+          "target_sub_pillars": [
+            "NDS-04",
+            "NDS-05",
+            "TRM-04",
+            "DSO-05",
+            "DSO-06",
+            "TRM-05",
+            "TRM-03",
+            "TRM-07",
+            "TRM-08",
+            "SAF-04",
+            "REL-03"
+          ]
+        }
+      }
+    }
+  }
+}

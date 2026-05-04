@@ -1,0 +1,614 @@
+{
+  "secure_by_design_ai_controls_v1.0": {
+    "schema_lineage": {
+      "parent": null,
+      "parent_version": null,
+      "source_document": "AI_Adoption_Controls_NIST.md",
+      "purpose": "Maturity self-assessment framework for secure-by-design AI technology and service capabilities — targeting Chief Product Officers (CPOs) and product security leaders responsible for embedding security, trust, and accountability into AI-powered products and services."
+    },
+    "intent": "Assess organizational maturity across 25 control dimensions spanning infrastructure, identity, network/data, DevSecOps/MLSecOps, and AI TRiSM. Each sub-pillar is scored 0–4 on a maturity scale. The framework is designed to be used as a self-assessment by product and engineering teams, complemented by evidence artifacts. It extends the NIST AI RMF alignment from the source document with explicit encryption controls (at rest and in transit) and graph-based auditability/lineage tracking for accountability.",
+    "metadata": {
+      "framework_alignment": "NIST AI RMF 1.0 + AI 600-1 (GenAI Profile) + AI RMF Playbook + COSAiS (SP 800-53 Overlays for AI)",
+      "target_audience": "Chief Product Officers (CPOs), VP Product Security, AI/ML Engineering Leads, GRC Teams",
+      "scoring_scale": {
+        "min": 1,
+        "max": 5,
+        "type": "maturity_self_assessment",
+        "scoring_logic": {
+          "1": "Not Started — No controls, processes, or awareness in this area. The organization has not begun addressing this dimension.",
+          "2": "Ad Hoc / Initial — Informal, reactive, or person-dependent practices exist. No documented policy or repeatable process. Controls may be applied inconsistently.",
+          "3": "Defined / Repeatable — Documented policies and procedures exist. Controls are applied consistently across most AI workloads but measurement is limited. Some tooling in place.",
+          "4": "Managed / Measured — Controls are enforced via automation or tooling, with defined metrics and KPIs. Evidence is collected systematically. Regular reviews occur. Exceptions are tracked.",
+          "5": "Optimized / Adaptive — Continuous improvement driven by metrics, threat intelligence, and lessons learned. Controls self-adapt or are proactively tuned. Full auditability, cross-framework mapping, and executive reporting in place."
+        }
+      },
+      "evidence_expectations": {
+        "description": "Each maturity level should be supported by evidence artifacts appropriate to the level.",
+        "by_level": {
+          "1": "N/A",
+          "2": "Informal notes, tribal knowledge, ad hoc procedures",
+          "3": "Documented policies, architecture diagrams, runbooks, tool configurations",
+          "4": "Automated dashboards, audit logs, KPI reports, test results, control validation records",
+          "5": "Continuous assurance reports, executive dashboards, cross-framework crosswalks, improvement trend data, third-party attestations"
+        }
+      },
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of sub-pillars scoring ≥3 (Defined or above)",
+        "scale": {
+          "A": "21–25 sub-pillars at ≥3 (84–100%)",
+          "B": "16–20 sub-pillars at ≥3 (64–80%)",
+          "C": "11–15 sub-pillars at ≥3 (44–60%)",
+          "D": "6–10 sub-pillars at ≥3 (24–40%)",
+          "F": "0–5 sub-pillars at ≥3 (0–20%)"
+        }
+      }
+    },
+    "pillars": {
+      "INF": {
+        "name": "Infrastructure for AI",
+        "focus": "Hardened, isolated, and cryptographically protected compute and runtime environments for AI training, fine-tuning, and inference — with supply-chain assurance for all AI components.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Secure & Resilient, Operation & Monitoring",
+          "COSAiS — isolation overlays for LLM/predictive/agent"
+        ],
+        "maturity_signals": [
+          "Dedicated VNETs/VPCs with private endpoints for AI workloads",
+          "Auditable GPU/TPU provisioning with RBAC",
+          "AES-256 or equivalent encryption at rest for models, weights, datasets",
+          "TLS 1.3+ encryption in transit for all model-serving and pipeline traffic",
+          "SBOM and provenance tracking for AI frameworks, pretrained models, and agents"
+        ]
+      },
+      "IAM": {
+        "name": "Identity & Access for AI",
+        "focus": "Fine-grained identity, authentication, and authorization controls for AI workspaces, APIs, agents, and human-in-the-loop approval workflows.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Governance & Secure/Resilient",
+          "AI 600-1 — safeguards for high-impact genAI"
+        ],
+        "maturity_signals": [
+          "RBAC/ABAC enforced across AI workspaces, model registries, and datasets",
+          "Managed identities and scoped tokens for all AI API endpoints",
+          "HITL approval gates for high-risk AI actions",
+          "Policy-aware prompt/response guardrails with role-based redaction",
+          "Non-human identity lifecycle management for AI agents"
+        ]
+      },
+      "NDS": {
+        "name": "Network & Data Security for AI",
+        "focus": "Network isolation, boundary defenses, secure data pipelines, inference monitoring, and data sovereignty controls purpose-built for AI workloads.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Map",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Secure Operations, Data & Drift",
+          "AI 600-1 — genAI abuse mitigations",
+          "COSAiS — component-level controls for training/test data"
+        ],
+        "maturity_signals": [
+          "Air-gapped or broker-mediated training networks",
+          "WAF + rate limiting + prompt-injection filtering at inference endpoints",
+          "Data provenance, integrity hashing, and poisoning/drift monitoring",
+          "Inference request/response logging with exfiltration detection",
+          "Data residency and sovereignty enforcement for AI datasets"
+        ]
+      },
+      "DSO": {
+        "name": "DevSecOps for AI (MLSecOps)",
+        "focus": "Secure ML CI/CD, model/dataset lineage and versioning, pre-release testing and validation (TEVV), risk-gated deployment, and production auditability through lineage graphs.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Manage",
+          "Map",
+          "Measure"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — TEVV, Governance & Documentation",
+          "AI 600-1 — release safeguards & contingency"
+        ],
+        "maturity_signals": [
+          "Dependency scanning and model signing in ML CI/CD pipelines",
+          "Immutable model/dataset versioning with rollback capability",
+          "Red-team, adversarial, bias, and safety testing before every release",
+          "Staged rollout with kill-switch and HITL escalation",
+          "Graph-based audit trail linking code → data → model → decision → outcome"
+        ]
+      },
+      "TRM": {
+        "name": "AI TRiSM (Trust, Risk & Security Management)",
+        "focus": "Model governance, use-case risk assessment, trustworthiness controls, AI-specific incident response, lineage and accountability graph for governance, and enterprise framework crosswalks.",
+        "ai_rmf_functions": [
+          "Govern",
+          "Map",
+          "Measure",
+          "Manage"
+        ],
+        "nist_references": [
+          "AI RMF Playbook — Governance & Oversight, Explainability, Fairness & Bias, Privacy",
+          "AI 600-1 — genAI monitoring & response",
+          "AI RMF Crosswalks"
+        ],
+        "maturity_signals": [
+          "Formal model approval, ownership, lifecycle, and retirement processes",
+          "Per-use-case AI risk assessments with stakeholder impact mapping",
+          "Bias, explainability, privacy, and robustness controls with metrics",
+          "AI-specific incident response runbooks (hallucinations, jailbreaks, data leakage)",
+          "Accountability graph connecting model decisions to governance artifacts and outcomes",
+          "Maintained crosswalk to NIST CSF, ISO 42001, EU AI Act"
+        ]
+      }
+    },
+    "sub_pillars": {
+      "INF-01": {
+        "name": "Hardened AI Runtime Isolation",
+        "expanded_definition": "Dedicated, hardened compute environments for AI training, fine-tuning, and inference — using VNETs, VPCs, private endpoints, and container/VM isolation to minimize blast radius and lateral movement risk.",
+        "ai_rmf_mapping": "Govern / Manage / Measure — governance of deployment patterns, managed risk treatments, continuous evaluation of infrastructure risk.",
+        "maturity_criteria": [
+          "Dedicated VNETs/VPCs for AI workloads separate from general compute",
+          "Private endpoints for model registries, training clusters, and inference APIs",
+          "Container and VM hardening (CIS benchmarks, minimal images, runtime security)",
+          "Network micro-segmentation between training, staging, and production AI environments",
+          "Automated drift detection for infrastructure configuration"
+        ]
+      },
+      "INF-02": {
+        "name": "Compute Access Governance",
+        "expanded_definition": "Controlled, auditable access to high-value AI compute resources (GPU/TPU clusters) with least-privilege provisioning, cost controls, and usage accountability.",
+        "ai_rmf_mapping": "Govern / Manage / Measure — role clarity and least privilege with effectiveness checks.",
+        "maturity_criteria": [
+          "RBAC for GPU/TPU cluster provisioning and scheduling",
+          "Auditable request/approval workflow for compute allocation",
+          "Cost and usage monitoring with anomaly alerting",
+          "Time-bounded and project-scoped compute reservations",
+          "Automated deprovisioning of idle or expired compute resources"
+        ]
+      },
+      "INF-03": {
+        "name": "Encryption at Rest",
+        "expanded_definition": "Cryptographic protection of all AI artifacts at rest — including trained models, model weights, training datasets, evaluation datasets, configuration files, and intermediate artifacts — using enterprise key management.",
+        "ai_rmf_mapping": "Manage / Measure — secure & resilient outcomes and verification.",
+        "maturity_criteria": [
+          "AES-256 (or equivalent) encryption for all stored models and weights",
+          "Encryption of training and evaluation datasets in object storage and databases",
+          "Hardware Security Module (HSM) or cloud KMS for key management",
+          "Key rotation policies enforced automatically on a defined schedule",
+          "Encryption coverage audit and gap reporting"
+        ]
+      },
+      "INF-04": {
+        "name": "Encryption in Transit",
+        "expanded_definition": "Cryptographic protection of all AI-related data in motion — including model-serving API traffic, training data pipeline transfers, model distribution, and inter-service communication — using modern transport security.",
+        "ai_rmf_mapping": "Manage / Measure — secure & resilient outcomes and verification.",
+        "maturity_criteria": [
+          "TLS 1.3+ enforced on all model-serving and inference API endpoints",
+          "Encrypted data pipelines for training data ingestion and transfer",
+          "mTLS (mutual TLS) between AI microservices and internal endpoints",
+          "Certificate lifecycle management with automated renewal",
+          "Network traffic inspection confirming no plaintext AI data in transit"
+        ]
+      },
+      "INF-05": {
+        "name": "AI Supply Chain Assurance",
+        "expanded_definition": "Verification, provenance tracking, and risk assessment for all AI supply-chain components — including ML frameworks, pretrained models, third-party agents, training data sources, and open-source dependencies.",
+        "ai_rmf_mapping": "Map / Govern / Manage — dependency mapping, policy setting, risk treatment.",
+        "maturity_criteria": [
+          "SBOM (Software Bill of Materials) for all AI pipeline components",
+          "Provenance verification for pretrained models and foundation models",
+          "Vulnerability scanning of ML frameworks and dependencies",
+          "Vendor/source risk assessment for third-party AI components",
+          "Automated alerting on supply-chain compromise indicators"
+        ]
+      },
+      "IAM-01": {
+        "name": "Fine-Grained AI Workspace IAM",
+        "expanded_definition": "Role-based (RBAC) and attribute-based (ABAC) access controls applied to AI workspaces, model registries, datasets, feature stores, and inference endpoints — enforcing least privilege across the AI lifecycle.",
+        "ai_rmf_mapping": "Govern / Manage — role definitions, least privilege, operational enforcement.",
+        "maturity_criteria": [
+          "RBAC policies defined for AI platform roles (data scientist, ML engineer, reviewer, admin)",
+          "ABAC policies incorporating project, data classification, and environment attributes",
+          "Separation of duties between model development, approval, and deployment",
+          "Access reviews and recertification on a defined cadence",
+          "Integration with enterprise IdP (SSO, MFA) for all AI platform access"
+        ]
+      },
+      "IAM-02": {
+        "name": "AI API Authorization & HITL Approvals",
+        "expanded_definition": "Strong authentication and authorization for AI APIs using managed identities, scoped tokens, and API keys — combined with human-in-the-loop (HITL) approval gates for high-risk or high-impact AI actions.",
+        "ai_rmf_mapping": "Manage / Measure — operational controls plus control-efficacy review.",
+        "maturity_criteria": [
+          "Managed identities or service principals for all AI API endpoints",
+          "Scoped API keys with expiration and usage limits per consumer",
+          "HITL approval workflows for model deployments, retraining triggers, and data access",
+          "Token-based authentication with short-lived access tokens (OAuth 2.0 / OIDC)",
+          "Audit logging of all API authorization decisions including denials"
+        ]
+      },
+      "IAM-03": {
+        "name": "Prompt & Response Guardrails by Role",
+        "expanded_definition": "Policy-aware input/output controls that filter, redact, or block AI interactions based on the requester's role, data classification of the context, and organizational content policies.",
+        "ai_rmf_mapping": "Manage / Measure — TEVV and monitoring for harmful outputs.",
+        "maturity_criteria": [
+          "Role-based prompt policies (e.g., restricting PII queries for non-privileged users)",
+          "Automated response redaction based on data classification",
+          "Content safety filters for harmful, biased, or policy-violating outputs",
+          "Jailbreak and prompt-injection detection with alert/block actions",
+          "Policy versioning and audit trail for guardrail rule changes"
+        ]
+      },
+      "IAM-04": {
+        "name": "AI Agent Identity & Delegation",
+        "expanded_definition": "Identity management for non-human AI agents — including unique agent identities, scoped delegation of authority, action boundaries, and revocable trust chains for agentic AI workflows.",
+        "ai_rmf_mapping": "Govern / Manage — role definitions and operational enforcement for autonomous agents.",
+        "maturity_criteria": [
+          "Unique, auditable identities assigned to each AI agent instance",
+          "Scoped delegation policies defining what actions agents may perform",
+          "Action boundary enforcement (resource limits, allowed APIs, data scopes)",
+          "Revocable trust chains with real-time suspension capability",
+          "Agent activity logging with attribution to originating user or workflow"
+        ]
+      },
+      "NDS-01": {
+        "name": "Segregated Training Networks",
+        "expanded_definition": "Network isolation for AI training environments — no direct internet egress, brokered or air-gapped data transfer, and dedicated network segments to prevent data leakage and supply-chain injection during training.",
+        "ai_rmf_mapping": "Govern / Manage — policy-driven isolation and operational guardrails.",
+        "maturity_criteria": [
+          "Training environments on isolated network segments with no direct internet access",
+          "Brokered data transfer via approved gateways with integrity checks",
+          "Egress filtering and DLP controls on training network boundaries",
+          "Separate DNS and proxy configurations for training vs. production",
+          "Network flow logging and anomaly detection for training segments"
+        ]
+      },
+      "NDS-02": {
+        "name": "Model Boundary Defenses",
+        "expanded_definition": "Perimeter and application-layer defenses purpose-built for AI inference endpoints — including web application firewalls, rate limiting, abuse detection, and prompt-injection/jailbreak filtering.",
+        "ai_rmf_mapping": "Manage / Measure — resilience and adversarial testing outcomes.",
+        "maturity_criteria": [
+          "WAF rules tuned for LLM endpoint attack patterns",
+          "Rate limiting and throttling per consumer, API key, and IP",
+          "Prompt-injection and jailbreak detection with real-time blocking",
+          "Model extraction and model-stealing defense mechanisms",
+          "Adversarial input detection (e.g., perturbation attacks on classification models)"
+        ]
+      },
+      "NDS-03": {
+        "name": "Secure Data Pipelines",
+        "expanded_definition": "End-to-end security for AI data pipelines — covering data provenance, integrity verification, labeling governance, and monitoring for data poisoning and distribution drift.",
+        "ai_rmf_mapping": "Map / Measure / Manage — context, continuous measurement, risk response.",
+        "maturity_criteria": [
+          "Data provenance tracking from source to training/evaluation usage",
+          "Cryptographic integrity checks (hashing) on datasets at each pipeline stage",
+          "Data labeling governance with quality assurance and reviewer audit trails",
+          "Automated monitoring for data poisoning, contamination, and anomalous inputs",
+          "Distribution drift detection with alerting and retraining triggers"
+        ]
+      },
+      "NDS-04": {
+        "name": "Inference Logging & Exfiltration Monitoring",
+        "expanded_definition": "Comprehensive logging of AI inference requests and responses — with monitoring for data exfiltration attempts, anomalous usage patterns, and unauthorized knowledge extraction.",
+        "ai_rmf_mapping": "Measure / Manage — ongoing risk monitoring and response.",
+        "maturity_criteria": [
+          "Structured logging of all inference requests and responses (or representative samples)",
+          "Anomaly detection on query patterns (volume spikes, systematic probing, enumeration)",
+          "Data exfiltration monitoring for PII, trade secrets, or training data leakage in outputs",
+          "Integration with SIEM/SOAR for automated alert and response workflows",
+          "Retention policies aligned with compliance and forensic requirements"
+        ]
+      },
+      "NDS-05": {
+        "name": "Data Sovereignty & Privacy Controls",
+        "expanded_definition": "Controls ensuring AI training data, model artifacts, and inference data comply with data residency, sovereignty, and privacy regulations — including GDPR, sector-specific mandates, and cross-border transfer restrictions.",
+        "ai_rmf_mapping": "Govern / Manage — policy-driven data governance and compliance.",
+        "maturity_criteria": [
+          "Data residency enforcement for AI datasets and model storage by jurisdiction",
+          "Cross-border data transfer controls with legal basis documentation",
+          "Privacy impact assessments (PIAs) for AI workloads processing personal data",
+          "Data minimization and purpose limitation enforced in training data selection",
+          "Right-to-erasure and data subject request workflows for AI training data"
+        ]
+      },
+      "DSO-01": {
+        "name": "Secure ML CI/CD",
+        "expanded_definition": "Security-integrated ML CI/CD pipelines — including dependency scanning, model signing, reproducible build environments, and automated security gates before model artifacts are published.",
+        "ai_rmf_mapping": "Manage / Measure / Govern — integrate trustworthy characteristics in SDLC and verify.",
+        "maturity_criteria": [
+          "Dependency scanning (SCA) for all ML pipeline packages and libraries",
+          "Model signing with cryptographic verification before registry publication",
+          "Reproducible training environments (pinned dependencies, deterministic builds)",
+          "Static analysis and linting for ML pipeline code (notebooks, scripts, configs)",
+          "Automated security gates that block pipeline promotion on policy violations"
+        ]
+      },
+      "DSO-02": {
+        "name": "Model & Dataset Lineage / Versioning",
+        "expanded_definition": "Immutable versioning and lineage tracking for all models and datasets — enabling full traceability from training data through model artifacts to production deployments, with rollback capability.",
+        "ai_rmf_mapping": "Map / Manage — lifecycle traceability and controlled change.",
+        "maturity_criteria": [
+          "Immutable versioning for all model artifacts (weights, configs, code snapshots)",
+          "Dataset versioning with diff capability and change attribution",
+          "Lineage graph linking data sources → training runs → model versions → deployments",
+          "One-click rollback to any previous model version in production",
+          "Retention and archival policies for deprecated model/dataset versions"
+        ]
+      },
+      "DSO-03": {
+        "name": "TEVV Before Release",
+        "expanded_definition": "Robust Testing, Evaluation, Verification, and Validation (TEVV) applied before any model or AI feature is released — including adversarial testing, bias evaluation, safety checks, reliability testing, and red-team exercises.",
+        "ai_rmf_mapping": "Measure / Manage — testing and risk treatment.",
+        "maturity_criteria": [
+          "Adversarial robustness testing against known attack vectors",
+          "Bias and fairness evaluation across protected demographic groups",
+          "Safety and toxicity testing for generative AI outputs",
+          "Reliability and performance regression testing against baseline metrics",
+          "Red-team exercises simulating realistic adversarial scenarios"
+        ]
+      },
+      "DSO-04": {
+        "name": "Risk-Gated Promotion to Production",
+        "expanded_definition": "Controlled promotion of AI models to production through risk-based gates — including HITL approvals, staged rollouts (canary/blue-green), kill-switch mechanisms, and automatic rollback triggers.",
+        "ai_rmf_mapping": "Govern / Manage — decision rights and operational controls.",
+        "maturity_criteria": [
+          "HITL approval required before production deployment of high-risk models",
+          "Staged rollout (canary, blue-green, shadow) with traffic percentage controls",
+          "Kill-switch capability for immediate production model disablement",
+          "Automatic rollback triggers based on performance/safety metric thresholds",
+          "Deployment approval audit trail with approver identity and justification"
+        ]
+      },
+      "DSO-05": {
+        "name": "Auditability & Lineage Graph",
+        "expanded_definition": "Graph-based audit trail for production AI systems — linking source code, training data, model versions, configuration changes, inference decisions, and downstream outcomes into a queryable accountability structure for regulatory and forensic purposes.",
+        "ai_rmf_mapping": "Map / Govern / Measure — lifecycle traceability, governance, and continuous assurance.",
+        "maturity_criteria": [
+          "Graph structure linking: code commit → dataset version → training run → model artifact → deployment → inference decision → outcome",
+          "Queryable lineage for any production decision (trace back to training data and code)",
+          "Tamper-evident or immutable storage of graph nodes and edges",
+          "Timeline reconstruction capability for incident investigation and root-cause analysis",
+          "Integration with GRC/compliance platforms for automated evidence export"
+        ]
+      },
+      "TRM-01": {
+        "name": "Model Governance",
+        "expanded_definition": "Formal governance processes for AI models — covering approval workflows, ownership assignment, lifecycle state management (draft → approved → production → deprecated → retired), and decommission procedures.",
+        "ai_rmf_mapping": "Govern — clear roles, policies, and oversight.",
+        "maturity_criteria": [
+          "Model approval workflow with defined decision criteria and authority levels",
+          "Named model owner and accountable executive for each production model",
+          "Lifecycle state tracking (draft, approved, production, deprecated, retired)",
+          "Scheduled model reviews with revalidation or retirement decisions",
+          "Decommission procedures with data retention and stakeholder notification"
+        ]
+      },
+      "TRM-02": {
+        "name": "AI Risk Assessment by Use Case",
+        "expanded_definition": "Structured risk assessment for each AI use case — evaluating impact, context, affected stakeholders, failure modes, and risk appetite — aligned to AI RMF Map/Govern functions.",
+        "ai_rmf_mapping": "Map / Govern — context & impact mapping with policy alignment.",
+        "maturity_criteria": [
+          "Risk assessment template applied before any new AI use case is approved",
+          "Impact classification (low/medium/high/critical) with defined criteria",
+          "Stakeholder impact mapping identifying affected parties and harm scenarios",
+          "Failure mode analysis with probability and severity estimation",
+          "Risk appetite alignment with documented accept/mitigate/transfer decisions"
+        ]
+      },
+      "TRM-03": {
+        "name": "Trustworthiness Controls",
+        "expanded_definition": "Technical and procedural controls ensuring AI trustworthiness across multiple dimensions — including fairness/bias mitigation, explainability/interpretability, privacy preservation, and robustness/reliability guarantees.",
+        "ai_rmf_mapping": "Measure / Manage — trustworthy characteristics implementation & evaluation.",
+        "maturity_criteria": [
+          "Bias measurement and mitigation across protected attributes with defined fairness metrics",
+          "Explainability methods appropriate to model type (SHAP, LIME, attention visualization, etc.)",
+          "Privacy-preserving techniques (differential privacy, federated learning, data anonymization)",
+          "Robustness testing against distribution shift, adversarial inputs, and edge cases",
+          "Published model cards or transparency reports for externally facing AI features"
+        ]
+      },
+      "TRM-04": {
+        "name": "AI Incident Response & Monitoring",
+        "expanded_definition": "Operational monitoring and incident response capabilities purpose-built for AI-specific failure modes — including hallucinations, jailbreaks, data leakage, model drift, and adversarial exploitation.",
+        "ai_rmf_mapping": "Measure / Manage — continuous monitoring and incident handling.",
+        "maturity_criteria": [
+          "AI-specific incident response runbooks covering hallucinations, jailbreaks, and data leakage",
+          "Real-time monitoring dashboards for model performance, drift, and safety metrics",
+          "Automated alerting on anomalous AI behavior with severity classification",
+          "Post-incident review process with root-cause analysis and control improvement",
+          "Integration with enterprise SOC workflows and escalation procedures"
+        ]
+      },
+      "TRM-05": {
+        "name": "Lineage & Accountability Graph",
+        "expanded_definition": "Governance-layer accountability graph that connects AI model decisions to organizational governance artifacts — linking risk assessments, approval records, policy versions, audit findings, and stakeholder impact analyses into a unified accountability structure. Complements the production lineage graph (DSO-05) by adding the governance and compliance dimension.",
+        "ai_rmf_mapping": "Govern / Map / Measure — assurance, attestation, and continuous governance traceability.",
+        "maturity_criteria": [
+          "Graph linking: risk assessment → approval record → policy version → model deployment → monitoring finding → remediation action",
+          "Accountability chain from any AI decision to the governance artifacts that authorized it",
+          "Artifact versioning so the policy/approval state at time-of-decision is reconstructable",
+          "Board/executive-level accountability dashboards derived from graph data",
+          "Cross-referencing with DSO-05 production lineage for end-to-end traceability"
+        ]
+      },
+      "TRM-06": {
+        "name": "Enterprise Framework Crosswalk",
+        "expanded_definition": "Maintained mapping from this framework's controls to enterprise and regulatory frameworks — including NIST CSF, ISO/IEC 42001, EU AI Act, NIST AI RMF, and sector-specific requirements — enabling unified compliance reporting.",
+        "ai_rmf_mapping": "Govern — assurance & attestations through standards mapping.",
+        "maturity_criteria": [
+          "Control-level crosswalk to NIST CSF 2.0 and NIST AI RMF",
+          "Mapping to ISO/IEC 42001 (AI Management System) requirements",
+          "EU AI Act risk-tier alignment with compliance gap analysis",
+          "Sector-specific regulatory mapping (healthcare, financial services, defense, etc.)",
+          "Crosswalk maintained as a living document with change tracking and review cadence"
+        ]
+      }
+    },
+    "assessment_fields": {
+      "organization": {
+        "type": "string",
+        "description": "Name of the organization being assessed"
+      },
+      "assessment_date": {
+        "type": "string",
+        "format": "date",
+        "description": "Date of the assessment (YYYY-MM-DD)"
+      },
+      "assessor": {
+        "type": "string",
+        "description": "Name or role of the person conducting the assessment"
+      },
+      "business_unit": {
+        "type": "string",
+        "description": "Business unit or product line being assessed"
+      },
+      "ai_workload_types": {
+        "type": "array",
+        "description": "Types of AI workloads in scope: genAI, predictive, agentic, multi-agent, fine-tuning, RAG"
+      },
+      "overall_maturity_score": {
+        "type": "number",
+        "description": "Average across all 25 sub-pillar scores (1.00–5.00)"
+      },
+      "pillar_scores": {
+        "type": "object",
+        "description": "Average maturity score per pillar (INF, IAM, NDS, DSO, TRM)",
+        "properties": {
+          "INF": {
+            "type": "number"
+          },
+          "IAM": {
+            "type": "number"
+          },
+          "NDS": {
+            "type": "number"
+          },
+          "DSO": {
+            "type": "number"
+          },
+          "TRM": {
+            "type": "number"
+          }
+        }
+      },
+      "sub_pillar_scores": {
+        "type": "object",
+        "description": "Maturity score (1–5) for each of the 25 sub-pillars, keyed by sub-pillar code"
+      },
+      "sub_pillar_evidence": {
+        "type": "object",
+        "description": "Evidence notes or artifact references supporting each sub-pillar score, keyed by sub-pillar code"
+      },
+      "sub_pillar_gaps": {
+        "type": "object",
+        "description": "Identified gaps and recommended actions per sub-pillar, keyed by sub-pillar code"
+      },
+      "coverage_grade": {
+        "type": "string",
+        "description": "Letter grade (A–F) based on count of sub-pillars scoring ≥3"
+      },
+      "priority_remediation": {
+        "type": "array",
+        "description": "Ordered list of sub-pillar codes to prioritize for maturity improvement"
+      }
+    },
+    "90_day_adoption_plan": {
+      "description": "Phased adoption roadmap aligned to NIST AI RMF functions, derived from source document Section B.",
+      "self_assessment_schedule": "Conduct baseline self-assessment in Phase 1 (W1–3) and re-score at milestones W5, W8, and W12.",
+      "milestones": [
+        { "week": 3, "label": "Baseline Self-Assessment Complete", "type": "self-assessment" },
+        { "week": 5, "label": "Inventory Validated", "type": "checkpoint" },
+        { "week": 8, "label": "Mid-Point Maturity Re-Score", "type": "self-assessment" },
+        { "week": 12, "label": "Final Assessment & Evidence Pack", "type": "self-assessment" }
+      ],
+      "phases": {
+        "weeks_1_3": {
+          "name": "Stand Up Governance",
+          "activities": [
+            "Charter an AI Risk Council; define roles for model owners, product owners, security, privacy, legal",
+            "Publish acceptable-use policy for genAI (data classes allowed/blocked, HITL requirements)",
+            "Baseline current state: score all 25 sub-pillars at Level 1–5"
+          ],
+          "ai_rmf_functions": [
+            "Govern"
+          ],
+          "target_sub_pillars": [
+            "IAM-01",
+            "TRM-01",
+            "TRM-02",
+            "TRM-06"
+          ]
+        },
+        "weeks_2_5": {
+          "name": "Inventory & Risk-Map",
+          "activities": [
+            "Create system of record for all AI models, agents, and vendor AI features",
+            "Complete context & impact mapping per AI RMF Map function",
+            "Tag genAI vs. predictive vs. agentic workloads for COSAiS alignment"
+          ],
+          "ai_rmf_functions": [
+            "Map",
+            "Govern"
+          ],
+          "target_sub_pillars": [
+            "TRM-02",
+            "DSO-02",
+            "INF-05",
+            "IAM-04"
+          ]
+        },
+        "weeks_4_8": {
+          "name": "Foundational Protections",
+          "activities": [
+            "Enforce least-privilege IAM on AI workspaces and endpoints",
+            "Network-isolate training environments; apply WAF/rate-limit at inference endpoints",
+            "Enable encryption at rest and in transit for all AI artifacts",
+            "Implement TEVV gates for any model update"
+          ],
+          "ai_rmf_functions": [
+            "Manage",
+            "Measure"
+          ],
+          "target_sub_pillars": [
+            "INF-01",
+            "INF-03",
+            "INF-04",
+            "IAM-02",
+            "NDS-01",
+            "NDS-02",
+            "DSO-03"
+          ]
+        },
+        "weeks_6_12": {
+          "name": "Measure, Monitor & Respond",
+          "activities": [
+            "Stand up model telemetry for drift, jailbreak attempts, and leakage",
+            "Define AI incident runbooks aligned to AI 600-1",
+            "Deploy auditability & lineage graph (DSO-05) and accountability graph (TRM-05)",
+            "Prepare evidence packs and re-score all 25 sub-pillars"
+          ],
+          "ai_rmf_functions": [
+            "Measure",
+            "Manage"
+          ],
+          "target_sub_pillars": [
+            "NDS-04",
+            "TRM-04",
+            "DSO-05",
+            "TRM-05",
+            "TRM-03"
+          ]
+        }
+      }
+    }
+  }
+}

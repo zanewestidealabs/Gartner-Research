@@ -1,0 +1,4197 @@
+[
+  {
+    "vendor": "IBM",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Platform Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Leverages Watson OpenScale for automated AI model monitoring and bias detection.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.38,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 3.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium",
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "AI lifecycle governance Read about driving ethical and compliant practices with a portfolio of AI products for generative AI models.",
+            "matched_terms": [
+              "models",
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Read the report Insight AI lifecycle governance Read about driving ethical and compliant practices with a portfolio of AI products for generative AI models.",
+            "matched_terms": [
+              "models",
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "In an enterprise-level organization, the CEO and senior leadership are ultimately responsible for ensuring their organization applies sound AI governance throughout the AI lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Implement an overall health score for AI models by using intuitive and easy-to-understand metrics to simplify monitoring. Automated monitoring:",
+            "matched_terms": [
+              "models",
+              "automated",
+              "model",
+              "metrics"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Protect your data across its lifecycle with IBM Guardium Secure critical enterprise data from both current and emerging risks, wherever it lives",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 10,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "might have defined levels of threat response. Instead, AI governance has structured approaches and frameworks developed by various entities that organizations can adopt or adapt to their specific needs.",
+            "matched_terms": [
+              "fine",
+              "over",
+              "specific",
+              "entities",
+              "ai governance"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "cybersecurity might have defined levels of threat response. Instead, AI governance has structured approaches and frameworks developed by various entities that organizations can adopt or adapt to their specific needs.",
+            "matched_terms": [
+              "fine",
+              "over",
+              "specific",
+              "entities",
+              "ai governance"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Instead, AI governance has structured approaches and frameworks developed by various entities that organizations can adopt or adapt to their specific needs.",
+            "matched_terms": [
+              "over",
+              "specific",
+              "entities",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Enterprises looking to scale AI initiatives responsibly will require a strong AI governance platform. Read the full analysis and discover how IBM watsonx.governance can support your Al strategy.",
+            "matched_terms": [
+              "over",
+              "analysis",
+              "ai governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "IDC MarketScape names IBM a Leader in Unified AI Governance Enterprises looking to scale AI initiatives responsibly will require a strong AI governance platform. Read the full analysis and discover how IBM watsonx.governance can support your Al strategy.",
+            "matched_terms": [
+              "over",
+              "analysis",
+              "ai governance"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 10,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium",
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance",
+              "ai policy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance",
+              "ai policy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance",
+              "ai policy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance",
+              "ai policy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "IBM named a leader in The Forrester Wave™: AI Governance Solutions, Q3 2025 See why Forrester recognized IBM as a Leader for its watsonx.governance solution-helping enterprises manage AI risk, compliance, and trust at scale.",
+            "matched_terms": [
+              "compliance",
+              "ai governance",
+              "ai risk"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 10,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium",
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "IBM named a leader in The Forrester Wave™: AI Governance Solutions, Q3 2025 See why Forrester recognized IBM as a Leader for its watsonx.governance solution-helping enterprises manage AI risk, compliance, and trust at scale.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust",
+              "ai governance",
+              "ai risk"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Read the report Report IBM named a leader in The Forrester Wave™: AI Governance Solutions, Q3 2025 See why Forrester recognized IBM as a Leader for its watsonx.governance solution-helping enterprises manage AI risk, compliance, and trust at scale.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust",
+              "ai governance",
+              "ai risk"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "See why Forrester recognized IBM as a Leader for its watsonx.governance solution-helping enterprises manage AI risk, compliance, and trust at scale.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust",
+              "ai risk"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "See why Forrester recognized IBM as a Leader for its watsonx.governance solution-helping enterprises manage AI risk, compliance, and trust at scale. Read the report",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust",
+              "ai risk"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "compliance",
+              "reporting",
+              "automated",
+              "ai policy"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 10,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium",
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Governance provides a structured approach to mitigate these potential risks. Such an approach can include sound AI policy, regulation and data governance. These help ensure that machine learning algorithms are monitored, evaluated and updated to prevent flawe…",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive",
+            "matched_terms": [
+              "policy",
+              "security"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Discover AI use cases, address risks and enforce security and governance. Explore IBM Guardium AI Security",
+            "matched_terms": [
+              "security",
+              "risk",
+              "ai security"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Explore IBM Guardium AI Security Achieve crypto-agility Manage encryption at scale, reduce cryptography risk and prepare for quantum resilience.",
+            "matched_terms": [
+              "security",
+              "risk",
+              "ai security"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "governance refers to the processes, standards and guardrails that help ensure AI systems and tools are safe and ethical. AI governance frameworks direct AI research, development and application to help ensure safety, fairness and respect for human rights.",
+            "matched_terms": [
+              "safety",
+              "guardrails"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 3.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Automated monitoring: Employ automatic detection systems for bias, drift, performance and anomalies to help ensure models function correctly and ethically.",
+            "matched_terms": [
+              "detection",
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Automated monitoring: Employ automatic detection systems for bias, drift, performance and anomalies to help ensure models function correctly and ethically.",
+            "matched_terms": [
+              "detection",
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Automated monitoring:",
+            "matched_terms": [
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Employ automatic detection systems for bias, drift, performance and anomalies to help ensure models function correctly and ethically.",
+            "matched_terms": [
+              "detection",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Tay chatbot incident , where a Microsoft AI chatbot learned toxic behavior from public interactions on social media and the",
+            "matched_terms": [
+              "behavior",
+              "incident"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium",
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Considered the world's first comprehensive regulatory framework for AI, the EU AI Act prohibits some AI uses outright and implements strict governance, risk management and transparency requirements for others.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Governance provides a structured approach to mitigate these potential risks. Such an approach can include sound AI policy, regulation and data governance. These help ensure that machine learning algorithms are monitored, evaluated and updated to prevent flawe…",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "policy",
+              "enforcement"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "policy",
+              "enforcement"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive",
+            "matched_terms": [
+              "policy",
+              "enforcement"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.ibm.com/watsonx/governance",
+          "https://www.ibm.com/products/guardium"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Turn data security from reactive to proactive Move from alerts to action with risk-based visibility, threat prioritization and built-in responses like access blocking and quarantine.",
+            "matched_terms": [
+              "data",
+              "access",
+              "alerts"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Move from alerts to action with risk-based visibility, threat prioritization and built-in responses like access blocking and quarantine. Protect data, simplify compliance",
+            "matched_terms": [
+              "data",
+              "access",
+              "alerts"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Turn data security from reactive to proactive Move from alerts to action with risk-based visibility, threat prioritization and built-in responses like access blocking and quarantine.",
+            "matched_terms": [
+              "data",
+              "access",
+              "alerts"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/watsonx/governance",
+            "excerpt": "Enable rapid, on-demand access to shared computer processing resources and data.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/watsonx/governance",
+            "excerpt": "Cloud Enable rapid, on-demand access to shared computer processing resources and data.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Discover sensitive data, AI and encryption across environments to build a complete risk picture and guide targeted protection.",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "across"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Discover data, AI and cryptography Discover sensitive data, AI and encryption across environments to build a complete risk picture and guide targeted protection.",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "across"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Discover sensitive data, AI and encryption across environments to build a complete risk picture and guide targeted protection. Data protection across multiple dimensions",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "across"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Home Products Guardium Protect your data across its lifecycle with IBM Guardium Secure critical enterprise data from both current and emerging risks, wherever it lives Book a live demo Guardium® Data Security Center named as a leader in four categories in Kup…",
+            "matched_terms": [
+              "discover",
+              "data",
+              "across",
+              "platforms"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Discover data, AI and cryptography Discover sensitive data, AI and encryption across environments to build a complete risk picture and guide targeted protection.",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "across"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Examples of AI governance include a range of policies, frameworks and practices that organizations and governments implement to help ensure the responsible use of AI technologies. These examples demonstrate how AI governance happens in different contexts:",
+            "matched_terms": [
+              "policies",
+              "contexts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Organizations should proactively set and adhere to high standards to manage the significant changes AI can bring, maintaining responsibility for AI's impacts.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Examples of AI governance Examples of AI governance include a range of policies, frameworks and practices that organizations and governments implement to help ensure the responsible use of AI technologies. These examples demonstrate how AI governance happens …",
+            "matched_terms": [
+              "policies",
+              "contexts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Accountability: Organizations should proactively set and adhere to high standards to manage the significant changes AI can bring, maintaining responsibility for AI's impacts.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Accountability: Organizations should proactively set and adhere to high standards to manage the significant changes AI can bring, maintaining responsibility for AI's impacts.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium",
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "The regulation requires bank officials to apply company-wide model risk management initiatives and maintain an inventory of models implemented for use, under development for implementation or recently retired.",
+            "matched_terms": [
+              "apply",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "1 The regulation requires bank officials to apply company-wide model risk management initiatives and maintain an inventory of models implemented for use, under development for implementation or recently retired.",
+            "matched_terms": [
+              "apply",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "1 The regulation requires bank officials to apply company-wide model risk management initiatives and maintain an inventory of models implemented for use, under development for implementation or recently retired.",
+            "matched_terms": [
+              "apply",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Discover sensitive data, AI and encryption across environments to build a complete risk picture and guide targeted protection.",
+            "matched_terms": [
+              "across",
+              "sensitive",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Discover data, AI and cryptography Discover sensitive data, AI and encryption across environments to build a complete risk picture and guide targeted protection.",
+            "matched_terms": [
+              "across",
+              "sensitive",
+              "risk"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium",
+          "https://www.ibm.com/topics/ai-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "workflows",
+              "data",
+              "policy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "Augment your Db2 security with IBM Guardium Data Protection Protect your critical data with advanced visibility, automated compliance and real-time threat detection.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "detection"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium",
+            "excerpt": "news Augment your Db2 security with IBM Guardium Data Protection Protect your critical data with advanced visibility, automated compliance and real-time threat detection.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "detection"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Governance provides a structured approach to mitigate these potential risks. Such an approach can include sound AI policy, regulation and data governance. These help ensure that machine learning algorithms are monitored, evaluated and updated to prevent flawe…",
+            "matched_terms": [
+              "data",
+              "policy",
+              "data governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.ibm.com/topics/ai-governance",
+            "excerpt": "Such an approach can include sound AI policy, regulation and data governance.",
+            "matched_terms": [
+              "data",
+              "policy",
+              "data governance"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 6 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 6,
+        "total_pages": 6,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 3.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.38,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI lifecycle governance Read about driving ethical and compliant practices with a portfolio of AI products for generative AI models.\". Also: \"Read the report Insight AI lifecycle governance Read about driving ethical and compliant practices with a portfolio of AI products for generative AI …\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"might have defined levels of threat response. Instead, AI governance has structured approaches and frameworks developed by various entities that organizations can adopt or adapt to their specific nee…\". Also: \"cybersecurity might have defined levels of threat response. Instead, AI governance has structured approaches and frameworks developed by various enti…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.\". Also: \"Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"IBM named a leader in The Forrester Wave™: AI Governance Solutions, Q3 2025 See why Forrester recognized IBM as a Leader for its watsonx.governance solution-helping enterprises manage AI risk, compli…\". Also: \"Read the report Report IBM named a leader in The Forrester Wave™: AI Governance Solutions, Q3 2025 See why Forrester recognized IBM as a Leader for i…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 3.25/5. TRiSM Maturity Level: AI-Augmented (specificity=3.0). Evidence flag: good_evidence. TRiSM signal: \"Governance provides a structured approach to mitigate these potential risks. Such an approach can include sound AI policy, regulation and data governance. These help ensure that machine learning algo…\". Also: \"Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security …\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automated monitoring: Employ automatic detection systems for bias, drift, performance and anomalies to help ensure models function correctly and ethically.\". Also: \"Automated monitoring: Employ automatic detection systems for bias, drift, performance and anomalies to help ensure models function correctly and ethi…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Considered the world's first comprehensive regulatory framework for AI, the EU AI Act prohibits some AI uses outright and implements strict governance, risk management and transparency requirements f…\". Also: \"Governance provides a structured approach to mitigate these potential risks. Such an approach can include sound AI policy, regulation and data govern…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Turn data security from reactive to proactive Move from alerts to action with risk-based visibility, threat prioritization and built-in responses like access blocking and quarantine.\". Also: \"Move from alerts to action with risk-based visibility, threat prioritization and built-in responses like access blocking and quarantine. Protect data…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Discover sensitive data, AI and encryption across environments to build a complete risk picture and guide targeted protection.\". Also: \"Discover data, AI and cryptography Discover sensitive data, AI and encryption across environments to build a complete risk picture and guide targeted…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Examples of AI governance include a range of policies, frameworks and practices that organizations and governments implement to help ensure the responsible use of AI technologies. These examples demo…\". Also: \"Organizations should proactively set and adhere to high standards to manage the significant changes AI can bring, maintaining responsibility for AI's…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"The regulation requires bank officials to apply company-wide model risk management initiatives and maintain an inventory of models implemented for use, under development for implementation or recentl…\". Also: \"1 The regulation requires bank officials to apply company-wide model risk management initiatives and maintain an inventory of models implemented for …\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive\". Also: \"Augment your Db2 security with IBM Guardium Data Protection Protect your critical data with advanced visibility, automated compliance and real-time t…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:18:35.159227+00:00",
+      "urls_used": [
+        "https://www.ibm.com/watsonx/governance",
+        "https://www.ibm.com/products/openscale",
+        "https://www.ibm.com/topics/ai-governance",
+        "https://www.ibm.com/products/watson-openscale",
+        "https://www.ibm.com/products/guardium",
+        "https://www.ibm.com/ai"
+      ],
+      "pages_ok": 6,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "IBM Security",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Integrates AI TRiSM with enterprise security operations and threat intelligence.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence",
+          "https://www.ibm.com/products/guardium-data-security-center"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, categorizing, and safeguarding sensitive data, ensuring regulatory compliance.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "watsonx.governance™ End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, categorizing, and safeguarding sensitive data, ensuring regulatory compliance.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, categorizing, and safeguarding sensitive data, ensuring regulatory compliance. Learn more about watsonx.governance",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Learn more about Trusteer watsonx.governance™ End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium-data-security-center",
+            "excerpt": "IBM® Guardium® Data Security Center helps you manage the data security lifecycle, from discovery to remediation, and empowers multidisciplinary teams to effectively manage data vulnerabilities and risks.",
+            "matched_terms": [
+              "discovery",
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence",
+          "https://www.ibm.com/security"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "IBM Security® provides transformative, AI-powered solutions that optimize analysts’ time-by accelerating ai threat detection and mitigation, expediting responses, and protecting user identity and datasets-while keeping cybersecurity teams in the loop and in c…",
+            "matched_terms": [
+              "data",
+              "entity",
+              "time",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Secure data and identities across environments Our data and identity-centric security controls and expertise across AI, hybrid cloud and quantum ensure clients stay in step with the speed of innovation and complexity of governance.",
+            "matched_terms": [
+              "data",
+              "entity",
+              "over",
+              "entities"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "IBM® Verify helps you protect multicloud identities and network access with real-time, risk-based authentication. Build an effective identity fabric with your existing tools to eliminate identity silos and extend modern authentication mechanisms to traditiona…",
+            "matched_terms": [
+              "entity",
+              "time",
+              "entities",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Data security Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM® Guardium® protects your most valuable asset data from the biggest risk-privileged users-by automating discove…",
+            "matched_terms": [
+              "data",
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Protect your data in the hybrid cloud and AI Explore on-demand webinars Safeguard workforce and consumer identities with scale and speed IBM® Verify helps you protect multicloud identities and network access with real-time, risk-based authentication.",
+            "matched_terms": [
+              "data",
+              "time",
+              "entities",
+              "access"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium-data-security-center",
+          "https://www.ibm.com/guardium"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance",
+              "ai policy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance",
+              "ai policy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance",
+              "ai policy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance",
+              "ai policy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium-data-security-center",
+            "excerpt": "With continuous risk assessments and automated workflows.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence",
+          "https://www.ibm.com/guardium"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Learn more about Trusteer watsonx.governance™ End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "compliance",
+              "reporting",
+              "automated",
+              "ai policy"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "compliance",
+              "reporting",
+              "automated",
+              "ai policy"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive",
+            "matched_terms": [
+              "compliance",
+              "reporting",
+              "automated",
+              "ai policy"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "compliance",
+              "reporting",
+              "automated",
+              "ai policy"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence",
+          "https://www.ibm.com/products/verify-governance",
+          "https://www.ibm.com/products/guardium-data-security-center",
+          "https://www.ibm.com/security"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/products/verify-governance",
+            "excerpt": "Reduced business risk Make appropriate access decisions and enable risk and compliance managers to quickly identify violations with SoD controls, including for SAP.",
+            "matched_terms": [
+              "risk",
+              "violation",
+              "reduced",
+              "controls"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/products/verify-governance",
+            "excerpt": "Reduced business risk Make appropriate access decisions and enable risk and compliance managers to quickly identify violations with SoD controls, including for SAP.",
+            "matched_terms": [
+              "risk",
+              "violation",
+              "reduced",
+              "controls"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Explore Guardium AI Security Request a free live demo IBM Verify Modernize identity and remove complexity for hybrid environments IBM Verify solutions include Customer IAM, Workforce Access, Privileged Access, Identity Governance, Identity Threat Detect and R…",
+            "matched_terms": [
+              "security",
+              "agnostic",
+              "ai security"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Utilizing predictive patching, risk-based policy enforcement, and contextual device actions, it bolsters the overall security posture.",
+            "matched_terms": [
+              "policy",
+              "security",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium-data-security-center",
+            "excerpt": "Provides guidelines for information security controls specifically relevant to cloud service providers and cloud service customers.",
+            "matched_terms": [
+              "security",
+              "provider",
+              "controls"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence",
+          "https://www.ibm.com/security"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Explore Guardium AI Security Request a free live demo IBM Verify Modernize identity and remove complexity for hybrid environments IBM Verify solutions include Customer IAM, Workforce Access, Privileged Access, Identity Governance, Identity Threat Detect and R…",
+            "matched_terms": [
+              "hybrid",
+              "response",
+              "ai security"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "These services harness AI-powered solutions to swiftly identify and respond to security incidents. Using advanced ai algorithms, they provide proactive threat detection and incident response, coordinating defenses against cyber threats and hackers, thereby sa…",
+            "matched_terms": [
+              "detection",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "IBM Security Managed Detection and Response (MDR) Services use automated and human-initiated actions to provide visibility and stop threats across networks and endpoints. With a unified, AI-powered approach, threat hunters can take decisive actions and respon…",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Generating more accurate and prioritized threats AI-powered risk analysis can produce incident summaries for high-fidelity alerts and automate incident responses, accelerating alert investigations and triage by an average of 55%.",
+            "matched_terms": [
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Solutions IBM Threat Detection and Response Services (TDR) These services harness AI-powered solutions to swiftly identify and respond to security incidents.",
+            "matched_terms": [
+              "detection",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Utilizing predictive patching, risk-based policy enforcement, and contextual device actions, it bolsters the overall security posture.",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, categorizing, and safeguarding sensitive data, ensuring regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "watsonx.governance™ End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, categorizing, and safeguarding sensitive data, ensuring regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, categorizing, and safeguarding sensitive data, ensuring regulatory compliance. Learn more about watsonx.governance",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "It features built-in AI outlier detection based on multiple risk factors, with functionality that provides organizations with superior data monitoring and quicker identification of data threats.",
+            "matched_terms": [
+              "detection",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence",
+          "https://www.ibm.com/guardium",
+          "https://www.ibm.com/security"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Security in the cloud must transform from being defined by a perimeter to dynamic-with no clear boundaries. Enterprises must protect sensitive data wherever it resides, however its configured, and then tightly control who has access to it.",
+            "matched_terms": [
+              "dynamic",
+              "bound",
+              "data",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Get the report AI to accelerate your security defenses Today’s security teams face many challenges-sophisticated hackers, an expanding attack surface , an explosion of data and growing infrastructure complexity-that hinder their ability to safeguard data , ma…",
+            "matched_terms": [
+              "data",
+              "access",
+              "ai security"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Explore Guardium AI Security Request a free live demo IBM Verify Modernize identity and remove complexity for hybrid environments IBM Verify solutions include Customer IAM, Workforce Access, Privileged Access, Identity Governance, Identity Threat Detect and R…",
+            "matched_terms": [
+              "privilege",
+              "access",
+              "ai security"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Turn data security from reactive to proactive Move from alerts to action with risk-based visibility, threat prioritization and built-in responses like access blocking and quarantine.",
+            "matched_terms": [
+              "data",
+              "access",
+              "alerts"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Move from alerts to action with risk-based visibility, threat prioritization and built-in responses like access blocking and quarantine. Protect data, simplify compliance",
+            "matched_terms": [
+              "data",
+              "access",
+              "alerts"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence",
+          "https://www.ibm.com/security"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM® Guardium® protects your most valuable asset data from the biggest risk-privileged users-by automating discovery, monitoring attack surfaces and uncovering…",
+            "matched_terms": [
+              "discover",
+              "data",
+              "across",
+              "cloud",
+              "discovery",
+              "data security posture"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Data security Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM® Guardium® protects your most valuable asset data from the biggest risk-privileged users-by automating discove…",
+            "matched_terms": [
+              "discover",
+              "data",
+              "across",
+              "cloud",
+              "discovery",
+              "data security posture"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud",
+              "data security posture"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud",
+              "data security posture"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Read the report Benefits Protecting data across hybrid cloud environments AI tools can identify shadow data, monitor for abnormalities in data access and alert cybersecurity professionals about potential threats by malicious actors accessing the data or sensi…",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium-data-security-center",
+          "https://www.ibm.com/guardium"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "enforcement",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "enforcement",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive",
+            "matched_terms": [
+              "enforcement",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.",
+            "matched_terms": [
+              "enforcement",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium-data-security-center",
+            "excerpt": "Proactively identify and remediate database vulnerabilities before they’re exploited through automated scanning of data stores.",
+            "matched_terms": [
+              "automated",
+              "before"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.ibm.com/products/guardium-data-security-center",
+          "https://www.ibm.com/security"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud",
+            "matched_terms": [
+              "across",
+              "risk",
+              "management",
+              "data security posture"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Data security Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM® Guardium® protects your most valuable asset data from the biggest risk-privileged users-by automating discove…",
+            "matched_terms": [
+              "across",
+              "risk",
+              "management",
+              "data security posture"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium-data-security-center",
+            "excerpt": "Extends ISO/IEC 27001 and ISO/IEC 27002 to include a Privacy Information Management System (PIMS), helping organizations manage personal data privacy.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium-data-security-center",
+            "excerpt": "ISO/IEC 27701 Extends ISO/IEC 27001 and ISO/IEC 27002 to include a Privacy Information Management System (PIMS), helping organizations manage personal data privacy.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.ibm.com/products/guardium-data-security-center",
+            "excerpt": "Extends ISO/IEC 27001 and ISO/IEC 27002 to include a Privacy Information Management System (PIMS), helping organizations manage personal data privacy. SOC 2",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.ibm.com/security/artificial-intelligence",
+          "https://www.ibm.com/guardium",
+          "https://www.ibm.com/security"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud",
+            "matched_terms": [
+              "across",
+              "security",
+              "data",
+              "access",
+              "data security posture"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/security",
+            "excerpt": "Data security Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM® Guardium® protects your most valuable asset data from the biggest risk-privileged users-by automating discove…",
+            "matched_terms": [
+              "across",
+              "security",
+              "data",
+              "access",
+              "data security posture"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.ibm.com/guardium",
+            "excerpt": "Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more. Turn data security from reactive to proactive",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "workflows",
+              "data",
+              "policy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Credico, a professional services firm, enabled 100% tablet policy compliance and enhanced endpoint security with IBM MaaS360 - an AI-powered UEM solution, allowing them to manage 2,000 - 3,000 tablets for a diverse set of independent sales offices (ISOs) spre…",
+            "matched_terms": [
+              "across",
+              "security",
+              "compliance",
+              "policy"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ibm.com/security/artificial-intelligence",
+            "excerpt": "Read the report Benefits Protecting data across hybrid cloud environments AI tools can identify shadow data, monitor for abnormalities in data access and alert cybersecurity professionals about potential threats by malicious actors accessing the data or sensi…",
+            "matched_terms": [
+              "across",
+              "security",
+              "data",
+              "access"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 5,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, categorizing, and safeguarding sensitive data, ensuring regulatory compli…\". Also: \"watsonx.governance™ End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, cat…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"IBM Security® provides transformative, AI-powered solutions that optimize analysts’ time-by accelerating ai threat detection and mitigation, expediting responses, and protecting user identity and dat…\". Also: \"Secure data and identities across environments Our data and identity-centric security controls and expertise across AI, hybrid cloud and quantum ensu…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.\". Also: \"Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Learn more about Trusteer watsonx.governance™ End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle.\". Also: \"Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduced business risk Make appropriate access decisions and enable risk and compliance managers to quickly identify violations with SoD controls, including for SAP.\". Also: \"Reduced business risk Make appropriate access decisions and enable risk and compliance managers to quickly identify violations with SoD controls, inc…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Explore Guardium AI Security Request a free live demo IBM Verify Modernize identity and remove complexity for hybrid environments IBM Verify solutions include Customer IAM, Workforce Access, Privileg…\". Also: \"These services harness AI-powered solutions to swiftly identify and respond to security incidents. Using advanced ai algorithms, they provide proacti…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Utilizing predictive patching, risk-based policy enforcement, and contextual device actions, it bolsters the overall security posture.\". Also: \"End-to-end toolkit for AI governance across to manage risk, compliance and the entire AI lifecycle. It aids in understanding, categorizing, and safeg…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Security in the cloud must transform from being defined by a perimeter to dynamic-with no clear boundaries. Enterprises must protect sensitive data wherever it resides, however its configured, and th…\". Also: \"Get the report AI to accelerate your security defenses Today’s security teams face many challenges-sophisticated hackers, an expanding attack surface…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM® Guardium® protects your most valuable asset data from the biggest risk-privileged users-by aut…\". Also: \"Data security Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM®…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.\". Also: \"Simplify compliance Streamline compliance with automated workflows, AI policy enforcement and reporting aligned to GDPR, CCPA, PCI-DSS and many more.\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud\". Also: \"Data security Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM®…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud\". Also: \"Data security Identity and access management Elevate your data security posture by prioritizing and remediating risks across AI and hybrid cloud IBM®…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:18:50.815727+00:00",
+      "urls_used": [
+        "https://www.ibm.com/security/artificial-intelligence",
+        "https://www.ibm.com/guardium",
+        "https://www.ibm.com/security",
+        "https://www.ibm.com/products/guardium-data-security-center",
+        "https://www.ibm.com/products/verify-governance"
+      ],
+      "pages_ok": 5,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Immuta",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": true,
+    "is_ai_first": false,
+    "vendor_type": "Data Governance",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Focuses on automated data access controls and privacy protection for AI pipelines.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.immuta.com/solutions/data-security/",
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "March 6, 2024 Enhancing Databricks Unity Catalog for Evolving Data & AI Governance In the 2024 State of Data Security Report, a vast majority (88%) of data professionals reported that employees at their organizations are using artificial intelligence (AI).",
+            "matched_terms": [
+              "state",
+              "catalog",
+              "ai governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Platform Services Metadata Registry Data Discovery & Classification Policy Entitlement Engine Unified Audit Data Domains Apps Data Marketplace Put data to work fast by enabling everyone to share data freely and safely.",
+            "matched_terms": [
+              "discovery",
+              "apps",
+              "registry"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "How Immuta Governance for Databricks Unity Catalog Models, Functions, & Volumes Powers AI & ML Innovation",
+            "matched_terms": [
+              "models",
+              "model",
+              "catalog"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "April 8, 2025 How Immuta Governance for Databricks Unity Catalog Models, Functions, & Volumes Powers AI & ML Innovation",
+            "matched_terms": [
+              "models",
+              "model",
+              "catalog"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Platform Services Metadata Registry Data Discovery & Classification Policy Entitlement Engine Unified Audit Data Domains Apps Data Marketplace Put data to work fast by enabling everyone to share data freely and safely.",
+            "matched_terms": [
+              "discovery",
+              "apps",
+              "registry"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 13,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "How much time have you spent sifting through organization-level data trying to find the right data sets for your specific needs? Not to mention that once you find what you’re looking for, you may find yourself waiting for a centralized IT team to approve your…",
+            "matched_terms": [
+              "data",
+              "time",
+              "sets",
+              "specific",
+              "access"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Although we are living in an age of unprecedented data generation, none of it matters if we can’t make that data available for analysis in a secure and timely manner. In order for users to analyze and derive insights from data, it must be discoverable and acc…",
+            "matched_terms": [
+              "data",
+              "over",
+              "time",
+              "access",
+              "analysis"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "As data further cements itself as an essential resource for modern businesses, more steps must be taken to guarantee its security. Why? These measures may be related to how and why data access is governed, ensuring that proper data access controls are in plac…",
+            "matched_terms": [
+              "data",
+              "maintain",
+              "over",
+              "access",
+              "governed"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "December 9, 2025 ReviewAssist 2.0: Smarter, More Confident Data Access Decisions at Scale Data governance teams are reviewing more access requests than ever, not just from employees, but from automated systems and now AI agents operating at machine speed.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "over",
+              "automated",
+              "access"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "March 3, 2025 How Immuta Copilot Accelerates Data Provisioning at AI Scale The tension between quickly provisioning data access and maintaining control over it has been growing for at least a decade, but thanks to decentralized architectures, diverse cloud ec…",
+            "matched_terms": [
+              "data",
+              "each",
+              "maintain",
+              "over",
+              "access"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 13,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.immuta.com/solutions/data-security/",
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Speed collaboration around data access with streamlined, automated workflows.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Technology Partners Speed collaboration around data access with streamlined, automated workflows.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Speed collaboration around data access with streamlined, automated workflows. Snowflake",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Ecosystem Partners Technology Partners Speed collaboration around data access with streamlined, automated workflows.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Speed collaboration around data access with streamlined, automated workflows.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 15,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.immuta.com/solutions/data-security/",
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "As part of the validation process, Google Cloud engineering teams run a series of data integration tests, compare results against benchmarks, work closely...",
+            "matched_terms": [
+              "validation",
+              "tests",
+              "results",
+              "integration"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Also referred to as “perimeter-less security,” Zero Trust has traditionally focused on employing network-centric tools that enable automated access controls, network microsegmentation, and continuous monitoring of connected devices.",
+            "matched_terms": [
+              "automated",
+              "continuous",
+              "trust"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "From trend reports to compliance playbooks, deepen your understanding of data access.",
+            "matched_terms": [
+              "compliance",
+              "trend"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Resource Center From trend reports to compliance playbooks, deepen your understanding of data access.",
+            "matched_terms": [
+              "compliance",
+              "trend"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "From trend reports to compliance playbooks, deepen your understanding of data access. Data Fundamentals",
+            "matched_terms": [
+              "compliance",
+              "trend"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 19,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Now is the Time for Risk-Aware Data Security & Access Controls",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "May 9, 2024 Now is the Time for Risk-Aware Data Security & Access Controls",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Data Leak Prevention for Modern Tech Stacks When we think of threats to data, malicious hackers who are out to profit off our information tend to come to mind. But what about the risks that are hiding in plain sight? Outdated systems, shared passwords, and la…",
+            "matched_terms": [
+              "pass",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "When we think of threats to data, malicious hackers who are out to profit off our information tend to come to mind. But what about the risks that are hiding in plain sight? Outdated systems, shared passwords, and lax controls may all seem like low grade issue…",
+            "matched_terms": [
+              "pass",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "May 9, 2024 Now is the Time for Risk-Aware Data Security & Access Controls From artificial intelligence and machine learning advancements, to decentralized cloud storage and analysis, and other novel use cases, we’re seeing data innovations happening before o…",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.immuta.com/solutions/data-security/",
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "and standards such as HIPAA, SOC 2, and PCI DSS. This involves implementing security controls, such as encryption, access controls, and monitoring and detection, across all of the different cloud services that an organization uses.",
+            "matched_terms": [
+              "detection",
+              "monitoring"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "data regulations and standards such as HIPAA, SOC 2, and PCI DSS. This involves implementing security controls, such as encryption, access controls, and monitoring and detection, across all of the different cloud services that an organization uses.",
+            "matched_terms": [
+              "detection",
+              "monitoring"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "This involves implementing security controls, such as encryption, access controls, and monitoring and detection, across all of the different cloud services that an organization uses.",
+            "matched_terms": [
+              "detection",
+              "monitoring"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Immuta’s native integration with Snowflake delivers automated, scalable data discovery, security, and monitoring, and the seamless user experience and close collaboration earned Immuta the title...",
+            "matched_terms": [
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Also referred to as “perimeter-less security,” Zero Trust has traditionally focused on employing network-centric tools that enable automated access controls, network microsegmentation, and continuous monitoring of connected devices.",
+            "matched_terms": [
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.immuta.com/solutions/data-security/",
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Data Discovery & Classification Policy Entitlement Engine",
+            "matched_terms": [
+              "policy",
+              "class"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Platform Services Metadata Registry Data Discovery & Classification Policy Entitlement Engine Unified Audit Data Domains Apps Data Marketplace Put data to work fast by enabling everyone to share data freely and safely.",
+            "matched_terms": [
+              "policy",
+              "class"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "The Breaking Point of Manual Policy Enforcement: Why Simplicity Fails to Scale",
+            "matched_terms": [
+              "policy",
+              "enforcement"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Automated Policy Enforcement is the Key to Self-Service Analytics",
+            "matched_terms": [
+              "policy",
+              "enforcement"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Layers of Data Policy Enforcement in Cloud Ecosystems",
+            "matched_terms": [
+              "policy",
+              "enforcement"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.immuta.com/solutions/data-security/",
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "November 19, 2025 Unlocking Seamless Data Access: Immuta’s Data Catalog Request for Access Integrations For years, organizations have invested considerable time and resources in building robust data catalogs.",
+            "matched_terms": [
+              "data",
+              "access",
+              "logs",
+              "integration"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "It addresses a critical gap in traditional metadata catalogs by making sensitive data discoverable and governable within domain boundaries, which adds critical context to policy enforcement.",
+            "matched_terms": [
+              "enforcement",
+              "bound",
+              "data",
+              "logs"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Beyond Discovery: Intelligent Data Provisioning Arrives in Catalogs The future of data access? Meet data consumers where they work.",
+            "matched_terms": [
+              "data",
+              "access",
+              "logs"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Unlocking Seamless Data Access: Immuta’s Data Catalog Request for Access Integrations",
+            "matched_terms": [
+              "data",
+              "access",
+              "integration"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Why Data Classification Frameworks Don’t Belong in Data Catalogs",
+            "matched_terms": [
+              "classification",
+              "data",
+              "logs"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Unique Data, Unique Solutions: Customizing Sensitive Data Discovery",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Sensitive Data Discovery Tools for Modern Data Stacks",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "August 13, 2024 Unique Data, Unique Solutions: Customizing Sensitive Data Discovery",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "August 29, 2022 Sensitive Data Discovery Tools for Modern Data Stacks",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "August 13, 2024 Unique Data, Unique Solutions: Customizing Sensitive Data Discovery In the world of data management, not all sensitive data fits neatly into predefined categories.",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 12,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "November 16, 2021 Snowflake and Immuta Pair Up to Provide an Industry-Leading Data Governance Solution For Data Engineers responsible for delivering data to consumers, the effort needed to wrangle policies can quickly get out of hand as the complexity of data…",
+            "matched_terms": [
+              "policies",
+              "data governance",
+              "data access control"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "December 9, 2025 ReviewAssist 2.0: Smarter, More Confident Data Access Decisions at Scale Data governance teams are reviewing more access requests than ever, not just from employees, but from automated systems and now AI agents operating at machine speed.",
+            "matched_terms": [
+              "scale",
+              "automated",
+              "data governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "November 19, 2025 Immuta Reveal Policies: Precision Access for Modern Data Governance Data provisioning, securely delivering the right data to the right people or systems at the right time, has always required balancing protection and access.",
+            "matched_terms": [
+              "right",
+              "policies",
+              "data governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "It addresses a critical gap in traditional metadata catalogs by making sensitive data discoverable and governable within domain boundaries, which adds critical context to policy enforcement.",
+            "matched_terms": [
+              "enforcement",
+              "bound",
+              "data catalog"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "November 4, 2025 The Breaking Point of Manual Policy Enforcement: Why Simplicity Fails to Scale Today’s technology moves data faster than ever before, but many organizations still rely on manual methods to control who can access what.",
+            "matched_terms": [
+              "scale",
+              "enforcement",
+              "before"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 13,
+        "pillar_term_hits": 12,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Intelligence Community’s (IC’s) complex and sensitive data governance problems, empowering organizations to harness the value of their data while preserving data privacy and security.",
+            "matched_terms": [
+              "privacy",
+              "sensitive",
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "How Does Data Classification Help Protect Data Privacy?",
+            "matched_terms": [
+              "privacy",
+              "data classification",
+              "data privacy"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "April 28, 2023 How Does Data Classification Help Protect Data Privacy?",
+            "matched_terms": [
+              "privacy",
+              "data classification",
+              "data privacy"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "5 Important Things to Look For in a Data Governance Tool A data governance tool can help your organization automate data governance at scale, increase data utilization, and comply with data privacy regulations. In this blog post, we’ll highlight five of the m…",
+            "matched_terms": [
+              "privacy",
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "A data governance tool can help your organization automate data governance at scale, increase data utilization, and comply with data privacy regulations. In this blog post, we’ll highlight five of the most important features to look for in a data governance t…",
+            "matched_terms": [
+              "privacy",
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 12,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.immuta.com/solutions/data-security/",
+          "https://www.immuta.com/blog/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "April 8, 2021 Why Your Data Governance Strategy Is Failing (And How to Fix It) Loading the Elevenlabs Text to Speech AudioNative Player… At-a-glance: Data governance strategies typically fail due to manual processes and legacy tools, inability to scale, data …",
+            "matched_terms": [
+              "scale",
+              "data",
+              "kpis",
+              "failure",
+              "data governance",
+              "data classification"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Data Access Governance Unify policy-setting, visibility, and auditing across all your platforms at scale.",
+            "matched_terms": [
+              "across",
+              "scale",
+              "data",
+              "access",
+              "policy",
+              "access governance"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.immuta.com/solutions/data-security/",
+            "excerpt": "Data Access Governance Unify policy-setting, visibility, and auditing across all your platforms at scale.",
+            "matched_terms": [
+              "across",
+              "scale",
+              "data",
+              "access",
+              "policy",
+              "access governance"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Data Access Governance Unify policy-setting, visibility, and auditing across all your platforms at scale.",
+            "matched_terms": [
+              "across",
+              "scale",
+              "data",
+              "access",
+              "policy",
+              "access governance"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.immuta.com/blog/",
+            "excerpt": "Data Access Governance Unify policy-setting, visibility, and auditing across all your platforms at scale.",
+            "matched_terms": [
+              "across",
+              "scale",
+              "data",
+              "access",
+              "policy",
+              "access governance"
+            ],
+            "relevance_score": 26
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 13,
+        "pillar_term_hits": 12,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"March 6, 2024 Enhancing Databricks Unity Catalog for Evolving Data & AI Governance In the 2024 State of Data Security Report, a vast majority (88%) of data professionals reported that employees at th…\". Also: \"Platform Services Metadata Registry Data Discovery & Classification Policy Entitlement Engine Unified Audit Data Domains Apps Data Marketplace Put da…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"How much time have you spent sifting through organization-level data trying to find the right data sets for your specific needs? Not to mention that once you find what you’re looking for, you may fin…\". Also: \"Although we are living in an age of unprecedented data generation, none of it matters if we can’t make that data available for analysis in a secure a…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Speed collaboration around data access with streamlined, automated workflows.\". Also: \"Technology Partners Speed collaboration around data access with streamlined, automated workflows.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"As part of the validation process, Google Cloud engineering teams run a series of data integration tests, compare results against benchmarks, work closely...\". Also: \"Also referred to as “perimeter-less security,” Zero Trust has traditionally focused on employing network-centric tools that enable automated access c…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Now is the Time for Risk-Aware Data Security & Access Controls\". Also: \"May 9, 2024 Now is the Time for Risk-Aware Data Security & Access Controls\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"and standards such as HIPAA, SOC 2, and PCI DSS. This involves implementing security controls, such as encryption, access controls, and monitoring and detection, across all of the different cloud ser…\". Also: \"data regulations and standards such as HIPAA, SOC 2, and PCI DSS. This involves implementing security controls, such as encryption, access controls, …\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data Discovery & Classification Policy Entitlement Engine\". Also: \"Platform Services Metadata Registry Data Discovery & Classification Policy Entitlement Engine Unified Audit Data Domains Apps Data Marketplace Put da…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"November 19, 2025 Unlocking Seamless Data Access: Immuta’s Data Catalog Request for Access Integrations For years, organizations have invested considerable time and resources in building robust data …\". Also: \"It addresses a critical gap in traditional metadata catalogs by making sensitive data discoverable and governable within domain boundaries, which add…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Unique Data, Unique Solutions: Customizing Sensitive Data Discovery\". Also: \"Sensitive Data Discovery Tools for Modern Data Stacks\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"November 16, 2021 Snowflake and Immuta Pair Up to Provide an Industry-Leading Data Governance Solution For Data Engineers responsible for delivering data to consumers, the effort needed to wrangle po…\". Also: \"December 9, 2025 ReviewAssist 2.0: Smarter, More Confident Data Access Decisions at Scale Data governance teams are reviewing more access requests th…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Intelligence Community’s (IC’s) complex and sensitive data governance problems, empowering organizations to harness the value of their data while preserving data privacy and security.\". Also: \"How Does Data Classification Help Protect Data Privacy?\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"April 8, 2021 Why Your Data Governance Strategy Is Failing (And How to Fix It) Loading the Elevenlabs Text to Speech AudioNative Player… At-a-glance: Data governance strategies typically fail due to …\". Also: \"Data Access Governance Unify policy-setting, visibility, and auditing across all your platforms at scale.\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:19:10.687124+00:00",
+      "urls_used": [
+        "https://www.immuta.com/platform/",
+        "https://www.immuta.com/solutions/ai-security/",
+        "https://www.immuta.com/solutions/data-governance/",
+        "https://www.immuta.com/solutions/data-security/",
+        "https://www.immuta.com/blog/"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Infosys",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 3.88,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 2.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.infosys.com/services/ai-automation.html",
+          "https://www.infosys.com/services/generative-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/generative-ai.html",
+            "excerpt": "Infosys Transformer Models",
+            "matched_terms": [
+              "models",
+              "model"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.infosys.com/services/generative-ai.html",
+            "excerpt": "Infosys Digital Brain Infosys Transformer Models",
+            "matched_terms": [
+              "models",
+              "model"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.infosys.com/services/generative-ai.html",
+            "excerpt": "Infosys Transformer Models Company",
+            "matched_terms": [
+              "models",
+              "model"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Digital Operating Model",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Infosys Unveils Product-Centric Delivery Model by using Agile and DevOps to Empower and Accelerate Business Outcomes",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Strengthening Cybersecurity: BECU leaders’ insights on the impact of Infosys Collaboration Infosys bolstered BECU's security posture by safeguarding sensitive data, streamlining, and automating identity and access management processes thereby reducing manual …",
+            "matched_terms": [
+              "data",
+              "entity",
+              "access",
+              "impact"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Cummins and Infosys: Securing identities together Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications",
+            "matched_terms": [
+              "each",
+              "over",
+              "entities",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Read More Strengthening Cybersecurity: BECU leaders’ insights on the impact of Infosys Collaboration Infosys bolstered BECU's security posture by safeguarding sensitive data, streamlining, and automating identity and access management processes thereby reduci…",
+            "matched_terms": [
+              "data",
+              "entity",
+              "access",
+              "impact"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "By seamlessly integrating with BECU's team, Infosys optimized the identity and access management processes, streamlined operations, and enhanced security. This collaboration enabled BECU to protect sensitive data and uphold customer trust effectively.",
+            "matched_terms": [
+              "data",
+              "entity",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys bolstered BECU's security posture by safeguarding sensitive data, streamlining, and automating identity and access management processes thereby reducing manual efforts and improving efficiency.",
+            "matched_terms": [
+              "data",
+              "entity",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.infosys.com/services/ai-automation.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Digital Operating Model",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Analyst Reports",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Infosys Unveils Product-Centric Delivery Model by using Agile and DevOps to Empower and Accelerate Business Outcomes",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Automation for scale: Leading Irish bank improves user satisfaction with automated issue resolution",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Scalable governance model for an oil and gas major",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Governance, Risk and Compliance",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys Governance Risk & Compliance Services",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys elevated the security posture and assured a safe digital environment to Backcountry by leveraging Infosys Cyber Next platform",
+            "matched_terms": [
+              "back",
+              "posture"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Strengthened the cloud security posture of a leading European investment firm through comprehensive risk assessments",
+            "matched_terms": [
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "ISG as CoE: Committed to innovation and eliminating risks for strengthening the security posture",
+            "matched_terms": [
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys Positioned as a Leader in the ISG Provider Lens™ Cybersecurity - Solutions and Services 2024 for U.S.",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys Positioned as a Leader (UK and Germany) in the ISG Provider Lens™ Cybersecurity - Solutions and Services 2024 for Europe",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Analyst Recognition Infosys Positioned as a Leader in the ISG Provider Lens™ Cybersecurity - Solutions and Services 2024 for U.S.",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys Positioned as a Leader in the ISG Provider Lens™ Cybersecurity - Solutions and Services 2024 for U.S. Read More",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Analyst Recognition Infosys Positioned as a Leader (UK and Germany) in the ISG Provider Lens™ Cybersecurity - Solutions and Services 2024 for Europe",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Threat Detection and Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Defensible Cyber Position in Incident Response",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys provides Managed Protection, Detection and Response to bpost",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys improved bpost’ security posture while migrating them to the cloud by leveraging Managed Protection Detection and Response offering",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys has significantly elevated Ferroglobe’s security landscape by efficiently managing 24*7 SOC monitoring and response, next-gen firewall, vulnerability management and EDR technologies.",
+            "matched_terms": [
+              "monitoring",
+              "response"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.infosys.com/services/ai-automation.html",
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Threat Detection and Response Governance, Risk and Compliance",
+            "matched_terms": [
+              "detection",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Cookie Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Privacy Statement Cookie Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Cookie Policy Safe Harbour Provision",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Threat Detection and Response",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "By seamlessly integrating with BECU's team, Infosys optimized the identity and access management processes, streamlined operations, and enhanced security. This collaboration enabled BECU to protect sensitive data and uphold customer trust effectively.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys bolstered BECU's security posture by safeguarding sensitive data, streamlining, and automating identity and access management processes thereby reducing manual efforts and improving efficiency.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Identity and Access Management Data Protection and Privacy",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Fortifying BECU's Future: A Cybersecurity Partnership with Infosys By seamlessly integrating with BECU's team, Infosys optimized the identity and access management processes, streamlined operations, and enhanced security. This collaboration enabled BECU to pr…",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Strengthening Cybersecurity: BECU leaders’ insights on the impact of Infosys Collaboration Infosys bolstered BECU's security posture by safeguarding sensitive data, streamlining, and automating identity and access management processes thereby reducing manual …",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications",
+            "matched_terms": [
+              "across",
+              "access governance"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Cummins and Infosys: Securing identities together Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications",
+            "matched_terms": [
+              "across",
+              "access governance"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications Read More",
+            "matched_terms": [
+              "across",
+              "access governance"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys improved bpost’ security posture while migrating them to the cloud by leveraging Managed Protection Detection and Response offering",
+            "matched_terms": [
+              "cloud",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys provides Managed Protection, Detection and Response to bpost Infosys improved bpost’ security posture while migrating them to the cloud by leveraging Managed Protection Detection and Response offering",
+            "matched_terms": [
+              "cloud",
+              "detection"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.infosys.com/services/ai-automation.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Automation for scale: Leading Irish bank improves user satisfaction with automated issue resolution",
+            "matched_terms": [
+              "scale",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Case Study Automation for scale: Leading Irish bank improves user satisfaction with automated issue resolution",
+            "matched_terms": [
+              "scale",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Automation for scale: Leading Irish bank improves user satisfaction with automated issue resolution Case Study",
+            "matched_terms": [
+              "scale",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Copyright © 2026 Infosys Limited",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.infosys.com/services/ai-automation.html",
+            "excerpt": "Connect with us Copyright © 2026 Infosys Limited",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.infosys.com/services/data-analytics.html",
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/data-analytics.html",
+            "excerpt": "Let's talk Press Release Agentic AI Gains Traction: 86% of Enterprises See Rising Risks, Only 2% Meet Responsible AI Standards Read More Video Data Democratization with Databricks: AI, Open Source & Business Transformation Watch now White Paper Synthetic Data…",
+            "matched_terms": [
+              "agentic",
+              "synthetic",
+              "risk",
+              "synthetic data"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications",
+            "matched_terms": [
+              "across",
+              "management",
+              "access governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Cummins and Infosys: Securing identities together Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications",
+            "matched_terms": [
+              "across",
+              "management",
+              "access governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications Read More",
+            "matched_terms": [
+              "across",
+              "management",
+              "access governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Identity and Access Management Data Privacy and Protection",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.infosys.com/services/cyber-security.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications",
+            "matched_terms": [
+              "across",
+              "security",
+              "access",
+              "access governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Cummins and Infosys: Securing identities together Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications",
+            "matched_terms": [
+              "across",
+              "security",
+              "access",
+              "access governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications Read More",
+            "matched_terms": [
+              "across",
+              "security",
+              "access",
+              "access governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "Identity and Access Management Data Privacy and Protection",
+            "matched_terms": [
+              "data",
+              "access",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.infosys.com/services/cyber-security.html",
+            "excerpt": "By seamlessly integrating with BECU's team, Infosys optimized the identity and access management processes, streamlined operations, and enhanced security. This collaboration enabled BECU to protect sensitive data and uphold customer trust effectively.",
+            "matched_terms": [
+              "security",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 2.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 3.88,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Infosys Transformer Models\". Also: \"Infosys Digital Brain Infosys Transformer Models\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Strengthening Cybersecurity: BECU leaders’ insights on the impact of Infosys Collaboration Infosys bolstered BECU's security posture by safeguarding sensitive data, streamlining, and automating ident…\". Also: \"Cummins and Infosys: Securing identities together Infosys helped Cummins minimize the probability of potential security breaches by improving passwor…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Digital Operating Model\". Also: \"Analyst Reports\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Governance, Risk and Compliance\". Also: \"Infosys Governance Risk & Compliance Services\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Infosys Positioned as a Leader in the ISG Provider Lens™ Cybersecurity - Solutions and Services 2024 for U.S.\". Also: \"Infosys Positioned as a Leader (UK and Germany) in the ISG Provider Lens™ Cybersecurity - Solutions and Services 2024 for Europe\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Threat Detection and Response\". Also: \"Defensible Cyber Position in Incident Response\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Threat Detection and Response Governance, Risk and Compliance\". Also: \"Cookie Policy\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"By seamlessly integrating with BECU's team, Infosys optimized the identity and access management processes, streamlined operations, and enhanced security. This collaboration enabled BECU to protect s…\". Also: \"Infosys bolstered BECU's security posture by safeguarding sensitive data, streamlining, and automating identity and access management processes there…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications\". Also: \"Cummins and Infosys: Securing identities together Infosys helped Cummins minimize the probability of potential security breaches by improving passwor…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automation for scale: Leading Irish bank improves user satisfaction with automated issue resolution\". Also: \"Case Study Automation for scale: Leading Irish bank improves user satisfaction with automated issue resolution\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Let's talk Press Release Agentic AI Gains Traction: 86% of Enterprises See Rising Risks, Only 2% Meet Responsible AI Standards Read More Video Data Democratization with Databricks: AI, Open Source & …\". Also: \"Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance ac…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Infosys helped Cummins minimize the probability of potential security breaches by improving password management and establishing access governance across their applications\". Also: \"Cummins and Infosys: Securing identities together Infosys helped Cummins minimize the probability of potential security breaches by improving passwor…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:19:24.149004+00:00",
+      "urls_used": [
+        "https://www.infosys.com/services/ai-automation.html",
+        "https://www.infosys.com/services/ai-automation/responsible-ai.html",
+        "https://www.infosys.com/services/cyber-security.html",
+        "https://www.infosys.com/services/data-analytics.html",
+        "https://www.infosys.com/services/generative-ai.html"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "KPMG",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Emphasizes AI compliance readiness assessments tailored to upcoming global regulations (e.g., EU AI Act).",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.0,
+      "RUN": 3.19,
+      "INF": 2.69
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 2.25,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.25,
+      "RUN-01": 2.0,
+      "RUN-02": 2.25,
+      "RUN-03": 4.25,
+      "RUN-04": 4.25,
+      "INF-01": 2.25,
+      "INF-02": 2.25,
+      "INF-03": 2.0,
+      "INF-04": 4.25
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.",
+            "matched_terms": [
+              "entities"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Throughout this website, “we”, “KPMG”, “us” and “our” refers to the KPMG global organization, to KPMG International Limited (“KPMG International”), and/or to one or more of the member firms of KPMG International, each of which is a separate legal entity.",
+            "matched_terms": [
+              "entity"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Help © 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.",
+            "matched_terms": [
+              "entities"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Create an account Contact Contact Us Submit RFP Contact Contact Us Submit RFP Media Newsroom Press Releases Media Newsroom Press Releases Company Careers About Us Company Careers About Us Legal Privacy Accessibility Help © 2026 Copyright owned by one or more …",
+            "matched_terms": [
+              "entities"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "KPMG International entities provide no services to clients.",
+            "matched_terms": [
+              "entities"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Create an account Contact Contact Us Submit RFP Contact Contact Us Submit RFP Media Newsroom Press Releases Media Newsroom Press Releases Company Careers About Us Company Careers About Us Legal Privacy Accessibility Help © 2026 Copyright owned by one or more …",
+            "matched_terms": [
+              "entities",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Many organizations are under pressure to do things better, more efficiently, more effectively, at a lower cost, at a higher quality, using fewer resources and at a faster pace.",
+            "matched_terms": [
+              "quality"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "The Fit for Pillar Two series aims to help tax teams of multinational enterprises within the scope of Pillar Two prepare for the upcoming wave of international tax changes by putting theory into practice.",
+            "matched_terms": [
+              "changes"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Accessibility",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.",
+            "matched_terms": [
+              "entities"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "AI Audit and Assurance",
+            "matched_terms": [
+              "audit",
+              "ai audit"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Audit and Assurance",
+            "matched_terms": [
+              "audit"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "The Fit for Pillar Two series aims to help tax teams of multinational enterprises within the scope of Pillar Two prepare for the upcoming wave of international tax changes by putting theory into practice.",
+            "matched_terms": [
+              "changes"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Audit and Assurance ESG",
+            "matched_terms": [
+              "audit"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Risk and Regulation In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer fit for purpose.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Explore bar_chart Risk and Regulation In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer fit for purpose.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Trending topics",
+            "matched_terms": [
+              "trend"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Risk and Regulation",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Operations Risk and Regulation",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Risk and Regulation Transformation",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "bar_chart Risk and Regulation",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Welcome to the KPMG knowledge base of research that demonstrates KPMG professionals' understanding of complex business challenges faced by organizations around the world.",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Our insights Welcome to the KPMG knowledge base of research that demonstrates KPMG professionals' understanding of complex business challenges faced by organizations around the world.",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Welcome to the KPMG knowledge base of research that demonstrates KPMG professionals' understanding of complex business challenges faced by organizations around the world. Trending topics",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Previous search terms close Cancel Our insights Welcome to the KPMG knowledge base of research that demonstrates KPMG professionals' understanding of complex business challenges faced by organizations around the world.",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 4,
+        "notes": "TRiSM claims extraction; 4 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Risk and Regulation In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer fit for purpose.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Explore bar_chart Risk and Regulation In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer fit for purpose.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Clear all Apply Filters Read more Subscribe to KPMG newsletters Receive exclusive content directly from KPMG professionals on current market trends.",
+            "matched_terms": [
+              "content",
+              "filters"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "fit for purpose.",
+            "matched_terms": [
+              "purpose"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Receive exclusive content directly from KPMG professionals on current market trends.",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Accessibility",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer fit for purpose.",
+            "matched_terms": [
+              "purpose"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "fit for purpose. Explore",
+            "matched_terms": [
+              "purpose"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "A blueprint for creating citizen-centric value through AI-driven transformation",
+            "matched_terms": [
+              "driven"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Intelligent government A blueprint for creating citizen-centric value through AI-driven transformation",
+            "matched_terms": [
+              "driven"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "A blueprint for creating citizen-centric value through AI-driven transformation Read more",
+            "matched_terms": [
+              "driven"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Search through our most active topics and see how they are helping clients discover new potential and implement positive change.",
+            "matched_terms": [
+              "discover"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Trending topics Search through our most active topics and see how they are helping clients discover new potential and implement positive change.",
+            "matched_terms": [
+              "discover"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 3,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Search through our most active topics and see how they are helping clients discover new potential and implement positive change.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "The world is rapidly changing. And change can create significant opportunities. Yet, from our perspective, seizing those opportunities requires vision, insights and capabilities.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "The Fit for Pillar Two series aims to help tax teams of multinational enterprises within the scope of Pillar Two prepare for the upcoming wave of international tax changes by putting theory into practice.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Trending topics Search through our most active topics and see how they are helping clients discover new potential and implement positive change.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Privacy Accessibility",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Create an account Contact Contact Us Submit RFP Contact Contact Us Submit RFP Media Newsroom Press Releases Media Newsroom Press Releases Company Careers About Us Company Careers About Us Legal Privacy Accessibility Help © 2026 Copyright owned by one or more …",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Risk and Regulation",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Apply Filters",
+            "matched_terms": [
+              "apply"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 2,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "The Fit for Pillar Two series aims to help tax teams of multinational enterprises within the scope of Pillar Two prepare for the upcoming wave of international tax changes by putting theory into practice.",
+            "matched_terms": [
+              "changes",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Fit for Pillar Two series The Fit for Pillar Two series aims to help tax teams of multinational enterprises within the scope of Pillar Two prepare for the upcoming wave of international tax changes by putting theory into practice.",
+            "matched_terms": [
+              "changes",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "The Fit for Pillar Two series aims to help tax teams of multinational enterprises within the scope of Pillar Two prepare for the upcoming wave of international tax changes by putting theory into practice. Read more",
+            "matched_terms": [
+              "changes",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "Search through our most active topics and see how they are helping clients discover new potential and implement positive change.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+            "excerpt": "The world is rapidly changing. And change can create significant opportunities. Yet, from our perspective, seizing those opportunities requires vision, insights and capabilities.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 59,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 2.25,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.25,
+      "RUN-01": 2.0,
+      "RUN-02": 2.25,
+      "RUN-03": 4.25,
+      "RUN-04": 4.25,
+      "INF-01": 2.25,
+      "INF-02": 2.25,
+      "INF-03": 2.0,
+      "INF-04": 4.25
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.0,
+      "RUN": 3.19,
+      "INF": 2.69
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"© 2026 Copyright owned by one or more of the KPMG International entities. KPMG International entities provide no services to clients. All rights reserved.\". Also: \"Throughout this website, “we”, “KPMG”, “us” and “our” refers to the KPMG global organization, to KPMG International Limited (“KPMG International”), a…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Create an account Contact Contact Us Submit RFP Contact Contact Us Submit RFP Media Newsroom Press Releases Media Newsroom Press Releases Company Careers About Us Company Careers About Us Legal Priva…\". Also: \"Many organizations are under pressure to do things better, more efficiently, more effectively, at a lower cost, at a higher quality, using fewer reso…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI Audit and Assurance\". Also: \"Audit and Assurance\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer\". Also: \"Risk and Regulation In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventi…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.00/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Risk and Regulation\". Also: \"In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to r…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Welcome to the KPMG knowledge base of research that demonstrates KPMG professionals' understanding of complex business challenges faced by organizations around the world.\". Also: \"Our insights Welcome to the KPMG knowledge base of research that demonstrates KPMG professionals' understanding of complex business challenges faced …\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventional approaches to risk and regulatory compliance are no longer\". Also: \"Risk and Regulation In a complex world where finance, trade, technology and environment intersect in different and evolving ways, we believe conventi…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"fit for purpose.\". Also: \"Receive exclusive content directly from KPMG professionals on current market trends.\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"A blueprint for creating citizen-centric value through AI-driven transformation\". Also: \"Intelligent government A blueprint for creating citizen-centric value through AI-driven transformation\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Search through our most active topics and see how they are helping clients discover new potential and implement positive change.\". Also: \"The world is rapidly changing. And change can create significant opportunities. Yet, from our perspective, seizing those opportunities requires visio…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 2.00/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Privacy Accessibility\". Also: \"Create an account Contact Contact Us Submit RFP Contact Contact Us Submit RFP Media Newsroom Press Releases Media Newsroom Press Releases Company Car…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"The Fit for Pillar Two series aims to help tax teams of multinational enterprises within the scope of Pillar Two prepare for the upcoming wave of international tax changes by putting theory into prac…\". Also: \"Fit for Pillar Two series The Fit for Pillar Two series aims to help tax teams of multinational enterprises within the scope of Pillar Two prepare fo…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:19:46.150754+00:00",
+      "urls_used": [
+        "https://kpmg.com/us/en/articles/responsible-ai.html",
+        "https://kpmg.com/us/en/capabilities-services/advisory-services/risk-and-compliance/trusted-ai.html",
+        "https://kpmg.com/xx/en/home/insights/2023/responsible-ai.html",
+        "https://kpmg.com/us/en/capabilities-services/advisory-services/cyber-security.html",
+        "https://kpmg.com/us/en/articles/generative-artificial-intelligence.html"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

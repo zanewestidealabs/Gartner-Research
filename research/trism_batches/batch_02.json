@@ -1,0 +1,3467 @@
+[
+  {
+    "vendor": "BCG (Boston Consulting Group)",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Provides strategic AI risk roadmaps for Fortune 500 and multinational organizations.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence",
+          "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "We established a comprehensive RAI governance framework, conducted detailed AI-specific risk mapping, and developed a thorough risk-and-controls registry.",
+            "matched_terms": [
+              "risk",
+              "mapping",
+              "registry",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "By looking at an organization’s purpose and values, as well as the risks it faces, we develop responsible AI policies that don’t so much manage risk as adopt an integrated approach to address it.",
+            "matched_terms": [
+              "risk",
+              "integrate",
+              "responsible ai"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "In a crucial step, we help companies integrate responsible AI into AI product development.",
+            "matched_terms": [
+              "integrate",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Pursuant to Transparency in Coverage final rules (85 FR 72158) set forth in the United States by The Departments of the Treasury, Labor, and Health and Human Services click",
+            "matched_terms": [
+              "state",
+              "coverage"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Pursuant to Transparency in Coverage final rules (85 FR 72158) set forth in the United States by The Departments of the Treasury, Labor, and Health and Human Services click here",
+            "matched_terms": [
+              "state",
+              "coverage"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence",
+          "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "We established a comprehensive RAI governance framework, conducted detailed AI-specific risk mapping, and developed a thorough risk-and-controls registry.",
+            "matched_terms": [
+              "over",
+              "mapping",
+              "specific",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "Our tailored approach included an AI risk assessment and tiering methodology, a clear governance structure aligned with strategic goals, and specific roles and guidelines for users and developers.",
+            "matched_terms": [
+              "over",
+              "specific",
+              "ai risk"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Invent New Business Models Our Clients’ Success in Artificial Intelligence Find more of our AI client work Client Impact AI Agents Reinvent the Consumer Experience BCG experts reveal how a leading beauty company is using AI to redefine the consumer journey an…",
+            "matched_terms": [
+              "fine",
+              "agent",
+              "impact"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Learn More Client Impact How AI Is Transforming Teacher Effectiveness and Learning Outcomes in India A partnership between Rajasthan’s School Education Department, the Michael & Susan Dell Foundation, and BCG has already brought 400,000 students out of learni…",
+            "matched_terms": [
+              "each",
+              "over",
+              "impact"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "Responsible AI is the process of developing and operating artificial intelligence systems that align with organizational purpose and ethical values, achieving transformative business impact.",
+            "matched_terms": [
+              "impact",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence",
+          "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "of organizations using third-party AI tools fail to evaluate risks stemming from those tools How We Help Companies Implement Responsible AI",
+            "matched_terms": [
+              "third",
+              "party",
+              "responsible ai"
+            ],
+            "relevance_score": 11
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "55% of AI-related failures step from third-party AI tools 78% of organizations use third-party AI tools 20% of organizations using third-party AI tools fail to evaluate risks stemming from those tools How We Help Companies Implement Responsible AI So far, rel…",
+            "matched_terms": [
+              "third",
+              "party",
+              "responsible ai"
+            ],
+            "relevance_score": 11
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "We established a comprehensive RAI governance framework, conducted detailed AI-specific risk mapping, and developed a thorough risk-and-controls registry.",
+            "matched_terms": [
+              "mapping",
+              "ai governance"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "This foundational work enabled the client to identify and manage AI risks effectively, ensuring trust and compliance in their GenAI deployments.",
+            "matched_terms": [
+              "compliance",
+              "ai risk"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": ". We help reimagine functions end-to-end, boosting efficiency and effectiveness through reengineered workflows. A key element to our DRI approach is optimizing performance, cost, and security as we simultaneously leverage robust, flexible solutions including",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence",
+          "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "This foundational work enabled the client to identify and manage AI risks effectively, ensuring trust and compliance in their GenAI deployments.",
+            "matched_terms": [
+              "deployment",
+              "compliance",
+              "risk",
+              "trust",
+              "ai risk"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "Facet By BCG X AI transparency is crucial to building trust and adoption. But it’s often elusive, as AI can be a ‘black box’ that produces results without explaining its decision-making processes. FACET opens the box by helping human operators understand adva…",
+            "matched_terms": [
+              "results",
+              "trust",
+              "ai transparency"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "AI transparency is crucial to building trust and adoption. But it’s often elusive, as AI can be a ‘black box’ that produces results without explaining its decision-making processes. FACET opens the box by helping human operators understand advanced machine le…",
+            "matched_terms": [
+              "results",
+              "trust",
+              "ai transparency"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "And we help them develop the capability for continuous improvement: always looking at how to optimize responsible AI initiatives.",
+            "matched_terms": [
+              "continuous",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Risk Management and Compliance",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence",
+          "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "We established a comprehensive RAI governance framework, conducted detailed AI-specific risk mapping, and developed a thorough risk-and-controls registry.",
+            "matched_terms": [
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Health Care Payers, Providers, Systems & Services",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "The industry has suffered an unprecedented shock. BCG collaborates with travel and tourism providers as they navigate this turbulence and build resilience for the future.",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "-and with AI-centered enterprises such as OpenAI, Anthropic, Articul8, LangChain, and Palantir. This ecosystem provides best-in-class GenAI enablement that ensures our clients’ ability to maximize investments and stay ahead.",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Privacy Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+          "https://www.bcg.com/capabilities/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "AI chatbots can dazzle-but they also hallucinate. Matt Kropp, CTO of BCG X, explains why vague prompts fuel errors and how detailed instructions, structured queries, and smarter techniques can help you get more accurate answers from your AI.",
+            "matched_terms": [
+              "prompt",
+              "techniques"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Learn More AI chatbots can dazzle-but they also hallucinate. Matt Kropp, CTO of BCG X, explains why vague prompts fuel errors and how detailed instructions, structured queries, and smarter techniques can help you get more accurate answers from your AI.",
+            "matched_terms": [
+              "prompt",
+              "techniques"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Matt Kropp, CTO of BCG X, explains why vague prompts fuel errors and how detailed instructions, structured queries, and smarter techniques can help you get more accurate answers from your AI.",
+            "matched_terms": [
+              "prompt",
+              "techniques"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": ", Chief AI Ethics Officer and Managing Director and Partner at BCG, illustrates why data scientists and engineers must build system guardrails as early as possible.",
+            "matched_terms": [
+              "rates",
+              "guardrails"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "Steven Mills , Chief AI Ethics Officer and Managing Director and Partner at BCG, illustrates why data scientists and engineers must build system guardrails as early as possible.",
+            "matched_terms": [
+              "rates",
+              "guardrails"
+            ],
+            "relevance_score": 7
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+          "https://www.bcg.com/capabilities/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "How to Reduce AI Chatbot Hallucinations",
+            "matched_terms": [
+              "hallucinations",
+              "hallucination"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "January 30, 2025 | The Wall Street Journal How to Reduce AI Chatbot Hallucinations",
+            "matched_terms": [
+              "hallucinations",
+              "hallucination"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "How to Reduce AI Chatbot Hallucinations Learn More",
+            "matched_terms": [
+              "hallucinations",
+              "hallucination"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "January 30, 2025 | The Wall Street Journal How to Reduce AI Chatbot Hallucinations Learn More AI chatbots can dazzle-but they also hallucinate.",
+            "matched_terms": [
+              "hallucinations",
+              "hallucination"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+            "excerpt": "ensuring that it adheres to relevant legal, policy, regulatory, and ethical standards",
+            "matched_terms": [
+              "policy",
+              "regulatory"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Subscribe to our newsletters and e-alerts to stay connected with the latest insights, data, ideas, and perspectives from BCG.",
+            "matched_terms": [
+              "data",
+              "alerts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "My Subscriptions Subscribe to our newsletters and e-alerts to stay connected with the latest insights, data, ideas, and perspectives from BCG.",
+            "matched_terms": [
+              "data",
+              "alerts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Subscribe to our newsletters and e-alerts to stay connected with the latest insights, data, ideas, and perspectives from BCG. Visit Page",
+            "matched_terms": [
+              "data",
+              "alerts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Visit Page Within M&A, Transactions, and PMI Carve-Out Divestitures Due Diligence IPO Joint Ventures Mergers and Acquisitions Post-Merger Integration Strategic Alliances Vendor Due Diligence Operations Operations Operations We help clients unlock value from e…",
+            "matched_terms": [
+              "transaction",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Visit Page My Subscriptions My Subscriptions My Subscriptions Subscribe to our newsletters and e-alerts to stay connected with the latest insights, data, ideas, and perspectives from BCG.",
+            "matched_terms": [
+              "data",
+              "alerts"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "We bring expertise and data-driven strategies to help clients unleash the power of effective pricing-and unlock its potential to increase the bottom line.",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Pricing and Revenue Management We bring expertise and data-driven strategies to help clients unleash the power of effective pricing-and unlock its potential to increase the bottom line.",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "We bring expertise and data-driven strategies to help clients unleash the power of effective pricing-and unlock its potential to increase the bottom line. Visit Page",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Visit Page Within People Strategy Digital HR Executive Coaching Future of Work Leadership Development Talent and Skills Pricing and Revenue Management Pricing and Revenue Management Pricing and Revenue Management We bring expertise and data-driven strategies …",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "With the ability to observe, plan, and act autonomously, AI agents open a new chapter of end-to-end transformation across industries-streamlining processes, driving data insights, and augmenting human potential like never before.",
+            "matched_terms": [
+              "data",
+              "across"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "By focusing on tangible ways to generate positive social impact (related to climate change, global education, racial equity, and more) we help organizations tackle some of the most pressing issues facing our world today.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "As a top consulting firm, BCG helps clients with total transformation-driving complex change, enabling organizations to grow, and driving bottom-line impact.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Social Impact By focusing on tangible ways to generate positive social impact (related to climate change, global education, racial equity, and more) we help organizations tackle some of the most pressing issues facing our world today.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "By focusing on tangible ways to generate positive social impact (related to climate change, global education, racial equity, and more) we help organizations tackle some of the most pressing issues facing our world today. Visit Page",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "About As a top consulting firm, BCG helps clients with total transformation-driving complex change, enabling organizations to grow, and driving bottom-line impact.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Risk Management and Compliance",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Within Risk Management and Compliance",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Commodity Risk Management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Credit Risk Management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Revenue Growth Management Risk Management and Compliance",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.bcg.com/capabilities/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "BCG helps global and regional financial institutions build for the future using digital innovations and an ESG focus to drive fundamental change and deliver on evolving customer demands.",
+            "matched_terms": [
+              "digital",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Climate Change and Sustainability",
+            "matched_terms": [
+              "sustain",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "Within Climate Change and Sustainability",
+            "matched_terms": [
+              "sustain",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": "By focusing on tangible ways to generate positive social impact (related to climate change, global education, racial equity, and more) we help organizations tackle some of the most pressing issues facing our world today.",
+            "matched_terms": [
+              "raci",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.bcg.com/capabilities/artificial-intelligence",
+            "excerpt": ". We help reimagine functions end-to-end, boosting efficiency and effectiveness through reengineered workflows. A key element to our DRI approach is optimizing performance, cost, and security as we simultaneously leverage robust, flexible solutions including",
+            "matched_terms": [
+              "security",
+              "workflows"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We established a comprehensive RAI governance framework, conducted detailed AI-specific risk mapping, and developed a thorough risk-and-controls registry.\". Also: \"By looking at an organization’s purpose and values, as well as the risks it faces, we develop responsible AI policies that don’t so much manage risk …\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We established a comprehensive RAI governance framework, conducted detailed AI-specific risk mapping, and developed a thorough risk-and-controls registry.\". Also: \"Our tailored approach included an AI risk assessment and tiering methodology, a clear governance structure aligned with strategic goals, and specific…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"of organizations using third-party AI tools fail to evaluate risks stemming from those tools How We Help Companies Implement Responsible AI\". Also: \"55% of AI-related failures step from third-party AI tools 78% of organizations use third-party AI tools 20% of organizations using third-party AI too…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"This foundational work enabled the client to identify and manage AI risks effectively, ensuring trust and compliance in their GenAI deployments.\". Also: \"Facet By BCG X AI transparency is crucial to building trust and adoption. But it’s often elusive, as AI can be a ‘black box’ that produces results wi…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We established a comprehensive RAI governance framework, conducted detailed AI-specific risk mapping, and developed a thorough risk-and-controls registry.\". Also: \"Health Care Payers, Providers, Systems & Services\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI chatbots can dazzle-but they also hallucinate. Matt Kropp, CTO of BCG X, explains why vague prompts fuel errors and how detailed instructions, structured queries, and smarter techniques can help y…\". Also: \"Learn More AI chatbots can dazzle-but they also hallucinate. Matt Kropp, CTO of BCG X, explains why vague prompts fuel errors and how detailed instru…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"How to Reduce AI Chatbot Hallucinations\". Also: \"January 30, 2025 | The Wall Street Journal How to Reduce AI Chatbot Hallucinations\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Subscribe to our newsletters and e-alerts to stay connected with the latest insights, data, ideas, and perspectives from BCG.\". Also: \"My Subscriptions Subscribe to our newsletters and e-alerts to stay connected with the latest insights, data, ideas, and perspectives from BCG.\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We bring expertise and data-driven strategies to help clients unleash the power of effective pricing-and unlock its potential to increase the bottom line.\". Also: \"Pricing and Revenue Management We bring expertise and data-driven strategies to help clients unleash the power of effective pricing-and unlock its po…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"By focusing on tangible ways to generate positive social impact (related to climate change, global education, racial equity, and more) we help organizations tackle some of the most pressing issues fa…\". Also: \"As a top consulting firm, BCG helps clients with total transformation-driving complex change, enabling organizations to grow, and driving bottom-line…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Risk Management and Compliance\". Also: \"Within Risk Management and Compliance\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"BCG helps global and regional financial institutions build for the future using digital innovations and an ESG focus to drive fundamental change and deliver on evolving customer demands.\". Also: \"Climate Change and Sustainability\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:10:15.022956+00:00",
+      "urls_used": [
+        "https://www.bcg.com/capabilities/artificial-intelligence",
+        "https://www.bcg.com/capabilities/artificial-intelligence/responsible-ai",
+        "https://www.bcg.com/capabilities/digital-technology-data/data-governance",
+        "https://www.bcg.com/capabilities/digital-technology-data/cybersecurity",
+        "https://www.bcg.com/publications/2023/what-responsible-ai-really-requires"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "BigID",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": true,
+    "is_ai_first": false,
+    "vendor_type": "Data Governance",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Emphasizes AI-driven data discovery and privacy risk scoring.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data & AI Catalog Data Lifecycle Management",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "catalog",
+              "ai catalog"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "AI Governance Data Lifecycle Management",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Proactively monitor and mitigate potential insider risk with risk investigation, data minimization, and remediation. Data Lifecycle Management",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Lifecycle Management",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Simplify and automate data lifecycle management from collection to destruction.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Define custom data retention policies, import existing policies, or activate over 190,000 OOB retention policies. Keep the data you need and delete the data you don’t with automated data retention.",
+            "matched_terms": [
+              "fine",
+              "data",
+              "over",
+              "automated"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Identify and manage over-privileged access and overexposed data, and enable zero trust. Lock down overexposed data and easily remediate access control risks and access rights violations, and reduce risks of insider threats, data leaks, and data breaches.",
+            "matched_terms": [
+              "data",
+              "each",
+              "over",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Labeling Enforce policy at scale, label & tag data accurately. Seamlessly integrate with MIP and google labels to extend enforcement - and assign custom labels by sensitivity, residency, identity, and risk.",
+            "matched_terms": [
+              "data",
+              "entity",
+              "sensitivity",
+              "labeling"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Retention Define custom data retention policies, import existing policies, or activate over 190,000 OOB retention policies. Keep the data you need and delete the data you don’t with automated data retention.",
+            "matched_terms": [
+              "fine",
+              "data",
+              "over",
+              "automated"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Define custom data retention policies, import existing policies, or activate over 190,000 OOB retention policies. Keep the data you need and delete the data you don’t with automated data retention. Learn More",
+            "matched_terms": [
+              "fine",
+              "data",
+              "over",
+              "automated"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Manage remediation for high risk, sensitive, and regulated data. Take action with confidence with custom workflows, full audit trails, alerts, and notifications for data remediation.",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Remediation Manage remediation for high risk, sensitive, and regulated data. Take action with confidence with custom workflows, full audit trails, alerts, and notifications for data remediation.",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Manage remediation for high risk, sensitive, and regulated data. Take action with confidence with custom workflows, full audit trails, alerts, and notifications for data remediation. Learn More",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Take action with confidence with custom workflows, full audit trails, alerts, and notifications for data remediation.",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Mapping",
+            "matched_terms": [
+              "mapping"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Security Posture Management Manage data risk and security alerts by severity and type, investigate alerts, and delegate for remediation. Detect, manage, and protect critical data elements in your environment.",
+            "matched_terms": [
+              "risk",
+              "posture",
+              "alerts"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Enable Zero Trust Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "risk",
+              "posture",
+              "trust"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Learn More Security Posture Management Manage data risk and security alerts by severity and type, investigate alerts, and delegate for remediation.",
+            "matched_terms": [
+              "risk",
+              "posture",
+              "alerts"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Protect AI Prompts Responsible AI",
+            "matched_terms": [
+              "prompt",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "AI Governance Reporting",
+            "matched_terms": [
+              "reporting",
+              "ai governance"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Find the data that matters most to you with customizable, ML-driven classification and automatically inventory your data by sensitivity, type, policy, context, and more. Identify vulnerabilities, remediate high risk, sensitive, and regulated data, reduce your…",
+            "matched_terms": [
+              "policy",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Jumpstart DSPM Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments. Revolutionize DLP",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Enable Zero Trust Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Detection & Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Reduce risk, protect your data, simplify incident response, and improve your security posture for all of your data, everywhere.",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Access Governance Data Detection & Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Detection & Response Privacy",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Get data security that scales with you - and go beyond legacy solutions with BigID’s ML-driven data security solutions. Reduce risk, protect your data, simplify incident response, and improve your security posture for all of your data, everywhere.",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Enforce policy at scale, label & tag data accurately. Seamlessly integrate with MIP and google labels to extend enforcement - and assign custom labels by sensitivity, residency, identity, and risk.",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Find the data that matters most to you with customizable, ML-driven classification and automatically inventory your data by sensitivity, type, policy, context, and more. Identify vulnerabilities, remediate high risk, sensitive, and regulated data, reduce your…",
+            "matched_terms": [
+              "policy",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Labeling Enforce policy at scale, label & tag data accurately. Seamlessly integrate with MIP and google labels to extend enforcement - and assign custom labels by sensitivity, residency, identity, and risk.",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Enforce policy at scale, label & tag data accurately. Seamlessly integrate with MIP and google labels to extend enforcement - and assign custom labels by sensitivity, residency, identity, and risk. Data Retention",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Find the data that matters most to you with customizable, ML-driven classification and automatically inventory your data by sensitivity, type, policy, context, and more.",
+            "matched_terms": [
+              "policy",
+              "class"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Identify and manage over-privileged access and overexposed data, and enable zero trust. Lock down overexposed data and easily remediate access control risks and access rights violations, and reduce risks of insider threats, data leaks, and data breaches.",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Access Intelligence Identify and manage over-privileged access and overexposed data, and enable zero trust. Lock down overexposed data and easily remediate access control risks and access rights violations, and reduce risks of insider threats, data leaks, and…",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Discovery & Classification Data Access Governance",
+            "matched_terms": [
+              "classification",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Learn More Access Intelligence Identify and manage over-privileged access and overexposed data, and enable zero trust.",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Transform your data security with ML-based classification, file analysis, and apps to reduce risk and take action",
+            "matched_terms": [
+              "classification",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Dark Data Discovery Uncover dark data, shadow data, and all data across the cloud and on-prem. Identify critical, high risk, and regulated data across your tech stack.",
+            "matched_terms": [
+              "discover",
+              "data",
+              "across",
+              "cloud",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "BigID Security Suite Dark Data Discovery Uncover dark data, shadow data, and all data across the cloud and on-prem.",
+            "matched_terms": [
+              "discover",
+              "data",
+              "across",
+              "cloud",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Discovery & Classification Data Access Governance",
+            "matched_terms": [
+              "discover",
+              "data",
+              "discovery",
+              "data discovery",
+              "access governance"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Enable Zero Trust Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "across",
+              "cloud",
+              "dspm"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Dark Data Discovery",
+            "matched_terms": [
+              "discover",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Define custom data retention policies, import existing policies, or activate over 190,000 OOB retention policies. Keep the data you need and delete the data you don’t with automated data retention.",
+            "matched_terms": [
+              "automated",
+              "policies",
+              "retention"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Enforce policy at scale, label & tag data accurately. Seamlessly integrate with MIP and google labels to extend enforcement - and assign custom labels by sensitivity, residency, identity, and risk. Data Retention",
+            "matched_terms": [
+              "scale",
+              "enforcement",
+              "retention"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Retention Define custom data retention policies, import existing policies, or activate over 190,000 OOB retention policies. Keep the data you need and delete the data you don’t with automated data retention.",
+            "matched_terms": [
+              "automated",
+              "policies",
+              "retention"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Define custom data retention policies, import existing policies, or activate over 190,000 OOB retention policies. Keep the data you need and delete the data you don’t with automated data retention. Learn More",
+            "matched_terms": [
+              "automated",
+              "policies",
+              "retention"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Make DLP smarter and more accurate with ML classification and additional context for consistent enforcement.",
+            "matched_terms": [
+              "enforcement",
+              "dlp"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Enable Zero Trust Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "across",
+              "controls",
+              "sensitive",
+              "risk",
+              "dspm"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Jumpstart DSPM Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "across",
+              "controls",
+              "risk",
+              "dspm"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments. Revolutionize DLP",
+            "matched_terms": [
+              "across",
+              "controls",
+              "risk",
+              "dlp"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "across",
+              "controls",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Manage remediation for high risk, sensitive, and regulated data. Take action with confidence with custom workflows, full audit trails, alerts, and notifications for data remediation.",
+            "matched_terms": [
+              "workflows",
+              "sensitive",
+              "risk"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://bigid.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Enable Zero Trust Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.",
+            "matched_terms": [
+              "across",
+              "security",
+              "data",
+              "access",
+              "dspm"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Discovery & Classification Data Access Governance",
+            "matched_terms": [
+              "data",
+              "access",
+              "data discovery",
+              "access governance"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Access Governance Data Detection & Response",
+            "matched_terms": [
+              "data",
+              "access",
+              "detection",
+              "access governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Data Access Governance",
+            "matched_terms": [
+              "data",
+              "access",
+              "access governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://bigid.com/platform/",
+            "excerpt": "Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM",
+            "matched_terms": [
+              "data",
+              "access",
+              "dspm"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data & AI Catalog Data Lifecycle Management\". Also: \"AI Governance Data Lifecycle Management\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Define custom data retention policies, import existing policies, or activate over 190,000 OOB retention policies. Keep the data you need and delete the data you don’t with automated data retention.\". Also: \"Identify and manage over-privileged access and overexposed data, and enable zero trust. Lock down overexposed data and easily remediate access contro…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Manage remediation for high risk, sensitive, and regulated data. Take action with confidence with custom workflows, full audit trails, alerts, and notifications for data remediation.\". Also: \"Data Remediation Manage remediation for high risk, sensitive, and regulated data. Take action with confidence with custom workflows, full audit trail…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Security Posture Management Manage data risk and security alerts by severity and type, investigate alerts, and delegate for remediation. Detect, manage, and protect critical data elements in your env…\". Also: \"Enable Zero Trust Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM Reduce risk…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.\". Also: \"Find the data that matters most to you with customizable, ML-driven classification and automatically inventory your data by sensitivity, type, policy…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data Detection & Response\". Also: \"Reduce risk, protect your data, simplify incident response, and improve your security posture for all of your data, everywhere.\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Enforce policy at scale, label & tag data accurately. Seamlessly integrate with MIP and google labels to extend enforcement - and assign custom labels by sensitivity, residency, identity, and risk.\". Also: \"Find the data that matters most to you with customizable, ML-driven classification and automatically inventory your data by sensitivity, type, policy…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Identify and manage over-privileged access and overexposed data, and enable zero trust. Lock down overexposed data and easily remediate access control risks and access rights violations, and reduce r…\". Also: \"Access Intelligence Identify and manage over-privileged access and overexposed data, and enable zero trust. Lock down overexposed data and easily rem…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Dark Data Discovery Uncover dark data, shadow data, and all data across the cloud and on-prem. Identify critical, high risk, and regulated data across your tech stack.\". Also: \"BigID Security Suite Dark Data Discovery Uncover dark data, shadow data, and all data across the cloud and on-prem.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Define custom data retention policies, import existing policies, or activate over 190,000 OOB retention policies. Keep the data you need and delete the data you don’t with automated data retention.\". Also: \"Enforce policy at scale, label & tag data accurately. Seamlessly integrate with MIP and google labels to extend enforcement - and assign custom label…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Enable Zero Trust Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM Reduce risk, improve security posture, and orchestrate contro…\". Also: \"Jumpstart DSPM Reduce risk, improve security posture, and orchestrate controls: across cloud, data-centers, and hybrid environments.\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Enable Zero Trust Get to zero trust faster from the data up: reduce access to sensitive data based on activity and context Jumpstart DSPM Reduce risk, improve security posture, and orchestrate contro…\". Also: \"Data Discovery & Classification Data Access Governance\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:10:38.054619+00:00",
+      "urls_used": [
+        "https://bigid.com/platform/",
+        "https://bigid.com/solutions/ai-data-governance/",
+        "https://bigid.com/solutions/data-classification/",
+        "https://bigid.com/solutions/data-security-posture-management/",
+        "https://bigid.com/solutions/data-privacy/"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Booz Allen Hamilton",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Strong focus on AI security for defense, intelligence, and public sector clients.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 2.5,
+      "RUN": 3.44,
+      "INF": 1.94
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 0.0,
+      "GOV-02": 1.0,
+      "GOV-03": 4.25,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 1.0,
+      "RUN-03": 4.25,
+      "RUN-04": 4.25,
+      "INF-01": 1.0,
+      "INF-02": 4.75,
+      "INF-03": 1.0,
+      "INF-04": 1.0
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Life at Booz Allen",
+            "matched_terms": [
+              "life"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Life Sciences & Healthcare",
+            "matched_terms": [
+              "life"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Privacy Statement",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "arrow-right Life at Booz Allen",
+            "matched_terms": [
+              "life"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Advanced tech. Deep domain know-how. Cutting-edge solutions engineered for impact.",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Community Impact and Philanthropy",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Our Technology Advanced tech. Deep domain know-how. Cutting-edge solutions engineered for impact.",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Advanced tech. Deep domain know-how. Cutting-edge solutions engineered for impact. arrow-right",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "arrow-right Community Impact and Philanthropy",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Our Reports",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Ethics & Compliance",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Privacy Statement",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "arrow-right Our Reports",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Our Reports arrow-right",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Read More Solutions Contract Vehicle Continuous Diagnostics and Mitigation (CDM) Continuous Diagnostics and Mitigation (CDM) CDM enables efficient, coordinated, agile cyber defense for civil government agencies Read More Contract Vehicle Trends 5G/NextG Techn…",
+            "matched_terms": [
+              "continuous",
+              "trend"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Zero Trust, More Confidence Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience. Read More",
+            "matched_terms": [
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Read More Product Protect Networks and Platforms by Countering Cyber Threats Solutions Zero Trust, More Confidence Zero Trust, More Confidence Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 5
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Leading provider of cybersecurity to the federal government",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Leading provider of cybersecurity to the federal government Source:",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Deltek's \"Federal Cybersecurity Market, 2024-2028\" report No. 1 provider of zero trust solutions to the federal government",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "As one of the world’s largest cybersecurity solution providers, we build and deploy intelligence-grade technology to support the most critical missions in the nation.",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Leading provider of cybersecurity to the federal government Source: Deltek's \"Federal Cybersecurity Market, 2024-2028\" report No.",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Incident Response",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Digital Forensic Investigations & Incident Response",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Cybersecurity Strategy Incident Response",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Incident Response arrow-right",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Services Digital Forensic Investigations & Incident Response",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Homeland Security & Law Enforcement",
+            "matched_terms": [
+              "enforcement"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "MORE CONTENT",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Cookie Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Careers Privacy Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "arrow-right Homeland Security & Law Enforcement",
+            "matched_terms": [
+              "enforcement"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Homeland Security & Law Enforcement",
+            "matched_terms": [
+              "enforcement"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Driven by purpose. Powered by people. Built to solve the nation’s toughest challenges.",
+            "matched_terms": [
+              "purpose"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Purpose & Values",
+            "matched_terms": [
+              "purpose"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "MORE CONTENT",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "arrow-right Homeland Security & Law Enforcement",
+            "matched_terms": [
+              "enforcement"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Read More Product Protect Networks and Platforms by Countering Cyber Threats Solutions Zero Trust, More Confidence Zero Trust, More Confidence Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "data",
+              "platforms",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Zero Trust, More Confidence Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience. Read More",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Driven by purpose. Powered by people. Built to solve the nation’s toughest challenges.",
+            "matched_terms": [
+              "driven"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Advanced tech. Deep domain know-how. Cutting-edge solutions engineered for impact. arrow-right",
+            "matched_terms": [
+              "right",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "arrow-right Homeland Security & Law Enforcement",
+            "matched_terms": [
+              "enforcement",
+              "right"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Homeland Security & Law Enforcement arrow-right",
+            "matched_terms": [
+              "enforcement",
+              "right"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "arrow-right Community Impact and Philanthropy",
+            "matched_terms": [
+              "right",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Community Impact and Philanthropy arrow-right",
+            "matched_terms": [
+              "right",
+              "impact"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Zero Trust, More Confidence Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience. Read More",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Read More Product Protect Networks and Platforms by Countering Cyber Threats Solutions Zero Trust, More Confidence Zero Trust, More Confidence Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Privacy Statement",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.boozallen.com/expertise/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Cookie Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Careers Privacy Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Terms of Use Cookie Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Cookie Policy Site Map",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.boozallen.com/expertise/cybersecurity.html",
+            "excerpt": "Site Map Careers Privacy Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 0.0,
+      "GOV-02": 1.0,
+      "GOV-03": 4.25,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 1.0,
+      "RUN-03": 4.25,
+      "RUN-04": 4.25,
+      "INF-01": 1.0,
+      "INF-02": 4.75,
+      "INF-03": 1.0,
+      "INF-04": 1.0
+    },
+    "pillar_scores_validated": {
+      "GOV": 2.5,
+      "RUN": 3.44,
+      "INF": 1.94
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Life at Booz Allen\". Also: \"Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Advanced tech. Deep domain know-how. Cutting-edge solutions engineered for impact.\". Also: \"Community Impact and Philanthropy\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Our Reports\". Also: \"Ethics & Compliance\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Read More Solutions Contract Vehicle Continuous Diagnostics and Mitigation (CDM) Continuous Diagnostics and Mitigation (CDM) CDM enables efficient, coordinated, agile cyber defense for civil governme…\". Also: \"Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Leading provider of cybersecurity to the federal government\". Also: \"Leading provider of cybersecurity to the federal government Source:\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Incident Response\". Also: \"Digital Forensic Investigations & Incident Response\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Homeland Security & Law Enforcement\". Also: \"MORE CONTENT\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Homeland Security & Law Enforcement\". Also: \"Driven by purpose. Powered by people. Built to solve the nation’s toughest challenges.\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Read More Product Protect Networks and Platforms by Countering Cyber Threats Solutions Zero Trust, More Confidence Zero Trust, More Confidence Embrace zero trust and data-driven cybersecurity to stre…\". Also: \"Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Advanced tech. Deep domain know-how. Cutting-edge solutions engineered for impact. arrow-right\". Also: \"arrow-right Homeland Security & Law Enforcement\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.\". Also: \"Zero Trust, More Confidence Embrace zero trust and data-driven cybersecurity to strengthen risk management and resilience.\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Cookie Policy\". Also: \"Careers Privacy Policy\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:11:00.296559+00:00",
+      "urls_used": [
+        "https://www.boozallen.com/expertise/analytics/ai.html",
+        "https://www.boozallen.com/expertise/analytics/responsible-ai.html",
+        "https://www.boozallen.com/expertise/cybersecurity.html",
+        "https://www.boozallen.com/expertise/analytics/data-governance.html",
+        "https://www.boozallen.com/capabilities/digital-solutions/generative-ai.html"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Capgemini",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Specializes in AI governance for large-scale digital transformation projects.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 0,
+        "flag": "no_evidence",
+        "confidence": 0.1
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "pillar_scores_validated": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: no_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes."
+    },
+    "research_flag": "no_evidence",
+    "research_confidence": 0.1,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:11:30.166813+00:00",
+      "urls_used": [
+        "https://www.capgemini.com/solutions/ai-and-analytics/responsible-ai/",
+        "https://www.capgemini.com/solutions/ai-and-analytics/generative-ai/",
+        "https://www.capgemini.com/solutions/cybersecurity/",
+        "https://www.capgemini.com/solutions/data/",
+        "https://www.capgemini.com/solutions/ai-and-analytics/"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "CGI",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.62,
+      "RUN": 4.0,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.25,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.cgi.com/en/cybersecurity",
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy, security, AI regulatio…",
+            "matched_terms": [
+              "models",
+              "model",
+              "ai governance",
+              "responsible ai",
+              "ai regulation"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy,…",
+            "matched_terms": [
+              "models",
+              "model",
+              "ai governance",
+              "ai regulation"
+            ],
+            "relevance_score": 11
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy, security, AI regulations, intellectual property and more.",
+            "matched_terms": [
+              "models",
+              "model",
+              "ai regulation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Managing security risks in an increasingly connected world demands an insights-driven and integrated approach that extends across the enterprise and ecosystem.",
+            "matched_terms": [
+              "risk",
+              "integrate"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Comprehensive cybersecurity services help you operate with agility and confidence Managing security risks in an increasingly connected world demands an insights-driven and integrated approach that extends across the enterprise and ecosystem.",
+            "matched_terms": [
+              "risk",
+              "integrate"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy, security, AI regulatio…",
+            "matched_terms": [
+              "data",
+              "over",
+              "provenance",
+              "ai governance",
+              "responsible ai",
+              "ai regulation"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy,…",
+            "matched_terms": [
+              "data",
+              "over",
+              "provenance",
+              "ai governance",
+              "ai regulation"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy, security, AI regulations, intellectual property and more.",
+            "matched_terms": [
+              "data",
+              "provenance",
+              "ai regulation"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Turning governed data into business value for modern energy operations",
+            "matched_terms": [
+              "data",
+              "over",
+              "governed"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Case study Turning governed data into business value for modern energy operations",
+            "matched_terms": [
+              "data",
+              "over",
+              "governed"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy, security, AI regulatio…",
+            "matched_terms": [
+              "model",
+              "ai governance",
+              "responsible ai",
+              "ai regulation"
+            ],
+            "relevance_score": 13
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Responsible AI (RAI) Principles & Framework Risk & Compliance Management",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy,…",
+            "matched_terms": [
+              "model",
+              "ai governance",
+              "ai regulation"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Investors Homepage Corporate governance Events Financial reports Newsroom Contact Global EN FR Artificial intelligence Combining responsible AI with human creativity Realizing the benefits of AI while mitigating the risks requires a combination of responsible…",
+            "matched_terms": [
+              "reports",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "and those from our third-party alliances, including:",
+            "matched_terms": [
+              "third",
+              "party"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Responsible AI (RAI) Principles & Framework Risk & Compliance Management",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "responsible ai"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy, security, AI regulatio…",
+            "matched_terms": [
+              "bias",
+              "trust",
+              "ai governance",
+              "responsible ai",
+              "ai regulation"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy,…",
+            "matched_terms": [
+              "bias",
+              "trust",
+              "ai governance",
+              "ai regulation"
+            ],
+            "relevance_score": 11
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Risk & Compliance Management",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Risk & Compliance Management Explore our",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.cgi.com/en/cybersecurity",
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "We work closely with clients to ensure security controls are baked in, not bolted on.",
+            "matched_terms": [
+              "security",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "We work closely with clients to ensure security controls are baked in, not bolted on. Through our expert talent, deep technical and business knowledge, best practices, accelerator frameworks and adherence to global standards, we provide the full spectrum of",
+            "matched_terms": [
+              "security",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy,…",
+            "matched_terms": [
+              "security",
+              "guardrails"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy, security, AI regulatio…",
+            "matched_terms": [
+              "security",
+              "guardrails"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "We provide best practices for developing guardrails, policies and AI governance.",
+            "matched_terms": [
+              "guardrails"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.cgi.com/en/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Incident Response & Forensics",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Security Operations Centers deliver around-the-clock cyber detection and prevention services to clients",
+            "matched_terms": [
+              "detection",
+              "prevention"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "We help you monitor prevent and respond to security attacks in a reliable and cost effective way. Incident Response & Forensics",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Incident Response & Forensics Security Operations",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "8 Security Operations Centers deliver around-the-clock cyber detection and prevention services to clients",
+            "matched_terms": [
+              "detection",
+              "prevention"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.cgi.com/en/cybersecurity",
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy,…",
+            "matched_terms": [
+              "explainability",
+              "guardrails"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-bias, data/model/provenance, privacy, security, AI regulatio…",
+            "matched_terms": [
+              "explainability",
+              "guardrails"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "business priority is enhancing cybersecurity, data protection and regulatory risk management",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "#5 business priority is enhancing cybersecurity, data protection and regulatory risk management",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "business priority is enhancing cybersecurity, data protection and regulatory risk management #4",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.cgi.com/en/cybersecurity",
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Company About us Alliances Country sites ESG Locations Mergers Newsroom Resource center Articles Blogs Case studies Events Podcasts Viewpoints See more Support Accessibility Privacy Terms of use Careers FAQ Discover more about CGI Keeping you informed Subscri…",
+            "matched_terms": [
+              "access",
+              "logs"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "We deploy Zero Trust Network Architecture principles and solutions that enforce least-privileged access, maintain continuous authentication, and establish secure, direct connections to applications.",
+            "matched_terms": [
+              "privilege",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "By reducing the attack surface and implementing micro-segmentation, CGI further enhances security by inspecting all traffic, including SSL-encrypted traffic, to block threats and prevent data leakage and to provide secure, efficient access while fully alignin…",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Company About us Alliances Country sites ESG Locations Mergers Newsroom Resource center Articles Blogs Case studies Events Podcasts Viewpoints See more Support Accessibility Privacy Terms of use Careers FAQ Discover more about CGI Keeping you informed Subscri…",
+            "matched_terms": [
+              "access",
+              "logs"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Skip to main content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.cgi.com/en/cybersecurity",
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Discovery, Innovation & Design Sprint",
+            "matched_terms": [
+              "discover",
+              "discovery"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Ideation & Assessment Discovery, Innovation & Design Sprint",
+            "matched_terms": [
+              "discover",
+              "discovery"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Discovery, Innovation & Design Sprint AI Proof of Concept",
+            "matched_terms": [
+              "discover",
+              "discovery"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Managing security risks in an increasingly connected world demands an insights-driven and integrated approach that extends across the enterprise and ecosystem.",
+            "matched_terms": [
+              "across",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Comprehensive cybersecurity services help you operate with agility and confidence Managing security risks in an increasingly connected world demands an insights-driven and integrated approach that extends across the enterprise and ecosystem.",
+            "matched_terms": [
+              "across",
+              "driven"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Rahul Ghodke From assistants to trustworthy AI co-workers: Operationalizing responsible agentic AI Jan 27, 2026 Assia Stoyanova AI change management: Embracing the excitement, managing the fear Jan 12, 2026 Andy Schmidt 2026 predictions for banking: Real time…",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Industry impact stories",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Culture, Change Management & Workforce Training",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "AI change management: Embracing the excitement, managing the fear",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "AI’s impact on management consulting: Is the role of the consultant becoming obsolete?",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.cgi.com/en/cybersecurity",
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Management Foundation is our primary intellectual property and starting point to ensure security and data privacy are \"baked in\" to everything we do.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Incident Response & Forensics Security Operations Cyber Threat Intelligence Why CGI: Cybersecurity is part of everything we do CGI’s Management Foundation is our primary intellectual property and starting point to ensure security and data privacy are \"baked i…",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Our multidisciplinary teams offer expertise in risk management, compliance and assurance, security architecture, business continuity, physical security, insider risk, training, crisis management, and workforce protection.",
+            "matched_terms": [
+              "training",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Our multidisciplinary teams offer expertise in risk management, compliance and assurance, security architecture, business continuity, physical security, insider risk, training, crisis management, and workforce protection. We exchange threat intelligence with …",
+            "matched_terms": [
+              "training",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "Crafting synthetic data for text-to-SQL systems: Powering enterprise innovation with Databricks",
+            "matched_terms": [
+              "synthetic",
+              "synthetic data"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.cgi.com/en/cybersecurity",
+          "https://www.cgi.com/en/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Managing security risks in an increasingly connected world demands an insights-driven and integrated approach that extends across the enterprise and ecosystem.",
+            "matched_terms": [
+              "across",
+              "security",
+              "integrated"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Comprehensive cybersecurity services help you operate with agility and confidence Managing security risks in an increasingly connected world demands an insights-driven and integrated approach that extends across the enterprise and ecosystem.",
+            "matched_terms": [
+              "across",
+              "security",
+              "integrated"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "Our multidisciplinary teams offer expertise in risk management, compliance and assurance, security architecture, business continuity, physical security, insider risk, training, crisis management, and workforce protection. We exchange threat intelligence with …",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "change"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cgi.com/en/cybersecurity",
+            "excerpt": "By reducing the attack surface and implementing micro-segmentation, CGI further enhances security by inspecting all traffic, including SSL-encrypted traffic, to block threats and prevent data leakage and to provide secure, efficient access while fully alignin…",
+            "matched_terms": [
+              "security",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cgi.com/en/artificial-intelligence",
+            "excerpt": "AI change management: Embracing the excitement, managing the fear",
+            "matched_terms": [
+              "raci",
+              "change"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.25,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.62,
+      "RUN": 4.0,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-…\". Also: \"What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address …\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-…\". Also: \"What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address …\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explainability, fairness, non-…\". Also: \"Responsible AI (RAI) Principles & Framework Risk & Compliance Management\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Responsible AI (RAI) Principles & Framework Risk & Compliance Management\". Also: \"We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, t…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"We work closely with clients to ensure security controls are baked in, not bolted on.\". Also: \"We work closely with clients to ensure security controls are baked in, not bolted on. Through our expert talent, deep technical and business knowledg…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Incident Response & Forensics\". Also: \"Security Operations Centers deliver around-the-clock cyber detection and prevention services to clients\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"What is generative AI? We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, trust, transparency, explain…\". Also: \"We provide best practices for developing guardrails, policies and AI governance. Our models for AI operations (AIOps) address issues of ethical AI, t…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Company About us Alliances Country sites ESG Locations Mergers Newsroom Resource center Articles Blogs Case studies Events Podcasts Viewpoints See more Support Accessibility Privacy Terms of use Care…\". Also: \"We deploy Zero Trust Network Architecture principles and solutions that enforce least-privileged access, maintain continuous authentication, and esta…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Discovery, Innovation & Design Sprint\". Also: \"Ideation & Assessment Discovery, Innovation & Design Sprint\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Rahul Ghodke From assistants to trustworthy AI co-workers: Operationalizing responsible agentic AI Jan 27, 2026 Assia Stoyanova AI change management: Embracing the excitement, managing the fear Jan 1…\". Also: \"Industry impact stories\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Management Foundation is our primary intellectual property and starting point to ensure security and data privacy are \"baked in\" to everything we do.\". Also: \"Incident Response & Forensics Security Operations Cyber Threat Intelligence Why CGI: Cybersecurity is part of everything we do CGI’s Management Found…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Managing security risks in an increasingly connected world demands an insights-driven and integrated approach that extends across the enterprise and ecosystem.\". Also: \"Comprehensive cybersecurity services help you operate with agility and confidence Managing security risks in an increasingly connected world demands …\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:11:50.111242+00:00",
+      "urls_used": [
+        "https://www.cgi.com/en/artificial-intelligence",
+        "https://www.cgi.com/en/cybersecurity",
+        "https://www.cgi.com/en/data-management-analytics",
+        "https://www.cgi.com/en/data-governance",
+        "https://www.cgi.com/en/responsible-ai"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

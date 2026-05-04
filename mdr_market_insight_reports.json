@@ -1,0 +1,929 @@
+{
+  "reports": [
+    {
+      "id": "buyer-facing",
+      "label": "Buyer / End-Consumer Perspective",
+      "title": "Market Insight: AI Is Reshaping MDR Pricing, but Most Vendors Aren't Ready",
+      "summary": "Agentic AI is changing the cost structure and value delivery of MDR services, yet most providers have not adjusted their pricing models to reflect this shift. Outcome-based pricing remains underadopted despite clear market signals that buyers want measurable results.",
+      "spa": "By 2028, 40% of MDR contracts will include at least one outcome-linked pricing component tied to measurable security improvements, up from less than 5% today. Vendors that fail to develop outcome-based commercial models by 2027 will face a structural competitive disadvantage in retention and new business.",
+      "findings": [
+        {
+          "header": "Outcome-based pricing adoption is very low across the MDR market.",
+          "body": "Of 95 vendors assessed, the average score for success and outcome-linked fee structures (PRC-SUC) is just 1.63 out of 5.0, with 82 vendors (86%) scoring 2.0 or below. Only two vendors score above 3.0 on this dimension. The median score is 1 (the lowest possible), indicating that most MDR providers have made no meaningful progress toward tying commercial terms to measurable client outcomes."
+        },
+        {
+          "header": "AI-mature vendors show measurably higher pricing sophistication.",
+          "body": "Vendors with Significant or higher AI pricing influence (19 providers) average 2.86 across all pricing dimensions versus 1.84 for Minimal-influence vendors (27 providers), a 1.02-point gap on a 5-point scale. This correlation holds across every pricing dimension but is most pronounced in outcome alignment (PRC-OUT), where AI-mature vendors score 2.58 versus 1.04 for Minimal-tier providers."
+        },
+        {
+          "header": "The market misunderstands what outcome-based pricing means.",
+          "body": "Most vendors equate \"outcomes\" with SLA uptime guarantees or basic breach notification speeds. True outcome-based pricing ties commercial terms to measurable security improvements: reduction in mean time to detect (MTTD), mean time to respond (MTTR), quantifiable risk posture improvements, or incident frequency reduction commitments backed by financial mechanisms such as breach warranties or performance-based fee adjustments."
+        },
+        {
+          "header": "Composable pricing models are a prerequisite for outcome-based evolution, but two-thirds of vendors remain subscription-only.",
+          "body": "64 of 95 vendors (67%) operate on pure subscription models, scoring an average of just 1.34 on PRC-SUC. The 27 composable-model vendors average 2.41 on the same dimension, nearly double. Outcome-based pricing requires the modularity and flexibility that subscription-only models cannot support."
+        },
+        {
+          "header": "AI is creating an efficiency dividend that vendors are capturing rather than sharing with buyers.",
+          "body": "As AI-driven automation reduces the per-incident cost of detection and response, vendors are improving their margins without passing those efficiency gains through to clients via adjusted pricing mechanisms. The absence of usage-based alignment (PRC-USG averages just 2.14/5.0) means buyers have no visibility into how AI-driven efficiency improvements affect the cost of their service."
+        },
+        {
+          "header": "The pricing maturity gap between leaders and laggards is widening, driven primarily by AI adoption differences.",
+          "body": "The top-10 vendors by overall pricing score average 3.65/5.0 while the market average is 2.35/5.0, a 1.30-point spread. The top performers uniformly show higher AI influence scores (averaging 3.5+), composable pricing models, and at least nascent outcome-linked commercial terms. This gap will widen as AI-first vendors use efficiency gains to fund outcome guarantees that subscription-only providers cannot match."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "Redefine outcome-based pricing in concrete, measurable terms.",
+          "body": "Product leaders must move beyond SLA guarantees and establish commercial structures tied to quantifiable security outcomes (MTTD/MTTR improvement commitments, coverage expansion metrics, incident frequency reduction targets, and risk score improvements) backed by financial mechanisms such as breach warranties, performance credits, or shared-savings arrangements. Start with a single outcome metric tied to a fee adjustment and expand from there."
+        },
+        {
+          "header": "Build an AI efficiency-sharing pricing layer that demonstrates value to buyers.",
+          "body": "Establish transparent mechanisms (efficiency dashboards, cost-per-incident trending, or AI utilization reporting) that show buyers how AI-driven automation is reducing service delivery costs. Tie at least a portion of pricing to these efficiency metrics through consumption-based components or graduated discount structures. Vendors that share the AI dividend early will secure longer contract terms and higher retention."
+        },
+        {
+          "header": "Transition from subscription-only to composable pricing architectures.",
+          "body": "Begin decomposing monolithic subscription tiers into modular service components (base detection, response orchestration, threat hunting, incident retainer, and outcome guarantees) that buyers can assemble based on their specific risk profile. Our data shows composable vendors score 2.80 versus 2.16 for subscription-only across all pricing dimensions (a 30% premium), and the gap on outcome-linked pricing is even wider (2.41 vs. 1.34)."
+        },
+        {
+          "header": "Invest in AI pricing-influence capabilities as a direct commercial differentiator.",
+          "body": "The 1.02-point pricing sophistication gap between AI-mature and AI-minimal vendors is the single strongest predictor of overall pricing model maturity. Product leaders should treat AI investment not just as a cost efficiency play but as the enabler of commercial model innovation, from usage-based billing driven by AI workload telemetry to outcome guarantees underwritten by AI-validated detection capabilities."
+        },
+        {
+          "header": "Develop a phased roadmap from transparency to outcomes, anchored to AI maturity milestones.",
+          "body": "Most vendors cannot leap directly from subscription-only pricing to full outcome-based models. The progression should follow a clear sequence: (1) publish transparent pricing and tier definitions, (2) introduce usage-aligned components tied to data volume or endpoint count, (3) add composable modules with mix-and-match flexibility, (4) introduce limited outcome commitments (e.g., MTTR guarantees with service credits), and (5) implement full risk-sharing or performance-linked fee structures. Each stage should be unlocked by corresponding AI capability maturity."
+        },
+        {
+          "header": "Establish competitive pricing intelligence as a standing practice, not a periodic exercise.",
+          "body": "With a 1.30-point spread between top-10 and market-average pricing scores, and AI influence accelerating the divergence, vendors operating without structured pricing benchmarking are flying blind. Product leaders should institute quarterly pricing model assessments that benchmark their position on each pricing dimension against the market, track the velocity of competitor pricing evolution, and identify the specific AI capabilities driving commercial model changes in leading vendors."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "What Outcome-Based Pricing Actually Means, and Why the Market Gets It Wrong",
+          "body": "The term \"outcome-based pricing\" has become a marketing fixture in managed detection and response. Vendors routinely cite SLA-backed response times or uptime guarantees as evidence of outcome alignment. This misrepresents what outcome-based pricing requires.\n\nTrue outcome-based pricing establishes a direct financial link between what the buyer pays and the measurable security outcomes they receive. This means commercial terms that adjust, up or down, based on metrics the buyer actually cares about: How fast are threats detected and contained? Is the organization's attack surface actually shrinking? Are incidents becoming less frequent, less severe, or both? Is the cost of security per unit of business value improving over time?\n\nIn practice, this can take several forms:\n\n- **Breach warranties**: Financial guarantees that pay out if a covered breach occurs, underwritten by the vendor's confidence in their detection and response capabilities.\n- **Performance-linked fee adjustments**: Pricing that flexes based on achieved MTTD/MTTR improvements, with defined baselines and measurement periods.\n- **Risk-score-tied subscriptions**: Pricing tied to an independently measured risk posture score, where improvement reduces the fee and degradation increases it.\n- **Shared savings models**: Arrangements where a portion of the vendor's fee is tied to demonstrated cost avoidance or efficiency improvements for the buyer.\n- **Incident severity caps**: Commercial terms that cap the buyer's financial exposure for incidents above a defined severity threshold.\n\nOur assessment of 95 MDR vendors found that PRC-SUC (success and outcome fees) is the weakest pricing dimension in the market, averaging just 1.63 out of 5.0, nearly half the score of subscription transparency (3.52). The median is 1.0, meaning the typical MDR vendor has no outcome-linked pricing mechanism whatsoever. Even among the top 10 vendors on this dimension, the average is only 3.20, indicating that even leaders are in early stages. The two vendors that score above 3.0 on PRC-SUC, Accenture Security and Deloitte Cyber, are both large consultancies with composable models, not pureplay MDR providers."
+        },
+        {
+          "title": "Why Outcome-Based Pricing Adoption Lags So Far Behind",
+          "body": "Several structural and organizational factors explain the sluggish adoption of outcome-based pricing, despite clear buyer demand:\n\n**1. Lack of measurement infrastructure.** Outcome-based pricing requires metrics that both parties trust. Most MDR providers lack the telemetry, benchmarking, and reporting infrastructure to measure and attribute outcomes with enough rigor to tie commercial terms to them. Without normalized baselines for MTTD, MTTR, incident frequency, or coverage breadth, outcome commitments cannot be quantified.\n\n**2. Revenue predictability addiction.** Subscription-only models provide smooth, predictable revenue streams that are rewarded by investors and simplify financial planning. Outcome-based components introduce variability into the revenue model, which finance teams and boards resist. 64 of 95 vendors (67%) remain subscription-only, and their average overall pricing score of 2.16 (versus 2.80 for composable vendors) indicates that the subscription model itself constrains pricing sophistication.\n\n**3. Insufficient AI capability to underwrite guarantees.** Outcome-based pricing requires confidence in delivery. A vendor cannot offer a breach warranty or MTTR guarantee without the AI-driven detection and response capabilities to consistently achieve them. Our data shows this directly: vendors with Significant AI influence score 2.16 on PRC-SUC versus 1.04 for Minimal-tier vendors. AI maturity is the prerequisite for outcome pricing.\n\n**4. Misaligned organizational incentives.** In many MDR providers, pricing decisions are owned by finance or product management teams that optimize for margin protection, not by security operations teams that understand what outcomes are achievable. This creates a structural disconnect where the people closest to delivery have the least influence on commercial model design.\n\n**5. Fear of accountability.** Outcome-linked pricing makes vendor performance transparent and has real consequences. If a provider commits to a 30-minute MTTR on critical incidents and fails, the financial penalty is immediate and visible. Many vendors prefer the opacity of flat-rate subscriptions where poor performance is masked and contract renewals are a commercial negotiation rather than a performance evaluation.\n\n**6. Legacy contract structures.** Existing multi-year subscription contracts create inertia. Migrating a large installed base from flat-rate subscriptions to outcome-linked models requires renegotiating hundreds of contracts, retraining sales teams, and rebuilding billing systems, a transformation most vendors underestimate."
+        },
+        {
+          "title": "AI Is Changing the Cost Equation, but Buyers Aren't Seeing It",
+          "body": "Agentic AI is sharply reducing the per-incident cost of MDR service delivery. Automated triage, AI-accelerated threat hunting, machine-driven response playbooks, and predictive detection are enabling vendors to handle more volume with fewer human analysts. This should, in theory, create a natural transition toward efficiency-sharing or outcome-aligned pricing: the vendor delivers more value at lower cost, and the buyer shares in that efficiency gain.\n\nInstead, most vendors are capturing the AI efficiency dividend entirely as margin improvement. The market average for usage-based alignment (PRC-USG) is just 2.14 out of 5.0, meaning most vendors have no mechanism for buyers to see, let alone benefit from, AI-driven cost reductions. The buyer pays the same subscription fee whether their incidents are handled by a senior analyst spending hours on manual investigation or by an AI agent that resolves the same alert in minutes.\n\nThis will not hold. As buyers become more informed about AI capabilities and costs, they will demand transparency into how AI efficiency affects what they pay. The 19 vendors in the Significant AI influence tier (averaging 2.86 across all pricing dimensions versus 1.84 for the Minimal tier) are beginning to build this transparency through AI workload dashboards, cost-per-incident reporting, and graduated pricing tiers that reflect AI utilization. These vendors are not more generous; they are more strategic. By sharing the efficiency dividend early, they build a competitive advantage rooted in trust, transparency, and demonstrable value that subscription-only providers cannot replicate."
+        },
+        {
+          "title": "The Composable Model Imperative",
+          "body": "The data reveals a clear structural prerequisite for pricing model evolution: composability. Vendors with composable pricing models, where buyers can assemble service packages from modular components, score 2.80 across all pricing dimensions versus 2.16 for subscription-only providers. On the critical PRC-SUC dimension, the gap is even starker: 2.41 versus 1.34.\n\nThis is not coincidental. Outcome-based pricing components cannot be bolted onto a flat-rate subscription. They require the architectural flexibility to price different service layers differently: a base detection fee, a response orchestration component, an outcome guarantee overlay, a shared-savings mechanism. Each layer has distinct cost drivers, risk profiles, and measurement requirements.\n\nThe 27 composable vendors (28% of the market) are positioned to add outcome-linked components over time. The 64 subscription-only vendors (67%) face a structural rebuild before outcomes can even be priced. As AI continues to change how MDR services are delivered, this divide will widen into a lasting competitive gap."
+        }
+      ],
+      "background": "The managed detection and response (MDR) market has seen considerable consolidation and commoditization pressure over the past three years. As core detection and response capabilities have become table stakes, pricing has emerged as a primary competitive battleground and a key indicator of vendor positioning.\n\nThis assessment evaluated 95 MDR service providers across six pricing dimensions: subscription transparency (PRC-SUB), usage-based alignment (PRC-USG), fixed delivery pricing (PRC-FIX), success and outcome fees (PRC-SUC), composability and model maturity (PRC-COM), and pricing-to-outcomes alignment (PRC-OUT). Each dimension was scored on a 1-5 scale based on evidence from vendor documentation, publicly available pricing information, and contracted engagement terms.\n\nThe overall market average pricing maturity score of 2.35 out of 5.0 places the MDR market in the \"developing\" stage. The strongest dimension, subscription transparency at 3.52, reflects an industry that has reached basic commercial maturity in publishing clear tier structures and feature sets. Every other dimension falls below 3.0, with the two outcome-related dimensions (PRC-SUC at 1.63 and PRC-OUT at 1.77) trailing well behind.\n\nThe AI enrichment layer, which assesses how AI operational maturity influences pricing model sophistication, reveals that 0 of 95 vendors reach the Transformative tier, 19 are Significant, 49 are Emerging, and 27 are Minimal. The market average AI pricing influence score of 2.48 out of 5.0 confirms that the industry has not yet translated AI investment into commercial model innovation at scale.",
+      "impact": "The implications of this pricing maturity deficit are direct and practical for both MDR providers and the organizations they serve.\n\n**For MDR vendors,** the inability to articulate and deliver outcome-based pricing will become a serious competitive problem within the next two to three years. As AI-first vendors use efficiency gains to fund outcome guarantees (breach warranties, MTTR commitments, risk-score-linked pricing), providers that cannot match these commercial structures will compete solely on price and feature lists. This is a losing position in a commoditizing market. The 1.02-point pricing sophistication gap between AI-mature and AI-minimal vendors is already visible in win rates and retention, and it will grow.\n\n**For buyers,** the slow adoption of outcome-based pricing means they continue to bear the full risk of poor vendor performance. A subscription-only MDR contract provides no financial consequence if the vendor fails to detect a breach, responds slowly, or delivers inconsistent coverage. Buyers should actively seek vendors willing to put commercial terms against measurable outcomes, and treat a vendor's refusal to do so as a signal about their confidence in their own capabilities.\n\n**For the broader cybersecurity services market,** the MDR pricing evolution is a leading indicator of a market-wide shift. As AI transforms cost structures across managed security services, the pressure for outcome-aligned pricing will extend to SOC-as-a-Service, vulnerability management, and security consulting. Vendors that develop outcome-based commercial capabilities in MDR will have a transferable advantage across their portfolio.\n\nThe platform MDR providers (28 vendors, averaging 2.43 and the highest AI influence at 2.75) are best positioned to lead this transition. Their technology platform investments provide the telemetry infrastructure needed to measure outcomes, and their AI adoption is creating the efficiency surplus needed to fund outcome guarantees. IR-enhanced MDR providers (7 vendors, 2.64 average) have the highest pricing maturity but may be constrained by their smaller scale and incident-dependent revenue streams.\n\nPureplay MDR providers (15 vendors, averaging 2.14 with the lowest AI influence at 2.13) face the most significant challenge. Without the AI capability to underwrite outcome commitments or the platform telemetry to measure them, pureplay vendors risk being squeezed between platform providers offering outcome guarantees at competitive prices and niche specialists offering deep expertise at premium rates.",
+      "conclusion": "The MDR pricing picture shows a market in transition that has not yet arrived. Subscription transparency is reasonably mature, but outcome-based pricing, the dimension that matters most to buyers, is essentially absent. With 86% of vendors scoring 2.0 or below on success and outcome fees, and a median score of 1.0, the market is not incrementally behind; it has barely started.\n\nAI adoption is the single most predictive variable in pricing model sophistication. The 1.02-point gap between AI-mature and AI-minimal vendors, and the even wider divergence on outcome-specific dimensions (2.58 vs. 1.04 on PRC-OUT), make clear that AI capability is not just correlated with pricing innovation; it enables it. Vendors cannot credibly commit to outcome-based pricing without the AI-driven detection, response, and measurement capabilities to consistently deliver against those commitments.\n\nThe path forward requires three parallel investments: AI capability maturity (to underwrite outcome guarantees), pricing architecture modernization (from subscription-only to composable), and measurement infrastructure (to enable transparent, trust-based outcome metrics). Vendors that treat pricing model evolution as a finance exercise rather than a capability development effort will find themselves unable to compete as the market matures.\n\nProduct leaders should not wait for buyer pressure to force this transition. The vendors that move first, establishing outcome-linked commercial terms while competitors stick with subscription-only models, will set the standard for what \"good\" looks like and make it harder for followers to catch up. The data is clear: AI maturity enables pricing innovation, pricing innovation enables competitive differentiation, and competitive differentiation determines long-term market position.",
+      "glossary": [
+        {
+          "term": "MDR",
+          "definition": "Managed Detection and Response"
+        },
+        {
+          "term": "MTTD",
+          "definition": "Mean Time to Detect. The average time from when a threat enters an environment to when it is identified."
+        },
+        {
+          "term": "MTTR",
+          "definition": "Mean Time to Respond. The average time from threat detection to containment and initial remediation."
+        },
+        {
+          "term": "PRC-SUB",
+          "definition": "Subscription Transparency. Pricing dimension measuring published pricing, tier clarity, and cost predictability."
+        },
+        {
+          "term": "PRC-USG",
+          "definition": "Usage-Based Alignment. Pricing dimension measuring alignment of commercial terms to actual workload and consumption patterns."
+        },
+        {
+          "term": "PRC-FIX",
+          "definition": "Fixed Delivery Pricing. Pricing dimension measuring availability of fixed-price retainers and project-based engagement models."
+        },
+        {
+          "term": "PRC-SUC",
+          "definition": "Success and Outcome Fees. Pricing dimension measuring adoption of outcome-linked fee structures, breach warranties, and performance-based adjustments."
+        },
+        {
+          "term": "PRC-COM",
+          "definition": "Composability and Model Maturity. Pricing dimension measuring overall flexibility, modularity, and buyer choice within the pricing architecture."
+        },
+        {
+          "term": "PRC-OUT",
+          "definition": "Pricing-to-Outcomes Alignment. Pricing dimension measuring how directly pricing connects to measurable security outcomes."
+        },
+        {
+          "term": "SLA",
+          "definition": "Service Level Agreement"
+        },
+        {
+          "term": "SOC",
+          "definition": "Security Operations Center"
+        },
+        {
+          "term": "AI/ML",
+          "definition": "Artificial Intelligence / Machine Learning"
+        },
+        {
+          "term": "IR",
+          "definition": "Incident Response"
+        }
+      ],
+      "evidence": [
+        "Gartner MDR Services Vendor Pricing Assessment, 2025-2026 (95 vendors, 6 pricing dimensions, AI enrichment overlay)",
+        "Gartner MDR Services Vendor Pricing 2-1 AI Enriched dataset (proprietary, generated through systematic vendor documentation review and scoring methodology)",
+        "Gartner client inquiry trends on MDR pricing transparency and outcome-aligned purchasing (2024-2025)",
+        "Market observation of AI-driven efficiency improvements in vendor-reported operational metrics across detection, triage, and response functions"
+      ]
+    },
+    {
+      "id": "cpo-product-strategy",
+      "label": "CPO / Product Strategy Perspective",
+      "title": "MDR Pricing Won't Be Revolutionized by Agentic AI",
+      "summary": "Industry hype is forcing product teams to develop arbitrary Agentic AI products that don't measure up to expectations. Product teams replacing SOAR automation with AI is dominating the MDR space with the illusion that this is providing additional value and outcomes that will drive revenue growth.",
+      "spa": "By 2028, fewer than 15% of MDR providers will have shipped a pricing model where AI-driven capabilities directly change what the customer pays, despite over 80% claiming AI integration in their product marketing. Product teams that confuse AI feature presence with AI pricing influence will lose share to vendors whose roadmaps connect AI investment to measurable commercial differentiation.",
+      "findings": [
+        {
+          "header": "Product teams are shipping AI features that don't move the pricing needle.",
+          "body": "Of 95 MDR vendors assessed, the average AI pricing influence score is just 2.48/5.0, and zero vendors reach the Transformative tier. 49 vendors (52%) sit at Emerging, meaning they have added AI features to their detection or triage pipeline but have not connected those capabilities to pricing model changes. Product investment in AI is high; product impact on commercial models is near zero."
+        },
+        {
+          "header": "SOAR-to-AI relabeling is the dominant product pattern, and it isn't working.",
+          "body": "Most MDR product teams are replacing SOAR playbook automation with AI/ML-driven triage and response orchestration. The market treats this as innovation, but the data shows otherwise: the 49 Emerging-tier vendors (who have done exactly this) average just 2.20 across all pricing dimensions, barely above the 1.84 average for Minimal-tier vendors who have no AI at all. Swapping SOAR for AI without changing the commercial model produces the same subscription-only pricing at the same margins."
+        },
+        {
+          "header": "The 1.02-point gap between AI tiers is a product strategy signal, not just a pricing one.",
+          "body": "Vendors with Significant AI influence score 2.86 across pricing dimensions versus 1.84 for Minimal. That gap exists because the Significant-tier vendors built AI into their product in ways that change what they can sell and how they can price it: usage-based billing on AI workload volume, outcome guarantees underwritten by AI detection confidence, composable modules enabled by AI-driven service decomposition. The product decisions drove the commercial differentiation."
+        },
+        {
+          "header": "Outcome-based pricing (PRC-SUC at 1.63/5.0) is a product capability gap, not a sales problem.",
+          "body": "Product leaders often treat pricing as a go-to-market concern. But outcome-linked pricing requires product capabilities that most MDR platforms lack: normalized outcome measurement and reporting, confidence-scored detection that can underwrite SLA commitments, and modular service architecture that separates base detection from outcome guarantee overlays. Until product builds these capabilities, sales has nothing to price against."
+        },
+        {
+          "header": "Two-thirds of vendors are locked into subscription-only models because of product architecture, not commercial preference.",
+          "body": "64 of 95 vendors (67%) operate subscription-only pricing. The root cause is monolithic product architecture: a single detection-and-response pipeline delivered as a flat service. Without product-level decomposition into separately measurable, separately deliverable components, pricing teams cannot create composable or outcome-linked tiers even if they want to. Composable vendors score 2.80 vs. 2.16 for subscription-only on overall pricing maturity."
+        },
+        {
+          "header": "The top-10 pricing leaders all made deliberate product architecture choices that enabled their commercial models.",
+          "body": "The top-10 vendors by pricing score average 3.65/5.0 versus the market average of 2.35. Every one of them has (a) a composable or hybrid pricing model, (b) Significant or higher AI influence, and (c) at least one measurable outcome metric exposed to customers. These were product decisions made 12-18 months before the pricing models shipped. Product teams that don't make equivalent architectural investments now will not be able to compete on pricing in 2027-2028."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "Stop treating AI as a feature checkbox and start treating it as a pricing architecture enabler.",
+          "body": "Product roadmaps should tie every AI investment to a specific commercial model capability it unlocks. If an AI feature does not enable a new pricing dimension (usage-based metering, outcome measurement, confidence-scored SLAs, or modular service decomposition), question whether it belongs on the roadmap at all. The 1.02-point pricing gap between AI-mature and AI-minimal vendors is driven by AI that changes what you can sell, not AI that improves what you already deliver for free."
+        },
+        {
+          "header": "Decompose the monolithic detection-and-response pipeline into separately priceable service components.",
+          "body": "The single biggest product architecture blocker to pricing innovation is the flat, bundled MDR service. Product teams should break the pipeline into discrete, measurable components: base detection and alerting, response orchestration, proactive threat hunting, outcome guarantee overlays, and efficiency reporting. Each component needs its own telemetry, its own SLA surface, and its own cost model. The data shows composable vendors outscore subscription-only by 30% across all pricing dimensions."
+        },
+        {
+          "header": "Build outcome measurement into the product, not the dashboard.",
+          "body": "The reason PRC-SUC scores 1.63/5.0 across the market is that most products cannot measure outcomes in a way that supports commercial commitments. Product teams need to ship normalized MTTD/MTTR measurement, risk posture scoring, incident frequency tracking, and coverage breadth metrics as first-class product features with APIs, not as after-the-fact dashboard reports. Pricing cannot commit to outcomes that the product cannot measure and attribute."
+        },
+        {
+          "header": "Replace the SOAR-to-AI migration with an AI-to-pricing pipeline.",
+          "body": "The current dominant product pattern (replace SOAR playbooks with AI orchestration) is a dead end for commercial differentiation. The next product investment should focus on connecting AI capabilities to pricing mechanics: AI workload telemetry that enables usage-based billing, AI detection confidence scores that underwrite MTTR guarantees, and AI efficiency metrics that support shared-savings pricing. If the AI doesn't change what you charge, it only changes your cost."
+        },
+        {
+          "header": "Set a 12-month product milestone to enable at least one outcome-linked pricing component.",
+          "body": "Based on the progression from Minimal to Significant AI influence (a jump from 1.84 to 2.86 on pricing dimensions), product teams should target shipping the foundational capabilities for one outcome-linked pricing tier within 12 months. A reasonable first target: an MTTR guarantee with service credits, backed by AI-driven response orchestration and normalized measurement infrastructure. This single capability moves a vendor from the 86% stuck at PRC-SUC <= 2.0 into the competitive tier."
+        },
+        {
+          "header": "Establish a quarterly product-pricing alignment review with commercial teams.",
+          "body": "The disconnect between product capability and commercial model is the core reason pricing innovation lags. Product leaders should institute a quarterly review where product roadmap milestones are mapped to specific pricing model changes they enable, pricing team feedback on commercial blockers is fed back into the product backlog, and competitor product-pricing moves are analyzed for architectural patterns to replicate or counter."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "The SOAR-to-AI Swap: Why Product Teams Are Building the Wrong Thing",
+          "body": "The dominant product investment pattern in MDR over the past 18 months is straightforward: replace SOAR-based playbook automation with AI/ML-driven orchestration. Vendors are rewriting triage logic to use machine learning classifiers instead of rule trees, replacing manual investigation workflows with AI-assisted enrichment, and swapping static response playbooks with AI-driven decision engines.\n\nThe problem is not that this work is bad engineering. It often reduces mean time to triage, lowers false positive rates, and improves analyst efficiency. The problem is that none of these improvements show up in the commercial model. The vendor still sells a flat subscription. The customer still pays per-seat or per-endpoint. The AI reduces the vendor's cost of delivery without changing what the customer experiences commercially.\n\nOur data makes this visible: the 49 Emerging-tier vendors (vendors that have shipped AI features but not connected them to pricing) average 2.20 across pricing dimensions. The 27 Minimal-tier vendors (no meaningful AI in pricing) average 1.84. That's a 0.36-point gap for all the AI investment. By contrast, the 19 Significant-tier vendors, who built AI in ways that change their commercial model, average 2.86, a full point above Emerging.\n\nThe takeaway for product leaders: shipping better AI is not enough. The AI has to change what you can sell."
+        },
+        {
+          "title": "Product Architecture Is the Real Pricing Bottleneck",
+          "body": "When product leaders ask why their pricing team can't offer composable or outcome-linked models, the answer is almost always product architecture. Consider what outcome-based pricing requires:\n\n- **Normalized outcome metrics**: MTTD, MTTR, detection coverage, incident frequency. These need to be measured per-customer, with baselines, trending, and attribution. Most MDR products measure aggregate operational metrics for internal use, not per-customer outcome metrics for commercial use.\n\n- **Modular service boundaries**: To price detection separately from response, or base service separately from outcome guarantees, the product must actually deliver these as separable components with independent SLAs and telemetry.\n\n- **Confidence scoring**: To underwrite an MTTR guarantee or breach warranty, the product needs to express detection and response confidence in a way that actuaries (or at least finance teams) can model.\n\n- **Usage telemetry**: To offer usage-based pricing components, the product needs metering infrastructure that tracks AI workload volume, incident complexity, and resource consumption at a per-customer level.\n\n64 of 95 vendors lack these capabilities. Their product delivers MDR as a monolithic pipeline: alerts go in, validated incidents and responses come out. There is no internal boundary where a pricing team could insert a usage meter, an outcome metric, or a modular component boundary. The product architecture dictates subscription-only pricing, regardless of what the commercial team wants.\n\nThe 27 composable-model vendors have invested in product decomposition. Their 30% pricing premium (2.80 vs. 2.16) is not because their sales team is more creative. It's because their product team gave pricing something to work with."
+        },
+        {
+          "title": "AI Efficiency Gains Are Going to Margin, Not to Product Differentiation",
+          "body": "Product teams are improving operational efficiency with AI and reporting this as a product success. Triage time is down. Analyst-to-incident ratios are up. Cost per incident is falling. These are real improvements.\n\nBut from a product strategy perspective, efficiency gains that go entirely to margin are a wasted competitive asset. The 19 Significant-tier vendors are using AI efficiency data as product features: customer-facing AI workload dashboards, cost-per-incident trending reports, and transparent efficiency metrics that customers can see. These features become the foundation for pricing innovation because they give customers something to pay for (or pay less for) based on AI performance.\n\nThe market average for usage-based alignment (PRC-USG) is 2.14/5.0. This means most products do not expose any AI efficiency data to customers in a way that could support pricing changes. The product team captures the efficiency, finance captures the margin, and the customer sees no difference.\n\nProduct leaders who want to compete on pricing in 2027-2028 need to treat AI efficiency visibility as a product feature on the roadmap, not a back-office operational metric. The vendors who share this data with customers are building trust and commercial leverage that subscription-only competitors cannot match."
+        },
+        {
+          "title": "The 12-Month Product Investment Window",
+          "body": "The gap between the top-10 pricing leaders (3.65/5.0) and the market average (2.35) is 1.30 points and growing. The product decisions that enabled the leaders' pricing models were made 12-18 months before those models shipped. This means the investment window for mid-market vendors is now.\n\nA realistic 12-month product roadmap for pricing enablement should target four milestones:\n\n**Months 1-3: Outcome measurement infrastructure.** Ship per-customer MTTD/MTTR tracking, normalized baselines, and trending. This is the prerequisite for any outcome-linked pricing component and the capability most vendors lack.\n\n**Months 3-6: Service decomposition.** Identify 2-3 modular boundaries in the MDR pipeline (e.g., base detection, response orchestration, threat hunting) and instrument each with independent telemetry and SLA surfaces.\n\n**Months 6-9: AI efficiency exposure.** Build a customer-facing AI workload dashboard that shows AI triage rates, automation percentages, and cost efficiency trends. This becomes the pricing team's tool for usage-based and efficiency-sharing conversations.\n\n**Months 9-12: First outcome-linked capability.** Ship an MTTR guarantee with service credits (or similar) on at least one tier, backed by the measurement infrastructure from months 1-3 and the AI detection confidence from the existing pipeline.\n\nThis sequence moves a vendor from the 86% stuck at PRC-SUC <= 2.0 to a position where outcome-linked pricing is at least available. The product investment is concrete, sequenced, and directly tied to commercial model impact."
+        }
+      ],
+      "background": "The managed detection and response (MDR) market has seen considerable consolidation and commoditization pressure over the past three years. Core detection and response capabilities are table stakes. Pricing is now the primary competitive battleground, and pricing model maturity has become a proxy for product strategy maturity.\n\nThis assessment evaluated 95 MDR service providers across six pricing dimensions: subscription transparency (PRC-SUB), usage-based alignment (PRC-USG), fixed delivery pricing (PRC-FIX), success and outcome fees (PRC-SUC), composability and model maturity (PRC-COM), and pricing-to-outcomes alignment (PRC-OUT). Each dimension was scored on a 1-5 scale.\n\nThe overall market average pricing maturity score of 2.35/5.0 places the MDR market at \"developing.\" Subscription transparency (3.52) is the only mature dimension. Every other dimension falls below 3.0, with the two outcome-related dimensions (PRC-SUC at 1.63 and PRC-OUT at 1.77) trailing by a wide margin.\n\nThe AI enrichment layer assessed how AI operational maturity influences pricing model sophistication. Results: 0 of 95 vendors at Transformative, 19 at Significant, 49 at Emerging, 27 at Minimal. Market average AI pricing influence: 2.48/5.0.\n\nFor product leaders, the key data point is not the overall market average. It is the gap between vendors whose product architecture enables pricing innovation (Significant tier at 2.86) and vendors whose product architecture constrains it (Minimal tier at 1.84). That 1.02-point gap is a product strategy gap, not a sales execution gap.",
+      "impact": "The pricing maturity data has direct implications for product roadmap prioritization, build-vs-buy decisions, and competitive positioning.\n\n**For product teams at subscription-only vendors (67% of the market):** Your product architecture is the binding constraint on commercial model evolution. No amount of sales enablement, pricing consultant engagement, or competitive benchmarking will unlock composable or outcome-linked pricing if the product delivers MDR as a monolithic pipeline. The first roadmap priority should be service decomposition and outcome measurement infrastructure.\n\n**For product teams at Emerging-tier vendors (52% of the market):** You have shipped AI features that improve operational metrics but do not change the commercial model. The next product investment cycle should focus on connecting AI capabilities to pricing mechanics: usage telemetry, outcome measurement, confidence scoring, and customer-facing efficiency reporting. Otherwise your AI investment is subsidizing margin, not building differentiation.\n\n**For product teams at Significant-tier vendors (20% of the market):** You have the architectural foundation for pricing innovation. The competitive priority is execution speed. Ship outcome-linked pricing components before the market catches up. The data shows that first movers on outcome pricing are setting buyer expectations that followers will have to match.\n\n**For platform MDR providers (28 vendors, 2.43 average):** Your technology platform investment gives you the telemetry infrastructure for outcome measurement. The product gap is modular service boundaries and customer-facing AI efficiency tools. Platform vendors that close this gap in the next 12 months will own the pricing conversation.\n\n**For pureplay MDR providers (15 vendors, 2.14 average):** Without platform-level telemetry or AI at scale, the product investment required for pricing innovation is disproportionately high. Consider build-vs-partner decisions: licensing outcome measurement and AI efficiency tooling from platform vendors may be faster than building it in-house.",
+      "conclusion": "The MDR pricing data tells a product strategy story. The vendors with the highest pricing maturity are not the ones with the best sales teams or the most aggressive discounting. They are the ones whose product teams made architectural decisions 12-18 months ago that enabled commercial model innovation.\n\nThe industry hype cycle around Agentic AI has pushed product teams to ship AI features for their own sake: AI-powered triage, AI-assisted hunting, AI-driven response. These features reduce delivery cost, but the data shows they do not, by themselves, change pricing sophistication. The Emerging-tier average (2.20) versus the Minimal-tier average (1.84) is a 0.36-point return on all that AI investment. The Significant-tier average (2.86) shows what happens when AI is built with pricing architecture in mind.\n\nProduct leaders should stop asking \"How do we add AI to our MDR product?\" and start asking \"What pricing model does this AI investment enable?\" If the answer is \"none,\" the investment improves your margin but not your market position.\n\nThe roadmap is concrete: decompose the monolithic pipeline, instrument outcome measurement, expose AI efficiency to customers, and ship one outcome-linked pricing component within 12 months. Every quarter of delay is a quarter where competitors with the right architecture are setting buyer expectations you will have to match later, at worse terms, with less differentiation.\n\nThe data is clear: product architecture determines pricing capability. Pricing capability determines competitive positioning. Competitive positioning determines which vendors survive the next consolidation wave.",
+      "glossary": [
+        {
+          "term": "MDR",
+          "definition": "Managed Detection and Response"
+        },
+        {
+          "term": "SOAR",
+          "definition": "Security Orchestration, Automation, and Response. The playbook-based automation technology that most vendors are replacing with AI/ML-driven orchestration."
+        },
+        {
+          "term": "MTTD",
+          "definition": "Mean Time to Detect. The average time from when a threat enters an environment to when it is identified."
+        },
+        {
+          "term": "MTTR",
+          "definition": "Mean Time to Respond. The average time from threat detection to containment and initial remediation."
+        },
+        {
+          "term": "PRC-SUB",
+          "definition": "Subscription Transparency. Pricing dimension measuring published pricing, tier clarity, and cost predictability."
+        },
+        {
+          "term": "PRC-USG",
+          "definition": "Usage-Based Alignment. Pricing dimension measuring alignment of commercial terms to actual workload and consumption patterns."
+        },
+        {
+          "term": "PRC-FIX",
+          "definition": "Fixed Delivery Pricing. Pricing dimension measuring availability of fixed-price retainers and project-based engagement models."
+        },
+        {
+          "term": "PRC-SUC",
+          "definition": "Success and Outcome Fees. Pricing dimension measuring adoption of outcome-linked fee structures, breach warranties, and performance-based adjustments."
+        },
+        {
+          "term": "PRC-COM",
+          "definition": "Composability and Model Maturity. Pricing dimension measuring overall flexibility, modularity, and buyer choice within the pricing architecture."
+        },
+        {
+          "term": "PRC-OUT",
+          "definition": "Pricing-to-Outcomes Alignment. Pricing dimension measuring how directly pricing connects to measurable security outcomes."
+        },
+        {
+          "term": "SLA",
+          "definition": "Service Level Agreement"
+        },
+        {
+          "term": "SOC",
+          "definition": "Security Operations Center"
+        },
+        {
+          "term": "AI/ML",
+          "definition": "Artificial Intelligence / Machine Learning"
+        },
+        {
+          "term": "IR",
+          "definition": "Incident Response"
+        },
+        {
+          "term": "CPO",
+          "definition": "Chief Product Officer"
+        }
+      ],
+      "evidence": [
+        "Gartner MDR Services Vendor Pricing Assessment, 2025-2026 (95 vendors, 6 pricing dimensions, AI enrichment overlay)",
+        "Gartner MDR Services Vendor Pricing 2-1 AI Enriched dataset (proprietary, generated through systematic vendor documentation review and scoring methodology)",
+        "Gartner client inquiry trends on MDR pricing transparency and outcome-aligned purchasing (2024-2025)",
+        "Market observation of AI-driven efficiency improvements in vendor-reported operational metrics across detection, triage, and response functions"
+      ]
+    },
+    {
+      "id": "buyer-facing-general",
+      "label": "Buyer Perspective (General)",
+      "title": "Market Insight: AI Is Reshaping MDR Pricing, but Most Vendors Aren't Ready",
+      "summary": "Agentic AI is changing the cost structure and value delivery of MDR services, yet most providers have not adjusted their pricing models to reflect this shift. Outcome-based pricing remains underadopted despite clear market signals that buyers want measurable results.",
+      "spa": "By 2028, 40% of MDR contracts will include at least one outcome-linked pricing component tied to measurable security improvements, up from less than 5% today. Vendors that fail to develop outcome-based commercial models by 2027 will face a structural competitive disadvantage in retention and new business.",
+      "findings": [
+        {
+          "header": "Outcome-based pricing adoption is vanishingly low across the MDR market.",
+          "body": "Across the vendors assessed, success and outcome-linked fee structures scored as the weakest pricing dimension by a wide margin. Close to 90% of providers have made little to no progress toward tying commercial terms to measurable client outcomes, and the typical vendor offers no outcome-linked pricing mechanism at all. The handful of providers that have moved furthest on this dimension are large consultancies with composable models, not pureplay MDR firms."
+        },
+        {
+          "header": "AI-mature vendors show measurably higher pricing sophistication.",
+          "body": "Vendors with advanced AI pricing influence consistently outperform their less mature counterparts across every pricing dimension. The gap between the most AI-mature providers and those with minimal AI influence is roughly one full point on a five-point scale, a separation that holds across subscription design, usage alignment, and outcome orientation alike. The widest divergence appears in pricing-to-outcomes alignment, where AI-advanced vendors score more than double their minimal-influence counterparts."
+        },
+        {
+          "header": "The market misunderstands what outcome-based pricing means.",
+          "body": "Most vendors equate \"outcomes\" with SLA uptime guarantees or basic breach notification speeds. True outcome-based pricing ties commercial terms to measurable security improvements: reduction in mean time to detect, mean time to respond, quantifiable risk posture improvements, or incident frequency reduction commitments backed by financial mechanisms such as breach warranties or performance-based fee adjustments."
+        },
+        {
+          "header": "Composable pricing models are a prerequisite for outcome-based evolution, but roughly two-thirds of vendors remain subscription-only.",
+          "body": "About two-thirds of providers still operate on pure subscription models, and their outcome-linked pricing adoption is roughly half that of composable-model vendors. Outcome-based pricing requires the modularity and flexibility that subscription-only models cannot support. Vendors that have introduced composable pricing architectures consistently score higher across every pricing dimension, not just outcomes."
+        },
+        {
+          "header": "AI is creating an efficiency dividend that vendors are capturing rather than sharing with buyers.",
+          "body": "As AI-driven automation reduces the per-incident cost of detection and response, vendors are improving their margins without passing those efficiency gains through to clients via adjusted pricing mechanisms. Usage-based alignment remains one of the weaker pricing dimensions across the market, meaning buyers have no visibility into how AI-driven efficiency improvements affect the cost of their service. The buyer pays the same subscription fee whether incidents are handled by a senior analyst over hours or by an AI agent in minutes."
+        },
+        {
+          "header": "The pricing maturity gap between leaders and laggards is widening, driven primarily by AI adoption differences.",
+          "body": "The top tier of vendors by overall pricing maturity outpaces the market average by more than a full point on a five-point scale. These leaders uniformly show higher AI influence, composable pricing models, and at least nascent outcome-linked commercial terms. This gap will widen as AI-first vendors use efficiency gains to fund outcome guarantees that subscription-only providers cannot match."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "Redefine outcome-based pricing in concrete, measurable terms.",
+          "body": "Product leaders must move beyond SLA guarantees and establish commercial structures tied to quantifiable security outcomes: detection and response time improvement commitments, coverage expansion metrics, incident frequency reduction targets, and risk score improvements, all backed by financial mechanisms such as breach warranties, performance credits, or shared-savings arrangements. Start with a single outcome metric tied to a fee adjustment and expand from there."
+        },
+        {
+          "header": "Build an AI efficiency-sharing pricing layer that demonstrates value to buyers.",
+          "body": "Establish transparent mechanisms (efficiency dashboards, cost-per-incident trending, or AI utilization reporting) that show buyers how AI-driven automation is reducing service delivery costs. Tie at least a portion of pricing to these efficiency metrics through consumption-based components or graduated discount structures. Vendors that share the AI dividend early will secure longer contract terms and higher retention."
+        },
+        {
+          "header": "Transition from subscription-only to composable pricing architectures.",
+          "body": "Begin decomposing monolithic subscription tiers into modular service components (base detection, response orchestration, threat hunting, incident retainer, and outcome guarantees) that buyers can assemble based on their specific risk profile. Our data shows composable vendors consistently outscore subscription-only providers by roughly 30% across all pricing dimensions, and the gap on outcome-linked pricing is even wider."
+        },
+        {
+          "header": "Invest in AI pricing-influence capabilities as a direct commercial differentiator.",
+          "body": "The pricing sophistication gap between AI-mature and AI-minimal vendors is the single strongest predictor of overall pricing model maturity. Product leaders should treat AI investment not just as a cost efficiency play but as the enabler of commercial model innovation: from usage-based billing driven by AI workload telemetry to outcome guarantees underwritten by AI-validated detection capabilities."
+        },
+        {
+          "header": "Develop a phased roadmap from transparency to outcomes, anchored to AI maturity milestones.",
+          "body": "Most vendors cannot leap directly from subscription-only pricing to full outcome-based models. The progression should follow a clear sequence: (1) publish transparent pricing and tier definitions, (2) introduce usage-aligned components tied to data volume or endpoint count, (3) add composable modules with mix-and-match flexibility, (4) introduce limited outcome commitments such as response time guarantees with service credits, and (5) implement full risk-sharing or performance-linked fee structures. Each stage should be unlocked by corresponding AI capability maturity."
+        },
+        {
+          "header": "Establish competitive pricing intelligence as a standing practice, not a periodic exercise.",
+          "body": "With a substantial spread between top-tier and market-average pricing maturity, and AI influence accelerating the divergence, vendors operating without structured pricing benchmarking are flying blind. Product leaders should institute quarterly pricing model assessments that benchmark their position on each pricing dimension against the market, track the velocity of competitor pricing evolution, and identify the specific AI capabilities driving commercial model changes in leading vendors."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "What Outcome-Based Pricing Actually Means, and Why the Market Gets It Wrong",
+          "body": "The term \"outcome-based pricing\" has become a marketing fixture in managed detection and response. Vendors routinely cite SLA-backed response times or uptime guarantees as evidence of outcome alignment. This misrepresents what outcome-based pricing requires.\n\nTrue outcome-based pricing establishes a direct financial link between what the buyer pays and the measurable security outcomes they receive. This means commercial terms that adjust, up or down, based on metrics the buyer actually cares about: How fast are threats detected and contained? Is the organization's attack surface actually shrinking? Are incidents becoming less frequent, less severe, or both? Is the cost of security per unit of business value improving over time?\n\nIn practice, this can take several forms:\n\n- **Breach warranties**: Financial guarantees that pay out if a covered breach occurs, underwritten by the vendor's confidence in their detection and response capabilities.\n- **Performance-linked fee adjustments**: Pricing that flexes based on achieved detection and response time improvements, with defined baselines and measurement periods.\n- **Risk-score-tied subscriptions**: Pricing tied to an independently measured risk posture score, where improvement reduces the fee and degradation increases it.\n- **Shared savings models**: Arrangements where a portion of the vendor's fee is tied to demonstrated cost avoidance or efficiency improvements for the buyer.\n- **Incident severity caps**: Commercial terms that cap the buyer's financial exposure for incidents above a defined severity threshold.\n\nOur assessment found that success and outcome-linked fee structures represent the weakest pricing dimension in the MDR market by a wide margin, scoring less than half of subscription transparency. The typical MDR vendor has no outcome-linked pricing mechanism whatsoever. Even among the top performers on this dimension, adoption is in early stages. The few providers showing meaningful progress are large consultancies with composable models, not pureplay MDR firms."
+        },
+        {
+          "title": "Why Outcome-Based Pricing Adoption Lags So Far Behind",
+          "body": "Several structural and organizational factors explain the sluggish adoption of outcome-based pricing, despite clear buyer demand:\n\n**1. Lack of measurement infrastructure.** Outcome-based pricing requires metrics that both parties trust. Most MDR providers lack the telemetry, benchmarking, and reporting infrastructure to measure and attribute outcomes with enough rigor to tie commercial terms to them. Without normalized baselines for detection time, response time, incident frequency, or coverage breadth, outcome commitments cannot be quantified.\n\n**2. Revenue predictability addiction.** Subscription-only models provide smooth, predictable revenue streams that are rewarded by investors and simplify financial planning. Outcome-based components introduce variability into the revenue model, which finance teams and boards resist. Roughly two-thirds of providers remain subscription-only, and their overall pricing maturity lags well behind composable vendors, indicating that the subscription model itself constrains pricing sophistication.\n\n**3. Insufficient AI capability to underwrite guarantees.** Outcome-based pricing requires confidence in delivery. A vendor cannot offer a breach warranty or response time guarantee without the AI-driven detection and response capabilities to consistently achieve them. Our data shows this directly: vendors with advanced AI influence score roughly double the outcome-linked pricing adoption of their minimal-tier counterparts. AI maturity is the prerequisite for outcome pricing.\n\n**4. Misaligned organizational incentives.** In many MDR providers, pricing decisions are owned by finance or product management teams that optimize for margin protection, not by security operations teams that understand what outcomes are achievable. This creates a structural disconnect where the people closest to delivery have the least influence on commercial model design.\n\n**5. Fear of accountability.** Outcome-linked pricing makes vendor performance transparent and has real consequences. If a provider commits to a rapid response time on critical incidents and fails, the financial penalty is immediate and visible. Many vendors prefer the opacity of flat-rate subscriptions where poor performance is masked and contract renewals are a commercial negotiation rather than a performance evaluation.\n\n**6. Legacy contract structures.** Existing multi-year subscription contracts create inertia. Migrating a large installed base from flat-rate subscriptions to outcome-linked models requires renegotiating hundreds of contracts, retraining sales teams, and rebuilding billing systems, a transformation most vendors underestimate."
+        },
+        {
+          "title": "AI Is Changing the Cost Equation, but Buyers Aren't Seeing It",
+          "body": "Agentic AI is sharply reducing the per-incident cost of MDR service delivery. Automated triage, AI-accelerated threat hunting, machine-driven response playbooks, and predictive detection are enabling vendors to handle more volume with fewer human analysts. This should, in theory, create a natural transition toward efficiency-sharing or outcome-aligned pricing: the vendor delivers more value at lower cost, and the buyer shares in that efficiency gain.\n\nInstead, most vendors are capturing the AI efficiency dividend entirely as margin improvement. Usage-based alignment remains weak across the market, meaning most vendors have no mechanism for buyers to see, let alone benefit from, AI-driven cost reductions. The buyer pays the same subscription fee whether their incidents are handled by a senior analyst spending hours on manual investigation or by an AI agent that resolves the same alert in minutes.\n\nThis will not hold. As buyers become more informed about AI capabilities and costs, they will demand transparency into how AI efficiency affects what they pay. The roughly 20% of vendors in the advanced AI influence tier are beginning to build this transparency through AI workload dashboards, cost-per-incident reporting, and graduated pricing tiers that reflect AI utilization. These vendors are not more generous; they are more strategic. By sharing the efficiency dividend early, they build a competitive advantage rooted in trust, transparency, and demonstrable value that subscription-only providers cannot replicate."
+        },
+        {
+          "title": "The Composable Model Imperative",
+          "body": "The data reveals a clear structural prerequisite for pricing model evolution: composability. Vendors with composable pricing models, where buyers can assemble service packages from modular components, consistently outscore subscription-only providers across every pricing dimension. The gap is widest on outcome-linked pricing, where composable vendors score nearly double their subscription-only counterparts.\n\nThis is not coincidental. Outcome-based pricing components cannot be bolted onto a flat-rate subscription. They require the architectural flexibility to price different service layers differently: a base detection fee, a response orchestration component, an outcome guarantee overlay, a shared-savings mechanism. Each layer has distinct cost drivers, risk profiles, and measurement requirements.\n\nRoughly 30% of the market has adopted composable models and is positioned to add outcome-linked components over time. The remaining two-thirds face a structural rebuild before outcomes can even be priced. As AI continues to change how MDR services are delivered, this divide will widen into a lasting competitive gap."
+        }
+      ],
+      "background": "The managed detection and response (MDR) market has seen considerable consolidation and commoditization pressure over the past three years. As core detection and response capabilities have become table stakes, pricing has emerged as a primary competitive battleground and a key indicator of vendor positioning.\n\nThis assessment evaluated MDR service providers across six pricing dimensions: subscription transparency, usage-based alignment, fixed delivery pricing, success and outcome fees, composability and model maturity, and pricing-to-outcomes alignment. Each dimension was scored on a standardized scale based on evidence from vendor documentation, publicly available pricing information, and contracted engagement terms.\n\nThe overall market average pricing maturity places the MDR market in the \"developing\" stage. Subscription transparency is the only dimension that has reached a reasonable level of maturity, reflecting an industry that has made progress in publishing clear tier structures and feature sets. Every other dimension falls well short, with the two outcome-related dimensions, success and outcome fees and pricing-to-outcomes alignment, trailing by the widest margin.\n\nThe AI enrichment layer, which assesses how AI operational maturity influences pricing model sophistication, reveals that no vendors have reached the most advanced tier, roughly 20% are at significant maturity, about half sit at an emerging level, and close to 30% remain minimal. The market has not yet translated AI investment into commercial model innovation at scale.",
+      "impact": "The implications of this pricing maturity deficit are direct and practical for both MDR providers and the organizations they serve.\n\n**For MDR vendors,** the inability to articulate and deliver outcome-based pricing will become a serious competitive problem within the next two to three years. As AI-first vendors use efficiency gains to fund outcome guarantees (breach warranties, response time commitments, risk-score-linked pricing), providers that cannot match these commercial structures will compete solely on price and feature lists. This is a losing position in a commoditizing market. The pricing sophistication gap between AI-mature and AI-minimal vendors is already visible in win rates and retention, and it will grow.\n\n**For buyers,** the slow adoption of outcome-based pricing means they continue to bear the full risk of poor vendor performance. A subscription-only MDR contract provides no financial consequence if the vendor fails to detect a breach, responds slowly, or delivers inconsistent coverage. Buyers should actively seek vendors willing to put commercial terms against measurable outcomes, and treat a vendor's refusal to do so as a signal about their confidence in their own capabilities.\n\n**For the broader cybersecurity services market,** the MDR pricing evolution is a leading indicator of a market-wide shift. As AI transforms cost structures across managed security services, the pressure for outcome-aligned pricing will extend to SOC-as-a-Service, vulnerability management, and security consulting. Vendors that develop outcome-based commercial capabilities in MDR will have a transferable advantage across their portfolio.\n\nPlatform MDR providers are best positioned to lead this transition. Their technology platform investments provide the telemetry infrastructure needed to measure outcomes, and their AI adoption is creating the efficiency surplus needed to fund outcome guarantees. Incident response-enhanced MDR providers show the highest pricing maturity but may be constrained by their smaller scale and incident-dependent revenue streams.\n\nPureplay MDR providers face the most significant challenge. Without the AI capability to underwrite outcome commitments or the platform telemetry to measure them, pureplay vendors risk being squeezed between platform providers offering outcome guarantees at competitive prices and niche specialists offering deep expertise at premium rates.",
+      "conclusion": "The MDR pricing picture shows a market in transition that has not yet arrived. Subscription transparency is reasonably mature, but outcome-based pricing, the dimension that matters most to buyers, is essentially absent. The vast majority of vendors show little to no adoption of success and outcome-linked fee structures; the market is not incrementally behind, it has barely started.\n\nAI adoption is the single most predictive variable in pricing model sophistication. The gap between AI-mature and AI-minimal vendors is substantial across every pricing dimension and is most pronounced on outcome alignment, where advanced vendors score more than double their least-mature counterparts. AI capability is not just correlated with pricing innovation; it enables it. Vendors cannot credibly commit to outcome-based pricing without the AI-driven detection, response, and measurement capabilities to consistently deliver against those commitments.\n\nThe path forward requires three parallel investments: AI capability maturity (to underwrite outcome guarantees), pricing architecture modernization (from subscription-only to composable), and measurement infrastructure (to enable transparent, trust-based outcome metrics). Vendors that treat pricing model evolution as a finance exercise rather than a capability development effort will find themselves unable to compete as the market matures.\n\nProduct leaders should not wait for buyer pressure to force this transition. The vendors that move first, establishing outcome-linked commercial terms while competitors stick with subscription-only models, will set the standard for what \"good\" looks like and make it harder for followers to catch up. AI maturity enables pricing innovation, pricing innovation enables competitive differentiation, and competitive differentiation determines long-term market position.",
+      "glossary": [
+        {
+          "term": "MDR",
+          "definition": "Managed Detection and Response"
+        },
+        {
+          "term": "MTTD",
+          "definition": "Mean Time to Detect. The average time from when a threat enters an environment to when it is identified."
+        },
+        {
+          "term": "MTTR",
+          "definition": "Mean Time to Respond. The average time from threat detection to containment and initial remediation."
+        },
+        {
+          "term": "SLA",
+          "definition": "Service Level Agreement"
+        },
+        {
+          "term": "SOC",
+          "definition": "Security Operations Center"
+        },
+        {
+          "term": "AI/ML",
+          "definition": "Artificial Intelligence / Machine Learning"
+        },
+        {
+          "term": "IR",
+          "definition": "Incident Response"
+        }
+      ],
+      "evidence": [
+        "Gartner MDR Services Vendor Pricing Assessment, 2025-2026 (broad market assessment across six pricing dimensions with AI enrichment overlay)",
+        "Gartner MDR Services Vendor Pricing AI Enriched dataset (proprietary, generated through systematic vendor documentation review and scoring methodology)",
+        "Gartner client inquiry trends on MDR pricing transparency and outcome-aligned purchasing (2024-2025)",
+        "Market observation of AI-driven efficiency improvements in vendor-reported operational metrics across detection, triage, and response functions"
+      ]
+    },
+    {
+      "id": "cpo-product-strategy-general",
+      "label": "CPO / Product Strategy (General)",
+      "title": "MDR Pricing Won't Be Revolutionized by Agentic AI",
+      "summary": "Industry hype is forcing product teams to develop arbitrary Agentic AI products that don't measure up to expectations. Product teams replacing SOAR automation with AI is dominating the MDR space with the illusion that this is providing additional value and outcomes that will drive revenue growth.",
+      "spa": "By 2028, fewer than 15% of MDR providers will have shipped a pricing model where AI-driven capabilities directly change what the customer pays, despite over 80% claiming AI integration in their product marketing. Product teams that confuse AI feature presence with AI pricing influence will lose share to vendors whose roadmaps connect AI investment to measurable commercial differentiation.",
+      "findings": [
+        {
+          "header": "Product teams are shipping AI features that don't move the pricing needle.",
+          "body": "Across the MDR market, no vendor has reached the most advanced tier of AI pricing influence, and roughly half sit at an emerging level where AI features exist in the detection or triage pipeline but have not translated into pricing model changes. Product investment in AI is high; product impact on commercial models is near zero."
+        },
+        {
+          "header": "SOAR-to-AI relabeling is the dominant product pattern, and it isn't working.",
+          "body": "Most MDR product teams are replacing SOAR playbook automation with AI/ML-driven triage and response orchestration. The market treats this as innovation, but the data shows otherwise. Vendors at the emerging tier (those who have done exactly this) score only marginally above vendors with no meaningful AI at all on pricing maturity. Swapping SOAR for AI without changing the commercial model produces the same subscription-only pricing at the same margins."
+        },
+        {
+          "header": "The gap between AI tiers is a product strategy signal, not just a pricing one.",
+          "body": "Vendors with advanced AI influence consistently score roughly a full point higher on pricing maturity than those with minimal AI. That gap exists because the advanced-tier vendors built AI into their product in ways that change what they can sell and how they can price it: usage-based billing on AI workload volume, outcome guarantees underwritten by AI detection confidence, composable modules enabled by AI-driven service decomposition. The product decisions drove the commercial differentiation."
+        },
+        {
+          "header": "Outcome-based pricing is a product capability gap, not a sales problem.",
+          "body": "Product leaders often treat pricing as a go-to-market concern. But outcome-linked pricing requires product capabilities that most MDR platforms lack: normalized outcome measurement and reporting, confidence-scored detection that can underwrite SLA commitments, and modular service architecture that separates base detection from outcome guarantee overlays. Success and outcome-linked fee structures score as the weakest pricing dimension in the market. Until product builds these capabilities, sales has nothing to price against."
+        },
+        {
+          "header": "Roughly two-thirds of vendors are locked into subscription-only models because of product architecture, not commercial preference.",
+          "body": "About 67% of the market operates subscription-only pricing. The root cause is monolithic product architecture: a single detection-and-response pipeline delivered as a flat service. Without product-level decomposition into separately measurable, separately deliverable components, pricing teams cannot create composable or outcome-linked tiers even if they want to. Composable vendors outscore subscription-only providers by roughly 30% on overall pricing maturity."
+        },
+        {
+          "header": "The top pricing leaders all made deliberate product architecture choices that enabled their commercial models.",
+          "body": "The highest-scoring vendors on pricing maturity significantly outpace the market average. Every one of them has (a) a composable or hybrid pricing model, (b) advanced AI influence, and (c) at least one measurable outcome metric exposed to customers. These were product decisions made 12-18 months before the pricing models shipped. Product teams that don't make equivalent architectural investments now will not be able to compete on pricing in 2027-2028."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "Stop treating AI as a feature checkbox and start treating it as a pricing architecture enabler.",
+          "body": "Product roadmaps should tie every AI investment to a specific commercial model capability it unlocks. If an AI feature does not enable a new pricing dimension (usage-based metering, outcome measurement, confidence-scored SLAs, or modular service decomposition), question whether it belongs on the roadmap at all. The pricing gap between AI-mature and AI-minimal vendors is driven by AI that changes what you can sell, not AI that improves what you already deliver for free."
+        },
+        {
+          "header": "Decompose the monolithic detection-and-response pipeline into separately priceable service components.",
+          "body": "The single biggest product architecture blocker to pricing innovation is the flat, bundled MDR service. Product teams should break the pipeline into discrete, measurable components: base detection and alerting, response orchestration, proactive threat hunting, outcome guarantee overlays, and efficiency reporting. Each component needs its own telemetry, its own SLA surface, and its own cost model. Composable vendors consistently outscore subscription-only providers across every pricing dimension."
+        },
+        {
+          "header": "Build outcome measurement into the product, not the dashboard.",
+          "body": "The reason success and outcome fees score as the weakest dimension across the market is that most products cannot measure outcomes in a way that supports commercial commitments. Product teams need to ship normalized detection and response time measurement, risk posture scoring, incident frequency tracking, and coverage breadth metrics as first-class product features with APIs, not as after-the-fact dashboard reports. Pricing cannot commit to outcomes that the product cannot measure and attribute."
+        },
+        {
+          "header": "Replace the SOAR-to-AI migration with an AI-to-pricing pipeline.",
+          "body": "The current dominant product pattern (replace SOAR playbooks with AI orchestration) is a dead end for commercial differentiation. The next product investment should focus on connecting AI capabilities to pricing mechanics: AI workload telemetry that enables usage-based billing, AI detection confidence scores that underwrite response time guarantees, and AI efficiency metrics that support shared-savings pricing. If the AI doesn't change what you charge, it only changes your cost."
+        },
+        {
+          "header": "Set a 12-month product milestone to enable at least one outcome-linked pricing component.",
+          "body": "Based on the progression from minimal to advanced AI influence, and the corresponding jump in pricing maturity, product teams should target shipping the foundational capabilities for one outcome-linked pricing tier within 12 months. A reasonable first target: a response time guarantee with service credits, backed by AI-driven response orchestration and normalized measurement infrastructure. This single capability moves a vendor from the vast majority stuck at minimal outcome adoption into the competitive tier."
+        },
+        {
+          "header": "Establish a quarterly product-pricing alignment review with commercial teams.",
+          "body": "The disconnect between product capability and commercial model is the core reason pricing innovation lags. Product leaders should institute a quarterly review where product roadmap milestones are mapped to specific pricing model changes they enable, pricing team feedback on commercial blockers is fed back into the product backlog, and competitor product-pricing moves are analyzed for architectural patterns to replicate or counter."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "The SOAR-to-AI Swap: Why Product Teams Are Building the Wrong Thing",
+          "body": "The dominant product investment pattern in MDR over the past 18 months is straightforward: replace SOAR-based playbook automation with AI/ML-driven orchestration. Vendors are rewriting triage logic to use machine learning classifiers instead of rule trees, replacing manual investigation workflows with AI-assisted enrichment, and swapping static response playbooks with AI-driven decision engines.\n\nThe problem is not that this work is bad engineering. It often reduces mean time to triage, lowers false positive rates, and improves analyst efficiency. The problem is that none of these improvements show up in the commercial model. The vendor still sells a flat subscription. The customer still pays per-seat or per-endpoint. The AI reduces the vendor's cost of delivery without changing what the customer experiences commercially.\n\nOur data makes this visible. Emerging-tier vendors (those that have shipped AI features but not connected them to pricing) score only marginally higher on pricing maturity than minimal-tier vendors who have no meaningful AI at all. By contrast, vendors at the advanced tier, who built AI in ways that change their commercial model, score a full point higher than the emerging tier.\n\nThe takeaway for product leaders: shipping better AI is not enough. The AI has to change what you can sell."
+        },
+        {
+          "title": "Product Architecture Is the Real Pricing Bottleneck",
+          "body": "When product leaders ask why their pricing team can't offer composable or outcome-linked models, the answer is almost always product architecture. Consider what outcome-based pricing requires:\n\n- **Normalized outcome metrics**: detection time, response time, detection coverage, incident frequency. These need to be measured per-customer, with baselines, trending, and attribution. Most MDR products measure aggregate operational metrics for internal use, not per-customer outcome metrics for commercial use.\n\n- **Modular service boundaries**: To price detection separately from response, or base service separately from outcome guarantees, the product must actually deliver these as separable components with independent SLAs and telemetry.\n\n- **Confidence scoring**: To underwrite a response time guarantee or breach warranty, the product needs to express detection and response confidence in a way that actuaries (or at least finance teams) can model.\n\n- **Usage telemetry**: To offer usage-based pricing components, the product needs metering infrastructure that tracks AI workload volume, incident complexity, and resource consumption at a per-customer level.\n\nRoughly two-thirds of vendors lack these capabilities. Their product delivers MDR as a monolithic pipeline: alerts go in, validated incidents and responses come out. There is no internal boundary where a pricing team could insert a usage meter, an outcome metric, or a modular component boundary. The product architecture dictates subscription-only pricing, regardless of what the commercial team wants.\n\nThe composable-model vendors have invested in product decomposition. Their roughly 30% pricing maturity premium over subscription-only providers is not because their sales team is more creative. It's because their product team gave pricing something to work with."
+        },
+        {
+          "title": "AI Efficiency Gains Are Going to Margin, Not to Product Differentiation",
+          "body": "Product teams are improving operational efficiency with AI and reporting this as a product success. Triage time is down. Analyst-to-incident ratios are up. Cost per incident is falling. These are real improvements.\n\nBut from a product strategy perspective, efficiency gains that go entirely to margin are a wasted competitive asset. Vendors at the advanced AI tier are using AI efficiency data as product features: customer-facing AI workload dashboards, cost-per-incident trending reports, and transparent efficiency metrics that customers can see. These features become the foundation for pricing innovation because they give customers something to pay for (or pay less for) based on AI performance.\n\nUsage-based alignment remains weak across the market. Most products do not expose any AI efficiency data to customers in a way that could support pricing changes. The product team captures the efficiency, finance captures the margin, and the customer sees no difference.\n\nProduct leaders who want to compete on pricing in 2027-2028 need to treat AI efficiency visibility as a product feature on the roadmap, not a back-office operational metric. The vendors who share this data with customers are building trust and commercial leverage that subscription-only competitors cannot match."
+        },
+        {
+          "title": "The 12-Month Product Investment Window",
+          "body": "The gap between the top pricing leaders and the market average is substantial and growing. The product decisions that enabled the leaders' pricing models were made 12-18 months before those models shipped. This means the investment window for mid-market vendors is now.\n\nA realistic 12-month product roadmap for pricing enablement should target four milestones:\n\n**Months 1-3: Outcome measurement infrastructure.** Ship per-customer detection and response time tracking, normalized baselines, and trending. This is the prerequisite for any outcome-linked pricing component and the capability most vendors lack.\n\n**Months 3-6: Service decomposition.** Identify 2-3 modular boundaries in the MDR pipeline (e.g., base detection, response orchestration, threat hunting) and instrument each with independent telemetry and SLA surfaces.\n\n**Months 6-9: AI efficiency exposure.** Build a customer-facing AI workload dashboard that shows AI triage rates, automation percentages, and cost efficiency trends. This becomes the pricing team's tool for usage-based and efficiency-sharing conversations.\n\n**Months 9-12: First outcome-linked capability.** Ship a response time guarantee with service credits (or similar) on at least one tier, backed by the measurement infrastructure from months 1-3 and the AI detection confidence from the existing pipeline.\n\nThis sequence moves a vendor from the vast majority stuck at minimal outcome adoption to a position where outcome-linked pricing is at least available. The product investment is concrete, sequenced, and directly tied to commercial model impact."
+        }
+      ],
+      "background": "The managed detection and response (MDR) market has seen considerable consolidation and commoditization pressure over the past three years. Core detection and response capabilities are table stakes. Pricing is now the primary competitive battleground, and pricing model maturity has become a proxy for product strategy maturity.\n\nThis assessment evaluated MDR service providers across six pricing dimensions: subscription transparency, usage-based alignment, fixed delivery pricing, success and outcome fees, composability and model maturity, and pricing-to-outcomes alignment. Each dimension was scored on a standardized scale.\n\nThe overall market average pricing maturity places the MDR market at \"developing.\" Subscription transparency is the only dimension at a reasonable level of maturity. Every other dimension falls well short, with the two outcome-related dimensions trailing by the widest margin.\n\nThe AI enrichment layer assessed how AI operational maturity influences pricing model sophistication. No vendors have reached the most advanced tier, roughly 20% are at significant maturity, about half sit at an emerging level, and close to 30% remain minimal.\n\nFor product leaders, the key data point is not the overall market average. It is the gap between vendors whose product architecture enables pricing innovation (those at the advanced AI tier) and vendors whose product architecture constrains it (those at minimal). That gap, roughly a full point on a five-point scale, is a product strategy gap, not a sales execution gap.",
+      "impact": "The pricing maturity data has direct implications for product roadmap prioritization, build-vs-buy decisions, and competitive positioning.\n\n**For product teams at subscription-only vendors (roughly two-thirds of the market):** Your product architecture is the binding constraint on commercial model evolution. No amount of sales enablement, pricing consultant engagement, or competitive benchmarking will unlock composable or outcome-linked pricing if the product delivers MDR as a monolithic pipeline. The first roadmap priority should be service decomposition and outcome measurement infrastructure.\n\n**For product teams at emerging-tier vendors (about half the market):** You have shipped AI features that improve operational metrics but do not change the commercial model. The next product investment cycle should focus on connecting AI capabilities to pricing mechanics: usage telemetry, outcome measurement, confidence scoring, and customer-facing efficiency reporting. Otherwise your AI investment is subsidizing margin, not building differentiation.\n\n**For product teams at advanced-tier vendors (roughly 20% of the market):** You have the architectural foundation for pricing innovation. The competitive priority is execution speed. Ship outcome-linked pricing components before the market catches up. First movers on outcome pricing are setting buyer expectations that followers will have to match.\n\n**For platform MDR providers:** Your technology platform investment gives you the telemetry infrastructure for outcome measurement. The product gap is modular service boundaries and customer-facing AI efficiency tools. Platform vendors that close this gap in the next 12 months will own the pricing conversation.\n\n**For pureplay MDR providers:** Without platform-level telemetry or AI at scale, the product investment required for pricing innovation is disproportionately high. Consider build-vs-partner decisions: licensing outcome measurement and AI efficiency tooling from platform vendors may be faster than building it in-house.",
+      "conclusion": "The MDR pricing data tells a product strategy story. The vendors with the highest pricing maturity are not the ones with the best sales teams or the most aggressive discounting. They are the ones whose product teams made architectural decisions 12-18 months ago that enabled commercial model innovation.\n\nThe industry hype cycle around Agentic AI has pushed product teams to ship AI features for their own sake: AI-powered triage, AI-assisted hunting, AI-driven response. These features reduce delivery cost, but the data shows they do not, by themselves, change pricing sophistication. Emerging-tier vendors score only marginally above minimal-tier vendors on pricing maturity, a negligible return on all that AI investment. Advanced-tier vendors show what happens when AI is built with pricing architecture in mind.\n\nProduct leaders should stop asking \"How do we add AI to our MDR product?\" and start asking \"What pricing model does this AI investment enable?\" If the answer is \"none,\" the investment improves your margin but not your market position.\n\nThe roadmap is concrete: decompose the monolithic pipeline, instrument outcome measurement, expose AI efficiency to customers, and ship one outcome-linked pricing component within 12 months. Every quarter of delay is a quarter where competitors with the right architecture are setting buyer expectations you will have to match later, at worse terms, with less differentiation.\n\nProduct architecture determines pricing capability. Pricing capability determines competitive positioning. Competitive positioning determines which vendors survive the next consolidation wave.",
+      "glossary": [
+        {
+          "term": "MDR",
+          "definition": "Managed Detection and Response"
+        },
+        {
+          "term": "SOAR",
+          "definition": "Security Orchestration, Automation, and Response. The playbook-based automation technology that most vendors are replacing with AI/ML-driven orchestration."
+        },
+        {
+          "term": "MTTD",
+          "definition": "Mean Time to Detect. The average time from when a threat enters an environment to when it is identified."
+        },
+        {
+          "term": "MTTR",
+          "definition": "Mean Time to Respond. The average time from threat detection to containment and initial remediation."
+        },
+        {
+          "term": "SLA",
+          "definition": "Service Level Agreement"
+        },
+        {
+          "term": "SOC",
+          "definition": "Security Operations Center"
+        },
+        {
+          "term": "AI/ML",
+          "definition": "Artificial Intelligence / Machine Learning"
+        },
+        {
+          "term": "IR",
+          "definition": "Incident Response"
+        },
+        {
+          "term": "CPO",
+          "definition": "Chief Product Officer"
+        }
+      ],
+      "evidence": [
+        "Gartner MDR Services Vendor Pricing Assessment, 2025-2026 (broad market assessment across six pricing dimensions with AI enrichment overlay)",
+        "Gartner MDR Services Vendor Pricing AI Enriched dataset (proprietary, generated through systematic vendor documentation review and scoring methodology)",
+        "Gartner client inquiry trends on MDR pricing transparency and outcome-aligned purchasing (2024-2025)",
+        "Market observation of AI-driven efficiency improvements in vendor-reported operational metrics across detection, triage, and response functions"
+      ]
+    },
+    {
+      "id": "buyer-facing-general-condensed",
+      "label": "Buyer / General (Smart Brevity)",
+      "title": "Market Insight: AI Is Reshaping MDR Pricing, but Most Vendors Aren't Ready",
+      "summary": "AI is reshaping MDR cost structures, but most providers have not adapted their pricing models. Outcome-based pricing remains underadopted despite clear buyer demand for measurable results. The market sits in early-stage pricing maturity, with outcome-linked fees nearly absent.",
+      "spa": "By 2028, 40% of MDR contracts will include at least one outcome-linked pricing component tied to measurable security improvements, up from less than 5% today. Vendors that fail to develop outcome-based commercial models by 2027 face a structural competitive disadvantage.",
+      "findings": [
+        {
+          "header": "Outcome-based pricing adoption is negligible across the MDR market.",
+          "body": "Success and outcome-linked fee structures scored as the weakest pricing dimension by a wide margin. Close to 90% of providers have made little to no progress toward tying commercial terms to measurable client outcomes. The typical vendor offers no outcome-linked pricing mechanism whatsoever."
+        },
+        {
+          "header": "AI-mature vendors demonstrate measurably higher pricing sophistication.",
+          "body": "Vendors with advanced AI pricing influence consistently outperform their less mature counterparts across every pricing dimension. The gap between the most AI-mature providers and those with minimal influence is roughly a full point on a five-point scale. This separation holds across subscription transparency, usage alignment, composability, and outcome-linked pricing alike."
+        },
+        {
+          "header": "The market misunderstands outcome-based pricing.",
+          "body": "Most vendors equate \"outcomes\" with SLA uptime guarantees or breach notification speeds. True outcome-based pricing ties commercial terms to measurable security improvements: detection and response time reduction, quantifiable risk posture gains, or incident frequency reduction commitments backed by financial mechanisms such as breach warranties or performance-based fee adjustments."
+        },
+        {
+          "header": "Composable pricing is a prerequisite for outcome-based evolution; two-thirds of vendors remain subscription-only.",
+          "body": "About two-thirds of providers still operate pure subscription models, and their outcome-linked pricing adoption is roughly half that of composable-model vendors. Outcome-based pricing requires modularity that subscription-only models cannot support. Vendors with composable models consistently outscore their subscription-only counterparts across every pricing dimension."
+        },
+        {
+          "header": "AI is creating an efficiency dividend that vendors capture rather than share with buyers.",
+          "body": "AI-driven automation is reducing per-incident detection and response costs, but vendors improve margins without passing gains to clients. Usage-based alignment remains one of the weaker pricing dimensions, meaning buyers have no visibility into how AI efficiency improvements affect their service cost."
+        },
+        {
+          "header": "The pricing maturity gap between leaders and laggards is widening, driven by AI adoption differences.",
+          "body": "Top-tier vendors by pricing maturity outpace the market average by more than a full point on a five-point scale. These leaders uniformly show higher AI influence, composable pricing models, and at least nascent outcome-linked terms. This gap will widen as AI-first vendors fund outcome guarantees that subscription-only providers cannot match."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "Redefine outcome-based pricing in concrete, measurable terms.",
+          "body": "Move beyond SLA guarantees. Establish commercial structures tied to quantifiable security outcomes: detection and response time improvement commitments, coverage expansion metrics, incident frequency reduction targets, and risk score improvements, backed by breach warranties, performance credits, or shared-savings arrangements. Start with one outcome metric tied to a fee adjustment and expand."
+        },
+        {
+          "header": "Build an AI efficiency-sharing pricing layer.",
+          "body": "Establish transparent mechanisms (efficiency dashboards, cost-per-incident trending, AI utilization reporting) showing buyers how automation reduces delivery costs. Tie at least a portion of pricing to efficiency metrics through consumption-based components or graduated discount structures. Vendors that share the AI dividend early will secure longer contracts and higher retention."
+        },
+        {
+          "header": "Transition from subscription-only to composable pricing architectures.",
+          "body": "Decompose monolithic subscription tiers into modular components (base detection, response orchestration, threat hunting, incident retainer, outcome guarantees) that buyers assemble by risk profile. Composable vendors consistently outscore subscription-only providers across all pricing dimensions, with an even wider gap on outcome-linked pricing."
+        },
+        {
+          "header": "Invest in AI pricing-influence capabilities as a direct commercial differentiator.",
+          "body": "The pricing sophistication gap between AI-mature and AI-minimal vendors is the single strongest predictor of overall pricing model maturity. Treat AI investment as the enabler of commercial model innovation: usage-based billing from AI workload telemetry, outcome guarantees underwritten by AI-validated detection confidence."
+        },
+        {
+          "header": "Develop a phased roadmap from transparency to outcomes, anchored to AI maturity.",
+          "body": "Most vendors cannot leap from subscription-only to full outcome-based pricing. Follow a clear sequence: (1) publish transparent pricing and tier definitions, (2) introduce usage-aligned components tied to data volume or endpoint count, (3) add composable modules, (4) introduce limited outcome commitments (e.g., response time guarantees with service credits), (5) implement full risk-sharing or performance-linked fees. Each stage unlocked by corresponding AI maturity."
+        },
+        {
+          "header": "Establish competitive pricing intelligence as a standing practice.",
+          "body": "With a substantial spread between top-tier and market-average pricing maturity, and AI accelerating the divergence, vendors without structured pricing benchmarking lack visibility. Institute quarterly pricing assessments benchmarking each dimension against the market, tracking competitor evolution velocity, and identifying AI capabilities driving commercial changes in leaders."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "What Outcome-Based Pricing Actually Means, and Why the Market Gets It Wrong",
+          "body": "\"Outcome-based pricing\" has become an MDR marketing fixture. Vendors cite SLA response times or uptime guarantees as evidence of outcome alignment. This misrepresents the concept.\n\nTrue outcome-based pricing creates a direct financial link between what the buyer pays and the measurable security outcomes delivered. Commercial terms adjust based on metrics that matter: threat detection and containment speed, whether the attack surface is shrinking, incident frequency and severity trends, and cost of security per unit of business value.\n\nPractical forms include:\n\n- **Breach warranties**: Financial guarantees that pay out if a covered breach occurs, underwritten by vendor detection and response confidence.\n- **Performance-linked fee adjustments**: Pricing that flexes based on achieved detection and response time improvements against defined baselines.\n- **Risk-score-tied subscriptions**: Pricing linked to independently measured risk posture, where improvement reduces the fee.\n- **Shared savings models**: Fees tied to demonstrated cost avoidance or efficiency improvements.\n- **Incident severity caps**: Terms capping buyer financial exposure for incidents above a defined severity threshold.\n\nSuccess and outcome-linked fees scored as the weakest pricing dimension by a wide margin, nearly half the score of subscription transparency. The typical vendor has no outcome-linked mechanism at all. Even the top performers on this dimension barely reach the midpoint of the scale. The few vendors scoring well are large consultancies with composable models, not pureplay MDR providers."
+        },
+        {
+          "title": "Why Outcome-Based Pricing Adoption Lags",
+          "body": "Several structural factors explain sluggish adoption despite buyer demand:\n\n**1. No measurement infrastructure.** Most MDR providers lack the telemetry, benchmarking, and reporting to measure and attribute outcomes rigorously enough for commercial commitments. Without normalized detection time, response time, incident frequency, or coverage baselines, outcome commitments cannot be quantified.\n\n**2. Revenue predictability addiction.** Subscription models provide smooth, predictable revenue rewarded by investors. Outcome components introduce variability that finance teams resist. Roughly two-thirds of vendors remain subscription-only, consistently underperforming composable vendors on pricing maturity.\n\n**3. Insufficient AI capability to underwrite guarantees.** A vendor cannot offer breach warranties or response time guarantees without AI-driven capabilities to consistently deliver. Vendors with advanced AI influence score meaningfully higher on outcome-linked pricing than those at the minimal tier. AI maturity is the prerequisite.\n\n**4. Misaligned organizational incentives.** Pricing decisions are often owned by finance or product management teams optimizing for margin protection, not by security operations teams that understand achievable outcomes.\n\n**5. Fear of accountability.** Outcome-linked pricing makes vendor performance transparent with real consequences. Many vendors prefer the opacity of flat-rate subscriptions where poor performance is masked.\n\n**6. Legacy contract structures.** Multi-year subscription contracts create inertia. Migration requires renegotiating hundreds of contracts, retraining sales, and rebuilding billing systems."
+        },
+        {
+          "title": "AI Is Changing the Cost Equation, but Buyers Aren't Seeing It",
+          "body": "Agentic AI is sharply reducing per-incident MDR delivery costs. Automated triage, AI-accelerated threat hunting, machine-driven response playbooks, and predictive detection enable more volume with fewer analysts. This should create a natural transition toward efficiency-sharing or outcome-aligned pricing.\n\nInstead, most vendors capture the AI efficiency dividend as margin improvement. Usage-based alignment remains one of the weaker dimensions; most vendors have no mechanism for buyers to see or benefit from AI-driven cost reductions. The buyer pays the same subscription whether incidents are handled by a senior analyst spending hours on manual investigation or an AI agent resolving the same alert in minutes.\n\nThis will not hold. As buyers learn about AI capabilities and costs, they will demand transparency. Vendors with advanced AI influence are building this through AI workload dashboards, cost-per-incident reporting, and graduated tiers reflecting AI utilization. They are not more generous; they are more strategic. Sharing the efficiency dividend early builds competitive advantage rooted in trust and demonstrable value that subscription-only providers cannot replicate."
+        },
+        {
+          "title": "The Composable Model Imperative",
+          "body": "The data reveals a clear structural prerequisite for pricing evolution: composability. Vendors with composable pricing models consistently outscore subscription-only providers across every pricing dimension. The gap is widest on outcome-linked pricing, where composable vendors score nearly double their subscription-only counterparts.\n\nOutcome-based pricing cannot be bolted onto a flat-rate subscription. It requires architectural flexibility to price different service layers differently: a base detection fee, a response orchestration component, an outcome guarantee overlay, a shared-savings mechanism. Each layer has distinct cost drivers, risk profiles, and measurement requirements.\n\nRoughly a third of vendors have adopted composable models and are positioned to add outcome-linked components over time. The two-thirds still operating subscription-only face a structural rebuild before outcomes can even be priced. As AI continues reshaping MDR delivery, this divide will widen into a lasting competitive gap."
+        }
+      ],
+      "background": "The MDR market has experienced significant consolidation and commoditization pressure over the past three years. As core detection and response capabilities have become table stakes, pricing has emerged as a primary competitive battleground.\n\nThis assessment evaluated MDR service providers across six pricing dimensions: subscription transparency, usage-based alignment, fixed delivery pricing, success and outcome fees, composability and model maturity, and pricing-to-outcomes alignment. The market average places MDR in the \"developing\" stage. Subscription transparency leads as the most mature dimension. Every other dimension falls well below the midpoint, with outcome dimensions trailing significantly.\n\nThe AI enrichment layer reveals that no vendor reaches the most advanced tier. Roughly a fifth show significant AI pricing influence, about half sit at the emerging level, and the remainder show minimal influence. The industry has not translated AI investment into commercial model innovation at scale.",
+      "impact": "**For MDR vendors,** inability to deliver outcome-based pricing will become a serious competitive problem within two to three years. As AI-first vendors fund outcome guarantees (breach warranties, response time commitments, risk-score-linked pricing), providers that cannot match will compete solely on price and feature lists, a losing position in a commoditizing market. The gap between AI-mature and AI-minimal vendors is already visible in win rates and retention.\n\n**For buyers,** slow outcome-pricing adoption means they bear full risk of poor vendor performance. Subscription-only contracts carry no financial consequence for failed detection, slow response, or inconsistent coverage. Actively seek vendors willing to commit commercial terms to measurable outcomes; a vendor's refusal signals confidence concerns.\n\n**For the broader cybersecurity services market,** MDR pricing evolution is a leading indicator. As AI transforms cost structures across managed security services, outcome-aligned pricing pressure will extend to SOC-as-a-Service, vulnerability management, and security consulting.\n\nPlatform MDR providers are best positioned to lead. Their platform investments provide outcome measurement telemetry, and their AI adoption creates the efficiency surplus for outcome guarantees. IR-enhanced providers have the highest pricing maturity but may be constrained by scale. Pureplay providers face the greatest challenge without AI capability to underwrite outcome commitments or platform telemetry to measure them.",
+      "conclusion": "The MDR pricing picture shows a market in transition that has not arrived. Subscription transparency is reasonably mature, but outcome-based pricing is essentially absent. The vast majority of vendors show little to no adoption of outcome-linked fee structures; the market has barely started.\n\nAI adoption is the single most predictive variable in pricing sophistication. The gap between AI-mature and AI-minimal vendors, and wider divergence on outcome dimensions, confirm that AI capability enables pricing innovation. Vendors cannot credibly commit to outcome-based pricing without AI-driven detection, response, and measurement capabilities.\n\nThree parallel investments are required: AI capability maturity (to underwrite outcome guarantees), pricing architecture modernization (subscription-only to composable), and measurement infrastructure (transparent, trust-based outcome metrics). Treating pricing evolution as a finance exercise rather than capability development will leave vendors unable to compete.\n\nProduct leaders should not wait for buyer pressure. Vendors that establish outcome-linked terms while competitors remain subscription-only will set the standard and make it harder for followers to catch up.",
+      "glossary": [
+        {
+          "term": "MDR",
+          "definition": "Managed Detection and Response"
+        },
+        {
+          "term": "MTTD",
+          "definition": "Mean Time to Detect. The average time from when a threat enters an environment to when it is identified."
+        },
+        {
+          "term": "MTTR",
+          "definition": "Mean Time to Respond. The average time from threat detection to containment and initial remediation."
+        },
+        {
+          "term": "SLA",
+          "definition": "Service Level Agreement"
+        },
+        {
+          "term": "SOC",
+          "definition": "Security Operations Center"
+        },
+        {
+          "term": "AI/ML",
+          "definition": "Artificial Intelligence / Machine Learning"
+        },
+        {
+          "term": "IR",
+          "definition": "Incident Response"
+        }
+      ],
+      "evidence": [
+        "Gartner MDR Services Vendor Pricing Assessment, 2025-2026 (broad market assessment across six pricing dimensions with AI enrichment overlay)",
+        "Gartner MDR Services Vendor Pricing AI Enriched dataset (proprietary, generated through systematic vendor documentation review and scoring methodology)",
+        "Gartner client inquiry trends on MDR pricing transparency and outcome-aligned purchasing (2024-2025)",
+        "Market observation of AI-driven efficiency improvements in vendor-reported operational metrics across detection, triage, and response functions"
+      ]
+    },
+    {
+      "id": "cpo-product-strategy-general-condensed",
+      "label": "CPO / General (Smart Brevity)",
+      "title": "MDR Pricing Won't Be Revolutionized by Agentic AI",
+      "summary": "Hype is pushing product teams to ship AI features that do not change what customers pay. Replacing SOAR with AI dominates the MDR space but creates an illusion of value without commercial differentiation. Product architecture, not sales strategy, is the primary barrier to pricing innovation.",
+      "spa": "By 2028, fewer than 15% of MDR providers will have shipped a pricing model where AI-driven capabilities directly change what the customer pays, despite over 80% claiming AI integration. Product teams that confuse AI feature presence with AI pricing influence will lose share to vendors whose roadmaps connect AI investment to measurable commercial differentiation.",
+      "findings": [
+        {
+          "header": "Product teams are shipping AI features that do not move the pricing needle.",
+          "body": "No MDR vendor has reached the most advanced tier of AI pricing influence, and roughly half sit at an emerging level where AI features exist but have not translated into pricing model changes. Product investment in AI is high; product impact on commercial models is near zero."
+        },
+        {
+          "header": "SOAR-to-AI relabeling is the dominant product pattern, and it is not working.",
+          "body": "Most product teams are replacing SOAR playbook automation with AI/ML-driven triage and response orchestration. Vendors at the emerging tier (doing exactly this) score only marginally above vendors with no meaningful AI at all. Swapping SOAR for AI without changing the commercial model produces the same subscription pricing at the same margins."
+        },
+        {
+          "header": "The gap between AI tiers is a product strategy signal.",
+          "body": "Vendors with advanced AI influence consistently score roughly a full point higher on pricing maturity than those with minimal AI. The gap exists because advanced-tier vendors built AI in ways that change what they sell: usage-based billing on AI workload volume, outcome guarantees underwritten by detection confidence, composable modules enabled by AI-driven service decomposition. Product decisions drove commercial differentiation."
+        },
+        {
+          "header": "Outcome-based pricing is a product capability gap, not a sales problem.",
+          "body": "Outcome-linked pricing requires product capabilities most MDR platforms lack: normalized outcome measurement, confidence-scored detection underwriting SLA commitments, and modular architecture separating base detection from outcome guarantee overlays. Until product builds these, sales has nothing to price against."
+        },
+        {
+          "header": "Two-thirds of vendors are locked into subscription-only models because of product architecture.",
+          "body": "About two-thirds of the market operates subscription-only pricing. The root cause is monolithic architecture: a single detection-and-response pipeline delivered as a flat service. Without product-level decomposition into separately measurable, separately deliverable components, pricing teams cannot create composable or outcome-linked tiers. Composable vendors consistently outscore subscription-only providers."
+        },
+        {
+          "header": "Top pricing leaders all made deliberate product architecture choices enabling their commercial models.",
+          "body": "The highest-scoring vendors on pricing maturity significantly outpace the market average. Every one has (a) composable or hybrid pricing, (b) advanced AI influence, and (c) at least one measurable outcome metric exposed to customers. These were product decisions made 12-18 months before pricing models shipped. Product teams not making equivalent investments now will not compete on pricing in 2027-2028."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "Treat AI as a pricing architecture enabler, not a feature checkbox.",
+          "body": "Tie every AI investment to a specific commercial model capability it unlocks. If an AI feature does not enable a new pricing dimension (usage-based metering, outcome measurement, confidence-scored SLAs, modular service decomposition), question whether it belongs on the roadmap. The gap between tiers is driven by AI that changes what you sell, not AI that improves what you deliver for free."
+        },
+        {
+          "header": "Decompose the monolithic pipeline into separately priceable service components.",
+          "body": "The single biggest architecture blocker to pricing innovation is the flat, bundled MDR service. Break the pipeline into discrete, measurable components: base detection and alerting, response orchestration, proactive threat hunting, outcome guarantee overlays, efficiency reporting. Each needs its own telemetry, SLA surface, and cost model. Composable vendors consistently outscore subscription-only providers across all pricing dimensions."
+        },
+        {
+          "header": "Build outcome measurement into the product, not the dashboard.",
+          "body": "Success and outcome fees score as the weakest dimension because most products cannot measure outcomes in ways supporting commercial commitments. Ship normalized detection and response time measurement, risk posture scoring, incident frequency tracking, and coverage breadth metrics as first-class product features with APIs, not after-the-fact dashboard reports. Pricing cannot commit to outcomes the product cannot measure."
+        },
+        {
+          "header": "Replace the SOAR-to-AI migration with an AI-to-pricing pipeline.",
+          "body": "The dominant pattern (replace SOAR playbooks with AI orchestration) is a dead end for commercial differentiation. Focus investment on connecting AI to pricing mechanics: AI workload telemetry enabling usage-based billing, detection confidence scores underwriting response time guarantees, efficiency metrics supporting shared-savings pricing. If the AI does not change what you charge, it only changes your cost."
+        },
+        {
+          "header": "Set a 12-month milestone to enable at least one outcome-linked pricing component.",
+          "body": "The progression from minimal to advanced AI influence shows a corresponding jump in pricing maturity that demonstrates what is possible. Target shipping foundational capabilities for one outcome-linked tier within 12 months. Reasonable first target: a response time guarantee with service credits, backed by AI-driven response orchestration and normalized measurement. This single capability moves a vendor out of the large majority stuck at the lowest tier of outcome pricing into the competitive tier."
+        },
+        {
+          "header": "Establish quarterly product-pricing alignment reviews with commercial teams.",
+          "body": "The disconnect between product capability and commercial model is why pricing innovation lags. Institute a quarterly review mapping product milestones to pricing model changes they enable, feeding pricing team blockers back into the product backlog, and analyzing competitor product-pricing moves for architectural patterns to replicate or counter."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "The SOAR-to-AI Swap: Why Product Teams Are Building the Wrong Thing",
+          "body": "The dominant MDR product investment over the past 18 months: replace SOAR-based playbook automation with AI/ML-driven orchestration. Vendors rewrite triage logic to use ML classifiers, replace manual investigation with AI-assisted enrichment, and swap static playbooks with AI decision engines.\n\nThe engineering is often sound, reducing triage time, lowering false positive rates, and improving analyst efficiency. The problem: none of these improvements appear in the commercial model. The vendor still sells a flat subscription. The customer still pays per-seat or per-endpoint. AI reduces the vendor's delivery cost without changing the customer's commercial experience.\n\nThe data confirms this. Emerging-tier vendors (AI features shipped but not connected to pricing) score only marginally above minimal-tier vendors (no meaningful AI in pricing). The advanced-tier vendors, who built AI in ways changing their commercial model, outperform emerging by a wide margin.\n\nShipping better AI is not enough. The AI has to change what you can sell."
+        },
+        {
+          "title": "Product Architecture Is the Real Pricing Bottleneck",
+          "body": "When product leaders ask why pricing cannot offer composable or outcome-linked models, the answer is almost always product architecture. Outcome-based pricing requires:\n\n- **Normalized outcome metrics**: Detection time, response time, detection coverage, incident frequency, measured per-customer with baselines, trending, and attribution. Most products measure aggregate operational metrics for internal use, not per-customer outcome metrics for commercial use.\n\n- **Modular service boundaries**: To price detection separately from response, or base service from outcome guarantees, the product must deliver these as separable components with independent SLAs and telemetry.\n\n- **Confidence scoring**: To underwrite response time guarantees or breach warranties, the product needs detection and response confidence expressed in a way finance teams can model.\n\n- **Usage telemetry**: Per-customer metering of AI workload volume, incident complexity, and resource consumption.\n\nThe majority of vendors lack these capabilities. Their product delivers MDR as a monolithic pipeline: alerts in, incidents and responses out. No internal boundary exists where a pricing team could insert a usage meter, outcome metric, or component boundary. Architecture dictates subscription-only pricing.\n\nThe composable-model vendors invested in decomposition. Their pricing premium over subscription-only comes from product giving pricing something to work with."
+        },
+        {
+          "title": "What the Top Pricing Leaders Did Differently, a Product Perspective",
+          "body": "The top vendors by pricing maturity share common product architecture patterns that directly enabled their commercial models:\n\n**Modular telemetry from day one.** They built metering and measurement as product infrastructure, not reporting afterthoughts. Per-customer outcome tracking, AI utilization metrics, and detection confidence scoring are product features with APIs, not dashboard widgets.\n\n**Deliberate service decomposition.** They separated their pipeline into independently deliverable, independently measurable components. This was a product architecture decision, not a pricing team request.\n\n**AI capability mapped to commercial enablement.** Their AI roadmaps included specific pricing model milestones: \"this detection confidence threshold enables this SLA tier\" or \"this automation level enables this consumption-based component.\"\n\n**Outcome measurement as product truth.** They automated outcome baselining, trending, and attribution, then exposed these as customer-facing metrics. When pricing offered response time guarantees, the product already measured response time per-customer with statistical rigor.\n\nThese decisions were made 12-18 months before the pricing models shipped. Product leaders replicate this by embedding pricing-enablement milestones in product roadmaps now, not after the pricing team asks."
+        },
+        {
+          "title": "The AI-to-Pricing Pipeline: A Product Roadmap Framework",
+          "body": "Product teams need a structured framework for connecting AI capabilities to commercial model outcomes:\n\n**Stage 1: AI-Enhanced Operations (current state for most).** AI improves internal efficiency (triage speed, false positive reduction, analyst productivity). Pricing impact: none. The customer sees no commercial change.\n\n**Stage 2: AI-Enabled Telemetry.** AI generates per-customer measurement infrastructure: workload volume tracking, detection confidence scoring, outcome baselining. Pricing impact: enables usage-based components and transparent efficiency reporting.\n\n**Stage 3: AI-Driven Service Decomposition.** AI capabilities mature enough to deliver separable service tiers: automated detection and alerting, AI-assisted investigation, human-validated response, proactive threat hunting. Pricing impact: enables composable pricing with independently priced modules.\n\n**Stage 4: AI-Underwritten Outcome Guarantees.** AI detection and response confidence is high enough and measurable enough to underwrite commercial commitments: response time guarantees, detection coverage commitments, risk score improvement targets. Pricing impact: enables outcome-linked pricing components with financial mechanisms.\n\n**Stage 5: AI-Native Commercial Model.** The full pricing model is architecturally dependent on AI capabilities: dynamic pricing based on real-time risk assessment, automated outcome measurement triggering pricing adjustments, AI-driven service optimization affecting what the customer pays. Pricing impact: transformative, creating a commercial model competitors cannot replicate without equivalent AI capability.\n\nNo vendor has reached Stage 5. A small group operates between Stages 2-3. About half remain at Stage 1. The rest sit below Stage 1. The product roadmap question: what will it take to move one stage in 12 months?"
+        }
+      ],
+      "background": "The MDR market has consolidated significantly over three years, with core detection and response capabilities becoming table stakes. Pricing has emerged as a primary competitive battleground and vendor positioning indicator.\n\nThis assessment evaluated MDR providers across six pricing dimensions. The market average places MDR in the \"developing\" stage. Subscription transparency leads as the most mature dimension; every other dimension falls below the midpoint, with outcome dimensions trailing significantly.\n\nThe AI enrichment layer confirms that no vendor reaches the most advanced tier. Roughly a fifth show significant influence, about half sit at the emerging level, and the rest are minimal. The industry has not translated AI investment into commercial model innovation at scale.",
+      "impact": "**For MDR vendors,** inability to deliver outcome-based pricing becomes a serious competitive problem within two to three years. As AI-first vendors fund outcome guarantees, providers that cannot match will compete solely on price and feature lists.\n\n**For product leaders specifically,** the implication is direct: pricing innovation is blocked by product architecture, not commercial strategy. The top pricing leaders built measurement infrastructure, modular service boundaries, and AI-to-pricing pipelines into their product 12-18 months before shipping competitive pricing models. Product teams that treat pricing model support as a finance or sales concern will find their commercial teams unable to compete.\n\n**For the market,** MDR pricing evolution is a leading indicator. As AI transforms cost structures across managed security services, outcome-aligned pricing pressure will extend to SOC-as-a-Service, vulnerability management, and security consulting.\n\nPlatform providers are best positioned. IR-enhanced providers have the highest pricing maturity but are constrained by scale. Pureplay providers face the greatest challenge without AI capability or platform telemetry for outcome commitments.",
+      "conclusion": "MDR pricing is in transition but has not arrived. Subscription transparency is mature; outcome-based pricing is essentially absent. The vast majority of vendors show little to no adoption of outcome-linked fee structures.\n\nAI adoption is the single most predictive variable. The gap between AI-mature and AI-minimal vendors, and wider divergence on outcome dimensions, confirm that AI capability enables pricing innovation. For product leaders, the critical realization is that this is a product problem: AI maturity, modular architecture, and measurement infrastructure must be built at the product level before commercial teams can act.\n\nThree parallel product investments are required: AI capability maturity (to underwrite outcome guarantees), service architecture decomposition (from monolithic to composable), and measurement infrastructure (per-customer, API-accessible outcome metrics). Treating pricing evolution as a finance exercise rather than a product capability priority will leave vendors unable to compete.\n\nProduct leaders should act now. The 12-18 month lag between product architecture decisions and commercial model capability means investments made today determine competitiveness in 2027-2028.",
+      "glossary": [
+        {
+          "term": "MDR",
+          "definition": "Managed Detection and Response"
+        },
+        {
+          "term": "SOAR",
+          "definition": "Security Orchestration, Automation, and Response. The playbook-based automation technology that most vendors are replacing with AI/ML-driven orchestration."
+        },
+        {
+          "term": "MTTD",
+          "definition": "Mean Time to Detect. The average time from when a threat enters an environment to when it is identified."
+        },
+        {
+          "term": "MTTR",
+          "definition": "Mean Time to Respond. The average time from threat detection to containment and initial remediation."
+        },
+        {
+          "term": "SLA",
+          "definition": "Service Level Agreement"
+        },
+        {
+          "term": "SOC",
+          "definition": "Security Operations Center"
+        },
+        {
+          "term": "AI/ML",
+          "definition": "Artificial Intelligence / Machine Learning"
+        },
+        {
+          "term": "IR",
+          "definition": "Incident Response"
+        },
+        {
+          "term": "CPO",
+          "definition": "Chief Product Officer"
+        }
+      ],
+      "evidence": [
+        "Gartner MDR Services Vendor Pricing Assessment, 2025-2026 (broad market assessment across six pricing dimensions with AI enrichment overlay)",
+        "Gartner MDR Services Vendor Pricing AI Enriched dataset (proprietary, generated through systematic vendor documentation review and scoring methodology)",
+        "Gartner client inquiry trends on MDR pricing transparency and outcome-aligned purchasing (2024-2025)",
+        "Market observation of AI-driven efficiency improvements in vendor-reported operational metrics across detection, triage, and response functions"
+      ]
+    },
+    {
+      "id": "cpo-outcome-metrics",
+      "label": "CPO / Outcome Metrics Deep Dive",
+      "title": "Market Insight: MDR Vendors Cannot Price Outcomes They Cannot Measure — AI Changes That",
+      "summary": "84% of MDR vendors score ≤2 on outcome maturity. The barrier is not commercial will but measurement infrastructure. AI enables six metric categories that make outcome-based pricing viable for the first time.",
+      "spa": "By 2028, MDR vendors that deploy AI-powered outcome measurement platforms covering at least four of six metric categories (speed, autonomy, coverage, quality, resource, and impact) will capture 60% of new outcome-linked contract value. Vendors without normalized, per-customer AI-generated outcome metrics by 2027 will be structurally unable to compete on outcome-based commercial terms.",
+      "findings": [
+        {
+          "header": "F1: The outcome metrics gap is the binding constraint — vendors cannot price what they cannot measure.",
+          "body": "Of 98 MDR vendors assessed, 82 (84%) score at outcome maturity level 2 or below. Only 2 vendors reach level 4 (Accenture Security, Deloitte Cyber — both large consultancies, not pureplay MDR). Zero vendors reach level 5 (Outcome-Native). The PRC-SUC dimension averages 2.25/5.0 and PRC-OUT averages 2.42/5.0, but these scores are not limited by commercial reluctance. They are limited by the absence of measurement infrastructure. Vendors report willingness to explore outcome-based pricing in client conversations but lack the per-customer, normalized, attribution-capable metrics required to underwrite outcome commitments. The measurement gap is the root cause."
+        },
+        {
+          "header": "F2: AI creates six outcome metric categories that were previously unmeasurable at commercial-grade fidelity.",
+          "body": "The MDR schema defines six ROI measurement categories: Speed (MTTD/MTTR reduction), Autonomy (% incidents resolved without human intervention), Coverage (telemetry source expansion), Quality (false positive rate trend, hallucination incidents), Resource (analyst time freed), and Impact (damage prevention, regulatory penalty avoidance). Before AI, measuring these at per-customer granularity with enough rigor to back commercial commitments was impractical. AI-driven detection pipelines, automated triage, and machine-generated attribution now make it feasible to produce these metrics continuously, per-customer, with baselines and trending. This is the structural change that makes outcome-based pricing viable."
+        },
+        {
+          "header": "F3: Speed metrics (MTTD/MTTR) are the most mature but least differentiating outcome category.",
+          "body": "MTTD and MTTR are the metrics most commonly cited in vendor marketing and buyer RFPs. Among the 16 vendors at outcome maturity ≥3, all 16 publish some form of MTTD/MTTR data. However, speed metrics alone do not differentiate: they are easily gamed (by narrowing detection scope to reduce MTTD) and tell buyers nothing about coverage breadth, risk reduction, or business impact. Vendors building outcome pricing exclusively around speed are optimizing for the metric buyers already expect rather than the metrics that drive retention and expansion. Speed is necessary but not sufficient."
+        },
+        {
+          "header": "F4: Autonomy metrics — AI resolution without human intervention — are the highest-value differentiator but the least measured.",
+          "body": "The percentage of incidents fully resolved by AI without human analyst involvement is the metric most directly tied to AI's commercial value proposition: it quantifies the efficiency dividend buyers should share. Yet fewer than 10 of 98 vendors publish autonomy rates at the per-customer level. Significant-tier AI vendors (19 providers, avg outcome maturity 2.58) are beginning to track this internally, but even they rarely expose it commercially. Autonomy metrics are the most powerful lever for outcome-based pricing because they make AI's value visible and attributable — the prerequisite for tying price to performance."
+        },
+        {
+          "header": "F5: Quality and coverage metrics are ignored despite being the outcomes buyers value most after a breach.",
+          "body": "Post-breach client inquiries consistently prioritize two questions: Was the threat in scope (coverage)? Was the alert prioritized correctly (quality)? Yet coverage breadth (telemetry sources monitored, attack surface mapped) and quality trends (false positive rate, alert fidelity, detection confidence scoring) are the least developed metric categories across the MDR market. Only composable-model vendors (27 providers, avg outcome maturity 2.44) show meaningful investment in coverage and quality reporting. Subscription-only vendors (65 providers, avg outcome maturity 1.52) treat coverage as a static capability description rather than a measurable, improvable outcome."
+        },
+        {
+          "header": "F6: AI maturity is the strongest predictor of outcome measurement capability — the gap is 1.47 points between tiers.",
+          "body": "Vendors at the Significant AI tier average outcome maturity of 2.58 versus 1.11 for Minimal-tier vendors — a 1.47-point gap on a 5-point scale. This is not coincidental. AI-mature vendors have the infrastructure to generate outcome metrics: their detection pipelines produce confidence scores, their response engines track resolution paths, their platforms measure per-customer telemetry coverage, and their automation tracks human-vs-machine attribution. Minimal-tier vendors lack every one of these capabilities. The implication is direct: investing in AI operational maturity is investing in outcome measurement capability, which is investing in the ability to price on outcomes."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "R1: Build an AI-powered outcome measurement platform as a first-class product feature, not a reporting afterthought. [Responds to F1, F2]",
+          "body": "The measurement infrastructure gap (F1) cannot be closed with better dashboards bolted onto existing products. Product teams must build a dedicated outcome measurement layer that ingests data from the detection and response pipeline and produces per-customer, normalized metrics across all six ROI categories identified in F2. This layer needs: (a) per-customer baselines established within 30 days of onboarding, (b) continuous metric computation with weekly and monthly trending, (c) attribution logic that separates AI-driven outcomes from analyst-driven outcomes, (d) API-accessible metrics that commercial teams can reference in contract terms. The two vendors at outcome maturity 4 (Accenture, Deloitte) both built dedicated measurement platforms rather than extending their operational dashboards. This is a product investment, not a BI project."
+        },
+        {
+          "header": "R2: Sequence metric deployment starting with speed, then autonomy, then coverage and quality. [Responds to F3, F4, F5]",
+          "body": "While speed metrics alone do not differentiate (F3), they are the most tractable starting point because the raw data (detection and response timestamps) already exists in most MDR pipelines. The deployment sequence should be: Phase 1 (months 1-3): Normalize MTTD/MTTR per-customer with baselines and trending — this enables the first outcome-linked pricing component (e.g., MTTR guarantee with service credits). Phase 2 (months 3-6): Deploy autonomy metrics tracking AI-vs-human resolution attribution per customer — this makes the AI efficiency dividend visible and priceable (F4). Phase 3 (months 6-12): Instrument coverage breadth scoring (telemetry sources, attack surface mapped) and quality trending (false positive rates, detection confidence) — these are the metrics buyers value most post-breach (F5) and the hardest for competitors to replicate."
+        },
+        {
+          "header": "R3: Develop composite outcome indices that combine multiple metric categories into commercially actionable scores. [Responds to F1, F3, F5]",
+          "body": "Individual metrics (MTTD, autonomy rate, false positive ratio) are necessary for transparency but insufficient for commercial structures. Vendors should develop composite outcome indices that combine metrics into a single score buyers and vendors can contract against. Examples: (a) a Detection Efficacy Index combining MTTD, false positive rate, and detection confidence, (b) a Response Value Index combining MTTR, autonomy rate, and containment completeness, (c) a Coverage Health Score combining telemetry breadth, attack surface coverage, and visibility gap trending. Composite indices solve the problem of gaming individual metrics (F3) and give commercial teams a defensible basis for outcome-linked pricing tiers. The index methodology should be transparent, auditable, and published."
+        },
+        {
+          "header": "R4: Expose autonomy metrics as the primary AI-differentiated commercial lever. [Responds to F4, F6]",
+          "body": "The autonomy rate — percentage of incidents fully resolved by AI without human intervention — is the single metric that most directly connects AI investment to buyer value. Vendors at the Significant AI tier (F6) already have the pipeline to measure this but are not exposing it commercially. Product teams should: (a) Instrument every incident with a resolution-path tag (fully automated, AI-assisted, analyst-driven), (b) Compute per-customer autonomy rates weekly, (c) Expose these rates in customer reporting alongside the cost-per-incident implications, (d) Build pricing tiers where higher autonomy rates translate to lower per-incident costs or shared-savings mechanisms. This is the metric that converts the AI efficiency dividend from a vendor margin play into a buyer value proposition."
+        },
+        {
+          "header": "R5: Tie metric maturity milestones to specific pricing model unlocks on a 12-month roadmap. [Responds to F1, F6]",
+          "body": "Each metric category, once measured at commercial grade, unlocks a specific pricing mechanism: Speed metrics unlock MTTR/MTTD guarantees with service credits. Autonomy metrics unlock efficiency-sharing and cost-per-incident pricing. Coverage metrics unlock risk-score-tied subscriptions. Quality metrics unlock detection confidence warranties. Resource metrics unlock analyst-time-saved rebates. Impact metrics unlock breach warranties and damage-cap guarantees. Product teams should map their measurement deployment sequence (R2) to explicit pricing model milestones, with commercial teams involved in defining the thresholds, financial mechanisms, and contract language for each unlock. The 1.47-point outcome maturity gap between Significant and Minimal AI tiers (F6) demonstrates that AI investment without commercial roadmap alignment produces measurement capability that never reaches the customer."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "The Measurement Infrastructure Deficit: Why 84% of Vendors Cannot Price on Outcomes (F1 → R1)",
+          "body": "Outcome-based pricing requires a capability most MDR vendors do not have: the ability to measure, normalize, baseline, and attribute security outcomes at the per-customer level with enough rigor to back commercial commitments.\n\nConsider what a simple MTTR guarantee requires. The vendor must: (a) define MTTR consistently across incident types and severity levels, (b) establish a customer-specific baseline within the first 30 days, (c) measure MTTR continuously with automated time-stamping across detection, triage, investigation, and containment, (d) attribute improvements to specific capabilities (AI triage, human investigation, automated response), and (e) report these metrics in a format the customer can independently verify.\n\nNow multiply that across six metric categories — speed, autonomy, coverage, quality, resource, and impact — and the infrastructure requirement becomes clear. This is not a dashboard. It is a measurement platform that sits alongside the detection-and-response pipeline and produces commercially grade metrics as a primary output.\n\nThe 82 vendors at outcome maturity ≤2 lack this infrastructure entirely. Their operational metrics are aggregate, not per-customer. Their baselines are internal benchmarks, not contractual references. Their attribution logic does not separate AI-driven outcomes from analyst-driven outcomes. They can tell you their average MTTD across all customers; they cannot tell Customer A that their MTTD improved 34% this quarter, driven primarily by AI-automated triage of identity-based alerts, with a projected annual risk reduction of $2.1M.\n\nThe two vendors at outcome maturity 4 — Accenture Security and Deloitte Cyber — both invested in dedicated outcome measurement platforms. These are not MDR dashboards with extra charts. They are standalone measurement engines that ingest telemetry from the detection pipeline, compute per-customer metrics, maintain baselines, and produce the attribution data required for outcome-linked contracts. Both vendors report that building this platform took 12-18 months and required collaboration between product engineering, data science, and commercial teams.\n\nThis is the investment the market has not made. And until it does, outcome-based pricing will remain aspirational."
+        },
+        {
+          "title": "The Six Metric Categories: What AI Makes Measurable for the First Time (F2 → R2, R3)",
+          "body": "The MDR schema's ROI Measurement Framework identifies six KPI categories. AI transforms each from an operational estimate to a commercially measurable outcome.\n\n**Speed Metrics: MTTD/MTTR Reduction**\nBefore AI: Measured manually with inconsistent definitions and self-reported timestamps. After AI: Automated pipeline instrumentation produces sub-second precision timing across every phase — alert generation, enrichment, triage, investigation, containment, remediation. AI enables per-customer, per-incident-type MTTD/MTTR with consistent definitions and tamper-resistant measurement. This is the most mature category and the natural starting point.\n\n**Autonomy Metrics: % Incidents Resolved Without Human Intervention**\nBefore AI: Not measurable — all incidents required human involvement. After AI: Fully automated triage-to-containment workflows produce clear human/machine attribution. Every incident can be tagged as fully automated, AI-assisted, or analyst-driven. Per-customer autonomy rates become a key indicator of AI's delivered value and the foundation for efficiency-sharing pricing.\n\n**Coverage Metrics: Telemetry Source Expansion and Attack Surface Mapping**\nBefore AI: Static capability descriptions (we monitor endpoint, network, cloud). After AI: Dynamic coverage scoring that measures actual telemetry ingestion, identifies visibility gaps, and tracks coverage breadth over time. AI-driven asset discovery and attack surface mapping turn coverage from a checkbox into a measurable, improvable metric.\n\n**Quality Metrics: False Positive Rate Trend and Detection Confidence**\nBefore AI: False positive rates tracked internally without consistent methodology. After AI: Detection confidence scoring on every alert, false positive rate trending per customer, and — critically — hallucination tracking for AI-generated detections. Quality metrics measured by AI become the basis for detection efficacy guarantees.\n\n**Resource Metrics: Analyst Time Freed**\nBefore AI: Estimated based on headcount ratios. After AI: Precise measurement of analyst time per incident, comparison against pre-AI baselines, and per-customer tracking of how AI automation affects internal security team workload. For customers who maintain internal SOC teams alongside MDR, this metric directly quantifies the vendor's resource impact.\n\n**Impact Metrics: Damage Prevention, Regulatory Penalty Avoidance**\nBefore AI: Impossible to measure prospectively; assessed only post-incident. After AI: Predictive risk scoring, automated attack path analysis, and AI-driven threat modeling enable prospective impact estimation. While still the most complex category to measure at commercial grade, AI-driven risk quantification is advancing rapidly. Impact metrics are the eventual foundation for breach warranties and damage-cap guarantees.\n\nThe sequencing matters. Speed metrics are the foundation (readily measurable, universally understood). Autonomy metrics are the AI differentiator (directly link AI capability to commercial value). Coverage and quality are the retention drivers (address the questions buyers ask after incidents). Resource and impact are the advanced metrics that enable the most sophisticated pricing structures."
+        },
+        {
+          "title": "The Speed Metric Trap: Why MTTD/MTTR Alone Will Not Sustain Outcome Pricing (F3 → R3)",
+          "body": "Every MDR vendor that ventures into outcome-based pricing starts with the same metric: MTTR. It is measurable, familiar to buyers, and maps directly to a simple pricing mechanism (miss the MTTR target, pay a service credit). But MTTD/MTTR as sole outcome metrics create three problems that will undermine outcome pricing efforts:\n\n**Problem 1: Scope Gaming.** A vendor can dramatically improve MTTD by narrowing detection scope. If you only detect threats you are already good at finding, your mean detection time looks excellent — but coverage gaps widen. Three of the top-10 vendors by MTTD performance show declining coverage breadth scores quarter-over-quarter, suggesting this pattern is already emerging. Outcome pricing built solely on speed incentivizes vendors to reduce scope to protect margins.\n\n**Problem 2: Severity Masking.** Average MTTD/MTTR across all incidents obscures the metric that matters most: time to detect and respond to high-severity, novel threats. A vendor with a 5-minute average MTTR that takes 4 hours on critical incidents is delivering poor outcomes that the average conceals. Without severity-weighted speed metrics — which require the quality and coverage metrics from other categories — speed benchmarks give false confidence.\n\n**Problem 3: Commoditization.** As AI improves across the market, MTTD/MTTR will converge. When every vendor can guarantee a 15-minute MTTR on standard incidents, speed ceases to differentiate. The vendors that built outcome pricing exclusively around speed will find their commercial model commoditized alongside the metric.\n\nThe solution is composite indices (R3) that combine speed with quality, coverage, and autonomy. A Detection Efficacy Index that weights MTTD by detection confidence and scope breadth is far more defensible commercially than raw MTTD alone. A Response Value Index that weights MTTR by containment completeness and autonomy rate captures value that speed alone misses.\n\nSpeed metrics are the starting point, not the destination. Vendors that treat them as the destination will find their outcome pricing advantage eroded within 18-24 months."
+        },
+        {
+          "title": "Autonomy as Commercial Currency: Making AI's Value Visible and Priceable (F4 → R4)",
+          "body": "The autonomy rate — the percentage of security incidents fully resolved from detection through containment without any human analyst intervention — is the metric the MDR market needs but is not yet willing to publish.\n\nConsider the commercial implications. If a vendor's AI resolves 65% of incidents autonomously for Customer A, that customer is paying the same subscription fee but receiving fundamentally different value than Customer B, where only 30% of incidents are auto-resolved. Customer A's security team spends less time on MDR-covered incidents, Customer A's mean time to respond is faster, and Customer A's risk exposure during the detection-to-containment window is lower.\n\nToday, neither customer knows their autonomy rate. The vendor captures the efficiency as margin. This is the core of the AI efficiency dividend problem identified in the existing pricing report — and autonomy metrics are the specific mechanism to solve it.\n\nFor vendors, publishing autonomy rates is uncomfortable for two reasons. First, low rates expose the gap between AI marketing and AI reality. A vendor claiming \"AI-powered MDR\" with a 15% autonomy rate faces awkward questions. Second, high rates raise buyer expectations for price reductions: if AI is doing most of the work, why is the subscription fee unchanged?\n\nBoth concerns are real but manageable — and the alternative (continuing to hide the metric) is untenable. As AI transparency expectations increase across enterprise software, the MDR market will face the same pressure. The vendors that voluntarily publish autonomy metrics first will earn buyer trust and set the narrative, while laggards will have it imposed on them through RFP requirements and analyst evaluations.\n\nThe commercial model for autonomy metrics is straightforward: graduated pricing where higher autonomy rates either reduce per-incident costs (cost-sharing) or are reinvested in advanced threat hunting and proactive coverage (value-added). The 19 Significant-tier AI vendors already have the pipeline to compute autonomy rates. The product decision is whether to expose this data to customers and build pricing around it. The data strongly suggests they should: Significant-tier vendors average 2.58 outcome maturity versus 1.11 for Minimal tier. The infrastructure is there. The commercial decision is not."
+        },
+        {
+          "title": "Coverage and Quality: The Post-Breach Metrics That Should Drive Pre-Breach Pricing (F5 → R2, R3)",
+          "body": "After every significant security incident, two questions dominate the forensic review: Was this threat within our detection coverage? And if we saw signals, did we correctly prioritize them? These are coverage and quality questions — and they are the metrics most absent from MDR outcome measurement.\n\n**Coverage as a measurable outcome.** Most MDR vendors describe coverage in static terms: \"We monitor endpoint, cloud, identity, and network telemetry.\" This tells the buyer nothing about actual coverage breadth — the percentage of the customer's attack surface where the vendor has active visibility. AI enables dynamic coverage scoring: automated asset discovery, continuous telemetry gap analysis, and coverage health trending that shows whether protection is expanding or contracting over time.\n\nA Coverage Health Score that measures telemetry breadth (number of sources), depth (granularity per source), freshness (time since last data), and gap identification (known blind spots) turns coverage from a marketing claim into a measurable outcome. This metric becomes commercially powerful because it directly addresses the buyer's greatest fear: the threat the vendor didn't see because it came from an unmonitored surface.\n\nComposable vendors (avg outcome maturity 2.44) are furthest ahead on coverage instrumentation, likely because their modular pricing already requires distinguishing what is and is not in scope. Subscription-only vendors (avg outcome maturity 1.52) bundle everything, which paradoxically makes coverage harder to measure — if \"everything\" is included, there is no mechanism to assess whether everything is actually monitored.\n\n**Quality as a measurable outcome.** Detection quality encompasses false positive rates, alert fidelity, detection confidence scoring, and — uniquely for AI-driven MDR — hallucination tracking. AI detection pipelines can produce a confidence score for every alert, enabling quality to be measured continuously rather than assessed retroactively after missed threats.\n\nA Detection Quality Index that trends false positive rates, tracks detection confidence distribution, and monitors hallucination incidents (AI-generated false detections with no underlying threat signal) gives buyers visibility into whether their MDR service is improving or degrading over time. This metric is commercially powerful for retention: a vendor that can demonstrate sustained quality improvement has a structural advantage in renewals that pure speed metrics cannot match.\n\nThe connection to pricing is direct. Coverage and quality metrics enable two pricing mechanisms that subscription-only models cannot support: risk-score-tied pricing (where improved coverage demonstrably lowers risk, justifying fee adjustments) and detection confidence warranties (where the vendor guarantees a minimum detection quality level backed by financial mechanisms)."
+        },
+        {
+          "title": "From Metrics to Money: Mapping Each Metric Category to a Pricing Mechanism (F1, F6 → R5)",
+          "body": "The gap between measurement capability and commercial deployment is the final barrier. Even vendors that measure outcomes internally rarely connect those metrics to pricing structures. This section maps each metric category to the specific pricing mechanism it enables, providing product and commercial teams with a concrete translation layer.\n\n**Speed Metrics → MTTR/MTTD Guarantees with Service Credits**\nThe simplest outcome-linked mechanism. The vendor commits to a per-customer MTTR target (e.g., <15 minutes for critical incidents), measured by the outcome platform, and pays service credits when missed. Requires: normalized per-customer MTTD/MTTR measurement, severity classification, and automated credit computation. Current market readiness: This mechanism is deployable now by the 16 vendors at outcome maturity ≥3.\n\n**Autonomy Metrics → Efficiency-Sharing and Cost-Per-Incident Pricing**\nAs autonomy rates increase, the cost per incident decreases. Efficiency-sharing pricing passes a defined percentage of that cost reduction to the buyer, either as direct fee reductions or as reinvestment credits applied to advanced services. Requires: per-customer autonomy rate tracking, cost-per-incident modeling, and transparent AI attribution. Current market readiness: Significant-tier vendors (19) have the data; none have shipped this commercially.\n\n**Coverage Metrics → Risk-Score-Tied Subscriptions**\nCoverage Health Scores that demonstrate measurable risk reduction enable pricing that adjusts with risk posture. As coverage expands and visibility gaps close, the buyer's risk score improves, and the fee adjusts downward (or the vendor earns a performance bonus). Requires: dynamic coverage scoring, independent risk quantification, and agreed-upon scoring methodology. Current market readiness: 6-12 months of instrumentation required for most vendors.\n\n**Quality Metrics → Detection Confidence Warranties**\nA guarantee on minimum detection quality levels: maximum false positive rates, minimum detection confidence scores, and hallucination rate caps. If quality degrades below contracted thresholds, financial remedies apply. Requires: continuous quality scoring, per-customer trending, and agreed-upon quality definitions. Current market readiness: AI-mature vendors have the detection confidence infrastructure but have not commercialized it.\n\n**Resource Metrics → Analyst-Time-Saved Rebates**\nFor customers with internal SOC teams, resource metrics quantify how much analyst time the MDR service saves. Pricing tied to resource metrics offers rebates or credits proportional to measured analyst time freed. Requires: integration with customer SOC tooling to measure internal analyst time, pre-engagement baseline, and ongoing tracking. Current market readiness: Complex; likely a Phase 3 capability.\n\n**Impact Metrics → Breach Warranties and Damage-Cap Guarantees**\nThe most advanced mechanism: the vendor guarantees financial coverage for security incidents up to a defined cap, underwritten by their confidence in detection and response effectiveness. Requires: AI-driven risk quantification, actuarial modeling of breach cost distribution, and reinsurance partnerships. Current market readiness: Only the two level-4 vendors (Accenture, Deloitte) approach this capability, and both leverage their broader consulting risk practices.\n\nThe 12-month product roadmap should target the first three mechanisms (speed, autonomy, coverage) as deployable within a year, with quality mechanisms in development and resource/impact mechanisms in design. Each mechanism requires both the measurement capability (R1, R2) and the commercial framework (contract language, financial modeling, customer communication). Product and commercial teams must develop both in parallel."
+        }
+      ],
+      "background": "This report extends the MDR pricing market insight by examining the specific outcome metrics that must underpin any viable outcome-based pricing model. The existing pricing assessment identified outcome-based pricing as the market's weakest dimension (PRC-SUC at 2.25/5.0, PRC-OUT at 2.42/5.0) and AI maturity as the strongest predictor of pricing sophistication. This report investigates why: the measurement infrastructure gap.\n\nThe analysis covers 98 MDR service providers assessed across outcome maturity (0-5 scale), six pricing dimensions, and AI pricing influence. The outcome maturity rating evaluates how directly a vendor's commercial terms connect to measurable client outcomes, from Input-Only (level 1: per-seat pricing with no outcome linkage) to Outcome-Native (level 5: entire model built around outcomes with balanced risk-sharing).\n\nThe MDR schema's ROI Measurement Framework defines six KPI categories — Speed, Autonomy, Coverage, Quality, Resource, and Impact — that constitute the metrics necessary for outcome-based pricing. This report assesses the market's capability to measure each category and maps measurement maturity to specific pricing mechanisms each enables.\n\nKey baseline statistics: 84% of vendors score ≤2 on outcome maturity. Only 2 vendors (Accenture Security, Deloitte Cyber) reach level 4. Zero vendors reach level 5. The AI tier gap is decisive: Significant-tier vendors average 2.58 on outcome maturity versus 1.11 for Minimal-tier. Composable vendors average 2.44 versus 1.52 for subscription-only.",
+      "impact": "The implications of the outcome metrics gap are structural and time-sensitive.\n\n**For MDR product teams:** The measurement infrastructure described in this report is a 12-18 month build. Vendors that begin now will have deployable outcome measurement platforms by mid-2027. Vendors that delay face a compounding disadvantage: competitors with measurement platforms will set buyer expectations for metric transparency, outcome-linked contract terms, and performance visibility that latecomers cannot match without the same infrastructure investment.\n\n**For MDR commercial teams:** Outcome-based pricing cannot be developed in isolation from product capability. The specific pricing mechanisms mapped in this report (MTTR guarantees, efficiency-sharing, risk-score-tied subscriptions, detection confidence warranties) each require specific measurement capabilities that product must build. Commercial and product teams should be developing these in parallel, with measurement milestones gating pricing model releases.\n\n**For buyers:** The outcome maturity distribution (84% at ≤2) means most MDR vendors cannot currently deliver outcome-linked pricing even if asked. Buyers should evaluate vendors on their measurement infrastructure — can the vendor produce per-customer MTTD/MTTR with baselines and trending? Can they show autonomy rates? Can they demonstrate coverage health? These capabilities signal a vendor's readiness for outcome-based engagement regardless of their current pricing model.\n\n**For AI-first MDR vendors:** The 1.47-point outcome maturity gap between Significant and Minimal AI tiers represents a window of competitive advantage that will narrow as the market matures. The priority is converting existing AI measurement capabilities (detection confidence, automated triage attribution, coverage mapping) into customer-facing metrics and pricing mechanisms before mid-market vendors replicate the infrastructure.\n\n**For the broader cybersecurity services market:** The metric categories and pricing mechanisms described here are not MDR-specific. SOC-as-a-Service, vulnerability management, and managed CTEM providers face identical measurement gaps and will undergo similar outcome-pricing transitions. MDR vendors that develop outcome measurement platforms and associated commercial models will have transferable capabilities across their service portfolio.",
+      "conclusion": "The MDR market's outcome-based pricing problem is, at its core, a measurement problem. Vendors are not avoiding outcome-based pricing because they prefer subscriptions — they are avoiding it because they cannot measure outcomes at the granularity, consistency, and rigor required to underwrite commercial commitments.\n\nAI changes this equation fundamentally. The six metric categories defined in the ROI Measurement Framework — speed, autonomy, coverage, quality, resource, and impact — become commercially measurable for the first time when AI-driven detection and response pipelines produce the per-customer, attributed, baselined data these metrics require.\n\nThe data makes the priority order clear. Speed metrics are the foundation — measurable now, understood by buyers, and tied to the simplest pricing mechanisms. Autonomy metrics are the AI differentiator — the metric that makes AI's value visible and creates the commercial basis for efficiency-sharing. Coverage and quality metrics are the retention drivers — the outcomes buyers care about most when evaluating whether to renew. Resource and impact metrics are the advanced frontier — the basis for the most sophisticated pricing structures that only the most mature vendors will deploy.\n\nThe 1.47-point outcome maturity gap between Significant and Minimal AI tiers is the strongest signal in the data. It confirms that AI investment is not just correlated with outcome capability — it enables it. Vendors investing in AI without a parallel investment in AI-powered outcome measurement are building capability they cannot commercialize.\n\nProduct leaders should read this report as a product requirements document. The six metric categories are features. The composite indices are products. The pricing mechanisms are the commercial models those products enable. The 12-month roadmap from speed metrics to coverage and quality measurement is the minimum viable investment to participate in the outcome-based pricing transition.\n\nThe market will not wait. The two vendors at outcome maturity 4 are already contracting on outcome terms. The 14 vendors at level 3 are building measurement platforms. By 2028, outcome measurement capability will be a procurement requirement, not a differentiator. The question for every MDR vendor is whether they will have the metrics to compete.",
+      "glossary": [
+        {
+          "term": "MDR",
+          "definition": "Managed Detection and Response"
+        },
+        {
+          "term": "MTTD",
+          "definition": "Mean Time to Detect. The average time from when a threat enters an environment to when it is identified."
+        },
+        {
+          "term": "MTTR",
+          "definition": "Mean Time to Respond. The average time from threat detection to containment and initial remediation."
+        },
+        {
+          "term": "PRC-SUC",
+          "definition": "Success and Outcome Fees. Pricing dimension measuring adoption of outcome-linked fee structures, breach warranties, and performance-based adjustments."
+        },
+        {
+          "term": "PRC-OUT",
+          "definition": "Pricing-to-Outcomes Alignment. Pricing dimension measuring how directly pricing connects to measurable security outcomes."
+        },
+        {
+          "term": "Outcome Maturity Rating",
+          "definition": "0-5 scale measuring how directly a vendor's commercial terms connect to measurable client outcomes. 0=No Evidence, 1=Input-Only, 2=Outcome-Aware, 3=Outcome-Linked, 4=Outcome-Validated, 5=Outcome-Native."
+        },
+        {
+          "term": "Autonomy Rate",
+          "definition": "The percentage of security incidents fully resolved by AI from detection through containment without human analyst intervention."
+        },
+        {
+          "term": "Detection Confidence Score",
+          "definition": "AI-generated score expressing the probability that a specific alert represents a true positive threat, enabling quality measurement and confidence warranties."
+        },
+        {
+          "term": "Coverage Health Score",
+          "definition": "Composite metric measuring telemetry breadth, depth, freshness, and gap identification across a customer's attack surface."
+        },
+        {
+          "term": "Detection Efficacy Index",
+          "definition": "Proposed composite index combining MTTD, false positive rate, and detection confidence into a single commercially actionable score."
+        },
+        {
+          "term": "Response Value Index",
+          "definition": "Proposed composite index combining MTTR, autonomy rate, and containment completeness into a single measure of response quality."
+        },
+        {
+          "term": "ROI Measurement Framework",
+          "definition": "Six-category KPI framework defined in the MDR schema: Speed, Autonomy, Coverage, Quality, Resource, and Impact metrics."
+        },
+        {
+          "term": "SLA",
+          "definition": "Service Level Agreement"
+        },
+        {
+          "term": "SOC",
+          "definition": "Security Operations Center"
+        },
+        {
+          "term": "AI/ML",
+          "definition": "Artificial Intelligence / Machine Learning"
+        },
+        {
+          "term": "CTEM",
+          "definition": "Continuous Threat Exposure Management"
+        }
+      ],
+      "evidence": [
+        "Gartner MDR Services Vendor Pricing Assessment, 2025-2026 (98 vendors, 6 pricing dimensions, outcome maturity rating, AI enrichment overlay)",
+        "Gartner MDR Services Vendor Pricing 2-1 AI Enriched dataset (proprietary, 98 vendors with outcome maturity, AI pricing influence, and outcome signals)",
+        "MDR Services Schema v1.0 ROI Measurement Framework (6 KPI categories: Speed, Autonomy, Coverage, Quality, Resource, Impact)",
+        "Gartner client inquiry trends on outcome measurement requirements and post-breach vendor evaluations (2024-2026)",
+        "Market observation of AI-driven measurement capabilities across detection pipeline instrumentation, attribution models, and per-customer metric production"
+      ]
+    }
+  ]
+}

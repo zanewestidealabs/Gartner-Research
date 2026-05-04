@@ -1,0 +1,3633 @@
+[
+  {
+    "vendor": "Palantir",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": true,
+    "vendor_type": "Platform Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Known for secure AI deployment in sensitive government and intelligence environments.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.25
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 1.0,
+      "INF-04": 0.0
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://blog.palantir.com/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://blog.palantir.com/",
+            "excerpt": "Life at Palantir",
+            "matched_terms": [
+              "life"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://blog.palantir.com/",
+            "excerpt": "Palantir AI Life at Palantir",
+            "matched_terms": [
+              "life"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://blog.palantir.com/",
+            "excerpt": "Life at Palantir Privacy & Civil Liberties",
+            "matched_terms": [
+              "life"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://blog.palantir.com/",
+            "excerpt": "Palantir Blog Sitemap Open in app Sign up Sign in Medium Logo Write Search Sign up Sign in Palantir Blog 9.2K followers · 1 editor Follow Engineering & Technology Company Palantir AI Life at Palantir Privacy & Civil Liberties Palantir Global About Palantir.co…",
+            "matched_terms": [
+              "life"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 4 excerpts from 5 pages."
+      },
+      "GOV-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "GOV-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "GOV-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "RUN-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "RUN-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "RUN-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "RUN-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "INF-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "INF-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://blog.palantir.com/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://blog.palantir.com/",
+            "excerpt": "Privacy & Civil Liberties",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://blog.palantir.com/",
+            "excerpt": "Life at Palantir Privacy & Civil Liberties",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://blog.palantir.com/",
+            "excerpt": "Privacy & Civil Liberties Palantir Global",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://blog.palantir.com/",
+            "excerpt": "Palantir Blog Sitemap Open in app Sign up Sign in Medium Logo Write Search Sign up Sign in Palantir Blog 9.2K followers · 1 editor Follow Engineering & Technology Company Palantir AI Life at Palantir Privacy & Civil Liberties Palantir Global About Palantir.co…",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 4,
+        "notes": "TRiSM claims extraction; 4 excerpts from 5 pages."
+      },
+      "INF-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 5,
+        "total_pages": 5,
+        "excerpts_total": 8,
+        "flag": "partial_evidence",
+        "confidence": 0.6
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 1.0,
+      "INF-04": 0.0
+    },
+    "pillar_scores_validated": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.25
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. TRiSM signal: \"Life at Palantir\". Also: \"Palantir AI Life at Palantir\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. TRiSM signal: \"Privacy & Civil Liberties\". Also: \"Life at Palantir Privacy & Civil Liberties\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: partial_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes."
+    },
+    "research_flag": "partial_evidence",
+    "research_confidence": 0.6,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:24:54.384855+00:00",
+      "urls_used": [
+        "https://www.palantir.com/platforms/aip/",
+        "https://www.palantir.com/newsroom/ai-security/",
+        "https://www.palantir.com/platforms/gotham/",
+        "https://www.palantir.com/platforms/foundry/",
+        "https://blog.palantir.com/"
+      ],
+      "pages_ok": 5,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Palo Alto Networks",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Integrates AI TRiSM into XDR and network security platforms.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.62,
+      "RUN": 4.38,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.25,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 4.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Uncover every threat with 10,000+ detections and 2,600+ analytics models.",
+            "matched_terms": [
+              "models",
+              "model"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Start with better data - triple the EDR telemetry plus enriched firewall logs - and apply 2,600+ ML models to stop advanced attacks. With 10,000+ up-to-date detections, XSIAM’s always ready for what’s next.",
+            "matched_terms": [
+              "models",
+              "model"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "reduction in MTTR Uncover every threat with 10,000+ detections and 2,600+ analytics models.",
+            "matched_terms": [
+              "models",
+              "model"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Uncover every threat with 10,000+ detections and 2,600+ analytics models. Get the guide",
+            "matched_terms": [
+              "models",
+              "model"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "​​Uncover Every Threat, Instantly. Start with better data - triple the EDR telemetry plus enriched firewall logs - and apply 2,600+ ML models to stop advanced attacks. With 10,000+ up-to-date detections, XSIAM’s always ready for what’s next.",
+            "matched_terms": [
+              "models",
+              "model"
+            ],
+            "relevance_score": 5
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Resolve threats in minutes, not hours, with automated triage and guided actions.",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "The Forrester Total Economic Impact",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "AI Access Security",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Secure Access Service Edge",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Prisma Access",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Industry Validation",
+            "matched_terms": [
+              "validation"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Resolve threats in minutes, not hours, with automated triage and guided actions.",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Uncover every threat with 10,000+ detections and 2,600+ analytics models.",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Start with better data - triple the EDR telemetry plus enriched firewall logs - and apply 2,600+ ML models to stop advanced attacks. With 10,000+ up-to-date detections, XSIAM’s always ready for what’s next.",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Palo Alto Networks Privacy Statement",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Cloud Posture Security Cloud Runtime Security",
+            "matched_terms": [
+              "posture",
+              "runtime"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Industry Validation",
+            "matched_terms": [
+              "validation"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "to siloed SOC tools, endless alerts and manual processes",
+            "matched_terms": [
+              "alerts"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Resolve threats in minutes, not hours, with automated triage and guided actions.",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Trusted by the Best",
+            "matched_terms": [
+              "trust"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "security operations Unparalleled data. Unbeatable AI. The most advanced SOC platform.",
+            "matched_terms": [
+              "security",
+              "parallel"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Explore Cortex XSIAM Security Analytics - Palo Alto Networks Industry Validation Products Solutions Blog Resources Get In Touch Request a Demo Search All Tech Docs Close search modal Cortex xsiam Unlock true AI-driven security operations Unparalleled data.",
+            "matched_terms": [
+              "security",
+              "parallel"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Unparalleled data. Unbeatable AI. The most advanced SOC platform.",
+            "matched_terms": [
+              "parallel"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "to siloed SOC tools, endless alerts and manual processes",
+            "matched_terms": [
+              "siloed"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Privacy Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Managed Detection and Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Unit 42 Managed Detection & Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Threat Intel and Incident Response Services",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Incident Response",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "detection coverage Save millions by consolidating tools, automating tasks, and boosting efficiency.",
+            "matched_terms": [
+              "detection",
+              "auto"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Uncover every threat with 10,000+ detections and 2,600+ analytics models.",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "detection coverage",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Start with better data - triple the EDR telemetry plus enriched firewall logs - and apply 2,600+ ML models to stop advanced attacks. With 10,000+ up-to-date detections, XSIAM’s always ready for what’s next.",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Managed Detection and Response",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Privacy Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "to siloed SOC tools, endless alerts and manual processes",
+            "matched_terms": [
+              "alerts"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Forget the swivel chair. Everything you need is in one place. AI turns thousands of alerts into a few prioritized cases and shows you the full attack story - including root cause - so you can make the right call, right away.",
+            "matched_terms": [
+              "alerts"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Get the latest news, invites to events and threat alerts.",
+            "matched_terms": [
+              "alerts"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Get the latest news, invites to events, and threat alerts",
+            "matched_terms": [
+              "alerts"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "AI Access Security",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "detection coverage",
+            "matched_terms": [
+              "coverage",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Start with better data - triple the EDR telemetry plus enriched firewall logs - and apply 2,600+ ML models to stop advanced attacks. With 10,000+ up-to-date detections, XSIAM’s always ready for what’s next.",
+            "matched_terms": [
+              "data",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "® detection coverage",
+            "matched_terms": [
+              "coverage",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "detection coverage Save millions by consolidating tools, automating tasks, and boosting efficiency.",
+            "matched_terms": [
+              "coverage",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "The #1 AI-driven SOC platform powered by unified data",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Resolve threats in minutes, not hours, with automated triage and guided actions.",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Forget the swivel chair. Everything you need is in one place. AI turns thousands of alerts into a few prioritized cases and shows you the full attack story - including root cause - so you can make the right call, right away.",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Uncover hidden threats anywhere in your environment - stopping breaches before they happen.",
+            "matched_terms": [
+              "before"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "The Forrester Total Economic Impact",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Copyright © 2026 Palo Alto Networks. All Rights Reserved",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Autonomous Digital Experience Management Enterprise DLP",
+            "matched_terms": [
+              "management",
+              "dlp"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.",
+            "matched_terms": [
+              "apply",
+              "privacy"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "reduction in MTTR",
+            "matched_terms": [
+              "reduction"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Exposure Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Palo Alto Networks Privacy Statement",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.paloaltonetworks.com/cortex/cortex-xsiam"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "reduction in MTTR Uncover every threat with 10,000+ detections and 2,600+ analytics models.",
+            "matched_terms": [
+              "reduction",
+              "mttr",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Learn how 98% reduction in MTTR Uncover every threat with 10,000+ detections and 2,600+ analytics models.",
+            "matched_terms": [
+              "reduction",
+              "mttr",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Enterprise DLP Prisma Access",
+            "matched_terms": [
+              "access",
+              "dlp"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "reduction in MTTR",
+            "matched_terms": [
+              "reduction",
+              "mttr"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+            "excerpt": "Start with better data - triple the EDR telemetry plus enriched firewall logs - and apply 2,600+ ML models to stop advanced attacks. With 10,000+ up-to-date detections, XSIAM’s always ready for what’s next.",
+            "matched_terms": [
+              "data",
+              "detection"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.25,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 4.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.62,
+      "RUN": 4.38,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Uncover every threat with 10,000+ detections and 2,600+ analytics models.\". Also: \"Start with better data - triple the EDR telemetry plus enriched firewall logs - and apply 2,600+ ML models to stop advanced attacks. With 10,000+ up-…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Resolve threats in minutes, not hours, with automated triage and guided actions.\". Also: \"The Forrester Total Economic Impact\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Industry Validation\". Also: \"Resolve threats in minutes, not hours, with automated triage and guided actions.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Cloud Posture Security Cloud Runtime Security\". Also: \"Industry Validation\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"security operations Unparalleled data. Unbeatable AI. The most advanced SOC platform.\". Also: \"Explore Cortex XSIAM Security Analytics - Palo Alto Networks Industry Validation Products Solutions Blog Resources Get In Touch Request a Demo Search…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Managed Detection and Response\". Also: \"Unit 42 Managed Detection & Response\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Uncover every threat with 10,000+ detections and 2,600+ analytics models.\". Also: \"detection coverage\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"to siloed SOC tools, endless alerts and manual processes\". Also: \"Forget the swivel chair. Everything you need is in one place. AI turns thousands of alerts into a few prioritized cases and shows you the full attack…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"detection coverage\". Also: \"Start with better data - triple the EDR telemetry plus enriched firewall logs - and apply 2,600+ ML models to stop advanced attacks. With 10,000+ up-…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Resolve threats in minutes, not hours, with automated triage and guided actions.\". Also: \"Forget the swivel chair. Everything you need is in one place. AI turns thousands of alerts into a few prioritized cases and shows you the full attack…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Autonomous Digital Experience Management Enterprise DLP\". Also: \"This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"reduction in MTTR Uncover every threat with 10,000+ detections and 2,600+ analytics models.\". Also: \"Learn how 98% reduction in MTTR Uncover every threat with 10,000+ detections and 2,600+ analytics models.\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:25:16.078402+00:00",
+      "urls_used": [
+        "https://www.paloaltonetworks.com/prisma/ai-security",
+        "https://www.paloaltonetworks.com/cortex/cortex-xsiam",
+        "https://www.paloaltonetworks.com/ai-security",
+        "https://docs.paloaltonetworks.com/ai-security",
+        "https://www.paloaltonetworks.com/prisma/cloud/data-security"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Proofpoint",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "AI governance , the catalog should track which datasets trained which models, version histories of training data, and any known limitations or biases in specific datasets.",
+            "matched_terms": [
+              "models",
+              "model",
+              "catalog",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "For AI governance , the catalog should track which datasets trained which models, version histories of training data, and any known limitations or biases in specific datasets.",
+            "matched_terms": [
+              "models",
+              "model",
+              "catalog",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Regularly review and update policies to align with evolving regulations, particularly as AI regulations emerge in different jurisdictions. Implement automated data discovery and classification tools.",
+            "matched_terms": [
+              "discovery",
+              "automated",
+              "ai regulation"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": ", the catalog should track which datasets trained which models, version histories of training data, and any known limitations or biases in specific datasets.",
+            "matched_terms": [
+              "models",
+              "model",
+              "catalog"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Clear procedures for data lifecycle management.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 7,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "AI governance , the catalog should track which datasets trained which models, version histories of training data, and any known limitations or biases in specific datasets.",
+            "matched_terms": [
+              "training",
+              "data",
+              "over",
+              "sets",
+              "specific",
+              "dataset"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "For AI governance , the catalog should track which datasets trained which models, version histories of training data, and any known limitations or biases in specific datasets.",
+            "matched_terms": [
+              "training",
+              "data",
+              "over",
+              "sets",
+              "specific",
+              "dataset"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "AI deployments require additional roles like AI Ethics Officers or Model Governance Leads who ensure training data meets quality and fairness standards.",
+            "matched_terms": [
+              "training",
+              "data",
+              "over",
+              "quality",
+              "ai ethics",
+              "model governance"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "While standard data governance focuses on accuracy, accessibility, and compliance, AI governance adds layers of concern around training data quality, model transparency, and algorithmic bias.",
+            "matched_terms": [
+              "training",
+              "data",
+              "over",
+              "access",
+              "quality",
+              "ai governance"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "data poisoning , where adversaries manipulate training data to corrupt model behavior. Security protocols must protect both stored datasets and the prompts or queries sent to AI systems. This component ensures compliance with regulatory requirements while mai…",
+            "matched_terms": [
+              "training",
+              "data",
+              "maintain",
+              "sets",
+              "access",
+              "dataset"
+            ],
+            "relevance_score": 24
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 7,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance",
+          "https://www.proofpoint.com/us/products"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "GDPR , CCPA, and HIPAA. They establish audit trails, access controls, and documentation that regulators expect to see during compliance reviews. Organizations with strong governance can demonstrate accountability and avoid fines that can reach up to 4% of glo…",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "documentation",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "They establish audit trails, access controls, and documentation that regulators expect to see during compliance reviews.",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "documentation",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products",
+            "excerpt": "Monitor and manage social media compliance with automated workflows and reporting.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products",
+            "excerpt": "Patrol Monitor and manage social media compliance with automated workflows and reporting.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products",
+            "excerpt": "Monitor and manage social media compliance with automated workflows and reporting. Prime Threat Protection",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 14,
+        "pillar_term_hits": 7,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance",
+          "https://www.proofpoint.com/us/products/information-protection"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "While standard data governance focuses on accuracy, accessibility, and compliance, AI governance adds layers of concern around training data quality, model transparency, and algorithmic bias.",
+            "matched_terms": [
+              "compliance",
+              "bias",
+              "ai governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products/information-protection",
+            "excerpt": "Continuously Strengthen Your Data Security Posture with Proofpoint DSPM Learn how Proofpoint data security reduces the most risk and delivers fastest time to value",
+            "matched_terms": [
+              "risk",
+              "posture",
+              "continuous"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": ": Big data in risk management analysis must be protected and properly managed to ensure the accuracy of results so that consultants can make effective decisions and maintain regulatory compliance.",
+            "matched_terms": [
+              "compliance",
+              "results",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Standardized methodologies for data quality management and validation, with additional rigor for datasets feeding automated systems.",
+            "matched_terms": [
+              "validation",
+              "automated",
+              "feeding"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": ": Monitor data and review metrics to determine if standards should be modified and improved using automated tools and dashboards.",
+            "matched_terms": [
+              "automated",
+              "metrics",
+              "dashboards"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 19,
+        "pillar_term_hits": 7,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance",
+          "https://www.proofpoint.com/us/products/information-protection"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Security and Privacy Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management procedures. AI introduces new attack vectors like",
+            "matched_terms": [
+              "security",
+              "risk",
+              "class",
+              "controls"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Security and Privacy Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management procedures.",
+            "matched_terms": [
+              "security",
+              "risk",
+              "class",
+              "controls"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products/information-protection",
+            "excerpt": "Get a complete view into risky behavior and investigate insider violations quickly and efficiently. Data Security Posture Management",
+            "matched_terms": [
+              "security",
+              "risk",
+              "violation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Reduced risk of data breaches, compliance violations, and reputational damage from AI mishaps.",
+            "matched_terms": [
+              "risk",
+              "violation",
+              "reduced"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management procedures. AI introduces new attack vectors like",
+            "matched_terms": [
+              "risk",
+              "class",
+              "controls"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance",
+          "https://www.proofpoint.com/us/products/information-protection"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Some platforms now include AI-specific capabilities like bias detection in training datasets and monitoring of model behavior.",
+            "matched_terms": [
+              "detection",
+              "behavior",
+              "monitoring"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "data poisoning , where adversaries manipulate training data to corrupt model behavior. Security protocols must protect both stored datasets and the prompts or queries sent to AI systems. This component ensures compliance with regulatory requirements while mai…",
+            "matched_terms": [
+              "prompt",
+              "behavior"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Modern data governance platforms should support automation, compliance monitoring, and real-time analytics while integrating with existing systems.",
+            "matched_terms": [
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products/information-protection",
+            "excerpt": "IP Address Blocked",
+            "matched_terms": [
+              "block"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products/information-protection",
+            "excerpt": "Experience Core Email Protection in action-block 99.99% of email threats",
+            "matched_terms": [
+              "block"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": ": Big data in risk management analysis must be protected and properly managed to ensure the accuracy of results so that consultants can make effective decisions and maintain regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Risk management : Big data in risk management analysis must be protected and properly managed to ensure the accuracy of results so that consultants can make effective decisions and maintain regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": ": Big data in risk management analysis must be protected and properly managed to ensure the accuracy of results so that consultants can make effective decisions and maintain regulatory compliance. Banking",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "data classification to identify sensitive information before it enters AI pipelines. Monitor data lineage to track which datasets trained which models and maintain audit logs for regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "class"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Risk management : Big data in risk management analysis must be protected and properly managed to ensure the accuracy of results so that consultants can make effective decisions and maintain regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": ": With the help of consultants or internal staff, audit data for its location, usability, availability, and access permissions across both on-premises and cloud environments.",
+            "matched_terms": [
+              "data",
+              "access",
+              "permissions"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management procedures. AI introduces new attack vectors like data poisoning",
+            "matched_terms": [
+              "classification",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Role-based access controls and authentication protocols to ensure appropriate data accessibility. Integration with existing security and compliance frameworks.",
+            "matched_terms": [
+              "data",
+              "access",
+              "integration"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Phase 2 : With the help of consultants or internal staff, audit data for its location, usability, availability, and access permissions across both on-premises and cloud environments.",
+            "matched_terms": [
+              "data",
+              "access",
+              "permissions"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": ": With the help of consultants or internal staff, audit data for its location, usability, availability, and access permissions across both on-premises and cloud environments. Phase 3",
+            "matched_terms": [
+              "data",
+              "access",
+              "permissions"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/products/information-protection",
+          "https://www.proofpoint.com/us/products"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/products",
+            "excerpt": "Data Security Posture Management (DSPM) Discover, classify, and protect sensitive data across cloud and hybrid environments.",
+            "matched_terms": [
+              "discover",
+              "classify",
+              "sensitive",
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 36
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products",
+            "excerpt": "Data Security Posture Management (DSPM) Discover, classify, and protect sensitive data across cloud and hybrid environments.",
+            "matched_terms": [
+              "discover",
+              "classify",
+              "sensitive",
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 36
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products/information-protection",
+            "excerpt": "Data Security Posture Management Discover, classify and protect sensitive data across cloud and hybrid environments.",
+            "matched_terms": [
+              "discover",
+              "classify",
+              "sensitive",
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products/information-protection",
+            "excerpt": "Discover and classify sensitive data to reduce exposure across cloud and hybrid environments. Modernize email DLP",
+            "matched_terms": [
+              "discover",
+              "classify",
+              "sensitive",
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products/information-protection",
+            "excerpt": "Data Security Posture Management Discover and classify sensitive data to reduce exposure across cloud and hybrid environments.",
+            "matched_terms": [
+              "discover",
+              "classify",
+              "sensitive",
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 30
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 9,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Implement automated data discovery and classification tools. Common Data Governance Challenges",
+            "matched_terms": [
+              "automated",
+              "data governance",
+              "data discovery"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Other parties might be involved with data governance. For example, a committee might determine standards and policies by voting on any changes to these procedures. Staff members carry out the committee’s regulations and are responsible for ensuring that stand…",
+            "matched_terms": [
+              "policies",
+              "change",
+              "data governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Phase 5 : Implement training programs for users and stakeholders on new standards, policies, and the importance of data governance. As organizations adopt more AI tools, they should include guidance on how data governance protects against common risks in auto…",
+            "matched_terms": [
+              "automated",
+              "policies",
+              "data governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": ": Implement training programs for users and stakeholders on new standards, policies, and the importance of data governance. As organizations adopt more AI tools, they should include guidance on how data governance protects against common risks in automated sy…",
+            "matched_terms": [
+              "automated",
+              "policies",
+              "data governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Regularly review and update policies to align with evolving regulations, particularly as AI regulations emerge in different jurisdictions. Implement automated data discovery and classification tools.",
+            "matched_terms": [
+              "automated",
+              "policies",
+              "data discovery"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 9,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/products/information-protection",
+          "https://www.proofpoint.com/us/products",
+          "https://www.proofpoint.com/us/threat-reference/data-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/products/information-protection",
+            "excerpt": "Experience the benefits of unified data security Reduce security risk Proofpoint brings omnichannel data loss prevention (DLP), data security posture management (DSPM), and insider threat management (ITM) into a single unified solution to mitigate a comprehen…",
+            "matched_terms": [
+              "risk",
+              "management",
+              "data loss prevention",
+              "dlp",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 32
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products",
+            "excerpt": "Data Security Posture Management (DSPM) Discover, classify, and protect sensitive data across cloud and hybrid environments.",
+            "matched_terms": [
+              "across",
+              "sensitive",
+              "management",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.proofpoint.com/us/products",
+            "excerpt": "Data Security Posture Management (DSPM) Discover, classify, and protect sensitive data across cloud and hybrid environments.",
+            "matched_terms": [
+              "across",
+              "sensitive",
+              "management",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Security and Privacy Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management procedures. AI introduces new attack vectors like",
+            "matched_terms": [
+              "controls",
+              "privacy",
+              "sensitive",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Security and Privacy Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management procedures.",
+            "matched_terms": [
+              "controls",
+              "privacy",
+              "sensitive",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 9,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.proofpoint.com/us/threat-reference/data-governance"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Modern data governance platforms offer integrated solutions for data discovery, classification, monitoring, and compliance reporting.",
+            "matched_terms": [
+              "compliance",
+              "data",
+              "integrated",
+              "data governance",
+              "data discovery"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Other parties might be involved with data governance. For example, a committee might determine standards and policies by voting on any changes to these procedures. Staff members carry out the committee’s regulations and are responsible for ensuring that stand…",
+            "matched_terms": [
+              "data",
+              "changes",
+              "change",
+              "data governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "While governance focuses on policy management and documentation tools, management employs technical solutions for data storage, processing, and security implementation. This comprehensive approach enables governance to guide the overall strategy while managem…",
+            "matched_terms": [
+              "security",
+              "data",
+              "policy",
+              "data governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "While standard data governance focuses on accuracy, accessibility, and compliance, AI governance adds layers of concern around training data quality, model transparency, and algorithmic bias.",
+            "matched_terms": [
+              "compliance",
+              "data",
+              "access",
+              "data governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.proofpoint.com/us/threat-reference/data-governance",
+            "excerpt": "Process and People Data governance dictates the decision-making framework for data usage, including quality standards, access policies, and compliance requirements.",
+            "matched_terms": [
+              "compliance",
+              "data",
+              "access",
+              "data governance"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 9,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 3,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI governance , the catalog should track which datasets trained which models, version histories of training data, and any known limitations or biases in specific datasets.\". Also: \"For AI governance , the catalog should track which datasets trained which models, version histories of training data, and any known limitations or bi…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI governance , the catalog should track which datasets trained which models, version histories of training data, and any known limitations or biases in specific datasets.\". Also: \"For AI governance , the catalog should track which datasets trained which models, version histories of training data, and any known limitations or bi…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"GDPR , CCPA, and HIPAA. They establish audit trails, access controls, and documentation that regulators expect to see during compliance reviews. Organizations with strong governance can demonstrate a…\". Also: \"They establish audit trails, access controls, and documentation that regulators expect to see during compliance reviews.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"While standard data governance focuses on accuracy, accessibility, and compliance, AI governance adds layers of concern around training data quality, model transparency, and algorithmic bias.\". Also: \"Continuously Strengthen Your Data Security Posture with Proofpoint DSPM Learn how Proofpoint data security reduces the most risk and delivers fastest…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Security and Privacy Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management procedures. AI introduces new attack vectors like\". Also: \"Security and Privacy Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management p…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Some platforms now include AI-specific capabilities like bias detection in training datasets and monitoring of model behavior.\". Also: \"data poisoning , where adversaries manipulate training data to corrupt model behavior. Security protocols must protect both stored datasets and the p…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \": Big data in risk management analysis must be protected and properly managed to ensure the accuracy of results so that consultants can make effective decisions and maintain regulatory compliance.\". Also: \"Risk management : Big data in risk management analysis must be protected and properly managed to ensure the accuracy of results so that consultants c…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \": With the help of consultants or internal staff, audit data for its location, usability, availability, and access permissions across both on-premises and cloud environments.\". Also: \"Protection mechanisms must safeguard sensitive information through proper classification, access controls, and risk management procedures. AI introdu…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data Security Posture Management (DSPM) Discover, classify, and protect sensitive data across cloud and hybrid environments.\". Also: \"Data Security Posture Management (DSPM) Discover, classify, and protect sensitive data across cloud and hybrid environments.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Implement automated data discovery and classification tools. Common Data Governance Challenges\". Also: \"Other parties might be involved with data governance. For example, a committee might determine standards and policies by voting on any changes to the…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Experience the benefits of unified data security Reduce security risk Proofpoint brings omnichannel data loss prevention (DLP), data security posture management (DSPM), and insider threat management …\". Also: \"Data Security Posture Management (DSPM) Discover, classify, and protect sensitive data across cloud and hybrid environments.\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Modern data governance platforms offer integrated solutions for data discovery, classification, monitoring, and compliance reporting.\". Also: \"Other parties might be involved with data governance. For example, a committee might determine standards and policies by voting on any changes to the…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:25:31.266056+00:00",
+      "urls_used": [
+        "https://www.proofpoint.com/us/products/information-protection/data-loss-prevention",
+        "https://www.proofpoint.com/us/products/information-protection",
+        "https://www.proofpoint.com/us/threat-reference/data-governance",
+        "https://www.proofpoint.com/us/products",
+        "https://www.proofpoint.com/us/solutions/gen-ai-security"
+      ],
+      "pages_ok": 3,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "PwC",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Offers robust AI audit and assurance services, including model transparency and explainability reviews.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.62,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.25,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "We build AI with purpose. To protect your data. Adapt to threats. Evolve with your business. Through our open ecosystem of leading AI collaborators, we use the right AI models to integrate seamlessly with your operations, culture and technologies.",
+            "matched_terms": [
+              "models",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "AI that scales smart and stays secure We build AI with purpose. To protect your data. Adapt to threats. Evolve with your business. Through our open ecosystem of leading AI collaborators, we use the right AI models to integrate seamlessly with your operations,…",
+            "matched_terms": [
+              "models",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Through our open ecosystem of leading AI collaborators, we use the right AI models to integrate seamlessly with your operations, culture and technologies.",
+            "matched_terms": [
+              "models",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Risk Modeling Services",
+            "matched_terms": [
+              "risk",
+              "model"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "of executives say their operating model will be unrecognizable in two years because of AI agents.",
+            "matched_terms": [
+              "agents",
+              "model"
+            ],
+            "relevance_score": 5
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Meet accessibility, reliability and compliance requirements Manage data assets, pipelines and governance",
+            "matched_terms": [
+              "data",
+              "over",
+              "sets",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Meet accessibility, reliability and compliance requirements Manage data assets, pipelines and governance Examine data for deeper insights Learn, collaborate and evolve with your business Optimise your vision Global AI.",
+            "matched_terms": [
+              "data",
+              "over",
+              "sets",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Our market planning and AI consulting services include: AI-readiness assessments Real-world AI simulations Organisational change management AI training across your business Data and analytics consulting AI development solutions Governance models (centralised …",
+            "matched_terms": [
+              "training",
+              "data",
+              "over",
+              "impact"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Our responsible AI methodology includes: Business case development Full strategy assessment and creation End-to-end implementation Responsible AI principles, controls and governance at every step-from ethics to privacy Achieve more AI that delivers Deliver im…",
+            "matched_terms": [
+              "over",
+              "impact",
+              "responsible ai"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "From boardroom strategy to bottom-line impact, we embed deep functional expertise across finance, supply chain, HR and more. The result: AI-powered ways of working tied to measurable value. Innovators in AI engineering and data:",
+            "matched_terms": [
+              "data",
+              "tied",
+              "impact"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Financial statement audit",
+            "matched_terms": [
+              "audit",
+              "state"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "AI only creates value when it fits your business. Generic solutions can work for one-off tasks but stall in the enterprise because they don’t learn your workflows or data.",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Finance and Accounting Financial statement audit",
+            "matched_terms": [
+              "audit",
+              "state"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Financial statement audit Front Office",
+            "matched_terms": [
+              "audit",
+              "state"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Capabilities Financial statement audit",
+            "matched_terms": [
+              "audit",
+              "state"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Regulatory Risk and Compliance - Health Industries We help health industry leaders navigate risk and regulation, strengthen trust, and thrive in today's dynamic ecosystem.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Learn more Regulatory Risk and Compliance - Health Industries We help health industry leaders navigate risk and regulation, strengthen trust, and thrive in today's dynamic ecosystem.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "We help you define what success looks like, reimagine business models and build AI solutions at scale - with expertise you can rely on, insights that matter and technology that delivers results you can trust. And we help you do it all, responsibly.",
+            "matched_terms": [
+              "results",
+              "trust"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Why work with us We help you define what success looks like, reimagine business models and build AI solutions at scale - with expertise you can rely on, insights that matter and technology that delivers results you can trust. And we help you do it all, respon…",
+            "matched_terms": [
+              "results",
+              "trust"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Explore our AI Agent Survey> Why work with us We help you define what success looks like, reimagine business models and build AI solutions at scale - with expertise you can rely on, insights that matter and technology that delivers results you can trust.",
+            "matched_terms": [
+              "results",
+              "trust"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "With deep industry and functional expertise, we deliver tools your teams will actually use-improving growth, increasing productivity and reducing risk. Governance and controls are engineered in so you can scale what works with confidence.",
+            "matched_terms": [
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "With deep industry and functional expertise, we deliver tools your teams will actually use-improving growth, increasing productivity and reducing risk. Governance and controls are engineered in so you can scale what works with confidence. Playback of this vid…",
+            "matched_terms": [
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Enterprise Risk and Controls Solutions",
+            "matched_terms": [
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Chartis Research, a leading provider of research and analysis on the global market for risk technology, issued its annual RiskTech100® 2024 report and ranked PwC as 28 out of 100.",
+            "matched_terms": [
+              "risk",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Chartis Research, a leading provider of research and analysis on the global market for risk technology has named PwC as a Category Leader in the 2024 RiskTech Quadrant® for AML Transaction Monitoring Solutions.",
+            "matched_terms": [
+              "risk",
+              "provider"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Stay ahead of digital threats with rapid incident response designed to reduce disruption and restore operations fast with our advanced threat detection and automation solutions.",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Cyber Defense and Engineering Stay ahead of digital threats with rapid incident response designed to reduce disruption and restore operations fast with our advanced threat detection and automation solutions.",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Stay ahead of digital threats with rapid incident response designed to reduce disruption and restore operations fast with our advanced threat detection and automation solutions. Learn more",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Source https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory/library/sox-compliance-automation.html Capabilities Cyber Defense and Engineering Stay ahead of digital threats with rapid incident response designed to reduce disruption and r…",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "We move fast to tailor AI to your domain-grounded in your data, aligned to the highest-value use cases, and built for measurable outcomes.",
+            "matched_terms": [
+              "measurable"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Cybersecurity, Risk & Regulatory: PwC Skip to content",
+            "matched_terms": [
+              "content",
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Source https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory/library/sox-compliance-automation.html Capabilities Cyber Defense and Engineering Stay ahead of digital threats with rapid incident response designed to reduce disruption and r…",
+            "matched_terms": [
+              "detection",
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Cybersecurity, Risk and Regulatory",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Consulting Cybersecurity, Risk and Regulatory",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Cybersecurity, Risk and Regulatory Deals",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "{{contentList.dataService.numberHits}} {{contentList.dataService.numberHits == 1 ? 'result' : 'results'}}",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "{{filterContent.facetedTitle}} {{contentList.dataService.numberHits}} {{contentList.dataService.numberHits == 1 ? 'result' : 'results'}}",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "{{contentList.dataService.numberHits}} {{contentList.dataService.numberHits == 1 ? 'result' : 'results'}} {{contentList.loadingText}}",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "{{filterContent.facetedTitle}} {{contentList.dataService.numberHits}} {{contentList.dataService.numberHits == 1 ?",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "We build AI with purpose. To protect your data. Adapt to threats. Evolve with your business. Through our open ecosystem of leading AI collaborators, we use the right AI models to integrate seamlessly with your operations, culture and technologies.",
+            "matched_terms": [
+              "purpose",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "AI agents are becoming central to business transformation. PwC’s agent OS helps you orchestrate and govern AI agents across platforms-unlocking productivity, scalability and speed. Discover agent OS",
+            "matched_terms": [
+              "discover",
+              "across",
+              "productivity",
+              "platforms"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "AI agents are becoming central to business transformation. PwC’s agent OS helps you orchestrate and govern AI agents across platforms-unlocking productivity, scalability and speed.",
+            "matched_terms": [
+              "across",
+              "productivity",
+              "platforms"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Connect your agents, people and systems with PwC’s agent OS AI agents are becoming central to business transformation. PwC’s agent OS helps you orchestrate and govern AI agents across platforms-unlocking productivity, scalability and speed.",
+            "matched_terms": [
+              "across",
+              "productivity",
+              "platforms"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "PwC’s agent OS helps you orchestrate and govern AI agents across platforms-unlocking productivity, scalability and speed.",
+            "matched_terms": [
+              "across",
+              "productivity",
+              "platforms"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Safeguard sensitive data with data-driven solutions that help prevent breaches and build trust - so you can focus on growth, not risk.",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "driven"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+          "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Our market planning and AI consulting services include: AI-readiness assessments Real-world AI simulations Organisational change management AI training across your business Data and analytics consulting AI development solutions Governance models (centralised …",
+            "matched_terms": [
+              "scale",
+              "change",
+              "impact",
+              "simulations"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "CIO/CTO Your top AI job as a CIO is to take advantage of how this technology can scale far more quickly - and deliver faster ROI - than other technologies. You can use AI agents, generative AI and other forms of the technology to help the business fundamental…",
+            "matched_terms": [
+              "scale",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+            "excerpt": "Your top AI job as a CIO is to take advantage of how this technology can scale far more quickly - and deliver faster ROI - than other technologies. You can use AI agents, generative AI and other forms of the technology to help the business fundamentally chang…",
+            "matched_terms": [
+              "scale",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Real-world AI simulations Organisational change management",
+            "matched_terms": [
+              "change",
+              "simulations"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Maximise your impact AI that scales smart and stays secure",
+            "matched_terms": [
+              "scale",
+              "impact"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "savings in SOX compliance costs and 35% reduction in quality assurance spend were achieved by a global tech company after reimagining its risk management program",
+            "matched_terms": [
+              "risk",
+              "reduction",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "50% savings in SOX compliance costs and 35% reduction in quality assurance spend were achieved by a global tech company after reimagining its risk management program",
+            "matched_terms": [
+              "risk",
+              "reduction",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "savings in SOX compliance costs and 35% reduction in quality assurance spend were achieved by a global tech company after reimagining its risk management program Source",
+            "matched_terms": [
+              "risk",
+              "reduction",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Data Risk and Privacy Safeguard sensitive data with data-driven solutions that help prevent breaches and build trust - so you can focus on growth, not risk.",
+            "matched_terms": [
+              "privacy",
+              "sensitive",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Benefits 50% savings in SOX compliance costs and 35% reduction in quality assurance spend were achieved by a global tech company after reimagining its risk management program Source https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory/l…",
+            "matched_terms": [
+              "risk",
+              "reduction",
+              "management"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+          "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Our market planning and AI consulting services include: AI-readiness assessments Real-world AI simulations Organisational change management AI training across your business Data and analytics consulting AI development solutions Governance models (centralised …",
+            "matched_terms": [
+              "across",
+              "compliance",
+              "scale",
+              "data",
+              "change"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Source https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory/library/sox-compliance-automation.html Capabilities Cyber Defense and Engineering Stay ahead of digital threats with rapid incident response designed to reduce disruption and r…",
+            "matched_terms": [
+              "security",
+              "digital",
+              "compliance",
+              "detection"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "AI is only as good as your data, and the people who transform insights into measurable results. So, with comprehensive data-across markets, sectors and industries-you get insightful, precise intelligence. Meet accessibility, reliability and compliance require…",
+            "matched_terms": [
+              "across",
+              "compliance",
+              "data",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+            "excerpt": "Benefits 50% savings in SOX compliance costs and 35% reduction in quality assurance spend were achieved by a global tech company after reimagining its risk management program Source https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory/l…",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "reduction"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html",
+            "excerpt": "Meet accessibility, reliability and compliance requirements Manage data assets, pipelines and governance",
+            "matched_terms": [
+              "compliance",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 3,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.25,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.62,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"We build AI with purpose. To protect your data. Adapt to threats. Evolve with your business. Through our open ecosystem of leading AI collaborators, we use the right AI models to integrate seamlessly…\". Also: \"AI that scales smart and stays secure We build AI with purpose. To protect your data. Adapt to threats. Evolve with your business. Through our open e…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Meet accessibility, reliability and compliance requirements Manage data assets, pipelines and governance\". Also: \"Meet accessibility, reliability and compliance requirements Manage data assets, pipelines and governance Examine data for deeper insights Learn, coll…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Financial statement audit\". Also: \"AI only creates value when it fits your business. Generic solutions can work for one-off tasks but stall in the enterprise because they don’t learn y…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Regulatory Risk and Compliance - Health Industries We help health industry leaders navigate risk and regulation, strengthen trust, and thrive in today's dynamic ecosystem.\". Also: \"Learn more Regulatory Risk and Compliance - Health Industries We help health industry leaders navigate risk and regulation, strengthen trust, and thr…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"With deep industry and functional expertise, we deliver tools your teams will actually use-improving growth, increasing productivity and reducing risk. Governance and controls are engineered in so yo…\". Also: \"With deep industry and functional expertise, we deliver tools your teams will actually use-improving growth, increasing productivity and reducing ris…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Stay ahead of digital threats with rapid incident response designed to reduce disruption and restore operations fast with our advanced threat detection and automation solutions.\". Also: \"Cyber Defense and Engineering Stay ahead of digital threats with rapid incident response designed to reduce disruption and restore operations fast wi…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Cybersecurity, Risk & Regulatory: PwC Skip to content\". Also: \"Source https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory/library/sox-compliance-automation.html Capabilities Cyber Defense …\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"{{contentList.dataService.numberHits}} {{contentList.dataService.numberHits == 1 ? 'result' : 'results'}}\". Also: \"{{filterContent.facetedTitle}} {{contentList.dataService.numberHits}} {{contentList.dataService.numberHits == 1 ? 'result' : 'results'}}\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI agents are becoming central to business transformation. PwC’s agent OS helps you orchestrate and govern AI agents across platforms-unlocking productivity, scalability and speed. Discover agent OS\". Also: \"AI agents are becoming central to business transformation. PwC’s agent OS helps you orchestrate and govern AI agents across platforms-unlocking produ…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Our market planning and AI consulting services include: AI-readiness assessments Real-world AI simulations Organisational change management AI training across your business Data and analytics consult…\". Also: \"CIO/CTO Your top AI job as a CIO is to take advantage of how this technology can scale far more quickly - and deliver faster ROI - than other technol…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"savings in SOX compliance costs and 35% reduction in quality assurance spend were achieved by a global tech company after reimagining its risk management program\". Also: \"50% savings in SOX compliance costs and 35% reduction in quality assurance spend were achieved by a global tech company after reimagining its risk ma…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Our market planning and AI consulting services include: AI-readiness assessments Real-world AI simulations Organisational change management AI training across your business Data and analytics consult…\". Also: \"Source https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory/library/sox-compliance-automation.html Capabilities Cyber Defense …\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:25:48.626534+00:00",
+      "urls_used": [
+        "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence/responsible-ai.html",
+        "https://www.pwc.com/us/en/services/consulting/cloud-digital/data-analytics/artificial-intelligence.html",
+        "https://www.pwc.com/gx/en/about/responsible-ai.html",
+        "https://www.pwc.com/us/en/services/consulting/cybersecurity-risk-regulatory.html",
+        "https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html"
+      ],
+      "pages_ok": 3,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Qualys",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.qualys.com/apps/cybersecurity-asset-management/",
+          "https://www.qualys.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "Expand internal attack surface coverage with passive network discovery using the already-deployed Qualys agent to detect risk from any assets missed by scans, agents, and API-based discovery.",
+            "matched_terms": [
+              "discovery",
+              "risk",
+              "agents",
+              "coverage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "Use the Qualys agent as a passive sensor Expand internal attack surface coverage with passive network discovery using the already-deployed Qualys agent to detect risk from any assets missed by scans, agents, and API-based discovery.",
+            "matched_terms": [
+              "discovery",
+              "risk",
+              "agents",
+              "coverage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "Expand internal attack surface coverage with passive network discovery using the already-deployed Qualys agent to detect risk from any assets missed by scans, agents, and API-based discovery. Learn More",
+            "matched_terms": [
+              "discovery",
+              "risk",
+              "agents",
+              "coverage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "Learn More Use the Qualys agent as a passive sensor Expand internal attack surface coverage with passive network discovery using the already-deployed Qualys agent to detect risk from any assets missed by scans, agents, and API-based discovery.",
+            "matched_terms": [
+              "discovery",
+              "risk",
+              "agents",
+              "coverage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Remediate efficiently with risk-based patching, AI-powered adaptive mitigation, and an integrated workflow across teams",
+            "matched_terms": [
+              "risk",
+              "integrate"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.qualys.com/apps/cybersecurity-asset-management/",
+          "https://www.qualys.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Prioritize risk by overall business impact",
+            "matched_terms": [
+              "over",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Eliminate cyber risk with complete confidence Prioritize risk by overall business impact",
+            "matched_terms": [
+              "over",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Prioritize risk by overall business impact Remediate efficiently with risk-based patching, AI-powered adaptive mitigation, and an integrated workflow across teams",
+            "matched_terms": [
+              "over",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "One-click and automated workflows to tag and organise assets for safe vulnerability scans.",
+            "matched_terms": [
+              "automated",
+              "sets"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "Correlate, normalise & deduplicate assets across multiple sensors and 3rd-party sources. One-click and automated workflows to tag and organise assets for safe vulnerability scans.",
+            "matched_terms": [
+              "automated",
+              "sets"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/",
+          "https://www.qualys.com/apps/cybersecurity-asset-management/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "95% fewer audit-related errors with standardized evidence collection, mandate-based mappings, and automated remediation workflows.",
+            "matched_terms": [
+              "automated",
+              "audit",
+              "workflows",
+              "workflow",
+              "evidence",
+              "mapping"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Improve Audit Effectiveness & Accuracy Achieve 95% fewer audit-related errors with standardized evidence collection, mandate-based mappings, and automated remediation workflows.",
+            "matched_terms": [
+              "automated",
+              "audit",
+              "workflows",
+              "workflow",
+              "evidence",
+              "mapping"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "with standardized evidence collection, mandate-based mappings, and automated remediation workflows.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "evidence",
+              "mapping"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "with standardized evidence collection, mandate-based mappings, and automated remediation workflows. Eliminate Regulatory Complexity Across Mandates",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow",
+              "evidence",
+              "mapping"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "Correlate, normalise & deduplicate assets across multiple sensors and 3rd-party sources. One-click and automated workflows to tag and organise assets for safe vulnerability scans.",
+            "matched_terms": [
+              "automated",
+              "party",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Reduce Risk & Stay Continuously Audit Ready Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.",
+            "matched_terms": [
+              "compliance",
+              "automated",
+              "risk",
+              "continuous",
+              "evidence",
+              "integration"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Download Sample Report Reduce Risk & Stay Continuously Audit Ready Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.",
+            "matched_terms": [
+              "compliance",
+              "automated",
+              "risk",
+              "continuous",
+              "evidence",
+              "integration"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.",
+            "matched_terms": [
+              "compliance",
+              "automated",
+              "risk",
+              "evidence",
+              "integration"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration. Prioritize Compliance Risks with Precision",
+            "matched_terms": [
+              "compliance",
+              "automated",
+              "risk",
+              "evidence",
+              "integration"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Stay Continuously Audit Ready with a Unified Compliance Platform Reduce Compliance Costs & Manual Effort Cut costs by 30% per mandate and reduce manual audit efforts by 90% with automation-driven compliance validation and reporting.",
+            "matched_terms": [
+              "validation",
+              "compliance",
+              "reporting",
+              "continuous"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.",
+            "matched_terms": [
+              "risk",
+              "evidence",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Policy Audit Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platform.",
+            "matched_terms": [
+              "single",
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Reduce Risk & Stay Continuously Audit Ready Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.",
+            "matched_terms": [
+              "risk",
+              "evidence",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration. Prioritize Compliance Risks with Precision",
+            "matched_terms": [
+              "risk",
+              "evidence",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Qualys Policy Audit: Simplify Audits and Reduce Risk Stay Continuously Audit Ready Policy Audit Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platform.",
+            "matched_terms": [
+              "single",
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platform.",
+            "matched_terms": [
+              "monitoring",
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Policy Audit Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platform.",
+            "matched_terms": [
+              "monitoring",
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platform. Try Now",
+            "matched_terms": [
+              "monitoring",
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Qualys Policy Audit: Simplify Audits and Reduce Risk Stay Continuously Audit Ready Policy Audit Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platform.",
+            "matched_terms": [
+              "monitoring",
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Automate End-to-End Compliance & Remediation",
+            "matched_terms": [
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/",
+          "https://www.qualys.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "While EPSS and CVSS are foundational metrics for severity, they can miss real threats and fail to filter out non-critical risk without complete business context of the environment.",
+            "matched_terms": [
+              "metrics",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Qualys Policy Audit: Simplify Audits and Reduce Risk",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.",
+            "matched_terms": [
+              "risk",
+              "evidence"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Qualys Policy Audit: Simplify Audits and Reduce Risk Stay Continuously Audit Ready",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Policy Audit Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platform.",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.qualys.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Dynamic CISO dashboards that capture TruRisk across your environment",
+            "matched_terms": [
+              "dynamic"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Integrations with CMDB that keep IT and Security teams in lockstep on the most critical priorities for your business",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Communicate cyber risk in terms of business value Dynamic CISO dashboards that capture TruRisk across your environment",
+            "matched_terms": [
+              "dynamic"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Dynamic CISO dashboards that capture TruRisk across your environment Business unit and compliance reports that pinpoint the most critical risks to your business",
+            "matched_terms": [
+              "dynamic"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Business unit and compliance reports that pinpoint the most critical risks to your business Integrations with CMDB that keep IT and Security teams in lockstep on the most critical priorities for your business",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/",
+          "https://www.qualys.com/apps/cybersecurity-asset-management/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "Gain continuous visibility across cloud, multi-cloud, on-premises, and IT/OT/IoT attack surfaces with the most versatile discovery methods available. The most comprehensive asset coverage on the market",
+            "matched_terms": [
+              "discover",
+              "across",
+              "cloud",
+              "discovery",
+              "coverage"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "Gain continuous visibility across cloud, multi-cloud, on-premises, and IT/OT/IoT attack surfaces with the most versatile discovery methods available.",
+            "matched_terms": [
+              "discover",
+              "across",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "External Attack Surface Management Gain continuous visibility across cloud, multi-cloud, on-premises, and IT/OT/IoT attack surfaces with the most versatile discovery methods available.",
+            "matched_terms": [
+              "discover",
+              "across",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "with standardized evidence collection, mandate-based mappings, and automated remediation workflows. Eliminate Regulatory Complexity Across Mandates",
+            "matched_terms": [
+              "across",
+              "automated",
+              "remediation",
+              "workflows"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.qualys.com/apps/cybersecurity-asset-management/",
+            "excerpt": "CSAM is the only solution that combines native scanning, agent, passive discovery, and complements with API-based third-party connectors to provide the most comprehensive asset attack surface coverage.",
+            "matched_terms": [
+              "discover",
+              "discovery",
+              "coverage"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.",
+            "matched_terms": [
+              "automated",
+              "evidence"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "with standardized evidence collection, mandate-based mappings, and automated remediation workflows.",
+            "matched_terms": [
+              "automated",
+              "evidence"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Reduce Risk & Stay Continuously Audit Ready Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.",
+            "matched_terms": [
+              "automated",
+              "evidence"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration. Prioritize Compliance Risks with Precision",
+            "matched_terms": [
+              "automated",
+              "evidence"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "95% fewer audit-related errors with standardized evidence collection, mandate-based mappings, and automated remediation workflows.",
+            "matched_terms": [
+              "automated",
+              "evidence"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/",
+          "https://www.qualys.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "The seamless collaboration between teams, combined with real-time visibility across multiple mandates, has streamlined our operations and enabled proactive risk management.",
+            "matched_terms": [
+              "across",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Discover everything with business context and lay the foundation for risk-based vulnerability management.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Stay compliant while reducing risk with 850 out-of-the-box policies, 19,000 controls, 350 technologies, and 100 regulations and frameworks.",
+            "matched_terms": [
+              "controls",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Secure your entire attack surface Discover everything with business context and lay the foundation for risk-based vulnerability management.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Discover everything with business context and lay the foundation for risk-based vulnerability management. Learn More",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.qualys.com/apps/policy-compliance/",
+          "https://www.qualys.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "with standardized evidence collection, mandate-based mappings, and automated remediation workflows. Eliminate Regulatory Complexity Across Mandates",
+            "matched_terms": [
+              "across",
+              "workflows",
+              "evidence"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/apps/policy-compliance/",
+            "excerpt": "Automate End-to-End Compliance & Remediation Ensure Compliance Visibility & Audit Success Integrating Qualys Policy Audit into our workflows has transformed how we manage compliance.",
+            "matched_terms": [
+              "compliance",
+              "workflows",
+              "policy"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Proactively eliminate the most critical vulnerabilities within your environment with easy-to-use workflows that unify your Security and IT teams.",
+            "matched_terms": [
+              "security",
+              "workflows"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Remediate efficiently with risk-based patching, AI-powered adaptive mitigation, and an integrated workflow across teams",
+            "matched_terms": [
+              "across",
+              "integrated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.qualys.com/platform/",
+            "excerpt": "Optimize and operationalize IT security workflows",
+            "matched_terms": [
+              "security",
+              "workflows"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Expand internal attack surface coverage with passive network discovery using the already-deployed Qualys agent to detect risk from any assets missed by scans, agents, and API-based discovery.\". Also: \"Use the Qualys agent as a passive sensor Expand internal attack surface coverage with passive network discovery using the already-deployed Qualys age…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Prioritize risk by overall business impact\". Also: \"Eliminate cyber risk with complete confidence Prioritize risk by overall business impact\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"95% fewer audit-related errors with standardized evidence collection, mandate-based mappings, and automated remediation workflows.\". Also: \"Improve Audit Effectiveness & Accuracy Achieve 95% fewer audit-related errors with standardized evidence collection, mandate-based mappings, and auto…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce Risk & Stay Continuously Audit Ready Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless …\". Also: \"Download Sample Report Reduce Risk & Stay Continuously Audit Ready Go beyond configuration assessments to simplify audits and reduce compliance risk …\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.\". Also: \"Policy Audit Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platfo…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platform.\". Also: \"Policy Audit Eliminate audit complexity with continuous monitoring, automated remediation workflows, and risk-based insights - all in a single platfo…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"While EPSS and CVSS are foundational metrics for severity, they can miss real threats and fail to filter out non-critical risk without complete business context of the environment.\". Also: \"Qualys Policy Audit: Simplify Audits and Reduce Risk\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Dynamic CISO dashboards that capture TruRisk across your environment\". Also: \"Integrations with CMDB that keep IT and Security teams in lockstep on the most critical priorities for your business\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Gain continuous visibility across cloud, multi-cloud, on-premises, and IT/OT/IoT attack surfaces with the most versatile discovery methods available. The most comprehensive asset coverage on the mark…\". Also: \"Gain continuous visibility across cloud, multi-cloud, on-premises, and IT/OT/IoT attack surfaces with the most versatile discovery methods available.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Go beyond configuration assessments to simplify audits and reduce compliance risk with automated evidence collection, mandate-based controls, and seamless integration.\". Also: \"with standardized evidence collection, mandate-based mappings, and automated remediation workflows.\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"The seamless collaboration between teams, combined with real-time visibility across multiple mandates, has streamlined our operations and enabled proactive risk management.\". Also: \"Discover everything with business context and lay the foundation for risk-based vulnerability management.\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"with standardized evidence collection, mandate-based mappings, and automated remediation workflows. Eliminate Regulatory Complexity Across Mandates\". Also: \"Automate End-to-End Compliance & Remediation Ensure Compliance Visibility & Audit Success Integrating Qualys Policy Audit into our workflows has tran…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:26:03.571843+00:00",
+      "urls_used": [
+        "https://www.qualys.com/platform/",
+        "https://www.qualys.com/apps/cybersecurity-asset-management/",
+        "https://www.qualys.com/apps/policy-compliance/",
+        "https://blog.qualys.com/vulnerabilities-threat-research",
+        "https://www.qualys.com/platform/cloud-security/"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

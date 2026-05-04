@@ -1,0 +1,611 @@
+{
+  "cnapp_mq_gap_taxonomy_v1.0": {
+    "schema_lineage": {
+      "schema_id": "CNAPP_MQ_Gap_Schema",
+      "version": "1.0",
+      "parent_schema": "MDR_MQ_Gap_Schema_App.json",
+      "related_schemas": ["CNAPP_Schema.json"],
+      "purpose": "Supplemental MQ evaluation criteria NOT addressed by the CNAPP capability schema. Scored independently, then combined via mq_scoring_mode to produce final Magic Quadrant positions for the Cloud-Native Application Protection Platform market."
+    },
+    "intent": "Evaluate CNAPP vendors against the 7 Magic Quadrant criteria gaps: Financial Viability, Sales Execution, Market Responsiveness, Marketing Execution, Customer Experience Quality, Market Understanding & Vision, and Vertical & Geographic Strategy. These supplement the CNAPP technical capability assessment (CSPM, CWPP, CIEM, Shift-Left, CDR, DSPM, Fringe) to complete the 15-criteria MQ evaluation framework.",
+    "metadata": {
+      "framework_alignment": "Gartner Magic Quadrant Evaluation Framework — G00802987 (2 July 2025); Gartner Market Guide for CNAPP",
+      "applies_to": "CNAPP",
+      "capability_scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No Evidence — No public data or documentation found",
+        "scoring_logic": {
+          "0": "No Evidence — no public data, documentation, or third-party references available.",
+          "1": "Minimal — vague or unsubstantiated claims only; no verifiable evidence.",
+          "2": "Basic — some evidence found but significant gaps remain; limited depth.",
+          "3": "Demonstrated — clear evidence of capability with moderate depth across multiple sources.",
+          "4": "Strong — well-documented with multiple proof points from credible sources.",
+          "5": "Market-Leading — best-in-class with extensive evidence and third-party validation."
+        }
+      },
+      "source_policy": {
+        "valid_sources": [
+          {"tier": 1, "type": "Company filings", "examples": ["SEC filings", "annual reports", "investor presentations"], "weight": 1.0},
+          {"tier": 1, "type": "Analyst reports", "examples": ["Gartner MQ/Market Guide for CNAPP", "Forrester Wave Cloud Workload Security", "IDC MarketScape"], "weight": 1.0},
+          {"tier": 2, "type": "Peer review platforms", "examples": ["Gartner Peer Insights (CNAPP)", "G2 (Cloud Security)", "TrustRadius", "PeerSpot"], "weight": 0.8},
+          {"tier": 2, "type": "Vendor website", "examples": ["product pages", "partner pages", "press releases", "blog"], "weight": 0.7},
+          {"tier": 3, "type": "Third-party research", "examples": ["Crunchbase", "LinkedIn", "news articles", "job postings"], "weight": 0.6},
+          {"tier": 3, "type": "Community sources", "examples": ["Reddit", "forums", "KubeCon/RSA presentations"], "weight": 0.4}
+        ],
+        "invalid_sources": ["Wikipedia (unverified)", "vendor-paid advertorials without disclosure", "anonymous unverifiable claims"]
+      },
+      "coverage_grade": {
+        "scale": {
+          "A": ">=90% sub-pillars scored with Tier-1/2 evidence",
+          "B": ">=75% sub-pillars scored with evidence",
+          "C": ">=60% sub-pillars scored",
+          "D": ">=40% sub-pillars scored",
+          "F": "<40% sub-pillars scored or mostly heuristic-derived"
+        }
+      },
+      "mq_axis_mapping": {
+        "ability_to_execute": ["VIA", "SLE", "MKR", "MKE", "CXQ"],
+        "completeness_of_vision": ["SLE", "MKE", "MKU", "VIG"],
+        "note": "SLE and MKE contribute to BOTH axes per Gartner MQ methodology"
+      }
+    },
+    "pillars": {
+      "VIA": {
+        "name": "Financial Viability & Stability",
+        "focus": "Overall financial health, cloud-security business unit success, and likelihood of continued CNAPP investment. Maps to MQ criterion ATE-2 (Overall Viability).",
+        "mq_criterion": "ATE-2",
+        "mq_criterion_name": "Overall Viability",
+        "mq_weight": "High",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": ["SEC filings", "annual reports", "cloud-security ARR disclosure", "funding announcements", "Crunchbase data", "valuation milestones (e.g., Wiz $12B)", "platform vendor cloud-security segment growth"]
+      },
+      "SLE": {
+        "name": "Sales Execution & Channel",
+        "focus": "Presales and sales capabilities, hyperscaler co-sell motion, MSP/MSSP channel strategy, and CNAPP-specific marketplace reach. Maps to MQ criteria ATE-3 (Sales Execution) and COV-3 (Sales Strategy).",
+        "mq_criterion": "ATE-3 + COV-3",
+        "mq_criterion_name": "Sales Execution + Sales Strategy",
+        "mq_weight": "Medium",
+        "mq_axis": "Both (Execute + Vision)",
+        "evidence_signals": ["AWS/Azure/GCP marketplace listings", "hyperscaler co-sell tier (e.g., AWS ISV Accelerate)", "MSSP partner programs", "free trial / cloud connector self-service signup", "regional sales offices", "cloud security job postings"]
+      },
+      "MKR": {
+        "name": "Market Responsiveness & Track Record",
+        "focus": "Ability to respond to cloud-security market shifts (AI-SPM, agentless adoption, runtime convergence, multi-cloud expansion). Maps to MQ criterion ATE-4.",
+        "mq_criterion": "ATE-4",
+        "mq_criterion_name": "Market Responsiveness & Track Record",
+        "mq_weight": "Medium",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": ["release notes / changelogs", "AI-SPM module launches", "agentless capability rollouts", "M&A activity (e.g., Palo Alto acquiring Dig, CrowdStrike acquiring Bionic)", "CNAPP convergence announcements", "Kubernetes / serverless coverage expansion"]
+      },
+      "MKE": {
+        "name": "Marketing Execution & Brand",
+        "focus": "Quality, creativity, and efficacy of CNAPP marketing programs plus differentiated messaging in a crowded cloud-security market. Maps to MQ criteria ATE-5 (Marketing Execution) and COV-2 (Marketing Strategy).",
+        "mq_criterion": "ATE-5 + COV-2",
+        "mq_criterion_name": "Marketing Execution + Marketing Strategy",
+        "mq_weight": "Low (ATE) / Medium (COV)",
+        "mq_axis": "Both (Execute + Vision)",
+        "evidence_signals": ["RSA/AWS re:Inforce/KubeCon presence", "cloud-threat research reports", "social media presence (X, LinkedIn)", "SEO ranking on CNAPP/CSPM/CWPP terms", "earned media coverage", "annual flagship event (e.g., Wiz Velocity, PANW Ignite)"]
+      },
+      "CXQ": {
+        "name": "Customer Experience Quality",
+        "focus": "Quantitative customer experience metrics for CNAPP buyers — onboarding speed for cloud connector deployment, support quality across hyperscalers, and customer success programs. Maps to MQ criterion ATE-6.",
+        "mq_criterion": "ATE-6",
+        "mq_criterion_name": "Customer Experience",
+        "mq_weight": "High",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": ["Gartner Peer Insights (CNAPP) ratings", "G2 Cloud Security category position", "agentless time-to-first-finding benchmarks", "SLA documentation", "customer success / TAM programs", "published NRR / DBNRR"]
+      },
+      "MKU": {
+        "name": "Market Understanding & Vision",
+        "focus": "Understanding of cloud-security buyer needs, articulation of CNAPP convergence vision, and platform extensibility roadmap. Maps to MQ criteria COV-1 (Market Understanding) and COV-4 (Offering Strategy).",
+        "mq_criterion": "COV-1 + COV-4",
+        "mq_criterion_name": "Market Understanding + Offering Strategy",
+        "mq_weight": "High",
+        "mq_axis": "Completeness of Vision",
+        "evidence_signals": ["CNAPP convergence vision pages", "CEO/CTO keynotes on cloud-security future", "AI-SPM / DSPM roadmap publications", "API / integration marketplace", "consumption-based pricing models", "patent filings (graph analysis, attack paths)"]
+      },
+      "VIG": {
+        "name": "Vertical & Geographic Strategy",
+        "focus": "Strategy to direct resources to regulated verticals (financial services, healthcare, public sector) and geographic regions with data sovereignty requirements. Maps to MQ criteria COV-6 (Vertical/Industry Strategy) and COV-8 (Geographic Strategy).",
+        "mq_criterion": "COV-6 + COV-8",
+        "mq_criterion_name": "Vertical/Industry Strategy + Geographic Strategy",
+        "mq_weight": "Low",
+        "mq_axis": "Completeness of Vision",
+        "evidence_signals": ["FedRAMP / IL5 authorization", "PCI-DSS / HIPAA / HITRUST compliance packs", "regional cloud region availability", "data residency (US/EU/APAC)", "GovCloud / sovereign cloud support", "vertical solution pages"]
+      }
+    },
+    "sub_pillars": {
+      "VIA-01": {
+        "name": "Revenue & Cloud-Security Growth Trajectory",
+        "expanded_definition": "Annual revenue (total and cloud-security/CNAPP-specific where available), year-over-year ARR growth, and revenue trend over the last 3 years. Particularly important for pure-play CNAPP vendors and cloud-security business units of platform vendors.",
+        "what_to_verify_publicly": ["SEC filings showing cloud-security segment revenue", "Press releases with ARR milestones (e.g., 'first to $500M ARR')", "Crunchbase funding and valuation data", "Analyst estimates of CNAPP market share", "Cloud-security headcount as proxy"],
+        "search_terms": ["revenue", "ARR", "growth", "cloud security revenue", "funding", "valuation", "next-gen security"],
+        "scoring_guidance": {
+          "1": "No revenue or ARR data publicly available",
+          "2": "Revenue disclosed but flat or declining; or only total company revenue with no cloud-security breakdown",
+          "3": "Positive growth documented; cloud-security segment identifiable; growing customer base implied",
+          "4": "Strong documented growth (>30% YoY) with specific cloud-security/CNAPP revenue; clear trajectory",
+          "5": "Market-leading revenue in CNAPP segment (>$500M ARR or equivalent); sustained 50%+ growth; transparent financials"
+        }
+      },
+      "VIA-02": {
+        "name": "Profitability & Financial Health",
+        "expanded_definition": "Profitability indicators for the cloud-security business, burn rate (for pure-play startups like Wiz, Orca, Sysdig), cash reserves, and parent-company financial backing for platform vendors.",
+        "what_to_verify_publicly": ["SEC filings showing profitability or segment EBITDA", "Recent funding rounds indicating runway (e.g., Wiz Series E)", "Credit ratings for public vendors", "Parent company financial backing evidence"],
+        "search_terms": ["profitable", "EBITDA", "cash", "burn rate", "runway", "Rule of 40", "free cash flow"],
+        "scoring_guidance": {
+          "1": "No financial health data; high-risk funding stage with no recent rounds",
+          "2": "Recent funding secured but high burn rate implied; or large company but CNAPP is a minor underfunded initiative",
+          "3": "Adequate runway (2+ years) for pure-plays; stable parent backing for platform vendors; or breakeven trajectory",
+          "4": "Profitable or near-profitable; strong cash position; documented commitment to sustained CNAPP R&D",
+          "5": "Profitable with strong margins; investment-grade parent or unicorn-level valuation; >$1B war chest for cloud-security investment"
+        }
+      },
+      "VIA-03": {
+        "name": "Customer Base & Retention",
+        "expanded_definition": "Published CNAPP / cloud-security customer count, enterprise logos, net retention rate, churn indicators, and customer base growth.",
+        "what_to_verify_publicly": ["Website customer logos page", "Published customer count (e.g., 'protecting 40% of Fortune 500')", "Cloud-security case studies across sectors", "G2 / Gartner Peer Insights review counts", "SEC filings with customer metrics"],
+        "search_terms": ["customers", "Fortune 500", "retention", "NRR", "DBNRR", "churn", "logo growth"],
+        "scoring_guidance": {
+          "1": "No customer count or logos published",
+          "2": "A few customer logos or case studies; no count or retention data",
+          "3": "Published customer count (100+); multiple cloud case studies across sectors",
+          "4": "Large customer base (500+); net retention data; expansion revenue documented; diverse verticals",
+          "5": "1000+ enterprise CNAPP customers; published NRR >120%; multiple Fortune 100 logos; low churn"
+        }
+      },
+      "VIA-04": {
+        "name": "Market Position & Competitive Standing",
+        "expanded_definition": "Estimated CNAPP market share, inclusion in analyst CNAPP/CWPP/CSPM reports (MQ, Wave, Market Guide), competitive win rates against Wiz/Palo Alto/Microsoft, and brand recognition.",
+        "what_to_verify_publicly": ["Gartner MQ for CNAPP / Market Guide for CNAPP inclusion", "Forrester Wave Cloud Workload Security positioning", "IDC MarketScape inclusion", "RSA Innovation Sandbox finalist status", "CNAPP analyst recognition"],
+        "search_terms": ["Gartner CNAPP", "Forrester Wave", "IDC MarketScape", "leader", "challenger", "RSA Innovation Sandbox"],
+        "scoring_guidance": {
+          "1": "No analyst recognition or competitive positioning evidence",
+          "2": "Mentioned in one CNAPP analyst report or industry list",
+          "3": "Included in multiple analyst reports; competitive positioning visible; moderate brand recognition",
+          "4": "Named as Leader/Strong Performer in a CNAPP MQ or Wave; strong positioning against named competitors",
+          "5": "Top-3 in Gartner CNAPP MQ or Forrester Wave; >10% market share; benchmark vendor cited by competitors"
+        }
+      },
+      "SLE-01": {
+        "name": "Cloud Marketplace & Hyperscaler Channel",
+        "expanded_definition": "Presence on AWS / Azure / GCP marketplaces, hyperscaler co-sell tier (e.g., AWS ISV Accelerate, Azure IP Co-Sell), MSP/MSSP partner program, and technology alliances with EDR/SIEM/IAM vendors.",
+        "what_to_verify_publicly": ["AWS/Azure/GCP marketplace listings with private offers", "Hyperscaler co-sell tier (AWS ISV Accelerate, Azure CIPP)", "Partner program tiers", "MSSP program documentation", "Technology alliance pages"],
+        "search_terms": ["AWS marketplace", "Azure marketplace", "Google Cloud marketplace", "co-sell", "ISV Accelerate", "MSSP", "partner"],
+        "scoring_guidance": {
+          "1": "No marketplace or channel presence",
+          "2": "Listed on 1 hyperscaler marketplace; minimal partner mentions",
+          "3": "All 3 hyperscaler marketplaces; documented partner program; some MSSP partners",
+          "4": "Co-sell tier on 2+ hyperscalers; mature partner program (50+ partners); MSSP program with named providers",
+          "5": "Top co-sell tier on all 3 hyperscalers; >100 channel partners; flagship MSSP relationships; deep technology alliances"
+        }
+      },
+      "SLE-02": {
+        "name": "Cloud Connector Self-Service & Trial Motion",
+        "expanded_definition": "Free trial / agentless cloud connector self-service, time-to-first-finding for prospects, sales team responsiveness, and product-led growth motion typical of modern CNAPP vendors.",
+        "what_to_verify_publicly": ["Free trial / 'connect your cloud in 5 minutes' availability", "G2 reviews on buying/onboarding experience", "Sales engineering job postings", "Self-service signup flows", "POV/POC program documentation"],
+        "search_terms": ["free trial", "agentless", "5 minutes", "self-service", "cloud connector", "POV", "POC", "PLG"],
+        "scoring_guidance": {
+          "1": "No trial or POV evidence; contact-us only",
+          "2": "Demo request form only; no trial or self-service connector",
+          "3": "Free trial or POV documented; cloud connector setup guide; sales team visible",
+          "4": "Self-service trial with agentless cloud connector; rapid time-to-value (hours); enterprise sales overlay",
+          "5": "Best-in-class PLG (sign up, connect cloud, findings in <1 hour); multi-motion sales (PLG + enterprise + channel)"
+        }
+      },
+      "SLE-03": {
+        "name": "Geographic Sales Coverage",
+        "expanded_definition": "Sales presence across regions, office locations supporting cloud-security buyers, language capabilities for sales, and regional CNAPP go-to-market teams.",
+        "what_to_verify_publicly": ["Office locations page", "Regional cloud-security job postings", "Regional partner pages", "Website language options", "Regional pricing or contact pages"],
+        "search_terms": ["offices", "EMEA", "APAC", "LATAM", "Japan", "Australia", "regional", "international"],
+        "scoring_guidance": {
+          "1": "Single-region sales presence only",
+          "2": "HQ region plus one additional region; limited international",
+          "3": "Sales presence in 2-3 major regions; some international partners",
+          "4": "Sales teams in 4+ regions; multi-language support; regional partners in each major market",
+          "5": "Global sales presence; offices in all major regions; localized sales motions; 20+ country coverage"
+        }
+      },
+      "SLE-04": {
+        "name": "Customer Acquisition Efficiency",
+        "expanded_definition": "Evidence of efficient CNAPP customer acquisition: cloud-risk assessments, free posture reports, ROI calculators, and demand-gen efficiency.",
+        "what_to_verify_publicly": ["Cloud risk assessment / free posture scan tools", "Content marketing funnel (blog, gated reports)", "Webinar program", "ROI calculators", "G2 reviews on buying experience"],
+        "search_terms": ["assessment", "ROI", "calculator", "free scan", "webinar", "demand generation", "cloud risk report"],
+        "scoring_guidance": {
+          "1": "No evidence of structured demand generation",
+          "2": "Basic website lead gen; limited content marketing",
+          "3": "Structured demand gen with content/events/digital; ROI calculators or risk-assessment tools",
+          "4": "Multi-channel demand gen; documented short sales cycles; free cloud-risk scan as primary funnel",
+          "5": "Best-in-class demand engine; documented CAC efficiency; industry-leading content velocity; community-driven growth"
+        }
+      },
+      "MKR-01": {
+        "name": "Product Release Cadence & Velocity",
+        "expanded_definition": "Frequency and substance of CNAPP platform releases, feature updates, and integration of new cloud services (new AWS/Azure/GCP services, Kubernetes versions) over the last 12-24 months.",
+        "what_to_verify_publicly": ["Release notes / changelog page", "Blog posts on new features", "Product update newsletters", "What's New page", "Community forums on releases"],
+        "search_terms": ["release notes", "changelog", "what's new", "feature launch", "version history"],
+        "scoring_guidance": {
+          "1": "No release history or changelog available",
+          "2": "Infrequent updates; quarterly+ releases with minor features",
+          "3": "Monthly release cadence; meaningful feature additions; new cloud-service coverage documented",
+          "4": "Bi-weekly releases; major capability additions; rapid coverage of new AWS/Azure/GCP services within 30-60 days of GA",
+          "5": "Continuous delivery; weekly releases; same-week or same-day coverage of new cloud services; documented velocity metrics"
+        }
+      },
+      "MKR-02": {
+        "name": "Competitive Response to CNAPP Convergence",
+        "expanded_definition": "Evidence of the vendor responding to CNAPP convergence trends — adding AI-SPM, DSPM, Kubernetes runtime, code-to-cloud, attack-path analysis, and runtime convergence (e.g., Wiz Defend, Sysdig CDR).",
+        "what_to_verify_publicly": ["Product announcements adding adjacent CNAPP capabilities", "Blog posts on cloud-security convergence", "Net-new pillars added (AI-SPM, DSPM, CDR)", "Analyst briefing notes", "Competitive comparison pages"],
+        "search_terms": ["AI-SPM", "DSPM", "code to cloud", "attack path", "Kubernetes runtime", "convergence", "unified platform"],
+        "scoring_guidance": {
+          "1": "No evidence of market-responsive adaptations; single-pillar vendor",
+          "2": "Slow to respond; capabilities lag market trends by 12+ months; missing 2+ of CSPM/CWPP/CIEM/DSPM/AI-SPM",
+          "3": "Aware of trends; key capabilities added within 6-12 months of demand; covers core CNAPP pillars",
+          "4": "Proactive response to convergence; early adopter of AI-SPM/DSPM/runtime convergence",
+          "5": "Market-shaping; first-to-market with CNAPP convergence themes (e.g., Wiz with attack-path graph, Sysdig with runtime CDR)"
+        }
+      },
+      "MKR-03": {
+        "name": "M&A & Strategic Investment Track Record",
+        "expanded_definition": "Recent acquisitions, strategic investments, or integrations that filled CNAPP capability gaps (e.g., Palo Alto + Dig Security, CrowdStrike + Bionic/Flow Security, Tenable + Ermetic, Fortinet + Lacework).",
+        "what_to_verify_publicly": ["Press releases on acquisitions", "SEC filings showing M&A", "Crunchbase acquisition history", "News articles on strategic deals", "Integration announcements post-acquisition"],
+        "search_terms": ["acquired", "acquisition", "Dig Security", "Bionic", "Lacework", "Ermetic", "Flow Security", "merger"],
+        "scoring_guidance": {
+          "1": "No acquisition or investment activity documented",
+          "2": "Minimal M&A; 1 small acquisition in last 3 years",
+          "3": "Strategic acquisitions that filled capability gaps; clear investment thesis",
+          "4": "Multiple strategic acquisitions integrated successfully; strong M&A track record (e.g., Palo Alto's Bridgecrew/Dig)",
+          "5": "Transformative M&A strategy; major acquisitions reshaping market position; integration excellence documented"
+        }
+      },
+      "MKR-04": {
+        "name": "Customer-Driven Feature Delivery",
+        "expanded_definition": "Evidence the vendor incorporates CNAPP customer feedback into product development — feature request portals, customer advisory boards, transparent roadmaps.",
+        "what_to_verify_publicly": ["Feature request portal / voting system", "Community Slack/forums with product team engagement", "Customer advisory board references", "Release notes citing customer requests", "Public roadmap"],
+        "search_terms": ["feedback", "advisory board", "community", "roadmap", "feature request", "customer-driven"],
+        "scoring_guidance": {
+          "1": "No customer feedback mechanisms visible",
+          "2": "Basic feedback collection; no evidence of incorporation",
+          "3": "Documented advisory board or feedback portal; some features attributed to customer input",
+          "4": "Active community Slack/forum; roadmap influenced by customer input; feature voting visible",
+          "5": "Transparent roadmap tied to customer feedback; documented request-to-delivery metrics; co-development programs"
+        }
+      },
+      "MKE-01": {
+        "name": "Brand Awareness & Cloud-Security Market Presence",
+        "expanded_definition": "Brand recognition in the CNAPP / cloud-security market, media mentions, social media presence (X, LinkedIn), and overall visibility at cloud-security events.",
+        "what_to_verify_publicly": ["Media coverage frequency (TechCrunch, DarkReading, etc.)", "Social media follower counts", "Web traffic estimates (SimilarWeb)", "Industry award lists", "RSA / AWS re:Inforce / KubeCon presence"],
+        "search_terms": ["recognized", "award", "leader", "brand", "RSA", "re:Inforce", "KubeCon", "DarkReading"],
+        "scoring_guidance": {
+          "1": "Minimal market presence; few media mentions",
+          "2": "Some recognition in niche CNAPP segments; limited media coverage",
+          "3": "Recognized brand in cloud security; regular media coverage; active social presence",
+          "4": "Strong brand with high awareness; frequent mentions; significant social following; conference keynotes",
+          "5": "Top-of-mind brand in CNAPP (e.g., Wiz, Palo Alto Prisma Cloud); extensive media presence; thought leader status"
+        }
+      },
+      "MKE-02": {
+        "name": "Content & Cloud-Threat Research Leadership",
+        "expanded_definition": "Quality and volume of published cloud-security content: cloud-threat research reports (Wiz Threat Research, Unit 42 Cloud Threat Report, Sysdig Threat Research), blogs, whitepapers, and educational resources.",
+        "what_to_verify_publicly": ["Blog post frequency and depth on cloud threats", "Annual Cloud Threat / Cloud Attack reports", "Webinar archives", "Cloud-security research team brand", "Podcast or media appearances"],
+        "search_terms": ["cloud threat report", "research", "blog", "whitepaper", "webinar", "Unit 42", "threat research"],
+        "scoring_guidance": {
+          "1": "No meaningful content publication",
+          "2": "Sparse blog content; occasional white papers",
+          "3": "Regular content cadence; multiple content types; some original cloud-threat research",
+          "4": "Prolific content publisher; named threat research team; annual cloud-threat report; widely cited",
+          "5": "Best-in-class content engine; flagship annual cloud-threat report cited by media/analysts; influential blog setting market narrative"
+        }
+      },
+      "MKE-03": {
+        "name": "Event & Conference Presence",
+        "expanded_definition": "Presence at major cloud-security events (RSA, AWS re:Inforce, AWS re:Invent, KubeCon, Black Hat, fwd:cloudsec), own-hosted events, and community engagement.",
+        "what_to_verify_publicly": ["Event sponsorship announcements", "Conference speaker slots at AWS re:Inforce, KubeCon, RSA", "Booth presence at major cloud events", "Own annual user conference (e.g., Wiz Velocity, PANW Ignite)", "Community meetup hosting"],
+        "search_terms": ["RSA", "re:Inforce", "re:Invent", "KubeCon", "Black Hat", "fwd:cloudsec", "Ignite", "Velocity"],
+        "scoring_guidance": {
+          "1": "No event presence documented",
+          "2": "Attends 1-2 events per year; booth presence only",
+          "3": "Regular presence at major cloud events; some speaking slots",
+          "4": "Major presence at top-tier events (RSA, re:Inforce, KubeCon); keynote speakers; own user conference",
+          "5": "Dominant event presence; headline sponsor at RSA/re:Inforce; flagship annual conference with 1000+ attendees (e.g., PANW Ignite, Wiz Velocity)"
+        }
+      },
+      "MKE-04": {
+        "name": "Digital Presence & Messaging Clarity",
+        "expanded_definition": "Website quality, messaging clarity around CNAPP convergence, value proposition articulation, and digital marketing sophistication in a crowded category.",
+        "what_to_verify_publicly": ["Website UX assessment", "Messaging consistency across CSPM/CWPP/CIEM/DSPM pages", "SEO ranking for CNAPP/CSPM/CWPP terms", "Digital ad presence", "Analyst evaluations of messaging"],
+        "search_terms": ["website", "messaging", "value proposition", "CNAPP", "SEO", "digital marketing"],
+        "scoring_guidance": {
+          "1": "Poor website; unclear messaging; no differentiation articulated",
+          "2": "Functional website; basic messaging; value prop generic ('we secure the cloud')",
+          "3": "Professional website; clear CNAPP positioning; differentiated messaging; good SEO",
+          "4": "Excellent website with strong UX; sharp differentiated messaging; clear competitive positioning; strong SEO",
+          "5": "Best-in-class digital presence; industry-defining messaging (e.g., 'attack path', 'code-to-cloud'); website as primary lead-gen engine"
+        }
+      },
+      "CXQ-01": {
+        "name": "Peer Review Ratings (CNAPP / Cloud Security)",
+        "expanded_definition": "Aggregated ratings on Gartner Peer Insights (CNAPP), G2 (Cloud Security category), and other peer review platforms. Overall rating, review count, sentiment.",
+        "what_to_verify_publicly": ["Gartner Peer Insights CNAPP rating and review count", "G2 Cloud Security category rating and Grid position", "TrustRadius score", "PeerSpot rating", "Customers' Choice or G2 Leader badges"],
+        "search_terms": ["Peer Insights", "G2", "TrustRadius", "PeerSpot", "Customers Choice", "G2 Leader"],
+        "scoring_guidance": {
+          "1": "No peer reviews found on any platform",
+          "2": "Few reviews (<10); available on 1 platform only",
+          "3": "Moderate review count (10-50); 4.0+/5.0 average; on 2+ platforms",
+          "4": "Strong review presence (50-200); 4.3+/5.0 average; Customers' Choice or G2 Leader",
+          "5": "Extensive reviews (200+); 4.5+/5.0 average; Gartner Peer Insights Customers' Choice; G2 Grid Leader"
+        }
+      },
+      "CXQ-02": {
+        "name": "Support Quality & Responsiveness",
+        "expanded_definition": "CNAPP customer support quality: support tier structure, response time commitments, escalation paths, named TAMs/CSMs, and satisfaction with support across cloud-security findings.",
+        "what_to_verify_publicly": ["SLA documentation on website", "Support tier descriptions (e.g., Standard / Premium / Elite)", "G2/Gartner reviews mentioning support quality", "Response time guarantees", "Dedicated TAM/CSM references"],
+        "search_terms": ["support", "SLA", "response time", "escalation", "TAM", "CSM", "customer success"],
+        "scoring_guidance": {
+          "1": "No support quality information available",
+          "2": "Basic support structure documented; no SLA specifics",
+          "3": "Tiered support with documented SLAs; dedicated account management mentioned",
+          "4": "24/7 premium support; documented response times; TAM/CSM assignment; high support ratings",
+          "5": "Best-in-class support; sub-hour response guarantees; proactive customer success; published high support NPS"
+        }
+      },
+      "CXQ-03": {
+        "name": "Onboarding & Time-to-First-Finding",
+        "expanded_definition": "Speed and quality of CNAPP onboarding — agentless cloud connector deployment time, first meaningful misconfiguration / threat finding within hours, and ease of multi-cloud onboarding.",
+        "what_to_verify_publicly": ["Onboarding documentation", "Cloud connector setup guides", "G2 reviews on implementation experience", "Case studies with deployment timelines", "Time-to-first-finding claims and evidence"],
+        "search_terms": ["onboarding", "deployment", "agentless", "5 minutes", "time to value", "quick start", "cloud connector"],
+        "scoring_guidance": {
+          "1": "No onboarding information available",
+          "2": "Basic onboarding mentioned; no timeline or process details",
+          "3": "Documented onboarding with milestones; deployment guides; reasonable time-to-value (days)",
+          "4": "Fast agentless onboarding (<1 hour to first findings); structured enablement; deployment automation",
+          "5": "Same-day full multi-cloud onboarding; agentless cloud connector with sub-30-minute time-to-first-finding documented"
+        }
+      },
+      "CXQ-04": {
+        "name": "Customer Success & Expansion",
+        "expanded_definition": "Evidence of customer success programs, CNAPP expansion revenue (cross-sell of DSPM, AI-SPM, code-to-cloud modules), customer community, and long-term relationship investment.",
+        "what_to_verify_publicly": ["Customer success program page", "Community forums or user groups (e.g., Wiz community)", "Expansion case studies", "NRR / DBNRR data", "Customer advisory board mentions"],
+        "search_terms": ["customer success", "community", "user group", "NRR", "expansion", "advisory board", "DBNRR"],
+        "scoring_guidance": {
+          "1": "No customer success program visible",
+          "2": "Basic account management; no proactive success program",
+          "3": "Designated CSM program; QBRs documented; customer training available",
+          "4": "Mature customer success with proactive engagement; customer community; documented expansion revenue",
+          "5": "Best-in-class customer success; advisory boards; published NRR >130% (typical for top CNAPP vendors); active user community"
+        }
+      },
+      "MKU-01": {
+        "name": "Cloud-Security Vision & CNAPP Convergence Direction",
+        "expanded_definition": "The vendor's articulated view of where CNAPP is heading, how they define platform convergence (CSPM + CWPP + CIEM + DSPM + AI-SPM), and whether their vision aligns with or shapes Gartner's market direction.",
+        "what_to_verify_publicly": ["Vision/strategy pages on website", "CEO/CTO interviews and keynotes (e.g., Wiz, PANW, CrowdStrike)", "Analyst briefing content", "Investor presentations on cloud-security strategy", "Published perspective on CNAPP evolution"],
+        "search_terms": ["vision", "strategy", "CNAPP convergence", "platform", "future of cloud security", "code to cloud"],
+        "scoring_guidance": {
+          "1": "No market vision articulated",
+          "2": "Generic positioning; follows market without clear vision",
+          "3": "Clear CNAPP perspective; articulated view of cloud-security evolution; some thought leadership",
+          "4": "Strong vision shaping market direction; forward-looking strategy on AI-SPM/DSPM/runtime convergence",
+          "5": "Market-defining vision (e.g., Wiz attack-path graph, PANW Code-to-Cloud); other vendors react to their narrative"
+        }
+      },
+      "MKU-02": {
+        "name": "Product Roadmap & R&D Investment",
+        "expanded_definition": "Published or implied CNAPP roadmap (DSPM, AI-SPM, runtime, code-to-cloud), R&D investment indicators, and clarity on future capability development.",
+        "what_to_verify_publicly": ["Roadmap publications or blog posts", "R&D job postings volume and roles", "Patent filings on graph analysis / attack paths", "Investor presentations on R&D spend", "Cloud-security research team output"],
+        "search_terms": ["roadmap", "R&D", "research", "patent", "labs", "innovation", "AI-SPM", "DSPM"],
+        "scoring_guidance": {
+          "1": "No roadmap or R&D indicators available",
+          "2": "Vague future direction mentioned; minimal R&D signals",
+          "3": "General roadmap themes documented; R&D investment evidenced by hiring and releases",
+          "4": "Detailed roadmap shared with customers; significant R&D investment; patent filings; named research lab",
+          "5": "Transparent multi-year roadmap; R&D >25% of revenue; active patent portfolio on cloud-security innovations; research partnerships"
+        }
+      },
+      "MKU-03": {
+        "name": "Platform & Ecosystem Strategy",
+        "expanded_definition": "Platform extensibility, API marketplace, integration ecosystem depth (SIEM, SOAR, EDR, ITSM, IaC tools), and strategy for becoming the consolidated CNAPP platform vs. point solution.",
+        "what_to_verify_publicly": ["API documentation quality", "Integration marketplace page", "Technology partner program", "Developer resources and SDKs (e.g., Wiz CLI, OPA support)", "Platform vs. point-solution positioning"],
+        "search_terms": ["API", "integration", "marketplace", "platform", "ecosystem", "SDK", "developer", "OPA", "Terraform"],
+        "scoring_guidance": {
+          "1": "No platform or ecosystem strategy visible",
+          "2": "Basic integrations; no API documentation; point-solution positioning",
+          "3": "Documented integrations with major SIEM/EDR/IaC tools; API available; growing partner ecosystem",
+          "4": "Rich integration marketplace (50+); documented APIs with SDKs; technology partner program; clear platform positioning",
+          "5": "Open platform with 100+ integrations; developer ecosystem; marketplace adoption; platform is industry standard"
+        }
+      },
+      "VIG-01": {
+        "name": "Vertical-Specific Solutions",
+        "expanded_definition": "Named vertical/industry solutions (financial services, healthcare, public sector, manufacturing), compliance packages (PCI-DSS, HIPAA, FedRAMP, IL5), and industry-specific cloud-security detections.",
+        "what_to_verify_publicly": ["Industry/vertical solution pages", "Compliance certification logos (FedRAMP, HITRUST, IL4/IL5, etc.)", "Vertical case studies", "Industry-tailored content", "Sector-specific compliance packs"],
+        "search_terms": ["healthcare", "financial", "government", "FedRAMP", "HITRUST", "PCI", "HIPAA", "IL5", "GovCloud", "vertical"],
+        "scoring_guidance": {
+          "1": "No vertical differentiation",
+          "2": "Generic compliance mention; no industry-specific solutions",
+          "3": "2-3 named vertical solutions; FedRAMP Moderate or 1-2 industry compliance packs",
+          "4": "Dedicated offerings for 4+ industries; FedRAMP High / IL4 / HITRUST certified; vertical GTM teams",
+          "5": "Industry leader in 2+ verticals; FedRAMP High + IL5; comprehensive compliance suite; vertical advisory boards"
+        }
+      },
+      "VIG-02": {
+        "name": "Industry Concentration & References",
+        "expanded_definition": "Customer concentration across verticals, published industry references, and vertical CNAPP market share indicators.",
+        "what_to_verify_publicly": ["Customer logos by industry", "Vertical case studies", "Industry awards", "Vertical conference presence", "Published vertical customer counts"],
+        "search_terms": ["industry", "vertical", "sector", "healthcare customers", "financial services", "government"],
+        "scoring_guidance": {
+          "1": "No vertical customer references",
+          "2": "Customers in 1-2 verticals only",
+          "3": "References across 3-5 verticals; some concentration data available",
+          "4": "Strong presence in 5+ verticals; documented vertical share in at least one industry",
+          "5": "Dominant in 2+ verticals (e.g., financial services, federal); comprehensive vertical portfolio; recognized vertical specialist"
+        }
+      },
+      "VIG-03": {
+        "name": "Regional & Global Cloud Coverage",
+        "expanded_definition": "Cloud region availability, data residency options (US, EU, APAC), regional compliance (GDPR, DORA, PIPL), GovCloud / sovereign cloud support, and service availability across geographies.",
+        "what_to_verify_publicly": ["Cloud region / hosting documentation", "Data residency pages", "Regional compliance certifications (GDPR, DORA, etc.)", "GovCloud / Azure Gov / Google Assured Workloads support", "Regional partner network"],
+        "search_terms": ["data residency", "GDPR", "DORA", "GovCloud", "sovereign cloud", "Azure Government", "regional", "multi-region"],
+        "scoring_guidance": {
+          "1": "Single country/region coverage only",
+          "2": "Primary region plus limited international availability",
+          "3": "Coverage in 2-3 major regions; some data residency options; GovCloud support",
+          "4": "Global coverage; data residency in US/EU/APAC; AWS GovCloud + Azure Gov support; GDPR/DORA",
+          "5": "True global coverage; sovereign cloud support; comprehensive data residency; FedRAMP High + IL5; global compliance portfolio"
+        }
+      },
+      "VIG-04": {
+        "name": "Localization & Regional Adaptation",
+        "expanded_definition": "Multi-language support for the CNAPP UI, regional pricing, culturally adapted services, and local cloud-security partner networks (especially APAC, EU).",
+        "what_to_verify_publicly": ["Website / UI language options", "Regional partner pages", "Localized documentation", "Regional pricing or contact pages", "Multi-language support evidence"],
+        "search_terms": ["language", "localization", "regional", "Japanese", "German", "French", "EU partners", "APAC partners"],
+        "scoring_guidance": {
+          "1": "English-only; no regional adaptation",
+          "2": "Website in 1-2 additional languages; minimal localization",
+          "3": "Multi-language support (3+); some regional partners; localized documentation",
+          "4": "Comprehensive localization; regional pricing; local partner networks; multi-language support",
+          "5": "Full global localization; local cloud-security teams in major regions; regional GTM; culturally adapted services"
+        }
+      }
+    },
+    "mq_scoring_mode": {
+      "description": "Combines CNAPP capability data + MQ Gap scores to produce 15 Magic Quadrant criteria. Each criterion has a formula mapping source data to a 0-5 score.",
+      "axes": {
+        "ability_to_execute": {
+          "criteria": [
+            {
+              "criterion_id": "ATE-1",
+              "criterion_name": "Products/Services",
+              "weight": "High",
+              "weight_value": 0.23,
+              "formula": "Weighted average of CNAPP pillar_scores (CSPM x 0.20, CWPP x 0.18, CIEM x 0.15, SHIFT x 0.12, CDR x 0.15, DSPM x 0.12, FRNG x 0.08)",
+              "source": "CNAPP capability schema",
+              "gap_supplement": "None — well covered"
+            },
+            {
+              "criterion_id": "ATE-2",
+              "criterion_name": "Overall Viability",
+              "weight": "High",
+              "weight_value": 0.21,
+              "formula": "Average of VIA-01 through VIA-04",
+              "source": "CNAPP MQ Gap schema — VIA pillar",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "ATE-3",
+              "criterion_name": "Sales Execution/Pricing",
+              "weight": "Medium",
+              "weight_value": 0.14,
+              "formula": "SLE pillar average (SLE-01 through SLE-04)",
+              "source": "CNAPP MQ Gap schema — SLE pillar",
+              "gap_supplement": "Sales execution research needed; CNAPP lacks dedicated pricing schema today"
+            },
+            {
+              "criterion_id": "ATE-4",
+              "criterion_name": "Market Responsiveness & Track Record",
+              "weight": "Low",
+              "weight_value": 0.09,
+              "formula": "Average of MKR-01 through MKR-04",
+              "source": "CNAPP MQ Gap schema — MKR pillar",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "ATE-5",
+              "criterion_name": "Marketing Execution",
+              "weight": "Low",
+              "weight_value": 0.09,
+              "formula": "Average of MKE-01 through MKE-04",
+              "source": "CNAPP MQ Gap schema — MKE pillar",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "ATE-6",
+              "criterion_name": "Customer Experience",
+              "weight": "Medium",
+              "weight_value": 0.12,
+              "formula": "Average of CXQ-01 through CXQ-04",
+              "source": "CNAPP MQ Gap schema — CXQ pillar",
+              "gap_supplement": "Quantitative CX metrics research needed"
+            },
+            {
+              "criterion_id": "ATE-7",
+              "criterion_name": "Operations",
+              "weight": "Medium",
+              "weight_value": 0.12,
+              "formula": "Weighted average of CNAPP operational pillars (CDR x 0.40, CSPM x 0.30, CWPP x 0.30)",
+              "source": "CNAPP capability schema",
+              "gap_supplement": "None — well covered"
+            }
+          ]
+        },
+        "completeness_of_vision": {
+          "criteria": [
+            {
+              "criterion_id": "COV-1",
+              "criterion_name": "Market Understanding",
+              "weight": "High",
+              "weight_value": 0.19,
+              "formula": "MKU-01",
+              "source": "CNAPP MQ Gap schema — MKU pillar (MKU-01)",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "COV-2",
+              "criterion_name": "Marketing Strategy",
+              "weight": "Medium",
+              "weight_value": 0.11,
+              "formula": "(MKE-02 x 0.40) + (MKE-04 x 0.60)",
+              "source": "CNAPP MQ Gap schema — MKE pillar (subset)",
+              "gap_supplement": "Partially covered by MKE research"
+            },
+            {
+              "criterion_id": "COV-3",
+              "criterion_name": "Sales Strategy",
+              "weight": "Medium",
+              "weight_value": 0.11,
+              "formula": "(SLE-01 x 0.40) + (SLE-03 x 0.30) + (SLE-04 x 0.30)",
+              "source": "CNAPP MQ Gap schema — SLE pillar (subset)",
+              "gap_supplement": "Partially covered by SLE research"
+            },
+            {
+              "criterion_id": "COV-4",
+              "criterion_name": "Offering (Product) Strategy",
+              "weight": "High",
+              "weight_value": 0.22,
+              "formula": "(CNAPP innovation pillars avg [DSPM, FRNG] x 0.50) + (MKU-02 x 0.25) + (MKU-03 x 0.25)",
+              "source": "CNAPP capability (DSPM, FRNG) + MQ Gap MKU",
+              "gap_supplement": "Roadmap and ecosystem research needed"
+            },
+            {
+              "criterion_id": "COV-6",
+              "criterion_name": "Vertical/Industry Strategy",
+              "weight": "Low",
+              "weight_value": 0.09,
+              "formula": "Average of VIG-01 and VIG-02",
+              "source": "CNAPP MQ Gap schema — VIG pillar (subset)",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "COV-7",
+              "criterion_name": "Innovation",
+              "weight": "High",
+              "weight_value": 0.19,
+              "formula": "CNAPP innovation composite (FRNG x 0.40, DSPM x 0.30, CDR x 0.20, SHIFT x 0.10)",
+              "source": "CNAPP capability schema",
+              "gap_supplement": "None — well covered"
+            },
+            {
+              "criterion_id": "COV-8",
+              "criterion_name": "Geographic Strategy",
+              "weight": "Low",
+              "weight_value": 0.09,
+              "formula": "Average of VIG-03 and VIG-04",
+              "source": "CNAPP MQ Gap schema — VIG pillar (subset)",
+              "gap_supplement": "All new research required"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

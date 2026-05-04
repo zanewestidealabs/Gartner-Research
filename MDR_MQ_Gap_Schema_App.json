@@ -1,0 +1,633 @@
+{
+  "mq_gap_taxonomy_v1.0": {
+    "schema_lineage": {
+      "schema_id": "MQ_Gap_Schema",
+      "version": "1.0",
+      "parent_schema": "MQ_Gap_Schema_1_0.json",
+      "related_schemas": ["MDR Services Schema 2-1.json", "MDR Pricing Schema 2-0.json"],
+      "purpose": "Supplemental MQ evaluation criteria NOT addressed by existing MDR capability or pricing schemas. Scored independently, then combined via mq_scoring_mode to produce final Magic Quadrant positions."
+    },
+    "intent": "Evaluate MDR vendors against the 7 Magic Quadrant criteria gaps: Financial Viability, Sales Execution, Market Responsiveness, Marketing Execution, Customer Experience Quality, Market Understanding & Vision, and Vertical & Geographic Strategy. These supplement the existing MDR technical capability assessment to complete the 15-criteria MQ evaluation framework.",
+    "metadata": {
+      "framework_alignment": "Gartner Magic Quadrant Evaluation Framework — G00802987 (2 July 2025)",
+      "applies_to": "MDR",
+      "capability_scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No Evidence — No public data or documentation found",
+        "scoring_logic": {
+          "0": "No Evidence — no public data, documentation, or third-party references available.",
+          "1": "Minimal — vague or unsubstantiated claims only; no verifiable evidence.",
+          "2": "Basic — some evidence found but significant gaps remain; limited depth.",
+          "3": "Demonstrated — clear evidence of capability with moderate depth across multiple sources.",
+          "4": "Strong — well-documented with multiple proof points from credible sources.",
+          "5": "Market-Leading — best-in-class with extensive evidence and third-party validation."
+        }
+      },
+      "source_policy": {
+        "valid_sources": [
+          {"tier": 1, "type": "Company filings", "examples": ["SEC filings", "annual reports", "investor presentations"], "weight": 1.0},
+          {"tier": 1, "type": "Analyst reports", "examples": ["Gartner MQ/Market Guide", "Forrester Wave", "IDC MarketScape"], "weight": 1.0},
+          {"tier": 2, "type": "Peer review platforms", "examples": ["Gartner Peer Insights", "G2", "TrustRadius", "PeerSpot"], "weight": 0.8},
+          {"tier": 2, "type": "Vendor website", "examples": ["product pages", "partner pages", "press releases", "blog"], "weight": 0.7},
+          {"tier": 3, "type": "Third-party research", "examples": ["Crunchbase", "LinkedIn", "news articles", "job postings"], "weight": 0.6},
+          {"tier": 3, "type": "Community sources", "examples": ["Reddit", "forums", "conference presentations"], "weight": 0.4}
+        ],
+        "invalid_sources": ["Wikipedia (unverified)", "vendor-paid advertorials without disclosure", "anonymous unverifiable claims"]
+      },
+      "coverage_grade": {
+        "scale": {
+          "A": ">=90% sub-pillars scored with Tier-1/2 evidence",
+          "B": ">=75% sub-pillars scored with evidence",
+          "C": ">=60% sub-pillars scored",
+          "D": ">=40% sub-pillars scored",
+          "F": "<40% sub-pillars scored or mostly heuristic-derived"
+        }
+      },
+      "mq_axis_mapping": {
+        "ability_to_execute": ["VIA", "SLE", "MKR", "MKE", "CXQ"],
+        "completeness_of_vision": ["SLE", "MKE", "MKU", "VIG"],
+        "note": "SLE and MKE contribute to BOTH axes per Gartner MQ methodology"
+      }
+    },
+    "pillars": {
+      "VIA": {
+        "name": "Financial Viability & Stability",
+        "focus": "Overall financial health, business unit success, and likelihood of continued product investment. Maps to MQ criterion ATE-2 (Overall Viability).",
+        "mq_criterion": "ATE-2",
+        "mq_criterion_name": "Overall Viability",
+        "mq_weight": "High",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": ["SEC filings", "annual reports", "funding announcements", "Crunchbase data", "press releases", "customer count disclosures", "analyst inclusions"]
+      },
+      "SLE": {
+        "name": "Sales Execution & Channel",
+        "focus": "Presales and sales capabilities, channel strategy, and market reach structure. Maps to MQ criteria ATE-3 (Sales Execution) and COV-3 (Sales Strategy).",
+        "mq_criterion": "ATE-3 + COV-3",
+        "mq_criterion_name": "Sales Execution + Sales Strategy",
+        "mq_weight": "Medium",
+        "mq_axis": "Both (Execute + Vision)",
+        "evidence_signals": ["partner pages", "channel programs", "marketplace listings", "trial/demo availability", "regional offices", "job postings", "GTM content"]
+      },
+      "MKR": {
+        "name": "Market Responsiveness & Track Record",
+        "focus": "Ability to respond to market changes, competitive moves, and customer needs. Maps to MQ criterion ATE-4.",
+        "mq_criterion": "ATE-4",
+        "mq_criterion_name": "Market Responsiveness & Track Record",
+        "mq_weight": "Medium",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": ["release notes", "changelogs", "product announcements", "M&A activity", "competitive pivots", "customer feedback mechanisms"]
+      },
+      "MKE": {
+        "name": "Marketing Execution & Brand",
+        "focus": "Quality, creativity, and efficacy of marketing programs plus differentiated messaging strategy. Maps to MQ criteria ATE-5 (Marketing Execution) and COV-2 (Marketing Strategy).",
+        "mq_criterion": "ATE-5 + COV-2",
+        "mq_criterion_name": "Marketing Execution + Marketing Strategy",
+        "mq_weight": "Low (ATE) / Medium (COV)",
+        "mq_axis": "Both (Execute + Vision)",
+        "evidence_signals": ["media coverage", "social presence", "content output", "event sponsorships", "webinar programs", "SEO presence", "brand recognition"]
+      },
+      "CXQ": {
+        "name": "Customer Experience Quality",
+        "focus": "Quantitative customer experience metrics supplementing the operational SOG pillar from the MDR schema. Maps to MQ criterion ATE-6.",
+        "mq_criterion": "ATE-6",
+        "mq_criterion_name": "Customer Experience (supplement to SOG)",
+        "mq_weight": "High",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": ["Gartner Peer Insights ratings", "G2 reviews", "SLA documentation", "onboarding guides", "customer success programs", "NRR data"]
+      },
+      "MKU": {
+        "name": "Market Understanding & Vision",
+        "focus": "Understanding buyer needs, articulating market direction, and aligning product/business strategy with market evolution. Maps to MQ criteria COV-1 (Market Understanding), COV-4 (Offering Strategy), COV-5 (Business Model).",
+        "mq_criterion": "COV-1 + COV-4 + COV-5",
+        "mq_criterion_name": "Market Understanding + Offering Strategy + Business Model",
+        "mq_weight": "High",
+        "mq_axis": "Completeness of Vision",
+        "evidence_signals": ["vision/strategy pages", "CEO/CTO interviews", "roadmap publications", "API documentation", "integration marketplace", "patent filings", "pricing model documentation"]
+      },
+      "VIG": {
+        "name": "Vertical & Geographic Strategy",
+        "focus": "Strategy to direct resources to individual verticals and geographic regions. Maps to MQ criteria COV-6 (Vertical/Industry Strategy) and COV-8 (Geographic Strategy).",
+        "mq_criterion": "COV-6 + COV-8",
+        "mq_criterion_name": "Vertical/Industry Strategy + Geographic Strategy",
+        "mq_weight": "Low",
+        "mq_axis": "Completeness of Vision",
+        "evidence_signals": ["vertical solution pages", "compliance certifications", "SOC locations", "data residency options", "regional partner networks", "localization evidence"]
+      }
+    },
+    "sub_pillars": {
+      "VIA-01": {
+        "name": "Revenue & Growth Trajectory",
+        "expanded_definition": "Annual revenue (total and cybersecurity/MDR-specific where available), year-over-year growth rate, and revenue trend direction over the last 3 years.",
+        "what_to_verify_publicly": ["SEC filings or annual reports showing revenue", "Press releases with revenue milestones", "Crunchbase funding and valuation data", "Analyst estimates of market share", "Employee count growth as proxy"],
+        "search_terms": ["revenue", "growth", "ARR", "funding", "valuation", "financial results"],
+        "scoring_guidance": {
+          "1": "No revenue data publicly available",
+          "2": "Revenue disclosed but flat or declining; or only total company revenue with no segment breakdown",
+          "3": "Positive revenue growth documented; cybersecurity segment identifiable; growing customer base implied",
+          "4": "Strong documented growth (>20% YoY) with specific cybersecurity/MDR revenue; clear growth trajectory",
+          "5": "Market-leading revenue in MDR segment; sustained high growth; public financials with segment breakdowns"
+        }
+      },
+      "VIA-02": {
+        "name": "Profitability & Financial Health",
+        "expanded_definition": "Profitability indicators, burn rate (for startups), cash reserves, debt levels, and overall financial sustainability.",
+        "what_to_verify_publicly": ["SEC filings showing profitability metrics", "Recent funding rounds indicating runway", "Credit ratings or debt indicators", "Parent company financial backing evidence"],
+        "search_terms": ["profitable", "profitability", "cash", "burn rate", "EBITDA", "financial health"],
+        "scoring_guidance": {
+          "1": "No financial health data available; high-risk funding stage with no recent rounds",
+          "2": "Recent funding secured but high burn rate implied; or large company but MDR is a minor, unfunded initiative",
+          "3": "Adequate financial runway (2+ years); stable parent company backing; or breakeven trajectory",
+          "4": "Profitable or near-profitable; strong cash position; parent company with solid financials backing MDR investment",
+          "5": "Profitable with strong margins; investment-grade parent; demonstrated commitment to sustained MDR R&D investment"
+        }
+      },
+      "VIA-03": {
+        "name": "Customer Base & Retention",
+        "expanded_definition": "Published customer count, customer logos, net retention rate, churn indicators, and customer base growth.",
+        "what_to_verify_publicly": ["Website customer logos page", "Published customer count in press releases", "Case studies showing customer diversity", "G2/Gartner Peer Insights review counts as proxy", "SEC filings with customer metrics"],
+        "search_terms": ["customers", "customer count", "customer base", "retention", "NRR", "churn"],
+        "scoring_guidance": {
+          "1": "No customer count or logos published",
+          "2": "A few customer logos or case studies; no count or retention data",
+          "3": "Published customer count (100+); multiple case studies across sectors; growth implied",
+          "4": "Large customer base (500+); net retention data available; expansion revenue documented; diverse verticals",
+          "5": "1000+ customers; published NRR >110%; major enterprise logos; low churn documented"
+        }
+      },
+      "VIA-04": {
+        "name": "Market Position & Competitive Standing",
+        "expanded_definition": "Estimated market share, inclusion in analyst reports (MQ/Wave), competitive win rates, and brand recognition in the MDR market.",
+        "what_to_verify_publicly": ["Gartner MQ or Market Guide inclusion", "Forrester Wave positioning", "IDC MarketScape inclusion", "MITRE ATT&CK evaluation participation", "Industry awards and recognition lists"],
+        "search_terms": ["Gartner", "Forrester", "IDC", "MITRE", "leader", "award", "market share"],
+        "scoring_guidance": {
+          "1": "No analyst recognition or competitive positioning evidence",
+          "2": "Mentioned in one analyst report or industry list",
+          "3": "Included in multiple analyst reports; recognized in competitive comparisons; moderate brand recognition",
+          "4": "Named in Gartner MQ/Forrester Wave; strong competitive positioning; well-known brand",
+          "5": "Leader in Gartner MQ or Forrester Wave; top-3 market share; benchmark vendor in the market"
+        }
+      },
+      "SLE-01": {
+        "name": "Sales Channel & Partner Ecosystem",
+        "expanded_definition": "Direct sales vs. channel/reseller mix, MSSP partner program, technology alliance partnerships, marketplace presence.",
+        "what_to_verify_publicly": ["Partner program page and tiers", "Technology alliance logos", "Marketplace listings (AWS, Azure, etc.)", "Press releases on partnerships", "MSSP/reseller program documentation"],
+        "search_terms": ["partner", "channel", "MSSP", "reseller", "alliance", "marketplace"],
+        "scoring_guidance": {
+          "1": "No channel or partner information published",
+          "2": "Direct sales only; minimal partner mentions",
+          "3": "Documented partner program; some marketplace presence; mix of direct and channel",
+          "4": "Mature partner program with tiered structure; 50+ partners; technology alliances; marketplace listings",
+          "5": "Extensive global partner ecosystem; MSSP-first model; 100+ channel partners; deep technology alliance network"
+        }
+      },
+      "SLE-02": {
+        "name": "Sales Motion & Go-to-Market",
+        "expanded_definition": "Sales approach (product-led vs. sales-led), trial/POC availability, sales team presence, deal velocity indicators.",
+        "what_to_verify_publicly": ["Free trial or demo request availability", "G2 reviews mentioning buying process", "Sales team job postings", "Investor presentations on GTM motion", "Self-service sign-up availability"],
+        "search_terms": ["trial", "demo", "POC", "free", "self-service", "product-led", "sales team"],
+        "scoring_guidance": {
+          "1": "No sales motion evidence; contact-us only",
+          "2": "Basic demo request form; no trial or POC program visible",
+          "3": "Free trial or POC documented; sales team roles in job postings; demo process clear",
+          "4": "Product-led growth with self-serve + enterprise sales; fast deal cycles documented; sales engineering team visible",
+          "5": "Multi-motion sales (PLG + enterprise + channel); documented fast time-to-value; sales team in multiple regions"
+        }
+      },
+      "SLE-03": {
+        "name": "Geographic Sales Coverage",
+        "expanded_definition": "Sales presence across regions, office locations, language capabilities for sales, and regional go-to-market teams.",
+        "what_to_verify_publicly": ["Office locations page", "Regional job postings", "Regional partner pages", "Website language options", "Regional pricing or contact pages"],
+        "search_terms": ["offices", "locations", "regional", "international", "global sales", "EMEA", "APAC"],
+        "scoring_guidance": {
+          "1": "Single-region sales presence only",
+          "2": "HQ region plus one additional region; limited international",
+          "3": "Sales presence in 2-3 major regions; some international partners",
+          "4": "Sales teams in 4+ regions; multi-language sales support; regional partners in each major market",
+          "5": "Global sales presence; offices in all major regions; localized sales motions; 20+ country coverage"
+        }
+      },
+      "SLE-04": {
+        "name": "Customer Acquisition Efficiency",
+        "expanded_definition": "Evidence of efficient customer acquisition: lead generation, demand generation effectiveness, sales cycle optimization.",
+        "what_to_verify_publicly": ["Website conversion paths and CTAs", "Content marketing funnel (blog, gated content)", "Event and webinar program", "ROI calculators or assessment tools", "G2 reviews on buying experience"],
+        "search_terms": ["ROI", "assessment", "calculator", "webinar", "demand generation", "lead"],
+        "scoring_guidance": {
+          "1": "No evidence of structured demand generation",
+          "2": "Basic website lead gen; limited content marketing",
+          "3": "Structured demand gen with content, events, and digital presence; ROI calculators or assessment tools",
+          "4": "Multi-channel demand gen; documented fast sales cycles; strong digital presence with conversion optimization",
+          "5": "Best-in-class demand engine; documented CAC efficiency; industry-leading content velocity; community-driven growth"
+        }
+      },
+      "MKR-01": {
+        "name": "Product Release Cadence & Velocity",
+        "expanded_definition": "Frequency and substance of product releases, feature updates, and platform improvements over the last 12-24 months.",
+        "what_to_verify_publicly": ["Release notes or changelog page", "Blog posts announcing new features", "Product update newsletters", "Version history documentation", "Community forums discussing releases"],
+        "search_terms": ["release notes", "changelog", "new features", "update", "version", "launch"],
+        "scoring_guidance": {
+          "1": "No release history or changelog available",
+          "2": "Infrequent updates; 1-2 releases per year with minor features",
+          "3": "Regular release cadence (quarterly+); meaningful feature additions documented",
+          "4": "Frequent releases (monthly+); major capability additions; clear acceleration of innovation",
+          "5": "Continuous delivery; weekly/bi-weekly releases; rapid response to market changes; documented velocity metrics"
+        }
+      },
+      "MKR-02": {
+        "name": "Competitive Response & Adaptation",
+        "expanded_definition": "Evidence of the vendor adapting to competitive moves, market shifts, or emerging threats (e.g., adding AI capabilities, expanding to new segments).",
+        "what_to_verify_publicly": ["Product announcements responding to market trends", "Blog posts on market evolution", "New capability areas added", "Analyst briefing notes", "Competitive comparison pages"],
+        "search_terms": ["AI", "generative AI", "XDR", "automation", "cloud", "zero trust", "identity", "market shift"],
+        "scoring_guidance": {
+          "1": "No evidence of market-responsive adaptations",
+          "2": "Slow to respond; capabilities lag market trends by 12+ months",
+          "3": "Demonstrates awareness of market trends; key capabilities added within 6-12 months of market demand",
+          "4": "Proactive response to market shifts; early adopter of critical trends; documented competitive pivots",
+          "5": "Market-shaping; consistently first to market with emerging capabilities; sets competitive agenda"
+        }
+      },
+      "MKR-03": {
+        "name": "M&A & Strategic Investment Track Record",
+        "expanded_definition": "Recent acquisitions, strategic investments, or divestitures that demonstrate market responsiveness and growth strategy.",
+        "what_to_verify_publicly": ["Press releases on acquisitions", "SEC filings showing M&A activity", "Crunchbase acquisition history", "News articles on strategic investments", "Integration announcements post-acquisition"],
+        "search_terms": ["acquired", "acquisition", "merger", "investment", "strategic", "divested"],
+        "scoring_guidance": {
+          "1": "No acquisition or investment activity documented",
+          "2": "Minimal M&A; 1 small acquisition in last 3 years",
+          "3": "Strategic acquisitions that filled capability gaps; clear investment thesis",
+          "4": "Multiple strategic acquisitions integrated successfully; strong M&A track record; capability-driven investment strategy",
+          "5": "Transformative M&A strategy; major acquisitions that reshaped market position; integration excellence documented"
+        }
+      },
+      "MKR-04": {
+        "name": "Customer-Driven Feature Delivery",
+        "expanded_definition": "Evidence that the vendor incorporates customer feedback into product development and delivers on customer-requested features.",
+        "what_to_verify_publicly": ["Feature request portal or voting system", "Community forums with product team engagement", "Customer advisory board references", "Release notes citing customer feedback", "Product roadmap transparency"],
+        "search_terms": ["feedback", "advisory board", "community", "roadmap", "feature request", "customer-driven"],
+        "scoring_guidance": {
+          "1": "No customer feedback mechanisms visible",
+          "2": "Basic feedback collection but no evidence of incorporation",
+          "3": "Documented customer advisory board or feedback portal; some features attributed to customer input",
+          "4": "Active customer community; product roadmap influenced by customer input; feature voting visible",
+          "5": "Transparent roadmap tied to customer feedback; documented feature request-to-delivery metrics; customer co-development programs"
+        }
+      },
+      "MKE-01": {
+        "name": "Brand Awareness & Market Presence",
+        "expanded_definition": "Brand recognition in the MDR market, media mentions, social media presence, and overall market visibility.",
+        "what_to_verify_publicly": ["Media coverage frequency", "Social media follower counts", "Web traffic estimates (SimilarWeb)", "Industry award lists", "Conference sponsorship visibility"],
+        "search_terms": ["recognized", "award", "top", "leader", "brand", "media", "coverage"],
+        "scoring_guidance": {
+          "1": "Minimal market presence; few media mentions",
+          "2": "Some brand recognition in niche segments; limited media coverage",
+          "3": "Recognized brand in MDR market; regular media coverage; active social presence",
+          "4": "Strong brand with high awareness; frequent media mentions; significant social following; conference keynotes",
+          "5": "Top-of-mind brand in MDR; extensive media presence; industry thought leader status; brand synonymous with MDR"
+        }
+      },
+      "MKE-02": {
+        "name": "Content & Thought Leadership",
+        "expanded_definition": "Quality and volume of published content: blogs, whitepapers, research reports, webinars, and educational resources.",
+        "what_to_verify_publicly": ["Blog post frequency and depth", "Resource center content inventory", "Webinar archives", "Published threat research reports", "Podcast or media appearances"],
+        "search_terms": ["blog", "whitepaper", "research report", "webinar", "threat intelligence report", "thought leadership"],
+        "scoring_guidance": {
+          "1": "No meaningful content publication",
+          "2": "Sparse blog content; occasional white papers",
+          "3": "Regular content cadence; multiple content types; some original research",
+          "4": "Prolific content publisher; own threat research reports; active webinar program; cited by media/analysts",
+          "5": "Best-in-class content engine; proprietary threat research widely cited; influential blog; annual flagship report"
+        }
+      },
+      "MKE-03": {
+        "name": "Event & Conference Presence",
+        "expanded_definition": "Presence at major industry events (RSA, Black Hat, Gartner SRM, etc.), own-hosted events, and community engagement.",
+        "what_to_verify_publicly": ["Event sponsorship announcements", "Conference speaker slots", "Booth presence at major events", "Own annual user conference", "Community meetup hosting"],
+        "search_terms": ["RSA", "Black Hat", "conference", "summit", "event", "sponsor", "speaker"],
+        "scoring_guidance": {
+          "1": "No event presence documented",
+          "2": "Attends 1-2 events per year; booth presence only",
+          "3": "Regular presence at major events; some speaking slots; regional events",
+          "4": "Major presence at top-tier events; keynote speakers; own user conference or summit",
+          "5": "Dominant event presence; headline sponsor at RSA/Black Hat; flagship annual conference with 1000+ attendees"
+        }
+      },
+      "MKE-04": {
+        "name": "Digital Presence & Messaging Clarity",
+        "expanded_definition": "Website quality, messaging clarity, value proposition articulation, and digital marketing sophistication.",
+        "what_to_verify_publicly": ["Website UX assessment", "Messaging consistency across pages", "SEO ranking for MDR terms", "Digital ad presence", "Analyst evaluations of messaging"],
+        "search_terms": ["website", "messaging", "value proposition", "digital", "SEO", "marketing"],
+        "scoring_guidance": {
+          "1": "Poor website; unclear messaging; no differentiation articulated",
+          "2": "Functional website; basic messaging; value proposition unclear or generic",
+          "3": "Professional website; clear MDR positioning; differentiated messaging; good SEO presence",
+          "4": "Excellent website with strong UX; sharp, differentiated messaging; competitive positioning clear; strong SEO",
+          "5": "Best-in-class digital presence; industry-defining messaging; website as lead gen engine; omnichannel consistency"
+        }
+      },
+      "CXQ-01": {
+        "name": "Peer Review Ratings",
+        "expanded_definition": "Aggregated ratings on Gartner Peer Insights, G2, and other peer review platforms. Overall rating, review count, and sentiment.",
+        "what_to_verify_publicly": ["Gartner Peer Insights rating and review count", "G2 MDR category rating", "TrustRadius score", "PeerSpot (formerly IT Central Station) rating", "Customers' Choice or similar badges"],
+        "search_terms": ["Peer Insights", "G2", "TrustRadius", "review", "rating", "Customers Choice"],
+        "scoring_guidance": {
+          "1": "No peer reviews found on any platform",
+          "2": "Few reviews (<10); available on 1 platform only",
+          "3": "Moderate review count (10-50); 4.0+/5.0 average; on 2+ platforms",
+          "4": "Strong review presence (50-200); 4.3+/5.0 average; Customers' Choice or similar recognition",
+          "5": "Extensive reviews (200+); 4.5+/5.0 average; Gartner Peer Insights Customers' Choice; G2 Leader"
+        }
+      },
+      "CXQ-02": {
+        "name": "Support Quality & Responsiveness",
+        "expanded_definition": "Customer support quality indicators: support tier structure, response time commitments, escalation paths, and satisfaction with support.",
+        "what_to_verify_publicly": ["SLA documentation on website", "Support tier descriptions", "G2/Gartner reviews mentioning support quality", "Response time guarantees", "Dedicated account management references"],
+        "search_terms": ["support", "SLA", "response time", "escalation", "account manager", "customer success"],
+        "scoring_guidance": {
+          "1": "No support quality information available",
+          "2": "Basic support structure documented; no SLA specifics",
+          "3": "Tiered support with documented SLAs; dedicated account management mentioned",
+          "4": "24/7 premium support; documented response times; TAM/CSM assignment; high support ratings in reviews",
+          "5": "Best-in-class support; sub-hour response guarantees; proactive customer success; support NPS published and high"
+        }
+      },
+      "CXQ-03": {
+        "name": "Onboarding & Time-to-Value",
+        "expanded_definition": "Speed and quality of customer onboarding, deployment assistance, and time to first meaningful detection/response.",
+        "what_to_verify_publicly": ["Onboarding process documentation", "Implementation guides and timelines", "G2 reviews on implementation experience", "Case studies with deployment timelines", "Time-to-value claims and evidence"],
+        "search_terms": ["onboarding", "deployment", "implementation", "time to value", "quick start", "setup"],
+        "scoring_guidance": {
+          "1": "No onboarding information available",
+          "2": "Basic onboarding mentioned; no timeline or process details",
+          "3": "Documented onboarding process with milestones; deployment guides available; reasonable time-to-value",
+          "4": "Fast onboarding (<30 days); structured enablement program; deployment automation; white-glove option",
+          "5": "Same-day or next-day detection capability; fully automated deployment; documented sub-week time-to-value"
+        }
+      },
+      "CXQ-04": {
+        "name": "Customer Success & Expansion",
+        "expanded_definition": "Evidence of customer success programs, expansion revenue, customer community, and long-term relationship investment.",
+        "what_to_verify_publicly": ["Customer success program page", "Community forums or user groups", "Expansion case studies", "NRR or expansion revenue data", "Customer advisory board mentions"],
+        "search_terms": ["customer success", "community", "user group", "NRR", "expansion", "advisory board"],
+        "scoring_guidance": {
+          "1": "No customer success program visible",
+          "2": "Basic account management; no proactive success program",
+          "3": "Designated CSM program; quarterly business reviews documented; customer training available",
+          "4": "Mature customer success with proactive engagement; customer community; documented expansion revenue",
+          "5": "Best-in-class customer success; customer advisory boards; published NRR >120%; active user community"
+        }
+      },
+      "MKU-01": {
+        "name": "Market Vision & Direction",
+        "expanded_definition": "The vendor's articulated view of where the MDR market is heading, how they define the market, and whether their vision aligns with or shapes market direction.",
+        "what_to_verify_publicly": ["Vision/strategy pages on website", "CEO/CTO interviews and keynotes", "Analyst briefing content", "Investor presentations on market direction", "Published perspective on market evolution"],
+        "search_terms": ["vision", "strategy", "market direction", "future", "evolution", "roadmap"],
+        "scoring_guidance": {
+          "1": "No market vision articulated",
+          "2": "Generic market positioning; follows market without clear vision",
+          "3": "Clear MDR market perspective; articulated view of market evolution; some thought leadership",
+          "4": "Strong market vision; shaping market direction in specific areas; forward-looking strategy documented",
+          "5": "Market-defining vision; consistently ahead of market trends; other vendors react to their moves"
+        }
+      },
+      "MKU-02": {
+        "name": "Product Roadmap & R&D Investment",
+        "expanded_definition": "Published or implied product roadmap, R&D investment indicators, and clarity on future capability development.",
+        "what_to_verify_publicly": ["Roadmap publications or blog posts", "R&D job postings volume and roles", "Patent filings in relevant areas", "Investor presentations on R&D spend", "Labs or research team output"],
+        "search_terms": ["roadmap", "R&D", "research", "patent", "labs", "innovation", "investment"],
+        "scoring_guidance": {
+          "1": "No product roadmap or R&D indicators available",
+          "2": "Vague future direction mentioned; minimal R&D investment signals",
+          "3": "General roadmap themes documented; R&D investment evidenced by hiring and releases",
+          "4": "Detailed roadmap shared with customers; significant R&D investment; patent filings; Labs/research output",
+          "5": "Transparent multi-year roadmap; R&D >20% of revenue; active patent portfolio; research partnerships"
+        }
+      },
+      "MKU-03": {
+        "name": "Platform & Ecosystem Strategy",
+        "expanded_definition": "Platform extensibility, API marketplace, integration ecosystem depth, and strategy for becoming a platform vs. point solution.",
+        "what_to_verify_publicly": ["API documentation quality and availability", "Integration marketplace page", "Technology partner program", "Developer resources and SDKs", "Platform vs. point-solution positioning"],
+        "search_terms": ["API", "integration", "marketplace", "platform", "ecosystem", "SDK", "developer"],
+        "scoring_guidance": {
+          "1": "No platform or ecosystem strategy visible",
+          "2": "Basic integrations; no API documentation; point-solution positioning",
+          "3": "Documented integrations with major SIEM/EDR/cloud; API available; growing partner ecosystem",
+          "4": "Rich integration marketplace (50+); documented APIs with SDKs; technology partner program; platform positioning",
+          "5": "Open platform with 100+ integrations; developer ecosystem; marketplace revenue; platform is industry standard"
+        }
+      },
+      "MKU-04": {
+        "name": "Business Model Maturity",
+        "expanded_definition": "Clarity and maturity of the vendor's business model: revenue diversification, customer economics, and commercial model sophistication.",
+        "what_to_verify_publicly": ["Pricing page transparency", "Revenue model from SEC filings", "Investor presentations on unit economics", "Multiple revenue streams evidence", "Commercial model documentation"],
+        "search_terms": ["pricing", "subscription", "revenue model", "business model", "unit economics", "commercial"],
+        "scoring_guidance": {
+          "1": "Business model unclear or undifferentiated",
+          "2": "Basic subscription model; single revenue stream; opaque economics",
+          "3": "Clear commercial model; multiple pricing tiers; some revenue diversification",
+          "4": "Mature business model; recurring + services revenue; strong unit economics; documented expansion model",
+          "5": "Best-in-class commercial model; multiple revenue streams; published unit economics; platform economics emerging"
+        }
+      },
+      "VIG-01": {
+        "name": "Vertical-Specific Solutions",
+        "expanded_definition": "Named vertical/industry solutions, compliance packages, industry-specific detections, and sector expertise.",
+        "what_to_verify_publicly": ["Industry/vertical solution pages", "Compliance certification logos (FedRAMP, HITRUST, etc.)", "Vertical-specific case studies", "Industry-tailored content", "Sector-specific detection rule packs"],
+        "search_terms": ["healthcare", "financial", "government", "FedRAMP", "HITRUST", "PCI", "vertical", "industry"],
+        "scoring_guidance": {
+          "1": "No vertical differentiation",
+          "2": "Generic compliance mention; no industry-specific solutions",
+          "3": "2-3 named vertical solutions or compliance packages; industry case studies",
+          "4": "Dedicated vertical offerings for 4+ industries; FedRAMP/HITRUST/PCI certified; vertical GTM teams",
+          "5": "Industry leader in 2+ verticals; deep regulatory compliance suite; vertical advisory boards; industry-specific SOC playbooks"
+        }
+      },
+      "VIG-02": {
+        "name": "Industry Concentration & References",
+        "expanded_definition": "Customer concentration across verticals, published industry references, and vertical market share indicators.",
+        "what_to_verify_publicly": ["Customer logos organized by industry", "Vertical-specific case studies", "Industry awards per vertical", "Conference presence in vertical events", "Published vertical customer counts"],
+        "search_terms": ["industry", "vertical", "sector", "healthcare customers", "financial services", "government"],
+        "scoring_guidance": {
+          "1": "No vertical customer references",
+          "2": "Customers in 1-2 verticals only",
+          "3": "References across 3-5 verticals; some concentration data available",
+          "4": "Strong presence in 5+ verticals; documented vertical market share in at least one industry",
+          "5": "Dominant in 2+ verticals; comprehensive vertical customer portfolio; recognized as vertical specialist"
+        }
+      },
+      "VIG-03": {
+        "name": "Regional & Global Coverage",
+        "expanded_definition": "SOC locations by region, data residency options, regional compliance certifications, and service availability across geographies.",
+        "what_to_verify_publicly": ["SOC location pages", "Data center and data residency documentation", "Regional compliance certifications (GDPR, etc.)", "Regional partner network lists", "Service availability by country/region"],
+        "search_terms": ["SOC locations", "data residency", "GDPR", "global coverage", "regional", "data sovereignty"],
+        "scoring_guidance": {
+          "1": "Single country/region coverage only",
+          "2": "Primary region plus limited international availability",
+          "3": "Coverage in 2-3 major regions; some data residency options; regional partners",
+          "4": "Global coverage with SOCs in 3+ regions; data residency in US/EU/APAC; regional compliance (GDPR, etc.)",
+          "5": "True global coverage; SOCs in 5+ regions; comprehensive data sovereignty; local language support; regional compliance portfolio"
+        }
+      },
+      "VIG-04": {
+        "name": "Localization & Regional Adaptation",
+        "expanded_definition": "Multi-language support, regional pricing, culturally adapted services, and local partner networks.",
+        "what_to_verify_publicly": ["Website language options", "Regional partner pages", "Localized documentation availability", "Regional pricing or contact pages", "Multi-language SOC analyst support evidence"],
+        "search_terms": ["language", "localization", "regional", "multi-language", "data sovereignty", "local"],
+        "scoring_guidance": {
+          "1": "English-only; no regional adaptation",
+          "2": "Website in 1-2 additional languages; minimal localization",
+          "3": "Multi-language support (3+); some regional partners; localized documentation",
+          "4": "Comprehensive localization; regional pricing; local partner networks; multi-language SOC support",
+          "5": "Full global localization; local SOC analysts in major regions; regional GTM teams; culturally adapted services"
+        }
+      }
+    },
+    "mq_scoring_mode": {
+      "description": "Combines MDR capability data + MQ Gap scores to produce 15 Magic Quadrant criteria. Each criterion has a formula mapping source data to a 0-5 score.",
+      "axes": {
+        "ability_to_execute": {
+          "criteria": [
+            {
+              "criterion_id": "ATE-1",
+              "criterion_name": "Products/Services",
+              "weight": "High",
+              "weight_value": 0.20,
+              "formula": "Weighted average of MDR pillar_scores (TDR x 0.25, PTI x 0.15, ADA x 0.05, DIS x 0.05, IRA x 0.15, AIO x 0.15, AID x 0.10, SOG x 0.10)",
+              "source": "MDR capability schema",
+              "gap_supplement": "None -- well covered"
+            },
+            {
+              "criterion_id": "ATE-2",
+              "criterion_name": "Overall Viability",
+              "weight": "High",
+              "weight_value": 0.18,
+              "formula": "Average of VIA-01 through VIA-04",
+              "source": "MQ Gap schema -- VIA pillar",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "ATE-3",
+              "criterion_name": "Sales Execution/Pricing",
+              "weight": "Medium",
+              "weight_value": 0.12,
+              "formula": "(MDR pricing_overall_score_v2 x 0.40) + (SLE pillar average x 0.60)",
+              "source": "MDR pricing + MQ Gap SLE pillar",
+              "gap_supplement": "Sales execution research needed"
+            },
+            {
+              "criterion_id": "ATE-4",
+              "criterion_name": "Market Responsiveness & Track Record",
+              "weight": "Medium",
+              "weight_value": 0.12,
+              "formula": "Average of MKR-01 through MKR-04",
+              "source": "MQ Gap schema -- MKR pillar",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "ATE-5",
+              "criterion_name": "Marketing Execution",
+              "weight": "Low",
+              "weight_value": 0.08,
+              "formula": "Average of MKE-01 through MKE-04",
+              "source": "MQ Gap schema -- MKE pillar",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "ATE-6",
+              "criterion_name": "Customer Experience",
+              "weight": "High",
+              "weight_value": 0.15,
+              "formula": "(MDR SOG pillar x 0.50) + (CXQ pillar average x 0.50)",
+              "source": "MDR SOG pillar + MQ Gap CXQ pillar",
+              "gap_supplement": "Quantitative CX metrics research needed"
+            },
+            {
+              "criterion_id": "ATE-7",
+              "criterion_name": "Operations",
+              "weight": "High",
+              "weight_value": 0.15,
+              "formula": "Weighted average of MDR operational pillars (IRA x 0.4, DIS x 0.3, SOG x 0.3)",
+              "source": "MDR capability schema",
+              "gap_supplement": "None -- well covered"
+            }
+          ]
+        },
+        "completeness_of_vision": {
+          "criteria": [
+            {
+              "criterion_id": "COV-1",
+              "criterion_name": "Market Understanding",
+              "weight": "High",
+              "weight_value": 0.18,
+              "formula": "(MKU-01 x 0.60) + (MKU-04 x 0.40)",
+              "source": "MQ Gap schema -- MKU pillar (subset)",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "COV-2",
+              "criterion_name": "Marketing Strategy",
+              "weight": "Medium",
+              "weight_value": 0.10,
+              "formula": "(MKE-02 x 0.40) + (MKE-04 x 0.60)",
+              "source": "MQ Gap schema -- MKE pillar (subset)",
+              "gap_supplement": "Partially covered by MKE research"
+            },
+            {
+              "criterion_id": "COV-3",
+              "criterion_name": "Sales Strategy",
+              "weight": "Medium",
+              "weight_value": 0.10,
+              "formula": "(SLE-01 x 0.40) + (SLE-03 x 0.30) + (SLE-04 x 0.30)",
+              "source": "MQ Gap schema -- SLE pillar (subset)",
+              "gap_supplement": "Partially covered by SLE research"
+            },
+            {
+              "criterion_id": "COV-4",
+              "criterion_name": "Offering (Product) Strategy",
+              "weight": "High",
+              "weight_value": 0.20,
+              "formula": "(MDR innovation pillars avg x 0.50) + (MKU-02 x 0.25) + (MKU-03 x 0.25)",
+              "source": "MDR (AIO, AID pillars) + MQ Gap MKU",
+              "gap_supplement": "Roadmap and ecosystem research needed"
+            },
+            {
+              "criterion_id": "COV-5",
+              "criterion_name": "Business Model",
+              "weight": "Low",
+              "weight_value": 0.08,
+              "formula": "(MDR pricing_overall_score_v2 x 0.40) + (MKU-04 x 0.60)",
+              "source": "MDR pricing + MQ Gap MKU-04",
+              "gap_supplement": "Business model maturity research needed"
+            },
+            {
+              "criterion_id": "COV-6",
+              "criterion_name": "Vertical/Industry Strategy",
+              "weight": "Low",
+              "weight_value": 0.08,
+              "formula": "Average of VIG-01 and VIG-02",
+              "source": "MQ Gap schema -- VIG pillar (subset)",
+              "gap_supplement": "All new research required"
+            },
+            {
+              "criterion_id": "COV-7",
+              "criterion_name": "Innovation",
+              "weight": "High",
+              "weight_value": 0.18,
+              "formula": "MDR innovation composite (AIO x 0.35, AID x 0.35, PTI x 0.15, ADA x 0.15)",
+              "source": "MDR capability schema",
+              "gap_supplement": "None -- well covered"
+            },
+            {
+              "criterion_id": "COV-8",
+              "criterion_name": "Geographic Strategy",
+              "weight": "Low",
+              "weight_value": 0.08,
+              "formula": "Average of VIG-03 and VIG-04",
+              "source": "MQ Gap schema -- VIG pillar (subset)",
+              "gap_supplement": "All new research required"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

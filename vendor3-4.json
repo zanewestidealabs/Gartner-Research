@@ -1,0 +1,4036 @@
+{
+  "schema_ref": "schema3-3.json",
+  "schema_version": "3.2",
+  "vendor_count": 79,
+  "vendors": [
+    {
+      "vendor": "CrowdStrike",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Platform-Led Endpoint Response",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 4.75,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 5,
+          "REM-03": 4,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Charlotte AI and Falcon RTR provide autonomous host isolation and stop ransomware before encryption. [6, 7]",
+      "capability_analysis_source": "https://www.crowdstrike.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Deloitte",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Crisis Leadership",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.75,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 5,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "CIR3 framework captures over 700 data points per engagement using agentic AI to coordinate crisis communication. [4, 5]",
+      "capability_analysis_source": "https://www.deloitte.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Kroll",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Litigation Support",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 3.25,
+        "REM": 2.75,
+        "PMG": 5.0,
+        "LAW": 5.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 2
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 5,
+          "PMG-03": 5,
+          "PMG-04": 5
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "Elite global IR provider dominant in high-stakes litigation support and lab-accredited evidence handling. [8, 1]",
+      "capability_analysis_source": "https://www.kroll.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Secureworks",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Taegis Platform Response",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Taegis platform uses ML-driven triage for APTs and integrates with over 15 SOAR platforms for automated containment. [9, 10]",
+      "capability_analysis_source": "https://www.secureworks.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "EY (Ernst & Young)",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Forensic Data Analytics",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.0,
+        "REM": 3.75,
+        "PMG": 4.0,
+        "LAW": 4.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Applies advanced analytics to early case assessment and evidentiary hearings for multinational clients. [3, 12]",
+      "capability_analysis_source": "https://www.ey.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "KPMG",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Legal and Forensic Audit",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 3.75,
+        "REM": 3.5,
+        "PMG": 4.0,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Leverages global law network for cross-border compliance and regulatory intelligence during breach responses. [1]",
+      "capability_analysis_source": "https://www.kpmg.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "IBM Security (X-Force)",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Enterprise Crisis Leadership",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.0,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Utilizes AI-powered risk audits to anticipate threats and automates response via QRadar. [13, 1]",
+      "capability_analysis_source": "https://www.ibm.com/security/xforce",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Verizon VTRAC",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "NetFlow Rapid Response",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 3.25,
+        "REM": 3.25,
+        "PMG": 4.25,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 3,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Investigative liaisons single point of contact for 700+ cases annually with NetFlow rolling data collection. [1, 6]",
+      "capability_analysis_source": "https://www.verizon.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Mitiga",
+      "region": "Global",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "AI-First",
+      "specialization": "Cloud-Native CDR",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.75,
+        "REM": 4.75,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 5,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Helios AI reconstructs cloud attack stories 70x faster, providing zero-impact containment. [14, 1]",
+      "capability_analysis_source": "https://www.mitiga.io/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Dropzone AI",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Autonomous Investigative Analyst",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 5.0,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Pre-trained AI agents mimic Tier-3 analysts to autonomously investigate 100% of alerts with superhuman depth. [15, 16]",
+      "capability_analysis_source": "https://www.dropzone.ai/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "AirMDR",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "AI-Native SecOps",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.75,
+        "REM": 4.25,
+        "PMG": 4.5,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "AI analyst Darryl automates 84% of investigative tasks, enabling triage of findings in under 3 minutes. [17, 15]",
+      "capability_analysis_source": "https://airmdr.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "7AI",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Agentic Security Orchestration",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 5.0,
+        "REM": 4.25,
+        "PMG": 4.25,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Swarming agents handle 90% of manual triage work, delivering full context investigations without human intervention. [18, 19]",
+      "capability_analysis_source": "https://7ai.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Rapid7",
+      "region": "North America / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Incident Command Automation",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.75,
+        "REM": 4.25,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Incident Command reduces investigation time by 20x using agentic workflows and automated attack chain visualization. [21, 22]",
+      "capability_analysis_source": "https://www.rapid7.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Arctic Wolf",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Concierge Managed SOC",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 3.75,
+        "REM": 4.5,
+        "PMG": 4.25,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Utilizes Alpha AI to process over 9 trillion events weekly, resolving incidents 15% faster than the industry average. [17, 15]",
+      "capability_analysis_source": "https://arcticwolf.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Anomali",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Intelligence-Augmented SOC",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.5,
+        "REM": 3.25,
+        "PMG": 3.5,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Specializes in aggregating large volumes of threat data and correlating it with an organization's unique environment.",
+      "capability_analysis_source": "https://www.anomali.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "ReliaQuest",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Multi-Tool XDR Orchestration",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.5,
+        "REM": 4.25,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "GreyMatter platform automates investigation workflows and normalizes telemetry across disparate stacks for sub-5 minute containment.",
+      "capability_analysis_source": "https://reliaquest.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Binary Defense",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Analyst-Driven Threat Hunting",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Analyst-enablement platform with expert-led threat hunters providing detailed investigations and compliance reporting. [23]",
+      "capability_analysis_source": "https://www.binarydefense.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Deepwatch",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Continuous SOC Monitoring",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 3.75,
+        "PMG": 4.25,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Uses a structured escalation process and expert engineers working with Splunk for detailed compliance reporting. [24]",
+      "capability_analysis_source": "https://www.deepwatch.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "UnderDefense",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "AI-Native SOC Automation",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.75,
+        "REM": 4.25,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Pioneering AI-native platform providing 2-minute alert resolution and proactive threat hunting for enterprises. [23]",
+      "capability_analysis_source": "https://underdefense.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Cynet",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Autonomous XDR",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.5,
+        "REM": 4.5,
+        "PMG": 4.0,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 3,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Consolidates EDR, network, and deception tech with automated response playbooks for mid-market firms.",
+      "capability_analysis_source": "https://www.cynet.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Tempest",
+      "region": "LATAM (Brazil)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Regional Managed Security",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.0,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Leading Brazil-native firm offering 24x7 SOC and compliance support for regional banks and government agencies.",
+      "capability_analysis_source": "https://www.tempest.com.br/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Cybervergent",
+      "region": "Africa (Nigeria)",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Automated Compliance & IR",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.0,
+        "REM": 3.25,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "African technology company focusing on automated security to navigate West African digital regulatory landscapes.",
+      "capability_analysis_source": "https://www.cybervergent.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "SISA",
+      "region": "APAC / Middle East",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Forensic Data Classification",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.5,
+        "REM": 3.5,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "SISA Radar provides forensic edge in data classification for highly regulated sectors.",
+      "capability_analysis_source": "https://www.sisainfosec.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "LGMS",
+      "region": "APAC (Malaysia)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "CREST-Accredited Response",
+      "pillar_scores": {
+        "PLA": 3.25,
+        "INV": 3.5,
+        "REM": 3.25,
+        "PMG": 3.25,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 3,
+          "PMG-02": 3,
+          "PMG-03": 3,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Premier specialist in Malaysia, leveraging advanced ML to analyze threat spread while prioritizing human expertise.",
+      "capability_analysis_source": "https://lgms.global/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Orca Security",
+      "region": "Global",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Side-Scanning Forensics",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.5,
+        "REM": 4.0,
+        "PMG": 3.5,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Side-Scanning technology eliminates agent deployment hurdles for full-stack cloud visibility and investigation.",
+      "capability_analysis_source": "https://orca.security/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Lacework",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Cloud Anomaly Detection",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.5,
+        "REM": 4.0,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Polygraph technology builds behavioral baselines to detect sub-second threats across cloud workloads.",
+      "capability_analysis_source": "https://www.lacework.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Safe Security",
+      "region": "Global / APAC",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Agentic Posture Management",
+      "pillar_scores": {
+        "PLA": 5.0,
+        "INV": 4.25,
+        "REM": 4.5,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 5,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 5,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Unveiled the first Agentic AI-powered CTEM platform for real-time risk quantification and system hardening.",
+      "capability_analysis_source": "https://safe.security/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Rubrik",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Data Security Recovery",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.0,
+        "REM": 4.75,
+        "PMG": 3.5,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 5,
+          "REM-03": 5,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Zero Trust Data Security platform specifically designed to automate recovery and restoration verification.",
+      "capability_analysis_source": "https://www.rubrik.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Flashpoint",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Dark Web Discovery",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.5,
+        "REM": 3.25,
+        "PMG": 3.75,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Dominant in dark-web monitoring and threat actor attribution; essential for pre-incident planning.",
+      "capability_analysis_source": "https://flashpoint.io/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Intel 471",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Cybercriminal Marketplace Intel",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.5,
+        "REM": 3.25,
+        "PMG": 3.5,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Focuses on monitoring underground marketplaces and closed-source communities for deep crime insights.",
+      "capability_analysis_source": "https://intel471.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Group-IB",
+      "region": "APAC / Middle East",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Neural Network Crime Resistance",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 3,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Intelligence-driven technologies detect attacks and track nation-state patterns via Digital Crime Resistance Centers.",
+      "capability_analysis_source": "https://www.group-ib.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Kivu",
+      "region": "North America / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Cyber Extortion Remediation",
+      "pillar_scores": {
+        "PLA": 3.25,
+        "INV": 4.0,
+        "REM": 4.75,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 5,
+          "REM-03": 5,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Utilizes a patented IR methodology and internal IP best positioned for ransomware response and dark-web exfiltration monitoring. [25, 26]",
+      "capability_analysis_source": "https://kivuconsulting.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Ensign InfoSecurity",
+      "region": "APAC (Singapore)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Regional Threat Hunting",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Asia's largest pure-play cybersecurity firm, leveraging in-house R&D for state-sponsored attack responses.",
+      "capability_analysis_source": "https://www.ensigninfosecurity.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Bridewell",
+      "region": "United Kingdom",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "NCSC / CREST accredited IR",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 3.25,
+        "REM": 3.0,
+        "PMG": 4.0,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "NCSC Assured Service Provider utilizing SANS-trained experts to ensure reliable chain of custody for digital evidence.",
+      "capability_analysis_source": "https://www.bridewell.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Digital Encode",
+      "region": "Africa (Nigeria)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Compliance-First Forensics",
+      "pillar_scores": {
+        "PLA": 3.25,
+        "INV": 3.25,
+        "REM": 3.0,
+        "PMG": 4.0,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Pioneer in the West African landscape, trusted by banks for blending technical forensics with rigorous audit standards.",
+      "capability_analysis_source": "https://digitalencode.com.ng/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Optiv",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Enterprise Risk IR",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 3.5,
+        "REM": 3.5,
+        "PMG": 4.0,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 3,
+          "INV-03": 3,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Applies a systematic management program based on NIST standards to expedite issue resolution.",
+      "capability_analysis_source": "https://www.optiv.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Expel",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Cloud Security MDR",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 4.25,
+        "REM": 3.75,
+        "PMG": 4.0,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Focuses on high-fidelity investigation with meaningful human-interpretable reporting aligned to business risk.",
+      "capability_analysis_source": "https://expel.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Labyrinth Labs",
+      "region": "Europe",
+      "is_startup": true,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Kubernetes & Cloud IR",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.25,
+        "REM": 3.75,
+        "PMG": 3.75,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 3,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Niche specialist in platform engineering and Kubernetes forensics using their LARA platform.",
+      "capability_analysis_source": "https://lablabs.io/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Blackpanda",
+      "region": "APAC",
+      "is_startup": true,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Emerging Market IR & Insurance",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Democratizing enterprise IR for Southeast Asia with specialized forensics and cyber insurance.",
+      "capability_analysis_source": "https://www.blackpanda.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "MixMode",
+      "region": "Global",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Unsupervised Analytics",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Unsupervised learning platform reduces bias in threat detection and network forensics.",
+      "capability_analysis_source": "https://mixmode.ai/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Radiant Security",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Agentic SOC Automation",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 5.0,
+        "REM": 4.25,
+        "PMG": 4.0,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Automates response end-to-end using AI reasoning to decide and execute actions across security tools.",
+      "capability_analysis_source": "https://radiantsecurity.ai/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Vectra AI",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Network Forensic Monitoring",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 4.75,
+        "REM": 4.0,
+        "PMG": 3.5,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 3,
+          "PMG-02": 4,
+          "PMG-03": 3,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Agentic models detect lateral spread and privilege escalation across billions of network sessions.",
+      "capability_analysis_source": "https://www.vectra.ai/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "SentinelOne",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Autonomous SecOps",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.75,
+        "REM": 4.75,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 5,
+          "REM-03": 4,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Singularity platform uses Purple AI to investigate threats and automate responses with minimal human intervention.",
+      "capability_analysis_source": "https://www.sentinelone.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "CyberArk",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Privileged Access Forensics",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.0,
+        "REM": 4.25,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Utilizes AI to detect emotion and behavioral patterns to protect from phantom CEO emails and mimic calls.",
+      "capability_analysis_source": "https://www.cyberark.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Vade Secure",
+      "region": "Europe",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Adaptive Phishing Protection",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.25,
+        "REM": 3.75,
+        "PMG": 3.5,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Focuses on highly technical email threats, offering adaptive AI protection for European governments.",
+      "capability_analysis_source": "https://www.vadesecure.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Acsense",
+      "region": "EMEA / North America",
+      "is_startup": true,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "IAM Resilience",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 4.75,
+        "PMG": 3.75,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Ensures business continuity for identity providers like Okta with automated disaster recovery and posture intelligence.",
+      "capability_analysis_source": "https://acsense.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Cynomi",
+      "region": "EMEA / North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Automated vCISO Readiness",
+      "pillar_scores": {
+        "PLA": 4.75,
+        "INV": 3.25,
+        "REM": 3.5,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 4,
+          "INV-03": 3,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Automated vCISO platform for gap analysis and prioritized remediation planning for SMBs.",
+      "capability_analysis_source": "https://www.cynomi.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Cogent",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Vulnerability Lifecycle AI",
+      "pillar_scores": {
+        "PLA": 4.75,
+        "INV": 4.0,
+        "REM": 4.25,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "World's first AI taskforce for SecOps teams, fully automating the vulnerability management lifecycle.",
+      "capability_analysis_source": "https://cogent.security/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Acuvity",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "GenAI Access Security",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 3.75,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Specializes in securing GenAI and agentic applications against access risk and prompt injection. [17]",
+      "capability_analysis_source": "https://acuvity.ai/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Adaptivesecurity",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Human Risk Platform",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.0,
+        "REM": 3.75,
+        "PMG": 4.0,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Next-generation awareness training platform designed specifically for AI-powered cyber threats.",
+      "capability_analysis_source": "https://adaptivesecurity.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "CyberLink",
+      "region": "APAC (Taiwan)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Facial Recognition Forensics",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 4.25,
+        "REM": 3.25,
+        "PMG": 3.25,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 3,
+          "PMG-02": 3,
+          "PMG-03": 3,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "FaceMe platform provides high-accuracy biometric forensics for secure identity verification and authentication auditing.",
+      "capability_analysis_source": "https://www.cyberlink.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Serianu Limited",
+      "region": "Africa (Kenya)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Fraud Detection",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 3.75,
+        "REM": 3.25,
+        "PMG": 3.75,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Pan-African cyber firm providing threat intelligence and managed SOC services for financial institutions.",
+      "capability_analysis_source": "https://www.serianu.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "CyberSOC Africa",
+      "region": "Africa (Pan-Africa)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Continuous Monitoring",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 3.5,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Supports banks, telecoms, and critical infrastructure with MDR and threat intelligence services.",
+      "capability_analysis_source": "https://cybersocafrica.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Nclose",
+      "region": "Africa (South Africa)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Enterprise Pentesting",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 3.5,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Specialist in managed IT and security services for SMEs and long-term banking partners.",
+      "capability_analysis_source": "https://nclose.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Wolfpack InfoRisk",
+      "region": "Africa (South Africa)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "GRC and Cyber Resilience",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 3.25,
+        "REM": 3.0,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 3,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Blends offensive testing with GRC expertise, delivering holistic cyber self-defense strategies.",
+      "capability_analysis_source": "https://wolfpackrisk.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Help AG",
+      "region": "Middle East (UAE)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Strategic Cyber Transformation",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.25,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 5
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Established IR leader integrated with UAE national infrastructure, maintaining a 400+ expert team.",
+      "capability_analysis_source": "https://www.helpag.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "DTS Solution",
+      "region": "Middle East (UAE)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Technical Assessment & MDR",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.0,
+        "REM": 3.75,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Combines strategic advisory with technical execution for regional finance and energy sectors.",
+      "capability_analysis_source": "https://dts-it.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "CPX",
+      "region": "Middle East (UAE)",
+      "is_startup": true,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "National Cyber Resilience",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.25,
+        "REM": 4.25,
+        "PMG": 4.25,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Government-backed cyber leader serving large enterprises and critical sectors with end-to-end trust.",
+      "capability_analysis_source": "https://www.cpx.net/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Cyberegate",
+      "region": "Middle East (UAE)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Environment Management",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.0,
+        "REM": 3.75,
+        "PMG": 4.25,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "UAE-based firm providing 24/7 incident management and vulnerability management as a service.",
+      "capability_analysis_source": "https://cybergate.ad/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "TrustedSEC",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Attack Path Analytics",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 3.5,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Elite technical firm providing detailed forensics and custom remediation for high-profile incidents.",
+      "capability_analysis_source": "https://www.trustedsec.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "ArcherHall",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Imaging and Cell Phone Forensics",
+      "pillar_scores": {
+        "PLA": 3.25,
+        "INV": 4.25,
+        "REM": 3.0,
+        "PMG": 4.0,
+        "LAW": 5.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "Strong background in litigation, specializing in trade secret theft and forensic data collection. [27]",
+      "capability_analysis_source": "https://archerhall.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Elite Digital Forensics",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Network Forensics",
+      "pillar_scores": {
+        "PLA": 3.25,
+        "INV": 4.5,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Achieved a 100% client satisfaction rate, having assisted in over 4,000 cases with ethical commitment. [27]",
+      "capability_analysis_source": "https://elitedigitalforensics.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Digital Forensics Now",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Mobile and Malware Forensics",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 4.25,
+        "REM": 3.5,
+        "PMG": 3.75,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Miami-based specialist offering expertise in mobile device forensics and forensic analysis of malware.",
+      "capability_analysis_source": "https://digitalforensicsnow.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "TCS (Tata Consultancy)",
+      "region": "Global / India",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Delivery Efficiency",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 3.5,
+        "REM": 3.5,
+        "PMG": 4.25,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Focuses on global execution through its Topaz AI investments and industrial-scale delivery models.",
+      "capability_analysis_source": "https://www.tcs.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Infosys",
+      "region": "Global / India",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "AI Consulting & IR",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 3.75,
+        "REM": 3.5,
+        "PMG": 4.25,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Consolidates SecOps via Infosys Topaz platform, maintaining a leadership position in AI transformation.",
+      "capability_analysis_source": "https://www.infosys.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "HCLTech",
+      "region": "Global / India",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "IT Infrastructure Modernization",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 3.75,
+        "REM": 3.5,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Delivers comprehensive SecOps lifecycle management with a focus on modernizing legacy enterprise estates. [1]",
+      "capability_analysis_source": "https://www.hcltech.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Capgemini",
+      "region": "Global / EMEA",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Intelligent Enterprise Transformation",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.0,
+        "REM": 3.75,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Integrates cyber resilience into large-scale digital transformation and AI governance programs.",
+      "capability_analysis_source": "https://www.capgemini.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "SecureSmartz",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "AI-Driven IR Consulting",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.25,
+        "REM": 3.75,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Consulting unit of Netsmartz focusing on rapid forensic analysis and AI-first defense.",
+      "capability_analysis_source": "https://netsmartz.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Luminance",
+      "region": "Europe",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Legal Process Automation",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.5,
+        "REM": 3.5,
+        "PMG": 4.25,
+        "LAW": 5.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "Next-generation legal AI providing elite e-discovery and evidentiary review for global law firms.",
+      "capability_analysis_source": "https://www.luminance.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Exterro",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Legal GRC and Forensics",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 3.5,
+        "PMG": 4.25,
+        "LAW": 5.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "FTK suite integrates agentic AI to decompose forensic tasks and provide full citations for courtroom defense.",
+      "capability_analysis_source": "https://www.exterro.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Reveal Data",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Evidence Visualization",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.5,
+        "REM": 3.25,
+        "PMG": 4.25,
+        "LAW": 4.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Provides REVEAL-Bench, a reasoning-enhanced forensic image detection platform with verifiable evidence chains.",
+      "capability_analysis_source": "https://www.revealdata.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Nozomi Networks",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "OT Device Fingerprinting",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.75,
+        "REM": 4.0,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "AI-powered anomaly detection for industrial and IoT networks, using Vantage for cloud-based scaling.",
+      "capability_analysis_source": "https://www.nozominetworks.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Claroty",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Cyber-Physical Systems (CPS) Defense",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.5,
+        "REM": 4.0,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Bridges the IT/OT gap with specialized vulnerability management and automated threat identification in industrial enclaves.",
+      "capability_analysis_source": "https://claroty.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Forescout",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Network Visibility & Control",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.0,
+        "REM": 4.75,
+        "PMG": 3.5,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 5,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Leading platform for automated asset identification and policy-based network containment across entire digital terrains.",
+      "capability_analysis_source": "https://www.forescout.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Microsoft Security (Sentinel)",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Unified SecOps Stack",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.25,
+        "REM": 4.25,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Security Copilot integrates deep identity and cloud telemetry to automate mid-attack disruption and triage.",
+      "capability_analysis_source": "https://www.microsoft.com/security",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "P0 Security",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "JIT Access Management",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.0,
+        "REM": 4.75,
+        "PMG": 3.5,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 5,
+          "REM-03": 4,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Ensures access is short-lived and auditable, identifying risky IAM configurations before exploitation.",
+      "capability_analysis_source": "https://www.p0.security/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Cyble",
+      "region": "Global",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Autonomous Dark Web Monitoring",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.75,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Automates external threat intel using agents that scour forums and leaked databases autonomously.",
+      "capability_analysis_source": "https://cyble.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Total Assure",
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Federal-Grade SMB Security",
+      "pillar_scores": {
+        "PLA": 4.75,
+        "INV": 4.25,
+        "REM": 4.5,
+        "PMG": 4.25,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Brings federal-grade security and <15-minute response times to the underserved small business market. [24, 10]",
+      "capability_analysis_source": "https://www.totalassure.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Beagle Security",
+      "region": "APAC / Global",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Agentic Security Testing",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.75,
+        "REM": 3.75,
+        "PMG": 3.5,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Agentic engine adapts testing strategies based on application behavior, refineing simulations automatically in CI/CD.",
+      "capability_analysis_source": "https://beaglesecurity.com/",
+      "schema_ref": "schema3-3.json"
+    }
+  ]
+}

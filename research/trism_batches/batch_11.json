@@ -1,0 +1,3322 @@
+[
+  {
+    "vendor": "Securonix",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": true,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Specializes in AI-driven threat detection and security analytics for enterprise environments.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.12
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 2.25,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.securonix.com/products/ueba/",
+          "https://www.securonix.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "User and Entity Behavior Analytics (UEBA) Solutions for Threat Detection Securonix Introduces Agentic Mesh and the First Productivity-Based AI Model for the SOC",
+            "matched_terms": [
+              "entity",
+              "model"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "User and Entity Behavior Analytics (UEBA) Solutions for Threat Detection Securonix Introduces Agentic Mesh and the First Productivity-Based AI Model for the SOC X Blog Connect Contact Us Request a Demo Why Securonix?",
+            "matched_terms": [
+              "entity",
+              "model"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Easily access critical details before, during, and after a breach with 365 days of ‘HOT’ searchable data Integrate",
+            "matched_terms": [
+              "searchable",
+              "integrate"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Platform Benefits Detect Respond Integrate Improve Detect Detect Advanced Threats Securonix Unified Defense SIEM is built with industry-leading analytics at its core to help you reduce false positives and monitor user and entity threats across your enterprise.",
+            "matched_terms": [
+              "entity",
+              "integrate"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Lighting Fast Search: Easily access critical details before, during, and after a breach with 365 days of ‘HOT’ searchable data Integrate Integrate Seamlessly Uncover blind spots in your multi-cloud environment and reduce complexity with a flexible, open archi…",
+            "matched_terms": [
+              "searchable",
+              "integrate"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.securonix.com/products/ueba/",
+          "https://www.securonix.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "BOOK A DEMO DOWNLOAD DATASHEET Uncover Unknown & Insider Threats Securonix User and Entity Behavior Analytics (UEBA) goes beyond traditional log analysis by using advanced machine learning to discern the intent behind user actions, distinguishing legitimate o…",
+            "matched_terms": [
+              "data",
+              "entity",
+              "over",
+              "analysis"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Our solution combines real-time data with historical behavior analysis to effectively identify insider threats and external takeovers before they escalate, ensuring sophisticated threat detection with minimal noise.",
+            "matched_terms": [
+              "data",
+              "over",
+              "time",
+              "analysis"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Lighting Fast Search: Easily access critical details before, during, and after a breach with 365 days of ‘HOT’ searchable data Integrate Integrate Seamlessly Uncover blind spots in your multi-cloud environment and reduce complexity with a flexible, open archi…",
+            "matched_terms": [
+              "data",
+              "each",
+              "over",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Easily access critical details before, during, and after a breach with 365 days of ‘HOT’ searchable data",
+            "matched_terms": [
+              "data",
+              "each",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Lighting Fast Search: Easily access critical details before, during, and after a breach with 365 days of ‘HOT’ searchable data",
+            "matched_terms": [
+              "data",
+              "each",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.securonix.com/products/",
+          "https://www.securonix.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Track workflows and investigation steps that are useful for compliance audits and tracing data breaches.",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Incident Management: Track workflows and investigation steps that are useful for compliance audits and tracing data breaches.",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Track workflows and investigation steps that are useful for compliance audits and tracing data breaches. Lighting Fast Search:",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Incident Management: Track workflows and investigation steps that are useful for compliance audits and tracing data breaches.",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Without a subpoena, voluntary compliance on the part of your Internet Service Provider, or additional records from a third party, information stored or retrieved for this purpose alone cannot usually be used to identify you.",
+            "matched_terms": [
+              "third",
+              "party",
+              "compliance"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.securonix.com/products/siem/",
+          "https://www.securonix.com/products/",
+          "https://www.securonix.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "Modernizing Higher Education Security with Automated Threat Detection A global MSSP enhanced threat detection and compliance for higher education clients by implementing Securonix’s cloud-native SIEM, ATS, and SOAR-cutting manual work, improving security, and…",
+            "matched_terms": [
+              "compliance",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Gain a complete picture of risk with over 500 connectors that ingest data from across your hybrid infrastructure. Built-In Cloud Integrations:",
+            "matched_terms": [
+              "risk",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Align alerts and analytics to the MITRE ATT&CK framework.",
+            "matched_terms": [
+              "alerts"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "MITRE ATT&CK Align alerts and analytics to the MITRE ATT&CK framework.",
+            "matched_terms": [
+              "alerts"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Align alerts and analytics to the MITRE ATT&CK framework. MSSPs",
+            "matched_terms": [
+              "alerts"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.securonix.com/products/siem/",
+          "https://www.securonix.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "By implementing Securonix’s unified defense SIEM and security analytics platform, NEC Asia Pacific has modernized its SOC, improved detection accuracy, reduced response times, and scaled its managed",
+            "matched_terms": [
+              "security",
+              "reduced"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Seamlessly and agnostically integrate any security tools, clouds, and data lakes. It’s flexible by design to allow organizations to maximize their security investments.",
+            "matched_terms": [
+              "security",
+              "agnostic"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Gain a complete picture of risk with over 500 connectors that ingest data from across your hybrid infrastructure.",
+            "matched_terms": [
+              "risk",
+              "connectors"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Seamlessly and agnostically integrate any security tools, clouds, and data lakes",
+            "matched_terms": [
+              "security",
+              "agnostic"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Cybersecurity Mesh Seamlessly and agnostically integrate any security tools, clouds, and data lakes. It’s flexible by design to allow organizations to maximize their security investments.",
+            "matched_terms": [
+              "security",
+              "agnostic"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.securonix.com/products/ueba/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Automate anomaly detection with the ability to baseline user activities against their peers.",
+            "matched_terms": [
+              "detection",
+              "activities",
+              "auto"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "User and Entity Behavior Analytics (UEBA) Solutions Uncover anomalous behavior with our cutting-edge UEBA solutions, employing an analytics-driven approach to modern threat detection. Experience unparalleled visibility into your environment, allowing for the …",
+            "matched_terms": [
+              "detection",
+              "anomalous",
+              "behavior"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Uncover anomalous behavior with our cutting-edge UEBA solutions, employing an analytics-driven approach to modern threat detection. Experience unparalleled visibility into your environment, allowing for the identification of subtle threats before they escalat…",
+            "matched_terms": [
+              "detection",
+              "anomalous",
+              "behavior"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Peer Group Analysis: Automate anomaly detection with the ability to baseline user activities against their peers.",
+            "matched_terms": [
+              "detection",
+              "activities",
+              "auto"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Automate anomaly detection with the ability to baseline user activities against their peers. Time-to-Value",
+            "matched_terms": [
+              "detection",
+              "activities",
+              "auto"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.securonix.com/products/ueba/",
+          "https://www.securonix.com/products/siem/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "The transition enhanced threat detection, streamlined workflows, and improved response times, enabling faster onboarding and better security outcomes for high-risk sectors.",
+            "matched_terms": [
+              "detection",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Automate anomaly detection with the ability to baseline user activities against their peers.",
+            "matched_terms": [
+              "anomaly",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Peer Group Analysis: Automate anomaly detection with the ability to baseline user activities against their peers.",
+            "matched_terms": [
+              "anomaly",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Automate anomaly detection with the ability to baseline user activities against their peers. Time-to-Value",
+            "matched_terms": [
+              "anomaly",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/ueba/",
+            "excerpt": "Peer Group Analysis: Automate anomaly detection with the ability to baseline user activities against their peers.",
+            "matched_terms": [
+              "anomaly",
+              "detection"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.securonix.com/products/",
+          "https://www.securonix.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "An unbounded integration between SIEM and SOAR puts all of your data in one place, allowing you to respond faster.",
+            "matched_terms": [
+              "bound",
+              "data",
+              "integration"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Built-In SOAR: An unbounded integration between SIEM and SOAR puts all of your data in one place, allowing you to respond faster.",
+            "matched_terms": [
+              "bound",
+              "data",
+              "integration"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "An unbounded integration between SIEM and SOAR puts all of your data in one place, allowing you to respond faster. Incident Management:",
+            "matched_terms": [
+              "bound",
+              "data",
+              "integration"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Built-In SOAR: An unbounded integration between SIEM and SOAR puts all of your data in one place, allowing you to respond faster.",
+            "matched_terms": [
+              "bound",
+              "data",
+              "integration"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "The technical storage or access is necessary for the legitimate purpose of storing preferences that are not requested by the subscriber or user.",
+            "matched_terms": [
+              "purpose",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.securonix.com/products/siem/",
+          "https://www.securonix.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Google Cloud Platform Improve detection and response across GCP.",
+            "matched_terms": [
+              "across",
+              "cloud",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Google Cloud Platform Improve detection and response across GCP.",
+            "matched_terms": [
+              "across",
+              "cloud",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "Google Cloud Platform Improve detection and response across GCP.",
+            "matched_terms": [
+              "across",
+              "cloud",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "Modernizing Higher Education Security with Automated Threat Detection A global MSSP enhanced threat detection and compliance for higher education clients by implementing Securonix’s cloud-native SIEM, ATS, and SOAR-cutting manual work, improving security, and…",
+            "matched_terms": [
+              "cloud",
+              "automated",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "Built for MSSPs: How SecureCyber Uses Securonix to Deliver MDXR Across Tenants with Speed and Precision SecureCyber Modernizes Threat Detection with Securonix Cloud-Native SIEM",
+            "matched_terms": [
+              "across",
+              "cloud",
+              "detection"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.securonix.com/products/siem/",
+          "https://www.securonix.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "See how Redington DigiGlass scaled MDR with Securonix SIEM, achieving 100% retention, 15,000 EPS ingestion, and zero audit gaps.",
+            "matched_terms": [
+              "scale",
+              "retention"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "Redington DigiGlass Accelerates MDR Growth with Securonix See how Redington DigiGlass scaled MDR with Securonix SIEM, achieving 100% retention, 15,000 EPS ingestion, and zero audit gaps.",
+            "matched_terms": [
+              "scale",
+              "retention"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "See how Redington DigiGlass scaled MDR with Securonix SIEM, achieving 100% retention, 15,000 EPS ingestion, and zero audit gaps. Read More",
+            "matched_terms": [
+              "scale",
+              "retention"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Securonix 2026. All Rights Reserved",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Read more about these purposes",
+            "matched_terms": [
+              "purposes"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.securonix.com/products/siem/",
+          "https://www.securonix.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Increase patient data privacy and prevent data snooping.",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "EMR Monitoring Increase patient data privacy and prevent data snooping.",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "Increase patient data privacy and prevent data snooping. MITRE ATT&CK",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.securonix.com/products/",
+            "excerpt": "EMR Monitoring Increase patient data privacy and prevent data snooping.",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "Increase patient data privacy and prevent data snooping.",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.securonix.com/products/siem/",
+          "https://www.securonix.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.securonix.com/products/siem/",
+            "excerpt": "By implementing Securonix’s unified defense SIEM and security analytics platform, NEC Asia Pacific has modernized its SOC, improved detection accuracy, reduced response times, and scaled its managed",
+            "matched_terms": [
+              "security",
+              "scale",
+              "detection",
+              "scaled"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Track workflows and investigation steps that are useful for compliance audits and tracing data breaches.",
+            "matched_terms": [
+              "compliance",
+              "raci",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Transform your Threat Detection, Investigation, and Response (TDIR) with our 5x Gartner MQ Leading SIEM Platform, enhanced with AI-powered capabilities. Elevate your security operations with our integrated SIEM and SOAR solution, and discover a security analy…",
+            "matched_terms": [
+              "security",
+              "scale",
+              "integrated",
+              "detection"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Scale up your Threat Defense Proactive threat defense with the industry’s first combination of AI, Cybersecurity Mesh, and a Frictionless Experience, our best-in-class SIEM unifies threat detection, investigation, and response (TDIR) on Snowflake’s Data Cloud.",
+            "matched_terms": [
+              "security",
+              "scale",
+              "data",
+              "detection"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.securonix.com/platform/",
+            "excerpt": "Incident Management: Track workflows and investigation steps that are useful for compliance audits and tracing data breaches.",
+            "matched_terms": [
+              "compliance",
+              "raci",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 5,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 2.25,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.12
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"User and Entity Behavior Analytics (UEBA) Solutions for Threat Detection Securonix Introduces Agentic Mesh and the First Productivity-Based AI Model for the SOC\". Also: \"User and Entity Behavior Analytics (UEBA) Solutions for Threat Detection Securonix Introduces Agentic Mesh and the First Productivity-Based AI Model …\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"BOOK A DEMO DOWNLOAD DATASHEET Uncover Unknown & Insider Threats Securonix User and Entity Behavior Analytics (UEBA) goes beyond traditional log analysis by using advanced machine learning to discern…\". Also: \"Our solution combines real-time data with historical behavior analysis to effectively identify insider threats and external takeovers before they esc…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Track workflows and investigation steps that are useful for compliance audits and tracing data breaches.\". Also: \"Incident Management: Track workflows and investigation steps that are useful for compliance audits and tracing data breaches.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Modernizing Higher Education Security with Automated Threat Detection A global MSSP enhanced threat detection and compliance for higher education clients by implementing Securonix’s cloud-native SIEM…\". Also: \"Gain a complete picture of risk with over 500 connectors that ingest data from across your hybrid infrastructure. Built-In Cloud Integrations:\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"By implementing Securonix’s unified defense SIEM and security analytics platform, NEC Asia Pacific has modernized its SOC, improved detection accuracy, reduced response times, and scaled its managed\". Also: \"Seamlessly and agnostically integrate any security tools, clouds, and data lakes. It’s flexible by design to allow organizations to maximize their se…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automate anomaly detection with the ability to baseline user activities against their peers.\". Also: \"User and Entity Behavior Analytics (UEBA) Solutions Uncover anomalous behavior with our cutting-edge UEBA solutions, employing an analytics-driven ap…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"The transition enhanced threat detection, streamlined workflows, and improved response times, enabling faster onboarding and better security outcomes for high-risk sectors.\". Also: \"Automate anomaly detection with the ability to baseline user activities against their peers.\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"An unbounded integration between SIEM and SOAR puts all of your data in one place, allowing you to respond faster.\". Also: \"Built-In SOAR: An unbounded integration between SIEM and SOAR puts all of your data in one place, allowing you to respond faster.\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Google Cloud Platform Improve detection and response across GCP.\". Also: \"Google Cloud Platform Improve detection and response across GCP.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"See how Redington DigiGlass scaled MDR with Securonix SIEM, achieving 100% retention, 15,000 EPS ingestion, and zero audit gaps.\". Also: \"Redington DigiGlass Accelerates MDR Growth with Securonix See how Redington DigiGlass scaled MDR with Securonix SIEM, achieving 100% retention, 15,00…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"Increase patient data privacy and prevent data snooping.\". Also: \"EMR Monitoring Increase patient data privacy and prevent data snooping.\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"By implementing Securonix’s unified defense SIEM and security analytics platform, NEC Asia Pacific has modernized its SOC, improved detection accuracy, reduced response times, and scaled its managed\". Also: \"Track workflows and investigation steps that are useful for compliance audits and tracing data breaches.\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:28:50.763143+00:00",
+      "urls_used": [
+        "https://www.securonix.com/products/",
+        "https://www.securonix.com/products/siem/",
+        "https://www.securonix.com/products/ueba/",
+        "https://www.securonix.com/platform/",
+        "https://www.securonix.com/solutions/insider-threat-detection/"
+      ],
+      "pages_ok": 5,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "ServiceNow",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Platform Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.62,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Control costs and minimize risks across the IT asset lifecycle.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Improve technology use and spend over the IT asset lifecycle. Governance, Risk, and Compliance",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "IT Asset Management Control costs and minimize risks across the IT asset lifecycle.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Control costs and minimize risks across the IT asset lifecycle. IT Operations Management",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "IT Asset Management Control costs and minimize risks across the IT asset lifecycle.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Power all your workflows, AI, and analytics with real-time access to data from any source.",
+            "matched_terms": [
+              "data",
+              "time",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "data",
+              "impact",
+              "analysis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Data Power all your workflows, AI, and analytics with real-time access to data from any source.",
+            "matched_terms": [
+              "data",
+              "time",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Power all your workflows, AI, and analytics with real-time access to data from any source. Workflows",
+            "matched_terms": [
+              "data",
+              "time",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Analyzes suspicious IP addresses, URLs, files, and file hashes to assess potential malicious activity. Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "data",
+              "impact",
+              "analysis"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Reduce third-party risk while improving resilience and compliance.",
+            "matched_terms": [
+              "third",
+              "party",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Streamline your security processes through automated workflows, enhance situational awareness and reduce response time to critical threats and risks.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Automatize remediation workflows for cloud vulnerabilities, take control of cloud security configurations, and gain continuous visibility into cloud compliance.",
+            "matched_terms": [
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Third-party Risk Management Reduce third-party risk while improving resilience and compliance.",
+            "matched_terms": [
+              "third",
+              "party",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Reduce third-party risk while improving resilience and compliance. Security Posture Control",
+            "matched_terms": [
+              "third",
+              "party",
+              "compliance"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "View key metrics and indicators with role-based dashboards and reporting. Enhance visibility into your security posture and team performance.",
+            "matched_terms": [
+              "reporting",
+              "posture",
+              "metrics",
+              "dashboards"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Know your security posture View key metrics and indicators with role-based dashboards and reporting. Enhance visibility into your security posture and team performance.",
+            "matched_terms": [
+              "reporting",
+              "posture",
+              "metrics",
+              "dashboards"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "View key metrics and indicators with role-based dashboards and reporting. Enhance visibility into your security posture and team performance. Get Data Sheet",
+            "matched_terms": [
+              "reporting",
+              "posture",
+              "metrics",
+              "dashboards"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Learn How Know your security posture View key metrics and indicators with role-based dashboards and reporting.",
+            "matched_terms": [
+              "reporting",
+              "posture",
+              "metrics",
+              "dashboards"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Empower admins to access instance compliance levels, monitor security trends, and mitigate risk. Improve cyber resilience and speed response times.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trend"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 14,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Enhance retail experiences with AI-powered insights on a single AI platform. Technology Providers",
+            "matched_terms": [
+              "single",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Technology Providers Reimagine your XaaS lifecycle with a single AI platform.",
+            "matched_terms": [
+              "single",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Technology Providers Reimagine your XaaS lifecycle with a single AI platform.",
+            "matched_terms": [
+              "single",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "risk",
+              "class"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Analyzes suspicious IP addresses, URLs, files, and file hashes to assess potential malicious activity. Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "risk",
+              "class"
+            ],
+            "relevance_score": 5
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Data Loss Prevention Incident Response",
+            "matched_terms": [
+              "prevention",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Security Incident Response Prioritize and respond quickly to security threats using workflows and automation.",
+            "matched_terms": [
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Enhance and scale your incident response capabilities Data Loss Prevention Incident Response",
+            "matched_terms": [
+              "prevention",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Data Loss Prevention Incident Response Integrate SecOps with your data loss prevention tool to reduce exposure.",
+            "matched_terms": [
+              "prevention",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Use MITRE ATT&CK to investigate threats and close gaps. Accelerate incident response with context and AI for smart workflows. Prioritize remediation",
+            "matched_terms": [
+              "remediation",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "detection",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Analyzes suspicious IP addresses, URLs, files, and file hashes to assess potential malicious activity. Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "detection",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation. Helps prioritize problems, drive remediation, and validate whether risks have been addressed.",
+            "matched_terms": [
+              "detection",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Skip to Main Content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "View key metrics and indicators with role-based dashboards and reporting. Enhance visibility into your security posture and team performance.",
+            "matched_terms": [
+              "metrics"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Power all your workflows, AI, and analytics with real-time access to data from any source.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "classification",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Data Power all your workflows, AI, and analytics with real-time access to data from any source.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Power all your workflows, AI, and analytics with real-time access to data from any source. Workflows",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Analyzes suspicious IP addresses, URLs, files, and file hashes to assess potential malicious activity. Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "classification",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Protect sensitive data and increase security, privacy, and compliance across the enterprise.",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "across"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.",
+            "matched_terms": [
+              "data",
+              "detection",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Automatize remediation workflows for cloud vulnerabilities, take control of cloud security configurations, and gain continuous visibility into cloud compliance.",
+            "matched_terms": [
+              "cloud",
+              "remediation",
+              "workflows"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Security Protect sensitive data and increase security, privacy, and compliance across the enterprise.",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "across"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Protect sensitive data and increase security, privacy, and compliance across the enterprise. App Engine",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "across"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Security Operations groups key features into packages that can scale with you as your needs change.",
+            "matched_terms": [
+              "scale",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Identify, prioritize, and respond to incidents and threats before they impact your business.",
+            "matched_terms": [
+              "impact",
+              "before"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Help analysts quickly respond to incidents and threats before they impact your business.",
+            "matched_terms": [
+              "impact",
+              "before"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Read the key findings about security hygiene and posture management, from opinions, challenges and metrics to recommendations.",
+            "matched_terms": [
+              "hygiene",
+              "recommendations"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Features for Security Operations Security Operations groups key features into packages that can scale with you as your needs change.",
+            "matched_terms": [
+              "scale",
+              "change"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Privacy Management Manage data privacy in real time as part of a holistic enterprise risk program.",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Privacy Management Manage data privacy in real time as part of a holistic enterprise risk program.",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Apply risk-based vulnerability management across your infrastructure. Use collaborative workspaces for effective management of risks and IT remediation.",
+            "matched_terms": [
+              "apply",
+              "across",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Prioritize remediation Apply risk-based vulnerability management across your infrastructure. Use collaborative workspaces for effective management of risks and IT remediation.",
+            "matched_terms": [
+              "apply",
+              "across",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Apply risk-based vulnerability management across your infrastructure. Use collaborative workspaces for effective management of risks and IT remediation. Learn How",
+            "matched_terms": [
+              "apply",
+              "across",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.servicenow.com/products/security-operations.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "AI, data, and workflows-working together on one platform. Only ServiceNow makes it this simple at scale.",
+            "matched_terms": [
+              "scale",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Power all your workflows, AI, and analytics with real-time access to data from any source.",
+            "matched_terms": [
+              "workflows",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Security Operations groups key features into packages that can scale with you as your needs change.",
+            "matched_terms": [
+              "security",
+              "scale",
+              "change"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Empower admins to access instance compliance levels, monitor security trends, and mitigate risk. Improve cyber resilience and speed response times.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.servicenow.com/products/security-operations.html",
+            "excerpt": "Automatize remediation workflows for cloud vulnerabilities, take control of cloud security configurations, and gain continuous visibility into cloud compliance.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "workflows"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.62,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Control costs and minimize risks across the IT asset lifecycle.\". Also: \"Improve technology use and spend over the IT asset lifecycle. Governance, Risk, and Compliance\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Power all your workflows, AI, and analytics with real-time access to data from any source.\". Also: \"Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce third-party risk while improving resilience and compliance.\". Also: \"Streamline your security processes through automated workflows, enhance situational awareness and reduce response time to critical threats and risks.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"View key metrics and indicators with role-based dashboards and reporting. Enhance visibility into your security posture and team performance.\". Also: \"Know your security posture View key metrics and indicators with role-based dashboards and reporting. Enhance visibility into your security posture an…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Enhance retail experiences with AI-powered insights on a single AI platform. Technology Providers\". Also: \"Technology Providers Reimagine your XaaS lifecycle with a single AI platform.\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data Loss Prevention Incident Response\". Also: \"Security Incident Response Prioritize and respond quickly to security threats using workflows and automation.\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.\". Also: \"Analyzes suspicious IP addresses, URLs, files, and file hashes to assess potential malicious activity. Facilitates importing knowledge base, host det…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Power all your workflows, AI, and analytics with real-time access to data from any source.\". Also: \"Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Protect sensitive data and increase security, privacy, and compliance across the enterprise.\". Also: \"Facilitates importing knowledge base, host detection, risk classification, and impact analysis data to manage risk and remediation.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Security Operations groups key features into packages that can scale with you as your needs change.\". Also: \"Identify, prioritize, and respond to incidents and threats before they impact your business.\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Privacy Management Manage data privacy in real time as part of a holistic enterprise risk program.\". Also: \"Privacy Management Manage data privacy in real time as part of a holistic enterprise risk program.\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI, data, and workflows-working together on one platform. Only ServiceNow makes it this simple at scale.\". Also: \"Power all your workflows, AI, and analytics with real-time access to data from any source.\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:29:21.121518+00:00",
+      "urls_used": [
+        "https://www.servicenow.com/products/ai-governance.html",
+        "https://www.servicenow.com/products/now-assist.html",
+        "https://www.servicenow.com/products/security-operations.html",
+        "https://docs.servicenow.com/bundle/ai-governance/page/product/ai-governance/concept/ai-governance.html",
+        "https://www.servicenow.com/solutions/ai.html"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Siemens",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Platform Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Focuses on AI safety and reliability for industrial and manufacturing applications.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 3.44,
+      "INF": 4.62
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.0,
+      "RUN-02": 4.75,
+      "RUN-03": 2.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.25,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "A digital twin is more than just a CAD model. It is a living entity that is extended, completed and updated throughout the asset’s lifecycle, further enriched with data obtained during the asset’s operation.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "The digital twin: Beyond a CAD model A digital twin is more than just a CAD model. It is a living entity that is extended, completed and updated throughout the asset’s lifecycle, further enriched with data obtained during the asset’s operation.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "A digital twin is more than just a CAD model. It is a living entity that is extended, completed and updated throughout the asset’s lifecycle, further enriched with data obtained during the asset’s operation. Download",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "It is a living entity that is extended, completed and updated throughout the asset’s lifecycle, further enriched with data obtained during the asset’s operation.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "The ultimate product lifecycle management (PLM) add-on module for Siemens Teamcenter, specifically designed for medical technology companies.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "See how Combine IT with operational technology Discover more Carbon footprint all Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (P…",
+            "matched_terms": [
+              "data",
+              "over",
+              "impact"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts.",
+            "matched_terms": [
+              "data",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts.",
+            "matched_terms": [
+              "data",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts. Read more",
+            "matched_terms": [
+              "data",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Carbon footprint: Automated and accurate Full-scale IT system integration has been successfully deployed with our partner NTT DATA at the Swiss Smart Factory, a lighthouse project of the Switzerland Innovation Park Biel.",
+            "matched_terms": [
+              "data",
+              "automated"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Siemens Mobility reports its best-ever EU Taxonomy result, with 87% of revenue now Taxonomy-aligned. This externally audited figure confirms our leadership in sustainable mobility.",
+            "matched_terms": [
+              "audit",
+              "reports"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Siemens Mobility leads in EU taxonomy results Siemens Mobility reports its best-ever EU Taxonomy result, with 87% of revenue now Taxonomy-aligned. This externally audited figure confirms our leadership in sustainable mobility.",
+            "matched_terms": [
+              "audit",
+              "reports"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Siemens Mobility reports its best-ever EU Taxonomy result, with 87% of revenue now Taxonomy-aligned. This externally audited figure confirms our leadership in sustainable mobility. all",
+            "matched_terms": [
+              "audit",
+              "reports"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Key trends such as agentic artificial intelligence (AI) and foundational models will shape industrial applications in the coming years.",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "The digital twin: Beyond a CAD model",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+          "https://www.siemens.com/global/en/products/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Carbon footprint: Automated and accurate Full-scale IT system integration has been successfully deployed with our partner NTT DATA at the Swiss Smart Factory, a lighthouse project of the Switzerland Innovation Park Biel.",
+            "matched_terms": [
+              "automated",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Read more Success story all Carbon footprint: Automated and accurate Full-scale IT system integration has been successfully deployed with our partner NTT DATA at the Swiss Smart Factory, a lighthouse project of the Switzerland Innovation Park Biel.",
+            "matched_terms": [
+              "automated",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/services/cybersecurity.html",
+            "excerpt": "While we acknowledge that no system can be 100% immune to cyberattacks, we continuously search for vulnerabilities.",
+            "matched_terms": [
+              "attacks",
+              "continuous"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Key trends such as agentic artificial intelligence (AI) and foundational models will shape industrial applications in the coming years.",
+            "matched_terms": [
+              "trend"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Siemens has held its Annual Shareholders' Meeting on February 12, 2026 and released the first quarter results.",
+            "matched_terms": [
+              "results"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "The Building X platform helps you manage and optimize building operations-from energy use and tenant comfort to maintenance, security, safety and more.",
+            "matched_terms": [
+              "safety",
+              "security"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Building X The Building X platform helps you manage and optimize building operations-from energy use and tenant comfort to maintenance, security, safety and more.",
+            "matched_terms": [
+              "safety",
+              "security"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "The Building X platform helps you manage and optimize building operations-from energy use and tenant comfort to maintenance, security, safety and more. Learn more",
+            "matched_terms": [
+              "safety",
+              "security"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Go to marketplace Siemens Xcelerator Building X The Building X platform helps you manage and optimize building operations-from energy use and tenant comfort to maintenance, security, safety and more.",
+            "matched_terms": [
+              "safety",
+              "security"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Guarding the plant: Robot dogs improve safety",
+            "matched_terms": [
+              "safety"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+          "https://www.siemens.com/global/en/products/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/services/cybersecurity.html",
+            "excerpt": "Our strategy focuses not only on proactive protection, but also rapid detection, and swift, effective response to minimize potential risks.",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Alarm monitoring for optimized building operations",
+            "matched_terms": [
+              "monitoring"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Siemens celebrates 125 years of partnership in Egypt",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Reduce non-revenue water by up to 50% About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+          "https://www.siemens.com/global/en/products/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/services/cybersecurity.html",
+            "excerpt": "Our strategy focuses not only on proactive protection, but also rapid detection, and swift, effective response to minimize potential risks.",
+            "matched_terms": [
+              "detection",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Skip to main content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Siemens home | Siemens Skip to main content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Skip to main content Home",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts.",
+            "matched_terms": [
+              "dynamic",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Full-scale IT system integration has been successfully deployed with our partner NTT DATA at the Swiss Smart Factory, a lighthouse project of the Switzerland Innovation Park Biel.",
+            "matched_terms": [
+              "data",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "IT/OT integration for industrial networks This white paper describes how to successfully connect your information technology (IT) and operational technology (OT) networks with a scalable, secure network infrastructure that enables you to get the most out of y…",
+            "matched_terms": [
+              "data",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts.",
+            "matched_terms": [
+              "dynamic",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts. Read more",
+            "matched_terms": [
+              "dynamic",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "discover",
+              "data",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Reduce non-revenue water by up to 50% About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "discover",
+              "data",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management. Get started",
+            "matched_terms": [
+              "discover",
+              "data",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "discover",
+              "data",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Carbon footprint: Automated and accurate Full-scale IT system integration has been successfully deployed with our partner NTT DATA at the Swiss Smart Factory, a lighthouse project of the Switzerland Innovation Park Biel.",
+            "matched_terms": [
+              "data",
+              "automated"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts.",
+            "matched_terms": [
+              "relevant",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts.",
+            "matched_terms": [
+              "relevant",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts. Read more",
+            "matched_terms": [
+              "relevant",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Carbon footprint: Automated and accurate Full-scale IT system integration has been successfully deployed with our partner NTT DATA at the Swiss Smart Factory, a lighthouse project of the Switzerland Innovation Park Biel.",
+            "matched_terms": [
+              "scale",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "See how Combine IT with operational technology Discover more Carbon footprint all Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (P…",
+            "matched_terms": [
+              "relevant",
+              "impact"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts.",
+            "matched_terms": [
+              "reduction",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "See how Combine IT with operational technology Discover more Carbon footprint all Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (P…",
+            "matched_terms": [
+              "reduction",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Get free app Carbon footprint all Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impa…",
+            "matched_terms": [
+              "reduction",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "With our innovative grid software and consultancy services, we pave the way for prosumer-centric, autonomous grid management and help transmission and distribution grid operators transform their grids.",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+          "https://www.siemens.com/global/en/products/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.siemens.com/global/en/products/services/cybersecurity.html",
+            "excerpt": "Learn more Open digital business platform Siemens Xcelerator Today, you need to be able to respond rapidly to changes in your markets.",
+            "matched_terms": [
+              "digital",
+              "changes",
+              "change"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "data",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful carbon-reduction efforts.",
+            "matched_terms": [
+              "data",
+              "reduction"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "NX software helps designers and manufacturers deliver better products faster using powerful, integrated computer-aided design (CAD) and computer-aided manufacturing (CAM) solutions that realize the full value of the digital twin.",
+            "matched_terms": [
+              "digital",
+              "integrated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+            "excerpt": "Reduce non-revenue water by up to 50% About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.",
+            "matched_terms": [
+              "data",
+              "detection"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.0,
+      "RUN-02": 4.75,
+      "RUN-03": 2.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.25,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 3.44,
+      "INF": 4.62
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"A digital twin is more than just a CAD model. It is a living entity that is extended, completed and updated throughout the asset’s lifecycle, further enriched with data obtained during the asset’s op…\". Also: \"The digital twin: Beyond a CAD model A digital twin is more than just a CAD model. It is a living entity that is extended, completed and updated thro…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"See how Combine IT with operational technology Discover more Carbon footprint all Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-bas…\". Also: \"Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF)…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Siemens Mobility reports its best-ever EU Taxonomy result, with 87% of revenue now Taxonomy-aligned. This externally audited figure confirms our leadership in sustainable mobility.\". Also: \"Siemens Mobility leads in EU taxonomy results Siemens Mobility reports its best-ever EU Taxonomy result, with 87% of revenue now Taxonomy-aligned. Th…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Carbon footprint: Automated and accurate Full-scale IT system integration has been successfully deployed with our partner NTT DATA at the Swiss Smart Factory, a lighthouse project of the Switzerland …\". Also: \"Read more Success story all Carbon footprint: Automated and accurate Full-scale IT system integration has been successfully deployed with our partner…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.00/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"The Building X platform helps you manage and optimize building operations-from energy use and tenant comfort to maintenance, security, safety and more.\". Also: \"Building X The Building X platform helps you manage and optimize building operations-from energy use and tenant comfort to maintenance, security, saf…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Our strategy focuses not only on proactive protection, but also rapid detection, and swift, effective response to minimize potential risks.\". Also: \"About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter d…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Our strategy focuses not only on proactive protection, but also rapid detection, and swift, effective response to minimize potential risks.\". Also: \"Skip to main content\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful…\". Also: \"Full-scale IT system integration has been successfully deployed with our partner NTT DATA at the Swiss Smart Factory, a lighthouse project of the Swi…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter data management.\". Also: \"Reduce non-revenue water by up to 50% About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you drive faster and more impactful…\". Also: \"Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Streamline emission management Easy to set up and use-and compliant with all relevant industry standards-this web-based app provides you with dynamic product carbon footprint (PCF) data, helping you …\". Also: \"See how Combine IT with operational technology Discover more Carbon footprint all Streamline emission management Easy to set up and use-and compliant…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Learn more Open digital business platform Siemens Xcelerator Today, you need to be able to respond rapidly to changes in your markets.\". Also: \"About 30% of drinking water is lost on its way to consumers. Discover how artificial intelligence can make leak detection smarter and improve meter d…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:29:51.855030+00:00",
+      "urls_used": [
+        "https://www.siemens.com/global/en/products/automation/industrial-ai.html",
+        "https://www.siemens.com/global/en/products/services/cybersecurity.html",
+        "https://www.siemens.com/global/en/products/xcelerator/ai.html",
+        "https://www.siemens.com/global/en/company/digital-transformation/responsible-ai.html",
+        "https://www.siemens.com/global/en/products/software/data-governance.html"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Sopra Steria",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 0.75,
+      "RUN": 1.56,
+      "INF": 0.5
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 0.0,
+      "GOV-02": 1.0,
+      "GOV-03": 1.0,
+      "GOV-04": 1.0,
+      "RUN-01": 1.0,
+      "RUN-02": 0.0,
+      "RUN-03": 1.0,
+      "RUN-04": 4.25,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 1.0,
+      "INF-04": 1.0
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/cybersecurity",
+          "https://www.soprasteria.com/about-us/responsible-digital",
+          "https://www.soprasteria.com/expertise/artificial-intelligence",
+          "https://www.soprasteria.com/expertise/data-intelligence",
+          "https://www.soprasteria.com/expertise/ai-trust"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/cybersecurity",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/data-intelligence",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.soprasteria.com/about-us/responsible-digital",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/ai-trust",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Financial publications & reports",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Ethics and Compliance",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Corporate Governance Financial publications & reports",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Financial publications & reports Financial publications & reports",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Financial publications & reports Investors Relations / Shareholders",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Systems Integration",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Ethics and Compliance",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Technology Services Systems Integration",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Systems Integration Systems Integration",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Systems Integration Software",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/artificial-intelligence",
+          "https://www.soprasteria.com/expertise/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Cookies policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Accessibility Cookies policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Cookies policy Twitter",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/cybersecurity",
+            "excerpt": "Cookies policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/artificial-intelligence",
+          "https://www.soprasteria.com/expertise/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Cookies policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Accessibility Cookies policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Cookies policy Twitter",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/cybersecurity",
+            "excerpt": "Cookies policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/cybersecurity",
+          "https://www.soprasteria.com/about-us/responsible-digital",
+          "https://www.soprasteria.com/expertise/artificial-intelligence",
+          "https://www.soprasteria.com/expertise/data-intelligence",
+          "https://www.soprasteria.com/expertise/ai-trust"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/cybersecurity",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/data-intelligence",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.soprasteria.com/about-us/responsible-digital",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/ai-trust",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/artificial-intelligence"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Protection of personal data",
+            "matched_terms": [
+              "data"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Personal Data Protection Notice",
+            "matched_terms": [
+              "data"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Ethics and Compliance Protection of personal data",
+            "matched_terms": [
+              "data"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Protection of personal data About us",
+            "matched_terms": [
+              "data"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Protection of personal data Our Commitments",
+            "matched_terms": [
+              "data"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 5 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/artificial-intelligence",
+          "https://www.soprasteria.com/expertise/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Infrastructure Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Business Process Services Infrastructure Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Infrastructure Management Cybersecurity",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/cybersecurity",
+            "excerpt": "Infrastructure Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/cybersecurity",
+            "excerpt": "Business Process Services Infrastructure Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.soprasteria.com/expertise/cybersecurity",
+          "https://www.soprasteria.com/about-us/responsible-digital",
+          "https://www.soprasteria.com/expertise/artificial-intelligence",
+          "https://www.soprasteria.com/expertise/data-intelligence",
+          "https://www.soprasteria.com/expertise/ai-trust"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.soprasteria.com/expertise/artificial-intelligence",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/cybersecurity",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/data-intelligence",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.soprasteria.com/about-us/responsible-digital",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.soprasteria.com/expertise/ai-trust",
+            "excerpt": "Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©",
+            "matched_terms": [
+              "data",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 5,
+        "total_pages": 5,
+        "excerpts_total": 45,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 0.0,
+      "GOV-02": 1.0,
+      "GOV-03": 1.0,
+      "GOV-04": 1.0,
+      "RUN-01": 1.0,
+      "RUN-02": 0.0,
+      "RUN-03": 1.0,
+      "RUN-04": 4.25,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 1.0,
+      "INF-04": 1.0
+    },
+    "pillar_scores_validated": {
+      "GOV": 0.75,
+      "RUN": 1.56,
+      "INF": 0.5
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©\". Also: \"Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies poli…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Financial publications & reports\". Also: \"Ethics and Compliance\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Systems Integration\". Also: \"Ethics and Compliance\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Cookies policy\". Also: \"Accessibility Cookies policy\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Cookies policy\". Also: \"Accessibility Cookies policy\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©\". Also: \"Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies poli…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Protection of personal data\". Also: \"Personal Data Protection Notice\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Infrastructure Management\". Also: \"Business Process Services Infrastructure Management\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 1.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: good_evidence. TRiSM signal: \"Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies policy Twitter Linkedin Youtube Sopra Steria 2026©\". Also: \"Manage your cookies Contact us Terms of use Personal Data Protection Notice Warning alert - scam / identify theft Site map Accessibility Cookies poli…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:30:04.046244+00:00",
+      "urls_used": [
+        "https://www.soprasteria.com/expertise/artificial-intelligence",
+        "https://www.soprasteria.com/expertise/cybersecurity",
+        "https://www.soprasteria.com/expertise/data-intelligence",
+        "https://www.soprasteria.com/about-us/responsible-digital",
+        "https://www.soprasteria.com/expertise/ai-trust"
+      ],
+      "pages_ok": 5,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Splunk",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Platform Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Provides AI-driven anomaly detection and auditability for security operations.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 0,
+        "total_pages": 5,
+        "excerpts_total": 0,
+        "flag": "fetch_failed",
+        "confidence": 0.0
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "pillar_scores_validated": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes."
+    },
+    "research_flag": "fetch_failed",
+    "research_confidence": 0.0,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:30:31.093409+00:00",
+      "urls_used": [
+        "https://www.splunk.com/en_us/products/artificial-intelligence.html",
+        "https://www.splunk.com/en_us/products/splunk-ai-assistant.html",
+        "https://www.splunk.com/en_us/products/unified-security-and-observability-platform.html",
+        "https://www.splunk.com/en_us/blog/ai.html",
+        "https://www.splunk.com/en_us/products/security-analytics.html"
+      ],
+      "pages_ok": 0,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

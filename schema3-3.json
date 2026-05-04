@@ -1,0 +1,72 @@
+{
+  "dfir_capability_taxonomy_v3.2": {
+    "metadata": {
+      "framework_alignment": "NIST CSF 2.0 & SANS Incident Handler's Handbook",
+      "scoring_logic": {
+        "1": "Manual: Process is explicitly human-led with no evidence of technological automation.",
+        "2": "Insufficient Evidence: Documentation confirms the service is provided, but does not verify AI integration.",
+        "3": "AI-Augmented: Basic generative AI assistants used for summarization, drafting, or search optimization.",
+        "4": "Advanced AI: Specialized models (DSLMs like ForensicLLM) perform deep correlation but require human validation.",
+        "5": "Fully Agentic: Autonomous systems that independently plan investigations, execute tools, and document methodology."
+      },
+      "market_position_definitions": {
+        "ir_focus_type": {
+          "Core Competency": "Pureplay IR consultancies or specialized units where response is the primary work product.",
+          "Assistance Component": "Incident response provided as a feature or support layer within an MDR or SOCaaS contract."
+        }
+      }
+    },
+    "pillars": {
+      "planning": {
+        "code": "PLA",
+        "focus": "Organizational Readiness and Breach Preparation",
+        "sub_capabilities": [
+          { "id": "PLA-01", "name": "Visibility Gap Analysis", "definition": "Identifying telemetry blind spots across hybrid environments.", "granular_activities": ["Log audit", "Endpoint mapping", "Cloud trail validation"] },
+          { "id": "PLA-02", "name": "Behavioral Playbook Design", "definition": "Development of non-linear response logic adapting to attacker tradecraft.", "granular_activities": ["Threat model simulation", "Decision tree mapping", "Playbook automation"] },
+          { "id": "PLA-03", "name": "Tabletop Exercise (TTX) Automation", "definition": "Simulating complex breach scenarios to test personnel, processes, and tools.", "granular_activities": ["Scenario design", "Simulation execution", "Feedback collection"] },
+          { "id": "PLA-04", "name": "Forensic Readiness Maturity Assessment", "definition": "Benchmarking evidence preservation against ISO 27037 standards.", "granular_activities": ["Asset inventory audit", "Collection speed testing", "Policy review"] }
+        ]
+      },
+      "forensic_investigation": {
+        "code": "INV",
+        "focus": "Evidence Identification, Collection, and Analytical Reconstruction",
+        "sub_capabilities": [
+          { "id": "INV-01", "name": "Triage and Scoping", "definition": "Rapid assessment of incident scope and priority for evidence collection.", "granular_activities": ["Impact assessment", "Affected asset enumeration", "Collection prioritization"] },
+          { "id": "INV-02", "name": "Multi-Hop Timeline Reconstruction", "definition": "Mapping digital events across systems to establish patient zero and the causal backstory.", "granular_activities": ["Log correlation", "Linkage mapping", "Graph analysis"] },
+          { "id": "INV-03", "name": "Artifact Source Attribution", "definition": "Proving the origin of an artifact by citing the specific file path or system event.", "granular_activities": ["Path citation", "Hash verification", "Metadata cross-referencing"] },
+          { "id": "INV-04", "name": "Malware and Reverse Engineering", "definition": "Technical analysis of malicious code to understand capabilities and persistence.", "granular_activities": ["Code comprehension", "Payload extraction", "C2 protocol analysis"] }
+        ]
+      },
+      "remediation": {
+        "code": "REM",
+        "focus": "Threat Containment and Business Restoration",
+        "sub_capabilities": [
+          { "id": "REM-01", "name": "Containment and Isolation", "definition": "Rapidly severing attacker access while preserving forensic evidence.", "granular_activities": ["Lateral movement blocking", "Access revocation", "Network segmentation"] },
+          { "id": "REM-02", "name": "Root Cause Eradication", "definition": "Closing vulnerabilities and removing persistence mechanisms like backdoors.", "granular_activities": ["Vulnerability patching", "Unauthorized account removal", "Artifact cleanup"] },
+          { "id": "REM-03", "name": "Recovery and Restoration Verification", "definition": "Returning services to operational states while verifying backups are not contaminated.", "granular_activities": ["Backup integrity checks", "Service restoration", "Failover validation"] },
+          { "id": "REM-04", "name": "Ransomware Negotiation and Outcomes Forecasting", "definition": "Managing settlements and using data to forecast the likelihood of successful recovery.", "granular_activities": ["Actor tracking", "Feasibility modeling", "Crypto-acquisition support"] }
+        ]
+      },
+      "program_management": {
+        "code": "PMG",
+        "focus": "Incident Lifecycle Oversight and Communication",
+        "sub_capabilities": [
+          { "id": "PMG-01", "name": "Incident Coordination and Escalation", "definition": "Orchestrating response activities across teams and external partners.", "granular_activities": ["Team coordination", "Stakeholder notification", "Executive briefings"] },
+          { "id": "PMG-02", "name": "Forensic Quality and Compliance Management", "definition": "Ensuring actions follow SOPs and meet accreditation standards like CREST.", "granular_activities": ["Quality audits", "Accreditation alignment", "Audit trail review"] },
+          { "id": "PMG-03", "name": "Crisis and Board Communication", "definition": "Drafting incident summaries and reports that align technical facts with business impact.", "granular_activities": ["Executive summaries", "Board reporting", "Stakeholder updates"] },
+          { "id": "PMG-04", "name": "Post-Incident Learning and Review", "definition": "Conducting reviews to identify root causes and improving future posture.", "granular_activities": ["AAR facilitation", "Root cause analysis", "Improvement recommendations"] }
+        ]
+      },
+      "criminal_proceedings": {
+        "code": "LAW",
+        "focus": "Legal Admissibility and Judicial Support",
+        "sub_capabilities": [
+          { "id": "LAW-01", "name": "Evidence Collection and Preservation", "definition": "Maintaining defensible chain of custody from collection through analysis.", "granular_activities": ["Artifact preservation", "Documentation", "Storage protection"] },
+          { "id": "LAW-02", "name": "Expert Witness Testimony Support", "definition": "Preparing foundational analysis and reports required for courtroom representation.", "granular_activities": ["Report writing", "Testimony prep", "Cross-examination readiness"] },
+          { "id": "LAW-03", "name": "Machine-Inclusive Chain of Custody", "definition": "An unbroken record of handling that meticulously logs human and AI agent interactions.", "granular_activities": ["Agent log preservation", "Model versioning", "Handoff tracking"] },
+          { "id": "LAW-04", "name": "Admissibility Defense (Daubert Standard)", "definition": "Ensuring the forensic methodology meets standards for scientific validity.", "granular_activities": ["Error rate documentation", "Protocol validation", "Peer-reviewed alignment"] }
+        ]
+      }
+    }
+  }
+}

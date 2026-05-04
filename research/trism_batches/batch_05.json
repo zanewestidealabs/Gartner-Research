@@ -1,0 +1,3947 @@
+[
+  {
+    "vendor": "Fujitsu",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 2.75,
+      "RUN": 3.25,
+      "INF": 3.38
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 2.25,
+      "GOV-02": 2.25,
+      "GOV-03": 2.25,
+      "GOV-04": 4.25,
+      "RUN-01": 2.25,
+      "RUN-02": 4.25,
+      "RUN-03": 2.25,
+      "RUN-04": 4.25,
+      "INF-01": 2.25,
+      "INF-02": 4.75,
+      "INF-03": 2.25,
+      "INF-04": 4.25
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Fujitsu automates entire software development lifecycle with new AI-Driven Software Development Platform",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "February 17, 2026 Fujitsu automates entire software development lifecycle with new AI-Driven Software Development Platform",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Fujitsu automates entire software development lifecycle with new AI-Driven Software Development Platform Press release",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Fujitsu Integrated Report 2025",
+            "matched_terms": [
+              "integrate"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Fujitsu Integrated Report 2025 is now available. Our initiatives seek to enhance the value provided to customers and realize net positive. These initiatives are shared in the report from various angles.",
+            "matched_terms": [
+              "integrate"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Driving change and delivering real impact from data, AI and transformational technologies.",
+            "matched_terms": [
+              "data",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Consulting brand by Fujitsu. Driving change and delivering real impact from data, AI and transformational technologies.",
+            "matched_terms": [
+              "data",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Driving change and delivering real impact from data, AI and transformational technologies. Consulting by Fujitsu",
+            "matched_terms": [
+              "data",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "We leverage technology to solve challenges and deliver a positive impact on society",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Fujitsu to present latest technologies for creating social and industrial value through fusion of AI and computing at India AI Impact Summit 2026",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+          "https://www.fujitsu.com/global/about/research/article/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "AI Ethics Research",
+            "matched_terms": [
+              "ai ethics"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "AI Security AI Ethics Research",
+            "matched_terms": [
+              "ai ethics"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "AI Ethics Research Converging Technologies",
+            "matched_terms": [
+              "ai ethics"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "Digital Trust AI Security AI Ethics Research Converging Technologies Combine digital technology with multidisciplinary knowledge to solve complex and diverse social challenges.",
+            "matched_terms": [
+              "ai ethics"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Madrid Health Ministry",
+            "matched_terms": [
+              "nist"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 4,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+          "https://www.fujitsu.com/global/about/research/article/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "Digital Trust AI Security AI Ethics Research Converging Technologies Combine digital technology with multidisciplinary knowledge to solve complex and diverse social challenges.",
+            "matched_terms": [
+              "trust",
+              "ai ethics"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Make the world more sustainable by building trust in society through innovation",
+            "matched_terms": [
+              "trust"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Fujitsu's trustworthy AI to drive your enterprise",
+            "matched_terms": [
+              "trust"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Our Purpose Make the world more sustainable by building trust in society through innovation",
+            "matched_terms": [
+              "trust"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Make the world more sustainable by building trust in society through innovation Fujitsu Way",
+            "matched_terms": [
+              "trust"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/about/research/article/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "World class computing technologies to innovate and accelerate AI.",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "AI Security",
+            "matched_terms": [
+              "security",
+              "ai security"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "Computing World class computing technologies to innovate and accelerate AI.",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "World class computing technologies to innovate and accelerate AI. Fujitsu Quantum",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "Digital Trust AI Security",
+            "matched_terms": [
+              "security",
+              "ai security"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Hybrid IT & Cloud",
+            "matched_terms": [
+              "hybrid"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Circularity is now a business imperative. Learn how data, blockchain, and digital product passports can strengthen supply chains, cut costs, and unlock new growth in a volatile global economy.",
+            "matched_terms": [
+              "block"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "IT and infrastructure operations Hybrid IT & Cloud",
+            "matched_terms": [
+              "hybrid"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Hybrid IT & Cloud Other",
+            "matched_terms": [
+              "hybrid"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "From Risk to Resilience: Why Circularity is the New Business Imperative Circularity is now a business imperative. Learn how data, blockchain, and digital product passports can strengthen supply chains, cut costs, and unlock new growth in a volatile global eco…",
+            "matched_terms": [
+              "block"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+          "https://www.fujitsu.com/global/about/research/article/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "This is a skip link click here to skip to main contents",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Your Sustainability Transformation Partner | Fujitsu Global This is a skip link click here to skip to main contents",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "This is a skip link click here to skip to main contents Country",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "This is a skip link click here to skip to main contents",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "World class computing technologies to innovate and accelerate AI.",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "This is a skip link click here to skip to main contents",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Johoku sought to modernize its ERP systems to improve automation, unify operations, and retire outdated infrastructure with Fujitsu’s support. Now, they gain from Microsoft Dynamics 365 Business Central out of the cloud.",
+            "matched_terms": [
+              "dynamic"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Our Purpose",
+            "matched_terms": [
+              "purpose"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Your Sustainability Transformation Partner | Fujitsu Global This is a skip link click here to skip to main contents",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "This is a skip link click here to skip to main contents Country",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+          "https://www.fujitsu.com/global/about/research/article/responsible-ai.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Data driven management",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Digital transformation Data driven management",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Data driven management Network services",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "Data driven management",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+            "excerpt": "Digital transformation Data driven management",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Driving change and delivering real impact from data, AI and transformational technologies.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Consulting brand by Fujitsu. Driving change and delivering real impact from data, AI and transformational technologies.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Driving change and delivering real impact from data, AI and transformational technologies. Consulting by Fujitsu",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "We leverage technology to solve challenges and deliver a positive impact on society",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Fujitsu automates entire software development lifecycle with new AI-Driven Software Development Platform",
+            "matched_terms": [
+              "lifecycle"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Data driven management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Digital transformation Data driven management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Data driven management Network services",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Terms of use Privacy",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Featured Insight Uvance Wayfinders： Redesigning security through white-hat hacking As data and AI become core sources of competitive advantage, cybersecurity has emerged as a critical management priority.",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.fujitsu.com/global/solutions/business-technology/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Bangchak Corporation needed to keep critical operations running while transforming its digital core. By working with Fujitsu, the company focused on stability while building a scalable platform for growth, AI adoption, and future innovation.",
+            "matched_terms": [
+              "digital",
+              "adoption"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Driving change and delivering real impact from data, AI and transformational technologies.",
+            "matched_terms": [
+              "data",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Bangchak Corporation Bangchak Corporation needed to keep critical operations running while transforming its digital core. By working with Fujitsu, the company focused on stability while building a scalable platform for growth, AI adoption, and future innovati…",
+            "matched_terms": [
+              "digital",
+              "adoption"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Consulting brand by Fujitsu. Driving change and delivering real impact from data, AI and transformational technologies.",
+            "matched_terms": [
+              "data",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+            "excerpt": "Driving change and delivering real impact from data, AI and transformational technologies. Consulting by Fujitsu",
+            "matched_terms": [
+              "data",
+              "change"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 2.25,
+      "GOV-02": 2.25,
+      "GOV-03": 2.25,
+      "GOV-04": 4.25,
+      "RUN-01": 2.25,
+      "RUN-02": 4.25,
+      "RUN-03": 2.25,
+      "RUN-04": 4.25,
+      "INF-01": 2.25,
+      "INF-02": 4.75,
+      "INF-03": 2.25,
+      "INF-04": 4.25
+    },
+    "pillar_scores_validated": {
+      "GOV": 2.75,
+      "RUN": 3.25,
+      "INF": 3.38
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"Fujitsu automates entire software development lifecycle with new AI-Driven Software Development Platform\". Also: \"February 17, 2026 Fujitsu automates entire software development lifecycle with new AI-Driven Software Development Platform\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"Driving change and delivering real impact from data, AI and transformational technologies.\". Also: \"Consulting brand by Fujitsu. Driving change and delivering real impact from data, AI and transformational technologies.\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"AI Ethics Research\". Also: \"AI Security AI Ethics Research\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Digital Trust AI Security AI Ethics Research Converging Technologies Combine digital technology with multidisciplinary knowledge to solve complex and diverse social challenges.\". Also: \"Make the world more sustainable by building trust in society through innovation\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"World class computing technologies to innovate and accelerate AI.\". Also: \"AI Security\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Hybrid IT & Cloud\". Also: \"Circularity is now a business imperative. Learn how data, blockchain, and digital product passports can strengthen supply chains, cut costs, and unlo…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"This is a skip link click here to skip to main contents\". Also: \"Your Sustainability Transformation Partner | Fujitsu Global This is a skip link click here to skip to main contents\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"This is a skip link click here to skip to main contents\". Also: \"Johoku sought to modernize its ERP systems to improve automation, unify operations, and retire outdated infrastructure with Fujitsu’s support. Now, t…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Data driven management\". Also: \"Digital transformation Data driven management\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Driving change and delivering real impact from data, AI and transformational technologies.\". Also: \"Consulting brand by Fujitsu. Driving change and delivering real impact from data, AI and transformational technologies.\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Data driven management\". Also: \"Digital transformation Data driven management\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Bangchak Corporation needed to keep critical operations running while transforming its digital core. By working with Fujitsu, the company focused on stability while building a scalable platform for g…\". Also: \"Driving change and delivering real impact from data, AI and transformational technologies.\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:16:30.580852+00:00",
+      "urls_used": [
+        "https://www.fujitsu.com/global/services/ai/",
+        "https://www.fujitsu.com/global/solutions/business-technology/ai/",
+        "https://www.fujitsu.com/global/services/cybersecurity/",
+        "https://www.fujitsu.com/global/about/research/article/responsible-ai.html",
+        "https://www.fujitsu.com/global/services/ai/responsible-ai/"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Google Cloud",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Hyperscaler",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Offers Vertex AI Explainable AI and built-in model monitoring for compliance.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "For AutoML model types that are not integrated, you can still enable feature attribution by exporting the model artifacts and configuring feature attribution when you upload the model artifacts to the Vertex AI Model Registry.",
+            "matched_terms": [
+              "attribution",
+              "registry",
+              "model",
+              "export",
+              "integrate"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "feature attributions for differentiable models, use the integrated gradients",
+            "matched_terms": [
+              "models",
+              "attribution",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "when you upload or register the model to the Vertex AI Model Registry. Additionally, for the following types of AutoML models, feature attribution is",
+            "matched_terms": [
+              "models",
+              "attribution",
+              "registry",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Additionally, for the following types of AutoML models, feature attribution is integrated into the Google Cloud console:",
+            "matched_terms": [
+              "models",
+              "attribution",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "AutoML tabular models (classification and regression models only) For AutoML model types that are integrated, you can enable feature attribution",
+            "matched_terms": [
+              "models",
+              "attribution",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 13,
+        "pillar_term_hits": 4,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "aggregate attributions over subsets over your dataset, or the entire",
+            "matched_terms": [
+              "data",
+              "over",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Mount an NFS share for serverless training Use managed datasets",
+            "matched_terms": [
+              "training",
+              "data",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Use managed datasets Prepare training application",
+            "matched_terms": [
+              "training",
+              "data",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Overview Create and manage datasets",
+            "matched_terms": [
+              "data",
+              "over",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Create and manage datasets Overview",
+            "matched_terms": [
+              "data",
+              "over",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 13,
+        "pillar_term_hits": 4,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://cloud.google.com/security/ai",
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Model evaluation notebook tutorials Orchestrate ML workflows using pipelines",
+            "matched_terms": [
+              "model",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Connect to 3rd party apps and enable data consistency without code. Workflows",
+            "matched_terms": [
+              "party",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "We’re committed to responsible AI. Customers can control their data with enterprise-grade capabilities, such as data isolation, data protection, and compliance support.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Leading the charge in responsible AI We’re committed to responsible AI. Customers can control their data with enterprise-grade capabilities, such as data isolation, data protection, and compliance support.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "We’re committed to responsible AI. Customers can control their data with enterprise-grade capabilities, such as data isolation, data protection, and compliance support. Learn about responsible AI at Google",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 4,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+          "https://cloud.google.com/security/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "We’re committed to responsible AI. Customers can control their data with enterprise-grade capabilities, such as data isolation, data protection, and compliance support.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Leading the charge in responsible AI We’re committed to responsible AI. Customers can control their data with enterprise-grade capabilities, such as data isolation, data protection, and compliance support.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "We’re committed to responsible AI. Customers can control their data with enterprise-grade capabilities, such as data isolation, data protection, and compliance support. Learn about responsible AI at Google",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Data bias metrics for Vertex AI",
+            "matched_terms": [
+              "bias",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Model bias metrics for Vertex AI",
+            "matched_terms": [
+              "bias",
+              "metrics"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 15,
+        "pillar_term_hits": 4,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://cloud.google.com/security/ai",
+          "https://ai.google/responsibility/responsible-ai-practices/",
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview"
+        ],
+        "excerpts": [
+          {
+            "url": "https://ai.google/responsibility/responsible-ai-practices/",
+            "excerpt": "Investing in industry-leading approaches to advance safety and security research and benchmarks, pioneering technical solutions to address risks, and sharing our learnings with the ecosystem.",
+            "matched_terms": [
+              "safety",
+              "security",
+              "risk",
+              "benchmarks"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://ai.google/responsibility/responsible-ai-practices/",
+            "excerpt": "Investing in industry-leading approaches to advance safety and security research and benchmarks, pioneering technical solutions to address risks, and sharing our learnings with the ecosystem. Employing rigorous design, testing, monitoring, and safeguards to m…",
+            "matched_terms": [
+              "safety",
+              "security",
+              "risk",
+              "benchmarks"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Security VPC Service Controls",
+            "matched_terms": [
+              "security",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://ai.google/responsibility/responsible-ai-practices/",
+            "excerpt": "Responsibility and safety Policy",
+            "matched_terms": [
+              "policy",
+              "safety"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Guidance for localized and low latency apps on Google’s hardware agnostic edge solution.",
+            "matched_terms": [
+              "latency",
+              "agnostic"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+          "https://cloud.google.com/security/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "you can use Gemini to query in natural language, create detection rules, build playbooks, investigate threats and more. Gemini surfaces recommended actions and context that matters most so you can resolve incidents fast. Learn effective prompting with our",
+            "matched_terms": [
+              "detection",
+              "prompt",
+              "playbooks",
+              "incident"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "you can use Gemini to query in natural language, create detection rules, build playbooks, investigate threats and more. Gemini surfaces recommended actions and context that matters most so you can resolve incidents fast.",
+            "matched_terms": [
+              "detection",
+              "playbooks",
+              "incident"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Security Operations you can use Gemini to query in natural language, create detection rules, build playbooks, investigate threats and more. Gemini surfaces recommended actions and context that matters most so you can resolve incidents fast.",
+            "matched_terms": [
+              "detection",
+              "playbooks",
+              "incident"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Introduction to Model Monitoring",
+            "matched_terms": [
+              "monitoring",
+              "model monitoring"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Model Monitoring v2",
+            "matched_terms": [
+              "monitoring",
+              "model monitoring"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "You can plot the feature attribution scores to see which features contributed most strongly to the resulting inference: An image classification model is trained to predict whether a given image contains a dog or a cat.",
+            "matched_terms": [
+              "class",
+              "scores"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Skip to main content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Train an AutoML image classification model",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Create a dataset and train an AutoML classification model",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Train a TensorFlow Keras image classification model",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Create a dataset and train an AutoML classification model",
+            "matched_terms": [
+              "classification",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Fine-tune an image classification model with custom data",
+            "matched_terms": [
+              "classification",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Classification and regression on tabular data",
+            "matched_terms": [
+              "classification",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Classification on image data",
+            "matched_terms": [
+              "classification",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Create a dataset and import images Train an AutoML image classification model",
+            "matched_terms": [
+              "classification",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://cloud.google.com/security/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Enable sustainable, efficient, and resilient data-driven operations across supply chain and logistics operations.",
+            "matched_terms": [
+              "data",
+              "across",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Discovery and analysis tools for moving to the cloud.",
+            "matched_terms": [
+              "discover",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Supply Chain and Logistics Enable sustainable, efficient, and resilient data-driven operations across supply chain and logistics operations.",
+            "matched_terms": [
+              "data",
+              "across",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Enable sustainable, efficient, and resilient data-driven operations across supply chain and logistics operations. Government",
+            "matched_terms": [
+              "data",
+              "across",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Generative AI on Google Cloud Transform content creation and discovery, research, customer service, and developer efficiency with the power of generative AI.",
+            "matched_terms": [
+              "discover",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://cloud.google.com/security/ai",
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "IAM permissions",
+            "matched_terms": [
+              "permissions",
+              "permission"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Access control with IAM IAM permissions",
+            "matched_terms": [
+              "permissions",
+              "permission"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "IAM permissions Set up a project for a team",
+            "matched_terms": [
+              "permissions",
+              "permission"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "summarizes high-priority alerts for misconfigurations and vulnerabilities, highlighting potential impact and recommending mitigations before assets can be exploited.",
+            "matched_terms": [
+              "impact",
+              "before"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Document processing and data capture automated at scale.",
+            "matched_terms": [
+              "scale",
+              "automated"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://cloud.google.com/security/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Our platform lets customers make their private data available to the platform at inference time; in doing this, we honor our data privacy commitments",
+            "matched_terms": [
+              "inference",
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Our platform lets customers make their private data available to the platform at inference time; in doing this, we honor our data privacy commitments to customers.",
+            "matched_terms": [
+              "inference",
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Compliance and security controls for sensitive workloads.",
+            "matched_terms": [
+              "controls",
+              "sensitive",
+              "workloads"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Assured Workloads Compliance and security controls for sensitive workloads.",
+            "matched_terms": [
+              "controls",
+              "sensitive",
+              "workloads"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Compliance and security controls for sensitive workloads. Google Security Operations",
+            "matched_terms": [
+              "controls",
+              "sensitive",
+              "workloads"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+          "https://cloud.google.com/security/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "reduces the toil of repetitive workflows, and helps you move from insight to action faster by simplifying how you interact with your security data.",
+            "matched_terms": [
+              "security",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Gemini in Security Operations reduces the toil of repetitive workflows, and helps you move from insight to action faster by simplifying how you interact with your security data.",
+            "matched_terms": [
+              "security",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "reduces the toil of repetitive workflows, and helps you move from insight to action faster by simplifying how you interact with your security data. In",
+            "matched_terms": [
+              "security",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/security/ai",
+            "excerpt": "Stay in the loop Contact Google Cloud Security 42:46 How AI can transform your approach to security Reduce toil and manual work Gemini in Security Operations reduces the toil of repetitive workflows, and helps you move from insight to action faster by simplif…",
+            "matched_terms": [
+              "security",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+            "excerpt": "Create an instance with user credential access Create an instance with Confidential Computing",
+            "matched_terms": [
+              "access",
+              "confidential computing"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 6,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"For AutoML model types that are not integrated, you can still enable feature attribution by exporting the model artifacts and configuring feature attribution when you upload the model artifacts to th…\". Also: \"feature attributions for differentiable models, use the integrated gradients\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"aggregate attributions over subsets over your dataset, or the entire\". Also: \"Mount an NFS share for serverless training Use managed datasets\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Model evaluation notebook tutorials Orchestrate ML workflows using pipelines\". Also: \"Connect to 3rd party apps and enable data consistency without code. Workflows\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We’re committed to responsible AI. Customers can control their data with enterprise-grade capabilities, such as data isolation, data protection, and compliance support.\". Also: \"Leading the charge in responsible AI We’re committed to responsible AI. Customers can control their data with enterprise-grade capabilities, such as …\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Investing in industry-leading approaches to advance safety and security research and benchmarks, pioneering technical solutions to address risks, and sharing our learnings with the ecosystem.\". Also: \"Investing in industry-leading approaches to advance safety and security research and benchmarks, pioneering technical solutions to address risks, and…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"you can use Gemini to query in natural language, create detection rules, build playbooks, investigate threats and more. Gemini surfaces recommended actions and context that matters most so you can re…\". Also: \"you can use Gemini to query in natural language, create detection rules, build playbooks, investigate threats and more. Gemini surfaces recommended a…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"You can plot the feature attribution scores to see which features contributed most strongly to the resulting inference: An image classification model is trained to predict whether a given image conta…\". Also: \"Skip to main content\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Create a dataset and train an AutoML classification model\". Also: \"Fine-tune an image classification model with custom data\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Enable sustainable, efficient, and resilient data-driven operations across supply chain and logistics operations.\". Also: \"Discovery and analysis tools for moving to the cloud.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"IAM permissions\". Also: \"Access control with IAM IAM permissions\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Our platform lets customers make their private data available to the platform at inference time; in doing this, we honor our data privacy commitments\". Also: \"Our platform lets customers make their private data available to the platform at inference time; in doing this, we honor our data privacy commitments…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"reduces the toil of repetitive workflows, and helps you move from insight to action faster by simplifying how you interact with your security data.\". Also: \"Gemini in Security Operations reduces the toil of repetitive workflows, and helps you move from insight to action faster by simplifying how you inter…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:16:56.731870+00:00",
+      "urls_used": [
+        "https://cloud.google.com/vertex-ai/docs/explainable-ai/overview",
+        "https://cloud.google.com/model-armor/docs/overview",
+        "https://ai.google/responsibility/responsible-ai-practices/",
+        "https://cloud.google.com/security/ai",
+        "https://cloud.google.com/discover/what-is-data-governance",
+        "https://cloud.google.com/dataplex/docs/data-governance"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "HCLTech",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 3.38,
+      "RUN": 4.5,
+      "INF": 3.25
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 2.25,
+      "GOV-02": 2.25,
+      "GOV-03": 4.25,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.25,
+      "INF-01": 2.25,
+      "INF-02": 2.25,
+      "INF-03": 4.25,
+      "INF-04": 4.25
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Adopt the strategies and solutions for strong and risk-based authentication, including multi-factor, biometric and risk review mechanisms Identity governance and administration",
+            "matched_terms": [
+              "risk",
+              "including",
+              "entity"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Choose flexible short- or long-term SLA-based identity security operations, including monitoring, architectural guidance, upgrades and maintaining version currency, premium content library and custom content development",
+            "matched_terms": [
+              "including",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Identity security operations Choose flexible short- or long-term SLA-based identity security operations, including monitoring, architectural guidance, upgrades and maintaining version currency, premium content library and custom content development",
+            "matched_terms": [
+              "including",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Choose flexible short- or long-term SLA-based identity security operations, including monitoring, architectural guidance, upgrades and maintaining version currency, premium content library and custom content development Related Digital Foundation Consulting S…",
+            "matched_terms": [
+              "including",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Increase vigilance whether users work from home or in a hybrid model for protection without compromising user experience",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Comprehensive Security Solutions for Secure Seamless Access Safeguard credentials, data and resources, close vulnerability gaps and protect against assumed breaches with enterprise cybersecurity solutions from",
+            "matched_terms": [
+              "data",
+              "each",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Manage and govern account credentials with elevated user privileges to control asset access by human and non-human accounts Identity security operations",
+            "matched_terms": [
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Symantec Identity and Access Management (IAM)",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Deliver new applications quickly for secure and seamless access by applying Zero Trust principles and enforcing stringent identity management controls",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Implement scalable identity and access management solutions quickly for improved protection",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Threat analytics Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows Web access management",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "United States",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Increase vigilance whether users work from home or in a hybrid model for protection without compromising user experience",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Privacy Trust Center",
+            "matched_terms": [
+              "trust"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Trends and Insights",
+            "matched_terms": [
+              "trend"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Complement continuous improvement with vigilance to foster responsive security tuned for broad-spectrum protection",
+            "matched_terms": [
+              "continuous"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Companies across every sector trust our expertise and industry intelligence to architect, design, implement and optimize cybersecurity solutions and processes.",
+            "matched_terms": [
+              "trust"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Strengthening Your Security Posture with Our Advanced Network Security Capabilities",
+            "matched_terms": [
+              "posture"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Get more protection and value across multi-vendor cybersecurity solutions, regardless of the provider",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Complement continuous improvement with vigilance to foster responsive security tuned for broad-spectrum protection Get more protection and value across multi-vendor cybersecurity solutions, regardless of the provider",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Get more protection and value across multi-vendor cybersecurity solutions, regardless of the provider Companies across every sector trust our expertise and industry intelligence to architect, design, implement and optimize cybersecurity solutions and processe…",
+            "matched_terms": [
+              "security",
+              "provider"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Deliver new applications quickly for secure and seamless access by applying Zero Trust principles and enforcing stringent identity management controls",
+            "matched_terms": [
+              "controls"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Control web-based access with expert guidance for internet access controls, IMAG integration, intranet access controls and advanced authentication",
+            "matched_terms": [
+              "controls"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows",
+            "matched_terms": [
+              "monitoring",
+              "activities"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Threat analytics Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows",
+            "matched_terms": [
+              "monitoring",
+              "activities"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows Web access management",
+            "matched_terms": [
+              "monitoring",
+              "activities"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Secure hybrid workforces",
+            "matched_terms": [
+              "hybrid"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Increase vigilance whether users work from home or in a hybrid model for protection without compromising user experience",
+            "matched_terms": [
+              "hybrid"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Mitigate risks to digital assets Leverage health checks, maturity progress assessments and workshops to inform and educate teams",
+            "matched_terms": [
+              "checks",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Skip to main content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Leverage health checks, maturity progress assessments and workshops to inform and educate teams",
+            "matched_terms": [
+              "checks"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Implement Zero Trust strategies that adapt and encompass regulatory requirements, new threat vectors and resiliency demands",
+            "matched_terms": [
+              "regulatory"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Health checks",
+            "matched_terms": [
+              "checks"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Count on our expert guidance for strategies and solutions to safeguard information assets through processes, programs, integrations and delegated administration Privileged access management",
+            "matched_terms": [
+              "privilege",
+              "access",
+              "integration"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Symantec Privileged Access Management (PAM)",
+            "matched_terms": [
+              "privilege",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows",
+            "matched_terms": [
+              "privilege",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Control web-based access with expert guidance for internet access controls, IMAG integration, intranet access controls and advanced authentication",
+            "matched_terms": [
+              "access",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Privileged access management",
+            "matched_terms": [
+              "privilege",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Get more protection and value across multi-vendor cybersecurity solutions, regardless of the provider",
+            "matched_terms": [
+              "across"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Companies across every sector trust our expertise and industry intelligence to architect, design, implement and optimize cybersecurity solutions and processes.",
+            "matched_terms": [
+              "across"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows",
+            "matched_terms": [
+              "workflows"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Complement continuous improvement with vigilance to foster responsive security tuned for broad-spectrum protection Get more protection and value across multi-vendor cybersecurity solutions, regardless of the provider",
+            "matched_terms": [
+              "across"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Get more protection and value across multi-vendor cybersecurity solutions, regardless of the provider Companies across every sector trust our expertise and industry intelligence to architect, design, implement and optimize cybersecurity solutions and processe…",
+            "matched_terms": [
+              "across"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Invest in technology with the right fit for the long term with the flexibility to evolve as threats expand",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Copyright © 2026 HCL Technologies Limited",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Secure and flexible Invest in technology with the right fit for the long term with the flexibility to evolve as threats expand",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Invest in technology with the right fit for the long term with the flexibility to evolve as threats expand Mitigate risks to digital assets",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Deliver new applications quickly for secure and seamless access by applying Zero Trust principles and enforcing stringent identity management controls",
+            "matched_terms": [
+              "apply",
+              "controls",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Symantec Identity and Access Management (IAM) Deliver new applications quickly for secure and seamless access by applying Zero Trust principles and enforcing stringent identity management controls",
+            "matched_terms": [
+              "apply",
+              "controls",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Deliver new applications quickly for secure and seamless access by applying Zero Trust principles and enforcing stringent identity management controls Symantec Privileged Access Management (PAM)",
+            "matched_terms": [
+              "apply",
+              "controls",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows Web access management",
+            "matched_terms": [
+              "workflows",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Web access management Control web-based access with expert guidance for internet access controls, IMAG integration, intranet access controls and advanced authentication",
+            "matched_terms": [
+              "controls",
+              "management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.hcltech.com/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Comprehensive Security Solutions for Secure Seamless Access Safeguard credentials, data and resources, close vulnerability gaps and protect against assumed breaches with enterprise cybersecurity solutions from",
+            "matched_terms": [
+              "security",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Comprehensive Security Solutions for Secure Seamless Access",
+            "matched_terms": [
+              "security",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows",
+            "matched_terms": [
+              "workflows",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Solutions Comprehensive Security Solutions for Secure Seamless Access",
+            "matched_terms": [
+              "security",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hcltech.com/cybersecurity",
+            "excerpt": "Symantec Privileged Access Management (PAM) Protect privileged accounts and credentials with a platform that is flexible and robust enough to adapt, scale and secure",
+            "matched_terms": [
+              "scale",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 2.25,
+      "GOV-02": 2.25,
+      "GOV-03": 4.25,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.25,
+      "INF-01": 2.25,
+      "INF-02": 2.25,
+      "INF-03": 4.25,
+      "INF-04": 4.25
+    },
+    "pillar_scores_validated": {
+      "GOV": 3.38,
+      "RUN": 4.5,
+      "INF": 3.25
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Adopt the strategies and solutions for strong and risk-based authentication, including multi-factor, biometric and risk review mechanisms Identity governance and administration\". Also: \"Choose flexible short- or long-term SLA-based identity security operations, including monitoring, architectural guidance, upgrades and maintaining ve…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Comprehensive Security Solutions for Secure Seamless Access Safeguard credentials, data and resources, close vulnerability gaps and protect against assumed breaches with enterprise cybersecurity solu…\". Also: \"Manage and govern account credentials with elevated user privileges to control asset access by human and non-human accounts Identity security operati…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows\". Also: \"Threat analytics Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact …\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Privacy Trust Center\". Also: \"Trends and Insights\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Get more protection and value across multi-vendor cybersecurity solutions, regardless of the provider\". Also: \"Complement continuous improvement with vigilance to foster responsive security tuned for broad-spectrum protection Get more protection and value acro…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activities or workflows\". Also: \"Threat analytics Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact …\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Mitigate risks to digital assets Leverage health checks, maturity progress assessments and workshops to inform and educate teams\". Also: \"Skip to main content\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Count on our expert guidance for strategies and solutions to safeguard information assets through processes, programs, integrations and delegated administration Privileged access management\". Also: \"Symantec Privileged Access Management (PAM)\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Get more protection and value across multi-vendor cybersecurity solutions, regardless of the provider\". Also: \"Companies across every sector trust our expertise and industry intelligence to architect, design, implement and optimize cybersecurity solutions and …\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Invest in technology with the right fit for the long term with the flexibility to evolve as threats expand\". Also: \"Use machine learning to step up protection with continuous intelligent monitoring of privileged access user activity with no impact on everyday activ…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Deliver new applications quickly for secure and seamless access by applying Zero Trust principles and enforcing stringent identity management controls\". Also: \"Symantec Identity and Access Management (IAM) Deliver new applications quickly for secure and seamless access by applying Zero Trust principles and e…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Comprehensive Security Solutions for Secure Seamless Access Safeguard credentials, data and resources, close vulnerability gaps and protect against assumed breaches with enterprise cybersecurity solu…\". Also: \"Comprehensive Security Solutions for Secure Seamless Access\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:17:24.461342+00:00",
+      "urls_used": [
+        "https://www.hcltech.com/artificial-intelligence",
+        "https://www.hcltech.com/artificial-intelligence/responsible-ai",
+        "https://www.hcltech.com/cybersecurity",
+        "https://www.hcltech.com/data-and-analytics",
+        "https://www.hcltech.com/generative-ai"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Hitachi Consulting",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "It integrates accelerated compute (including NVIDIA GPUs), high-speed networking, and scalable enterprise or high-performance storage, delivering the flexibility and power required for training, tuning, and deploying large language models (LLMs), RAG framewor…",
+            "matched_terms": [
+              "models",
+              "including",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Data Protection Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle. Data Governance & Compliance",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Data Protection Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+          "https://www.hitachivantara.com/en-us/solutions/data-management.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Cloud Extensibility Adapt to market changes quickly with secure access to resources and services across private and public clouds Industries Unlock tailored solutions and real-world use cases to address your industry-specific data challenges.",
+            "matched_terms": [
+              "data",
+              "specific",
+              "access",
+              "changes"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Watch the video Hitachi iQ Hitachi’s Industry-optimized AI solution suite for organizations investing in AI/ML workloads A New Class of Enterprise Storage Modernize enterprise storage for Agentic AI Explore AI Data Platform Deploy Agentic AI Learn more Timely…",
+            "matched_terms": [
+              "agent",
+              "data",
+              "time",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Cloud Extensibility Adapt to market changes quickly with secure access to resources and services across private and public clouds Industries Unlock tailored solutions and real-world use cases to address your industry-specific data challenges.",
+            "matched_terms": [
+              "data",
+              "specific",
+              "access",
+              "changes"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-management.html",
+            "excerpt": "Enable LAN-speed access to cloud storage using caching, sync, and backup data solutions with seamless disaster recovery.",
+            "matched_terms": [
+              "data",
+              "over",
+              "access",
+              "sync"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-management.html",
+            "excerpt": "Safely connect desktops to the cloud with Hitachi Cloud Platform Anywhere Enterprise Enable LAN-speed access to cloud storage using caching, sync, and backup data solutions with seamless disaster recovery.",
+            "matched_terms": [
+              "data",
+              "over",
+              "access",
+              "sync"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Audit-Ready Compliance Take an intelligent data governance approach to securing your crucial data and establishing effective control and visibility over your workflows.",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Hitachi Vantara Data Governance & Regulatory Compliance Top 10 Reasons Why to Choose Hitachi Vantara Solutions for Data Resiliency and Compliance Learn more Data Governance & Regulatory Compliance Audit-Ready Compliance Take an intelligent data governance app…",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Simplify audit-ready regulatory compliance with one trusted partner for data security, privacy, resilience, and reporting tailored to your industry and geography.",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Optimize data for AI workflows",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Supercharge your AI Data workflows with Hitachi and Hammerspace",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Simplify audit-ready regulatory compliance with one trusted partner for data security, privacy, resilience, and reporting tailored to your industry and geography.",
+            "matched_terms": [
+              "compliance",
+              "reporting",
+              "trust"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Data Resilience & Compliance Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale. Ransomware Resilience",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Data Governance & Compliance Simplify audit-ready regulatory compliance with one trusted partner for data security, privacy, resilience, and reporting tailored to your industry and geography.",
+            "matched_terms": [
+              "compliance",
+              "reporting",
+              "trust"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "The GigaOm report highlights Hitachi’s ability to deliver high throughput, low latency, and strong data protection.",
+            "matched_terms": [
+              "latency",
+              "throughput"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Watch the video Hitachi iQ Hitachi’s Industry-optimized AI solution suite for organizations investing in AI/ML workloads A New Class of Enterprise Storage Modernize enterprise storage for Agentic AI Explore AI Data Platform Deploy Agentic AI Learn more Timely…",
+            "matched_terms": [
+              "security",
+              "class"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Highly resilient, low latency systems to deploy and manage critical apps and workloads at enterprise scale across hybrid cloud.",
+            "matched_terms": [
+              "latency"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Elevate your private cloud infrastructure and run your most critical apps at scale with best-in-class performance and availability.",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Managed Service Providers",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+          "https://www.hitachivantara.com/en-us/solutions/data-management.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Deliver continuous insights, intelligence, and automation. Hybrid Cloud Services",
+            "matched_terms": [
+              "hybrid",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Deliver continuous insights, intelligence, and automation. Hybrid Cloud Services",
+            "matched_terms": [
+              "hybrid",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-management.html",
+            "excerpt": "Deliver continuous insights, intelligence, and automation. Hybrid Cloud Services",
+            "matched_terms": [
+              "hybrid",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Block Storage",
+            "matched_terms": [
+              "block"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Hybrid Cloud Services",
+            "matched_terms": [
+              "hybrid"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Data Resilience & Compliance Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale. Ransomware Resilience",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Data Resilience & Compliance Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Access the data you need, wherever it lives, with advanced metadata tools and enterprise search. Explore Hitachi Content Intelligence",
+            "matched_terms": [
+              "content",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Hitachi iQ is the flagship AI portfolio from Hitachi, delivering extreme performance and resiliency at scale, with unified access to data wherever it is.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "The flagship AI portfolio from Hitachi, delivering extreme performance and resiliency at scale, with unified access to data wherever it is.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Unmatched scalability for SAP HANA. Infrastructure that powers real-time data access and faster decision-making.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Ensuring data is relevant and accessible for AI applications and analytics, while prioritizing security and compliance.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/data-governance.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Unpack data governance Accelerate data discovery",
+            "matched_terms": [
+              "discover",
+              "data",
+              "discovery",
+              "data governance",
+              "data discovery"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Unpack data governance Accelerate data discovery Access the data you need, wherever it lives, with advanced metadata tools and enterprise search.",
+            "matched_terms": [
+              "discover",
+              "data",
+              "discovery",
+              "data governance",
+              "data discovery"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "With automated discovery and prediction, you can simplify data privacy and compliance to reduce risk and protect valuable company data.",
+            "matched_terms": [
+              "discover",
+              "data",
+              "automated",
+              "discovery",
+              "data privacy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Ensure data privacy and compliance while lowering risk and cost With automated discovery and prediction, you can simplify data privacy and compliance to reduce risk and protect valuable company data.",
+            "matched_terms": [
+              "discover",
+              "data",
+              "automated",
+              "discovery",
+              "data privacy"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "With automated discovery and prediction, you can simplify data privacy and compliance to reduce risk and protect valuable company data. Learn about solution",
+            "matched_terms": [
+              "discover",
+              "data",
+              "automated",
+              "discovery",
+              "data privacy"
+            ],
+            "relevance_score": 22
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle. Data Governance & Compliance",
+            "matched_terms": [
+              "lifecycle",
+              "data governance"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "With automated discovery and prediction, you can simplify data privacy and compliance to reduce risk and protect valuable company data.",
+            "matched_terms": [
+              "automated",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle. Data Governance & Compliance",
+            "matched_terms": [
+              "lifecycle",
+              "data governance"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Ensure data privacy and compliance while lowering risk and cost With automated discovery and prediction, you can simplify data privacy and compliance to reduce risk and protect valuable company data.",
+            "matched_terms": [
+              "automated",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "With automated discovery and prediction, you can simplify data privacy and compliance to reduce risk and protect valuable company data. Learn about solution",
+            "matched_terms": [
+              "automated",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle. Data Governance & Compliance",
+            "matched_terms": [
+              "across",
+              "workloads",
+              "data governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Ensure data privacy and compliance while lowering risk and cost",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "With automated discovery and prediction, you can simplify data privacy and compliance to reduce risk and protect valuable company data.",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle. Data Governance & Compliance",
+            "matched_terms": [
+              "across",
+              "workloads",
+              "data governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+            "excerpt": "Explore Hitachi Content Intelligence Ensure data privacy and compliance while lowering risk and cost",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "compliance",
+              "sustain",
+              "scale",
+              "data",
+              "reduction"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Data Resilience & Compliance Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "compliance",
+              "sustain",
+              "scale",
+              "data",
+              "reduction"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale. Ransomware Resilience",
+            "matched_terms": [
+              "compliance",
+              "sustain",
+              "scale",
+              "data",
+              "reduction"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Data Resilience & Compliance Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.",
+            "matched_terms": [
+              "compliance",
+              "sustain",
+              "scale",
+              "data",
+              "reduction"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+            "excerpt": "Cloud Extensibility Adapt to market changes quickly with secure access to resources and services across private and public clouds Industries Unlock tailored solutions and real-world use cases to address your industry-specific data challenges.",
+            "matched_terms": [
+              "across",
+              "data",
+              "access",
+              "changes",
+              "change"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 5,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"It integrates accelerated compute (including NVIDIA GPUs), high-speed networking, and scalable enterprise or high-performance storage, delivering the flexibility and power required for training, tuni…\". Also: \"Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across it…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Cloud Extensibility Adapt to market changes quickly with secure access to resources and services across private and public clouds Industries Unlock tailored solutions and real-world use cases to addr…\". Also: \"Watch the video Hitachi iQ Hitachi’s Industry-optimized AI solution suite for organizations investing in AI/ML workloads A New Class of Enterprise St…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Audit-Ready Compliance Take an intelligent data governance approach to securing your crucial data and establishing effective control and visibility over your workflows.\". Also: \"Hitachi Vantara Data Governance & Regulatory Compliance Top 10 Reasons Why to Choose Hitachi Vantara Solutions for Data Resiliency and Compliance Lea…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.\". Also: \"Simplify audit-ready regulatory compliance with one trusted partner for data security, privacy, resilience, and reporting tailored to your industry a…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"The GigaOm report highlights Hitachi’s ability to deliver high throughput, low latency, and strong data protection.\". Also: \"Watch the video Hitachi iQ Hitachi’s Industry-optimized AI solution suite for organizations investing in AI/ML workloads A New Class of Enterprise St…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Deliver continuous insights, intelligence, and automation. Hybrid Cloud Services\". Also: \"Deliver continuous insights, intelligence, and automation. Hybrid Cloud Services\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.\". Also: \"Data Resilience & Compliance Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove …\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Access the data you need, wherever it lives, with advanced metadata tools and enterprise search. Explore Hitachi Content Intelligence\". Also: \"Hitachi iQ is the flagship AI portfolio from Hitachi, delivering extreme performance and resiliency at scale, with unified access to data wherever it…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Unpack data governance Accelerate data discovery\". Also: \"Unpack data governance Accelerate data discovery Access the data you need, wherever it lives, with advanced metadata tools and enterprise search.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle. Data Governance & Compliance\". Also: \"With automated discovery and prediction, you can simplify data privacy and compliance to reduce risk and protect valuable company data.\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Ensure reliable data integrity and 100% uptime with scalable protection, backup, and recovery for all workloads-aligned to data criticality across its lifecycle. Data Governance & Compliance\". Also: \"Ensure data privacy and compliance while lowering risk and cost\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove data resilience and regulatory compliance at scale.\". Also: \"Data Resilience & Compliance Strengthen operational resilience and streamline risk reduction with one trusted partner to achieve, sustain, and prove …\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:17:39.381557+00:00",
+      "urls_used": [
+        "https://www.hitachivantara.com/en-us/solutions/ai-analytics.html",
+        "https://www.hitachivantara.com/en-us/solutions/data-governance.html",
+        "https://social-innovation.hitachi/en-eu/digital/ai/",
+        "https://www.hitachivantara.com/en-us/solutions/data-management.html",
+        "https://social-innovation.hitachi/en-eu/case-studies/responsible-ai/"
+      ],
+      "pages_ok": 5,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Honeywell",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Platform Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 3.44,
+      "RUN": 2.81,
+      "INF": 2.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 2.25,
+      "GOV-04": 2.0,
+      "RUN-01": 2.0,
+      "RUN-02": 2.25,
+      "RUN-03": 2.25,
+      "RUN-04": 4.75,
+      "INF-01": 2.25,
+      "INF-02": 2.25,
+      "INF-03": 2.25,
+      "INF-04": 4.25
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "PHARMACEUTICALS Improve the efficiency of early-phase drug design and discovery CHEMICALS Accelerate development of new chemicals FINANCE Reduce risk through improved portfolio insight AEROSPACE & DEFENSE Develop new aircraft materials and military technology…",
+            "matched_terms": [
+              "discovery",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "You are browsing the product catalog for",
+            "matched_terms": [
+              "catalog"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Honeywell Quantum Solutions and Cambridge Quantum have combined to form Quantinuum - the world’s largest integrated quantum computing company.",
+            "matched_terms": [
+              "integrate"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Improve the efficiency of early-phase drug design and discovery",
+            "matched_terms": [
+              "discovery"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "You can now solve problems with the Honeywell System Model H1.",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "PHARMACEUTICALS Improve the efficiency of early-phase drug design and discovery CHEMICALS Accelerate development of new chemicals FINANCE Reduce risk through improved portfolio insight AEROSPACE & DEFENSE Develop new aircraft materials and military technology…",
+            "matched_terms": [
+              "data",
+              "over",
+              "sets",
+              "analysis"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Accelerate machine learning and analysis of large data sets.",
+            "matched_terms": [
+              "data",
+              "sets",
+              "analysis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "DATA CENTER Accelerate machine learning and analysis of large data sets.",
+            "matched_terms": [
+              "data",
+              "sets",
+              "analysis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Accelerate machine learning and analysis of large data sets. MANUFACTURING",
+            "matched_terms": [
+              "data",
+              "sets",
+              "analysis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "MANUFACTURING Gain visibility into design and production limitations TELECOMMUNICATION Optimize antenna efficiency and bandwidth utilization View More Our Quantum Technology Enables High-Quality Qubits Defined in nature by their atomic structure, our trapped-…",
+            "matched_terms": [
+              "fine",
+              "quality"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "United States - English",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "You can now solve problems with the Honeywell System Model H1.",
+            "matched_terms": [
+              "model"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Privacy Statement",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Canada - French United States - English",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "United States - English |",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "As a leading technology company, we will shape the adoption and integration of quantum information systems into the industries we serve.",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "As a leading technology company, we will shape the adoption and integration of quantum information systems into the industries we serve. PHARMACEUTICALS",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Reduce risk through improved portfolio insight",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "FINANCE Reduce risk through improved portfolio insight",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Reduce risk through improved portfolio insight AEROSPACE & DEFENSE",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 2,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "OT Cybersecurity",
+            "matched_terms": [
+              "security"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Reduce risk through improved portfolio insight",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Honeywell Forge OT Cybersecurity",
+            "matched_terms": [
+              "security"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "OT Cybersecurity Our Products",
+            "matched_terms": [
+              "security"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "FINANCE Reduce risk through improved portfolio insight",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "United Arab Emirates - Arabic",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "United Arab Emirates - English",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "High fidelity and high qubit count with error rates at the leading-edge of industry capability",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Robustness",
+            "matched_terms": [
+              "robustness"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Saudi Arabia - English United Arab Emirates - Arabic",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "/content/honeywellbt/us/en/search.html",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "You are viewing the overview and resources for /content/honeywellbt/us/en/search.html",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "/content/honeywellbt/us/en/search.html title",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Reduce risk through improved portfolio insight",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "FINANCE Reduce risk through improved portfolio insight",
+            "matched_terms": [
+              "risk"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 3,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "/content/honeywellbt/us/en/search.html",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "As a leading technology company, we will shape the adoption and integration of quantum information systems into the industries we serve.",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Dynamic qubits that can be rearranged and interacted to improve algorithm opportunities",
+            "matched_terms": [
+              "dynamic"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Accessibility",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Employee Access",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "PHARMACEUTICALS Improve the efficiency of early-phase drug design and discovery CHEMICALS Accelerate development of new chemicals FINANCE Reduce risk through improved portfolio insight AEROSPACE & DEFENSE Develop new aircraft materials and military technology…",
+            "matched_terms": [
+              "discover",
+              "data",
+              "discovery"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Improve the efficiency of early-phase drug design and discovery",
+            "matched_terms": [
+              "discover",
+              "discovery"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "PHARMACEUTICALS Improve the efficiency of early-phase drug design and discovery",
+            "matched_terms": [
+              "discover",
+              "discovery"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Improve the efficiency of early-phase drug design and discovery CHEMICALS",
+            "matched_terms": [
+              "discover",
+              "discovery"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Data Centers",
+            "matched_terms": [
+              "data"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 4,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Copyright © 2026 Honeywell International Inc.",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Instagram Copyright © 2026 Honeywell International Inc.",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Copyright © 2026 Honeywell International Inc. Terms & Conditions",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 3,
+        "notes": "TRiSM claims extraction; 3 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Privacy Statement",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Your Privacy Choices",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Terms & Conditions Privacy Statement",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Privacy Statement Your Privacy Choices",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Your Privacy Choices Cookie Notice",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.honeywell.com/us/en/company/quantum"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Honeywell Quantum Solutions and Cambridge Quantum have combined to form Quantinuum - the world’s largest integrated quantum computing company.",
+            "matched_terms": [
+              "integrated"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "As a leading technology company, we will shape the adoption and integration of quantum information systems into the industries we serve.",
+            "matched_terms": [
+              "adoption"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Accessibility",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Employee Access",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.honeywell.com/us/en/company/quantum",
+            "excerpt": "Honeywell Quantum Solutions Honeywell Quantum Solutions and Cambridge Quantum have combined to form Quantinuum - the world’s largest integrated quantum computing company.",
+            "matched_terms": [
+              "integrated"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 58,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 2.25,
+      "GOV-04": 2.0,
+      "RUN-01": 2.0,
+      "RUN-02": 2.25,
+      "RUN-03": 2.25,
+      "RUN-04": 4.75,
+      "INF-01": 2.25,
+      "INF-02": 2.25,
+      "INF-03": 2.25,
+      "INF-04": 4.25
+    },
+    "pillar_scores_validated": {
+      "GOV": 3.44,
+      "RUN": 2.81,
+      "INF": 2.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"PHARMACEUTICALS Improve the efficiency of early-phase drug design and discovery CHEMICALS Accelerate development of new chemicals FINANCE Reduce risk through improved portfolio insight AEROSPACE & DE…\". Also: \"You are browsing the product catalog for\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"PHARMACEUTICALS Improve the efficiency of early-phase drug design and discovery CHEMICALS Accelerate development of new chemicals FINANCE Reduce risk through improved portfolio insight AEROSPACE & DE…\". Also: \"Accelerate machine learning and analysis of large data sets.\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"United States - English\". Also: \"You can now solve problems with the Honeywell System Model H1.\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 2.00/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"As a leading technology company, we will shape the adoption and integration of quantum information systems into the industries we serve.\". Also: \"As a leading technology company, we will shape the adoption and integration of quantum information systems into the industries we serve. PHARMACEUTIC…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.00/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"OT Cybersecurity\". Also: \"Reduce risk through improved portfolio insight\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"United Arab Emirates - Arabic\". Also: \"United Arab Emirates - English\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"/content/honeywellbt/us/en/search.html\". Also: \"You are viewing the overview and resources for /content/honeywellbt/us/en/search.html\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"/content/honeywellbt/us/en/search.html\". Also: \"As a leading technology company, we will shape the adoption and integration of quantum information systems into the industries we serve.\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"PHARMACEUTICALS Improve the efficiency of early-phase drug design and discovery CHEMICALS Accelerate development of new chemicals FINANCE Reduce risk through improved portfolio insight AEROSPACE & DE…\". Also: \"Improve the efficiency of early-phase drug design and discovery\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Copyright © 2026 Honeywell International Inc.\". Also: \"Instagram Copyright © 2026 Honeywell International Inc.\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Privacy Statement\". Also: \"Your Privacy Choices\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Honeywell Quantum Solutions and Cambridge Quantum have combined to form Quantinuum - the world’s largest integrated quantum computing company.\". Also: \"As a leading technology company, we will shape the adoption and integration of quantum information systems into the industries we serve.\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:18:03.333156+00:00",
+      "urls_used": [
+        "https://www.honeywell.com/us/en/company/artificial-intelligence",
+        "https://www.honeywell.com/us/en/cybersecurity",
+        "https://www.honeywell.com/us/en/company/quantum",
+        "https://www.honeywell.com/us/en/solutions/connected-enterprise",
+        "https://www.honeywell.com/us/en/press/2024/ai-solutions"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

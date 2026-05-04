@@ -1,0 +1,380 @@
+{
+  "dfir_capability_taxonomy_v5.0_ai": {
+    "schema_lineage": {
+      "parent": "schema4-0_enhanced.json",
+      "parent_version": "4.0",
+      "sub_pillar_id_mapping": "identical",
+      "score_layers": ["current", "validated", "researched", "ai_researched"],
+      "purpose": "AI-focused evaluation layer using identical sub-pillar IDs for cross-schema score comparison"
+    },
+    "intent": "Evaluates vendors exclusively on their use of AI/ML technologies within each DFIR capability. Scores reflect the maturity, specificity, and autonomy of AI integration — not general DFIR capability.",
+    "metadata": {
+      "framework_alignment": "NIST CSF 2.0 & SANS Incident Handler's Handbook — AI/ML Focus Overlay",
+      "scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of AI/ML usage in this capability area",
+        "scoring_logic": {
+          "0": "No Evidence: No publicly verifiable evidence of AI/ML in this capability.",
+          "1": "No AI/ML: Capability is entirely manual/traditional with no mention of AI, machine learning, or automation beyond basic scripting.",
+          "2": "Generic AI Claims: Vendor mentions AI/ML in marketing but provides no technical specifics, named models, documented workflows, or measurable outcomes.",
+          "3": "AI-Augmented: Documented AI/ML tools used with human oversight. Specific use cases described (e.g., ML-based alert triage, NLP-driven report drafting). Humans remain primary decision-makers.",
+          "4": "Advanced AI: Specialized ML models with measurable outcomes (e.g., detection rates, time reduction). Partially automated workflows with human validation gates. Named AI features or platforms.",
+          "5": "Fully Agentic: Autonomous AI systems that plan, execute, and document with minimal human intervention. Governance gates documented. Model performance metrics disclosed. Evidence of agentic orchestration."
+        }
+      },
+      "source_policy": {
+        "description": "Evidence may come from any credible public source, not limited to vendor's own website. All sources must be publicly accessible and verifiable.",
+        "valid_sources": [
+          {
+            "tier": "A",
+            "type": "Vendor documentation",
+            "examples": ["Product pages", "Technical documentation", "API references", "Whitepapers", "Release notes"],
+            "weight": 1.0
+          },
+          {
+            "tier": "A",
+            "type": "Analyst reports",
+            "examples": ["Gartner Magic Quadrant/Market Guide", "Forrester Wave", "IDC MarketScape", "KuppingerCole Leadership Compass", "MITRE ATT&CK evaluations"],
+            "weight": 1.0
+          },
+          {
+            "tier": "B",
+            "type": "Technical media",
+            "examples": ["Dark Reading", "SC Media", "CSO Online", "The Record", "BleepingComputer", "SecurityWeek", "Help Net Security", "Infosecurity Magazine"],
+            "weight": 0.85
+          },
+          {
+            "tier": "B",
+            "type": "Case studies and benchmarks",
+            "examples": ["Published case studies from media companies", "SANS case studies", "Industry benchmark reports", "Government procurement evaluations"],
+            "weight": 0.85
+          },
+          {
+            "tier": "C",
+            "type": "Social media and professional networks",
+            "examples": ["LinkedIn articles by vendor employees", "LinkedIn articles by analysts/researchers", "LinkedIn posts with technical detail", "Medium/Substack technical posts"],
+            "weight": 0.7
+          },
+          {
+            "tier": "C",
+            "type": "Conference and academic sources",
+            "examples": ["RSA Conference presentations", "Black Hat/DEF CON talks", "SANS summit presentations", "Academic papers", "arXiv preprints"],
+            "weight": 0.7
+          }
+        ],
+        "invalid_sources": [
+          "Vendor sales pitches without technical detail",
+          "Unverifiable anonymous claims",
+          "Paywalled content not publicly accessible",
+          "Internal/confidential documents"
+        ]
+      },
+      "ai_search_terms": {
+        "primary": [
+          "agentic", "autonomous AI", "AI agent", "AI-driven", "AI-powered",
+          "machine learning", "ML model", "deep learning", "neural network",
+          "LLM", "large language model", "generative AI", "GenAI",
+          "NLP", "natural language processing", "computer vision",
+          "reinforcement learning", "transformer", "GPT",
+          "AI orchestration", "automated reasoning", "copilot",
+          "machine learning pipeline", "AI workflow", "intelligent automation"
+        ],
+        "secondary": [
+          "anomaly detection", "behavioral analysis", "pattern recognition",
+          "predictive analytics", "classification model", "clustering",
+          "sentiment analysis", "entity extraction", "knowledge graph",
+          "embedding", "vector search", "RAG", "retrieval augmented generation",
+          "fine-tuning", "transfer learning", "model training",
+          "explainability", "XAI", "model governance", "AI ethics"
+        ],
+        "exclusions_not_ai": [
+          "basic SOAR playbooks without ML",
+          "rule-based automation",
+          "regex-based detection",
+          "static signature matching",
+          "manual scripting"
+        ]
+      }
+    },
+    "pillars": {
+      "PLA": {
+        "name": "Planning & Preparation",
+        "focus": "AI/ML integration in organizational readiness and pre-incident capability maturity. How does AI improve preparedness automation, gap detection, playbook design, and exercise simulation?",
+        "validated_pillar_score_rule": "Average of AI-researched sub-pillar scores (PLA-01..PLA-04)",
+        "ai_evidence_signals": [
+          "ML-driven gap detection and coverage optimization",
+          "AI-generated or AI-maintained playbooks",
+          "AI-powered tabletop exercise simulation and scoring",
+          "Automated forensic readiness assessment using trained models"
+        ]
+      },
+      "INV": {
+        "name": "Forensic Investigation",
+        "focus": "AI/ML integration in evidence acquisition and analytic reconstruction. How does AI accelerate triage, timeline correlation, artifact attribution, and malware analysis?",
+        "validated_pillar_score_rule": "Average of AI-researched sub-pillar scores (INV-01..INV-04)",
+        "ai_evidence_signals": [
+          "ML-assisted triage with automated reasoning and confidence scoring",
+          "AI-powered cross-system timeline reconstruction",
+          "ML-driven artifact clustering and provenance attribution",
+          "AI-assisted malware classification, deobfuscation, and IOC extraction"
+        ]
+      },
+      "REM": {
+        "name": "Remediation & Recovery",
+        "focus": "AI/ML integration in containment, eradication, and restoration. How does AI reduce time-to-contain, automate persistence detection, and validate recovery integrity?",
+        "validated_pillar_score_rule": "Average of AI-researched sub-pillar scores (REM-01..REM-04)",
+        "ai_evidence_signals": [
+          "AI-recommended containment actions with automated execution gates",
+          "ML-based persistence pattern detection across endpoints",
+          "AI-validated restoration integrity checking",
+          "ML-powered ransomware actor profiling and outcome forecasting"
+        ]
+      },
+      "PMG": {
+        "name": "Post-Incident Management",
+        "focus": "AI/ML integration in lifecycle oversight, reporting, and communication. How does AI improve coordination, quality assurance, executive communication, and lessons-learned extraction?",
+        "validated_pillar_score_rule": "Average of AI-researched sub-pillar scores (PMG-01..PMG-04)",
+        "ai_evidence_signals": [
+          "AI-generated task plans and automated incident status synthesis",
+          "ML-driven quality assurance and audit trail validation",
+          "AI-drafted executive communications with source citations",
+          "Automated root cause extraction and improvement recommendation"
+        ]
+      },
+      "LAW": {
+        "name": "Legal & Compliance",
+        "focus": "AI/ML integration in legal admissibility and judicial support. How does AI maintain chain-of-custody integrity, support court-ready documentation, and ensure methodology defensibility?",
+        "validated_pillar_score_rule": "Average of AI-researched sub-pillar scores (LAW-01..LAW-04)",
+        "ai_evidence_signals": [
+          "AI-assisted evidence triage that preserves defensible provenance",
+          "ML-powered court-ready report generation with traceability",
+          "Comprehensive logging of AI agent actions in chain-of-custody",
+          "Documented AI model validation, error rates, and Daubert alignment"
+        ]
+      }
+    },
+    "sub_pillars": {
+      "PLA-01": {
+        "name": "Visibility Gap Analysis",
+        "expanded_definition": "Using AI/ML to identify telemetry blind spots across hybrid environments and generate prioritized, explainable remediation recommendations.",
+        "ai_evaluation_criteria": [
+          "ML-driven telemetry gap detection across endpoint, network, identity, and cloud sources — not just rule-based checks",
+          "Automated asset discovery and classification using trained ML models (e.g., device fingerprinting, shadow IT detection)",
+          "AI-generated coverage recommendations with confidence scores, risk prioritization, and explainability",
+          "Continuous drift detection using anomaly models on log and telemetry feeds to flag emerging blind spots",
+          "Evidence of specific ML models, algorithms, or AI platforms used (not generic 'AI-powered' claims)"
+        ]
+      },
+      "PLA-02": {
+        "name": "Behavioral Playbook Design",
+        "expanded_definition": "Using AI/ML to generate, maintain, and dynamically adapt response playbooks based on threat intelligence, incident context, and attacker behavior patterns.",
+        "ai_evaluation_criteria": [
+          "AI-generated playbook drafts from threat intelligence feeds, incident patterns, or MITRE ATT&CK mappings",
+          "Dynamic playbook branching that adapts in real-time based on ML-assessed incident conditions",
+          "NLP-driven analysis of past incident reports to suggest playbook improvements or new playbooks",
+          "ML-based playbook effectiveness scoring and optimization recommendations",
+          "Integration of AI-generated playbooks with SOAR platforms for automated execution with human approval gates"
+        ]
+      },
+      "PLA-03": {
+        "name": "Tabletop Exercise (TTX) Automation",
+        "expanded_definition": "Using AI/ML to generate realistic breach scenarios, simulate attacker behavior, facilitate exercises, and automatically extract actionable lessons.",
+        "ai_evaluation_criteria": [
+          "AI-driven scenario generation using threat landscape analysis, industry-specific attack patterns, or generative AI",
+          "LLM-powered role-play simulation (e.g., AI acting as attacker, regulator, or media) during tabletop exercises",
+          "Automated participant performance scoring using ML analysis of decisions, timing, and communication quality",
+          "NLP-powered extraction of lessons learned, action items, and gap identification from exercise transcripts",
+          "AI-generated post-exercise reports with benchmarking against industry standards or previous exercises"
+        ]
+      },
+      "PLA-04": {
+        "name": "Forensic Readiness Maturity Assessment",
+        "expanded_definition": "Using AI/ML to assess evidence preservation readiness, benchmark against standards, and continuously monitor forensic collection capability.",
+        "ai_evaluation_criteria": [
+          "ML-assisted correlation of policies, configurations, and log settings against forensic readiness frameworks (ISO 27037, NIST)",
+          "AI-driven automated evidence-readiness scoring with specific gap identification and remediation priority",
+          "Continuous monitoring using ML models to detect forensic readiness degradation (e.g., log rotation changes, agent failures)",
+          "NLP analysis of policy documents to assess alignment with forensic collection requirements",
+          "AI-generated maturity roadmaps with prioritized improvement recommendations and effort estimation"
+        ]
+      },
+      "INV-01": {
+        "name": "Triage and Scoping",
+        "expanded_definition": "Using AI/ML to rapidly assess incident scope, prioritize evidence collection, and generate defensible triage summaries with confidence scoring.",
+        "ai_evaluation_criteria": [
+          "ML-based alert triage that prioritizes incidents by severity, blast radius, and business impact using trained models",
+          "AI-generated triage summaries that cite specific artifacts, IOCs, and data sources with confidence scores",
+          "Automated scoping suggestions using ML analysis of telemetry patterns, lateral movement indicators, and historical incidents",
+          "NLP-driven enrichment from threat intelligence feeds integrated into triage workflow",
+          "Agentic triage systems that autonomously collect initial evidence and generate preliminary scoping reports"
+        ]
+      },
+      "INV-02": {
+        "name": "Multi-Hop Timeline Reconstruction",
+        "expanded_definition": "Using AI/ML to correlate events across disparate sources and automatically construct multi-hop attack narratives with evidence-linked timelines.",
+        "ai_evaluation_criteria": [
+          "ML-powered cross-source event correlation across endpoints, network, identity, cloud, and application logs",
+          "AI-generated attack timelines that automatically link events into causal sequences with confidence scoring",
+          "Graph-based ML models (e.g., knowledge graphs, GNNs) for visualizing multi-hop lateral movement paths",
+          "Automated detection of temporal anomalies and event gaps using statistical or deep learning models",
+          "Agentic timeline builders that autonomously collect, correlate, and present evidence-linked narratives"
+        ]
+      },
+      "INV-03": {
+        "name": "Artifact Source Attribution",
+        "expanded_definition": "Using AI/ML to cluster artifacts, determine provenance, and attribute findings to actors or campaigns with traceable evidence chains.",
+        "ai_evaluation_criteria": [
+          "ML-driven artifact clustering that groups related IOCs, files, and behaviors by likely source or campaign",
+          "AI-assisted attribution models that link artifacts to known threat actors using TTP fingerprinting",
+          "Automated provenance graph generation connecting artifacts to their origin (process tree, file path, user, network flow)",
+          "NLP analysis of malware code, ransom notes, and communications for linguistic attribution signals",
+          "AI confidence scoring on attribution conclusions with explicit evidence chain documentation"
+        ]
+      },
+      "INV-04": {
+        "name": "Malware and Reverse Engineering",
+        "expanded_definition": "Using AI/ML to analyze malicious code, automate deobfuscation, classify malware families, and extract IOCs and TTPs at scale.",
+        "ai_evaluation_criteria": [
+          "ML-based malware classification and family identification using trained models (not just signature matching)",
+          "AI-assisted code deobfuscation and unpacking using deep learning or symbolic analysis",
+          "LLM-powered code understanding and natural-language explanation of malware behavior",
+          "Automated IOC, YARA rule, and TTP extraction using ML pipelines with validation",
+          "AI-driven sandbox analysis with behavioral classification and automated report generation"
+        ]
+      },
+      "REM-01": {
+        "name": "Containment and Isolation",
+        "expanded_definition": "Using AI/ML to recommend and execute containment actions with speed, precision, and documented rationale while preserving forensic evidence.",
+        "ai_evaluation_criteria": [
+          "AI-recommended containment actions (EDR isolation, account disable, network segmentation) with documented rationale and blast-radius assessment",
+          "ML-based risk scoring to prioritize containment targets and predict attacker next-move to preemptively contain",
+          "Automated containment execution through AI-SOAR integration with human approval gates and rollback capability",
+          "AI-driven evidence preservation checks prior to containment to prevent forensic data loss",
+          "Agentic containment systems that autonomously respond to confirmed threats within defined governance boundaries"
+        ]
+      },
+      "REM-02": {
+        "name": "Root Cause Eradication",
+        "expanded_definition": "Using AI/ML to detect persistence mechanisms, generate eradication plans, and verify complete removal across the environment.",
+        "ai_evaluation_criteria": [
+          "ML-based persistence detection that identifies non-obvious mechanisms (scheduled tasks, registry, WMI, firmware) beyond signature matching",
+          "AI-generated eradication checklists tied to specific findings with artifact citations and validation steps",
+          "Automated scanning using trained models to verify complete removal of attacker footholds across all affected systems",
+          "NLP-driven analysis of threat intelligence to identify persistence TTPs specific to the observed threat actor",
+          "AI-powered root cause analysis that traces the initial compromise vector using causal inference models"
+        ]
+      },
+      "REM-03": {
+        "name": "Recovery and Restoration Verification",
+        "expanded_definition": "Using AI/ML to validate recovery integrity, detect post-restoration anomalies, and ensure hardening measures address the identified root cause.",
+        "ai_evaluation_criteria": [
+          "ML-based anomaly detection on restored systems to verify clean-state (behavioral baseline comparison)",
+          "AI-validated backup integrity checking using trained models to detect embedded malware or compromised images",
+          "Automated post-restoration monitoring using ML models to flag deviations from expected system behavior",
+          "AI-generated hardening recommendations specifically tied to the incident root cause with implementation guidance",
+          "Predictive models assessing re-compromise risk based on threat actor TTPs and remediation completeness"
+        ]
+      },
+      "REM-04": {
+        "name": "Ransomware Negotiation and Outcomes Forecasting",
+        "expanded_definition": "Using AI/ML to support negotiation strategy, forecast outcomes, and profile threat actors using historical data and behavioral analysis.",
+        "ai_evaluation_criteria": [
+          "ML-powered ransom outcome modeling using historical payment data, actor behavior patterns, and case-specific signals",
+          "AI-driven threat actor profiling and TTP clustering to predict negotiation behavior and reliability",
+          "NLP analysis of ransom communications for sentiment, urgency signals, and linguistic threat actor fingerprinting",
+          "AI-generated negotiation strategy recommendations based on case context and historical outcome data",
+          "Predictive models for data recovery probability and decryption key reliability based on actor track record"
+        ]
+      },
+      "PMG-01": {
+        "name": "Incident Coordination and Escalation",
+        "expanded_definition": "Using AI/ML to automate task coordination, generate status updates, optimize resource allocation, and manage escalation decisions.",
+        "ai_evaluation_criteria": [
+          "AI-generated task plans and work breakdown structures for incident response with priority and dependency analysis",
+          "Automated incident status synthesis using NLP to aggregate updates from multiple analysts into coherent summaries",
+          "ML-based escalation recommendations that assess severity progression and suggest stakeholder notifications",
+          "AI-powered resource allocation optimization based on analyst availability, expertise matching, and case complexity",
+          "Agentic coordination systems that autonomously track progress, identify blockers, and flag overdue tasks"
+        ]
+      },
+      "PMG-02": {
+        "name": "Forensic Quality and Compliance Management",
+        "expanded_definition": "Using AI/ML to automate quality assurance checks, validate audit trail completeness, and ensure SOP adherence throughout the investigation.",
+        "ai_evaluation_criteria": [
+          "AI-driven QA checks that validate evidence handling procedures against SOPs and flag deviations with traceability",
+          "ML-based audit trail completeness validation that detects gaps or inconsistencies in evidence chain documentation",
+          "Automated compliance checking against accreditation requirements (ISO 17025, ASCLD) using NLP analysis",
+          "AI-generated quality scorecards for investigations with specific improvement recommendations",
+          "Real-time SOP adherence monitoring using ML models that flag procedural deviations during active investigations"
+        ]
+      },
+      "PMG-03": {
+        "name": "Crisis and Board Communication",
+        "expanded_definition": "Using AI/ML to draft executive-ready communications, translate technical findings into business impact, and maintain evidence-backed narratives.",
+        "ai_evaluation_criteria": [
+          "LLM-powered drafting of executive briefings and board communications with automatic technical-to-business translation",
+          "AI-generated incident summaries that cite specific evidence sources and maintain factual traceability",
+          "Automated regulatory notification drafting (GDPR, SEC, HIPAA) using NLP templates adapted to incident specifics",
+          "ML-based impact assessment that quantifies business exposure, customer impact, and regulatory risk from incident data",
+          "AI-assisted media response preparation with fact-checking against investigation findings"
+        ]
+      },
+      "PMG-04": {
+        "name": "Post-Incident Learning and Review",
+        "expanded_definition": "Using AI/ML to extract structured lessons learned, identify systemic patterns across incidents, and generate prioritized improvement recommendations.",
+        "ai_evaluation_criteria": [
+          "NLP-powered extraction of themes, root causes, and action items from post-incident review documents and meeting transcripts",
+          "ML-based pattern analysis across multiple incidents to identify systemic weaknesses and recurring failure modes",
+          "AI-generated improvement recommendations with prioritization, effort estimation, and expected risk reduction",
+          "Automated benchmarking of incident response metrics against industry baselines using ML comparison models",
+          "Knowledge graph construction from lessons learned to enable cross-incident learning and trend analysis"
+        ]
+      },
+      "LAW-01": {
+        "name": "Evidence Collection and Preservation",
+        "expanded_definition": "Using AI/ML in evidence collection workflows while maintaining defensible chain of custody, provenance documentation, and tamper-evident preservation.",
+        "ai_evaluation_criteria": [
+          "AI-assisted evidence triage that prioritizes collection while preserving full provenance metadata and chain of custody",
+          "Automated documentation of collection procedures using NLP to generate defensible collection reports in real-time",
+          "ML-based integrity verification of collected evidence (hash validation, metadata consistency checking at scale)",
+          "AI-driven identification of potentially relevant evidence across large data sets using trained classification models",
+          "Automated chain-of-custody record generation that includes AI system identifiers, versions, and decision rationale"
+        ]
+      },
+      "LAW-02": {
+        "name": "Expert Witness Testimony Support",
+        "expanded_definition": "Using AI/ML to produce court-ready analysis, automate report generation with traceable evidence linkage, and prepare defensible methodology documentation.",
+        "ai_evaluation_criteria": [
+          "LLM-assisted drafting of expert reports with automatic cross-referencing to source evidence and exhibits",
+          "AI-powered evidence timeline visualization generation suitable for court presentation",
+          "Automated consistency checking of expert reports against underlying evidence using NLP validation",
+          "ML-based identification of relevant precedents and case law for methodology defense",
+          "AI-generated methodology documentation that explicitly describes reproducibility, limitations, and error rates"
+        ]
+      },
+      "LAW-03": {
+        "name": "Machine-Inclusive Chain of Custody",
+        "expanded_definition": "Comprehensive logging and governance of AI system interactions with evidence, including model identifiers, prompts, outputs, and decision rationale.",
+        "ai_evaluation_criteria": [
+          "Explicit logging of all AI agent actions, prompts, inputs, and outputs in chain-of-custody records",
+          "Model version tracking and documentation of which AI models processed which evidence at what time",
+          "Governance controls preventing untracked AI modifications to evidence or analysis products",
+          "Automated audit reports showing AI decision trees, confidence scores, and human override points",
+          "Documented procedures for challenging or validating AI-generated conclusions in legal proceedings"
+        ]
+      },
+      "LAW-04": {
+        "name": "Admissibility Defense (Daubert Standard)",
+        "expanded_definition": "Documenting AI methodology validity for legal admissibility, including error rates, reproducibility evidence, peer alignment, and model governance.",
+        "ai_evaluation_criteria": [
+          "Documented AI model validation with error rates, false positive/negative rates, and confidence intervals",
+          "Reproducibility evidence showing consistent AI outputs across repeated analyses of the same evidence",
+          "AI model governance documentation including training data provenance, bias assessment, and version control",
+          "Peer-reviewed or standards-aligned AI methodology documentation suitable for Daubert/Frye challenges",
+          "Human review and override documentation for all AI-generated conclusions used in legal proceedings"
+        ]
+      }
+    }
+  }
+}

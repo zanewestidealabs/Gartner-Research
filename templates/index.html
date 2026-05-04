@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFIR Vendor Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v=(static_versions.style_css if static_versions else 1)) }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Rail -->
+        <nav class="nav-rail">
+            <div class="nav-rail-header">
+                <div class="logo" id="nav-logo">DFIR</div>
+            </div>
+            
+            <div class="nav-rail-content">
+                <button class="nav-item active" data-view="dashboard" data-requires-vendors="true">
+                    <span class="icon">📊</span>
+                    <span class="label">Dashboard</span>
+                </button>
+                <button class="nav-item" data-view="vendors" data-requires-vendors="true">
+                    <span class="icon">🏢</span>
+                    <span class="label">Vendors</span>
+                </button>
+                <button class="nav-item" data-view="analysis" data-requires-vendors="true">
+                    <span class="icon">📈</span>
+                    <span class="label">Analysis</span>
+                </button>
+                <button class="nav-item" data-view="cross-section" data-requires-vendors="true">
+                    <span class="icon">🧮</span>
+                    <span class="label">Cross-Section</span>
+                </button>
+                <button class="nav-item" data-view="legend">
+                    <span class="icon">📖</span>
+                    <span class="label">Legend</span>
+                </button>
+                <button class="nav-item" data-view="roadmap" data-requires-schema="Secure_by_Design_AI_Controls_Schema.json">
+                    <span class="icon">🗓️</span>
+                    <span class="label">Roadmap</span>
+                </button>
+                <button class="nav-item" data-view="reports">
+                    <span class="icon">📋</span>
+                    <span class="label">Reports</span>
+                </button>
+            </div>
+            
+            <div class="nav-rail-footer">
+                <button id="dark-mode-toggle" class="nav-item dark-mode-btn" title="Toggle dark mode">
+                    <span class="icon">🌙</span>
+                    <span class="label">Dark</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-top">
+                    <div class="header-title">
+                        <h1 id="page-title">DFIR Vendor Marketplace Analysis 2026</h1>
+                        <p id="page-subtitle">Filter and analyze incident response vendors by capabilities and specializations</p>
+                    </div>
+                    <div class="header-controls">
+                        <div class="vendor-file-selector" style="position: relative;">
+                            <label for="schema-file-select">Schema:</label>
+                            <select id="schema-file-select">
+                                <option value="">Loading...</option>
+                            </select>
+                            <button id="schema-visibility-config" class="btn-primary" title="Choose which schemas appear in this dropdown" aria-label="Configure visible schemas" style="margin-left: 6px; padding: 4px 8px;" type="button">&#9881;</button>
+                            <div id="schema-visibility-popover" class="schema-visibility-popover" hidden>
+                                <div class="schema-visibility-header">
+                                    <strong>Visible Schemas</strong>
+                                    <div class="schema-visibility-actions">
+                                        <button type="button" id="schema-visibility-all">All</button>
+                                        <button type="button" id="schema-visibility-none">None</button>
+                                        <button type="button" id="schema-visibility-close" aria-label="Close">&times;</button>
+                                    </div>
+                                </div>
+                                <div id="schema-visibility-list" class="schema-visibility-list"></div>
+                            </div>
+                            <button id="export-schema-html" class="btn-primary" title="Download the selected schema as a styled HTML document" style="margin-left: 8px;">Export HTML</button>
+                        </div>
+                        <div class="vendor-file-selector" style="margin-left: 16px;">
+                            <label for="vendor-file-select">Vendor Data:</label>
+                            <select id="vendor-file-select">
+                                <option value="">Loading...</option>
+                            </select>
+                            <button id="apply-vendor-file" class="btn-primary">Apply</button>
+                        </div>
+                        <div class="vendor-file-selector" style="margin-left: 16px;">
+                            <label for="score-mode-select">Score Mode:</label>
+                            <select id="score-mode-select">
+                                <option value="validated">Validated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Vendors View -->
+            <section id="vendors-view" class="view-container active">
+                <!-- Filter Panel -->
+                <div class="filter-panel">
+                    <!-- Search Box -->
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search all fields...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+
+                    <!-- Simple Filter Dropdowns (Single Row) -->
+                    <div class="filter-groups">
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-region">Region:</label>
+                            <select id="filter-region" class="filter-dropdown">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-specialization">Specialization:</label>
+                            <select id="filter-specialization" class="filter-dropdown">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-ir-focus">IR Focus Type:</label>
+                            <select id="filter-ir-focus" class="filter-dropdown">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-startup">Company Type:</label>
+                            <select id="filter-startup" class="filter-dropdown">
+                                <option value="">All</option>
+                                <option value="startup">Startup</option>
+                                <option value="established">Established</option>
+                            </select>
+                        </div>
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-ai-first">AI-First:</label>
+                            <select id="filter-ai-first" class="filter-dropdown">
+                                <option value="">All</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <button id="reset-filters" class="btn-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Vendor Table -->
+                <div class="vendor-container">
+                    <div class="vendor-header">
+                        <span class="vendor-count">Loading vendors...</span>
+                        <div class="view-options">
+                            <button id="vendors-export-open" class="btn-secondary" type="button">Export</button>
+                            <button class="btn-icon" id="toggle-columns" title="Toggle columns">⚙️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-wrapper">
+                        <table id="vendors-table" class="vendors-table">
+                            <thead>
+                                <tr id="header-row-1">
+                                    <th class="base-column" data-base-col="vendor">
+                                        <span class="header-text">Vendor Name</span>
+                                        <span class="info-icon" data-field="vendor">ℹ️</span>
+                                    </th>
+                                    <th class="base-column" data-base-col="region">
+                                        <span class="header-text">Region</span>
+                                        <span class="info-icon" data-field="region">ℹ️</span>
+                                    </th>
+                                    <th class="base-column" data-base-col="specialization">
+                                        <span class="header-text">Specialization</span>
+                                        <span class="info-icon" data-field="specialization">ℹ️</span>
+                                    </th>
+                                    <th class="base-column" data-base-col="ir_focus_type">
+                                        <span class="header-text">Type</span>
+                                        <span class="info-icon" data-field="ir_focus_type">ℹ️</span>
+                                    </th>
+                                    <th class="base-column" data-base-col="is_ai_first">
+                                        <span class="header-text">AI-First</span>
+                                        <span class="info-icon" data-field="is_ai_first">ℹ️</span>
+                                    </th>
+                                    <th class="base-column" data-base-col="is_startup">
+                                        <span class="header-text">Startup</span>
+                                        <span class="info-icon" data-field="is_startup">ℹ️</span>
+                                    </th>
+                                    <!-- Pillar columns are generated dynamically by JS based on active schema -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Vendors will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Legend View -->
+            <section id="legend-view" class="view-container">
+                <div class="legend-container">
+                    <h2>Scoring Legend</h2>
+                    <div class="legend-grid">
+                        <!-- Legend items will be inserted here -->
+                    </div>
+
+                    <h2 style="margin-top: 2rem;">Pillars & Sub-Pillars</h2>
+                    <div class="pillars-grid">
+                        <!-- Pillars and sub-pillars will be inserted here -->
+                    </div>
+
+                    <h2 style="margin-top: 2rem;">Field Descriptions</h2>
+                    <div class="field-descriptions">
+                        <!-- Field descriptions will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Roadmap View (90-Day Adoption Plan Gantt Chart) -->
+            <section id="roadmap-view" class="view-container">
+                <div class="roadmap-container">
+                    <div class="roadmap-header">
+                        <h2>90-Day Adoption Roadmap</h2>
+                        <p class="roadmap-subtitle">Interactive timeline for phased adoption of secure-by-design AI controls. Drag bar edges to adjust timelines, click to edit details.</p>
+                    </div>
+                    <div class="gantt-wrapper">
+                        <div class="gantt-ruler-row">
+                            <div class="gantt-ruler-spacer"></div>
+                            <div class="gantt-ruler" id="gantt-ruler"></div>
+                        </div>
+                        <div class="gantt-chart" id="gantt-chart"></div>
+                        <svg class="gantt-arrows" id="gantt-arrows"></svg>
+                    </div>
+                    <div class="gantt-legend">
+                        <h3>NIST AI RMF Functions</h3>
+                        <div class="gantt-legend-items" id="gantt-rmf-legend"></div>
+                    </div>
+                    <div class="gantt-phase-details" id="gantt-phase-details">
+                        <!-- Populated on phase click -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gantt Phase Edit Modal -->
+            <div id="gantt-edit-modal" class="modal">
+                <div class="modal-content gantt-modal-content">
+                    <button class="modal-close" onclick="closeGanttEditModal()">&times;</button>
+                    <h2 id="gantt-modal-title">Edit Phase</h2>
+                    <div id="gantt-modal-body"></div>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" id="gantt-modal-save">Save Changes</button>
+                        <button class="btn btn-secondary" onclick="closeGanttEditModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export HTML Modal -->
+            <div id="export-html-modal" class="modal">
+                <div class="modal-content" style="max-width:440px;">
+                    <button class="modal-close" onclick="closeExportHtmlModal()">&times;</button>
+                    <h2 style="margin-bottom:6px;">Export as Static HTML</h2>
+                    <p style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:18px;">Choose which sections to include in the exported page.</p>
+                    <div class="export-html-options">
+                        <label class="export-html-checkbox"><input type="checkbox" id="export-chk-legend" checked /> <span>📖 Capability Legend</span></label>
+                        <label class="export-html-checkbox"><input type="checkbox" id="export-chk-roadmap" checked /> <span>🗓️ 90-Day Adoption Roadmap</span></label>
+                        <label class="export-html-checkbox"><input type="checkbox" id="export-chk-self-assessment" checked /> <span>📊 Self-Assessment</span></label>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" onclick="executeExportHtml()">Export</button>
+                        <button class="btn btn-secondary" onclick="closeExportHtmlModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar Details Modal -->
+            <div id="pillar-details-modal" class="modal">
+                <div class="modal-content">
+                    <button class="modal-close">&times;</button>
+                    <h2 id="pillar-modal-title"></h2>
+                    <div id="pillar-modal-body"></div>
+                </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div id="edit-modal" class="modal">
+                <div class="modal-content">
+                    <button class="modal-close">&times;</button>
+                    <h2>Edit Details</h2>
+                    <form id="edit-form">
+                        <div class="form-group">
+                            <label for="edit-id">ID/Code:</label>
+                            <input type="text" id="edit-id" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-name">Name:</label>
+                            <input type="text" id="edit-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-description">Description/Definition:</label>
+                            <textarea id="edit-description" rows="6" required></textarea>
+                        </div>
+                        <div class="form-footer">
+                            <button type="button" class="btn-cancel" onclick="document.getElementById('edit-modal').classList.remove('show')">Cancel</button>
+                            <button type="submit" class="btn-save">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dashboard View -->
+            <section id="dashboard-view" class="view-container">
+                <div class="dashboard-container">
+                    <h2>Dashboard</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-total-vendors">-</div>
+                            <div class="stat-label">Total Vendors</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-ai-first">-</div>
+                            <div class="stat-label">AI-First Companies</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-startups">-</div>
+                            <div class="stat-label">Startups</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-global">-</div>
+                            <div class="stat-label">Global Vendors</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-grid">
+                        <div class="chart-container">
+                            <h3>Vendors by Region</h3>
+                            <div id="region-chart" class="chart"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Average Pillar Scores</h3>
+                            <div id="pillar-chart" class="chart"></div>
+                        </div>
+                    </div>
+
+                    <!-- Overall Vendor Ranking -->
+                    <div class="ranking-section">
+                        <div class="ranking-header">
+                            <h3>Overall Vendor Ranking</h3>
+                            <div class="ranking-controls">
+                                <label for="ranking-top-n">Show top:</label>
+                                <select id="ranking-top-n">
+                                    <option value="10">10</option>
+                                    <option value="20" selected>20</option>
+                                    <option value="50">50</option>
+                                    <option value="0">All</option>
+                                </select>
+                                <button id="ranking-expand-toggle" class="btn-sm" title="Toggle detail columns">Detail ▸</button>
+                            </div>
+                        </div>
+                        <div class="ranking-legend">
+                            <span class="legend-item"><span class="legend-dot legend-dot-overall"></span> Overall Refined Score (0–5, 0.2 increments)</span>
+                            <span class="legend-item"><span class="legend-dot legend-dot-evidence"></span> Evidence Quality Factor</span>
+                        </div>
+                        <div id="ranking-table-container" class="ranking-table-container"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analysis View -->
+            <section id="analysis-view" class="view-container">
+                <div class="analysis-container">
+                    <div class="analysis-header">
+                        <h2>Analytics & Reporting</h2>
+                        <button id="customize-widgets-btn" class="customize-btn">⚙ Customize Widgets</button>
+                    </div>
+                    
+                    <!-- Widget Customization Modal -->
+                    <div id="widget-customization-modal" class="widget-modal">
+                        <div class="modal-content modal-large">
+                            <div class="modal-header">
+                                <h3>Customize Dashboard Widgets</h3>
+                                <button class="modal-close" id="modal-close-btn">&times;</button>
+                            </div>
+                            <div class="modal-body modal-two-column">
+                                <!-- Left panel: Widget list -->
+                                <div class="widget-list-panel">
+                                    <h4>Available Widgets</h4>
+                                    <div class="widget-checkbox-group">
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="region-chart" checked>
+                                            <span>Vendor Distribution by Region</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="pillar-chart" checked>
+                                            <span>Average Pillar Capabilities</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="specialization-chart" checked>
+                                            <span>Specialization Breakdown</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="type-chart" checked>
+                                            <span id="type-chart-widget-label">Type Distribution</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="ai-chart" checked>
+                                            <span>AI-First vs Traditional</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="startup-chart" checked>
+                                            <span>Startup vs Established</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="pillar-radar-chart" checked>
+                                            <span>Pillar Capabilities Radar</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="comparison-radar-chart" checked>
+                                            <span>Comparison Radar (5-way)</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="validation-comparison-chart" checked>
+                                            <span>Score Layer Comparison</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="summary-stats" checked>
+                                            <span>Summary Statistics</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Right panel: Widget preview grid -->
+                                <div class="widget-preview-panel">
+                                    <h4>Widget Layout Preview</h4>
+                                    <p class="preview-help">Drag resize handles to adjust widget sizes. Blue triangles appear when hovering over widget titles.</p>
+                                    <div id="widget-preview-grid" class="widget-preview-grid">
+                                        <!-- Widget previews will be generated here -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="save-widgets-btn" class="save-btn">Save Preferences</button>
+                                <button id="cancel-widgets-btn" class="cancel-btn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Active Filters Panel (Top) -->
+                    <div class="active-filters-panel">
+                        <h3>Active Filters</h3>
+                        <div id="query-filters" class="query-filters">
+                            <!-- Filter rows will be added here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Main Content Area with Sidebar -->
+                    <div class="analysis-content-wrapper">
+                        <!-- Add Filters Sidebar (Left) -->
+                        <div class="add-filters-sidebar">
+                            <h3>Add Filters</h3>
+                            <div class="field-selector-list">
+                                <h4>Vendor Attributes</h4>
+                                <div id="vendor-attribute-buttons">
+                                    <!-- Generated dynamically by rebuildVendorAttributeButtons() -->
+                                </div>
+                                
+                                <h4>Capabilities</h4>
+                                <div id="pillar-field-buttons">
+                                    <!-- Pillar and sub-pillar buttons are generated dynamically by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Charts Grid -->
+                        <div class="analytics-grid" id="analytics-grid">
+                            <div class="chart-container" data-widget="region-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>Vendor Distribution by Region</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-region-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="pillar-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>Average Pillar Capabilities</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-pillar-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="specialization-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>Specialization Breakdown</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-specialization-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="type-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>IR Focus Type Distribution</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-type-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="ai-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>AI-First vs Traditional</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-ai-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="startup-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>Startup vs Established</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-startup-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="pillar-radar-chart" data-col-span="2" data-row-span="2">
+                                <div class="widget-header">
+                                    <h3>Pillar Capabilities Radar</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-pillar-radar-chart" class="chart"></div>
+                            </div>
+
+                            <div class="chart-container" data-widget="comparison-radar-chart" data-col-span="2" data-row-span="2">
+                                <div class="widget-header">
+                                    <h3>Comparison Radar</h3>
+                                    <button id="comparison-radar-config-btn" class="widget-config-btn" title="Configure Comparison Radar" aria-label="Configure Comparison Radar">⚙</button>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="comparison-radar-chart" class="chart"></div>
+                            </div>
+
+                            <!-- Comparison Radar Config Modal -->
+                            <div id="comparison-radar-config-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="modal-close" id="comparison-radar-config-close">&times;</span>
+                                    <h2>Configure Comparison Radar</h2>
+                                    <div class="comparison-radar-form">
+                                        <label>
+                                            Compare by
+                                            <select id="comparison-radar-type" class="comparison-radar-type">
+                                                <option value="vendor">Vendor</option>
+                                                <option value="region">Region (contains)</option>
+                                                <option value="ai_first">AI-First</option>
+                                                <option value="startup">Startup / Established</option>
+                                                <option value="ir_focus_type">IR Focus Type</option>
+                                            </select>
+                                        </label>
+
+                                        <label>
+                                            Axes
+                                            <select id="comparison-radar-axes" class="comparison-radar-axes">
+                                                <option value="pillars">Pillars</option>
+                                                <option value="subpillars">Sub-pillars</option>
+                                                <option value="both">Both</option>
+                                            </select>
+                                        </label>
+
+                                        <div class="comparison-radar-series">
+                                            <select id="comparison-radar-s1"></select>
+                                            <select id="comparison-radar-s2"></select>
+                                            <select id="comparison-radar-s3"></select>
+                                            <select id="comparison-radar-s4"></select>
+                                            <select id="comparison-radar-s5"></select>
+                                        </div>
+
+                                        <div class="comparison-radar-form-actions">
+                                            <button id="comparison-radar-config-save" class="save-btn" type="button">Save</button>
+                                            <button id="comparison-radar-config-cancel" class="cancel-btn" type="button">Cancel</button>
+                                        </div>
+                                        <div class="comparison-radar-hint">Tip: leave series blank to ignore it. Axes use the current Score Mode.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Researched vs Validated Comparison Widget -->
+                            <div class="chart-container" data-widget="validation-comparison-chart" data-col-span="3" data-row-span="2">
+                                <div class="widget-header">
+                                    <h3>Score Layer Comparison</h3>
+                                    <button id="validation-comparison-config-btn" class="widget-config-btn" title="Configure Comparison" aria-label="Configure Comparison">⚙</button>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="validation-comparison-chart" class="chart validation-comparison-content"></div>
+                            </div>
+
+                            <!-- Researched vs Validated Config Modal -->
+                            <div id="validation-comparison-config-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="modal-close" id="validation-comparison-config-close">&times;</span>
+                                    <h2>Configure Score Layer Comparison</h2>
+                                    <div class="validation-comparison-form">
+                                        <label>
+                                            Category Type
+                                            <select id="validation-comparison-category-type">
+                                                <option value="">Select...</option>
+                                                <option value="all">All Vendors</option>
+                                                <option value="region">Region</option>
+                                                <option value="startup">Startup / Established</option>
+                                                <option value="ai_first">AI-First / Traditional</option>
+                                                <option value="ir_focus_type">IR Focus Type</option>
+                                            </select>
+                                        </label>
+
+                                        <label>
+                                            Category Value
+                                            <select id="validation-comparison-category-value">
+                                                <option value="">Select...</option>
+                                            </select>
+                                        </label>
+
+                                        <label>
+                                            Axes
+                                            <select id="validation-comparison-axes">
+                                                <option value="pillars">Pillars (5)</option>
+                                                <option value="subpillars">Sub-pillars (20)</option>
+                                                <option value="both">Both (25)</option>
+                                            </select>
+                                        </label>
+
+                                        <label>
+                                            <input type="checkbox" id="validation-comparison-show-delta" checked>
+                                            Show Delta (Difference) Metrics
+                                        </label>
+
+                                        <div class="validation-comparison-form-actions">
+                                            <button id="validation-comparison-config-save" class="save-btn" type="button">Save</button>
+                                            <button id="validation-comparison-config-cancel" class="cancel-btn" type="button">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Statistics -->
+                    <div class="summary-stats" data-widget="summary-stats">
+                        <h3>Summary Statistics</h3>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <span class="stat-label">Vendors Analyzed:</span>
+                                <span id="analysis-stat-count" class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Average Pillar Score:</span>
+                                <span id="analysis-stat-avg-score" class="stat-value">0.0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">AI-First %:</span>
+                                <span id="analysis-stat-ai-pct" class="stat-value">0%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Startup %:</span>
+                                <span id="analysis-stat-startup-pct" class="stat-value">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports View -->
+            <section id="reports-view" class="view-container">
+                <div class="reports-container">
+                    <div class="reports-header">
+                        <h2>Reports</h2>
+                        <button class="report-export-btn" id="btn-export-html" onclick="openExportHtmlModal()" title="Export selected reports as a standalone HTML page" data-schema="Secure_by_Design_AI_Controls_Schema.json" style="display:none;">
+                            <span class="icon">🌐</span> Export HTML
+                        </button>
+                    </div>
+                    <div class="reports-tabs-bar">
+                        <div class="reports-tabs-scroll">
+                            <button class="reports-tab active" data-report-tab="legend-report" type="button">
+                                <span class="reports-tab-icon">📖</span>
+                                <span class="reports-tab-label">Capability Legend</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="market-insight-template" type="button">
+                                <span class="reports-tab-icon">📋</span>
+                                <span class="reports-tab-label">Market Insight Template</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="positioning-statement-template" type="button">
+                                <span class="reports-tab-icon">🎯</span>
+                                <span class="reports-tab-label">Positioning Statement Template</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="report-846698" data-schema="schema5-0_ai.json" type="button">
+                                <span class="reports-tab-icon">📄</span>
+                                <span class="reports-tab-label">846698 &mdash; Agentic AI</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="dfir-market-insight" data-schema="schema5-0_ai.json" type="button">
+                                <span class="reports-tab-icon">🔬</span>
+                                <span class="reports-tab-label">DFIR Market Insight</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="adoption-plan-report" data-schema="Secure_by_Design_AI_Controls_Schema.json" type="button">
+                                <span class="reports-tab-icon">🗓️</span>
+                                <span class="reports-tab-label">90-Day Adoption Plan</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="self-assessment" data-schema="Secure_by_Design_AI_Controls_Schema.json" type="button">
+                                <span class="reports-tab-icon">📊</span>
+                                <span class="reports-tab-label">Self-Assessment</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="vendor-analysis" type="button">
+                                <span class="reports-tab-icon">🔍</span>
+                                <span class="reports-tab-label">Vendor Analysis</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="pricing-analysis" data-schema="MDR_Services_Schema.json" type="button">
+                                <span class="reports-tab-icon">💰</span>
+                                <span class="reports-tab-label">Pricing Analysis</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="mdr-market-insight" data-schema="MDR_Services_Schema.json" type="button">
+                                <span class="reports-tab-icon">📊</span>
+                                <span class="reports-tab-label">MDR Pricing Insight</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="cnapp-mq-market-insight" data-schema="CNAPP_MQ_Gap_Schema_App.json" type="button">
+                                <span class="reports-tab-icon">☁️</span>
+                                <span class="reports-tab-label">CNAPP MQ Insight</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="precyber-market-insight" data-schema="Preemptive_Cybersecurity_Schema_v2.json" type="button">
+                                <span class="reports-tab-icon">🛡️</span>
+                                <span class="reports-tab-label">PreCyber Market Insight</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="pmr-market-insight" data-schema="Product Market Readiness Schema 1_0.json" type="button">
+                                <span class="reports-tab-icon">🎯</span>
+                                <span class="reports-tab-label">PMR Credibility Gap</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="magic-quadrant-template" type="button">
+                                <span class="reports-tab-icon">◆</span>
+                                <span class="reports-tab-label">Magic Quadrant Template</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="hype-cycle-template" type="button">
+                                <span class="reports-tab-icon">🔄</span>
+                                <span class="reports-tab-label">Hype Cycle Template</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="analyst-take" type="button">
+                                <span class="reports-tab-icon">✍️</span>
+                                <span class="reports-tab-label">Analyst Take</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="blumira-deep-dive" type="button">
+                                <span class="reports-tab-icon">🔬</span>
+                                <span class="reports-tab-label">Blumira Deep Dive</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="mq-analysis-report" data-schema="MDR_MQ_Gap_Schema_App.json" data-mq-schema="mdr" type="button">
+                                <span class="reports-tab-icon">◆</span>
+                                <span class="reports-tab-label">Magic Quadrant — MDR</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="mq-analysis-report" data-schema="CNAPP_MQ_Gap_Schema_App.json" data-mq-schema="cnapp" type="button">
+                                <span class="reports-tab-icon">◆</span>
+                                <span class="reports-tab-label">Magic Quadrant — CNAPP</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="innovation-profile" data-schema="Secure_by_Design_AI_Controls_Schema_v2.json" type="button">
+                                <span class="reports-tab-icon">💡</span>
+                                <span class="reports-tab-label">Innovation Profile</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="reports-tab-content">
+                        <!-- Legend Report Panel -->
+                        <div id="report-panel-legend-report" class="report-panel active">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1 id="report-legend-title">Capability Taxonomy - Pillar &amp; Sub-Pillar Reference</h1>
+                                        <button class="report-export-btn" onclick="exportLegendReportAsMarkdown()" title="Export as Markdown">
+                                            <span class="icon">📥</span> Export .md
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle" id="report-legend-schema-label">Schema: loading&hellip;</p>
+                                    <p class="report-doc-intent" id="report-legend-intent"></p>
+                                </div>
+                                <div id="report-legend-body" class="report-legend-body">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Market Insight Template Panel -->
+                        <div id="report-panel-market-insight-template" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1>Market Insight &mdash; Content Type Guidance</h1>
+                                        <button class="report-export-btn" onclick="exportMarketInsightTemplateAsMarkdown()" title="Export as Markdown">
+                                            <span class="icon">📥</span> Export .md
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle">Reference guide for Market Insight document structure, requirements, and limits</p>
+                                </div>
+                                <div id="report-market-insight-body" class="report-legend-body">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Positioning Statement Template Panel -->
+                        <div id="report-panel-positioning-statement-template" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1>Positioning Statement &mdash; PJA Framework Guidance</h1>
+                                        <button class="report-export-btn" onclick="exportPositioningStatementTemplateAsMarkdown()" title="Export as Markdown">
+                                            <span class="icon">📥</span> Export .md
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle">Reference guide for the Position, Justification, Actions (PJA) framework &mdash; crafting powerful, defensible, actionable positions</p>
+                                </div>
+                                <div id="report-positioning-statement-body" class="report-legend-body">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Magic Quadrant Template Panel -->
+                        <div id="report-panel-magic-quadrant-template" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1>Magic Quadrant &mdash; Methodology &amp; Evaluation Framework</h1>
+                                        <button class="report-export-btn" onclick="exportMagicQuadrantTemplateAsMarkdown()" title="Export as Markdown">
+                                            <span class="icon">📥</span> Export .md
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle">Gartner Magic Quadrant methodology &mdash; evaluation criteria, quadrant definitions, market maturity guidance &amp; best practices (G00802987)</p>
+                                </div>
+                                <div id="report-magic-quadrant-body" class="report-legend-body">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hype Cycle Template Panel -->
+                        <div id="report-panel-hype-cycle-template" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1>Hype Cycle &mdash; Methodology &amp; Writing Template</h1>
+                                        <button class="report-export-btn" onclick="exportHypeCycleTemplateAsMarkdown()" title="Export as Markdown">
+                                            <span class="icon">📥</span> Export .md
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle">Gartner Hype Cycle methodology &mdash; phases, Innovation Profile placement, benefit ratings, maturity levels &amp; quality checklist</p>
+                                </div>
+                                <div id="report-hype-cycle-body" class="report-legend-body">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 846698 Report Panel -->
+                        <div id="report-panel-report-846698" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1 id="report-846698-title">Loading&hellip;</h1>
+                                        <button class="report-export-btn" onclick="exportMarketInsightReportAsMarkdown('846698')" title="Export as Markdown">
+                                            <span class="icon">📥</span> Export .md
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle" id="report-846698-meta"></p>
+                                </div>
+                                <div id="report-846698-body" class="report-legend-body">
+                                    <!-- Populated by JS from JSON -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 90-Day Adoption Plan Report Panel -->
+                        <div id="report-panel-adoption-plan-report" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1>90-Day Adoption Plan &mdash; Secure-by-Design AI Controls</h1>
+                                        <button class="report-export-btn" onclick="exportAdoptionPlanReportAsMarkdown()" title="Export as Markdown">
+                                            <span class="icon">📥</span> Export .md
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle">Phased implementation roadmap with dependencies, milestones, and NIST AI RMF alignment</p>
+                                </div>
+                                <div id="report-adoption-plan-body" class="report-legend-body">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Self-Assessment Report Panel -->
+                        <div id="report-panel-self-assessment" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1>Maturity Self-Assessment &mdash; Secure-by-Design AI Controls</h1>
+                                        <div style="display:flex;gap:8px;">
+                                            <button class="report-export-btn" onclick="exportSelfAssessmentAsMarkdown()" title="Export as Markdown">
+                                                <span class="icon">📥</span> Export .md
+                                            </button>
+                                            <button class="report-export-btn" onclick="exportSelfAssessmentAsCsv()" title="Export as CSV">
+                                                <span class="icon">📥</span> Export .csv
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="report-doc-subtitle">Per-product maturity scoring across all 5 pillars and 25 sub-pillars (1&ndash;5 scale). Scores auto-save per product.</p>
+                                </div>
+                                <div id="report-self-assessment-body" class="report-legend-body">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Vendor Analysis Report Panel -->
+                        <div id="report-panel-vendor-analysis" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1>MDR Vendor Analysis Report</h1>
+                                        <button class="report-export-btn" onclick="exportVendorAnalysisHTML()" title="Export as standalone HTML">
+                                            <span class="icon">🌐</span> Export HTML
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle">Select a vendor to view capability analysis, gap assessment, and improvement roadmap.</p>
+                                </div>
+                                <div class="va-vendor-selector">
+                                    <label for="va-vendor-dropdown">Select Vendor:</label>
+                                    <select id="va-vendor-dropdown"><option value="">-- Choose a vendor --</option></select>
+                                </div>
+                                <div class="va-inner-tabs" id="va-inner-tabs" style="display:none;">
+                                    <button class="va-inner-tab active" data-va-tab="exec-summary" type="button">Executive Summary</button>
+                                    <button class="va-inner-tab" data-va-tab="pillar-scorecard" type="button">Pillar Scorecard</button>
+                                    <button class="va-inner-tab" data-va-tab="strengths-weaknesses" type="button">Strengths &amp; Weaknesses</button>
+                                    <button class="va-inner-tab" data-va-tab="gap-analysis" type="button">Gap Analysis</button>
+                                    <button class="va-inner-tab" data-va-tab="roadmap" type="button">Priorities &amp; Roadmap</button>
+                                    <button class="va-inner-tab" data-va-tab="capability-legend" type="button">Capability Legend</button>
+                                </div>
+                                <div id="va-tab-content">
+                                    <div id="va-panel-exec-summary" class="va-inner-panel active"></div>
+                                    <div id="va-panel-pillar-scorecard" class="va-inner-panel"></div>
+                                    <div id="va-panel-strengths-weaknesses" class="va-inner-panel"></div>
+                                    <div id="va-panel-gap-analysis" class="va-inner-panel"></div>
+                                    <div id="va-panel-roadmap" class="va-inner-panel"></div>
+                                    <div id="va-panel-capability-legend" class="va-inner-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pricing Analysis Report Panel -->
+                        <!-- MDR Market Insight Report Panel -->
+                        <div id="report-panel-mdr-market-insight" class="report-panel">
+                            <div class="report-document mi-report">
+                                <div class="mi-header">
+                                    <div class="mi-header-row">
+                                        <div>
+                                            <div class="mi-content-type">Market Insight</div>
+                                            <h1 id="mi-title">Loading&hellip;</h1>
+                                        </div>
+                                        <div class="mi-header-controls">
+                                            <select id="mi-perspective-select" class="mi-perspective-select" title="Select report perspective">
+                                                <option value="">Loading perspectives&hellip;</option>
+                                            </select>
+                                            <button class="report-export-btn" onclick="exportMarketInsightHTML()" title="Export as standalone HTML">
+                                                <span class="icon">🌐</span> Export HTML
+                                            </button>
+                                            <button id="mi-edit-btn" class="report-export-btn" onclick="miToggleEdit()" title="Edit report text">
+                                                <span class="icon">✏️</span> Edit
+                                            </button>
+                                            <button id="mi-save-btn" class="report-export-btn" onclick="miSaveEdits()" title="Save changes" style="display:none;background:#107c10;color:#fff">
+                                                <span class="icon">💾</span> Save
+                                            </button>
+                                            <button id="mi-cancel-btn" class="report-export-btn" onclick="miCancelEdit()" title="Discard changes" style="display:none">
+                                                <span class="icon">✖</span> Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="mi-summary" id="mi-summary"></p>
+                                </div>
+                                <div class="mi-inner-tabs" id="mi-inner-tabs">
+                                    <button class="mi-inner-tab active" data-mi-tab="exec-summary" type="button">Executive Summary</button>
+                                    <button class="mi-inner-tab" data-mi-tab="analysis" type="button">Analysis</button>
+                                    <button class="mi-inner-tab" data-mi-tab="background" type="button">Background &amp; Context</button>
+                                    <button class="mi-inner-tab" data-mi-tab="impact" type="button">The Impact</button>
+                                    <button class="mi-inner-tab" data-mi-tab="conclusion" type="button">Conclusion</button>
+                                    <button class="mi-inner-tab" data-mi-tab="glossary" type="button">Glossary &amp; Evidence</button>
+                                    <button class="mi-inner-tab" data-mi-tab="graphics" type="button">📊 Graphics</button>
+                                    <button class="mi-inner-tab" data-mi-tab="positioning" type="button">🎯 Positioning Statement</button>
+                                </div>
+                                <div id="mi-tab-content">
+                                    <div id="mi-panel-exec-summary" class="mi-inner-panel active"></div>
+                                    <div id="mi-panel-analysis" class="mi-inner-panel"></div>
+                                    <div id="mi-panel-background" class="mi-inner-panel"></div>
+                                    <div id="mi-panel-impact" class="mi-inner-panel"></div>
+                                    <div id="mi-panel-conclusion" class="mi-inner-panel"></div>
+                                    <div id="mi-panel-glossary" class="mi-inner-panel"></div>
+                                    <div id="mi-panel-graphics" class="mi-inner-panel"></div>
+                                    <div id="mi-panel-positioning" class="mi-inner-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PreCyber Market Insight Report Panel -->
+                        <!-- CNAPP MQ Market Insight Report Panel -->
+                        <div id="report-panel-cnapp-mq-market-insight" class="report-panel">
+                            <div class="report-document mi-report">
+                                <div class="mi-header">
+                                    <div class="mi-header-row">
+                                        <div>
+                                            <div class="mi-content-type">Market Insight</div>
+                                            <h1 id="cmi-title">Loading&hellip;</h1>
+                                        </div>
+                                        <div class="mi-header-controls">
+                                            <select id="cmi-perspective-select" class="mi-perspective-select" title="Select report perspective">
+                                                <option value="">Loading perspectives&hellip;</option>
+                                            </select>
+                                            <button class="report-export-btn" onclick="exportCNAPPMarketInsightHTML()" title="Export as standalone HTML">
+                                                <span class="icon">🌐</span> Export HTML
+                                            </button>
+                                            <button id="cmi-edit-btn" class="report-export-btn" onclick="cmiToggleEdit()" title="Edit report text">
+                                                <span class="icon">✏️</span> Edit
+                                            </button>
+                                            <button id="cmi-save-btn" class="report-export-btn" onclick="cmiSaveEdits()" title="Save changes" style="display:none;background:#107c10;color:#fff">
+                                                <span class="icon">💾</span> Save
+                                            </button>
+                                            <button id="cmi-cancel-btn" class="report-export-btn" onclick="cmiCancelEdit()" title="Discard changes" style="display:none">
+                                                <span class="icon">✖</span> Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="mi-summary" id="cmi-summary"></p>
+                                </div>
+                                <div class="mi-inner-tabs" id="cmi-inner-tabs">
+                                    <button class="mi-inner-tab active" data-cmi-tab="exec-summary" type="button">Executive Summary</button>
+                                    <button class="mi-inner-tab" data-cmi-tab="analysis" type="button">Analysis</button>
+                                    <button class="mi-inner-tab" data-cmi-tab="background" type="button">Background &amp; Context</button>
+                                    <button class="mi-inner-tab" data-cmi-tab="impact" type="button">The Impact</button>
+                                    <button class="mi-inner-tab" data-cmi-tab="conclusion" type="button">Conclusion</button>
+                                    <button class="mi-inner-tab" data-cmi-tab="glossary" type="button">Glossary &amp; Evidence</button>
+                                    <button class="mi-inner-tab" data-cmi-tab="quadrant" type="button">📊 Quadrant Map</button>
+                                </div>
+                                <div id="cmi-tab-content">
+                                    <div id="cmi-panel-exec-summary" class="mi-inner-panel active"></div>
+                                    <div id="cmi-panel-analysis" class="mi-inner-panel"></div>
+                                    <div id="cmi-panel-background" class="mi-inner-panel"></div>
+                                    <div id="cmi-panel-impact" class="mi-inner-panel"></div>
+                                    <div id="cmi-panel-conclusion" class="mi-inner-panel"></div>
+                                    <div id="cmi-panel-glossary" class="mi-inner-panel"></div>
+                                    <div id="cmi-panel-quadrant" class="mi-inner-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PMR Credibility Gap Panel -->
+                        <div id="report-panel-pmr-market-insight" class="report-panel">
+                            <div class="report-document mi-report">
+                                <div class="mi-header">
+                                    <div class="mi-header-row">
+                                        <div>
+                                            <div class="mi-content-type">Market Insight</div>
+                                            <h1 id="pmr-title">Loading&hellip;</h1>
+                                        </div>
+                                        <div class="mi-header-controls">
+                                            <select id="pmr-perspective-select" class="mi-perspective-select" title="Select report perspective">
+                                                <option value="">Loading perspectives&hellip;</option>
+                                            </select>
+                                            <button class="report-export-btn" onclick="exportPMRMarketInsightHTML()" title="Export as standalone HTML">
+                                                <span class="icon">🌐</span> Export HTML
+                                            </button>
+                                            <button class="report-export-btn" onclick="exportPMRAllGraphicsPPTX()" title="Export credibility gap graphics as editable PowerPoint slides">
+                                                <span class="icon">&#128196;</span> Export PPTX
+                                            </button>
+                                            <button id="pmr-edit-btn" class="report-export-btn" onclick="pmrToggleEdit()" title="Edit report text">
+                                                <span class="icon">✏️</span> Edit
+                                            </button>
+                                            <button id="pmr-save-btn" class="report-export-btn" onclick="pmrSaveEdits()" title="Save changes" style="display:none;background:#107c10;color:#fff">
+                                                <span class="icon">💾</span> Save
+                                            </button>
+                                            <button id="pmr-cancel-btn" class="report-export-btn" onclick="pmrCancelEdit()" title="Discard changes" style="display:none">
+                                                <span class="icon">✖</span> Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="mi-summary" id="pmr-summary"></p>
+                                </div>
+                                <div class="mi-inner-tabs" id="pmr-inner-tabs">
+                                    <button class="mi-inner-tab active" data-pmr-tab="exec-summary" type="button">Executive Summary</button>
+                                    <button class="mi-inner-tab" data-pmr-tab="analysis" type="button">Analysis</button>
+                                    <button class="mi-inner-tab" data-pmr-tab="background" type="button">Background &amp; Context</button>
+                                    <button class="mi-inner-tab" data-pmr-tab="impact" type="button">The Impact</button>
+                                    <button class="mi-inner-tab" data-pmr-tab="conclusion" type="button">Conclusion</button>
+                                    <button class="mi-inner-tab" data-pmr-tab="glossary" type="button">Glossary &amp; Evidence</button>
+                                    <button class="mi-inner-tab" data-pmr-tab="graphics" type="button">📊 Graphics</button>
+                                </div>
+                                <div id="pmr-tab-content">
+                                    <div id="pmr-panel-exec-summary" class="mi-inner-panel active"></div>
+                                    <div id="pmr-panel-analysis" class="mi-inner-panel"></div>
+                                    <div id="pmr-panel-background" class="mi-inner-panel"></div>
+                                    <div id="pmr-panel-impact" class="mi-inner-panel"></div>
+                                    <div id="pmr-panel-conclusion" class="mi-inner-panel"></div>
+                                    <div id="pmr-panel-glossary" class="mi-inner-panel"></div>
+                                    <div id="pmr-panel-graphics" class="mi-inner-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="report-panel-precyber-market-insight" class="report-panel">
+                            <div class="report-document mi-report">
+                                <div class="mi-header">
+                                    <div class="mi-header-row">
+                                        <div>
+                                            <div class="mi-content-type">Market Insight</div>
+                                            <h1 id="pci-title">Loading&hellip;</h1>
+                                        </div>
+                                        <div class="mi-header-controls">
+                                            <select id="pci-perspective-select" class="mi-perspective-select" title="Select report perspective">
+                                                <option value="">Loading perspectives&hellip;</option>
+                                            </select>
+                                            <button class="report-export-btn" onclick="exportPreCyberMarketInsightHTML()" title="Export as standalone HTML">
+                                                <span class="icon">🌐</span> Export HTML
+                                            </button>
+                                            <button id="pci-edit-btn" class="report-export-btn" onclick="pciToggleEdit()" title="Edit report text">
+                                                <span class="icon">✏️</span> Edit
+                                            </button>
+                                            <button id="pci-save-btn" class="report-export-btn" onclick="pciSaveEdits()" title="Save changes" style="display:none;background:#107c10;color:#fff">
+                                                <span class="icon">💾</span> Save
+                                            </button>
+                                            <button id="pci-cancel-btn" class="report-export-btn" onclick="pciCancelEdit()" title="Discard changes" style="display:none">
+                                                <span class="icon">✖</span> Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="mi-summary" id="pci-summary"></p>
+                                </div>
+                                <div class="mi-inner-tabs" id="pci-inner-tabs">
+                                    <button class="mi-inner-tab active" data-pci-tab="exec-summary" type="button">Executive Summary</button>
+                                    <button class="mi-inner-tab" data-pci-tab="analysis" type="button">Analysis</button>
+                                    <button class="mi-inner-tab" data-pci-tab="background" type="button">Background &amp; Context</button>
+                                    <button class="mi-inner-tab" data-pci-tab="impact" type="button">The Impact</button>
+                                    <button class="mi-inner-tab" data-pci-tab="conclusion" type="button">Conclusion</button>
+                                    <button class="mi-inner-tab" data-pci-tab="glossary" type="button">Glossary &amp; Evidence</button>
+                                    <button class="mi-inner-tab" data-pci-tab="graphics" type="button">📊 Graphics</button>
+                                    <button class="mi-inner-tab" data-pci-tab="positioning" type="button">🎯 Positioning Statement</button>
+                                </div>
+                                <div id="pci-tab-content">
+                                    <div id="pci-panel-exec-summary" class="mi-inner-panel active"></div>
+                                    <div id="pci-panel-analysis" class="mi-inner-panel"></div>
+                                    <div id="pci-panel-background" class="mi-inner-panel"></div>
+                                    <div id="pci-panel-impact" class="mi-inner-panel"></div>
+                                    <div id="pci-panel-conclusion" class="mi-inner-panel"></div>
+                                    <div id="pci-panel-glossary" class="mi-inner-panel"></div>
+                                    <div id="pci-panel-graphics" class="mi-inner-panel"></div>
+                                    <div id="pci-panel-positioning" class="mi-inner-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DFIR Market Insight Panel -->
+                        <div id="report-panel-dfir-market-insight" class="report-panel">
+                            <div class="report-document mi-report">
+                                <div class="mi-header">
+                                    <div class="mi-header-row">
+                                        <div>
+                                            <div class="mi-content-type">Market Insight</div>
+                                            <h1 id="dfi-title">Loading&hellip;</h1>
+                                        </div>
+                                        <div class="mi-header-controls">
+                                            <select id="dfi-perspective-select" class="mi-perspective-select" title="Select report perspective">
+                                                <option value="">Loading perspectives&hellip;</option>
+                                            </select>
+                                            <button class="report-export-btn" onclick="exportDFIRMarketInsightHTML()" title="Export as standalone HTML">
+                                                <span class="icon">🌐</span> Export HTML
+                                            </button>
+                                            <button id="dfi-edit-btn" class="report-export-btn" onclick="dfiToggleEdit()" title="Edit report text">
+                                                <span class="icon">✏️</span> Edit
+                                            </button>
+                                            <button id="dfi-save-btn" class="report-export-btn" onclick="dfiSaveEdits()" title="Save changes" style="display:none;background:#107c10;color:#fff">
+                                                <span class="icon">💾</span> Save
+                                            </button>
+                                            <button id="dfi-cancel-btn" class="report-export-btn" onclick="dfiCancelEdit()" title="Discard changes" style="display:none">
+                                                <span class="icon">✖</span> Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="mi-summary" id="dfi-summary"></p>
+                                </div>
+                                <div class="mi-inner-tabs" id="dfi-inner-tabs">
+                                    <button class="mi-inner-tab active" data-dfi-tab="exec-summary" type="button">Executive Summary</button>
+                                    <button class="mi-inner-tab" data-dfi-tab="analysis" type="button">Analysis</button>
+                                    <button class="mi-inner-tab" data-dfi-tab="background" type="button">Background &amp; Context</button>
+                                    <button class="mi-inner-tab" data-dfi-tab="impact" type="button">The Impact</button>
+                                    <button class="mi-inner-tab" data-dfi-tab="conclusion" type="button">Conclusion</button>
+                                    <button class="mi-inner-tab" data-dfi-tab="glossary" type="button">Glossary &amp; Evidence</button>
+                                    <button class="mi-inner-tab" data-dfi-tab="graphics" type="button">📊 Graphics</button>
+                                </div>
+                                <div id="dfi-tab-content">
+                                    <div id="dfi-panel-exec-summary" class="mi-inner-panel active"></div>
+                                    <div id="dfi-panel-analysis" class="mi-inner-panel"></div>
+                                    <div id="dfi-panel-background" class="mi-inner-panel"></div>
+                                    <div id="dfi-panel-impact" class="mi-inner-panel"></div>
+                                    <div id="dfi-panel-conclusion" class="mi-inner-panel"></div>
+                                    <div id="dfi-panel-glossary" class="mi-inner-panel"></div>
+                                    <div id="dfi-panel-graphics" class="mi-inner-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Analyst Take Panel (cross-schema) -->
+                        <div id="report-panel-analyst-take" class="report-panel">
+                            <div class="report-document mi-report">
+                                <div class="mi-header">
+                                    <div class="mi-header-row">
+                                        <div>
+                                            <div class="mi-content-type">Analyst Take</div>
+                                            <h1 id="at-title">Loading&hellip;</h1>
+                                        </div>
+                                        <div class="mi-header-controls">
+                                            <select id="at-perspective-select" class="mi-perspective-select" title="Select Analyst Take">
+                                                <option value="">Loading&hellip;</option>
+                                            </select>
+                                            <button class="report-export-btn" onclick="exportAnalystTakeHTML()" title="Export as standalone HTML">
+                                                <span class="icon">🌐</span> Export HTML
+                                            </button>
+                                            <button id="at-edit-btn" class="report-export-btn" onclick="atToggleEdit()" title="Edit report text">
+                                                <span class="icon">✏️</span> Edit
+                                            </button>
+                                            <button id="at-save-btn" class="report-export-btn" onclick="atSaveEdits()" title="Save changes" style="display:none;background:#107c10;color:#fff">
+                                                <span class="icon">💾</span> Save
+                                            </button>
+                                            <button id="at-cancel-btn" class="report-export-btn" onclick="atCancelEdit()" title="Discard changes" style="display:none">
+                                                <span class="icon">✖</span> Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="mi-summary" id="at-subtitle"></p>
+                                </div>
+                                <div class="mi-inner-tabs" id="at-inner-tabs">
+                                    <button class="mi-inner-tab active" data-at-tab="body" type="button">Body Text</button>
+                                    <button class="mi-inner-tab" data-at-tab="recommended" type="button">Recommended Reading</button>
+                                    <button class="mi-inner-tab" data-at-tab="notes" type="button">Notes</button>
+                                    <button class="mi-inner-tab" data-at-tab="graphics" type="button">🎨 Graphics</button>
+                                    <button class="mi-inner-tab" data-at-tab="guidance" type="button">📖 Writing Guide</button>
+                                </div>
+                                <div id="at-tab-content">
+                                    <div id="at-panel-body" class="mi-inner-panel active"></div>
+                                    <div id="at-panel-recommended" class="mi-inner-panel"></div>
+                                    <div id="at-panel-notes" class="mi-inner-panel"></div>
+                                    <div id="at-panel-graphics" class="mi-inner-panel"></div>
+                                    <div id="at-panel-guidance" class="mi-inner-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="report-panel-pricing-analysis" class="report-panel">
+                            <div class="report-document">
+                                <div class="report-doc-header">
+                                    <div class="report-doc-header-row">
+                                        <h1>MDR Pricing Analysis &amp; Vendor Comparison</h1>
+                                        <button class="report-export-btn" onclick="exportPricingAnalysisHTML()" title="Export as standalone HTML">
+                                            <span class="icon">🌐</span> Export HTML
+                                        </button>
+                                    </div>
+                                    <p class="report-doc-subtitle" id="pa-subtitle">Pricing model maturity, dimension scoring, and cross-vendor pricing comparison across MDR service providers.</p>
+                                </div>
+                                <div class="pa-inner-tabs" id="pa-inner-tabs">
+                                    <button class="pa-inner-tab active" data-pa-tab="market-overview" type="button">Market Overview</button>
+                                    <button class="pa-inner-tab" data-pa-tab="dimension-deep-dive" type="button">Dimension Deep Dive</button>
+                                    <button class="pa-inner-tab" data-pa-tab="vendor-comparison" type="button">Vendor Comparison</button>
+                                    <button class="pa-inner-tab" data-pa-tab="vendor-detail" type="button">Vendor Detail</button>
+                                    <button class="pa-inner-tab" data-pa-tab="cohort-analysis" type="button">Cohort Analysis</button>
+                                    <button class="pa-inner-tab pa-ai-tab" data-pa-tab="ai-pricing" type="button">AI &amp; Pricing</button>
+                                </div>
+                                <div id="pa-tab-content">
+                                    <div id="pa-panel-market-overview" class="pa-inner-panel active"></div>
+                                    <div id="pa-panel-dimension-deep-dive" class="pa-inner-panel"></div>
+                                    <div id="pa-panel-vendor-comparison" class="pa-inner-panel"></div>
+                                    <div id="pa-panel-vendor-detail" class="pa-inner-panel"></div>
+                                    <div id="pa-panel-cohort-analysis" class="pa-inner-panel"></div>
+                                    <div id="pa-panel-ai-pricing" class="pa-inner-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blumira Deep Dive Panel -->
+                    <div id="report-panel-blumira-deep-dive" class="report-panel">
+                        <div class="report-document">
+                            <div class="report-doc-header">
+                                <div class="report-doc-header-row">
+                                    <h1>Blumira — Vendor Capability Deep Dive</h1>
+                                    <button class="report-export-btn" onclick="exportBlumiraDeepDiveHTML()" title="Export as HTML">
+                                        <span class="icon">📥</span> Export HTML
+                                    </button>
+                                </div>
+                                <p class="report-doc-subtitle">Cross-schema capability analysis with unmapped capability assessment</p>
+                            </div>
+                            <div class="mi-inner-tabs" id="bdd-inner-tabs">
+                                <button class="mi-inner-tab active" data-bdd-tab="overview" type="button">Overview</button>
+                                <button class="mi-inner-tab" data-bdd-tab="mdr" type="button">MDR Services</button>
+                                <button class="mi-inner-tab" data-bdd-tab="precyber" type="button">Preemptive Cyber</button>
+                                <button class="mi-inner-tab" data-bdd-tab="dfir" type="button">DFIR</button>
+                                <button class="mi-inner-tab" data-bdd-tab="unmapped" type="button">Unmapped Capabilities</button>
+                            </div>
+                            <div id="bdd-tab-content">
+                                <div id="bdd-panel-overview" class="mi-inner-panel active"></div>
+                                <div id="bdd-panel-mdr" class="mi-inner-panel"></div>
+                                <div id="bdd-panel-precyber" class="mi-inner-panel"></div>
+                                <div id="bdd-panel-dfir" class="mi-inner-panel"></div>
+                                <div id="bdd-panel-unmapped" class="mi-inner-panel"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Magic Quadrant Analysis Panel -->
+                    <div id="report-panel-mq-analysis-report" class="report-panel">
+                        <div class="report-document">
+                            <div class="report-doc-header">
+                                <div class="report-doc-header-row">
+                                    <h1 id="mq-report-title">Magic Quadrant &mdash; Managed Detection &amp; Response Services</h1>
+                                    <select id="mq-schema-select" onchange="onMQSchemaChange()" style="padding:6px 12px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-primary); font-size:13px; cursor:pointer; margin-right:10px;">
+                                        <option value="mdr" selected>MDR Services</option>
+                                        <option value="cnapp">CNAPP</option>
+                                    </select>
+                                    <select id="mq-score-mode-select" onchange="onMQScoreModeChange()" title="CNAPP score mode" style="display:none; padding:6px 12px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-primary); font-size:13px; cursor:pointer; margin-right:10px;">
+                                        <option value="v1" selected>v1 — Heuristic</option>
+                                        <option value="v2">v2 — Evidence-enriched</option>
+                                    </select>
+                                    <button class="report-export-btn" onclick="exportMQAnalysisAsMarkdown()" title="Export as Markdown">
+                                        <span class="icon">📥</span> Export .md
+                                    </button>
+                                    <button class="report-export-btn" onclick="exportMQAnalysisAsHTML()" title="Export as HTML">
+                                        <span class="icon">🌐</span> Export .html
+                                    </button>
+                                </div>
+                                <p class="report-doc-subtitle" id="mq-report-subtitle">Vendor positioning based on 15 weighted criteria across Ability to Execute and Completeness of Vision axes &bull; Schema: <strong>MDR_MQ_Gap_Schema_App.json</strong></p>
+                            </div>
+                            <div class="pa-inner-tabs" id="mq-inner-tabs">
+                                <button class="pa-inner-tab active" data-mq-tab="quadrant-overview" type="button">Quadrant Overview</button>
+                                <button class="pa-inner-tab" data-mq-tab="criteria-analysis" type="button">Criteria Analysis</button>
+                                <button class="pa-inner-tab" data-mq-tab="vendor-rankings" type="button">Vendor Rankings</button>
+                                <button class="pa-inner-tab" data-mq-tab="score-heatmap" type="button">Score Heatmap</button>
+                                <button class="pa-inner-tab" data-mq-tab="boundary-analysis" type="button">Boundary Analysis</button>
+                                <button class="pa-inner-tab" data-mq-tab="methodology" type="button">Methodology</button>
+                                <button class="pa-inner-tab" data-mq-tab="vendor-deep-dive" type="button">🔍 Vendor Deep Dive</button>
+                            </div>
+                            <div id="mq-tab-content">
+                                <div id="mq-panel-quadrant-overview" class="pa-inner-panel active"></div>
+                                <div id="mq-panel-criteria-analysis" class="pa-inner-panel"></div>
+                                <div id="mq-panel-vendor-rankings" class="pa-inner-panel"></div>
+                                <div id="mq-panel-score-heatmap" class="pa-inner-panel"></div>
+                                <div id="mq-panel-boundary-analysis" class="pa-inner-panel"></div>
+                                <div id="mq-panel-methodology" class="pa-inner-panel"></div>
+                                <div id="mq-panel-vendor-deep-dive" class="pa-inner-panel"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Innovation Profile Panel -->
+                    <div id="report-panel-innovation-profile" class="report-panel">
+                        <div class="report-document">
+                            <div class="report-doc-header">
+                                <div class="report-doc-header-row">
+                                    <h1 id="ip-report-title">Innovation Profile</h1>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <select id="ip-version-select" onchange="onIPVersionChange()" style="padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); font-size: 13px; cursor: pointer;">
+                                            <option value="v1">v1 — Extended Analysis</option>
+                                            <option value="v2" selected>v2 — Gartner IP Template</option>
+                                        </select>
+                                        <button class="report-export-btn" onclick="exportInnovationProfileAsMarkdown()" title="Export as Markdown">
+                                            <span class="icon">📥</span> Export .md
+                                        </button>
+                                        <button class="report-export-btn" onclick="exportInnovationProfileAsHTML()" title="Export as HTML" style="background: #107c10;">
+                                            <span class="icon">🌐</span> Export .html
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="report-doc-subtitle" id="ip-report-subtitle">Hype Cycle Innovation Profile</p>
+                            </div>
+
+                            <!-- v1: Multi-tab extended analysis (original) -->
+                            <div id="ip-v1-container" style="display: none;">
+                                <div class="mi-inner-tabs" id="ip-inner-tabs">
+                                    <button class="mi-inner-tab active" data-ip-tab="overview" type="button">Overview</button>
+                                    <button class="mi-inner-tab" data-ip-tab="analysis" type="button">Analysis</button>
+                                    <button class="mi-inner-tab" data-ip-tab="position" type="button">Position &amp; Adoption</button>
+                                    <button class="mi-inner-tab" data-ip-tab="sbd-mapping" type="button">SBD-AI Mapping</button>
+                                    <button class="mi-inner-tab" data-ip-tab="knowledge-graphs" type="button">Knowledge Graphs</button>
+                                    <button class="mi-inner-tab" data-ip-tab="user-advice" type="button">User Advice</button>
+                                    <button class="mi-inner-tab" data-ip-tab="vendors" type="button">Sample Vendors</button>
+                                </div>
+                                <div id="ip-tab-content">
+                                    <div id="ip-panel-overview" class="mi-inner-panel active"></div>
+                                    <div id="ip-panel-analysis" class="mi-inner-panel"></div>
+                                    <div id="ip-panel-position" class="mi-inner-panel"></div>
+                                    <div id="ip-panel-sbd-mapping" class="mi-inner-panel"></div>
+                                    <div id="ip-panel-knowledge-graphs" class="mi-inner-panel"></div>
+                                    <div id="ip-panel-user-advice" class="mi-inner-panel"></div>
+                                    <div id="ip-panel-vendors" class="mi-inner-panel"></div>
+                                </div>
+                            </div>
+
+                            <!-- v2: Gartner Innovation Profile template (single-scroll document) -->
+                            <div id="ip-v2-container">
+                                <div id="ip-v2-hc-badge" style="margin-bottom: 20px;"></div>
+                                <div id="ip-v2-definition" class="ip-v2-section"></div>
+                                <div id="ip-v2-why-important" class="ip-v2-section"></div>
+                                <div id="ip-v2-business-impact" class="ip-v2-section"></div>
+                                <div id="ip-v2-drivers" class="ip-v2-section"></div>
+                                <div id="ip-v2-obstacles" class="ip-v2-section"></div>
+                                <div id="ip-v2-user-recommendations" class="ip-v2-section"></div>
+                                <div id="ip-v2-sbd-mapping" class="ip-v2-section"></div>
+                                <div id="ip-v2-knowledge-graphs" class="ip-v2-section"></div>
+                                <div id="ip-v2-sample-vendors" class="ip-v2-section"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Cross-Section Sheet View -->
+            <section id="cross-section-view" class="view-container">
+                <div class="cross-section-container">
+                    <div class="cross-section-header">
+                        <div>
+                            <h2>Cross-Section Analysis Sheet</h2>
+                            <p>Pivot-style cross-sections across cohorts and scores. Uses the current Score Mode and any active filters.</p>
+                        </div>
+                        <div class="cross-section-header-actions">
+                            <button id="cross-open-config" class="btn-secondary" type="button" title="Configure">⚙ Configure</button>
+                            <button id="cross-edit-filters" class="btn-secondary" type="button">Edit Filters (Analysis)</button>
+                            <button id="cross-export-csv" class="btn-secondary" type="button">Export CSV</button>
+                        </div>
+                    </div>
+
+                    <div class="cross-section-subheader">
+                        <div class="cross-filters-inline">
+                            <strong>Filters:</strong> <span id="cross-filters-summary">None</span>
+                        </div>
+                        <div class="cross-metric-inline">
+                            <strong>Metric:</strong> <span id="cross-metric-summary">Average</span>
+                        </div>
+                    </div>
+
+                    <div id="cross-section-table" class="cross-section-table"></div>
+                </div>
+            </section>
+
+            <!-- Cross-Section Config Modal -->
+            <div id="cross-section-config-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Configure Cross-Section</h3>
+                        <button class="modal-close" type="button">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="cross-config-grid">
+                            <div class="cross-config-block">
+                                <div class="cross-config-title">Cell Metric</div>
+                                <div class="cross-config-row">
+                                    <label for="cross-config-metric">Metric</label>
+                                    <select id="cross-config-metric">
+                                        <option value="avg">Average score</option>
+                                        <option value="count">Count (vendors with a numeric score)</option>
+                                        <option value="percent">% of total vendors</option>
+                                    </select>
+                                </div>
+                                <div class="cross-config-row">
+                                    <label>&nbsp;</label>
+                                    <button id="cross-config-clear" class="btn-secondary" type="button">Clear rows &amp; columns</button>
+                                </div>
+                                <div class="cross-config-note">
+                                    % uses the total number of vendors in the current filtered set as the denominator.
+                                </div>
+                            </div>
+
+                            <div class="cross-config-block">
+                                <div class="cross-config-title">Axes</div>
+                                <div class="cross-axis-grid">
+                                    <div class="cross-axis">
+                                        <div class="cross-axis-header">
+                                            <strong>Columns (X)</strong>
+                                            <div class="cross-axis-type">
+                                                <label for="cross-config-x-type">Type</label>
+                                                <select id="cross-config-x-type">
+                                                    <option value="cohorts">Cohorts</option>
+                                                    <option value="scores">Scores</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="cross-config-x-items" class="cross-axis-items"></div>
+                                        <div class="cross-axis-actions">
+                                            <button id="cross-config-x-add" class="btn-secondary" type="button">Add Column</button>
+                                            <button id="cross-config-x-add-pillars" class="btn-secondary" type="button">Add all pillars</button>
+                                            <button id="cross-config-x-add-subpillars" class="btn-secondary" type="button">Add all sub-pillars</button>
+                                            <button id="cross-config-x-clear" class="btn-secondary" type="button">Clear columns</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="cross-axis">
+                                        <div class="cross-axis-header">
+                                            <strong>Rows (Y)</strong>
+                                            <div class="cross-axis-type">
+                                                <label for="cross-config-y-type">Type</label>
+                                                <select id="cross-config-y-type">
+                                                    <option value="scores">Scores</option>
+                                                    <option value="cohorts">Cohorts</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="cross-config-y-items" class="cross-axis-items"></div>
+                                        <div class="cross-axis-actions">
+                                            <button id="cross-config-y-add" class="btn-secondary" type="button">Add Row</button>
+                                            <button id="cross-config-y-add-pillars" class="btn-secondary" type="button">Add all pillars</button>
+                                            <button id="cross-config-y-add-subpillars" class="btn-secondary" type="button">Add all sub-pillars</button>
+                                            <button id="cross-config-y-clear" class="btn-secondary" type="button">Clear rows</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Field Info Modal -->
+    <div id="field-info-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-values" class="modal-values"></div>
+        </div>
+    </div>
+
+    <!-- Vendor Details Modal -->
+    <div id="vendor-details-modal" class="modal">
+        <div class="modal-content vendor-report-content">
+            <div class="vendor-report-header">
+                <div class="vendor-report-title-block">
+                    <h2 id="vendor-report-title">Vendor Report</h2>
+                    <div id="vendor-report-subtitle" class="vendor-report-subtitle"></div>
+                </div>
+                <div class="vendor-report-actions">
+                    <button id="vendor-report-copy-json" class="btn-secondary" type="button">Copy JSON</button>
+                    <button id="vendor-report-download-json" class="btn-secondary" type="button">Download JSON</button>
+                    <button class="modal-close" type="button" aria-label="Close">&times;</button>
+                </div>
+            </div>
+
+            <div class="vendor-report-tabs" role="tablist" aria-label="Vendor report tabs">
+                <button class="vendor-report-tab active" type="button" data-tab="summary" role="tab" aria-selected="true">Summary</button>
+                <button class="vendor-report-tab" type="button" data-tab="scores" role="tab" aria-selected="false">Scores</button>
+                <button class="vendor-report-tab" type="button" data-tab="evidence" role="tab" aria-selected="false">Evidence & Rationale</button>
+                <button class="vendor-report-tab" type="button" data-tab="raw" role="tab" aria-selected="false">Raw</button>
+            </div>
+
+            <div class="vendor-report-toolbar">
+                <div class="vendor-report-toolbar-left">
+                    <input id="vendor-report-search" class="vendor-report-search" type="text" placeholder="Search sub-pillars, rationale, sources…" />
+                </div>
+                <div class="vendor-report-toolbar-right">
+                    <button id="vendor-report-expand-all" class="btn-secondary" type="button">Expand all</button>
+                    <button id="vendor-report-collapse-all" class="btn-secondary" type="button">Collapse all</button>
+                </div>
+            </div>
+
+            <div class="vendor-report-body">
+                <section id="vendor-report-panel-summary" class="vendor-report-panel active" data-panel="summary" role="tabpanel"></section>
+                <section id="vendor-report-panel-scores" class="vendor-report-panel" data-panel="scores" role="tabpanel"></section>
+                <section id="vendor-report-panel-evidence" class="vendor-report-panel" data-panel="evidence" role="tabpanel"></section>
+                <section id="vendor-report-panel-raw" class="vendor-report-panel" data-panel="raw" role="tabpanel"></section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendors Export Modal -->
+    <div id="vendors-export-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Export</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="vendors-export-grid">
+                    <div class="vendors-export-row">
+                        <label for="vendors-export-format">Format</label>
+                        <select id="vendors-export-format">
+                            <option value="csv">CSV</option>
+                            <option value="json">JSON</option>
+                        </select>
+                    </div>
+                    <div class="vendors-export-row">
+                        <label for="vendors-export-data">Data</label>
+                        <select id="vendors-export-data">
+                            <option value="vendors">Vendors (current filtered set)</option>
+                            <option value="schema">Schema / Metadata</option>
+                        </select>
+                    </div>
+
+                    <div id="vendors-export-scope" class="vendors-export-scope" style="display:none;">
+                        <div class="vendors-export-row">
+                            <label for="vendors-export-scope-mode">Scope</label>
+                            <select id="vendors-export-scope-mode">
+                                <option value="table">All fields (flattened columns)</option>
+                                <option value="raw">All fields (raw)</option>
+                                <option value="selected">Selected fields only</option>
+                            </select>
+                        </div>
+
+                        <div id="vendors-export-fields" class="vendors-export-fields" style="display:none;">
+                            <div class="vendors-export-fields-toolbar">
+                                <input id="vendors-export-fields-search" type="text" placeholder="Search fields…" />
+                                <div class="vendors-export-fields-actions">
+                                    <button id="vendors-export-fields-select-visible" class="btn-secondary" type="button">Select visible</button>
+                                    <button id="vendors-export-fields-select-all" class="btn-secondary" type="button">Select all</button>
+                                    <button id="vendors-export-fields-select-none" class="btn-secondary" type="button">Select none</button>
+                                </div>
+                            </div>
+                            <div class="vendors-export-fields-count" id="vendors-export-fields-count"></div>
+                            <div class="vendors-export-fields-list" id="vendors-export-fields-list"></div>
+                            <div class="vendors-export-fields-help">
+                                Tip: you can export nested values using dot paths (e.g., <code>pillar_scores_validated.PLA</code>).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vendors-export-note" id="vendors-export-note">
+                        Vendors export respects the current Filters &amp; Search.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="vendors-export-cancel" class="btn-secondary" type="button">Cancel</button>
+                <button id="vendors-export-run" class="btn-primary" type="button">Export</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sub-Pillars Filter Modal -->
+    <div id="column-visibility-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Manage Columns</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="column-visibility-container">
+                    <!-- Base columns -->
+                    <div class="column-section">
+                        <h3>Base Columns</h3>
+                        <label class="disabled-column"><input type="checkbox" class="col-visibility-check" data-column="vendor" checked disabled> Vendor</label>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="region" checked> Region</label>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="specialization" checked> Specialization</label>
+                        <label id="type-col-visibility-label"><input type="checkbox" class="col-visibility-check" data-column="ir_focus_type" checked> Type</label>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="is_ai_first" checked> AI-First</label>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="is_startup" checked> Startup</label>
+                    </div>
+                    
+                    <!-- Pillar columns (generated dynamically by JS based on active schema) -->
+                    <div class="column-section">
+                        <h3>Pillars</h3>
+                        <div id="pillars-visibility-list">
+                            <!-- Dynamic pillar visibility checkboxes inserted here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Sub-pillar columns -->
+                    <div class="column-section">
+                        <h3>Sub-Pillars</h3>
+                        <div id="sub-pillars-visibility-list">
+                            <!-- Dynamic sub-pillars will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="col-modal-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: false, theme: 'dark' });</script>
+    <script src="{{ url_for('static', filename='rough.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='app.js', v=(static_versions.app_js if static_versions else 1)) }}"></script>
+</body>
+</html>

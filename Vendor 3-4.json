@@ -1,0 +1,207 @@
+{
+  "schema_ref": "schema3-3.json",
+  "schema_version": "3.2",
+  "vendor_count": 4,
+  "vendors": [
+    {
+      "vendor": "CrowdStrike",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Platform-Led Endpoint Response",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 4.75,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 5,
+          "REM-03": 4,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Charlotte AI and Falcon RTR provide autonomous host isolation and stop ransomware before encryption. Source: https://www.crowdstrike.com/ [6, 7]",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Deloitte",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Crisis Leadership",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.75,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 5,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "CIR3 framework captures over 700 data points per engagement using agentic AI to coordinate crisis communication. Source: https://www.deloitte.com/ [4, 5]",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Kroll",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Litigation Support",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 3.25,
+        "REM": 2.75,
+        "PMG": 5.0,
+        "LAW": 5.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 2
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 5,
+          "PMG-03": 5,
+          "PMG-04": 5
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "Elite global IR provider dominant in high-stakes litigation support and lab-accredited evidence handling. Source: https://www.kroll.com/ [8, 1]",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Secureworks",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Taegis Platform Response",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Taegis platform uses ML-driven triage for APTs and integrates with over 15 SOAR platforms for automated containment. Source: https://www.secureworks.com/ [9, 10]",
+      "schema_ref": "schema3-3.json"
+    }
+  ]
+}

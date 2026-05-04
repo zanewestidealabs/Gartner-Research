@@ -1,0 +1,17 @@
+[Unit]
+Description=DFIR Vendor Analysis Platform
+After=network.target
+
+[Service]
+Type=simple
+User=vm-ssh
+WorkingDirectory=/home/vm-ssh/gartner
+Environment="PATH=/home/vm-ssh/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/usr/bin/python3 /home/vm-ssh/gartner/app.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

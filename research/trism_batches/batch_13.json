@@ -1,0 +1,2376 @@
+[
+  {
+    "vendor": "Unisys",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 3.38,
+      "INF": 4.62
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 2.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.25
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/enterprise-computing/",
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Queensland Transport and Main Roads: Driving identity security forward Smart biometrics and cloud solutions secure 5 million driver licenses.",
+            "matched_terms": [
+              "entity",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Read more Queensland Transport and Main Roads: Driving identity security forward Smart biometrics and cloud solutions secure 5 million driver licenses.",
+            "matched_terms": [
+              "entity",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/enterprise-computing/",
+            "excerpt": "Queensland Transport and Main Roads: Driving identity security forward Smart biometrics and cloud solutions secure 5 million driver licenses.",
+            "matched_terms": [
+              "entity",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/enterprise-computing/",
+            "excerpt": "Read more Queensland Transport and Main Roads: Driving identity security forward Smart biometrics and cloud solutions secure 5 million driver licenses.",
+            "matched_terms": [
+              "entity",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Queensland Transport and Main Roads: Driving identity security forward",
+            "matched_terms": [
+              "entity"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Does your identity and access management (IAM) go the distance? Assess your current IAM maturity level and gain a roadmap for improving it. The Digital Identity and Access Management solution prioritizes people, process, technology, operations and governance.",
+            "matched_terms": [
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Strengthen security with an identity-centric approach Does your identity and access management (IAM) go the distance? Assess your current IAM maturity level and gain a roadmap for improving it. The Digital Identity and Access Management solution prioritizes p…",
+            "matched_terms": [
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "See how analysts rank us Build a secure and resilient enterprise Security Managed Services Security Transformation Continuous Threat Exposure Management Digital Identity and Access Management Secure Network Access Managed Detection and Response Cyber Recovery…",
+            "matched_terms": [
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "The Digital Identity and Access Management solution prioritizes people, process, technology, operations and governance.",
+            "matched_terms": [
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Microsegmentation to fortify your network with close-range defense Managed services for Secure Access Service Edge(SASE) Zero Trust Network Access for network, application and data access security Managed SD-WAN tailored to your business needs Expl…",
+            "matched_terms": [
+              "data",
+              "time",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Immutable storage to protect vault backups from tampering Automated orchestration for consistent backup testing and confident restore to production",
+            "matched_terms": [
+              "automated",
+              "immutable"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise Cybersecurity service management Flexible deployments Solution overview Assess exposure and mitigate your threat risk Prioritiz…",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Rapid recovery of core business services after a cyber attack Immutable storage to protect vault backups from tampering Automated orchestration for consistent backup testing and confident restore to production Experienced advisory, implementation a…",
+            "matched_terms": [
+              "automated",
+              "immutable"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Responsible AI Statement",
+            "matched_terms": [
+              "state",
+              "responsible ai"
+            ],
+            "relevance_score": 7
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise Cybersecurity service management Flexible deployments Solution overview Assess exposure and mitigate your threat risk Prioritiz…",
+            "matched_terms": [
+              "deployment",
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Governance, risk management and compliance expertise",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Automated orchestration for consistent backup testing and confident restore to production",
+            "matched_terms": [
+              "automated",
+              "back"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Governance, risk management and compliance expertise Cybersecurity service management",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Security and system event log collection, retention, correlation and analysis Security monitoring of networks, systems, endpoints and data Threat detection, event enrichment and alerting Incident management, including post-incident analysis and inc…",
+            "matched_terms": [
+              "security",
+              "escalation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Incident management, including post-incident analysis and incident escalation",
+            "matched_terms": [
+              "escalation"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Threat detection, event enrichment and alerting Incident management, including post-incident analysis and incident escalation",
+            "matched_terms": [
+              "escalation"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Incident management, including post-incident analysis and incident escalation Solution overview",
+            "matched_terms": [
+              "escalation"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "We combine proprietary intelligence and automation with best-in-class tools to build a comprehensive defense system that balances expert intervention with AI-driven efficiency to help keep your systems protected while you focus on your core business.",
+            "matched_terms": [
+              "class"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Cyberattacks don’t happen on a schedule. The Managed Detection and Response solution detects, responds to and mitigates threats and manages incidents in real time. It includes 24/7/365 monitoring to detect potential threats and provides platform management an…",
+            "matched_terms": [
+              "detection",
+              "monitoring",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Automated orchestration for consistent backup testing and confident restore to production Experienced advisory, implementation and managed services and incident response",
+            "matched_terms": [
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "The Managed Detection and Response solution detects, responds to and mitigates threats and manages incidents in real time.",
+            "matched_terms": [
+              "detection",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "It includes 24/7/365 monitoring to detect potential threats and provides platform management and scalable incident response.",
+            "matched_terms": [
+              "monitoring",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Security and system event log collection, retention, correlation and analysis Security monitoring of networks, systems, endpoints and data Threat detection, event enrichment and alerting Incident management, including post-incident analysis and inc…",
+            "matched_terms": [
+              "detection",
+              "monitoring",
+              "incident"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Smart biometrics and cloud solutions secure 5 million driver licenses.",
+            "matched_terms": [
+              "metrics"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Managed Detection and Response",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Threat detection, event enrichment and alerting",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Smart biometrics and cloud solutions secure 5 million driver licenses",
+            "matched_terms": [
+              "metrics"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Queensland Transport and Main Roads: Driving identity security forward Smart biometrics and cloud solutions secure 5 million driver licenses.",
+            "matched_terms": [
+              "metrics"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Zero Trust Network Access for network, application and data access security",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Your network powers critical operations and safeguards valuable data residing in the cloud or on-premises. Our Secure Network Access solution implements robust protection through end-to-end network segmentation, safeguarding data and application access with a…",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Managed services for Secure Access Service Edge(SASE) Zero Trust Network Access for network, application and data access security",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Zero Trust Network Access for network, application and data access security Managed SD-WAN tailored to your business needs",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Our Secure Network Access solution implements robust protection through end-to-end network segmentation, safeguarding data and application access with a well-architected Zero Trust framework.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Smart biometrics and cloud solutions secure 5 million driver licenses.",
+            "matched_terms": [
+              "cloud",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Unifying fragmented IT across 60 countries with cloud, security and digital workplace.",
+            "matched_terms": [
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Attack surface discovery",
+            "matched_terms": [
+              "discover",
+              "discovery"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Smart biometrics and cloud solutions secure 5 million driver licenses",
+            "matched_terms": [
+              "cloud",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Queensland Transport and Main Roads: Driving identity security forward Smart biometrics and cloud solutions secure 5 million driver licenses.",
+            "matched_terms": [
+              "cloud",
+              "metrics"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Security and system event log collection, retention, correlation and analysis Security monitoring of networks, systems, endpoints and data Threat detection, event enrichment and alerting Incident management, including post-incident analysis and inc…",
+            "matched_terms": [
+              "retention",
+              "alerting"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Security and system event log collection, retention, correlation and analysis",
+            "matched_terms": [
+              "retention"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Threat detection, event enrichment and alerting",
+            "matched_terms": [
+              "alerting"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Automated orchestration for consistent backup testing and confident restore to production",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Security and system event log collection, retention, correlation and analysis",
+            "matched_terms": [
+              "retention"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Governance, risk management and compliance expertise",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Governance, risk management and compliance expertise Cybersecurity service management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Highlights Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise Cybersecurity service management Flexible deployments Solution overview Assess exposure and mitigate your threat risk Prioritiz…",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Cloud Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.unisys.com/solutions/cybersecurity-solutions/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Technology powers your business. Protect your digital assets with security-integrated business solutions from Unisys that help secure data, address threats, fortify customer trust and comply with regulations.",
+            "matched_terms": [
+              "security",
+              "digital",
+              "data",
+              "integrated"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Cybersecurity solutions Technology powers your business. Protect your digital assets with security-integrated business solutions from Unisys that help secure data, address threats, fortify customer trust and comply with regulations.",
+            "matched_terms": [
+              "security",
+              "digital",
+              "data",
+              "integrated"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Technology powers your business. Protect your digital assets with security-integrated business solutions from Unisys that help secure data, address threats, fortify customer trust and comply with regulations. Start your assessment",
+            "matched_terms": [
+              "security",
+              "digital",
+              "data",
+              "integrated"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "Protect your digital assets with security-integrated business solutions from Unisys that help secure data, address threats, fortify customer trust and comply with regulations.",
+            "matched_terms": [
+              "security",
+              "digital",
+              "data",
+              "integrated"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.unisys.com/solutions/cybersecurity-solutions/",
+            "excerpt": "See how analysts rank us Build a secure and resilient enterprise Security Managed Services Security Transformation Continuous Threat Exposure Management Digital Identity and Access Management Secure Network Access Managed Detection and Response Cyber Recovery…",
+            "matched_terms": [
+              "security",
+              "digital",
+              "access",
+              "detection"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 2.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.25
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 3.38,
+      "INF": 4.62
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Queensland Transport and Main Roads: Driving identity security forward Smart biometrics and cloud solutions secure 5 million driver licenses.\". Also: \"Read more Queensland Transport and Main Roads: Driving identity security forward Smart biometrics and cloud solutions secure 5 million driver license…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Does your identity and access management (IAM) go the distance? Assess your current IAM maturity level and gain a roadmap for improving it. The Digital Identity and Access Management solution priorit…\". Also: \"Strengthen security with an identity-centric approach Does your identity and access management (IAM) go the distance? Assess your current IAM maturit…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise\". Also: \"Immutable storage to protect vault backups from tampering Automated orchestration for consistent backup testing and confident restore to production\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Highlights Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise Cybersecurity service management Flexible deployments Solution over…\". Also: \"Governance, risk management and compliance expertise\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Highlights Security and system event log collection, retention, correlation and analysis Security monitoring of networks, systems, endpoints and data Threat detection, event enrichment and alerting I…\". Also: \"Incident management, including post-incident analysis and incident escalation\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Cyberattacks don’t happen on a schedule. The Managed Detection and Response solution detects, responds to and mitigates threats and manages incidents in real time. It includes 24/7/365 monitoring to …\". Also: \"Automated orchestration for consistent backup testing and confident restore to production Experienced advisory, implementation and managed services a…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Smart biometrics and cloud solutions secure 5 million driver licenses.\". Also: \"Managed Detection and Response\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Zero Trust Network Access for network, application and data access security\". Also: \"Your network powers critical operations and safeguards valuable data residing in the cloud or on-premises. Our Secure Network Access solution impleme…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Smart biometrics and cloud solutions secure 5 million driver licenses.\". Also: \"Unifying fragmented IT across 60 countries with cloud, security and digital workplace.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Highlights Security and system event log collection, retention, correlation and analysis Security monitoring of networks, systems, endpoints and data Threat detection, event enrichment and alerting I…\". Also: \"Security and system event log collection, retention, correlation and analysis\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Governance, risk management and compliance expertise\". Also: \"Global cybersecurity experts for audits, assessments and consulting Governance, risk management and compliance expertise\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Technology powers your business. Protect your digital assets with security-integrated business solutions from Unisys that help secure data, address threats, fortify customer trust and comply with reg…\". Also: \"Cybersecurity solutions Technology powers your business. Protect your digital assets with security-integrated business solutions from Unisys that hel…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:33:12.870629+00:00",
+      "urls_used": [
+        "https://www.unisys.com/solutions/digital-workplace/ai/",
+        "https://www.unisys.com/solutions/cybersecurity-solutions/",
+        "https://www.unisys.com/solutions/enterprise-computing/",
+        "https://www.unisys.com/about-us/innovation/ai/",
+        "https://www.unisys.com/solutions/digital-workplace/"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Veracode",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 3.5,
+      "INF": 4.62
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 2.25,
+      "RUN-04": 2.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.25,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.veracode.com/products"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity.",
+            "matched_terms": [
+              "apps",
+              "runtime",
+              "apis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "DAST Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity.",
+            "matched_terms": [
+              "apps",
+              "runtime",
+              "apis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity. Learn More",
+            "matched_terms": [
+              "apps",
+              "runtime",
+              "apis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Learn More DAST Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity.",
+            "matched_terms": [
+              "apps",
+              "runtime",
+              "apis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Secure coding from inception, slashing risks by 60%. Readily integrates with over 40 tools, delivering real-time, precise feedback with low false positives.",
+            "matched_terms": [
+              "risk",
+              "integrate"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.veracode.com/products/software-composition-analysis"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prioritize the most impactful fixes with context and ultra-low false positives. Go beyond the national vulnerabili…",
+            "matched_terms": [
+              "context",
+              "data",
+              "time",
+              "impact"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prioritize the most impactful fixes with context and ultra-low false positives.",
+            "matched_terms": [
+              "context",
+              "time",
+              "impact"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated policy and governance.",
+            "matched_terms": [
+              "over",
+              "automated",
+              "usage"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Fix the risks that matter, faster Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prioritize the most impactful fixes with context and ultra-low false positives.",
+            "matched_terms": [
+              "context",
+              "time",
+              "impact"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Continuously improve your security posture Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated polic…",
+            "matched_terms": [
+              "over",
+              "automated",
+              "usage"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.veracode.com/products",
+          "https://www.veracode.com/products/software-composition-analysis"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Centralized cross-risk analysis, vulnerability and legal risk results, and auditable mitigation workflows.",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Unified reporting & analytics Centralized cross-risk analysis, vulnerability and legal risk results, and auditable mitigation workflows.",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Centralized cross-risk analysis, vulnerability and legal risk results, and auditable mitigation workflows. Secure your software supply chain",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Unified reporting & analytics Centralized cross-risk analysis, vulnerability and legal risk results, and auditable mitigation workflows.",
+            "matched_terms": [
+              "audit",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Reports State of Software Security (SoSS) 2025: A New View of Maturity",
+            "matched_terms": [
+              "reports",
+              "state"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.veracode.com/products",
+          "https://www.veracode.com/products/software-composition-analysis"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Continuously improve your security posture Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated polic…",
+            "matched_terms": [
+              "compliance",
+              "automated",
+              "posture",
+              "continuous"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity.",
+            "matched_terms": [
+              "attacks",
+              "runtime",
+              "apis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "DAST Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity.",
+            "matched_terms": [
+              "attacks",
+              "runtime",
+              "apis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity. Learn More",
+            "matched_terms": [
+              "attacks",
+              "runtime",
+              "apis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Learn More DAST Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity.",
+            "matched_terms": [
+              "attacks",
+              "runtime",
+              "apis"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.veracode.com/products",
+          "https://www.veracode.com/products/software-composition-analysis"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated policy and governance.",
+            "matched_terms": [
+              "single",
+              "policy",
+              "security"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Continuously improve your security posture Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated polic…",
+            "matched_terms": [
+              "single",
+              "policy",
+              "security"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated policy and governance. The Veracode SCA advantage",
+            "matched_terms": [
+              "single",
+              "policy",
+              "security"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach your development pipelines.",
+            "matched_terms": [
+              "policy",
+              "violation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Package Firewall Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach your development pipelines.",
+            "matched_terms": [
+              "policy",
+              "violation"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.veracode.com/products",
+          "https://www.veracode.com/products/software-composition-analysis"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Auto-remediation improves accuracy and fix rates.",
+            "matched_terms": [
+              "rates",
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Reduce fix time Auto-remediation improves accuracy and fix rates.",
+            "matched_terms": [
+              "rates",
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Auto-remediation improves accuracy and fix rates. Proprietary database",
+            "matched_terms": [
+              "rates",
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Reduce fix time Auto-remediation improves accuracy and fix rates.",
+            "matched_terms": [
+              "rates",
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Automate remediation and save developer time.",
+            "matched_terms": [
+              "auto",
+              "remediation"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.veracode.com/products"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach your development pipelines.",
+            "matched_terms": [
+              "violations",
+              "policy"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Package Firewall Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach your development pipelines.",
+            "matched_terms": [
+              "violations",
+              "policy"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach your development pipelines. Learn More",
+            "matched_terms": [
+              "violations",
+              "policy"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Learn More Package Firewall Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach your development pipelines.",
+            "matched_terms": [
+              "violations",
+              "policy"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Policy and Reporting",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.veracode.com/products"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "A suite of application risk management tools purposely built to reduce risk, catch vulnerabilities early, and empower developers to deliver secure code across the SDLC.",
+            "matched_terms": [
+              "purpose"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Security and SDLC integrations",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "See Veracode SDLC integrations",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Integrations",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Build, Scale and Secure Software Fast A suite of application risk management tools purposely built to reduce risk, catch vulnerabilities early, and empower developers to deliver secure code across the SDLC.",
+            "matched_terms": [
+              "purpose"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.veracode.com/products",
+          "https://www.veracode.com/products/software-composition-analysis"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Empower your SDLC with cutting-edge tools that detect vulnerabilities, streamline remediation, and integrate seamlessly-delivering robust protection and actionable insights across every stage Code to cloud scanning",
+            "matched_terms": [
+              "across",
+              "cloud",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "With auto-pull requests, targeted “best-fix” actions, and automated remediation, developers can fix issues faster, directly in their environment-reducing work time from hours to minutes. Stay ahead of newly discovered vulnerabilities",
+            "matched_terms": [
+              "discover",
+              "automated",
+              "remediation"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "AI-powered remediation trained on curated data to automate security flaw fixes by generating a unique and proprietary set of reference patches designed by Veracode experts.",
+            "matched_terms": [
+              "data",
+              "remediation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Empower your SDLC with cutting-edge tools that detect vulnerabilities, streamline remediation, and integrate seamlessly-delivering robust protection and actionable insights across every stage",
+            "matched_terms": [
+              "across",
+              "remediation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Boost productivity through AI-powered remediation, fixing flaws in minutes vs. hours.",
+            "matched_terms": [
+              "productivity",
+              "remediation"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.veracode.com/products",
+          "https://www.veracode.com/products/software-composition-analysis"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prioritize the most impactful fixes with context and ultra-low false positives.",
+            "matched_terms": [
+              "right",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Fix the risks that matter, faster Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prioritize the most impactful fixes with context and ultra-low false positives.",
+            "matched_terms": [
+              "right",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prioritize the most impactful fixes with context and ultra-low false positives. Go beyond the national vulnerabili…",
+            "matched_terms": [
+              "right",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Secure container technologies before production.",
+            "matched_terms": [
+              "before"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach your development pipelines.",
+            "matched_terms": [
+              "before"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.veracode.com/products"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "A suite of application risk management tools purposely built to reduce risk, catch vulnerabilities early, and empower developers to deliver secure code across the SDLC.",
+            "matched_terms": [
+              "across",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Comprehensive Application Risk Management Identify, prioritize, and mitigate application risk across your entire SDLC with AI-powered precision.",
+            "matched_terms": [
+              "across",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Build, Scale and Secure Software Fast A suite of application risk management tools purposely built to reduce risk, catch vulnerabilities early, and empower developers to deliver secure code across the SDLC.",
+            "matched_terms": [
+              "across",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "A suite of application risk management tools purposely built to reduce risk, catch vulnerabilities early, and empower developers to deliver secure code across the SDLC. Risk Manager",
+            "matched_terms": [
+              "across",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Veracode | Application Risk Management Platform",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.veracode.com/products",
+          "https://www.veracode.com/products/software-composition-analysis"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated policy and governance.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "policy"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Continuously improve your security posture Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated polic…",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "policy"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products/software-composition-analysis",
+            "excerpt": "Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties with automated policy and governance. The Veracode SCA advantage",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "policy"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Embracing the AI-Integrated Software Revolution",
+            "matched_terms": [
+              "raci",
+              "integrated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.veracode.com/products",
+            "excerpt": "Blog Embracing the AI-Integrated Software Revolution",
+            "matched_terms": [
+              "raci",
+              "integrated"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 2.25,
+      "RUN-04": 2.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.25,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 3.5,
+      "INF": 4.62
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity.\". Also: \"DAST Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productiv…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prioritize the most impactful fixes with context and u…\". Also: \"Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prio…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Centralized cross-risk analysis, vulnerability and legal risk results, and auditable mitigation workflows.\". Also: \"Unified reporting & analytics Centralized cross-risk analysis, vulnerability and legal risk results, and auditable mitigation workflows.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Continuously improve your security posture Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Contro…\". Also: \"Identify and address runtime vulnerabilities in web apps and APIs through simulated attacks, enhancing security and boosting developer productivity.\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties wit…\". Also: \"Continuously improve your security posture Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-dem…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Auto-remediation improves accuracy and fix rates.\". Also: \"Reduce fix time Auto-remediation improves accuracy and fix rates.\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach your development pipelines.\". Also: \"Package Firewall Fortify your software supply chain by proactively stopping vulnerabilities, malware, and policy violations before they ever reach yo…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"A suite of application risk management tools purposely built to reduce risk, catch vulnerabilities early, and empower developers to deliver secure code across the SDLC.\". Also: \"Security and SDLC integrations\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Empower your SDLC with cutting-edge tools that detect vulnerabilities, streamline remediation, and integrate seamlessly-delivering robust protection and actionable insights across every stage Code to…\". Also: \"With auto-pull requests, targeted “best-fix” actions, and automated remediation, developers can fix issues faster, directly in their environment-redu…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automatically remediate open source license and vulnerability risks in real time - right in your development environment, without breaking code. Prioritize the most impactful fixes with context and u…\". Also: \"Fix the risks that matter, faster Automatically remediate open source license and vulnerability risks in real time - right in your development enviro…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"A suite of application risk management tools purposely built to reduce risk, catch vulnerabilities early, and empower developers to deliver secure code across the SDLC.\". Also: \"Comprehensive Application Risk Management Identify, prioritize, and mitigate application risk across your entire SDLC with AI-powered precision.\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-demand expertise - all from a single platform. Control open source usage and avoid penalties wit…\". Also: \"Continuously improve your security posture Strengthen open source security and compliance with code-to-cloud scans, actionable visibility, and on-dem…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:33:34.562118+00:00",
+      "urls_used": [
+        "https://www.veracode.com/products/fix-ai",
+        "https://www.veracode.com/products",
+        "https://www.veracode.com/resources/ai-security",
+        "https://www.veracode.com/products/software-composition-analysis",
+        "https://www.veracode.com/solutions/ai-security"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Wipro",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 3.88,
+      "RUN": 2.25,
+      "INF": 3.38
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 2.25,
+      "GOV-02": 4.25,
+      "GOV-03": 4.75,
+      "GOV-04": 4.25,
+      "RUN-01": 2.25,
+      "RUN-02": 2.25,
+      "RUN-03": 2.25,
+      "RUN-04": 2.25,
+      "INF-01": 4.25,
+      "INF-02": 2.25,
+      "INF-03": 2.25,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deli…",
+            "matched_terms": [
+              "integrate"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deliver rea…",
+            "matched_terms": [
+              "integrate"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities.",
+            "matched_terms": [
+              "integrate"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Life Sciences & Pharma",
+            "matched_terms": [
+              "life"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "United States",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 3,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Intelligence™ changes the game for our clients, helps us deliver better services, and empowers us to operate better as a business.",
+            "matched_terms": [
+              "changes"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Please fill the required details to access the content",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Intelligence™ changes the game for our clients, helps us deliver better services, and empowers us to operate better as a business. X",
+            "matched_terms": [
+              "changes"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deli…",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deliver rea…",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deli…",
+            "matched_terms": [
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deliver rea…",
+            "matched_terms": [
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities.",
+            "matched_terms": [
+              "workflows",
+              "workflow",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "United States",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Intelligence™ changes the game for our clients, helps us deliver better services, and empowers us to operate better as a business.",
+            "matched_terms": [
+              "changes"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deli…",
+            "matched_terms": [
+              "compliance",
+              "results"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deliver rea…",
+            "matched_terms": [
+              "compliance",
+              "results"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Strengthen enterprise cyber resilience and posture",
+            "matched_terms": [
+              "posture"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Why global trade needs intelligence, not just compliance",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "CyberTransform Strengthen enterprise cyber resilience and posture",
+            "matched_terms": [
+              "posture"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Network & Edge Providers",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "› Network & Edge Providers",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Network & Edge Providers Healthcare",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Technology Products and Services Network & Edge Providers",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Cybersecurity",
+            "matched_terms": [
+              "security"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 4,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deli…",
+            "matched_terms": [
+              "measurable"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deliver rea…",
+            "matched_terms": [
+              "measurable"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact.",
+            "matched_terms": [
+              "measurable"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Automotive",
+            "matched_terms": [
+              "auto"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Intelligence Platforms unlock AI, automation, and ecosystem partnerships to help enterprises modernize, innovate, and scale with agility. The result: faster decisions, smarter operations, and sustainable growth.",
+            "matched_terms": [
+              "auto"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 3,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Skip to Content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Please fill the required details to access the content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "AI powered solutions Wipro Intelligence platform for enterprise growth Skip to Content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Skip to Content Skip to Navigation",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Contact Wipro Please fill the required details to access the content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Please fill the required details to access the content",
+            "matched_terms": [
+              "content",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Contact Wipro Please fill the required details to access the content",
+            "matched_terms": [
+              "content",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Skip to Content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "AI powered solutions Wipro Intelligence platform for enterprise growth Skip to Content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Skip to Content Skip to Navigation",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Transform wealth management with AI-driven insights across the value chain",
+            "matched_terms": [
+              "across",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Partners with Google Cloud to Launch Agentic AI Solutions Across Industries and Functions",
+            "matched_terms": [
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "WealthAI Transform wealth management with AI-driven insights across the value chain",
+            "matched_terms": [
+              "across",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Transform wealth management with AI-driven insights across the value chain Read More",
+            "matched_terms": [
+              "across",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Read More Wipro Partners with Google Cloud to Launch Agentic AI Solutions Across Industries and Functions",
+            "matched_terms": [
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deli…",
+            "matched_terms": [
+              "scale",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deliver rea…",
+            "matched_terms": [
+              "scale",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Intelligence™ changes the game for our clients, helps us deliver better services, and empowers us to operate better as a business.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Intelligence™ changes the game for our clients, helps us deliver better services, and empowers us to operate better as a business. X",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact.",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Transform wealth management with AI-driven insights across the value chain",
+            "matched_terms": [
+              "across",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "WealthAI Transform wealth management with AI-driven insights across the value chain",
+            "matched_terms": [
+              "across",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Transform wealth management with AI-driven insights across the value chain Read More",
+            "matched_terms": [
+              "across",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Privacy at Wipro",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Partner Ecosystem Privacy at Wipro",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.wipro.com/ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deli…",
+            "matched_terms": [
+              "compliance",
+              "scale",
+              "workflows"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities. Every solution is designed to deliver rea…",
+            "matched_terms": [
+              "compliance",
+              "scale",
+              "workflows"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Intelligence™ changes the game for our clients, helps us deliver better services, and empowers us to operate better as a business.",
+            "matched_terms": [
+              "changes",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "Wipro Intelligence™ changes the game for our clients, helps us deliver better services, and empowers us to operate better as a business. X",
+            "matched_terms": [
+              "changes",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.wipro.com/ai/",
+            "excerpt": "We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock new growth opportunities.",
+            "matched_terms": [
+              "compliance",
+              "workflows"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 2.25,
+      "GOV-02": 4.25,
+      "GOV-03": 4.75,
+      "GOV-04": 4.25,
+      "RUN-01": 2.25,
+      "RUN-02": 2.25,
+      "RUN-03": 2.25,
+      "RUN-04": 2.25,
+      "INF-01": 4.25,
+      "INF-02": 2.25,
+      "INF-03": 2.25,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 3.88,
+      "RUN": 2.25,
+      "INF": 3.38
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock …\". Also: \"Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Wipro Intelligence™ changes the game for our clients, helps us deliver better services, and empowers us to operate better as a business.\". Also: \"Please fill the required details to access the content\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock …\". Also: \"Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock …\". Also: \"Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Network & Edge Providers\". Also: \"› Network & Edge Providers\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock …\". Also: \"Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Skip to Content\". Also: \"Please fill the required details to access the content\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Please fill the required details to access the content\". Also: \"Contact Wipro Please fill the required details to access the content\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Transform wealth management with AI-driven insights across the value chain\". Also: \"Wipro Partners with Google Cloud to Launch Agentic AI Solutions Across Industries and Functions\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock …\". Also: \"Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Transform wealth management with AI-driven insights across the value chain\". Also: \"WealthAI Transform wealth management with AI-driven insights across the value chain\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Solve. Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost efficiency, ensure compliance, and unlock …\". Also: \"Turn complexity into clarity with consulting-led, AI-powered solutions built for measurable impact. We integrate intelligence into workflows to boost…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:34:06.896214+00:00",
+      "urls_used": [
+        "https://www.wipro.com/ai/",
+        "https://www.wipro.com/cybersecurity-and-risk/",
+        "https://www.wipro.com/data-and-analytics/",
+        "https://www.wipro.com/ai/responsible-ai/",
+        "https://www.wipro.com/ai/generative-ai/"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

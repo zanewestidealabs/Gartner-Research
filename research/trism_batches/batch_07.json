@@ -1,0 +1,3446 @@
+[
+  {
+    "vendor": "LTI (Larsen & Toubro Infotech)",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.12,
+      "INF": 4.62
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.25,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cloud-infrastructure/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Our Oracle life sciences solutions facilitate direct-to-patient trials, ensure drug-batch validity, and improve batch control and tracking throughout the supply chain lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Life Sciences Our Oracle life sciences solutions facilitate direct-to-patient trials, ensure drug-batch validity, and improve batch control and tracking throughout the supply chain lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Our Oracle life sciences solutions facilitate direct-to-patient trials, ensure drug-batch validity, and improve batch control and tracking throughout the supply chain lifecycle. Learn more",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Learn more Life Sciences Our Oracle life sciences solutions facilitate direct-to-patient trials, ensure drug-batch validity, and improve batch control and tracking throughout the supply chain lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "risk",
+              "metrics"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/",
+          "https://www.ltimindtree.com/solutions/generative-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "Leveraging well-architected framework and sound governance measures, LTIMindtree Gen AI Platform effectively manages proprietary and industry-specific data, while factoring its ethical use, sustainability, privacy and security.",
+            "matched_terms": [
+              "data",
+              "over",
+              "specific"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Identity and Access Management for American Entertainment Conglomerate",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Read More Identity and Access Management for American Entertainment Conglomerate",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Identity and Access Management for American Entertainment Conglomerate Read More",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "Close Save changes Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard Multi-Year Accessibility Plan Modern Slavery Statement Sitemap Do not sell my personal information Privacy St…",
+            "matched_terms": [
+              "access",
+              "changes"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/",
+          "https://www.ltimindtree.com/services/data-engineering/",
+          "https://www.ltimindtree.com/solutions/generative-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Social Media Cookie If you use social media or other third-party credentials to log in to our sites, then that other organization may set a cookie that allows that company to recognize you.",
+            "matched_terms": [
+              "third",
+              "party"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "Close Save changes Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard Multi-Year Accessibility Plan Modern Slavery Statement Sitemap Do not sell my personal information Privacy St…",
+            "matched_terms": [
+              "state",
+              "changes"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "Social Media Cookie If you use social media or other third-party credentials to log in to our sites, then that other organization may set a cookie that allows that company to recognize you.",
+            "matched_terms": [
+              "third",
+              "party"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Governance, Risk, and Compliance (GRC) Service",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Navigate governance, risk, and compliance for lasting success.",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Governance, Risk, and Compliance (GRC) Service",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Navigate governance, risk, and compliance for lasting success.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "risk",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Boost security with robust data measures and generative AI. Governance, Risk, and Compliance (GRC) Service",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Governance, Risk, and Compliance (GRC) Service Navigate governance, risk, and compliance for lasting success.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cloud-infrastructure/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Our Oracle solutions optimize insurance operations, including policy administration, claims management, underwriting automation, and customer engagement platforms.",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Insurance Our Oracle solutions optimize insurance operations, including policy administration, claims management, underwriting automation, and customer engagement platforms.",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Our Oracle solutions optimize insurance operations, including policy administration, claims management, underwriting automation, and customer engagement platforms. Learn more",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Learn more Insurance Our Oracle solutions optimize insurance operations, including policy administration, claims management, underwriting automation, and customer engagement platforms.",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Boost security with robust data measures and generative AI. Governance, Risk, and Compliance (GRC) Service",
+            "matched_terms": [
+              "security",
+              "risk"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 4,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Managed Security Operations for a Top Chemical Manufacturer Enhancing Monitoring, Visibility, and Collaboration",
+            "matched_terms": [
+              "monitoring"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "measurable"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Read More Managed Security Operations for a Top Chemical Manufacturer Enhancing Monitoring, Visibility, and Collaboration",
+            "matched_terms": [
+              "monitoring"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Managed Security Operations for a Top Chemical Manufacturer Enhancing Monitoring, Visibility, and Collaboration Read More",
+            "matched_terms": [
+              "monitoring"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "measurable"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "metrics",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "metrics",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics Blog",
+            "matched_terms": [
+              "metrics",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Regulatory Pressure Meets Operational Reality: Critical Infrastructure Cybersecurity",
+            "matched_terms": [
+              "regulatory"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "AI Regulatory Pressure Meets Operational Reality: Critical Infrastructure Cybersecurity",
+            "matched_terms": [
+              "regulatory"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/",
+          "https://www.ltimindtree.com/services/data-engineering/",
+          "https://www.ltimindtree.com/solutions/generative-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "LTIMindtree provides data engineering services and solutions encompassing bespoke data lakes, data hubs, and data warehouses, and migration to cloud warehouses (Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), Snowflake, Databricks, wi…",
+            "matched_terms": [
+              "data",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Read More Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard Multi-Year Accessibility Plan Modern Slavery Statement Sitemap Do not sell my personal information Privacy Statement R…",
+            "matched_terms": [
+              "access",
+              "logs"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "Close Save changes Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard Multi-Year Accessibility Plan Modern Slavery Statement Sitemap Do not sell my personal information Privacy St…",
+            "matched_terms": [
+              "access",
+              "logs"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Identity and Access Management for American Entertainment Conglomerate",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Accessibility",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/data-engineering/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "LTIMindtree provides data engineering services and solutions encompassing bespoke data lakes, data hubs, and data warehouses, and migration to cloud warehouses (Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), Snowflake, Databricks, wi…",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "cloud",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Customer data platform: Delivering extraordinary data-driven...",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Read More Customer data platform: Delivering extraordinary data-driven...",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Customer data platform: Delivering extraordinary data-driven... Building an integrated data ecosystem that delivers personalized experiences in real time to increase purchases, build brand loyalty, and prevent churn.",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cloud-infrastructure/",
+          "https://www.ltimindtree.com/solutions/generative-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "In this on-demand webinar, we dive into the true impact of generative AI and determine whether it’s just hype or a game-changer.",
+            "matched_terms": [
+              "change",
+              "impact"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Our Oracle life sciences solutions facilitate direct-to-patient trials, ensure drug-batch validity, and improve batch control and tracking throughout the supply chain lifecycle.",
+            "matched_terms": [
+              "lifecycle"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Oracle media services streamline content creation, distribution, rights management, and analytics, boosting monetization and audience engagement.",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "“LTM was our partner of choice for our SaaS implementation. Right from understanding business requirements to the solution, they went the extra mile and exceeded expectations for solutioning, reinforcing their expertise.”",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cloud-infrastructure/",
+            "excerpt": "Choosing the Right Oracle Exadata Cloud Solution for the Banking Sector",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/data-engineering/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Data infrastructure modernization services powered with data privacy and compliance",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Data Engineering Data infrastructure modernization services powered with data privacy and compliance",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Data infrastructure modernization services powered with data privacy and compliance Home",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "The services ensure that the latest data privacy and compliance regulations, such as GDPR, HIPPA, and CCPA, are met.",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "risk",
+              "metrics"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.ltimindtree.com/solutions/generative-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "LTIMindtree Survey Unveils Blueprint for Successful Generative AI Adoption Business leaders believe up to 40% reduction in business costs is possible if generative AI is scaled effectively.",
+            "matched_terms": [
+              "scale",
+              "reduction",
+              "scaled",
+              "adoption"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "LTIMindtree Survey Unveils Blueprint for Successful Generative AI Adoption Business leaders believe up to 40% reduction in business costs is possible if generative AI is scaled effectively.",
+            "matched_terms": [
+              "scale",
+              "reduction",
+              "scaled",
+              "adoption"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "Business leaders believe up to 40% reduction in business costs is possible if generative AI is scaled effectively.",
+            "matched_terms": [
+              "scale",
+              "reduction",
+              "scaled"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "Business leaders believe up to 40% reduction in business costs is possible if generative AI is scaled effectively. Read More",
+            "matched_terms": [
+              "scale",
+              "reduction",
+              "scaled"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/generative-ai/",
+            "excerpt": "Close Save changes Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard Multi-Year Accessibility Plan Modern Slavery Statement Sitemap Do not sell my personal information Privacy St…",
+            "matched_terms": [
+              "access",
+              "changes",
+              "change"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.25,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.12,
+      "INF": 4.62
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Our Oracle life sciences solutions facilitate direct-to-patient trials, ensure drug-batch validity, and improve batch control and tracking throughout the supply chain lifecycle.\". Also: \"Life Sciences Our Oracle life sciences solutions facilitate direct-to-patient trials, ensure drug-batch validity, and improve batch control and track…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Leveraging well-architected framework and sound governance measures, LTIMindtree Gen AI Platform effectively manages proprietary and industry-specific data, while factoring its ethical use, sustainab…\". Also: \"Identity and Access Management for American Entertainment Conglomerate\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Social Media Cookie If you use social media or other third-party credentials to log in to our sites, then that other organization may set a cookie that allows that company to recognize you.\". Also: \"Close Save changes Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Governance, Risk, and Compliance (GRC) Service\". Also: \"Navigate governance, risk, and compliance for lasting success.\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Our Oracle solutions optimize insurance operations, including policy administration, claims management, underwriting automation, and customer engagement platforms.\". Also: \"Insurance Our Oracle solutions optimize insurance operations, including policy administration, claims management, underwriting automation, and custom…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Managed Security Operations for a Top Chemical Manufacturer Enhancing Monitoring, Visibility, and Collaboration\". Also: \"Cyber Risk Quantification: Turning Threats into Measurable Metrics\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Cyber Risk Quantification: Turning Threats into Measurable Metrics\". Also: \"Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"LTIMindtree provides data engineering services and solutions encompassing bespoke data lakes, data hubs, and data warehouses, and migration to cloud warehouses (Amazon Web Services (AWS), Microsoft A…\". Also: \"Read More Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard Multi-Ye…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"LTIMindtree provides data engineering services and solutions encompassing bespoke data lakes, data hubs, and data warehouses, and migration to cloud warehouses (Amazon Web Services (AWS), Microsoft A…\". Also: \"Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"In this on-demand webinar, we dive into the true impact of generative AI and determine whether it’s just hype or a game-changer.\". Also: \"Our Oracle life sciences solutions facilitate direct-to-patient trials, ensure drug-batch validity, and improve batch control and tracking throughout…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data infrastructure modernization services powered with data privacy and compliance\". Also: \"Data Engineering Data infrastructure modernization services powered with data privacy and compliance\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"LTIMindtree Survey Unveils Blueprint for Successful Generative AI Adoption Business leaders believe up to 40% reduction in business costs is possible if generative AI is scaled effectively.\". Also: \"LTIMindtree Survey Unveils Blueprint for Successful Generative AI Adoption Business leaders believe up to 40% reduction in business costs is possible…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:20:25.947862+00:00",
+      "urls_used": [
+        "https://www.ltimindtree.com/services/ai-and-data-analytics/",
+        "https://www.ltimindtree.com/services/cybersecurity/",
+        "https://www.ltimindtree.com/services/cloud-infrastructure/",
+        "https://www.ltimindtree.com/services/data-engineering/",
+        "https://www.ltimindtree.com/solutions/generative-ai/"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "McKinsey & Company",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 0,
+        "total_pages": 5,
+        "excerpts_total": 0,
+        "flag": "fetch_failed",
+        "confidence": 0.0
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "pillar_scores_validated": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes."
+    },
+    "research_flag": "fetch_failed",
+    "research_confidence": 0.0,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:20:47.614325+00:00",
+      "urls_used": [
+        "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
+        "https://www.mckinsey.com/capabilities/quantumblack/our-insights/responsible-ai",
+        "https://www.mckinsey.com/capabilities/risk-and-resilience/our-insights/ai-risk",
+        "https://www.mckinsey.com/capabilities/quantumblack/our-insights/generative-ai",
+        "https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/data-governance"
+      ],
+      "pages_ok": 0,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Microsoft",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Hyperscaler",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Embeds Responsible AI principles and tools (e.g., Fairlearn, InterpretML) into enterprise deployments.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+          "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Microsoft Purview Data Lifecycle Management Microsoft Purview eDiscovery",
+            "matched_terms": [
+              "discovery",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "The content filtering system integrated in the Foundry Models service in Foundry Tools contains:",
+            "matched_terms": [
+              "models",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Content filter types The content filtering system integrated in the Foundry Models service in Foundry Tools contains:",
+            "matched_terms": [
+              "models",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Content filter types The content filtering system integrated in the Foundry Models service in Foundry Tools contains: Neural multiclass classification models that detect and filter harmful content.",
+            "matched_terms": [
+              "models",
+              "model",
+              "integrate"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "The use of these models is optional, but use of protected material code model might be required for Customer Copyright Commitment coverage.",
+            "matched_terms": [
+              "models",
+              "coverage",
+              "model"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 4,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+          "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Data security & governance Identity & network access",
+            "matched_terms": [
+              "data",
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+            "excerpt": "in Foundry is a role created by Microsoft that covers common access scenarios that you can assign to your team members. Key built-in roles used across Azure include Owner, Contributor, and Reader. These roles aren't specific to Foundry resource permissions.",
+            "matched_terms": [
+              "over",
+              "specific",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+            "excerpt": "built-in role in Foundry is a role created by Microsoft that covers common access scenarios that you can assign to your team members. Key built-in roles used across Azure include Owner, Contributor, and Reader. These roles aren't specific to Foundry resource …",
+            "matched_terms": [
+              "over",
+              "specific",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+            "excerpt": "Disable Preview Features with Role-Based Access . This article provides more details on specific permissions in Foundry across control and data plane which you can utilize when building custom roles.",
+            "matched_terms": [
+              "data",
+              "specific",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Summarize vast data signals into key insights to cut through the noise, and make use of AI-driven guidance and analysis across identities, devices, data, clouds, and apps.",
+            "matched_terms": [
+              "data",
+              "entities",
+              "analysis"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 4,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+          "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Explore now Responsible AI AI with built-in data security Data provided to Security Copilot is protected by industry-leading compliance and security controls.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Azure OpenAI in Foundry Models documentation",
+            "matched_terms": [
+              "model",
+              "documentation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Indirect Attacks, also referred to as Indirect Prompt Attacks or Cross-Domain Prompt Injection Attacks, are a potential vulnerability where third parties place malicious instructions inside of documents that the generative AI system can access and process. Re…",
+            "matched_terms": [
+              "model",
+              "third"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": ". Learn more about configurability in the Azure OpenAI in Foundry Models documentation",
+            "matched_terms": [
+              "model",
+              "documentation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Azure OpenAI in Foundry Models documentation .",
+            "matched_terms": [
+              "model",
+              "documentation"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 4,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+          "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Explore now Responsible AI AI with built-in data security Data provided to Security Copilot is protected by industry-leading compliance and security controls.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "User Prompt Attacks",
+            "matched_terms": [
+              "prompt",
+              "attacks"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Detecting indirect attacks requires using document delimiters when constructing the prompt. See the",
+            "matched_terms": [
+              "prompt",
+              "attacks"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Personally identifiable information (PII) refers to any information that can be used to identify a particular individual. PII detection involves analyzing text content in LLM completions and filtering any PII that was returned. User Prompt Attacks",
+            "matched_terms": [
+              "prompt",
+              "attacks"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "User Prompt Attacks User prompt attacks are user prompts designed to provoke the generative AI model into exhibiting behaviors it was trained to avoid or to break the rules set in the system message. Such attacks can vary from intricate roleplay to subtle sub…",
+            "matched_terms": [
+              "prompt",
+              "attacks"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 4,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter"
+        ],
+        "excerpts": [
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Guardrails + controls",
+            "matched_terms": [
+              "controls",
+              "guardrails"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Navigate to your project. Then select the Guardrails + controls",
+            "matched_terms": [
+              "controls",
+              "guardrails"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Guardrails + controls page from the left menu and select the",
+            "matched_terms": [
+              "controls",
+              "guardrails"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Then select the Guardrails + controls page from the left menu and select the Content filters tab.",
+            "matched_terms": [
+              "controls",
+              "guardrails"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Other optional classification models that detect jailbreak risk and known content for text and code.",
+            "matched_terms": [
+              "risk",
+              "class",
+              "jailbreak"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 6,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter"
+        ],
+        "excerpts": [
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Learn how to configure a content filter Content filtering scenarios When the content safety system detects harmful content, you receive either an error on the API call if the prompt was deemed inappropriate, or the finish_reason on the response will be conten…",
+            "matched_terms": [
+              "prompt",
+              "response",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Content filtering scenarios When the content safety system detects harmful content, you receive either an error on the API call if the prompt was deemed inappropriate, or the",
+            "matched_terms": [
+              "prompt",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Indirect Attacks Indirect Attacks, also referred to as Indirect Prompt Attacks or Cross-Domain Prompt Injection Attacks, are a potential vulnerability where third parties place malicious instructions inside of documents that the generative AI system can acces…",
+            "matched_terms": [
+              "prompt",
+              "injection",
+              "prompt injection"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Indirect Attacks, also referred to as Indirect Prompt Attacks or Cross-Domain Prompt Injection Attacks, are a potential vulnerability where third parties place malicious instructions inside of documents that the generative AI system can access and process. Re…",
+            "matched_terms": [
+              "prompt",
+              "injection",
+              "prompt injection"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "In addition to the content filtering system, Azure OpenAI performs monitoring to detect content and behaviors that suggest use of the service in a manner that might violate applicable product terms.",
+            "matched_terms": [
+              "behavior",
+              "monitoring",
+              "content filtering"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 6,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter"
+        ],
+        "excerpts": [
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Other optional classification models that detect jailbreak risk and known content for text and code.",
+            "matched_terms": [
+              "content",
+              "risk",
+              "class",
+              "jailbreak"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "The following regions support Groundedness Detection: Central US, East US, France Central, and Canada East Input filters Text content filters See Harm categories and severity levels to learn more about the four content filtering categories (hate, sexual, viol…",
+            "matched_terms": [
+              "content",
+              "detection",
+              "filters",
+              "content filtering"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "includes a content filtering system that works alongside core models and image generation models and is powered by Azure AI Content Safety",
+            "matched_terms": [
+              "content",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Content filtering scenarios When the content safety system detects harmful content, you receive either an error on the API call if the prompt was deemed inappropriate, or the",
+            "matched_terms": [
+              "content",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Microsoft Foundry includes a content filtering system that works alongside core models and image generation models and is powered by Azure AI Content Safety .",
+            "matched_terms": [
+              "content",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 6,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter"
+        ],
+        "excerpts": [
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "We don't store prompts or completions for the purposes of content filtering. We don't use prompts or completions to train, retrain, or improve the content filtering system without user consent. For more information, see Data, privacy, and security",
+            "matched_terms": [
+              "content",
+              "purpose",
+              "data",
+              "content filtering"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "includes a content filtering system that works alongside core models and image generation models and is powered by Azure AI Content Safety",
+            "matched_terms": [
+              "content",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Content filtering scenarios When the content safety system detects harmful content, you receive either an error on the API call if the prompt was deemed inappropriate, or the",
+            "matched_terms": [
+              "content",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Microsoft Foundry includes a content filtering system that works alongside core models and image generation models and is powered by Azure AI Content Safety .",
+            "matched_terms": [
+              "content",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+            "excerpt": "Learn how to configure a content filter Content filtering scenarios When the content safety system detects harmful content, you receive either an error on the API call if the prompt was deemed inappropriate, or the finish_reason on the response will be conten…",
+            "matched_terms": [
+              "content",
+              "content filtering",
+              "content safety"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 6,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Summarize vast data signals into key insights to cut through the noise, and make use of AI-driven guidance and analysis across identities, devices, data, clouds, and apps.",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud",
+              "driven"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Catch what others miss Summarize vast data signals into key insights to cut through the noise, and make use of AI-driven guidance and analysis across identities, devices, data, clouds, and apps.",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud",
+              "driven"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Summarize vast data signals into key insights to cut through the noise, and make use of AI-driven guidance and analysis across identities, devices, data, clouds, and apps. Respond faster",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud",
+              "driven"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Mitigate cyberthreats to devices, protect data, and improve compliance across clouds-available with Copilot embedded.",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Microsoft Purview Data Lifecycle Management Microsoft Purview eDiscovery",
+            "matched_terms": [
+              "discover",
+              "data",
+              "discovery"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.microsoft.com/en-us/ai/responsible-ai",
+          "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": "When you’re using Copilots at work, all your existing security and compliance requirements are inherited, so only people with the right permissions can access the content it generates.",
+            "matched_terms": [
+              "permissions",
+              "permission",
+              "right",
+              "copilots"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": ". You can always manage your privacy preferences in your Copilot Privacy settings. When you’re using Copilots at work, all your existing security and compliance requirements are inherited, so only people with the right permissions can access the content it ge…",
+            "matched_terms": [
+              "permissions",
+              "permission",
+              "right",
+              "copilots"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": "When you’re using Copilots at work, all your existing security and compliance requirements are inherited, so only people with the right permissions can access the content it generates. As a company, Microsoft is committed to providing",
+            "matched_terms": [
+              "permissions",
+              "permission",
+              "right",
+              "copilots"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+            "excerpt": "Azure AI User Grants reader access to Foundry project, Foundry resource, and data actions for your Foundry project. If you can assign roles, this role is assigned to you automatically. Otherwise, your subscription Owner or a user with role assignment permissi…",
+            "matched_terms": [
+              "permissions",
+              "least",
+              "permission"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+            "excerpt": "What permissions do I want my team to have when building in Microsoft Foundry?",
+            "matched_terms": [
+              "permissions",
+              "permission"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.microsoft.com/en-us/ai/responsible-ai",
+          "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot",
+            "excerpt": "Microsoft Purview Insider Risk Management Microsoft Purview Data Loss Prevention",
+            "matched_terms": [
+              "risk",
+              "management",
+              "data loss prevention"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": "How does Microsoft protect my privacy and ensure confidentiality of sensitive data?",
+            "matched_terms": [
+              "privacy",
+              "confidential",
+              "sensitive"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": "05/ How does Microsoft protect my privacy and ensure confidentiality of sensitive data?",
+            "matched_terms": [
+              "privacy",
+              "confidential",
+              "sensitive"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": "How does Microsoft protect my privacy and ensure confidentiality of sensitive data? Microsoft Copilot remembers details that matter to your daily life while keeping your personal data secure and protecting your",
+            "matched_terms": [
+              "privacy",
+              "confidential",
+              "sensitive"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": "The Microsoft Responsible AI Standard 05/ How does Microsoft protect my privacy and ensure confidentiality of sensitive data?",
+            "matched_terms": [
+              "privacy",
+              "confidential",
+              "sensitive"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.microsoft.com/en-us/ai/responsible-ai",
+          "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": "When you’re using Copilots at work, all your existing security and compliance requirements are inherited, so only people with the right permissions can access the content it generates.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "access",
+              "permission",
+              "copilots"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": ". You can always manage your privacy preferences in your Copilot Privacy settings. When you’re using Copilots at work, all your existing security and compliance requirements are inherited, so only people with the right permissions can access the content it ge…",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "access",
+              "permission",
+              "copilots"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+            "excerpt": "When you’re using Copilots at work, all your existing security and compliance requirements are inherited, so only people with the right permissions can access the content it generates. As a company, Microsoft is committed to providing",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "access",
+              "permission",
+              "copilots"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+            "excerpt": "Disable Preview Features with Role-Based Access . This article provides more details on specific permissions in Foundry across control and data plane which you can utilize when building custom roles.",
+            "matched_terms": [
+              "across",
+              "data",
+              "access",
+              "permission"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+            "excerpt": "in Foundry is a role created by Microsoft that covers common access scenarios that you can assign to your team members. Key built-in roles used across Azure include Owner, Contributor, and Reader. These roles aren't specific to Foundry resource permissions.",
+            "matched_terms": [
+              "across",
+              "access",
+              "permission"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 5,
+        "total_pages": 6,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Microsoft Purview Data Lifecycle Management Microsoft Purview eDiscovery\". Also: \"The content filtering system integrated in the Foundry Models service in Foundry Tools contains:\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data security & governance Identity & network access\". Also: \"in Foundry is a role created by Microsoft that covers common access scenarios that you can assign to your team members. Key built-in roles used acros…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Explore now Responsible AI AI with built-in data security Data provided to Security Copilot is protected by industry-leading compliance and security controls.\". Also: \"Azure OpenAI in Foundry Models documentation\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Explore now Responsible AI AI with built-in data security Data provided to Security Copilot is protected by industry-leading compliance and security controls.\". Also: \"User Prompt Attacks\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Guardrails + controls\". Also: \"Navigate to your project. Then select the Guardrails + controls\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Learn how to configure a content filter Content filtering scenarios When the content safety system detects harmful content, you receive either an error on the API call if the prompt was deemed inappr…\". Also: \"Content filtering scenarios When the content safety system detects harmful content, you receive either an error on the API call if the prompt was dee…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Other optional classification models that detect jailbreak risk and known content for text and code.\". Also: \"The following regions support Groundedness Detection: Central US, East US, France Central, and Canada East Input filters Text content filters See Har…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We don't store prompts or completions for the purposes of content filtering. We don't use prompts or completions to train, retrain, or improve the content filtering system without user consent. For m…\". Also: \"includes a content filtering system that works alongside core models and image generation models and is powered by Azure AI Content Safety\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Summarize vast data signals into key insights to cut through the noise, and make use of AI-driven guidance and analysis across identities, devices, data, clouds, and apps.\". Also: \"Catch what others miss Summarize vast data signals into key insights to cut through the noise, and make use of AI-driven guidance and analysis across…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"When you’re using Copilots at work, all your existing security and compliance requirements are inherited, so only people with the right permissions can access the content it generates.\". Also: \". You can always manage your privacy preferences in your Copilot Privacy settings. When you’re using Copilots at work, all your existing security and…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Microsoft Purview Insider Risk Management Microsoft Purview Data Loss Prevention\". Also: \"How does Microsoft protect my privacy and ensure confidentiality of sensitive data?\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"When you’re using Copilots at work, all your existing security and compliance requirements are inherited, so only people with the right permissions can access the content it generates.\". Also: \". You can always manage your privacy preferences in your Copilot Privacy settings. When you’re using Copilots at work, all your existing security and…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:21:39.770041+00:00",
+      "urls_used": [
+        "https://www.microsoft.com/en-us/ai/responsible-ai",
+        "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/content-filter",
+        "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-purview-ai-hub",
+        "https://learn.microsoft.com/en-us/azure/ai-studio/concepts/rbac-ai-studio",
+        "https://azure.microsoft.com/en-us/products/ai-services/",
+        "https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-security-copilot"
+      ],
+      "pages_ok": 5,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Mindtree",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.62,
+      "RUN": 4.0,
+      "INF": 4.5
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.25,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.25,
+      "INF-03": 4.25,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.ltimindtree.com/solutions/responsible-ai/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "risk",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "risk",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics Blog",
+            "matched_terms": [
+              "risk",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "test cycles, 3× device coverage and 50% infrastructure savings.",
+            "matched_terms": [
+              "cycle",
+              "coverage"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "and smarter infrastructure. The result: 30% fasterreleases, 40% shorter test cycles, 3× device coverage and 50% infrastructure savings.",
+            "matched_terms": [
+              "cycle",
+              "coverage"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Identity and Access Management for American Entertainment Conglomerate",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Read More Identity and Access Management for American Entertainment Conglomerate",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Identity and Access Management for American Entertainment Conglomerate Read More",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Accessibility",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Partners Accessibility",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/data-engineering/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Social Media Cookie If you use social media or other third-party credentials to log in to our sites, then that other organization may set a cookie that allows that company to recognize you.",
+            "matched_terms": [
+              "third",
+              "party"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Governance, Risk, and Compliance (GRC) Service",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Navigate governance, risk, and compliance for lasting success.",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Modern Slavery Statement",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Privacy Statement",
+            "matched_terms": [
+              "state"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Governance, Risk, and Compliance (GRC) Service",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Navigate governance, risk, and compliance for lasting success.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "risk",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Boost security with robust data measures and generative AI. Governance, Risk, and Compliance (GRC) Service",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Governance, Risk, and Compliance (GRC) Service Navigate governance, risk, and compliance for lasting success.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.ltimindtree.com/solutions/responsible-ai/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "benchmarks",
+            "matched_terms": [
+              "benchmarks"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "Show me cloud migration benchmarks",
+            "matched_terms": [
+              "benchmarks"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "benchmarks How can we Outcreate?",
+            "matched_terms": [
+              "benchmarks"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "Show me cloud migration benchmarks How can we Outcreate?",
+            "matched_terms": [
+              "benchmarks"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Boost security with robust data measures and generative AI. Governance, Risk, and Compliance (GRC) Service",
+            "matched_terms": [
+              "security",
+              "risk"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 4,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Managed Security Operations for a Top Chemical Manufacturer Enhancing Monitoring, Visibility, and Collaboration",
+            "matched_terms": [
+              "monitoring"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "measurable"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Read More Managed Security Operations for a Top Chemical Manufacturer Enhancing Monitoring, Visibility, and Collaboration",
+            "matched_terms": [
+              "monitoring"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Managed Security Operations for a Top Chemical Manufacturer Enhancing Monitoring, Visibility, and Collaboration Read More",
+            "matched_terms": [
+              "monitoring"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "measurable"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "metrics",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "metrics",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics Blog",
+            "matched_terms": [
+              "metrics",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Regulatory Pressure Meets Operational Reality: Critical Infrastructure Cybersecurity",
+            "matched_terms": [
+              "regulatory"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "AI Regulatory Pressure Meets Operational Reality: Critical Infrastructure Cybersecurity",
+            "matched_terms": [
+              "regulatory"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.ltimindtree.com/solutions/responsible-ai/",
+          "https://www.ltimindtree.com/services/data-engineering/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "LTIMindtree provides data engineering services and solutions encompassing bespoke data lakes, data hubs, and data warehouses, and migration to cloud warehouses (Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), Snowflake, Databricks, wi…",
+            "matched_terms": [
+              "data",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Read More Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard Multi-Year Accessibility Plan Modern Slavery Statement Sitemap Do not sell my personal information Privacy Statement R…",
+            "matched_terms": [
+              "access",
+              "logs"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "LTM unified customer data, content, and inventory for",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "omnichannel commerce LTM unified customer data, content, and inventory for",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "LTM unified customer data, content, and inventory for UK’s top electronics retailer on Salesforce - making",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/data-engineering/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "LTIMindtree provides data engineering services and solutions encompassing bespoke data lakes, data hubs, and data warehouses, and migration to cloud warehouses (Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), Snowflake, Databricks, wi…",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "cloud",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Customer data platform: Delivering extraordinary data-driven...",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Read More Customer data platform: Delivering extraordinary data-driven...",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Customer data platform: Delivering extraordinary data-driven... Building an integrated data ecosystem that delivers personalized experiences in real time to increase purchases, build brand loyalty, and prevent churn.",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/data-engineering/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Organizational Change & Transformation",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "ESG & Sustainability Tech Consulting Organizational Change & Transformation",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Organizational Change & Transformation Value Engineering",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "The social media organization may use that cookie for its own purposes.",
+            "matched_terms": [
+              "purposes"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Data infrastructure modernization services powered with data privacy and compliance",
+            "matched_terms": [
+              "data privacy"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.ltimindtree.com/services/data-engineering/",
+          "https://www.ltimindtree.com/services/cybersecurity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Data infrastructure modernization services powered with data privacy and compliance",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Data Engineering Data infrastructure modernization services powered with data privacy and compliance",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Data infrastructure modernization services powered with data privacy and compliance Home",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "The services ensure that the latest data privacy and compliance regulations, such as GDPR, HIPPA, and CCPA, are met.",
+            "matched_terms": [
+              "privacy",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/cybersecurity/",
+            "excerpt": "Cyber Risk Quantification: Turning Threats into Measurable Metrics",
+            "matched_terms": [
+              "risk",
+              "metrics"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.ltimindtree.com/solutions/responsible-ai/",
+          "https://www.ltimindtree.com/services/data-engineering/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Building an integrated data ecosystem that delivers personalized experiences in real time to increase purchases, build brand loyalty, and prevent churn.",
+            "matched_terms": [
+              "data",
+              "integrated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "ESG & Sustainability Tech Consulting Organizational Change & Transformation",
+            "matched_terms": [
+              "sustain",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Customer data platform: Delivering extraordinary data-driven... Building an integrated data ecosystem that delivers personalized experiences in real time to increase purchases, build brand loyalty, and prevent churn.",
+            "matched_terms": [
+              "data",
+              "integrated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/services/data-engineering/",
+            "excerpt": "Building an integrated data ecosystem that delivers personalized experiences in real time to increase purchases, build brand loyalty, and prevent churn. Read More",
+            "matched_terms": [
+              "data",
+              "integrated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.ltimindtree.com/solutions/responsible-ai/",
+            "excerpt": "Armada and LTM Team Up to Accelerate Edge AI Adoption Across Global Industries",
+            "matched_terms": [
+              "across",
+              "adoption"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.25,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.25,
+      "INF-03": 4.25,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.62,
+      "RUN": 4.0,
+      "INF": 4.5
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Cyber Risk Quantification: Turning Threats into Measurable Metrics\". Also: \"Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Identity and Access Management for American Entertainment Conglomerate\". Also: \"Read More Identity and Access Management for American Entertainment Conglomerate\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Social Media Cookie If you use social media or other third-party credentials to log in to our sites, then that other organization may set a cookie that allows that company to recognize you.\". Also: \"Governance, Risk, and Compliance (GRC) Service\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Governance, Risk, and Compliance (GRC) Service\". Also: \"Navigate governance, risk, and compliance for lasting success.\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"benchmarks\". Also: \"Show me cloud migration benchmarks\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Managed Security Operations for a Top Chemical Manufacturer Enhancing Monitoring, Visibility, and Collaboration\". Also: \"Cyber Risk Quantification: Turning Threats into Measurable Metrics\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Cyber Risk Quantification: Turning Threats into Measurable Metrics\". Also: \"Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"LTIMindtree provides data engineering services and solutions encompassing bespoke data lakes, data hubs, and data warehouses, and migration to cloud warehouses (Amazon Web Services (AWS), Microsoft A…\". Also: \"Read More Linkedin Twitter Youtube Facebook Instagram Mail Blogs Careers Company Investors © 2026 LTIMindtree Limited Accessibility Standard Multi-Ye…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"LTIMindtree provides data engineering services and solutions encompassing bespoke data lakes, data hubs, and data warehouses, and migration to cloud warehouses (Amazon Web Services (AWS), Microsoft A…\". Also: \"Cloud & Infrastructure Services Cyber Risk Quantification: Turning Threats into Measurable Metrics\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Organizational Change & Transformation\". Also: \"ESG & Sustainability Tech Consulting Organizational Change & Transformation\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Data infrastructure modernization services powered with data privacy and compliance\". Also: \"Data Engineering Data infrastructure modernization services powered with data privacy and compliance\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Building an integrated data ecosystem that delivers personalized experiences in real time to increase purchases, build brand loyalty, and prevent churn.\". Also: \"ESG & Sustainability Tech Consulting Organizational Change & Transformation\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:22:02.364999+00:00",
+      "urls_used": [
+        "https://www.ltimindtree.com/services/ai-and-data-analytics/",
+        "https://www.ltimindtree.com/services/cybersecurity/",
+        "https://www.ltimindtree.com/ltimindtree-ai/",
+        "https://www.ltimindtree.com/services/data-engineering/",
+        "https://www.ltimindtree.com/solutions/responsible-ai/"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Mphasis",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Automated Identity Access Management and Standardized Governance and Administration",
+            "matched_terms": [
+              "automated",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Identity and Access Management (IAM) Integrated Cyber Defense and Threat Management Services",
+            "matched_terms": [
+              "entity",
+              "integrate"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Automated Identity Access Management and Standardized Governance and Administration",
+            "matched_terms": [
+              "automated",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Automated Identity Access Management and Standardized Governance and Administration KNOW MORE",
+            "matched_terms": [
+              "automated",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & management.",
+            "matched_terms": [
+              "risk",
+              "entity"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Automated Identity Access Management and Standardized Governance and Administration",
+            "matched_terms": [
+              "entity",
+              "over",
+              "automated",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Automated Identity Access Management and Standardized Governance and Administration",
+            "matched_terms": [
+              "entity",
+              "over",
+              "automated",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Automated Identity Access Management and Standardized Governance and Administration KNOW MORE",
+            "matched_terms": [
+              "entity",
+              "over",
+              "automated",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & management.",
+            "matched_terms": [
+              "data",
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Click here to know more Cyber Intelligence SUCCESS STORIES Unified threat monitoring program to meet HIPAA & HITECH compliance KNOW MORE Automated Identity Access Management and Standardized Governance and Administration KNOW MORE Enabled 100% Ident…",
+            "matched_terms": [
+              "entity",
+              "over",
+              "automated",
+              "access"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Click here to know more Cyber Intelligence SUCCESS STORIES Unified threat monitoring program to meet HIPAA & HITECH compliance KNOW MORE Automated Identity Access Management and Standardized Governance and Administration KNOW MORE Enabled 100% Ident…",
+            "matched_terms": [
+              "automated",
+              "compliance",
+              "nist"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Automated Identity Access Management and Standardized Governance and Administration",
+            "matched_terms": [
+              "automated",
+              "nist"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Cisco Duo warns third-party data breach exposed SMS MFA logs",
+            "matched_terms": [
+              "third",
+              "party"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Automated Identity Access Management and Standardized Governance and Administration",
+            "matched_terms": [
+              "automated",
+              "nist"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Automated Identity Access Management and Standardized Governance and Administration KNOW MORE",
+            "matched_terms": [
+              "automated",
+              "nist"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Click here to know more Governance, Risk and Compliance Mphasis Microsoft Security Services Mphasis Microsoft Security Services enhance visibility and disrupt attacks across multi-cloud environments with a unified security operations service.",
+            "matched_terms": [
+              "compliance",
+              "attacks",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Governance, Risk & Compliance",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Governance, Risk and Compliance",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Developed security policies and framework and ensured a mature security posture with risk remediation.",
+            "matched_terms": [
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Identified & remediated Infrastructure risk to meet regulatory compliance.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "These will also challenge the integrity of current security controls and will risk enterprise data and intellectual property (IP).",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Real-time incident detection & analysis for a Life Science Research and Clinical Diagnostics Company KNOW MORE Developed security policies and framework and ensured a mature security posture with risk remediation.",
+            "matched_terms": [
+              "security",
+              "risk",
+              "agnostic"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Vendor-agnostic and established as a credible partner for cybersecurity management and monitoring services, specifically in the North American region",
+            "matched_terms": [
+              "security",
+              "agnostic"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Know More Security Awareness Cyber Intelligence Digital Forensics & Incident Response (DFIR) service provides in-depth forensics investigation of digital analysis assets, analyzes advanced threats and malwares, gathers evidences on malicious activit…",
+            "matched_terms": [
+              "security",
+              "evidence"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Real-time incident detection & analysis for a Life Science Research and Clinical Diagnostics Company",
+            "matched_terms": [
+              "agnostic"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Moving from traditional Security Operations Center (SOC) to Proactive AI-led Threat Monitoring & Incident Response helps you prevent threats before it could cause damage. Mphasis Cyber Defense Services helps transform your incident response preparedness.",
+            "matched_terms": [
+              "monitoring",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Integrated Cyber Defense and Threat Management Services Moving from traditional Security Operations Center (SOC) to Proactive AI-led Threat Monitoring & Incident Response helps you prevent threats before it could cause damage. Mphasis Cyber Defense Services h…",
+            "matched_terms": [
+              "monitoring",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Click here to know more Identity and Access Management (IAM) Integrated Cyber Defense and Threat Management Services Moving from traditional Security Operations Center (SOC) to Proactive AI-led Threat Monitoring & Incident Response helps you prevent…",
+            "matched_terms": [
+              "monitoring",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Know More Security Awareness Cyber Intelligence Digital Forensics & Incident Response (DFIR) service provides in-depth forensics investigation of digital analysis assets, analyzes advanced threats and malwares, gathers evidences on malicious activit…",
+            "matched_terms": [
+              "activities",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Real-time incident detection & analysis for a Life Science Research and Clinical Diagnostics Company KNOW MORE Developed security policies and framework and ensured a mature security posture with risk remediation.",
+            "matched_terms": [
+              "detection",
+              "remediation",
+              "incident"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Identified & remediated Infrastructure risk to meet regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Identified & remediated Infrastructure risk to meet regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Identified & remediated Infrastructure risk to meet regulatory compliance. KNOW MORE",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Real-time incident detection & analysis for a Life Science Research and Clinical Diagnostics Company KNOW MORE Developed security policies and framework and ensured a mature security posture with risk remediation.",
+            "matched_terms": [
+              "detection",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Refreshed security infrastructure and enabled advanced threat intelligence to cyber threats by migrating to Mphasis SOC KNOW MORE Identified & remediated Infrastructure risk to meet regulatory compliance.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & management.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Identity and Access Management (IAM)",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Automated Identity Access Management and Standardized Governance and Administration",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Enabled 100% Identity Access Management and SOX compliance for an American bank.",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Quasar Remote Access Trojan",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & management.",
+            "matched_terms": [
+              "data",
+              "driven",
+              "access governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Applications provide digital access to enterprise resources. Our Application Security and DevSecOps offering provide end to end security of CI/CD pipeline. From securing your Infrastructure as code to automated application testing, intelligent vulnerability p…",
+            "matched_terms": [
+              "automated",
+              "remediation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Our machine learning models and connected intelligence platforms enable the detection of advanced and targeted threats.",
+            "matched_terms": [
+              "platforms",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "From securing your Infrastructure as code to automated application testing, intelligent vulnerability prioritization and remediation.",
+            "matched_terms": [
+              "automated",
+              "remediation"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Click here to know more Governance, Risk and Compliance Mphasis Microsoft Security Services Mphasis Microsoft Security Services enhance visibility and disrupt attacks across multi-cloud environments with a unified security operations service.",
+            "matched_terms": [
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Moving from traditional Security Operations Center (SOC) to Proactive AI-led Threat Monitoring & Incident Response helps you prevent threats before it could cause damage. Mphasis Cyber Defense Services helps transform your incident response preparedness.",
+            "matched_terms": [
+              "before"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Automated Identity Access Management and Standardized Governance and Administration",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Developed security policies and framework and ensured a mature security posture with risk remediation.",
+            "matched_terms": [
+              "policies"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Google fixed a severe zero-day vulnerability in Chrome by addressing an out-of-bounds read weakness in the V8 JavaScript engine. The issue, CVE-2024-3159, has been resolved.",
+            "matched_terms": [
+              "bound"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "The Grayling threat group targets organizations for intelligence-gathering purposes. As part of their post-exploitation activities, the threat actors terminate a predetermined list of processes, and dump credentials using Mimikatz.",
+            "matched_terms": [
+              "purposes"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & management.",
+            "matched_terms": [
+              "risk",
+              "management",
+              "access governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Mphasis Cyber Security Services | Threat & Risk Management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Mphasis Cyber Security Services | Threat & Risk Management Investors",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "These will also challenge the integrity of current security controls and will risk enterprise data and intellectual property (IP).",
+            "matched_terms": [
+              "controls",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Asset Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.mphasis.com/home/services/cybersecurity.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & management.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access",
+              "access governance"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Click here to know more Integrated Cyber Defense and Threat Management Services Application Security and DevSecOps Applications provide digital access to enterprise resources.",
+            "matched_terms": [
+              "security",
+              "digital",
+              "access",
+              "integrated"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "Applications provide digital access to enterprise resources. Our Application Security and DevSecOps offering provide end to end security of CI/CD pipeline. From securing your Infrastructure as code to automated application testing, intelligent vulnerability p…",
+            "matched_terms": [
+              "security",
+              "digital",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "KNOW MORE Click here to know more Identity and Access Management (IAM) Integrated Cyber Defense and Threat Management Services Moving from traditional Security Operations Center (SOC) to Proactive AI-led Threat Monitoring & Incident Response helps you prevent…",
+            "matched_terms": [
+              "security",
+              "access",
+              "integrated"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.mphasis.com/home/services/cybersecurity.html",
+            "excerpt": "The services also include security advisory and implementation to protect critical information and modernize digital estates.",
+            "matched_terms": [
+              "security",
+              "digital",
+              "estates"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automated Identity Access Management and Standardized Governance and Administration\". Also: \"Identity and Access Management (IAM) Integrated Cyber Defense and Threat Management Services\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automated Identity Access Management and Standardized Governance and Administration\". Also: \"KNOW MORE Automated Identity Access Management and Standardized Governance and Administration\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"KNOW MORE Click here to know more Cyber Intelligence SUCCESS STORIES Unified threat monitoring program to meet HIPAA & HITECH compliance KNOW MORE Automated Identity Access Management and Standardize…\". Also: \"Automated Identity Access Management and Standardized Governance and Administration\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"KNOW MORE Click here to know more Governance, Risk and Compliance Mphasis Microsoft Security Services Mphasis Microsoft Security Services enhance visibility and disrupt attacks across multi-cloud env…\". Also: \"Governance, Risk & Compliance\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"These will also challenge the integrity of current security controls and will risk enterprise data and intellectual property (IP).\". Also: \"KNOW MORE Real-time incident detection & analysis for a Life Science Research and Clinical Diagnostics Company KNOW MORE Developed security policies …\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Moving from traditional Security Operations Center (SOC) to Proactive AI-led Threat Monitoring & Incident Response helps you prevent threats before it could cause damage. Mphasis Cyber Defense Servic…\". Also: \"Integrated Cyber Defense and Threat Management Services Moving from traditional Security Operations Center (SOC) to Proactive AI-led Threat Monitorin…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Identified & remediated Infrastructure risk to meet regulatory compliance.\". Also: \"KNOW MORE Identified & remediated Infrastructure risk to meet regulatory compliance.\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & managem…\". Also: \"Identity and Access Management (IAM)\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & managem…\". Also: \"Applications provide digital access to enterprise resources. Our Application Security and DevSecOps offering provide end to end security of CI/CD pip…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Moving from traditional Security Operations Center (SOC) to Proactive AI-led Threat Monitoring & Incident Response helps you prevent threats before it could cause damage. Mphasis Cyber Defense Servic…\". Also: \"Automated Identity Access Management and Standardized Governance and Administration\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & managem…\". Also: \"Mphasis Cyber Security Services | Threat & Risk Management\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We ensure a holistic risk-driven approach in the areas of identity and access governance, data protection, risk & compliance, threat management and mitigation, and cyber security monitoring & managem…\". Also: \"KNOW MORE Click here to know more Integrated Cyber Defense and Threat Management Services Application Security and DevSecOps Applications provide dig…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:22:26.295414+00:00",
+      "urls_used": [
+        "https://www.mphasis.com/home/services/artificial-intelligence.html",
+        "https://www.mphasis.com/home/services/digital-risk.html",
+        "https://www.mphasis.com/home/services/data-analytics.html",
+        "https://www.mphasis.com/home/services/cognitive-computing.html",
+        "https://www.mphasis.com/home/services/cybersecurity.html"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

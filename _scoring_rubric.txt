@@ -1,0 +1,6 @@
+0|No Evidence: No publicly verifiable evidence of capability in this sub-pillar.
+1|Minimal: Basic or manual capability; no automation, analytics, or continuous operation.
+2|Generic Claims: Marketing mentions the capability but lacks named products, technical docs, metrics, or specifics.
+3|Demonstrated: Documented capability with named products or features, some technical detail, and identifiable use cases.
+4|Advanced: Named products with measurable outcomes, integration points, customer validation, or analyst recognition. Automation and continuous operation present.
+5|Market-Leading: Best-in-class capability with deep technical evidence, extensive customer base, analyst leadership recognition, measurable impact metrics, and continuous innovation.

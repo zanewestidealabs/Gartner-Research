@@ -1,0 +1,2282 @@
+<!doctype html>
+<html lang="en"  class="no-js">
+<head>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/sentinelone/assets/favicon-whyte/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/sentinelone/assets/favicon-whyte/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/sentinelone/assets/favicon-whyte/favicon-16x16.png">
+	<link rel="manifest" href="/wp-content/themes/sentinelone/assets/favicon-whyte/site.webmanifest">
+	<link rel="mask-icon" href="/wp-content/themes/sentinelone/assets/favicon-whyte/safari-pinned-tab.svg" color="#6100ff">
+	<link rel="shortcut icon" href="/wp-content/themes/sentinelone/assets/favicon-whyte/favicon.ico">
+	<meta name="msapplication-TileColor" content="#6100ff">
+	<meta name="msapplication-config" content="/wp-content/themes/sentinelone/assets/favicon-whyte/browserconfig.xml">
+	<meta name="theme-color" content="#6100ff">
+	<meta name="googlebot-news" content="noindex" />
+    
+	<link rel="preload" href="//go.sentinelone.com/js/forms2/js/forms2.min.js" as="script">
+	<link href="//ajax.googleapis.com" rel="dns-prefetch">
+
+	
+	<style>
+	@font-face {
+		font-family: 'Whyte';
+		src: url( '/wp-content/themes/sentinelone/assets/fonts/whyte/ABCWhytePlusVariable.woff2') format( 'woff2' ),
+			url( '/wp-content/themes/sentinelone/assets/fonts/whyte/ABCWhytePlusVariable.woff' ) format('woff');
+		font-display: swap;
+		/* use alternate a */
+		font-feature-settings: "ss01" on;
+	}
+	</style>
+	<script>
+	( function() {
+
+		// Optimization for Repeat Views
+		if( sessionStorage.fontsLoaded ) {
+			document.documentElement.className += " fonts-loaded";
+			return;
+		}
+
+		/* Font Face Observer v2.0.13 - © Bram Stein. License: BSD-3-Clause */
+		(function(){'use strict';var f,g=[];function l(a){g.push(a);1==g.length&&f()}function m(){for(;g.length;)g[0](),g.shift()}f=function(){setTimeout(m)};function n(a){this.a=p;this.b=void 0;this.f=[];var b=this;try{a(function(a){q(b,a)},function(a){r(b,a)})}catch(c){r(b,c)}}var p=2;function t(a){return new n(function(b,c){c(a)})}function u(a){return new n(function(b){b(a)})}function q(a,b){if(a.a==p){if(b==a)throw new TypeError;var c=!1;try{var d=b&&b.then;if(null!=b&&"object"==typeof b&&"function"==typeof d){d.call(b,function(b){c||q(a,b);c=!0},function(b){c||r(a,b);c=!0});return}}catch(e){c||r(a,e);return}a.a=0;a.b=b;v(a)}}
+		function r(a,b){if(a.a==p){if(b==a)throw new TypeError;a.a=1;a.b=b;v(a)}}function v(a){l(function(){if(a.a!=p)for(;a.f.length;){var b=a.f.shift(),c=b[0],d=b[1],e=b[2],b=b[3];try{0==a.a?"function"==typeof c?e(c.call(void 0,a.b)):e(a.b):1==a.a&&("function"==typeof d?e(d.call(void 0,a.b)):b(a.b))}catch(h){b(h)}}})}n.prototype.g=function(a){return this.c(void 0,a)};n.prototype.c=function(a,b){var c=this;return new n(function(d,e){c.f.push([a,b,d,e]);v(c)})};
+		function w(a){return new n(function(b,c){function d(c){return function(d){h[c]=d;e+=1;e==a.length&&b(h)}}var e=0,h=[];0==a.length&&b(h);for(var k=0;k<a.length;k+=1)u(a[k]).c(d(k),c)})}function x(a){return new n(function(b,c){for(var d=0;d<a.length;d+=1)u(a[d]).c(b,c)})};window.Promise||(window.Promise=n,window.Promise.resolve=u,window.Promise.reject=t,window.Promise.race=x,window.Promise.all=w,window.Promise.prototype.then=n.prototype.c,window.Promise.prototype["catch"]=n.prototype.g);}());
+		(function(){function l(a,b){document.addEventListener?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b)}function m(a){document.body?a():document.addEventListener?document.addEventListener("DOMContentLoaded",function c(){document.removeEventListener("DOMContentLoaded",c);a()}):document.attachEvent("onreadystatechange",function k(){if("interactive"==document.readyState||"complete"==document.readyState)document.detachEvent("onreadystatechange",k),a()})};function r(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
+		this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}
+		function t(a,b){a.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:"+b+";"}function y(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function z(a,b){function c(){var a=k;y(a)&&a.a.parentNode&&b(a.g)}var k=a;l(a.b,c);l(a.c,c);y(a)};function A(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal"}var B=null,C=null,E=null,F=null;function G(){if(null===C)if(J()&&/Apple/.test(window.navigator.vendor)){var a=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);C=!!a&&603>parseInt(a[1],10)}else C=!1;return C}function J(){null===F&&(F=!!document.fonts);return F}
+		function K(){if(null===E){var a=document.createElement("div");try{a.style.font="condensed 100px sans-serif"}catch(b){}E=""!==a.style.font}return E}function L(a,b){return[a.style,a.weight,K()?a.stretch:"","100px",b].join(" ")}
+		A.prototype.load=function(a,b){var c=this,k=a||"BESbswy",q=0,D=b||3E3,H=(new Date).getTime();return new Promise(function(a,b){if(J()&&!G()){var M=new Promise(function(a,b){function e(){(new Date).getTime()-H>=D?b():document.fonts.load(L(c,'"'+c.family+'"'),k).then(function(c){1<=c.length?a():setTimeout(e,25)},function(){b()})}e()}),N=new Promise(function(a,c){q=setTimeout(c,D)});Promise.race([N,M]).then(function(){clearTimeout(q);a(c)},function(){b(c)})}else m(function(){function u(){var b;if(b=-1!=
+		f&&-1!=g||-1!=f&&-1!=h||-1!=g&&-1!=h)(b=f!=g&&f!=h&&g!=h)||(null===B&&(b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),B=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))),b=B&&(f==v&&g==v&&h==v||f==w&&g==w&&h==w||f==x&&g==x&&h==x)),b=!b;b&&(d.parentNode&&d.parentNode.removeChild(d),clearTimeout(q),a(c))}function I(){if((new Date).getTime()-H>=D)d.parentNode&&d.parentNode.removeChild(d),b(c);else{var a=document.hidden;if(!0===a||void 0===a)f=e.a.offsetWidth,
+		g=n.a.offsetWidth,h=p.a.offsetWidth,u();q=setTimeout(I,50)}}var e=new r(k),n=new r(k),p=new r(k),f=-1,g=-1,h=-1,v=-1,w=-1,x=-1,d=document.createElement("div");d.dir="ltr";t(e,L(c,"sans-serif"));t(n,L(c,"serif"));t(p,L(c,"monospace"));d.appendChild(e.a);d.appendChild(n.a);d.appendChild(p.a);document.body.appendChild(d);v=e.a.offsetWidth;w=n.a.offsetWidth;x=p.a.offsetWidth;I();z(e,function(a){f=a;u()});t(e,L(c,'"'+c.family+'",sans-serif'));z(n,function(a){g=a;u()});t(n,L(c,'"'+c.family+'",serif'));
+		z(p,function(a){h=a;u()});t(p,L(c,'"'+c.family+'",monospace'))})})};"object"===typeof module?module.exports=A:(window.FontFaceObserver=A,window.FontFaceObserver.prototype.load=A.prototype.load);}());
+
+		Promise.all( [
+			( new FontFaceObserver( 'Whyte' ) ).load( null, 10000 ),
+		] ).then( function () {
+			document.documentElement.className += " fonts-loaded";
+			sessionStorage.fontsLoaded = true;
+		} );
+
+	} )();
+	</script>
+	<link rel="alternate" href="https://www.sentinelone.com/platform/cloud-security/" hreflang="x-default" />
+<link rel="alternate" href="https://www.sentinelone.com/platform/cloud-security/" hreflang="en" />
+<link rel="alternate" href="https://www.sentinelone.com/ja/platform/cloud-security/" hreflang="ja-JP" />
+<link rel="alternate" href="https://www.sentinelone.com/de/platform/cloud-security/" hreflang="de-DE" />
+<link rel="alternate" href="https://www.sentinelone.com/es/platform/cloud-security/" hreflang="es-ES" />
+<link rel="alternate" href="https://www.sentinelone.com/fr/platform/cloud-security/" hreflang="fr-FR" />
+<link rel="alternate" href="https://www.sentinelone.com/it/platform/cloud-security/" hreflang="it-IT" />
+<link rel="alternate" href="https://www.sentinelone.com/nl/platform/cloud-security/" hreflang="nl-NL" />
+<link rel="alternate" href="https://www.sentinelone.com/ko/platform/cloud-security/" hreflang="ko-KR" />
+
+	<!-- Intellimize start -->
+<style>.anti-flicker, .anti-flicker * {visibility: hidden !important; opacity: 0 !important;}</style>
+<script>(function(e,t,p){var n=document.documentElement,s={p:[],r:[]},u={p:s.p,r:s.r,push:function(e){s.p.push(e)},ready:function(e){s.r.push(e)}};e.intellimize=u,n.className+=" "+p,setTimeout(function(){n.className=n.className.replace(RegExp(" ?"+p),"")},t)})(window, 4000, 'anti-flicker')</script>
+<link rel="preload" href="https://cdn.intellimize.co/snippet/117922517.js" as="script">
+<script src="https://cdn.intellimize.co/snippet/117922517.js" async onerror="document.documentElement.className = document.documentElement.className.replace(RegExp(' ?anti-flicker'), '');"></script>
+<link rel="preconnect" href="https://api.intellimize.co" crossorigin>
+<link rel="preconnect" href="https://117922517.intellimizeio.com">
+<link rel="preconnect" href="https://log.intellimize.co" crossorigin>
+<!-- Intellimize end -->
+
+<!-- polyfill for safari -->
+<script>
+  window.cancelIdleCallback = window.cancelIdleCallback || function (id) {
+    clearTimeout(id);
+  };
+</script>
+
+<!-- Qualified added 6.26.23 -->
+<script type="text/plain" class="optanon-category-C0004">
+    document.addEventListener('DOMContentLoaded', (e) => {
+      qualified('handleEvents', function(name, data) {
+        switch(name) {
+          case 'Email Captured': {
+            if (data && data.field_values) {
+              for (const [key, value] of Object.entries(data.field_values)) {
+                if (typeof value === "string" && /.+\@.+\..+/.test(value)) {
+                  analytics.identify(value, { email: value });
+                  break;
+                }
+              }
+            }
+            break;
+          }
+          default:
+                   }
+      });
+    });
+
+</script>
+<!-- End qualified -->
+
+<!-- iHeart Media 
+<img src="https://arttrk.com/pixel/?ad_log=referer&action=lead&pixid=7cf98e37-89e1-453c-b75b-60da1b813a63" style="position: absolute;" width="1" height="1" border="0">
+End iHeart Media -->
+
+
+
+<style>
+
+  .banner.light.has-logo * {
+    font-weight: 500;
+  }
+
+
+  body header.header .banner.has-logo .inner {
+    justify-content: center;
+  }
+
+  body header.header .banner.has-logo .inner {
+    gap: 6.25rem;
+  }
+
+  @media (max-width: 900px) {
+    body header.header .banner.has-logo .inner {
+      gap: 3.75;
+    }
+  }
+
+  @media (max-width: 768px) {
+    body header.header .banner.has-logo .inner {
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 640px) {
+    body header.header .banner.has-logo .inner {
+      justify-content: center;
+      gap: 2.5rem;
+    }
+  }
+
+
+  body header.header .banner.has-logo .inner {
+    justify-content: center;
+  }
+
+  body header.header .banner.has-logo .inner {
+    gap: 6.25rem;
+  }
+
+  @media (max-width: 900px) {
+    body header.header .banner.has-logo .inner {
+      gap: 3.75;
+    }
+  }
+
+  @media (max-width: 768px) {
+    body header.header .banner.has-logo .inner {
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 640px) {
+    body header.header .banner.has-logo .inner {
+      justify-content: center;
+      gap: 2.5rem;
+    }
+  }
+
+  * {
+    font-synthesis: none;
+  }
+
+  @media ( max-width: 800px ) {
+    section.side_by_side .inner {
+      min-height: unset !important;
+    }
+  }
+
+  .single-anthology .main .anthology-content .main-content #sidebar {
+    max-width: 300px;
+  }
+
+
+  html * {
+    -webkit-font-feature-settings: "ss01" on;
+    font-feature-settings: "ss01" on;
+  }
+
+
+  body.single-post .featured-items .featured-items-after-post .featured-item {
+    flex: 1;
+  }
+
+  body.search-results #prefooter {
+    display: none;
+  }
+ 
+</style><meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v23.5 (Yoast SEO v25.7) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Singularity™ Cloud Security, Most Trusted AI-Powered CNAPP</title>
+	<meta name="description" content="Deploy AI-powered protection by SentinelOne, combining CSPM, CWPP, CDR, CIEM, DSPM, and more for real-time cloud security." />
+	<link rel="canonical" href="https://www.sentinelone.com/platform/cloud-security/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Singularity™ Cloud Security, Most Trusted AI-Powered CNAPP" />
+	<meta property="og:description" content="Deploy AI-powered protection by SentinelOne, combining CSPM, CWPP, CDR, CIEM, DSPM, and more for real-time cloud security." />
+	<meta property="og:url" content="https://www.sentinelone.com/platform/cloud-security/" />
+	<meta property="og:site_name" content="SentinelOne" />
+	<meta property="article:publisher" content="https://www.facebook.com/SentinelOne/" />
+	<meta property="article:modified_time" content="2026-02-11T16:52:06+00:00" />
+	<meta property="og:image" content="https://www.sentinelone.com/wp-content/uploads/2024/07/CloudSecurity_SocialCard.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Singularity™ Cloud Security, Most Trusted AI-Powered CNAPP" />
+	<meta name="twitter:image" content="https://www.sentinelone.com/wp-content/uploads/2024/07/CloudSecurity_SocialCard.jpg" />
+	<meta name="twitter:site" content="@SentinelOne" />
+	<script type="application/ld+json" class="yoast-schema-graph">{
+	    "@context": "https://schema.org",
+	    "@graph": [
+	        {
+	            "@type": "WebPage",
+	            "@id": "https://www.sentinelone.com/platform/cloud-security/",
+	            "url": "https://www.sentinelone.com/platform/cloud-security/",
+	            "name": "Singularity™ Cloud Security, Most Trusted AI-Powered CNAPP",
+	            "isPartOf": {
+	                "@id": "https://www.sentinelone.com/#website"
+	            },
+	            "datePublished": "2024-07-23T08:56:19+00:00",
+	            "dateModified": "2026-02-11T16:52:06+00:00",
+	            "description": "Deploy AI-powered protection by SentinelOne, combining CSPM, CWPP, CDR, CIEM, DSPM, and more for real-time cloud security.",
+	            "inLanguage": "en-US",
+	            "potentialAction": [
+	                {
+	                    "@type": "ReadAction",
+	                    "target": [
+	                        "https://www.sentinelone.com/platform/cloud-security/"
+	                    ]
+	                }
+	            ]
+	        },
+	        {
+	            "@type": "WebSite",
+	            "@id": "https://www.sentinelone.com/#website",
+	            "url": "https://www.sentinelone.com/",
+	            "name": "SentinelOne",
+	            "description": "Next Generation Endpoint Security",
+	            "publisher": {
+	                "@id": "https://www.sentinelone.com/#organization"
+	            },
+	            "inLanguage": "en-US"
+	        },
+	        {
+	            "@type": "Organization",
+	            "@id": "https://www.sentinelone.com/#organization",
+	            "name": "SentinelOne",
+	            "url": "https://www.sentinelone.com/",
+	            "logo": {
+	                "@type": "ImageObject",
+	                "inLanguage": "en-US",
+	                "@id": "https://www.sentinelone.com/#/schema/logo/image/",
+	                "url": "https://www.sentinelone.com/wp-content/uploads/2025/02/header-logo-dark.svg",
+	                "contentUrl": "https://www.sentinelone.com/wp-content/uploads/2025/02/header-logo-dark.svg",
+	                "width": 240,
+	                "height": 46,
+	                "caption": "SentinelOne"
+	            },
+	            "image": {
+	                "@id": "https://www.sentinelone.com/#/schema/logo/image/"
+	            },
+	            "sameAs": [
+	                "https://www.facebook.com/SentinelOne/",
+	                "https://x.com/SentinelOne"
+	            ]
+	        }
+	    ]
+	}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//go.sentinelone.com' />
+<link rel="alternate" type="application/rss+xml" title="SentinelOne &raquo; Feed" href="https://www.sentinelone.com/feed/" />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='carbine-style-css' href='https://www.sentinelone.com/wp-content/themes/sentinelone/carbine/assets/css/style-v2.min.css?ver=1777560194' type='text/css' media='all' />
+<script type="text/javascript" src="https://www.sentinelone.com/static/global/jquery.min.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="//go.sentinelone.com/js/forms2/js/forms2.min.js" id="marketo-forms-js"></script>
+<link rel='shortlink' href='https://www.sentinelone.com/?p=101561' />
+		<style type="text/css" id="wp-custom-css">
+			body.single-labs .archive-single-post.labs #primary .entry-content table {
+    word-break: break-word;
+}
+.custom_code .code-wrap p, article.hentry p {
+    word-break: break-word;
+}		</style>
+		
+		<!-- Qualified -->
+	<script>
+	(function(w,q){w['QualifiedObject']=q;w[q]=w[q]||function(){
+	(w[q].q=w[q].q||[]).push(arguments)};})(window,'qualified')
+	</script>
+	<script type="text/plain" class="optanon-category-C0004" async src="https://js.qualified.com/qualified.js?token=ZQoyHXFTqngPcfcB"></script>
+	<!-- End Qualified -->
+	
+	<!-- CHEQ INVOCATION TAG -->
+	 <script async src="https://ob.roundprincemusic.com/i/42be7542a024ee54d75f04ae145eed17.js" data-ch="cheq4ppc" class="ct_clicktrue_87896" data-jsonp="onCheqResponse"></script>
+	<!-- END CHEQ INVOCATION TAG -->
+
+	<!-- Google Tag Manager -->
+	<script>
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-KGGXSJ');
+	</script>
+	<!-- End Google Tag Manager -->
+
+	<!-- Calibermind -->
+	<script type="text/plain" class="optanon-category-C0004" charset="UTF-8" >
+	!(function() { var analytics = (window.analytics = window.analytics || []); if (!analytics.initialize) { if (analytics.invoked) { window.console && console.error && console.error('MetaRouter snippet included twice.') } else { analytics.invoked = !0; analytics.methods = [ 'trackSubmit', 'trackClick', 'trackLink', 'trackForm', 'pageview', 'identify', 'reset', 'group', 'track', 'ready', 'alias', 'debug', 'page', 'once', 'off', 'on', 'addSourceMiddleware', 'addIntegrationMiddleware', 'setAnonymousId', 'addDestinationMiddleware', ]; analytics.factory = function (e) { return function () { var t = Array.prototype.slice.call(arguments); t.unshift(e); analytics.push(t); return analytics } }; for (var e = 0; e < analytics.methods.length; e++) { var key = analytics.methods[e]; analytics[key] = analytics.factory(key) } analytics.load = function (src, o) { analytics._loadOptions = o; var t = document.createElement('script'); t.type = 'text/javascript'; t.async = !0; t.src = ("https:" === document.location.protocol ? "https://" : "http://") + "cdn.calibermind.com/"+ src + ".js"; var n = document.getElementsByTagName('script')[0]; n.parentNode.insertBefore(t, n); }; analytics.SNIPPET_VERSION = '4.13.1'; analytics.load('a', { writeKey: 'XJ8n3dREAnBDhzEdyhZP6'}); analytics.page(); }}})();
+	</script>
+
+	<script async type="text/plain" src="https://cdn.calibermind.com/js/identifyEmail.latest.js" class="optanon-category-C0004"></script>
+
+			<link
+  rel="preload"
+  as="image"
+  href="https://www.sentinelone.com/wp-content/uploads/2025/05/Hero_LP_Cloud@2x.jpg"
+  type="image/jpeg"
+/>	
+			<style>.block-0 .container{max-width:1400px}.block-0 .cta{max-width:100%;text-align:center;box-sizing:border-box}.block-0 .page_head_v2.has-image .inner{display:flex;flex-direction:row-reverse;gap:2rem;justify-content:space-between}@media(max-width: 1080px){.block-0 .page_head_v2.has-image .inner{flex-direction:column-reverse;gap:2.5rem}}@media(max-width: 640px){.block-0 .page_head_v2.has-image .inner{margin:0 1.25rem}}.block-0 .page_head_v2.has-image .context{max-width:654px}@media(max-width: 1080px){.block-0 .page_head_v2.has-image .context{width:100%}}.block-0 .page_head_v2.has-image .graphic{cursor:pointer;display:block;left:0;max-width:520px;position:relative}.block-0 .page_head_v2.has-image .graphic::after{content:"";background-image:url('data:image/svg+xml,<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M78 40C78 60.9868 60.9868 78 40 78C19.0132 78 2.00001 60.9868 2.00001 40C2.00001 19.0132 19.0132 2 40 2C60.9868 2 78 19.0132 78 40ZM80 40C80 62.0914 62.0914 80 40 80C17.9086 80 9.53674e-06 62.0914 9.53674e-06 40C9.53674e-06 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40ZM52.6157 41.0865C54.088 40.3489 54.088 38.2477 52.6157 37.5101L33.8656 28.1173C32.5357 27.4511 30.9698 28.4181 30.9698 29.9055L30.9698 48.6911C30.9698 50.1785 32.5357 51.1455 33.8656 50.4792L52.6157 41.0865Z" fill="white"/></svg>');height:80px;left:calc(50% - 40px);position:absolute;top:calc(50% - 40px);transition:transform .2s ease;width:80px}.block-0 .page_head_v2.has-image .graphic:hover::after{transform:scale(1.15)}.block-0 .page_head_v2.has-image .graphic img{height:auto;left:0;width:100%}.logos.marquee.horizontal .inner .entries img{filter:none}</style>
+	
+	
+	<!-- Calibermind Mkto tracker -->
+	<script>
+	MktoForms2.whenReady(function(form) {
+		form.onSubmit(function() {
+			var values = form.vals();
+			if (values.Email) {
+				if (typeof analytics === "undefined") {
+					console.log("[CaliberMind] The analyticsJS library failed to load before the identify call was made.");
+				} else {
+					analytics.identify(values.Email, { email: values.Email });
+				}
+			}
+		});
+	});           
+	</script>
+
+
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+</head>
+<body class="wp-singular page-template page-template-carbine page-template-template-v2 page-template-carbinetemplate-v2-php page page-id-101561 page-child parent-pageid-34310 wp-theme-sentinelone carbine page-slug-cloud-security site-www no-sidebar">
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGGXSJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<!-- CHEQ INVOCATION TAG (noscript) -->
+	 <noscript><iframe src="https://obs.roundprincemusic.com/ns/42be7542a024ee54d75f04ae145eed17.html?ch=cheq4ppc" width="0" height="0" style="display:none"></iframe></noscript>
+	<!-- End CHEQ INVOCATION TAG (noscript) -->
+
+		<header class="header  hasbanner">
+			<div class="banner light " data-close="88c70d77a6f3821764ef4880cf1cc4b0" style="background: #6100ff">
+		<a href="https://www.sentinelone.com/lp/cyber-forum-threat-intel/" aria-label="Register Now" target=""></a>
+		<div class="container--whyte">
+			<div class="inner">
+								<span class="wide">Join the Cyber Forum: Threat Intel on May 12, 2026 to learn how AI is reshaping threat defense.</span>
+				<span class="narrow">Join the Virtual Cyber Forum: Threat Intel</span>
+				
+<div class="cta-wrap">
+	<a class="cta wow fadeIn light arrow" href="https://www.sentinelone.com/lp/cyber-forum-threat-intel/" target=""  >
+				<span>Register Now</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>
+<div class="cta-wrap">
+	<a class="cta wow fadeIn light arrow narrow" href="https://www.sentinelone.com/lp/cyber-forum-threat-intel/" target=""  >
+				<span>Join the Virtual Cyber Forum: Threat Intel</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>			</div>
+		</div>
+	</div>
+		<div class="utility-nav">
+	<div class="container--whyte">
+		<div class="inner">
+			<div class="utility-wrap">
+				<div class="search-wrap">
+					<div id="utility-nav-menu">
+						<span class="breach"></span>
+						<ul id="menu-top-bar" class="menu"><li id="menu-item-113882" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-113882"><a href="/contact/">Experiencing a Breach?</a></li>
+<li id="menu-item-16923" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16923"><a href="https://www.sentinelone.com/blog/">Blog</a></li>
+</ul>					</div>
+					<button class="search">	<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;24&#039; height=&#039;24&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/themes/sentinelone/carbine/assets/svg/search-icon.svg" 
+				alt="Search Icon" 
+		style="" 
+		width="24" 
+		height="24" />
+	</button>
+<div class="search-form">
+	<form autocomplete="off" method="get" action="https://www.sentinelone.com" >
+		<fieldset>
+			<input type="search" name="s" placeholder="Search ..." value="" />
+			<button class="search" type="submit">
+					<img class="lazy icon-search" 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;24&#039; height=&#039;24&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/themes/sentinelone/carbine/assets/svg/search-icon.svg" 
+				alt="Search Icon" 
+		style="" 
+		width="24" 
+		height="24" />
+						<img class="lazy icon-down" 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;18&#039; height=&#039;16&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/themes/sentinelone/carbine/assets/svg/navigation-close-dark.svg" 
+				alt="Navigation Close Dark" 
+		style="" 
+		width="18" 
+		height="16" />
+				</button>
+		</fieldset>
+	</form>
+</div>				</div>
+			</div>
+					<div class="lang-select">
+			
+							<span class="label"></span>
+						<ul>
+		<li class="current"><span data-subdomain="US" href="https://www.sentinelone.com/platform/cloud-security/">English</span></li><li class=""><a data-subdomain="JA" href="https://www.sentinelone.com/ja/platform/cloud-security/">日本語</a></li><li class=""><a data-subdomain="DE" href="https://www.sentinelone.com/de/platform/cloud-security/">Deutsch</a></li><li class=""><a data-subdomain="ES" href="https://www.sentinelone.com/es/platform/cloud-security/">Español</a></li><li class=""><a data-subdomain="FR" href="https://www.sentinelone.com/fr/platform/cloud-security/">Français</a></li><li class=""><a data-subdomain="IT" href="https://www.sentinelone.com/it/platform/cloud-security/">Italiano</a></li><li class=""><a data-subdomain="NL" href="https://www.sentinelone.com/nl/platform/cloud-security/">Dutch</a></li><li class=""><a data-subdomain="KO" href="https://www.sentinelone.com/ko/platform/cloud-security/">한국어</a></li>			</ul>
+		</div>
+									<div class="nav-ctas-wrapper">					<a class="demo fadein animated" href="/request-demo/"><span>Get Started</span></a>
+											<a class="secondary fadein animated" target="" href="/contact/"><span>Contact Us</span></a>
+									</div>					</div>
+	</div>
+</div>
+		<div class="navigation">
+	<div class="container--whyte">
+		<div class="inner">
+			<div class="logo fadein animated s">
+				<a href="/">						<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;240&#039; height=&#039;46&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/themes/sentinelone/assets/svg/header-logo-dark.svg" 
+				alt="Header Logo Dark" 
+		style="" 
+		width="240" 
+		height="46" />
+										</a>			</div>
+						<div class="nav-wrap">
+				<div class="menu-wrap">
+	<div class="marker"></div>
+		<div class="menu-root-item active ">
+		<a href="/platform/" target="">Platform</a>
+		<div class="mega">
+							<ul class="menu-groups">
+										<li class="menu-group twoline cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Platform Overview</div>
+							<ul class="submenu twoline cols-1">
+																										<li class="menu-item twoline cols-1 ">
+										<a href="/platform/" target="" data-menu-title="Platform" data-column-title="Platform Overview">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Platform</strong></span>
+																								<span class="subtitle">Welcome to Integrated<br>Enterprise Security</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/ai-cybersecurity/" target="" data-menu-title="Platform" data-column-title="Platform Overview">
+																						<div class="labels">
+												<span class="title"><strong>AI for Security</strong></span>
+																								<span class="subtitle">Leading the Way in AI-Powered Security Solutions</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/securing-ai/" target="" data-menu-title="Platform" data-column-title="Platform Overview">
+																						<div class="labels">
+												<span class="title"><strong>Securing AI</strong></span>
+																								<span class="subtitle">Accelerate AI Adoption with Secure AI Tools, Apps, and Agents</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/how-singularity-xdr-works/" target="" data-menu-title="Platform" data-column-title="Platform Overview">
+																						<div class="labels">
+												<span class="title"><strong>How It Works</strong></span>
+																								<span class="subtitle">The Singularity XDR Difference</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/partners/singularity-marketplace/" target="" data-menu-title="Platform" data-column-title="Platform Overview">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Marketplace</strong></span>
+																								<span class="subtitle">One-Click Integrations to Unlock the Power of XDR</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform-packages/" target="" data-menu-title="Platform" data-column-title="Platform Overview">
+																						<div class="labels">
+												<span class="title"><strong>Pricing & Packaging</strong></span>
+																								<span class="subtitle">Comparisons and Guidance at a Glance</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+										<li class="menu-group twoline cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Data & AI</div>
+							<ul class="submenu twoline cols-1">
+																										<li class="menu-item twoline cols-1 ">
+										<a href="/platform/purple/" target="" data-menu-title="Platform" data-column-title="Data &amp; AI">
+																						<div class="labels">
+												<span class="title"><strong>Purple AI</strong></span>
+																								<span class="subtitle">Accelerate SecOps with Generative AI</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-hyperautomation/" target="" data-menu-title="Platform" data-column-title="Data &amp; AI">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Hyperautomation</strong></span>
+																								<span class="subtitle">Easily Automate <br>Security Processes</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/ai-siem/" target="" data-menu-title="Platform" data-column-title="Data &amp; AI">
+																						<div class="labels">
+												<span class="title"><strong>AI-SIEM</strong></span>
+																								<span class="subtitle">The AI SIEM for the Autonomous SOC</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/data-pipelines/" target="" data-menu-title="Platform" data-column-title="Data &amp; AI">
+																						<div class="labels">
+												<span class="title"><strong>AI Data Pipelines</strong></span>
+																								<span class="subtitle">Security Data Pipeline for AI SIEM and Data Optimization</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/data-lake/" target="" data-menu-title="Platform" data-column-title="Data &amp; AI">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Data Lake</strong></span>
+																								<span class="subtitle">AI-Powered, Unified <br>Data Lake</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/data-lake-log-analytics/" target="" data-menu-title="Platform" data-column-title="Data &amp; AI">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Data Lake for Log Analytics</strong></span>
+																								<span class="subtitle">Seamlessly Ingest Data <br>from On-Prem, Cloud or Hybrid Environments</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+										<li class="menu-group twoline cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Endpoint Security</div>
+							<ul class="submenu twoline cols-1">
+																										<li class="menu-item twoline cols-1 ">
+										<a href="/platform/endpoint-security/" target="" data-menu-title="Platform" data-column-title="Endpoint Security">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Endpoint</strong></span>
+																								<span class="subtitle">Autonomous Prevention, Detection, and Response</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-xdr-protection/" target="" data-menu-title="Platform" data-column-title="Endpoint Security">
+																						<div class="labels">
+												<span class="title"><strong>Singularity XDR</strong></span>
+																								<span class="subtitle">Native & Open Protection, Detection, and Response</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-remoteops-forensics/" target="" data-menu-title="Platform" data-column-title="Endpoint Security">
+																						<div class="labels">
+												<span class="title"><strong>Singularity RemoteOps Forensics</strong></span>
+																								<span class="subtitle">Orchestrate Forensics at Scale</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-threat-intelligence/" target="" data-menu-title="Platform" data-column-title="Endpoint Security">
+																						<div class="labels">
+												<span class="title"><strong>Singularity </strong><br /> Threat Intelligence</span>
+																								<span class="subtitle">Comprehensive Adversary Intelligence</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-vulnerability-management/" target="" data-menu-title="Platform" data-column-title="Endpoint Security">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Vulnerability Management</strong></span>
+																								<span class="subtitle">Application & OS Vulnerability Management</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/identity/" target="" data-menu-title="Platform" data-column-title="Endpoint Security">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Identity</strong></span>
+																								<span class="subtitle">Identity Threat Detection and Response</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+										<li class="menu-group twoline cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Cloud Security </div>
+							<ul class="submenu twoline cols-1">
+																										<li class="menu-item twoline cols-1 active">
+										<a href="/platform/cloud-security/" target="" data-menu-title="Platform" data-column-title="Cloud Security ">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Cloud Security</strong></span>
+																								<span class="subtitle">Block Attacks with an <br>AI-Powered CNAPP</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-cloud-native-security/" target="" data-menu-title="Platform" data-column-title="Cloud Security ">
+																						<div class="labels">
+												<span class="title"><strong>Singularity </strong><br /> Cloud Native Security</span>
+																								<span class="subtitle">Secure Cloud and Development Resources</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-cloud-workload-security/" target="" data-menu-title="Platform" data-column-title="Cloud Security ">
+																						<div class="labels">
+												<span class="title"><strong>Singularity </strong><br /> Cloud Workload Security</span>
+																								<span class="subtitle">Real-Time Cloud Workload Protection Platform</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-cloud-data-security/" target="" data-menu-title="Platform" data-column-title="Cloud Security ">
+																						<div class="labels">
+												<span class="title"><strong>Singularity </strong><br /> Cloud Data Security</span>
+																								<span class="subtitle">AI-Powered Threat Detection for Cloud Storage</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/platform/singularity-cloud-cspm/" target="" data-menu-title="Platform" data-column-title="Cloud Security ">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Cloud Security Posture Management</strong></span>
+																								<span class="subtitle">Detect and Remediate Cloud Misconfigurations</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+										<li class="menu-group twoline cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Securing AI</div>
+							<ul class="submenu twoline cols-1">
+																										<li class="menu-item twoline cols-1 ">
+										<a href="/platform/securing-ai-prompt/" target="" data-menu-title="Platform" data-column-title="Securing AI">
+																						<div class="labels">
+												<span class="title"><strong>Prompt Security</strong></span>
+																								<span class="subtitle">Secure AI Tools Across Your Enterprise</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+									</ul>
+					</div>
+	</div>
+		<div class="menu-root-item  ">
+		<a href="/why-sentinelone/" target="">Why SentinelOne?</a>
+		<div class="mega">
+							<ul class="menu-groups">
+										<li class="menu-group twoline cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Why SentinelOne?</div>
+							<ul class="submenu twoline cols-1">
+																										<li class="menu-item twoline cols-1 ">
+										<a href="/why-sentinelone/" target="" data-menu-title="Why SentinelOne?" data-column-title="Why SentinelOne?">
+																						<div class="labels">
+												<span class="title"><strong>Why SentinelOne?</strong></span>
+																								<span class="subtitle">Cybersecurity Built<br>for What’s Next</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/customers/" target="" data-menu-title="Why SentinelOne?" data-column-title="Why SentinelOne?">
+																						<div class="labels">
+												<span class="title"><strong>Our Customers</strong></span>
+																								<span class="subtitle">Trusted by the World’s Leading Enterprises</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/industry-recognition/" target="" data-menu-title="Why SentinelOne?" data-column-title="Why SentinelOne?">
+																						<div class="labels">
+												<span class="title"><strong>Industry Recognition</strong></span>
+																								<span class="subtitle">Tested and Proven <br>by the Experts</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/company/" target="" data-menu-title="Why SentinelOne?" data-column-title="Why SentinelOne?">
+																						<div class="labels">
+												<span class="title"><strong>About Us</strong></span>
+																								<span class="subtitle">The Industry Leader in Autonomous Cybersecurity</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+										<li class="menu-group single cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Compare SentinelOne</div>
+							<ul class="submenu single cols-1">
+																										<li class="menu-item single cols-1 ">
+										<a href="/vs/arctic-wolf/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Arctic Wolf</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/broadcom/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Broadcom</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/crowdstrike/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>CrowdStrike</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/cybereason/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Cybereason</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/microsoft/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Microsoft</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/palo-alto-networks/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Palo Alto Networks</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/sophos/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Sophos</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/splunk/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Splunk</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/trellix/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Trellix</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/trend-micro/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Trend Micro</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/vs/wiz/" target="" data-menu-title="Why SentinelOne?" data-column-title="Compare SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Wiz</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+										<li class="menu-group single cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Verticals</div>
+							<ul class="submenu single cols-1">
+																										<li class="menu-item single cols-1 ">
+										<a href="/platform/energy/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>Energy</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/platform/federal-government/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>Federal Government</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/platform/finance/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>Finance</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/platform/healthcare/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>Healthcare</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/platform/highereducation/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>Higher Education</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/platform/platform-cybersecurity-for-k12-education/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>K-12 Education</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/platform/manufacturing/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>Manufacturing</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/platform/retail/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>Retail</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/platform/state-and-local-government/" target="" data-menu-title="Why SentinelOne?" data-column-title="Verticals">
+																						<div class="labels">
+												<span class="title"><strong>State and Local Government</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+									</ul>
+					</div>
+	</div>
+		<div class="menu-root-item  ">
+		<a href="/global-services/services-overview/" target="">Services</a>
+		<div class="mega">
+							<ul class="menu-groups">
+										<li class="menu-group twoline cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Managed Services</div>
+							<ul class="submenu twoline cols-1">
+																										<li class="menu-item twoline cols-1 ">
+										<a href="/global-services/" target="" data-menu-title="Services" data-column-title="Managed Services">
+																						<div class="labels">
+												<span class="title"><strong>Managed Services Overview</strong></span>
+																								<span class="subtitle">Wayfinder Threat Detection & Response</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/global-services/threat-hunting/" target="" data-menu-title="Services" data-column-title="Managed Services">
+																						<div class="labels">
+												<span class="title"><strong>Threat Hunting</strong></span>
+																								<span class="subtitle">World-Class Expertise and Threat Intelligence</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/global-services/managed-detection-and-response/" target="" data-menu-title="Services" data-column-title="Managed Services">
+																						<div class="labels">
+												<span class="title"><strong>Managed Detection & Response</strong></span>
+																								<span class="subtitle">24/7/365 Expert MDR Across Your Entire Environment</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-1 ">
+										<a href="/global-services/incident-readiness-and-response/" target="" data-menu-title="Services" data-column-title="Managed Services">
+																						<div class="labels">
+												<span class="title"><strong>Incident Readiness & Response</strong></span>
+																								<span class="subtitle">DFIR, Breach Readiness, & Compromise Assessments</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+										<li class="menu-group twoline cols-2">
+						<div class="submenu-wrap">
+							<div class="menu-label">Support, Deployment, & Health</div>
+							<ul class="submenu twoline cols-2">
+																										<li class="menu-item twoline cols-2 ">
+										<a href="/global-services/technical-account-management/" target="" data-menu-title="Services" data-column-title="Support, Deployment, &amp; Health">
+																						<div class="labels">
+												<span class="title"><strong>Technical Account Management</strong></span>
+																								<span class="subtitle">Customer Success with Personalized Service</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/global-services/sentinelone-go/" target="" data-menu-title="Services" data-column-title="Support, Deployment, &amp; Health">
+																						<div class="labels">
+												<span class="title"><strong>SentinelOne GO</strong></span>
+																								<span class="subtitle">Guided Onboarding & Deployment Advisory</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/global-services/university/" target="" data-menu-title="Services" data-column-title="Support, Deployment, &amp; Health">
+																						<div class="labels">
+												<span class="title"><strong>SentinelOne University</strong></span>
+																								<span class="subtitle">Live and On-Demand Training</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/global-services/services-overview/" target="" data-menu-title="Services" data-column-title="Support, Deployment, &amp; Health">
+																						<div class="labels">
+												<span class="title"><strong>Services Overview</strong></span>
+																								<span class="subtitle">Comprehensive Solutions for Seamless Security Operations</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="https://community.sentinelone.com/" target="" data-menu-title="Services" data-column-title="Support, Deployment, &amp; Health">
+																						<div class="labels">
+												<span class="title"><strong>SentinelOne Community</strong></span>
+																								<span class="subtitle">Community Login</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+									</ul>
+					</div>
+	</div>
+		<div class="menu-root-item  ">
+		<a href="/partners/partner-overview/" target="">Partners</a>
+		<div class="mega">
+							<ul class="menu-groups">
+										<li class="menu-group twoline cols-2">
+						<div class="submenu-wrap">
+							<div class="menu-label">Our Network</div>
+							<ul class="submenu twoline cols-2">
+																										<li class="menu-item twoline cols-2 ">
+										<a href="/partners/mssp-partners/" target="" data-menu-title="Partners" data-column-title="Our Network">
+																						<div class="labels">
+												<span class="title"><strong>MSSP Partners</strong></span>
+																								<span class="subtitle">Succeed Faster <br>with SentinelOne</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/partners/singularity-marketplace/" target="" data-menu-title="Partners" data-column-title="Our Network">
+																						<div class="labels">
+												<span class="title"><strong>Singularity Marketplace</strong></span>
+																								<span class="subtitle">Extend the Power <br>of S1 Technology</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/partners/cyber-risk-partners/" target="" data-menu-title="Partners" data-column-title="Our Network">
+																						<div class="labels">
+												<span class="title"><strong>Cyber Risk <br /> Partners</strong></span>
+																								<span class="subtitle">Enlist Pro Response <br>and Advisory Teams</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/partners/technology-alliance/" target="" data-menu-title="Partners" data-column-title="Our Network">
+																						<div class="labels">
+												<span class="title"><strong>Technology Alliances</strong></span>
+																								<span class="subtitle">Integrated, Enterprise-Scale Solutions</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/sentinelone-for-aws/" target="" data-menu-title="Partners" data-column-title="Our Network">
+																						<div class="labels">
+												<span class="title"><strong>SentinelOne for AWS</strong></span>
+																								<span class="subtitle">Hosted in AWS Regions Around the World</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="https://partners.sentinelone.com/English/" target="" data-menu-title="Partners" data-column-title="Our Network">
+																						<div class="labels">
+												<span class="title"><strong>Channel Partners</strong></span>
+																								<span class="subtitle">Deliver the Right <br>Solutions, Together</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/sentinelone-for-google/" target="" data-menu-title="Partners" data-column-title="Our Network">
+																						<div class="labels">
+												<span class="title"><strong>SentinelOne for Google Cloud</strong></span>
+																								<span class="subtitle">Unified, Autonomous Security Giving Defenders the Advantage at Global Scale</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-2 ">
+										<a href="/partners/partner-locator/" target="" data-menu-title="Partners" data-column-title="Our Network">
+																						<div class="labels">
+												<span class="title"><strong>Partner Locator</strong></span>
+																								<span class="subtitle">Your Go-to Source for Our Top Partners in Your Region</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+												<a class="sublink" href="https://partners.sentinelone.com/English/" target=""  data-menu-title="Partners" data-column-title="sublink">Partner Portal</a>
+											</li>
+									</ul>
+					</div>
+	</div>
+		<div class="menu-root-item  ">
+		<a href="/resources/" target="">Resources</a>
+		<div class="mega">
+							<ul class="menu-groups">
+										<li class="menu-group single cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Resource Center</div>
+							<ul class="submenu single cols-1">
+																										<li class="menu-item single cols-1 ">
+										<a href="/resources/?type=casestudies" target="" data-menu-title="Resources" data-column-title="Resource Center">
+																						<div class="labels">
+												<span class="title"><strong>Case Studies</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/resources/?type=datasheets" target="" data-menu-title="Resources" data-column-title="Resource Center">
+																						<div class="labels">
+												<span class="title"><strong>Data Sheets</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/resources/?type=ebooks" target="" data-menu-title="Resources" data-column-title="Resource Center">
+																						<div class="labels">
+												<span class="title"><strong>eBooks</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/resources/?type=reports" target="" data-menu-title="Resources" data-column-title="Resource Center">
+																						<div class="labels">
+												<span class="title"><strong>Reports</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/resources/?type=videos" target="" data-menu-title="Resources" data-column-title="Resource Center">
+																						<div class="labels">
+												<span class="title"><strong>Videos</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/resources/?type=webinars" target="" data-menu-title="Resources" data-column-title="Resource Center">
+																						<div class="labels">
+												<span class="title"><strong>Webinars</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/resources/?type=whitepapers" target="" data-menu-title="Resources" data-column-title="Resource Center">
+																						<div class="labels">
+												<span class="title"><strong>Whitepapers</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/events/" target="" data-menu-title="Resources" data-column-title="Resource Center">
+																						<div class="labels">
+												<span class="title"><strong>Events</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+												<a class="sublink" href="/resources/" target=""  data-menu-title="Resources" data-column-title="sublink">View All Resources</a>
+											</li>
+										<li class="menu-group single cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Blog</div>
+							<ul class="submenu single cols-1">
+																										<li class="menu-item single cols-1 ">
+										<a href="/blog/category/spotlight/" target="" data-menu-title="Resources" data-column-title="Blog">
+																						<div class="labels">
+												<span class="title"><strong>Feature Spotlight</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/blog/category/for-ciso-cio/" target="" data-menu-title="Resources" data-column-title="Blog">
+																						<div class="labels">
+												<span class="title"><strong>For CISO/CIO</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/blog/category/from-the-front-lines/" target="" data-menu-title="Resources" data-column-title="Blog">
+																						<div class="labels">
+												<span class="title"><strong>From the Front Lines</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/blog/category/identity/" target="" data-menu-title="Resources" data-column-title="Blog">
+																						<div class="labels">
+												<span class="title"><strong>Identity</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/blog/category/cloud/" target="" data-menu-title="Resources" data-column-title="Blog">
+																						<div class="labels">
+												<span class="title"><strong>Cloud</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/blog/category/macos-security-sentinelone/" target="" data-menu-title="Resources" data-column-title="Blog">
+																						<div class="labels">
+												<span class="title"><strong>macOS</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/blog/" target="" data-menu-title="Resources" data-column-title="Blog">
+																						<div class="labels">
+												<span class="title"><strong>SentinelOne Blog</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+												<a class="sublink" href="/blog/" target=""  data-menu-title="Resources" data-column-title="sublink">Blog</a>
+											</li>
+										<li class="menu-group single cols-1">
+						<div class="submenu-wrap">
+							<div class="menu-label">Tech Resources</div>
+							<ul class="submenu single cols-1">
+																										<li class="menu-item single cols-1 ">
+										<a href="/labs/" target="" data-menu-title="Resources" data-column-title="Tech Resources">
+																						<div class="labels">
+												<span class="title"><strong>SentinelLABS</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/anthology/" target="" data-menu-title="Resources" data-column-title="Tech Resources">
+																						<div class="labels">
+												<span class="title"><strong>Ransomware Anthology</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item single cols-1 ">
+										<a href="/cybersecurity-101/" target="" data-menu-title="Resources" data-column-title="Tech Resources">
+																						<div class="labels">
+												<span class="title"><strong>Cybersecurity 101</strong></span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+									</ul>
+					</div>
+	</div>
+		<div class="menu-root-item  ">
+		<a href="/company/" target="">About</a>
+		<div class="mega">
+							<ul class="menu-groups">
+										<li class="menu-group twoline cols-3">
+						<div class="submenu-wrap">
+							<div class="menu-label">About SentinelOne</div>
+							<ul class="submenu twoline cols-3">
+																										<li class="menu-item twoline cols-3 ">
+										<a href="/company/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>About SentinelOne</strong></span>
+																								<span class="subtitle">The Industry Leader in Cybersecurity</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="https://investors.sentinelone.com/overview/default.aspx" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Investor Relations</strong></span>
+																								<span class="subtitle">Financial Information & Events</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="/labs/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>SentinelLABS</strong></span>
+																								<span class="subtitle">Threat Research for <br>the Modern Threat Hunter</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="/careers/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Careers</strong></span>
+																								<span class="subtitle">The Latest Job Opportunities</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="/press/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Press & News</strong></span>
+																								<span class="subtitle">Company Announcements</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="/blog/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>Cybersecurity Blog</strong></span>
+																								<span class="subtitle">The Latest Cybersecurity Threats, News, & More</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="/faq/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>FAQ</strong></span>
+																								<span class="subtitle">Get Answers to Our Most  Frequently Asked Questions</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="https://www.dataset.com/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>DataSet</strong></span>
+																								<span class="subtitle">The Live Data Platform</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="/s-foundation/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>S Foundation</strong></span>
+																								<span class="subtitle">Securing a Safer Future for All</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																		<li class="menu-item twoline cols-3 ">
+										<a href="/s-ventures/" target="" data-menu-title="About" data-column-title="About SentinelOne">
+																						<div class="labels">
+												<span class="title"><strong>S Ventures</strong></span>
+																								<span class="subtitle">Investing in the Next Generation </br>of Security, Data and AI</span>
+																							</div>
+											<div class="bg"></div>
+										</a>
+									</li>
+																								</ul>
+						</div>
+											</li>
+									</ul>
+					</div>
+	</div>
+		<div class="menu-root-item  single-link">
+		<a href="/platform-packages/" target="">Pricing</a>
+		<div class="mega">
+					</div>
+	</div>
+	</div>						<div class="lang-select">
+			
+							<span class="label"></span>
+						<ul>
+		<li class="current"><span data-subdomain="US" href="https://www.sentinelone.com/platform/cloud-security/">English</span></li><li class=""><a data-subdomain="JA" href="https://www.sentinelone.com/ja/platform/cloud-security/">日本語</a></li><li class=""><a data-subdomain="DE" href="https://www.sentinelone.com/de/platform/cloud-security/">Deutsch</a></li><li class=""><a data-subdomain="ES" href="https://www.sentinelone.com/es/platform/cloud-security/">Español</a></li><li class=""><a data-subdomain="FR" href="https://www.sentinelone.com/fr/platform/cloud-security/">Français</a></li><li class=""><a data-subdomain="IT" href="https://www.sentinelone.com/it/platform/cloud-security/">Italiano</a></li><li class=""><a data-subdomain="NL" href="https://www.sentinelone.com/nl/platform/cloud-security/">Dutch</a></li><li class=""><a data-subdomain="KO" href="https://www.sentinelone.com/ko/platform/cloud-security/">한국어</a></li>			</ul>
+		</div>
+						<div class="menu-toggle"><span></span></div>
+			</div>
+										<div class="nav-ctas-wrapper">					<a class="demo fadein animated" href="/request-demo/"><span>Get Started</span></a>
+											<a class="secondary fadein animated" target="" href="/contact/"><span>Contact Us</span></a>
+									</div>					</div>
+	</div>
+</div>
+	</header>
+	
+	<div class="main  with-footer with-short-header hasbanner">
+						<div id="singularity-cloud-security" class="section-wrap header block-0  ">
+		<link rel='preload' as='image' href='https://www.sentinelone.com/wp-content/uploads/2024/07/Hero@2x-1-scaled-1.jpg' fetchpriority='high' type='image/svg+xml' /><link rel='preload' as='image' href='https://www.sentinelone.com/wp-content/uploads/2024/07/Hero@2x-1-scaled-1.jpg' fetchpriority='high' type='image/svg+xml' /><section id="page_head_v2_36b9f7a9bd4da2d259df9b7a831c4a04"
+	class="page_head_v2 36b9f7a9bd4da2d259df9b7a831c4a04 light s7030 none    has-image  inset-bg title-img-top"
+	style="background-color:#0b0c1b;"
+	>
+
+	
+		<div class="background desktop" style="background-position: 50% 50%;background-color: #0b0c1b;background-size:cover;background-image: url( https://www.sentinelone.com/wp-content/uploads/2024/07/Hero@2x-1-scaled-1.jpg );background-image:url( https://www.sentinelone.com/wp-content/uploads/2024/07/Hero@2x-1-scaled-1.jpg )"></div>
+
+		<div class="background mobile" style="background-position: 50% 50%;background-color: #0b0c1b;background-sizecover;background-image: url( https://www.sentinelone.com/wp-content/uploads/2024/07/Hero@2x-1-scaled-1.jpg );background-image:url( https://www.sentinelone.com/wp-content/uploads/2024/07/Hero@2x-1-scaled-1.jpg )"></div>
+
+	
+	<div class="underlay video"></div>
+
+	
+	
+	<div class="container">
+		<div class="inner">
+
+						<div class="graphic wow fadeIn">
+									<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;1040&#039; height=&#039;600&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/uploads/2025/03/CloudHeroVideo@2x-1.png" 
+				alt="CloudHeroVideo@2x 1" 
+		style="" 
+		width="1040" 
+		height="600" />
+								</div>
+			
+			<div class="context">
+
+				
+				
+								<div class="heading">
+
+										<h1 class="title title-3xl-300 wow fadeInDown">Singularity<sup>™</sup> Cloud Security </h1>
+														</div>
+				
+								<div class="blurb body-md-350 wow fadeIn" data-wow-delay=".5s">
+					Verify Exploitable Risk and Stop Runtime Threats with an AI-powered CNAPP				</div>
+				
+				
+																				
+<div class="cta-wrap">
+	<a class="cta wow fadeIn filled white arrow" href="https://www.sentinelone.com/lp/request-cnapp-demo/" target=""  >
+				<span>Move to Real-Time Security</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>																			
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+		</div>
+							<div id="section-1" class="section-wrap  block-1 pt-none pb-none">
+		<section id="custom_0623e6c78f7a85abf391829743e6c0ec" class="custom vigilante-feature-grid 0623e6c78f7a85abf391829743e6c0ec dark " style="background-color:#ffffff;">
+	
+	
+		
+		
+						
+			
+<div class="container--whyte">
+	<div class="inner">
+		<div class="heading">
+			<h2 class="title-2xl-300">Your Ultimate CNAPP Solution</h2>
+			<p class="subtitle body-xl-350">Singularity™ Cloud Security from SentinelOne is the most comprehensive and integrated CNAPP solution available. See what a flexible, cost-effective, and resilient cloud security platform can do for your organization.</p>
+		</div>
+		<div class="entries-wrap">
+			<div class="sidebar lazy" data-bg="https://www.sentinelone.com/wp-content/uploads/2024/07/CNAPP_Desktop@2x.jpg">
+				<h3 class="title-xl-300">CNAPP</h3>
+				<p class="body-lg-350">Cloud-Native Application Protection Platform</p>
+				<div class="body-md-500"><ul><li>Unified platform for full visibility and control</li><li>Real-time detection and response</li><li>Prioritize fixes with Verified Exploit Paths<sup>™</sup></li><li>No-code Hyperautomation</li><li>AI security analyst</li><li>World-class threat intelligence</li></ul></div>
+			</div>
+			<div id="entries_534dd6362df714d80414cf46dc99d1bf" class="entries">
+									<div class="entry">
+						<h3 class="title-md-350">CSPM</h3>
+						<p class="body-lg-350">Cloud Security Posture<br /> Management</p>
+						<div class="body-sm-400"><ul><li>Agentless deployment in minutes</li><li>Eliminate misconfigurations</li><li>Easily assess compliance</li></ul></div>
+					</div>
+									<div class="entry">
+						<h3 class="title-md-350">CWPP</h3>
+						<p class="body-lg-350">#1 Ranked Cloud Workload<br /> Protection Platform*</p>
+						<div class="body-sm-400"><ul><li>Real-time AI-powered protection</li><li>Monitor, detect, and protect any workload</li><li>Supports containers, Kubernetes, virtual machines, physical servers, serverless</li><li>Public, private, hybrid, and on-prem</li></ul></div>
+					</div>
+									<div class="entry">
+						<h3 class="title-md-350">DSPM</h3>
+						<p class="body-lg-350">Data Security Posture<br />Management</p>
+						<div class="body-sm-400"><ul><li>Discover, classify and protect cloud data</li><li>Prevent high-risk data from use in AI pipelines</li><li>Attack paths link sensitive data to exposures</li></ul></div>
+					</div>
+									<div class="entry">
+						<h3 class="title-md-350">AI-SPM</h3>
+						<p class="body-lg-350">AI Security Posture<br /> Management</p>
+						<div class="body-sm-400"><ul><li>Discover AI pipelines and models</li><li>Configure checks on AI services</li><li>Leverage Verified Exploit Paths<sup>™</sup> for AI services</li></ul></div>
+					</div>
+									<div class="entry">
+						<h3 class="title-md-350">CIEM</h3>
+						<p class="body-lg-350">Cloud Infrastructure Entitlement<br /> Management</p>
+						<div class="body-sm-400"><ul><li>Manage cloud entitlements</li><li>Prevent secrets leakage</li><li>Tighten permissions</li></ul></div>
+					</div>
+									<div class="entry">
+						<h3 class="title-md-350">EASM</h3>
+						<p class="body-lg-350">External Attack Surface<br /> &amp; Management</p>
+						<div class="body-sm-400"><ul><li>Unknown cloud and asset discovery</li><li>Automated pen-testing and exploit path discovery</li><li>Protection beyond CSPM</li></ul></div>
+					</div>
+									<div class="entry">
+						<h3 class="title-md-350">Graph Explorer</h3>
+						<p class="body-lg-350">Graph-Based<br /> Asset Inventory</p>
+						<div class="body-sm-400"><ul><li>Visually map cloud, endpoint, and identity assets</li><li>Track and correlate alerts from different sources</li><li>Determine blast radius and impact of threats</li></ul></div>
+					</div>
+									<div class="entry">
+						<h3 class="title-md-350">DevSecOps</h3>
+						<p class="body-lg-350">Shift-Left<br />  Security Testing</p>
+						<div class="body-sm-400"><ul><li>Integrate with CI/CD pipelines</li><li>Scan repositories, container registries, images, and IaC templates</li><li>Agentless vulnerability scanning</li><li>1000+ out-of-the-box and custom rules</li></ul></div>
+					</div>
+									<div class="entry">
+						<h3 class="title-md-350">KSPM</h3>
+						<p class="body-lg-350">Container &amp; Kubernetes Security Posture Management</p>
+						<div class="body-sm-400"><ul><li>Misconfiguration checks</li><li>Compliance standard alignment</li></ul></div>
+					</div>
+							</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.addEventListener( 'DOMContentLoaded', () => {
+		UniformHeights.uid( document.querySelectorAll( '#entries_534dd6362df714d80414cf46dc99d1bf .entry .body-lg-350' ) );
+	});
+</script>		
+		
+</section>
+
+		</div>
+							<div id="section-2" class="section-wrap  block-2 pt-default pb-default">
+		<section id="custom_bc958a719e4cc0563e1d930464f43ea2" class="custom vigilante-award-banner bc958a719e4cc0563e1d930464f43ea2 light " style="background-color:;">
+	
+	
+		
+		
+						
+			
+<div class="container--whyte">
+	<div class="inner">
+		<div class="content-wrap lazy" data-bg="https://www.sentinelone.com/wp-content/uploads/2024/07/G2_Module_BG@2x-scaled-1.jpg">
+			<div class="context">
+				<h2 class="title-2xl-300">The Most Awarded CNAPP Solution by G2</h2>
+				<p class="body-xl-350"> The only CNAPP product to earn a 4.9 out of 5 rating.<br />Over 240 awards—and counting.</p>
+				
+<div class="cta-wrap">
+	<a class="cta wow fadeIn filled white arrow" href="https://www.g2.com/products/sentinelone-singularity-cloud-security/reviews" target=""  >
+				<span>Read Reviews</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>			</div>
+			<div class="graphic lazy" data-bg="https://www.sentinelone.com/wp-content/uploads/2024/07/Badges1.png"></div>
+		</div>
+	</div>
+</div>
+		
+		
+</section>
+
+		</div>
+							<div id="section-3" class="section-wrap  block-3 pt-none pb-none">
+		<section id="custom_6a54eb97d618c166155d108e5a549ada" class="custom vigilante-side-by-side 6a54eb97d618c166155d108e5a549ada dark " style="background-color:#ffffff;">
+	
+	
+		
+		
+						
+			
+<div class="container--whyte">
+	<div class="inner">
+		<div class="content-wrap img-left">
+			<div class="graphic screenshot lazy " data-bg="">
+								<div class="image">
+												<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;1700&#039; height=&#039;1216&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/uploads/2025/04/Module05@2x.png" 
+				alt="Module05@2x" 
+		style="" 
+		width="1700" 
+		height="1216" />
+										</div>
+			</div>
+			<div class="context">
+								<h2 class="title-2xl-300">Unified and Comprehensive</h2>
+				<div class="body-md-350"><ul><li>Unified CNAPP platform provides seamless security from build time to runtime</li><li>Full analytics capabilities that go far beyond standard cloud solutions</li><li>Autonomous AI-based protection that deflects attacks in real time</li><li>Threat hunting across your entire cloud environment</li><li>World-class threat intelligence built into the platform</li><li>Protection for all workloads, applications, and data</li></ul></div>
+								
+<div class="cta-wrap">
+	<a class="cta wow fadeIn filled dark arrow" href="https://www.sentinelone.com/lp/request-cnapp-demo/" target=""  >
+				<span>Secure Your Cloud</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>							</div>
+		</div>
+	</div>
+</div>
+		
+		
+</section>
+
+		</div>
+							<div id="section-4" class="section-wrap  block-4 pt-default pb-default">
+		<section id="custom_f4895595d63e4dded03e5bec19e4e4b9" class="custom vigilante-side-by-side f4895595d63e4dded03e5bec19e4e4b9 dark " style="background-color:#ffffff;">
+	
+	
+		
+		
+						
+			
+<div class="container--whyte">
+	<div class="inner">
+		<div class="content-wrap img-right">
+			<div class="graphic screenshot lazy " data-bg="">
+								<div class="image">
+												<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;1700&#039; height=&#039;1216&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/uploads/2025/04/Module06@2x.png" 
+				alt="Module06@2x" 
+		style="" 
+		width="1700" 
+		height="1216" />
+										</div>
+			</div>
+			<div class="context">
+								<h2 class="title-2xl-300">Configure + Protect</h2>
+				<div class="body-md-350"><ul><li>Leverage the industry's only AI-powered runtime protection</li><li>Deploy active protection beyond configuration</li><li>Respond, contain, and fully control all aspects of your cloud remotely</li><li>Use no code/low code Hyperautomation workflows for even faster automation capabilities</li></ul></div>
+								
+<div class="cta-wrap">
+	<a class="cta wow fadeIn filled dark arrow" href="https://www.sentinelone.com/lp/request-cnapp-demo/" target=""  >
+				<span>Secure Your Cloud</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>							</div>
+		</div>
+	</div>
+</div>
+		
+		
+</section>
+
+		</div>
+							<div id="section-5" class="section-wrap  block-5 pt-none pb-none">
+		<section id="custom_93c45e7588af25d1330d2bf55e5b7ba6" class="custom vigilante-side-by-side 93c45e7588af25d1330d2bf55e5b7ba6 dark " style="background-color:#ffffff;">
+	
+	
+		
+		
+						
+			
+<div class="container--whyte">
+	<div class="inner">
+		<div class="content-wrap img-left">
+			<div class="graphic center lazy " data-bg="https://www.sentinelone.com/wp-content/uploads/2024/07/Module7_SuperiorCoverage.jpg">
+								<div class="image">
+												<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;720&#039; height=&#039;480&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/uploads/2024/07/Logos-1.png" 
+				alt="Logos 1" 
+		style="" 
+		width="720" 
+		height="480" />
+										</div>
+			</div>
+			<div class="context">
+								<h2 class="title-2xl-300">Full Coverage</h2>
+				<div class="body-md-350"><ul><li>Protection for any and all assets</li><li>Supports public, private, hybrid, and on-prem clouds</li><li>Supports all workloads, containers, Kubernetes, servers, virtual machines, databases, physical servers, serverless, and storage</li><li>Capable of discovering unknown cloud deployments</li><li>Greater operating system coverage than any other vendor</li></ul></div>
+								
+<div class="cta-wrap">
+	<a class="cta wow fadeIn filled dark arrow" href="https://www.sentinelone.com/lp/request-cnapp-demo/" target=""  >
+				<span>Secure Your Cloud</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>							</div>
+		</div>
+	</div>
+</div>
+		
+		
+</section>
+
+		</div>
+							<div id="section-6" class="section-wrap  block-6 pt-default pb-default">
+		<section id="custom_d114cd21255722c0240124f5277243b3" class="custom vigilante-side-by-side d114cd21255722c0240124f5277243b3 dark " style="background-color:#ffffff;">
+	
+	
+		
+		
+						
+			
+<div class="container--whyte">
+	<div class="inner">
+		<div class="content-wrap img-right">
+			<div class="graphic bottom-right screenshot lazy " data-bg="https://www.sentinelone.com/wp-content/uploads/2024/07/Module8_Unparrallelled.jpg">
+								<div class="image">
+												<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;1930&#039; height=&#039;1148&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/uploads/2024/07/Module8@2x-1.jpg" 
+				alt="Module8@2x 1" 
+		style="" 
+		width="1930" 
+		height="1148" />
+										</div>
+			</div>
+			<div class="context">
+								<h2 class="title-2xl-300">Industry-Leading Performance</h2>
+				<div class="body-md-350"><ul><li>Production-grade, real-time technology</li><li>Resilient, fully-redundant architecture</li><li>Fine-grain performance controls tailored to your environment</li><li>No kernel access needed</li></ul></div>
+								
+<div class="cta-wrap">
+	<a class="cta wow fadeIn filled dark arrow" href="https://www.sentinelone.com/lp/request-cnapp-demo/" target=""  >
+				<span>Secure Your Cloud</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>							</div>
+		</div>
+	</div>
+</div>
+		
+		
+</section>
+
+		</div>
+							<div id="the-worlds-leading-and-largest-enterprises-trust-sentinelone" class="section-wrap  block-7 pt-default pb-default">
+		<section id="logos_8ba43881f0f533b42b6e2f4e60f0301f" class="logos 8ba43881f0f533b42b6e2f4e60f0301f dark marquee horizontal" style="background-color:#ffffff;">
+
+	<div class="background desktop lazy" style="background-position: 50% 50%;background-color:#ffffff;background-size: cover;" data-bg-multi=""></div>
+
+	<div class="underlay video"></div>
+
+	<div class="container">
+		<div class="inner">
+
+							<div class="context">
+										<div class="heading">
+												<h2 class="title-2xl-300 wow fadeInDown">The World’s Leading and Largest<br />
+Enterprises Trust SentinelOne</h2>
+																		<h3 class="body-xl-350 wow fadeInUp" data-wow-delay=".3s">Including four of the Fortune 10 and hundreds of the Global 2000.</h3>
+											</div>
+																			</div>
+			
+			<div class="entries">
+									<div>
+																		<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;2998&#039; height=&#039;46&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/uploads/2025/08/logo_bar_12-08-2025.svg" 
+				alt="Logo Bar 12 08 2025" 
+		style="" 
+		width="2998" 
+		height="46" />
+																	</div>
+					<div>
+												<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;2998&#039; height=&#039;46&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/uploads/2025/08/logo_bar_12-08-2025.svg" 
+				alt="Logo Bar 12 08 2025" 
+		style="" 
+		width="2998" 
+		height="46" />
+											</div>
+				
+			</div>
+			
+			
+			
+
+			
+		</div>
+	</div>
+</section>
+
+
+		</div>
+							<div id="section-8" class="section-wrap  block-8 pt-none pb-sm">
+		<section id="custom_968021faf5247e09999cc5b272c7699d" class="custom vigilante-side-by-side 968021faf5247e09999cc5b272c7699d dark " style="background-color:#ffffff;">
+	
+	
+		
+		
+						
+			
+<div class="container--whyte">
+	<div class="inner">
+		<div class="content-wrap img-left">
+			<div class="graphic center inset screenshot lazy " data-bg="https://www.sentinelone.com/wp-content/uploads/2024/07/Module6_EasilyConfig.jpg">
+								<div id="hb-1c49418010ab07de67dab4ff8824a9d2" class="hitbox" data-src="https://www.sentinelone.com/wp-content/uploads/2024/06/HC0310_S1_CloudNativeSecurity_H264_1080p24_-16LKFS_OA_Captions.mp4"></div>
+								<div class="image">
+												<img class="lazy " 
+		src="data:image/svg+xml;utf8,&lt;svg xmlns=&#039;http://www.w3.org/2000/svg&#039; width=&#039;850&#039; height=&#039;570&#039;&gt;&lt;rect width=&#039;100%&#039; height=&#039;100%&#039; fill=&#039;none&#039;/&gt;&lt;/svg&gt;" 
+		data-src="https://www.sentinelone.com/wp-content/uploads/2024/07/Module10.jpg" 
+				alt="Module10" 
+		style="" 
+		width="850" 
+		height="570" />
+										</div>
+			</div>
+			<div class="context">
+								<h2 class="title-2xl-300">See Comprehensive Cloud Security in Action</h2>
+				<div class="body-md-350">Discover how Singularity Cloud Native Security from SentinelOne can help your security teams gain greater visibility and boost investigation efficiency.</div>
+								
+<div class="cta-wrap">
+	<a class="cta wow fadeIn filled dark arrow" href="https://www.sentinelone.com/lp/request-cnapp-demo/" target=""  >
+				<span>Secure Your Cloud</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>							</div>
+		</div>
+	</div>
+</div>
+<script>
+	$( function() {
+		$( "#hb-1c49418010ab07de67dab4ff8824a9d2" ).click( function () {
+			GlobalMediaViewer.src( $( this ).data( 'src' ), '' );
+		});
+	} );
+</script>
+		
+		
+</section>
+
+		</div>
+							<div id="resources-for-security-leaders" class="section-wrap  block-9 pt-sm pb-none">
+		
+
+	<section id="related-resources_bab634261808a170712dceb8d4e5d97d" class="related-resources-ventures bab634261808a170712dceb8d4e5d97d">
+		<div class="container--whyte">
+			<div class="inner">
+				<div class="heading-content">
+					<div class="heading-text">
+													<div class="eyebrow body-xl-350">Cybersecurity Resources</div>
+																			<h2>Resources for Security Leaders</h2>
+																	</div>
+
+					<div class="cta-navigation-wrapper">
+																			<div class="buttons top">
+								<div class="ui">
+									<div class="button-ui button-prev">
+										<svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M3.62361 8.23803L3.62361 9.17403C3.89561 9.20603 4.15161 9.25403 4.39161 9.31803C4.63161 9.38203 4.87961 9.47003 5.13561 9.58203C5.39161 9.69403 5.63161 9.81403 5.85561 9.94203C6.07961 10.086 6.30361 10.27 6.52761 10.494L8.85561 12.798L7.36761 14.238L0.359613 7.20603L7.36761 0.150029L8.85561 1.61403L6.62361 3.82203C6.35161 4.07803 6.08761 4.28603 5.83161 4.44603C5.57561 4.60603 5.31961 4.73403 5.06361 4.83003C4.82361 4.92603 4.58361 5.00603 4.34361 5.07003C4.10361 5.15003 3.86361 5.19803 3.62361 5.21403L3.62361 6.15003L18.6236 6.15003L18.6236 8.23803L3.62361 8.23803Z" fill="#ffffff" />
+										</svg>
+									</div>
+									<div class="button-ui button-next">
+										<svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M15.3764 6.76197V5.82597C15.1044 5.79397 14.8484 5.74597 14.6084 5.68197C14.3684 5.61797 14.1204 5.52997 13.8644 5.41797C13.6084 5.30597 13.3684 5.18597 13.1444 5.05797C12.9204 4.91397 12.6964 4.72997 12.4724 4.50597L10.1444 2.20197L11.6324 0.76197L18.6404 7.79397L11.6324 14.85L10.1444 13.386L12.3764 11.178C12.6484 10.922 12.9124 10.714 13.1684 10.554C13.4244 10.394 13.6804 10.266 13.9364 10.17C14.1764 10.074 14.4164 9.99397 14.6564 9.92997C14.8964 9.84997 15.1364 9.80197 15.3764 9.78597V8.84997L0.376387 8.84997L0.376387 6.76197L15.3764 6.76197Z" fill="white" />
+										</svg>
+									</div>
+								</div>
+							</div>
+											</div>
+				</div>
+				<div class="entries swiper-container overflow-visible">
+					<div class="swiper-wrapper">
+													<div class="swiper-slide entry" data-index="1">
+								<div class="entry-card" style="background: #F8F8F8;">
+																			<a href="https://www.sentinelone.com/resources/datasheets/assets/cnapp/ai-powered-cnapp-en" class="link-wrap" title="Read Now" aria-label="Read Now" target="_blank" rel="noopener noreferrer"></a>
+																		<div class="entry-image" style="background-image: url(https://www.sentinelone.com/wp-content/uploads/2025/10/Resources_DataSheet03.avif);"></div>
+									<div class="entry-content">
+																					<div class="category body-xs-500 dark-theme">Datasheet</div>
+										
+										<div class="entry-title title-sm-350">
+											Singularity Cloud Security										</div>
+
+										<div class="blurb-button-wrap">
+											
+																							<div class="cta-wrap">
+													<a class="cta wow fadeIn purple arrow" href="https://www.sentinelone.com/resources/datasheets/assets/cnapp/ai-powered-cnapp-en" target="_blank" rel="noopener noreferrer" style="visibility: visible; animation-name: fadeIn;">
+														<span class="body-sm-400">Read Now</span>
+														<svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M13.501 5.936V4.836C13.3836 4.836 13.2736 4.82867 13.171 4.814C13.083 4.79933 12.9803 4.77 12.863 4.726C12.3496 4.682 11.851 4.58667 11.367 4.44C10.883 4.27867 10.4063 3.96333 9.93698 3.494L8.63898 2.218L10.619 0.26L17.703 7.322L10.619 14.384L8.63898 12.426L9.91498 11.172C10.399 10.7027 10.8903 10.38 11.389 10.204C11.8876 10.028 12.401 9.92533 12.929 9.896C13.017 9.86667 13.1123 9.84467 13.215 9.83C13.3176 9.81533 13.413 9.80067 13.501 9.786V8.708H0.740977V5.936H13.501Z" fill="#6100FF"></path>
+														</svg>
+													</a>
+												</div>
+																					</div>
+									</div>
+								</div>
+							</div>
+													<div class="swiper-slide entry" data-index="2">
+								<div class="entry-card" style="background: #F8F8F8;">
+																			<a href="https://www.sentinelone.com/resources/ebooks/assets/cnapp/cnapp-buyers-guide-en" class="link-wrap" title="Read Now" aria-label="Read Now" target="_blank" rel="noopener noreferrer"></a>
+																		<div class="entry-image" style="background-image: url(https://www.sentinelone.com/wp-content/uploads/2025/10/Resources_Ebook02.jpg);"></div>
+									<div class="entry-content">
+																					<div class="category body-xs-500 dark-theme">Guide</div>
+										
+										<div class="entry-title title-sm-350">
+											CNAPP Buyer’s Guide										</div>
+
+										<div class="blurb-button-wrap">
+											
+																							<div class="cta-wrap">
+													<a class="cta wow fadeIn purple arrow" href="https://www.sentinelone.com/resources/ebooks/assets/cnapp/cnapp-buyers-guide-en" target="_blank" rel="noopener noreferrer" style="visibility: visible; animation-name: fadeIn;">
+														<span class="body-sm-400">Read Now</span>
+														<svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M13.501 5.936V4.836C13.3836 4.836 13.2736 4.82867 13.171 4.814C13.083 4.79933 12.9803 4.77 12.863 4.726C12.3496 4.682 11.851 4.58667 11.367 4.44C10.883 4.27867 10.4063 3.96333 9.93698 3.494L8.63898 2.218L10.619 0.26L17.703 7.322L10.619 14.384L8.63898 12.426L9.91498 11.172C10.399 10.7027 10.8903 10.38 11.389 10.204C11.8876 10.028 12.401 9.92533 12.929 9.896C13.017 9.86667 13.1123 9.84467 13.215 9.83C13.3176 9.81533 13.413 9.80067 13.501 9.786V8.708H0.740977V5.936H13.501Z" fill="#6100FF"></path>
+														</svg>
+													</a>
+												</div>
+																					</div>
+									</div>
+								</div>
+							</div>
+													<div class="swiper-slide entry" data-index="3">
+								<div class="entry-card" style="background: #F8F8F8;">
+																			<a href="https://www.sentinelone.com/resources/webinars/assets/cnapp/unified-cloud-security-en" class="link-wrap" title="Watch Now" aria-label="Watch Now" target="_blank" rel="noopener noreferrer"></a>
+																		<div class="entry-image" style="background-image: url(https://www.sentinelone.com/wp-content/uploads/2025/10/Resources_Ebook03.jpg);"></div>
+									<div class="entry-content">
+																					<div class="category body-xs-500 dark-theme">Webinar</div>
+										
+										<div class="entry-title title-sm-350">
+											A New Unified Approach to Cloud Security										</div>
+
+										<div class="blurb-button-wrap">
+											
+																							<div class="cta-wrap">
+													<a class="cta wow fadeIn purple arrow" href="https://www.sentinelone.com/resources/webinars/assets/cnapp/unified-cloud-security-en" target="_blank" rel="noopener noreferrer" style="visibility: visible; animation-name: fadeIn;">
+														<span class="body-sm-400">Watch Now</span>
+														<svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M13.501 5.936V4.836C13.3836 4.836 13.2736 4.82867 13.171 4.814C13.083 4.79933 12.9803 4.77 12.863 4.726C12.3496 4.682 11.851 4.58667 11.367 4.44C10.883 4.27867 10.4063 3.96333 9.93698 3.494L8.63898 2.218L10.619 0.26L17.703 7.322L10.619 14.384L8.63898 12.426L9.91498 11.172C10.399 10.7027 10.8903 10.38 11.389 10.204C11.8876 10.028 12.401 9.92533 12.929 9.896C13.017 9.86667 13.1123 9.84467 13.215 9.83C13.3176 9.81533 13.413 9.80067 13.501 9.786V8.708H0.740977V5.936H13.501Z" fill="#6100FF"></path>
+														</svg>
+													</a>
+												</div>
+																					</div>
+									</div>
+								</div>
+							</div>
+													<div class="swiper-slide entry" data-index="4">
+								<div class="entry-card" style="background: #F8F8F8;">
+																			<a href="https://www.sentinelone.com/resources/datasheets/assets/cws/cloud-workload-security-en" class="link-wrap" title="Read Now" aria-label="Read Now" target="_blank" rel="noopener noreferrer"></a>
+																		<div class="entry-image" style="background-image: url(https://www.sentinelone.com/wp-content/uploads/2025/10/Resources_DataSheet02.avif);"></div>
+									<div class="entry-content">
+																					<div class="category body-xs-500 dark-theme">Datasheet</div>
+										
+										<div class="entry-title title-sm-350">
+											Singularity Cloud Workload Security										</div>
+
+										<div class="blurb-button-wrap">
+											
+																							<div class="cta-wrap">
+													<a class="cta wow fadeIn purple arrow" href="https://www.sentinelone.com/resources/datasheets/assets/cws/cloud-workload-security-en" target="_blank" rel="noopener noreferrer" style="visibility: visible; animation-name: fadeIn;">
+														<span class="body-sm-400">Read Now</span>
+														<svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M13.501 5.936V4.836C13.3836 4.836 13.2736 4.82867 13.171 4.814C13.083 4.79933 12.9803 4.77 12.863 4.726C12.3496 4.682 11.851 4.58667 11.367 4.44C10.883 4.27867 10.4063 3.96333 9.93698 3.494L8.63898 2.218L10.619 0.26L17.703 7.322L10.619 14.384L8.63898 12.426L9.91498 11.172C10.399 10.7027 10.8903 10.38 11.389 10.204C11.8876 10.028 12.401 9.92533 12.929 9.896C13.017 9.86667 13.1123 9.84467 13.215 9.83C13.3176 9.81533 13.413 9.80067 13.501 9.786V8.708H0.740977V5.936H13.501Z" fill="#6100FF"></path>
+														</svg>
+													</a>
+												</div>
+																					</div>
+									</div>
+								</div>
+							</div>
+											</div>
+				</div>
+
+							</div>
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+			const container = document.querySelector('.related-resources-ventures .swiper-container');
+
+			const initobj = {
+				navigation: {
+					nextEl: ".related-resources-ventures .button-next",
+					prevEl: ".related-resources-ventures .button-prev",
+				},
+				spaceBetween: 24,
+				grabCursor: true,
+				slidesPerView: 'auto',
+				// Allow visual overflow without creating scrollbars
+				watchOverflow: true,
+				cssMode: false,
+				watchSlidesProgress: true
+			};
+
+			if (typeof Swiper === 'function') {
+				const swiper = new Swiper(container, initobj);
+			} else {
+				// Load Swiper if not already loaded
+				const script = document.createElement('script');
+				script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+				script.onload = () => {
+					const swiper = new Swiper(container, initobj);
+				};
+				document.head.appendChild(script);
+			}
+		});
+	</script>
+		</div>
+			
+	</div><!-- end .main from header.php -->
+
+			
+
+	<section id="prefooter" class="prefooter light default">
+	<div class="container--whyte">
+		<div class="inner">
+							<div class="context lazy" style="
+				--desktop_bg: url('https://www.sentinelone.com/wp-content/uploads/2024/07/footer_bg.jpg'); 
+				--tablet_bg: url('https://www.sentinelone.com/wp-content/uploads/2024/07/footer_bg.jpg'); 
+				--mobile_bg: url('https://www.sentinelone.com/wp-content/uploads/2024/07/footer_bg.jpg');">
+					<h2 class="title-4xl-300">Experience Autonomous <br class='nobr /'>Cloud Security First Hand</h2>
+					<div class="lower">
+						<p class="blurb body-xl-350">Connect with a SentinelOne expert to see how our AI-powered CNAPP can help you protect your entire cloud estate from build time to runtime.</p>
+						
+<div class="cta-wrap">
+	<a class="cta wow fadeIn filled dark arrow" href="/lp/request-cnapp-demo/" target=""  >
+				<span>Get a Personalized Demo</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+				<path d="M12.5309 5.14V4.36C12.3042 4.33333 12.0909 4.29333 11.8909 4.24C11.6909 4.18667 11.4842 4.11333 11.2709 4.02C11.0575 3.92667 10.8575 3.82667 10.6709 3.72C10.4842 3.6 10.2975 3.44667 10.1109 3.26L8.17086 1.34L9.41086 0.14L15.2509 6L9.41086 11.88L8.17086 10.66L10.0309 8.82C10.2575 8.60667 10.4775 8.43333 10.6909 8.3C10.9042 8.16667 11.1175 8.06 11.3309 7.98C11.5309 7.9 11.7309 7.83333 11.9309 7.78C12.1309 7.71333 12.3309 7.67333 12.5309 7.66V6.88L0.0308594 6.88L0.0308594 5.14L12.5309 5.14Z" fill="white"/>
+			</svg>
+			</a>
+</div>					</div>
+				</div>
+					</div>
+	</div>
+</section>
+
+
+	<footer class="footer">
+		<div class="container--whyte">
+			<div class="inner">
+				<div class="mid main-footer">
+						<div>
+							<div class="company">
+								<div class="column test menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+   <div class="coltitle whyte s_15 w_700">Get Started</div>
+   <ul>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/request-demo/">Get a Demo</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/tour/">Product Tour</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/why-sentinelone/">Why SentinelOne</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform-packages/">Pricing & Packaging</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/faq/">FAQ</a></li>
+      <li class="coltitle submenu whyte s_15 w_700 menu-item menu-item-type-custom menu-item-object-custom"><div class="whyte s_15 w_400">Contact</div></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/contact/">Contact Us</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/global-services/get-support-now/">Customer Support</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://status.sentinelone.com/" target="_blank">SentinelOne Status</a></li>
+   </ul>
+</div>							</div>
+					
+							<div class="column language-wrapper">
+								<div class="coltitle whyte s_15 w_700 language-title">Language</div>
+										<div class="lang-select">
+							<span class="label">English</span>
+			
+						<ul>
+		<li class="current"><span data-subdomain="US" href="https://www.sentinelone.com/platform/cloud-security/">English</span></li><li class=""><a data-subdomain="JA" href="https://www.sentinelone.com/ja/platform/cloud-security/">日本語</a></li><li class=""><a data-subdomain="DE" href="https://www.sentinelone.com/de/platform/cloud-security/">Deutsch</a></li><li class=""><a data-subdomain="ES" href="https://www.sentinelone.com/es/platform/cloud-security/">Español</a></li><li class=""><a data-subdomain="FR" href="https://www.sentinelone.com/fr/platform/cloud-security/">Français</a></li><li class=""><a data-subdomain="IT" href="https://www.sentinelone.com/it/platform/cloud-security/">Italiano</a></li><li class=""><a data-subdomain="NL" href="https://www.sentinelone.com/nl/platform/cloud-security/">Dutch</a></li><li class=""><a data-subdomain="KO" href="https://www.sentinelone.com/ko/platform/cloud-security/">한국어</a></li>			</ul>
+		</div>
+									</div>
+						</div>
+
+					<div class="column menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children"><div class="coltitle whyte s_15 w_700">Platform</div><ul><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/">Singularity Platform</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/endpoint-security/">Singularity Endpoint</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/cloud-security/">Singularity Cloud</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/ai-siem/">Singularity AI-SIEM</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/identity/">Singularity Identity</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/partners/singularity-marketplace/">Singularity Marketplace</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/purple/">Purple AI</a></li><li class="coltitle submenu menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="#">Services</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/global-services/">Wayfinder TDR</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="/global-services/threat-hunting/">Threat Hunting</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="/global-services/managed-detection-and-response/">Managed Detection & Response</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="/global-services/incident-readiness-and-response/">Incident Readiness & Response</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/global-services/sentinelone-go/">SentinelOne GO</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/global-services/technical-account-management/">Technical Account Management</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/global-services/support-services/">Support Services</a></li></ul></div><div class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><div class="coltitle whyte s_15 w_700">Verticals</div><ul><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/energy/">Energy</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/federal-government/">Federal Government</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/finance/">Finance</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="/platform/healthcare/">Healthcare</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/highereducation/">Higher Education</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/platform-cybersecurity-for-k12-education/">K-12 Education</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/manufacturing/">Manufacturing</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/retail/">Retail</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="/platform/state-and-local-government/">State and Local Government</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/platform/small-business/">Cybersecurity for SMB</a></li></ul></div><div class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><div class="coltitle whyte s_15 w_700">Resources</div><ul><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/labs/">Labs</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/resources/?type=casestudies">Case Studies</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/resources/?type=videos">Videos</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/tour/">Product Tours</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="/events/">Events</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/cybersecurity-101/">Cybersecurity 101</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/resources/?type=ebooks">eBooks</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/resources/?type=webinars">Webinars</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/resources/?type=whitepapers">Whitepapers</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/press/">Press</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/news/">News</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/anthology/">Ransomware Anthology</a></li></ul></div><div class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><div class="coltitle whyte s_15 w_700">Company</div><ul><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/company/">About Us</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="/customers/">Our Customers</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/careers/">Careers</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/partners/partner-overview/">Partners</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/legal/">Legal &#038; Compliance</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="/security-compliance/">Security & Compliance</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://investors.sentinelone.com/overview/default.aspx">Investor Relations</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/s-foundation/">S Foundation</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom"><a class="whyte s_15 w_400" href="https://www.sentinelone.com/s-ventures/">S Ventures</a></li></ul></div>
+				</div>
+
+			</div>
+		</div>
+
+		
+			<div class="container--whyte">
+				<div class="inner" style="display: flex; justify-content: space-between; align-items: center;">
+					<div class="footer-left">
+						<div class="logo footer-logo-minimal">
+							<svg width="37" height="46" viewBox="0 0 37 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mark">
+<g id="Group 66685">
+<path id="Vector" d="M18.1771 9.10834L36.3546 18.1963V9.08961L18.1771 0V9.10834Z" fill="url(#paint0_linear_1448_191838)"/>
+<path id="Vector_2" d="M18.1771 36.3328L36.3546 27.2432V36.3515L18.1771 45.4411V36.3328Z" fill="url(#paint1_linear_1448_191838)"/>
+<path id="Vector_3" d="M18.1775 9.10834L0 18.1963V9.08961L18.1775 0V9.10834Z" fill="url(#paint2_linear_1448_191838)"/>
+<path id="Vector_4" d="M18.1775 36.3328L0 27.2432V36.3515L18.1775 45.4411V36.3328Z" fill="url(#paint3_linear_1448_191838)"/>
+<path id="Vector_5" d="M4.54095 20.4542L22.7049 29.537L31.8064 24.982L13.6527 15.9043L4.54095 20.4542Z" fill="url(#paint4_linear_1448_191838)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1448_191838" x1="36.2269" y1="13.5851" x2="18.1686" y2="4.54481" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4500B6"/>
+<stop offset="1" stop-color="#6100FF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1448_191838" x1="36.2269" y1="31.8561" x2="18.1686" y2="40.8963" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4500B6"/>
+<stop offset="1" stop-color="#6100FF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_1448_191838" x1="0.129365" y1="13.5851" x2="18.186" y2="4.54481" gradientUnits="userSpaceOnUse">
+<stop stop-color="#6100FF"/>
+<stop offset="1" stop-color="#4500B6"/>
+</linearGradient>
+<linearGradient id="paint3_linear_1448_191838" x1="0.129365" y1="31.8561" x2="18.186" y2="40.8963" gradientUnits="userSpaceOnUse">
+<stop stop-color="#6100FF"/>
+<stop offset="1" stop-color="#4500B6"/>
+</linearGradient>
+<linearGradient id="paint4_linear_1448_191838" x1="27.8727" y1="27.5727" x2="8.33" y2="17.7886" gradientUnits="userSpaceOnUse">
+<stop stop-color="#6100FF"/>
+<stop offset="1" stop-color="#4500B6"/>
+</linearGradient>
+</defs>
+</svg>
+						</div>
+						<div class="copy-wrapper">
+							<div class="copy whyte s_12 w_400">©2026 SentinelOne, All Rights Reserved.</div>
+							<div class="links" style="flex-direction: row">
+								<a href="/legal/privacy-notice/">Privacy Notice</a>
+<a href="/legal/terms-of-use/">Terms of Use</a>							</div>
+						</div>
+					</div>
+					
+	
+					
+					<div class="icons">
+						<a aria-label="Twitter" href="https://twitter.com/SentinelOne" rel="noopener noreferrer" target="_blank">
+							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.31742 6.77491L15.1457 0H13.7646L8.70389 5.88256L4.66193 0H0L6.11224 8.89547L0 16H1.38119L6.72542 9.78782L10.994 16H15.656L9.31708 6.77491H9.31742ZM7.42569 8.97384L6.80639 8.08805L1.87886 1.03974H4.00029L7.97687 6.72795L8.59617 7.61374L13.7652 15.0075H11.6438L7.42569 8.97418V8.97384Z" fill="#0B0C1B"/>
+</svg>
+						</a>
+						<a aria-label="Facebook" href="https://www.facebook.com/SentinelOne/" rel="noopener noreferrer" target="_blank">
+							<svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5.03092 16L5.04234 9.0876H7.33845C7.54488 9.0876 7.71882 8.92695 7.74312 8.71373L7.99711 6.48557C8.02587 6.2335 7.83646 6.01195 7.59243 6.01195H5.03092V4.14806C5.03092 3.30279 5.25665 2.72681 6.42233 2.72681L7.50183 2.72629C7.72673 2.72615 7.90914 2.53649 7.90914 2.30254V0.42375C7.90914 0.189706 7.7266 0 7.5016 0H5.74265C3.59909 0 2.13154 1.36045 2.13154 3.85894V6.0119H0.407543C0.18186 6.0119 -0.000861628 6.2026 3.05632e-06 6.43726L0.00828583 8.66541C0.009105 8.8988 0.191326 9.08751 0.41578 9.08751H2.14292L2.1315 15.9999L5.03092 16Z" fill="#0B0C1B"/>
+</svg>
+						</a>
+						<a aria-label="Linkedin" href="https://www.linkedin.com/company/sentinelone/" rel="noopener noreferrer" target="_blank">
+							<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2.3369 4.64286C1.04628 4.64286 0 3.60351 0 2.32143C0 1.03935 1.04628 0 2.3369 0C3.62753 0 4.67381 1.03935 4.67381 2.32143C4.67381 3.60351 3.62759 4.64286 2.3369 4.64286ZM17 16.4722C17 16.7636 16.762 17 16.4687 17H13.829C13.5356 17 13.2977 16.7636 13.2977 16.4722V11.6674C13.2977 11.6146 13.2989 11.5526 13.3001 11.4829C13.3164 10.6066 13.3548 8.52655 11.4121 8.52655C9.78528 8.52655 9.45531 10.1858 9.38905 10.9304V16.4722C9.38905 16.7636 9.1512 17 8.85772 17H6.30475C6.01133 17 5.77342 16.7636 5.77342 16.4722V6.13621C5.77342 5.84479 6.01133 5.60846 6.30475 5.60846H8.85772C9.15114 5.60846 9.38905 5.84479 9.38905 6.13621V7.02994C9.99227 6.13068 10.8887 5.43658 12.7975 5.43658C17.0004 5.43658 17.0001 9.31512 17 11.4779V11.5145V16.4722ZM3.56685 17C3.88601 17 4.14472 16.743 4.14472 16.4259V6.18251C4.14472 5.86546 3.88601 5.60846 3.56685 5.60846H1.10696C0.787799 5.60846 0.529088 5.86546 0.529088 6.18251V16.4259C0.529088 16.743 0.787799 17 1.10696 17H3.56685Z" fill="#0B0C1B"/>
+</svg>
+						</a>
+						<a aria-label="Youtube" href="https://goo.gl/e5C9f4" rel="noopener noreferrer" target="_blank">
+							<svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.36143 0H16.6386C19.0473 0 21 2.10246 21 4.69598V11.304C21 13.8975 19.0473 16 16.6386 16H4.36143C1.95268 16 0 13.8975 0 11.304V4.69598C0 2.10246 1.95268 0 4.36143 0ZM7.94655 11.2704L13.6891 8.32151C13.8618 8.23283 13.8648 7.9692 13.6941 7.87606L7.95152 4.74287C7.79818 4.6592 7.61679 4.77917 7.61679 4.96427V11.0463C7.61679 11.2288 7.79354 11.349 7.94655 11.2704Z" fill="#0B0C1B"/>
+</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</footer>
+
+	<!-- New UI (commented out for now) -->
+	
+	<script>
+		// Collapsible footer toggle
+		$(document).ready(function() {
+			$('.collapsible-footer-toggle').on('click', function() {
+				$('.collapsible-footer-content').slideToggle();
+				$(this).toggleClass('active');
+				if (!$(this).hasClass('active')) {
+					$(this).addClass('inactive-animate');
+				} else {
+					$(this).removeClass('inactive-animate');
+				}
+				$(this).find('.inactive, .active').toggle();
+			});
+		});
+	</script>
+
+
+	
+<footer class="copyright disclaimer ">
+	<div class="container--whyte">
+		<div class="inner">
+			<div class="copy body-xs-400">
+				<p>*According to G2 users</p>
+<p>*Coming Soon</p>
+			</div>
+		</div>
+	</div>
+</footer>	
+	
+	<script>
+		MktoForms2.onFormRender(function( form ) {
+			var button_row = form.getFormElem().find( '.mktoButtonRow' );
+			var label      = button_row.find( 'button' ).html();
+			var legalese   = 'By clicking {{LABEL}}, I agree to the use of my personal data in accordance with SentinelOne <a href=\"/legal/privacy-notice/\">Privacy Notice</a>. SentinelOne will not sell, trade, lease, or rent your personal data to third parties. This site is protected by reCAPTCHA and the <a href=\"https://policies.google.com/privacy\" target=\"_blank\">Google Privacy Policy</a> and <a href=\"https://policies.google.com/terms\" target=\"_blank\">Terms of Service</a> apply.';
+			if ( button_row.data( 'inited' ) ) {
+				return;
+			}
+			button_row.data( 'inited', true );
+			button_row.after( '<div class="marketo-legal">' + legalese.split( '{{LABEL}}' ).join( label )  + '</div>' );
+		} );
+	</script>
+
+	<div id="global-media-viewer">
+		<div class="underlay"></div>
+		<div class="display-wrap">
+			<div class="display">
+				<div class="modalbar">
+					<div class="title"></div>
+					<div class="close">
+						<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18"><path d="m4.243 13.243 8.485-8.486M12.728 13.243 4.243 4.757" stroke="currentColor" /></svg>
+					</div>
+				</div>
+				<video controls><source src="" type="video/mp4"></video>
+				<div class="image-renderer"></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/sentinelone/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="https://www.sentinelone.com/wp-content/themes/sentinelone/carbine/assets/js/global.min.js?ver=1777560194" id="carbine-script-global-js"></script>
+	<script>
+	jQuery( document ).ready( function() {
+		jQuery( 'pre' ).each( function ( i, block ) {
+			hljs.highlightBlock( block );
+		} );
+	} );
+	</script>
+	
+<!-- Carbine Components --><script>UniformHeights=(function(){function Constructor(){function applyHeights(elements){if(!elements){return;}
+$(elements).height('unset');var elementHeights=$(elements).map(function(){return $(this).height();}).get();var maxHeight=Math.max.apply(null,elementHeights);$(elements).height(maxHeight);}
+this.uid=(els)=>{window.addEventListener('load',function(){if($(window).innerWidth()>640){applyHeights(els);}else{$(els).height('unset');}});window.addEventListener('resize',function(){if($(window).innerWidth()>640){applyHeights(els);}else{$(els).height('unset');}});};}
+return new Constructor();}());</script>				<script>$('.block-0 .graphic').click(() => {
+	GlobalMediaViewer.src('https://www.sentinelone.com/wp-content/uploads/2025/04/CNS-Product-Video-v4-with-subs.mp4');
+});
+
+$( '.block-2 .cta' ).attr( 'target', '_blank' );
+UniformHeights.uid(document.querySelectorAll('.vigilante-side-by-side .content-wrap'));</script>
+	
+</body>
+</html>

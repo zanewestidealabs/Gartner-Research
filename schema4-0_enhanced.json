@@ -1,0 +1,360 @@
+{
+  "dfir_capability_taxonomy_v4.0_enhanced": {
+    "based_on": "dfir_capability_taxonomy_v3.2",
+    "intent": "Adds AI-evidence-oriented guidance and richer pillar/sub-pillar definitions to support research-based scoring.",
+    "metadata": {
+      "framework_alignment": "NIST CSF 2.0 & SANS Incident Handler's Handbook",
+      "scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence / not applicable / not disclosed",
+        "scoring_logic": {
+          "1": "Manual: Process is explicitly human-led with no evidence of technological automation.",
+          "2": "Insufficient Evidence: Documentation confirms the service is provided, but does not verify AI integration.",
+          "3": "AI-Augmented: Assistive AI used for summarization, drafting, triage suggestions, or search optimization; humans remain primary decision-makers.",
+          "4": "Advanced AI: Specialized models perform correlation/classification at scale; workflows are partially automated but require human validation/approval.",
+          "5": "Fully Agentic: Autonomous systems plan tasks, execute tooling, and generate defensible documentation with measurable human oversight gates."
+        }
+      },
+      "research_method": {
+        "primary_sources": [
+          "Vendor official documentation/product pages",
+          "Public technical blogs and whitepapers",
+          "Public case studies and after-action reports",
+          "Conference talks and slide decks",
+          "Public API references / product docs"
+        ],
+        "secondary_sources": [
+          "Independent analyst write-ups",
+          "Credible media coverage",
+          "Public procurement / government disclosures"
+        ],
+        "evidence_quality_tiers": {
+          "A": "Direct vendor docs + technical detail (features, workflows, screenshots, API refs)",
+          "B": "Vendor marketing with some specifics (named features, rough workflow)",
+          "C": "Third-party mentions without technical verification",
+          "D": "Unverifiable claims / vague statements"
+        }
+      }
+    },
+    "pillars": {
+      "PLA": {
+        "name": "Planning & Preparation",
+        "focus": "Organizational readiness and pre-incident capability maturity; especially the automation of preparedness activities.",
+        "validated_pillar_score_rule": "Average of validated sub-pillar scores (PLA-01..PLA-04)",
+        "ai_evidence_signals": [
+          "Automated gap detection across telemetry sources",
+          "Playbooks generated/maintained with AI assistance",
+          "Automated tabletop simulation and scoring",
+          "Evidence preservation readiness checks with repeatable automation"
+        ]
+      },
+      "INV": {
+        "name": "Forensic Investigation",
+        "focus": "Evidence acquisition and analytic reconstruction; prioritizes AI that accelerates correlation, attribution, and timeline building.",
+        "validated_pillar_score_rule": "Average of validated sub-pillar scores (INV-01..INV-04)",
+        "ai_evidence_signals": [
+          "Automated triage with explicit reasoning or playbooks",
+          "Cross-system timeline reconstruction features",
+          "Attribution and provenance tracking",
+          "Automated malware triage / reverse engineering assistance"
+        ]
+      },
+      "REM": {
+        "name": "Remediation & Recovery",
+        "focus": "Containment, eradication, and restoration; evaluates AI that reduces time-to-contain and validates recovery.",
+        "validated_pillar_score_rule": "Average of validated sub-pillar scores (REM-01..REM-04)",
+        "ai_evidence_signals": [
+          "Automated containment playbooks",
+          "Automated persistence detection and removal guidance",
+          "Restoration verification automation",
+          "Negotiation/forecasting support tied to data"
+        ]
+      },
+      "PMG": {
+        "name": "Post-Incident Management",
+        "focus": "Lifecycle oversight, reporting, and communication; evaluates AI in coordination and defensible reporting.",
+        "validated_pillar_score_rule": "Average of validated sub-pillar scores (PMG-01..PMG-04)",
+        "ai_evidence_signals": [
+          "Automated task coordination / case management augmentation",
+          "Quality/compliance automation (audit trails)",
+          "Automated comms drafting with traceability",
+          "Structured lessons-learned extraction"
+        ]
+      },
+      "LAW": {
+        "name": "Legal & Compliance",
+        "focus": "Legal admissibility and judicial support; evaluates AI with chain-of-custody, auditability, and defensible methodology.",
+        "validated_pillar_score_rule": "Average of validated sub-pillar scores (LAW-01..LAW-04)",
+        "ai_evidence_signals": [
+          "Defensible evidence collection workflows",
+          "Court-ready reporting support",
+          "Audit logs including AI interactions",
+          "Methodology validation and error-rate documentation"
+        ]
+      }
+    },
+    "sub_pillars": {
+      "PLA-01": {
+        "name": "Visibility Gap Analysis",
+        "expanded_definition": "Identifying telemetry blind spots across hybrid environments and recommending measurable remediation actions.",
+        "what_to_verify_publicly": [
+          "Automated coverage maps across endpoints, network, identity, cloud logs",
+          "Detection of missing audit trails / misconfigurations",
+          "Repeatable assessments (dashboards, scheduled checks)"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted gap detection or anomaly identification in telemetry coverage",
+          "Automated recommendations with explainability"
+        ]
+      },
+      "PLA-02": {
+        "name": "Behavioral Playbook Design",
+        "expanded_definition": "Creating response logic aligned to attacker behaviors and decision points; playbooks that adapt to conditions.",
+        "what_to_verify_publicly": [
+          "Named playbook libraries and maintenance workflows",
+          "Decision-tree or condition-based branching",
+          "Integration with SOAR / case management"
+        ],
+        "ai_specific_evidence": [
+          "AI-generated playbook drafts with human approval",
+          "Dynamic playbook suggestions from incident context"
+        ]
+      },
+      "PLA-03": {
+        "name": "Tabletop Exercise (TTX) Automation",
+        "expanded_definition": "Simulating breach scenarios and automatically capturing actions, timelines, and outcomes for improvement.",
+        "what_to_verify_publicly": [
+          "Scenario library, facilitation tooling, scoring/metrics",
+          "Automated post-exercise reporting",
+          "Support for repeated runs and benchmarking"
+        ],
+        "ai_specific_evidence": [
+          "AI-driven scenario generation or role-play",
+          "Automated extraction of lessons learned"
+        ]
+      },
+      "PLA-04": {
+        "name": "Forensic Readiness Maturity Assessment",
+        "expanded_definition": "Benchmarking evidence preservation, collection readiness, and defensibility against standards.",
+        "what_to_verify_publicly": [
+          "Standard mapping (ISO 27037, NIST guidance)",
+          "Checklists and measurable maturity outcomes",
+          "Repeatable assessments"
+        ],
+        "ai_specific_evidence": [
+          "AI assistance in policy/log-review correlation",
+          "Automated evidence-readiness checks"
+        ]
+      },
+      "INV-01": {
+        "name": "Triage and Scoping",
+        "expanded_definition": "Rapidly assessing scope/impact and prioritizing collection with defensible rationale.",
+        "what_to_verify_publicly": [
+          "Triage workflows and decision criteria",
+          "Automated enrichment from telemetry",
+          "Prioritized collection guidance"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted triage summaries with cited artifacts",
+          "Automated scoping suggestions with confidence/traceability"
+        ]
+      },
+      "INV-02": {
+        "name": "Multi-Hop Timeline Reconstruction",
+        "expanded_definition": "Correlating events across hosts, identities, cloud, and network to build multi-hop attack narratives.",
+        "what_to_verify_publicly": [
+          "Cross-source correlation features",
+          "Graph/timeline visualizations",
+          "Exportable evidence-linked timelines"
+        ],
+        "ai_specific_evidence": [
+          "AI correlation of events into sequences",
+          "Agentic collection + timeline building"
+        ]
+      },
+      "INV-03": {
+        "name": "Artifact Source Attribution",
+        "expanded_definition": "Proving artifact provenance with path/process/user context and validation (hashes, metadata).",
+        "what_to_verify_publicly": [
+          "Provenance features (process tree, file paths, user/session context)",
+          "Hashing/signing and integrity verification",
+          "Evidence linkage from claims to artifacts"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted clustering/attribution that cites underlying artifacts",
+          "Automated provenance graphs with traceability"
+        ]
+      },
+      "INV-04": {
+        "name": "Malware and Reverse Engineering",
+        "expanded_definition": "Analyzing malicious code and behaviors to determine capabilities, persistence, and likely operators.",
+        "what_to_verify_publicly": [
+          "Malware triage pipelines and sandboxing",
+          "Unpacking/deobfuscation approaches",
+          "Report outputs (IOCs, YARA rules, TTP mapping)"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted code understanding or classification",
+          "Automated enrichment and IOC extraction with validation"
+        ]
+      },
+      "REM-01": {
+        "name": "Containment and Isolation",
+        "expanded_definition": "Rapidly severing attacker access while preserving evidence; evaluates automation and control-plane reach.",
+        "what_to_verify_publicly": [
+          "Containment playbooks (EDR isolation, account disable, firewall rules)",
+          "Integration with SOAR/EDR/identity controls",
+          "Preservation steps prior to containment"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted containment recommendations with rationale",
+          "Automated containment execution with approval gates"
+        ]
+      },
+      "REM-02": {
+        "name": "Root Cause Eradication",
+        "expanded_definition": "Removing persistence mechanisms and closing exploited weaknesses with a verified eradication plan.",
+        "what_to_verify_publicly": [
+          "Persistence detection methods",
+          "Remediation checklists tied to findings",
+          "Validation steps confirming removal"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted detection of persistence patterns",
+          "Automated remediation guidance with artifact citations"
+        ]
+      },
+      "REM-03": {
+        "name": "Recovery and Restoration Verification",
+        "expanded_definition": "Restoring services and validating backups/environments are clean; emphasizes verification automation.",
+        "what_to_verify_publicly": [
+          "Backup integrity verification",
+          "Post-restoration monitoring/validation",
+          "Hardening steps tied to root cause"
+        ],
+        "ai_specific_evidence": [
+          "AI-supported restoration validation (anomaly detection)",
+          "Automated checks with documented outcomes"
+        ]
+      },
+      "REM-04": {
+        "name": "Ransomware Negotiation and Outcomes Forecasting",
+        "expanded_definition": "Supporting negotiation strategy and forecasting outcomes using historical and case-specific signals.",
+        "what_to_verify_publicly": [
+          "Negotiation support services and tooling",
+          "Outcome forecasting methodology",
+          "Evidence of structured actor intelligence"
+        ],
+        "ai_specific_evidence": [
+          "AI-supported pricing/outcome modeling",
+          "Automated actor TTP/behavior clustering"
+        ]
+      },
+      "PMG-01": {
+        "name": "Incident Coordination and Escalation",
+        "expanded_definition": "Coordinating stakeholders, tasks, and timelines; evaluates automation in case operations.",
+        "what_to_verify_publicly": [
+          "Case management and workflow tooling",
+          "Role-based coordination and escalation",
+          "Timeline/task tracking outputs"
+        ],
+        "ai_specific_evidence": [
+          "AI-generated task plans with approval",
+          "Automated incident status synthesis with citations"
+        ]
+      },
+      "PMG-02": {
+        "name": "Forensic Quality and Compliance Management",
+        "expanded_definition": "Ensuring SOP adherence, defensibility, and audit trail quality across the investigation lifecycle.",
+        "what_to_verify_publicly": [
+          "Quality controls and review workflows",
+          "Accreditation alignment (where applicable)",
+          "Audit trail completeness"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted QA checks with traceability",
+          "Automated audit trail validation"
+        ]
+      },
+      "PMG-03": {
+        "name": "Crisis and Board Communication",
+        "expanded_definition": "Producing leadership-ready updates that connect technical facts to business impact with defensible sourcing.",
+        "what_to_verify_publicly": [
+          "Report templates and executive briefing outputs",
+          "Evidence-backed narrative generation",
+          "Stakeholder comms workflows"
+        ],
+        "ai_specific_evidence": [
+          "AI drafting that includes source citations",
+          "Automated summarization of evidence with human review"
+        ]
+      },
+      "PMG-04": {
+        "name": "Post-Incident Learning and Review",
+        "expanded_definition": "Capturing lessons learned and implementing measurable improvements; evaluates structured extraction automation.",
+        "what_to_verify_publicly": [
+          "AAR processes and artifacts",
+          "Root cause to improvement mapping",
+          "Benchmarking across incidents"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted extraction of themes/root causes",
+          "Automated recommendation generation with review"
+        ]
+      },
+      "LAW-01": {
+        "name": "Evidence Collection and Preservation",
+        "expanded_definition": "Maintaining defensible chain of custody from collection through analysis with clear, repeatable procedures.",
+        "what_to_verify_publicly": [
+          "Collection methodology and tooling",
+          "Chain-of-custody records",
+          "Tamper-evident storage practices"
+        ],
+        "ai_specific_evidence": [
+          "AI-assisted triage that preserves provenance",
+          "Automated documentation that remains defensible"
+        ]
+      },
+      "LAW-02": {
+        "name": "Expert Witness Testimony Support",
+        "expanded_definition": "Producing court-ready analysis and documentation; evaluates repeatability and methodological clarity.",
+        "what_to_verify_publicly": [
+          "Litigation support services",
+          "Report formats aligned to legal standards",
+          "Expert testimony readiness"
+        ],
+        "ai_specific_evidence": [
+          "AI assistance in report drafting with traceability",
+          "Automated evidence cross-referencing"
+        ]
+      },
+      "LAW-03": {
+        "name": "Machine-Inclusive Chain of Custody",
+        "expanded_definition": "Logging human and AI agent interactions across evidence handling, with model/version traceability.",
+        "what_to_verify_publicly": [
+          "Audit logs that include automation steps",
+          "Model/version tracking (if AI is used)",
+          "Repeatable handoff procedures"
+        ],
+        "ai_specific_evidence": [
+          "Explicit logging of AI actions and prompts",
+          "Controls preventing untracked modifications"
+        ]
+      },
+      "LAW-04": {
+        "name": "Admissibility Defense (Daubert Standard)",
+        "expanded_definition": "Defending methodology validity via error-rate documentation, repeatability, and peer-aligned procedures.",
+        "what_to_verify_publicly": [
+          "Documented methodology and validation",
+          "Error rate/limitations disclosures",
+          "Peer-reviewed or standards alignment"
+        ],
+        "ai_specific_evidence": [
+          "AI model limitations disclosed in reports",
+          "Validation of AI-assisted steps with human review"
+        ]
+      }
+    }
+  }
+}

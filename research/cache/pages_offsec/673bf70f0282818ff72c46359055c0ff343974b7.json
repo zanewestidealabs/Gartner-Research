@@ -1,0 +1,7 @@
+{
+  "url": "https://docs.prismacloud.io/",
+  "fetched_at": "2026-03-19T00:42:17.891628+00:00",
+  "ok": true,
+  "text": "Prisma Cloud Documentation \n\nGet started and find the documentation you need to optimize your Prisma Cloud journey \n\nEnterprise Edition—Darwin \n\nCompute Edition \n\nOperationalize \n\nEnterprise Edition—Darwin (Japanese) \n\nWhat’s New \n\n| \n\nJanuary 2025 \n\nFeature \n\nCIEM enhancements to provide greater visibility and control over Microsoft Azure Entra ID permissions. \n\nFeature \n\nEnhancements to Vulnerability Reporting for Red Hat Enterprise Linux (RHEL) Versions 8 and 9. \n\nFeature \n\nAI-assisted remediation steps for Critical and High Alerts. \n\nPolicy-New \n\nNew and updated policies. \n\nIngestions \n\nNew API ingestions . \n\nCompliance \n\nSupport for new Compliance Benchmarks . \n\nView All Enterprise Edition Release Notes \n\nResources \n\nOther Documentation \n\nAPI Documentation— Enterprise Edition \n\nAPI Documentation— Compute Edition \n\nCompute Edition Release Notes—33.03 \n\nCompute Edition Administrator’s Guide—33.03 \n\nPrisma Cloud FAQs—Eliminating Attack Paths Free Trial \n\nContribute on GitHub \n\nJoin our community and start contributing to our GitHub repository today, and be a part of shaping innovative solutions that make a lasting impact.",
+  "error": null
+}

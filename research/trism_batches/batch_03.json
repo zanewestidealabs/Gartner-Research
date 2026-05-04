@@ -1,0 +1,3584 @@
+[
+  {
+    "vendor": "Check Point Software",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.checkpoint.com/infinity/ai-copilot/",
+          "https://www.checkpoint.com/cloudguard/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/cloudguard/",
+            "excerpt": "Secure the entire application lifecycle from code-to-cloud. Manage your security posture, detect misconfigurations, enforce best practices, prevent threats, and prioritize risks.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/cloudguard/",
+            "excerpt": "Cloud Native Application Protection Secure the entire application lifecycle from code-to-cloud. Manage your security posture, detect misconfigurations, enforce best practices, prevent threats, and prioritize risks.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/cloudguard/",
+            "excerpt": "Secure the entire application lifecycle from code-to-cloud. Manage your security posture, detect misconfigurations, enforce best practices, prevent threats, and prioritize risks. Learn More",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/infinity/ai-copilot/",
+            "excerpt": "Lifecycle Management Services",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/infinity/ai-copilot/",
+            "excerpt": "Security Deployment and Optimization Lifecycle Management Services",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/",
+          "https://www.checkpoint.com/infinity/ai-copilot/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Watch the Analysis Secure Every Layer of Your AI Journey We secure AI across workforce usage, customer-facing applications, and autonomous agents - with unified visibility and runtime enforcement.",
+            "matched_terms": [
+              "agent",
+              "time",
+              "usage",
+              "analysis"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/infinity/ai-copilot/",
+            "excerpt": "Infinity AI Copilot knows the customer’s policies, access rules, objects, logs, as well as all product documentation - allowing it to provide contextualized and complete answers.​ Accelerate security administration Reduce the time needed for security tasks in…",
+            "matched_terms": [
+              "context",
+              "time",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Autonomous agents don’t just generate text they act. As agents gain access to tools, files, and systems, security teams need guardrails that govern what agents can do, not just what they can say.",
+            "matched_terms": [
+              "agent",
+              "over",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Agents Control tool calls, file access, and autonomous runtime behavior.",
+            "matched_terms": [
+              "agent",
+              "time",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Control tool calls, file access, and autonomous runtime behavior. AI Security Lessons from the Year of the Agent",
+            "matched_terms": [
+              "agent",
+              "time",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/",
+          "https://www.checkpoint.com/infinity/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Apply consistent policy across all AI interactions, with unified audit trails and compliance reporting.",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Govern → Enforce policy Apply consistent policy across all AI interactions, with unified audit trails and compliance reporting.",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Apply consistent policy across all AI interactions, with unified audit trails and compliance reporting. Join the World’s Largest AI Red Team",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Govern → Enforce policy Apply consistent policy across all AI interactions, with unified audit trails and compliance reporting.",
+            "matched_terms": [
+              "audit",
+              "trails",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/infinity/",
+            "excerpt": "Implement automated workflows across products, tools and 3rd part security vendors, for faster mitigation",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "AI Red-Teaming & Assessment Continuously attack your models and agents using real adversarial techniques mapped to OWASP risks.",
+            "matched_terms": [
+              "teaming",
+              "adversarial",
+              "risk",
+              "continuous"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Learn More AI Red-Teaming & Assessment Continuously attack your models and agents using real adversarial techniques mapped to OWASP risks.",
+            "matched_terms": [
+              "teaming",
+              "adversarial",
+              "risk",
+              "continuous"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Continuously attack your models and agents using real adversarial techniques mapped to OWASP risks.",
+            "matched_terms": [
+              "adversarial",
+              "risk",
+              "continuous"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Powering Lakera Guard and Red with continuous adversarial intelligence. Real attacks from millions of players strengthen defenses for copilots, LLMs, and agents.",
+            "matched_terms": [
+              "attacks",
+              "adversarial",
+              "continuous"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Prevent prompt attacks & harmful outputs As teams embed AI into customer-facing and internal applications, risk shifts to prompts, responses, and model behavior. Protection needs to happen inline where inputs and outputs are generated not after the damage is …",
+            "matched_terms": [
+              "prompt",
+              "attacks",
+              "risk"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 18,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Tool/privilege abuse prevention Unsafe autonomy blocking Looping / DoW risk mitigation Explore Agent Runtime Guardrails Built for Enterprise AI at Scale 100+ languages monitored in real time <50 ms latency guaranteed at runtime 1M+ hackers continuously fuelin…",
+            "matched_terms": [
+              "security",
+              "risk",
+              "latency",
+              "guardrails",
+              "ai security"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "AI Application Security Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "security",
+              "latency",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Learn More AI Application Security Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "security",
+              "latency",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "latency",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement. Learn More",
+            "matched_terms": [
+              "latency",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "As teams embed AI into customer-facing and internal applications, risk shifts to prompts, responses, and model behavior. Protection needs to happen inline where inputs and outputs are generated not after the damage is done. Prompt injection detection",
+            "matched_terms": [
+              "detection",
+              "prompt",
+              "injection",
+              "inputs",
+              "behavior",
+              "response"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "prompt",
+              "injection",
+              "jailbreaks",
+              "block",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "AI Application Security Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "prompt",
+              "injection",
+              "jailbreaks",
+              "block",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement. Learn More",
+            "matched_terms": [
+              "prompt",
+              "injection",
+              "jailbreaks",
+              "block",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Prompt injection detection Jailbreak defense Data exfiltration protection Explore Application Runtime Protection Keep agents from taking unsafe actions Autonomous agents don’t just generate text they act.",
+            "matched_terms": [
+              "detection",
+              "prompt",
+              "injection",
+              "auto",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 28
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "enforcement",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Prompt injection detection Jailbreak defense",
+            "matched_terms": [
+              "detection",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "AI Application Security Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "enforcement",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement. Learn More",
+            "matched_terms": [
+              "enforcement",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Prompt injection detection Jailbreak defense Data exfiltration protection Explore Application Runtime Protection Keep agents from taking unsafe actions Autonomous agents don’t just generate text they act.",
+            "matched_terms": [
+              "detection",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "enforcement",
+              "latency",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "AI Application Security Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "enforcement",
+              "latency",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement. Learn More",
+            "matched_terms": [
+              "enforcement",
+              "latency",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Tool/privilege abuse prevention Unsafe autonomy blocking Looping / DoW risk mitigation Explore Agent Runtime Guardrails Built for Enterprise AI at Scale 100+ languages monitored in real time <50 ms latency guaranteed at runtime 1M+ hackers continuously fuelin…",
+            "matched_terms": [
+              "privilege",
+              "latency",
+              "guardrails",
+              "ai security"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Learn More AI Application Security Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.",
+            "matched_terms": [
+              "enforcement",
+              "latency",
+              "prompt injection",
+              "jailbreak"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/",
+          "https://www.checkpoint.com/quantum/data-loss-prevention/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Shadow AI discovery Sensitive paste detection Data loss prevention Explore Workforce AI Controls Prevent prompt attacks & harmful outputs As teams embed AI into customer-facing and internal applications, risk shifts to prompts, responses, and model behavior.",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "detection",
+              "data loss prevention"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.checkpoint.com/quantum/data-loss-prevention/",
+            "excerpt": "Data Loss Prevention (DLP) in NGFWs tracks and controls data movements across the network to ensure sensitive information does not leave the organization.",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "across",
+              "data loss prevention",
+              "dlp"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Stop sensitive data from leaving in prompts Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots without breaking productivity or forcing users to change ho…",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "across",
+              "saas",
+              "productivity"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots without breaking productivity or forcing users to change how they work. Shadow AI discovery",
+            "matched_terms": [
+              "discover",
+              "across",
+              "saas",
+              "productivity",
+              "discovery"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Sensitive paste detection Data loss prevention",
+            "matched_terms": [
+              "sensitive",
+              "data",
+              "detection",
+              "data loss prevention"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/",
+          "https://www.checkpoint.com/infinity/ai-copilot/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/infinity/ai-copilot/",
+            "excerpt": "Search access policies to update the right one Manually analyze events with no expert advice Verify your IPS has patches against latest CVEs Threat hunting via multiple logs and data types Look for DLP rules and update manually Infinity AI Copilot Resources E…",
+            "matched_terms": [
+              "right",
+              "policies",
+              "dlp"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots without breaking productivity or forcing users to change how they work.",
+            "matched_terms": [
+              "policies",
+              "copilots",
+              "change"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Stop sensitive data from leaving in prompts Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots without breaking productivity or forcing users to change ho…",
+            "matched_terms": [
+              "policies",
+              "copilots",
+              "change"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots without breaking productivity or forcing users to change how they work. Shadow AI discovery",
+            "matched_terms": [
+              "policies",
+              "copilots",
+              "change"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.checkpoint.com/infinity/ai-copilot/",
+            "excerpt": "Search access policies to update the right one",
+            "matched_terms": [
+              "right",
+              "policies"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/",
+          "https://www.checkpoint.com/quantum/data-loss-prevention/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/quantum/data-loss-prevention/",
+            "excerpt": "Data Loss Prevention (DLP) in NGFWs tracks and controls data movements across the network to ensure sensitive information does not leave the organization.",
+            "matched_terms": [
+              "across",
+              "controls",
+              "sensitive",
+              "data loss prevention",
+              "dlp"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Shadow AI discovery Sensitive paste detection Data loss prevention Explore Workforce AI Controls Prevent prompt attacks & harmful outputs As teams embed AI into customer-facing and internal applications, risk shifts to prompts, responses, and model behavior.",
+            "matched_terms": [
+              "controls",
+              "sensitive",
+              "risk",
+              "data loss prevention"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.checkpoint.com/quantum/data-loss-prevention/",
+            "excerpt": "Check Point Data Loss Prevention (DLP) pre-emptively protects your business from unintentional loss of valuable and sensitive information.",
+            "matched_terms": [
+              "sensitive",
+              "data loss prevention",
+              "dlp"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/quantum/data-loss-prevention/",
+            "excerpt": "Quantum Data Loss Prevention (DLP) Check Point Data Loss Prevention (DLP) pre-emptively protects your business from unintentional loss of valuable and sensitive information.",
+            "matched_terms": [
+              "sensitive",
+              "data loss prevention",
+              "dlp"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/quantum/data-loss-prevention/",
+            "excerpt": "Check Point Data Loss Prevention (DLP) pre-emptively protects your business from unintentional loss of valuable and sensitive information. Integrated in Check Point",
+            "matched_terms": [
+              "sensitive",
+              "data loss prevention",
+              "dlp"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.checkpoint.com/ai-security/",
+          "https://www.checkpoint.com/quantum/data-loss-prevention/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Stop sensitive data from leaving in prompts Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots without breaking productivity or forcing users to change ho…",
+            "matched_terms": [
+              "across",
+              "security",
+              "data",
+              "change",
+              "copilots"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/quantum/data-loss-prevention/",
+            "excerpt": "Check Point Data Loss Prevention (DLP) pre-emptively protects your business from unintentional loss of valuable and sensitive information. Integrated in Check Point",
+            "matched_terms": [
+              "data",
+              "integrated",
+              "data loss prevention",
+              "dlp"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots without breaking productivity or forcing users to change how they work.",
+            "matched_terms": [
+              "across",
+              "security",
+              "change",
+              "copilots"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "AI Adoption Outpaced Your Controls AI has scaled faster than traditional security can adapt. Employees, applications, and agents create new exposure points that legacy tools don’t see. You need guardrails where AI runs:",
+            "matched_terms": [
+              "security",
+              "scale",
+              "scaled",
+              "adoption"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.checkpoint.com/ai-security/",
+            "excerpt": "Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots without breaking productivity or forcing users to change how they work. Shadow AI discovery",
+            "matched_terms": [
+              "across",
+              "security",
+              "change",
+              "copilots"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 5 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 5,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Secure the entire application lifecycle from code-to-cloud. Manage your security posture, detect misconfigurations, enforce best practices, prevent threats, and prioritize risks.\". Also: \"Cloud Native Application Protection Secure the entire application lifecycle from code-to-cloud. Manage your security posture, detect misconfiguration…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Watch the Analysis Secure Every Layer of Your AI Journey We secure AI across workforce usage, customer-facing applications, and autonomous agents - with unified visibility and runtime enforcement.\". Also: \"Infinity AI Copilot knows the customer’s policies, access rules, objects, logs, as well as all product documentation - allowing it to provide context…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Apply consistent policy across all AI interactions, with unified audit trails and compliance reporting.\". Also: \"Govern → Enforce policy Apply consistent policy across all AI interactions, with unified audit trails and compliance reporting.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI Red-Teaming & Assessment Continuously attack your models and agents using real adversarial techniques mapped to OWASP risks.\". Also: \"Learn More AI Red-Teaming & Assessment Continuously attack your models and agents using real adversarial techniques mapped to OWASP risks.\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Tool/privilege abuse prevention Unsafe autonomy blocking Looping / DoW risk mitigation Explore Agent Runtime Guardrails Built for Enterprise AI at Scale 100+ languages monitored in real time <50 ms l…\". Also: \"AI Application Security Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"As teams embed AI into customer-facing and internal applications, risk shifts to prompts, responses, and model behavior. Protection needs to happen inline where inputs and outputs are generated not a…\". Also: \"Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.\". Also: \"Prompt injection detection Jailbreak defense\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.\". Also: \"AI Application Security Block prompt injection, jailbreaks, and harmful outputs at runtime with low-latency enforcement.\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Shadow AI discovery Sensitive paste detection Data loss prevention Explore Workforce AI Controls Prevent prompt attacks & harmful outputs As teams embed AI into customer-facing and internal applicati…\". Also: \"Data Loss Prevention (DLP) in NGFWs tracks and controls data movements across the network to ensure sensitive information does not leave the organiza…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Search access policies to update the right one Manually analyze events with no expert advice Verify your IPS has patches against latest CVEs Threat hunting via multiple logs and data types Look for D…\". Also: \"Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and co…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data Loss Prevention (DLP) in NGFWs tracks and controls data movements across the network to ensure sensitive information does not leave the organization.\". Also: \"Shadow AI discovery Sensitive paste detection Data loss prevention Explore Workforce AI Controls Prevent prompt attacks & harmful outputs As teams em…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Stop sensitive data from leaving in prompts Employees are adopting AI faster than policies can keep up. Security teams need visibility and control that works across browsers, SaaS tools, and copilots…\". Also: \"Check Point Data Loss Prevention (DLP) pre-emptively protects your business from unintentional loss of valuable and sensitive information. Integrated…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:12:16.658043+00:00",
+      "urls_used": [
+        "https://www.checkpoint.com/infinity/ai-copilot/",
+        "https://www.checkpoint.com/ai-security/",
+        "https://www.checkpoint.com/quantum/data-loss-prevention/",
+        "https://www.checkpoint.com/cloudguard/",
+        "https://www.checkpoint.com/infinity/"
+      ],
+      "pages_ok": 5,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Cognizant",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.62,
+      "INF": 4.12
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.25,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 2.25,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai",
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted data foundations for enterprise intelligence.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Data and AI management Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted data foundations for enterprise intellig…",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Learn more Data and AI management Ensure secure, compliant and efficient data lifecycle management.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Development Lifecycle Navigator",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Background Transparent Development Lifecycle Navigator",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "AI Training Data Services Deliver high-quality data across modalities to support annotation, fine-tuning and governance-at scale. Human-in-the-loop precision ensures faster, safer and more business-aligned AI outcomes.",
+            "matched_terms": [
+              "training",
+              "fine",
+              "tuning",
+              "data",
+              "over",
+              "quality"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Know more AI Training Data Services Deliver high-quality data across modalities to support annotation, fine-tuning and governance-at scale.",
+            "matched_terms": [
+              "training",
+              "fine",
+              "tuning",
+              "data",
+              "over",
+              "quality"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Deliver high-quality data across modalities to support annotation, fine-tuning and governance-at scale. Human-in-the-loop precision ensures faster, safer and more business-aligned AI outcomes.",
+            "matched_terms": [
+              "fine",
+              "tuning",
+              "data",
+              "over",
+              "quality"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Deliver high-quality data across modalities to support annotation, fine-tuning and governance-at scale. Human-in-the-loop precision ensures faster, safer and more business-aligned AI outcomes. Know more",
+            "matched_terms": [
+              "fine",
+              "tuning",
+              "data",
+              "over",
+              "quality"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks. Support real-time dashboards, KPI tracking and decisioning systems tailored to industry-specific needs.",
+            "matched_terms": [
+              "data",
+              "time",
+              "specific",
+              "tracking"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Streamline operations through AI-driven automation to optimize efficiency and reduce manual efforts. Transform workflows, achieve process excellence and improve productivity.",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Fuel developer productivity with AI-driven tools and resources to enable faster development cycles and improve code quality. Accelerate innovation, streamline workflows and enhance collaboration.",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Process Optimizer Streamline operations through AI-driven automation to optimize efficiency and reduce manual efforts. Transform workflows, achieve process excellence and improve productivity.",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Streamline operations through AI-driven automation to optimize efficiency and reduce manual efforts. Transform workflows, achieve process excellence and improve productivity. style",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Development Lifecycle Navigator Fuel developer productivity with AI-driven tools and resources to enable faster development cycles and improve code quality. Accelerate innovation, streamline workflows and enhance collaboration.",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai",
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Adopt AI using a seamless approach that skillfully infuses human and technology expertise to drive results. Responsible AI",
+            "matched_terms": [
+              "results",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks. Support real-time dashboards, KPI tracking and decisioning systems tailored to industry-specific needs.",
+            "matched_terms": [
+              "reporting",
+              "dashboards"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Fast track data and analytics transformation with a modular and scalable platform. Leverage agentic AI to streamline assessment, migration, integration, validation and optimization-achieving up to 40% lower modernization costs.",
+            "matched_terms": [
+              "validation",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy or managing current issues and unknown risks.",
+            "matched_terms": [
+              "risk",
+              "trust",
+              "ai governance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Business intelligence and visualization Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks. Support real-time dashboards, KPI tracking and decisioning systems tailored to industry-specific n…",
+            "matched_terms": [
+              "reporting",
+              "dashboards"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai",
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy or managing current issues and unknown risks.",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "A more effective approach to AI governance Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy or managing curre…",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy or managing current issues and unknown risks.",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "With this certification, clients can be assured of Cognizant's ability to provide best-in-class AI management practices that help them to minimize the legal, reputational and operational risks associated with AI.",
+            "matched_terms": [
+              "risk",
+              "class"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "With this certification, clients can be assured of Cognizant's ability to provide best-in-class AI management practices that help them to minimize the legal, reputational and operational risks associated with AI.",
+            "matched_terms": [
+              "risk",
+              "class"
+            ],
+            "relevance_score": 5
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Gen AI agent boosts response time by 53%, enhancing operational efficiency We partnered with a global agricultural company to develop a gen AI conversational agent that reduced incident creation by 20% and cut costs by 15%.",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "We partnered with a global agricultural company to develop a gen AI conversational agent that reduced incident creation by 20% and cut costs by 15%. Millions saved, response accuracy boosted by 95%",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "CONSUMER GOODS Gen AI agent boosts response time by 53%, enhancing operational efficiency CONSUMER GOODS Gen AI agent boosts response time by 53%, enhancing operational efficiency We partnered with a global agricultural company to develop a gen AI conversatio…",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Cognizant Neuro AI accelerates your adoption journey",
+            "matched_terms": [
+              "rates"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Gen AI agent boosts response time by 53%, enhancing operational efficiency",
+            "matched_terms": [
+              "response"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai",
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy or managing current issues and unknown risks.",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "A more effective approach to AI governance Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy or managing curre…",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy or managing current issues and unknown risks.",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "With this certification, clients can be assured of Cognizant's ability to provide best-in-class AI management practices that help them to minimize the legal, reputational and operational risks associated with AI.",
+            "matched_terms": [
+              "risk",
+              "class"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "With this certification, clients can be assured of Cognizant's ability to provide best-in-class AI management practices that help them to minimize the legal, reputational and operational risks associated with AI.",
+            "matched_terms": [
+              "risk",
+              "class"
+            ],
+            "relevance_score": 5
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "<h3>Business growth requires better decision making. Trusted intelligence with data and AI services enables you to outpace dynamic markets and anticipate change-as if on intuition.</h3>",
+            "matched_terms": [
+              "dynamic",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Fast track data and analytics transformation with a modular and scalable platform. Leverage agentic AI to streamline assessment, migration, integration, validation and optimization-achieving up to 40% lower modernization costs.",
+            "matched_terms": [
+              "data",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Modernize legacy data ecosystems through cloud enablement, intelligent migration and low-code/no-code frameworks. Solutions include data ingestion, transformation and integration powered by Cognizant’s agentic AI-powered accelerators.",
+            "matched_terms": [
+              "data",
+              "integration"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Watch video <h3>Business growth requires better decision making. Trusted intelligence with data and AI services enables you to outpace dynamic markets and anticipate change-as if on intuition.</h3>",
+            "matched_terms": [
+              "dynamic",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "<h3>Business growth requires better decision making. Trusted intelligence with data and AI services enables you to outpace dynamic markets and anticipate change-as if on intuition.</h3> style",
+            "matched_terms": [
+              "dynamic",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai",
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks. Support real-time dashboards, KPI tracking and decisioning systems tailored to industry-specific needs.",
+            "matched_terms": [
+              "data",
+              "platforms",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Business intelligence and visualization Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks. Support real-time dashboards, KPI tracking and decisioning systems tailored to industry-specific n…",
+            "matched_terms": [
+              "data",
+              "platforms",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks. Support real-time dashboards, KPI tracking and decisioning systems tailored to industry-specific needs. Cognizant Ignition",
+            "matched_terms": [
+              "data",
+              "platforms",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Learn more Business intelligence and visualization Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks.",
+            "matched_terms": [
+              "data",
+              "platforms",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Streamline operations through AI-driven automation to optimize efficiency and reduce manual efforts. Transform workflows, achieve process excellence and improve productivity.",
+            "matched_terms": [
+              "productivity",
+              "driven",
+              "workflows"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai",
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted data foundations for enterprise intelligence.",
+            "matched_terms": [
+              "lifecycle",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Data and AI management Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted data foundations for enterprise intellig…",
+            "matched_terms": [
+              "lifecycle",
+              "data privacy"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Streamline data pipelines and gain recommendations for best practices plus automated solutions to common data engineering challenges to enhance efficiency and accuracy.",
+            "matched_terms": [
+              "automated",
+              "recommendations"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Data Engineering Navigator Streamline data pipelines and gain recommendations for best practices plus automated solutions to common data engineering challenges to enhance efficiency and accuracy.",
+            "matched_terms": [
+              "automated",
+              "recommendations"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "Streamline data pipelines and gain recommendations for best practices plus automated solutions to common data engineering challenges to enhance efficiency and accuracy. style",
+            "matched_terms": [
+              "automated",
+              "recommendations"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai",
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted data foundations for enterprise intelligence.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Data and AI management Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted data foundations for enterprise intellig…",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted data foundations for enterprise intelligence.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "With this certification, clients can be assured of Cognizant's ability to provide best-in-class AI management practices that help them to minimize the legal, reputational and operational risks associated with AI.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "With this certification, clients can be assured of Cognizant's ability to provide best-in-class AI management practices that help them to minimize the legal, reputational and operational risks associated with AI.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.cognizant.com/us/en/services/ai/generative-ai",
+          "https://www.cognizant.com/us/en/services/ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai/generative-ai",
+            "excerpt": "It puts boundless potential at our fingertips, catalyzes digital transformation and profoundly changes business and work with higher levels of human-machine collaboration.",
+            "matched_terms": [
+              "digital",
+              "changes",
+              "change"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "<h3>Business growth requires better decision making. Trusted intelligence with data and AI services enables you to outpace dynamic markets and anticipate change-as if on intuition.</h3>",
+            "matched_terms": [
+              "data",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Watch video <h3>Business growth requires better decision making. Trusted intelligence with data and AI services enables you to outpace dynamic markets and anticipate change-as if on intuition.</h3>",
+            "matched_terms": [
+              "data",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "<h3>Business growth requires better decision making. Trusted intelligence with data and AI services enables you to outpace dynamic markets and anticipate change-as if on intuition.</h3> style",
+            "matched_terms": [
+              "data",
+              "change"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cognizant.com/us/en/services/ai",
+            "excerpt": "Trusted intelligence with data and AI services enables you to outpace dynamic markets and anticipate change-as if on intuition.</h3> style Background Transparent label Overview id #spy-overview Future-ready means AI-ready Explore the five essential areas to a…",
+            "matched_terms": [
+              "data",
+              "change"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.25,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 2.25,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.62,
+      "INF": 4.12
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted dat…\". Also: \"Data and AI management Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and go…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI Training Data Services Deliver high-quality data across modalities to support annotation, fine-tuning and governance-at scale. Human-in-the-loop precision ensures faster, safer and more business-a…\". Also: \"Know more AI Training Data Services Deliver high-quality data across modalities to support annotation, fine-tuning and governance-at scale.\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Streamline operations through AI-driven automation to optimize efficiency and reduce manual efforts. Transform workflows, achieve process excellence and improve productivity.\". Also: \"Fuel developer productivity with AI-driven tools and resources to enable faster development cycles and improve code quality. Accelerate innovation, s…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Adopt AI using a seamless approach that skillfully infuses human and technology expertise to drive results. Responsible AI\". Also: \"Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks. Support real-time dashboards…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy …\". Also: \"A more effective approach to AI governance Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions he…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Gen AI agent boosts response time by 53%, enhancing operational efficiency We partnered with a global agricultural company to develop a gen AI conversational agent that reduced incident creation by 2…\". Also: \"We partnered with a global agricultural company to develop a gen AI conversational agent that reduced incident creation by 20% and cut costs by 15%. …\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions help you build trust in AI systems and free up time you can apply to setting thoughtful policy …\". Also: \"A more effective approach to AI governance Traditional AI governance approaches are outdated and often ineffective. Our modern assurance solutions he…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"<h3>Business growth requires better decision making. Trusted intelligence with data and AI services enables you to outpace dynamic markets and anticipate change-as if on intuition.</h3>\". Also: \"Fast track data and analytics transformation with a modular and scalable platform. Leverage agentic AI to streamline assessment, migration, integrati…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization frameworks. Support real-time dashboards, KPI tracking and decisioning systems tailored to…\". Also: \"Business intelligence and visualization Transform raw data into actionable insights through AI-driven BI platforms, reporting tools and optimization …\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted dat…\". Also: \"Data and AI management Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and go…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and governance, AI governance and customer data platforms, enabling trusted dat…\". Also: \"Data and AI management Ensure secure, compliant and efficient data lifecycle management. Services include master data management, data privacy and go…\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"It puts boundless potential at our fingertips, catalyzes digital transformation and profoundly changes business and work with higher levels of human-machine collaboration.\". Also: \"<h3>Business growth requires better decision making. Trusted intelligence with data and AI services enables you to outpace dynamic markets and antici…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:12:38.056927+00:00",
+      "urls_used": [
+        "https://www.cognizant.com/us/en/services/ai",
+        "https://www.cognizant.com/us/en/services/ai/responsible-ai",
+        "https://www.cognizant.com/us/en/services/cybersecurity",
+        "https://www.cognizant.com/us/en/services/data-modernization",
+        "https://www.cognizant.com/us/en/services/ai/generative-ai"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "CrowdStrike",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 3.88,
+      "INF": 4.62
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.25,
+      "RUN-03": 4.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.25,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/charlotte-ai/",
+          "https://www.crowdstrike.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Secure data, models, agents, identities, infrastructure, and interactions - from enterprise AI development through workforce AI usage.",
+            "matched_terms": [
+              "entities",
+              "models",
+              "agents",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Secure AI where AI happens Secure data, models, agents, identities, infrastructure, and interactions - from enterprise AI development through workforce AI usage.",
+            "matched_terms": [
+              "entities",
+              "models",
+              "agents",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Secure data, models, agents, identities, infrastructure, and interactions - from enterprise AI development through workforce AI usage. Learn more",
+            "matched_terms": [
+              "entities",
+              "models",
+              "agents",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Learn more Secure AI where AI happens Secure data, models, agents, identities, infrastructure, and interactions - from enterprise AI development through workforce AI usage.",
+            "matched_terms": [
+              "entities",
+              "models",
+              "agents",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "ISO 42001 certification for AI governance CrowdStrike achieves a global standard for AI governance, reflecting our commitment to responsible AI development.",
+            "matched_terms": [
+              "ai governance",
+              "responsible ai",
+              "iso 42001"
+            ],
+            "relevance_score": 9
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/",
+          "https://www.crowdstrike.com/platform/charlotte-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Accelerate investigations with human-agent collaboration Charlotte AI supercharges investigations, fusing analyst expertise with autonomous reasoning in a dynamic canvas. Guide investigations in real time - inject context, set priorities, and drive sharper, f…",
+            "matched_terms": [
+              "agent",
+              "context",
+              "time",
+              "analysis"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Charlotte AI supercharges investigations, fusing analyst expertise with autonomous reasoning in a dynamic canvas. Guide investigations in real time - inject context, set priorities, and drive sharper, faster analysis. Build and customize agents with Charlotte…",
+            "matched_terms": [
+              "agent",
+              "context",
+              "time",
+              "analysis"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Onum: Agentic SOC transformation starts with real-time, high-quality, AI-ready data.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "time",
+              "quality"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Secure data, models, agents, identities, infrastructure, and interactions - from enterprise AI development through workforce AI usage.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "entities",
+              "usage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Read blog Onum: Agentic SOC transformation starts with real-time, high-quality, AI-ready data.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "time",
+              "quality"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/charlotte-ai/",
+          "https://www.crowdstrike.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Workflow Generation Agent: Convert natural language into automated workflows in Falcon Fusion",
+            "matched_terms": [
+              "automated",
+              "generation",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Learn more Workflow Generation Agent: Convert natural language into automated workflows in Falcon Fusion",
+            "matched_terms": [
+              "automated",
+              "generation",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Workflow Generation Agent: Convert natural language into automated workflows in Falcon Fusion Workflow Generation Agent: Convert natural language into automated workflows in Falcon Fusion",
+            "matched_terms": [
+              "automated",
+              "generation",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Workflow Generation Agent: Convert natural language into automated workflows in Falcon Fusion Read blog",
+            "matched_terms": [
+              "automated",
+              "generation",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "ISO 42001 certification for AI governance CrowdStrike achieves a global standard for AI governance, reflecting our commitment to responsible AI development.",
+            "matched_terms": [
+              "42001",
+              "ai governance",
+              "responsible ai",
+              "iso 42001"
+            ],
+            "relevance_score": 13
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/charlotte-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "ISO 42001 certification for AI governance CrowdStrike achieves a global standard for AI governance, reflecting our commitment to responsible AI development.",
+            "matched_terms": [
+              "ai governance",
+              "responsible ai",
+              "iso 42001"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Explore latest releases Start free trial Introducing Charlotte AI AgentWorks IDC Link: Fal.Con 2025: CrowdStrike Enters the Agentic Security Era Download report ISO 42001 certification for AI governance CrowdStrike achieves a global standard for AI governance…",
+            "matched_terms": [
+              "ai governance",
+              "responsible ai",
+              "iso 42001"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Calculated by multiplying the average number of alerts triaged by Charlotte AI by a 5-minute triage time per alert as estimated by the Falcon Complete team. Individual results may vary based on factors such as total alert volume.",
+            "matched_terms": [
+              "results",
+              "alerts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "6 Calculated by multiplying the average number of alerts triaged by Charlotte AI by a 5-minute triage time per alert as estimated by the Falcon Complete team. Individual results may vary based on factors such as total alert volume.",
+            "matched_terms": [
+              "results",
+              "alerts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Calculated by multiplying the average number of alerts triaged by Charlotte AI by a 5-minute triage time per alert as estimated by the Falcon Complete team. Individual results may vary based on factors such as total alert volume. Try CrowdStrike free for 15 d…",
+            "matched_terms": [
+              "results",
+              "alerts"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/charlotte-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Charlotte AI delivers speed without compromise, scaling agentic defense with accountability and control. With built-in controls, every answer is traceable, every action user-authorized, every decision grounded in validated data and aligned to your role.",
+            "matched_terms": [
+              "controls"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Service Providers",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Deploy AI safely and with full control Charlotte AI delivers speed without compromise, scaling agentic defense with accountability and control. With built-in controls, every answer is traceable, every action user-authorized, every decision grounded in validat…",
+            "matched_terms": [
+              "controls"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Partner Programs Service Providers",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Service Providers Strategic Technology",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/charlotte-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Close speed gaps by uniting intelligent agents and automation to drive machine-speed response.",
+            "matched_terms": [
+              "auto",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Trained on the decisions of CrowdStrike’s elite analysts - Falcon Complete Next-Gen MDR, CrowdStrike Counter Adversary Operations threat hunters, and CrowdStrike Incident Response experts - and the industry’s richest AI data layer.",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Accelerated Triage and Response Close skills gaps by analyzing detections with expert-level reasoning.",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Agentic SOAR Close speed gaps by uniting intelligent agents and automation to drive machine-speed response.",
+            "matched_terms": [
+              "auto",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Close speed gaps by uniting intelligent agents and automation to drive machine-speed response. Scale elite judgment at machine speed",
+            "matched_terms": [
+              "auto",
+              "response"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/charlotte-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Charlotte AI gets smarter with every threat stopped. Trained on decisions of elite analysts, Charlotte AI triages detections, filters false positives, and surfaces only what matters.",
+            "matched_terms": [
+              "detection",
+              "filters"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Automate triage with battleground intelligence Charlotte AI gets smarter with every threat stopped. Trained on decisions of elite analysts, Charlotte AI triages detections, filters false positives, and surfaces only what matters.",
+            "matched_terms": [
+              "detection",
+              "filters"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Charlotte AI gets smarter with every threat stopped. Trained on decisions of elite analysts, Charlotte AI triages detections, filters false positives, and surfaces only what matters. ×",
+            "matched_terms": [
+              "detection",
+              "filters"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Trained on decisions of elite analysts, Charlotte AI triages detections, filters false positives, and surfaces only what matters.",
+            "matched_terms": [
+              "detection",
+              "filters"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Skip to Main Content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/charlotte-ai/",
+          "https://www.crowdstrike.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Enhanced Privileged Access: Eliminate standing privileges with dynamic, risk-aware access decisions",
+            "matched_terms": [
+              "dynamic",
+              "privilege",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Read blog Enhanced Privileged Access: Eliminate standing privileges with dynamic, risk-aware access decisions",
+            "matched_terms": [
+              "dynamic",
+              "privilege",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Enhanced Privileged Access: Eliminate standing privileges with dynamic, risk-aware access decisions Enhanced Privileged Access: Eliminate standing privileges with dynamic, risk-aware access decisions",
+            "matched_terms": [
+              "dynamic",
+              "privilege",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Enhanced Privileged Access: Eliminate standing privileges with dynamic, risk-aware access decisions Watch demo",
+            "matched_terms": [
+              "dynamic",
+              "privilege",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Skip to Main Content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "AI Discovery: Unified visibility into deployed AI across endpoints and cloud",
+            "matched_terms": [
+              "discover",
+              "across",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Watch demo AI Discovery: Unified visibility into deployed AI across endpoints and cloud",
+            "matched_terms": [
+              "discover",
+              "across",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "AI Discovery: Unified visibility into deployed AI across endpoints and cloud AI Discovery: Unified visibility into deployed AI across endpoints and cloud",
+            "matched_terms": [
+              "discover",
+              "across",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "AI Discovery: Unified visibility into deployed AI across endpoints and cloud Read blog",
+            "matched_terms": [
+              "discover",
+              "across",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "GenAI Data Protection: Secure GenAI data leaks in real-time across browsers, local applications and cloud data flows",
+            "matched_terms": [
+              "data",
+              "across",
+              "cloud"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/",
+          "https://www.crowdstrike.com/platform/charlotte-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Copyright © 2026",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "한국어 Copyright © 2026",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Copyright © 2026 Privacy",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Contact Us Schedule a Meeting FAQs English (US) Deutsch English (AU) English (UK) English (US) Español (España) Español (Latinoamérica) Français Italiano Português (Brasil) عربى 日本語 繁體中文 한국어 Copyright © 2026 Privacy Cookies Your Privacy Choices Terms of Use A…",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Agentic Security Workforce: Mission-ready agents out of the box to automate high-impact workflows",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/charlotte-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Charlotte AI delivers speed without compromise, scaling agentic defense with accountability and control. With built-in controls, every answer is traceable, every action user-authorized, every decision grounded in validated data and aligned to your role.",
+            "matched_terms": [
+              "agentic",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Deploy AI safely and with full control Charlotte AI delivers speed without compromise, scaling agentic defense with accountability and control. With built-in controls, every answer is traceable, every action user-authorized, every decision grounded in validat…",
+            "matched_terms": [
+              "agentic",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Your Privacy Choices",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Copyright © 2026 Privacy",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/charlotte-ai/",
+            "excerpt": "Cookies Your Privacy Choices",
+            "matched_terms": [
+              "privacy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.crowdstrike.com/platform/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Agentic Security Workforce: Mission-ready agents out of the box to automate high-impact workflows",
+            "matched_terms": [
+              "security",
+              "workflows"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Unified Detections: New out-of-the-box detections for GenAI misuse, data loss, and insider threats",
+            "matched_terms": [
+              "data",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Insider Threat Dashboard: Correlated identity and data protection telemetry for faster detection and response",
+            "matched_terms": [
+              "data",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "CrowdStrike’s first fleet of agents are designed to handle critical security workflows and automate repetitive tasks better suited for machines, freeing analysts to focus on higher-value work and accelerating outcomes.",
+            "matched_terms": [
+              "security",
+              "workflows"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.crowdstrike.com/platform/",
+            "excerpt": "Unified security wasn’t a want, it was a necessity. Going from a bare-bones stack to a robust, integrated platform used to feel like a pipe dream. Now it’s our reality.”",
+            "matched_terms": [
+              "security",
+              "integrated"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.25,
+      "RUN-03": 4.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.25,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 3.88,
+      "INF": 4.62
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Secure data, models, agents, identities, infrastructure, and interactions - from enterprise AI development through workforce AI usage.\". Also: \"Secure AI where AI happens Secure data, models, agents, identities, infrastructure, and interactions - from enterprise AI development through workfor…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Accelerate investigations with human-agent collaboration Charlotte AI supercharges investigations, fusing analyst expertise with autonomous reasoning in a dynamic canvas. Guide investigations in real…\". Also: \"Charlotte AI supercharges investigations, fusing analyst expertise with autonomous reasoning in a dynamic canvas. Guide investigations in real time -…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Workflow Generation Agent: Convert natural language into automated workflows in Falcon Fusion\". Also: \"Learn more Workflow Generation Agent: Convert natural language into automated workflows in Falcon Fusion\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"ISO 42001 certification for AI governance CrowdStrike achieves a global standard for AI governance, reflecting our commitment to responsible AI development.\". Also: \"Explore latest releases Start free trial Introducing Charlotte AI AgentWorks IDC Link: Fal.Con 2025: CrowdStrike Enters the Agentic Security Era Down…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Charlotte AI delivers speed without compromise, scaling agentic defense with accountability and control. With built-in controls, every answer is traceable, every action user-authorized, every decisio…\". Also: \"Service Providers\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Close speed gaps by uniting intelligent agents and automation to drive machine-speed response.\". Also: \"Trained on the decisions of CrowdStrike’s elite analysts - Falcon Complete Next-Gen MDR, CrowdStrike Counter Adversary Operations threat hunters, and…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Charlotte AI gets smarter with every threat stopped. Trained on decisions of elite analysts, Charlotte AI triages detections, filters false positives, and surfaces only what matters.\". Also: \"Automate triage with battleground intelligence Charlotte AI gets smarter with every threat stopped. Trained on decisions of elite analysts, Charlotte…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Enhanced Privileged Access: Eliminate standing privileges with dynamic, risk-aware access decisions\". Also: \"Read blog Enhanced Privileged Access: Eliminate standing privileges with dynamic, risk-aware access decisions\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI Discovery: Unified visibility into deployed AI across endpoints and cloud\". Also: \"Watch demo AI Discovery: Unified visibility into deployed AI across endpoints and cloud\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Copyright © 2026\". Also: \"한국어 Copyright © 2026\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Charlotte AI delivers speed without compromise, scaling agentic defense with accountability and control. With built-in controls, every answer is traceable, every action user-authorized, every decisio…\". Also: \"Deploy AI safely and with full control Charlotte AI delivers speed without compromise, scaling agentic defense with accountability and control. With …\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Agentic Security Workforce: Mission-ready agents out of the box to automate high-impact workflows\". Also: \"Unified Detections: New out-of-the-box detections for GenAI misuse, data loss, and insider threats\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:12:57.719910+00:00",
+      "urls_used": [
+        "https://www.crowdstrike.com/platform/charlotte-ai/",
+        "https://www.crowdstrike.com/blog/ai-security/",
+        "https://www.crowdstrike.com/platform/",
+        "https://www.crowdstrike.com/platform/falcon-data-protection/",
+        "https://www.crowdstrike.com/platform/falcon-identity-protection/"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Darktrace",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": true,
+    "is_ai_first": true,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Uses self-learning AI for real-time threat detection and autonomous response.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.62,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://darktrace.com/cyber-ai-analyst"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Cyber AI Analyst investigations span all of your covered enterprise locations, including network, email, cloud, OT, Identity, and SaaS",
+            "matched_terms": [
+              "including",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Comprehensive risk management / IDENTITY",
+            "matched_terms": [
+              "risk",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Gain the full picture of an attack Cyber AI Analyst investigations span all of your covered enterprise locations, including network, email, cloud, OT, Identity, and SaaS",
+            "matched_terms": [
+              "including",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Cyber AI Analyst investigations span all of your covered enterprise locations, including network, email, cloud, OT, Identity, and SaaS Customer stories",
+            "matched_terms": [
+              "including",
+              "entity"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Tailor investigations to align with your security playbooks Customizable to your unique digital estate, you can set up repeatable investigative workflows that are integrated with other security technologies.",
+            "matched_terms": [
+              "state",
+              "integrate"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://darktrace.com/cyber-ai-analyst",
+          "https://darktrace.com/products/detect"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Reduce false positives and mean time to respond Cyber AI Analyst runs continuously, re-investigating existing alerts with emerging data to ensure thorough analysis.",
+            "matched_terms": [
+              "data",
+              "time",
+              "analysis"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/products/detect",
+            "excerpt": "Installs quickly, whether deployed in specific coverage areas like email or across the entire enterprise. Darktrace Self-Learning AI understands your organization’s normal patterns of life and continues to dynamically learn over time.",
+            "matched_terms": [
+              "over",
+              "time",
+              "specific"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/products/detect",
+            "excerpt": "Simple implementation that learns the uniqueness of your business Installs quickly, whether deployed in specific coverage areas like email or across the entire enterprise. Darktrace Self-Learning AI understands your organization’s normal patterns of life and …",
+            "matched_terms": [
+              "over",
+              "time",
+              "specific"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/products/detect",
+            "excerpt": "Installs quickly, whether deployed in specific coverage areas like email or across the entire enterprise. Darktrace Self-Learning AI understands your organization’s normal patterns of life and continues to dynamically learn over time. BEYOND DETECTION",
+            "matched_terms": [
+              "over",
+              "time",
+              "specific"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "With alert fatigue minimized and investigations streamlined, your analysts can avoid the tedious data collection and analysis stages and focus on critical decision-making.",
+            "matched_terms": [
+              "data",
+              "analysis"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://darktrace.com/platform",
+          "https://darktrace.com/cyber-ai-analyst"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Dramatically reduce time spent investigating alerts and streamline workflows so your security team can focus on what matters most Power faster, smarter investigations with next-generation AI models",
+            "matched_terms": [
+              "generation",
+              "model",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Tailor investigations to align with your security playbooks Customizable to your unique digital estate, you can set up repeatable investigative workflows that are integrated with other security technologies.",
+            "matched_terms": [
+              "workflows",
+              "state",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Transform SecOps with automated investigation of every relevant alert, including third-party, combined with real-time autonomous response",
+            "matched_terms": [
+              "automated",
+              "third",
+              "party"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Dramatically reduce time spent investigating alerts and streamline workflows so your security team can focus on what matters most",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Find out how the state's security team turned 3,000 model breaches to just 18 critical incidents with Darktrace, saving over 2,000 hours per month.",
+            "matched_terms": [
+              "model",
+              "state"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://darktrace.com/platform",
+          "https://darktrace.com/cyber-ai-analyst",
+          "https://darktrace.com/products/detect"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Reduce false positives and mean time to respond Cyber AI Analyst runs continuously, re-investigating existing alerts with emerging data to ensure thorough analysis.",
+            "matched_terms": [
+              "continuous",
+              "alerts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "over your attack paths to eliminate security gaps and mitigate risk Continual automated investigation",
+            "matched_terms": [
+              "automated",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/products/detect",
+            "excerpt": "Darktrace DETECT analyzes thousands of metrics to reveal subtle deviations that may signal an evolving threat - even unknown techniques and novel malware. It distinguishes between malicious and benign behavior, identifying attacks that typically go unnoticed.",
+            "matched_terms": [
+              "attacks",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/products/detect",
+            "excerpt": "Always on, always evolving Darktrace DETECT analyzes thousands of metrics to reveal subtle deviations that may signal an evolving threat - even unknown techniques and novel malware. It distinguishes between malicious and benign behavior, identifying attacks t…",
+            "matched_terms": [
+              "attacks",
+              "metrics"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Integrations",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://darktrace.com/platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Begin with the security controls that best suit your current priorities. The flexible Darktrace ActiveAI Security Platform can help you achieve comprehensive protection across part or all of your organization, from communications to cloud and everything betwe…",
+            "matched_terms": [
+              "security",
+              "controls",
+              "ai security"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Begin with the security controls that best suit your current priorities.",
+            "matched_terms": [
+              "security",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Through this approach, Darktrace provides the ability to visualize and correlate security incidents uninhibited by the siloed approach of individual point solutions.",
+            "matched_terms": [
+              "security",
+              "siloed"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Get a demo Begin with the security controls that best suit your current priorities.",
+            "matched_terms": [
+              "security",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Through this approach, Darktrace provides the ability to visualize and correlate security incidents uninhibited by the siloed approach of individual point solutions. Discover more about our AI",
+            "matched_terms": [
+              "security",
+              "siloed"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://darktrace.com/platform",
+          "https://darktrace.com/cyber-ai-analyst"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "response",
+              "ai security"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Security Platform The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "response",
+              "ai security"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats. Learn more",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "response",
+              "ai security"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Learn more Darktrace ActiveAI Security Platform The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "response",
+              "ai security"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "The ActiveAI Security Platform understands your enterprise data in real time to deliver preventive and live threat detection, with targeted autonomous response to shut down known and novel threats without disrupting business operations.",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "response",
+              "ai security"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://darktrace.com/platform",
+          "https://darktrace.com/cyber-ai-analyst"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "detection",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Security Platform The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "detection",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats. Learn more",
+            "matched_terms": [
+              "detection",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Learn more Darktrace ActiveAI Security Platform The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "detection",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "The ActiveAI Security Platform understands your enterprise data in real time to deliver preventive and live threat detection, with targeted autonomous response to shut down known and novel threats without disrupting business operations.",
+            "matched_terms": [
+              "detection",
+              "ai security"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://darktrace.com/cyber-ai-analyst",
+          "https://darktrace.com/platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "What is ActiveAI Security? Proactive. Intelligent. Dynamic.",
+            "matched_terms": [
+              "dynamic",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Proactive. Intelligent. Dynamic. ActiveAI Security is our philosophy for the role we believe AI must play to successfully mitigate cyber risk. It embodies an intelligent, dynamic use of AI, that adapts to the environment, the threat landscape and your busines…",
+            "matched_terms": [
+              "dynamic",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "ActiveAI Security is our philosophy for the role we believe AI must play to successfully mitigate cyber risk. It embodies an intelligent, dynamic use of AI, that adapts to the environment, the threat landscape and your business. It allows defenders to remain …",
+            "matched_terms": [
+              "dynamic",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Reduce false positives and mean time to respond Cyber AI Analyst runs continuously, re-investigating existing alerts with emerging data to ensure thorough analysis.",
+            "matched_terms": [
+              "data",
+              "alerts"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Integrations",
+            "matched_terms": [
+              "integration"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://darktrace.com/cyber-ai-analyst",
+          "https://darktrace.com/products/detect"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/products/detect",
+            "excerpt": "Installs quickly, whether deployed in specific coverage areas like email or across the entire enterprise. Darktrace Self-Learning AI understands your organization’s normal patterns of life and continues to dynamically learn over time. BEYOND DETECTION",
+            "matched_terms": [
+              "across",
+              "coverage",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Complete cloud coverage",
+            "matched_terms": [
+              "cloud",
+              "coverage"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Spot novel threats across your whole organization.",
+            "matched_terms": [
+              "across",
+              "spot"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "across",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "/ CLOUD Complete cloud coverage",
+            "matched_terms": [
+              "cloud",
+              "coverage"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://darktrace.com/cyber-ai-analyst",
+          "https://darktrace.com/platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Transform SecOps with automated investigation of every relevant alert, including third-party, combined with real-time autonomous response",
+            "matched_terms": [
+              "automated",
+              "relevant"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Copyright 2026 Darktrace Holdings Limited. All rights reserved.",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Vulnerability Disclosure Policy Copyright 2026 Darktrace Holdings Limited. All rights reserved.",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "All rights reserved.",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Transform SecOps with automated investigation",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://darktrace.com/platform",
+          "https://darktrace.com/cyber-ai-analyst"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Comprehensive risk management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "/ OT Comprehensive risk management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Comprehensive risk management / IDENTITY",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "Comprehensive risk management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://darktrace.com/platform",
+            "excerpt": "/ OT Comprehensive risk management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://darktrace.com/cyber-ai-analyst"
+        ],
+        "excerpts": [
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Tailor investigations to align with your security playbooks Customizable to your unique digital estate, you can set up repeatable investigative workflows that are integrated with other security technologies.",
+            "matched_terms": [
+              "security",
+              "digital",
+              "workflows",
+              "integrated"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "across",
+              "security",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Security Platform The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "across",
+              "security",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats. Learn more",
+            "matched_terms": [
+              "across",
+              "security",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://darktrace.com/cyber-ai-analyst",
+            "excerpt": "Learn more Darktrace ActiveAI Security Platform The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel threats.",
+            "matched_terms": [
+              "across",
+              "security",
+              "detection"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 3 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 3,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.62,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Cyber AI Analyst investigations span all of your covered enterprise locations, including network, email, cloud, OT, Identity, and SaaS\". Also: \"Comprehensive risk management / IDENTITY\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce false positives and mean time to respond Cyber AI Analyst runs continuously, re-investigating existing alerts with emerging data to ensure thorough analysis.\". Also: \"Installs quickly, whether deployed in specific coverage areas like email or across the entire enterprise. Darktrace Self-Learning AI understands your…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Dramatically reduce time spent investigating alerts and streamline workflows so your security team can focus on what matters most Power faster, smarter investigations with next-generation AI models\". Also: \"Tailor investigations to align with your security playbooks Customizable to your unique digital estate, you can set up repeatable investigative workf…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce false positives and mean time to respond Cyber AI Analyst runs continuously, re-investigating existing alerts with emerging data to ensure thorough analysis.\". Also: \"over your attack paths to eliminate security gaps and mitigate risk Continual automated investigation\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Begin with the security controls that best suit your current priorities. The flexible Darktrace ActiveAI Security Platform can help you achieve comprehensive protection across part or all of your org…\". Also: \"Begin with the security controls that best suit your current priorities.\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel…\". Also: \"Security Platform The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time detection and autonomous response to known and novel…\". Also: \"Security Platform The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"What is ActiveAI Security? Proactive. Intelligent. Dynamic.\". Also: \"Proactive. Intelligent. Dynamic. ActiveAI Security is our philosophy for the role we believe AI must play to successfully mitigate cyber risk. It emb…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Installs quickly, whether deployed in specific coverage areas like email or across the entire enterprise. Darktrace Self-Learning AI understands your organization’s normal patterns of life and contin…\". Also: \"Complete cloud coverage\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Transform SecOps with automated investigation of every relevant alert, including third-party, combined with real-time autonomous response\". Also: \"Copyright 2026 Darktrace Holdings Limited. All rights reserved.\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Comprehensive risk management\". Also: \"/ OT Comprehensive risk management\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Tailor investigations to align with your security playbooks Customizable to your unique digital estate, you can set up repeatable investigative workflows that are integrated with other security techn…\". Also: \"The Darktrace Active AI Security Platform correlates threats across your entire organization, delivering proactive cyber resilience with real-time de…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:13:12.491353+00:00",
+      "urls_used": [
+        "https://darktrace.com/products/ai-security",
+        "https://darktrace.com/cyber-ai-analyst",
+        "https://darktrace.com/platform",
+        "https://darktrace.com/products/detect",
+        "https://darktrace.com/products/proactive-exposure-management"
+      ],
+      "pages_ok": 3,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "DataRobot",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": true,
+    "is_ai_first": true,
+    "vendor_type": "AI-Native",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Offers built-in model governance, monitoring, and compliance controls.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 0,
+        "total_pages": 5,
+        "excerpts_total": 0,
+        "flag": "fetch_failed",
+        "confidence": 0.0
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "pillar_scores_validated": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes."
+    },
+    "research_flag": "fetch_failed",
+    "research_confidence": 0.0,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:13:35.566031+00:00",
+      "urls_used": [
+        "https://www.datarobot.com/platform/mlops/",
+        "https://www.datarobot.com/platform/ai-governance/",
+        "https://www.datarobot.com/platform/",
+        "https://www.datarobot.com/solutions/responsible-ai/",
+        "https://www.datarobot.com/blog/"
+      ],
+      "pages_ok": 0,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

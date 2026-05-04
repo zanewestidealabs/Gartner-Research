@@ -1,0 +1,4830 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Secure Everything from Dev to Runtime with Uptycs</title>
+    <link rel="shortcut icon" href="https://www.uptycs.com/hubfs/uptycs_mark_1C_purple_rgb.png">
+    <meta name="description" content="Discover the magic of better security through deep telemetry. Secure everything in the cloud from Dev to Runtime with the Uptycs CNAPP.">
+
+
+    
+    
+    
+
+
+    
+     
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.bc0a.com/autopilot/f00000000301697/autopilot_sdk.js" async></script>
+
+
+    
+    
+
+
+    
+
+
+    <!--     <link rel="stylesheet" href="../../assets/vendor/aos/dist/aos.css">
+    <script src="../../assets/vendor/aos/dist/aos.js"></script> -->
+
+    <script>
+
+      document.addEventListener('DOMContentLoaded', () => {
+        /** init gtm after 3500 seconds - this could be adjusted */
+        setTimeout(initGTM, 3500);
+      });
+      document.addEventListener('scroll', initGTMOnEvent);
+      document.addEventListener('mousemove', initGTMOnEvent);
+      document.addEventListener('touchstart', initGTMOnEvent);
+      function initGTMOnEvent(event) {
+        initGTM();
+        event.currentTarget.removeEventListener(event.type, initGTMOnEvent); // remove the event listener that got triggered
+      }
+      function initGTM() {
+        if (window.gtmDidInit) {
+          return false;
+        }
+        window.gtmDidInit = true; // flag to ensure script does not get added to DOM more than once.
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        // ensure PageViews is always tracked (on script load)
+        script.onload = () => {
+          dataLayer.push({ event: 'gtm.js', 'gtm.start': new Date().getTime(), 'gtm.uniqueEventId': 0 });
+        };
+        script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-P663XDQ';
+        document.head.appendChild(script);
+      }
+    </script>    
+
+
+    <script>
+      window.hsConversationsSettings = {
+        disableAttachment: true
+      };
+    </script>
+
+    
+    
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:description" content="Discover the magic of better security through deep telemetry. Secure everything in the cloud from Dev to Runtime with the Uptycs CNAPP.">
+    <meta property="og:title" content="Secure Everything from Dev to Runtime with Uptycs">
+    <meta name="twitter:description" content="Discover the magic of better security through deep telemetry. Secure everything in the cloud from Dev to Runtime with the Uptycs CNAPP.">
+    <meta name="twitter:title" content="Secure Everything from Dev to Runtime with Uptycs">
+
+    
+
+    
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/template_assets/1/105237096759/1775464457282/template_main.min.css" defer="true">
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/template_assets/1/105237648739/1775464458309/template_theme-overrides.min.css" defer="true">
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/template_assets/1/118532473678/1775464456641/template_uptycs-custome-style.min.css" defer="true">
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/template_assets/1/148558324100/1775464458027/template_aos.min.css" defer="true">
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/template_assets/1/169533052438/1775464454453/template__header-new.min.css">
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/169053681686/1740875454659/module_top-banner.min.css">
+
+<style>
+  .UT_announcement_bar.widget_1726026662100 {
+    padding-top: 10px;
+padding-right: 0px;
+padding-bottom: 10px;
+padding-left: 0px;
+
+    background: linear-gradient(to right, rgba(146, 101, 235, 1), rgba(146, 232, 251, 1), rgba(146, 232, 251, 1), rgba(210, 255, 82, 1)); 
+  }
+  .UT_announcement_bar.widget_1726026662100 .UT_announcement_bar-inner {
+    padding: 0px 40px;
+  }
+  .UT_announcement_bar.widget_1726026662100 a.cta_button span {
+    font-size: 13px !important;
+  }
+  .UT_announcement_bar.widget_1726026662100 a.cta_button {
+    padding: 0px 1px !important;
+    font-size: 13px !important;
+    background: transparent !important;
+    color: #050314 !important;
+    border-bottom: 2px solid #050314 !important;
+    border-radius: 0px !important;
+    font-weight: 600;
+    line-height: 16px !important; 
+    font-family: Dazzed !important;
+  }
+  .UT_announcement_bar.widget_1726026662100 a.cta_button span {
+    color: #050314 !important;
+  } 
+  .UT_announcement_bar.widget_1726026662100 a.cta_button:hover {
+    color: #050314 !important;
+    border-bottom: 2px solid #050314 !important;
+  }
+  .UT_announcement_bar a.cta_button:before {
+    background: #050314;
+  }
+  .UT_announcement_bar.widget_1726026662100 .banner-header{
+    color: #050314;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
+  .UT_announcement_bar.widget_1726026662100 {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: -100%;
+    -webkit-transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease-in-out;
+    z-index: 99999999999;
+  }
+  .UT_announcement_bar.widget_1726026662100.show-pop {
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  @media only screen and (max-width: 767px){
+    .UT_announcement_bar.widget_1726026662100 {
+      position: fixed !important;
+    }
+    .UT_announcement_bar.widget_1726026662100.show-pop { 
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  body.body-show-pop {
+    margin-top: 45.2px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  body.body-show-pop .HeaderTop {
+    margin-top: 28.2px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }  
+  body.body-show-pop .header-new.show-pop {
+    -webkit-transition: all 0.4s ease-in-out; 
+    transition: all 0.4s ease-in-out;
+  }
+  
+
+  /**************iPad Portrait***************/
+  @media only screen and ( max-width: 1024px ) and (min-width: 986px){
+    .UT_announcement_bar .banner-cta {
+      min-width: 120px;
+    }
+  }
+  /********************************************//**************iPad Portrait***************/
+  @media only screen and (max-width: 985px) and (min-width: 768px){
+    body.body-show-pop {
+      margin-top: 45px !important;
+    }
+    /*     body.body-show-pop .HeaderTop { 
+    margin-top: 45px !important;
+  }  */ 
+    .UT_announcement_bar .banner-cta {
+      min-width: 120px;
+    }
+
+  }
+  /********************************************//**************iPad Portrait***************/
+  @media only screen and (max-width: 479px) and (min-width: 220px){
+    .UT_announcement_bar .UT_announcement_bar-inner {
+      padding: 0px 20px !important;
+    }
+
+    
+ 
+/*     header.header.header-new {
+      margin-top: 15px !important; 
+    } */
+
+    
+
+  }
+  /**********************************//***************iPhone Landscape*************/
+  @media only screen and (max-width: 767px) and (min-width: 480px){
+    body.body-show-pop {
+      margin-top: 80px !important;
+    }
+    body.body-show-pop header.header.menu_header {
+      margin-top: 80px;
+    } 
+    .UT_announcement_bar .cta-banner{ 
+      flex-direction: row;
+      text-align: center;
+    }
+    .UT_announcement_bar .banner-header {
+      text-align: left;
+    }
+    .UT_announcement_bar .banner-header {
+      margin-bottom: 0px;   
+    }
+
+  }
+
+  
+  @media only screen and (max-width: 800px) and (min-width: 120px){
+    .UT_announcement_bar{
+      display: none !important
+    }
+    
+
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/177030409118/1773904779106/module_mega-menu-new.min.css">
+
+<style>
+  #hs_cos_wrapper_mega-menu-new .menu .menu__submenu {
+  border:0px none;
+  background-color:rgba(255,255,255,1.0);
+}
+
+@media (min-width:767px) {
+  #hs_cos_wrapper_mega-menu-new .menu__submenu--level-2>.menu__item:first-child:before {
+    border:0px none;
+    background-color:rgba(255,255,255,1.0);
+  }
+}
+
+#hs_cos_wrapper_mega-menu-new .menu__submenu .menu__link,
+#hs_cos_wrapper_mega-menu-new .menu__submenu .menu__link:hover,
+#hs_cos_wrapper_mega-menu-new .menu__submenu .menu__link:focus { background-color:rgba(255,255,255,1.0); }
+
+#hs_cos_wrapper_mega-menu-new .menu__submenu .menu__child-toggle-icon,
+#hs_cos_wrapper_mega-menu-new .menu__submenu .menu__child-toggle-icon:hover,
+#hs_cos_wrapper_mega-menu-new .menu__submenu .menu__child-toggle-icon:focus {}
+
+</style>
+
+
+<style>
+
+  .menu--desktop .menu__item--depth-1 .menu__link {
+    position: relative;
+    display: inline-block;
+  }
+
+  .menu--desktop .menu__item--depth-1 .menu__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, #6910D9 0%, #8AC1F5 51.5%, #BAF473 100%);
+    transition: width 0.2s ease, left 0.2s ease;
+    transform: translateX(-50%);
+  }
+
+  .menu--desktop .menu__item--depth-1 .menu__link:hover::after,
+  .menu--desktop .menu__item--depth-1 .menu__link:active::after {
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+
+
+  .menu--desktop li.menu__item.menu__item--depth-2 a.menu__link.menu__link--toggle::after{
+    content:none;
+  }
+  /*   .menu--desktop li.menu__item.menu__item--depth-3 a.menu__link.menu__link--toggle::after{
+  content:none;
+  } */
+  .menu--desktop li.menu__item.menu__item--depth-2 a.menu__link.menu__link--toggle::before {
+    content: "";
+    display: block;
+    height:1px;
+    width: 82%;
+    background-color:#0000002B;
+    position: absolute;
+    bottom: 0;
+    left: 27px;
+  }  
+  /*   .menu--desktop li.menu__item.menu__item--depth-3 span.menu__link::after{
+  content:none;
+  } */
+ 
+  .menu--desktop ul.menu__submenu li.menu__item.menu__item--depth-3 a.menu__link{
+
+  }
+
+  .menu__submenu .menu__item--depth-3 .menu__link:hover:after {
+    /* Styles for the link when hovered */
+    background-image: url('data:image/svg+xml,%3Csvg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M11.7094 7.35358L1 7.35358V6.35358L11.7095 6.35358L7.06299 1.70711L7.77009 1L13.6236 6.85355L7.77009 12.7071L7.06299 12L11.7094 7.35358Z" fill="%23050314"/%3E%3Cpath d="M11.7094 7.35358L11.8862 7.53035L12.313 7.10358H11.7094V7.35358ZM1 7.35358H0.75V7.60358H1L1 7.35358ZM1 6.35358L1 6.10358H0.75V6.35358H1ZM11.7095 6.35358V6.60358H12.313L11.8862 6.1768L11.7095 6.35358ZM7.06299 1.70711L6.88621 1.53033L6.70943 1.70711L6.88621 1.88388L7.06299 1.70711ZM7.77009 1L7.94687 0.823223L7.77009 0.646447L7.59332 0.823223L7.77009 1ZM13.6236 6.85355L13.8004 7.03033L13.9772 6.85355L13.8004 6.67678L13.6236 6.85355ZM7.77009 12.7071L7.59332 12.8839L7.77009 13.0607L7.94687 12.8839L7.77009 12.7071ZM7.06299 12L6.88621 11.8232L6.70943 12L6.88621 12.1768L7.06299 12ZM11.7094 7.10358L1 7.10358L1 7.60358L11.7094 7.60358V7.10358ZM1.25 7.35358V6.35358H0.75V7.35358H1.25ZM1 6.60358L11.7095 6.60358V6.10358L1 6.10358L1 6.60358ZM11.8862 6.1768L7.23977 1.53033L6.88621 1.88388L11.5327 6.53035L11.8862 6.1768ZM7.23977 1.88388L7.94687 1.17678L7.59332 0.823223L6.88621 1.53033L7.23977 1.88388ZM7.59332 1.17678L13.4469 7.03033L13.8004 6.67678L7.94687 0.823223L7.59332 1.17678ZM13.4469 6.67678L7.59332 12.5303L7.94687 12.8839L13.8004 7.03033L13.4469 6.67678ZM7.94687 12.5303L7.23977 11.8232L6.88621 12.1768L7.59332 12.8839L7.94687 12.5303ZM7.23977 12.1768L11.8862 7.53035L11.5326 7.1768L6.88621 11.8232L7.23977 12.1768Z" fill="%236910D9"/%3E%3C/svg%3E');;
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 12.624px;
+    height: 11.707px;
+    position:absolute;
+    left: 90%; 
+    top: 50%;
+    transform: translateY(-50%);
+    opacity:1;
+  }
+  .menu__submenu .menu__item--depth-3 .menu__link:after {
+    /* Styles for the link when hovered */
+    background-image: url('data:image/svg+xml,%3Csvg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M11.7094 7.35358L1 7.35358V6.35358L11.7095 6.35358L7.06299 1.70711L7.77009 1L13.6236 6.85355L7.77009 12.7071L7.06299 12L11.7094 7.35358Z" fill="%23050314"/%3E%3Cpath d="M11.7094 7.35358L11.8862 7.53035L12.313 7.10358H11.7094V7.35358ZM1 7.35358H0.75V7.60358H1L1 7.35358ZM1 6.35358L1 6.10358H0.75V6.35358H1ZM11.7095 6.35358V6.60358H12.313L11.8862 6.1768L11.7095 6.35358ZM7.06299 1.70711L6.88621 1.53033L6.70943 1.70711L6.88621 1.88388L7.06299 1.70711ZM7.77009 1L7.94687 0.823223L7.77009 0.646447L7.59332 0.823223L7.77009 1ZM13.6236 6.85355L13.8004 7.03033L13.9772 6.85355L13.8004 6.67678L13.6236 6.85355ZM7.77009 12.7071L7.59332 12.8839L7.77009 13.0607L7.94687 12.8839L7.77009 12.7071ZM7.06299 12L6.88621 11.8232L6.70943 12L6.88621 12.1768L7.06299 12ZM11.7094 7.10358L1 7.10358L1 7.60358L11.7094 7.60358V7.10358ZM1.25 7.35358V6.35358H0.75V7.35358H1.25ZM1 6.60358L11.7095 6.60358V6.10358L1 6.10358L1 6.60358ZM11.8862 6.1768L7.23977 1.53033L6.88621 1.88388L11.5327 6.53035L11.8862 6.1768ZM7.23977 1.88388L7.94687 1.17678L7.59332 0.823223L6.88621 1.53033L7.23977 1.88388ZM7.59332 1.17678L13.4469 7.03033L13.8004 6.67678L7.94687 0.823223L7.59332 1.17678ZM13.4469 6.67678L7.59332 12.5303L7.94687 12.8839L13.8004 7.03033L13.4469 6.67678ZM7.94687 12.5303L7.23977 11.8232L6.88621 12.1768L7.59332 12.8839L7.94687 12.5303ZM7.23977 12.1768L11.8862 7.53035L11.5326 7.1768L6.88621 11.8232L7.23977 12.1768Z" fill="%236910D9"/%3E%3C/svg%3E');;
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 12.624px;
+    height: 11.707px;
+    position:absolute;
+    left: 85%; 
+    top: 50%;
+    transform: translateY(-50%);
+    opacity:0;
+  }
+  .menu__submenu .menu__item--depth-3 .menu__link {
+    transition: width 0.2s ease, left 0.2s ease;
+  }
+  .menu__submenu .menu__item--depth-3 .menu__link{
+    position:relative;
+    /*     display: flex;
+    align-items: center; 
+    padding-right: 20px;  */
+  }
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/169623459881/1742621739864/module_header-cta.min.css">
+
+<style>
+.header-cta-outer .demo-cta a:hover{
+  background-color: #9de70a;
+  border: 1px solid #9de70a;
+  }
+  .header-cta-outer .log-cta a:hover{
+  color:#5c5b5f
+  }
+</style>
+
+
+<style>
+  .UT_announcement_bar.widget_1717737662664 {
+    padding-top: 10px;
+padding-right: 0px;
+padding-bottom: 10px;
+padding-left: 0px;
+
+    background: linear-gradient(to right, rgba(146, 101, 235, 1), rgba(146, 232, 251, 1), rgba(146, 232, 251, 1), rgba(146, 232, 251, 1), rgba(210, 255, 82, 1)); 
+  }
+  .UT_announcement_bar.widget_1717737662664 .UT_announcement_bar-inner {
+    padding: 0px 40px;
+  }
+  .UT_announcement_bar.widget_1717737662664 a.cta_button span {
+    font-size: 13px !important;
+  }
+  .UT_announcement_bar.widget_1717737662664 a.cta_button {
+    padding: 0px 1px !important;
+    font-size: 13px !important;
+    background: transparent !important;
+    color: #050314 !important;
+    border-bottom: 2px solid #050314 !important;
+    border-radius: 0px !important;
+    font-weight: 600;
+    line-height: 16px !important; 
+    font-family: Dazzed !important;
+  }
+  .UT_announcement_bar.widget_1717737662664 a.cta_button span {
+    color: #050314 !important;
+  } 
+  .UT_announcement_bar.widget_1717737662664 a.cta_button:hover {
+    color: #050314 !important;
+    border-bottom: 2px solid #050314 !important;
+  }
+  .UT_announcement_bar a.cta_button:before {
+    background: #050314;
+  }
+  .UT_announcement_bar.widget_1717737662664 .banner-header{
+    color: #050314;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
+  .UT_announcement_bar.widget_1717737662664 {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: -100%;
+    -webkit-transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease-in-out;
+    z-index: 99999999999;
+  }
+  .UT_announcement_bar.widget_1717737662664.show-pop {
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  @media only screen and (max-width: 767px){
+    .UT_announcement_bar.widget_1717737662664 {
+      position: fixed !important;
+    }
+    .UT_announcement_bar.widget_1717737662664.show-pop { 
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  body.body-show-pop {
+    margin-top: 45.2px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  body.body-show-pop .HeaderTop {
+    margin-top: 28.2px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }  
+  body.body-show-pop .header-new.show-pop {
+    -webkit-transition: all 0.4s ease-in-out; 
+    transition: all 0.4s ease-in-out;
+  }
+  
+
+  /**************iPad Portrait***************/
+  @media only screen and ( max-width: 1024px ) and (min-width: 986px){
+    .UT_announcement_bar .banner-cta {
+      min-width: 120px;
+    }
+  }
+  /********************************************//**************iPad Portrait***************/
+  @media only screen and (max-width: 985px) and (min-width: 768px){
+    body.body-show-pop {
+      margin-top: 45px !important;
+    }
+    /*     body.body-show-pop .HeaderTop { 
+    margin-top: 45px !important;
+  }  */ 
+    .UT_announcement_bar .banner-cta {
+      min-width: 120px;
+    }
+
+  }
+  /********************************************//**************iPad Portrait***************/
+  @media only screen and (max-width: 479px) and (min-width: 220px){
+    .UT_announcement_bar .UT_announcement_bar-inner {
+      padding: 0px 20px !important;
+    }
+
+    
+ 
+/*     header.header.header-new {
+      margin-top: 15px !important; 
+    } */
+
+    
+
+  }
+  /**********************************//***************iPhone Landscape*************/
+  @media only screen and (max-width: 767px) and (min-width: 480px){
+    body.body-show-pop {
+      margin-top: 80px !important;
+    }
+    body.body-show-pop header.header.menu_header {
+      margin-top: 80px;
+    } 
+    .UT_announcement_bar .cta-banner{ 
+      flex-direction: row;
+      text-align: center;
+    }
+    .UT_announcement_bar .banner-header {
+      text-align: left;
+    }
+    .UT_announcement_bar .banner-header {
+      margin-bottom: 0px;   
+    }
+
+  }
+
+  
+  @media only screen and (max-width: 800px) and (min-width: 120px){
+    .UT_announcement_bar{
+      display: none !important
+    }
+    
+
+</style>
+
+
+<style>
+#hs_cos_wrapper_widget_1700666458217 .modal {
+  display:none;
+  position:fixed;
+  z-index:10000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  overflow:auto;
+  background-color:rgb(0,0,0);
+  background-color:rgba(0,0,0,0.4);
+  padding-top:60px;
+}
+
+#hs_cos_wrapper_widget_1700666458217 .form-title,
+#hs_cos_wrapper_widget_1700666458217 .submitted-message { background-color:transparent !important; }
+
+#hs_cos_wrapper_widget_1700666458217 .modal-content {
+  background-color:#6910d9;
+  padding:20px;
+  border-radius:15px;
+  margin:5% auto;
+  padding:20px;
+  width:80%;
+  max-width:600px;
+  animation-name:animatetop;
+  animation-duration:0.4s;
+  position:relative;
+}
+
+#hs_cos_wrapper_widget_1700666458217 span.closeBtn1 {
+  position:absolute;
+  top:0;
+  right:15px;
+  font-size:34px;
+  cursor:pointer;
+}
+
+#hs_cos_wrapper_widget_1700666458217 #demoModalLabel {
+  font-size:21px;
+  text-align:center;
+  font-style:normal;
+  font-weight:400;
+  text-align:center;
+}
+
+#hs_cos_wrapper_widget_1700666458217 .modal-content .hs-form,
+#hs_cos_wrapper_widget_1700666458217 .modal-content .hs_cos_wrapper.form-title { background-color:inherit; }
+
+#hs_cos_wrapper_widget_1700666458217 .modal-content .hs_cos_wrapper.form-title { display:none; }
+
+#hs_cos_wrapper_widget_1700666458217 .modal-content .hs-form .hs-input {
+  border:0;
+  height:40px;
+  color:#050314;
+  padding-top:0;
+  padding-bottom:0;
+}
+
+#hs_cos_wrapper_widget_1700666458217 .modal-content .hs-form .legal-consent-container .hs-richtext p {
+  font-size:11px !important;
+  line-height:19px !important;
+}
+
+#hs_cos_wrapper_widget_1700666458217 .modal-content .hs-form .hs_submit.hs-submit {
+  display:flex;
+  justify-content:center;
+}
+
+#hs_cos_wrapper_widget_1700666458217 .modal-content .hs-form .hs-richtext.hs-main-font-element h2 { margin:0; }
+
+#hs_cos_wrapper_widget_1700666458217 .modal-content .hs-form .hs_submit.hs-submit input.hs-button.primary.large {
+  background:rgb(202,250,60);
+  font-weight:700;
+  font-size:16px;
+  color:#000000;
+  text-align:center;
+  padding-left:40px;
+  display:block;
+  margin:0 auto 0;
+}
+
+@keyframes animatetop {
+  from {
+    top:-300px;
+    opacity:0;
+  }
+  to {
+    top:0;
+    opacity:1;
+  }
+}
+
+#hs_cos_wrapper_widget_1700666458217 .closeBtn {
+  color:#aaa;
+  float:right;
+  font-size:28px;
+  font-weight:bold;
+}
+
+#hs_cos_wrapper_widget_1700666458217 .closeBtn:hover,
+#hs_cos_wrapper_widget_1700666458217 .closeBtn:focus {
+  color:black;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+#hs_cos_wrapper_widget_1700666458217 .body-modal-open { overflow:hidden; }
+
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/173835417166/1741928964265/module_Home_banner_New.min.css">
+
+<style>
+  .home-banner-outer .thumbnail:before{
+    content: "";
+    width: 100%;
+    height: 9px;
+    background: linear-gradient(90deg, #5827D3 0%, #B794F4 32%, #9EE1F8 67.5%, #CCF270 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+  }
+
+  .row-fluid-wrapper.row-depth-1.row-number-5.dnd_area-row-2-padding.dnd_area-row-2-max-width-section-centering.dnd-section.dnd_area-row-2-background-image {
+    background-size: 100% 140% !important;
+  }
+  @media only screen and (max-width: 1390px){
+    .row-fluid-wrapper.row-depth-1.row-number-5.dnd_area-row-2-padding.dnd_area-row-2-max-width-section-centering.dnd-section.dnd_area-row-2-background-image {
+      background-size:auto !important;
+    }
+  }
+
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/171333140787/1741925369194/module_logo_slider.min.css">
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/178354124167/1742621795658/module_image-content-box.min.css">
+
+<style>
+a.success-btn:active {
+    font-weight: 600;
+}
+  .success-btn:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%20top.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 19px;
+    right: 30px;
+    position: absolute;
+    transition: all .3s ease-in-out;
+  }
+  .success-btn:hover:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%20top.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 17px;
+    right: 30px;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  .success-btn{
+    position: relative;
+  }
+
+  .image-content-box-outer .image-content-box-section {
+    position: relative;
+    border-radius: 0 0 11px 11px;
+    overflow: hidden; 
+  }
+
+  .image-content-box-outer .image-content-box-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px; 
+    background: linear-gradient(19deg, #9B54F8, #8DCFF7, #CAFA3C);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+
+  .image-content-box-outer .image-content-box-section > * {
+    position: relative;
+    z-index: 1; 
+    background: #fff; 
+  }
+
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/173844893035/1740875474426/module_two_column_with_image_V2.min.css">
+
+<style>
+  .two-column-section-v2 .right-section:after {
+    display:none;
+    background: url(https://www.uptycs.com/hubfs/Group%2088-1.svg);
+    width: 600px;
+    height: 513px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: -168px;
+    top: -170px;
+    z-index: -1;
+  } 
+  @media only screen and (max-width: 767px){
+    .two-column-section-v2 .right-section:after {
+      display:none;
+      background: url(https://www.uptycs.com/hubfs/Group%2088-1.svg);
+      width: 500px;
+      height: 463px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      right: -140px;
+      top: -160px;
+      z-index: -1;
+    }
+  }
+  .trial-btn:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%2057-2.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 19px;
+    right: 30px;
+    position: absolute;
+    transition: all .3s ease-in-out;
+  }
+  .trial-btn:hover:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%2057-2.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 17px;
+    right: 30px;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  .trial-btn{
+    position:relative
+  }
+  .row-number-7.dnd_area-row-3-max-width-section-centering.dnd-section.dnd_area-row-3-padding {
+    overflow-x: hidden;
+  }
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/170949760523/1740875457424/module_three_card_solution.min.css">
+
+<style>
+
+  .three-card-solution .single-card:before{
+    content: "";
+    width: 100%;
+    height: 9px;
+    background-image: url(https://www.uptycs.com/hubfs/Rectangle%2035.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+  }
+  .learn-more-btn:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Arrow%20top.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 19px;
+    right: 30px;
+    position: absolute;
+/*     transition: transform 0.3s ease; */
+    transition: all .3s ease-in-out;
+  }
+  .learn-more-btn:hover:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Arrow%20top.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 17px;
+    right: 30px;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  .learn-more-btn{
+    position:relative;
+  }
+  .three-card-solution .single-card:after{
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    background: linear-gradient(116deg, #9B54F8, #8DCFF7, #CAFA3C);
+    content: '';
+    z-index: -1;
+    border-top: 0px;
+    border-radius: 0px 0px 16px 16px;
+  }
+  .three-card-solution .single-card{
+    margin: 0;
+    background: url('https://www.uptycs.com/hubfs/background.png');
+    background-size: cover;
+    background-position: center;
+    /*     background: linear-gradient(90deg,
+    rgba(88, 39, 211, 0.3) 0%, 
+    rgba(183, 148, 244, 0.3) 32%, 
+    rgba(158, 225, 248, 0.3) 68%, 
+    rgba(204, 242, 112, 0.3) 100%); */
+  }
+  
+  
+  
+  
+	.three-card-solution .description-text p{
+    display:none;
+  }
+
+
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/173949477988/1740875475773/module_market_guide.min.css">
+
+<style>
+
+  .report-btn:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Arrow%20top.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 19px;
+    right: 30px;
+    position: absolute;
+    transition: all .3s ease-in-out;
+  }
+  .report-btn:hover:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Arrow%20top.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 17px;
+    right: 30px;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  .cta_button:active{
+    font-weight:600;
+  }
+  .report-btn{
+    position: relative;
+  }
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/173961706352/1740875477138/module_Three_Column_Line_slider.min.css">
+
+<style>
+
+  .card-button a:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Polygon%203.svg);
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center center;
+    top: 2px;
+    right: -31px;
+    position: absolute;
+    transition: all .3s ease-in-out;
+  }
+  .card-button a:hover:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Polygon%203.svg);
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center center;
+    top: 2px;
+    right: -31px;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  .card-button a{
+    position: relative;
+  }
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/176455084146/1740875482839/module_tab-section.min.css">
+
+<style>
+
+  .tab-section-outer .points-text ul li:before{
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%20146.svg) ;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 0px;
+    left: -30px;
+    position: absolute;
+  }
+  .tab-section-outer .points-text ul li{
+    position:relative;
+    list-style:none;
+  }
+
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/173962035856/1740875478556/module_lookout_section.min.css">
+
+<style>
+
+  .success-btn:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%20top.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 19px;
+    right: 30px;
+    position: absolute;
+    transition: all .3s ease-in-out;
+  }
+  .success-btn:hover:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%20top.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 17px;
+    right: 30px;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  .success-btn{
+    position: relative;
+  }
+  
+.lookout-outer .lookout-section {
+    position: relative;
+    border-radius: 0 0 11px 11px;
+    overflow: hidden; 
+}
+
+.lookout-outer .lookout-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px; 
+    background: linear-gradient(19deg, #9B54F8, #8DCFF7, #CAFA3C);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+
+.lookout-outer .lookout-section > * {
+    position: relative;
+    z-index: 1; 
+    background: #fff; 
+}
+  
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/171339306366/1740875463564/module_related_resources.min.css">
+
+<style>
+  .three-col-outer .three-col-section:after{
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    background: linear-gradient(116deg, #9B54F8, #8DCFF7, #CAFA3C);
+    content: '';
+    z-index: -1;
+    border-top: 0px;
+    border-radius: 0px 0px 16px 16px;
+  }
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/171447005065/1740875465276/module_bottom_banner.min.css">
+
+<style>
+
+  .demo-btn:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%2057.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 19px;
+    right: 30px;
+    position: absolute;
+    transition: all .3s ease-in-out;
+  }
+  .demo-btn:hover:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%2057.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 17px;
+    right: 30px;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  .demo-btn{
+    position:relative;
+  }
+
+  .scroll_btn{
+    position:relative;
+    text-decoration: none;
+    color: #050314 !important;
+    font-family: Dazzed;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 42px;
+    display: inline-block;
+    text-decoration: none !important;
+    padding: 3px 70px 3px 18px;
+    justify-content: center;
+    border-radius: 0px 100px 100px 0px;
+    background: #CAFA3C;
+    border: 1px solid #CAFA3C;
+  }
+  .scroll_btn:hover{
+    text-decoration: none !important;
+    background: #9de70a;
+    border: 1px solid #9de70a;
+  }
+  .scroll_btn:active{
+    font-weight: 600;
+  }
+  .scroll_btn:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%2057.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 19px;
+    right: 30px;
+    position: absolute;
+    transition: all .3s ease-in-out;
+  }
+  .scroll_btn:hover:after{
+    content: "";
+    width: 20px;
+    height: 15px;
+    background-image: url(https://www.uptycs.com/hubfs/Group%2057.svg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    top: 17px;
+    right: 30px;
+    position: absolute;
+    transform: rotate(90deg);
+  }  
+
+
+</style>
+
+<link rel="stylesheet" href="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/174733485380/1740875481336/module_Footer_New_2024.min.css">
+
+<style>
+  #hs_cos_wrapper_widget_1722594192479 .TwoMenuLinks {
+  padding-right:22px;
+  width:17%;
+}
+
+#hs_cos_wrapper_widget_1722594192479 .Footer_Links { width:75%; }
+
+#hs_cos_wrapper_widget_1722594192479 .Footer {
+  display:inline-block;
+  width:100%;
+}
+
+#hs_cos_wrapper_widget_1722594192479 .Attack_Surfaces h6 {
+  margin-bottom:8px;
+  margin-top:20px;
+  color:#9b54f8;
+}
+
+#hs_cos_wrapper_widget_1722594192479 .footer_pre_copy {
+  margin-bottom:0;
+  padding-top:0;
+  text-align:left !important;
+  width:24.1%;
+}
+
+#hs_cos_wrapper_widget_1722594192479 .footer_icons_new { margin:10px 0; }
+
+#hs_cos_wrapper_widget_1722594192479 .mobile_parter { display:none; }
+
+@media all and (max-width:1024px) {
+  #hs_cos_wrapper_widget_1722594192479 .TwoMenuLinks {
+    padding-right:35px;
+    width:45%;
+    display:block;
+  }
+
+  #hs_cos_wrapper_widget_1722594192479 .FServices_Links {
+    padding-left:0;
+    padding-right:25px;
+    width:100%;
+  }
+
+  #hs_cos_wrapper_widget_1722594192479 .Attack_Surfaces,
+  #hs_cos_wrapper_widget_1722594192479 .Use_Case { width:100%; }
+
+  #hs_cos_wrapper_widget_1722594192479 footer.footer.footer_new .Footer_SocialMedia { padding-bottom:0px; }
+}
+
+@media all and (max-width:767px) {
+  #hs_cos_wrapper_widget_1722594192479 .footer_pre_copy { width:100%; }
+
+  #hs_cos_wrapper_widget_1722594192479 .Footer_Links { width:100%; }
+
+  #hs_cos_wrapper_widget_1722594192479 .footer_icons_new {
+    height:50px !important;
+    width:auto;
+  }
+
+  #hs_cos_wrapper_widget_1722594192479 .Footer_SocialMedia {
+    float:left;
+    width:100%;
+  }
+
+  #hs_cos_wrapper_widget_1722594192479 .footer_pre_copy { display:none; }
+
+  #hs_cos_wrapper_widget_1722594192479 .footer_pre_copy.mobile_parter { display:block !important; }
+
+  #hs_cos_wrapper_widget_1722594192479 .TwoMenuLinks {
+    padding-right:25px;
+    width:45%;
+  }
+}
+
+@media all and (max-width:640px) {
+  #hs_cos_wrapper_widget_1722594192479 .TwoMenuLinks {
+    padding-right:0px;
+    display:block;
+    margin-top:0;
+  }
+
+  #hs_cos_wrapper_widget_1722594192479 .Attack_Surfaces h6 {
+    margin-bottom:7px;
+    font-size:14px;
+  }
+
+  #hs_cos_wrapper_widget_1722594192479 .FPartners_Links,
+  #hs_cos_wrapper_widget_1722594192479 .FServices_Links {
+    margin-top:0;
+    padding-top:0;
+  }
+
+  #hs_cos_wrapper_widget_1722594192479 .Footer_Links ul li { padding:0 0 5px; }
+
+  #hs_cos_wrapper_widget_1722594192479 .Footer_Links ul li a { font-size:12px; }
+
+  #hs_cos_wrapper_widget_1722594192479 .Footer h5 { margin-bottom:10px; }
+
+  #hs_cos_wrapper_widget_1722594192479 .TwoMenuLinks {
+    padding-right:25px;
+    width:45%;
+  }
+}
+
+</style>
+
+<!-- Editor Styles -->
+<style id="hs_editor_style" type="text/css">
+#hs_cos_wrapper_widget_1764107393883  { display: block !important; padding-top: 130px !important }
+#hs_cos_wrapper_widget_1764107393883  { display: block !important; padding-top: 130px !important }
+.header-top-row-0-force-full-width-section > .row-fluid {
+  max-width: none !important;
+}
+.dnd_area-row-2-max-width-section-centering > .row-fluid {
+  max-width: 1128px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.dnd_area-row-9-max-width-section-centering > .row-fluid {
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.dnd_area-row-12-max-width-section-centering > .row-fluid {
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/* HubSpot Styles (default) */
+.header-top-row-0-padding {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.dnd_area-row-2-padding {
+  padding-top: 205px !important;
+  padding-bottom: 467px !important;
+}
+.dnd_area-row-2-background-layers {
+  background-image: url('https://www.uptycs.com/hubfs/Group%20152.svg') !important;
+  background-position: center top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+.dnd_area-row-3-margin {
+  margin-top: -272px !important;
+  margin-bottom: 0px !important;
+}
+.dnd_area-row-3-padding {
+  padding-top: 0px !important;
+  padding-bottom: 145px !important;
+}
+.dnd_area-row-6-background-layers {
+  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) !important;
+  background-position: left top !important;
+  background-size: auto !important;
+  background-repeat: no-repeat !important;
+}
+.dnd_area-row-7-padding {
+  padding-top: 110px !important;
+  padding-bottom: 104px !important;
+}
+.dnd_area-row-8-padding {
+  padding-top: 40px !important;
+  padding-bottom: 53px !important;
+}
+.dnd_area-row-8-background-layers {
+  background-image: url('https://www.uptycs.com/hubfs/2024%20Gartner%20Market%20Guide-1.webp') !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+.dnd_area-row-9-padding {
+  padding-top: 131px !important;
+  padding-bottom: 60px !important;
+}
+.dnd_area-row-9-background-layers {
+  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) !important;
+  background-position: left top !important;
+  background-size: auto !important;
+  background-repeat: no-repeat !important;
+}
+.dnd_area-row-10-padding {
+  padding-top: 100px !important;
+  padding-bottom: 160px !important;
+}
+.dnd_area-row-11-margin {
+  margin-top: -145px !important;
+}
+.dnd_area-row-11-padding {
+  padding-top: 120px !important;
+  padding-bottom: 145px !important;
+}
+.dnd_area-row-12-padding {
+  padding-bottom: 98px !important;
+}
+.dnd_area-row-12-background-layers {
+  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) !important;
+  background-position: left top !important;
+  background-size: auto !important;
+  background-repeat: no-repeat !important;
+}
+.dnd_area-row-13-padding {
+  padding-top: 90px !important;
+  padding-bottom: 94px !important;
+}
+.dnd_area-row-13-background-layers {
+  background-image: url('https://www.uptycs.com/hubfs/Background%20Image%20-%20See%20it%20in%20Action-1.webp') !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+/* HubSpot Styles (mobile) */
+@media (max-width: 767px) {
+  .dnd_area-row-2-padding {
+    padding-top: 150px !important;
+    padding-bottom: 205px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .dnd_area-row-3-margin {
+    margin-top: -100px !important;
+  }
+  .dnd_area-row-3-padding {
+    padding-bottom: 105px !important;
+  }
+  .dnd_area-row-7-padding {
+    padding-top: 120px !important;
+    padding-bottom: 87px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .dnd_area-row-8-padding {
+    padding-top: 63px !important;
+    padding-bottom: 68px !important;
+  }
+  .dnd_area-row-9-padding {
+    padding-top: 87px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .dnd_area-row-10-padding {
+    padding-top: 30px !important;
+    padding-bottom: 60px !important;
+  }
+  .dnd_area-row-11-margin {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  .dnd_area-row-11-padding {
+    padding-top: 69px !important;
+    padding-bottom: 120px !important;
+  }
+  .dnd_area-row-12-padding {
+    padding-bottom: 127px !important;
+  }
+  .dnd_area-row-13-padding {
+    padding-top: 55px !important;
+    padding-bottom: 55px !important;
+    padding-left: 26px !important;
+    padding-right: 26px !important;
+  }
+}
+</style>
+    
+
+    
+<!--  Added by GoogleAnalytics integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+_hsp.push(['addPrivacyConsentListener', function(consent) { if (consent.allowed || (consent.categories && consent.categories.analytics)) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-117543321-1','auto');
+  ga('send','pageview');
+}}]);
+</script>
+
+<!-- /Added by GoogleAnalytics integration -->
+
+<!--  Added by GoogleAnalytics4 integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = 1000;
+
+
+if (!window._hsGoogleConsentRunOnce) {
+  window._hsGoogleConsentRunOnce = true;
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': waitForUpdateMillis
+  });
+
+  if (useGoogleConsentModeV2) {
+    _hsp.push(['useGoogleConsentModeV2'])
+  } else {
+    _hsp.push(['addPrivacyConsentListener', function(consent){
+      var hasAnalyticsConsent = consent && (consent.allowed || (consent.categories && consent.categories.analytics));
+      var hasAdsConsent = consent && (consent.allowed || (consent.categories && consent.categories.advertisement));
+
+      gtag('consent', 'update', {
+        'ad_storage': hasAdsConsent ? 'granted' : 'denied',
+        'analytics_storage': hasAnalyticsConsent ? 'granted' : 'denied',
+        'ad_user_data': hasAdsConsent ? 'granted' : 'denied',
+        'ad_personalization': hasAdsConsent ? 'granted' : 'denied'
+      });
+    }]);
+  }
+}
+
+gtag('js', new Date());
+gtag('set', 'developer_id.dZTQ1Zm', true);
+gtag('config', 'G-FM1R8N7KP8');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM1R8N7KP8"></script>
+
+<!-- /Added by GoogleAnalytics4 integration -->
+
+<!--  Added by GoogleTagManager integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = 1000;
+
+
+
+var hsLoadGtm = function loadGtm() {
+    if(window._hsGtmLoadOnce) {
+      return;
+    }
+
+    if (useGoogleConsentModeV2) {
+
+      gtag('set','developer_id.dZTQ1Zm',true);
+
+      gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': waitForUpdateMillis
+      });
+
+      _hsp.push(['useGoogleConsentModeV2'])
+    }
+
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P663XDQ');
+
+    window._hsGtmLoadOnce = true;
+};
+
+_hsp.push(['addPrivacyConsentListener', function(consent){
+  if(consent.allowed || (consent.categories && consent.categories.analytics)){
+    hsLoadGtm();
+  }
+}]);
+
+</script>
+
+<!-- /Added by GoogleTagManager integration -->
+
+    <link rel="canonical" href="https://www.uptycs.com">
+
+ 
+<meta property="og:image" content="https://www.uptycs.com/hubfs/About%20Us%20Page%20SPI-2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="uptycs">
+<meta name="twitter:image" content="https://www.uptycs.com/hubfs/About%20Us%20Page%20SPI-2.png">
+<meta name="twitter:image:alt" content="uptycs">
+
+<meta property="og:url" content="https://www.uptycs.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta http-equiv="content-language" content="en">
+
+
+
+
+
+
+    
+
+  <meta name="generator" content="HubSpot"></head>
+
+  <body class="  hs-content-id-134901819710 hs-site-page page  light-background">
+<!--  Added by GoogleTagManager integration -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P663XDQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- /Added by GoogleTagManager integration -->
+
+    <div class="body-wrapper   hs-content-id-134901819710 hs-site-page page ">
+      
+      
+
+
+      <div data-global-resource-path="Uptycs_Theme_2023/templates/partials/mega-menu-new.html">
+
+
+<header class="header header-new ">
+  <div class="HeaderTop text-center"><div class="wrapper"></div></div>
+  <div class="header-inner wrapper">
+    
+    <a href="#main-content" class="header__skip">Skip to content</a>
+
+    
+
+    <div class="container-fluid content-wrapper">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 dnd-section header-top-row-0-padding header-top-row-0-force-full-width-section">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1726026662100" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><section class="UT_announcement_bar widget_1726026662100" style="">
+  <div class="UT_announcement_bar-inner">  
+    <div class="cta-banner">
+      <div class="banner-header">
+        Most security AI is a stranger to its environment: Solving security AI's 4 biggest problems
+      </div>
+      
+      <div class="banner-cta">
+        <span id="hs_cos_wrapper_widget_1726026662100_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-be3c8cee-be42-451a-83e8-ee258483ed4e"><span class="hs-cta-node hs-cta-be3c8cee-be42-451a-83e8-ee258483ed4e" id="hs-cta-be3c8cee-be42-451a-83e8-ee258483ed4e"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/be3c8cee-be42-451a-83e8-ee258483ed4e" target="_blank" rel="noopener"><img class="hs-cta-img" id="hs-cta-img-be3c8cee-be42-451a-83e8-ee258483ed4e" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/be3c8cee-be42-451a-83e8-ee258483ed4e.png" alt="Learn More"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, 'be3c8cee-be42-451a-83e8-ee258483ed4e', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+      </div>
+      
+    </div>
+    <span class="close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 14 14" fill="none">
+        <path d="M13 1L1 13" stroke="#050314" />
+        <path d="M13 13L1 0.999999" stroke="#050314" />
+      </svg>
+    </span>
+  </div>
+</section> 
+
+ 
+
+
+ 
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+
+    
+
+    <div class="header__container content-wrapper">
+
+      
+
+      <div class="header__logo header__logo--main">
+        <div id="hs_cos_wrapper_site_logo" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <span id="hs_cos_wrapper_site_logo_hs_logo_widget" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a href="https://www.uptycs.com/?hsLang=en" id="hs-link-site_logo_hs_logo_widget" style="border-width:0px;border:0px;"><img src="https://www.uptycs.com/hubfs/uptycs_logo_2C_on-light_rgb-1.svg" class="hs-image-widget " height="36" style="height: auto;width:120px;border-width:0px;border:0px;" width="120" alt="Uptycs" title="Uptycs"></a></span>
+</div>
+      </div>
+
+      
+      <div class="header__column">
+        
+        <div class="header__row-1">
+          <div class="header--toggle header__navigation--toggle"></div>
+
+          <div class="header__close--toggle"></div>
+
+          <div class="header__navigation header--element">
+            <div class="menu mega-menu-header">
+              
+              <div id="hs_cos_wrapper_mega-menu-new" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+
+
+
+	
+ 
+
+<nav class="menu menu--desktop mega-menu-top">
+  <ul class="menu__wrapper no-list mega-menu">
+    
+    <li class="menu__item menu__item--has-submenux ">
+    <a class="menu__link top-menu-link " href="">
+      Product
+    </a>
+      
+      <ul class="sub-menu">
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Product</span></h5>
+<p><span>Protect, Detect, Respond</span></p></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp" role="menuitem" target="_self">CNAPP</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/xdr" role="menuitem" target="_self">XDR</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/juno-ai" role="menuitem" target="_self">Juno AI</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        
+      </ul>
+      
+    </li>
+    
+    <li class="menu__item menu__item--has-submenux ">
+    <a class="menu__link top-menu-link " href="">
+      Platform
+    </a>
+      
+      <ul class="sub-menu">
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>CNAPP Hybrid Cloud Security</span></h5>
+<p><span>Protect, Detect, Respond</span></p></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp" role="menuitem" target="_self">Platform <p>An Integrated Platform for your Cloud Security needs</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/juno-ai" role="menuitem" target="_self">Juno AI <p>A Fully Integrated Security Analyst Assistant</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/hybrid-cloud-asset-management" role="menuitem" target="_self">Cyber Asset Management<p>Maintain inventory and visibility of all security assets</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/detection" role="menuitem" target="_self">Threat Coverage <p>Coverage for APT’s and Malicious Toolkits</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/uptycs-nexus-endpoint-security-management" role="menuitem" target="_self">Osquery Fleet Management <p>Enable distributed system monitoring and real-time querying</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/telemetry-powered-cybersecurity" role="menuitem" target="_self">Telemetry Powered Security <p>Comprehensive, real-time security, &amp; visibility</p></a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Cloud Native Security<br></span><span></span></h5>
+<p>Cloud, Workload, Applications &amp; Data</p></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/cwpp" role="menuitem" target="_self">Cloud Workload Protection <p>Secure VMs and containers</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/cspm" role="menuitem" target="_self">Cloud Security Posture Management<p>Automate cloud risk detection</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/use-cases/strengthening-security-integrated-compliance-platform" role="menuitem" target="_self">Cloud Risk &amp; Compliance <p>Maintain Regulatory and policy alignment</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/use-cases/vulnerability-scanning" role="menuitem" target="_self">Vulnerability Management <p>Identify and remediate security weaknesses</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/attack-surfaces/containers-kubernetes" role="menuitem" target="_self">Container &amp; Kubernetes Security <p>Protect containerized applications</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/use-cases/cloud-threat-prevention-defend-against-cloud-threats" role="menuitem" target="_self">Cloud Detection &amp; Response <p>Address threats within cloud environments</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/use-cases/data-security-posture-management" role="menuitem" target="_self">Data Security Posture Management <p>Protect sensitive information</p></a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5>Cyber Operations and Threat Management</h5>
+<p>Cyber-Intelligence, Hunt and Forensics</p></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/xdr" role="menuitem" target="_self">Extended Detection &amp; Response <p>Provide broad visibility and automated response</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/file-integrity-monitoring-enhanced-security" role="menuitem" target="_self">File Integrity Monitoring <p>Ensure system integrity and detect unauthorized changes</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/system-insight" role="menuitem" target="_self">Visibility &amp; User Behavior<p>Understand normal vs. abnormal activity</p></a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/uptycs-incident-response-capability" role="menuitem" target="_self">Incident Response &amp; Forensics<p>Investigate and remediate security threats</p></a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        
+        <li class="sub-menu-post-item">
+            <div class="menu-post-image">
+              
+              
+              <img class="img-src lozad" data-src="https://2617658.fs1.hubspotusercontent-na1.net/hubfs/2617658/Blog%20Banner_Introducing%20Juno%20The%20First%20Verifiable%20AI%20Analyst%20for%20Cybersecurity.webp" alt="Blog Banner_Introducing Juno The First Verifiable AI Analyst for Cybersecurity" loading="">
+              
+            </div>
+            <div class="post-content">
+              <h5><span>Juno AI Analyst</span></h5>
+<p><a href="https://www.uptycs.com/juno-ai-assistant?hsLang=en" rel="noopener">Learn more</a></p>
+            </div>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li class="menu__item menu__item--has-submenux li-active-link">
+    <a class="menu__link top-menu-link active-link" href="https://www.uptycs.com/pricing?hsLang=en">
+      Pricing
+    </a>
+      
+    </li>
+    
+    <li class="menu__item menu__item--has-submenux ">
+    <a class="menu__link top-menu-link " href="">
+      Environments
+    </a>
+      
+      <ul class="sub-menu">
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Environments</span></h5></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners/aws" role="menuitem" target="_self">AWS</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners/azure" role="menuitem" target="_self">Microsoft Azure</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners/google-cloud-security" role="menuitem" target="_self">Google Cloud</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners/ibm-cloud" role="menuitem" target="_self">IBM Cloud</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Integrations</span></h5></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/tools-and-integrations" role="menuitem" target="_self">Tools and Integrations</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners/checkmarx" role="menuitem" target="_self">Checkmarx</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        
+        <li class="sub-menu-post-item">
+            <div class="menu-post-image">
+              
+              
+              <img class="img-src lozad" data-src="https://www.uptycs.com/hubfs/1k-marketplace-challenge-aws.png" alt="1k-marketplace-challenge-aws" loading="">
+              
+            </div>
+            <div class="post-content">
+              <h5><span>Take the $1K<br>Marketplace Challenge</span></h5>
+<p><a href="https://www.uptycs.com/resources/aws-marketplace-challenge-2024?hsLang=en" rel="noopener"><span>Learn more</span></a></p>
+            </div>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li class="menu__item menu__item--has-submenux ">
+    <a class="menu__link top-menu-link " href="">
+      Why Uptycs
+    </a>
+      
+      <ul class="sub-menu">
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Why Uptycs</span></h5></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/about" role="menuitem" target="_self">About Us</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=customer_stories" role="menuitem" target="_self">Case Studies </a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/reviews" role="menuitem" target="_self">Reviews</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Compare Uptycs</span></h5></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/aqua" role="menuitem" target="_self">Aqua</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/lacework-uptycs" role="menuitem" target="_self">Lacework</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/sysdig" role="menuitem" target="_self">Sysdig</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/crowdstrike" role="menuitem" target="_self">CrowdStrike</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/wiz" role="menuitem" target="_self">Wiz</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        
+        <li class="sub-menu-post-item">
+            <div class="menu-post-image">
+              
+              
+              <img class="img-src lozad" data-src="https://2617658.fs1.hubspotusercontent-na1.net/hubfs/2617658/Gartner%20CNAPP%20Market%20Guide%202025%20Key%20Highlights%20for%20Security%20Leaders.png" alt="Gartner CNAPP Market Guide 2025 Key Highlights for Security Leaders" loading="">
+              
+            </div>
+            <div class="post-content">
+              <h5><span>Our Key Takeaways for Security Leaders from the 2025 Gartner® Market Guide for CNAPP</span></h5>
+<p><a href="https://www.uptycs.com/blog/gartner-market-guide-for-cnapp-2025-key-takeaways?hsLang=en" rel="noopener"><span>Learn more</span></a></p>
+            </div>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li class="menu__item menu__item--has-submenux ">
+    <a class="menu__link top-menu-link " href="">
+      Resources
+    </a>
+      
+      <ul class="sub-menu">
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Resources</span></h5></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=analyst_reports" role="menuitem" target="_self">Analyst Reports</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=product_briefs" role="menuitem" target="_self">Product Briefs</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/blog" role="menuitem" target="_self">Blog</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/video-hub" role="menuitem" target="_self">Video Hub </a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/blog/threat-research-report-team" role="menuitem" target="_self">Threat Research Report Team</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=guides" role="menuitem" target="_self">Whitepapers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=guides" role="menuitem" target="_self">E-books</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=guides" role="menuitem" target="_self">Guides</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=threat_intelligence" role="menuitem" target="_self">Threat Quarterly Reports</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/master-glossary" role="menuitem" target="_self">Glossary</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/events" role="menuitem" target="_self">Webinars and Events</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Company</span></h5></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/about/career" role="menuitem" target="_self">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/press-news-release" role="menuitem" target="_self">News</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/cybersecurity-standup" role="menuitem" target="_self">CSU</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/services-support" role="menuitem" target="_self">Support</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Key Topics</span></h5></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/kubernetes-security-posture-management" role="menuitem" target="_self">KSPM</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/what-is-cnapp-meaning-cloud-native-application-protection-platform" role="menuitem" target="_self">CNAPP</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/what-is-cspm-cloud-security-posture-management" role="menuitem" target="_self">CSPM</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/cwpp-meaning-cloud-workload-protection" role="menuitem" target="_self">CWPP</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/osquery-how-it-works-and-how-to-use" role="menuitem" target="_self">Osquery</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        
+        <li class="sub-menu-post-item">
+            <div class="menu-post-image">
+              
+              
+              <img class="img-src lozad" data-src="https://www.uptycs.com/hubfs/Detection-1.png" alt="Detection-1" loading="">
+              
+            </div>
+            <div class="post-content">
+              <h5>Unrivaled Threat Detection, Intelligence, and Advanced Coverage Across All Environments</h5>
+<p><a href="https://www.uptycs.com/detection?hsLang=en" rel="noopener"><span>Learn more</span></a></p>
+            </div>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li class="menu__item menu__item--has-submenux ">
+    <a class="menu__link top-menu-link " href="">
+      Partners
+    </a>
+      
+      <ul class="sub-menu">
+        
+        <li class="submenu-box">
+          
+          <div class="sub-header"><h5><span>Partners</span></h5></div>
+          
+          <div class="submenu_menu">
+            <span id="hs_cos_wrapper_mega-menu-new_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_mega-menu-new_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners" role="menuitem" target="_self">Upward Partner Program</a></li>
+ </ul>
+</div></span>
+          </div>
+        </li>
+        
+        
+      </ul>
+      
+    </li>
+    
+  </ul>
+</nav>
+
+
+
+
+<nav class="menu menu--mobile" aria-label="Main menu">
+  <ul class="menu__wrapper no-list">
+    
+
+
+
+
+
+
+
+<li class="menu__item menu__item--depth-1 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Product</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Product</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-2 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Product<br><span>Protect, Detect, Respond</span></a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Product<br><span>Protect, Detect, Respond</span></span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/cnapp">CNAPP</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/xdr">XDR</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/juno-ai">Juno AI</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+
+
+<li class="menu__item menu__item--depth-1 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Platform</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Platform</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-2 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">CNAPP Hybrid Cloud Security <br> <span>Protect, Detect, Respond</span></a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for CNAPP Hybrid Cloud Security <br> <span>Protect, Detect, Respond</span></span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/cnapp">Platform</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/juno-ai">Juno AI</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/cnapp/hybrid-cloud-asset-management">Cyber Asset Management</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/detection">Threat Coverage</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/uptycs-nexus-endpoint-security-management">Osquery Fleet Management </a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/cnapp/telemetry-powered-cybersecurity">Telemetry Powered Security</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Cloud Native Security <br> <span>Cloud, Workload, Applications &amp; Data</span></a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Cloud Native Security <br> <span>Cloud, Workload, Applications &amp; Data</span></span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/cnapp/cwpp">Cloud Workload Protection</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/cnapp/cspm">Cloud Security Posture Management</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/use-cases/cloud-threat-prevention-defend-against-cloud-threats">Cloud Risk &amp; Compliance </a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/use-cases/vulnerability-scanning">Vulnerability Management</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/attack-surfaces/containers-kubernetes">Container &amp; Kubernetes Security</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources/cloud-detection-and-response-solution">Cloud Detection &amp; Response</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/use-cases/data-security-posture-management">Data Security Posture Management</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Cyber Operations and Threat Management <br> <span>Cyber-Intelligence, Hunt and Forensics</span></a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Cyber Operations and Threat Management <br> <span>Cyber-Intelligence, Hunt and Forensics</span></span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources/cloud-detection-and-response-solution">Extended Detection &amp; Response</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources/file-integrity-monitoring-solution">File Integrity Monitoring</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources/user-behavioral-monitoring">Visibility &amp; User Behavior</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/products/uptycs-incident-response-capability">Incident Response &amp; Forensics</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+
+
+<li class="menu__item menu__item--depth-1  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/pricing">Pricing</a>
+  
+  
+</li>
+
+
+
+<li class="menu__item menu__item--depth-1 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Environments</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Environments</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-2 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Environments</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Environments</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/partners/aws">AWS</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/partners/azure">Microsoft Azure</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/partners/google-cloud-security">Google Cloud</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/partners/ibm-cloud">IBM Cloud</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Integrations</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Integrations</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/tools-and-integrations">Tools and Integrations</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/partners/checkmarx">Checkmarx</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false"><strong>CNAPP Hybrid Cloud Security</strong><br><span>Protect, Detect, Respond</span></a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for <strong>CNAPP Hybrid Cloud Security</strong><br><span>Protect, Detect, Respond</span></span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  
+  <span class="menu__link"></span>
+  
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+
+
+<li class="menu__item menu__item--depth-1 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Why Uptycs</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Why Uptycs</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-2 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Why Uptycs</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Why Uptycs</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/about">About Us</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources?filter=customer_stories">Case Studies</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/reviews">Reviews</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Compare Uptycs </a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Compare Uptycs </span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/compare-us/aqua">Aqua</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/compare-us/lacework-uptycs">Lacework</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/compare-us/sysdig">Sysdig</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/compare-us/crowdstrike">CrowdStrike</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/compare-us/wiz">Wiz</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+
+
+<li class="menu__item menu__item--depth-1 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Resources</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Resources</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-2 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Resources</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Resources</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources?filter=analyst_reports">Analyst Reports</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources?filter=product_briefs">Product Briefs</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/blog">Blog</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/video-hub">Video Hub </a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/blog/threat-research-report-team">Threat Research Report Team</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources?filter=guides">Whitepapers</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources?filter=guides">E-books</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources?filter=guides">Guides</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/resources?filter=threat_intelligence">Threat Quarterly Reports</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/master-glossary">Glossary</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/events">Webinars and Events</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Company</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Company</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/about/career">Careers</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/press-news-release">News</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/cybersecurity-standup">CSU</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/services-support">Support</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Key Topics</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Key Topics</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/kubernetes-security-posture-management">KSPM</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/what-is-cnapp-meaning-cloud-native-application-protection-platform">CNAPP</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="httphttps://www.uptycs.com/what-is-cspm-cloud-security-posture-managements://www.uptycs.com/what-is-cwpp-meaning-cloud-workload-protection-platform">CSPM</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/what-is-cwpp-meaning-cloud-workload-protection-platform">CWPP</a>
+  
+  
+</li>
+
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/osquery-how-it-works-and-how-to-use">Osquery</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+
+
+<li class="menu__item menu__item--depth-1 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Partners</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Partners</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-2 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-2 menu__item--has-submenu hs-skip-lang-url-rewrite">
+  
+  
+  <a class="menu__link menu__link--toggle" href="#" aria-haspopup="true" aria-expanded="false">Partners</a>
+  
+  
+  
+  
+  <button class="menu__child-toggle no-button" aria-expanded="false">
+    <span class="show-for-sr">Show submenu for Partners</span>
+    <span class="menu__child-toggle-icon"></span>
+  </button>
+  <ul class="menu__submenu menu__submenu--level-3 no-list">
+    
+    
+    
+<li class="menu__item menu__item--depth-3  hs-skip-lang-url-rewrite">
+  
+  <a class="menu__link   " href="https://www.uptycs.com/partners">Upward Partner Program</a>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+    
+  </ul>
+  
+  
+</li>
+
+
+
+
+  </ul>
+</nav>
+
+
+</div> 
+            </div>
+
+            <!--             mobile  -->
+            <div class="cta_login mobile">
+
+             
+
+               
+
+
+              <div class="header__row-2">
+               
+                
+              </div>
+
+              
+              <div class="header__row-3">
+                <div class="header-menu-cta mobile">
+                  <div id="hs_cos_wrapper_module_171764893606315" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="header-cta-outer">
+  <div class="log-cta">
+    <a href=""></a>
+  </div>
+  <div class="demo-cta">
+    <a href="https://www.uptycs.com/request-demo?hsLang=en">Get demo</a>
+  </div>
+</div>
+ 
+</div>
+                </div>
+              </div>
+            </div>
+            <!--  mobile  -->
+
+          </div>
+
+        </div>
+
+        
+
+        <div class="header__row-2">
+         
+          
+        </div>
+
+        
+        <div class="header__row-3">
+          <div class="header-menu-cta desktop">
+            <div id="hs_cos_wrapper_module_171764893606315" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="header-cta-outer">
+  <div class="log-cta">
+    <a href=""></a>
+  </div>
+  <div class="demo-cta">
+    <a href="https://www.uptycs.com/request-demo?hsLang=en">Get demo</a>
+  </div>
+</div>
+ 
+</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    
+
+    <div class="container-fluid content-wrapper">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+  </div>
+</header></div>
+       
+
+      
+
+      <main id="main-content" class="body-container-wrapper">
+        
+
+
+
+<div class="container-fluid body-container body-container--home">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 dnd-section">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1717737662664" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><section class="UT_announcement_bar widget_1717737662664" style="">
+  <div class="UT_announcement_bar-inner">  
+    <div class="cta-banner">
+      <div class="banner-header">
+        Most security AI is a stranger to its environment: Solving security AI's 4 biggest problems
+      </div>
+      
+      <div class="banner-cta">
+        <span id="hs_cos_wrapper_widget_1717737662664_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-be3c8cee-be42-451a-83e8-ee258483ed4e"><span class="hs-cta-node hs-cta-be3c8cee-be42-451a-83e8-ee258483ed4e" id="hs-cta-be3c8cee-be42-451a-83e8-ee258483ed4e"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/be3c8cee-be42-451a-83e8-ee258483ed4e" target="_blank" rel="noopener"><img class="hs-cta-img" id="hs-cta-img-be3c8cee-be42-451a-83e8-ee258483ed4e" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/be3c8cee-be42-451a-83e8-ee258483ed4e.png" alt="Learn More"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, 'be3c8cee-be42-451a-83e8-ee258483ed4e', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+      </div>
+      
+    </div>
+    <span class="close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 14 14" fill="none">
+        <path d="M13 1L1 13" stroke="#050314" />
+        <path d="M13 13L1 0.999999" stroke="#050314" />
+      </svg>
+    </span>
+  </div>
+</section> 
+
+ 
+
+
+ 
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 dnd-section">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1700666458217" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<!-- <div class="Trustedlogobtn buttonv1 text-center">
+    <a class="" id="demoBtn1" aria-controls="demoModal">Request A DEMO
+        <span>
+            <img src="https://www.uptycs.com/hubfs/Button_arrow.png" alt="Request DEMO ">
+        </span>
+    </a>
+</div> -->
+<div id="demoModal1" class="modal" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <span class="closeBtn1" aria-label="Close">×</span>
+        <p>
+            <span id="hs_cos_wrapper_widget_1700666458217_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_form" style="" data-hs-cos-general-type="widget" data-hs-cos-type="form"></span></p><h3 id="hs_cos_wrapper_form_911981502_title" class="hs_cos_wrapper form-title" data-hs-cos-general-type="widget_field" data-hs-cos-type="text"></h3>
+
+<div id="hs_form_target_form_911981502"></div>
+
+
+
+
+
+
+
+
+
+
+        <p></p>
+    </div>
+</div></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 dnd_area-row-2-background-layers dnd_area-row-2-padding dnd_area-row-2-max-width-section-centering dnd-section dnd_area-row-2-background-image">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721803022355" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="home-banner-outer widget_1721803022355">
+  <div class="left-section">
+    <div class="top-head">
+      <h1>Secure Everything from Dev to Runtime</h1>
+<p><img src="https://www.uptycs.com/hs-fs/hubfs/Enhanced%20by%20Juno_dark.png?width=292&amp;height=47&amp;name=Enhanced%20by%20Juno_dark.png" width="292" height="47" loading="lazy" alt="Enhanced by Juno_dark" style="height: auto; max-width: 100%; width: 292px;" srcset="https://www.uptycs.com/hs-fs/hubfs/Enhanced%20by%20Juno_dark.png?width=146&amp;height=24&amp;name=Enhanced%20by%20Juno_dark.png 146w, https://www.uptycs.com/hs-fs/hubfs/Enhanced%20by%20Juno_dark.png?width=292&amp;height=47&amp;name=Enhanced%20by%20Juno_dark.png 292w, https://www.uptycs.com/hs-fs/hubfs/Enhanced%20by%20Juno_dark.png?width=438&amp;height=71&amp;name=Enhanced%20by%20Juno_dark.png 438w, https://www.uptycs.com/hs-fs/hubfs/Enhanced%20by%20Juno_dark.png?width=584&amp;height=94&amp;name=Enhanced%20by%20Juno_dark.png 584w, https://www.uptycs.com/hs-fs/hubfs/Enhanced%20by%20Juno_dark.png?width=730&amp;height=118&amp;name=Enhanced%20by%20Juno_dark.png 730w, https://www.uptycs.com/hs-fs/hubfs/Enhanced%20by%20Juno_dark.png?width=876&amp;height=141&amp;name=Enhanced%20by%20Juno_dark.png 876w" sizes="(max-width: 292px) 100vw, 292px"></p>
+    </div>
+    <div class="content">
+      <p><span>Discover the magic of better security through deep telemetry, now made effortless by Juno AI Analyst.&nbsp;</span><span aria-label="&nbsp;" data-stringify-type="paragraph-break"></span><span>Secure everything in the cloud, from Dev to Runtime, with Uptycs CNAPP. Observe, analyze, contextualize, and prioritize findings faster and <a href="/resources/white-papers/juno-verifiable-ai?hsLang=en" rel="noopener">with more clarity</a> using Juno AI Analyst&nbsp;for rapid resolution and remediation.</span></p>
+    </div>
+    <div class="left-trial-btn">
+      <span id="hs_cos_wrapper_widget_1721803022355_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-535190ca-2e95-4424-a379-4e5fca1edc79"><span class="hs-cta-node hs-cta-535190ca-2e95-4424-a379-4e5fca1edc79" id="hs-cta-535190ca-2e95-4424-a379-4e5fca1edc79"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/535190ca-2e95-4424-a379-4e5fca1edc79"><img class="hs-cta-img" id="hs-cta-img-535190ca-2e95-4424-a379-4e5fca1edc79" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/535190ca-2e95-4424-a379-4e5fca1edc79.png" alt="Meet Juno AI"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, '535190ca-2e95-4424-a379-4e5fca1edc79', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+    </div>
+  </div>
+  <div class="right-section">
+    <div class="video-module">
+      
+
+      <div class="image-module">
+        
+        
+        
+        
+        
+        
+        <img src="https://www.uptycs.com/hs-fs/hubfs/Uptycs_Juno%20AI_Are%20we%20vulnerable.gif?width=1920&amp;height=1080&amp;name=Uptycs_Juno%20AI_Are%20we%20vulnerable.gif" alt="Uptycs_Juno AI_Are we vulnerable" loading="lazy" width="1920" height="1080" style="max-width: 100%; height: auto;" srcset="https://www.uptycs.com/hs-fs/hubfs/Uptycs_Juno%20AI_Are%20we%20vulnerable.gif?width=960&amp;height=540&amp;name=Uptycs_Juno%20AI_Are%20we%20vulnerable.gif 960w, https://www.uptycs.com/hs-fs/hubfs/Uptycs_Juno%20AI_Are%20we%20vulnerable.gif?width=1920&amp;height=1080&amp;name=Uptycs_Juno%20AI_Are%20we%20vulnerable.gif 1920w, https://www.uptycs.com/hs-fs/hubfs/Uptycs_Juno%20AI_Are%20we%20vulnerable.gif?width=2880&amp;height=1620&amp;name=Uptycs_Juno%20AI_Are%20we%20vulnerable.gif 2880w, https://www.uptycs.com/hs-fs/hubfs/Uptycs_Juno%20AI_Are%20we%20vulnerable.gif?width=3840&amp;height=2160&amp;name=Uptycs_Juno%20AI_Are%20we%20vulnerable.gif 3840w, https://www.uptycs.com/hs-fs/hubfs/Uptycs_Juno%20AI_Are%20we%20vulnerable.gif?width=4800&amp;height=2700&amp;name=Uptycs_Juno%20AI_Are%20we%20vulnerable.gif 4800w, https://www.uptycs.com/hs-fs/hubfs/Uptycs_Juno%20AI_Are%20we%20vulnerable.gif?width=5760&amp;height=3240&amp;name=Uptycs_Juno%20AI_Are%20we%20vulnerable.gif 5760w" sizes="(max-width: 1920px) 100vw, 1920px">
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-7 dnd-section dnd_area-row-3-margin dnd_area-row-3-padding">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-8 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721805405549" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<div class="clients-logo-slider widget_1721805405549">
+  <div class="title-text">
+    <p style="color: #000; font-family: Dazzed; font-size: 21.4px; font-weight: 600; line-height: 24px; letter-spacing: -0.2px; text-align: center; margin-bottom: 37px;">Trusted by</p>
+  </div>
+  <div class="description-text">
+    
+  </div>
+  <div class="logo-slider-outer">
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/Group%20(1)%201-1.svg" alt="Group (1) 1-1">
+    </div>
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/Frame%2065-1.svg" alt="Frame 65-1">
+    </div>
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/Frame%2062943%201-1.svg" alt="Frame 62943 1-1">
+    </div>
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/Vector%20(2)-1%201-1.svg" alt="Vector (2)-1 1-1">
+    </div>
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/Shein_Logo_2017%201-1.svg" alt="Shein_Logo_2017 1-1">
+    </div>
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/Group%2061952-1.svg" alt="Group 61952-1">
+    </div>
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/Group%2061738%201-1.svg" alt="Group 61738 1-1">
+    </div>
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/FrankieOne-logo.png" alt="FrankieOne-logo">
+    </div>
+    
+    <div class="logo-images">
+      <img src="https://www.uptycs.com/hubfs/finra-logo_with%20padding-1.png" alt="finra-logo_with padding-1">
+    </div>
+    
+  </div>
+   
+</div></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-9 dnd-section">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-10 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1764106752437" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="image-content-box-outer">
+  <div class="image-content-box-inner">
+    <div class="image-content-box-section">
+      <div class="left-section">
+        
+        <div class="top-logo">
+          
+          
+          
+          <img src="https://www.uptycs.com/hs-fs/hubfs/Juno%20AI%20logo_dark%20text.png?width=200&amp;height=80&amp;name=Juno%20AI%20logo_dark%20text.png" alt="Juno AI logo_dark text" loading="lazy" width="200" height="80" srcset="https://www.uptycs.com/hs-fs/hubfs/Juno%20AI%20logo_dark%20text.png?width=100&amp;height=40&amp;name=Juno%20AI%20logo_dark%20text.png 100w, https://www.uptycs.com/hs-fs/hubfs/Juno%20AI%20logo_dark%20text.png?width=200&amp;height=80&amp;name=Juno%20AI%20logo_dark%20text.png 200w, https://www.uptycs.com/hs-fs/hubfs/Juno%20AI%20logo_dark%20text.png?width=300&amp;height=120&amp;name=Juno%20AI%20logo_dark%20text.png 300w, https://www.uptycs.com/hs-fs/hubfs/Juno%20AI%20logo_dark%20text.png?width=400&amp;height=160&amp;name=Juno%20AI%20logo_dark%20text.png 400w, https://www.uptycs.com/hs-fs/hubfs/Juno%20AI%20logo_dark%20text.png?width=500&amp;height=200&amp;name=Juno%20AI%20logo_dark%20text.png 500w, https://www.uptycs.com/hs-fs/hubfs/Juno%20AI%20logo_dark%20text.png?width=600&amp;height=240&amp;name=Juno%20AI%20logo_dark%20text.png 600w" sizes="(max-width: 200px) 100vw, 200px">
+        </div>
+        
+        <div class="description-text">
+          <p>Meet <span>Juno AI Analyst. </span></p>
+<p>&nbsp;</p>
+<p><span>A fully integrated Security Analyst, built to help cybersecurity teams </span><span>interpret complex detection data, accelerate investigations, and verify every conclusion. </span><span>No hallucinations. No black boxes.</span></p>
+        </div>
+        
+        
+        <div class="left-cta">
+          <span id="hs_cos_wrapper_widget_1764106752437_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-eab65e0d-97c7-4b2b-b80f-e90ffc1e0d16"><span class="hs-cta-node hs-cta-eab65e0d-97c7-4b2b-b80f-e90ffc1e0d16" id="hs-cta-eab65e0d-97c7-4b2b-b80f-e90ffc1e0d16"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/eab65e0d-97c7-4b2b-b80f-e90ffc1e0d16" target="_blank" rel="noopener"><img class="hs-cta-img" id="hs-cta-img-eab65e0d-97c7-4b2b-b80f-e90ffc1e0d16" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/eab65e0d-97c7-4b2b-b80f-e90ffc1e0d16.png" alt="Meet Juno AI"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, 'eab65e0d-97c7-4b2b-b80f-e90ffc1e0d16', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="right-image">
+          <img class="lozad" data-src="https://2617658.fs1.hubspotusercontent-na1.net/hubfs/2617658/juno%20how%20it%20works%20illustration.png" alt="juno how it works illustration" loading="lazy" width="200" height="80">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-11 dnd-section">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-12 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1764107393883" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-space" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span class="hs-horizontal-spacer"></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-13 dnd-section dnd_area-row-6-background-layers dnd_area-row-6-background-color">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-14 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721811413525" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="two-column-section-v2 widget_1721811413525">
+  <div class="left-section">
+    <div class="top-head">
+      Why Uptycs
+    </div>
+    <div class="heading">
+      <h2>Unified Protection</h2>
+    </div>
+    <div class="contents">
+      <p>Uptycs security analytics platform has been built ground up for scale, correlation, runtime detection and response with rich contextualization for real-time decision making. Uptycs provides a foundational platform based on first principles to Observe, Analyze and Contextualize everything to protect and secure your cloud infrastructure.&nbsp;</p>
+<p>&nbsp;</p>
+    </div>
+    <div class="section-button">
+      <span id="hs_cos_wrapper_widget_1721811413525_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-fbe0a07c-0e8d-4fc9-a920-a5bc636c4d95"><span class="hs-cta-node hs-cta-fbe0a07c-0e8d-4fc9-a920-a5bc636c4d95" id="hs-cta-fbe0a07c-0e8d-4fc9-a920-a5bc636c4d95"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/fbe0a07c-0e8d-4fc9-a920-a5bc636c4d95"><img class="hs-cta-img" id="hs-cta-img-fbe0a07c-0e8d-4fc9-a920-a5bc636c4d95" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/fbe0a07c-0e8d-4fc9-a920-a5bc636c4d95.png" alt="Talk to an Expert"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, 'fbe0a07c-0e8d-4fc9-a920-a5bc636c4d95', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+    </div>
+  </div>
+  <div class="right-section"> 
+    
+
+    <div class="video-section">
+      <video muted loop autoplay width="100%" class="lozad" data-poster="">
+        <source data-src="https://www.uptycs.com/hubfs/screenshot-video/Homepage%20GIF_Hero.mp4" type="video/mp4">
+        Sorry, your browser doesn't support embedded videos.
+      </video>
+    </div>
+     
+  </div>
+</div>
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-15 dnd-section dnd_area-row-7-padding">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-16 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721811157453" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="three-card-solution widget_1721811157453">
+  <div class="top-head">
+    How it works
+  </div>
+  <div class="heading">
+    <h2>Hybrid cloud security at your fingertips</h2>
+  </div>
+  <div class="description-text">
+    <p>Our Customer Experience team is always on-hand to help fine-tune and optimize your strategy to improve efficiency and maximize your investment.</p>
+  </div>
+  <div class="card-outer">
+    
+    <div class="single-card">
+      <div class="card-image">
+        
+        
+        
+        
+        <img src="https://www.uptycs.com/hubfs/Group%2091.svg" alt="Group 91" loading="lazy" width="63" height="63">
+        
+      </div>
+      <div class="card-head">
+        Discover &amp; Observe
+      </div>
+      <div class="card-content">
+        <p>See with context everything you build and deploy in the cloud from development to runtime.</p>
+      </div>
+    </div>
+    
+    <div class="single-card">
+      <div class="card-image">
+        
+        
+        
+        
+        <img src="https://www.uptycs.com/hubfs/Group%2095.svg" alt="Group 95" loading="lazy" width="48" height="51">
+        
+      </div>
+      <div class="card-head">
+        Prevent &amp; Harden
+      </div>
+      <div class="card-content">
+        <p>Prevent threats before they can cause damage and continuously harden security posture.</p>
+      </div>
+    </div>
+    
+    <div class="single-card">
+      <div class="card-image">
+        
+        
+        
+        
+        <img src="https://www.uptycs.com/hubfs/Group%2093%20(1).svg" alt="Group 93 (1)" loading="lazy" width="50" height="48">
+        
+      </div>
+      <div class="card-head">
+        Detect &amp; Respond
+      </div>
+      <div class="card-content">
+        <p>Focus on the threats and risks that matter with insights that correlate runtime and historical data across multiple attack surfaces.</p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="solution-bottom-btn">
+    <span id="hs_cos_wrapper_widget_1721811157453_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-273c93d5-961f-488d-b42c-7640d4211727"><span class="hs-cta-node hs-cta-273c93d5-961f-488d-b42c-7640d4211727" id="hs-cta-273c93d5-961f-488d-b42c-7640d4211727"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/273c93d5-961f-488d-b42c-7640d4211727"><img class="hs-cta-img" id="hs-cta-img-273c93d5-961f-488d-b42c-7640d4211727" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/273c93d5-961f-488d-b42c-7640d4211727.png" alt="Learn more"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, '273c93d5-961f-488d-b42c-7640d4211727', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+  </div>
+  
+</div>
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-17 dnd_area-row-8-background-image dnd-section dnd_area-row-8-background-layers dnd_area-row-8-padding">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-18 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721890487725" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="market-guide-outer">
+  <div class="market-guide">
+    <div class="left-section">
+      <div class="top-text">
+        Verifiable AI: The Foundation for Trust in Cybersecurity
+      </div>
+      <div class="description-text">
+        <p>Introducing a new standard for security AI with transparent reasoning, evidence-backed insights, and audit-ready confidence.</p>
+      </div>
+      <div class="bottom-cta">
+        <span id="hs_cos_wrapper_widget_1721890487725_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-e94f409e-bb4d-40bb-9e5b-6156836e884b"><span class="hs-cta-node hs-cta-e94f409e-bb4d-40bb-9e5b-6156836e884b" id="hs-cta-e94f409e-bb4d-40bb-9e5b-6156836e884b"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/e94f409e-bb4d-40bb-9e5b-6156836e884b" target="_blank" rel="noopener"><img class="hs-cta-img" id="hs-cta-img-e94f409e-bb4d-40bb-9e5b-6156836e884b" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/e94f409e-bb4d-40bb-9e5b-6156836e884b.png" alt="Download the whitepaper"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, 'e94f409e-bb4d-40bb-9e5b-6156836e884b', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+      </div>
+    </div>
+    <div class="right-section">
+      <div class="right-image">
+        <img class="lozad" data-src="https://2617658.fs1.hubspotusercontent-na1.net/hubfs/2617658/LP%20Thumbnail_Verifiable%20AI.png" alt="LP Thumbnail_Verifiable AI">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-19 dnd_area-row-9-max-width-section-centering dnd-section dnd_area-row-9-padding dnd_area-row-9-background-color dnd_area-row-9-background-layers">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-20 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721899637777" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="three-column-line-slider widget_1721899637777">
+  <div class="left-heading">
+    <p>Uptycs Solutions&nbsp;</p>
+  </div>
+  <div class="top-head">
+    <h2>Real-time hybrid and multi-cloud security</h2>
+  </div> 
+  <div class="line-slider-outer">
+    
+    <div class="line-slider-single">
+      <div class="card-head">
+        <h3>Workload Protection</h3>
+      </div>
+      <div class="card-content">
+        <p>Protect diverse technologies with agentless coverage, deep telemetry, and rich security.</p>
+      </div>
+      
+      <div class="card-button">
+        <a href="https://www.uptycs.com/products/cnapp/cwpp?hsLang=en">Learn more</a>
+      </div>
+      
+    </div>
+    
+    <div class="line-slider-single">
+      <div class="card-head">
+        <h3>Posture Management&nbsp;</h3>
+      </div>
+      <div class="card-content">
+        <p>Continuously monitor cloud resources to detect misconfigurations, contextualize risk, identify violations, and enforce least privilege.</p>
+      </div>
+      
+      <div class="card-button">
+        <a href="https://www.uptycs.com/products/cnapp/cspm?hsLang=en">Learn more</a>
+      </div>
+      
+    </div>
+    
+    <div class="line-slider-single">
+      <div class="card-head">
+        <h3>Detection &amp; Response</h3>
+      </div>
+      <div class="card-content">
+        <p>Real-time threat detection mapped to MITRE ATT&amp;CK, securing workloads with full attack path visibility</p>
+      </div>
+      
+    </div>
+    
+    <div class="line-slider-single">
+      <div class="card-head">
+        <h3>Asset Management</h3>
+      </div>
+      <div class="card-content">
+        <p>Identify cloud assets in real-time without using a sensor, ensuring an up-to-date inventory of both ephemeral and persistent cloud assets.</p>
+      </div>
+      
+    </div>
+    
+    <div class="line-slider-single">
+      <div class="card-head">
+        <h3>Risk &amp; Compliance</h3>
+      </div>
+      <div class="card-content">
+        <p>Map compliance standards, customize for security, and use best practices. Prioritize findings across clouds.</p>
+      </div>
+      
+    </div>
+    
+    <div class="line-slider-single">
+      <div class="card-head">
+        <h3>Vulnerability Management</h3>
+      </div>
+      <div class="card-content">
+        <p>Centralized vulnerability view across apps, systems, and clouds. Prioritize, track metrics, manage exceptions, and automate remediation.</p>
+      </div>
+      
+    </div>
+    
+    <div class="line-slider-single">
+      <div class="card-head">
+        <h3>Software Pipeline Security</h3>
+      </div>
+      <div class="card-content">
+        <p>Scan CI/CD images for vulnerabilities, misconfigurations, and malware. Monitor and enforce security policies.</p>
+      </div>
+      
+    </div>
+    
+  </div>
+  <div class="slider-progress-bar">
+    <div class="progress"></div>
+  </div>
+</div>
+
+
+
+
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-21 dnd-section dnd_area-row-10-padding">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-22 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1724389519254" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="tab-section-outer">
+  <div class="tab-title">
+    <h2>Top 3 Reasons Industry Leaders Choose Uptycs</h2>
+  </div>
+  <div class="tab-section-inner">
+    <div class="tab-title-section">
+      <ul class="tabs">
+        
+        <li class="tab-link" data-tab="1">1</li>
+        
+        <li class="tab-link" data-tab="2">2</li>
+        
+        <li class="tab-link" data-tab="3">3</li>
+        
+      </ul>
+    </div>
+
+    <div class="tab-content-outer">
+      <div class="tab-content-inner">
+        
+        <div id="tab-1" class="tab-content">
+          <div class="tab-content-section">
+            <div class="left-section">
+              <div class="top-text">
+                <h3>Security Observability at Scale with Uptycs</h3>
+<p><span style="color: #000000;">Uptycs introduces the first cloud security solution with streaming telemetry-based observability, ensuring comprehensive protection of dynamic cloud infrastructure.</span></p>
+              </div>
+              <div class="points-text">
+                <ul>
+                  
+                  <li><p><strong>Observe Everything:</strong> Harness telemetry for configuration, state changes, behavioral shifts, and input/output flows.</p></li>
+                  
+                  <li><p><strong>Advanced Telemetry:</strong> Uptycs captures runtime (eBPF, Cloud-trail), configuration, and flow telemetry for scalable cloud signal extraction and correlation.</p></li>
+                  
+                  <li><p><strong>High-Fidelity Observability:</strong> Uptycs' eBPF-based syscall observability ensures seamless monitoring without affecting OS kernel stability.</p></li>
+                  
+                </ul>
+              </div>
+            </div>
+            <div class="right-section">
+              <div class="image-sec">
+                
+                
+                
+                <div class="video-section">
+                  <video muted autoplay loop width="100%" class="lozad" data-poster=" ">
+                    <source data-src="https://www.uptycs.com/hubfs/screenshot-video/Homepage_Tile%201.mp4" type="video/mp4">
+                    Sorry, your browser doesn't support embedded videos.
+                  </video>
+                </div>
+                
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div id="tab-2" class="tab-content">
+          <div class="tab-content-section">
+            <div class="left-section">
+              <div class="top-text">
+                <h3>Advanced Signal Processing and Analysis with Uptycs</h3>
+              </div>
+              <div class="points-text">
+                <ul>
+                  
+                  <li><p><strong>Scalable Signal Processing:</strong> Utilizes a lambda architecture for real-time streaming and batch/ML processing of vast telemetry data.</p></li>
+                  
+                  <li><p><strong>Continuous Analysis</strong>: Constantly analyzes runtime data, including eBPF syscalls, to detect suspicious or malicious activity through graph-based and time-indexed correlation.</p></li>
+                  
+                  <li><p><strong>Context-Rich Security:</strong> Combines signal processing, lambda analytics, graph correlation, and ML to provide low-latency, high-fidelity findings.</p></li>
+                  
+                  <li><p><strong>Efficient Threat Operations:</strong> Delivers actionable insights for effective threat detection, response, and vulnerability management.</p></li>
+                  
+                </ul>
+              </div>
+            </div>
+            <div class="right-section">
+              <div class="image-sec">
+                
+                <img class="lozad" data-src="https://www.uptycs.com/hubfs/Homepage%20GIF_Tile%201%201%20(1).svg" alt="Homepage ">
+                
+                
+                
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div id="tab-3" class="tab-content">
+          <div class="tab-content-section">
+            <div class="left-section">
+              <div class="top-text">
+                <h3>Unified Risk Prioritization and Protection with Uptycs</h3>
+<p><span style="color: #000000;">Uptycs integrates advanced features to streamline cloud risk prioritization and reduce alert fatigue.</span></p>
+              </div>
+              <div class="points-text">
+                <ul>
+                  
+                  <li><p><strong>Unified Risk Scoring:</strong> Combines static agentless posture management with runtime security insights for effective risk prioritization.</p></li>
+                  
+                  <li><p><strong>Centralized Risk Management</strong>: Consolidates risky combinations from across attack surfaces into a single location, focusing on critical threats.</p></li>
+                  
+                  <li><p><span><strong>Real-Time Threat Detection:</strong> Leverages advanced analytics and threat intelligence to detect and respond to malicious activity instantly.</span></p></li>
+                  
+                </ul>
+              </div>
+            </div>
+            <div class="right-section">
+              <div class="image-sec">
+                
+                
+                
+                <div class="video-section">
+                  <video muted autoplay loop width="100%" class="lozad" data-poster=" ">
+                    <source data-src="https://www.uptycs.com/hubfs/screenshot-video/Homepage_Tile%203.mp4" type="video/mp4">
+                    Sorry, your browser doesn't support embedded videos.
+                  </video>
+                </div>
+                
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+
+
+      </div>
+    </div>
+  </div>
+  <div class="bottom-cta">
+    <span id="hs_cos_wrapper_widget_1724389519254_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-3521b2f6-1711-47c7-8862-4adbd2b4482d"><span class="hs-cta-node hs-cta-3521b2f6-1711-47c7-8862-4adbd2b4482d" id="hs-cta-3521b2f6-1711-47c7-8862-4adbd2b4482d"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/3521b2f6-1711-47c7-8862-4adbd2b4482d"><img class="hs-cta-img" id="hs-cta-img-3521b2f6-1711-47c7-8862-4adbd2b4482d" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/3521b2f6-1711-47c7-8862-4adbd2b4482d.png" alt="Learn More"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, '3521b2f6-1711-47c7-8862-4adbd2b4482d', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+  </div>
+</div>
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-23 dnd_area-row-11-margin dnd-section dnd_area-row-11-padding">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-24 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721901301777" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="lookout-outer">
+  <div class="lookout-inner">
+    <div class="lookout-section">
+      <div class="left-section">
+        <div class="top-logo">
+          <img class="lozad" data-src="https://www.uptycs.com/hubfs/Group%20109.svg" alt="Lookout">
+        </div>
+        <div class="description-text">
+          <p>“We've gotten a significant ROI on our Uptycs investment by playing to its strengths - the single data model and backend analytics.”</p>
+        </div>
+        <div class="author-text">
+          Grant Kahn
+        </div>
+        <div class="position-text">
+          Director, Security Intelligence Engineering
+        </div>
+        <div class="left-cta">
+          <span id="hs_cos_wrapper_widget_1721901301777_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-3b43bde6-0b4e-4410-800f-b64912cdc17a"><span class="hs-cta-node hs-cta-3b43bde6-0b4e-4410-800f-b64912cdc17a" id="hs-cta-3b43bde6-0b4e-4410-800f-b64912cdc17a"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/3b43bde6-0b4e-4410-800f-b64912cdc17a"><img class="hs-cta-img" id="hs-cta-img-3b43bde6-0b4e-4410-800f-b64912cdc17a" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/3b43bde6-0b4e-4410-800f-b64912cdc17a.png" alt="See success story"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, '3b43bde6-0b4e-4410-800f-b64912cdc17a', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="right-image">
+          <img class="lozad" data-src="https://www.uptycs.com/hubfs/Screenshot%202024-06-17%20at%203.42.54%20AM%201-1.png" alt="Lookout Image">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-25 dnd_area-row-12-background-color dnd_area-row-12-padding dnd-section dnd_area-row-12-max-width-section-centering dnd_area-row-12-background-layers">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-26 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721968959910" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="three-col-outer">
+  <div class="title-text">
+    <h2>Recommended content</h2>
+  </div>
+  
+  <div class="three-col-inner">
+    
+    
+    <div class="three-col-section">
+      
+	
+	<a href="https://www.uptycs.com/blog/uptycs-linux-edr-leader?hsLang=en">
+      <div class="image-sec">
+        <img class="lozad" data-src="https://2617658.fs1.hubspotusercontent-na1.net/hubfs/2617658/Using%20Osquery%20To%20Detect%20Container-Escape%20Vulnerabilities%20In%20Real%20Time(1).png" alt="Using Osquery To Detect Container-Escape Vulnerabilities In Real Time(1)">
+      </div>
+      <div class="text-section">
+        <div class="card-text">
+          <div id="hs_cos_wrapper_widget_1721968959910_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="inline_rich_text" data-hs-cos-field="card_text"><p>Why Uptycs is #1 in Linux EDR</p></div>
+        </div>
+        
+        <div class="bottom-button">
+          	<div id="hs_cos_wrapper_widget_1721968959910_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="inline_text" data-hs-cos-field="button_text">Read the Blog</div>
+        </div>
+      </div>
+    </a>
+    </div>
+    	
+    
+    
+    <div class="three-col-section">
+      
+	
+	<a href="https://www.uptycs.com/resources/white-papers/juno-verifiable-ai?hsLang=en">
+      <div class="image-sec">
+        <img class="lozad" data-src="https://2617658.fs1.hubspotusercontent-na1.net/hubfs/2617658/Cover%20v1.png" alt="Cover v1">
+      </div>
+      <div class="text-section">
+        <div class="card-text">
+          <div id="hs_cos_wrapper_widget_1721968959910_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="inline_rich_text" data-hs-cos-field="card_text"><p>Verifiable AI: The Foundation for Trust in Cybersecurity</p></div>
+        </div>
+        
+        <div class="bottom-button">
+          	<div id="hs_cos_wrapper_widget_1721968959910_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="inline_text" data-hs-cos-field="button_text">White Paper</div>
+        </div>
+      </div>
+    </a>
+    </div>
+    	
+    
+    
+    <div class="three-col-section">
+      
+	
+	<a href="https://www.uptycs.com/blast-radius-mitigation-cloud-security?hsLang=en">
+      <div class="image-sec">
+        <img class="lozad" data-src="https://www.uptycs.com/hubfs/Screenshot_13.png" alt="Screenshot_13">
+      </div>
+      <div class="text-section">
+        <div class="card-text">
+          <div id="hs_cos_wrapper_widget_1721968959910_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="inline_rich_text" data-hs-cos-field="card_text"><p>Blast Radius Mitigation: Everything You Need to Know</p></div>
+        </div>
+        
+        <div class="bottom-button">
+          	<div id="hs_cos_wrapper_widget_1721968959910_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="inline_text" data-hs-cos-field="button_text">Guide</div>
+        </div>
+      </div>
+    </a>
+    </div>
+    	
+    
+  </div>
+</div>
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-27 dnd_area-row-13-background-layers dnd_area-row-13-padding dnd-section dnd_area-row-13-background-image">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-28 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1721978139739" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="bottom-banner-outer">
+  <div class="bottom-banner-inner">
+    <div class="title">
+      <h2>See Uptycs in action</h2>
+    </div>
+    <div class="description">
+      <p>Find and remove critical risks in your modern attack surface - cloud, containers, and endpoints - all from a single UI and data model. Let our team of experts show you how.</p>
+    </div>
+    
+    <div class="cta-bottom">
+      <span id="hs_cos_wrapper_widget_1721978139739_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"><!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-2da7785a-a23c-406d-a57e-197a641a606e"><span class="hs-cta-node hs-cta-2da7785a-a23c-406d-a57e-197a641a606e" id="hs-cta-2da7785a-a23c-406d-a57e-197a641a606e"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/2617658/2da7785a-a23c-406d-a57e-197a641a606e"><img class="hs-cta-img" id="hs-cta-img-2da7785a-a23c-406d-a57e-197a641a606e" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/2617658/2da7785a-a23c-406d-a57e-197a641a606e.png" alt="Request a Live Demo"></a></span><script charset="utf-8" src="/hs/cta/cta/current.js"></script><script type="text/javascript"> hbspt.cta._relativeUrls=true;hbspt.cta.load(2617658, '2da7785a-a23c-406d-a57e-197a641a606e', {"useNewLoader":"true","region":"na1"}); </script></span><!-- end HubSpot Call-to-Action Code --></span>
+    </div>
+    
+  </div>
+</div>
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+
+<style>
+  body.light-background{
+    background-color: #fff !important;
+  }
+</style>
+
+      </main>
+
+      
+      <div data-global-resource-path="Uptycs_Theme_2023/templates/partials/footer-new.html"><footer class="footer footer_new">
+  <div class="container-fluid footer__container content-wrapper">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 dnd-section">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell dnd-column" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 dnd-row">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget dnd-module" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_widget_1722594192479" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="Footer_Section footer_new">
+
+  <div class="Footer_Box Footer_Box_top">
+    <div class="wrapper">
+      <div class="Footer_Box">
+        <!-- Start Footer Subscribe -->
+        <div class="Subscribe">
+          <div class="Subscribe_innner">
+            
+            <div class="Logo_icon">
+              
+              
+              
+              
+              
+              
+              <img class="lozad" data-src="https://2617658.fs1.hubspotusercontent-na1.net/hubfs/2617658/Uptycs%20Theme%20-%202023/Home%20Page%20Images/Vector.png" alt="Uptycs" loading="lazy" width="29" height="30" style="max-width: 100%; height: auto;">
+              
+            </div>
+            
+            <div class="Subscribe_Content">
+              
+              <h6>Stay in the loop</h6>
+              
+              
+              <p>Get regular updates on all things Uptycs—<br>from product updates to expert articles and much more</p>
+              
+            </div>
+            <div class="Subscribe_field">
+              <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_form" style="" data-hs-cos-general-type="widget" data-hs-cos-type="form"><h3 id="hs_cos_wrapper_form_751737599_title" class="hs_cos_wrapper form-title" data-hs-cos-general-type="widget_field" data-hs-cos-type="text"></h3>
+
+<div id="hs_form_target_form_751737599"></div>
+
+
+
+
+
+
+
+
+
+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="Footer_Box Footer_Box_bottom">
+    <div class="wrapper">
+      <!-- End Footer Subscribe -->
+      <!-- Start Footer Link and Social media  -->
+      <div class="Footer pt60 pb80">
+        <div class="Footer_inner">
+
+
+          <!-- Start Social Media -->
+
+          <div class="footer_pre_copy">
+
+            <div class="social">
+              <div class="Footer_SocialMedia">
+                
+                <h5>Follow Us</h5>
+                
+                <ul>
+                  
+                  <li>
+                    
+                    
+                    <a href="https://www.linkedin.com/company/uptycs/" target="_blank" rel="noopener">
+                      
+                      <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.26897 2.56951C3.07306 2.56951 3.57649 2.03811 3.56949 1.37387C3.5625 0.695637 3.07306 0.178223 2.28295 0.178223C1.49984 0.178223 0.982422 0.695637 0.982422 1.37387C0.982422 2.03811 1.47886 2.56951 2.25498 2.56951H2.26897ZM6.99562 10.4426V6.57598C6.99562 6.36621 7.01659 6.16344 7.07253 6.00962C7.24034 5.59709 7.61791 5.17057 8.25419 5.17057C9.08625 5.17057 9.42187 5.80685 9.42187 6.7368V10.4426H11.7223V6.4711C11.7223 4.3455 10.5895 3.35263 9.07226 3.35263C7.87377 3.35263 7.32365 3.99452 7.01607 4.46663L6.99516 4.49907L6.99562 3.51344H4.69522C4.69522 3.51344 4.72319 4.16371 4.69522 10.4426H6.99562ZM3.42266 10.4426V3.51344H1.11527V10.4426H3.42266Z" fill="#962DE9" /></svg>
+                      
+                    </a>
+                  </li>
+                  
+                  <li>
+                    
+                    
+                    <a href="https://twitter.com/uptycs?lang=en" target="_blank" rel="noopener">
+                      
+                      <svg width="14" height="12" viewbox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.27091 10.3906C6.42771 10.3906 8.15746 9.66525 9.46017 8.21458C10.7629 6.76392 11.4142 5.14782 11.4142 3.3663V3.0609C11.9318 2.68763 12.3459 2.26346 12.6565 1.78839C12.2252 1.99199 11.742 2.11924 11.2072 2.17014C11.7766 1.84777 12.1475 1.38966 12.3201 0.795828C11.7679 1.11819 11.233 1.3218 10.7154 1.40663C10.2151 0.880663 9.61115 0.617676 8.90372 0.617676C8.19629 0.617676 7.60101 0.855212 7.11789 1.33028C6.63476 1.80535 6.3932 2.39071 6.3932 3.08635C6.3932 3.34085 6.41046 3.52749 6.44497 3.64626C4.33993 3.54446 2.62311 2.68763 1.29452 1.07578C1.07022 1.46602 0.958063 1.87322 0.958063 2.29739C0.958063 3.19663 1.32903 3.88379 2.07097 4.35886C1.69137 4.35886 1.31178 4.25706 0.93218 4.05346V4.07891C0.93218 4.67275 1.12629 5.19448 1.51452 5.6441C1.90274 6.09373 2.38155 6.37792 2.95095 6.49669C2.67488 6.56456 2.45057 6.59849 2.27802 6.59849C2.1745 6.59849 2.01921 6.58152 1.81216 6.54759C1.96745 7.03963 2.26077 7.44259 2.69213 7.75648C3.12349 8.07036 3.60662 8.23579 4.1415 8.25276C3.22702 8.96537 2.19175 9.32167 1.03571 9.32167C0.914926 9.32167 0.716501 9.3047 0.44043 9.27077C1.61373 10.0173 2.89056 10.3906 4.27091 10.3906Z" fill="#962DE9" /></svg>
+                      
+                    </a>
+                  </li>
+                  
+                  <li>
+                    
+                    
+                    <a href="https://www.facebook.com/uptycs/" target="_blank" rel="noopener">
+                      
+                      <svg width="9" height="16" viewbox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.9387 14.2018V8.09205H7.98331L8.29724 5.70935H5.9387V4.18797C5.9387 3.50375 6.12384 3.02883 7.11395 3.02883H8.37774V0.903724C8.1604 0.871526 7.41178 0.807129 6.54242 0.807129C4.7232 0.807129 3.47551 1.91798 3.47551 3.95453V5.70935H1.42285V8.09205H3.47551V14.2018H5.9387Z" fill="#962DE9" /></svg>
+                      
+                    </a>
+                  </li>
+                  
+                  <li>
+                    
+                    
+                    <a href="https://www.youtube.com/@uptycs" target="_blank" rel="noopener">
+                      
+                      <svg width="15" height="12" viewbox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1182 0.984606C13.705 1.14249 14.1672 1.60764 14.324 2.19829C14.609 3.26887 14.609 5.50253 14.609 5.50253C14.609 5.50253 14.609 7.73618 14.324 8.80677C14.1672 9.39741 13.705 9.86256 13.1182 10.0205C12.0545 10.3073 7.7894 10.3073 7.7894 10.3073C7.7894 10.3073 3.52426 10.3073 2.4606 10.0205C1.87376 9.86256 1.41159 9.39741 1.25474 8.80677C0.969727 7.73618 0.969727 5.50253 0.969727 5.50253C0.969727 5.50253 0.969727 3.26887 1.25474 2.19829C1.41159 1.60764 1.87376 1.14247 2.4606 0.984606C3.52426 0.697754 7.7894 0.697754 7.7894 0.697754C7.7894 0.697754 12.0545 0.697754 13.1182 0.984606ZM9.95894 5.50266L6.39412 7.53061V3.47461L9.95894 5.50266Z" fill="#962DE9" /></svg>
+                      
+                    </a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+
+            <div class="partners">
+              
+              
+              
+              
+              
+              <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20117%20(2).png" alt="partner-image" loading="" width="365" height="117"> 
+              
+              
+              
+              
+              
+              
+              <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20118.png" alt="partner-image" loading="" width="365" height="117"> 
+              
+              
+              
+              
+              
+              
+              <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20119.png" alt="partner-image" loading="" width="365" height="117"> 
+              
+              
+              
+              
+              
+              
+              <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20120.png" alt="partner-image" loading="" width="365" height="117"> 
+              
+              
+              
+              
+              
+              
+              <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20121-1.png" alt="partner-image" loading="" width="365" height="117"> 
+              
+              
+            </div>
+          </div>
+
+
+
+          <!-- End Social Media -->
+          <!-- Start Footer Links -->
+          <div class="Footer_Links">
+            
+            <div class="TwoMenuLinks Desktop">
+              <div class="FServices_Links">
+                
+                <h5>Platform</h5>
+                
+                <div class="w100">
+                  <div class="Attack_Surfaces">
+                    
+                    <h6>CNAPP Hybrid Cloud Security</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp" role="menuitem" target="_self">Platform</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/pricing" role="menuitem" target="_self">Cloud Security Pricing</a></li>
+ </ul>
+</div></span>
+                    
+                    <h6>Solutions</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/cwpp" role="menuitem" target="_self">Workload Protection</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/cspm" role="menuitem" target="_self">Posture Management</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/use-cases/vulnerability-scanning" role="menuitem" target="_self">Vulnerability Management</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/attack-surfaces/containers-kubernetes" role="menuitem" target="_self">Container &amp; Kubernetes Security</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/solutions/application-security-posture-management" role="menuitem" target="_self">Software Supply Chain</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/file-integrity-monitoring-enhanced-security" role="menuitem" target="_self">File Integrity Monitoring</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/use-cases/cloud-threat-prevention-defend-against-cloud-threats" role="menuitem" target="_self">Detection &amp; Response</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/cnapp/hybrid-cloud-asset-management" role="menuitem" target="_self">Asset Management</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/products/use-cases/strengthening-security-integrated-compliance-platform" role="menuitem" target="_self">Compliance &amp; Risk</a></li>
+ </ul>
+</div></span>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="TwoMenuLinks Desktop">
+              <div class="FServices_Links">
+                
+                <h5>Environments</h5>
+                
+                <div class="w100">
+                  <div class="Attack_Surfaces">
+                    
+                    <h6>By Platform</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners/aws" role="menuitem" target="_self">AWS</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners/azure" role="menuitem" target="_self">Microsoft Azure</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners/google-cloud-security" role="menuitem" target="_self">Google Cloud</a></li>
+ </ul>
+</div></span>
+                    
+                    <h6>Integrations</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/tools-and-integrations" role="menuitem" target="_self">Tools and Integrations</a></li>
+ </ul>
+</div></span>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="TwoMenuLinks Desktop">
+              <div class="FServices_Links">
+                
+                <h5>Why Uptycs</h5>
+                
+                <div class="w100">
+                  <div class="Attack_Surfaces">
+                    
+                    <h6>Why Choose Uptycs</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/about" role="menuitem" target="_self"> About Us</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=customer_stories" role="menuitem" target="_self">Case Studies</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/reviews" role="menuitem" target="_self">Reviews</a></li>
+ </ul>
+</div></span>
+                    
+                    <h6>Compare Uptycs</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/aqua" role="menuitem" target="_self">Aqua</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/lacework-uptycs" role="menuitem" target="_self"> Lacework</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/sysdig" role="menuitem" target="_self"> Sysdig</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/compare-us/crowdstrike" role="menuitem" target="_self"> CrowdStrike</a></li>
+ </ul>
+</div></span>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="TwoMenuLinks Desktop">
+              <div class="FServices_Links">
+                
+                <h5>Resources</h5>
+                
+                <div class="w100">
+                  <div class="Attack_Surfaces">
+                    
+                    <h6>Resources</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=analyst_reports" role="menuitem" target="_self">Analyst Reports</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=product_briefs" role="menuitem" target="_self">Product Briefs</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/blog" role="menuitem" target="_self">Blog</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/video-hub" role="menuitem" target="_self">Video Hub</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/blog/threat-research-report-team" role="menuitem" target="_self">Threat Research Report Team</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=guides" role="menuitem" target="_self">Whitepapers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=guides" role="menuitem" target="_self">E-books</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=guides" role="menuitem" target="_self">Guides</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/resources?filter=threat_intelligence" role="menuitem" target="_self">Threat Quarterly Reports</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/master-glossary" role="menuitem" target="_self">Glossary</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/events" role="menuitem" target="_self">Webinars and Events</a></li>
+ </ul>
+</div></span>
+                    
+                    <h6>Company</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/about/career" role="menuitem" target="_self">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/press-news-release" role="menuitem" target="_self">News</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/cybersecurity-standup" role="menuitem" target="_self">CSU</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/services-support" role="menuitem" target="_self">Support</a></li>
+ </ul>
+</div></span>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="TwoMenuLinks Desktop">
+              <div class="FServices_Links">
+                
+                <h5>Partners</h5>
+                
+                <div class="w100">
+                  <div class="Attack_Surfaces">
+                    
+                    <h6>Partner Program</h6>
+                    <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/partners" role="menuitem" target="_self">Upward Partner Program</a></li>
+ </ul>
+</div></span>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+          <!-- End Footer Links -->
+        </div>
+
+        <div class="social social-mobile">
+          <div class="Footer_SocialMedia">
+            
+            <h5>Follow Us</h5>
+            
+            <ul>
+              
+              <li>
+                
+                
+                <a href="https://www.linkedin.com/company/uptycs/" target="_blank" rel="noopener">
+                  
+                  <svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.26897 2.56951C3.07306 2.56951 3.57649 2.03811 3.56949 1.37387C3.5625 0.695637 3.07306 0.178223 2.28295 0.178223C1.49984 0.178223 0.982422 0.695637 0.982422 1.37387C0.982422 2.03811 1.47886 2.56951 2.25498 2.56951H2.26897ZM6.99562 10.4426V6.57598C6.99562 6.36621 7.01659 6.16344 7.07253 6.00962C7.24034 5.59709 7.61791 5.17057 8.25419 5.17057C9.08625 5.17057 9.42187 5.80685 9.42187 6.7368V10.4426H11.7223V6.4711C11.7223 4.3455 10.5895 3.35263 9.07226 3.35263C7.87377 3.35263 7.32365 3.99452 7.01607 4.46663L6.99516 4.49907L6.99562 3.51344H4.69522C4.69522 3.51344 4.72319 4.16371 4.69522 10.4426H6.99562ZM3.42266 10.4426V3.51344H1.11527V10.4426H3.42266Z" fill="#962DE9" /></svg>
+                  
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="https://twitter.com/uptycs?lang=en" target="_blank" rel="noopener">
+                  
+                  <svg width="14" height="12" viewbox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.27091 10.3906C6.42771 10.3906 8.15746 9.66525 9.46017 8.21458C10.7629 6.76392 11.4142 5.14782 11.4142 3.3663V3.0609C11.9318 2.68763 12.3459 2.26346 12.6565 1.78839C12.2252 1.99199 11.742 2.11924 11.2072 2.17014C11.7766 1.84777 12.1475 1.38966 12.3201 0.795828C11.7679 1.11819 11.233 1.3218 10.7154 1.40663C10.2151 0.880663 9.61115 0.617676 8.90372 0.617676C8.19629 0.617676 7.60101 0.855212 7.11789 1.33028C6.63476 1.80535 6.3932 2.39071 6.3932 3.08635C6.3932 3.34085 6.41046 3.52749 6.44497 3.64626C4.33993 3.54446 2.62311 2.68763 1.29452 1.07578C1.07022 1.46602 0.958063 1.87322 0.958063 2.29739C0.958063 3.19663 1.32903 3.88379 2.07097 4.35886C1.69137 4.35886 1.31178 4.25706 0.93218 4.05346V4.07891C0.93218 4.67275 1.12629 5.19448 1.51452 5.6441C1.90274 6.09373 2.38155 6.37792 2.95095 6.49669C2.67488 6.56456 2.45057 6.59849 2.27802 6.59849C2.1745 6.59849 2.01921 6.58152 1.81216 6.54759C1.96745 7.03963 2.26077 7.44259 2.69213 7.75648C3.12349 8.07036 3.60662 8.23579 4.1415 8.25276C3.22702 8.96537 2.19175 9.32167 1.03571 9.32167C0.914926 9.32167 0.716501 9.3047 0.44043 9.27077C1.61373 10.0173 2.89056 10.3906 4.27091 10.3906Z" fill="#962DE9" /></svg>
+                  
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="https://www.facebook.com/uptycs/" target="_blank" rel="noopener">
+                  
+                  <svg width="9" height="16" viewbox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.9387 14.2018V8.09205H7.98331L8.29724 5.70935H5.9387V4.18797C5.9387 3.50375 6.12384 3.02883 7.11395 3.02883H8.37774V0.903724C8.1604 0.871526 7.41178 0.807129 6.54242 0.807129C4.7232 0.807129 3.47551 1.91798 3.47551 3.95453V5.70935H1.42285V8.09205H3.47551V14.2018H5.9387Z" fill="#962DE9" /></svg>
+                  
+                </a>
+              </li>
+              
+              <li>
+                
+                
+                <a href="https://www.youtube.com/@uptycs" target="_blank" rel="noopener">
+                  
+                  <svg width="15" height="12" viewbox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1182 0.984606C13.705 1.14249 14.1672 1.60764 14.324 2.19829C14.609 3.26887 14.609 5.50253 14.609 5.50253C14.609 5.50253 14.609 7.73618 14.324 8.80677C14.1672 9.39741 13.705 9.86256 13.1182 10.0205C12.0545 10.3073 7.7894 10.3073 7.7894 10.3073C7.7894 10.3073 3.52426 10.3073 2.4606 10.0205C1.87376 9.86256 1.41159 9.39741 1.25474 8.80677C0.969727 7.73618 0.969727 5.50253 0.969727 5.50253C0.969727 5.50253 0.969727 3.26887 1.25474 2.19829C1.41159 1.60764 1.87376 1.14247 2.4606 0.984606C3.52426 0.697754 7.7894 0.697754 7.7894 0.697754C7.7894 0.697754 12.0545 0.697754 13.1182 0.984606ZM9.95894 5.50266L6.39412 7.53061V3.47461L9.95894 5.50266Z" fill="#962DE9" /></svg>
+                  
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="footer_pre_copy mobile_parter">
+          
+          
+          
+          
+          
+          <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20117%20(2).png" alt="partner-image" loading="" width="365" height="117">
+          
+          
+          
+          
+          
+          
+          <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20118.png" alt="partner-image" loading="" width="365" height="117">
+          
+          
+          
+          
+          
+          
+          <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20119.png" alt="partner-image" loading="" width="365" height="117">
+          
+          
+          
+          
+          
+          
+          <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20120.png" alt="partner-image" loading="" width="365" height="117">
+          
+          
+          
+          
+          
+          
+          <img class="footer_icons_new lozad" data-src="https://www.uptycs.com/hubfs/Group%20121-1.png" alt="partner-image" loading="" width="365" height="117">
+          
+          
+        </div>
+
+      </div>
+      <!-- End Footer Link and Social media  -->
+      <!-- Start Footer Bottom -->
+      <div class="be-ix-link-block"></div>
+      <div class="footerBottom">
+        
+        <div class="Copyright w50">
+          © 2026 Uptycs. All rights reserved.
+        </div>
+        
+        
+        <div class="BottomRight_Links w50">
+          <span id="hs_cos_wrapper_widget_1722594192479_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_widget_1722594192479_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/privacy-policy" role="menuitem" target="_self">Privacy Policy</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/about/security" role="menuitem" target="_self">Security Practices</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.uptycs.com/contact-us" role="menuitem" target="_self">Contact Us</a></li>
+ </ul>
+</div></span>
+        </div>
+        
+      </div>
+      <!-- End Footer Bottom -->
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+ 
+  
+  
+  
+</footer></div>
+      
+    </div> 
+
+    
+
+
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js"></script>
+<script src="https://www.uptycs.com/hubfs/hub_generated/template_assets/1/148557950338/1775464451875/template_aos.min.js"></script>
+<script src="https://www.uptycs.com/hubfs/hub_generated/template_assets/1/105237812090/1775464452610/template_main.min.js"></script>
+<script>
+var hsVars = hsVars || {}; hsVars['language'] = 'en';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js"></script>
+ 
+<script>
+  window.setTimeout(function(){
+
+     if (window.innerWidth > 800) { 
+      $('.UT_announcement_bar').addClass('show-pop');
+      $('header.header.menu_header').addClass('show-pop');
+      $('header.header.header-new').addClass('show-pop');
+
+      $('body').addClass('body-show-pop');
+      var top_bar_height = $('.UT_announcement_bar').innerHeight();
+      var header_height = $('header.header.menu_header').innerHeight();
+      var total_height = top_bar_height + header_height;
+
+      $('body.body-show-pop').css('margin-top', total_height +'px');
+      $('body.body-show-pop header.header.menu_header').css('margin-top', top_bar_height +'px');
+      $('body.body-show-pop header.header.header-new').css('margin-top', top_bar_height +'px'); 
+       } 
+  }, 3000);  
+</script>
+
+ 
+<script>
+  $('.UT_announcement_bar .close').on('click', function() {
+    $('body').css('margin-top', 0);
+    $('header.header.menu_header.show-pop').css('margin-top', 0);
+    $('header.header.header-new.show-pop').css('margin-top', 0);
+
+    $('.UT_announcement_bar').removeClass('show-pop');
+    $('header.header.menu_header').removeClass('show-pop');
+    $('header.header.header-new').removeClass('show-pop');
+    $('body').removeClass('body-show-pop');
+  }); 
+</script>
+
+<script src="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/177030409118/1773904779106/module_mega-menu-new.min.js"></script>
+<script src="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/145789449845/1742621714786/module_EXT_-_Request_Demo_2023_November_Modal.min.js"></script>
+
+    <!--[if lte IE 8]>
+    <script charset="utf-8" src="https://js.hsforms.net/forms/v2-legacy.js"></script>
+    <![endif]-->
+
+<script data-hs-allowed="true" src="/_hcms/forms/v2.js"></script>
+
+    <script data-hs-allowed="true">
+        var options = {
+            portalId: '2617658',
+            formId: '464171ef-7766-4b86-9e48-f51bb13b325f',
+            formInstanceId: '8975',
+            
+            pageId: '134901819710',
+            
+            region: 'na1',
+            
+            
+            
+            
+            pageName: "Secure Everything from Dev to Runtime with Uptycs",
+            
+            
+            
+            inlineMessage: "<div aria-setsize=\"-1\" id=\"1701201608.413599\" data-qa=\"virtual-list-item\" data-item-key=\"1701201608.413599\" tabindex=\"0\" role=\"listitem\">\n<div data-qa=\"message_container\" data-qa-unprocessed=\"false\" data-qa-placeholder=\"false\" role=\"presentation\">\n<div data-qa-hover=\"true\" role=\"document\" aria-roledescription=\"message\">\n<div>\n<div>\n<div data-qa=\"message_content\" role=\"presentation\">\n<div>\n<div data-qa=\"message-text\">\n<div data-qa=\"block-kit-renderer\">\n<div>\n<div dir=\"auto\">\n<div style=\"font-size: 18px; text-align: center;\"><span style=\"color: #ffffff;\">Great! Well get back to you soon.<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<div aria-setsize=\"-1\" id=\"1701201665.858649\" data-qa=\"virtual-list-item\" data-item-key=\"1701201665.858649\" tabindex=\"-1\" role=\"listitem\">\n<div data-qa=\"message_container\" data-qa-unprocessed=\"false\" data-qa-placeholder=\"false\" role=\"presentation\">\n<div data-qa-hover=\"true\" role=\"document\" aria-roledescription=\"message\">\n<div data-stringify-ignore=\"true\" style=\"font-size: 18px; text-align: center;\" role=\"presentation\"><span style=\"color: #ffffff;\">&nbsp;<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>",
+            
+            
+            rawInlineMessage: "<div aria-setsize=\"-1\" id=\"1701201608.413599\" data-qa=\"virtual-list-item\" data-item-key=\"1701201608.413599\" tabindex=\"0\" role=\"listitem\">\n<div data-qa=\"message_container\" data-qa-unprocessed=\"false\" data-qa-placeholder=\"false\" role=\"presentation\">\n<div data-qa-hover=\"true\" role=\"document\" aria-roledescription=\"message\">\n<div>\n<div>\n<div data-qa=\"message_content\" role=\"presentation\">\n<div>\n<div data-qa=\"message-text\">\n<div data-qa=\"block-kit-renderer\">\n<div>\n<div dir=\"auto\">\n<div style=\"font-size: 18px; text-align: center;\"><span style=\"color: #ffffff;\">Great! Well get back to you soon.<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<div aria-setsize=\"-1\" id=\"1701201665.858649\" data-qa=\"virtual-list-item\" data-item-key=\"1701201665.858649\" tabindex=\"-1\" role=\"listitem\">\n<div data-qa=\"message_container\" data-qa-unprocessed=\"false\" data-qa-placeholder=\"false\" role=\"presentation\">\n<div data-qa-hover=\"true\" role=\"document\" aria-roledescription=\"message\">\n<div data-stringify-ignore=\"true\" style=\"font-size: 18px; text-align: center;\" role=\"presentation\"><span style=\"color: #ffffff;\">&nbsp;<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>",
+            
+            
+            hsFormKey: "fedbf82d1a92fc7225d3416ff79d9938",
+            
+            
+            css: '',
+            target: '#hs_form_target_form_911981502',
+            
+            
+            
+            
+            
+            
+            
+            contentType: "standard-page",
+            
+            
+            
+            formsBaseUrl: '/_hcms/forms/',
+            
+            
+            
+            formData: {
+                cssClass: 'hs-form stacked hs-custom-form'
+            }
+        };
+
+        options.getExtraMetaDataBeforeSubmit = function() {
+            var metadata = {};
+            
+
+            if (hbspt.targetedContentMetadata) {
+                var count = hbspt.targetedContentMetadata.length;
+                var targetedContentData = [];
+                for (var i = 0; i < count; i++) {
+                    var tc = hbspt.targetedContentMetadata[i];
+                     if ( tc.length !== 3) {
+                        continue;
+                     }
+                     targetedContentData.push({
+                        definitionId: tc[0],
+                        criterionId: tc[1],
+                        smartTypeId: tc[2]
+                     });
+                }
+                metadata["targetedContentMetadata"] = JSON.stringify(targetedContentData);
+            }
+
+            return metadata;
+        };
+
+        hbspt.forms.create(options);
+    </script>
+
+<script src="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/173835417166/1741928964265/module_Home_banner_New.min.js"></script>
+<script src="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/171333140787/1741925369194/module_logo_slider.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+  var $slider = $('.line-slider-outer');
+  var $progress = $('.slider-progress-bar .progress');
+
+  $slider.slick({
+    prevArrow: '<span class="prev2"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="20" viewBox="0 0 11 20" fill="none"><path d="M10 1L1 10L10 19" stroke="#050314" stroke-opacity="1" stroke-width="2" stroke-linejoin="round"/></svg></span>',
+    nextArrow: '<span class="next2"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="20" viewBox="0 0 11 20" fill="none"><path d="M1 1L10 10L1 19" stroke="#050314" stroke-width="2" stroke-linejoin="round"/></svg></span>',
+    arrows: true,
+    dots: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    adaptiveHeight: false,
+    infinite: false,
+    
+    autoplay: true,
+    autoplaySpeed: 2000,
+    infinite: true,
+    
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
+
+  function updateProgressBar() {
+    var slickInstance = $slider.slick('getSlick');
+    var totalSlides = slickInstance.slideCount;
+    var slidesToShow = slickInstance.options.slidesToShow;
+    var slidesToScroll = slickInstance.options.slidesToScroll;
+    var currentSlide = $slider.slick('slickCurrentSlide');
+
+    // Total slides visible in a single view (like a single page of a book)
+    var slidesVisible = Math.min(slidesToShow, totalSlides);
+    var currentSlidePosition = Math.floor(currentSlide / slidesToScroll) * slidesToScroll;
+    var totalPositions = Math.ceil(totalSlides / slidesToScroll) * slidesToScroll;
+
+    // Progress calculation
+    var progress = ((currentSlidePosition + slidesToShow) / totalSlides) * 100;
+    progress = Math.min(100, progress); // Ensure the progress does not exceed 100%
+
+    $progress.css('width', progress + '%');
+  }
+
+  // Update progress bar on slide change
+  $slider.on('afterChange', function() {
+    updateProgressBar();
+  });
+
+  // Initialize progress bar on load
+  updateProgressBar();
+});
+
+</script>
+
+<script src="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/176455084146/1740875482839/module_tab-section.min.js"></script>
+<script src="https://www.uptycs.com/hubfs/hub_generated/module_assets/1/171339306366/1740875463564/module_related_resources.min.js"></script>
+
+    <script data-hs-allowed="true">
+        var options = {
+            portalId: '2617658',
+            formId: '0492e7b1-c029-4110-8042-598f482d9802',
+            formInstanceId: '4400',
+            
+            pageId: '134901819710',
+            
+            region: 'na1',
+            
+            
+            
+            
+            pageName: "Secure Everything from Dev to Runtime with Uptycs",
+            
+            
+            
+            inlineMessage: "Thanks for submitting the form.",
+            
+            
+            rawInlineMessage: "Thanks for submitting the form.",
+            
+            
+            hsFormKey: "e5beef984e6aeeab34a3b94bbdfd60a6",
+            
+            
+            css: '',
+            target: '#hs_form_target_form_751737599',
+            
+            
+            
+            
+            
+            
+            
+            contentType: "standard-page",
+            
+            
+            
+            formsBaseUrl: '/_hcms/forms/',
+            
+            
+            
+            formData: {
+                cssClass: 'hs-form stacked hs-custom-form'
+            }
+        };
+
+        options.getExtraMetaDataBeforeSubmit = function() {
+            var metadata = {};
+            
+
+            if (hbspt.targetedContentMetadata) {
+                var count = hbspt.targetedContentMetadata.length;
+                var targetedContentData = [];
+                for (var i = 0; i < count; i++) {
+                    var tc = hbspt.targetedContentMetadata[i];
+                     if ( tc.length !== 3) {
+                        continue;
+                     }
+                     targetedContentData.push({
+                        definitionId: tc[0],
+                        criterionId: tc[1],
+                        smartTypeId: tc[2]
+                     });
+                }
+                metadata["targetedContentMetadata"] = JSON.stringify(targetedContentData);
+            }
+
+            return metadata;
+        };
+
+        hbspt.forms.create(options);
+    </script>
+
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/www.uptycs.com"]);
+_hsq.push(["setPageId", "134901819710"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 134901819710,
+    "legacyPageId": "134901819710",
+    "contentFolderId": null,
+    "contentGroupId": null,
+    "abTestId": null,
+    "languageVariantId": 134901819710,
+    "languageCode": "en",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/2617658.js"></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript">
+var hsVars = {
+    render_id: "12d6baa9-8caa-451b-bc1f-0cc90ef1c0a3",
+    ticks: 1776866934833,
+    page_id: 134901819710,
+    
+    content_group_id: 0,
+    portal_id: 2617658,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en",
+    analytics_page_type: "standard-page",
+    scp_content_type: "",
+    
+    analytics_page_id: "134901819710",
+    category_id: 1,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.640/js/index.js"></script>
+
+      <noscript>
+        <img src="https://ws.zoominfo.com/pixel/6127ecc2d037650015c31617" width="1" height="1" style="display: none;">
+      </noscript>
+
+
+
+
+
+
+    <!-- Lozad.js from CDN -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.42/polyfill.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <script>
+      jQuery(document).ready(function() {
+
+        const observer = lozad('.lozad', {
+          rootMargin: '0%',
+          loaded: function (el) {
+            el.classList.add("is-loaded");
+            el.classList.add("fades");
+          }
+        });
+        observer.observe();
+
+      });
+    </script>
+
+    <style>
+      .fades {
+        animation-name: fade;
+        animation-duration: 2s;
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+    <!-- Lozad.js from CDN -->
+
+    <script>
+      window.Userback = window.Userback || {};
+      Userback.access_token = 'P-5RVE7RcuXUu9psHGXBbJ3Rezx';
+      // identify your logged-in users (optional)
+      Userback.user_data = {
+        id: "123456", // example data
+        info: {
+          name: "someone", // example data
+          email: "someone@example.com" // example data
+        }
+      };
+      (function(d) {
+        var s = d.createElement('script');s.async = true;
+        s.src = 'https://static.userback.io/widget/v1.js';
+        (d.head || d.body).appendChild(s);
+      })(document);
+    </script>
+
+  
+</body></html>

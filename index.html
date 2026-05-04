@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFIR Vendor Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v=(static_versions.style_css if static_versions else 1)) }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Rail -->
+        <nav class="nav-rail">
+            <div class="nav-rail-header">
+                <div class="logo">DFIR</div>
+            </div>
+            
+            <div class="nav-rail-content">
+                <button class="nav-item active" data-view="dashboard">
+                    <span class="icon">📊</span>
+                    <span class="label">Dashboard</span>
+                </button>
+                <button class="nav-item" data-view="vendors">
+                    <span class="icon">🏢</span>
+                    <span class="label">Vendors</span>
+                </button>
+                <button class="nav-item" data-view="analysis">
+                    <span class="icon">📈</span>
+                    <span class="label">Analysis</span>
+                </button>
+                <button class="nav-item" data-view="cross-section">
+                    <span class="icon">🧮</span>
+                    <span class="label">Cross-Section</span>
+                </button>
+                <button class="nav-item" data-view="legend">
+                    <span class="icon">📖</span>
+                    <span class="label">Legend</span>
+                </button>
+            </div>
+            
+            <div class="nav-rail-footer">
+                <button id="dark-mode-toggle" class="nav-item dark-mode-btn" title="Toggle dark mode">
+                    <span class="icon">🌙</span>
+                    <span class="label">Dark</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-top">
+                    <div class="header-title">
+                        <h1>DFIR Vendor Marketplace Analysis 2026</h1>
+                        <p>Filter and analyze incident response vendors by capabilities and specializations</p>
+                    </div>
+                    <div class="header-controls">
+                        <div class="vendor-file-selector">
+                            <label for="schema-file-select">Schema:</label>
+                            <select id="schema-file-select">
+                                <option value="">Loading...</option>
+                            </select>
+                        </div>
+                        <div class="vendor-file-selector" style="margin-left: 16px;">
+                            <label for="vendor-file-select">Vendor Data:</label>
+                            <select id="vendor-file-select">
+                                <option value="">Loading...</option>
+                            </select>
+                            <button id="apply-vendor-file" class="btn-primary">Apply</button>
+                        </div>
+                        <div class="vendor-file-selector" style="margin-left: 16px;">
+                            <label for="score-mode-select">Score Mode:</label>
+                            <select id="score-mode-select">
+                                <option value="validated">Validated</option>
+                                <option value="researched">Researched</option>
+                                <option value="ai_researched">AI Researched</option>
+                                <option value="current">Current (Raw)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Vendors View -->
+            <section id="vendors-view" class="view-container active">
+                <!-- Filter Panel -->
+                <div class="filter-panel">
+                    <!-- Search Box -->
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search all fields...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+
+                    <!-- Simple Filter Dropdowns (Single Row) -->
+                    <div class="filter-groups">
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-region">Region:</label>
+                            <select id="filter-region" class="filter-dropdown">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-specialization">Specialization:</label>
+                            <select id="filter-specialization" class="filter-dropdown">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-ir-focus">IR Focus Type:</label>
+                            <select id="filter-ir-focus" class="filter-dropdown">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-startup">Company Type:</label>
+                            <select id="filter-startup" class="filter-dropdown">
+                                <option value="">All</option>
+                                <option value="startup">Startup</option>
+                                <option value="established">Established</option>
+                            </select>
+                        </div>
+                        <div class="filter-dropdown-wrapper">
+                            <label for="filter-ai-first">AI-First:</label>
+                            <select id="filter-ai-first" class="filter-dropdown">
+                                <option value="">All</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <button id="reset-filters" class="btn-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Vendor Table -->
+                <div class="vendor-container">
+                    <div class="vendor-header">
+                        <span class="vendor-count">Loading vendors...</span>
+                        <div class="view-options">
+                            <button id="vendors-export-open" class="btn-secondary" type="button">Export</button>
+                            <button class="btn-icon" id="toggle-columns" title="Toggle columns">⚙️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-wrapper">
+                        <table id="vendors-table" class="vendors-table">
+                            <thead>
+                                <tr id="header-row-1">
+                                    <th class="base-column">
+                                        <span class="header-text">Vendor Name</span>
+                                        <span class="info-icon" data-field="vendor">ℹ️</span>
+                                    </th>
+                                    <th class="base-column">
+                                        <span class="header-text">Region</span>
+                                        <span class="info-icon" data-field="region">ℹ️</span>
+                                    </th>
+                                    <th class="base-column">
+                                        <span class="header-text">Specialization</span>
+                                        <span class="info-icon" data-field="specialization">ℹ️</span>
+                                    </th>
+                                    <th class="base-column">
+                                        <span class="header-text">Type</span>
+                                        <span class="info-icon" data-field="ir_focus_type">ℹ️</span>
+                                    </th>
+                                    <th class="base-column">
+                                        <span class="header-text">AI-First</span>
+                                        <span class="info-icon" data-field="is_ai_first">ℹ️</span>
+                                    </th>
+                                    <th class="base-column">
+                                        <span class="header-text">Startup</span>
+                                        <span class="info-icon" data-field="is_startup">ℹ️</span>
+                                    </th>
+                                    <th class="pillar-column">
+                                        <span class="header-text">Planning (PLA)</span>
+                                        <span class="info-icon" data-field="PLA">ℹ️</span>
+                                    </th>
+                                    <th class="pillar-column">
+                                        <span class="header-text">Investigation (INV)</span>
+                                        <span class="info-icon" data-field="INV">ℹ️</span>
+                                    </th>
+                                    <th class="pillar-column">
+                                        <span class="header-text">Remediation (REM)</span>
+                                        <span class="info-icon" data-field="REM">ℹ️</span>
+                                    </th>
+                                    <th class="pillar-column">
+                                        <span class="header-text">Program Mgmt (PMG)</span>
+                                        <span class="info-icon" data-field="PMG">ℹ️</span>
+                                    </th>
+                                    <th class="pillar-column">
+                                        <span class="header-text">Legal (LAW)</span>
+                                        <span class="info-icon" data-field="LAW">ℹ️</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Vendors will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Legend View -->
+            <section id="legend-view" class="view-container">
+                <div class="legend-container">
+                    <h2>Scoring Legend</h2>
+                    <div class="legend-grid">
+                        <!-- Legend items will be inserted here -->
+                    </div>
+
+                    <h2 style="margin-top: 2rem;">Pillars & Sub-Pillars</h2>
+                    <div class="pillars-grid">
+                        <!-- Pillars and sub-pillars will be inserted here -->
+                    </div>
+
+                    <h2 style="margin-top: 2rem;">Field Descriptions</h2>
+                    <div class="field-descriptions">
+                        <!-- Field descriptions will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pillar Details Modal -->
+            <div id="pillar-details-modal" class="modal">
+                <div class="modal-content">
+                    <button class="modal-close">&times;</button>
+                    <h2 id="pillar-modal-title"></h2>
+                    <div id="pillar-modal-body"></div>
+                </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div id="edit-modal" class="modal">
+                <div class="modal-content">
+                    <button class="modal-close">&times;</button>
+                    <h2>Edit Details</h2>
+                    <form id="edit-form">
+                        <div class="form-group">
+                            <label for="edit-id">ID/Code:</label>
+                            <input type="text" id="edit-id" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-name">Name:</label>
+                            <input type="text" id="edit-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-description">Description/Definition:</label>
+                            <textarea id="edit-description" rows="6" required></textarea>
+                        </div>
+                        <div class="form-footer">
+                            <button type="button" class="btn-cancel" onclick="document.getElementById('edit-modal').classList.remove('show')">Cancel</button>
+                            <button type="submit" class="btn-save">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dashboard View -->
+            <section id="dashboard-view" class="view-container">
+                <div class="dashboard-container">
+                    <h2>Dashboard</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-total-vendors">-</div>
+                            <div class="stat-label">Total Vendors</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-ai-first">-</div>
+                            <div class="stat-label">AI-First Companies</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-startups">-</div>
+                            <div class="stat-label">Startups</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-global">-</div>
+                            <div class="stat-label">Global Vendors</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-grid">
+                        <div class="chart-container">
+                            <h3>Vendors by Region</h3>
+                            <div id="region-chart" class="chart"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Average Pillar Scores</h3>
+                            <div id="pillar-chart" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analysis View -->
+            <section id="analysis-view" class="view-container">
+                <div class="analysis-container">
+                    <div class="analysis-header">
+                        <h2>Analytics & Reporting</h2>
+                        <button id="customize-widgets-btn" class="customize-btn">⚙ Customize Widgets</button>
+                    </div>
+                    
+                    <!-- Widget Customization Modal -->
+                    <div id="widget-customization-modal" class="widget-modal">
+                        <div class="modal-content modal-large">
+                            <div class="modal-header">
+                                <h3>Customize Dashboard Widgets</h3>
+                                <button class="modal-close" id="modal-close-btn">&times;</button>
+                            </div>
+                            <div class="modal-body modal-two-column">
+                                <!-- Left panel: Widget list -->
+                                <div class="widget-list-panel">
+                                    <h4>Available Widgets</h4>
+                                    <div class="widget-checkbox-group">
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="region-chart" checked>
+                                            <span>Vendor Distribution by Region</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="pillar-chart" checked>
+                                            <span>Average Pillar Capabilities</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="specialization-chart" checked>
+                                            <span>Specialization Breakdown</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="type-chart" checked>
+                                            <span>IR Focus Type Distribution</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="ai-chart" checked>
+                                            <span>AI-First vs Traditional</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="startup-chart" checked>
+                                            <span>Startup vs Established</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="pillar-radar-chart" checked>
+                                            <span>Pillar Capabilities Radar</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="comparison-radar-chart" checked>
+                                            <span>Comparison Radar (5-way)</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="validation-comparison-chart" checked>
+                                            <span>Score Layer Comparison</span>
+                                        </label>
+                                        <label class="widget-toggle">
+                                            <input type="checkbox" name="widget" value="summary-stats" checked>
+                                            <span>Summary Statistics</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Right panel: Widget preview grid -->
+                                <div class="widget-preview-panel">
+                                    <h4>Widget Layout Preview</h4>
+                                    <p class="preview-help">Drag resize handles to adjust widget sizes. Blue triangles appear when hovering over widget titles.</p>
+                                    <div id="widget-preview-grid" class="widget-preview-grid">
+                                        <!-- Widget previews will be generated here -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="save-widgets-btn" class="save-btn">Save Preferences</button>
+                                <button id="cancel-widgets-btn" class="cancel-btn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Active Filters Panel (Top) -->
+                    <div class="active-filters-panel">
+                        <h3>Active Filters</h3>
+                        <div id="query-filters" class="query-filters">
+                            <!-- Filter rows will be added here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Main Content Area with Sidebar -->
+                    <div class="analysis-content-wrapper">
+                        <!-- Add Filters Sidebar (Left) -->
+                        <div class="add-filters-sidebar">
+                            <h3>Add Filters</h3>
+                            <div class="field-selector-list">
+                                <h4>Vendor Attributes</h4>
+                                <button class="field-selector-btn" data-field="vendor">Vendor Name</button>
+                                <button class="field-selector-btn" data-field="region">Region</button>
+                                <button class="field-selector-btn" data-field="specialization">Specialization</button>
+                                <button class="field-selector-btn" data-field="ir_focus_type">IR Focus Type</button>
+                                <button class="field-selector-btn" data-field="is_ai_first">AI-First</button>
+                                <button class="field-selector-btn" data-field="is_startup">Startup</button>
+                                
+                                <h4>Capabilities</h4>
+                                
+                                <button class="field-selector-btn pillar-btn" data-field="PLA">Planning & Preparation</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="PLA-01">Visibility Gap Analysis</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="PLA-02">Behavioral Playbook Design</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="PLA-03">Tabletop Exercise Automation</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="PLA-04">Forensic Readiness Assessment</button>
+                                
+                                <button class="field-selector-btn pillar-btn" data-field="INV">Forensic Investigation</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="INV-01">Triage and Scoping</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="INV-02">Multi-Hop Timeline Reconstruction</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="INV-03">Artifact Source Attribution</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="INV-04">Malware and Reverse Engineering</button>
+                                
+                                <button class="field-selector-btn pillar-btn" data-field="REM">Remediation</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="REM-01">Containment and Isolation</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="REM-02">Root Cause Eradication</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="REM-03">Recovery and Restoration</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="REM-04">Ransomware Negotiation</button>
+                                
+                                <button class="field-selector-btn pillar-btn" data-field="PMG">Program Management</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="PMG-01">Incident Coordination</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="PMG-02">Forensic Quality Management</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="PMG-03">Crisis Communication</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="PMG-04">Post-Incident Learning</button>
+                                
+                                <button class="field-selector-btn pillar-btn" data-field="LAW">Criminal Proceedings</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="LAW-01">Evidence Collection & Preservation</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="LAW-02">Expert Witness Support</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="LAW-03">Machine-Inclusive Chain of Custody</button>
+                                <button class="field-selector-btn sub-pillar-btn" data-field="LAW-04">Admissibility Defense</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Charts Grid -->
+                        <div class="analytics-grid" id="analytics-grid">
+                            <div class="chart-container" data-widget="region-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>Vendor Distribution by Region</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-region-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="pillar-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>Average Pillar Capabilities</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-pillar-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="specialization-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>Specialization Breakdown</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-specialization-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="type-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>IR Focus Type Distribution</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-type-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="ai-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>AI-First vs Traditional</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-ai-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="startup-chart" data-col-span="1" data-row-span="1">
+                                <div class="widget-header">
+                                    <h3>Startup vs Established</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-startup-chart" class="chart"></div>
+                            </div>
+                            <div class="chart-container" data-widget="pillar-radar-chart" data-col-span="2" data-row-span="2">
+                                <div class="widget-header">
+                                    <h3>Pillar Capabilities Radar</h3>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="analysis-pillar-radar-chart" class="chart"></div>
+                            </div>
+
+                            <div class="chart-container" data-widget="comparison-radar-chart" data-col-span="2" data-row-span="2">
+                                <div class="widget-header">
+                                    <h3>Comparison Radar</h3>
+                                    <button id="comparison-radar-config-btn" class="widget-config-btn" title="Configure Comparison Radar" aria-label="Configure Comparison Radar">⚙</button>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="comparison-radar-chart" class="chart"></div>
+                            </div>
+
+                            <!-- Comparison Radar Config Modal -->
+                            <div id="comparison-radar-config-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="modal-close" id="comparison-radar-config-close">&times;</span>
+                                    <h2>Configure Comparison Radar</h2>
+                                    <div class="comparison-radar-form">
+                                        <label>
+                                            Compare by
+                                            <select id="comparison-radar-type" class="comparison-radar-type">
+                                                <option value="vendor">Vendor</option>
+                                                <option value="region">Region (contains)</option>
+                                                <option value="ai_first">AI-First</option>
+                                                <option value="startup">Startup / Established</option>
+                                                <option value="ir_focus_type">IR Focus Type</option>
+                                            </select>
+                                        </label>
+
+                                        <label>
+                                            Axes
+                                            <select id="comparison-radar-axes" class="comparison-radar-axes">
+                                                <option value="pillars">Pillars</option>
+                                                <option value="subpillars">Sub-pillars</option>
+                                                <option value="both">Both</option>
+                                            </select>
+                                        </label>
+
+                                        <div class="comparison-radar-series">
+                                            <select id="comparison-radar-s1"></select>
+                                            <select id="comparison-radar-s2"></select>
+                                            <select id="comparison-radar-s3"></select>
+                                            <select id="comparison-radar-s4"></select>
+                                            <select id="comparison-radar-s5"></select>
+                                        </div>
+
+                                        <div class="comparison-radar-form-actions">
+                                            <button id="comparison-radar-config-save" class="save-btn" type="button">Save</button>
+                                            <button id="comparison-radar-config-cancel" class="cancel-btn" type="button">Cancel</button>
+                                        </div>
+                                        <div class="comparison-radar-hint">Tip: leave series blank to ignore it. Axes use the current Score Mode.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Researched vs Validated Comparison Widget -->
+                            <div class="chart-container" data-widget="validation-comparison-chart" data-col-span="3" data-row-span="2">
+                                <div class="widget-header">
+                                    <h3>Score Layer Comparison</h3>
+                                    <button id="validation-comparison-config-btn" class="widget-config-btn" title="Configure Comparison" aria-label="Configure Comparison">⚙</button>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div id="validation-comparison-chart" class="chart validation-comparison-content"></div>
+                            </div>
+
+                            <!-- Researched vs Validated Config Modal -->
+                            <div id="validation-comparison-config-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="modal-close" id="validation-comparison-config-close">&times;</span>
+                                    <h2>Configure Score Layer Comparison</h2>
+                                    <div class="validation-comparison-form">
+                                        <label>
+                                            Category Type
+                                            <select id="validation-comparison-category-type">
+                                                <option value="">Select...</option>
+                                                <option value="all">All Vendors</option>
+                                                <option value="region">Region</option>
+                                                <option value="startup">Startup / Established</option>
+                                                <option value="ai_first">AI-First / Traditional</option>
+                                                <option value="ir_focus_type">IR Focus Type</option>
+                                            </select>
+                                        </label>
+
+                                        <label>
+                                            Category Value
+                                            <select id="validation-comparison-category-value">
+                                                <option value="">Select...</option>
+                                            </select>
+                                        </label>
+
+                                        <label>
+                                            Axes
+                                            <select id="validation-comparison-axes">
+                                                <option value="pillars">Pillars (5)</option>
+                                                <option value="subpillars">Sub-pillars (20)</option>
+                                                <option value="both">Both (25)</option>
+                                            </select>
+                                        </label>
+
+                                        <label>
+                                            <input type="checkbox" id="validation-comparison-show-delta" checked>
+                                            Show Delta (Difference) Metrics
+                                        </label>
+
+                                        <div class="validation-comparison-form-actions">
+                                            <button id="validation-comparison-config-save" class="save-btn" type="button">Save</button>
+                                            <button id="validation-comparison-config-cancel" class="cancel-btn" type="button">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Statistics -->
+                    <div class="summary-stats" data-widget="summary-stats">
+                        <h3>Summary Statistics</h3>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <span class="stat-label">Vendors Analyzed:</span>
+                                <span id="analysis-stat-count" class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Average Pillar Score:</span>
+                                <span id="analysis-stat-avg-score" class="stat-value">0.0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">AI-First %:</span>
+                                <span id="analysis-stat-ai-pct" class="stat-value">0%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Startup %:</span>
+                                <span id="analysis-stat-startup-pct" class="stat-value">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cross-Section Sheet View -->
+            <section id="cross-section-view" class="view-container">
+                <div class="cross-section-container">
+                    <div class="cross-section-header">
+                        <div>
+                            <h2>Cross-Section Analysis Sheet</h2>
+                            <p>Pivot-style cross-sections across cohorts and scores. Uses the current Score Mode and any active filters.</p>
+                        </div>
+                        <div class="cross-section-header-actions">
+                            <button id="cross-open-config" class="btn-secondary" type="button" title="Configure">⚙ Configure</button>
+                            <button id="cross-edit-filters" class="btn-secondary" type="button">Edit Filters (Analysis)</button>
+                            <button id="cross-export-csv" class="btn-secondary" type="button">Export CSV</button>
+                        </div>
+                    </div>
+
+                    <div class="cross-section-subheader">
+                        <div class="cross-filters-inline">
+                            <strong>Filters:</strong> <span id="cross-filters-summary">None</span>
+                        </div>
+                        <div class="cross-metric-inline">
+                            <strong>Metric:</strong> <span id="cross-metric-summary">Average</span>
+                        </div>
+                    </div>
+
+                    <div id="cross-section-table" class="cross-section-table"></div>
+                </div>
+            </section>
+
+            <!-- Cross-Section Config Modal -->
+            <div id="cross-section-config-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Configure Cross-Section</h3>
+                        <button class="modal-close" type="button">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="cross-config-grid">
+                            <div class="cross-config-block">
+                                <div class="cross-config-title">Cell Metric</div>
+                                <div class="cross-config-row">
+                                    <label for="cross-config-metric">Metric</label>
+                                    <select id="cross-config-metric">
+                                        <option value="avg">Average score</option>
+                                        <option value="count">Count (vendors with a numeric score)</option>
+                                        <option value="percent">% of total vendors</option>
+                                    </select>
+                                </div>
+                                <div class="cross-config-row">
+                                    <label>&nbsp;</label>
+                                    <button id="cross-config-clear" class="btn-secondary" type="button">Clear rows &amp; columns</button>
+                                </div>
+                                <div class="cross-config-note">
+                                    % uses the total number of vendors in the current filtered set as the denominator.
+                                </div>
+                            </div>
+
+                            <div class="cross-config-block">
+                                <div class="cross-config-title">Axes</div>
+                                <div class="cross-axis-grid">
+                                    <div class="cross-axis">
+                                        <div class="cross-axis-header">
+                                            <strong>Columns (X)</strong>
+                                            <div class="cross-axis-type">
+                                                <label for="cross-config-x-type">Type</label>
+                                                <select id="cross-config-x-type">
+                                                    <option value="cohorts">Cohorts</option>
+                                                    <option value="scores">Scores</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="cross-config-x-items" class="cross-axis-items"></div>
+                                        <div class="cross-axis-actions">
+                                            <button id="cross-config-x-add" class="btn-secondary" type="button">Add Column</button>
+                                            <button id="cross-config-x-add-pillars" class="btn-secondary" type="button">Add all pillars</button>
+                                            <button id="cross-config-x-add-subpillars" class="btn-secondary" type="button">Add all sub-pillars</button>
+                                            <button id="cross-config-x-clear" class="btn-secondary" type="button">Clear columns</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="cross-axis">
+                                        <div class="cross-axis-header">
+                                            <strong>Rows (Y)</strong>
+                                            <div class="cross-axis-type">
+                                                <label for="cross-config-y-type">Type</label>
+                                                <select id="cross-config-y-type">
+                                                    <option value="scores">Scores</option>
+                                                    <option value="cohorts">Cohorts</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="cross-config-y-items" class="cross-axis-items"></div>
+                                        <div class="cross-axis-actions">
+                                            <button id="cross-config-y-add" class="btn-secondary" type="button">Add Row</button>
+                                            <button id="cross-config-y-add-pillars" class="btn-secondary" type="button">Add all pillars</button>
+                                            <button id="cross-config-y-add-subpillars" class="btn-secondary" type="button">Add all sub-pillars</button>
+                                            <button id="cross-config-y-clear" class="btn-secondary" type="button">Clear rows</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Field Info Modal -->
+    <div id="field-info-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-values" class="modal-values"></div>
+        </div>
+    </div>
+
+    <!-- Vendor Details Modal -->
+    <div id="vendor-details-modal" class="modal">
+        <div class="modal-content vendor-report-content">
+            <div class="vendor-report-header">
+                <div class="vendor-report-title-block">
+                    <h2 id="vendor-report-title">Vendor Report</h2>
+                    <div id="vendor-report-subtitle" class="vendor-report-subtitle"></div>
+                </div>
+                <div class="vendor-report-actions">
+                    <button id="vendor-report-copy-json" class="btn-secondary" type="button">Copy JSON</button>
+                    <button id="vendor-report-download-json" class="btn-secondary" type="button">Download JSON</button>
+                    <button class="modal-close" type="button" aria-label="Close">&times;</button>
+                </div>
+            </div>
+
+            <div class="vendor-report-tabs" role="tablist" aria-label="Vendor report tabs">
+                <button class="vendor-report-tab active" type="button" data-tab="summary" role="tab" aria-selected="true">Summary</button>
+                <button class="vendor-report-tab" type="button" data-tab="scores" role="tab" aria-selected="false">Scores</button>
+                <button class="vendor-report-tab" type="button" data-tab="evidence" role="tab" aria-selected="false">Evidence & Rationale</button>
+                <button class="vendor-report-tab" type="button" data-tab="raw" role="tab" aria-selected="false">Raw</button>
+            </div>
+
+            <div class="vendor-report-toolbar">
+                <div class="vendor-report-toolbar-left">
+                    <input id="vendor-report-search" class="vendor-report-search" type="text" placeholder="Search sub-pillars, rationale, sources…" />
+                </div>
+                <div class="vendor-report-toolbar-right">
+                    <button id="vendor-report-expand-all" class="btn-secondary" type="button">Expand all</button>
+                    <button id="vendor-report-collapse-all" class="btn-secondary" type="button">Collapse all</button>
+                </div>
+            </div>
+
+            <div class="vendor-report-body">
+                <section id="vendor-report-panel-summary" class="vendor-report-panel active" data-panel="summary" role="tabpanel"></section>
+                <section id="vendor-report-panel-scores" class="vendor-report-panel" data-panel="scores" role="tabpanel"></section>
+                <section id="vendor-report-panel-evidence" class="vendor-report-panel" data-panel="evidence" role="tabpanel"></section>
+                <section id="vendor-report-panel-raw" class="vendor-report-panel" data-panel="raw" role="tabpanel"></section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendors Export Modal -->
+    <div id="vendors-export-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Export</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="vendors-export-grid">
+                    <div class="vendors-export-row">
+                        <label for="vendors-export-format">Format</label>
+                        <select id="vendors-export-format">
+                            <option value="csv">CSV</option>
+                            <option value="json">JSON</option>
+                        </select>
+                    </div>
+                    <div class="vendors-export-row">
+                        <label for="vendors-export-data">Data</label>
+                        <select id="vendors-export-data">
+                            <option value="vendors">Vendors (current filtered set)</option>
+                            <option value="schema">Schema / Metadata</option>
+                        </select>
+                    </div>
+
+                    <div id="vendors-export-scope" class="vendors-export-scope" style="display:none;">
+                        <div class="vendors-export-row">
+                            <label for="vendors-export-scope-mode">Scope</label>
+                            <select id="vendors-export-scope-mode">
+                                <option value="table">All fields (flattened columns)</option>
+                                <option value="raw">All fields (raw)</option>
+                                <option value="selected">Selected fields only</option>
+                            </select>
+                        </div>
+
+                        <div id="vendors-export-fields" class="vendors-export-fields" style="display:none;">
+                            <div class="vendors-export-fields-toolbar">
+                                <input id="vendors-export-fields-search" type="text" placeholder="Search fields…" />
+                                <div class="vendors-export-fields-actions">
+                                    <button id="vendors-export-fields-select-visible" class="btn-secondary" type="button">Select visible</button>
+                                    <button id="vendors-export-fields-select-all" class="btn-secondary" type="button">Select all</button>
+                                    <button id="vendors-export-fields-select-none" class="btn-secondary" type="button">Select none</button>
+                                </div>
+                            </div>
+                            <div class="vendors-export-fields-count" id="vendors-export-fields-count"></div>
+                            <div class="vendors-export-fields-list" id="vendors-export-fields-list"></div>
+                            <div class="vendors-export-fields-help">
+                                Tip: you can export nested values using dot paths (e.g., <code>pillar_scores_validated.PLA</code>).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vendors-export-note" id="vendors-export-note">
+                        Vendors export respects the current Filters &amp; Search.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="vendors-export-cancel" class="btn-secondary" type="button">Cancel</button>
+                <button id="vendors-export-run" class="btn-primary" type="button">Export</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sub-Pillars Filter Modal -->
+    <div id="column-visibility-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Manage Columns</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="column-visibility-container">
+                    <!-- Base columns -->
+                    <div class="column-section">
+                        <h3>Base Columns (Required)</h3>
+                        <label class="disabled-column"><input type="checkbox" class="col-visibility-check" data-column="vendor" checked disabled> Vendor</label>
+                        <label class="disabled-column"><input type="checkbox" class="col-visibility-check" data-column="region" checked disabled> Region</label>
+                        <label class="disabled-column"><input type="checkbox" class="col-visibility-check" data-column="specialization" checked disabled> Specialization</label>
+                        <label class="disabled-column"><input type="checkbox" class="col-visibility-check" data-column="ir_focus_type" checked disabled> IR Focus Type</label>
+                        <label class="disabled-column"><input type="checkbox" class="col-visibility-check" data-column="is_ai_first" checked disabled> AI-First</label>
+                        <label class="disabled-column"><input type="checkbox" class="col-visibility-check" data-column="is_startup" checked disabled> Startup</label>
+                    </div>
+                    
+                    <!-- Pillar columns -->
+                    <div class="column-section">
+                        <h3>Pillars</h3>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="PLA" checked> Planning (PLA)</label>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="INV" checked> Investigation (INV)</label>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="REM" checked> Remediation (REM)</label>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="PMG" checked> Program Management (PMG)</label>
+                        <label><input type="checkbox" class="col-visibility-check" data-column="LAW" checked> Legal (LAW)</label>
+                    </div>
+                    
+                    <!-- Sub-pillar columns -->
+                    <div class="column-section">
+                        <h3>Sub-Pillars</h3>
+                        <div id="sub-pillars-visibility-list">
+                            <!-- Dynamic sub-pillars will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="col-modal-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js', v=(static_versions.app_js if static_versions else 1)) }}"></script>
+</body>
+</html>

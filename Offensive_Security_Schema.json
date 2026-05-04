@@ -1,0 +1,609 @@
+{
+  "offensive_security_taxonomy_v1.0": {
+    "schema_lineage": {
+      "parent": "MDR_Services_Schema.json",
+      "parent_version": "1.0",
+      "related_schemas": ["Preemptive_Cybersecurity_Schema.json", "MDR_Services_Schema.json"],
+      "purpose": "Evaluate vendors providing offensive security, continuous threat exposure management (CTEM), vulnerability management, and application security testing capabilities. Assesses attack surface management, vulnerability prioritization, offensive testing automation, DevSecOps integration, remediation lifecycle, AI adoption maturity, and pricing model sophistication."
+    },
+
+    "intent": "Assess offensive security vendor capability alignment across five capability pillars and a separate pricing model evaluation scale. The capability assessment spans attack surface discovery through automated offensive testing, application security integration, and closed-loop remediation lifecycle management. AI maturity is evaluated as a cross-cutting dimension, with particular emphasis on agentic AI adoption in automated testing, exposure prioritization, and DevSecOps pipeline integration. The pricing model assessment evaluates commercial construct maturity using an adapted version of Gartner's composable pricing framework. Vendors are evaluated on demonstrated, publicly verifiable capability, not marketing claims.",
+
+    "metadata": {
+      "framework_alignment": "Gartner CTEM Framework + MITRE ATT&CK + OWASP + NIST CSF 2.0 + NIST SSDF + CVE/CVSS/EPSS + Gartner Composable Pricing Research (G00826132 / G00846386)",
+      "capability_scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of capability in this area",
+        "scoring_logic": {
+          "0": "No Evidence: No publicly verifiable evidence of capability in this sub-pillar.",
+          "1": "Minimal: Basic or manual capability; no automation, analytics, or continuous operation.",
+          "2": "Generic Claims: Marketing mentions the capability but lacks named products, technical docs, metrics, or specifics.",
+          "3": "Demonstrated: Documented capability with named products or features, some technical detail, and identifiable use cases.",
+          "4": "Advanced: Named products with measurable outcomes, integration points, customer validation, or analyst recognition. Automation and continuous operation present.",
+          "5": "Market-Leading: Best-in-class capability with deep technical evidence, extensive customer base, analyst leadership recognition, measurable impact metrics, and continuous innovation."
+        }
+      },
+      "pricing_scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of this pricing construct",
+        "scoring_logic": {
+          "0": "No Evidence: No public information available about this pricing dimension.",
+          "1": "Opaque: Pricing exists but is entirely opaque, no public detail on structure, components, or methodology.",
+          "2": "Basic: General pricing information available but limited transparency, bundled quotes without component breakdown.",
+          "3": "Structured: Defined pricing structure with identifiable components, documented on website or in sales materials.",
+          "4": "Transparent & Flexible: Clear component-based pricing with published tiers, calculators, or configurators. Demonstrated client flexibility.",
+          "5": "Composable Best Practice: Fully composable pricing model with transparent subscription, usage, fixed, and success-fee components. Real-time usage dashboards, documented KPI alignment, and demonstrated risk-sharing mechanisms."
+        }
+      },
+      "source_policy": {
+        "description": "Evidence must be publicly accessible and verifiable.",
+        "valid_sources": [
+          { "tier": "A", "type": "Vendor documentation", "examples": ["Product pages", "Admin/Developer docs", "API references", "Release notes", "Security whitepapers", "Pricing pages"], "weight": 1.0 },
+          { "tier": "A", "type": "Analyst reports", "examples": ["Gartner Market Guide / Hype Cycle", "Forrester Wave", "IDC MarketScape", "KuppingerCole", "Everest Group PEAK Matrix"], "weight": 1.0 },
+          { "tier": "B", "type": "Technical media", "examples": ["SecurityWeek", "Dark Reading", "Help Net Security", "CSO Online", "The Hacker News"], "weight": 0.85 },
+          { "tier": "B", "type": "Benchmarks/Case studies", "examples": ["Customer case studies", "Public bake-offs", "Government RFP evals", "MITRE Engenuity ATT&CK Evaluations", "OWASP Benchmark"], "weight": 0.85 },
+          { "tier": "C", "type": "Conference/Academic", "examples": ["RSAC", "Black Hat", "DEF CON", "BSides", "OWASP AppSec", "arXiv"], "weight": 0.7 },
+          { "tier": "C", "type": "Professional networks", "examples": ["Engineer-authored LinkedIn/Blogs with technical detail"], "weight": 0.7 }
+        ]
+      },
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of capability sub-pillars covered (score >= 1)",
+        "scale": {
+          "A": "21-25 sub-pillars (84-100%)",
+          "B": "16-20 sub-pillars (64-80%)",
+          "C": "11-15 sub-pillars (44-60%)",
+          "D": "6-10 sub-pillars (24-40%)",
+          "F": "1-5 sub-pillars (4-20%)"
+        }
+      },
+      "market_position_definitions": {
+        "offensive_security_vendor_type": {
+          "Pureplay Exposure Management Platform": "Vendors whose primary offering is a unified continuous threat exposure management platform spanning discovery, assessment, validation, and remediation.",
+          "Extended Security Platform": "Large security vendors offering offensive security capabilities as part of a broader security suite (XDR, CNAPP, or security operations platform).",
+          "Offensive Security Specialist": "Vendors focused primarily on automated penetration testing, breach and attack simulation, red team automation, or adversary emulation.",
+          "DevSecOps-Integrated": "Vendors whose primary approach integrates application security testing directly into CI/CD pipelines and the software development lifecycle.",
+          "Vulnerability Management Specialist": "Vendors focused primarily on vulnerability scanning, assessment, and risk-based prioritization across infrastructure and applications."
+        },
+        "deployment_model": {
+          "SaaS-Only": "Cloud-delivered platform with no on-premises deployment option.",
+          "Hybrid": "Supports both cloud-delivered and on-premises or agent-based deployment.",
+          "On-Premises": "Primarily deployed within the customer's infrastructure.",
+          "Agent-Based": "Requires deployment of agents on target systems for scanning or testing."
+        }
+      }
+    },
+
+    "pillars": {
+      "ASM": {
+        "name": "Attack Surface Management & Discovery",
+        "focus": "Continuous discovery, inventory, and monitoring of an organization's complete attack surface, including external-facing assets, cloud environments, shadow IT, and internal infrastructure. Evaluates the ability to maintain a real-time, contextualized view of all assets and exposures that adversaries could target.",
+        "evidence_signals": [
+          "Continuous external and internal attack surface discovery and enumeration",
+          "Cloud, hybrid, and multi-cloud environment asset mapping and monitoring",
+          "Shadow IT, unknown asset, and subsidiary discovery capabilities",
+          "Asset classification with business context and criticality scoring",
+          "Real-time change detection and drift monitoring across the attack surface"
+        ]
+      },
+      "VUL": {
+        "name": "Vulnerability Assessment & Prioritization",
+        "focus": "Comprehensive vulnerability scanning, detection, and risk-based prioritization across infrastructure, applications, and cloud workloads. Evaluates vendor capability to move beyond CVSS-only scoring toward business-context, exploitability, and threat-intelligence-enriched prioritization that reduces noise and focuses remediation on exposures that matter.",
+        "evidence_signals": [
+          "Multi-environment vulnerability scanning (infrastructure, cloud, containers, applications)",
+          "Risk-based prioritization using CVSS, EPSS, threat intelligence, and business context",
+          "Configuration assessment and compliance benchmarking (CIS, DISA STIG, NIST)",
+          "Exploitability validation and proof-of-exploit capabilities",
+          "Vulnerability intelligence correlation with active threat campaigns"
+        ]
+      },
+      "OFT": {
+        "name": "Offensive Testing & Validation",
+        "focus": "Automated and continuous offensive security testing that validates whether identified exposures are actually exploitable and measures defensive control effectiveness. Includes automated penetration testing, breach and attack simulation (BAS), red/purple team automation, attack path analysis, and adversary emulation aligned to real-world TTPs.",
+        "evidence_signals": [
+          "Automated penetration testing with safe exploitation of real vulnerabilities",
+          "Breach and attack simulation (BAS) across the kill chain",
+          "Red team and purple team automation with continuous validation",
+          "Attack path analysis and modeling from initial access to critical assets",
+          "Adversary emulation aligned to MITRE ATT&CK techniques and threat actor profiles"
+        ]
+      },
+      "APP": {
+        "name": "Application Security Testing & DevSecOps Integration",
+        "focus": "Security testing capabilities embedded in the software development lifecycle, from code analysis through runtime protection. Evaluates SAST, DAST, IAST, API security testing, software composition analysis, and the depth of CI/CD pipeline integration. Particular emphasis on agentic AI adoption in automated code review, vulnerability detection, and remediation suggestion within developer workflows.",
+        "evidence_signals": [
+          "Static application security testing (SAST) with IDE and repository integration",
+          "Dynamic application security testing (DAST) with authenticated scanning",
+          "API security testing covering REST, GraphQL, gRPC, and WebSocket interfaces",
+          "Software composition analysis (SCA) with license and vulnerability tracking",
+          "Native CI/CD pipeline integration with policy-as-code enforcement"
+        ]
+      },
+      "REM": {
+        "name": "Remediation, Lifecycle & Exposure Management",
+        "focus": "Closed-loop remediation workflow from exposure identification through verified fix, including automated patching orchestration, risk-based prioritization of remediation actions, integration with IT service management and ticketing systems, validation that fixes are effective, and executive-level reporting on exposure trends and risk posture improvement over time.",
+        "evidence_signals": [
+          "Automated remediation and patching orchestration across infrastructure and applications",
+          "Risk-based remediation prioritization with SLA tracking and accountability",
+          "Integration with ITSM, ticketing, and workflow systems (ServiceNow, Jira, etc.)",
+          "Closed-loop validation and verification that remediation actions resolved the exposure",
+          "Executive dashboards and metrics tracking exposure trends, SLA compliance, and risk posture improvement"
+        ]
+      }
+    },
+
+    "sub_pillars": {
+      "ASM-01": {
+        "name": "External Attack Surface Discovery",
+        "expanded_definition": "Continuous, automated discovery of externally facing assets, services, and exposures across domains, IP ranges, cloud providers, SaaS applications, and third-party infrastructure. Includes identification of forgotten, orphaned, or misconfigured assets exposed to the internet.",
+        "what_to_verify_publicly": [
+          "Automated external asset discovery across domains, IPs, and cloud providers",
+          "Identification of orphaned, forgotten, and shadow assets exposed to the internet",
+          "Subdomain enumeration, certificate transparency monitoring, and DNS analysis",
+          "Third-party and supply chain attack surface visibility",
+          "Frequency and depth of discovery scans (continuous vs. periodic)"
+        ],
+        "search_terms": ["external attack surface management", "EASM", "attack surface discovery", "external asset discovery", "internet-facing asset inventory", "shadow asset detection", "digital footprint"]
+      },
+      "ASM-02": {
+        "name": "Internal Asset Inventory & Classification",
+        "expanded_definition": "Comprehensive internal asset discovery and classification across on-premises, cloud, and hybrid infrastructure. Includes automated asset tagging with business context, ownership attribution, data sensitivity classification, and criticality scoring to support risk-based decision-making.",
+        "what_to_verify_publicly": [
+          "Internal network and endpoint asset discovery and inventory",
+          "Automated asset classification by type, function, and technology stack",
+          "Business context tagging including ownership, criticality, and data sensitivity",
+          "Integration with CMDB, cloud provider APIs, and identity systems",
+          "Asset inventory accuracy and freshness metrics"
+        ],
+        "search_terms": ["asset inventory", "asset classification", "CMDB integration", "asset discovery internal", "cyber asset management", "asset criticality scoring", "IT asset inventory security"]
+      },
+      "ASM-03": {
+        "name": "Cloud & Hybrid Environment Mapping",
+        "expanded_definition": "Deep visibility into cloud and hybrid infrastructure including IaaS, PaaS, SaaS, container environments, serverless functions, and multi-cloud deployments. Maps security group configurations, IAM policies, storage permissions, and network topology to identify cloud-specific exposures.",
+        "what_to_verify_publicly": [
+          "Multi-cloud asset discovery and inventory (AWS, Azure, GCP, OCI)",
+          "Container and Kubernetes cluster visibility and security posture",
+          "Serverless function enumeration and permission analysis",
+          "Cloud IAM policy analysis and privilege escalation path detection",
+          "Cloud storage and database exposure detection (S3 buckets, blob storage, etc.)"
+        ],
+        "search_terms": ["cloud security posture management", "CSPM", "cloud asset discovery", "multi-cloud visibility", "container security", "Kubernetes security", "cloud misconfiguration", "CNAPP"]
+      },
+      "ASM-04": {
+        "name": "Shadow IT & Unknown Asset Detection",
+        "expanded_definition": "Identification of unauthorized, unmanaged, or unknown technology assets operating within or connected to the organization's infrastructure. Includes rogue SaaS application detection, unauthorized cloud accounts, personal device visibility, and third-party integrations operating outside IT governance.",
+        "what_to_verify_publicly": [
+          "Rogue SaaS and unauthorized cloud application detection",
+          "Unknown device and endpoint discovery on the network",
+          "Unauthorized cloud account and subscription identification",
+          "Third-party integration and API connection visibility",
+          "Alerting and workflow for bringing shadow assets under governance"
+        ],
+        "search_terms": ["shadow IT detection", "rogue SaaS", "unauthorized cloud", "unknown asset detection", "SaaS security posture management", "SSPM", "unmanaged device discovery"]
+      },
+      "ASM-05": {
+        "name": "Continuous Attack Surface Change Monitoring",
+        "expanded_definition": "Real-time or near-real-time monitoring of changes to the attack surface, including new asset deployments, configuration changes, certificate expirations, DNS modifications, and exposure drift. Provides alerting on security-relevant changes and tracks attack surface growth or reduction over time.",
+        "what_to_verify_publicly": [
+          "Real-time or near-real-time change detection across the attack surface",
+          "Alerting on new exposures, misconfigurations, and certificate issues",
+          "Attack surface trending and growth metrics over time",
+          "Integration with change management and DevOps deployment pipelines",
+          "Historical attack surface snapshots for comparison and audit"
+        ],
+        "search_terms": ["attack surface monitoring", "exposure monitoring", "continuous monitoring", "attack surface change detection", "security drift detection", "certificate monitoring", "exposure trending"]
+      },
+
+      "VUL-01": {
+        "name": "Vulnerability Scanning & Detection",
+        "expanded_definition": "Comprehensive vulnerability scanning across infrastructure, operating systems, applications, network devices, cloud workloads, and containers. Includes authenticated and unauthenticated scanning, agent-based and agentless approaches, and coverage of CVE databases, vendor advisories, and zero-day disclosures.",
+        "what_to_verify_publicly": [
+          "Multi-environment scanning (infrastructure, cloud, containers, applications)",
+          "Authenticated and unauthenticated scanning capabilities",
+          "Agent-based and agentless scanning deployment options",
+          "CVE database coverage, update frequency, and zero-day advisory integration",
+          "Scanning frequency options (continuous, scheduled, on-demand)"
+        ],
+        "search_terms": ["vulnerability scanner", "vulnerability assessment", "CVE scanning", "infrastructure scanning", "cloud vulnerability scanning", "container scanning", "authenticated scanning"]
+      },
+      "VUL-02": {
+        "name": "Risk-Based Vulnerability Prioritization",
+        "expanded_definition": "Prioritization of vulnerabilities using multi-factor risk scoring that goes beyond CVSS to incorporate exploitability data (EPSS), active threat intelligence, asset criticality, business context, and environmental factors. Reduces the volume of actionable findings to focus remediation effort on exposures that present genuine risk.",
+        "what_to_verify_publicly": [
+          "Multi-factor risk scoring beyond CVSS (EPSS, threat intelligence, business context)",
+          "Asset criticality and business impact integration in prioritization",
+          "Active exploitation and in-the-wild threat correlation",
+          "Reduction metrics: percentage of vulnerabilities deprioritized through context",
+          "Customizable risk scoring policies aligned to organizational risk appetite"
+        ],
+        "search_terms": ["risk-based vulnerability management", "RBVM", "EPSS", "vulnerability prioritization", "exploitability scoring", "threat-informed prioritization", "contextual vulnerability scoring"]
+      },
+      "VUL-03": {
+        "name": "Configuration & Compliance Assessment",
+        "expanded_definition": "Assessment of system, application, and cloud configurations against established security baselines and compliance benchmarks. Includes CIS Benchmark validation, DISA STIG compliance, cloud provider security best practices, and custom policy enforcement with deviation tracking and remediation guidance.",
+        "what_to_verify_publicly": [
+          "CIS Benchmark assessment across operating systems, databases, and cloud platforms",
+          "DISA STIG and government compliance baseline checking",
+          "Cloud provider security best practice validation (AWS, Azure, GCP)",
+          "Custom policy and configuration standard enforcement",
+          "Configuration drift detection and compliance trending over time"
+        ],
+        "search_terms": ["configuration assessment", "CIS benchmark", "compliance scanning", "DISA STIG", "security baseline", "configuration compliance", "hardening assessment", "cloud compliance"]
+      },
+      "VUL-04": {
+        "name": "Exploitability Validation",
+        "expanded_definition": "Techniques that validate whether identified vulnerabilities are actually exploitable in the target environment, moving beyond theoretical risk to proven impact. Includes safe exploit execution, proof-of-concept validation, and environmental context analysis that confirms or eliminates vulnerabilities based on compensating controls, network segmentation, or runtime protection.",
+        "what_to_verify_publicly": [
+          "Safe exploit execution and proof-of-concept validation capabilities",
+          "Environmental context analysis (compensating controls, segmentation, WAF)",
+          "Differentiation between theoretically vulnerable and actually exploitable",
+          "Integration with offensive testing tools for validation workflows",
+          "False positive reduction metrics through exploitability confirmation"
+        ],
+        "search_terms": ["exploitability validation", "vulnerability validation", "proof of exploit", "exploit verification", "safe exploitation", "compensating controls analysis", "vulnerability confirmation"]
+      },
+      "VUL-05": {
+        "name": "Vulnerability Intelligence & Threat Correlation",
+        "expanded_definition": "Integration of vulnerability findings with active threat intelligence, exploit availability data, and attacker campaign information to identify which vulnerabilities are being actively targeted. Correlates CVEs with known threat actor toolkits, exploit-in-the-wild databases, and dark web intelligence.",
+        "what_to_verify_publicly": [
+          "Threat intelligence integration with vulnerability findings",
+          "Active exploit and in-the-wild exploitation tracking (CISA KEV, etc.)",
+          "Correlation with known threat actor TTPs and campaign indicators",
+          "Dark web and exploit marketplace monitoring for vulnerability exploitation",
+          "Automated enrichment of vulnerability records with threat context"
+        ],
+        "search_terms": ["vulnerability threat intelligence", "exploit intelligence", "CISA KEV", "threat correlation", "vulnerability enrichment", "exploit availability", "vulnerability threat context"]
+      },
+
+      "OFT-01": {
+        "name": "Automated Penetration Testing",
+        "expanded_definition": "Continuous or on-demand automated penetration testing that safely exploits real vulnerabilities to demonstrate actual business impact. Includes intelligent scoping, credential harvesting, privilege escalation, lateral movement, and objective-based testing (e.g., reach domain admin, exfiltrate data) with proof of exploitation and remediation guidance.",
+        "what_to_verify_publicly": [
+          "Automated penetration testing with safe, real exploitation of vulnerabilities",
+          "Multi-vector testing (network, application, cloud, identity)",
+          "Objective-based testing scenarios (reach critical assets, exfiltrate data)",
+          "Credential harvesting, privilege escalation, and lateral movement simulation",
+          "Detailed remediation guidance tied to proven exploitation paths"
+        ],
+        "search_terms": ["automated penetration testing", "autonomous pentest", "automated pentesting", "continuous penetration testing", "pentest automation", "autonomous security testing", "network penetration testing"]
+      },
+      "OFT-02": {
+        "name": "Breach & Attack Simulation (BAS)",
+        "expanded_definition": "Continuous simulation of known attack techniques across the full kill chain to validate that security controls detect and prevent threats as expected. Tests endpoint protection, network security, email security, web gateway, and cloud security controls against a library of attack scenarios updated with emerging threats.",
+        "what_to_verify_publicly": [
+          "Kill-chain simulation covering initial access through exfiltration",
+          "Security control validation across endpoint, network, email, and cloud",
+          "Attack scenario library size, update frequency, and emerging threat coverage",
+          "Control gap identification with specific detection and prevention failures",
+          "Continuous and scheduled simulation options with drift detection"
+        ],
+        "search_terms": ["breach and attack simulation", "BAS", "attack simulation", "security control validation", "purple team automation", "security testing automation", "control effectiveness"]
+      },
+      "OFT-03": {
+        "name": "Red Team & Purple Team Automation",
+        "expanded_definition": "Automated red team operations that replicate sophisticated adversary behavior beyond individual technique execution, including multi-stage attack campaigns, evasion techniques, and objective-driven operations. Purple team automation provides real-time collaboration between offensive testing and defensive detection to improve security posture iteratively.",
+        "what_to_verify_publicly": [
+          "Automated multi-stage attack campaigns replicating real adversary behavior",
+          "Evasion technique simulation (obfuscation, living-off-the-land, fileless attacks)",
+          "Purple team mode with real-time detection validation and SOC integration",
+          "Campaign replay and variation testing for defensive tuning",
+          "Customizable adversary profiles and objective-driven operations"
+        ],
+        "search_terms": ["red team automation", "purple team automation", "adversary simulation", "automated red team", "offensive security automation", "attack campaign simulation", "evasion testing"]
+      },
+      "OFT-04": {
+        "name": "Attack Path Analysis & Modeling",
+        "expanded_definition": "Graph-based analysis of potential attack paths from initial access points to critical assets, identifying the highest-risk chains of vulnerabilities, misconfigurations, and identity relationships that an attacker could exploit. Prioritizes remediation based on path criticality and the number of paths a single fix would eliminate.",
+        "what_to_verify_publicly": [
+          "Graph-based attack path discovery from entry points to critical assets",
+          "Identity, credential, and privilege escalation path mapping",
+          "Choke point identification showing highest-impact remediation targets",
+          "Cloud and hybrid environment attack path coverage",
+          "Visualization of attack paths with risk scoring and blast radius analysis"
+        ],
+        "search_terms": ["attack path analysis", "attack path management", "attack graph", "exposure management", "attack path modeling", "choke point analysis", "blast radius", "privilege escalation path"]
+      },
+      "OFT-05": {
+        "name": "Adversary Emulation & MITRE ATT&CK Alignment",
+        "expanded_definition": "Emulation of specific threat actor behaviors and TTPs aligned to the MITRE ATT&CK framework to test organizational readiness against named adversary groups. Includes threat-informed testing based on sector-specific threat profiles, MITRE Engenuity ATT&CK Evaluations participation, and mapping of test results to specific techniques and sub-techniques.",
+        "what_to_verify_publicly": [
+          "MITRE ATT&CK technique and sub-technique coverage in testing",
+          "Named threat actor emulation profiles (APT groups, ransomware operators)",
+          "Sector-specific threat scenarios aligned to industry threat landscape",
+          "MITRE Engenuity ATT&CK Evaluations participation and results",
+          "Mapping of test findings to specific ATT&CK techniques with detection gaps"
+        ],
+        "search_terms": ["adversary emulation", "MITRE ATT&CK", "threat emulation", "APT simulation", "ATT&CK evaluation", "threat actor emulation", "TTP emulation", "MITRE Engenuity"]
+      },
+
+      "APP-01": {
+        "name": "Static & Dynamic Application Security Testing (SAST/DAST)",
+        "expanded_definition": "Source code analysis (SAST) and runtime application testing (DAST) capabilities for identifying security vulnerabilities in applications. SAST analyzes source code, bytecode, or binaries without execution. DAST tests running applications by sending crafted requests. Includes IAST (Interactive AST) approaches that combine both. Evaluates language coverage, framework support, accuracy, and integration with developer workflows.",
+        "what_to_verify_publicly": [
+          "SAST support across major languages and frameworks (Java, .NET, Python, JavaScript, Go, etc.)",
+          "DAST capabilities with authenticated and unauthenticated scanning",
+          "IAST integration combining code analysis with runtime observation",
+          "False positive rates and accuracy metrics or benchmarks (OWASP Benchmark)",
+          "IDE integration and developer-friendly vulnerability presentation"
+        ],
+        "search_terms": ["SAST", "DAST", "IAST", "static application security testing", "dynamic application security testing", "code scanning", "application vulnerability scanning", "AppSec testing"]
+      },
+      "APP-02": {
+        "name": "API Security Testing",
+        "expanded_definition": "Dedicated security testing for API endpoints covering REST, GraphQL, gRPC, SOAP, and WebSocket interfaces. Includes API discovery, schema analysis, authentication and authorization testing, injection and parameter manipulation, rate limiting validation, and business logic testing specific to API architectures.",
+        "what_to_verify_publicly": [
+          "API discovery and inventory across REST, GraphQL, gRPC, and WebSocket",
+          "OpenAPI/Swagger and GraphQL schema-based test generation",
+          "OWASP API Security Top 10 coverage and testing",
+          "Authentication, authorization, and BOLA/IDOR testing capabilities",
+          "Business logic and rate limiting validation for API-specific threats"
+        ],
+        "search_terms": ["API security testing", "API vulnerability scanning", "API security", "OWASP API Top 10", "GraphQL security", "REST API testing", "API discovery", "API fuzzing"]
+      },
+      "APP-03": {
+        "name": "Software Composition Analysis (SCA)",
+        "expanded_definition": "Analysis of open-source and third-party software components, libraries, and dependencies for known vulnerabilities, license compliance issues, and supply chain risks. Includes SBOM generation, dependency graph analysis, reachability analysis (determining if vulnerable code is actually called), and monitoring of component health and maintenance status.",
+        "what_to_verify_publicly": [
+          "Open-source vulnerability detection across package ecosystems (npm, Maven, PyPI, etc.)",
+          "SBOM generation and management (CycloneDX, SPDX formats)",
+          "Reachability analysis determining if vulnerable code paths are actually exercised",
+          "License compliance detection and policy enforcement",
+          "Dependency graph visualization and transitive dependency risk assessment"
+        ],
+        "search_terms": ["software composition analysis", "SCA", "open source security", "SBOM", "dependency scanning", "component analysis", "license compliance", "supply chain security"]
+      },
+      "APP-04": {
+        "name": "CI/CD Pipeline Security Integration",
+        "expanded_definition": "Native integration of security testing into continuous integration and continuous deployment pipelines, enabling automated security gates, policy-as-code enforcement, and shift-left security workflows. Evaluates depth of integration with major CI/CD platforms, scan speed impact on pipeline velocity, and the ability to enforce security policies without blocking developer productivity.",
+        "what_to_verify_publicly": [
+          "Native integrations with CI/CD platforms (GitHub Actions, GitLab CI, Jenkins, Azure DevOps)",
+          "Security gate enforcement with configurable pass/fail policies",
+          "Scan speed and pipeline impact metrics (time overhead per scan)",
+          "Policy-as-code support for security requirements (OPA, custom policies)",
+          "Developer-facing fix guidance and auto-remediation pull requests"
+        ],
+        "search_terms": ["DevSecOps", "CI/CD security", "pipeline security", "shift-left security", "security gate", "DevOps security integration", "automated security testing pipeline", "policy-as-code"]
+      },
+      "APP-05": {
+        "name": "Container, IaC & Cloud-Native Application Security",
+        "expanded_definition": "Security testing for cloud-native application architectures including container image scanning, Infrastructure as Code (IaC) template analysis, Kubernetes manifest validation, serverless function security, and runtime container protection. Evaluates coverage of cloud-native attack surface and integration with cloud-native development workflows.",
+        "what_to_verify_publicly": [
+          "Container image scanning in registries and CI/CD pipelines",
+          "IaC template analysis (Terraform, CloudFormation, ARM, Pulumi, Helm)",
+          "Kubernetes manifest and admission controller security validation",
+          "Serverless function security analysis and permission review",
+          "Runtime container protection and drift detection in production"
+        ],
+        "search_terms": ["container security scanning", "IaC scanning", "Terraform security", "Kubernetes security", "cloud-native security", "container image scanning", "infrastructure as code security", "CNAPP"]
+      },
+
+      "REM-01": {
+        "name": "Automated Remediation & Patching Orchestration",
+        "expanded_definition": "Capabilities to automate or orchestrate the remediation of identified vulnerabilities and exposures, including automated patch deployment, configuration correction, and integration with endpoint management and cloud infrastructure APIs for direct remediation action. Evaluates the breadth of automated fix capabilities versus manual remediation guidance only.",
+        "what_to_verify_publicly": [
+          "Automated patch deployment or orchestration capabilities",
+          "Configuration auto-remediation for known misconfigurations",
+          "Integration with endpoint management tools (SCCM, Intune, Jamf, etc.)",
+          "Cloud-native remediation through provider APIs (AWS SSM, Azure Automation)",
+          "Rollback capabilities and remediation safety controls"
+        ],
+        "search_terms": ["automated remediation", "patch orchestration", "auto-remediation", "vulnerability remediation automation", "patch management integration", "automated fix", "remediation orchestration"]
+      },
+      "REM-02": {
+        "name": "Exposure Prioritization & Risk Scoring",
+        "expanded_definition": "Unified risk scoring and prioritization engine that aggregates findings from vulnerability scanning, attack surface management, offensive testing, and application security into a single, contextualized view. Prioritizes remediation actions based on business risk, exploitability, asset criticality, and threat activity rather than raw vulnerability counts.",
+        "what_to_verify_publicly": [
+          "Unified risk scoring aggregating findings across multiple security tools",
+          "Business context and asset criticality integration in prioritization",
+          "Exposure trending and risk posture scoring over time",
+          "Customizable risk policies aligned to organizational risk appetite",
+          "Reduction in remediation volume through intelligent prioritization"
+        ],
+        "search_terms": ["exposure prioritization", "risk scoring", "exposure management", "unified vulnerability view", "risk-based prioritization", "exposure aggregation", "vulnerability prioritization engine"]
+      },
+      "REM-03": {
+        "name": "Remediation Workflow & Ticketing Integration",
+        "expanded_definition": "Integration with IT service management (ITSM), project management, and developer workflow tools to create, assign, track, and escalate remediation tasks. Includes automated ticket creation with enriched context, SLA tracking, escalation rules, and bi-directional synchronization between the security platform and remediation workflow systems.",
+        "what_to_verify_publicly": [
+          "ITSM integration (ServiceNow, Jira, Azure DevOps, BMC Remedy)",
+          "Automated ticket creation with vulnerability context and fix guidance",
+          "SLA tracking and escalation rules for overdue remediation",
+          "Bi-directional sync between security platform and ticketing system",
+          "Assignment routing based on asset ownership and team responsibility"
+        ],
+        "search_terms": ["remediation workflow", "vulnerability ticketing", "ServiceNow integration", "Jira security integration", "remediation tracking", "vulnerability management workflow", "SLA tracking remediation"]
+      },
+      "REM-04": {
+        "name": "Validation & Verification (Closed-Loop Remediation)",
+        "expanded_definition": "Capabilities to verify that remediation actions successfully resolved the identified exposure, completing the closed-loop from discovery through fix to confirmation. Includes automated re-scanning, re-testing, and validation workflows that confirm vulnerability closure and detect remediation regression.",
+        "what_to_verify_publicly": [
+          "Automated re-scanning or re-testing after remediation to verify fix",
+          "Closed-loop workflow from finding to remediation to verification",
+          "Regression detection for previously remediated vulnerabilities",
+          "Remediation effectiveness metrics and fix rate tracking",
+          "Integration with offensive testing for post-fix validation"
+        ],
+        "search_terms": ["closed-loop remediation", "remediation verification", "vulnerability validation", "fix verification", "remediation effectiveness", "regression detection", "post-remediation scanning"]
+      },
+      "REM-05": {
+        "name": "Metrics, Reporting & Executive Dashboards",
+        "expanded_definition": "Comprehensive reporting and visualization of exposure management program effectiveness, including executive-level risk posture dashboards, operational metrics (MTTR, fix rates, SLA compliance), trend analysis, compliance reporting, and board-ready presentation of security posture improvement over time.",
+        "what_to_verify_publicly": [
+          "Executive dashboards with risk posture trending and improvement metrics",
+          "Operational metrics including MTTR, fix rates, and backlog aging",
+          "SLA compliance tracking and reporting by team, business unit, or asset class",
+          "Compliance and regulatory reporting (PCI DSS, SOX, HIPAA, etc.)",
+          "Board-ready and exportable reporting formats"
+        ],
+        "search_terms": ["vulnerability management reporting", "exposure metrics", "security posture dashboard", "vulnerability SLA tracking", "risk posture reporting", "remediation metrics", "MTTR vulnerability", "exposure management KPI"]
+      }
+    },
+
+    "ai_maturity_model": {
+      "description": "Assessment of AI adoption maturity across offensive security capabilities, with particular emphasis on agentic AI in automated testing, exposure triage, DevSecOps integration, and remediation orchestration.",
+      "levels": {
+        "1": {
+          "name": "Manual / Traditional",
+          "description": "No meaningful AI integration. Processes rely entirely on manual analysis, rule-based scanning, signature matching, and human-driven workflows. Vulnerability prioritization based on raw CVSS scores without contextual enrichment.",
+          "indicators": [
+            "Rule-based and signature-only scanning",
+            "Manual vulnerability triage and prioritization",
+            "No ML or AI in detection, testing, or remediation workflows",
+            "Static playbooks and manual ticket creation"
+          ]
+        },
+        "2": {
+          "name": "AI-Augmented",
+          "description": "AI assists human operators in specific workflows. Machine learning enhances vulnerability prioritization, reduces false positives, or accelerates scan analysis. Human decision-making remains primary for all critical actions. AI capabilities are bolt-on features rather than architectural foundations.",
+          "indicators": [
+            "ML-enhanced vulnerability prioritization beyond CVSS",
+            "AI-assisted false positive reduction in scanning results",
+            "Natural language processing for vulnerability description analysis",
+            "AI-generated remediation suggestions that humans review and execute"
+          ]
+        },
+        "3": {
+          "name": "AI-Automated",
+          "description": "AI drives significant portions of the workflow with human oversight. Automated triage, scanning optimization, and remediation orchestration operate continuously with human review at defined checkpoints. Named AI products or features with documented performance metrics.",
+          "indicators": [
+            "Automated vulnerability triage with confidence scoring",
+            "AI-optimized scan scheduling and resource allocation",
+            "Automated remediation for well-understood vulnerability classes",
+            "AI-driven attack path analysis and exposure correlation",
+            "Documented reduction in analyst workload through AI automation"
+          ]
+        },
+        "4": {
+          "name": "AI-Agentic",
+          "description": "Autonomous AI agents perform complex security testing, analysis, and remediation tasks with minimal human intervention. Agents reason about attack surfaces, plan and execute multi-step testing campaigns, generate and validate exploits, and orchestrate remediation workflows. Human oversight through governance frameworks rather than per-action approval.",
+          "indicators": [
+            "Autonomous penetration testing agents that plan, execute, and adapt",
+            "Agentic vulnerability research and zero-day discovery",
+            "AI agents generating and submitting remediation pull requests",
+            "Multi-agent systems coordinating discovery, testing, and remediation",
+            "Governance frameworks defining agent autonomy boundaries",
+            "Documented agent decision transparency and audit trails"
+          ]
+        },
+        "5": {
+          "name": "AI-Native",
+          "description": "The platform is architecturally built around AI capabilities rather than having AI layered onto traditional tools. AI is the primary decision-making engine for exposure management, with continuous self-optimization, cross-domain reasoning, and predictive exposure forecasting. Human involvement is strategic oversight rather than operational execution.",
+          "indicators": [
+            "AI-native architecture where AI is the primary processing engine, not an add-on",
+            "Continuous self-optimization of testing strategies based on results",
+            "Predictive exposure forecasting before vulnerabilities are disclosed",
+            "Cross-domain AI reasoning connecting ASM, vulnerability, AppSec, and remediation data",
+            "AI-generated security policy recommendations based on organizational context",
+            "Published AI research, patents, or benchmark results demonstrating depth"
+          ]
+        }
+      }
+    },
+
+    "pricing_evaluation": {
+      "description": "Evaluation of pricing model maturity for offensive security vendors, adapted from the MDR composable pricing framework. Assesses the transition from opaque, seat-based licensing toward transparent, usage-aligned, and outcome-linked pricing models. Particular focus on how AI-driven efficiency improvements are reflected in commercial terms and whether vendors share efficiency dividends with customers.",
+      "dimensions": [
+        {
+          "id": "PRC-SUB",
+          "name": "Subscription & License Transparency",
+          "description": "Clarity and transparency of the vendor's subscription or license pricing structure. Evaluates whether tiers, included features, volume bands, and upgrade paths are publicly documented and understandable.",
+          "what_to_evaluate": [
+            "Published pricing tiers or license structure with clear feature definitions",
+            "Component breakdown (scanning, testing, remediation, reporting) visible to buyers",
+            "Volume-based or asset-count-based pricing clarity (per-IP, per-app, per-endpoint)",
+            "Scope adjustment and scaling flexibility within the subscription model",
+            "Renewal and upgrade path transparency"
+          ]
+        },
+        {
+          "id": "PRC-USG",
+          "name": "Usage-Based & Consumption Alignment",
+          "description": "Degree to which pricing aligns with actual usage and consumption patterns rather than fixed seats or licenses. Evaluates availability of consumption-based pricing, metered billing, and transparent usage dashboards.",
+          "what_to_evaluate": [
+            "Consumption-based pricing tied to scan volume, asset count, or API calls",
+            "Real-time usage dashboards and cost tracking for customers",
+            "Overage policies and thresholds clearly defined",
+            "AI efficiency pass-through: reduced pricing when AI reduces scan or analysis time",
+            "Elastic scaling pricing aligned to project or seasonal demand"
+          ]
+        },
+        {
+          "id": "PRC-FIX",
+          "name": "Fixed & Project-Based Pricing",
+          "description": "Availability and transparency of fixed-fee or project-based pricing for discrete engagements such as penetration tests, application assessments, or compliance audits.",
+          "what_to_evaluate": [
+            "Fixed-fee options for discrete engagements (pentests, assessments, audits)",
+            "Clear scope definition and deliverable specification for fixed-price work",
+            "Project vs. continuous service cost separation",
+            "Change request and scope expansion pricing processes",
+            "Milestone-based payment structures for phased engagements"
+          ]
+        },
+        {
+          "id": "PRC-SUC",
+          "name": "Success & Outcome-Based Fees",
+          "description": "Adoption of pricing models tied to measurable security outcomes rather than asset counts or time-and-materials. Evaluates whether commercial terms include risk reduction commitments, vulnerability SLA guarantees, or performance-based fee adjustments.",
+          "what_to_evaluate": [
+            "Outcome metrics tied to pricing (vulnerability reduction targets, MTTR improvements)",
+            "Risk reduction guarantees or commitments with financial mechanisms",
+            "Performance-based fee adjustments (credits for unmet SLAs, bonuses for exceeded targets)",
+            "Breach warranty or financial guarantee components",
+            "Measurement methodology for outcome validation and dispute resolution"
+          ]
+        },
+        {
+          "id": "PRC-COM",
+          "name": "Composability & Model Maturity",
+          "description": "Flexibility and modularity of the pricing model, enabling buyers to assemble service packages from independently priced components rather than purchasing monolithic bundles.",
+          "what_to_evaluate": [
+            "Modular pricing for individual capabilities (ASM, VM, pentest, AppSec, remediation)",
+            "Mix-and-match service assembly without forced bundling",
+            "Budget predictability with clear per-component costs",
+            "Risk-sharing mechanisms with financial upside and downside",
+            "Pricing model flexibility across enterprise, mid-market, and SMB segments"
+          ]
+        },
+        {
+          "id": "PRC-OUT",
+          "name": "Pricing-to-Outcomes Alignment",
+          "description": "Overall alignment between what the customer pays and the measurable security outcomes delivered. Evaluates whether the pricing model creates a direct financial link between vendor revenue and customer risk reduction.",
+          "what_to_evaluate": [
+            "Direct financial link between pricing and measurable risk reduction",
+            "AI efficiency gains reflected in customer pricing (pass-through economics)",
+            "Value realization metrics shared with customers to demonstrate ROI",
+            "Pricing model evolution roadmap toward outcome-based commercial terms",
+            "Avoidance of outcome-washing: pricing genuinely tied to what matters, not marketing metrics"
+          ]
+        }
+      ]
+    },
+
+    "vendor_classification": {
+      "fields": {
+        "vendor_name": "Full legal or trading name of the vendor",
+        "website": "Primary vendor website URL",
+        "vendor_type": "Classification from offensive_security_vendor_type definitions",
+        "deployment_model": "From deployment_model definitions",
+        "primary_focus": "The vendor's primary market focus area within offensive security",
+        "ai_maturity_level": "Current AI maturity assessment (1-5 from ai_maturity_model)",
+        "ai_pricing_influence": {
+          "description": "Assessment of how AI capabilities influence the vendor's pricing model and commercial construct",
+          "scale": {
+            "Transformative": "AI fundamentally reshapes the pricing model; outcome-based pricing is AI-dependent",
+            "Significant": "AI capabilities directly enable pricing differentiation (usage-based metering, outcome measurement)",
+            "Emerging": "AI present in product but not connected to pricing model changes",
+            "Minimal": "Little to no AI influence on pricing structure or commercial terms"
+          }
+        },
+        "founded_year": "Year the company was founded",
+        "headquarters": "Corporate headquarters location",
+        "employee_count_range": "Approximate employee count range",
+        "key_products": "Primary product names relevant to offensive security",
+        "target_market": "Primary customer segment (Enterprise, Mid-Market, SMB, or All)",
+        "notable_customers_or_references": "Publicly referenced customers or case studies",
+        "analyst_recognition": "Notable analyst report inclusions (Gartner, Forrester, IDC, etc.)"
+      }
+    }
+  }
+}

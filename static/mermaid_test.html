@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mermaid Diagram Test</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+<style>body{background:#1e1e1e;color:#fff;font-family:sans-serif;padding:20px}h2{color:#ca5010;border-bottom:1px solid #333;padding-bottom:8px}pre.mermaid{background:#2d2d2d;padding:16px;border-radius:8px}</style>
+</head>
+<body>
+
+<h2>Test 1: Flowchart</h2>
+<pre class="mermaid">
+%%{init: {'theme': 'dark'}}%%
+flowchart LR
+    subgraph TODAY["WHERE AI IS TODAY"]
+        direction TB
+        A1["Report Writing"]
+        A2["SOAR Automation"]
+        A3["Program Management"]
+        A4["Compliance Docs"]
+        A5["Planning Support"]
+    end
+
+    subgraph CRITICAL["WHERE AI SHOULD FOCUS"]
+        direction TB
+        B1["Deep Forensic Analysis"]
+        B2["Triage and Scoping"]
+        B3["Timeline Reconstruction"]
+        B4["Malware Reverse Engineering"]
+        B5["Containment and Isolation"]
+    end
+
+    TODAY -->|"Marginal Impact"| MISS["Process Efficiency Only"]
+    CRITICAL -->|"Critical Path Impact"| WIN["Faster Recovery and Risk Mitigation"]
+
+    style A1 fill:#3a1e0e,stroke:#ca5010,color:#f0a070
+    style A2 fill:#3a1e0e,stroke:#ca5010,color:#f0a070
+    style A3 fill:#3a1e0e,stroke:#ca5010,color:#f0a070
+    style A4 fill:#3a1e0e,stroke:#ca5010,color:#f0a070
+    style A5 fill:#3a1e0e,stroke:#ca5010,color:#f0a070
+    style B1 fill:#0e2a0e,stroke:#107c10,color:#70f080
+    style B2 fill:#0e2a0e,stroke:#107c10,color:#70f080
+    style B3 fill:#0e2a0e,stroke:#107c10,color:#70f080
+    style B4 fill:#0e2a0e,stroke:#107c10,color:#70f080
+    style B5 fill:#0e2a0e,stroke:#107c10,color:#70f080
+    style MISS fill:#3a0e0e,stroke:#a80000,color:#ff8888
+    style WIN fill:#0e3a0e,stroke:#107c10,color:#88ff88
+</pre>
+
+<h2>Test 2: State Diagram</h2>
+<pre class="mermaid">
+%%{init: {'theme': 'dark'}}%%
+stateDiagram-v2
+    [*] --> RawEvidence : Incident Detected
+
+    state "AI Ingestion" as AIIn {
+        DataCapture --> HashVerification
+        HashVerification --> UIDAssignment
+    }
+    state "AI Analysis" as AIAn {
+        Correlation --> TimelineReconstruction
+        TimelineReconstruction --> ArtifactLinkage
+    }
+    state "Human Validation" as HV {
+        MethodologyReview --> ReasoningVerification
+        ReasoningVerification --> EvidenceConfirmation
+    }
+
+    RawEvidence --> AIIn : AI Agent Acquires
+    AIIn --> AIAn : Documented Methods
+    AIAn --> HV : SHAP LIME Explanations
+    HV --> CourtReady : Immutable Audit Trail
+    CourtReady --> [*] : Daubert and Rule 901 Compliant
+</pre>
+
+<h2>Test 3: Timeline</h2>
+<pre class="mermaid" style="min-width:900px">
+%%{init: {'theme': 'dark'}}%%
+timeline
+    title The DFIR AI Convergence Roadmap
+    2024 : AI applied to reports and admin only
+         : Traditional vendors dominate at 62 percent
+         : Trust deficit blocks investigation AI
+    2025 : ForensicLLM achieves 80 plus accuracy
+         : DFKGs enable evidence visualization
+         : AI-first startups gain investigation edge
+    2026 : Tandem operating models emerge
+         : SHAP and LIME frameworks standardize
+         : 138 vendors assessed across 5 pillars
+    2027 : Government oversight of AI forensic tools
+         : Insurance validation of AI powered LLMs
+         : Traditional vendors redirect investment
+    2028 : Vendors below 4.0 in investigation at risk
+         : AI native architectures become standard
+         : Chain of custody automation matures
+    2030 : Manual investigation models irrelevant
+         : Full convergence of AI speed and human trust
+         : Court admissibility of AI evidence standard
+</pre>
+
+<h2>Test 4: Minimal Flowchart (sanity check)</h2>
+<pre class="mermaid">
+flowchart LR
+    A["Hello"] --> B["World"]
+</pre>
+
+</body>
+</html>

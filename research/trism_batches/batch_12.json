@@ -1,0 +1,4189 @@
+[
+  {
+    "vendor": "Tata Consultancy Services",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.62,
+      "RUN": 4.12,
+      "INF": 4.12
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.25,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 2.25,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "We help enterprises improve their security posture with a platform-first approach to integrate and modernize cybersecurity. Governance, risk and compliance",
+            "matched_terms": [
+              "risk",
+              "integrate"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Learn more Digital identity management Strengthen your identity and access management processes using our consulting, implementation and managed services Enterprise security-as-a-service We help enterprises improve their security posture with a platform-first…",
+            "matched_terms": [
+              "entity",
+              "integrate"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Safeguard your critical industrial systems, connected devices, and intelligent edge, through seamlessly integrated cybersecurity services. Learn more.",
+            "matched_terms": [
+              "integrate"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Digital identity management",
+            "matched_terms": [
+              "entity"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Strengthen your identity and access management processes using our consulting, implementation and managed services",
+            "matched_terms": [
+              "entity"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Strengthen your identity and access management processes using our consulting, implementation and managed services",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Digital identity management Strengthen your identity and access management processes using our consulting, implementation and managed services",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Strengthen your identity and access management processes using our consulting, implementation and managed services Enterprise security-as-a-service",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Learn more Digital identity management Strengthen your identity and access management processes using our consulting, implementation and managed services Enterprise security-as-a-service We help enterprises improve their security posture with a platform-first…",
+            "matched_terms": [
+              "entity",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "Data center: Building automated, secure, and green solutions",
+            "matched_terms": [
+              "data",
+              "automated"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "TCS Intelligent Urban Exchange™ TCS OmniStore™",
+            "matched_terms": [
+              "exchange",
+              "nist"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "TCS Intelligent Urban Exchange™ TCS OmniStore™",
+            "matched_terms": [
+              "exchange",
+              "nist"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "TCS Intelligent Urban Exchange™",
+            "matched_terms": [
+              "exchange"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Quarterly Earnings Reports",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Policies and Reports",
+            "matched_terms": [
+              "reports"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Read how TCS Governance, risk, and compliance services helps customers automate GRC functions and simplify processes and requirements for better risk posture.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "We help enterprises improve their security posture with a platform-first approach to integrate and modernize cybersecurity. Governance, risk and compliance",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Governance, risk and compliance Read how TCS Governance, risk, and compliance services helps customers automate GRC functions and simplify processes and requirements for better risk posture.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Read how TCS Governance, risk, and compliance services helps customers automate GRC functions and simplify processes and requirements for better risk posture. Learn more",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Governance, risk and compliance Read how TCS Governance, risk, and compliance services helps customers automate GRC functions and simplify processes and requirements for better risk posture.",
+            "matched_terms": [
+              "compliance",
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Security Policy",
+            "matched_terms": [
+              "policy",
+              "security"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Disclaimer Security Policy",
+            "matched_terms": [
+              "policy",
+              "security"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Security Policy California Notice at Collection",
+            "matched_terms": [
+              "policy",
+              "security"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "Security Policy",
+            "matched_terms": [
+              "policy",
+              "security"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "Disclaimer Security Policy",
+            "matched_terms": [
+              "policy",
+              "security"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Threat detection and response TCS MDR solutions help enterprises gain a 360-degree view, automate response, and remediate cyber threats with contextual and strategic threat intelligence.",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Learn more Threat detection and response TCS MDR solutions help enterprises gain a 360-degree view, automate response, and remediate cyber threats with contextual and strategic threat intelligence.",
+            "matched_terms": [
+              "detection",
+              "auto",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Incident response and rapid recovery",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "With 24x7 monitoring and a zero-trust approach, TCS Network Security Services help organizations elevate their security posture and support hybrid workforces.",
+            "matched_terms": [
+              "monitoring",
+              "hybrid"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Threat detection and response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Skip to main content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Our solution with AI and agentic AI capabilities enhances cybersecurity frameworks and boosts threat detection, helping businesses strengthen cyber resilience.",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Threat detection and response",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Meet regulatory compliance",
+            "matched_terms": [
+              "regulatory"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "TCS Recognized as a Leader in Managed Detection and Response",
+            "matched_terms": [
+              "detection"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Accessibility Adjustments",
+            "matched_terms": [
+              "access",
+              "adjust"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Data and Cybersecurity to Fight off Cyberattacks Skip to main content",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Website feedback Accessibility Adjustments",
+            "matched_terms": [
+              "access",
+              "adjust"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Accessibility Adjustments Reset settings",
+            "matched_terms": [
+              "access",
+              "adjust"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Data and Cybersecurity to Fight off Cyberattacks Skip to main content Skip to footer Click here or press enter to go to homepage What we do Who we are Insights Careers Newsroom Investors Search Button Contact us tata.com logo Open in New Tab Perpetually Adapt…",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cognitive-business-operations"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "Data center: Building automated, secure, and green solutions",
+            "matched_terms": [
+              "data",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "TCS Survey of CxOs Finds Digital and Data-Driven Operations are #1 Priority for a Future-Ready Organization",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": ": Building responsive networks to drive agility Data center: Building automated, secure, and green solutions",
+            "matched_terms": [
+              "data",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "Data center: Building automated, secure, and green solutions Applications: Decoding operations to accelerate speed to market",
+            "matched_terms": [
+              "data",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "Opens in new tab TCS Survey of CxOs Finds Digital and Data-Driven Operations are #1 Priority for a Future-Ready Organization",
+            "matched_terms": [
+              "data",
+              "driven"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "Swipe Right As boundaries disappear and businesses converge, operations must connect ecosystem partners to drive the growth agenda.",
+            "matched_terms": [
+              "right",
+              "bound"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cognitive-business-operations",
+            "excerpt": "Features Build a competitive advantage Drive purpose-led growth Ensure business continuity Facilitate continuous innovation Swipe Left Swipe Right As boundaries disappear and businesses converge, operations must connect ecosystem partners to drive the growth …",
+            "matched_terms": [
+              "right",
+              "bound"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "At TCS, we don’t just help businesses transform. We help them become perpetually adaptive enterprises, built to evolve continuously and confidently in a world of constant change.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "TCS Intelligent Urban Exchange™",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "We deliver excellence and create value for customers and communities - everyday. With the best talent and the latest technology we help customers turn complexity into opportunities and create meaningful change.",
+            "matched_terms": [
+              "change"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Learn more Secure AI Adoption Secure AI adoption empowers businesses with service to manage cybersecurity and data privacy risks in AI deployments and build cyber resilience.",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "TCS Secure AI Adoption helps enterprises identify and address cybersecurity and data privacy-related risks while adopting AI, machine learning (ML), and GenAI technologies.",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Stakeholder Engagement and Enterprise Risk Management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Policies and Reports Stakeholder Engagement and Enterprise Risk Management",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Stakeholder Engagement and Enterprise Risk Management Investor FAQs",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.tcs.com/what-we-do/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Learn more Secure AI Adoption Secure AI adoption empowers businesses with service to manage cybersecurity and data privacy risks in AI deployments and build cyber resilience.",
+            "matched_terms": [
+              "security",
+              "data",
+              "adoption",
+              "data privacy"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "TCS Secure AI Adoption helps enterprises identify and address cybersecurity and data privacy-related risks while adopting AI, machine learning (ML), and GenAI technologies.",
+            "matched_terms": [
+              "security",
+              "data",
+              "adoption",
+              "data privacy"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Learn more Digital identity management Strengthen your identity and access management processes using our consulting, implementation and managed services Enterprise security-as-a-service We help enterprises improve their security posture with a platform-first…",
+            "matched_terms": [
+              "security",
+              "digital",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Safeguard your critical industrial systems, connected devices, and intelligent edge, through seamlessly integrated cybersecurity services. Learn more.",
+            "matched_terms": [
+              "security",
+              "integrated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tcs.com/what-we-do/services/cybersecurity",
+            "excerpt": "Our solution with AI and agentic AI capabilities enhances cybersecurity frameworks and boosts threat detection, helping businesses strengthen cyber resilience.",
+            "matched_terms": [
+              "security",
+              "detection"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.25,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 2.25,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.62,
+      "RUN": 4.12,
+      "INF": 4.12
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We help enterprises improve their security posture with a platform-first approach to integrate and modernize cybersecurity. Governance, risk and compliance\". Also: \"Learn more Digital identity management Strengthen your identity and access management processes using our consulting, implementation and managed serv…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Strengthen your identity and access management processes using our consulting, implementation and managed services\". Also: \"Digital identity management Strengthen your identity and access management processes using our consulting, implementation and managed services\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"TCS Intelligent Urban Exchange™ TCS OmniStore™\". Also: \"TCS Intelligent Urban Exchange™ TCS OmniStore™\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Read how TCS Governance, risk, and compliance services helps customers automate GRC functions and simplify processes and requirements for better risk posture.\". Also: \"We help enterprises improve their security posture with a platform-first approach to integrate and modernize cybersecurity. Governance, risk and comp…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"Security Policy\". Also: \"Disclaimer Security Policy\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Threat detection and response TCS MDR solutions help enterprises gain a 360-degree view, automate response, and remediate cyber threats with contextual and strategic threat intelligence.\". Also: \"Learn more Threat detection and response TCS MDR solutions help enterprises gain a 360-degree view, automate response, and remediate cyber threats wi…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Skip to main content\". Also: \"Our solution with AI and agentic AI capabilities enhances cybersecurity frameworks and boosts threat detection, helping businesses strengthen cyber r…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Accessibility Adjustments\". Also: \"Data and Cybersecurity to Fight off Cyberattacks Skip to main content\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data center: Building automated, secure, and green solutions\". Also: \"TCS Survey of CxOs Finds Digital and Data-Driven Operations are #1 Priority for a Future-Ready Organization\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Swipe Right As boundaries disappear and businesses converge, operations must connect ecosystem partners to drive the growth agenda.\". Also: \"Features Build a competitive advantage Drive purpose-led growth Ensure business continuity Facilitate continuous innovation Swipe Left Swipe Right As…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"Learn more Secure AI Adoption Secure AI adoption empowers businesses with service to manage cybersecurity and data privacy risks in AI deployments and build cyber resilience.\". Also: \"TCS Secure AI Adoption helps enterprises identify and address cybersecurity and data privacy-related risks while adopting AI, machine learning (ML), …\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Learn more Secure AI Adoption Secure AI adoption empowers businesses with service to manage cybersecurity and data privacy risks in AI deployments and build cyber resilience.\". Also: \"TCS Secure AI Adoption helps enterprises identify and address cybersecurity and data privacy-related risks while adopting AI, machine learning (ML), …\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:31:16.838237+00:00",
+      "urls_used": [
+        "https://www.tcs.com/what-we-do/industries/ai",
+        "https://www.tcs.com/what-we-do/services/cybersecurity",
+        "https://www.tcs.com/what-we-do/services/data-analytics",
+        "https://www.tcs.com/what-we-do/research-innovation/articles/responsible-ai",
+        "https://www.tcs.com/what-we-do/services/cognitive-business-operations"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Tech Mahindra",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.12,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "A workbench to manage model development and deployment lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Forecasting Workbench A workbench to manage model development and deployment lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "A workbench to manage model development and deployment lifecycle. AI Store",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Forecasting Workbench A workbench to manage model development and deployment lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Cognitive Process Monitoring models business processes, applications, and infrastructure with key metrics to deliver near real-time visibility and insights into overall system health.",
+            "matched_terms": [
+              "models",
+              "model",
+              "metrics"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Responsible AI Adoption Establishing transparent, unbiased, fair, and interpretable AI-powered decision-making process while also adapting to industry-specific regulations.",
+            "matched_terms": [
+              "specific",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Responsible AI Adoption Establishing transparent, unbiased, fair, and interpretable AI-powered decision-making process while also adapting to industry-specific regulations.",
+            "matched_terms": [
+              "specific",
+              "responsible ai"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access commerce, etc.",
+            "matched_terms": [
+              "over",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solutions suite AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access…",
+            "matched_terms": [
+              "over",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solutions suite AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access…",
+            "matched_terms": [
+              "over",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Digital Workforce Monitoring AI and Bot Governance DevOps - CD2 Model Bot Command Center Previous Next Featured Platform TechM Orion TechM Orion is our next-generation agentic AI platform, built on NVIDIA accelerated computing, that enables intelligent, auton…",
+            "matched_terms": [
+              "generation",
+              "model",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "A next-gen agentic AI platform, TechM Orion enables intelligent, autonomous execution of complex business workflows, helping enterprises achieve efficiency, scalability with good governance.",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "This platform provides end-to-end services for asset assessment, including capture of Lidar and imagery, identification of defects, field management systems including auditing and compliance, digital twins, and geospatial data services.",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "TechM Orion A next-gen agentic AI platform, TechM Orion enables intelligent, autonomous execution of complex business workflows, helping enterprises achieve efficiency, scalability with good governance.",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "A next-gen agentic AI platform, TechM Orion enables intelligent, autonomous execution of complex business workflows, helping enterprises achieve efficiency, scalability with good governance. LEARN MORE",
+            "matched_terms": [
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "An end-to-end innovative, secure, and automated cloud platform, “netOps.ai,” powers telco networks to accelerate digital transformation and enable rapid deployment of 5G networks.",
+            "matched_terms": [
+              "deployment",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "netOps.ai An end-to-end innovative, secure, and automated cloud platform, “netOps.ai,” powers telco networks to accelerate digital transformation and enable rapid deployment of 5G networks.",
+            "matched_terms": [
+              "deployment",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "An end-to-end innovative, secure, and automated cloud platform, “netOps.ai,” powers telco networks to accelerate digital transformation and enable rapid deployment of 5G networks. LEARN MORE",
+            "matched_terms": [
+              "deployment",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "LEARN MORE hidden-link netOps.ai An end-to-end innovative, secure, and automated cloud platform, “netOps.ai,” powers telco networks to accelerate digital transformation and enable rapid deployment of 5G networks.",
+            "matched_terms": [
+              "deployment",
+              "automated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "The Freight Watch solution uses AI, automated monitoring, and computer vision to streamline warehouse shipping and receiving, improving inspection accuracy, reducing errors, and boosting operational efficiency.",
+            "matched_terms": [
+              "automated"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AI-Driven Customer Service & Decision Support for Top Telco Provider",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Positioned as a “Leader” among the Top Data Science Service Providers PeMa Quadrant 2024 by AIM",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Tech Mahindra has been recognized in the ‘Leaders’ quadrant of the 2024 Data Science Service Providers PeMa Quadrant",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Transforming Healthcare Marketing with AI-Powered Precision AI-Driven Customer Service & Decision Support for Top Telco Provider",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AI-Driven Customer Service & Decision Support for Top Telco Provider AI-Driven Customer Service & Decision Support for Top Telco Provider",
+            "matched_terms": [
+              "provider"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Tech Mahindra’s Email amplifAIer uses the power of generative AI to provide unified visualization and automation techniques",
+            "matched_terms": [
+              "techniques",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "The Freight Watch solution uses AI, automated monitoring, and computer vision to streamline warehouse shipping and receiving, improving inspection accuracy, reducing errors, and boosting operational efficiency.",
+            "matched_terms": [
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access commerce, etc.",
+            "matched_terms": [
+              "detection",
+              "monitoring"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Email amplifAIer Tech Mahindra’s Email amplifAIer uses the power of generative AI to provide unified visualization and automation techniques",
+            "matched_terms": [
+              "techniques",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Tech Mahindra’s Email amplifAIer uses the power of generative AI to provide unified visualization and automation techniques LEARN MORE",
+            "matched_terms": [
+              "techniques",
+              "auto"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access commerce, etc.",
+            "matched_terms": [
+              "anomaly",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solutions suite AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access…",
+            "matched_terms": [
+              "anomaly",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solutions suite AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access…",
+            "matched_terms": [
+              "anomaly",
+              "detection"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Skip to main content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AI-driven Content Moderation",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Guardrails Framework for AI It is a comprehensive solution for safeguarding AI applications, specifically LLMs, in a ready-to-consume format with API integration.",
+            "matched_terms": [
+              "integration",
+              "guardrails"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "LEARN MORE hidden-link Guardrails Framework for AI It is a comprehensive solution for safeguarding AI applications, specifically LLMs, in a ready-to-consume format with API integration.",
+            "matched_terms": [
+              "integration",
+              "guardrails"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Synthetic Data Generation AI-driven Content Moderation",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Skip to main content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AI-driven Content Moderation",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Synthetic Data Generation AI-driven Content Moderation",
+            "matched_terms": [
+              "data",
+              "driven",
+              "synthetic data"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Scale AI faster, responsibly, with an end-to-end comprehensive framework for assessing, auditing, and certifying AI solutions across various domains and use cases, from Discovery to Development and from Production to Post-production.",
+            "matched_terms": [
+              "discover",
+              "across",
+              "discovery"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access commerce, etc.",
+            "matched_terms": [
+              "discover",
+              "across",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "VerifAI Scale AI faster, responsibly, with an end-to-end comprehensive framework for assessing, auditing, and certifying AI solutions across various domains and use cases, from Discovery to Development and from Production to Post-production.",
+            "matched_terms": [
+              "discover",
+              "across",
+              "discovery"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Scale AI faster, responsibly, with an end-to-end comprehensive framework for assessing, auditing, and certifying AI solutions across various domains and use cases, from Discovery to Development and from Production to Post-production. LEARN MORE",
+            "matched_terms": [
+              "discover",
+              "across",
+              "discovery"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Tech Mahindra Unveils ‘AI Delivered Right’: A Comprehensive Strategy to Help Enterprises Scale AI with Purpose and Precision",
+            "matched_terms": [
+              "scale",
+              "right"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Press Release Tech Mahindra Unveils ‘AI Delivered Right’: A Comprehensive Strategy to Help Enterprises Scale AI with Purpose and Precision",
+            "matched_terms": [
+              "scale",
+              "right"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Tech Mahindra Unveils ‘AI Delivered Right’: A Comprehensive Strategy to Help Enterprises Scale AI with Purpose and Precision READ MORE",
+            "matched_terms": [
+              "scale",
+              "right"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AI Delivered Right",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Experience the future with Tech Mahindra’s ‘AI Delivered Right’-secure, practical AI solutions from strategy to implementation",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Synthetic data generation offers a compelling solution by generating artificial data that mimics the characteristics of real data but without compromising privacy or security.",
+            "matched_terms": [
+              "synthetic",
+              "privacy",
+              "synthetic data"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Synthetic Data Generation Synthetic data generation offers a compelling solution by generating artificial data that mimics the characteristics of real data but without compromising privacy or security.",
+            "matched_terms": [
+              "synthetic",
+              "privacy",
+              "synthetic data"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Synthetic data generation offers a compelling solution by generating artificial data that mimics the characteristics of real data but without compromising privacy or security. LEARN MORE",
+            "matched_terms": [
+              "synthetic",
+              "privacy",
+              "synthetic data"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "LEARN MORE hidden-link Synthetic Data Generation Synthetic data generation offers a compelling solution by generating artificial data that mimics the characteristics of real data but without compromising privacy or security.",
+            "matched_terms": [
+              "synthetic",
+              "privacy",
+              "synthetic data"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "Synthetic Data Generation",
+            "matched_terms": [
+              "synthetic",
+              "synthetic data"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.techmahindra.com/en-in/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access commerce, etc.",
+            "matched_terms": [
+              "across",
+              "access",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solutions suite AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access…",
+            "matched_terms": [
+              "across",
+              "access",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "AIOps solutions suite AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly detection, provisioning commerce, access…",
+            "matched_terms": [
+              "across",
+              "access",
+              "detection"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "MobiLytix™ Marketing Studio provides marketers with integrated tools to leverage advances in AI seamlessly, real-time decision making, and digital marketing technology to power their customer value management (CVM) programs.",
+            "matched_terms": [
+              "digital",
+              "integrated"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.techmahindra.com/en-in/artificial-intelligence/",
+            "excerpt": "MobiLytix™ MobiLytix™ Marketing Studio provides marketers with integrated tools to leverage advances in AI seamlessly, real-time decision making, and digital marketing technology to power their customer value management (CVM) programs.",
+            "matched_terms": [
+              "digital",
+              "integrated"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.12,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"A workbench to manage model development and deployment lifecycle.\". Also: \"Forecasting Workbench A workbench to manage model development and deployment lifecycle.\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Responsible AI Adoption Establishing transparent, unbiased, fair, and interpretable AI-powered decision-making process while also adapting to industry-specific regulations.\". Also: \"Responsible AI Adoption Establishing transparent, unbiased, fair, and interpretable AI-powered decision-making process while also adapting to industr…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Digital Workforce Monitoring AI and Bot Governance DevOps - CD2 Model Bot Command Center Previous Next Featured Platform TechM Orion TechM Orion is our next-generation agentic AI platform, built on N…\". Also: \"A next-gen agentic AI platform, TechM Orion enables intelligent, autonomous execution of complex business workflows, helping enterprises achieve effi…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"An end-to-end innovative, secure, and automated cloud platform, “netOps.ai,” powers telco networks to accelerate digital transformation and enable rapid deployment of 5G networks.\". Also: \"netOps.ai An end-to-end innovative, secure, and automated cloud platform, “netOps.ai,” powers telco networks to accelerate digital transformation and…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=2.0). Evidence flag: good_evidence. TRiSM signal: \"AI-Driven Customer Service & Decision Support for Top Telco Provider\". Also: \"Positioned as a “Leader” among the Top Data Science Service Providers PeMa Quadrant 2024 by AIM\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Tech Mahindra’s Email amplifAIer uses the power of generative AI to provide unified visualization and automation techniques\". Also: \"The Freight Watch solution uses AI, automated monitoring, and computer vision to streamline warehouse shipping and receiving, improving inspection ac…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly de…\". Also: \"AIOps solutions suite AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive proc…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Guardrails Framework for AI It is a comprehensive solution for safeguarding AI applications, specifically LLMs, in a ready-to-consume format with API integration.\". Also: \"LEARN MORE hidden-link Guardrails Framework for AI It is a comprehensive solution for safeguarding AI applications, specifically LLMs, in a ready-to-…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Synthetic Data Generation AI-driven Content Moderation\". Also: \"Scale AI faster, responsibly, with an end-to-end comprehensive framework for assessing, auditing, and certifying AI solutions across various domains …\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Tech Mahindra Unveils ‘AI Delivered Right’: A Comprehensive Strategy to Help Enterprises Scale AI with Purpose and Precision\". Also: \"Press Release Tech Mahindra Unveils ‘AI Delivered Right’: A Comprehensive Strategy to Help Enterprises Scale AI with Purpose and Precision\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Synthetic data generation offers a compelling solution by generating artificial data that mimics the characteristics of real data but without compromising privacy or security.\". Also: \"Synthetic Data Generation Synthetic data generation offers a compelling solution by generating artificial data that mimics the characteristics of rea…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive process monitoring, problem analytics, alert noise management, DB anomaly de…\". Also: \"AIOps solutions suite AIOps solution suite discovers, maps, and monitors the entire IT landscape across teams and tools, which include cognitive proc…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:31:50.594670+00:00",
+      "urls_used": [
+        "https://www.techmahindra.com/en-in/artificial-intelligence/",
+        "https://www.techmahindra.com/en-in/cybersecurity/",
+        "https://www.techmahindra.com/en-in/data-privacy/",
+        "https://www.techmahindra.com/en-in/responsible-ai/",
+        "https://www.techmahindra.com/en-in/generative-ai/"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Tenable",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "The platform combines the broadest vulnerability coverage spanning IT, OT and IoT assets, cloud resources, containers, web apps and identity systems, builds on the speed and breadth of vulnerability coverage from Tenable Research and adds comprehensive analyt…",
+            "matched_terms": [
+              "risk",
+              "apps",
+              "entity",
+              "coverage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "By fusing Tenable’s sensor data with risk-scoring metrics and asset context (e.g., criticality, ownership), organizations can surface high-exposure scenarios that require immediate remediation.",
+            "matched_terms": [
+              "risk",
+              "scoring",
+              "ownership",
+              "metrics"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Exposure Prioritization: Tenable uses patented machine learning models for advanced prioritization, including vulnerability priority rating (VPR), OS prediction from network data, and predictive scoring for assets, helping teams focus on a small percentage of…",
+            "matched_terms": [
+              "scoring",
+              "models",
+              "including",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Centralized view of all assets, weaknesses and tags, including IT, OT, IoT, cloud, identities and web apps, with the ability to create specific asset tags from a variety of sources.",
+            "matched_terms": [
+              "entities",
+              "apps",
+              "including"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Inventory: Centralized view of all assets, weaknesses and tags, including IT, OT, IoT, cloud, identities and web apps, with the ability to create specific asset tags from a variety of sources.",
+            "matched_terms": [
+              "entities",
+              "apps",
+              "including"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Use native attack surface discovery for cloud, identities, IT, IoT, OT, AI, applications, containers and Kubernetes that Tenable product sensor fuel. Seamlessly connect asset and exposure data from your existing tools to enrich Tenable intelligence and get co…",
+            "matched_terms": [
+              "context",
+              "data",
+              "over",
+              "entities"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Centralized view of all assets, weaknesses and tags, including IT, OT, IoT, cloud, identities and web apps, with the ability to create specific asset tags from a variety of sources.",
+            "matched_terms": [
+              "sets",
+              "specific",
+              "entities"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Unite business leaders and security teams to do battle as one, mobilizing all organizational resources to find and fix risks with the highest likelihood of attack and business impact. Unify tools and data for unmatched security context",
+            "matched_terms": [
+              "context",
+              "data",
+              "impact"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Accelerate search, insight and action with generative AI that uncovers hidden risks and amplifies security expertise across your environment. Gain a unified view of all your assets and risk across your attack surface: unseen assets, IT, OT, IoT, cloud, identi…",
+            "matched_terms": [
+              "over",
+              "sets",
+              "entities"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Gain a unified view of all your assets and risk across your attack surface: unseen assets, IT, OT, IoT, cloud, identities and applications. Understand attacker accessibility through visualizations of cross-domain relationships, so you can block your most crit…",
+            "matched_terms": [
+              "sets",
+              "entities",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Orchestration and remediation Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts. Explore",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Focus your efforts on what matters most: the critical exposures attackers are most likely to exploit. Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts. Streamline measurement and communication of cyber exposure with business-aligned views to optimize decision making and investments.",
+            "matched_terms": [
+              "automated",
+              "workflows",
+              "workflow"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "With pre-built and customizable dashboards, security teams can analyze risk, drill into key metrics, track progress over time, and clearly communicate insights to stakeholders-driving better decisions and stronger security outcomes.",
+            "matched_terms": [
+              "risk",
+              "metrics",
+              "dashboards"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Tenable One Exposure Management Platform enables you to gain visibility across your attack surface, focus efforts to prevent likely attacks, and accurately communicate cyber risk to support optimal business performance.",
+            "matched_terms": [
+              "attacks",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Use business-aligned insights of your exposure landscape to drive proactive risk mitigation and ensure strategic alignment with organizational goals.",
+            "matched_terms": [
+              "risk",
+              "alignment"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Tenable One is an Exposure Management Platform to help organizations gain visibility across the modern attack surface, focus efforts to prevent likely attacks and accurately communicate cyber risk to support optimal business performance.",
+            "matched_terms": [
+              "attacks",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Platform Tenable One Exposure Management Platform enables you to gain visibility across your attack surface, focus efforts to prevent likely attacks, and accurately communicate cyber risk to support optimal business performance.",
+            "matched_terms": [
+              "attacks",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Bring visibility and context from multiple security tools into a single place to achieve a unified Exposure Data Fabric that leverages the world’s largest repository of asset, exposure and risk data. Learn more about Tenable One Connectors",
+            "matched_terms": [
+              "single",
+              "multiple",
+              "security",
+              "risk",
+              "connectors"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "policy",
+              "risk",
+              "violation",
+              "policy engine"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "policy",
+              "risk",
+              "violation",
+              "policy engine"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation. Learn more about cyber hygiene",
+            "matched_terms": [
+              "policy",
+              "risk",
+              "violation",
+              "policy engine"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Learn more about exposure prioritization Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "policy",
+              "risk",
+              "violation",
+              "policy engine"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.",
+            "matched_terms": [
+              "auto",
+              "remediation",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Orchestration and remediation Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.",
+            "matched_terms": [
+              "auto",
+              "remediation",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts. Explore",
+            "matched_terms": [
+              "auto",
+              "remediation",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Focus your efforts on what matters most: the critical exposures attackers are most likely to exploit. Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.",
+            "matched_terms": [
+              "auto",
+              "remediation",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts. Streamline measurement and communication of cyber exposure with business-aligned views to optimize decision making and investments.",
+            "matched_terms": [
+              "auto",
+              "remediation",
+              "response"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "violations",
+              "policy",
+              "risk",
+              "policy engine"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "violations",
+              "policy",
+              "risk",
+              "policy engine"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation. Learn more about cyber hygiene",
+            "matched_terms": [
+              "violations",
+              "policy",
+              "risk",
+              "policy engine"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Learn more about exposure prioritization Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "violations",
+              "policy",
+              "risk",
+              "policy engine"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Enable business with technology Up to 10X improvement in visibility of assets and risk across the attack surface Prioritize and communicate risk Over 80% reduction in tickets via contextual prioritization of true exposure Consolidate and optimize efficiency U…",
+            "matched_terms": [
+              "licensing",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "dynamic",
+              "policy engine"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "dynamic",
+              "policy engine"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation. Learn more about cyber hygiene",
+            "matched_terms": [
+              "dynamic",
+              "policy engine"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Learn more about exposure prioritization Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "dynamic",
+              "policy engine"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Integration with Tenable Research blogs allow for creation of custom exposure cards that reflect cyber security developments.",
+            "matched_terms": [
+              "logs",
+              "integration"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Gain a unified view of all your assets and risk across your attack surface: asset blind spots, IT, OT, IoT, cloud, identities and applications.",
+            "matched_terms": [
+              "across",
+              "cloud",
+              "blind",
+              "spot"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Comprehensive asset inventory Gain a unified view of all your assets and risk across your attack surface: asset blind spots, IT, OT, IoT, cloud, identities and applications.",
+            "matched_terms": [
+              "across",
+              "cloud",
+              "blind",
+              "spot"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Gain a unified view of all your assets and risk across your attack surface: asset blind spots, IT, OT, IoT, cloud, identities and applications. Explore",
+            "matched_terms": [
+              "across",
+              "cloud",
+              "blind",
+              "spot"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Use native attack surface discovery for cloud, identities, IT, IoT, OT, AI, applications, containers and Kubernetes that Tenable product sensor fuel. Seamlessly connect asset and exposure data from your existing tools to enrich Tenable intelligence and get co…",
+            "matched_terms": [
+              "discover",
+              "data",
+              "cloud",
+              "discovery"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "By fusing Tenable’s sensor data with risk-scoring metrics and asset context (e.g., criticality, ownership), organizations can surface high-exposure scenarios that require immediate remediation.",
+            "matched_terms": [
+              "data",
+              "ownership",
+              "metrics",
+              "remediation"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Executive permissions",
+            "matched_terms": [
+              "permissions",
+              "permission"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "hygiene",
+              "policies"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "CVE Executive permissions",
+            "matched_terms": [
+              "permissions",
+              "permission"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Executive permissions Digital",
+            "matched_terms": [
+              "permissions",
+              "permission"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.",
+            "matched_terms": [
+              "hygiene",
+              "policies"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Data Security Posture Management (DSPM)",
+            "matched_terms": [
+              "management",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Cyber insurance Data Security Posture Management (DSPM)",
+            "matched_terms": [
+              "management",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Data Security Posture Management (DSPM) Google Cloud security",
+            "matched_terms": [
+              "management",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Tenable’s AI Security Posture Management (AI-SPM) helps organizations identify and fix risks in AI workloads across cloud environments, ensuring secure configuration, governance, and visibility of AI resources.",
+            "matched_terms": [
+              "across",
+              "workloads",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Securing AI Workloads in the Cloud: Tenable’s AI Security Posture Management (AI-SPM) helps organizations identify and fix risks in AI workloads across cloud environments, ensuring secure configuration, governance, and visibility of AI resources.",
+            "matched_terms": [
+              "across",
+              "workloads",
+              "risk",
+              "management"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.tenable.com/products/tenable-one"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Data Security Posture Management (DSPM)",
+            "matched_terms": [
+              "security",
+              "data",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Cyber insurance Data Security Posture Management (DSPM)",
+            "matched_terms": [
+              "security",
+              "data",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Data Security Posture Management (DSPM) Google Cloud security",
+            "matched_terms": [
+              "security",
+              "data",
+              "dspm",
+              "data security posture"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Gain a unified view of all your assets and risk across your attack surface: unseen assets, IT, OT, IoT, cloud, identities and applications. Understand attacker accessibility through visualizations of cross-domain relationships, so you can block your most crit…",
+            "matched_terms": [
+              "across",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.tenable.com/products/tenable-one",
+            "excerpt": "Executive permissions Digital",
+            "matched_terms": [
+              "digital",
+              "permission"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"The platform combines the broadest vulnerability coverage spanning IT, OT and IoT assets, cloud resources, containers, web apps and identity systems, builds on the speed and breadth of vulnerability …\". Also: \"By fusing Tenable’s sensor data with risk-scoring metrics and asset context (e.g., criticality, ownership), organizations can surface high-exposure s…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Use native attack surface discovery for cloud, identities, IT, IoT, OT, AI, applications, containers and Kubernetes that Tenable product sensor fuel. Seamlessly connect asset and exposure data from y…\". Also: \"Centralized view of all assets, weaknesses and tags, including IT, OT, IoT, cloud, identities and web apps, with the ability to create specific asset…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.\". Also: \"Orchestration and remediation Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"With pre-built and customizable dashboards, security teams can analyze risk, drill into key metrics, track progress over time, and clearly communicate insights to stakeholders-driving better decision…\". Also: \"Tenable One Exposure Management Platform enables you to gain visibility across your attack surface, focus efforts to prevent likely attacks, and accu…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Bring visibility and context from multiple security tools into a single place to achieve a unified Exposure Data Fabric that leverages the world’s largest repository of asset, exposure and risk data.…\". Also: \"Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.\". Also: \"Orchestration and remediation Accelerate response with automated workflows and prescriptive guidance that streamline remediation efforts.\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.\". Also: \"Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, …\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.\". Also: \"Streamline risk management Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, …\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Gain a unified view of all your assets and risk across your attack surface: asset blind spots, IT, OT, IoT, cloud, identities and applications.\". Also: \"Comprehensive asset inventory Gain a unified view of all your assets and risk across your attack surface: asset blind spots, IT, OT, IoT, cloud, iden…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Executive permissions\". Also: \"Leverage a dynamic policy engine to track risks, enforce tailored hygiene policies, and prioritize violations for faster, smarter remediation.\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data Security Posture Management (DSPM)\". Also: \"Cyber insurance Data Security Posture Management (DSPM)\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data Security Posture Management (DSPM)\". Also: \"Cyber insurance Data Security Posture Management (DSPM)\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:32:11.921491+00:00",
+      "urls_used": [
+        "https://www.tenable.com/products/tenable-ai-aware",
+        "https://www.tenable.com/products/tenable-one",
+        "https://www.tenable.com/data-security",
+        "https://www.tenable.com/solutions/ai-security",
+        "https://www.tenable.com/products/exposure-ai"
+      ],
+      "pages_ok": 1,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Thales Group",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Focuses on AI security for critical infrastructure and government clients.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform",
+          "https://cpl.thalesgroup.com/access-management"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven threats and zero-trust models.",
+            "matched_terms": [
+              "discovery",
+              "models",
+              "including",
+              "model",
+              "runtime"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "2025 KuppingerCole Leadership Compass: API Security & Management Report Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven thre…",
+            "matched_terms": [
+              "discovery",
+              "models",
+              "including",
+              "model",
+              "runtime"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven threats and zero-trust models. Learn More",
+            "matched_terms": [
+              "discovery",
+              "models",
+              "including",
+              "model",
+              "runtime"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/access-management",
+            "excerpt": "Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven threats and zero-trust models.",
+            "matched_terms": [
+              "discovery",
+              "models",
+              "including",
+              "model",
+              "runtime"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/access-management",
+            "excerpt": "2025 KuppingerCole Leadership Compass: API Security & Management Report Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven thre…",
+            "matched_terms": [
+              "discovery",
+              "models",
+              "including",
+              "model",
+              "runtime"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Deliver real-time visibility into file usage, encryption status, and sensitive data access, enabling proactive threat detection and data protection across your organization.",
+            "matched_terms": [
+              "data",
+              "time",
+              "access",
+              "usage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": ": Deliver real-time visibility into file usage, encryption status, and sensitive data access, enabling proactive threat detection and data protection across your organization.",
+            "matched_terms": [
+              "data",
+              "time",
+              "access",
+              "usage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Deliver real-time visibility into file usage, encryption status, and sensitive data access, enabling proactive threat detection and data protection across your organization. Recommended product",
+            "matched_terms": [
+              "data",
+              "time",
+              "access",
+              "usage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "File Activity Monitoring : Deliver real-time visibility into file usage, encryption status, and sensitive data access, enabling proactive threat detection and data protection across your organization.",
+            "matched_terms": [
+              "data",
+              "time",
+              "access",
+              "usage"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Mitigate the risk of unauthorized access and data breaches.",
+            "matched_terms": [
+              "data",
+              "each",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "The platform supports transparent encryption, which means that data can be encrypted without requiring changes to applications or workflows.",
+            "matched_terms": [
+              "workflows",
+              "changes",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "NAIC Insurance Data Security Model Law Compliance New York State Cybersecurity Requirements for Financial Services Companies Compliance",
+            "matched_terms": [
+              "model",
+              "state",
+              "compliance"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Transparent encryption: The platform supports transparent encryption, which means that data can be encrypted without requiring changes to applications or workflows.",
+            "matched_terms": [
+              "workflows",
+              "changes",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "The platform supports transparent encryption, which means that data can be encrypted without requiring changes to applications or workflows. Key management:",
+            "matched_terms": [
+              "workflows",
+              "changes",
+              "workflow"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Transparent encryption: The platform supports transparent encryption, which means that data can be encrypted without requiring changes to applications or workflows.",
+            "matched_terms": [
+              "workflows",
+              "changes",
+              "workflow"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": ". The CipherTrust Platform unifies data discovery, classification, data protection, and centralized management for keys and secrets into a single platform. This results in fewer resources dedicated to security operations, ubiquitous compliance controls, and s…",
+            "matched_terms": [
+              "compliance",
+              "results",
+              "risk",
+              "trust"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven threats and zero-trust models.",
+            "matched_terms": [
+              "trust",
+              "runtime",
+              "trend"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time.",
+            "matched_terms": [
+              "compliance",
+              "posture",
+              "continuous"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "2025 KuppingerCole Leadership Compass: API Security & Management Report Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven thre…",
+            "matched_terms": [
+              "trust",
+              "runtime",
+              "trend"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven threats and zero-trust models. Learn More",
+            "matched_terms": [
+              "trust",
+              "runtime",
+              "trend"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": ". The CipherTrust Platform unifies data discovery, classification, data protection, and centralized management for keys and secrets into a single platform. This results in fewer resources dedicated to security operations, ubiquitous compliance controls, and s…",
+            "matched_terms": [
+              "single",
+              "security",
+              "risk",
+              "class",
+              "reduced",
+              "controls"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "This results in fewer resources dedicated to security operations, ubiquitous compliance controls, and significantly reduced risk across your business.",
+            "matched_terms": [
+              "security",
+              "risk",
+              "reduced",
+              "controls"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Risk Management in Technology (RMiT) Policy",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Download the 2025 guide for Data Security Platforms, and learn how combining data security controls and fine-grained authorization leads to more efficient data security.",
+            "matched_terms": [
+              "security",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time.",
+            "matched_terms": [
+              "policy",
+              "security"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "By protecting sensitive data, CipherTrust can help organizations reduce the risk of data breaches and other security incidents. File Activity Monitoring",
+            "matched_terms": [
+              "monitoring",
+              "incident"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "File Activity Monitoring : Deliver real-time visibility into file usage, encryption status, and sensitive data access, enabling proactive threat detection and data protection across your organization.",
+            "matched_terms": [
+              "detection",
+              "monitoring"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Risk Analytics & Monitoring",
+            "matched_terms": [
+              "monitoring"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Blockchain",
+            "matched_terms": [
+              "block"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Luna HSMs - Hybrid, On-Premises and Cloud HSM",
+            "matched_terms": [
+              "hybrid"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Risk Management in Technology (RMiT) Policy",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time.",
+            "matched_terms": [
+              "policy",
+              "enforcement"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Helps organizations meet regulatory requirements like GDPR, HIPAA, and PCI DSS by providing tools for data discovery, classification, and protection.",
+            "matched_terms": [
+              "regulatory",
+              "class"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Philippines NPC Circular 2023-06 Risk Management in Technology (RMiT) Policy",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Risk Management in Technology (RMiT) Policy Singapore MAS Advisory On Quantum",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time.",
+            "matched_terms": [
+              "enforcement",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "CipherTrust supports dynamic data masking, which allows sensitive data to be masked or redacted in real time, preventing unauthorized access even when data is in use.",
+            "matched_terms": [
+              "dynamic",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Enforces granular access controls to restrict access to sensitive data based on user roles, permissions, and location.",
+            "matched_terms": [
+              "data",
+              "access",
+              "permissions"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Define data protection policies, including classification criteria, access controls, encryption settings, and DLP rules.",
+            "matched_terms": [
+              "classification",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "CipherTrust offers features for data discovery, classification, and access controls that can help organizations comply with GDPR requirements for data protection and privacy.",
+            "matched_terms": [
+              "classification",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Visualize your sensitive data with efficient data discovery, classification, and risk analysis across data stores.",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "across",
+              "discovery",
+              "stores"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Data Discovery and Classification Visualize your sensitive data with efficient data discovery, classification, and risk analysis across data stores.",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "across",
+              "discovery",
+              "stores"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Visualize your sensitive data with efficient data discovery, classification, and risk analysis across data stores. Learn more",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "across",
+              "discovery",
+              "stores"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Thales CipherTrust Data Discovery & Classification Streamline data protection across environments, addressing compliance by scanning and classifying sensitive data with 250 pre-built info types.",
+            "matched_terms": [
+              "discover",
+              "classify",
+              "sensitive",
+              "data",
+              "across",
+              "discovery"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Learn more Data Discovery and Classification Visualize your sensitive data with efficient data discovery, classification, and risk analysis across data stores.",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "across",
+              "discovery",
+              "stores"
+            ],
+            "relevance_score": 30
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 8,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Define data protection policies, including classification criteria, access controls, encryption settings, and DLP rules.",
+            "matched_terms": [
+              "policies",
+              "dlp"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Configure Policies: Define data protection policies, including classification criteria, access controls, encryption settings, and DLP rules.",
+            "matched_terms": [
+              "policies",
+              "dlp"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Define data protection policies, including classification criteria, access controls, encryption settings, and DLP rules. Monitor Activity:",
+            "matched_terms": [
+              "policies",
+              "dlp"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "The management console provides a user-friendly interface for administrators to: Configure Policies: Define data protection policies, including classification criteria, access controls, encryption settings, and DLP rules.",
+            "matched_terms": [
+              "policies",
+              "dlp"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Enforces granular access controls to restrict access to sensitive data based on user roles, permissions, and location.",
+            "matched_terms": [
+              "permissions",
+              "permission"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 8,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": ". The CipherTrust Platform unifies data discovery, classification, data protection, and centralized management for keys and secrets into a single platform. This results in fewer resources dedicated to security operations, ubiquitous compliance controls, and s…",
+            "matched_terms": [
+              "across",
+              "controls",
+              "risk",
+              "management",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "CipherTrust Data Security Posture Management Assess your data risk, fortify your data environment, and improve data governance.",
+            "matched_terms": [
+              "risk",
+              "management",
+              "data governance",
+              "data security posture"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Learn More Explore the CipherTrust portfolio CipherTrust Data Security Posture Management Assess your data risk, fortify your data environment, and improve data governance.",
+            "matched_terms": [
+              "risk",
+              "management",
+              "data governance",
+              "data security posture"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Visualize your sensitive data with efficient data discovery, classification, and risk analysis across data stores.",
+            "matched_terms": [
+              "across",
+              "sensitive",
+              "risk",
+              "data discovery"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Thales’ CipherTrust Data Security Platform aims to reduce the complexity and risk of managing sensitive data with a broad range of capabilities unifying data discovery, classification, data protection, and centralized management for keys and secrets into a si…",
+            "matched_terms": [
+              "sensitive",
+              "risk",
+              "management",
+              "data discovery"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 8,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://cpl.thalesgroup.com/encryption/data-security-platform"
+        ],
+        "excerpts": [
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Monitor Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time. Request a Demo",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Tokenization replaces sensitive data with non-sensitive tokens, making it difficult for unauthorized individuals to access or misuse the data. Dynamic data masking:",
+            "matched_terms": [
+              "data",
+              "access",
+              "data masking",
+              "tokenization"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://cpl.thalesgroup.com/encryption/data-security-platform",
+            "excerpt": "Some of the key compliance regulations that CipherTrust can help address include: General Data Protection Regulation (GDPR): CipherTrust offers features for data discovery, classification, and access controls that can help organizations comply with GDPR requi…",
+            "matched_terms": [
+              "compliance",
+              "data",
+              "access",
+              "data discovery"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 8,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, emphasizing trends like AI-driven threats and zero…\". Also: \"2025 KuppingerCole Leadership Compass: API Security & Management Report Discover insights into vital security solutions, including API discovery and …\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Deliver real-time visibility into file usage, encryption status, and sensitive data access, enabling proactive threat detection and data protection across your organization.\". Also: \": Deliver real-time visibility into file usage, encryption status, and sensitive data access, enabling proactive threat detection and data protection…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"The platform supports transparent encryption, which means that data can be encrypted without requiring changes to applications or workflows.\". Also: \"NAIC Insurance Data Security Model Law Compliance New York State Cybersecurity Requirements for Financial Services Companies Compliance\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \". The CipherTrust Platform unifies data discovery, classification, data protection, and centralized management for keys and secrets into a single platform. This results in fewer resources dedicated t…\". Also: \"Discover insights into vital security solutions, including API discovery and runtime protection, and a guide to the changing API security landscape, …\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \". The CipherTrust Platform unifies data discovery, classification, data protection, and centralized management for keys and secrets into a single platform. This results in fewer resources dedicated t…\". Also: \"This results in fewer resources dedicated to security operations, ubiquitous compliance controls, and significantly reduced risk across your business.\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"By protecting sensitive data, CipherTrust can help organizations reduce the risk of data breaches and other security incidents. File Activity Monitoring\". Also: \"File Activity Monitoring : Deliver real-time visibility into file usage, encryption status, and sensitive data access, enabling proactive threat dete…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Risk Management in Technology (RMiT) Policy\". Also: \"Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security postur…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time.\". Also: \"CipherTrust supports dynamic data masking, which allows sensitive data to be masked or redacted in real time, preventing unauthorized access even whe…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Visualize your sensitive data with efficient data discovery, classification, and risk analysis across data stores.\". Also: \"Data Discovery and Classification Visualize your sensitive data with efficient data discovery, classification, and risk analysis across data stores.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Define data protection policies, including classification criteria, access controls, encryption settings, and DLP rules.\". Also: \"Configure Policies: Define data protection policies, including classification criteria, access controls, encryption settings, and DLP rules.\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \". The CipherTrust Platform unifies data discovery, classification, data protection, and centralized management for keys and secrets into a single platform. This results in fewer resources dedicated t…\". Also: \"CipherTrust Data Security Posture Management Assess your data risk, fortify your data environment, and improve data governance.\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen security posture in real-time.\". Also: \"Monitor Continuously track data access patterns, user activity, and policy enforcement to detect anomalies, ensure compliance, and strengthen securit…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:32:27.204224+00:00",
+      "urls_used": [
+        "https://www.thalesgroup.com/en/markets/digital-identity-and-security/data-protection",
+        "https://cpl.thalesgroup.com/encryption/data-security-platform",
+        "https://cpl.thalesgroup.com/access-management",
+        "https://cpl.thalesgroup.com/data-discovery-classification",
+        "https://www.thalesgroup.com/en/worldwide/digital-identity-and-security/ai"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "TrustArc",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": true,
+    "is_ai_first": false,
+    "vendor_type": "Data Governance",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 3.88,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 2.25,
+      "RUN-03": 4.75,
+      "RUN-04": 4.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "An AI governance platform centralizes the tracking of AI models, risks, and compliance requirements across the entire AI lifecycle.",
+            "matched_terms": [
+              "risk",
+              "models",
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Track your compliance and enhance your risk management with real-time risk scoring, visibility, and reporting all within one AI governance platform. Demonstrate responsible AI use",
+            "matched_terms": [
+              "risk",
+              "scoring",
+              "ai governance",
+              "responsible ai"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.",
+            "matched_terms": [
+              "risk",
+              "scoring",
+              "automated",
+              "mapping"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Accelerate your governance program Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.",
+            "matched_terms": [
+              "risk",
+              "scoring",
+              "automated",
+              "mapping"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities. Be proactive about compliance",
+            "matched_terms": [
+              "risk",
+              "scoring",
+              "automated",
+              "mapping"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 6,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/",
+          "https://trustarc.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "TrustArc’s AI governance solution simplifies compliance with AI regulations by providing prebuilt templates, automated assessments, and real-time visibility across all AI activities.",
+            "matched_terms": [
+              "over",
+              "time",
+              "automated",
+              "ai governance",
+              "ai regulation"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Through defined governance frameworks and structured oversight, AI governance enforces standards for data quality, accuracy, and transparency.",
+            "matched_terms": [
+              "fine",
+              "data",
+              "over",
+              "quality",
+              "ai governance"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Automate data flow mapping and risk analysis for effortless compliance. Save time, lower privacy risks, and maintain continuous compliance. Perfect for businesses handling sensitive data.",
+            "matched_terms": [
+              "data",
+              "maintain",
+              "time",
+              "mapping",
+              "analysis"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Data Mapping & Risk Manager Automate data flow mapping and risk analysis for effortless compliance. Save time, lower privacy risks, and maintain continuous compliance. Perfect for businesses handling sensitive data.",
+            "matched_terms": [
+              "data",
+              "maintain",
+              "time",
+              "mapping",
+              "analysis"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Automate data flow mapping and risk analysis for effortless compliance. Save time, lower privacy risks, and maintain continuous compliance. Perfect for businesses handling sensitive data. Assessment Manager",
+            "matched_terms": [
+              "data",
+              "maintain",
+              "time",
+              "mapping",
+              "analysis"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 6,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/",
+          "https://trustarc.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness and transparency, ensuring your compliance with AI regulations including the EU AI Act.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai",
+              "ai regulation",
+              "eu ai act"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Responsible AI Certification Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness and transparency, ensuring your compliance with AI regulations including the EU AI Act.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai",
+              "ai regulation",
+              "eu ai act"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness and transparency, ensuring your compliance with AI regulations including the EU AI Act. Integrations",
+            "matched_terms": [
+              "compliance",
+              "responsible ai",
+              "ai regulation",
+              "eu ai act"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "TrustArc’s AI governance solution simplifies compliance with AI regulations by providing prebuilt templates, automated assessments, and real-time visibility across all AI activities.",
+            "matched_terms": [
+              "automated",
+              "compliance",
+              "ai governance",
+              "ai regulation"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "complete risk management (for AI, third party, privacy), enterprise AI governance, and overall privacy and security compliance governance",
+            "matched_terms": [
+              "third",
+              "party",
+              "compliance",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 6,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/",
+          "https://trustarc.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness and transparency, ensuring your compliance with AI regulations including the EU AI Act. Integrations",
+            "matched_terms": [
+              "compliance",
+              "integration",
+              "responsible ai",
+              "ai regulation",
+              "eu ai act"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Track your compliance and enhance your risk management with real-time risk scoring, visibility, and reporting all within one AI governance platform. Demonstrate responsible AI use",
+            "matched_terms": [
+              "compliance",
+              "reporting",
+              "risk",
+              "ai governance",
+              "responsible ai"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "TrustArc’s AI governance solution simplifies compliance with AI regulations by providing prebuilt templates, automated assessments, and real-time visibility across all AI activities.",
+            "matched_terms": [
+              "compliance",
+              "automated",
+              "trust",
+              "ai governance",
+              "ai regulation"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness and transparency, ensuring your compliance with AI regulations including the EU AI Act.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai",
+              "ai regulation",
+              "eu ai act"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Responsible AI Certification Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness and transparency, ensuring your compliance with AI regulations including the EU AI Act.",
+            "matched_terms": [
+              "compliance",
+              "responsible ai",
+              "ai regulation",
+              "eu ai act"
+            ],
+            "relevance_score": 22
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 6,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "By establishing clear governance processes and compliance controls, AI governance solutions help organizations adopt AI faster and more safely. This reduces compliance risks and encourages business leaders to scale AI initiatives with confidence.",
+            "matched_terms": [
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "What role does AI governance play in accelerating AI adoption? By establishing clear governance processes and compliance controls, AI governance solutions help organizations adopt AI faster and more safely. This reduces compliance risks and encourages busines…",
+            "matched_terms": [
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Organizations that invest in a mature AI governance platform gain improved risk management, reduced compliance costs, and greater trust from stakeholders. It helps align AI development with business objectives, ensuring ethical, transparent, and compliant AI …",
+            "matched_terms": [
+              "risk",
+              "reduced"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "An effective AI governance framework includes risk management, data quality controls, accountability structures, compliance monitoring, and clear ethical standards.",
+            "matched_terms": [
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Organizations that invest in a mature AI governance platform gain improved risk management, reduced compliance costs, and greater trust from stakeholders.",
+            "matched_terms": [
+              "risk",
+              "reduced"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.",
+            "matched_terms": [
+              "activities",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Accelerate your governance program Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.",
+            "matched_terms": [
+              "activities",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities. Be proactive about compliance",
+            "matched_terms": [
+              "activities",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Accelerate your governance program Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.",
+            "matched_terms": [
+              "activities",
+              "auto"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "TrustArc’s AI governance solution simplifies compliance with AI regulations by providing prebuilt templates, automated assessments, and real-time visibility across all AI activities.",
+            "matched_terms": [
+              "activities",
+              "auto"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "AI governance is no longer optional. It’s a regulatory and ethical imperative. As new AI laws and data protection regulations emerge across jurisdictions, managing AI use responsibly has become a key part of enterprise risk and compliance strategy.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "TrustArc’s AI governance solution helps organizations operationalize AI governance with a centralized, scalable solution that unites privacy, risk, and regulatory workflows, so you can move fast, stay compliant, and build trust.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.",
+            "matched_terms": [
+              "templates",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "comprehensive AI risk management, AI governance, and regulatory compliance",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "AI Governance Solutions to Manage Risk & Compliance | TrustArc Skip to Main Content",
+            "matched_terms": [
+              "content",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/",
+          "https://trustarc.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Stay ahead of privacy trends and regulations with our AI research database. Make informed decisions, access the largest template library, and navigate evolving laws, with expert guidance.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Nymity Research Stay ahead of privacy trends and regulations with our AI research database. Make informed decisions, access the largest template library, and navigate evolving laws, with expert guidance.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Stay ahead of privacy trends and regulations with our AI research database. Make informed decisions, access the largest template library, and navigate evolving laws, with expert guidance. Assurance Services",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Skip to Main Content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Get instant access to the latest in privacy regulations, legal summaries, and operational templates.",
+            "matched_terms": [
+              "access"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/",
+          "https://trustarc.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Unlock data privacy excellence with TrustArc. Get certified, streamline compliance processes, and protect your brand across all major jurisdictions under GDPR and CCPA. Save time and ensure compliance with the most recognized seal of privacy, the TRUSTe seal.",
+            "matched_terms": [
+              "data",
+              "across",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Assurance Services Unlock data privacy excellence with TrustArc. Get certified, streamline compliance processes, and protect your brand across all major jurisdictions under GDPR and CCPA. Save time and ensure compliance with the most recognized seal of privac…",
+            "matched_terms": [
+              "data",
+              "across",
+              "data privacy"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Automate consent and data subject rights compliance. Design seamless privacy experiences to enhance customer trust across your digital landscape.",
+            "matched_terms": [
+              "data",
+              "across"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "AI governance is no longer optional. It’s a regulatory and ethical imperative. As new AI laws and data protection regulations emerge across jurisdictions, managing AI use responsibly has become a key part of enterprise risk and compliance strategy.",
+            "matched_terms": [
+              "data",
+              "across"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.",
+            "matched_terms": [
+              "data",
+              "automated"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/",
+          "https://trustarc.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps.",
+            "matched_terms": [
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Governance Suite Overview Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps.",
+            "matched_terms": [
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps. PrivacyCentral",
+            "matched_terms": [
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Simplify data privacy management and ensure data governance with cutting-edge apps.",
+            "matched_terms": [
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps.",
+            "matched_terms": [
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 6
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://trustarc.com/solutions/ai-governance/",
+          "https://trustarc.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Governance Suite Overview Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps. PrivacyCentral",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://trustarc.com/solutions/ai-governance/",
+            "excerpt": "Simplify data privacy management and ensure data governance with cutting-edge apps.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data governance",
+              "data privacy"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://trustarc.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Centralize privacy, security, legal, and compliance workflows in a customizable no-code hub. Allow customers to access real-time information, exercise privacy rights, and make quicker decisions.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "workflows",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Ensure compliant cross-border data transfers with Global CBPR and PRP Certifications. Showcase your commitment to privacy compliance, facilitate trusted data exchanges, reduce legal risks, and confidently expand your global business footprint.",
+            "matched_terms": [
+              "compliance",
+              "data",
+              "changes",
+              "change"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Trust Center Centralize privacy, security, legal, and compliance workflows in a customizable no-code hub. Allow customers to access real-time information, exercise privacy rights, and make quicker decisions.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "workflows",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "Centralize privacy, security, legal, and compliance workflows in a customizable no-code hub. Allow customers to access real-time information, exercise privacy rights, and make quicker decisions. Governance Suite",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "workflows",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://trustarc.com/products/",
+            "excerpt": "TRUSTe Global CBPR and PRP Certifications Ensure compliant cross-border data transfers with Global CBPR and PRP Certifications. Showcase your commitment to privacy compliance, facilitate trusted data exchanges, reduce legal risks, and confidently expand your …",
+            "matched_terms": [
+              "compliance",
+              "data",
+              "changes",
+              "change"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.25,
+      "RUN-02": 2.25,
+      "RUN-03": 4.75,
+      "RUN-04": 4.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 3.88,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"An AI governance platform centralizes the tracking of AI models, risks, and compliance requirements across the entire AI lifecycle.\". Also: \"Track your compliance and enhance your risk management with real-time risk scoring, visibility, and reporting all within one AI governance platform. …\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"TrustArc’s AI governance solution simplifies compliance with AI regulations by providing prebuilt templates, automated assessments, and real-time visibility across all AI activities.\". Also: \"Through defined governance frameworks and structured oversight, AI governance enforces standards for data quality, accuracy, and transparency.\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness and transparency, ensuring your compliance with AI regulations including the EU…\". Also: \"Responsible AI Certification Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness …\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Earn our Responsible AI Certification to prove your brand champions responsible AI. Stand out by committing to fairness and transparency, ensuring your compliance with AI regulations including the EU…\". Also: \"Track your compliance and enhance your risk management with real-time risk scoring, visibility, and reporting all within one AI governance platform. …\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"By establishing clear governance processes and compliance controls, AI governance solutions help organizations adopt AI faster and more safely. This reduces compliance risks and encourages business l…\". Also: \"What role does AI governance play in accelerating AI adoption? By establishing clear governance processes and compliance controls, AI governance solu…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.\". Also: \"Accelerate your governance program Automated risk scoring, prebuilt templates, and faster data mapping streamline your risk management activities.\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"AI governance is no longer optional. It’s a regulatory and ethical imperative. As new AI laws and data protection regulations emerge across jurisdictions, managing AI use responsibly has become a key…\". Also: \"TrustArc’s AI governance solution helps organizations operationalize AI governance with a centralized, scalable solution that unites privacy, risk, a…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Stay ahead of privacy trends and regulations with our AI research database. Make informed decisions, access the largest template library, and navigate evolving laws, with expert guidance.\". Also: \"Nymity Research Stay ahead of privacy trends and regulations with our AI research database. Make informed decisions, access the largest template libr…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Unlock data privacy excellence with TrustArc. Get certified, streamline compliance processes, and protect your brand across all major jurisdictions under GDPR and CCPA. Save time and ensure complianc…\". Also: \"Assurance Services Unlock data privacy excellence with TrustArc. Get certified, streamline compliance processes, and protect your brand across all ma…\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps.\". Also: \"Governance Suite Overview Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-edge apps.\". Also: \"Governance Suite Overview Stay ahead of privacy and compliance regulations. Simplify data privacy management and ensure data governance with cutting-…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Centralize privacy, security, legal, and compliance workflows in a customizable no-code hub. Allow customers to access real-time information, exercise privacy rights, and make quicker decisions.\". Also: \"Ensure compliant cross-border data transfers with Global CBPR and PRP Certifications. Showcase your commitment to privacy compliance, facilitate trus…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:32:39.782045+00:00",
+      "urls_used": [
+        "https://trustarc.com/solutions/ai-governance/",
+        "https://trustarc.com/products/",
+        "https://trustarc.com/solutions/privacy-compliance/",
+        "https://trustarc.com/resources/",
+        "https://trustarc.com/blog/"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

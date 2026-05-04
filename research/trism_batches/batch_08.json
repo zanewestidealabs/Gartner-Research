@@ -1,0 +1,3672 @@
+[
+  {
+    "vendor": "NTT DATA",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Consultancy",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.12,
+      "INF": 4.5
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.25,
+      "INF-02": 4.75,
+      "INF-03": 4.25,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/generative-ai",
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "NTT DATA expedites contract lifecycle management with NLP NTT DATA's AI Governance",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "(PDF: 19.1MB) BLOG Application modernization with Azure OpenAI BLOG NTT DATA powers up legal mining with LLM BLOG NTT DATA expedites contract lifecycle management with NLP NTT DATA's AI Governance While the use of AI brings various conveniences, it also prese…",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "lifecycle",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Our full lifecycle cybersecurity services portfolio helps you to proactively manage cyber risks, drive resilience and securely enable business innovation and growth.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Our Services Our full lifecycle cybersecurity services portfolio helps you to proactively manage cyber risks, drive resilience and securely enable business innovation and growth.",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Our full lifecycle cybersecurity services portfolio helps you to proactively manage cyber risks, drive resilience and securely enable business innovation and growth. Risk Management and Compliance",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/generative-ai"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "(PDF: 19.1MB) BLOG Application modernization with Azure OpenAI BLOG NTT DATA powers up legal mining with LLM BLOG NTT DATA expedites contract lifecycle management with NLP NTT DATA's AI Governance While the use of AI brings various conveniences, it also prese…",
+            "matched_terms": [
+              "data",
+              "over",
+              "quality",
+              "ai governance"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "LITRON is a group of GenAI solutions from NTT DATA designed to accelerate enterprise processes. LITRON Sales, for example, utilizes AI agents specifically for sales operations to maximize the value of customer data.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "specific"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "Transform operations for quality and productivity to position your organization for growth with our end-to-end practices, assets and responsible GenAI implementation. Overview",
+            "matched_terms": [
+              "over",
+              "sets",
+              "quality"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "LITRON LITRON is a group of GenAI solutions from NTT DATA designed to accelerate enterprise processes. LITRON Sales, for example, utilizes AI agents specifically for sales operations to maximize the value of customer data.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "specific"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "LITRON is a group of GenAI solutions from NTT DATA designed to accelerate enterprise processes. LITRON Sales, for example, utilizes AI agents specifically for sales operations to maximize the value of customer data. Syntphony Conversational AI",
+            "matched_terms": [
+              "agent",
+              "data",
+              "specific"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/generative-ai",
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "We can help you select the right models, architectures and partners, while developing the necessary talent and ensuring regulatory compliance and risk management.",
+            "matched_terms": [
+              "model",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Risk Management and Compliance",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions.",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "We can provide solutions to meet your cost and compliance requirements, worldwide.",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "BRUSA HyPower boosts cybersecurity and minimizes compliance risks",
+            "matched_terms": [
+              "compliance"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "BRUSA HyPower AG faced growing challenges due to the increasing threat of cyberattacks, which put their assets and compliance at risk. To strengthen their cybersecurity and minimize these risks, they chose a comprehensive cybersecurity solution from NTT DATA.",
+            "matched_terms": [
+              "compliance",
+              "attacks",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "BRUSA HyPower AG BRUSA HyPower boosts cybersecurity and minimizes compliance risks BRUSA HyPower AG faced growing challenges due to the increasing threat of cyberattacks, which put their assets and compliance at risk.",
+            "matched_terms": [
+              "compliance",
+              "attacks",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Risk Management and Compliance",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "BRUSA HyPower boosts cybersecurity and minimizes compliance risks",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Cookie Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Social Media Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Accessibility Cookie Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Cookie Policy Cookie Preferences",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Cookie Preferences Social Media Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "NTT DATA named a Leader and Star Performer by Everest Group in Managed Detection and Response Services PEAK Matrix 2025",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Strengthen your cyber resilience with extended detection and response (XDR) from NTT DATA",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Generative AI used in incident response",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "NTT DATA achieves the AWS Security Incident Response Specialization",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "NTT DATA's CSIRT (Computer Security Incident Response Team), NTTDATA-CERT, publishes a quarterly report on global security trends. offering insights to keep the industry informed of current and future cybersecurity developments.",
+            "matched_terms": [
+              "incident",
+              "response"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/generative-ai",
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Risk Management and Compliance Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions. Learn more",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Risk Management and Compliance Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions.",
+            "matched_terms": [
+              "regulatory",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "All hallucinations are not bad - acknowledging GenAI's constraints and",
+            "matched_terms": [
+              "hallucinations",
+              "hallucination"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/generative-ai",
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure access to sensitive data, applications and infrastructure.",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Toyota-Astra Motor protects critical information systems with cybersecurity services Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure access to sensitive data, applications and…",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure access to sensitive data, applications and infrastructure. Read the case study",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Read the case study Toyota-Astra Motor Toyota-Astra Motor protects critical information systems with cybersecurity services Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure acc…",
+            "matched_terms": [
+              "data",
+              "access"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "Syntphony Intelligent Document Processing is a multicloud GenAI solution to optimize document processing, enhance content creation and accelerate data insights for tailored and scalable industry-specific and cross-functional use cases.",
+            "matched_terms": [
+              "content",
+              "data"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/generative-ai",
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "NTT DATA partners with Palo Alto Networks to deliver AI-driven cloud-to-edge cybersecurity to enterprise clients",
+            "matched_terms": [
+              "data",
+              "cloud",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "NEWS NTT DATA partners with Palo Alto Networks to deliver AI-driven cloud-to-edge cybersecurity to enterprise clients",
+            "matched_terms": [
+              "data",
+              "cloud",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "NTT DATA partners with Palo Alto Networks to deliver AI-driven cloud-to-edge cybersecurity to enterprise clients NEWS",
+            "matched_terms": [
+              "data",
+              "cloud",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "Empower your business in a GenAI-driven reality with end-to-end support for creating and operating generative AI platforms, addressing both technical and operational aspects. Discover more",
+            "matched_terms": [
+              "discover",
+              "platforms",
+              "driven"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "Discover more GenAI Platforms Empower your business in a GenAI-driven reality with end-to-end support for creating and operating generative AI platforms, addressing both technical and operational aspects.",
+            "matched_terms": [
+              "discover",
+              "platforms",
+              "driven"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/generative-ai",
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "GARTNER is a registered trademark and service mark of Gartner, Inc. and/or its affiliates in the U.S. and internationally, and MAGIC QUADRANT is a registered trademark of Gartner, Inc. and/or its affiliates and are used herein with permission. All rights rese…",
+            "matched_terms": [
+              "permission",
+              "right"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Our impact",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Our full lifecycle cybersecurity services portfolio helps you to proactively manage cyber risks, drive resilience and securely enable business innovation and growth.",
+            "matched_terms": [
+              "lifecycle"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Security risks of generative AI and countermeasures, and its impact on cybersecurity",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Copyright © NTT DATA Group Corporation",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Risk Management and Compliance",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Our full lifecycle cybersecurity services portfolio helps you to proactively manage cyber risks, drive resilience and securely enable business innovation and growth. Risk Management and Compliance",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Risk Management and Compliance Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Overview Our services Our impact Case studies Industry recognition Close the modal dialog Turn cybersecurity into your strategic advantage Our cybersecurity solutions and services are your catalyst for improved stakeholder trust and business growth through pr…",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Risk Management and Compliance Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions.",
+            "matched_terms": [
+              "risk",
+              "management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.nttdata.com/global/en/services/generative-ai",
+          "https://www.nttdata.com/global/en/services/cybersecurity"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.nttdata.com/global/en/services/generative-ai",
+            "excerpt": "NTT DATA GenAI TechHub offers integrated, prequalified GenAI prototypes and solutions to minimize complexity, reduce risk and speed up adoption. It standardizes output, accelerates ROI and scales efficiently on Microsoft Azure, AWS and Google Cloud, ensuring …",
+            "matched_terms": [
+              "scale",
+              "data",
+              "integrated",
+              "adoption"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure access to sensitive data, applications and infrastructure.",
+            "matched_terms": [
+              "security",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Uninterrupted and secure access to a globally distributed OT environment In collaboration with Bayer AG, we enhanced cybersecurity for Bayer Pharmaceuticals Division's complex OT environment. Our experts boosted asset visibility and security, and expanded ass…",
+            "matched_terms": [
+              "across",
+              "security",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Toyota-Astra Motor protects critical information systems with cybersecurity services Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure access to sensitive data, applications and…",
+            "matched_terms": [
+              "security",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.nttdata.com/global/en/services/cybersecurity",
+            "excerpt": "Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure access to sensitive data, applications and infrastructure. Read the case study",
+            "matched_terms": [
+              "security",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 2.25,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.25,
+      "INF-02": 4.75,
+      "INF-03": 4.25,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.12,
+      "INF": 4.5
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"NTT DATA expedites contract lifecycle management with NLP NTT DATA's AI Governance\". Also: \"(PDF: 19.1MB) BLOG Application modernization with Azure OpenAI BLOG NTT DATA powers up legal mining with LLM BLOG NTT DATA expedites contract lifecyc…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"(PDF: 19.1MB) BLOG Application modernization with Azure OpenAI BLOG NTT DATA powers up legal mining with LLM BLOG NTT DATA expedites contract lifecycle management with NLP NTT DATA's AI Governance Wh…\". Also: \"LITRON is a group of GenAI solutions from NTT DATA designed to accelerate enterprise processes. LITRON Sales, for example, utilizes AI agents specifi…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"We can help you select the right models, architectures and partners, while developing the necessary talent and ensuring regulatory compliance and risk management.\". Also: \"Risk Management and Compliance\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"BRUSA HyPower AG faced growing challenges due to the increasing threat of cyberattacks, which put their assets and compliance at risk. To strengthen their cybersecurity and minimize these risks, they…\". Also: \"BRUSA HyPower AG BRUSA HyPower boosts cybersecurity and minimizes compliance risks BRUSA HyPower AG faced growing challenges due to the increasing th…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 2.25/5. TRiSM Maturity Level: Generic AI Claims (specificity=1.5). Evidence flag: good_evidence. TRiSM signal: \"Cookie Policy\". Also: \"Social Media Policy\". To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"NTT DATA named a Leader and Star Performer by Everest Group in Managed Detection and Response Services PEAK Matrix 2025\". Also: \"Strengthen your cyber resilience with extended detection and response (XDR) from NTT DATA\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and aligning protection with your risk appetite and business ambitions.\". Also: \"Risk Management and Compliance Rethink cybersecurity as a business opportunity by proactively managing risks, ensuring regulatory compliance and alig…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure access to sensitive data, applications and infrastructure.\". Also: \"Toyota-Astra Motor protects critical information systems with cybersecurity services Working with Toyota-Astra Motor, we assessed their current secur…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"NTT DATA partners with Palo Alto Networks to deliver AI-driven cloud-to-edge cybersecurity to enterprise clients\". Also: \"NEWS NTT DATA partners with Palo Alto Networks to deliver AI-driven cloud-to-edge cybersecurity to enterprise clients\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"GARTNER is a registered trademark and service mark of Gartner, Inc. and/or its affiliates in the U.S. and internationally, and MAGIC QUADRANT is a registered trademark of Gartner, Inc. and/or its aff…\". Also: \"Our impact\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Risk Management and Compliance\". Also: \"Our full lifecycle cybersecurity services portfolio helps you to proactively manage cyber risks, drive resilience and securely enable business innova…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"NTT DATA GenAI TechHub offers integrated, prequalified GenAI prototypes and solutions to minimize complexity, reduce risk and speed up adoption. It standardizes output, accelerates ROI and scales eff…\". Also: \"Working with Toyota-Astra Motor, we assessed their current security posture to identify and manage vulnerabilities, enabling secure access to sensiti…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:23:04.844337+00:00",
+      "urls_used": [
+        "https://www.nttdata.com/global/en/services/artificial-intelligence",
+        "https://www.nttdata.com/global/en/services/cybersecurity",
+        "https://www.nttdata.com/global/en/services/data-intelligence",
+        "https://www.nttdata.com/global/en/insights/responsible-ai",
+        "https://www.nttdata.com/global/en/services/generative-ai"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Okta",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Security Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.5,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.25,
+      "RUN-03": 4.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.okta.com/products/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Identity Governance & Administration Lifecycle Management",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Lifecycle Management Identity Governance",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "To get AI agent security right, you have to get identity right Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle.",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle. Learn more",
+            "matched_terms": [
+              "life",
+              "cycle",
+              "entity",
+              "lifecycle"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.okta.com/products/",
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Contact Us About Okta About Us Leadership Our Customers Newsroom Investors ↗ Okta Ventures Careers & community Careers Talent, Connection, & Community Values & Impact Responsibility Okta for Good Trust ↗ Accessibility Secure Identity Commitment Contact Us Dis…",
+            "matched_terms": [
+              "entity",
+              "over",
+              "access",
+              "impact"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Vaulting of local server account passwords Continuous server local account discovery Scheduled password rotation PRIVILEGED ACCESS GOVERNANCE Define who has access and when Enforce business controls including multi-step approvals, business justification, and …",
+            "matched_terms": [
+              "fine",
+              "over",
+              "time",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Gain visibility into application-specific service accounts Enforce flexible policies for service accounts, including time-based access and request and approval flows",
+            "matched_terms": [
+              "time",
+              "specific",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "PRIVILEGED ACCESS GOVERNANCE Define who has access and when",
+            "matched_terms": [
+              "fine",
+              "over",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Define who has access and when Enforce business controls including multi-step approvals, business justification, and time-bound approval durations - with convenient, user-friendly integrations.",
+            "matched_terms": [
+              "fine",
+              "time",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Review details of end-user access for auditing or compliance",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Dive into the details of a modern privileged access management (PAM) solution. Learn how organizations quickly implement least privilege and compliance objectives while reducing administrative overhead.",
+            "matched_terms": [
+              "compliance",
+              "nist"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Enforce flexible policies for service accounts, including time-based access and request and approval flows Review details of end-user access for auditing or compliance",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Review details of end-user access for auditing or compliance Learn more",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Okta Privileged Access Technical Datasheet Dive into the details of a modern privileged access management (PAM) solution. Learn how organizations quickly implement least privilege and compliance objectives while reducing administrative overhead.",
+            "matched_terms": [
+              "compliance",
+              "nist"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.okta.com/products/",
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "100% of users onboarded post M&A vs piecemeal integration 50% reduction in time to onboard new applications with Okta Integration Network See full story FedEx improves their security posture by unifying identity and building a foundation for Zero Trust.",
+            "matched_terms": [
+              "posture",
+              "trust",
+              "integration"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "FedEx improves their security posture by unifying identity and building a foundation for Zero Trust.",
+            "matched_terms": [
+              "posture",
+              "trust"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "See full story FedEx improves their security posture by unifying identity and building a foundation for Zero Trust.",
+            "matched_terms": [
+              "posture",
+              "trust"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "FedEx improves their security posture by unifying identity and building a foundation for Zero Trust. 250+",
+            "matched_terms": [
+              "posture",
+              "trust"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Using anonymized data from over 17,000 global customers and the Okta Integration Network, we’ve identified key insights to help you stay ahead of global app and business trends.",
+            "matched_terms": [
+              "trend",
+              "integration"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.",
+            "matched_terms": [
+              "policy",
+              "security",
+              "policy engine"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Secure NHIs at scale Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.",
+            "matched_terms": [
+              "policy",
+              "security",
+              "policy engine"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation. Learn more",
+            "matched_terms": [
+              "policy",
+              "security",
+              "policy engine"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Download the report Secure NHIs at scale Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.",
+            "matched_terms": [
+              "policy",
+              "security",
+              "policy engine"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Increase security posture Extend device context, risk signals, and policy-based automation across every Identity action and decision.",
+            "matched_terms": [
+              "policy",
+              "security",
+              "risk"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.okta.com/products/",
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Identity Threat Detection & Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Privileged Access Identity Threat Detection & Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Identity Threat Detection & Response Identity Security Posture Management",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Identity Threat Detection & Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Privileged Access Identity Threat Detection & Response",
+            "matched_terms": [
+              "detection",
+              "response"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.okta.com/products/",
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Skip to content We’re unveiling our latest AI security innovations at Okta Showcase",
+            "matched_terms": [
+              "content",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.",
+            "matched_terms": [
+              "policy",
+              "policy engine"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Skip to content We’re unveiling our latest AI security innovations at Okta Showcase",
+            "matched_terms": [
+              "content",
+              "ai security"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Secure NHIs at scale Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.",
+            "matched_terms": [
+              "policy",
+              "policy engine"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation. Learn more",
+            "matched_terms": [
+              "policy",
+              "policy engine"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Vaulting of local server account passwords Continuous server local account discovery Scheduled password rotation PRIVILEGED ACCESS GOVERNANCE Define who has access and when Enforce business controls including multi-step approvals, business justification, and …",
+            "matched_terms": [
+              "privilege",
+              "bound",
+              "access",
+              "integration"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Get the datasheet BLOG Strengthen AWS security with Okta Privileged Access Discover, analyze, and optimize AWS entitlements, ensuring that permissions are right-sized and aligned with organizational security policies.",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access",
+              "permissions"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Okta Privileged Access Technical Datasheet",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Okta Privileged Access | Okta Skip to content",
+            "matched_terms": [
+              "privilege",
+              "content",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Define who has access and when Enforce business controls including multi-step approvals, business justification, and time-bound approval durations - with convenient, user-friendly integrations.",
+            "matched_terms": [
+              "bound",
+              "access",
+              "integration"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.okta.com/products/",
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Vaulting of local server account passwords Continuous server local account discovery Scheduled password rotation PRIVILEGED ACCESS GOVERNANCE Define who has access and when Enforce business controls including multi-step approvals, business justification, and …",
+            "matched_terms": [
+              "discover",
+              "discovery",
+              "access governance"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle.",
+            "matched_terms": [
+              "across",
+              "platforms"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "To get AI agent security right, you have to get identity right Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle.",
+            "matched_terms": [
+              "across",
+              "platforms"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle. Learn more",
+            "matched_terms": [
+              "across",
+              "platforms"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "UNVEILING SECURE AI Register for Okta Showcase streaming live March 16th Sign up now OKTA X MCLAREN Speed towards seamless experiences OKTA X MCLAREN To get AI agent security right, you have to get identity right Our neutral and extensible platforms let you s…",
+            "matched_terms": [
+              "across",
+              "platforms"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.okta.com/products/",
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Discover, analyze, and optimize AWS entitlements, ensuring that permissions are right-sized and aligned with organizational security policies.",
+            "matched_terms": [
+              "permissions",
+              "permission",
+              "right",
+              "policies"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Strengthen AWS security with Okta Privileged Access Discover, analyze, and optimize AWS entitlements, ensuring that permissions are right-sized and aligned with organizational security policies.",
+            "matched_terms": [
+              "permissions",
+              "permission",
+              "right",
+              "policies"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Discover, analyze, and optimize AWS entitlements, ensuring that permissions are right-sized and aligned with organizational security policies. Read the blog",
+            "matched_terms": [
+              "permissions",
+              "permission",
+              "right",
+              "policies"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Get the datasheet BLOG Strengthen AWS security with Okta Privileged Access Discover, analyze, and optimize AWS entitlements, ensuring that permissions are right-sized and aligned with organizational security policies.",
+            "matched_terms": [
+              "permissions",
+              "permission",
+              "right",
+              "policies"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "To get AI agent security right, you have to get identity right Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle.",
+            "matched_terms": [
+              "lifecycle",
+              "right"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.okta.com/products/",
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Vaulting of local server account passwords Continuous server local account discovery Scheduled password rotation PRIVILEGED ACCESS GOVERNANCE Define who has access and when Enforce business controls including multi-step approvals, business justification, and …",
+            "matched_terms": [
+              "controls",
+              "access governance"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Identity & Access Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "API Access Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Privileged Access Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.okta.com/products/",
+            "excerpt": "Identity Security Posture Management",
+            "matched_terms": [
+              "management"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.okta.com/products/privileged-access/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Secure NHIs at scale Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.",
+            "matched_terms": [
+              "across",
+              "security",
+              "scale",
+              "policy"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Download the report Secure NHIs at scale Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.",
+            "matched_terms": [
+              "across",
+              "security",
+              "scale",
+              "policy"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Get the datasheet SOLUTION BRIEF Okta Privileged Access Executive Brief Achieve stronger security, faster compliance, and enhanced productivity through a unified identity strategy.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Get the datasheet BLOG Strengthen AWS security with Okta Privileged Access Discover, analyze, and optimize AWS entitlements, ensuring that permissions are right-sized and aligned with organizational security policies.",
+            "matched_terms": [
+              "security",
+              "data",
+              "access",
+              "permission"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.okta.com/products/privileged-access/",
+            "excerpt": "Okta Privileged Access provides unified access and governance for privileged resources - whether on-prem or cloud - and increases visibility, compliance and security without compromising user experience.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 2 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 2,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.25,
+      "RUN-03": 4.25,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.5,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle.\". Also: \"Identity Governance & Administration Lifecycle Management\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Contact Us About Okta About Us Leadership Our Customers Newsroom Investors ↗ Okta Ventures Careers & community Careers Talent, Connection, & Community Values & Impact Responsibility Okta for Good Tru…\". Also: \"Vaulting of local server account passwords Continuous server local account discovery Scheduled password rotation PRIVILEGED ACCESS GOVERNANCE Define …\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Review details of end-user access for auditing or compliance\". Also: \"Dive into the details of a modern privileged access management (PAM) solution. Learn how organizations quickly implement least privilege and complian…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"100% of users onboarded post M&A vs piecemeal integration 50% reduction in time to onboard new applications with Okta Integration Network See full story FedEx improves their security posture by unify…\". Also: \"FedEx improves their security posture by unifying identity and building a foundation for Zero Trust.\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.\". Also: \"Secure NHIs at scale Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Identity Threat Detection & Response\". Also: \"Privileged Access Identity Threat Detection & Response\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Skip to content We’re unveiling our latest AI security innovations at Okta Showcase\". Also: \"Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Vaulting of local server account passwords Continuous server local account discovery Scheduled password rotation PRIVILEGED ACCESS GOVERNANCE Define who has access and when Enforce business controls …\". Also: \"Get the datasheet BLOG Strengthen AWS security with Okta Privileged Access Discover, analyze, and optimize AWS entitlements, ensuring that permission…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Vaulting of local server account passwords Continuous server local account discovery Scheduled password rotation PRIVILEGED ACCESS GOVERNANCE Define who has access and when Enforce business controls …\". Also: \"Our neutral and extensible platforms let you secure the identity of every AI agent across its full lifecycle.\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Discover, analyze, and optimize AWS entitlements, ensuring that permissions are right-sized and aligned with organizational security policies.\". Also: \"Strengthen AWS security with Okta Privileged Access Discover, analyze, and optimize AWS entitlements, ensuring that permissions are right-sized and a…\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Vaulting of local server account passwords Continuous server local account discovery Scheduled password rotation PRIVILEGED ACCESS GOVERNANCE Define who has access and when Enforce business controls …\". Also: \"Identity & Access Management\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Secure NHIs at scale Unify NHI security and control for every identity across your tech stack with one policy engine-without slowing innovation.\". Also: \"Download the report Secure NHIs at scale Unify NHI security and control for every identity across your tech stack with one policy engine-without slow…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:23:25.254359+00:00",
+      "urls_used": [
+        "https://www.okta.com/identity-governance/",
+        "https://www.okta.com/products/",
+        "https://www.okta.com/blog/ai-identity-security/",
+        "https://www.okta.com/solutions/ai/",
+        "https://www.okta.com/products/privileged-access/"
+      ],
+      "pages_ok": 2,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "OneTrust",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Data Governance",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Specializes in AI privacy management and consent compliance.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.onetrust.com/products/ai-governance/",
+          "https://www.onetrust.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Integrate with MLOps and data platforms to automatically discover and track agents, models, and datasets, ensuring alignment with governance policies and regulatory requirements from the outset. Set governance checks across the AI lifecycle",
+            "matched_terms": [
+              "models",
+              "agents",
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Integrate with MLOps and data platforms to automatically discover and track agents, models, and datasets, ensuring alignment with governance policies and regulatory requirements from the outset. Set governance checks across the AI lifecycle",
+            "matched_terms": [
+              "models",
+              "agents",
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "What should an enterprise AI governance framework include? Key components include: AI use case intake and approval workflows, a unified asset inventory, lifecycle checkpoints, centralized policy enforcement, and real-time monitoring of risk and model performa…",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle",
+              "model",
+              "ai governance"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "What should an enterprise AI governance framework include? Key components include: AI use case intake and approval workflows, a unified asset inventory, lifecycle checkpoints, centralized policy enforcement, and real-time monitoring of risk and model performa…",
+            "matched_terms": [
+              "risk",
+              "life",
+              "cycle",
+              "lifecycle",
+              "model",
+              "ai governance"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Evaluate risk early in the AI lifecycle Proactively evaluate use cases for risk and context before development or deployment begins, leveraging pre-built integrations to gain visibility into models, datasets, and intended usage.",
+            "matched_terms": [
+              "risk",
+              "models",
+              "life",
+              "cycle",
+              "lifecycle",
+              "model"
+            ],
+            "relevance_score": 24
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 7,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.onetrust.com/products/ai-governance/",
+          "https://www.onetrust.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Automate discovery and registration of AI models, datasets, vendors, and agents. Map relationships across systems to ensure traceability, reduce duplication, and maintain continuous visibility across your AI landscape.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "maintain",
+              "over",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Build a comprehensive AI inventory Automate discovery and registration of AI models, datasets, vendors, and agents. Map relationships across systems to ensure traceability, reduce duplication, and maintain continuous visibility across your AI landscape.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "maintain",
+              "over",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Automate discovery and registration of AI models, datasets, vendors, and agents. Map relationships across systems to ensure traceability, reduce duplication, and maintain continuous visibility across your AI landscape. Why this works:",
+            "matched_terms": [
+              "agent",
+              "data",
+              "maintain",
+              "over",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Proactively evaluate use cases for risk and context before development or deployment begins, leveraging pre-built integrations to gain visibility into models, datasets, and intended usage. Govern continuously for greater ROI",
+            "matched_terms": [
+              "context",
+              "data",
+              "over",
+              "sets",
+              "usage",
+              "dataset"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Automate discovery and registration of AI models, datasets, vendors, and agents. Map relationships across systems to ensure traceability, reduce duplication, and maintain continuous visibility across your AI landscape.",
+            "matched_terms": [
+              "agent",
+              "data",
+              "maintain",
+              "over",
+              "sets",
+              "dataset"
+            ],
+            "relevance_score": 24
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 7,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.onetrust.com/products/ai-governance/",
+          "https://www.onetrust.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Scale documentation and transparency Automatically generate model cards, AI bills of materials (BoM), lineage reports, and dashboards to streamline audits, meet regulatory obligations, and build trust.",
+            "matched_terms": [
+              "model",
+              "cards",
+              "audit",
+              "documentation",
+              "reports",
+              "model card"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Scale documentation and transparency Automatically generate model cards, AI bills of materials (BoM), lineage reports, and dashboards to streamline audits, meet regulatory obligations, and build trust.",
+            "matched_terms": [
+              "model",
+              "cards",
+              "audit",
+              "documentation",
+              "reports",
+              "model card"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Scale documentation and transparency Automatically generate model cards, AI bills of materials (BoM), lineage reports, and dashboards to streamline audits, meet regulatory obligations, and build trust.",
+            "matched_terms": [
+              "model",
+              "cards",
+              "audit",
+              "documentation",
+              "reports",
+              "model card"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Scale documentation and transparency Automatically generate model cards, AI bills of materials (BoM), lineage reports, and dashboards to streamline audits, meet regulatory obligations, and build trust.",
+            "matched_terms": [
+              "model",
+              "cards",
+              "audit",
+              "documentation",
+              "reports",
+              "model card"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Track AI risk and performance in real time, generate audit-ready reports, and benchmark safety to prevent misuse and maximize ROI. Operationalize compliance with the EU AI Act",
+            "matched_terms": [
+              "audit",
+              "reports",
+              "compliance",
+              "eu ai act",
+              "ai risk"
+            ],
+            "relevance_score": 24
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 15,
+        "pillar_term_hits": 7,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.onetrust.com/products/ai-governance/",
+          "https://www.onetrust.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Turn trust into results with automated governance, proactive risk mitigation, and transparent reporting. Demonstrate responsible AI by design",
+            "matched_terms": [
+              "reporting",
+              "automated",
+              "results",
+              "risk",
+              "trust",
+              "responsible ai"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Operationalize compliance with the EU AI Act Download our playbook Explore our solution Build trust and stay compliant Govern continuously for greater ROI Accelerate AI adoption Build trust and stay compliant Lay the foundation for AI-Ready Governance with cr…",
+            "matched_terms": [
+              "compliance",
+              "automated",
+              "continuous",
+              "trust",
+              "alignment",
+              "eu ai act"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Turn trust into results with automated governance, proactive risk mitigation, and transparent reporting. Demonstrate responsible AI by design",
+            "matched_terms": [
+              "reporting",
+              "automated",
+              "results",
+              "risk",
+              "trust",
+              "responsible ai"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Operationalize compliance with the EU AI Act Download our playbook Explore our solution Build trust and stay compliant Govern continuously for greater ROI Accelerate AI adoption Build trust and stay compliant Lay the foundation for AI-Ready Governance with cr…",
+            "matched_terms": [
+              "compliance",
+              "automated",
+              "continuous",
+              "trust",
+              "alignment",
+              "eu ai act"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "OneTrust enables organizations to monitor AI risk in real time, reduce model bias through continuous oversight, and generate audit-ready documentation.",
+            "matched_terms": [
+              "risk",
+              "continuous",
+              "bias",
+              "trust",
+              "ai risk"
+            ],
+            "relevance_score": 22
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 12,
+        "pillar_term_hits": 7,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.onetrust.com/products/ai-governance/",
+          "https://www.onetrust.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Compliance requires classifying AI systems by risk level, performing impact assessments, maintaining documentation, and continuously monitoring AI use. OneTrust automate this with out-of-the-box assessments, regulatory updates, and policy enforcement to meet …",
+            "matched_terms": [
+              "policy",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Compliance requires classifying AI systems by risk level, performing impact assessments, maintaining documentation, and continuously monitoring AI use. OneTrust automate this with out-of-the-box assessments, regulatory updates, and policy enforcement to meet …",
+            "matched_terms": [
+              "policy",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Key components include: AI use case intake and approval workflows, a unified asset inventory, lifecycle checkpoints, centralized policy enforcement, and real-time monitoring of risk and model performance.",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "What should an enterprise AI governance framework include? Key components include: AI use case intake and approval workflows, a unified asset inventory, lifecycle checkpoints, centralized policy enforcement, and real-time monitoring of risk and model performa…",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Key components include: AI use case intake and approval workflows, a unified asset inventory, lifecycle checkpoints, centralized policy enforcement, and real-time monitoring of risk and model performance.",
+            "matched_terms": [
+              "policy",
+              "risk"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.onetrust.com/products/privacy-management/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification Get a central view into your privacy posture across all assets, processing activities, and vendors",
+            "matched_terms": [
+              "activities",
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "KEY CAPABILITIES Integration with existing privacy records (PIAs and data inventories) to understand context and impact Automated notification guidance to meet regulatory requirements Featured products Clear Filters Privacy Operations Simplify privacy program…",
+            "matched_terms": [
+              "activities",
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification",
+            "matched_terms": [
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Simplify privacy program activities like data & activity mapping, privacy risk assessments, incident response, and more.",
+            "matched_terms": [
+              "activities",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "KEY CAPABILITIES Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification",
+            "matched_terms": [
+              "auto",
+              "incident",
+              "response"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.onetrust.com/products/ai-governance/",
+          "https://www.onetrust.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Compliance requires classifying AI systems by risk level, performing impact assessments, maintaining documentation, and continuously monitoring AI use. OneTrust automate this with out-of-the-box assessments, regulatory updates, and policy enforcement to meet …",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "regulatory",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "Compliance requires classifying AI systems by risk level, performing impact assessments, maintaining documentation, and continuously monitoring AI use. OneTrust automate this with out-of-the-box assessments, regulatory updates, and policy enforcement to meet …",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "regulatory",
+              "risk",
+              "class"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "Key components include: AI use case intake and approval workflows, a unified asset inventory, lifecycle checkpoints, centralized policy enforcement, and real-time monitoring of risk and model performance.",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "What should an enterprise AI governance framework include? Key components include: AI use case intake and approval workflows, a unified asset inventory, lifecycle checkpoints, centralized policy enforcement, and real-time monitoring of risk and model performa…",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "risk"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "OneTrust automate this with out-of-the-box assessments, regulatory updates, and policy enforcement to meet evolving requirements.",
+            "matched_terms": [
+              "policy",
+              "enforcement",
+              "regulatory"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.onetrust.com/products/data-discovery/",
+          "https://www.onetrust.com/products/privacy-management/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "Automate policy enforcement at machine speed, ensuring compliance without slowing down AI, analytics, and data initiatives. Ensure purpose-based policies",
+            "matched_terms": [
+              "enforcement",
+              "purpose",
+              "data"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "We designed the solution to favor policy-centric over data-centric governance, programmatic over manual enforcement, and project-initiated over access-based data enablement.",
+            "matched_terms": [
+              "enforcement",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification",
+            "matched_terms": [
+              "classification",
+              "purpose",
+              "data"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "KEY CAPABILITIES Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification",
+            "matched_terms": [
+              "classification",
+              "purpose",
+              "data"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification Get a central view into your privacy posture across all assets, processing activities, and vendors",
+            "matched_terms": [
+              "classification",
+              "purpose",
+              "data"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.onetrust.com/products/privacy-management/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification Get a central view into your privacy posture across all assets, processing activities, and vendors",
+            "matched_terms": [
+              "discover",
+              "data",
+              "across",
+              "discovery",
+              "workflows",
+              "data discovery"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification",
+            "matched_terms": [
+              "discover",
+              "data",
+              "discovery",
+              "workflows",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "automated data discovery",
+            "matched_terms": [
+              "discover",
+              "data",
+              "automated",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "KEY CAPABILITIES Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification",
+            "matched_terms": [
+              "discover",
+              "data",
+              "discovery",
+              "workflows",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Purpose-built applications powered by automated data discovery",
+            "matched_terms": [
+              "discover",
+              "data",
+              "automated",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.onetrust.com/products/data-discovery/",
+          "https://www.onetrust.com/products/privacy-management/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "Combine your privacy, consent, and regulatory data policies in one place for streamlined policy enforcement. Manage data policies for the full lifecycle of data-from ingestion and usage to sharing-ensuring transparency and compliance throughout.",
+            "matched_terms": [
+              "lifecycle",
+              "enforcement",
+              "policies"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "Turn documented data policies into enforceable control code Combine your privacy, consent, and regulatory data policies in one place for streamlined policy enforcement. Manage data policies for the full lifecycle of data-from ingestion and usage to sharing-en…",
+            "matched_terms": [
+              "lifecycle",
+              "enforcement",
+              "policies"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "Connect data policies directly to real-time data controls native to your modern data & AI systems Shift from policy attestation to proactive enforcement of data use with automated data controls.",
+            "matched_terms": [
+              "enforcement",
+              "automated",
+              "policies"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "With automated deep scanning, dynamic inventories, and native policy enforcement, it provides the clarity and control needed to scale AI confidently while staying ahead of evolving risks and regulations.",
+            "matched_terms": [
+              "scale",
+              "enforcement",
+              "automated"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Scale privacy operations & risk management Understand the operational impact of regulatory changes",
+            "matched_terms": [
+              "scale",
+              "change",
+              "impact"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 11,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.onetrust.com/products/data-discovery/",
+          "https://www.onetrust.com/products/ai-governance/",
+          "https://www.onetrust.com/solutions/ai-governance/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "Use the purpose of data use as a consistent input for data governance policy application, starting at project initiation. Snowflake and OneTrust: Balance accountability and responsible data use with innovative consent management, data and AI governance, and d…",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data governance",
+              "data privacy",
+              "consent management"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "Snowflake and OneTrust: Balance accountability and responsible data use with innovative consent management, data and AI governance, and data privacy solutions.",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy",
+              "consent management"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "Snowflake and OneTrust: Balance accountability and responsible data use with innovative consent management, data and AI governance, and data privacy solutions. Learn more",
+            "matched_terms": [
+              "privacy",
+              "management",
+              "data privacy",
+              "consent management"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.onetrust.com/solutions/ai-governance/",
+            "excerpt": "AI Risk Management Data privacy",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.onetrust.com/products/ai-governance/",
+            "excerpt": "AI Risk Management Data privacy",
+            "matched_terms": [
+              "privacy",
+              "risk",
+              "management",
+              "data privacy"
+            ],
+            "relevance_score": 18
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.onetrust.com/products/data-discovery/",
+          "https://www.onetrust.com/products/privacy-management/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.onetrust.com/products/data-discovery/",
+            "excerpt": "Use the purpose of data use as a consistent input for data governance policy application, starting at project initiation. Snowflake and OneTrust: Balance accountability and responsible data use with innovative consent management, data and AI governance, and d…",
+            "matched_terms": [
+              "data",
+              "policy",
+              "data governance",
+              "data privacy",
+              "consent management"
+            ],
+            "relevance_score": 26
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Automate privacy workflows to scale compliance and enable responsible data use across your business.",
+            "matched_terms": [
+              "across",
+              "compliance",
+              "scale",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Scale privacy operations with AI Automate privacy workflows to scale compliance and enable responsible data use across your business.",
+            "matched_terms": [
+              "across",
+              "compliance",
+              "scale",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Automate privacy workflows to scale compliance and enable responsible data use across your business. Watch demo",
+            "matched_terms": [
+              "across",
+              "compliance",
+              "scale",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.onetrust.com/products/privacy-management/",
+            "excerpt": "Privacy Automation Scale privacy operations with AI Automate privacy workflows to scale compliance and enable responsible data use across your business.",
+            "matched_terms": [
+              "across",
+              "compliance",
+              "scale",
+              "workflows",
+              "data"
+            ],
+            "relevance_score": 20
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 9,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 5,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.75,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.75,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Integrate with MLOps and data platforms to automatically discover and track agents, models, and datasets, ensuring alignment with governance policies and regulatory requirements from the outset. Set …\". Also: \"Integrate with MLOps and data platforms to automatically discover and track agents, models, and datasets, ensuring alignment with governance policies…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automate discovery and registration of AI models, datasets, vendors, and agents. Map relationships across systems to ensure traceability, reduce duplication, and maintain continuous visibility across…\". Also: \"Build a comprehensive AI inventory Automate discovery and registration of AI models, datasets, vendors, and agents. Map relationships across systems …\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Scale documentation and transparency Automatically generate model cards, AI bills of materials (BoM), lineage reports, and dashboards to streamline audits, meet regulatory obligations, and build trus…\". Also: \"Scale documentation and transparency Automatically generate model cards, AI bills of materials (BoM), lineage reports, and dashboards to streamline a…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Turn trust into results with automated governance, proactive risk mitigation, and transparent reporting. Demonstrate responsible AI by design\". Also: \"Operationalize compliance with the EU AI Act Download our playbook Explore our solution Build trust and stay compliant Govern continuously for greate…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Compliance requires classifying AI systems by risk level, performing impact assessments, maintaining documentation, and continuously monitoring AI use. OneTrust automate this with out-of-the-box asse…\". Also: \"Compliance requires classifying AI systems by risk level, performing impact assessments, maintaining documentation, and continuously monitoring AI us…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification Get a central view into your privacy posture across all assets, pro…\". Also: \"KEY CAPABILITIES Integration with existing privacy records (PIAs and data inventories) to understand context and impact Automated notification guidan…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Compliance requires classifying AI systems by risk level, performing impact assessments, maintaining documentation, and continuously monitoring AI use. OneTrust automate this with out-of-the-box asse…\". Also: \"Compliance requires classifying AI systems by risk level, performing impact assessments, maintaining documentation, and continuously monitoring AI us…\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automate policy enforcement at machine speed, ensuring compliance without slowing down AI, analytics, and data initiatives. Ensure purpose-based policies\". Also: \"We designed the solution to favor policy-centric over data-centric governance, programmatic over manual enforcement, and project-initiated over acces…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification Get a central view into your privacy posture across all assets, pro…\". Also: \"Automate record-keeping and downstream workflows like PIAs and incident response with purpose-built data discovery & classification\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Combine your privacy, consent, and regulatory data policies in one place for streamlined policy enforcement. Manage data policies for the full lifecycle of data-from ingestion and usage to sharing-en…\". Also: \"Turn documented data policies into enforceable control code Combine your privacy, consent, and regulatory data policies in one place for streamlined …\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Use the purpose of data use as a consistent input for data governance policy application, starting at project initiation. Snowflake and OneTrust: Balance accountability and responsible data use with …\". Also: \"Snowflake and OneTrust: Balance accountability and responsible data use with innovative consent management, data and AI governance, and data privacy …\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Use the purpose of data use as a consistent input for data governance policy application, starting at project initiation. Snowflake and OneTrust: Balance accountability and responsible data use with …\". Also: \"Automate privacy workflows to scale compliance and enable responsible data use across your business.\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:23:37.184434+00:00",
+      "urls_used": [
+        "https://www.onetrust.com/solutions/ai-governance/",
+        "https://www.onetrust.com/products/ai-governance/",
+        "https://www.onetrust.com/products/data-discovery/",
+        "https://www.onetrust.com/products/privacy-management/",
+        "https://www.onetrust.com/solutions/responsible-ai/"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "OpenAI",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": true,
+    "is_ai_first": true,
+    "vendor_type": "AI-Native",
+    "primary_trism_layer": "",
+    "notable_differentiation": "Provides guidance on safe and responsible AI use, with a focus on LLM transparency and alignment.",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "GOV-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "RUN-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-01": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-02": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-03": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "INF-04": {
+        "source_urls": [],
+        "excerpts": [],
+        "sub_pillar_specificity": 0.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "TRiSM claims extraction; 0 excerpts from 0 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 0,
+        "total_pages": 6,
+        "excerpts_total": 0,
+        "flag": "fetch_failed",
+        "confidence": 0.0
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 0.0,
+      "GOV-02": 0.0,
+      "GOV-03": 0.0,
+      "GOV-04": 0.0,
+      "RUN-01": 0.0,
+      "RUN-02": 0.0,
+      "RUN-03": 0.0,
+      "RUN-04": 0.0,
+      "INF-01": 0.0,
+      "INF-02": 0.0,
+      "INF-03": 0.0,
+      "INF-04": 0.0
+    },
+    "pillar_scores_validated": {
+      "GOV": 0.0,
+      "RUN": 0.0,
+      "INF": 0.0
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes.",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 0.00/5. TRiSM Maturity Level: None (specificity=0.0). Evidence flag: fetch_failed. No TRiSM-specific evidence captured. To improve: Publicly document specific AI governance, runtime enforcement, or information governance controls with measurable outcomes."
+    },
+    "research_flag": "fetch_failed",
+    "research_confidence": 0.0,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:24:08.074727+00:00",
+      "urls_used": [
+        "https://openai.com/safety/",
+        "https://platform.openai.com/docs/guides/safety-best-practices",
+        "https://openai.com/policies/usage-policies",
+        "https://openai.com/index/our-approach-to-ai-safety/",
+        "https://openai.com/index/preparedness-framework-beta/",
+        "https://openai.com/charter/"
+      ],
+      "pages_ok": 0,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  },
+  {
+    "vendor": "Oracle",
+    "region": "Global",
+    "specialization": "",
+    "is_startup": false,
+    "is_ai_first": false,
+    "vendor_type": "Platform Vendor",
+    "primary_trism_layer": "",
+    "notable_differentiation": "",
+    "capability_analysis": "",
+    "pillar_scores": {
+      "GOV": 4.75,
+      "RUN": 4.62,
+      "INF": 4.75
+    },
+    "sub_pillar_scores_current": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "sub_pillar_schema_labels": {
+      "GOV-01": "AI Catalog & Inventory",
+      "GOV-02": "AI Data Mapping & Lineage",
+      "GOV-03": "Documentation, Audit & Approvals",
+      "GOV-04": "Continuous Assurance & Posture",
+      "RUN-01": "Unified Runtime Control Plane",
+      "RUN-02": "Security & Threat Defense",
+      "RUN-03": "Safety, Quality & Compliance Filtering",
+      "RUN-04": "Contextual Data Protection at Runtime",
+      "INF-01": "Data Discovery & Classification",
+      "INF-02": "Access Governance & Sharing Hygiene",
+      "INF-03": "Privacy‑Enhancing Technologies (PETs)",
+      "INF-04": "Cross‑Functional Operating Model"
+    },
+    "sub_pillar_evidence": {
+      "GOV-01": {
+        "source_urls": [
+          "https://www.oracle.com/artificial-intelligence/generative-ai/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/generative-ai/",
+            "excerpt": "Select from Cohere and Meta foundational models in a managed environment, and fine-tune as needed. Access these models via APIs to integrate them into a wide range of use cases. OCI Generative AI Agents",
+            "matched_terms": [
+              "models",
+              "agents",
+              "model",
+              "apis",
+              "integrate"
+            ],
+            "relevance_score": 20
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/generative-ai/",
+            "excerpt": "Enter a new era of productivity with generative AI capabilities built for business. Innovate with your choice of open source or proprietary large language models (LLMs). Leverage AI embedded as you need it across the full stack-apps, infrastructure, and more.",
+            "matched_terms": [
+              "models",
+              "apps",
+              "embedded",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/generative-ai/",
+            "excerpt": "Select from Cohere and Meta foundational models in a managed environment, and fine-tune as needed. Access these models via APIs to integrate them into a wide range of use cases.",
+            "matched_terms": [
+              "models",
+              "model",
+              "apis",
+              "integrate"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/generative-ai/",
+            "excerpt": "Generative AI capabilities Enter a new era of productivity with generative AI capabilities built for business. Innovate with your choice of open source or proprietary large language models (LLMs). Leverage AI embedded as you need it across the full stack-apps…",
+            "matched_terms": [
+              "models",
+              "apps",
+              "embedded",
+              "model"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/generative-ai/",
+            "excerpt": "OCI Generative AI Select from Cohere and Meta foundational models in a managed environment, and fine-tune as needed. Access these models via APIs to integrate them into a wide range of use cases.",
+            "matched_terms": [
+              "models",
+              "model",
+              "apis",
+              "integrate"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 7,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-02": {
+        "source_urls": [
+          "https://www.oracle.com/security/",
+          "https://www.oracle.com/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Explore Identity Management solutions The value of identity fabric Products Oracle Cloud Infrastructure Identity and Access Management Identity Governance Access Management Directory Services Strong security practices and principles for built-in protection Or…",
+            "matched_terms": [
+              "data",
+              "entity",
+              "over",
+              "access"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Explore 11 practical, high-impact applications of AI-particularly AI agents-in healthcare, retail, finance, and other industries to inspire fresh ideas for your business. Access the",
+            "matched_terms": [
+              "agent",
+              "access",
+              "impact"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Register today for 2026 AI Trends: Data Management for the AI-Ready Enterprise 11 AI Use Cases to Launch Today Explore 11 practical, high-impact applications of AI-particularly AI agents-in healthcare, retail, finance, and other industries to inspire fresh id…",
+            "matched_terms": [
+              "agent",
+              "data",
+              "impact"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Explore Oracle’s AI ISVs Additional Oracle AI resources Learn more about Oracle AI OCI Generative AI OCI Generative AI Agents OCI AI Services OCI Data Labeling OCI Data Science AI Vector Search Machine Learning in Oracle AI Database Autonomous AI Database Sel…",
+            "matched_terms": [
+              "agent",
+              "data",
+              "labeling"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Automate security to reduce complexity, prevent human error, and lower cost with automated patching for Autonomous Database and threat mitigation for Oracle Cloud Infrastructure provided by our Access Management.",
+            "matched_terms": [
+              "data",
+              "automated",
+              "access"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-03": {
+        "source_urls": [
+          "https://www.oracle.com/security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, activity monitoring, and auditing.",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, a…",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privilege…",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privileged user access controls, activity monitor…",
+            "matched_terms": [
+              "audit",
+              "compliance"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Oracle provides information about frameworks for which an Oracle line of business has achieved a third-party attestation or certification for one or more of its services in the form of attestations.",
+            "matched_terms": [
+              "third",
+              "party"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 10,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "GOV-04": {
+        "source_urls": [
+          "https://www.oracle.com/security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Management. Explore Oracle’s automated, always-on, and archite…",
+            "matched_terms": [
+              "automated",
+              "risk",
+              "continuous"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Management.",
+            "matched_terms": [
+              "risk",
+              "continuous"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, activity monitoring, and auditing.",
+            "matched_terms": [
+              "compliance",
+              "risk"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce risk Strengthen your security posture and reduce risk with security-first design principles that center on providing built-in security controls. These include isolated network virtualization in Oracle Cloud Infrastructure and strict separation of dutie…",
+            "matched_terms": [
+              "risk",
+              "posture"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Continuous protection Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Management.",
+            "matched_terms": [
+              "risk",
+              "continuous"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 8,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-01": {
+        "source_urls": [
+          "https://www.oracle.com/security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Access the report for 2025 KuppingerCole Leadership Compass for Data Security Platforms Our security-first approach Reduce risk Strengthen your security posture and reduce risk with security-first design principles that center on providing built-in security c…",
+            "matched_terms": [
+              "pass",
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 16
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, activity monitoring, and auditing.",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce risk Strengthen your security posture and reduce risk with security-first design principles that center on providing built-in security controls. These include isolated network virtualization in Oracle Cloud Infrastructure and strict separation of dutie…",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, a…",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privilege…",
+            "matched_terms": [
+              "security",
+              "risk",
+              "controls"
+            ],
+            "relevance_score": 12
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-02": {
+        "source_urls": [
+          "https://www.oracle.com/security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Management.",
+            "matched_terms": [
+              "behavior",
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Continuous protection Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Management.",
+            "matched_terms": [
+              "behavior",
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Management. Explore Oracle’s automated, always-on, and archite…",
+            "matched_terms": [
+              "behavior",
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Read the IDC technical brief (PDF) Continuous protection Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Manag…",
+            "matched_terms": [
+              "behavior",
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privilege…",
+            "matched_terms": [
+              "monitoring",
+              "auto"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 4,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-03": {
+        "source_urls": [
+          "https://www.oracle.com/security/",
+          "https://www.oracle.com/artificial-intelligence/generative-ai/",
+          "https://www.oracle.com/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Accessibility Policy Skip to content",
+            "matched_terms": [
+              "content",
+              "policy"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Accessibility Policy Skip to content",
+            "matched_terms": [
+              "content",
+              "policy"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/generative-ai/",
+            "excerpt": "Accessibility Policy Skip to content",
+            "matched_terms": [
+              "content",
+              "policy"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Accessibility Policy",
+            "matched_terms": [
+              "policy"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Skip to content",
+            "matched_terms": [
+              "content"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "RUN-04": {
+        "source_urls": [
+          "https://www.oracle.com/security/",
+          "https://www.oracle.com/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, activity monitoring, and auditing.",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, a…",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privilege…",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privileged user access controls, activity monitor…",
+            "matched_terms": [
+              "privilege",
+              "data",
+              "access"
+            ],
+            "relevance_score": 12
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Accessibility Policy Skip to content",
+            "matched_terms": [
+              "content",
+              "access"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 4.0,
+        "schema_criteria_hits": 3,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-01": {
+        "source_urls": [
+          "https://www.oracle.com/security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Data Masking and Subsetting Sensitive data discovery, masking, and subsetting",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery",
+              "data masking"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Sensitive data discovery, masking, and subsetting",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Sensitive Data discovery, masking and subsetting",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Sensitive data discovery, masking, and subsetting Label Security",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": ": Sensitive Data discovery, masking and subsetting",
+            "matched_terms": [
+              "discover",
+              "sensitive",
+              "data",
+              "discovery",
+              "data discovery"
+            ],
+            "relevance_score": 22
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-02": {
+        "source_urls": [
+          "https://www.oracle.com/security/",
+          "https://www.oracle.com/artificial-intelligence/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Learn more about Oracle Cloud compliance March 20, 2025 AI-Powered Automation with Oracle Access Governance Pavana Jain, Vice President, Product Management, Oracle Kamal Narayan, Senior Director, Product Management, Oracle Oracle Access Governance expedites a…",
+            "matched_terms": [
+              "recommendations",
+              "access governance"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Data Masking and Subsetting Sensitive data discovery, masking, and subsetting",
+            "matched_terms": [
+              "data discovery",
+              "data masking"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Explore 11 practical, high-impact applications of AI-particularly AI agents-in healthcare, retail, finance, and other industries to inspire fresh ideas for your business.",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Explore the AI trends that will impact business in 2026",
+            "matched_terms": [
+              "impact"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.oracle.com/artificial-intelligence/",
+            "excerpt": "Which services are right for me?",
+            "matched_terms": [
+              "right"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-03": {
+        "source_urls": [
+          "https://www.oracle.com/security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, activity monitoring, and auditing.",
+            "matched_terms": [
+              "controls",
+              "risk",
+              "management",
+              "data masking"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, a…",
+            "matched_terms": [
+              "controls",
+              "risk",
+              "management",
+              "data masking"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privilege…",
+            "matched_terms": [
+              "controls",
+              "risk",
+              "management",
+              "data masking"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privileged user access controls, activity monitor…",
+            "matched_terms": [
+              "controls",
+              "risk",
+              "management",
+              "data masking"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Data Masking and Subsetting Sensitive data discovery, masking, and subsetting",
+            "matched_terms": [
+              "sensitive",
+              "data discovery",
+              "data masking"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 6,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "INF-04": {
+        "source_urls": [
+          "https://www.oracle.com/security/"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, activity monitoring, and auditing.",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access",
+              "data masking"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged user access controls, a…",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access",
+              "data masking"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privilege…",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access",
+              "data masking"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Autonomous Database and Oracle Database security solutions that include encryption, key management, data masking, privileged user access controls, activity monitor…",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "data",
+              "access",
+              "data masking"
+            ],
+            "relevance_score": 22
+          },
+          {
+            "url": "https://www.oracle.com/security/",
+            "excerpt": "Security, Identity, and Compliance | Oracle Accessibility Policy",
+            "matched_terms": [
+              "security",
+              "compliance",
+              "access",
+              "policy"
+            ],
+            "relevance_score": 16
+          }
+        ],
+        "sub_pillar_specificity": 5.0,
+        "schema_criteria_hits": 5,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "TRiSM claims extraction; 5 excerpts from 4 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 4,
+        "total_pages": 6,
+        "excerpts_total": 60,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "GOV-01": 4.75,
+      "GOV-02": 4.75,
+      "GOV-03": 4.75,
+      "GOV-04": 4.75,
+      "RUN-01": 4.75,
+      "RUN-02": 4.75,
+      "RUN-03": 4.75,
+      "RUN-04": 4.25,
+      "INF-01": 4.75,
+      "INF-02": 4.75,
+      "INF-03": 4.75,
+      "INF-04": 4.75
+    },
+    "pillar_scores_validated": {
+      "GOV": 4.75,
+      "RUN": 4.62,
+      "INF": 4.75
+    },
+    "sub_pillar_rationale_validated": {
+      "GOV-01": "GOV-01 - AI Catalog & Inventory. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Select from Cohere and Meta foundational models in a managed environment, and fine-tune as needed. Access these models via APIs to integrate them into a wide range of use cases. OCI Generative AI Age…\". Also: \"Enter a new era of productivity with generative AI capabilities built for business. Innovate with your choice of open source or proprietary large lan…\".",
+      "GOV-02": "GOV-02 - AI Data Mapping & Lineage. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Explore Identity Management solutions The value of identity fabric Products Oracle Cloud Infrastructure Identity and Access Management Identity Governance Access Management Directory Services Strong …\". Also: \"Explore 11 practical, high-impact applications of AI-particularly AI agents-in healthcare, retail, finance, and other industries to inspire fresh ide…\".",
+      "GOV-03": "GOV-03 - Documentation, Audit & Approvals. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged use…\". Also: \"Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Databa…\".",
+      "GOV-04": "GOV-04 - Continuous Assurance & Posture. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Ma…\". Also: \"Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastr…\".",
+      "RUN-01": "RUN-01 - Unified Runtime Control Plane. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Access the report for 2025 KuppingerCole Leadership Compass for Data Security Platforms Our security-first approach Reduce risk Strengthen your security posture and reduce risk with security-first de…\". Also: \"Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryp…\".",
+      "RUN-02": "RUN-02 - Security & Threat Defense. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and Oracle Cloud Infrastructure, further mitigating risk with our Access Ma…\". Also: \"Continuous protection Keep your business protected using always-on encryption and continuous monitoring of user behavior with Autonomous Database and…\".",
+      "RUN-03": "RUN-03 - Safety, Quality & Compliance Filtering. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Accessibility Policy Skip to content\". Also: \"Accessibility Policy Skip to content\".",
+      "RUN-04": "RUN-04 - Contextual Data Protection at Runtime. TRiSM Score: 4.25/5. TRiSM Maturity Level: Advanced AI (specificity=4.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged use…\". Also: \"Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Databa…\".",
+      "INF-01": "INF-01 - Data Discovery & Classification. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Data Masking and Subsetting Sensitive data discovery, masking, and subsetting\". Also: \"Sensitive data discovery, masking, and subsetting\".",
+      "INF-02": "INF-02 - Access Governance & Sharing Hygiene. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Learn more about Oracle Cloud compliance March 20, 2025 AI-Powered Automation with Oracle Access Governance Pavana Jain, Vice President, Product Management, Oracle Kamal Narayan, Senior Director, Pro…\". Also: \"Data Masking and Subsetting Sensitive data discovery, masking, and subsetting\".",
+      "INF-03": "INF-03 - Privacy‑Enhancing Technologies (PETs). TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged use…\". Also: \"Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Databa…\".",
+      "INF-04": "INF-04 - Cross‑Functional Operating Model. TRiSM Score: 4.75/5. TRiSM Maturity Level: Fully Agentic (specificity=5.0). Evidence flag: good_evidence. TRiSM signal: \"Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Database security products that include encryption, key management, data masking, privileged use…\". Also: \"Safeguard your most valuable asset-data Reduce the risk of a data breach and simplify compliance both on-premises and in the cloud with Oracle Databa…\"."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "trism_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-19T03:24:26.271995+00:00",
+      "urls_used": [
+        "https://www.oracle.com/artificial-intelligence/",
+        "https://www.oracle.com/artificial-intelligence/ai-infrastructure/",
+        "https://www.oracle.com/security/",
+        "https://www.oracle.com/security/cloud-security/data-safe/",
+        "https://www.oracle.com/artificial-intelligence/generative-ai/",
+        "https://docs.oracle.com/en/cloud/paas/data-safe/"
+      ],
+      "pages_ok": 4,
+      "schema": "AI TriSM Schema 1_0.json",
+      "tool": "research_trism_v1_claims.py",
+      "cap_applied": false
+    }
+  }
+]

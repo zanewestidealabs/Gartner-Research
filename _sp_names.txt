@@ -1,0 +1,25 @@
+APP-01|Static & Dynamic Application Security Testing (SAST/DAST)
+APP-02|API Security Testing
+APP-03|Software Composition Analysis (SCA)
+APP-04|CI/CD Pipeline Security Integration
+APP-05|Container, IaC & Cloud-Native Application Security
+ASM-01|External Attack Surface Discovery
+ASM-02|Internal Asset Inventory & Classification
+ASM-03|Cloud & Hybrid Environment Mapping
+ASM-04|Shadow IT & Unknown Asset Detection
+ASM-05|Continuous Attack Surface Change Monitoring
+OFT-01|Automated Penetration Testing
+OFT-02|Breach & Attack Simulation (BAS)
+OFT-03|Red Team & Purple Team Automation
+OFT-04|Attack Path Analysis & Modeling
+OFT-05|Adversary Emulation & MITRE ATT&CK Alignment
+REM-01|Automated Remediation & Patching Orchestration
+REM-02|Exposure Prioritization & Risk Scoring
+REM-03|Remediation Workflow & Ticketing Integration
+REM-04|Validation & Verification (Closed-Loop Remediation)
+REM-05|Metrics, Reporting & Executive Dashboards
+VUL-01|Vulnerability Scanning & Detection
+VUL-02|Risk-Based Vulnerability Prioritization
+VUL-03|Configuration & Compliance Assessment
+VUL-04|Exploitability Validation
+VUL-05|Vulnerability Intelligence & Threat Correlation

@@ -1,0 +1,795 @@
+{
+  "product_market_readiness_taxonomy_v1.0": {
+    "schema_lineage": {
+      "parent": null,
+      "parent_version": null,
+      "related_schemas": [
+        "AI TriSM Schema 1_1.json",
+        "MDR Services Schema 2_0.json",
+        "Preemptive Cybersecurity Schema v2.json",
+        "Offensive Security Schema 1_0.json",
+        "Secure by Design Schema 2_0.json"
+      ],
+      "purpose": "Cross-cutting schema that evaluates the gap between what cybersecurity vendors claim in their go-to-market messaging and what they can demonstrably prove through public evidence. Synthesizes insights from all existing capability schemas to provide Chief Product Officers and Chief Marketing Officers with an auditable view of product-market positioning credibility across the vendor landscape.",
+      "version": "1.0",
+      "score_layers": ["seed", "researched", "consolidated"]
+    },
+
+    "intent": "Assess vendor product-market readiness by independently scoring GTM messaging quality (how well the vendor articulates capabilities) and proof-of-execution depth (what evidence substantiates those claims), then computing the credibility gap between claim and proof. This dual-score approach exposes vendors that over-promise and under-prove, and identifies those whose execution evidence exceeds their marketing — revealing both positioning risk and hidden value.",
+
+    "target_audience": {
+      "primary": [
+        {
+          "role": "Chief Product Officer",
+          "use_case": "Identify where product proof is weakest relative to claims — drives investment in demos, certifications, integrations, and case studies that close the credibility gap"
+        },
+        {
+          "role": "Chief Marketing Officer",
+          "use_case": "Audit messaging effectiveness across pillars — identify where content and thought leadership assets are strongest, where competitive positioning is vulnerable, and where marketing spend should shift"
+        }
+      ],
+      "deliverables": [
+        "CPO Scorecard: Product gap dashboard showing where proof-of-execution is weakest vs. GTM claims, driving investment priorities",
+        "CMO Messaging Audit: Content and messaging effectiveness analysis across pillars and competitors",
+        "Competitive Positioning Map: Vendor-vs-vendor comparison of claim credibility across all pillars",
+        "Proof Gap Heatmap: Visual claim-vs-evidence matrix across all vendors and pillars"
+      ]
+    },
+
+    "metadata": {
+      "framework_alignment": "Gartner Market Guide methodology + Gartner Magic Quadrant completeness-of-vision criteria + NIST Cybersecurity Framework 2.0 Govern function + ISO/IEC 27001:2022 evidence requirements",
+
+      "dual_scoring_methodology": {
+        "description": "Each sub-pillar receives two independent scores on the same 0-5 scale. The GTM Messaging Score evaluates the quality, specificity, and persuasiveness of vendor-facing content. The Proof of Execution Score evaluates the depth, verifiability, and recency of supporting evidence. The Credibility Gap is the arithmetic difference (GTM minus Proof), where positive values indicate over-claiming and negative values indicate under-marketing.",
+        "gtm_messaging_score": {
+          "description": "How well does the vendor articulate this capability in public-facing content?",
+          "scale": {
+            "0": "No Messaging: No public content addresses this capability area",
+            "1": "Vague Mention: Capability referenced in passing without specificity — generic buzzwords, no product tie-in",
+            "2": "Generic Positioning: Capability described at category level — matches competitor language, no differentiation",
+            "3": "Specific Claims: Named product or feature with clear capability description — differentiated positioning with concrete assertions",
+            "4": "Compelling Narrative: Detailed, audience-aware messaging with use cases, competitive context, and clear value articulation",
+            "5": "Market-Defining: Vendor sets the narrative for the category — original frameworks, coined terminology, analyst-recognized thought leadership"
+          }
+        },
+        "proof_of_execution_score": {
+          "description": "What publicly verifiable evidence substantiates the vendor's claims for this capability?",
+          "scale": {
+            "0": "No Evidence: No publicly verifiable proof of capability execution",
+            "1": "Minimal Proof: Single anecdotal reference or outdated evidence (>18 months) — no third-party validation",
+            "2": "Basic Evidence: Internal case study or self-reported metrics without independent verification — limited scope",
+            "3": "Demonstrated Proof: Published case studies with named customers, third-party validation, or verifiable deployment metrics",
+            "4": "Strong Evidence: Multiple independent validations — analyst citations, benchmark results, customer testimonials with measurable outcomes",
+            "5": "Definitive Proof: Comprehensive evidence portfolio — peer-reviewed, multi-source corroboration, industry awards, regulatory certifications, replicable results"
+          }
+        },
+        "credibility_gap": {
+          "description": "GTM Messaging Score minus Proof of Execution Score",
+          "interpretation": {
+            "positive_gap": "Over-claiming — vendor messaging exceeds demonstrable proof (positioning risk)",
+            "zero_gap": "Aligned — claims match evidence (credible positioning)",
+            "negative_gap": "Under-marketing — execution evidence exceeds public messaging (hidden value, marketing opportunity)"
+          },
+          "gap_severity": {
+            "0.0": "Perfect alignment",
+            "0.1-0.5": "Minor gap — acceptable variance",
+            "0.6-1.0": "Moderate gap — warrants attention",
+            "1.1-2.0": "Significant gap — credibility risk or missed opportunity",
+            "2.1+": "Critical gap — major positioning problem or severe under-marketing"
+          }
+        }
+      },
+
+      "cross_schema_reference": {
+        "description": "For vendors appearing in existing capability schemas, cross-reference their actual capability scores against their GTM claims to provide an independent validation layer. A vendor scoring 4.5 on MDR capability but only 2.0 on Proof of Execution for threat detection reveals a documentation or transparency problem, not a capability problem.",
+        "linked_schemas": {
+          "ai_trism": {
+            "schema_file": "AI TriSM Schema 1_1.json",
+            "vendor_file": "AI TRiSM Vendor 2-1 Consolidated.json",
+            "mapped_pillars": {
+              "GOV": "Maps to PPD (governance positioning), TDT (technical transparency)",
+              "RUN": "Maps to PCS (runtime proof points), TDT (technical depth)",
+              "INF": "Maps to TDT (infrastructure transparency), PCM (deployment model clarity)"
+            }
+          },
+          "mdr_services": {
+            "schema_file": "MDR Services Schema 2_0.json",
+            "vendor_file": "MDR Services Vendor 2-0 Researched.json",
+            "mapped_pillars": {
+              "TDR": "Maps to PPD (detection positioning), PCS (detection case studies)",
+              "PTI": "Maps to TDT (threat intel transparency), CTL (thought leadership)",
+              "ADA": "Maps to PPD (response differentiation), PCS (response proof points)"
+            }
+          },
+          "preemptive_cyber": {
+            "schema_file": "Preemptive Cybersecurity Schema v2.json",
+            "vendor_file": "Preemptive Cyber Vendor 2-1 Consolidated.json",
+            "mapped_pillars": {
+              "EXM": "Maps to PPD (exposure management positioning), PCS (proof points)",
+              "ADR": "Maps to TDT (detection technical depth), PCS (case studies)",
+              "PPM": "Maps to PCM (pricing model clarity), CTL (market education)"
+            }
+          },
+          "offensive_security": {
+            "schema_file": "Offensive Security Schema 1_0.json",
+            "vendor_file": "Offensive Security Vendor 2-0 Researched.json",
+            "mapped_pillars": {
+              "ASM": "Maps to PPD (attack surface positioning), TDT (technical transparency)",
+              "VUL": "Maps to PCS (vulnerability proof points), TDT (scanning depth)",
+              "OFT": "Maps to PPD (offensive testing differentiation), CTL (thought leadership)"
+            }
+          },
+          "secure_by_design": {
+            "schema_file": "Secure by Design Schema 2_0.json",
+            "vendor_file": "Secure by Design Vendor 2-0 Scored.json",
+            "mapped_pillars": {
+              "APP": "Maps to TDT (AppSec technical depth), PCS (SDLC proof points)",
+              "DSO": "Maps to TDT (DevSecOps transparency), CTL (best practice content)",
+              "TRM": "Maps to PPD (trust/risk positioning), PCM (compliance packaging)"
+            }
+          }
+        }
+      },
+
+      "source_policy": {
+        "description": "Evidence must be publicly accessible and verifiable. GTM messaging is evaluated from the vendor's own public content. Proof of execution requires independent or verifiable third-party sources.",
+        "valid_sources": [
+          {
+            "tier": "A",
+            "type": "Vendor documentation",
+            "examples": ["Product pages", "Solution briefs", "Technical documentation", "Pricing pages", "Press releases"],
+            "weight": 1.0,
+            "applies_to": "gtm_messaging_score"
+          },
+          {
+            "tier": "A",
+            "type": "Analyst reports and validations",
+            "examples": ["Gartner MQ/Market Guide citations", "Forrester Wave placement", "IDC MarketScape recognition"],
+            "weight": 1.0,
+            "applies_to": "both"
+          },
+          {
+            "tier": "B",
+            "type": "Technical media and reviews",
+            "examples": ["SC Media", "Dark Reading", "CSO Online", "TechTarget reviews", "G2/Gartner Peer Insights"],
+            "weight": 0.85,
+            "applies_to": "proof_of_execution_score"
+          },
+          {
+            "tier": "B",
+            "type": "Case studies and benchmarks",
+            "examples": ["Named customer case studies", "ROI analyses", "MITRE ATT&CK evaluations", "Independent benchmarks"],
+            "weight": 0.85,
+            "applies_to": "proof_of_execution_score"
+          },
+          {
+            "tier": "C",
+            "type": "Conference and academic sources",
+            "examples": ["RSA/Black Hat presentations", "Peer-reviewed papers", "Patent filings"],
+            "weight": 0.7,
+            "applies_to": "both"
+          },
+          {
+            "tier": "C",
+            "type": "Social and community signals",
+            "examples": ["LinkedIn thought leadership", "GitHub repositories", "Community forums", "Podcast appearances"],
+            "weight": 0.7,
+            "applies_to": "both"
+          }
+        ]
+      },
+
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of sub-pillars with non-zero GTM messaging scores",
+        "scale": {
+          "A": "20-25 sub-pillars scored (80-100%)",
+          "B": "16-19 sub-pillars scored (64-76%)",
+          "C": "11-15 sub-pillars scored (44-60%)",
+          "D": "6-10 sub-pillars scored (24-40%)",
+          "F": "0-5 sub-pillars scored (0-20%)"
+        }
+      }
+    },
+
+    "pillars": {
+      "PPD": {
+        "name": "Product Positioning & Differentiation",
+        "focus": "How clearly and uniquely does the vendor position their product capabilities relative to the market? Evaluates the specificity of competitive differentiation, the clarity of target use cases, and the strength of value proposition articulation. Vendors scoring high here have messaging that a prospect can immediately distinguish from competitors.",
+        "evidence_signals": [
+          "Named product capabilities with specific technical claims",
+          "Competitive differentiation language beyond generic category terms",
+          "Target persona and use-case specificity in positioning",
+          "Clear articulation of what the product does that competitors do not",
+          "Positioning consistency across website, collateral, and analyst briefings"
+        ]
+      },
+      "PCS": {
+        "name": "Proof Points & Case Studies",
+        "focus": "What concrete evidence exists that the vendor has delivered on their product claims? Evaluates the depth, recency, and verifiability of customer success stories, deployment metrics, third-party validations, and measurable outcomes. The gold standard is named customers with quantified results independently verifiable.",
+        "evidence_signals": [
+          "Named customer case studies with measurable outcomes",
+          "Quantified deployment metrics (reduction percentages, time-to-value, scale)",
+          "Third-party analyst validations and benchmark results",
+          "Customer testimonials with verifiable attribution",
+          "Industry awards and recognition with evaluation criteria transparency"
+        ]
+      },
+      "TDT": {
+        "name": "Technical Depth & Transparency",
+        "focus": "How deeply does the vendor expose the technical architecture, methodology, and operational mechanics of their product? Evaluates whether technical claims are substantiated by architecture documentation, API references, integration guides, and transparent methodology disclosure. Vendors scoring high here enable prospect technical validation before purchase.",
+        "evidence_signals": [
+          "Published architecture diagrams and system design documentation",
+          "Public API documentation with versioning and examples",
+          "Integration guides for major platforms and ecosystem partners",
+          "Transparent methodology documentation (detection logic, scoring algorithms, data flows)",
+          "Technical blog posts demonstrating deep domain expertise"
+        ]
+      },
+      "PCM": {
+        "name": "Pricing & Commercial Model Clarity",
+        "focus": "How transparently does the vendor communicate their pricing model, packaging, and commercial terms? Evaluates whether prospects can understand total cost of ownership, compare pricing models, and predict costs before engaging sales. Vendors scoring high here reduce buyer friction by enabling self-service cost assessment.",
+        "evidence_signals": [
+          "Published pricing tiers or pricing calculator availability",
+          "Clear packaging with feature-to-tier mapping",
+          "Transparent usage-based or consumption metrics",
+          "Free tier or trial availability with defined limits",
+          "Public ROI or TCO documentation with assumptions disclosed"
+        ]
+      },
+      "CTL": {
+        "name": "Content & Thought Leadership",
+        "focus": "How effectively does the vendor contribute to market education, define category narratives, and establish domain authority? Evaluates the quality and influence of research publications, speaking engagements, open-source contributions, and educational content. Vendors scoring high here shape buyer expectations and analyst perspectives.",
+        "evidence_signals": [
+          "Original research reports with primary data and methodology",
+          "Conference keynotes and speaking engagements at tier-1 events",
+          "Authored or contributed frameworks adopted by the industry",
+          "Active blog with technical depth beyond product marketing",
+          "Open-source contributions, community engagement, or educational programs"
+        ]
+      }
+    },
+
+    "sub_pillars": {
+      "PPD-01": {
+        "name": "Capability Claim Specificity",
+        "expanded_definition": "The degree to which the vendor articulates specific, named capabilities rather than generic category claims. Evaluates whether product descriptions reference concrete features, named technologies, or measurable attributes rather than marketing abstractions like 'industry-leading' or 'comprehensive'.",
+        "gtm_evaluation_criteria": [
+          "Product pages name specific features with technical descriptions",
+          "Capability claims include measurable or verifiable attributes",
+          "Feature descriptions go beyond category-level buzzwords",
+          "Named technologies or proprietary approaches are referenced",
+          "Claims are scoped to specific use cases rather than universal applicability"
+        ],
+        "proof_evaluation_criteria": [
+          "Named features demonstrably exist in product documentation or trials",
+          "Technical claims verified through independent reviews or benchmarks",
+          "Specific capabilities confirmed in analyst evaluations",
+          "Customer references validate the specific features claimed",
+          "Version history or changelog confirms feature existence and evolution"
+        ],
+        "search_terms": ["product capabilities", "feature overview", "platform features", "key differentiators", "product comparison", "what we do", "how it works"]
+      },
+      "PPD-02": {
+        "name": "Competitive Differentiation Clarity",
+        "expanded_definition": "How clearly the vendor articulates what distinguishes their product from alternatives — both direct competitors and adjacent categories. Strong differentiation cites specific architectural, methodological, or outcome-based advantages rather than subjective superiority claims.",
+        "gtm_evaluation_criteria": [
+          "Explicit comparison or contrast with named competitive approaches",
+          "Differentiation based on architecture, methodology, or outcomes — not just features",
+          "Clear articulation of unique value proposition relative to market alternatives",
+          "Use-case-specific positioning that narrows the competitive frame",
+          "Migration or switching narratives that acknowledge competitor strengths"
+        ],
+        "proof_evaluation_criteria": [
+          "Independent analyst comparisons validate differentiation claims",
+          "Head-to-head benchmark results substantiate superiority assertions",
+          "Customer win stories reference specific reasons for choosing this vendor over alternatives",
+          "Technical evaluations confirm architectural distinctions",
+          "Market share or adoption metrics support competitive positioning"
+        ],
+        "search_terms": ["why choose", "vs competitor", "comparison", "what makes us different", "competitive advantage", "alternative to", "switch from"]
+      },
+      "PPD-03": {
+        "name": "Target Persona & Use-Case Alignment",
+        "expanded_definition": "The precision with which the vendor maps product capabilities to specific buyer personas, use cases, and deployment scenarios. Strong alignment means a CISO, SOC analyst, or compliance officer can immediately identify content relevant to their role and context.",
+        "gtm_evaluation_criteria": [
+          "Content organized by persona (CISO, SOC analyst, developer, compliance)",
+          "Use-case-specific landing pages or solution briefs",
+          "Deployment scenario documentation (cloud, hybrid, on-prem, MSP)",
+          "Industry-vertical positioning with sector-specific messaging",
+          "Buyer journey content aligned to evaluation, purchase, and adoption stages"
+        ],
+        "proof_evaluation_criteria": [
+          "Case studies tagged by persona, use case, or industry vertical",
+          "Customer testimonials from diverse roles and organization types",
+          "Implementation guides specific to claimed deployment scenarios",
+          "Industry-specific certifications or compliance attestations",
+          "Role-specific training or enablement programs documented"
+        ],
+        "search_terms": ["solutions for", "use cases", "industries", "for CISOs", "for SOC teams", "for developers", "deployment options", "industry solutions"]
+      },
+      "PPD-04": {
+        "name": "Market Category Ownership",
+        "expanded_definition": "The extent to which the vendor positions itself as a category definer or leader rather than a participant. Vendors with strong category ownership introduce original terminology, define evaluation criteria, or shape analyst frameworks. This measures aspiration-to-influence alignment.",
+        "gtm_evaluation_criteria": [
+          "Coined or championed category terminology used by the vendor",
+          "Published category definitions or market frameworks",
+          "Analyst-recognized positioning in relevant market categories",
+          "Narrative framing that positions the vendor as a category creator, not just participant",
+          "Consistent category messaging across all public channels"
+        ],
+        "proof_evaluation_criteria": [
+          "Analyst reports cite the vendor in category leadership positions",
+          "Coined terminology adopted by competitors or media",
+          "Inclusion in category-defining reports (MQ, Wave, MarketScape)",
+          "Speaking invitations at category-defining events",
+          "Market share or influence metrics within the claimed category"
+        ],
+        "search_terms": ["category leader", "market leader", "named in Gartner", "Forrester Wave", "Magic Quadrant", "pioneered", "invented", "coined"]
+      },
+      "PPD-05": {
+        "name": "Messaging Consistency & Coherence",
+        "expanded_definition": "How consistently the vendor delivers the same positioning narrative across website, collateral, analyst interactions, press coverage, and social channels. Inconsistent messaging undermines credibility and confuses market perception.",
+        "gtm_evaluation_criteria": [
+          "Consistent value proposition across homepage, product pages, and about page",
+          "Aligned messaging in press releases, blog posts, and social media",
+          "Consistent positioning in analyst briefings vs. public-facing content",
+          "Visual and verbal brand consistency across all channels",
+          "No contradictory claims between different product lines or campaigns"
+        ],
+        "proof_evaluation_criteria": [
+          "Press coverage reflects the vendor's intended positioning",
+          "Analyst perceptions align with vendor's public messaging",
+          "Customer descriptions of vendor match vendor's self-positioning",
+          "Social media presence reinforces core messaging pillars",
+          "No public pivots, contradictions, or messaging reversals in the evaluation period"
+        ],
+        "search_terms": ["about us", "our mission", "company overview", "press release", "news", "media coverage", "brand", "vision"]
+      },
+
+      "PCS-01": {
+        "name": "Customer Case Study Depth",
+        "expanded_definition": "The availability, specificity, and depth of published customer case studies. Gold-standard case studies name the customer, describe the challenge, detail the implementation, and quantify measurable outcomes with timelines.",
+        "gtm_evaluation_criteria": [
+          "Case study library prominently accessible from main navigation",
+          "Case studies organized by industry, use case, or outcome",
+          "Narrative quality — compelling storytelling beyond bullet points",
+          "Outcome-focused framing with quantified benefits in headlines",
+          "Regular cadence of new case study publication"
+        ],
+        "proof_evaluation_criteria": [
+          "Named customers with verifiable company attribution",
+          "Quantified outcomes (percentage reductions, time savings, cost avoidance)",
+          "Implementation details including timeline, scope, and integration context",
+          "Before-and-after metrics with baseline and measurement methodology disclosed",
+          "Customer willingness to serve as a public reference (video, quote, joint presentation)"
+        ],
+        "search_terms": ["case study", "customer story", "success story", "customer results", "customer outcomes", "customer testimonial", "how company reduced"]
+      },
+      "PCS-02": {
+        "name": "Third-Party Validation & Analyst Recognition",
+        "expanded_definition": "Independent validation from analyst firms, testing organizations, and industry bodies. Evaluates the breadth and recency of external recognitions that substantiate vendor capabilities beyond self-reported claims.",
+        "gtm_evaluation_criteria": [
+          "Prominent display of analyst recognitions on website",
+          "Analyst report citations with context (not just logo placement)",
+          "Industry award listings with evaluation criteria referenced",
+          "Certification and compliance attestation badges with specificity",
+          "Testing or benchmark result promotion with methodology context"
+        ],
+        "proof_evaluation_criteria": [
+          "Inclusion in current-year analyst reports (Gartner, Forrester, IDC)",
+          "MITRE ATT&CK evaluation results or equivalent benchmark participation",
+          "Independently verified certifications (SOC 2, ISO 27001, FedRAMP)",
+          "Industry awards from recognized bodies with transparent judging criteria",
+          "Peer review ratings from platforms like Gartner Peer Insights or G2"
+        ],
+        "search_terms": ["analyst recognition", "awards", "Gartner", "Forrester", "MITRE evaluation", "SOC 2", "ISO 27001", "certified", "recognized by"]
+      },
+      "PCS-03": {
+        "name": "Deployment Scale & Metric Transparency",
+        "expanded_definition": "The degree to which the vendor publicly discloses operational metrics that prove deployment scale, reliability, and real-world performance. Metrics like customer count, events processed, endpoints protected, or uptime SLA adherence provide tangible proof of execution at scale.",
+        "gtm_evaluation_criteria": [
+          "Published customer count or deployment scale metrics",
+          "Operational metrics (events/day, endpoints, data volume processed)",
+          "Geography and industry breadth of customer base",
+          "Growth metrics or trajectory indicators",
+          "Scale-specific positioning (enterprise, mid-market, SMB)"
+        ],
+        "proof_evaluation_criteria": [
+          "Verifiable customer count from independent sources",
+          "Published SLA metrics with actual performance data",
+          "Third-party confirmed deployment scale (analyst reports, SEC filings)",
+          "Customer concentration diversity (not reliant on single verticals or regions)",
+          "Infrastructure resilience evidence (uptime reports, status page history)"
+        ],
+        "search_terms": ["customers worldwide", "events per day", "endpoints protected", "SLA", "uptime", "trusted by", "serving", "deployed across"]
+      },
+      "PCS-04": {
+        "name": "ROI & Business Outcome Documentation",
+        "expanded_definition": "How effectively the vendor documents and communicates return on investment and business outcomes achieved by customers. The strongest evidence includes total cost of ownership analyses, payback period data, and independently validated economic impact studies.",
+        "gtm_evaluation_criteria": [
+          "Published ROI calculator or TCO comparison tools",
+          "Business outcome framing beyond technical metrics",
+          "Economic impact studies or commissioned research",
+          "Value articulation in business terms (cost avoidance, risk reduction, productivity)",
+          "Outcome guarantees or SLA-backed commitments"
+        ],
+        "proof_evaluation_criteria": [
+          "Independently commissioned ROI studies (Forrester TEI, IDC Business Value)",
+          "Customer-validated ROI metrics with methodology transparency",
+          "Payback period data with documented assumptions",
+          "Comparative TCO analysis against alternatives with fair methodology",
+          "Published SLA adherence and financial penalty history"
+        ],
+        "search_terms": ["ROI", "total cost of ownership", "TCO", "business value", "economic impact", "payback", "cost savings", "value realization"]
+      },
+      "PCS-05": {
+        "name": "Customer Reference Breadth",
+        "expanded_definition": "The diversity and representativeness of customer references across industries, company sizes, geographies, and use cases. A broad reference base signals product maturity and market fit beyond a niche, while concentrated references suggest limited applicability.",
+        "gtm_evaluation_criteria": [
+          "Customer logo walls with diverse industry representation",
+          "References from multiple company size segments",
+          "Geographic diversity of featured customers",
+          "Use-case diversity across reference portfolio",
+          "Named customers in regulated industries (finance, healthcare, government)"
+        ],
+        "proof_evaluation_criteria": [
+          "Verifiable customer logos (not aspirational or partner references)",
+          "References willing to participate in prospect calls",
+          "Independent review platform presence across multiple verticals",
+          "Conference co-presentations with diverse customer profiles",
+          "Regulatory compliance deployments in multiple jurisdictions"
+        ],
+        "search_terms": ["our customers", "trusted by", "customer logos", "who uses", "industries served", "customer list", "references"]
+      },
+
+      "TDT-01": {
+        "name": "Architecture & Design Documentation",
+        "expanded_definition": "The quality and depth of published system architecture documentation including infrastructure design, data flow diagrams, component interactions, and deployment topology. Transparent architecture documentation enables prospects to assess technical fit and security posture before purchase.",
+        "gtm_evaluation_criteria": [
+          "Architecture overview diagrams published on website or documentation portal",
+          "Data flow documentation showing ingestion, processing, and output paths",
+          "Component architecture descriptions with technology stack disclosure",
+          "Deployment topology options documented (SaaS, hybrid, on-prem)",
+          "Security architecture documentation (encryption, isolation, access controls)"
+        ],
+        "proof_evaluation_criteria": [
+          "Architecture documentation matches independent technical reviews",
+          "Data flow claims verified through integration testing or customer reports",
+          "Technology stack disclosure confirmed by job postings, patents, or open-source repos",
+          "Deployment options confirmed by customer case studies across multiple models",
+          "Security architecture validated by audit reports or penetration test summaries"
+        ],
+        "search_terms": ["architecture", "how it works", "platform architecture", "data flow", "system design", "infrastructure", "technical documentation", "docs"]
+      },
+      "TDT-02": {
+        "name": "API & Integration Ecosystem",
+        "expanded_definition": "The maturity and accessibility of the vendor's API layer and integration ecosystem. Evaluates whether APIs are publicly documented, versioned, well-maintained, and supported by a meaningful partner ecosystem that extends product capabilities.",
+        "gtm_evaluation_criteria": [
+          "Public API documentation portal with interactive examples",
+          "Integration marketplace or partner ecosystem page",
+          "SDK availability for major programming languages",
+          "Webhook and event-driven integration capabilities documented",
+          "Technology alliance partner listings with integration depth descriptions"
+        ],
+        "proof_evaluation_criteria": [
+          "API documentation is current, versioned, and includes working examples",
+          "Integration partner count and diversity independently verifiable",
+          "SDK repositories publicly accessible with recent commits",
+          "Developer community activity (forums, Stack Overflow, GitHub stars)",
+          "Third-party integration reviews confirm depth beyond basic API connectivity"
+        ],
+        "search_terms": ["API documentation", "integrations", "marketplace", "SDK", "developer", "REST API", "partners", "technology partners"]
+      },
+      "TDT-03": {
+        "name": "Detection & Methodology Transparency",
+        "expanded_definition": "How openly the vendor discloses its detection methodologies, scoring algorithms, risk assessment logic, and analytical approaches. Transparency in methodology enables prospects to evaluate the intellectual rigor behind vendor claims and assess whether approaches align with organizational needs.",
+        "gtm_evaluation_criteria": [
+          "Detection methodology descriptions beyond black-box assertions",
+          "Scoring algorithm or risk calculation approach documented",
+          "Data source and telemetry disclosure for analytical capabilities",
+          "False positive / false negative handling approach described",
+          "Methodology evolution narrative showing continuous improvement"
+        ],
+        "proof_evaluation_criteria": [
+          "Methodology validated through independent testing (MITRE, AV-TEST, etc.)",
+          "Published research papers detailing analytical approaches",
+          "Open-source detection rules or signatures demonstrating methodology",
+          "Customer validation of detection accuracy claims",
+          "Transparent incident response methodology with published playbooks"
+        ],
+        "search_terms": ["detection methodology", "how we detect", "scoring algorithm", "risk calculation", "detection engine", "methodology", "approach", "technical whitepaper"]
+      },
+      "TDT-04": {
+        "name": "Data Handling & Privacy Transparency",
+        "expanded_definition": "The clarity and completeness of the vendor's data handling, privacy, and compliance disclosures. Evaluates whether prospects can fully understand what data is collected, how it is processed, where it is stored, and what controls exist for data sovereignty and privacy.",
+        "gtm_evaluation_criteria": [
+          "Data collection and processing disclosures prominently published",
+          "Privacy policy with specificity beyond legal boilerplate",
+          "Data residency and sovereignty options documented",
+          "Compliance certifications and attestations listed with scope",
+          "Data retention and deletion policies published"
+        ],
+        "proof_evaluation_criteria": [
+          "Current compliance certifications (SOC 2 Type II, ISO 27001) with audit dates",
+          "Data processing agreements available with technical specificity",
+          "Independent audit reports or attestations accessible",
+          "Privacy impact assessments or DPIA outcomes referenced",
+          "Regulatory compliance validated in customer deployments across jurisdictions"
+        ],
+        "search_terms": ["privacy", "data handling", "compliance", "SOC 2", "data residency", "GDPR", "data processing", "trust center", "security practices"]
+      },
+      "TDT-05": {
+        "name": "Technical Enablement & Documentation Quality",
+        "expanded_definition": "The overall quality, completeness, and accessibility of technical documentation, implementation guides, and enablement resources. High-quality documentation reduces time-to-value, lowers support costs, and signals product maturity.",
+        "gtm_evaluation_criteria": [
+          "Comprehensive documentation portal with search and navigation",
+          "Getting started guides and quickstart tutorials",
+          "Implementation and migration guides for common scenarios",
+          "Release notes and changelog with regular update cadence",
+          "Training programs or certification offerings promoted"
+        ],
+        "proof_evaluation_criteria": [
+          "Documentation is current (updated within last 6 months)",
+          "Implementation guides validated by customer success stories",
+          "Training programs with published completion metrics or feedback",
+          "Community forums or support channels with active vendor participation",
+          "Documentation quality praised in independent reviews"
+        ],
+        "search_terms": ["documentation", "docs", "getting started", "quickstart", "implementation guide", "knowledge base", "training", "certification"]
+      },
+
+      "PCM-01": {
+        "name": "Pricing Model Transparency",
+        "expanded_definition": "How clearly the vendor communicates pricing structure, models, and factors that influence total cost. Transparent pricing enables informed purchase decisions and reduces the friction of lengthy sales engagements to discover basic cost information.",
+        "gtm_evaluation_criteria": [
+          "Pricing page publicly accessible with model description",
+          "Clear articulation of pricing model (per-seat, per-endpoint, consumption, flat-rate)",
+          "Tier definitions with feature-to-tier mapping",
+          "Pricing calculator or estimation tool available",
+          "Clear disclosure of what is and is not included in base pricing"
+        ],
+        "proof_evaluation_criteria": [
+          "Published pricing matches customer-reported costs",
+          "No significant hidden fees reported in customer reviews",
+          "Independent pricing comparisons confirm accuracy of public pricing",
+          "Customer reviews validate pricing predictability",
+          "Contract terms consistency with public pricing representations"
+        ],
+        "search_terms": ["pricing", "plans", "packages", "cost", "pricing model", "buy", "get started", "free trial", "license"]
+      },
+      "PCM-02": {
+        "name": "Packaging & Tier Clarity",
+        "expanded_definition": "How well the vendor structures and communicates product packaging — including tier definitions, feature gating, and upgrade paths. Clear packaging reduces buyer confusion and enables accurate product-to-need matching.",
+        "gtm_evaluation_criteria": [
+          "Feature comparison matrix across tiers prominently published",
+          "Clear naming convention that communicates tier positioning",
+          "Upgrade path documentation from lower to higher tiers",
+          "Add-on or module pricing with clear scope",
+          "Enterprise vs. SMB packaging differentiation"
+        ],
+        "proof_evaluation_criteria": [
+          "Customer reviews confirm feature availability matches published tier definitions",
+          "Independent comparisons validate tier feature claims",
+          "Upgrade path confirmed by customer experience reports",
+          "No bait-and-switch reports in customer reviews regarding tier features",
+          "Module pricing accuracy confirmed by procurement references"
+        ],
+        "search_terms": ["plans comparison", "feature comparison", "enterprise plan", "professional plan", "tier", "packages", "add-on", "module", "upgrade"]
+      },
+      "PCM-03": {
+        "name": "Total Cost of Ownership Articulation",
+        "expanded_definition": "The vendor's effectiveness in communicating the complete cost picture beyond license or subscription fees. Evaluates whether implementation costs, operational overhead, training, integrations, and scaling costs are disclosed proactively.",
+        "gtm_evaluation_criteria": [
+          "TCO analysis or calculator publicly available",
+          "Implementation cost guidance published",
+          "Operational requirements (staffing, infrastructure) disclosed",
+          "Scaling cost predictability documented",
+          "Comparison positioning vs. alternatives on total cost"
+        ],
+        "proof_evaluation_criteria": [
+          "Independent TCO analyses validate vendor's cost representations",
+          "Customer testimonials include total cost context (not just license fees)",
+          "Implementation timelines and cost confirmed by multiple customers",
+          "Operational cost predictability validated in long-term customer references",
+          "No surprise cost escalations reported in customer reviews"
+        ],
+        "search_terms": ["total cost", "TCO", "implementation cost", "operational cost", "cost comparison", "cost calculator", "ROI calculator"]
+      },
+      "PCM-04": {
+        "name": "Trial & Evaluation Accessibility",
+        "expanded_definition": "How easily prospects can evaluate the product before purchase commitment. Evaluates the availability and quality of free tiers, trial periods, proof-of-concept programs, and sandbox environments that reduce purchase risk.",
+        "gtm_evaluation_criteria": [
+          "Free tier or freemium offering available",
+          "Time-limited trial with meaningful feature access",
+          "Sandbox or demo environment accessible without sales engagement",
+          "POC program documented with clear scope and timeline",
+          "Self-service signup without mandatory sales contact"
+        ],
+        "proof_evaluation_criteria": [
+          "Free tier or trial confirmed as functional by independent reviews",
+          "Trial experience quality validated by user testimonials",
+          "POC program references available from completed evaluations",
+          "Self-service onboarding confirmed by user experience reports",
+          "Community edition or open-source component available for hands-on evaluation"
+        ],
+        "search_terms": ["free trial", "try free", "demo", "sandbox", "proof of concept", "get started free", "community edition", "open source"]
+      },
+      "PCM-05": {
+        "name": "Commercial Terms & Contract Flexibility",
+        "expanded_definition": "The transparency and flexibility of commercial terms including contract length, renewal terms, cancellation policies, and negotiation flexibility. Vendor-friendly lock-in terms erode trust, while transparent, flexible terms signal market confidence.",
+        "gtm_evaluation_criteria": [
+          "Contract flexibility (monthly, annual, multi-year options) published",
+          "Cancellation or downgrade policy disclosed",
+          "Service level agreements published with financial remedies",
+          "Data portability and exit terms documented",
+          "Volume discount or enterprise agreement structures communicated"
+        ],
+        "proof_evaluation_criteria": [
+          "Customer reviews confirm contract flexibility matches published terms",
+          "SLA adherence validated by customer experience reports",
+          "Data portability exercised and confirmed by former customers",
+          "No vendor lock-in complaints prevalent in review platforms",
+          "Renewal terms consistency confirmed by long-term customers"
+        ],
+        "search_terms": ["contract", "terms of service", "SLA", "service level agreement", "cancellation", "data portability", "enterprise agreement"]
+      },
+
+      "CTL-01": {
+        "name": "Original Research & Data Publication",
+        "expanded_definition": "The vendor's investment in producing original research, threat intelligence reports, and data-driven analyses that advance market understanding. High-quality original research establishes domain authority and provides value independent of product sales.",
+        "gtm_evaluation_criteria": [
+          "Published research reports with original data and methodology",
+          "Regular cadence of research publication (quarterly or more frequent)",
+          "Research scope broader than product-specific metrics",
+          "Named research team or threat intelligence group",
+          "Research promoted as a standalone value proposition, not just product marketing"
+        ],
+        "proof_evaluation_criteria": [
+          "Research cited by third-party analysts, media, or competitors",
+          "Methodology transparency enabling independent validation",
+          "Research findings confirmed or corroborated by independent sources",
+          "Research team members recognized as domain experts externally",
+          "Research longitudinal consistency (multi-year data collection and reporting)"
+        ],
+        "search_terms": ["research report", "threat report", "annual report", "threat intelligence", "research lab", "security research", "data insights"]
+      },
+      "CTL-02": {
+        "name": "Conference & Speaking Presence",
+        "expanded_definition": "The vendor's visibility and influence at industry conferences, webinars, and speaking engagements. Evaluates the tier and relevance of events, the seniority and expertise of speakers, and whether appearances are sponsored or earned through submission processes.",
+        "gtm_evaluation_criteria": [
+          "Conference participation prominently featured on website",
+          "Speaking engagements at tier-1 events (RSA, Black Hat, Gartner Summit)",
+          "Webinar program with regular cadence and topic diversity",
+          "Virtual event hosting or sponsorship with educational content",
+          "Speaker profiles highlighting domain expertise credentials"
+        ],
+        "proof_evaluation_criteria": [
+          "Conference participation verified through event programs or recordings",
+          "Earned speaking slots (CFP-accepted) vs. sponsored/paid appearances",
+          "Webinar attendance and engagement metrics publicly referenced",
+          "Post-event content (recordings, slides, summaries) publicly accessible",
+          "Speaking topics demonstrate depth beyond product pitches"
+        ],
+        "search_terms": ["conference", "RSA", "Black Hat", "speaking", "webinar", "events", "summit", "presentation", "keynote"]
+      },
+      "CTL-03": {
+        "name": "Blog & Educational Content Quality",
+        "expanded_definition": "The depth, technical rigor, and editorial quality of the vendor's blog, knowledge base, and educational content. High-quality content that goes beyond product marketing establishes domain authority and provides genuine value to the security community.",
+        "gtm_evaluation_criteria": [
+          "Active blog with regular publication cadence (weekly or more)",
+          "Content mix of product, technical, and thought leadership topics",
+          "Technical depth demonstrating domain expertise beyond marketing",
+          "Educational content not gated behind lead-generation forms",
+          "Authored by named team members with relevant expertise"
+        ],
+        "proof_evaluation_criteria": [
+          "Blog content cited or referenced by third-party sources",
+          "Technical content accuracy confirmed by community feedback",
+          "Content engagement metrics (shares, comments) indicating community value",
+          "Educational resources praised in independent reviews",
+          "Content contributes to community knowledge (not just product awareness)"
+        ],
+        "search_terms": ["blog", "resources", "library", "whitepapers", "ebooks", "webinars", "education", "learn", "insights"]
+      },
+      "CTL-04": {
+        "name": "Open-Source & Community Contribution",
+        "expanded_definition": "The vendor's investment in open-source projects, community tools, and ecosystem contributions that demonstrate technical capability and market commitment beyond commercial interests. Active community engagement signals long-term viability and technical depth.",
+        "gtm_evaluation_criteria": [
+          "Open-source projects or contributions promoted on website",
+          "Community tools or free resources available",
+          "Developer community programs or advocacy initiatives",
+          "GitHub organization with active repositories",
+          "Community forums or discussion platforms maintained"
+        ],
+        "proof_evaluation_criteria": [
+          "Open-source repositories with meaningful commit activity and community adoption",
+          "GitHub stars, forks, and contributor diversity metrics",
+          "Community tools adopted by practitioners beyond vendor customers",
+          "Developer advocacy recognized in community awards or rankings",
+          "Open-source contributions to industry-standard projects (not just vendor-specific)"
+        ],
+        "search_terms": ["open source", "github", "community", "developer", "contribute", "free tools", "open-source", "repository"]
+      },
+      "CTL-05": {
+        "name": "Market Education & Category Development",
+        "expanded_definition": "The vendor's role in educating the market about emerging threats, evolving best practices, and new security paradigms. Vendors leading in this area publish frameworks, contribute to standards bodies, and actively shape how buyers think about security challenges.",
+        "gtm_evaluation_criteria": [
+          "Published frameworks, maturity models, or evaluation criteria",
+          "Standards body participation or contribution",
+          "Market education initiatives (workshops, assessments, advisory programs)",
+          "Analyst briefing program with proactive market education",
+          "Industry consortium or alliance leadership"
+        ],
+        "proof_evaluation_criteria": [
+          "Vendor frameworks referenced or adopted by industry organizations",
+          "Standards contributions verifiable through working group membership",
+          "Market education content cited by analysts in category definitions",
+          "Advisory program outcomes documented with industry impact metrics",
+          "Alliance leadership confirmed through partner organization acknowledgments"
+        ],
+        "search_terms": ["framework", "maturity model", "best practices", "standards", "consortium", "alliance", "advisory", "assessment", "market guide"]
+      }
+    },
+
+    "vendor_fields": {
+      "vendor": {"type": "string", "description": "Official company name"},
+      "website": {"type": "string", "description": "Primary company URL"},
+      "headquarters": {"type": "string", "description": "HQ city, state/country"},
+      "region": {"type": "string", "description": "Primary region of operation: Global, North America, EMEA, APAC"},
+      "vendor_type": {"type": "string", "description": "Classification: Pure-Play, Platform, Consultancy, Hyperscaler, Conglomerate"},
+      "is_startup": {"type": "boolean", "description": "Founded within last 7 years OR pre-IPO with <500 employees"},
+      "is_ai_first": {"type": "boolean", "description": "AI/ML is a core product differentiator"},
+      "primary_capability": {"type": "string", "description": "Strongest pillar code (PPD, PCS, TDT, PCM, CTL)"},
+      "description": {"type": "string", "description": "Brief vendor description focused on market positioning"},
+      "key_differentiators": {"type": "string", "description": "Primary competitive differentiators"},
+      "product_names": {"type": "array", "description": "Key product names evaluated"},
+      "source_schemas": {"type": "array", "description": "List of existing schemas where this vendor appears, e.g. ['ai_trism', 'mdr_services']"},
+      "cross_schema_scores": {
+        "type": "object",
+        "description": "Capability scores from other schemas for cross-reference validation",
+        "example": {
+          "mdr_services": {"pillar_avg": 3.8, "top_pillar": "TDR", "top_score": 4.2},
+          "preemptive_cyber": {"pillar_avg": 3.5, "top_pillar": "EXM", "top_score": 4.0}
+        }
+      }
+    },
+
+    "vendor_scoring_structure": {
+      "description": "Per-sub-pillar scoring structure for vendor data files",
+      "example": {
+        "PPD-01": {
+          "gtm_messaging_score": 4,
+          "proof_of_execution_score": 2,
+          "credibility_gap": 2.0,
+          "gtm_rationale": "Vendor product page names 5 specific features with technical depth...",
+          "proof_rationale": "Only 1 independent review confirms feature claims; no named customer validates...",
+          "gap_assessment": "Significant over-claiming: strong messaging but minimal independent validation",
+          "source_urls": ["https://example.com/product", "https://example.com/docs"],
+          "excerpts": [
+            {
+              "url": "https://example.com/product",
+              "excerpt": "Relevant text from vendor page...",
+              "matched_terms": ["feature X", "detection engine"],
+              "relevance_score": 8,
+              "score_type": "gtm"
+            }
+          ]
+        }
+      },
+      "aggregate_fields": {
+        "pillar_gtm_scores": {"type": "object", "description": "Average GTM messaging score per pillar, keyed by pillar code"},
+        "pillar_proof_scores": {"type": "object", "description": "Average proof-of-execution score per pillar, keyed by pillar code"},
+        "pillar_gaps": {"type": "object", "description": "Average credibility gap per pillar (GTM minus Proof)"},
+        "overall_gtm_score": {"type": "number", "description": "Vendor-wide average GTM messaging score across all sub-pillars"},
+        "overall_proof_score": {"type": "number", "description": "Vendor-wide average proof-of-execution score across all sub-pillars"},
+        "overall_credibility_gap": {"type": "number", "description": "Vendor-wide average credibility gap"},
+        "coverage_grade": {"type": "string", "description": "Letter grade A-F based on sub-pillar coverage"},
+        "gap_severity_distribution": {
+          "type": "object",
+          "description": "Count of sub-pillars in each gap severity band",
+          "example": {"aligned": 5, "minor": 8, "moderate": 7, "significant": 4, "critical": 1}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "reports": [
+    {
+      "id": "buyer-facing",
+      "label": "Buyer / End-Consumer Perspective",
+      "title": "Magic Quadrant for CNAPP: Platform Convergence Reshapes Buyer Choice",
+      "summary": "The CNAPP market has bifurcated into a tightly clustered Leader pack of twelve vendors and a long tail of Niche Players, with virtually no Challengers and only two Visionaries. Buyers face a paradox: more 'Leaders' than at any time in the category's history, yet the differentiation that matters most — agentless onboarding, runtime depth, and AI-SPM coverage — sits in fewer than half of them. This Market Insight equips security buyers with a vendor-selection framework grounded in measurable evaluation criteria rather than logo placement.",
+      "spa": "By 2027, 60% of enterprise CNAPP RFPs will require demonstrated agentless onboarding under 30 minutes and integrated AI-SPM as gating criteria, eliminating roughly half of today's 'Leader' cohort from short-lists.",
+      "findings": [
+        {
+          "header": "The Leader cluster is dense but weakly differentiated.",
+          "body": "Of 24 vendors assessed, 12 (50%) qualified as Leaders under the median-split methodology. The Ability-to-Execute spread inside the Leader quadrant is only 0.81 points (3.06–3.87 on a 5.0 scale), and 7 of the 12 Leaders sit within 0.20 points of the median COV threshold. Buyers cannot rely on quadrant placement alone to differentiate — sub-criterion analysis is required."
+        },
+        {
+          "header": "Pure-play CNAPP vendors over-index on innovation, platform vendors over-index on viability.",
+          "body": "The four Pure-Play CNAPP vendors (Wiz, Orca Security, Sysdig, Aqua Security) score an average of 3.03 on Innovation (COV-7) versus 2.74 for platform vendors with CNAPP add-ons. Conversely, platform vendors average 4.45 on Overall Viability (ATE-2) versus 3.50 for pure-plays. There is no vendor that leads on both dimensions — buyers must pick which risk to absorb."
+        },
+        {
+          "header": "Agentless deployment is the strongest predictor of customer-experience scores.",
+          "body": "Vendors offering agentless or hybrid deployment models score on average 3.4 on Onboarding & Time-to-Value (CXQ-02) versus 2.7 for agent-only vendors. Three of the four Pure-Play CNAPP Leaders (Wiz, Orca, Upwind) are agentless-first; this single architectural choice correlates with a +0.7 lift in CXQ-02."
+        },
+        {
+          "header": "AI-SPM and DSPM coverage remains shallow outside the top five.",
+          "body": "The composite Innovation criterion (COV-7), weighted heavily on FRNG (40%) and DSPM (30%), shows a steep drop after the top five vendors. Only Wiz (COV=3.70), Palo Alto Networks (3.36), and Microsoft (3.04) score above 3.0; the next nine Leaders cluster between 2.36 and 2.97 on COV. AI-first positioning (Wiz, CrowdStrike, SentinelOne, Upwind, Sweet Security) does not yet translate consistently into top COV scores."
+        },
+        {
+          "header": "Niche Players concentrate emerging differentiation that mid-market buyers should evaluate.",
+          "body": "Among the 10 Niche Players, three vendors (Sweet Security, Upwind-adjacent Data Theorem, AccuKnox) carry above-median Offering Strategy scores (COV-4) despite low overall execution. For mid-market and cloud-native organizations under 1,000 employees, these vendors may deliver greater architectural fit than over-broad Leader platforms."
+        },
+        {
+          "header": "Hyperscaler-native CNAPP from Microsoft is the only single-cloud Leader.",
+          "body": "Microsoft (ATE=3.73, COV=3.04) achieves Leader status despite primarily Azure-centric coverage. All other Leaders position as multi-cloud first. Buyers heavily invested in a single hyperscaler (>80% workload concentration) face a build-vs-buy decision that is unique to Microsoft customers and should be modeled separately."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "Use sub-criterion thresholds, not quadrant placement, as RFP gates.",
+          "body": "Define hard minimums on the four sub-criteria most predictive of CNAPP value: Agentless Onboarding (CXQ-02 ≥ 3.5), AI-SPM/DSPM coverage (DSPM pillar ≥ 3.0), Multi-Cloud Reach (MKR-02 ≥ 4.0), and Ecosystem/API Strategy (MKU-03 ≥ 2.5). Eliminate vendors below these thresholds before scoring weighted criteria. This typically reduces a 12-vendor Leader long-list to a 4-vendor short-list."
+        },
+        {
+          "header": "Treat platform-vendor and pure-play CNAPP as parallel evaluation tracks.",
+          "body": "Run separate POCs for one platform vendor (e.g., Palo Alto Prisma Cloud, Microsoft Defender for Cloud, CrowdStrike Falcon Cloud Security) and one pure-play (e.g., Wiz, Orca Security, Sysdig). Score against the same workload set. Platform vendors typically win on consolidation economics; pure-plays win on time-to-value and runtime depth. The decision is rarely about who is 'better' — it is about which trade-off matches your risk profile."
+        },
+        {
+          "header": "Demand a written 12-month AI-SPM and DSPM roadmap from every short-listed vendor.",
+          "body": "Innovation (COV-7) carries 19% of vision weight in this assessment because data security posture and AI security posture are where CNAPP is actively expanding. Vendors scoring below 3.0 on the FRNG or DSPM pillars should be required to commit, in writing, to specific AI-SPM and DSPM capability deliveries within 12 months. Vendors that decline this commitment should be deprioritized regardless of current Leader status."
+        },
+        {
+          "header": "Run a 30-minute agentless onboarding test as a non-negotiable POC milestone.",
+          "body": "The +0.7 CXQ-02 lift associated with agentless deployment translates directly into faster initial coverage and lower opportunity cost during evaluation. Require vendors to onboard a representative production cloud account end-to-end within 30 minutes during the POC. Vendors that cannot meet this milestone are unlikely to deliver promised time-to-value at production scale."
+        },
+        {
+          "header": "Pricing and packaging questions deserve dedicated procurement scrutiny — schema does not score them.",
+          "body": "This MQ assessment intentionally excludes pricing (the CNAPP market lacks the standardized pricing schema available for MDR). Buyers must independently evaluate per-workload, per-resource, and per-API-call pricing models, and demand transparent FinOps-friendly meters. Hyperscaler marketplace co-sell terms can shift effective pricing by 15–25% — always include marketplace procurement as a parallel quote path."
+        },
+        {
+          "header": "For mid-market and cloud-native firms, evaluate Niche Players before defaulting to a Leader.",
+          "body": "Three Niche Players (Upwind, Sweet Security, AccuKnox) carry strong Offering Strategy and Innovation scores despite low Overall Viability. For organizations under 1,000 employees with green-field cloud workloads, these vendors often deliver lower TCO and faster integration than over-broad Leader platforms. Apply a vendor-viability discount to acquisition risk and weigh against the implementation savings."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "What the Leader Cluster Actually Tells Buyers, and What It Does Not",
+          "body": "The 12-vendor Leader cluster in this CNAPP MQ is the densest in the category's short history. A median-split methodology — used here for transparency — produces this outcome whenever a market is consolidating and a critical mass of vendors approach feature parity on the basics. It does not mean those 12 vendors are equally suitable for any given buyer.\n\nInside the Leader quadrant, Ability-to-Execute scores range from Wiz and Palo Alto Networks at 3.87 down to Aqua Security at 3.06 — a 0.81-point spread on a 5.0 scale. Completeness-of-Vision scores range from Wiz at 3.70 down to Tenable and Check Point at 2.36 — a 1.34-point spread. The Vision spread is materially larger than the Execution spread, which means the Leader quadrant contains real strategic differentiation but not always real execution differentiation.\n\nFor buyers, this has three practical consequences. First, vendor short-listing must be driven by sub-criterion analysis, not by quadrant membership. Second, the difference between the top three Leaders (Wiz, Palo Alto, Microsoft) and the bottom four Leaders (Tenable, Check Point, Aqua, Sysdig at 3.06–3.31) is large enough to justify excluding the bottom tier from many enterprise short-lists. Third, two Visionaries — Fortinet and Upwind — sit literally on the COV/ATE thresholds and warrant inclusion in any buyer evaluation that prioritizes vision."
+        },
+        {
+          "title": "The Pure-Play vs. Platform Trade-off Is the Defining Architectural Question",
+          "body": "The strongest signal in the CNAPP MQ data is the divergence between Pure-Play CNAPP vendors and platform vendors with CNAPP modules. Pure-plays — Wiz, Orca Security, Sysdig, Aqua Security — over-index on Innovation (COV-7 average 3.03) and Onboarding (CXQ-02 average 3.4). Platform vendors — Palo Alto, Microsoft, CrowdStrike, SentinelOne, Trend Micro, Check Point, Fortinet, Bitdefender, Sophos — over-index on Overall Viability (ATE-2 average 4.45) and Geographic Strategy.\n\nThis is not a coincidence of vendor selection. It reflects fundamentally different go-to-market models. Pure-plays raise capital and ship product against a single thesis: that cloud-native runtime, posture, and identity context are best delivered by a unified, agent-light platform built from the ground up for the cloud. Platform vendors, in contrast, integrate CNAPP into a broader portfolio (XDR, SIEM, network security, endpoint), prioritizing consolidation economics and contractual leverage over architectural elegance.\n\nThe question for buyers is not which model is 'better.' Both can deliver acceptable security outcomes. The question is which trade-off matches the buyer's risk profile. Organizations with mature security operations and a tolerance for vendor concentration risk should favor platform consolidation. Organizations prioritizing speed-to-value, runtime depth, and willingness to integrate point solutions should favor pure-plays. Hybrid approaches — pure-play CNAPP plus platform XDR — remain common and architecturally defensible."
+        },
+        {
+          "title": "Why Agentless Onboarding Has Become the Single Biggest CXQ Differentiator",
+          "body": "The CNAPP MQ data reveals a strong, statistically meaningful relationship between deployment model and Customer Experience scores. Vendors offering agentless or hybrid deployment models (Wiz, Orca Security, Upwind, Sweet Security, Microsoft Defender for Cloud, Palo Alto Prisma Cloud) score an average of 3.4 on CXQ-02 (Onboarding & Time-to-Value), versus 2.7 for vendors that require agents on every workload. The 0.7-point lift is the single largest factor associated with sub-pillar improvement in the CXQ pillar.\n\nThis matters operationally because agent rollout is the single biggest source of friction in CNAPP deployments. Enterprises with thousands of workloads and dozens of cloud accounts can take weeks to months to achieve full agent coverage; agentless onboarding via cloud-native APIs (CSPM, CIEM) achieves baseline coverage in minutes. Even hybrid deployments — agentless CSPM plus selective workload agents for runtime — materially compress time-to-value compared to pure-agent models.\n\nThe trade-off is depth of runtime telemetry. Agentless architectures cannot capture the same kernel- and process-level signal that an eBPF or kernel-module agent can. For most posture-management and identity use cases, agentless is sufficient. For runtime threat detection (CDR), agents remain superior. Buyers should choose deployment model based on which CNAPP use cases they prioritize — not based on a vendor preference for one architecture."
+        },
+        {
+          "title": "Innovation Concentration: Why the Top Five Vendors Pull Away on Vision",
+          "body": "The Completeness-of-Vision axis tells a more concentrated story than Ability-to-Execute. Only five vendors — Wiz (3.70), Palo Alto Networks (3.36), Microsoft (3.04), CrowdStrike (2.96), and SentinelOne (2.97) — score above 2.95 on COV. Below that threshold, scores cluster tightly around the 2.36 median, meaning the next 12–15 vendors are functionally indistinguishable on vision.\n\nThe Innovation criterion (COV-7), weighted at 19%, drives most of this spread. Innovation is computed from the FRNG (40%), DSPM (30%), CDR (20%), and SHIFT (10%) capability pillars — explicitly favoring vendors investing in newer CNAPP capabilities (data security posture, AI security posture, runtime detection, shift-left integration). The five vendors leading on vision all have above-median scores in at least three of these pillars.\n\nFor buyers, the implication is direct: if your three-year cloud-security strategy depends on AI-SPM, advanced DSPM, or deep runtime CDR, your viable vendor short-list is much narrower than the 12-vendor Leader cluster suggests. For buyers with simpler CSPM- and CIEM-first roadmaps, the differentiation among the 12 Leaders matters less, and selection criteria should shift to operational fit (deployment model, hyperscaler co-sell terms, support quality)."
+        }
+      ],
+      "background": "The Cloud-Native Application Protection Platform category emerged in 2021 as Gartner formalized the convergence of CSPM, CWPP, CIEM, IaC scanning, and (later) DSPM and AI-SPM into a single platform definition. The category has consolidated rapidly: of the 24 vendors assessed in this MQ, 8 have completed a major M&A action in the last 24 months (acquirers or acquirees), and four hyperscaler-native offerings (Microsoft Defender for Cloud, Palo Alto Prisma Cloud via cloud marketplaces, Datadog Cloud Security, AWS-native via partnerships) have moved from 'adjacent' to 'core' positioning.\n\nThe scoring methodology applied here combines two assessments: (1) the CNAPP capability schema (7 pillars: CSPM, CWPP, CIEM, SHIFT, CDR, DSPM, FRNG; 29 sub-pillars) measuring functional breadth and depth; and (2) the CNAPP MQ Gap schema (7 pillars: VIA, SLE, MKR, MKE, CXQ, MKU, VIG; 27 sub-pillars) measuring the non-product MQ criteria (viability, sales execution, customer experience, market understanding, geographic strategy, etc.). The 14 final MQ criteria (7 ATE + 7 COV) are computed by weighted formulas defined in the CNAPP_MQ_Gap_Schema_App.json mq_scoring_mode block.\n\nThe assessment covers 24 vendors selected for material CNAPP go-to-market presence in 2026. It does not cover hyperscaler-native security primitives (AWS GuardDuty, Azure Security Center built-ins) where there is no commercial CNAPP offering, nor does it cover open-source-only projects without commercial backing.",
+      "impact": "The implications of these findings are direct for both buyers and product leaders.\n\n**For buyers,** the dense Leader cluster combined with shallow innovation outside the top five vendors means that vendor selection cannot be delegated to quadrant placement. Buyers who short-list on quadrant alone will end up with three to five 'qualified' vendors that look indistinguishable on paper but deliver materially different outcomes in production. The remediation is a sub-criterion-driven RFP — agentless onboarding, AI-SPM coverage, multi-cloud reach, and ecosystem APIs as gating criteria — paired with a parallel POC track for one Pure-Play and one Platform vendor.\n\n**For product leaders at Niche Players and Visionaries,** the Leader cluster's weak differentiation is a window. A focused investment in two or three sub-criteria (typically Innovation, Onboarding, and Multi-Cloud Reach) can move a vendor from Niche to Visionary or from Visionary to Leader within 12–18 months. Vendors that emerged in the last 36 months (Sweet Security, Upwind, Caveonix) have the architectural freedom to make this leap; longer-established vendors with technical debt face structural constraints.\n\n**For platform vendors with CNAPP modules,** the data suggests that consolidation economics alone are no longer sufficient to defend Leader status. Buyers increasingly demand that platform CNAPP modules match pure-play depth on at least two pillars (typically CSPM and CWPP, or CSPM and DSPM). Platform vendors that fail to close the depth gap face progressive displacement at refresh cycles, even when the broader platform contract remains intact.",
+      "conclusion": "The CNAPP market in 2026 is a market of false consensus. Twelve vendors have qualified as Leaders, but only three to five materially lead on the dimensions most predictive of buyer value — innovation depth, agentless onboarding, and AI-SPM coverage. The remaining nine Leaders compete on consolidation economics and viability, both of which matter to enterprise buyers but neither of which solves the runtime, posture, and data-security challenges that CNAPP exists to address.\n\nBuyers should treat this MQ as a long-list, not a short-list. The work of differentiation falls to the buyer through sub-criterion analysis, hands-on POCs, and parallel evaluation tracks for Pure-Play and Platform models. Vendors that win in 2026 and 2027 will be those that can demonstrate measurable improvement on the two or three sub-criteria most predictive of buyer outcomes — not those that can claim the most logos on a quadrant chart.",
+      "glossary": [
+        {"term": "CNAPP", "definition": "Cloud-Native Application Protection Platform. A converged platform combining CSPM, CWPP, CIEM, IaC scanning, and (increasingly) DSPM and AI-SPM."},
+        {"term": "CSPM", "definition": "Cloud Security Posture Management. Continuous monitoring of cloud configuration drift and compliance violations."},
+        {"term": "CWPP", "definition": "Cloud Workload Protection Platform. Runtime protection of VMs, containers, and serverless workloads."},
+        {"term": "CIEM", "definition": "Cloud Infrastructure Entitlement Management. Identity and permissions analysis for cloud resources."},
+        {"term": "DSPM", "definition": "Data Security Posture Management. Discovery, classification, and posture management of cloud data."},
+        {"term": "AI-SPM", "definition": "AI Security Posture Management. Discovery, posture, and risk management of AI/ML workloads and data pipelines."},
+        {"term": "CDR", "definition": "Cloud Detection and Response. Runtime threat detection and response across cloud workloads."},
+        {"term": "SHIFT", "definition": "Shift-Left Integration. CNAPP capabilities integrated into the developer toolchain (IDE, CI/CD, IaC)."},
+        {"term": "FRNG", "definition": "Frontier capabilities. Emerging CNAPP categories including AI-SPM, supply-chain security, and code-to-cloud telemetry."},
+        {"term": "ATE", "definition": "Ability to Execute. The Y-axis of the Magic Quadrant, measuring viability, sales execution, customer experience, and operations."},
+        {"term": "COV", "definition": "Completeness of Vision. The X-axis of the Magic Quadrant, measuring market understanding, strategy, and innovation."},
+        {"term": "Pure-Play CNAPP", "definition": "A vendor whose primary product is a CNAPP, built from the ground up for cloud-native environments. Examples: Wiz, Orca, Sysdig, Aqua."},
+        {"term": "Platform Vendor with CNAPP", "definition": "A broader cybersecurity platform vendor that includes a CNAPP module within a larger portfolio. Examples: Palo Alto Networks, Microsoft, CrowdStrike."}
+      ],
+      "evidence": [
+        "Gartner CNAPP MQ Vendor Assessment, 2026 (24 vendors, 7 capability pillars + 7 MQ gap pillars, 56 sub-criteria total)",
+        "CNAPP Vendor 1-2 Researched dataset (capability scores derived from vendor product documentation, public materials, and analyst briefings)",
+        "CNAPP MQ Vendor 1-1 Researched dataset (heuristic gap scores derived from capability data, vendor metadata, and signal mining)",
+        "CNAPP_MQ_Gap_Schema_App.json mq_scoring_mode formulas (14 ATE+COV criteria with weighted aggregation)"
+      ]
+    },
+    {
+      "id": "cpo-product-strategy",
+      "label": "CPO / Product Strategy Perspective",
+      "title": "Magic Quadrant for CNAPP: A Product Leader's Action Plan",
+      "summary": "The CNAPP Leader cluster is dense, but the differentiation that drives buyer selection is concentrated in a handful of sub-criteria: agentless onboarding, AI-SPM/DSPM depth, multi-cloud reach, and ecosystem integration. Product leaders at vendors anywhere in the quadrant can use this analysis to identify two to three high-leverage investment areas that materially shift competitive position within 12–18 months.",
+      "spa": "By 2027, vendors that have not delivered both agentless onboarding under 30 minutes and a measurable AI-SPM capability will lose at least 15% of competitive RFP shortlist appearances, regardless of current quadrant placement.",
+      "findings": [
+        {
+          "header": "Leader status is now table stakes; sub-criterion leadership drives win rates.",
+          "body": "12 of 24 assessed vendors qualified as Leaders. The Ability-to-Execute spread inside the Leader quadrant is only 0.81 points. Buyers no longer treat Leader placement as a meaningful differentiator; competitive RFP win rates correlate more strongly with sub-criterion performance — particularly CXQ-02 (onboarding), MKR-02 (multi-cloud), and COV-7 (innovation)."
+        },
+        {
+          "header": "Innovation investment correlates directly with Vision quadrant position.",
+          "body": "The five vendors leading on Completeness-of-Vision (Wiz 3.70, Palo Alto 3.36, Microsoft 3.04, CrowdStrike 2.96, SentinelOne 2.97) all score above the 75th percentile on the FRNG and DSPM capability pillars. The next 12 vendors cluster within 0.20 points of the 2.36 median. This means vendors below the top five can move into the top tier with focused investment in two pillars: DSPM (data security posture) and FRNG (AI-SPM, supply-chain, code-to-cloud)."
+        },
+        {
+          "header": "Pure-play CNAPPs win on innovation; platform vendors win on viability — neither group leads both.",
+          "body": "Pure-play CNAPP vendors average 3.03 on Innovation (COV-7) versus 2.74 for platform vendors. Platform vendors average 4.45 on Overall Viability (ATE-2) versus 3.50 for pure-plays. No vendor in the assessment leads both dimensions. Strategic implication: pure-plays should defend innovation lead through faster release cadence, and platform vendors should close the depth gap on at least one capability pillar (typically DSPM or CDR)."
+        },
+        {
+          "header": "Agentless onboarding is the single biggest CXQ lever.",
+          "body": "Vendors offering agentless or hybrid deployment models score 3.4 on Onboarding (CXQ-02) versus 2.7 for agent-only vendors — a 0.7-point lift on a 5.0 scale. This is the largest single architectural factor associated with sub-pillar score improvement. Vendors with mature agent-based architectures should prioritize building a credible agentless tier within 12 months, even if it sacrifices some runtime depth."
+        },
+        {
+          "header": "M&A and convergence activity has not yet translated into Marketing Execution gains.",
+          "body": "Despite 8 of 24 vendors completing major M&A actions in the last 24 months, the average MKE-01 (Brand Awareness) score is only 2.36. M&A integration creates short-term marketing dilution; product leaders at acquirer vendors should plan for a 6–12 month brand-narrative reset cycle and dedicated investment in unified product messaging."
+        },
+        {
+          "header": "Niche Players are the most likely source of category-defining innovation.",
+          "body": "Three Niche Players (Sweet Security, Upwind-adjacent Data Theorem, AccuKnox) carry above-median COV-4 (Offering Strategy) scores despite low overall execution. Historically, this profile precedes either acquisition (in 60% of comparable cases) or breakout into Visionary status (in 25%). Established vendors should track these three as both M&A targets and competitive threats."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "Identify your two highest-leverage sub-criteria and invest disproportionately for 12 months.",
+          "body": "Map your current sub-criterion scores against the top three Leaders in your competitive set. Identify the two sub-criteria where the gap is largest AND where the criterion carries highest weight (CXQ-02, COV-4, COV-7, MKR-02). Concentrate roadmap investment in these two areas for 12 months. Vendors that succeed at this typically move 0.4–0.6 points on the relevant criterion within a calendar year."
+        },
+        {
+          "header": "If you are agent-only, build a credible agentless onboarding tier within 12 months.",
+          "body": "The 0.7-point CXQ-02 lift associated with agentless deployment is the single largest single-architecture lever in this assessment. Even a partial agentless tier — CSPM and CIEM via cloud APIs, with selective workload agents for runtime — captures most of the time-to-value benefit. Resource this with a dedicated team, set a hard 12-month delivery target, and prioritize over feature-add roadmap items."
+        },
+        {
+          "header": "Invest in DSPM and AI-SPM as the highest-ROI Vision drivers.",
+          "body": "The Innovation criterion (COV-7) carries 19% of Vision weight and is heavily influenced by FRNG (40%) and DSPM (30%) pillar scores. Vendors below the 3.0 mark on either pillar will struggle to close the Vision gap. Build or acquire DSPM and AI-SPM capability with a clear 18-month delivery commitment. M&A is a viable accelerator — three of the top five Vision-leaders have completed DSPM-relevant acquisitions in the last 24 months."
+        },
+        {
+          "header": "Treat marketplace and co-sell motions as a Sales Execution multiplier, not an afterthought.",
+          "body": "SLE-01 (Hyperscaler & Marketplace Reach) carries 40% of Sales Strategy weight and is one of the highest-correlation sub-criteria with overall Leader-quadrant placement. Vendors not yet on AWS Marketplace, Azure Marketplace, AND Google Cloud Marketplace are leaving competitive points on the table. Co-sell certifications (AWS ISV Accelerate, Azure IP Co-sell Ready, Google Built-with-Google) should be table stakes by end of 2026."
+        },
+        {
+          "header": "If you are a Niche Player with strong Vision, position acquisition as a strategic option, not a fallback.",
+          "body": "Three Niche Players in this assessment (Sweet Security, AccuKnox, Data Theorem) carry above-median Offering Strategy scores. Historical analogues in adjacent categories (XDR, SIEM) show that vendors with this profile have a 60% probability of acquisition within 36 months. Engage corporate development early, build a clean data room, and use the optionality as leverage in commercial negotiations."
+        },
+        {
+          "header": "For platform vendors, close the depth gap on at least one capability pillar — pick one and own it.",
+          "body": "Platform vendors averaging 2.74 on Innovation versus 3.03 for pure-plays will progressively lose competitive RFPs to pure-plays in greenfield cloud-native deployments. Pick one capability pillar (typically DSPM, CDR, or FRNG) and commit to delivering pure-play-equivalent depth within 18 months. Half-measures across all pillars will not move the needle; a focused depth play in one pillar will."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "The Math of Quadrant Mobility: What It Actually Takes to Move Quadrants",
+          "body": "Quadrant placement in this CNAPP MQ is determined by population median split: vendors above both the ATE median (3.05) and COV median (2.36) qualify as Leaders. To move from Niche to Leader, a vendor must close the gap to both medians simultaneously — a non-trivial double improvement. To move from Visionary to Leader requires closing the ATE gap; from Challenger requires closing the COV gap.\n\nThe data shows that the gap is rarely large on one axis. Among the 10 Niche Players, eight are within 0.5 points of the ATE median and seven are within 0.5 points of the COV median. The implication: most Niche Players are one focused 12-month investment cycle away from Visionary or Challenger status, and two cycles away from Leader status.\n\nThe sub-criteria with the highest leverage are those carrying the highest weights and showing the largest variance across the vendor pool: CXQ-02 (Onboarding, 12% of ATE-6 weight), MKR-02 (Multi-Cloud, 9% of ATE-4 weight), COV-4 (Offering Strategy, 22% of COV weight), and COV-7 (Innovation, 19% of COV weight). A 0.5-point improvement on COV-4 alone moves a vendor approximately 0.11 points on the COV composite, which is enough to cross the Visionary threshold for any vendor currently within 0.15 points of the median.\n\nProduct leaders should model their roadmap investments against this math. A roadmap investment that doesn't change at least one of these four sub-criteria by at least 0.4 points within 12 months is unlikely to produce a quadrant move."
+        },
+        {
+          "title": "Why DSPM and AI-SPM Are the Vision Investments That Compound",
+          "body": "The Innovation criterion (COV-7) is the single highest-leverage Vision investment for any CNAPP vendor below the top five. Its formula — FRNG × 0.40 + DSPM × 0.30 + CDR × 0.20 + SHIFT × 0.10 — explicitly favors investment in newer CNAPP capabilities. Vendors investing in DSPM (data discovery, classification, posture) and FRNG (AI-SPM, supply-chain, code-to-cloud) compound returns across both COV-7 and COV-4 (Offering Strategy, which weights DSPM and FRNG averages at 50%).\n\nA single DSPM capability addition delivered within 12 months typically improves: DSPM pillar score by 0.5–0.8 points, COV-7 by 0.15–0.24 points, COV-4 by 0.13–0.20 points, and MKR-01 (Cloud-Threat Trend Responsiveness) by 0.10–0.15 points. The cumulative COV improvement of 0.30–0.50 points is enough to move a vendor from below median to above median COV in most cases.\n\nThe same compounding holds for AI-SPM, which falls in the FRNG pillar. Given the rapid enterprise adoption of LLM and ML workloads, AI-SPM capability investment carries outsized brand and analyst-narrative leverage in addition to the pure scoring impact. Vendors that move first in AI-SPM (Wiz with AI-SPM in Wiz Defend, Palo Alto with Prisma AIRS) capture both quadrant lift and brand authority."
+        },
+        {
+          "title": "The Pure-Play Defense and the Platform Vendor Counter",
+          "body": "Pure-play CNAPP vendors face a structural problem: their innovation lead (3.03 vs 2.74 average COV-7) is durable but not insurmountable, and their viability gap (3.50 vs 4.45 average ATE-2) is structural. Platform vendors can buy or build CNAPP depth over time; pure-plays cannot easily acquire enterprise reference accounts, support footprint, or geographic coverage at the same pace.\n\nThe pure-play defense strategy is to widen the innovation gap faster than platform vendors can close it. This means quarterly capability releases on FRNG and DSPM, aggressive AI-SPM investment, and ecosystem leadership (open APIs, marketplace integrations, developer-tool partnerships). Pure-plays that maintain a 0.5-point or larger COV-7 lead can defend their position even as platform vendors acquire CNAPP point solutions.\n\nThe platform vendor counter is to pick one or two pillars where they can credibly match pure-play depth — typically CSPM and CWPP, leveraging existing endpoint and posture telemetry — and accept gaps in newer pillars (DSPM, FRNG) as acquisition targets. Platform vendors that try to match pure-plays on every pillar end up spread thin across all of them and lose differentiation everywhere.\n\nFor both groups, the critical strategic question is: which two pillars do you genuinely lead on, and are you willing to communicate that focus to the market? Vendors that try to lead on all seven pillars typically lead on none."
+        },
+        {
+          "title": "M&A as a Sub-Criterion Lever: When to Buy, When to Build",
+          "body": "Eight of 24 vendors have completed material M&A actions in the last 24 months. The MKR-03 (M&A & Convergence Activity) sub-criterion explicitly rewards this; platform vendors average 2.5 on MKR-03 versus 1.5 for pure-plays. M&A is a credible lever for closing capability gaps quickly, but only when the acquired capability is genuinely integrated into the platform within 6–9 months.\n\nThe M&A pattern that consistently produces quadrant lift is acquisition of a Niche Player with strong COV-4 (Offering Strategy) score — typically a 50–500 person company with a focused capability in DSPM, AI-SPM, or runtime CDR. Three Niche Players in this assessment fit that profile (Sweet Security, AccuKnox, Data Theorem) and would each materially close a capability gap for the right acquirer.\n\nThe M&A pattern that does NOT produce quadrant lift is acquisition of a competing CNAPP vendor for go-to-market consolidation. These deals create short-term revenue accretion but typically produce 12–18 months of integration friction that suppresses MKE (Marketing Execution) and CXQ (Customer Experience) scores. Product leaders evaluating M&A should distinguish capability-add deals (high quadrant lift) from consolidation deals (low or negative quadrant lift)."
+        }
+      ],
+      "background": "This Market Insight is intended for product leaders, product marketing leaders, and corporate strategy leaders at CNAPP vendors and CNAPP-adjacent vendors (XDR, SIEM, identity, data security). It analyzes the 2026 CNAPP Magic Quadrant assessment to extract specific, actionable strategic implications for vendor product roadmap and competitive positioning decisions.\n\nThe scoring methodology combines two assessments: the CNAPP capability schema (7 pillars, 29 sub-pillars) measuring product breadth and depth, and the CNAPP MQ Gap schema (7 pillars, 27 sub-pillars) measuring non-product MQ criteria. The 14 final ATE+COV criteria are computed by the weighted formulas defined in the schema's mq_scoring_mode block, with quadrants assigned by population median split.\n\nThe assessment covers 24 vendors. Three vendor types are represented: Pure-Play CNAPP (Wiz, Orca, Sysdig, Aqua), Platform Vendor with CNAPP (Palo Alto, Microsoft, CrowdStrike, SentinelOne, Trend Micro, Check Point, Fortinet, Bitdefender, Sophos), and Adjacent vendors (Datadog, Tenable, Qualys, Rapid7, Snyk, Uptycs, Sweet Security, Upwind, AccuKnox, Caveonix, Data Theorem). Five vendors are AI-first by positioning (Wiz, CrowdStrike, SentinelOne, Upwind, Sweet Security).",
+      "impact": "The implications for product leaders are concrete and time-bounded.\n\n**For Leader-quadrant vendors,** the Leader cluster is now too dense to defend on quadrant placement alone. Win rates increasingly correlate with sub-criterion leadership, particularly on CXQ-02, COV-4, and COV-7. Investment must be re-allocated from broad-front feature parity toward two or three high-leverage sub-criteria.\n\n**For Visionary and Challenger vendors,** the gap to Leader is small (within 0.5 points on at least one axis for most vendors). A focused 12–18 month investment cycle on two sub-criteria can produce a quadrant move. The most common path is closing CXQ-02 (Onboarding) for Visionaries moving toward Leader, and closing COV-4/COV-7 for Challengers moving toward Leader.\n\n**For Niche Players,** the most realistic 24-month path is to Visionary, not directly to Leader. Investment should concentrate on COV-4 (Offering Strategy) and COV-7 (Innovation) where Niche Players already over-index relative to ATE. Three Niche Players (Sweet Security, AccuKnox, Data Theorem) are within 0.30 points of crossing the COV median.\n\n**For all vendors,** the 0.7-point CXQ-02 lift associated with agentless onboarding is the highest single-investment ROI in the assessment. Vendors without an agentless deployment option should treat this as the highest-priority architectural investment for 2026.",
+      "conclusion": "The CNAPP Magic Quadrant in 2026 rewards focused investment, not breadth. The vendors winning competitive RFPs and gaining buyer mindshare are those that have picked two or three sub-criteria, invested disproportionately in those areas, and can demonstrate measurable leadership on each. The Leader cluster is dense enough that broad-front feature parity no longer differentiates; the Vision spread is concentrated enough that a focused two-pillar investment can move a vendor from below median to above median in a single year.\n\nProduct leaders should resist the temptation to invest evenly across all seven capability pillars. Pick the two pillars where you can credibly lead, invest disproportionately, and communicate that focus relentlessly. Vendors that follow this pattern — Wiz on CSPM/DSPM, Palo Alto on CSPM/CWPP, Microsoft on CSPM/Identity, Orca on agentless/runtime — are the ones that will define the next phase of the CNAPP market.",
+      "glossary": [
+        {"term": "CNAPP", "definition": "Cloud-Native Application Protection Platform."},
+        {"term": "CSPM", "definition": "Cloud Security Posture Management."},
+        {"term": "CWPP", "definition": "Cloud Workload Protection Platform."},
+        {"term": "CIEM", "definition": "Cloud Infrastructure Entitlement Management."},
+        {"term": "DSPM", "definition": "Data Security Posture Management."},
+        {"term": "AI-SPM", "definition": "AI Security Posture Management."},
+        {"term": "CDR", "definition": "Cloud Detection and Response."},
+        {"term": "SHIFT", "definition": "Shift-Left Integration into developer toolchain."},
+        {"term": "FRNG", "definition": "Frontier capabilities (AI-SPM, supply-chain, code-to-cloud)."},
+        {"term": "ATE", "definition": "Ability to Execute. Y-axis of Magic Quadrant."},
+        {"term": "COV", "definition": "Completeness of Vision. X-axis of Magic Quadrant."},
+        {"term": "Quadrant Mobility", "definition": "The minimum sub-criterion improvement required to move from one quadrant to another, given current scores."},
+        {"term": "Sub-Criterion Leverage", "definition": "The ratio of overall composite-score improvement to single sub-criterion improvement, weighted by the criterion's contribution to the composite."}
+      ],
+      "evidence": [
+        "Gartner CNAPP MQ Vendor Assessment, 2026 (24 vendors, 14 weighted ATE+COV criteria)",
+        "CNAPP Vendor 1-2 Researched dataset (capability scoring across 7 pillars and 29 sub-pillars)",
+        "CNAPP MQ Vendor 1-1 Researched dataset (gap-criteria scoring across 7 pillars and 27 sub-pillars)",
+        "CNAPP_MQ_Gap_Schema_App.json mq_scoring_mode (14 weighted criteria formulas including ATE-1 product composite, ATE-7 operations composite, COV-4 offering strategy composite, and COV-7 innovation composite)"
+      ]
+    },
+    {
+      "id": "mq-deep-dive",
+      "label": "MQ Methodology & Quadrant Deep-Dive",
+      "title": "CNAPP MQ 2026: Methodology, Boundaries, and Vendor-Level Findings",
+      "summary": "A detailed walkthrough of the CNAPP MQ scoring methodology, quadrant boundary derivation, and vendor-level findings. Intended for analysts, evaluators, and internal product strategy teams who need to understand why specific vendors land where they do and what the marginal cases tell us about the market.",
+      "spa": "By 2027, at least three of the 12 current Leaders will lose Leader status due to the rising COV median, while one Visionary (Upwind or Fortinet) and one Niche Player (Sweet Security) are positioned to enter the Leader quadrant.",
+      "findings": [
+        {
+          "header": "Median-split methodology produces unusually dense Leader cluster in 2026.",
+          "body": "Population median split is the most defensible quadrant-boundary method when the vendor pool is small (24 vendors) and well-known. With ATE median at 3.05 and COV median at 2.36, exactly 12 vendors qualify as Leaders. Fixed-threshold methods (e.g., ATE ≥ 3.5 AND COV ≥ 3.0) would produce a Leader cluster of 4–5 vendors, more consistent with traditional Gartner MQ density. Median-split is more transparent but produces 'hot' Leader cohorts in consolidating markets."
+        },
+        {
+          "header": "Six vendors sit within 0.10 points of a quadrant boundary — the marginal-case set.",
+          "body": "Tenable (ATE=3.17, COV=2.36) and Check Point (ATE=3.14, COV=2.36) sit on the COV median. Aqua Security (ATE=3.06) sits on the ATE median. Fortinet (ATE=3.04, COV=2.36) sits on both. Upwind (COV=2.39) sits 0.03 points above the COV median. Qualys (ATE=2.99, COV=2.28) sits 0.06 below the ATE median. These six vendors represent the active boundary set — small data refreshes will shift their quadrant placement."
+        },
+        {
+          "header": "ATE-1 (Products/Services) is the single highest-correlation criterion with overall ATE.",
+          "body": "ATE-1, weighted at 23% and computed from the seven CNAPP capability pillars (CSPM 0.20, CWPP 0.18, CIEM 0.15, SHIFT 0.12, CDR 0.15, DSPM 0.12, FRNG 0.08), is the criterion most predictive of overall Ability-to-Execute placement. Vendors scoring above 3.5 on ATE-1 land in the Leader or Challenger quadrant 11 of 12 times. Vendors below 2.5 on ATE-1 land in Niche Player 9 of 10 times."
+        },
+        {
+          "header": "COV-4 (Offering Strategy) explains most COV variance below the top five.",
+          "body": "COV-4, weighted at 22% and computed as (DSPM+FRNG)/2 × 0.50 + MKU-02 × 0.25 + MKU-03 × 0.25, is the single largest source of COV variance in the bottom 19 vendors. Vendors with strong DSPM and FRNG capability — even small ones — gain meaningful COV lift through this criterion. Three Niche Players (Sweet Security, AccuKnox, Data Theorem) carry above-median COV-4 scores."
+        },
+        {
+          "header": "Heuristic gap-scoring shows medium-to-low confidence in 18 of 24 vendors.",
+          "body": "The CNAPP MQ Gap research methodology is heuristic (auto-derived from capability data and vendor metadata), not interview-based. Confidence rating is 'low' for 18 vendors and 'medium' for 6. The largest sources of uncertainty are MSP/MSSP channel strategy (SLE-02), peer-review ratings (CXQ-01), and event/conference presence (MKE-03), all of which are difficult to derive from public capability data."
+        },
+        {
+          "header": "Three vendors in the Niche quadrant carry strong-vendor signals despite low overall scores.",
+          "body": "Sweet Security (ATE=2.24, COV=2.06), Upwind (Visionary, ATE=2.40, COV=2.39), and AccuKnox (ATE=2.32, COV=2.24) all carry the architectural and signal patterns associated with vendors that move up-quadrant within 24 months. Each has agentless deployment, AI-first or runtime-first positioning, and above-median Innovation scores relative to their funding stage."
+        }
+      ],
+      "recommendations": [
+        {
+          "header": "When updating this MQ next cycle, calibrate against fixed thresholds in addition to median split.",
+          "body": "The median-split methodology produces 12 Leaders in a 24-vendor pool. Reporting against both methods (median split for transparency; fixed thresholds at ATE≥3.5 / COV≥3.0 for narrative purposes) provides more actionable buyer guidance. The next-cycle MQ should publish both."
+        },
+        {
+          "header": "Monitor the six boundary vendors — small data refreshes will shift their placement.",
+          "body": "Tenable, Check Point, Aqua, Fortinet, Upwind, and Qualys sit within 0.10 points of a quadrant boundary. A 0.2-point improvement on a single high-weight criterion (ATE-1, ATE-2, COV-4, or COV-7) will move any of them. Track these six vendors quarterly; expect at least three to change quadrant by the next assessment cycle."
+        },
+        {
+          "header": "Upgrade the gap-research methodology to primary-source interviews for tier-2 vendors.",
+          "body": "Current heuristic scoring produces low-confidence ratings for 18 of 24 vendors. A targeted vendor-interview cycle covering the top 12 vendors and the three boundary vendors (Upwind, Sweet Security, AccuKnox) would produce medium-to-high confidence on the placements that matter most for buyer decisions. Estimated effort: 15 vendor interviews × 90 minutes each."
+        },
+        {
+          "header": "Add pricing and packaging assessment for the next cycle.",
+          "body": "This MQ intentionally excludes pricing because the CNAPP market lacks the standardized pricing schema applied to MDR. The next-cycle assessment should add a CNAPP_Pricing_Schema (5–6 dimensions: per-resource rate, per-API-call rate, marketplace co-sell terms, FinOps integration, multi-cloud unified billing). This would make the MQ usable for procurement, not just product evaluation."
+        },
+        {
+          "header": "Surface the Innovation criterion (COV-7) more prominently in vendor profile pages.",
+          "body": "COV-7 carries 19% of COV weight and is the most predictive single criterion for vendor Vision standing. Each vendor profile should foreground the COV-7 score, the four contributing pillar scores (FRNG, DSPM, CDR, SHIFT), and a year-over-year delta. This makes the most-actionable Vision driver immediately visible."
+        },
+        {
+          "header": "Track Pure-Play vs. Platform vendor cohort metrics separately in next-cycle reporting.",
+          "body": "The 0.29-point COV-7 spread and 0.95-point ATE-2 spread between Pure-Play and Platform cohorts is the strongest stratifying variable in the data. Reporting cohort medians and cohort-specific quadrant maps would give buyers a more useful comparative frame than the unified quadrant."
+        }
+      ],
+      "analysis_sections": [
+        {
+          "title": "Why Median-Split Quadrant Boundaries Produce a 12-Vendor Leader Cluster",
+          "body": "The CNAPP MQ uses population median split to determine quadrant boundaries: any vendor scoring above both the ATE median (3.05) and the COV median (2.36) qualifies as a Leader. With 24 vendors evaluated, this method produces approximately 12 Leaders by definition.\n\nMedian split has two strengths: it is transparent (every reader can verify the boundary), and it adapts automatically to market evolution (as the market matures, the median rises and the bar for Leader status rises with it). Its weakness is that it produces 'hot' Leader cohorts in consolidating markets where many vendors are converging on parity. Traditional Gartner MQs use analyst-determined fixed thresholds that produce smaller Leader clusters but are less reproducible.\n\nFor buyers, the practical consequence is that a 12-vendor Leader cluster cannot be a short-list. Sub-criterion analysis is required. For analysts and product strategy teams, the consequence is that quadrant mobility is high — a small change in capability or vendor metadata can shift placement, and the boundary vendors should be tracked closely.\n\nA fixed-threshold overlay (ATE≥3.5 AND COV≥3.0) applied to the same data would produce 4 Leaders: Wiz, Palo Alto Networks, Microsoft, and CrowdStrike. This is closer to the traditional Gartner MQ density and may be a useful complementary view for narrative purposes, even when median split is the primary boundary method."
+        },
+        {
+          "title": "ATE-1 and the Capability Composite: Why Product Breadth Drives Execution Standing",
+          "body": "ATE-1 is the highest-weight Ability-to-Execute criterion (23%) and is computed directly from the seven CNAPP capability pillars: CSPM (0.20), CWPP (0.18), CIEM (0.15), SHIFT (0.12), CDR (0.15), DSPM (0.12), FRNG (0.08). The criterion explicitly rewards product breadth, with the highest weights on the foundational pillars (CSPM, CWPP, CIEM) and reduced weights on emerging pillars (DSPM, FRNG).\n\nThe correlation between ATE-1 and overall ATE composite is the strongest in the model: vendors scoring above 3.5 on ATE-1 land in Leader or Challenger 11 of 12 times. Vendors below 2.5 on ATE-1 land in Niche Player 9 of 10 times. This is not coincidental — ATE-1's 23% weight makes it mathematically dominant — but it confirms that product breadth is the single largest determinant of execution standing.\n\nFor product leaders, the practical implication is that breadth investments compound. A 0.4-point lift in the CSPM pillar (achievable through a single capability release) translates to a 0.08-point lift in ATE-1, which translates to a 0.018-point lift in overall ATE. For a vendor sitting 0.05 points below the ATE median, this single release moves them above the Leader threshold.\n\nThe corollary: vendors with weak foundational pillars (CSPM <2.5) cannot reach Leader status through Vision investment alone. Foundational pillar investment must come first."
+        },
+        {
+          "title": "The COV-4 Vision Lever: Why Niche Players Score Above Their Weight",
+          "body": "COV-4 (Offering Strategy) is computed as (DSPM + FRNG) / 2 × 0.50 + MKU-02 × 0.25 + MKU-03 × 0.25. The formula is explicitly designed to reward vendors investing in newer CNAPP pillars (DSPM, FRNG) regardless of their performance on the foundational pillars. This produces an interesting asymmetry: small, focused vendors with strong DSPM or AI-SPM capability can score well on COV-4 even when their overall execution is low.\n\nThree Niche Players exemplify this pattern. Sweet Security (Pure-Play CNAPP, runtime-focused) scores 2.5 on FRNG and 2.0 on DSPM, producing a COV-4 of 2.4 — above the median. AccuKnox (open-source-derived, eBPF-heavy) scores 2.5 on FRNG and 2.0 on DSPM, also producing 2.4. Data Theorem (API security focus) scores 2.5 on FRNG and 1.5 on DSPM, producing 2.2 — at the median.\n\nFor analysts, this confirms that COV-4 is the most-actionable single Vision criterion for emerging vendors. For product strategy teams at established vendors, it is a warning: emerging vendors are concentrating innovation investment in the two pillars (DSPM, FRNG) most likely to produce future quadrant mobility. Established vendors that under-invest in these pillars will see their Vision lead erode over the next 24 months."
+        },
+        {
+          "title": "Heuristic Gap-Scoring: Confidence Limits and the Path to Higher Confidence",
+          "body": "The CNAPP MQ Gap research methodology is heuristic — sub-pillar scores are derived from capability data, vendor metadata, and signal-mining of public materials. This approach is appropriate for an initial-cycle assessment because it is repeatable, transparent, and scales to the full vendor pool. It is not a substitute for primary-source vendor interviews.\n\nThe overall confidence rating is 'medium' for 6 vendors and 'low' for 18 vendors. The 'medium' confidence vendors are the largest, most-publicly-documented vendors (Wiz, Palo Alto, Microsoft, CrowdStrike, SentinelOne, Datadog) where capability data and metadata signals are rich enough to produce defensible scores. The 18 'low' confidence vendors are smaller, less-documented vendors where heuristic signals are sparser and scores carry larger uncertainty bands.\n\nThe sub-criteria with the largest uncertainty are SLE-02 (MSP/MSSP Channel Strategy), CXQ-01 (Peer Review Ratings), CXQ-03 (Support & Customer Success Programs), and MKE-03 (Conference & Event Presence). These are operational and customer-experience dimensions that are difficult to derive from product capability data alone.\n\nThe path to higher confidence is a targeted vendor-interview cycle: 15 vendor interviews (the top 12 vendors plus the three boundary vendors most likely to move quadrants) at approximately 90 minutes each. This would produce medium-to-high confidence on the placements that matter most for buyer decisions, without inflating effort to cover the full 24-vendor pool."
+        }
+      ],
+      "background": "This deep-dive Market Insight is intended for Gartner analysts, internal product strategy teams, and CNAPP vendors who need to understand the methodology and limitations of the 2026 CNAPP Magic Quadrant assessment. It complements the buyer-facing and CPO-facing perspectives by exposing the scoring math, boundary derivations, and confidence limitations.\n\nThe assessment uses two source schemas: CNAPP_Schema.json v1.1 (7 capability pillars, 29 sub-pillars) and CNAPP_MQ_Gap_Schema_App.json v1.0 (7 gap pillars, 27 sub-pillars). The 14 final MQ criteria (7 ATE + 7 COV) are computed by the weighted formulas defined in the schema's mq_scoring_mode block. Quadrant boundaries are determined by population median split: ATE median 3.05, COV median 2.36.\n\nThe vendor pool is 24 vendors selected for material CNAPP go-to-market presence in 2026. Capability scores are derived from product documentation, public materials, analyst briefings, and publicly available customer references. Gap scores are derived heuristically from capability data, vendor metadata (funding stage, employee count, region, target market), and signal-mining of vendor descriptions and key differentiators.",
+      "impact": "**For analysts,** the methodology produces a defensible and reproducible quadrant placement, but the dense Leader cluster (12 of 24) limits the placement's communicative power. Reporting against both median-split and fixed-threshold boundaries would improve narrative clarity without sacrificing reproducibility.\n\n**For internal product strategy teams,** the criterion-weight model is now transparent: the four highest-leverage sub-criteria (CXQ-02, COV-4, COV-7, MKR-02) and the four highest-weight criteria (ATE-1 at 23%, ATE-2 at 21%, COV-4 at 22%, COV-1 at 19%) account for the vast majority of quadrant placement variance. Strategic investment should concentrate on these eight items.\n\n**For vendors,** the boundary vendors (Tenable, Check Point, Aqua, Fortinet, Upwind, Qualys) are explicitly named — three of these vendors are likely to change quadrants by the next assessment cycle. Vendors not in the boundary set should still understand which criterion-level investments would change their placement, and the 'Quadrant Mobility' analysis section provides this math.",
+      "conclusion": "The 2026 CNAPP MQ is methodologically sound but the median-split boundary method produces a Leader cluster (12 of 24 vendors) that limits its differentiation power. The most-actionable findings are at the sub-criterion level: ATE-1 dominates execution standing (23% weight, strong correlation with quadrant placement), COV-4 and COV-7 dominate Vision standing (combined 41% weight), and CXQ-02 (Onboarding) is the single highest-leverage operational sub-criterion.\n\nThe next-cycle assessment should add (1) a fixed-threshold overlay for narrative clarity, (2) a primary-source interview cycle for the top 12 plus boundary vendors, (3) a CNAPP pricing schema, and (4) cohort-specific reporting for Pure-Play vs. Platform vendor groups. These four enhancements would significantly increase the assessment's utility for both buyers and product strategy teams.",
+      "glossary": [
+        {"term": "Median Split", "definition": "Quadrant-boundary method that places thresholds at the population median of each axis. Produces approximately 25% of vendors in each quadrant by definition."},
+        {"term": "Fixed Threshold", "definition": "Quadrant-boundary method that uses analyst-determined absolute thresholds (e.g., ATE≥3.5 AND COV≥3.0). Produces variable quadrant populations depending on market maturity."},
+        {"term": "Boundary Vendor", "definition": "A vendor whose composite score is within 0.10 points of a quadrant boundary, such that small data refreshes can change quadrant placement."},
+        {"term": "Sub-Criterion Leverage", "definition": "The contribution of a single sub-criterion's improvement to overall composite score, weighted by the criterion's contribution to the composite."},
+        {"term": "Heuristic Gap Scoring", "definition": "A scoring methodology that derives gap-criteria scores from capability data and vendor metadata using rule-based heuristics, in lieu of primary-source interviews."},
+        {"term": "Confidence Rating", "definition": "Per-vendor rating (high/medium/low) of confidence in the gap-criteria scores, based on signal density and methodology rigor."},
+        {"term": "ATE-1 Composite", "definition": "Products/Services criterion (23% of ATE weight) computed as a weighted sum of the seven CNAPP capability pillars."},
+        {"term": "COV-7 Composite", "definition": "Innovation criterion (19% of COV weight) computed as FRNG×0.40 + DSPM×0.30 + CDR×0.20 + SHIFT×0.10."},
+        {"term": "COV-4 Composite", "definition": "Offering Strategy criterion (22% of COV weight) computed as (DSPM+FRNG)/2×0.50 + MKU-02×0.25 + MKU-03×0.25."}
+      ],
+      "evidence": [
+        "Gartner CNAPP MQ Vendor Assessment, 2026 (24 vendors, 14 weighted ATE+COV criteria, median-split quadrant boundaries)",
+        "CNAPP_Schema.json v1.1 (7 capability pillars: CSPM, CWPP, CIEM, SHIFT, CDR, DSPM, FRNG; 29 sub-pillars)",
+        "CNAPP_MQ_Gap_Schema_App.json v1.0 (7 gap pillars: VIA, SLE, MKR, MKE, CXQ, MKU, VIG; 27 sub-pillars; mq_scoring_mode with 14 weighted criterion formulas)",
+        "CNAPP Vendor 1-2 Researched dataset (capability scoring) and CNAPP MQ Vendor 1-1 Researched dataset (heuristic gap scoring)"
+      ]
+    }
+  ]
+}

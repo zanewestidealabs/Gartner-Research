@@ -1,0 +1,306 @@
+{
+  "ai_trism_taxonomy_v1.1": {
+    "schema_lineage": {
+      "parent": "AI TriSM Schema 1_0.json",
+      "parent_version": "1.0",
+      "sub_pillar_id_mapping": "unchanged_from_v1.0",
+      "score_layers": ["current", "validated", "researched", "v2_researched"],
+      "purpose": "AI TRiSM evaluation schema with research methodology documentation, rationale consolidation logic, and comprehensive field mapping"
+    },
+
+    "intent": "Evaluate vendors and platforms on their AI Trust, Risk, and Security Management (TRiSM) capabilities. Scores reflect the maturity, specificity, measurability, and autonomy of AI-enabled TRiSM controls—not the general product capability. This version documents the complete research pipeline, rationale consolidation methodology, and all data fields used in vendor scoring.",
+
+    "metadata": {
+      "framework_alignment": "Gartner AI TRiSM layers (Gov/Runtime/InfoGov) + NIST AI RMF + ISO/IEC 42001",
+      "scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of AI-enabled TRiSM capability in this area",
+        "scoring_logic": {
+          "0": "No Evidence: No publicly verifiable evidence of AI-enabled TRiSM in this capability.",
+          "1": "No AI/ML: Policy/process or manual controls only; no AI-based enforcement, monitoring, or evaluation beyond simple rules/scripting.",
+          "2": "Generic AI Claims: Marketing mentions AI/ML guardrails but lacks named models, policy engines, runtime hooks, metrics, or docs.",
+          "3": "AI-Augmented: Documented AI models or policy engines assist humans (e.g., runtime detections, cataloging, or evaluations) with human approval gates; some use-case specifics disclosed.",
+          "4": "Advanced AI: Named models/policy engines with measurable outcomes (block/allow rates, false-positive/negative, latency). Partially automated runtime enforcement with blended risk scoring; continuous assurance pipelines.",
+          "5": "Fully Agentic: Autonomous TRiSM controls that plan, inspect, enforce, and auto-remediate within governance bounds; full auditability of AI actions, versioned models, error rates, and override points disclosed."
+        }
+      },
+      "source_policy": {
+        "description": "Evidence must be publicly accessible and verifiable; not restricted to vendor domains.",
+        "valid_sources": [
+          { "tier": "A", "type": "Vendor documentation", "examples": ["Product pages", "Admin/Developer docs", "API references", "Release notes", "Security whitepapers"], "weight": 1.0 },
+          { "tier": "A", "type": "Analyst reports", "examples": ["Gartner Market Guide / Hype Cycle", "Forrester Wave", "IDC MarketScape", "KuppingerCole"], "weight": 1.0 },
+          { "tier": "B", "type": "Technical media", "examples": ["SecurityWeek", "Dark Reading", "Help Net Security", "CSO Online"], "weight": 0.85 },
+          { "tier": "B", "type": "Benchmarks/Case studies", "examples": ["Customer case studies", "Public bake-offs", "Government RFP evals"], "weight": 0.85 },
+          { "tier": "C", "type": "Conference/Academic", "examples": ["RSAC", "Black Hat", "DEF CON", "arXiv", "Standards drafts"], "weight": 0.7 },
+          { "tier": "C", "type": "Professional networks", "examples": ["Engineer-authored LinkedIn/Blogs with technical detail"], "weight": 0.7 }
+        ],
+        "invalid_sources": [
+          "Unverifiable anonymous claims",
+          "Paywalled content not publicly accessible",
+          "Internal/confidential docs",
+          "Generic sales collateral without technical detail"
+        ]
+      }
+    },
+
+    "research_methodology": {
+      "pipeline_overview": "The TRiSM research pipeline progresses through versioned stages. Each stage enriches vendor records with additional data and refines scores based on evidence. No stage deletes prior data; each appends new layers.",
+      "stages": {
+        "v1_0_seed": {
+          "file_pattern": "AI TRiSM Vendor 1-0 Seed.json",
+          "script": "generate_trism_seed.py",
+          "description": "Initial vendor list with raw pillar/sub-pillar scores from capability claims. No evidence validation.",
+          "fields_produced": ["vendor", "region", "specialization", "is_startup", "is_ai_first", "vendor_type", "primary_trism_layer", "capability_analysis", "pillar_scores", "sub_pillar_scores_current"]
+        },
+        "v1_1_validated": {
+          "file_pattern": "AI TRiSM Vendor 1-1 Validated.json",
+          "script": "research_validate_vendors.py",
+          "description": "Validate vendor existence, websites, and basic claims. Produce validated scores and rationale strings.",
+          "fields_produced": ["pillar_scores_validated", "sub_pillar_scores_validated", "sub_pillar_rationale_validated", "research", "research_flag", "research_confidence"]
+        },
+        "v2_0_researched": {
+          "file_pattern": "AI TRiSM Vendor 2-0 Researched.json",
+          "script": "research_trism_v2_rationale.py",
+          "description": "Deep research: fetch public evidence, evaluate against schema criteria, produce structured rationale objects with evidence quality analysis and score adjustments.",
+          "fields_produced": ["pillar_scores_v2_researched", "sub_pillar_scores_v2_researched", "sub_pillar_rationale_v2", "sub_pillar_evidence", "evidence_quality_analysis", "evidence_quality_summary"]
+        },
+        "v2_1_consolidated": {
+          "file_pattern": "AI TRiSM Vendor 2-1 Consolidated.json",
+          "script": "build_trism_v2_1.py",
+          "description": "Data-only transform: consolidate three rationale sources (score_rationale, evidence_quality_rationale, score_adjustment.reason) plus criteria assessment into a single human-readable string per sub-pillar. No external fetches.",
+          "fields_produced": ["sub_pillar_rationale_v2_consolidated"],
+          "consolidation_logic": {
+            "inputs": [
+              {
+                "field": "sub_pillar_rationale_v2.{sid}.score_rationale",
+                "description": "Primary scoring justification: why this maturity level was assigned, evidence basis (excerpt count, source count, term matches), criteria met/partial/unmet, and evidence specificity."
+              },
+              {
+                "field": "sub_pillar_rationale_v2.{sid}.evidence_quality_rationale",
+                "description": "Evidence quality grade (A-F) with breakdown: source diversity factor, volume assessment, term specificity, cross-source confirmation, and schema criteria coverage ratio."
+              },
+              {
+                "field": "sub_pillar_rationale_v2.{sid}.score_adjustment.reason",
+                "description": "Explanation of why the score was adjusted from its original (v1) value, including the analytical level determination and evidence strength comparison."
+              }
+            ],
+            "additional_context_included": [
+              {
+                "field": "sub_pillar_rationale_v2.{sid}.criteria_assessment",
+                "description": "Array of per-criterion evaluations with status (met/partial/unmet), supporting evidence text, and confidence level."
+              },
+              {
+                "field": "sub_pillar_rationale_v2.{sid}.key_evidence",
+                "description": "Top evidence snippets used in the scoring decision."
+              }
+            ],
+            "output_format": "Human-readable text with labeled sections: [Score Rationale], [Evidence Quality], [Score Adjustment], [Criteria Assessment], [Key Evidence]"
+          }
+        }
+      }
+    },
+
+    "rationale_consolidation_logic": {
+      "description": "The v2.1 consolidated rationale merges three independent analytical outputs into one readable field per sub-pillar. This is the authoritative rationale for display in the vendor detail modal.",
+      "section_1_score_rationale": {
+        "source_field": "sub_pillar_rationale_v2.{sid}.score_rationale",
+        "content": "States the assigned score, maturity level label, evidence strength indicators (coverage %, V1 signal correlation, pillar term matches, schema criteria matches), and lists criteria that are fully met, partially met, or unmet with specific gap descriptions.",
+        "example_prefix": "Vendor scores X.XX/5.0 (Level N: Label). Evidence: coverage=XX%, V1 signal=X.XX..."
+      },
+      "section_2_evidence_quality": {
+        "source_field": "sub_pillar_rationale_v2.{sid}.evidence_quality_rationale",
+        "content": "Assigns a letter grade (A-F) to the evidence base. Breaks down: source diversity factor (0-1), excerpt volume, term specificity, cross-source confirmation, and schema criteria coverage ratio. Low grades flag unreliable scores.",
+        "example_prefix": "Evidence quality: XX.X% — Grade X (Label). Source diversity..."
+      },
+      "section_3_score_adjustment": {
+        "source_field": "sub_pillar_rationale_v2.{sid}.score_adjustment",
+        "content": "Explains score movement from original (v1) to adjusted (v2). Includes direction (increased/decreased/confirmed), magnitude, and the analytical reasoning (criteria met count, key evidence count, analytical level).",
+        "example_prefix": "X.XX → X.XX: Score decreased/confirmed — rationale analysis..."
+      },
+      "section_4_criteria_assessment": {
+        "source_field": "sub_pillar_rationale_v2.{sid}.criteria_assessment",
+        "content": "Per-criterion breakdown with status icons (✅ met, ⚠️ partial, ❌ unmet) and the criterion text. Provides a quick summary line (N met, N partial, N unmet of N total).",
+        "format": "Tabular with status, criterion name"
+      },
+      "section_5_key_evidence": {
+        "source_field": "sub_pillar_rationale_v2.{sid}.key_evidence",
+        "content": "Top 3 evidence snippets (150 chars each) that were most influential in the scoring decision.",
+        "format": "Numbered list of truncated excerpts"
+      }
+    },
+
+    "pillars": {
+      "GOV": {
+        "name": "AI Governance",
+        "focus": "Visibility, accountability, and continuous assurance across all AI entities and use cases.",
+        "validated_pillar_score_rule": "Average of AI-researched sub-pillar scores (GOV-01..GOV-04)",
+        "ai_evidence_signals": [
+          "AI catalog with risk scores across models, agents, and apps",
+          "AI data mapping/lineage tied to each AI entity",
+          "Automated documentation, audit trails, and approvals/attestations",
+          "Continuous assurance: evaluations, red-teaming, posture & compliance dashboards"
+        ]
+      },
+      "RUN": {
+        "name": "Runtime Inspection & Enforcement",
+        "focus": "Single-pass, low-latency runtime controls that inspect inputs/outputs/activities and enforce enterprise policy.",
+        "validated_pillar_score_rule": "Average of AI-researched sub-pillar scores (RUN-01..RUN-04)",
+        "ai_evidence_signals": [
+          "Unified runtime policy engines with blended risk scoring",
+          "Prompt-injection/jailbreak defense; model/agent monitoring",
+          "Context-aware data protection (dynamic classification, PBAC, selective redaction)",
+          "Auto-block/auto-remediation with human escalation playbooks"
+        ]
+      },
+      "INF": {
+        "name": "Information Governance (for AI)",
+        "focus": "Data discovery, classification, access control, retention, and PETs to prevent oversharing and data compromise.",
+        "validated_pillar_score_rule": "Average of AI-researched sub-pillar scores (INF-01..INF-04)",
+        "ai_evidence_signals": [
+          "DSPM/DLP/DAG controls across SaaS, cloud, productivity suites",
+          "Policy of least privilege/PBAC; permissions hygiene at scale",
+          "PETs: masking, tokenization, synthetic data, confidential compute",
+          "Cross-functional operating model integrations (Security, D&A, IAM, Compliance)"
+        ]
+      }
+    },
+
+    "sub_pillars": {
+      "GOV-01": {
+        "name": "AI Catalog & Inventory",
+        "expanded_definition": "Discovery and risk scoring of all AI entities (models, agents, apps), including ownership, lineage, and life-cycle state.",
+        "ai_evaluation_criteria": [
+          "Automated discovery of embedded and homegrown AI entities",
+          "Risk scoring per entity with policy/control coverage mapping",
+          "Owner/approver attribution and versioned lifecycle records",
+          "Searchable registry with model cards/BOMs and runtime metrics",
+          "APIs to export catalog and integrate with SIEM/GRC"
+        ]
+      },
+      "GOV-02": {
+        "name": "AI Data Mapping & Lineage",
+        "expanded_definition": "Map training, fine-tuning, RAG, and agent context data to each AI entity and maintain lineage over time.",
+        "ai_evaluation_criteria": [
+          "Automated mapping of data sets to specific AI entities",
+          "Lineage tracking (provenance, transformations, access history)",
+          "Data quality & sensitivity labeling tied to AI usage",
+          "Impact analysis for dataset changes on governed AI entities",
+          "Interfaces with data catalogs/MDM for bidirectional sync"
+        ]
+      },
+      "GOV-03": {
+        "name": "Documentation, Audit & Approvals",
+        "expanded_definition": "Automated generation and maintenance of model cards, audit trails, approvals/attestations, and third-party RFI workflows.",
+        "ai_evaluation_criteria": [
+          "Automated documentation (model cards, BOM, reports)",
+          "Immutable audit trails of AI artifacts and state changes",
+          "Workflow for approvals/exceptions with evidence attachments",
+          "Third-party AI RFI/evidence exchange and validation",
+          "Compliance mapping to NIST AI RMF / ISO 42001 / EU AI Act"
+        ]
+      },
+      "GOV-04": {
+        "name": "Continuous Assurance & Posture",
+        "expanded_definition": "Pre- and post-deployment evaluations, red teaming, risk/control validation, and compliance reporting.",
+        "ai_evaluation_criteria": [
+          "Automated red teaming (prompt attacks, adversarial tests) with results back to risk posture",
+          "Continuous policy/control validation (bias, leakage, trust, alignment)",
+          "Runtime metrics feeding posture dashboards and alerts",
+          "Compliance reporting with evidence links and trend views",
+          "APIs for SIEM/SOAR/GRC integration"
+        ]
+      },
+
+      "RUN-01": {
+        "name": "Unified Runtime Control Plane",
+        "expanded_definition": "Single-pass inspection with multiple policy engines (safety, legal/compliance, security) and blended risk scoring.",
+        "ai_evaluation_criteria": [
+          "Parallel policy engines with aggregated risk/decisioning",
+          "Latency SLAs and throughput benchmarks documented",
+          "Deterministic escalation routes by violation class",
+          "Pluggable policies/models; provider-agnostic connectors",
+          "Evidence of reduced conflicts vs siloed controls"
+        ]
+      },
+      "RUN-02": {
+        "name": "Security & Threat Defense",
+        "expanded_definition": "Detection and prevention of prompt injection, jailbreaks, adversarial inputs, and anomalous model/agent behavior.",
+        "ai_evaluation_criteria": [
+          "Prompt-injection/jailbreak detection with measurable block rates",
+          "Model/app/agent monitoring for anomalous activities",
+          "Signature + ML hybrid techniques for robustness",
+          "Auto-remediation playbooks with rollback",
+          "Feeds to SIEM/SOAR for incident response"
+        ]
+      },
+      "RUN-03": {
+        "name": "Safety, Quality & Compliance Filtering",
+        "expanded_definition": "Input/output checking for toxicity, IP/copyright, hallucinations, and regulatory/policy violations with explainer artifacts.",
+        "ai_evaluation_criteria": [
+          "Content anomaly detection with precision/recall metrics",
+          "Hallucination & factuality checks with citations",
+          "IP/copyright filters and licensing policy enforcement",
+          "Regulatory templates (e.g., EU AI Act risk class checks)",
+          "Explainability artifacts (rationales, scores, evidence IDs)"
+        ]
+      },
+      "RUN-04": {
+        "name": "Contextual Data Protection at Runtime",
+        "expanded_definition": "Dynamic classification, PBAC/least-privilege enforcement, and selective redaction/obfuscation in transit.",
+        "ai_evaluation_criteria": [
+          "Dynamic content classification inline with AI sessions",
+          "PBAC/ABAC enforcement bound to user/app/agent purpose",
+          "Selective redaction/tokenization with low latency",
+          "Per-transaction data access logs and alerts",
+          "Integration with DSPM/DLP/IAM to adjust permissions"
+        ]
+      },
+
+      "INF-01": {
+        "name": "Data Discovery & Classification",
+        "expanded_definition": "Discover and classify sensitive data across SaaS, cloud, and productivity platforms relevant to AI.",
+        "ai_evaluation_criteria": [
+          "Automated discovery across structured/unstructured stores",
+          "ML-driven classifiers for sensitivity and ownership",
+          "Coverage metrics and blind-spot detection",
+          "Linkage to AI use cases/RAG indexes",
+          "Bulk remediation workflows"
+        ]
+      },
+      "INF-02": {
+        "name": "Access Governance & Sharing Hygiene",
+        "expanded_definition": "Permissions hygiene at scale with least-privilege/PBAC and lifecycle (retention/ROT) enforcement.",
+        "ai_evaluation_criteria": [
+          "Automated permission right-sizing recommendations",
+          "PBAC policies bound to AI purposes and contexts",
+          "Lifecycle policies (retention, ROT cleanup) with evidence",
+          "Alerting on oversharing hotspots relevant to AI copilots",
+          "Change impact simulations before enforcement"
+        ]
+      },
+      "INF-03": {
+        "name": "Privacy-Enhancing Technologies (PETs)",
+        "expanded_definition": "Apply PETs across training, tuning, inference, and agentic workflows.",
+        "ai_evaluation_criteria": [
+          "Runtime masking/redaction/tokenization with rehydration controls",
+          "Synthetic data/differential privacy for evaluations",
+          "Confidential computing/TEEs for sensitive workloads",
+          "Documented privacy risk reduction metrics",
+          "Governed key/secret management for AI contexts"
+        ]
+      },
+      "INF-04": {
+        "name": "Cross-Functional Operating Model",
+        "expanded_definition": "Coordination across Security, D&A, Digital Workplace, IAM, and Compliance to sustain InfoGov for AI at scale.",
+        "ai_evaluation_criteria": [
+          "Documented RACI and workflows for AI data access changes",
+          "Joint KPIs (oversharing reduction, MTTR for policy fixes)",
+          "Integrated change mgmt from detection → permission fix",
+          "TTX for InfoGov failure modes (e.g., oversharing in copilots)",
+          "Evidence of scaled adoption in M365/Workspace estates"
+        ]
+      }
+    }
+  }
+}

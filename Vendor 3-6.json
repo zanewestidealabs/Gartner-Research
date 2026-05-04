@@ -1,0 +1,1607 @@
+{
+  "schema_ref": "schema3-3.json",
+  "schema_version": "3.2",
+  "vendor_count": 32,
+  "vendors": [
+    {
+      "vendor": "Ankura",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Data Mining & Regulatory Compliance",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 4.0,
+        "REM": 3.0,
+        "PMG": 4.25,
+        "LAW": 5.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "Perfect 5.0 in Law due to elite e-discovery automation and AI data mining that identifies PII 92% faster. Source: https://ankura.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Arctic Wolf",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Concierge Security Operations",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 3.75,
+        "REM": 4.5,
+        "PMG": 4.25,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Aurora platform processes 9 trillion events weekly with AI-driven triage; Incident360 provides 1-hour response SLAs. Source: https://arcticwolf.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Atos (Eviden)",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Sovereign Cloud Forensics",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.5,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Polaris AI platform introduces autonomous 'SRE teammates' to automate incident diagnosis and ticket resolution. Source: https://atos.net/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Binalyze",
+      "region": "Europe / Global",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "AI-First",
+      "specialization": "Automated Evidence Acquisition",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 5.0,
+        "REM": 4.0,
+        "PMG": 4.25,
+        "LAW": 4.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "AIR platform uses Fleet AI agents to autonomously collect 650+ artifact types and map evidence lineage. Source: https://www.binalyze.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Booz Allen Hamilton",
+      "region": "North America / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "National Security & Government Grade IR",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Utilizes a Multi-Agent Insider Threat solution to correlate evidence from HR and logs in minutes. Source: https://www.boozallen.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Check Point Software Technologies",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Prevention-First Infrastructure",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.0,
+        "REM": 4.25,
+        "PMG": 4.0,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "ThreatCloud AI shares IoCs stack-wide in <2 seconds; Infinity Playblocks delivers automated containment. Source: https://www.checkpoint.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Cisco",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Intelligence-Led Discovery",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 3.5,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Talos IR leverages massive telemetry from 800 billion daily events to automate TTP mapping to MITRE. Source: https://talosintelligence.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Coveware",
+      "region": "North America / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Cyber Extortion Negotiation",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 4.75,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 5
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Recon Scanner evaluates encryption behavior and forecasts recovery likelihood based on historic actor data. Source: https://www.coveware.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "CyberCX",
+      "region": "APAC (Australia)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Critical Infrastructure IR",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 3.25,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 4,
+          "INV-03": 3,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Region's largest team of incident responders; provides expert reports and testimony in legal proceedings. Source: https://cybercx.com.au/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Cybereason",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "MalOp Behavioral Detection",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.25,
+        "REM": 4.5,
+        "PMG": 3.5,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 3,
+          "PMG-02": 4,
+          "PMG-03": 3,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 3,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "AI-driven platform recognizes and ends MalOps before they take hold, improving intervals by 93%. Source: https://www.cybereason.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Darktrace (Cado Security)",
+      "region": "UK / Global",
+      "is_startup": false,
+      "is_ai_first": true,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "AI-First",
+      "specialization": "Autonomous Self-Learning Defense",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 4.75,
+        "REM": 4.5,
+        "PMG": 4.0,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Antigena Response automatically neutralizes threats; integrates Cado for truly automated cloud forensics. Source: https://www.darktrace.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Dell Technologies",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Data Security Recovery",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 3.5,
+        "REM": 4.0,
+        "PMG": 3.75,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 3
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Dell Automation Platform streamlines AI deployment via blueprints; PowerProtect provides automated restoration. Source: https://www.dell.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "eSentire",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Turnkey Threat Containment",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.5,
+        "REM": 4.25,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Atlas platform delivers 43x investigation acceleration, completing 5-hour investigations in under 7 minutes. Source: https://www.esentire.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "EY (Ernst & Young)",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Forensic & Integrity Services",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.0,
+        "REM": 3.75,
+        "PMG": 4.0,
+        "LAW": 4.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "4,000+ professionals; applies advanced analytics to collection validation, gap analysis, and trial prep. Source: https://www.ey.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Google Cloud (Mandiant)",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Intelligence-Led Forensics",
+      "pillar_scores": {
+        "PLA": 4.75,
+        "INV": 4.5,
+        "REM": 4.25,
+        "PMG": 4.25,
+        "LAW": 4.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 5,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Integration of Gemini AI enables 'IOC-to-Action' workflows to pivot from clues to threat stories in minutes. Source: https://cloud.google.com/security/mandiant",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Group-IB",
+      "region": "APAC (Singapore) / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "High-Tech Crime Investigation",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 3,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Uses a neural network of Digital Crime Resistance Centers (DCRCs) to thwart local attacks via global intel. Source: https://www.group-ib.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "IBM (X-Force)",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Enterprise Crisis Leadership",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 4.0,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Utilizes AI-powered risk audits to anticipate threats and automates response actions via QRadar. Source: https://www.ibm.com/security/xforce",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Integrity360",
+      "region": "EMEA (Ireland/UK) / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "European Cyber Resilience",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 4.25,
+        "REM": 3.25,
+        "PMG": 3.5,
+        "LAW": 3.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 3,
+          "PMG-02": 3,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 3,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Aegis MDR unifies telemetry to anticipate attacks; NCSC-assured for top-tier incident response. Source: https://www.integrity360.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Kroll",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Litigation Support & Forensic Recovery",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 3.25,
+        "REM": 2.75,
+        "PMG": 5.0,
+        "LAW": 5.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 3,
+          "REM-04": 2
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 5,
+          "PMG-03": 5,
+          "PMG-04": 5
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "Dominant in corporate risk; forensic engineers present findings as court-appointed special masters. Source: https://www.kroll.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Kudelski Security",
+      "region": "Global / EMEA",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Hypothesis-Driven Hunting",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.0,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "MDR service integrates continuous intelligence-led hunts aligned with active global campaigns. Source: https://kudelskisecurity.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Mitiga",
+      "region": "Global",
+      "is_startup": true,
+      "is_ai_first": true,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "AI-First",
+      "specialization": "Cloud-Native Breach Prevention",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 4.75,
+        "REM": 4.75,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 3,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 5,
+          "INV-02": 5,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 5,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Helios AI reconstructs cloud attack stories 70x faster, providing zero-impact containment for cloud assets. Source: https://www.mitiga.io/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "mnemonic",
+      "region": "Europe (Nordics)",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Digital Forensics Research",
+      "pillar_scores": {
+        "PLA": 3.25,
+        "INV": 4.5,
+        "REM": 3.25,
+        "PMG": 3.25,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 3,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 3,
+          "PMG-02": 3,
+          "PMG-03": 3,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Utilizes innovative NLP models (TextCNN) to identify crypto mnemonics 40x faster than traditional methods. Source: https://www.mnemonic.no/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "NCC Group",
+      "region": "Europe / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Accredited IR & National Resilience",
+      "pillar_scores": {
+        "PLA": 3.5,
+        "INV": 3.25,
+        "REM": 3.25,
+        "PMG": 4.25,
+        "LAW": 5.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 3,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 5,
+          "LAW-03": 5,
+          "LAW-04": 5
+        }
+      },
+      "capability_analysis": "CREST-accredited forensics leader; provides rigorous chain-of-custody protocols for national critical infrastructure. Source: https://www.nccgroup.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Optiv",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "NIST-Aligned Incident Recovery",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 3.5,
+        "REM": 3.5,
+        "PMG": 4.0,
+        "LAW": 3.75
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 5
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 3,
+          "INV-03": 3,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Strategic incident management programs based on NIST standards; expertly guides through identification to analysis. Source: https://www.optiv.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Palo Alto Unit 42",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Threat Intel-Led Investigations",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.5,
+        "REM": 4.25,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 5
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 5,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Elite research uncovers Chinese threat groups (Phantom Taurus) using intelligence-led discovery playbooks. Source: https://www.paloaltonetworks.com/unit42",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Pondurance",
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Mid-Market Concierge SOC",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 3.25,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 3,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Assurance Program provides 24/7 access to experts; ensures compliance with data privacy and litigation holds. Source: https://www.pondurance.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "PwC",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Business Risk & Recovery",
+      "pillar_scores": {
+        "PLA": 4.25,
+        "INV": 3.75,
+        "REM": 3.5,
+        "PMG": 4.25,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 5,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "IDC Leader; grounds response in business acumen and regulatory reporting for complex GDPR and DORA matters. Source: https://www.pwc.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Quorum Cyber",
+      "region": "United Kingdom / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Microsoft Security Ecosystem",
+      "pillar_scores": {
+        "PLA": 4.5,
+        "INV": 4.25,
+        "REM": 4.25,
+        "PMG": 4.0,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 5,
+          "PLA-02": 5,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 4,
+          "INV-03": 5,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 5,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "2026 Global Risk Intelligence report tracked first nation-state actors leveraging agentic AI to automate intrusions. Source: https://www.quorumcyber.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Sophos (Secureworks)",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Assistance Component",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Taegis Platform Response",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 4.25,
+        "REM": 4.0,
+        "PMG": 4.0,
+        "LAW": 3.5
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 4,
+          "INV-02": 5,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 4,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 3,
+          "LAW-04": 3
+        }
+      },
+      "capability_analysis": "Leverages the Taegis platform for ML-driven triage of APTs; integrates with 15+ SOAR tools for automated response. Source: https://www.secureworks.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Sygnia",
+      "region": "Middle East / Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Elite Adversary Eviction",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 3.5,
+        "REM": 4.25,
+        "PMG": 4.25,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 5,
+          "PLA-04": 2
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 4,
+          "INV-03": 4,
+          "INV-04": 3
+        },
+        "REM": {
+          "REM-01": 4,
+          "REM-02": 4,
+          "REM-03": 5,
+          "REM-04": 4
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 5
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Israeli 'cyber-SWAT' responders (ex-Unit 8200) known for tactical attacker eviction in high-stakes environments. Source: https://www.sygnia.co/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Trustwave",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "Research-Driven Forensics",
+      "pillar_scores": {
+        "PLA": 4.0,
+        "INV": 3.5,
+        "REM": 3.25,
+        "PMG": 4.0,
+        "LAW": 4.25
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 4
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 4,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 4,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 5,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "Elite SpiderLabs research uncovers AsyncRAT and fileless malware; focuses on forensic depth and litigation preservation. Source: https://www.trustwave.com/",
+      "schema_ref": "schema3-3.json"
+    },
+    {
+      "vendor": "Verizon",
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false,
+      "ir_focus_type": "Core Competency",
+      "ai_identity": "Legacy-Integrated",
+      "specialization": "VTRAC Rapid Response",
+      "pillar_scores": {
+        "PLA": 3.75,
+        "INV": 3.25,
+        "REM": 3.25,
+        "PMG": 4.25,
+        "LAW": 4.0
+      },
+      "granular_mapping": {
+        "PLA": {
+          "PLA-01": 4,
+          "PLA-02": 4,
+          "PLA-03": 4,
+          "PLA-04": 3
+        },
+        "INV": {
+          "INV-01": 3,
+          "INV-02": 3,
+          "INV-03": 3,
+          "INV-04": 4
+        },
+        "REM": {
+          "REM-01": 3,
+          "REM-02": 3,
+          "REM-03": 4,
+          "REM-04": 3
+        },
+        "PMG": {
+          "PMG-01": 5,
+          "PMG-02": 4,
+          "PMG-03": 4,
+          "PMG-04": 4
+        },
+        "LAW": {
+          "LAW-01": 4,
+          "LAW-02": 4,
+          "LAW-03": 4,
+          "LAW-04": 4
+        }
+      },
+      "capability_analysis": "VTRAC team handles 700+ cases annually; utilizes automated NetFlow collection for 30-day forensic periods. Source: https://www.verizon.com/",
+      "schema_ref": "schema3-3.json"
+    }
+  ]
+}

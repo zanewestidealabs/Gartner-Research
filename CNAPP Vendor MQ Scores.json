@@ -1,0 +1,2908 @@
+{
+  "schema_ref": "CNAPP_MQ_Gap_Schema_App.json",
+  "title": "Magic Quadrant for Cloud-Native Application Protection Platforms",
+  "methodology": "Composite scores derived from CNAPP capability data (7 pillars / 29 sub-pillars) and CNAPP MQ Gap heuristics (7 pillars / 27 sub-pillars). 14 MQ criteria computed per CNAPP_MQ_Gap_Schema_App.json mq_scoring_mode and weighted to produce ATE (Y) and COV (X) composites. Quadrant assigned by population median split.",
+  "vendor_count": 24,
+  "axis_statistics": {
+    "ability_to_execute": {
+      "median": 3.05,
+      "min": 1.77,
+      "max": 3.87,
+      "mean": 2.94,
+      "stdev": 0.62
+    },
+    "completeness_of_vision": {
+      "median": 2.36,
+      "min": 1.75,
+      "max": 3.7,
+      "mean": 2.47,
+      "stdev": 0.49
+    }
+  },
+  "quadrant_boundaries": {
+    "ate_threshold": 3.05,
+    "cov_threshold": 2.36,
+    "method": "Population median split"
+  },
+  "quadrant_distribution": {
+    "Leaders": 12,
+    "Challengers": 0,
+    "Visionaries": 2,
+    "Niche Players": 10
+  },
+  "criterion_weights": {
+    "ability_to_execute": {
+      "ATE-1": {
+        "name": "Products/Services",
+        "weight": 0.23
+      },
+      "ATE-2": {
+        "name": "Overall Viability",
+        "weight": 0.21
+      },
+      "ATE-3": {
+        "name": "Sales Execution/Pricing",
+        "weight": 0.14
+      },
+      "ATE-4": {
+        "name": "Market Responsiveness & Track Record",
+        "weight": 0.09
+      },
+      "ATE-5": {
+        "name": "Marketing Execution",
+        "weight": 0.09
+      },
+      "ATE-6": {
+        "name": "Customer Experience",
+        "weight": 0.12
+      },
+      "ATE-7": {
+        "name": "Operations",
+        "weight": 0.12
+      }
+    },
+    "completeness_of_vision": {
+      "COV-1": {
+        "name": "Market Understanding",
+        "weight": 0.19
+      },
+      "COV-2": {
+        "name": "Marketing Strategy",
+        "weight": 0.11
+      },
+      "COV-3": {
+        "name": "Sales Strategy",
+        "weight": 0.11
+      },
+      "COV-4": {
+        "name": "Offering (Product) Strategy",
+        "weight": 0.22
+      },
+      "COV-6": {
+        "name": "Vertical/Industry Strategy",
+        "weight": 0.09
+      },
+      "COV-7": {
+        "name": "Innovation",
+        "weight": 0.19
+      },
+      "COV-8": {
+        "name": "Geographic Strategy",
+        "weight": 0.09
+      }
+    }
+  },
+  "generated_at": "2026-05-01T12:52:18.122138+00:00",
+  "script": "build_cnapp_mq_scores.py",
+  "vendors": [
+    {
+      "vendor": "Wiz",
+      "website": "https://www.wiz.io",
+      "headquarters": "New York, NY, USA",
+      "region": "North America",
+      "year_founded": 2020,
+      "employee_count_range": "1000-5000",
+      "funding_stage": "Late Stage VC",
+      "total_funding": "$1.9B",
+      "cnapp_vendor_type": "Pure-Play CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": true,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 5.0,
+        "CIEM": 5.0,
+        "SHIFT": 5.0,
+        "CDR": 4.5,
+        "DSPM": 5.0,
+        "FRNG": 4.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 4.0,
+        "SLE": 2.9,
+        "MKR": 3.38,
+        "MKE": 2.73,
+        "CXQ": 3.1,
+        "MKU": 3.77,
+        "VIG": 2.15
+      },
+      "ability_to_execute": {
+        "composite_score": 3.87,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 4.88,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 4.0,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.9,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 3.38,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.73,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 3.1,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.8,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 3.7,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 4.2,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.3,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 3.19,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 4.15,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.85,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 4.7,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.45,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "website": "https://www.paloaltonetworks.com/prisma/cloud",
+      "headquarters": "Santa Clara, CA, USA",
+      "region": "North America",
+      "year_founded": 2005,
+      "employee_count_range": "10000+",
+      "funding_stage": "IPO",
+      "total_funding": "Public (PANW)",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud + Edge",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 5.0,
+        "CIEM": 4.5,
+        "SHIFT": 5.0,
+        "CDR": 4.5,
+        "DSPM": 4.0,
+        "FRNG": 4.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 4.15,
+        "SLE": 2.83,
+        "MKR": 3.27,
+        "MKE": 3.22,
+        "CXQ": 3.1,
+        "MKU": 3.33,
+        "VIG": 2.15
+      },
+      "ability_to_execute": {
+        "composite_score": 3.87,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 4.65,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 4.15,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.83,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 3.27,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 3.22,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 3.1,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.8,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 3.36,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 3.5,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.42,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 3.09,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 3.62,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.7,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 4.2,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.6,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Microsoft",
+      "website": "https://azure.microsoft.com/en-us/products/defender-for-cloud",
+      "headquarters": "Redmond, WA, USA",
+      "region": "North America",
+      "year_founded": 1975,
+      "employee_count_range": "10000+",
+      "funding_stage": "IPO",
+      "total_funding": "Public (MSFT)",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 5.0,
+        "CIEM": 4.0,
+        "SHIFT": 4.0,
+        "CDR": 4.5,
+        "DSPM": 3.0,
+        "FRNG": 3.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 4.05,
+        "SLE": 3.02,
+        "MKR": 2.88,
+        "MKE": 3.2,
+        "CXQ": 3.0,
+        "MKU": 2.97,
+        "VIG": 2.23
+      },
+      "ability_to_execute": {
+        "composite_score": 3.73,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 4.25,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 4.05,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 3.02,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.88,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 3.2,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 3.0,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.8,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 3.04,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 3.1,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.42,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 3.41,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.95,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.85,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 3.4,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.6,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "CrowdStrike",
+      "website": "https://www.crowdstrike.com/platform/cloud-security/",
+      "headquarters": "Austin, TX, USA",
+      "region": "North America",
+      "year_founded": 2011,
+      "employee_count_range": "5000-10000",
+      "funding_stage": "IPO",
+      "total_funding": "Public (CRWD)",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": true,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 5.0,
+        "CIEM": 3.0,
+        "SHIFT": 3.0,
+        "CDR": 5.0,
+        "DSPM": 2.0,
+        "FRNG": 3.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 4.05,
+        "SLE": 2.8,
+        "MKR": 3.0,
+        "MKE": 3.12,
+        "CXQ": 2.83,
+        "MKU": 2.93,
+        "VIG": 2.33
+      },
+      "ability_to_execute": {
+        "composite_score": 3.64,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 3.94,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 4.05,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.8,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 3.0,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 3.12,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.83,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 5.0,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.96,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 3.5,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.4,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 3.1,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.58,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 2.05,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 3.1,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.6,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "SentinelOne",
+      "website": "https://www.sentinelone.com/products/cloud-security/",
+      "headquarters": "Mountain View, CA, USA",
+      "region": "North America",
+      "year_founded": 2013,
+      "employee_count_range": "1000-5000",
+      "funding_stage": "IPO",
+      "total_funding": "Public (S)",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": true,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 5.0,
+        "CIEM": 3.0,
+        "SHIFT": 4.0,
+        "CDR": 4.0,
+        "DSPM": 3.0,
+        "FRNG": 3.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.95,
+        "SLE": 2.77,
+        "MKR": 3.05,
+        "MKE": 2.85,
+        "CXQ": 2.92,
+        "MKU": 2.97,
+        "VIG": 2.15
+      },
+      "ability_to_execute": {
+        "composite_score": 3.58,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 4.03,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.95,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.77,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 3.05,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.85,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.92,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.6,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.97,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 3.3,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.22,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 3.07,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.9,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.85,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 3.3,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.45,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Orca Security",
+      "website": "https://orca.security",
+      "headquarters": "Portland, OR, USA",
+      "region": "North America",
+      "year_founded": 2019,
+      "employee_count_range": "500-1000",
+      "funding_stage": "Late Stage VC",
+      "total_funding": "$632M",
+      "cnapp_vendor_type": "Pure-Play CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Agentless",
+      "target_market": "Mid-Market/Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 5.0,
+        "CIEM": 2.5,
+        "SHIFT": 3.0,
+        "CDR": 4.0,
+        "DSPM": 4.5,
+        "FRNG": 2.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.48,
+        "SLE": 2.55,
+        "MKR": 2.83,
+        "MKE": 2.42,
+        "CXQ": 2.73,
+        "MKU": 2.67,
+        "VIG": 2.02
+      },
+      "ability_to_execute": {
+        "composite_score": 3.36,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 3.98,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.48,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.55,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.83,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.42,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.73,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.6,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.86,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.7,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.1,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.79,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 3.07,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.8,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 3.45,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.25,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Datadog",
+      "website": "https://www.datadoghq.com/product/cloud-security/",
+      "headquarters": "New York, NY, USA",
+      "region": "North America",
+      "year_founded": 2010,
+      "employee_count_range": "5000-10000",
+      "funding_stage": "IPO",
+      "total_funding": "Public (DDOG)",
+      "cnapp_vendor_type": "Adjacent CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 4.0,
+        "CIEM": 2.0,
+        "SHIFT": 4.0,
+        "CDR": 4.0,
+        "DSPM": 1.5,
+        "FRNG": 2.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.92,
+        "SLE": 2.75,
+        "MKR": 2.62,
+        "MKE": 2.95,
+        "CXQ": 2.77,
+        "MKU": 2.73,
+        "VIG": 2.23
+      },
+      "ability_to_execute": {
+        "composite_score": 3.35,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 3.44,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.92,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.75,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.62,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.95,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.77,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.3,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.61,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 3.0,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.28,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 3.02,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.17,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.85,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.45,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.6,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Trend Micro",
+      "website": "https://www.trendmicro.com/en_us/business/products/hybrid-cloud/cloud-one.html",
+      "headquarters": "Tokyo, Japan",
+      "region": "APAC",
+      "year_founded": 1988,
+      "employee_count_range": "5000-10000",
+      "funding_stage": "IPO",
+      "total_funding": "Public (TM)",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud + Edge",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 5.0,
+        "CIEM": 2.0,
+        "SHIFT": 3.5,
+        "CDR": 3.5,
+        "DSPM": 2.0,
+        "FRNG": 2.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.92,
+        "SLE": 2.55,
+        "MKR": 2.48,
+        "MKE": 2.92,
+        "CXQ": 2.75,
+        "MKU": 2.53,
+        "VIG": 1.9
+      },
+      "ability_to_execute": {
+        "composite_score": 3.34,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 3.54,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.92,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.55,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.48,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.92,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.75,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.4,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.55,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 3.3,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.24,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.78,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.08,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.7,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.45,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.1,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Sysdig",
+      "website": "https://sysdig.com",
+      "headquarters": "San Francisco, CA, USA",
+      "region": "North America",
+      "year_founded": 2013,
+      "employee_count_range": "500-1000",
+      "funding_stage": "Late Stage VC",
+      "total_funding": "$774M",
+      "cnapp_vendor_type": "Pure-Play CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 4.0,
+        "CWPP": 5.0,
+        "CIEM": 3.0,
+        "SHIFT": 3.5,
+        "CDR": 5.0,
+        "DSPM": 1.5,
+        "FRNG": 3.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.6,
+        "SLE": 2.65,
+        "MKR": 2.62,
+        "MKE": 2.58,
+        "CXQ": 2.42,
+        "MKU": 2.93,
+        "VIG": 1.73
+      },
+      "ability_to_execute": {
+        "composite_score": 3.31,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 3.74,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.6,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.65,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.62,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.58,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.42,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.7,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.68,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.9,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.22,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.94,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.6,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.2,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 3.0,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.25,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Tenable",
+      "website": "https://www.tenable.com/products/tenable-cloud-security",
+      "headquarters": "Columbia, MD, USA",
+      "region": "North America",
+      "year_founded": 2002,
+      "employee_count_range": "1000-5000",
+      "funding_stage": "IPO",
+      "total_funding": "Public (TENB)",
+      "cnapp_vendor_type": "Adjacent CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 4.0,
+        "CIEM": 4.0,
+        "SHIFT": 3.0,
+        "CDR": 2.0,
+        "DSPM": 2.0,
+        "FRNG": 2.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.8,
+        "SLE": 2.67,
+        "MKR": 2.62,
+        "MKE": 2.75,
+        "CXQ": 2.65,
+        "MKU": 2.13,
+        "VIG": 2.08
+      },
+      "ability_to_execute": {
+        "composite_score": 3.17,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 3.38,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.8,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.67,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.62,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.75,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.65,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 3.5,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.36,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.7,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.02,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.95,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.92,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.7,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.1,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.45,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Check Point",
+      "website": "https://www.checkpoint.com/cloudguard/",
+      "headquarters": "Tel Aviv, Israel",
+      "region": "EMEA",
+      "year_founded": 1993,
+      "employee_count_range": "5000-10000",
+      "funding_stage": "IPO",
+      "total_funding": "Public (CHKP)",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud + Edge",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 4.0,
+        "CIEM": 1.5,
+        "SHIFT": 4.0,
+        "CDR": 2.5,
+        "DSPM": 1.5,
+        "FRNG": 2.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.9,
+        "SLE": 2.5,
+        "MKR": 2.5,
+        "MKE": 2.85,
+        "CXQ": 2.62,
+        "MKU": 2.3,
+        "VIG": 1.8
+      },
+      "ability_to_execute": {
+        "composite_score": 3.14,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 3.18,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.9,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.5,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.5,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.85,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.62,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 3.7,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.36,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.6,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.12,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.72,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.08,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.7,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.35,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 1.9,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Aqua Security",
+      "website": "https://www.aquasec.com",
+      "headquarters": "Tel Aviv, Israel",
+      "region": "EMEA",
+      "year_founded": 2015,
+      "employee_count_range": "500-1000",
+      "funding_stage": "Late Stage VC",
+      "total_funding": "$265M",
+      "cnapp_vendor_type": "Pure-Play CNAPP",
+      "cloud_coverage": "Multi-Cloud + Edge",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 4.0,
+        "CWPP": 5.0,
+        "CIEM": 2.0,
+        "SHIFT": 5.0,
+        "CDR": 3.0,
+        "DSPM": 1.5,
+        "FRNG": 3.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.45,
+        "SLE": 2.4,
+        "MKR": 2.67,
+        "MKE": 2.33,
+        "CXQ": 2.4,
+        "MKU": 2.7,
+        "VIG": 1.57
+      },
+      "ability_to_execute": {
+        "composite_score": 3.06,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 3.47,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.45,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.4,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.67,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.33,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.4,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 3.9,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.5,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.8,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 2.98,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.64,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.45,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.4,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.75,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 1.75,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Leaders",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Fortinet",
+      "website": "https://www.fortinet.com/products/public-cloud-security",
+      "headquarters": "Sunnyvale, CA, USA",
+      "region": "North America",
+      "year_founded": 2000,
+      "employee_count_range": "10000+",
+      "funding_stage": "IPO",
+      "total_funding": "Public (FTNT)",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud + Edge",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 3.5,
+        "CWPP": 3.0,
+        "CIEM": 2.0,
+        "SHIFT": 3.0,
+        "CDR": 3.0,
+        "DSPM": 1.5,
+        "FRNG": 2.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.95,
+        "SLE": 2.88,
+        "MKR": 2.6,
+        "MKE": 3.0,
+        "CXQ": 2.53,
+        "MKU": 2.13,
+        "VIG": 2.05
+      },
+      "ability_to_execute": {
+        "composite_score": 3.04,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.69,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.95,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.88,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.6,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 3.0,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.53,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 3.15,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.36,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.5,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.22,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 3.17,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.85,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.5,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.15,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.6,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Visionaries",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Qualys",
+      "website": "https://www.qualys.com/apps/totalcloud/",
+      "headquarters": "Foster City, CA, USA",
+      "region": "North America",
+      "year_founded": 1999,
+      "employee_count_range": "1000-5000",
+      "funding_stage": "IPO",
+      "total_funding": "Public (QLYS)",
+      "cnapp_vendor_type": "Adjacent CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 3.5,
+        "CIEM": 1.5,
+        "SHIFT": 3.0,
+        "CDR": 2.0,
+        "DSPM": 1.5,
+        "FRNG": 1.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.7,
+        "SLE": 2.77,
+        "MKR": 2.42,
+        "MKE": 2.73,
+        "CXQ": 2.6,
+        "MKU": 2.17,
+        "VIG": 2.08
+      },
+      "ability_to_execute": {
+        "composite_score": 2.99,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.81,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.7,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.77,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.42,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.73,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.6,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 3.35,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.28,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.7,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.14,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 3.07,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.7,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.7,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 1.75,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.45,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Rapid7",
+      "website": "https://www.rapid7.com/products/insightcloudsec/",
+      "headquarters": "Boston, MA, USA",
+      "region": "North America",
+      "year_founded": 2000,
+      "employee_count_range": "1000-5000",
+      "funding_stage": "IPO",
+      "total_funding": "Public (RPD)",
+      "cnapp_vendor_type": "Adjacent CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Agentless",
+      "target_market": "Mid-Market/Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 5.0,
+        "CWPP": 2.0,
+        "CIEM": 2.5,
+        "SHIFT": 1.5,
+        "CDR": 2.0,
+        "DSPM": 1.0,
+        "FRNG": 1.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.6,
+        "SLE": 2.55,
+        "MKR": 2.42,
+        "MKE": 2.62,
+        "CXQ": 2.35,
+        "MKU": 1.77,
+        "VIG": 2.17
+      },
+      "ability_to_execute": {
+        "composite_score": 2.75,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.42,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.6,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.55,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.42,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.62,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.35,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 2.9,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 1.95,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.1,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.02,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.8,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.3,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.9,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 1.25,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.45,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Uptycs",
+      "website": "https://www.uptycs.com",
+      "headquarters": "Waltham, MA, USA",
+      "region": "North America",
+      "year_founded": 2016,
+      "employee_count_range": "200-500",
+      "funding_stage": "Series D",
+      "total_funding": "$134M",
+      "cnapp_vendor_type": "Adjacent CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 4.0,
+        "CWPP": 4.0,
+        "CIEM": 1.5,
+        "SHIFT": 1.5,
+        "CDR": 4.0,
+        "DSPM": 1.5,
+        "FRNG": 1.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 2.55,
+        "SLE": 2.4,
+        "MKR": 2.42,
+        "MKE": 2.15,
+        "CXQ": 2.15,
+        "MKU": 2.0,
+        "VIG": 1.82
+      },
+      "ability_to_execute": {
+        "composite_score": 2.67,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.83,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 2.55,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.4,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.42,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.15,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.15,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 4.0,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.16,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.5,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.04,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.63,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.62,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.4,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.0,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.25,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Snyk",
+      "website": "https://snyk.io",
+      "headquarters": "Boston, MA, USA",
+      "region": "North America",
+      "year_founded": 2015,
+      "employee_count_range": "1000-5000",
+      "funding_stage": "Late Stage VC",
+      "total_funding": "$1.2B",
+      "cnapp_vendor_type": "Adjacent CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Agentless",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 3.0,
+        "CWPP": 3.0,
+        "CIEM": 1.0,
+        "SHIFT": 5.0,
+        "CDR": 1.0,
+        "DSPM": 1.5,
+        "FRNG": 2.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 3.27,
+        "SLE": 2.6,
+        "MKR": 2.25,
+        "MKE": 2.35,
+        "CXQ": 2.12,
+        "MKU": 2.4,
+        "VIG": 1.82
+      },
+      "ability_to_execute": {
+        "composite_score": 2.54,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.42,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 3.27,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.6,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.25,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.35,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.12,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 2.2,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.31,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.4,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 2.9,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.83,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.2,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.2,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.15,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.45,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Bitdefender",
+      "website": "https://www.bitdefender.com/business/enterprise-products/cloud-security/",
+      "headquarters": "Bucharest, Romania",
+      "region": "EMEA",
+      "year_founded": 2001,
+      "employee_count_range": "1000-5000",
+      "funding_stage": "Late Stage VC",
+      "total_funding": "$180M+",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Mid-Market/Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 3.0,
+        "CWPP": 3.5,
+        "CIEM": 1.0,
+        "SHIFT": 1.5,
+        "CDR": 2.5,
+        "DSPM": 1.0,
+        "FRNG": 1.0
+      },
+      "capability_coverage_grade": "B",
+      "mq_gap_pillar_scores": {
+        "VIA": 2.88,
+        "SLE": 2.23,
+        "MKR": 2.08,
+        "MKE": 2.42,
+        "CXQ": 2.08,
+        "MKU": 1.63,
+        "VIG": 1.48
+      },
+      "ability_to_execute": {
+        "composite_score": 2.42,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.14,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 2.88,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.23,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.08,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.42,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.08,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 2.95,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 1.78,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.0,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.18,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.38,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.23,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.2,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 1.35,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 1.75,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Upwind",
+      "website": "https://www.upwind.io",
+      "headquarters": "San Francisco, CA, USA",
+      "region": "North America",
+      "year_founded": 2022,
+      "employee_count_range": "50-200",
+      "funding_stage": "Series B",
+      "total_funding": "$65M",
+      "cnapp_vendor_type": "Emerging CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": true,
+      "capability_pillar_scores": {
+        "CSPM": 2.5,
+        "CWPP": 4.0,
+        "CIEM": 1.5,
+        "SHIFT": 1.5,
+        "CDR": 3.5,
+        "DSPM": 1.5,
+        "FRNG": 2.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 2.05,
+        "SLE": 2.33,
+        "MKR": 2.88,
+        "MKE": 1.82,
+        "CXQ": 2.0,
+        "MKU": 2.43,
+        "VIG": 1.62
+      },
+      "ability_to_execute": {
+        "composite_score": 2.4,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.53,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 2.05,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.33,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.88,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 1.82,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.0,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 3.35,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.39,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 3.2,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 2.88,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.61,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.02,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.0,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.3,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.25,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Visionaries",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "AccuKnox",
+      "website": "https://www.accuknox.com",
+      "headquarters": "Los Altos, CA, USA",
+      "region": "North America",
+      "year_founded": 2019,
+      "employee_count_range": "50-200",
+      "funding_stage": "Series A",
+      "total_funding": "Undisclosed",
+      "cnapp_vendor_type": "Emerging CNAPP",
+      "cloud_coverage": "Multi-Cloud + Edge",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise/Edge",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 3.0,
+        "CWPP": 4.0,
+        "CIEM": 0.5,
+        "SHIFT": 3.0,
+        "CDR": 3.5,
+        "DSPM": 1.0,
+        "FRNG": 2.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 1.77,
+        "SLE": 2.2,
+        "MKR": 2.4,
+        "MKE": 1.82,
+        "CXQ": 2.02,
+        "MKU": 2.2,
+        "VIG": 1.65
+      },
+      "ability_to_execute": {
+        "composite_score": 2.32,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.6,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 1.77,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.2,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.4,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 1.82,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.02,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 3.5,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.24,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.7,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 2.88,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.46,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.85,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.05,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.3,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.25,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Sweet Security",
+      "website": "https://sweet.security",
+      "headquarters": "Tel Aviv, Israel",
+      "region": "EMEA",
+      "year_founded": 2022,
+      "employee_count_range": "50-200",
+      "funding_stage": "Series A",
+      "total_funding": "$33M",
+      "cnapp_vendor_type": "Emerging CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Enterprise",
+      "is_ai_first": true,
+      "capability_pillar_scores": {
+        "CSPM": 2.0,
+        "CWPP": 4.0,
+        "CIEM": 1.0,
+        "SHIFT": 1.0,
+        "CDR": 4.0,
+        "DSPM": 1.0,
+        "FRNG": 2.0
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 1.9,
+        "SLE": 2.08,
+        "MKR": 2.58,
+        "MKE": 1.8,
+        "CXQ": 1.9,
+        "MKU": 2.13,
+        "VIG": 1.32
+      },
+      "ability_to_execute": {
+        "composite_score": 2.24,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 2.27,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 1.9,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.08,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.58,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 1.8,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 1.9,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 3.4,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.06,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.6,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 2.86,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.31,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.7,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 0.9,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.0,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 1.75,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Sophos",
+      "website": "https://www.sophos.com/en-us/products/cloud-security",
+      "headquarters": "Abingdon, Oxfordshire, UK",
+      "region": "EMEA",
+      "year_founded": 1985,
+      "employee_count_range": "1000-5000",
+      "funding_stage": "Private Equity",
+      "total_funding": "Thoma Bravo portfolio",
+      "cnapp_vendor_type": "Platform CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Mid-Market",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 2.5,
+        "CWPP": 2.5,
+        "CIEM": 1.5,
+        "SHIFT": 1.5,
+        "CDR": 2.5,
+        "DSPM": 1.0,
+        "FRNG": 1.0
+      },
+      "capability_coverage_grade": "B",
+      "mq_gap_pillar_scores": {
+        "VIA": 2.15,
+        "SLE": 2.33,
+        "MKR": 2.05,
+        "MKE": 2.35,
+        "CXQ": 2.05,
+        "MKU": 1.63,
+        "VIG": 1.45
+      },
+      "ability_to_execute": {
+        "composite_score": 2.16,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 1.93,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 2.15,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.33,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.05,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 2.35,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 2.05,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 2.5,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 1.79,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.2,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 3.06,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.38,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.18,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 1.15,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 1.35,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 1.75,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Data Theorem",
+      "website": "https://www.datatheorem.com",
+      "headquarters": "Palo Alto, CA, USA",
+      "region": "North America",
+      "year_founded": 2013,
+      "employee_count_range": "50-200",
+      "funding_stage": "Series B",
+      "total_funding": "$51M",
+      "cnapp_vendor_type": "Emerging CNAPP",
+      "cloud_coverage": "Multi-Cloud",
+      "deployment_model": "Agentless",
+      "target_market": "Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 2.0,
+        "CWPP": 1.0,
+        "CIEM": 0.5,
+        "SHIFT": 3.0,
+        "CDR": 1.0,
+        "DSPM": 1.5,
+        "FRNG": 3.5
+      },
+      "capability_coverage_grade": "A",
+      "mq_gap_pillar_scores": {
+        "VIA": 1.88,
+        "SLE": 2.33,
+        "MKR": 2.3,
+        "MKE": 1.62,
+        "CXQ": 1.75,
+        "MKU": 2.1,
+        "VIG": 1.57
+      },
+      "ability_to_execute": {
+        "composite_score": 1.81,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 1.62,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 1.88,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.33,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.3,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 1.62,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 1.75,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 1.3,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 2.25,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.4,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 2.6,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.61,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 2.23,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 0.9,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 2.35,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.25,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    },
+    {
+      "vendor": "Caveonix",
+      "website": "https://www.caveonix.com",
+      "headquarters": "McLean, VA, USA",
+      "region": "North America",
+      "year_founded": 2018,
+      "employee_count_range": "50-200",
+      "funding_stage": "Series B",
+      "total_funding": "Undisclosed",
+      "cnapp_vendor_type": "Emerging CNAPP",
+      "cloud_coverage": "Multi-Cloud + Edge",
+      "deployment_model": "Hybrid (Agent + Agentless)",
+      "target_market": "Government/Enterprise",
+      "is_ai_first": false,
+      "capability_pillar_scores": {
+        "CSPM": 3.0,
+        "CWPP": 1.5,
+        "CIEM": 1.5,
+        "SHIFT": 1.5,
+        "CDR": 0.5,
+        "DSPM": 1.5,
+        "FRNG": 0.5
+      },
+      "capability_coverage_grade": "B",
+      "mq_gap_pillar_scores": {
+        "VIA": 1.85,
+        "SLE": 2.2,
+        "MKR": 2.08,
+        "MKE": 1.55,
+        "CXQ": 1.7,
+        "MKU": 1.5,
+        "VIG": 2.23
+      },
+      "ability_to_execute": {
+        "composite_score": 1.77,
+        "criteria": {
+          "ATE-1": {
+            "name": "Products/Services",
+            "score": 1.57,
+            "weight": 0.23
+          },
+          "ATE-2": {
+            "name": "Overall Viability",
+            "score": 1.85,
+            "weight": 0.21
+          },
+          "ATE-3": {
+            "name": "Sales Execution/Pricing",
+            "score": 2.2,
+            "weight": 0.14
+          },
+          "ATE-4": {
+            "name": "Market Responsiveness & Track Record",
+            "score": 2.08,
+            "weight": 0.09
+          },
+          "ATE-5": {
+            "name": "Marketing Execution",
+            "score": 1.55,
+            "weight": 0.09
+          },
+          "ATE-6": {
+            "name": "Customer Experience",
+            "score": 1.7,
+            "weight": 0.12
+          },
+          "ATE-7": {
+            "name": "Operations",
+            "score": 1.55,
+            "weight": 0.12
+          }
+        }
+      },
+      "completeness_of_vision": {
+        "composite_score": 1.75,
+        "criteria": {
+          "COV-1": {
+            "name": "Market Understanding",
+            "score": 2.0,
+            "weight": 0.19
+          },
+          "COV-2": {
+            "name": "Marketing Strategy",
+            "score": 2.52,
+            "weight": 0.11
+          },
+          "COV-3": {
+            "name": "Sales Strategy",
+            "score": 2.46,
+            "weight": 0.11
+          },
+          "COV-4": {
+            "name": "Offering (Product) Strategy",
+            "score": 1.12,
+            "weight": 0.22
+          },
+          "COV-6": {
+            "name": "Vertical/Industry Strategy",
+            "score": 2.2,
+            "weight": 0.09
+          },
+          "COV-7": {
+            "name": "Innovation",
+            "score": 0.9,
+            "weight": 0.19
+          },
+          "COV-8": {
+            "name": "Geographic Strategy",
+            "score": 2.25,
+            "weight": 0.09
+          }
+        }
+      },
+      "quadrant": "Niche Players",
+      "mq_gap_research_tier": "tier_2",
+      "mq_gap_research_confidence": "medium"
+    }
+  ],
+  "score_mode": "v1"
+}

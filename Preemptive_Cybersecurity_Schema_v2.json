@@ -1,0 +1,594 @@
+{
+  "preemptive_cybersecurity_taxonomy_v2.0": {
+    "schema_lineage": {
+      "parent": "preemptive_cybersecurity_taxonomy_v1.0",
+      "parent_version": "1.0",
+      "version": "2.0",
+      "changelog": "Added Services Capability Maturity (SVC) pillar with 4 sub-pillars. Added per-pillar services maturity sub-pillars (EXM-05, AMT-05, ADR-05, PPM-05) for contextual services assessment within each capability pillar. Added separate Pricing Evaluation framework with 6 dimensions aligned to MDR pricing methodology. Updated coverage grade scale to reflect 24 total sub-pillars. Updated vendor_fields for new pillar and pricing data.",
+      "purpose": "Evaluate vendors providing preemptive cybersecurity capabilities — proactive defense architectures that prevent, disrupt, and neutralize threats before exploitation occurs. v2.0 adds assessment of services delivery maturity and pricing model sophistication."
+    },
+
+    "intent": "Assess vendor capability alignment with the preemptive cybersecurity definition. Vendors are evaluated on whether their product delivers capabilities that align with the taxonomy — not solely on AI usage. AI-first and startup markers are retained for market segmentation but are secondary to capability coverage. Most vendors will cover a subset of the 24 sub-pillars; full coverage is rare and not expected. v2.0 additionally evaluates the maturity of vendors' services wrapper (implementation through autonomous delivery) and pricing model transparency and composability. Each of the four capability pillars now includes a dedicated services maturity sub-pillar (EXM-05, AMT-05, ADR-05, PPM-05) in addition to the standalone SVC pillar.",
+
+    "metadata": {
+      "framework_alignment": "Gartner Preemptive Security / CTEM Framework + MITRE ATT&CK + NIST CSF 2.0",
+      "scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of preemptive capability in this area",
+        "scoring_logic": {
+          "0": "No Evidence: No publicly verifiable evidence of capability in this sub-pillar.",
+          "1": "Minimal: Basic or manual capability; no automation, analytics, or continuous operation.",
+          "2": "Generic Claims: Marketing mentions the capability but lacks named products, technical docs, metrics, or specifics.",
+          "3": "Demonstrated: Documented capability with named products or features, some technical detail, and identifiable use cases.",
+          "4": "Advanced: Named products with measurable outcomes, integration points, customer validation, or analyst recognition. Automation and continuous operation present.",
+          "5": "Market-Leading: Best-in-class capability with deep technical evidence, extensive customer base, analyst leadership recognition, measurable impact metrics, and continuous innovation."
+        }
+      },
+      "source_policy": {
+        "description": "Evidence must be publicly accessible and verifiable.",
+        "valid_sources": [
+          { "tier": "A", "type": "Vendor documentation", "examples": ["Product pages", "Admin/Developer docs", "API references", "Release notes", "Security whitepapers"], "weight": 1.0 },
+          { "tier": "A", "type": "Analyst reports", "examples": ["Gartner Market Guide / Hype Cycle", "Forrester Wave", "IDC MarketScape", "KuppingerCole"], "weight": 1.0 },
+          { "tier": "B", "type": "Technical media", "examples": ["SecurityWeek", "Dark Reading", "Help Net Security", "CSO Online", "The Hacker News"], "weight": 0.85 },
+          { "tier": "B", "type": "Benchmarks/Case studies", "examples": ["Customer case studies", "Public bake-offs", "Government RFP evals"], "weight": 0.85 },
+          { "tier": "C", "type": "Conference/Academic", "examples": ["RSAC", "Black Hat", "DEF CON", "arXiv", "Standards drafts"], "weight": 0.7 },
+          { "tier": "C", "type": "Professional networks", "examples": ["Engineer-authored LinkedIn/Blogs with technical detail"], "weight": 0.7 }
+        ]
+      },
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of sub-pillars covered (24 total in v2.0)",
+        "scale": {
+          "A": "21-24 sub-pillars (88-100%)",
+          "B": "16-20 sub-pillars (67-83%)",
+          "C": "10-15 sub-pillars (42-63%)",
+          "D": "5-9 sub-pillars (21-38%)",
+          "F": "1-4 sub-pillars (4-17%)"
+        }
+      },
+      "services_maturity_model": {
+        "description": "The Services Capability Maturity pillar captures where vendors sit on the delivery maturity spectrum. This is a progression model — vendors typically advance through these stages as they mature their go-to-market and operational models.",
+        "maturity_levels": {
+          "1_implementation_only": "Vendor provides technology with basic deployment support. Client is responsible for ongoing operation. No advisory or managed service layer.",
+          "2_consultative": "Vendor offers strategic advisory services, security assessments, and architecture guidance alongside technology. Client still operates but with expert guidance.",
+          "3_managed": "Vendor operates the capability on behalf of the client through a managed service model. Dedicated analyst teams, 24/7 monitoring, SLA-backed operations.",
+          "4_ai_augmented": "Managed services are augmented with AI/ML automation — automated triage, intelligent escalation, ML-driven recommendations. Human analysts focus on high-value decisions.",
+          "5_autonomous": "Generative AI and agentic workflows drive autonomous operations. Self-healing, self-tuning systems with minimal human intervention. Represents the frontier of service delivery."
+        }
+      }
+    },
+
+    "pillars": {
+      "EXM": {
+        "name": "Exposure Management",
+        "focus": "Continuous discovery, assessment, and prioritization of exposures across the full attack surface before adversaries can exploit them.",
+        "evidence_signals": [
+          "External and internal asset discovery with real-time inventory",
+          "Continuous threat exposure management programs (CTEM)",
+          "Risk-based vulnerability prioritization beyond CVSS",
+          "Third-party and supply chain exposure monitoring"
+        ]
+      },
+      "AMT": {
+        "name": "Automated Moving Target Defense",
+        "focus": "Dynamic mutation and randomization of the IT environment to increase attacker uncertainty, cost, and complexity — making static reconnaissance and exploitation unreliable.",
+        "evidence_signals": [
+          "Runtime mutation of memory layouts, network configs, API endpoints",
+          "In-process application protection through instrumentation and hardening",
+          "Automated network topology reconfiguration and micro-segmentation",
+          "Ephemeral credential provisioning and automated key/token rotation"
+        ]
+      },
+      "ADR": {
+        "name": "Adversary Disruption",
+        "focus": "Active measures to deceive, misdirect, delay, and disrupt adversary operations — increasing attacker cost and exposing threat actor TTPs before damage occurs.",
+        "evidence_signals": [
+          "Decoys, honeypots, honeytokens, and breadcrumbs for high-fidelity detection",
+          "Automated threat intelligence ingestion, correlation, and actioning",
+          "Proactive hypothesis-driven threat hunting operations",
+          "Counter-adversary operations including takedowns and dark web monitoring"
+        ]
+      },
+      "PPM": {
+        "name": "Preemptive Posture Management",
+        "focus": "Continuous validation, simulation, and hardening of security posture to ensure defenses are effective against real-world attack techniques before incidents occur.",
+        "evidence_signals": [
+          "Breach and attack simulation against production environments",
+          "Security control validation (SIEM, EDR, firewall effectiveness testing)",
+          "Automated penetration testing and red team exercise capabilities",
+          "Cloud security posture management and misconfiguration detection"
+        ]
+      },
+      "SVC": {
+        "name": "Services Capability Maturity",
+        "focus": "Maturity and completeness of the vendor's services delivery model — spanning implementation, consulting, managed operations, AI-augmented automation, and autonomous service delivery. Evaluates how effectively the vendor wraps technology with operational services that drive client outcomes.",
+        "evidence_signals": [
+          "Professional services for deployment, integration, and onboarding with defined time-to-value targets",
+          "Strategic advisory services including CTEM program design, architecture review, and maturity assessments",
+          "Managed service operations with 24/7 SOC coverage, dedicated analyst teams, and SLA-backed delivery",
+          "AI-augmented and autonomous service delivery using ML recommendation engines, GenAI-powered workflows, and agentic automation"
+        ]
+      }
+    },
+
+    "sub_pillars": {
+      "EXM-01": {
+        "name": "Attack Surface Management",
+        "expanded_definition": "Continuous discovery and inventory of all external and internal assets, shadow IT, cloud resources, and third-party integrations to maintain a real-time map of the exploitable attack surface.",
+        "what_to_verify_publicly": [
+          "Automated discovery of internet-facing assets and shadow IT",
+          "Real-time asset inventory with risk scoring",
+          "Cloud resource discovery across multi-cloud environments",
+          "Integration with CMDB and asset management systems",
+          "Continuous monitoring for new or changed assets"
+        ],
+        "search_terms": ["attack surface management", "ASM", "external attack surface", "EASM", "asset discovery", "shadow IT discovery", "digital footprint", "cyber asset management"]
+      },
+      "EXM-02": {
+        "name": "Continuous Threat Exposure Management",
+        "expanded_definition": "Operationalized programs that scope, discover, prioritize, validate, and mobilize responses to exposures on a continuous cycle — aligning to the Gartner CTEM framework.",
+        "what_to_verify_publicly": [
+          "CTEM program capabilities or alignment",
+          "Exposure scoping and discovery automation",
+          "Prioritization based on exploitability and business context",
+          "Validation of exposure remediation effectiveness",
+          "Continuous cycle operation (not point-in-time)"
+        ],
+        "search_terms": ["CTEM", "continuous threat exposure management", "exposure management program", "threat exposure", "exposure prioritization", "continuous exposure"]
+      },
+      "EXM-03": {
+        "name": "Vulnerability Prioritization & Management",
+        "expanded_definition": "Risk-based prioritization of vulnerabilities using exploitability context, threat intelligence, asset criticality, and business impact rather than CVSS alone.",
+        "what_to_verify_publicly": [
+          "Risk-based vulnerability scoring beyond CVSS",
+          "Exploitability context from threat intelligence",
+          "Asset criticality and business impact weighting",
+          "Automated remediation prioritization and tracking",
+          "Integration with patch management and ticketing systems"
+        ],
+        "search_terms": ["vulnerability prioritization", "risk-based vulnerability", "VPT", "vulnerability management", "exploit prediction", "patch prioritization", "remediation prioritization"]
+      },
+      "EXM-04": {
+        "name": "Third-Party & Supply Chain Exposure",
+        "expanded_definition": "Assessment and monitoring of exposure introduced through third-party vendors, supply chain dependencies, open-source components, and partner integrations.",
+        "what_to_verify_publicly": [
+          "Third-party vendor risk assessment capabilities",
+          "Software supply chain monitoring (SBOM analysis)",
+          "Open-source component vulnerability tracking",
+          "Continuous monitoring of vendor security posture",
+          "Supply chain attack detection and alerting"
+        ],
+        "search_terms": ["third-party risk", "supply chain security", "vendor risk management", "SBOM", "software supply chain", "third-party exposure", "open source risk"]
+      },
+      "AMT-01": {
+        "name": "Polymorphic & Morphing Defense",
+        "expanded_definition": "Runtime mutation of application memory layouts, network configurations, API endpoints, and system identifiers to prevent static targeting by adversaries.",
+        "what_to_verify_publicly": [
+          "Runtime address space or memory layout randomization",
+          "API endpoint mutation or obfuscation",
+          "Network configuration morphing",
+          "System identifier rotation",
+          "Evidence of increased attacker cost through dynamic changes"
+        ],
+        "search_terms": ["polymorphic defense", "moving target defense", "AMTD", "runtime randomization", "address space randomization", "memory randomization", "dynamic defense"]
+      },
+      "AMT-02": {
+        "name": "Runtime Application Protection",
+        "expanded_definition": "In-process protection that shields applications during execution through instrumentation, code hardening, and real-time exploit prevention without signature dependence.",
+        "what_to_verify_publicly": [
+          "RASP or in-app runtime protection capabilities",
+          "Code instrumentation for exploit prevention",
+          "Application hardening and anti-tampering",
+          "Memory corruption defense (ROP, buffer overflow prevention)",
+          "Signature-less exploit detection at runtime"
+        ],
+        "search_terms": ["RASP", "runtime protection", "application shielding", "runtime application self-protection", "code instrumentation", "exploit prevention", "application hardening"]
+      },
+      "AMT-03": {
+        "name": "Dynamic Network & Infrastructure Defense",
+        "expanded_definition": "Automated reconfiguration of network topology, micro-segmentation boundaries, and infrastructure parameters to deny adversaries a stable operating environment.",
+        "what_to_verify_publicly": [
+          "Automated micro-segmentation with dynamic policy",
+          "Network topology reconfiguration capabilities",
+          "Software-defined perimeter or zero trust network access",
+          "Infrastructure-as-code security automation",
+          "Adaptive access controls based on risk signals"
+        ],
+        "search_terms": ["dynamic network defense", "micro-segmentation", "software-defined perimeter", "network randomization", "adaptive network", "zero trust network", "dynamic segmentation"]
+      },
+      "AMT-04": {
+        "name": "Identity & Credential Rotation",
+        "expanded_definition": "Automated rotation, obfuscation, and ephemeral provisioning of credentials, tokens, keys, and identity artifacts to limit credential-based attack windows.",
+        "what_to_verify_publicly": [
+          "Automated credential and secret rotation",
+          "Ephemeral or just-in-time credential provisioning",
+          "Service account and API key lifecycle management",
+          "Certificate and token rotation automation",
+          "Privileged access session isolation"
+        ],
+        "search_terms": ["credential rotation", "ephemeral credentials", "key rotation", "token rotation", "just-in-time access", "secret rotation", "privileged access management"]
+      },
+      "ADR-01": {
+        "name": "Deception Technology",
+        "expanded_definition": "Deployment of decoys, honeypots, honeytokens, and breadcrumbs across the environment to detect lateral movement, credential theft, and reconnaissance with high-fidelity alerts.",
+        "what_to_verify_publicly": [
+          "Honeypot and honeytoken deployment capabilities",
+          "Decoy systems mimicking production assets",
+          "Breadcrumb placement for lateral movement detection",
+          "High-fidelity alerting with low false-positive rates",
+          "Integration with SIEM/SOAR for automated response"
+        ],
+        "search_terms": ["deception technology", "honeypot", "honeytoken", "decoy", "breadcrumb", "deception platform", "cyber deception", "distributed deception"]
+      },
+      "ADR-02": {
+        "name": "Threat Intelligence Operationalization",
+        "expanded_definition": "Automated ingestion, correlation, and actioning of tactical and operational threat intelligence to preemptively block, hunt, and disrupt known adversary infrastructure and TTPs.",
+        "what_to_verify_publicly": [
+          "Threat intelligence platform or feed integration",
+          "Automated IOC ingestion and correlation",
+          "TTP mapping to MITRE ATT&CK framework",
+          "Automated blocking based on threat intelligence",
+          "Intelligence-driven hunting query generation"
+        ],
+        "search_terms": ["threat intelligence platform", "TIP", "threat intelligence operationalization", "IOC enrichment", "adversary tracking", "threat feed", "MITRE ATT&CK mapping"]
+      },
+      "ADR-03": {
+        "name": "Proactive Threat Hunting",
+        "expanded_definition": "Hypothesis-driven and intelligence-led hunting operations that proactively search for adversary presence, persistence mechanisms, and pre-attack indicators before alerts trigger.",
+        "what_to_verify_publicly": [
+          "Managed or automated threat hunting services",
+          "Hypothesis-driven hunting methodologies",
+          "Hunt query libraries and playbooks",
+          "Integration with telemetry sources (EDR, NDR, SIEM)",
+          "Hunt findings feeding back to detection engineering"
+        ],
+        "search_terms": ["threat hunting", "proactive hunting", "hypothesis-driven hunting", "hunt operations", "adversary hunting", "managed threat hunting", "detection engineering"]
+      },
+      "ADR-04": {
+        "name": "Counter-Adversary Operations",
+        "expanded_definition": "Capabilities to attribute, track, and actively counter adversary campaigns — including takedown services, adversary infrastructure disruption, and dark web monitoring.",
+        "what_to_verify_publicly": [
+          "Dark web monitoring and intelligence gathering",
+          "Brand protection and impersonation detection",
+          "Takedown service capabilities (domains, phishing, infrastructure)",
+          "Adversary attribution and campaign tracking",
+          "Digital risk protection services"
+        ],
+        "search_terms": ["counter-adversary", "adversary disruption", "takedown service", "dark web monitoring", "adversary attribution", "digital risk protection", "brand protection"]
+      },
+      "PPM-01": {
+        "name": "Breach & Attack Simulation",
+        "expanded_definition": "Automated simulation of attack chains, lateral movement, and data exfiltration scenarios against production environments to validate detection and prevention control effectiveness.",
+        "what_to_verify_publicly": [
+          "Automated attack chain simulation capabilities",
+          "Continuous validation against production controls",
+          "MITRE ATT&CK technique coverage",
+          "Control gap identification and remediation guidance",
+          "Reporting on detection and prevention effectiveness"
+        ],
+        "search_terms": ["breach and attack simulation", "BAS", "attack simulation", "purple team automation", "control validation", "security validation", "adversary simulation"]
+      },
+      "PPM-02": {
+        "name": "Security Control Validation",
+        "expanded_definition": "Systematic testing and verification that deployed security controls (SIEM rules, EDR policies, firewall rules, DLP configs) are correctly configured, active, and effective.",
+        "what_to_verify_publicly": [
+          "SIEM detection rule validation and testing",
+          "EDR policy effectiveness verification",
+          "Firewall and network control validation",
+          "DLP and data protection control testing",
+          "Configuration drift detection and alerting"
+        ],
+        "search_terms": ["security control validation", "control effectiveness", "detection validation", "SIEM validation", "EDR validation", "control gap analysis", "security posture validation"]
+      },
+      "PPM-03": {
+        "name": "Penetration Testing & Red Teaming",
+        "expanded_definition": "Automated or continuous penetration testing and red team exercise capabilities that identify exploitable paths and validate organizational resilience under realistic adversary conditions.",
+        "what_to_verify_publicly": [
+          "Automated penetration testing platform",
+          "Continuous or on-demand pen testing capabilities",
+          "Attack path analysis and visualization",
+          "Exploit validation and proof-of-concept generation",
+          "Red team exercise automation (PTaaS)"
+        ],
+        "search_terms": ["penetration testing", "automated pentest", "red team", "continuous pentest", "attack path analysis", "PTaaS", "offensive security", "exploitation testing"]
+      },
+      "PPM-04": {
+        "name": "Cloud Security Posture Management",
+        "expanded_definition": "Continuous assessment of cloud infrastructure configurations, entitlements, and workload security against best practices and compliance frameworks to preemptively close cloud exposure gaps.",
+        "what_to_verify_publicly": [
+          "Cloud misconfiguration detection (AWS, Azure, GCP)",
+          "Cloud entitlement and permissions analysis (CIEM)",
+          "Compliance framework mapping and reporting",
+          "Cloud workload protection capabilities",
+          "Infrastructure-as-code security scanning"
+        ],
+        "search_terms": ["CSPM", "cloud security posture", "cloud misconfiguration", "CIEM", "cloud entitlement", "CNAPP", "cloud workload protection", "cloud compliance"]
+      },
+      "EXM-05": {
+        "name": "Exposure Management Services Maturity",
+        "expanded_definition": "Maturity and delivery model of managed services specifically for exposure management operations — including managed ASM, CTEM-as-a-service, managed vulnerability operations, and outsourced exposure prioritization. Evaluates whether the vendor can operate exposure management programs on behalf of clients through dedicated analyst teams, continuous monitoring, and operationalized remediation workflows.",
+        "what_to_verify_publicly": [
+          "Managed attack surface management (managed ASM) service offering",
+          "CTEM-as-a-service or managed exposure management programs",
+          "Managed vulnerability operations with analyst-driven prioritization",
+          "Dedicated exposure management analyst teams or SOC coverage",
+          "SLA-backed exposure discovery, assessment, and remediation workflows",
+          "Continuous managed monitoring of third-party and supply chain exposure"
+        ],
+        "search_terms": ["managed ASM", "managed attack surface", "CTEM as a service", "managed exposure management", "managed vulnerability", "vulnerability management service", "exposure management service", "managed EASM", "outsourced vulnerability management"],
+        "maturity_guidance": {
+          "1": "Exposure management technology only. No managed service for ASM, CTEM, or vulnerability operations.",
+          "2": "Basic vulnerability scanning service with periodic reports. No continuous managed ASM or CTEM program.",
+          "3": "Managed ASM or vulnerability operations with dedicated analysts, continuous discovery, and SLA-backed assessments.",
+          "4": "Full managed CTEM program with proactive exposure prioritization, remediation tracking, and continuous analyst-driven operations.",
+          "5": "Autonomous exposure management operations with AI-driven discovery, continuous CTEM orchestration, and self-optimizing remediation workflows."
+        }
+      },
+      "AMT-05": {
+        "name": "AMTD Services Maturity",
+        "expanded_definition": "Maturity and delivery model of managed services for automated moving target defense — including managed AMTD deployment, runtime protection-as-a-service, managed micro-segmentation operations, and outsourced credential rotation management. Evaluates whether the vendor can deploy, tune, and operate moving target defense capabilities on behalf of clients.",
+        "what_to_verify_publicly": [
+          "Managed AMTD deployment and configuration services",
+          "Runtime protection-as-a-service or managed RASP operations",
+          "Managed micro-segmentation or zero trust network services",
+          "Managed credential rotation and privileged access operations",
+          "Continuous tuning and optimization of moving target defense policies",
+          "SLA-backed managed services for application hardening or network defense"
+        ],
+        "search_terms": ["managed AMTD", "managed moving target defense", "managed RASP", "managed micro-segmentation", "managed zero trust", "managed PAM", "runtime protection service", "managed credential rotation", "segmentation as a service"],
+        "maturity_guidance": {
+          "1": "AMTD technology only. Client is fully responsible for deployment and ongoing operation.",
+          "2": "Basic deployment assistance with documentation. No ongoing managed AMTD or runtime protection service.",
+          "3": "Managed AMTD or micro-segmentation operations with analyst support, policy tuning, and scheduled reviews.",
+          "4": "Fully managed moving target defense with continuous policy optimization, proactive threat adaptation, and dedicated security engineers.",
+          "5": "Autonomous AMTD operations with AI-driven policy adaptation, self-tuning runtime protection, and continuous zero trust enforcement without manual intervention."
+        }
+      },
+      "ADR-05": {
+        "name": "Adversary Disruption Services Maturity",
+        "expanded_definition": "Maturity and delivery model of managed services for adversary disruption operations — including managed deception environments, managed threat hunting, managed threat intelligence operations, and outsourced counter-adversary programs. Evaluates whether the vendor can operate deception, hunting, and disruption capabilities on behalf of clients through dedicated teams and continuous operations.",
+        "what_to_verify_publicly": [
+          "Managed deception-as-a-service with analyst-operated decoy environments",
+          "Managed threat hunting services with dedicated hunt teams",
+          "Managed threat intelligence operations with analyst-curated intelligence",
+          "Managed counter-adversary operations including takedowns and dark web monitoring",
+          "Managed digital risk protection services with 24/7 analyst coverage",
+          "SLA-backed adversary disruption operations with defined response times"
+        ],
+        "search_terms": ["managed deception", "deception as a service", "managed threat hunting", "managed threat intelligence", "managed counter-adversary", "managed digital risk protection", "managed DRP", "outsourced threat hunting", "managed takedown service"],
+        "maturity_guidance": {
+          "1": "Adversary disruption technology only. No managed deception, hunting, or counter-adversary services.",
+          "2": "Basic threat intelligence feed with periodic reports. No managed hunting or deception operations.",
+          "3": "Managed threat hunting or managed deception with dedicated analysts, regular hunt cycles, and SLA-backed response.",
+          "4": "Full managed adversary disruption program with continuous hunting, managed deception, intelligence operations, and proactive counter-adversary actions.",
+          "5": "Autonomous adversary disruption operations with AI-driven hunting, self-adapting deception environments, and automated counter-adversary workflows."
+        }
+      },
+      "PPM-05": {
+        "name": "Posture Management Services Maturity",
+        "expanded_definition": "Maturity and delivery model of managed services for preemptive posture management — including managed BAS operations, penetration testing as a service (PTaaS), managed security control validation, and outsourced cloud security posture management. Evaluates whether the vendor can continuously validate and harden client security posture through managed operations.",
+        "what_to_verify_publicly": [
+          "Managed BAS operations with continuous simulation and analyst-driven gap analysis",
+          "Penetration testing as a service (PTaaS) with on-demand or continuous testing",
+          "Managed security control validation with analyst-driven effectiveness reporting",
+          "Managed CSPM or cloud security posture operations",
+          "Dedicated posture management analyst teams with continuous validation cycles",
+          "SLA-backed posture management services with defined remediation workflows"
+        ],
+        "search_terms": ["managed BAS", "BAS as a service", "PTaaS", "pen testing as a service", "managed penetration testing", "managed security validation", "managed CSPM", "managed posture management", "continuous security validation service", "managed red team"],
+        "maturity_guidance": {
+          "1": "Posture management technology only. No managed BAS, PTaaS, or control validation services.",
+          "2": "Periodic penetration testing engagements. No continuous managed BAS or posture validation service.",
+          "3": "Managed BAS or PTaaS with continuous simulation, analyst-driven gap analysis, and SLA-backed reporting.",
+          "4": "Full managed posture management program with continuous validation, control optimization, and proactive remediation guidance.",
+          "5": "Autonomous posture management operations with AI-driven continuous validation, self-optimizing controls, and automated remediation workflows."
+        }
+      },
+      "SVC-01": {
+        "name": "Implementation & Onboarding",
+        "expanded_definition": "Quality and depth of professional services for deploying, configuring, integrating, and operationalizing preemptive security capabilities. Evaluates whether the vendor provides structured onboarding with defined milestones, integration support for existing security stacks, and measurable time-to-value targets.",
+        "what_to_verify_publicly": [
+          "Defined implementation methodology with milestones and timelines",
+          "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+          "Onboarding documentation, runbooks, and knowledge transfer programs",
+          "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+          "Post-deployment validation and tuning services",
+          "API-first integration architecture supporting custom workflows"
+        ],
+        "search_terms": ["professional services", "implementation services", "onboarding", "deployment support", "time-to-value", "integration services", "customer onboarding", "proof of value"],
+        "maturity_guidance": {
+          "1": "Self-service deployment only. Documentation exists but no structured implementation support.",
+          "2": "Basic deployment guides with email/ticket support. No dedicated implementation team.",
+          "3": "Structured implementation program with assigned engineer, defined milestones, and integration playbooks.",
+          "4": "White-glove onboarding with custom integration development, validation testing, and defined time-to-value metrics.",
+          "5": "Programmatic onboarding with automated health checks, ML-driven configuration optimization, and guaranteed time-to-value SLAs."
+        }
+      },
+      "SVC-02": {
+        "name": "Consultative & Advisory Services",
+        "expanded_definition": "Strategic consulting capabilities that extend beyond product deployment — including security maturity assessments, CTEM program design, architecture review, threat landscape briefings, and ongoing advisory relationships that help clients derive maximum value from preemptive security investments.",
+        "what_to_verify_publicly": [
+          "Security maturity assessment and gap analysis services",
+          "CTEM program design and roadmap consulting",
+          "Architecture review and security stack optimization advisory",
+          "Threat landscape briefings and strategic intelligence services",
+          "Executive reporting and board-level security communication support",
+          "Ongoing advisory retainer or customer success management with strategic focus"
+        ],
+        "search_terms": ["security consulting", "advisory services", "maturity assessment", "security architecture review", "CTEM consulting", "strategic consulting", "customer success", "security advisory"],
+        "maturity_guidance": {
+          "1": "No advisory services. Product-only engagement.",
+          "2": "Basic technical support with reactive Q&A. No strategic advisory capability.",
+          "3": "Formal consulting offerings including maturity assessments or architecture reviews as paid engagements.",
+          "4": "Dedicated customer success with proactive advisory, executive briefings, and program design services.",
+          "5": "Full strategic partner model with embedded advisory, continuous maturity tracking, board-level reporting, and CTEM program co-design."
+        }
+      },
+      "SVC-03": {
+        "name": "Managed Operations & Continuous Delivery",
+        "expanded_definition": "Operational capabilities to run preemptive security functions on behalf of the client as a managed service — including 24/7 SOC coverage, dedicated analyst teams, SLA-backed monitoring and response, continuous tuning, and operational governance. Evaluates whether the vendor can fully operate and optimize their technology for clients who lack internal resources.",
+        "what_to_verify_publicly": [
+          "24/7 managed service operations with defined SOC coverage model",
+          "Dedicated or named analyst teams assigned to client accounts",
+          "SLA-backed detection, response, and reporting commitments",
+          "Continuous tuning and optimization of detection rules and policies",
+          "Operational dashboards and reporting for client visibility",
+          "Escalation procedures, incident management, and governance frameworks"
+        ],
+        "search_terms": ["managed services", "managed security", "MSSP", "managed detection", "24/7 SOC", "managed operations", "security operations", "managed preemptive", "MDR"],
+        "maturity_guidance": {
+          "1": "No managed service option. Technology-only licensing.",
+          "2": "Basic monitoring service with limited hours or alert forwarding only.",
+          "3": "Full managed service with 24/7 monitoring, alert triage, and SLA-backed response times.",
+          "4": "Dedicated analyst teams with proactive tuning, operational governance, and continuous improvement cycles.",
+          "5": "Elite managed operations with guaranteed outcomes, continuous posture optimization, and full operational accountability."
+        }
+      },
+      "SVC-04": {
+        "name": "AI-Driven & Autonomous Delivery",
+        "expanded_definition": "Use of artificial intelligence, machine learning, and generative AI to automate and enhance service delivery — spanning automated triage, intelligent escalation, ML-driven recommendations, GenAI-powered investigation, agentic workflows, and autonomous remediation. Evaluates the vendor's progression from human-dependent delivery toward AI-augmented and ultimately autonomous operations.",
+        "what_to_verify_publicly": [
+          "AI/ML-powered alert triage, prioritization, and noise reduction in service delivery",
+          "Intelligent escalation systems that route to appropriate response tier automatically",
+          "GenAI-powered investigation narratives, recommendations, or runbook generation",
+          "Agentic AI workflows that autonomously execute response actions with human oversight",
+          "Self-tuning detection and policy optimization without manual analyst intervention",
+          "Measurable reduction in human analyst effort through AI automation (MTTR, triage volume)"
+        ],
+        "search_terms": ["AI automation", "autonomous security", "GenAI security", "agentic security", "AI-augmented SOC", "automated triage", "AI-driven response", "autonomous remediation", "self-healing security", "copilot security"],
+        "maturity_guidance": {
+          "1": "No AI in service delivery. Fully human-operated manual workflows.",
+          "2": "Basic rule-based automation (SOAR playbooks, scripted responses). No ML or AI models.",
+          "3": "ML-augmented triage and prioritization. AI recommends but humans decide and execute.",
+          "4": "AI-driven automated response for defined incident classes. GenAI generates investigation narratives and recommendations. Human oversight for critical decisions.",
+          "5": "Autonomous AI-native operations. Agentic workflows self-investigate, self-remediate, and self-optimize. GenAI drives continuous improvement. Human intervention only for novel or high-impact scenarios."
+        }
+      }
+    },
+
+    "pricing_evaluation": {
+      "description": "Separate evaluation scale assessing the maturity and transparency of the vendor's pricing model for preemptive cybersecurity capabilities. This is NOT a capability assessment — it evaluates how well the vendor's commercial construct serves buyer and provider interests. Methodology is aligned with the MDR Services pricing evaluation framework for cross-schema comparability.",
+      "framework_source": "Gartner Research: 'Pricing Constructs That Support Profitable Business Process Services Revenue' (G00826132, April 2025) and 'Outcome-Based Pricing Fails Tech CEOs in Services' (G00846386, February 2026)",
+      "dimensions": {
+        "PRC-SUB": {
+          "name": "Subscription Transparency",
+          "definition": "Clarity and structure of recurring subscription fees — including breakdown of platform access, agent/sensor licensing, managed service tiers, AI feature add-ons, and support levels.",
+          "what_to_evaluate": [
+            "Published subscription pricing tiers or structure",
+            "Component breakdown visible to buyers (platform vs. managed service vs. AI features)",
+            "Predictability of recurring costs for client budgeting",
+            "Flexibility in subscription scope adjustment (scale up/down)",
+            "Transparency about what is included vs. excluded at each tier"
+          ],
+          "pricing_model_alignment": "Subscriptions provide the revenue floor and budget predictability. Applicable to platform licensing for Exposure Management, AMTD, and Posture Management where continuous operation and baseline access are required."
+        },
+        "PRC-USG": {
+          "name": "Usage-Based Alignment",
+          "definition": "Variable cost components driven by actual consumption — including asset counts, scan volume, simulation frequency, API calls, data ingestion, and compute for AI inference — with transparent measurement and real-time tracking.",
+          "what_to_evaluate": [
+            "Usage-based pricing components clearly defined (per-asset, per-scan, per-simulation)",
+            "Measurement systems for quantifying consumption",
+            "Real-time usage dashboards or monitoring available to clients",
+            "Clear overage policies and escalation thresholds",
+            "Alignment of usage fees with computational effort and value delivered"
+          ],
+          "pricing_model_alignment": "Applicable to Exposure Management asset-based pricing, BAS simulation frequency pricing, and AI inference charges. Aligns cost to operational intensity."
+        },
+        "PRC-FIX": {
+          "name": "Fixed Delivery Pricing",
+          "definition": "One-time costs for discrete scope items — including initial deployment, integration setup, deception environment design, pen test engagements, custom playbook creation, and CTEM program implementation.",
+          "what_to_evaluate": [
+            "Clear one-time fees defined for setup and implementation",
+            "Scope definition for fixed-fee deliverables",
+            "Separation of project costs from ongoing service costs",
+            "Change request and scope adjustment processes",
+            "Implementation timeline and milestone-based payment structure"
+          ],
+          "pricing_model_alignment": "Applicable to initial deployment of deception environments, AMTD configuration, pen testing engagements, and CTEM program design consulting."
+        },
+        "PRC-SUC": {
+          "name": "Success & Outcome Fees",
+          "definition": "Performance-linked pricing components — including bonuses, penalties, or per-unit fees based on achieving engagement objectives, exposure reduction targets, vulnerability remediation rates, or validated control effectiveness metrics. Includes fees-at-risk mechanisms.",
+          "what_to_evaluate": [
+            "Defined success metrics tied to pricing (exposure reduction, control effectiveness, vulnerability SLAs)",
+            "Fees-at-risk component in service agreements",
+            "Per-finding or per-validation pricing for pen test and BAS outcomes",
+            "Clear measurement methodology and dispute resolution",
+            "Balance of risk between provider and client"
+          ],
+          "pricing_model_alignment": "Applicable to BAS and pen testing outcome-based pricing, exposure reduction targets in CTEM services, and control validation effectiveness guarantees."
+        },
+        "PRC-COM": {
+          "name": "Composability & Overall Model Maturity",
+          "definition": "Overall maturity of the pricing model as a composable, transparent hybrid — assessing whether the vendor's commercial construct can be assembled and reassembled to suit client needs, protects revenue while balancing risk, and avoids the pitfalls of pure outcome-based pricing.",
+          "what_to_evaluate": [
+            "Multiple pricing components available and combinable",
+            "Client budgeting predictability with spending expectations set upfront",
+            "Demonstrated risk-sharing with clear rewards and penalties",
+            "Avoidance of excessive variability and dispute potential",
+            "Demystification of what the client pays for, when, and why"
+          ],
+          "pricing_model_alignment": "The composable approach is the Gartner-recommended best practice — a combination that protects provider revenue, enhances client position, balances risk, and avoids the failure modes of pure outcome-based pricing."
+        },
+        "PRC-OUT": {
+          "name": "Pricing-to-Outcomes Alignment",
+          "definition": "Assessment of how well the vendor's pricing model is aligned to measurable client outcomes — evaluating whether pricing components are tied to demonstrated security improvements, risk reduction, and operational gains rather than purely input-based metrics (assets, seats, scan counts).",
+          "what_to_evaluate": [
+            "Pricing components explicitly tied to measurable security outcomes (exposure reduction, control gap closure, mean-time-to-remediation)",
+            "Outcome-based SLA commitments with financial consequences (credits, rebates, penalties)",
+            "Value realization metrics shared with clients showing pricing-to-outcome correlation",
+            "Pricing adjustments based on demonstrated AI efficiency gains passed to clients",
+            "Avoidance of outcome-washing — pricing labeled as outcome-based but measured on inputs"
+          ],
+          "pricing_model_alignment": "Gartner research cautions that pure outcome-based pricing frequently fails due to measurement complexity and dispute potential. This dimension evaluates whether vendors have found a sustainable middle ground — tying pricing components to verifiable outcomes without creating unsustainable risk for either party.",
+          "complementarity_note": "PRC-OUT may be complementary to other pricing dimensions. Vendors scoring high on PRC-COM but low on PRC-OUT have composable pricing without outcome linkage. Vendors scoring high on PRC-OUT but low on PRC-COM have outcome ambitions without composable structure."
+        }
+      },
+      "outcome_maturity_rating": {
+        "description": "Overall maturity rating for the vendor's alignment of pricing to security outcomes. Evaluates the holistic maturity of the vendor's ability to demonstrate, measure, and align their commercial model to verifiable client outcomes across the preemptive cybersecurity engagement lifecycle.",
+        "framework_source": "Derived from Gartner Research: 'Outcome-Based Pricing Fails Tech CEOs in Services' (G00846386, February 2026) and preemptive cybersecurity market evolution toward value-based commercial models.",
+        "scale": {
+          "min": 0,
+          "max": 5,
+          "scoring_logic": {
+            "0": "No Evidence: No public information about outcome linkage in pricing or service delivery.",
+            "1": "Input-Only: Pricing is entirely input-based (per-asset, per-agent, per-scan). No outcome metrics referenced in commercial constructs.",
+            "2": "Outcome-Aware: Vendor references outcomes (exposure reduction, control effectiveness) in marketing but pricing model is not structurally linked to those outcomes.",
+            "3": "Outcome-Linked: Specific pricing components are tied to measurable outcomes. SLAs have financial consequences. Value realization reporting demonstrates pricing-to-outcome correlation.",
+            "4": "Outcome-Validated: Pricing model embeds verified outcome metrics with independent or jointly agreed measurement. Client-visible dashboards show real-time outcome performance. Pricing adjustments occur based on demonstrated value delivery.",
+            "5": "Outcome-Native: The entire commercial model is designed around verifiable outcome delivery with transparent measurement, balanced risk-sharing, AI-efficiency gain pass-through, and continuous value optimization. Rare — represents the theoretical ideal."
+          }
+        },
+        "evaluation_criteria": [
+          "Does the vendor's pricing change based on outcomes delivered (not just inputs consumed)?",
+          "Are outcome metrics independently verifiable or solely vendor-reported?",
+          "Does the vendor share AI-driven efficiency gains with clients through pricing adjustments?",
+          "Is outcome alignment embedded in the contract structure or limited to marketing claims?",
+          "Does the vendor demonstrate a track record of outcome-based client renewals and expansions?"
+        ]
+      }
+    },
+
+    "vendor_fields": {
+      "vendor": { "type": "string", "description": "Official company name" },
+      "website": { "type": "string", "description": "Primary company URL" },
+      "headquarters": { "type": "string", "description": "HQ city, state/country" },
+      "year_founded": { "type": "integer", "description": "Year the company was founded" },
+      "employee_count_range": { "type": "string", "description": "Estimated employee bracket" },
+      "funding_stage": { "type": "string", "description": "Latest funding round: Seed, Series A-F, IPO, Acquired, Bootstrapped" },
+      "total_funding": { "type": "string", "description": "Total funding raised to date" },
+      "is_startup": { "type": "boolean", "description": "Founded within last 7 years OR pre-IPO with <500 employees" },
+      "is_ai_first": { "type": "boolean", "description": "AI/ML is a core differentiator — secondary to capability alignment" },
+      "region": { "type": "string", "description": "Primary region of operation" },
+      "specialization": { "type": "string", "description": "Primary security specialization" },
+      "ir_focus_type": { "type": "string", "description": "Primary market focus: SMB, Mid-Market, Enterprise, All" },
+      "primary_capability": { "type": "string", "description": "Single strongest preemptive capability pillar code (EXM, AMT, ADR, PPM, SVC)" },
+      "capability_coverage": { "type": "array", "description": "List of sub-pillar codes where vendor has demonstrated capability (max 24 including per-pillar services maturity EXM-05, AMT-05, ADR-05, PPM-05 and standalone SVC-01 through SVC-04)" },
+      "capability_coverage_count": { "type": "integer", "description": "Number of sub-pillars covered out of 24 total" },
+      "services_maturity_level": { "type": "string", "description": "Overall services maturity classification: implementation_only, consultative, managed, ai_augmented, autonomous" },
+      "description": { "type": "string", "description": "Brief description of the vendor and their preemptive security approach" },
+      "key_differentiators": { "type": "string", "description": "What sets this vendor apart in preemptive cybersecurity" },
+      "product_names": { "type": "array", "description": "Key product or platform names" }
+    }
+  }
+}

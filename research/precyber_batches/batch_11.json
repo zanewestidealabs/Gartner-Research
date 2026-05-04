@@ -1,0 +1,1222 @@
+[
+  {
+    "vendor": "Zscaler",
+    "headquarters": "San Jose, CA, USA",
+    "region": "Global",
+    "specialization": "Zero Trust Network",
+    "is_startup": false,
+    "is_ai_first": true,
+    "primary_capability": "AMT",
+    "description": "Cloud-native zero trust platform providing secure access, threat protection, and data protection.",
+    "key_differentiators": "Zero Trust Exchange architecture; inline inspection; SDP at scale.",
+    "expected_coverage": [
+      "AMT-03"
+    ],
+    "capability_coverage_count": 1,
+    "ir_focus_type": "Enterprise",
+    "pillar_scores": {
+      "EXM": 3.5,
+      "AMT": 3.5,
+      "ADR": 3.75,
+      "PPM": 2.75
+    },
+    "sub_pillar_scores_current": {
+      "EXM-01": 3.25,
+      "EXM-02": 4.25,
+      "EXM-03": 3.25,
+      "EXM-04": 3.25,
+      "AMT-01": 3.25,
+      "AMT-02": 3.25,
+      "AMT-03": 4.25,
+      "AMT-04": 3.25,
+      "ADR-01": 3.25,
+      "ADR-02": 4.25,
+      "ADR-03": 4.25,
+      "ADR-04": 3.25,
+      "PPM-01": 3.25,
+      "PPM-02": 2.25,
+      "PPM-03": 3.25,
+      "PPM-04": 2.25
+    },
+    "sub_pillar_schema_labels": {
+      "EXM-01": "Attack Surface Management",
+      "EXM-02": "Continuous Threat Exposure Management",
+      "EXM-03": "Vulnerability Prioritization & Management",
+      "EXM-04": "Third-Party & Supply Chain Exposure",
+      "AMT-01": "Polymorphic & Morphing Defense",
+      "AMT-02": "Runtime Application Protection",
+      "AMT-03": "Dynamic Network & Infrastructure Defense",
+      "AMT-04": "Identity & Credential Rotation",
+      "ADR-01": "Deception Technology",
+      "ADR-02": "Threat Intelligence Operationalization",
+      "ADR-03": "Proactive Threat Hunting",
+      "ADR-04": "Counter-Adversary Operations",
+      "PPM-01": "Breach & Attack Simulation",
+      "PPM-02": "Security Control Validation",
+      "PPM-03": "Penetration Testing & Red Teaming",
+      "PPM-04": "Cloud Security Posture Management"
+    },
+    "sub_pillar_evidence": {
+      "EXM-01": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zscaler-digital-experience",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Reduce Cyber Risk Continuous Threat Exposure Management",
+            "matched_terms": [
+              "continuous",
+              "risk",
+              "management",
+              "continuous threat exposure",
+              "exposure management"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Reduce Cyber Risk Continuous Threat Exposure Management",
+            "matched_terms": [
+              "continuous",
+              "risk",
+              "management",
+              "continuous threat exposure",
+              "exposure management"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Reduce Cyber Risk Continuous Threat Exposure Management",
+            "matched_terms": [
+              "continuous",
+              "risk",
+              "management",
+              "continuous threat exposure",
+              "exposure management"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Continuous Threat Exposure Management",
+            "matched_terms": [
+              "continuous",
+              "management",
+              "continuous threat exposure",
+              "exposure management"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Continuous Threat Exposure Management Security Operations",
+            "matched_terms": [
+              "continuous",
+              "management",
+              "continuous threat exposure",
+              "exposure management"
+            ],
+            "relevance_score": 8
+          }
+        ],
+        "sub_pillar_specificity": 2.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "EXM-02": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zscaler-digital-experience",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Continuous Threat Exposure Management Security Operations",
+            "matched_terms": [
+              "continuous threat exposure management",
+              "continuous",
+              "exposure",
+              "operation",
+              "threat exposure",
+              "continuous threat exposure"
+            ],
+            "relevance_score": 32
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Continuous Threat Exposure Management Security Operations",
+            "matched_terms": [
+              "continuous threat exposure management",
+              "continuous",
+              "exposure",
+              "operation",
+              "threat exposure",
+              "continuous threat exposure"
+            ],
+            "relevance_score": 32
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Continuous Threat Exposure Management Security Operations",
+            "matched_terms": [
+              "continuous threat exposure management",
+              "continuous",
+              "exposure",
+              "operation",
+              "threat exposure",
+              "continuous threat exposure"
+            ],
+            "relevance_score": 32
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Continuous Threat Exposure Management",
+            "matched_terms": [
+              "continuous threat exposure management",
+              "continuous",
+              "exposure",
+              "threat exposure",
+              "continuous threat exposure",
+              "exposure management"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Reduce Cyber Risk Continuous Threat Exposure Management",
+            "matched_terms": [
+              "continuous threat exposure management",
+              "continuous",
+              "exposure",
+              "threat exposure",
+              "continuous threat exposure",
+              "exposure management"
+            ],
+            "relevance_score": 28
+          }
+        ],
+        "sub_pillar_specificity": 3.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "EXM-03": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zscaler-digital-experience",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Risk360 Unified Vulnerability Management",
+            "matched_terms": [
+              "risk",
+              "vulnerability",
+              "management",
+              "vulnerability management"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Risk360 Unified Vulnerability Management",
+            "matched_terms": [
+              "risk",
+              "vulnerability",
+              "management",
+              "vulnerability management"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Risk360 Unified Vulnerability Management",
+            "matched_terms": [
+              "risk",
+              "vulnerability",
+              "management",
+              "vulnerability management"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Unified Vulnerability Management",
+            "matched_terms": [
+              "vulnerability",
+              "management",
+              "vulnerability management"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Unified Vulnerability Management Deception",
+            "matched_terms": [
+              "vulnerability",
+              "management",
+              "vulnerability management"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 3.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "EXM-04": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zscaler-digital-experience",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "The Zscaler Zero Trust Exchange™ is a comprehensive, integrated platform that enables zero trust security and network transformation for all users, workloads, IoT/OT, and B2B partners.",
+            "matched_terms": [
+              "partner",
+              "security",
+              "open source risk"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Transform your architecture from firewalls to zero trust The Zscaler Zero Trust Exchange™ is a comprehensive, integrated platform that enables zero trust security and network transformation for all users, workloads, IoT/OT, and B2B partners.",
+            "matched_terms": [
+              "partner",
+              "security",
+              "open source risk"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Platform Overview Transform your architecture from firewalls to zero trust The Zscaler Zero Trust Exchange™ is a comprehensive, integrated platform that enables zero trust security and network transformation for all users, workloads, IoT/OT, and B2B partners.",
+            "matched_terms": [
+              "partner",
+              "security",
+              "open source risk"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Provide granular, segmented access to distributed applications and workloads. Leverage a holistic set of cloud-delivered services built on the Zscaler Zero Trust Exchange™, the world's largest security cloud. Key capabilities",
+            "matched_terms": [
+              "capabilities",
+              "security",
+              "open source risk"
+            ],
+            "relevance_score": 14
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Digital Experience Monitoring (DEM) | Zscaler ZDX Open",
+            "matched_terms": [
+              "monitoring",
+              "open",
+              "open source risk"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 3.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 5,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "AMT-01": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "application",
+              "zero trust network",
+              "privileged access management",
+              "ztna"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "application",
+              "zero trust network",
+              "privileged access management",
+              "ztna"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications. Learn more",
+            "matched_terms": [
+              "application",
+              "zero trust network",
+              "privileged access management",
+              "ztna"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Learn more Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "application",
+              "zero trust network",
+              "privileged access management",
+              "ztna"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Offer secure, optimized access, without costly and complex point products, through a unified, cloud native ZTNA platform for users, workloads, and IoT/OT.",
+            "matched_terms": [
+              "cost",
+              "through",
+              "zero trust network",
+              "ztna"
+            ],
+            "relevance_score": 6
+          }
+        ],
+        "sub_pillar_specificity": 2.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "AMT-02": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "applications",
+              "application",
+              "zero trust network",
+              "privileged access management",
+              "ztna"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "applications",
+              "application",
+              "zero trust network",
+              "privileged access management",
+              "ztna"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications. Learn more",
+            "matched_terms": [
+              "applications",
+              "application",
+              "zero trust network",
+              "privileged access management",
+              "ztna"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Learn more Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "applications",
+              "application",
+              "zero trust network",
+              "privileged access management",
+              "ztna"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Get the Forrester Total Economic Impact (TEI) report Product Details Zero Trust Networking Cyberthreat Protection Data Security Zero Trust Networking Provide granular, segmented access to distributed applications and workloads.",
+            "matched_terms": [
+              "protection",
+              "applications",
+              "application",
+              "zero trust network"
+            ],
+            "relevance_score": 6
+          }
+        ],
+        "sub_pillar_specificity": 2.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "AMT-03": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Whether to trade off security or productivity is an impossible choice-but you don't have to choose. Adopt zero trust network access (ZTNA) that delivers fast and seamless user connectivity, minimizes risk, and mitigates lateral movement.",
+            "matched_terms": [
+              "network",
+              "zero",
+              "trust",
+              "access",
+              "security",
+              "risk"
+            ],
+            "relevance_score": 34
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Ensure secure private access while boosting productivity Whether to trade off security or productivity is an impossible choice-but you don't have to choose. Adopt zero trust network access (ZTNA) that delivers fast and seamless user connectivity, minimizes ri…",
+            "matched_terms": [
+              "network",
+              "zero",
+              "trust",
+              "access",
+              "security",
+              "risk"
+            ],
+            "relevance_score": 34
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Whether to trade off security or productivity is an impossible choice-but you don't have to choose. Adopt zero trust network access (ZTNA) that delivers fast and seamless user connectivity, minimizes risk, and mitigates lateral movement. The Problem",
+            "matched_terms": [
+              "network",
+              "zero",
+              "trust",
+              "access",
+              "security",
+              "risk"
+            ],
+            "relevance_score": 34
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "A trusted network connects users, sites, and apps, and is defended by a security perimeter. Trying to accommodate cloud services and other trends by extending the network perimeter to them is risky, expensive, and harms user experiences. Zero trust architectu…",
+            "matched_terms": [
+              "network",
+              "perimeter",
+              "zero",
+              "trust",
+              "security",
+              "risk"
+            ],
+            "relevance_score": 30
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Adopt zero trust network access (ZTNA) that delivers fast and seamless user connectivity, minimizes risk, and mitigates lateral movement.",
+            "matched_terms": [
+              "network",
+              "zero",
+              "trust",
+              "access",
+              "risk",
+              "zero trust network"
+            ],
+            "relevance_score": 30
+          }
+        ],
+        "sub_pillar_specificity": 3.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "AMT-04": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "service",
+              "privileged",
+              "access",
+              "privileged access management",
+              "zero trust network",
+              "ztna"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Learn more Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "service",
+              "privileged",
+              "access",
+              "privileged access management",
+              "zero trust network",
+              "ztna"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.",
+            "matched_terms": [
+              "privileged",
+              "access",
+              "privileged access management",
+              "zero trust network",
+              "ztna"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications. Learn more",
+            "matched_terms": [
+              "privileged",
+              "access",
+              "privileged access management",
+              "zero trust network",
+              "ztna"
+            ],
+            "relevance_score": 24
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Based on the zero trust principle of least-privileged access, our unique proxy architecture enables full TLS/SSL inspection at scale. One-to-one connections are brokered between users and applications based on identity, context, and business policies.",
+            "matched_terms": [
+              "identity",
+              "based",
+              "privileged",
+              "access",
+              "privileged access management"
+            ],
+            "relevance_score": 22
+          }
+        ],
+        "sub_pillar_specificity": 3.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "ADR-01": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zscaler-digital-experience",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "detect",
+              "detection",
+              "response",
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "detect",
+              "detection",
+              "response",
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "detect",
+              "detection",
+              "response",
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 9
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Threat Hunting",
+            "matched_terms": [
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Threat Hunting USE CASES",
+            "matched_terms": [
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 6
+          }
+        ],
+        "sub_pillar_specificity": 2.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "ADR-02": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-digital-experience"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Gather metrics from users’ devices, over multiple networks, to apps and services-even those not in your control.",
+            "matched_terms": [
+              "threat intelligence platform",
+              "tip"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Consolidate multiple monitoring tools",
+            "matched_terms": [
+              "threat intelligence platform",
+              "tip"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Track latency and packet loss across multipath networks with detailed path visualization, analyze hops, identify top ISPs, and enable remote packet capture for troubleshooting.",
+            "matched_terms": [
+              "threat intelligence platform",
+              "tip"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Get end-to-end visibility Gather metrics from users’ devices, over multiple networks, to apps and services-even those not in your control.",
+            "matched_terms": [
+              "threat intelligence platform",
+              "tip"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Gather metrics from users’ devices, over multiple networks, to apps and services-even those not in your control. Reduce help desk tickets",
+            "matched_terms": [
+              "threat intelligence platform",
+              "tip"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 3.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "ADR-03": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zscaler-digital-experience",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "hunting",
+              "managed",
+              "threat",
+              "hunt",
+              "detection",
+              "threat hunting"
+            ],
+            "relevance_score": 32
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "hunting",
+              "managed",
+              "threat",
+              "hunt",
+              "detection",
+              "threat hunting"
+            ],
+            "relevance_score": 32
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "hunting",
+              "managed",
+              "threat",
+              "hunt",
+              "detection",
+              "threat hunting"
+            ],
+            "relevance_score": 32
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Threat Hunting",
+            "matched_terms": [
+              "hunting",
+              "managed",
+              "threat",
+              "hunt",
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 28
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Threat Hunting USE CASES",
+            "matched_terms": [
+              "hunting",
+              "managed",
+              "threat",
+              "hunt",
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 28
+          }
+        ],
+        "sub_pillar_specificity": 3.5,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "ADR-04": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zscaler-digital-experience",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "detection",
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "detection",
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-digital-experience",
+            "excerpt": "Managed Detection and Response Managed Threat Hunting",
+            "matched_terms": [
+              "detection",
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Threat Hunting",
+            "matched_terms": [
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Managed Threat Hunting USE CASES",
+            "matched_terms": [
+              "threat hunting",
+              "managed threat hunting"
+            ],
+            "relevance_score": 6
+          }
+        ],
+        "sub_pillar_specificity": 2.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 3,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "PPM-01": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Firewall and VPN architectures increase risk Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop bre…",
+            "matched_terms": [
+              "attack",
+              "chain",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop breaches across all four stages of the attack ch…",
+            "matched_terms": [
+              "attack",
+              "chain",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop breaches across all four stages of the attack chain.",
+            "matched_terms": [
+              "attack",
+              "chain",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Minimize the attack surface with user-to-app and app-to-app segmentation, with identity-based authentication and access policies. Read the data sheet",
+            "matched_terms": [
+              "attack",
+              "data",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 18
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Minimize the attack surface with user-to-app and app-to-app segmentation, with identity-based authentication and access policies.",
+            "matched_terms": [
+              "attack",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 14
+          }
+        ],
+        "sub_pillar_specificity": 3.0,
+        "schema_criteria_hits": 2,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "PPM-02": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Firewall and VPN architectures increase risk Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop bre…",
+            "matched_terms": [
+              "security",
+              "firewall",
+              "network",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop breaches across all four stages of the attack ch…",
+            "matched_terms": [
+              "security",
+              "firewall",
+              "network",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop breaches across all four stages of the attack chain.",
+            "matched_terms": [
+              "security",
+              "network",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "Minimize the attack surface with user-to-app and app-to-app segmentation, with identity-based authentication and access policies. Read the data sheet",
+            "matched_terms": [
+              "policies",
+              "data",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Based on the zero trust principle of least-privileged access, our unique proxy architecture enables full TLS/SSL inspection at scale. One-to-one connections are brokered between users and applications based on identity, context, and business policies.",
+            "matched_terms": [
+              "policies",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 5
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "PPM-03": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zscaler-private-access",
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "AI Red Teaming",
+            "matched_terms": [
+              "team",
+              "red team"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "AI Access Security AI Red Teaming",
+            "matched_terms": [
+              "team",
+              "red team"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "AI Red Teaming AI Guardrails",
+            "matched_terms": [
+              "team",
+              "red team"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "AI Red Teaming",
+            "matched_terms": [
+              "team",
+              "red team"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.zscaler.com/products/zscaler-private-access",
+            "excerpt": "AI Access Security AI Red Teaming",
+            "matched_terms": [
+              "team",
+              "red team"
+            ],
+            "relevance_score": 10
+          }
+        ],
+        "sub_pillar_specificity": 3.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "PPM-04": {
+        "source_urls": [
+          "https://www.zscaler.com/products/zero-trust-exchange"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Firewall and VPN architectures increase risk Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop bre…",
+            "matched_terms": [
+              "security",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop breaches across all four stages of the attack ch…",
+            "matched_terms": [
+              "security",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "The problem is simple: trying to protect a hub-and-spoke network with perimeter-based security tools fails to stop breaches across all four stages of the attack chain.",
+            "matched_terms": [
+              "security",
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Based on the zero trust principle of least-privileged access, our unique proxy architecture enables full TLS/SSL inspection at scale. One-to-one connections are brokered between users and applications based on identity, context, and business policies.",
+            "matched_terms": [
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.zscaler.com/products/zero-trust-exchange",
+            "excerpt": "Use AI to determine risk based on context, considering factors like user behavior, device posture, destination and content, third-party intel, and more than 500 trillion daily signals.",
+            "matched_terms": [
+              "breach and attack simulation",
+              "bas"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 2,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 3 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 3,
+        "total_pages": 5,
+        "excerpts_total": 80,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "EXM-01": 3.25,
+      "EXM-02": 4.25,
+      "EXM-03": 3.25,
+      "EXM-04": 3.25,
+      "AMT-01": 3.25,
+      "AMT-02": 3.25,
+      "AMT-03": 4.25,
+      "AMT-04": 3.25,
+      "ADR-01": 3.25,
+      "ADR-02": 4.25,
+      "ADR-03": 4.25,
+      "ADR-04": 3.25,
+      "PPM-01": 3.25,
+      "PPM-02": 2.25,
+      "PPM-03": 3.25,
+      "PPM-04": 2.25
+    },
+    "pillar_scores_validated": {
+      "EXM": 3.5,
+      "AMT": 3.5,
+      "ADR": 3.75,
+      "PPM": 2.75
+    },
+    "sub_pillar_rationale_validated": {
+      "EXM-01": "EXM-01 - Attack Surface Management. Score: 3.25/5. Maturity Level: Demonstrated (specificity=2.5). Evidence flag: good_evidence. Evidence: \"Reduce Cyber Risk Continuous Threat Exposure Management\". Also: \"Reduce Cyber Risk Continuous Threat Exposure Management\".",
+      "EXM-02": "EXM-02 - Continuous Threat Exposure Management. Score: 4.25/5. Maturity Level: Advanced (specificity=3.5). Evidence flag: good_evidence. Evidence: \"Continuous Threat Exposure Management Security Operations\". Also: \"Continuous Threat Exposure Management Security Operations\".",
+      "EXM-03": "EXM-03 - Vulnerability Prioritization & Management. Score: 3.25/5. Maturity Level: Demonstrated (specificity=3.0). Evidence flag: good_evidence. Evidence: \"Risk360 Unified Vulnerability Management\". Also: \"Risk360 Unified Vulnerability Management\".",
+      "EXM-04": "EXM-04 - Third-Party & Supply Chain Exposure. Score: 3.25/5. Maturity Level: Demonstrated (specificity=3.0). Evidence flag: good_evidence. Evidence: \"The Zscaler Zero Trust Exchange™ is a comprehensive, integrated platform that enables zero trust security and network transformation for all users, workloads, IoT/OT, and B2B partners.\". Also: \"Transform your architecture from firewalls to zero trust The Zscaler Zero Trust Exchange™ is a comprehensive, integrated platform that enables zero t…\".",
+      "AMT-01": "AMT-01 - Polymorphic & Morphing Defense. Score: 3.25/5. Maturity Level: Demonstrated (specificity=2.5). Evidence flag: good_evidence. Evidence: \"Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.\". Also: \"Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.\".",
+      "AMT-02": "AMT-02 - Runtime Application Protection. Score: 3.25/5. Maturity Level: Demonstrated (specificity=2.5). Evidence flag: good_evidence. Evidence: \"Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.\". Also: \"Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.\".",
+      "AMT-03": "AMT-03 - Dynamic Network & Infrastructure Defense. Score: 4.25/5. Maturity Level: Advanced (specificity=3.5). Evidence flag: good_evidence. Evidence: \"Whether to trade off security or productivity is an impossible choice-but you don't have to choose. Adopt zero trust network access (ZTNA) that delivers fast and seamless user connectivity, minimizes…\". Also: \"Ensure secure private access while boosting productivity Whether to trade off security or productivity is an impossible choice-but you don't have to …\".",
+      "AMT-04": "AMT-04 - Identity & Credential Rotation. Score: 3.25/5. Maturity Level: Demonstrated (specificity=3.0). Evidence flag: good_evidence. Evidence: \"Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.\". Also: \"Learn more Private Service Edge Bring ZTNA to on-premises users with direct user-to-app, least-privileged access to private applications.\".",
+      "ADR-01": "ADR-01 - Deception Technology. Score: 3.25/5. Maturity Level: Demonstrated (specificity=2.5). Evidence flag: good_evidence. Evidence: \"Managed Detection and Response Managed Threat Hunting\". Also: \"Managed Detection and Response Managed Threat Hunting\".",
+      "ADR-02": "ADR-02 - Threat Intelligence Operationalization. Score: 4.25/5. Maturity Level: Advanced (specificity=3.5). Evidence flag: good_evidence. Evidence: \"Gather metrics from users’ devices, over multiple networks, to apps and services-even those not in your control.\". Also: \"Consolidate multiple monitoring tools\".",
+      "ADR-03": "ADR-03 - Proactive Threat Hunting. Score: 4.25/5. Maturity Level: Advanced (specificity=3.5). Evidence flag: good_evidence. Evidence: \"Managed Detection and Response Managed Threat Hunting\". Also: \"Managed Detection and Response Managed Threat Hunting\".",
+      "ADR-04": "ADR-04 - Counter-Adversary Operations. Score: 3.25/5. Maturity Level: Demonstrated (specificity=2.5). Evidence flag: good_evidence. Evidence: \"Managed Detection and Response Managed Threat Hunting\". Also: \"Managed Detection and Response Managed Threat Hunting\".",
+      "PPM-01": "PPM-01 - Breach & Attack Simulation. Score: 3.25/5. Maturity Level: Demonstrated (specificity=3.0). Evidence flag: good_evidence. Evidence: \"Firewall and VPN architectures increase risk Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke n…\". Also: \"Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-sp…\".",
+      "PPM-02": "PPM-02 - Security Control Validation. Score: 2.25/5. Maturity Level: Generic Claims (specificity=2.0). Evidence flag: good_evidence. Evidence: \"Firewall and VPN architectures increase risk Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke n…\". Also: \"Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-sp…\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "PPM-03": "PPM-03 - Penetration Testing & Red Teaming. Score: 3.25/5. Maturity Level: Demonstrated (specificity=3.0). Evidence flag: good_evidence. Evidence: \"AI Red Teaming\". Also: \"AI Access Security AI Red Teaming\".",
+      "PPM-04": "PPM-04 - Cloud Security Posture Management. Score: 2.25/5. Maturity Level: Generic Claims (specificity=2.0). Evidence flag: good_evidence. Evidence: \"Firewall and VPN architectures increase risk Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-spoke n…\". Also: \"Organizations worldwide have spent billions on firewalls and VPNs, yet breaches are increasing. The problem is simple: trying to protect a hub-and-sp…\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "precyber_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-24T16:11:26.812742+00:00",
+      "urls_used": [
+        "https://www.zscaler.com/products/zero-trust-exchange",
+        "https://www.zscaler.com/products/zscaler-private-access",
+        "https://www.zscaler.com/products/zscaler-digital-experience",
+        "https://www.zscaler.com/products/zscaler-deception",
+        "https://www.zscaler.com/solutions/cloud-security-posture-management"
+      ],
+      "pages_ok": 3,
+      "schema": "Preemptive_Cybersecurity_Schema.json",
+      "tool": "research_precyber_v1_evidence.py",
+      "cap_applied": false
+    }
+  }
+]

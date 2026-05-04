@@ -1,0 +1,308 @@
+{
+  "preemptive_cybersecurity_taxonomy_v1.0": {
+    "schema_lineage": {
+      "parent": null,
+      "parent_version": null,
+      "purpose": "Evaluate vendors providing preemptive cybersecurity capabilities — proactive defense architectures that prevent, disrupt, and neutralize threats before exploitation occurs."
+    },
+
+    "intent": "Assess vendor capability alignment with the preemptive cybersecurity definition. Vendors are evaluated on whether their product delivers capabilities that align with the taxonomy — not solely on AI usage. AI-first and startup markers are retained for market segmentation but are secondary to capability coverage. Most vendors will cover a subset of the 16 sub-pillars; full coverage is rare and not expected.",
+
+    "metadata": {
+      "framework_alignment": "Gartner Preemptive Security / CTEM Framework + MITRE ATT&CK + NIST CSF 2.0",
+      "scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of preemptive capability in this area",
+        "scoring_logic": {
+          "0": "No Evidence: No publicly verifiable evidence of capability in this sub-pillar.",
+          "1": "Minimal: Basic or manual capability; no automation, analytics, or continuous operation.",
+          "2": "Generic Claims: Marketing mentions the capability but lacks named products, technical docs, metrics, or specifics.",
+          "3": "Demonstrated: Documented capability with named products or features, some technical detail, and identifiable use cases.",
+          "4": "Advanced: Named products with measurable outcomes, integration points, customer validation, or analyst recognition. Automation and continuous operation present.",
+          "5": "Market-Leading: Best-in-class capability with deep technical evidence, extensive customer base, analyst leadership recognition, measurable impact metrics, and continuous innovation."
+        }
+      },
+      "source_policy": {
+        "description": "Evidence must be publicly accessible and verifiable.",
+        "valid_sources": [
+          { "tier": "A", "type": "Vendor documentation", "examples": ["Product pages", "Admin/Developer docs", "API references", "Release notes", "Security whitepapers"], "weight": 1.0 },
+          { "tier": "A", "type": "Analyst reports", "examples": ["Gartner Market Guide / Hype Cycle", "Forrester Wave", "IDC MarketScape", "KuppingerCole"], "weight": 1.0 },
+          { "tier": "B", "type": "Technical media", "examples": ["SecurityWeek", "Dark Reading", "Help Net Security", "CSO Online", "The Hacker News"], "weight": 0.85 },
+          { "tier": "B", "type": "Benchmarks/Case studies", "examples": ["Customer case studies", "Public bake-offs", "Government RFP evals"], "weight": 0.85 },
+          { "tier": "C", "type": "Conference/Academic", "examples": ["RSAC", "Black Hat", "DEF CON", "arXiv", "Standards drafts"], "weight": 0.7 },
+          { "tier": "C", "type": "Professional networks", "examples": ["Engineer-authored LinkedIn/Blogs with technical detail"], "weight": 0.7 }
+        ]
+      },
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of sub-pillars covered",
+        "scale": {
+          "A": "13-16 sub-pillars (81-100%)",
+          "B": "10-12 sub-pillars (63-75%)",
+          "C": "7-9 sub-pillars (44-56%)",
+          "D": "4-6 sub-pillars (25-38%)",
+          "F": "1-3 sub-pillars (6-19%)"
+        }
+      }
+    },
+
+    "pillars": {
+      "EXM": {
+        "name": "Exposure Management",
+        "focus": "Continuous discovery, assessment, and prioritization of exposures across the full attack surface before adversaries can exploit them.",
+        "evidence_signals": [
+          "External and internal asset discovery with real-time inventory",
+          "Continuous threat exposure management programs (CTEM)",
+          "Risk-based vulnerability prioritization beyond CVSS",
+          "Third-party and supply chain exposure monitoring"
+        ]
+      },
+      "AMT": {
+        "name": "Automated Moving Target Defense",
+        "focus": "Dynamic mutation and randomization of the IT environment to increase attacker uncertainty, cost, and complexity — making static reconnaissance and exploitation unreliable.",
+        "evidence_signals": [
+          "Runtime mutation of memory layouts, network configs, API endpoints",
+          "In-process application protection through instrumentation and hardening",
+          "Automated network topology reconfiguration and micro-segmentation",
+          "Ephemeral credential provisioning and automated key/token rotation"
+        ]
+      },
+      "ADR": {
+        "name": "Adversary Disruption",
+        "focus": "Active measures to deceive, misdirect, delay, and disrupt adversary operations — increasing attacker cost and exposing threat actor TTPs before damage occurs.",
+        "evidence_signals": [
+          "Decoys, honeypots, honeytokens, and breadcrumbs for high-fidelity detection",
+          "Automated threat intelligence ingestion, correlation, and actioning",
+          "Proactive hypothesis-driven threat hunting operations",
+          "Counter-adversary operations including takedowns and dark web monitoring"
+        ]
+      },
+      "PPM": {
+        "name": "Preemptive Posture Management",
+        "focus": "Continuous validation, simulation, and hardening of security posture to ensure defenses are effective against real-world attack techniques before incidents occur.",
+        "evidence_signals": [
+          "Breach and attack simulation against production environments",
+          "Security control validation (SIEM, EDR, firewall effectiveness testing)",
+          "Automated penetration testing and red team exercise capabilities",
+          "Cloud security posture management and misconfiguration detection"
+        ]
+      }
+    },
+
+    "sub_pillars": {
+      "EXM-01": {
+        "name": "Attack Surface Management",
+        "expanded_definition": "Continuous discovery and inventory of all external and internal assets, shadow IT, cloud resources, and third-party integrations to maintain a real-time map of the exploitable attack surface.",
+        "what_to_verify_publicly": [
+          "Automated discovery of internet-facing assets and shadow IT",
+          "Real-time asset inventory with risk scoring",
+          "Cloud resource discovery across multi-cloud environments",
+          "Integration with CMDB and asset management systems",
+          "Continuous monitoring for new or changed assets"
+        ],
+        "search_terms": ["attack surface management", "ASM", "external attack surface", "EASM", "asset discovery", "shadow IT discovery", "digital footprint", "cyber asset management"]
+      },
+      "EXM-02": {
+        "name": "Continuous Threat Exposure Management",
+        "expanded_definition": "Operationalized programs that scope, discover, prioritize, validate, and mobilize responses to exposures on a continuous cycle — aligning to the Gartner CTEM framework.",
+        "what_to_verify_publicly": [
+          "CTEM program capabilities or alignment",
+          "Exposure scoping and discovery automation",
+          "Prioritization based on exploitability and business context",
+          "Validation of exposure remediation effectiveness",
+          "Continuous cycle operation (not point-in-time)"
+        ],
+        "search_terms": ["CTEM", "continuous threat exposure management", "exposure management program", "threat exposure", "exposure prioritization", "continuous exposure"]
+      },
+      "EXM-03": {
+        "name": "Vulnerability Prioritization & Management",
+        "expanded_definition": "Risk-based prioritization of vulnerabilities using exploitability context, threat intelligence, asset criticality, and business impact rather than CVSS alone.",
+        "what_to_verify_publicly": [
+          "Risk-based vulnerability scoring beyond CVSS",
+          "Exploitability context from threat intelligence",
+          "Asset criticality and business impact weighting",
+          "Automated remediation prioritization and tracking",
+          "Integration with patch management and ticketing systems"
+        ],
+        "search_terms": ["vulnerability prioritization", "risk-based vulnerability", "VPT", "vulnerability management", "exploit prediction", "patch prioritization", "remediation prioritization"]
+      },
+      "EXM-04": {
+        "name": "Third-Party & Supply Chain Exposure",
+        "expanded_definition": "Assessment and monitoring of exposure introduced through third-party vendors, supply chain dependencies, open-source components, and partner integrations.",
+        "what_to_verify_publicly": [
+          "Third-party vendor risk assessment capabilities",
+          "Software supply chain monitoring (SBOM analysis)",
+          "Open-source component vulnerability tracking",
+          "Continuous monitoring of vendor security posture",
+          "Supply chain attack detection and alerting"
+        ],
+        "search_terms": ["third-party risk", "supply chain security", "vendor risk management", "SBOM", "software supply chain", "third-party exposure", "open source risk"]
+      },
+      "AMT-01": {
+        "name": "Polymorphic & Morphing Defense",
+        "expanded_definition": "Runtime mutation of application memory layouts, network configurations, API endpoints, and system identifiers to prevent static targeting by adversaries.",
+        "what_to_verify_publicly": [
+          "Runtime address space or memory layout randomization",
+          "API endpoint mutation or obfuscation",
+          "Network configuration morphing",
+          "System identifier rotation",
+          "Evidence of increased attacker cost through dynamic changes"
+        ],
+        "search_terms": ["polymorphic defense", "moving target defense", "AMTD", "runtime randomization", "address space randomization", "memory randomization", "dynamic defense"]
+      },
+      "AMT-02": {
+        "name": "Runtime Application Protection",
+        "expanded_definition": "In-process protection that shields applications during execution through instrumentation, code hardening, and real-time exploit prevention without signature dependence.",
+        "what_to_verify_publicly": [
+          "RASP or in-app runtime protection capabilities",
+          "Code instrumentation for exploit prevention",
+          "Application hardening and anti-tampering",
+          "Memory corruption defense (ROP, buffer overflow prevention)",
+          "Signature-less exploit detection at runtime"
+        ],
+        "search_terms": ["RASP", "runtime protection", "application shielding", "runtime application self-protection", "code instrumentation", "exploit prevention", "application hardening"]
+      },
+      "AMT-03": {
+        "name": "Dynamic Network & Infrastructure Defense",
+        "expanded_definition": "Automated reconfiguration of network topology, micro-segmentation boundaries, and infrastructure parameters to deny adversaries a stable operating environment.",
+        "what_to_verify_publicly": [
+          "Automated micro-segmentation with dynamic policy",
+          "Network topology reconfiguration capabilities",
+          "Software-defined perimeter or zero trust network access",
+          "Infrastructure-as-code security automation",
+          "Adaptive access controls based on risk signals"
+        ],
+        "search_terms": ["dynamic network defense", "micro-segmentation", "software-defined perimeter", "network randomization", "adaptive network", "zero trust network", "dynamic segmentation"]
+      },
+      "AMT-04": {
+        "name": "Identity & Credential Rotation",
+        "expanded_definition": "Automated rotation, obfuscation, and ephemeral provisioning of credentials, tokens, keys, and identity artifacts to limit credential-based attack windows.",
+        "what_to_verify_publicly": [
+          "Automated credential and secret rotation",
+          "Ephemeral or just-in-time credential provisioning",
+          "Service account and API key lifecycle management",
+          "Certificate and token rotation automation",
+          "Privileged access session isolation"
+        ],
+        "search_terms": ["credential rotation", "ephemeral credentials", "key rotation", "token rotation", "just-in-time access", "secret rotation", "privileged access management"]
+      },
+      "ADR-01": {
+        "name": "Deception Technology",
+        "expanded_definition": "Deployment of decoys, honeypots, honeytokens, and breadcrumbs across the environment to detect lateral movement, credential theft, and reconnaissance with high-fidelity alerts.",
+        "what_to_verify_publicly": [
+          "Honeypot and honeytoken deployment capabilities",
+          "Decoy systems mimicking production assets",
+          "Breadcrumb placement for lateral movement detection",
+          "High-fidelity alerting with low false-positive rates",
+          "Integration with SIEM/SOAR for automated response"
+        ],
+        "search_terms": ["deception technology", "honeypot", "honeytoken", "decoy", "breadcrumb", "deception platform", "cyber deception", "distributed deception"]
+      },
+      "ADR-02": {
+        "name": "Threat Intelligence Operationalization",
+        "expanded_definition": "Automated ingestion, correlation, and actioning of tactical and operational threat intelligence to preemptively block, hunt, and disrupt known adversary infrastructure and TTPs.",
+        "what_to_verify_publicly": [
+          "Threat intelligence platform or feed integration",
+          "Automated IOC ingestion and correlation",
+          "TTP mapping to MITRE ATT&CK framework",
+          "Automated blocking based on threat intelligence",
+          "Intelligence-driven hunting query generation"
+        ],
+        "search_terms": ["threat intelligence platform", "TIP", "threat intelligence operationalization", "IOC enrichment", "adversary tracking", "threat feed", "MITRE ATT&CK mapping"]
+      },
+      "ADR-03": {
+        "name": "Proactive Threat Hunting",
+        "expanded_definition": "Hypothesis-driven and intelligence-led hunting operations that proactively search for adversary presence, persistence mechanisms, and pre-attack indicators before alerts trigger.",
+        "what_to_verify_publicly": [
+          "Managed or automated threat hunting services",
+          "Hypothesis-driven hunting methodologies",
+          "Hunt query libraries and playbooks",
+          "Integration with telemetry sources (EDR, NDR, SIEM)",
+          "Hunt findings feeding back to detection engineering"
+        ],
+        "search_terms": ["threat hunting", "proactive hunting", "hypothesis-driven hunting", "hunt operations", "adversary hunting", "managed threat hunting", "detection engineering"]
+      },
+      "ADR-04": {
+        "name": "Counter-Adversary Operations",
+        "expanded_definition": "Capabilities to attribute, track, and actively counter adversary campaigns — including takedown services, adversary infrastructure disruption, and dark web monitoring.",
+        "what_to_verify_publicly": [
+          "Dark web monitoring and intelligence gathering",
+          "Brand protection and impersonation detection",
+          "Takedown service capabilities (domains, phishing, infrastructure)",
+          "Adversary attribution and campaign tracking",
+          "Digital risk protection services"
+        ],
+        "search_terms": ["counter-adversary", "adversary disruption", "takedown service", "dark web monitoring", "adversary attribution", "digital risk protection", "brand protection"]
+      },
+      "PPM-01": {
+        "name": "Breach & Attack Simulation",
+        "expanded_definition": "Automated simulation of attack chains, lateral movement, and data exfiltration scenarios against production environments to validate detection and prevention control effectiveness.",
+        "what_to_verify_publicly": [
+          "Automated attack chain simulation capabilities",
+          "Continuous validation against production controls",
+          "MITRE ATT&CK technique coverage",
+          "Control gap identification and remediation guidance",
+          "Reporting on detection and prevention effectiveness"
+        ],
+        "search_terms": ["breach and attack simulation", "BAS", "attack simulation", "purple team automation", "control validation", "security validation", "adversary simulation"]
+      },
+      "PPM-02": {
+        "name": "Security Control Validation",
+        "expanded_definition": "Systematic testing and verification that deployed security controls (SIEM rules, EDR policies, firewall rules, DLP configs) are correctly configured, active, and effective.",
+        "what_to_verify_publicly": [
+          "SIEM detection rule validation and testing",
+          "EDR policy effectiveness verification",
+          "Firewall and network control validation",
+          "DLP and data protection control testing",
+          "Configuration drift detection and alerting"
+        ],
+        "search_terms": ["security control validation", "control effectiveness", "detection validation", "SIEM validation", "EDR validation", "control gap analysis", "security posture validation"]
+      },
+      "PPM-03": {
+        "name": "Penetration Testing & Red Teaming",
+        "expanded_definition": "Automated or continuous penetration testing and red team exercise capabilities that identify exploitable paths and validate organizational resilience under realistic adversary conditions.",
+        "what_to_verify_publicly": [
+          "Automated penetration testing platform",
+          "Continuous or on-demand pen testing capabilities",
+          "Attack path analysis and visualization",
+          "Exploit validation and proof-of-concept generation",
+          "Red team exercise automation (PTaaS)"
+        ],
+        "search_terms": ["penetration testing", "automated pentest", "red team", "continuous pentest", "attack path analysis", "PTaaS", "offensive security", "exploitation testing"]
+      },
+      "PPM-04": {
+        "name": "Cloud Security Posture Management",
+        "expanded_definition": "Continuous assessment of cloud infrastructure configurations, entitlements, and workload security against best practices and compliance frameworks to preemptively close cloud exposure gaps.",
+        "what_to_verify_publicly": [
+          "Cloud misconfiguration detection (AWS, Azure, GCP)",
+          "Cloud entitlement and permissions analysis (CIEM)",
+          "Compliance framework mapping and reporting",
+          "Cloud workload protection capabilities",
+          "Infrastructure-as-code security scanning"
+        ],
+        "search_terms": ["CSPM", "cloud security posture", "cloud misconfiguration", "CIEM", "cloud entitlement", "CNAPP", "cloud workload protection", "cloud compliance"]
+      }
+    },
+
+    "vendor_fields": {
+      "vendor": { "type": "string", "description": "Official company name" },
+      "website": { "type": "string", "description": "Primary company URL" },
+      "headquarters": { "type": "string", "description": "HQ city, state/country" },
+      "year_founded": { "type": "integer", "description": "Year the company was founded" },
+      "employee_count_range": { "type": "string", "description": "Estimated employee bracket" },
+      "funding_stage": { "type": "string", "description": "Latest funding round: Seed, Series A-F, IPO, Acquired, Bootstrapped" },
+      "total_funding": { "type": "string", "description": "Total funding raised to date" },
+      "is_startup": { "type": "boolean", "description": "Founded within last 7 years OR pre-IPO with <500 employees" },
+      "is_ai_first": { "type": "boolean", "description": "AI/ML is a core differentiator — secondary to capability alignment" },
+      "region": { "type": "string", "description": "Primary region of operation" },
+      "specialization": { "type": "string", "description": "Primary security specialization" },
+      "ir_focus_type": { "type": "string", "description": "Primary market focus: SMB, Mid-Market, Enterprise, All" },
+      "primary_capability": { "type": "string", "description": "Single strongest preemptive capability pillar code (EXM, AMT, ADR, PPM)" },
+      "capability_coverage": { "type": "array", "description": "List of sub-pillar codes where vendor has demonstrated capability" },
+      "capability_coverage_count": { "type": "integer", "description": "Number of sub-pillars covered out of 16 total" },
+      "description": { "type": "string", "description": "Brief description of the vendor and their preemptive security approach" },
+      "key_differentiators": { "type": "string", "description": "What sets this vendor apart in preemptive cybersecurity" },
+      "product_names": { "type": "array", "description": "Key product or platform names" }
+    }
+  }
+}

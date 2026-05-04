@@ -1,0 +1,353 @@
+{
+  "report_type": "Incomplete Research Analysis",
+  "total_vendors_in_dataset": 139,
+  "vendors_with_incomplete_research": 43,
+  "incomplete_percentage": "30.9%",
+  "default_score_used": 0.25,
+  "vendors": [
+    {
+      "vendor": "Aon (Stroz Friedberg)",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Bitdefender",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Europe / global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Booz Allen Hamilton",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "North America / Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Bridewell",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "United Kingdom",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "BT Cyber",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Europe / Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Capgemini",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Global / EMEA",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Cisco",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "CPX",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Middle East (UAE)",
+      "is_startup": true,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "CyberCX",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "APAC (Australia)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Cyberegate",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Middle East (UAE)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "CyberLink",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "APAC (Taiwan)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "CyberSOC Africa",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Africa (Pan-Africa)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Digital Encode",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Africa (Nigeria)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "DTS Solution",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Middle East (UAE)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Expel",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Group-IB",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "APAC (Singapore) / Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "HCLTech",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Global / India",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Help AG",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Middle East (UAE)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "IBM (X-Force)",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "IBM Security (X-Force)",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Infosys",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Global / India",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Kivu",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "North America / Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "LGMS",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "APAC (Malaysia)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Litt",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true
+    },
+    {
+      "vendor": "Mitiga",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Global",
+      "is_startup": true,
+      "is_ai_first": true
+    },
+    {
+      "vendor": "mnemonic",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Europe (Nordics)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Nozomi Networks",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true
+    },
+    {
+      "vendor": "Orange Cyberdefense",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Europe / Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "P0 Security",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": true
+    },
+    {
+      "vendor": "Pondurance",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "PwC",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Quorum Cyber",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "United Kingdom / Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Rubrik",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": true
+    },
+    {
+      "vendor": "S-RM",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Europe / Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Serianu Limited",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Africa (Kenya)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Stellar Cyber",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Global",
+      "is_startup": true,
+      "is_ai_first": true
+    },
+    {
+      "vendor": "Sygnia",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Middle East / Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Tempest",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "LATAM (Brazil)",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Tenzai",
+      "research_flag": "fetch_failed",
+      "research_confidence": 0.0,
+      "region": "Middle East",
+      "is_startup": true,
+      "is_ai_first": true
+    },
+    {
+      "vendor": "Total Assure",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "North America",
+      "is_startup": true,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "TrustedSEC",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "North America",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Trustwave",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Global",
+      "is_startup": false,
+      "is_ai_first": false
+    },
+    {
+      "vendor": "Wolfpack InfoRisk",
+      "research_flag": "no_evidence",
+      "research_confidence": 0.1,
+      "region": "Africa (South Africa)",
+      "is_startup": false,
+      "is_ai_first": false
+    }
+  ]
+}

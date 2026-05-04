@@ -1,0 +1,874 @@
+{
+  "cnapp_taxonomy_v1.1": {
+    "schema_lineage": {
+      "parent": "MDR_Services_Schema.json",
+      "parent_version": "1.0",
+      "related_schemas": [
+        "Offensive_Security_Schema.json",
+        "Preemptive_Cybersecurity_Schema_v2.json"
+      ],
+      "purpose": "Evaluate vendors providing Cloud-Native Application Protection Platform (CNAPP) products — encompassing cloud security posture management, workload protection, identity entitlement, shift-left DevSecOps, cloud detection and response, data security posture, and fringe differentiating capabilities.",
+      "version": "1.1",
+      "change_log": [
+        {
+          "version": "1.1",
+          "date": "2026-05-01",
+          "changes": [
+            "CSPM pillar: emphasize multicloud (AWS/Azure/GCP minimum) + private-cloud (OpenStack/OpenShift) coverage",
+            "CSPM-01: renamed to 'Multicloud Misconfiguration Detection & Guided Auto-Remediation'",
+            "CSPM-03: added 'toxic combination' detection",
+            "CSPM-04: renamed to include Business Impact Scoring & Executive Reporting",
+            "CWPP-01: renamed to 'Workload Runtime Monitoring' (dropped EDR); added agent vs agentless and agent-type taxonomy",
+            "CWPP-02: removed CI/CD aspect (moved to SHIFT-03)",
+            "SHIFT-04: added SCA, MBOM, AIBOM",
+            "SHIFT-05: NEW sub-pillar — Ticketing & Workflow Integration",
+            "CDR, DSPM, FRNG flagged tier=non-core (evaluate-if-present); scoring math unchanged"
+          ]
+        }
+      ]
+    },
+    "intent": "Assess CNAPP vendor capability depth across seven pillars aligned to Gartner's CNAPP Market Guide framework. Pillars span the full cloud application protection lifecycle — from infrastructure posture and workload runtime protection through identity entitlement management, developer-side shift-left security, cloud threat detection and response, data security posture, and emerging differentiators. Vendors are scored on demonstrated, publicly verifiable capability — not marketing claims. Fringe capabilities (AI/GenAI security posture, API security, cloud network microsegmentation, secrets management) are evaluated separately to surface differentiators beyond the Gartner baseline.",
+    "metadata": {
+      "framework_alignment": "Gartner CNAPP Market Guide 2024 + Gartner Hype Cycle for Cloud Security + CIS Cloud Benchmarks + NIST CSF 2.0 + CSA Cloud Controls Matrix (CCM) v4",
+      "scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of capability in this area",
+        "scoring_logic": {
+          "0": "No Evidence: No publicly verifiable evidence of capability in this sub-pillar.",
+          "1": "Minimal: Basic or manual capability; limited automation, minimal technical specifics, or niche-only applicability.",
+          "2": "Generic Claims: Marketing mentions the capability but lacks named products, technical documentation, metrics, or meaningful specifics.",
+          "3": "Demonstrated: Documented capability with named products or features, some technical depth, identifiable use cases, and available customer validation.",
+          "4": "Advanced: Named products with measurable outcomes, analyst recognition, deep integration points, and automation-forward architecture. Continuous coverage across cloud providers demonstrated.",
+          "5": "Market-Leading: Best-in-class capability with deep technical evidence, multicloud breadth, analyst leadership recognition, measurable impact metrics, and continuous innovation. Reference customers and third-party validation available."
+        }
+      },
+      "source_policy": {
+        "description": "Evidence must be publicly accessible and verifiable.",
+        "valid_sources": [
+          {
+            "tier": "A",
+            "type": "Vendor documentation",
+            "examples": [
+              "Product pages",
+              "Technical documentation",
+              "API references",
+              "Release notes",
+              "Security whitepapers",
+              "Compliance documentation"
+            ],
+            "weight": 1.0
+          },
+          {
+            "tier": "A",
+            "type": "Analyst reports",
+            "examples": [
+              "Gartner Market Guide / Magic Quadrant / Hype Cycle",
+              "Forrester Wave",
+              "IDC MarketScape",
+              "KuppingerCole Leadership Compass",
+              "ESG Technical Validation"
+            ],
+            "weight": 1.0
+          },
+          {
+            "tier": "B",
+            "type": "Technical media",
+            "examples": [
+              "SecurityWeek",
+              "Dark Reading",
+              "Help Net Security",
+              "CSO Online",
+              "The Hacker News",
+              "SC Media"
+            ],
+            "weight": 0.85
+          },
+          {
+            "tier": "B",
+            "type": "Benchmarks/Case studies",
+            "examples": [
+              "Customer case studies",
+              "Cloud provider marketplace listings",
+              "CISA advisories referencing vendor tools",
+              "CSA STAR certifications"
+            ],
+            "weight": 0.85
+          },
+          {
+            "tier": "C",
+            "type": "Conference/Academic",
+            "examples": [
+              "RSAC",
+              "Black Hat",
+              "re:Inforce",
+              "fwd:cloudsec",
+              "KubeCon Security talks",
+              "arXiv"
+            ],
+            "weight": 0.7
+          },
+          {
+            "tier": "C",
+            "type": "Professional networks",
+            "examples": [
+              "Engineer-authored LinkedIn/Blogs with technical detail",
+              "GitHub repos with documented integrations"
+            ],
+            "weight": 0.7
+          }
+        ]
+      },
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of capability sub-pillars covered (score ≥ 1)",
+        "scale": {
+          "A": "22-28 sub-pillars (79-100%)",
+          "B": "17-21 sub-pillars (61-75%)",
+          "C": "11-16 sub-pillars (39-57%)",
+          "D": "6-10 sub-pillars (21-36%)",
+          "F": "1-5 sub-pillars (4-18%)"
+        }
+      },
+      "market_position_definitions": {
+        "cnapp_vendor_type": {
+          "Pure-Play CNAPP": "Vendors whose primary commercial offering is a unified CNAPP platform — cloud security is the core business, not an extension or module of a broader product suite.",
+          "Platform CNAPP": "Large security platform vendors who deliver CNAPP as a deeply integrated component of their broader XDR, EDR, or security ecosystem — cloud security is a first-class pillar within a multi-product portfolio.",
+          "Adjacent CNAPP": "Vendors entering CNAPP from an adjacent market — vulnerability management, application security, observability, or network security — who have expanded their platform to cover cloud-native use cases.",
+          "Emerging CNAPP": "Early-stage or growth-stage vendors building differentiated CNAPP capabilities, often with AI-native architectures or novel runtime approaches not yet reflected in mainstream frameworks."
+        },
+        "cloud_coverage": {
+          "AWS Only": "Primary or exclusive support for Amazon Web Services environments.",
+          "Azure Only": "Primary or exclusive support for Microsoft Azure environments.",
+          "GCP Only": "Primary or exclusive support for Google Cloud Platform environments.",
+          "Multi-Cloud": "Full production-grade support across at least two major hyperscalers (AWS, Azure, GCP).",
+          "Multi-Cloud + Edge": "Multi-cloud coverage extended to include edge/on-prem hybrid environments and private cloud."
+        },
+        "deployment_model": {
+          "Agentless": "Primary protection model relying on cloud-provider API integrations without agent installation on workloads.",
+          "Agent-Based": "Primary protection model using lightweight agents deployed within workloads for deep runtime visibility.",
+          "Hybrid (Agent + Agentless)": "Platform supports both agent-based and agentless modes — agentless for broad posture coverage, agent-based for deep runtime protection."
+        }
+      }
+    },
+    "pillars": {
+      "CSPM": {
+        "name": "Cloud Security Posture Management",
+        "focus": "The foundational CNAPP capability — continuous assessment of cloud infrastructure configurations, compliance posture, and security benchmarks across hyperscaler environments (minimum AWS, Azure, GCP; additional providers and private-cloud stacks such as OpenStack and OpenShift count as differentiators). Covers misconfig detection, guided remediation, asset inventory with toxic-combination analysis, and business-impact-aware risk scoring.",
+        "evidence_signals": [
+          "Multicloud misconfiguration detection across AWS, Azure, and GCP with documented rule coverage",
+          "Automated or one-click remediation capabilities with audit trail",
+          "Compliance framework mapping to CIS, PCI DSS, SOC 2, HIPAA, NIST, ISO 27001",
+          "Continuous cloud asset inventory with relationship mapping and attack surface scoring",
+          "Contextual risk prioritization combining misconfiguration severity with exploitability and asset criticality",
+          "Multicloud breadth — AWS, Azure, GCP at minimum; bonus for Oracle, Alibaba, IBM Cloud",
+          "Private cloud coverage — OpenStack, OpenShift, VMware Cloud Foundation, Nutanix"
+        ],
+        "tier": "core"
+      },
+      "CWPP": {
+        "name": "Cloud Workload Protection Platform",
+        "focus": "Runtime and pre-runtime protection for cloud workloads — virtual machines, containers, Kubernetes pods, and serverless functions. Evaluates BOTH agent-based and agentless deployment models, depth of vulnerability management, real-time vs point-in-time analysis, and the breadth of supported agent types (OS agent, K8s DaemonSet, sidecar, embedded SDK, eBPF sensor, kernel module, serverless wrapper, container-runtime hook).",
+        "evidence_signals": [
+          "Runtime threat prevention for VMs, containers, and serverless functions with documented prevention efficacy",
+          "Vulnerability scanning with EPSS or CVSS-based exploitability prioritization",
+          "Container runtime security including anomaly detection and process/file monitoring",
+          "Serverless function security posture and runtime monitoring",
+          "Agentless scanning alongside or instead of agent-based deployment options",
+          "Clear documentation of agent-based vs agentless deployment options",
+          "Real-time runtime monitoring AND point-in-time snapshot analysis",
+          "Multiple agent types supported (OS agent, K8s DaemonSet, sidecar, eBPF, kernel module, serverless wrapper, container-runtime hook, embedded SDK)"
+        ],
+        "tier": "core"
+      },
+      "CIEM": {
+        "name": "Cloud Identity & Entitlement Management",
+        "focus": "Governing who and what can access cloud resources — covering IAM users, service accounts, roles, federation, and non-human identities (NHI). Evaluates permission discovery and analysis, least-privilege enforcement, detection of over-privileged accounts, and advanced controls like just-in-time (JIT) access that are increasingly critical as identity becomes the primary cloud attack vector.",
+        "evidence_signals": [
+          "Cloud IAM permission discovery and entitlement mapping across users, roles, and service accounts",
+          "Least-privilege analysis with actionable remediation recommendations",
+          "Non-human identity (NHI) security including service accounts, API keys, and OAuth tokens",
+          "Just-in-time (JIT) access provisioning and privilege escalation detection",
+          "Cross-cloud identity federation risk analysis and anomaly detection"
+        ],
+        "tier": "core"
+      },
+      "SHIFT": {
+        "name": "Shift-Left & DevSecOps Security",
+        "focus": "Integrating security into the development pipeline before cloud deployment — covering IaC scanning, container image analysis, CI/CD integrations, and software supply chain protection. Evaluates how well the CNAPP vendor embeds security checks in developer workflows to prevent insecure infrastructure from reaching production.",
+        "evidence_signals": [
+          "Infrastructure as Code (IaC) scanning for Terraform, CloudFormation, Pulumi, Bicep, and Kubernetes manifests",
+          "Container image scanning in registries (ECR, ACR, GCR, Docker Hub) with vulnerability and malware detection",
+          "Native CI/CD integrations (GitHub Actions, GitLab CI, Jenkins, Azure DevOps) with pull request feedback",
+          "SBOM generation and software supply chain risk identification",
+          "Developer-friendly remediation guidance with fix suggestions and policy-as-code frameworks",
+          "Ticketing & workflow integration (Jira, ServiceNow, Slack/Teams, PagerDuty, webhooks)"
+        ],
+        "tier": "core"
+      },
+      "CDR": {
+        "name": "Cloud Detection & Response",
+        "focus": "Real-time detection, investigation, and response to active threats within cloud environments — the operational security layer of CNAPP. Evaluates threat detection depth using cloud telemetry (CloudTrail, Azure Monitor, GCP logs), attack path visualization through security knowledge graphs, forensic investigation capabilities, and response automation for cloud-native incidents.",
+        "evidence_signals": [
+          "Cloud threat detection using hyperscaler-native telemetry (CloudTrail, Azure Monitor, GCP Audit Logs, Kubernetes audit logs)",
+          "Attack path analysis and security knowledge graph connecting misconfigs, permissions, and workload vulnerabilities",
+          "Cloud incident investigation with contextual forensics and timeline reconstruction",
+          "Automated response capabilities (IAM revocation, workload isolation, policy enforcement)",
+          "AI-driven threat prioritization reducing alert noise across cloud environments"
+        ],
+        "tier": "non-core (evaluate if present)"
+      },
+      "DSPM": {
+        "name": "Data Security Posture Management",
+        "focus": "Discovering, classifying, and governing sensitive data across cloud storage, databases, and SaaS environments. DSPM is identified by Gartner as a rapidly growing CNAPP capability as organizations struggle with data proliferation across cloud environments. Evaluates data discovery breadth, sensitivity classification accuracy, access governance, shadow data detection, and compliance reporting.",
+        "evidence_signals": [
+          "Sensitive data discovery across cloud storage (S3, Azure Blob, GCS), databases, and SaaS platforms",
+          "Data classification using ML-based content inspection with PII, PHI, PCI, and IP detection",
+          "Data access governance showing who and what can access sensitive data stores",
+          "Shadow data and forgotten data exposure detection in misconfigured buckets or shares",
+          "Data compliance reporting aligned to GDPR, CCPA, HIPAA, PCI DSS requirements"
+        ],
+        "tier": "non-core (evaluate if present)"
+      },
+      "FRNG": {
+        "name": "Fringe & Differentiating Capabilities",
+        "focus": "Emerging capabilities that extend CNAPP beyond the Gartner Market Guide baseline — representing competitive differentiation signals and next-generation cloud security directions. Covers AI/GenAI workload security posture (AISPM), API security discovery, cloud network microsegmentation, and secrets/credential protection at runtime. These capabilities are increasingly evaluated by enterprise buyers as distinguishing factors between otherwise similar platforms.",
+        "evidence_signals": [
+          "AI/GenAI workload security posture management (AISPM) — scanning AI models, training pipelines, and LLM deployments",
+          "API discovery, inventory, and shadow API risk assessment integrated into the cloud security graph",
+          "Cloud network security with microsegmentation, network flow analysis, and lateral movement prevention",
+          "Secrets detection across code repositories, container images, and running workloads (API keys, tokens, credentials)",
+          "Runtime application self-protection (RASP) or eBPF-based deep runtime observability for zero-day prevention"
+        ],
+        "tier": "non-core (evaluate if present)"
+      }
+    },
+    "sub_pillars": {
+      "CSPM-01": {
+        "name": "Multicloud Misconfiguration Detection & Guided Auto-Remediation",
+        "expanded_definition": "Continuous detection of misconfigurations across AWS, Azure, GCP (and ideally Oracle, Alibaba, IBM, plus private-cloud stacks such as OpenStack and OpenShift), paired with guided auto-remediation — remediation actions are proposed via playbooks, ticketed for review, and applied with rollback and audit trail rather than silently auto-fixed.",
+        "what_to_verify_publicly": [
+          "Documented rule count and coverage across AWS, Azure, GCP misconfigurations",
+          "Additional cloud provider coverage (Oracle, Alibaba, IBM Cloud) as differentiators",
+          "Private-cloud coverage (OpenStack, OpenShift, VMware) where applicable",
+          "Guided remediation workflow — proposed fix, approval/ticket, rollback, audit trail",
+          "Real-time vs scheduled scan modes for continuous monitoring"
+        ],
+        "search_terms": [
+          "cloud misconfiguration",
+          "CSPM",
+          "cloud security posture",
+          "guided remediation",
+          "auto-remediation",
+          "remediation playbook",
+          "cloud compliance",
+          "OpenStack security",
+          "OpenShift security",
+          "S3 bucket exposure"
+        ]
+      },
+      "CSPM-02": {
+        "name": "Compliance Framework Mapping & CIS Benchmarks",
+        "expanded_definition": "Automated mapping of cloud environment configurations to regulatory and industry compliance frameworks — including CIS Cloud Benchmarks (AWS, Azure, GCP), PCI DSS, HIPAA, SOC 2, NIST 800-53, ISO 27001, GDPR, and FedRAMP — with continuous compliance drift detection and audit-ready reporting.",
+        "what_to_verify_publicly": [
+          "Number and breadth of supported compliance frameworks",
+          "Continuous compliance monitoring with drift alerting",
+          "Audit-ready report generation for regulatory submissions",
+          "Custom policy framework creation for internal standards",
+          "Compliance posture scoring with trend tracking over time"
+        ],
+        "search_terms": [
+          "cloud compliance",
+          "CIS benchmark",
+          "cloud regulatory compliance",
+          "PCI DSS cloud",
+          "HIPAA cloud",
+          "FedRAMP cloud",
+          "compliance posture management",
+          "cloud audit reporting"
+        ]
+      },
+      "CSPM-03": {
+        "name": "Cloud Asset Inventory & Attack Surface Visibility",
+        "expanded_definition": "Continuous discovery of cloud assets across providers with relationship and graph mapping. Critical capability is detection of TOXIC COMBINATIONS — high-risk multi-factor exposures such as a publicly-exposed workload + over-privileged role + sensitive data access — surfaced as prioritized attack paths.",
+        "what_to_verify_publicly": [
+          "Breadth of asset types discovered across cloud services and providers",
+          "Relationship/graph mapping (network topology, IAM connections, data flows)",
+          "Toxic-combination detection (e.g., public exposure + privileged identity + sensitive data)",
+          "Shadow IT and unmanaged resource discovery",
+          "Attack path / blast radius visualization"
+        ],
+        "search_terms": [
+          "cloud asset inventory",
+          "cloud visibility",
+          "attack surface",
+          "toxic combination",
+          "attack path",
+          "blast radius",
+          "cloud resource discovery",
+          "graph analysis cloud"
+        ]
+      },
+      "CSPM-04": {
+        "name": "Risk Prioritization, Business Impact Scoring & Executive Reporting",
+        "expanded_definition": "Contextual risk scoring that combines exploitability (EPSS, KEV), asset criticality, exposure, and BUSINESS IMPACT (revenue tier, regulatory scope, data sensitivity). Surfaces results both to operators (prioritized backlog) and executives (board-level dashboards, trend overviews, risk-by-business-unit views).",
+        "what_to_verify_publicly": [
+          "Contextual risk scoring incorporating multiple risk factors",
+          "Exploitability enrichment (EPSS, KEV catalog, threat intelligence)",
+          "Asset criticality / business-impact weighting (revenue, regulation, data sensitivity)",
+          "Executive dashboards and overview reports (board-ready, by business unit, trend)",
+          "Quantitative cyber-risk reporting (e.g., CRQ, dollar-loss estimates)"
+        ],
+        "search_terms": [
+          "cloud risk prioritization",
+          "contextual risk scoring",
+          "business impact",
+          "executive dashboard",
+          "executive report",
+          "risk quantification",
+          "EPSS cloud",
+          "alert prioritization"
+        ]
+      },
+      "CWPP-01": {
+        "name": "Workload Runtime Monitoring",
+        "expanded_definition": "Continuous runtime visibility into cloud workloads — VMs, containers, Kubernetes pods, serverless. Evaluates BOTH agent-based and agentless approaches; real-time runtime telemetry vs point-in-time snapshot analysis; and the breadth of supported agent types: OS agent for VM, Kubernetes DaemonSet, sidecar container, embedded SDK, eBPF-based sensor, kernel module, function/serverless runtime wrapper, and container runtime hook.",
+        "what_to_verify_publicly": [
+          "Both agent-based AND agentless runtime monitoring modes documented",
+          "Real-time runtime telemetry AND point-in-time snapshot analysis",
+          "Agent types supported: OS agent (VM), K8s DaemonSet, sidecar container, embedded SDK, eBPF sensor, kernel module, serverless wrapper, container-runtime hook",
+          "Behavioral anomaly detection for processes, file system, and network activity",
+          "File integrity monitoring (FIM) and drift detection"
+        ],
+        "search_terms": [
+          "workload runtime monitoring",
+          "runtime visibility",
+          "agentless workload",
+          "agent-based workload",
+          "eBPF",
+          "Kubernetes DaemonSet",
+          "sidecar security",
+          "kernel module",
+          "container runtime hook",
+          "serverless runtime",
+          "file integrity monitoring"
+        ]
+      },
+      "CWPP-02": {
+        "name": "Vulnerability Assessment & Exploitability Prioritization",
+        "expanded_definition": "Vulnerability assessment for running workloads (OS packages, libraries, application dependencies) with exploitability prioritization (EPSS, KEV, reachability). Pre-deployment image scanning lives in SHIFT-02; CI/CD pipeline gating lives in SHIFT-03. This sub-pillar focuses on RUNTIME-aware vulnerability findings.",
+        "what_to_verify_publicly": [
+          "Vulnerability scanning coverage across OS packages, libraries, and application dependencies for running workloads",
+          "EPSS or KEV-based exploitability prioritization reducing actionable CVE volume",
+          "Runtime-aware vulnerability assessment (packages actually loaded vs. installed)",
+          "Reachability analysis to identify exploitable code paths"
+        ],
+        "search_terms": [
+          "runtime vulnerability",
+          "workload vulnerability",
+          "EPSS prioritization",
+          "KEV catalog",
+          "reachability analysis",
+          "CVE exploitability"
+        ]
+      },
+      "CWPP-03": {
+        "name": "Container & Kubernetes Security",
+        "expanded_definition": "Specialized security controls for containerized workloads and Kubernetes orchestration environments — including Kubernetes Security Posture Management (KSPM), admission control policies, container escape prevention, namespace isolation, and runtime monitoring of Kubernetes clusters, nodes, pods, and service meshes.",
+        "what_to_verify_publicly": [
+          "Kubernetes Security Posture Management (KSPM) with CIS Kubernetes Benchmark coverage",
+          "Admission controller integration (OPA/Gatekeeper, Kyverno) for policy enforcement",
+          "Runtime container monitoring including syscall visibility and eBPF telemetry",
+          "Kubernetes network policy analysis and enforcement",
+          "Container escape and privilege escalation detection"
+        ],
+        "search_terms": [
+          "Kubernetes security",
+          "KSPM",
+          "container security",
+          "Kubernetes posture",
+          "container runtime security",
+          "K8s security scanning",
+          "admission control security",
+          "eBPF container security"
+        ]
+      },
+      "CWPP-04": {
+        "name": "Serverless & Agentless Architecture",
+        "expanded_definition": "Protection of serverless functions (AWS Lambda, Azure Functions, Google Cloud Functions) combined with an architectural approach that provides broad, immediate cloud visibility without requiring agent deployment — using cloud provider APIs, snapshot scanning, and SaaS connector integrations that reduce deployment friction and enable rapid time-to-value.",
+        "what_to_verify_publicly": [
+          "Serverless function security scanning and runtime monitoring capabilities",
+          "Agentless deployment mode using cloud provider APIs (no agent on workload required)",
+          "Time-to-value metrics for agentless deployment (minutes vs. days for agent rollout)",
+          "Coverage depth comparison: agentless vs. agent-based detection breadth",
+          "Multi-cloud agentless support across AWS, Azure, and GCP"
+        ],
+        "search_terms": [
+          "serverless security",
+          "agentless cloud security",
+          "Lambda security",
+          "Azure Functions security",
+          "agentless CWPP",
+          "cloud agentless scanning",
+          "serverless runtime security",
+          "agentless posture"
+        ]
+      },
+      "CIEM-01": {
+        "name": "Cloud Identity & Permission Discovery",
+        "expanded_definition": "Automated discovery and mapping of all cloud identities and their effective permissions — IAM users, roles, groups, service accounts, federated identities, and resource-based policies — visualized in a permission graph that reveals who can access what, how, and from where across multicloud environments.",
+        "what_to_verify_publicly": [
+          "Comprehensive IAM inventory across AWS, Azure, and GCP identity constructs",
+          "Effective permission calculation showing actual vs. assigned access rights",
+          "Permission graph visualization connecting identities to resources",
+          "Cross-account and cross-cloud identity federation mapping",
+          "Undocumented or orphaned identity detection (stale accounts, unused roles)"
+        ],
+        "search_terms": [
+          "CIEM",
+          "cloud identity management",
+          "IAM security",
+          "cloud permission discovery",
+          "cloud entitlement management",
+          "cloud identity governance",
+          "IAM visibility",
+          "cloud access graph"
+        ]
+      },
+      "CIEM-02": {
+        "name": "Least Privilege Enforcement & Access Governance",
+        "expanded_definition": "Identifying over-privileged identities and generating actionable least-privilege recommendations that reduce the standing permission surface without breaking application functionality — including automated policy generation, access certification workflows, and governance controls that ensure minimum necessary access is maintained over time.",
+        "what_to_verify_publicly": [
+          "Least privilege analysis with actionable right-sizing recommendations",
+          "Automated least-privilege policy generation for IAM roles and policies",
+          "Access review and certification workflow capabilities",
+          "Over-privileged service account and role detection with remediation",
+          "Privilege drift detection alerting when permissions expand beyond baseline"
+        ],
+        "search_terms": [
+          "least privilege cloud",
+          "IAM right-sizing",
+          "cloud access governance",
+          "over-privileged IAM",
+          "cloud privilege management",
+          "IAM remediation",
+          "cloud access review",
+          "minimum privilege cloud"
+        ]
+      },
+      "CIEM-03": {
+        "name": "Non-Human Identity & Service Account Security",
+        "expanded_definition": "Security governance for non-human identities (NHI) — machine identities, service accounts, API keys, OAuth tokens, instance profiles, workload identity federation, and third-party application credentials — which represent the fastest-growing and most overlooked cloud attack vector. Includes discovery of exposed credentials and detection of anomalous NHI behavior.",
+        "what_to_verify_publicly": [
+          "Non-human identity (NHI) discovery and inventory across cloud environments",
+          "Service account usage analysis and anomaly detection",
+          "API key and OAuth token exposure detection in code or configs",
+          "Machine identity lifecycle management capabilities",
+          "Detection of lateral movement or privilege escalation through service accounts"
+        ],
+        "search_terms": [
+          "non-human identity",
+          "NHI security",
+          "service account security",
+          "machine identity",
+          "workload identity",
+          "API key security",
+          "OAuth token security",
+          "cloud machine identity"
+        ]
+      },
+      "CIEM-04": {
+        "name": "Just-in-Time Access & Privilege Escalation Control",
+        "expanded_definition": "Advanced entitlement controls that eliminate standing privileged access by providing just-in-time (JIT) access grants — provisioned on-demand, time-bound, and automatically revoked — alongside real-time detection of privilege escalation paths and active exploitation of IAM misconfigurations through compromised credentials.",
+        "what_to_verify_publicly": [
+          "Just-in-time (JIT) access provisioning with time-bounded grants",
+          "Automatic access revocation and session termination controls",
+          "Privilege escalation path detection and pre-emptive blocking",
+          "Detection of active IAM exploitation or anomalous credential usage",
+          "Integration with identity providers (Okta, Azure AD, Google Workspace) for JIT workflows"
+        ],
+        "search_terms": [
+          "just-in-time access cloud",
+          "JIT privilege",
+          "privilege escalation cloud",
+          "cloud access control",
+          "temporary credentials cloud",
+          "IAM anomaly detection",
+          "cloud privilege escalation",
+          "credential misuse cloud"
+        ]
+      },
+      "SHIFT-01": {
+        "name": "Infrastructure as Code (IaC) Security Scanning",
+        "expanded_definition": "Static analysis of Infrastructure as Code templates — Terraform, AWS CloudFormation, Azure Resource Manager (ARM)/Bicep, Google Deployment Manager, Pulumi, and Kubernetes YAML manifests — to detect misconfigurations, security policy violations, and compliance deviations before infrastructure is provisioned, preventing insecure-by-design cloud deployments.",
+        "what_to_verify_publicly": [
+          "IaC framework coverage (Terraform, CloudFormation, ARM/Bicep, Pulumi, K8s YAML)",
+          "Rule breadth and custom policy creation for IaC checks",
+          "Integration with code repositories (GitHub, GitLab, Bitbucket) for automated scanning",
+          "Severity classification and developer-readable remediation guidance in scan output",
+          "Drift detection comparing deployed infrastructure to IaC source-of-truth"
+        ],
+        "search_terms": [
+          "IaC security scanning",
+          "Terraform security",
+          "CloudFormation security",
+          "infrastructure as code scanning",
+          "IaC misconfiguration",
+          "policy as code",
+          "IaC static analysis",
+          "Bicep security scanning"
+        ]
+      },
+      "SHIFT-02": {
+        "name": "Container Image & Registry Scanning",
+        "expanded_definition": "Vulnerability, malware, and misconfiguration scanning of container images stored in registries (ECR, ACR, GCR, Docker Hub, Harbor) and during build pipelines — identifying vulnerable OS packages, application libraries, embedded secrets, and malware before containers are deployed to production environments.",
+        "what_to_verify_publicly": [
+          "Container image registry integration for pre-deployment scanning",
+          "OS package and application library vulnerability scanning with CVSS/EPSS enrichment",
+          "Embedded secret and credential detection within container images",
+          "Malware scanning and behavioral analysis of container image contents",
+          "Registry admission control to block vulnerable images from deployment"
+        ],
+        "search_terms": [
+          "container image scanning",
+          "registry security",
+          "ECR scanning",
+          "container vulnerability",
+          "Docker security scanning",
+          "container registry scanning",
+          "image malware scanning",
+          "container image security"
+        ]
+      },
+      "SHIFT-03": {
+        "name": "CI/CD Pipeline Integration & Developer Tooling",
+        "expanded_definition": "Native integrations with CI/CD platforms and developer tooling that embed security checks directly into build, test, and deployment workflows — providing automated security gates, pull request annotations, IDE plugins, and CLI tools that surface security findings in the developer's context without requiring security team involvement in routine checks.",
+        "what_to_verify_publicly": [
+          "Native CI/CD integrations (GitHub Actions, GitLab CI, Jenkins, Azure DevOps, CircleCI)",
+          "Pull request / merge request annotations with inline security findings",
+          "IDE plugin availability (VS Code, IntelliJ, JetBrains) for pre-commit scanning",
+          "CLI tools for local developer scanning and testing",
+          "Security gate enforcement (blocking merges or deployments on policy failure)"
+        ],
+        "search_terms": [
+          "CI/CD security integration",
+          "DevSecOps pipeline",
+          "GitHub Actions security",
+          "developer security tooling",
+          "security gate CI/CD",
+          "pull request security scan",
+          "shift-left security",
+          "developer IDE security"
+        ]
+      },
+      "SHIFT-04": {
+        "name": "Software Supply Chain — SCA, SBOM, MBOM & AIBOM",
+        "expanded_definition": "Software Composition Analysis (SCA) for open-source dependencies; Software Bill of Materials (SBOM) generation in SPDX/CycloneDX; Model Bill of Materials (MBOM) for ML model lineage; AI Bill of Materials (AIBOM) for GenAI components, training data, and model provenance. Includes dependency confusion / typosquatting detection.",
+        "what_to_verify_publicly": [
+          "Software Composition Analysis (SCA) for open-source dependencies",
+          "SBOM generation in SPDX or CycloneDX format",
+          "MBOM (Model Bill of Materials) for ML/AI model lineage",
+          "AIBOM (AI Bill of Materials) for GenAI components, training data, model provenance",
+          "Dependency confusion and typosquatting detection",
+          "Third-party / transitive dependency vulnerability tracking"
+        ],
+        "search_terms": [
+          "SCA",
+          "software composition analysis",
+          "SBOM",
+          "MBOM",
+          "AIBOM",
+          "AI bill of materials",
+          "model bill of materials",
+          "supply chain security",
+          "dependency confusion",
+          "CycloneDX",
+          "SPDX"
+        ]
+      },
+      "SHIFT-05": {
+        "name": "Ticketing & Workflow Integration",
+        "expanded_definition": "Native, bi-directional integrations with enterprise ticketing, workflow, and ChatOps systems so that cloud security findings flow into the developer / SRE / SecOps work queues already in use. Includes Jira, ServiceNow, Linear, Asana for ticketing; Slack and Microsoft Teams for ChatOps; PagerDuty and Opsgenie for on-call/incident; and webhooks for custom workflow.",
+        "what_to_verify_publicly": [
+          "Native Jira integration with bi-directional sync (status, assignee, comments)",
+          "Native ServiceNow integration",
+          "Slack and/or Microsoft Teams ChatOps integration",
+          "PagerDuty / Opsgenie on-call integration for high-severity findings",
+          "Webhook / outbound automation for custom workflows",
+          "Linear, Asana, GitHub Issues coverage as differentiators"
+        ],
+        "search_terms": [
+          "Jira integration",
+          "ServiceNow integration",
+          "Slack integration",
+          "Microsoft Teams integration",
+          "PagerDuty integration",
+          "Opsgenie",
+          "ticketing integration",
+          "workflow automation",
+          "webhook",
+          "ChatOps"
+        ],
+        "scoring_guidance": {
+          "1": "No documented ticketing or workflow integrations",
+          "2": "One ticketing integration (typically Jira) only; minimal workflow",
+          "3": "Jira + ServiceNow + Slack/Teams; basic webhook support",
+          "4": "Bi-directional sync to Jira and ServiceNow; multiple ChatOps; PagerDuty/Opsgenie; documented webhook framework",
+          "5": "Comprehensive workflow ecosystem — bi-directional Jira/ServiceNow/Linear, Slack+Teams ChatOps, PagerDuty+Opsgenie, customizable workflow engine, marketplace of pre-built playbooks"
+        }
+      },
+      "CDR-01": {
+        "name": "Cloud Threat Detection & Alert Correlation",
+        "expanded_definition": "Real-time threat detection using cloud-native telemetry — AWS CloudTrail, Azure Activity Logs / Defender signals, GCP Audit Logs, Kubernetes audit logs, and network flow data — correlated with threat intelligence and behavioral baselines to identify active attacks including account compromise, lateral movement, exfiltration, cryptomining, and ransomware staging in cloud environments.",
+        "what_to_verify_publicly": [
+          "Cloud-native telemetry ingestion (CloudTrail, Azure Monitor, GCP Audit Logs, K8s audit)",
+          "Threat detection rules mapped to MITRE ATT&CK for Cloud (IaaS and Containers matrices)",
+          "Behavioral baseline anomaly detection for cloud API activity",
+          "Correlation of cloud signals with endpoint and identity telemetry",
+          "Alert volume and false positive rate benchmarks in documented deployments"
+        ],
+        "search_terms": [
+          "cloud threat detection",
+          "CDR",
+          "cloud detection response",
+          "CloudTrail detection",
+          "cloud SIEM",
+          "cloud alert correlation",
+          "MITRE ATT&CK cloud",
+          "cloud behavioral detection"
+        ]
+      },
+      "CDR-02": {
+        "name": "Attack Path Analysis & Security Knowledge Graph",
+        "expanded_definition": "Visualization and automated discovery of multi-hop attack paths that chain together misconfigurations, vulnerable workloads, over-privileged identities, and network exposure — connecting individual findings into exploitable attack scenarios and surfacing the small number of 'toxic combinations' that represent the highest actual risk in the cloud environment.",
+        "what_to_verify_publicly": [
+          "Attack path visualization connecting misconfigs, permissions, and vulnerabilities",
+          "Security knowledge graph representing cloud assets and their relationships",
+          "Automated discovery of internet-to-sensitive-asset attack chains",
+          "Toxic combination detection (e.g., public S3 + over-privileged role + vulnerable EC2)",
+          "Attack path simulation and blast radius analysis"
+        ],
+        "search_terms": [
+          "attack path analysis",
+          "cloud security graph",
+          "attack path cloud",
+          "toxic combination CNAPP",
+          "cloud blast radius",
+          "cloud risk graph",
+          "lateral movement cloud path",
+          "security knowledge graph"
+        ]
+      },
+      "CDR-03": {
+        "name": "Cloud Incident Investigation & Forensics",
+        "expanded_definition": "Capabilities for investigating active or past cloud security incidents — including timeline reconstruction of API calls and resource changes, forensic capture of workload memory and disk state, evidence preservation for regulatory or legal requirements, and cross-cloud investigation workflows that correlate events across cloud providers and security controls.",
+        "what_to_verify_publicly": [
+          "Cloud forensics capabilities: CloudTrail timeline, API call reconstruction, resource change history",
+          "Workload memory and disk forensic capture for container and VM incidents",
+          "Evidence preservation and chain-of-custody documentation",
+          "Cross-cloud incident correlation and unified investigation view",
+          "Playbook-driven investigation workflows with guided response steps"
+        ],
+        "search_terms": [
+          "cloud forensics",
+          "cloud incident investigation",
+          "CloudTrail forensics",
+          "cloud IR",
+          "cloud incident response",
+          "container forensics",
+          "cloud evidence collection",
+          "cloud investigation"
+        ]
+      },
+      "CDR-04": {
+        "name": "Automated Cloud Response & Playbook Orchestration",
+        "expanded_definition": "Automated response actions executed directly in cloud environments upon threat detection — including IAM key revocation, security group modification, workload isolation, account suspension, S3 bucket quarantine, and network flow blocking — orchestrated through documented playbooks with human-in-the-loop approval workflows for high-impact actions.",
+        "what_to_verify_publicly": [
+          "Automated response action library targeting cloud resources (IAM, EC2, S3, network, containers)",
+          "Human-in-the-loop approval workflows for high-impact automated actions",
+          "Response playbook customization and documentation capabilities",
+          "SOAR platform integration or native orchestration capabilities",
+          "Response SLAs and time-to-contain metrics for documented cloud incidents"
+        ],
+        "search_terms": [
+          "cloud automated response",
+          "cloud playbook",
+          "IAM revocation automated",
+          "cloud SOAR",
+          "cloud response orchestration",
+          "cloud remediation automation",
+          "cloud incident automation",
+          "cloud security automation"
+        ]
+      },
+      "DSPM-01": {
+        "name": "Sensitive Data Discovery & Classification",
+        "expanded_definition": "Automated discovery and ML-based classification of sensitive data across cloud storage services (S3, Azure Blob Storage, Google Cloud Storage), managed databases (RDS, Azure SQL, BigQuery), data warehouses, and SaaS platforms — identifying PII, PHI, financial data, intellectual property, and secrets at rest with high accuracy and low operational overhead.",
+        "what_to_verify_publicly": [
+          "Breadth of cloud data store coverage (object storage, databases, data warehouses, SaaS)",
+          "Classification accuracy for PII, PHI, PCI, and IP data categories",
+          "Agentless or API-based discovery without data egress requirements",
+          "Custom classification rule creation for organization-specific sensitive data types",
+          "Discovery coverage across structured and unstructured data formats"
+        ],
+        "search_terms": [
+          "DSPM",
+          "data security posture management",
+          "sensitive data discovery cloud",
+          "cloud data classification",
+          "cloud PII detection",
+          "cloud data inventory",
+          "cloud data risk",
+          "data discovery S3"
+        ]
+      },
+      "DSPM-02": {
+        "name": "Data Access Risk & Exposure Governance",
+        "expanded_definition": "Assessment of who and what can access sensitive cloud data — identifying publicly exposed data stores, over-permissive access policies, unauthenticated access paths, cross-account data sharing risks, and the intersection of data sensitivity with IAM permissions to surface the highest-risk data exposure scenarios.",
+        "what_to_verify_publicly": [
+          "Identification of publicly exposed sensitive data stores",
+          "Access path analysis connecting identities to sensitive data resources",
+          "Cross-account and cross-cloud data sharing risk assessment",
+          "Unauthenticated access detection for data stores and APIs",
+          "Combined data sensitivity + permission graph for unified data risk view"
+        ],
+        "search_terms": [
+          "cloud data exposure",
+          "data access governance cloud",
+          "DSPM access",
+          "cloud data risk",
+          "exposed S3 bucket data",
+          "cloud data over-exposure",
+          "cloud data access analysis",
+          "sensitive data access cloud"
+        ]
+      },
+      "DSPM-03": {
+        "name": "Shadow Data & Data Flow Mapping",
+        "expanded_definition": "Detection of unknown, unmanaged, or forgotten data stores — shadow data created by automated pipelines, development environments, or abandoned projects — alongside mapping of data movement between cloud services, regions, and third parties that reveals unauthorized data flows, cross-border data transfer risks, and unexpected data replication.",
+        "what_to_verify_publicly": [
+          "Shadow data store discovery (unregistered S3 buckets, forgotten databases, dev environment leakage)",
+          "Data flow tracking between cloud services, regions, and external destinations",
+          "Cross-border data transfer detection and compliance flagging",
+          "Data lineage tracing from creation through storage, processing, and sharing",
+          "Abandoned or stale data store identification and cleanup recommendations"
+        ],
+        "search_terms": [
+          "shadow data cloud",
+          "data flow mapping cloud",
+          "cloud data lineage",
+          "data pipeline security",
+          "forgotten cloud data",
+          "cross-border data transfer",
+          "cloud data sprawl",
+          "data movement detection"
+        ]
+      },
+      "DSPM-04": {
+        "name": "Data Compliance & Regulatory Reporting",
+        "expanded_definition": "Automated mapping of cloud data assets to regulatory compliance requirements — GDPR, CCPA, HIPAA, PCI DSS, LGPD, and sector-specific frameworks — with evidence generation for data protection impact assessments (DPIAs), breach notification workflows, audit reports, and data residency verification for regulated industries.",
+        "what_to_verify_publicly": [
+          "Regulatory framework mapping for GDPR, CCPA, HIPAA, and PCI DSS data requirements",
+          "Data residency verification and cross-border transfer compliance monitoring",
+          "Data Protection Impact Assessment (DPIA) support and evidence generation",
+          "Audit-ready compliance reports for data governance regulators",
+          "Breach notification workflow support with data exposure scope assessment"
+        ],
+        "search_terms": [
+          "cloud data compliance",
+          "GDPR cloud data",
+          "HIPAA data cloud",
+          "PCI DSS data cloud",
+          "data residency cloud",
+          "data governance cloud",
+          "DPIA cloud",
+          "cloud regulatory data reporting"
+        ]
+      },
+      "FRNG-01": {
+        "name": "AI/GenAI Workload Security Posture (AISPM)",
+        "expanded_definition": "Emerging capability to discover, assess, and govern the security posture of AI and GenAI workloads deployed in cloud environments — including LLM model deployments, AI training pipelines, vector databases, embedding stores, and AI agent infrastructure. Covers AI-specific misconfigurations, prompt injection exposure surfaces, model poisoning risks, and shadow AI usage detection. Gartner identifies AI Security Posture Management (AISPM) as a fast-emerging CNAPP extension capability.",
+        "what_to_verify_publicly": [
+          "Discovery of AI/ML workloads and model deployments in cloud environments",
+          "AI-specific misconfiguration detection (unsecured model endpoints, overly permissive AI service accounts)",
+          "LLM deployment security assessment including prompt injection exposure surfaces",
+          "Shadow AI usage detection (unauthorized use of AI APIs or unsanctioned AI services)",
+          "AI training pipeline security and model artifact integrity protection"
+        ],
+        "search_terms": [
+          "AISPM",
+          "AI security posture management",
+          "GenAI security cloud",
+          "LLM security cloud",
+          "AI workload security",
+          "shadow AI detection",
+          "AI cloud security",
+          "model security cloud",
+          "AI posture management"
+        ]
+      },
+      "FRNG-02": {
+        "name": "API Security Discovery & Risk Assessment",
+        "expanded_definition": "Automated discovery of APIs deployed in cloud environments — including shadow APIs, undocumented internal APIs, and third-party API integrations — with risk assessment covering API authentication, authorization, data exposure, rate limiting, and integration into the cloud security graph to connect API exposure to data and identity risks.",
+        "what_to_verify_publicly": [
+          "Automated API discovery across cloud environments (REST, GraphQL, gRPC endpoints)",
+          "Shadow API and undocumented API endpoint identification",
+          "API security risk assessment (authentication, authorization, sensitive data exposure)",
+          "Integration of API inventory with cloud security graph and attack path analysis",
+          "Runtime API traffic analysis for behavioral anomaly detection"
+        ],
+        "search_terms": [
+          "API security cloud",
+          "cloud API discovery",
+          "shadow API",
+          "API security posture",
+          "API risk assessment cloud",
+          "cloud API inventory",
+          "API vulnerability cloud",
+          "GraphQL security cloud"
+        ]
+      },
+      "FRNG-03": {
+        "name": "Cloud Network Security & Microsegmentation",
+        "expanded_definition": "Network-level security controls within cloud environments — including VPC security group analysis, network flow analysis and anomaly detection, east-west traffic visibility, and microsegmentation capabilities that prevent lateral movement by restricting workload-to-workload communication to only required paths. Bridges the historical gap between cloud network security and CNAPP posture management.",
+        "what_to_verify_publicly": [
+          "Cloud network flow analysis and visualization (VPC Flow Logs, Azure NSG Flow Logs, GCP VPC Flow)",
+          "Security group and network ACL misconfiguration detection",
+          "Microsegmentation policy generation and enforcement capabilities",
+          "East-west network anomaly detection for lateral movement identification",
+          "Cloud network topology mapping and exposure analysis"
+        ],
+        "search_terms": [
+          "cloud network security",
+          "microsegmentation cloud",
+          "VPC security",
+          "cloud lateral movement detection",
+          "cloud network segmentation",
+          "security group analysis",
+          "cloud network flow analysis",
+          "east-west traffic cloud"
+        ]
+      },
+      "FRNG-04": {
+        "name": "Secrets Detection & Runtime Credential Protection",
+        "expanded_definition": "Detection of exposed secrets, API keys, certificates, passwords, and cryptographic credentials embedded in code repositories, container images, running workloads, environment variables, and cloud storage — combined with runtime protection that detects active use of compromised credentials and supports secrets vault integration for remediation.",
+        "what_to_verify_publicly": [
+          "Secrets scanning coverage across code repos, container images, and cloud configs",
+          "Runtime detection of hardcoded secrets in running workloads and environment variables",
+          "Integration with secrets management platforms (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault)",
+          "Detection of secrets in S3 buckets, database connection strings, and log outputs",
+          "Automated alerting and rotation workflow triggering upon secret exposure detection"
+        ],
+        "search_terms": [
+          "secrets detection cloud",
+          "API key exposure cloud",
+          "hardcoded credentials cloud",
+          "secrets scanning",
+          "cloud credentials exposure",
+          "secret management cloud security",
+          "exposed secrets detection",
+          "credential scanning cloud"
+        ]
+      }
+    }
+  }
+}

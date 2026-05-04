@@ -1,0 +1,743 @@
+{
+  "mdr_services_taxonomy_v1.0": {
+    "schema_lineage": {
+      "parent": "Preemptive_Cybersecurity_Schema.json",
+      "parent_version": "1.0",
+      "related_schemas": ["schema3-3.json", "Secure_by_Design_AI_Controls_Schema.json"],
+      "purpose": "Evaluate vendors providing Managed Detection and Response (MDR) services - encompassing standard TDIR, preemptive threat intelligence, autonomous deception, disinformation security, IR support, AI adoption in operations and development, service governance, and composable pricing model maturity."
+    },
+
+    "intent": "Assess MDR vendor capability alignment across eight capability pillars and a separate pricing model evaluation scale. The capability assessment covers standard detection and response through advanced AI-driven preemptive and emerging capabilities. The pricing model assessment evaluates commercial construct maturity based on Gartner's composable pricing framework. Vendors are evaluated on demonstrated, publicly verifiable capability - not marketing claims. AI maturity within MDR operations is assessed comprehensively as both an operational dimension and a development investment dimension.",
+
+    "metadata": {
+      "framework_alignment": "Gartner MDR Market Guide + Preemptive Security / CTEM Framework + MITRE ATT&CK + NIST CSF 2.0 + Gartner Composable Pricing Research (G00826132 / G00846386)",
+      "capability_scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of capability in this area",
+        "scoring_logic": {
+          "0": "No Evidence: No publicly verifiable evidence of capability in this sub-pillar.",
+          "1": "Minimal: Basic or manual capability; no automation, analytics, or continuous operation.",
+          "2": "Generic Claims: Marketing mentions the capability but lacks named products, technical docs, metrics, or specifics.",
+          "3": "Demonstrated: Documented capability with named products or features, some technical detail, and identifiable use cases.",
+          "4": "Advanced: Named products with measurable outcomes, integration points, customer validation, or analyst recognition. Automation and continuous operation present.",
+          "5": "Market-Leading: Best-in-class capability with deep technical evidence, extensive customer base, analyst leadership recognition, measurable impact metrics, and continuous innovation."
+        }
+      },
+      "pricing_scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of this pricing construct",
+        "scoring_logic": {
+          "0": "No Evidence: No public information available about this pricing dimension.",
+          "1": "Opaque: Pricing exists but is entirely opaque - no public detail on structure, components, or methodology.",
+          "2": "Basic: General pricing information available but limited transparency - bundled quotes without component breakdown.",
+          "3": "Structured: Defined pricing structure with identifiable components, documented on website or in sales materials.",
+          "4": "Transparent & Flexible: Clear component-based pricing with published tiers, calculators, or configurators. Demonstrated client flexibility.",
+          "5": "Composable Best Practice: Fully composable pricing model with transparent subscription, usage, fixed, and success-fee components. Real-time usage dashboards, documented KPI alignment, and demonstrated risk-sharing mechanisms."
+        }
+      },
+      "source_policy": {
+        "description": "Evidence must be publicly accessible and verifiable.",
+        "valid_sources": [
+          { "tier": "A", "type": "Vendor documentation", "examples": ["Product pages", "Admin/Developer docs", "API references", "Release notes", "Security whitepapers", "Pricing pages"], "weight": 1.0 },
+          { "tier": "A", "type": "Analyst reports", "examples": ["Gartner Market Guide / Hype Cycle", "Forrester Wave", "IDC MarketScape", "KuppingerCole", "Everest Group PEAK Matrix"], "weight": 1.0 },
+          { "tier": "B", "type": "Technical media", "examples": ["SecurityWeek", "Dark Reading", "Help Net Security", "CSO Online", "The Hacker News"], "weight": 0.85 },
+          { "tier": "B", "type": "Benchmarks/Case studies", "examples": ["Customer case studies", "Public bake-offs", "Government RFP evals", "MITRE Engenuity ATT&CK Evaluations"], "weight": 0.85 },
+          { "tier": "C", "type": "Conference/Academic", "examples": ["RSAC", "Black Hat", "DEF CON", "arXiv", "DFRWS", "Standards drafts"], "weight": 0.7 },
+          { "tier": "C", "type": "Professional networks", "examples": ["Engineer-authored LinkedIn/Blogs with technical detail"], "weight": 0.7 }
+        ]
+      },
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of capability sub-pillars covered (score ≥ 1)",
+        "scale": {
+          "A": "26-32 sub-pillars (81-100%)",
+          "B": "20-25 sub-pillars (63-78%)",
+          "C": "14-19 sub-pillars (44-59%)",
+          "D": "8-13 sub-pillars (25-41%)",
+          "F": "1-7 sub-pillars (3-22%)"
+        }
+      },
+      "market_position_definitions": {
+        "mdr_service_type": {
+          "Pureplay MDR": "Organizations whose primary business is managed detection and response services.",
+          "Extended MDR": "MDR as a core offering within a broader managed security services portfolio.",
+          "Platform MDR": "Technology vendors who offer MDR services built atop their own detection platform (EDR/XDR).",
+          "IR-Enhanced MDR": "MDR providers with significant incident response retainer and DFIR capabilities."
+        },
+        "ir_focus_type": {
+          "Core Competency": "Incident response is a primary service line with dedicated DFIR specialists.",
+          "Assistance Component": "Incident response provided as a support layer or feature within the MDR contract."
+        },
+        "delivery_model": {
+          "Platform Only": "Vendor sells the detection/response platform directly to the end customer. The customer is responsible for operating, managing, and staffing the platform themselves. No managed service layer is included.",
+          "Platform + Partner": "Vendor provides the underlying detection/response platform and works with MSSP partners who leverage that platform to deliver a managed service to the end customer. The partner operates the platform on behalf of the client.",
+          "Managed Service": "Vendor delivers both the platform and the operational service as a unified offering. The service includes the technology, the SOC analysts, and the operational workflow. The customer consumes a fully managed outcome, not a product."
+        }
+      }
+    },
+
+    "pillars": {
+      "TDR": {
+        "name": "Standard Threat Detection, Investigation & Response",
+        "focus": "Core MDR baseline - real-time signal correlation across endpoints, networks, identities, and cloud environments; alert triage and false positive identification; guided investigation; and actionable response with measurable MTTD and MTTR outcomes.",
+        "evidence_signals": [
+          "24/7 real-time signal correlation across multi-source telemetry (EDR, NDR, SIEM, cloud, identity)",
+          "Alert triage with false positive identification and noise reduction",
+          "Guided investigation capabilities with root cause determination",
+          "Response orchestration including containment, isolation, and remediation actions",
+          "Measurable SLAs for Mean Time to Detect (MTTD) and Mean Time to Respond (MTTR)"
+        ]
+      },
+      "PTI": {
+        "name": "Preemptive Threat Intelligence",
+        "focus": "AI-driven predictive analytics and threat intelligence operationalization - historically the domain of specialized threat research companies (e.g., Recorded Future) but now increasingly achievable through domain-specific AI agents and LLMs. Includes behavior-based prioritization, anomaly detection, and rapid processing of massive threat intelligence feeds.",
+        "evidence_signals": [
+          "Automated threat intelligence ingestion, correlation, and actioning from multiple feeds",
+          "Predictive analytics using historical data and ML to forecast threats and vulnerabilities",
+          "Behavior-based prioritization and user/entity anomaly detection (UEBA)",
+          "TTP mapping to MITRE ATT&CK framework with proactive blocking",
+          "Intelligence-driven hunting query generation and campaign tracking"
+        ]
+      },
+      "ADA": {
+        "name": "Autonomous Deception & AMTD",
+        "focus": "Proactive, preventative stance using AI-powered analytics to create decoy environments, fake data, and misleading network traffic to expose adversary TTPs - combined with dynamic mutation of the attack surface to complicate exploitation and increase attacker cost.",
+        "evidence_signals": [
+          "Decoy environments, honeypots, honeytokens, and breadcrumbs for high-fidelity detection",
+          "Automated moving target defense through runtime mutation of configurations",
+          "Dynamic attack surface management and micro-segmentation",
+          "AI-powered analytics to trick attackers into revealing TTPs",
+          "Counter-adversary operations including takedowns and adversary infrastructure disruption"
+        ]
+      },
+      "DIS": {
+        "name": "Disinformation & Identity Security",
+        "focus": "Emerging capability to detect and respond to disinformation campaigns including deepfakes, voice/image impersonation, identity fraud, and narrative attacks that evade traditional detection - protecting organizational reputation and executive identity.",
+        "evidence_signals": [
+          "Deepfake and synthetic media detection capabilities",
+          "Voice, image, and identity impersonation defense",
+          "Narrative attack and social engineering detection",
+          "Brand and executive protection services",
+          "Digital risk protection and dark web monitoring for impersonation threats"
+        ]
+      },
+      "IRA": {
+        "name": "IR Support & Assistance",
+        "focus": "MDR-adjacent incident response capability modeled as the 'Assistance Component' - IR as a feature within MDR contracts rather than pureplay DFIR. Includes scoping, containment support, recovery guidance, and post-incident review, leveraging context from the DFIR capability taxonomy.",
+        "evidence_signals": [
+          "Incident scoping and triage capabilities within MDR service",
+          "Containment and isolation support with evidence preservation",
+          "Recovery and restoration guidance for impacted systems",
+          "Post-incident review with root cause analysis and improvement recommendations",
+          "Integration with external DFIR specialists and retainer services"
+        ]
+      },
+      "AIO": {
+        "name": "AI Adoption in MDR Operations",
+        "focus": "Comprehensive assessment of how AI is embedded across the MDR service delivery lifecycle - from detection engineering through investigation, triage, response automation, and transparency. Evaluates whether AI delivers measurable operational improvements or remains marketing claims.",
+        "evidence_signals": [
+          "AI-driven detection engineering with reduced false positive rates",
+          "AI-assisted investigation and automated triage of well-known issues",
+          "AI-powered response automation replacing traditional SOAR functions",
+          "Explainable AI outputs with transparency into methodology and reasoning",
+          "Measurable impact: increased throughput, expanded coverage, improved MTTD/MTTR"
+        ]
+      },
+      "AID": {
+        "name": "AI Development & Platform Maturity",
+        "focus": "The vendor's investment in AI platform development - domain-specific LLMs, model governance, AI supply chain trustworthiness, and innovation pipeline. Evaluates whether AI capability is a genuine engineering investment or superficial marketing overlay.",
+        "evidence_signals": [
+          "Domain-specific AI/LLM development for security operations",
+          "AI model governance including lifecycle management and versioning",
+          "AI supply chain assurance and third-party model risk management",
+          "Investment in AI-driven service innovation beyond traditional SOAR replacement",
+          "Published AI research, patents, or conference contributions demonstrating depth"
+        ]
+      },
+      "SOG": {
+        "name": "Service Operations & Governance",
+        "focus": "Operational maturity of the MDR service - analyst staffing model, coverage depth, compliance alignment, reporting quality, client engagement transparency, and the overall governance framework that ensures consistent, accountable service delivery.",
+        "evidence_signals": [
+          "24/7 SOC operations with documented analyst staffing model and tier structure",
+          "Client engagement model with dedicated contacts and transparent escalation paths",
+          "Compliance and regulatory alignment (SOC 2, ISO 27001, sector-specific requirements)",
+          "Quality reporting with actionable metrics, dashboards, and executive summaries",
+          "Documented service governance framework with SLAs, reviews, and continuous improvement"
+        ]
+      }
+    },
+
+    "sub_pillars": {
+      "TDR-01": {
+        "name": "Signal Correlation & Alert Triage",
+        "expanded_definition": "Real-time correlation of security signals across multi-source telemetry - endpoints (EDR), networks (NDR), cloud environments, identity providers, and SIEM platforms - with intelligent alert triage that separates actionable threats from noise.",
+        "what_to_verify_publicly": [
+          "Multi-source telemetry ingestion (EDR, NDR, SIEM, cloud, identity)",
+          "Real-time signal correlation across disparate data sources",
+          "Alert prioritization with context enrichment",
+          "False positive identification and noise reduction metrics",
+          "Volume of alerts processed and triage SLAs"
+        ],
+        "search_terms": ["MDR detection", "signal correlation", "alert triage", "managed detection", "XDR", "multi-source telemetry", "security monitoring", "alert prioritization"]
+      },
+      "TDR-02": {
+        "name": "Investigation & Root Cause Analysis",
+        "expanded_definition": "Guided investigation capabilities that determine the root cause, scope, and impact of detected threats - including timeline reconstruction, artifact correlation, and attack chain mapping to understand the full adversary path.",
+        "what_to_verify_publicly": [
+          "Guided investigation workflows for analysts and clients",
+          "Root cause determination and attack chain reconstruction",
+          "Timeline and artifact correlation across systems",
+          "Scope and impact assessment for validated threats",
+          "Investigation documentation and knowledge base"
+        ],
+        "search_terms": ["MDR investigation", "root cause analysis", "attack chain", "guided investigation", "threat analysis", "incident investigation", "timeline reconstruction"]
+      },
+      "TDR-03": {
+        "name": "Response Orchestration & Containment",
+        "expanded_definition": "Actionable response capabilities including automated and human-initiated containment, isolation, and remediation actions - orchestrated across the client's security stack with documented response playbooks.",
+        "what_to_verify_publicly": [
+          "Automated response actions (host isolation, account lockout, IP blocking)",
+          "Human-in-the-loop response approval workflows",
+          "Response playbook library and customization capabilities",
+          "Integration with client security tools for response execution",
+          "Response SLAs and documented containment timelines"
+        ],
+        "search_terms": ["MDR response", "response orchestration", "automated containment", "incident response", "remediation", "response playbooks", "SOAR integration"]
+      },
+      "TDR-04": {
+        "name": "SLA & MTTD/MTTR Performance",
+        "expanded_definition": "Measurable service level commitments for detection and response speed - including published Mean Time to Detect (MTTD), Mean Time to Respond (MTTR), and adherence to contractual SLAs with transparent performance reporting.",
+        "what_to_verify_publicly": [
+          "Published MTTD and MTTR metrics or commitments",
+          "Contractual SLAs for detection, investigation, and response phases",
+          "Performance reporting and trend tracking over time",
+          "Client-facing dashboards showing real-time SLA adherence",
+          "Third-party or analyst validation of performance claims"
+        ],
+        "search_terms": ["MTTD", "MTTR", "MDR SLA", "detection time", "response time", "MDR performance", "service level agreement", "mean time to detect"]
+      },
+      "PTI-01": {
+        "name": "Threat Intelligence Operationalization",
+        "expanded_definition": "Automated ingestion, correlation, and actioning of tactical and operational threat intelligence from multiple feeds - transforming raw intelligence into proactive blocking rules, hunting queries, and detection engineering improvements.",
+        "what_to_verify_publicly": [
+          "Threat intelligence platform or feed integration capabilities",
+          "Automated IOC ingestion and correlation across telemetry",
+          "Intelligence-to-detection pipeline (feeds → rules → detections)",
+          "TTP mapping to MITRE ATT&CK framework",
+          "Automated blocking or alerting based on threat intelligence"
+        ],
+        "search_terms": ["threat intelligence platform", "TIP", "IOC enrichment", "threat feed integration", "MITRE ATT&CK mapping", "intelligence operationalization", "threat intelligence MDR"]
+      },
+      "PTI-02": {
+        "name": "Predictive Threat Analytics",
+        "expanded_definition": "AI and ML-driven predictive analytics that use historical attack data, vulnerability trends, and environmental context to forecast likely threats, prioritize defensive actions, and preempt attacks before they materialize.",
+        "what_to_verify_publicly": [
+          "Predictive models using historical data to forecast threats",
+          "Vulnerability trend analysis and exploitability prediction",
+          "Environmental risk scoring based on client-specific context",
+          "Proactive defensive recommendations based on predictions",
+          "Validation of prediction accuracy and effectiveness metrics"
+        ],
+        "search_terms": ["predictive analytics security", "threat prediction", "AI threat forecasting", "risk prediction", "exploit prediction", "predictive threat intelligence", "machine learning security"]
+      },
+      "PTI-03": {
+        "name": "Behavior-Based Anomaly Detection",
+        "expanded_definition": "User and entity behavior analytics (UEBA) that establish baselines and detect anomalous activities across user accounts, network traffic, and system behaviors - identifying insider threats, compromised credentials, and lateral movement.",
+        "what_to_verify_publicly": [
+          "UEBA capabilities with behavioral baseline establishment",
+          "Anomaly detection across user, entity, and network behaviors",
+          "Insider threat detection and compromised credential identification",
+          "Lateral movement detection through behavioral analysis",
+          "Reduction in false positives through behavioral context"
+        ],
+        "search_terms": ["UEBA", "behavior analytics", "anomaly detection", "user behavior", "entity behavior", "insider threat detection", "behavioral baseline", "lateral movement detection"]
+      },
+      "PTI-04": {
+        "name": "Dark Web & Adversary Tracking",
+        "expanded_definition": "Monitoring of dark web forums, threat actor communications, leaked credential databases, and adversary infrastructure - providing early warning of targeted campaigns, data exposure, and emerging threats specific to the client's environment.",
+        "what_to_verify_publicly": [
+          "Dark web monitoring and intelligence gathering capabilities",
+          "Leaked credential and data exposure alerting",
+          "Adversary campaign tracking and attribution",
+          "Early warning services for client-specific threats",
+          "Integration with detection engineering for proactive defense"
+        ],
+        "search_terms": ["dark web monitoring", "adversary tracking", "leaked credentials", "threat actor intelligence", "digital risk protection", "dark web MDR", "credential exposure"]
+      },
+      "ADA-01": {
+        "name": "Deception Technology & Honeypots",
+        "expanded_definition": "Deployment and management of decoys, honeypots, honeytokens, and breadcrumbs across client environments to detect lateral movement, credential theft, and reconnaissance with high-fidelity, low-false-positive alerts.",
+        "what_to_verify_publicly": [
+          "Managed deception technology deployment within MDR service",
+          "Honeypot and honeytoken capabilities across network, endpoint, and cloud",
+          "Breadcrumb placement for lateral movement detection",
+          "High-fidelity alerting with near-zero false positive rates",
+          "Integration with MDR detection and response workflows"
+        ],
+        "search_terms": ["deception technology", "honeypot", "honeytoken", "deception platform", "managed deception", "decoy", "breadcrumb", "deception-as-a-service"]
+      },
+      "ADA-02": {
+        "name": "Automated Moving Target Defense",
+        "expanded_definition": "Dynamic mutation and randomization of the client's IT environment - including runtime application protection, network topology reconfiguration, credential rotation, and API endpoint obfuscation - to deny adversaries a stable target.",
+        "what_to_verify_publicly": [
+          "AMTD capabilities within the MDR service offering",
+          "Runtime mutation of network configurations or application environments",
+          "Dynamic micro-segmentation and topology changes",
+          "Automated credential and session rotation",
+          "Evidence of increased attacker cost through dynamic defense"
+        ],
+        "search_terms": ["AMTD", "moving target defense", "dynamic defense", "runtime randomization", "polymorphic defense", "attack surface mutation", "automated moving target"]
+      },
+      "ADA-03": {
+        "name": "Dynamic Attack Surface Management",
+        "expanded_definition": "Continuous discovery, assessment, and dynamic reduction of the external and internal attack surface - identifying shadow IT, misconfigured cloud resources, and exposed services with automated remediation recommendations.",
+        "what_to_verify_publicly": [
+          "External attack surface management (EASM) within MDR",
+          "Continuous asset discovery including shadow IT and cloud resources",
+          "Automated exposure assessment and risk scoring",
+          "Dynamic attack surface reduction recommendations",
+          "Integration with MDR detection pipeline for exposure-informed alerting"
+        ],
+        "search_terms": ["attack surface management", "EASM", "ASM", "shadow IT discovery", "exposure management", "attack surface discovery", "digital footprint"]
+      },
+      "ADA-04": {
+        "name": "Counter-Adversary Operations",
+        "expanded_definition": "Active measures to attribute, track, and disrupt adversary campaigns - including takedown services for phishing infrastructure and impersonation domains, adversary infrastructure mapping, and proactive threat hunting operations.",
+        "what_to_verify_publicly": [
+          "Takedown service capabilities (domains, phishing, infrastructure)",
+          "Adversary infrastructure mapping and campaign tracking",
+          "Proactive hypothesis-driven threat hunting operations",
+          "Managed threat hunting with documented methodologies",
+          "Hunt findings feeding back to detection engineering improvements"
+        ],
+        "search_terms": ["counter-adversary", "takedown service", "threat hunting", "adversary disruption", "proactive hunting", "managed hunting", "adversary attribution"]
+      },
+      "DIS-01": {
+        "name": "Deepfake & Synthetic Media Detection",
+        "expanded_definition": "Technical capabilities to detect AI-generated synthetic content - including deepfake video and audio, AI-generated images, and synthetic text - that may be used in social engineering, fraud, or disinformation campaigns targeting the organization.",
+        "what_to_verify_publicly": [
+          "Deepfake detection technology or service capability",
+          "Synthetic audio and voice clone detection",
+          "AI-generated image and video analysis",
+          "Integration with communication security controls",
+          "False positive/negative rates for synthetic content detection"
+        ],
+        "search_terms": ["deepfake detection", "synthetic media", "AI-generated content", "voice clone detection", "deepfake defense", "synthetic content", "media authentication"]
+      },
+      "DIS-02": {
+        "name": "Identity Impersonation Defense",
+        "expanded_definition": "Detection and prevention of identity-based impersonation attacks - including business email compromise (BEC), executive impersonation, account takeover, and credential stuffing - using behavioral analytics and identity verification technologies.",
+        "what_to_verify_publicly": [
+          "Business email compromise (BEC) detection and prevention",
+          "Executive impersonation alerting and verification",
+          "Account takeover detection through behavioral analytics",
+          "Identity verification and authentication anomaly detection",
+          "Integration with identity providers and email security gateways"
+        ],
+        "search_terms": ["BEC detection", "impersonation detection", "identity protection", "account takeover", "executive impersonation", "identity fraud", "credential stuffing defense"]
+      },
+      "DIS-03": {
+        "name": "Narrative & Social Engineering Detection",
+        "expanded_definition": "Identification of coordinated disinformation narratives and advanced social engineering campaigns targeting the organization - including influence operations, fake review campaigns, and manipulation of public perception.",
+        "what_to_verify_publicly": [
+          "Social engineering campaign detection capabilities",
+          "Narrative attack identification and tracking",
+          "Influence operation monitoring and alerting",
+          "Phishing campaign analysis beyond traditional email scanning",
+          "Employee awareness and resilience assessment"
+        ],
+        "search_terms": ["social engineering detection", "disinformation", "narrative attack", "influence operation", "phishing campaign", "social engineering MDR", "manipulation detection"]
+      },
+      "DIS-04": {
+        "name": "Brand & Executive Protection",
+        "expanded_definition": "Monitoring and protection of organizational brand reputation and executive digital identities - including domain squatting detection, social media impersonation, and proactive defense against reputation-damaging campaigns.",
+        "what_to_verify_publicly": [
+          "Brand monitoring across web, social media, and dark web",
+          "Domain squatting and typosquatting detection",
+          "Social media impersonation monitoring and takedown",
+          "Executive digital identity protection services",
+          "Reputation threat alerting and response workflows"
+        ],
+        "search_terms": ["brand protection", "executive protection", "domain squatting", "typosquatting", "digital risk protection", "reputation monitoring", "brand impersonation"]
+      },
+      "IRA-01": {
+        "name": "Incident Scoping & Triage",
+        "expanded_definition": "Rapid assessment of incident scope, severity, and priority within the MDR service context - determining affected systems, initial impact assessment, evidence identification, and escalation decisions aligned with the client's incident response plan.",
+        "what_to_verify_publicly": [
+          "Incident scoping and severity assessment capabilities",
+          "Affected system and data identification processes",
+          "Evidence preservation guidance during initial triage",
+          "Escalation criteria and decision frameworks",
+          "Integration with client incident response plans and retainers"
+        ],
+        "search_terms": ["incident triage", "incident scoping", "IR support", "incident assessment", "MDR incident response", "severity assessment", "incident escalation"]
+      },
+      "IRA-02": {
+        "name": "Containment & Isolation Support",
+        "expanded_definition": "Active containment and isolation assistance performed within or directed by the MDR service - including host isolation, network segmentation, account suspension, and lateral movement blocking while preserving forensic evidence.",
+        "what_to_verify_publicly": [
+          "Remote host isolation and quarantine capabilities",
+          "Network-level containment actions (blocking, segmentation)",
+          "Account and credential suspension or reset",
+          "Evidence preservation during containment actions",
+          "Containment SLAs and documented response times"
+        ],
+        "search_terms": ["incident containment", "host isolation", "MDR containment", "lateral movement blocking", "quarantine", "network isolation", "incident response containment"]
+      },
+      "IRA-03": {
+        "name": "Recovery & Restoration Guidance",
+        "expanded_definition": "Guidance and support for restoring impacted systems to operational status - including backup integrity verification, system rebuild recommendations, eradication of persistence mechanisms, and validation that the threat has been fully eliminated.",
+        "what_to_verify_publicly": [
+          "Recovery guidance and restoration support within MDR",
+          "Backup integrity verification and contamination checking",
+          "Persistence mechanism identification and eradication support",
+          "System rebuild and hardening recommendations",
+          "Post-recovery validation and monitoring"
+        ],
+        "search_terms": ["incident recovery", "system restoration", "eradication", "persistence removal", "backup verification", "MDR recovery", "post-incident restoration"]
+      },
+      "IRA-04": {
+        "name": "Post-Incident Review & Reporting",
+        "expanded_definition": "Structured post-incident review process that documents findings, identifies root causes, provides improvement recommendations, and updates detection engineering - ensuring the organization is better prepared for future incidents.",
+        "what_to_verify_publicly": [
+          "Post-incident review (PIR) or after-action review (AAR) service",
+          "Root cause analysis with documented findings",
+          "Improvement recommendations for people, process, and technology",
+          "Detection engineering updates based on incident learnings",
+          "Executive and technical reporting for different audiences"
+        ],
+        "search_terms": ["post-incident review", "after-action review", "lessons learned", "incident report", "root cause analysis", "PIR", "MDR reporting", "incident improvement"]
+      },
+      "AIO-01": {
+        "name": "AI in Detection Engineering",
+        "expanded_definition": "Application of AI and ML to improve detection rule creation, tuning, and maintenance - including automated detection content generation, ML-driven false positive reduction, and continuous detection coverage assessment against MITRE ATT&CK.",
+        "what_to_verify_publicly": [
+          "AI-assisted detection rule creation and tuning",
+          "ML-driven false positive reduction with measurable improvement",
+          "Automated detection coverage assessment against frameworks",
+          "AI-powered anomaly detection models in production",
+          "Detection engineering metrics showing AI impact"
+        ],
+        "search_terms": ["AI detection engineering", "ML detection", "automated detection", "AI false positive", "AI-driven detection", "machine learning security", "detection automation"]
+      },
+      "AIO-02": {
+        "name": "AI in Investigation & Triage",
+        "expanded_definition": "AI-powered investigation assistance that accelerates analyst workflows - including automated alert triage, AI-generated investigation summaries, context enrichment, and intelligent case prioritization that replaces traditional SOAR-level automation.",
+        "what_to_verify_publicly": [
+          "AI-automated alert triage for well-known issue classes",
+          "AI-generated investigation summaries and recommendations",
+          "Intelligent context enrichment from multiple data sources",
+          "Case prioritization using ML-based risk scoring",
+          "Measurable improvement in investigation speed and quality"
+        ],
+        "search_terms": ["AI investigation", "automated triage", "AI-powered SOC", "AI analyst", "intelligent triage", "AI security operations", "automated investigation"]
+      },
+      "AIO-03": {
+        "name": "AI in Response Automation",
+        "expanded_definition": "AI-driven response automation that goes beyond traditional SOAR playbooks - including autonomous resolution of specific incident classes, adaptive response selection based on context, and AI-coordinated multi-step remediation workflows.",
+        "what_to_verify_publicly": [
+          "AI-autonomous resolution of defined incident classes",
+          "Adaptive response selection based on incident context",
+          "AI-coordinated multi-step remediation workflows",
+          "Reduction in human intervention for resolved incidents",
+          "Guardrails and human-in-the-loop controls for AI responses"
+        ],
+        "search_terms": ["AI response automation", "autonomous remediation", "AI SOAR", "automated response", "AI incident resolution", "agentic response", "AI security automation"]
+      },
+      "AIO-04": {
+        "name": "AI Transparency & Explainability",
+        "expanded_definition": "Transparency and explainability of AI-driven decisions within the MDR service - including human-readable explanations for AI actions, audit trails for automated decisions, and clear documentation of when and why AI intervened versus human analysts.",
+        "what_to_verify_publicly": [
+          "Explainable AI outputs with human-readable reasoning",
+          "Audit trail for AI-automated actions and decisions",
+          "Clear delineation between AI and human-driven actions in reports",
+          "Client-facing documentation of AI capabilities and limitations",
+          "Quality metrics for AI outputs (hallucination rates, accuracy)"
+        ],
+        "search_terms": ["explainable AI", "AI transparency", "XAI security", "AI audit trail", "AI accountability", "AI explainability MDR", "trustworthy AI security"]
+      },
+      "AID-01": {
+        "name": "Domain-Specific AI/LLM Investment",
+        "expanded_definition": "Vendor investment in security-specific AI models and domain-specific LLMs - not merely wrapping generic foundation models but developing or fine-tuning models on security-specific training data for detection, investigation, and threat intelligence tasks.",
+        "what_to_verify_publicly": [
+          "Named domain-specific AI models or security LLMs",
+          "Evidence of security-specific model training or fine-tuning",
+          "Documented AI/ML engineering team and investment",
+          "Published research, patents, or conference presentations on security AI",
+          "Differentiation from generic GPT-wrapper implementations"
+        ],
+        "search_terms": ["security LLM", "domain-specific AI", "security AI model", "AI investment security", "custom AI model", "security foundation model", "ForensicLLM"]
+      },
+      "AID-02": {
+        "name": "AI Model Governance & Lifecycle",
+        "expanded_definition": "Governance of AI models used within the MDR service - including model versioning, testing and validation before deployment, performance monitoring, drift detection, and retirement procedures to ensure consistent, trustworthy AI outputs.",
+        "what_to_verify_publicly": [
+          "Model versioning and lifecycle management practices",
+          "Pre-deployment testing and validation procedures",
+          "Production model performance monitoring and drift detection",
+          "Model update cadence and change management processes",
+          "AI incident response for model failures or degradation"
+        ],
+        "search_terms": ["AI model governance", "model lifecycle", "MLOps security", "AI governance", "model versioning", "AI model management", "model monitoring"]
+      },
+      "AID-03": {
+        "name": "AI Supply Chain & Trustworthiness",
+        "expanded_definition": "Assurance of the AI supply chain within the MDR service - including provenance of foundation models, third-party AI component risk assessment, training data governance, and controls to prevent model compromise or poisoning.",
+        "what_to_verify_publicly": [
+          "Foundation model provenance and supply chain documentation",
+          "Third-party AI component risk assessment processes",
+          "Training data governance and quality assurance",
+          "Model security controls (prompt injection defense, adversarial testing)",
+          "Compliance with AI trustworthiness frameworks (NIST AI RMF, EU AI Act)"
+        ],
+        "search_terms": ["AI supply chain", "AI trustworthiness", "model provenance", "AI TRiSM", "training data governance", "AI security controls", "AI risk management"]
+      },
+      "AID-04": {
+        "name": "AI-Driven Service Innovation",
+        "expanded_definition": "Evidence of AI-driven innovation that extends the MDR service beyond traditional capabilities - including new service offerings enabled by AI, expanded coverage through AI efficiency, and investment in emerging AI applications for security operations.",
+        "what_to_verify_publicly": [
+          "New service capabilities or offerings enabled by AI",
+          "Expanded coverage or service scope through AI efficiency",
+          "AI innovation pipeline with named features or products",
+          "Client-visible AI improvements in service quality over time",
+          "AI-enabled differentiation from competitors"
+        ],
+        "search_terms": ["AI innovation security", "AI-powered MDR", "next-gen SOC", "AI-enabled security", "security AI innovation", "AI service improvement", "AI MDR differentiation"]
+      },
+      "SOG-01": {
+        "name": "24/7 SOC Coverage & Analyst Model",
+        "expanded_definition": "The operational foundation of the MDR service - including geographic distribution of SOC operations, analyst tier structure, named or dedicated resources, and the human staffing model that ensures continuous, qualified coverage.",
+        "what_to_verify_publicly": [
+          "24/7/365 SOC operations with documented geographic coverage",
+          "Analyst tier structure (L1/L2/L3) with defined responsibilities",
+          "Dedicated or named analyst model (e.g., concierge security team)",
+          "Analyst qualification and certification requirements",
+          "Staff retention rates and experience level documentation"
+        ],
+        "search_terms": ["SOC coverage", "24/7 monitoring", "analyst model", "security operations center", "dedicated analyst", "concierge security", "MDR staffing"]
+      },
+      "SOG-02": {
+        "name": "Client Engagement & Transparency",
+        "expanded_definition": "The client-facing engagement model - including onboarding processes, regular business reviews, escalation paths, communication transparency, and the overall client experience framework that builds trust and ensures alignment with business objectives.",
+        "what_to_verify_publicly": [
+          "Structured onboarding process with documented timeline",
+          "Regular business review cadence (monthly, quarterly)",
+          "Named client contacts with clear escalation paths",
+          "Client portal or dashboard for real-time visibility",
+          "Satisfaction measurement and feedback mechanisms"
+        ],
+        "search_terms": ["client engagement MDR", "onboarding", "business review", "client portal", "escalation", "customer success", "MDR transparency"]
+      },
+      "SOG-03": {
+        "name": "Compliance & Regulatory Alignment",
+        "expanded_definition": "The compliance posture of the MDR service - including vendor certifications, regulatory framework alignment, data handling practices, and support for client compliance requirements in regulated industries.",
+        "what_to_verify_publicly": [
+          "SOC 2 Type II certification (or equivalent)",
+          "ISO 27001 certification",
+          "Support for regulated industry requirements (healthcare, finance, government)",
+          "Data residency and sovereignty controls",
+          "Compliance reporting capabilities for client audits"
+        ],
+        "search_terms": ["MDR compliance", "SOC 2", "ISO 27001", "MDR certification", "regulated industry", "compliance reporting", "MDR data residency"]
+      },
+      "SOG-04": {
+        "name": "Reporting Quality & Metrics",
+        "expanded_definition": "Quality and depth of service reporting - including actionable executive summaries, technical incident reports, trend analysis, performance metrics, and ROI-oriented reporting that demonstrates the value and impact of the MDR service.",
+        "what_to_verify_publicly": [
+          "Executive-level reporting with business impact context",
+          "Technical incident reports with detailed analysis",
+          "Trend analysis and threat landscape reporting",
+          "Performance metrics dashboards with KPI tracking",
+          "ROI and value demonstration reporting"
+        ],
+        "search_terms": ["MDR reporting", "security metrics", "MDR dashboard", "incident reporting", "threat reporting", "MDR KPIs", "security reporting quality"]
+      }
+    },
+
+    "pricing_evaluation": {
+      "description": "Separate evaluation scale assessing the maturity and transparency of the vendor's pricing model, based on Gartner's composable pricing research. This is NOT a capability assessment - it evaluates how well the vendor's commercial construct serves buyer and provider interests.",
+      "framework_source": "Gartner Research: 'Pricing Constructs That Support Profitable Business Process Services Revenue' (G00826132, April 2025) and 'Outcome-Based Pricing Fails Tech CEOs in Services' (G00846386, February 2026)",
+      "dimensions": {
+        "PRC-SUB": {
+          "name": "Subscription Transparency",
+          "definition": "Clarity and structure of recurring subscription fees - including breakdown of human analyst time, platform access fees, AI tool fees, managed service bundles, and non-AI software components.",
+          "what_to_evaluate": [
+            "Published subscription pricing tiers or structure",
+            "Component breakdown visible to buyers (human time vs. platform vs. AI)",
+            "Predictability of recurring costs for client budgeting",
+            "Flexibility in subscription scope adjustment",
+            "Transparency about what is included vs. excluded"
+          ],
+          "pricing_model_alignment": "Subscriptions provide the revenue floor and budget predictability. Applicable to Standard TDIR, Disinformation Security monitoring, and Deception-as-a-Service where continuous human-in-the-loop oversight and baseline platform access are required."
+        },
+        "PRC-USG": {
+          "name": "Usage-Based Alignment",
+          "definition": "Variable cost components driven by actual consumption - including API calls, data volume ingested, compute hours, AI inference charges, and overages - with transparent measurement and real-time tracking.",
+          "what_to_evaluate": [
+            "Usage-based pricing components clearly defined",
+            "Measurement systems for quantifying consumption",
+            "Real-time usage dashboards or monitoring available to clients",
+            "Clear overage policies and escalation thresholds",
+            "Alignment of usage fees with computational effort provided"
+          ],
+          "pricing_model_alignment": "Applicable to Preemptive Threat Intelligence - AI compute, data volume, and inference charges align cost to computational effort. Also relevant for cloud-based telemetry ingestion."
+        },
+        "PRC-FIX": {
+          "name": "Fixed Delivery Pricing",
+          "definition": "One-time costs for discrete scope items - including initial deployment, integration setup, customized playbook creation, deception environment design, and complex telemetry pipeline implementation.",
+          "what_to_evaluate": [
+            "Clear one-time fees defined for setup and implementation",
+            "Scope definition for fixed-fee deliverables",
+            "Separation of project costs from ongoing service costs",
+            "Change request and scope adjustment processes",
+            "Implementation timeline and milestone-based payment structure"
+          ],
+          "pricing_model_alignment": "Applicable to initial deployment of Autonomous Deception and AMTD environments, complex telemetry integrations, and customized AI playbook creation."
+        },
+        "PRC-SUC": {
+          "name": "Success & Outcome Fees",
+          "definition": "Performance-linked pricing components - including bonuses, penalties, or per-unit fees based on achieving engagement objectives, MTTD/MTTR targets, or AI-automated resolution metrics. Includes fees-at-risk mechanisms.",
+          "what_to_evaluate": [
+            "Defined success metrics tied to pricing (MTTD, MTTR, resolution rates)",
+            "Fees-at-risk component in service agreements",
+            "Per-resolution or per-unit pricing for AI-automated outcomes",
+            "Clear measurement methodology and dispute resolution",
+            "Balance of risk between provider and client"
+          ],
+          "pricing_model_alignment": "Applicable to Standard TDIR and AI Automations - per-resolution fees for AI-automated incident classes, and success bonuses tied to verified MTTD/MTTR reductions. Must balance Gartner's caution that outcome-based pricing often fails due to measurement complexity."
+        },
+        "PRC-COM": {
+          "name": "Composability & Overall Model Maturity",
+          "definition": "Overall maturity of the pricing model as a composable, transparent hybrid - assessing whether the vendor's commercial construct can be assembled and reassembled to suit client needs, protects revenue while balancing risk, and avoids the pitfalls of pure outcome-based pricing.",
+          "what_to_evaluate": [
+            "Multiple pricing components available and combinable",
+            "Client budgeting predictability with spending expectations set upfront",
+            "Demonstrated risk-sharing with clear rewards and penalties",
+            "Avoidance of excessive variability and dispute potential",
+            "Demystification of what the client pays for, when, and why"
+          ],
+          "pricing_model_alignment": "The composable approach is the Gartner-recommended best practice - a 'best-of-breed' combination that protects provider revenue, enhances client position, balances risk, and avoids the failure modes of pure outcome-based pricing."
+        },
+        "PRC-OUT": {
+          "name": "Pricing-to-Outcomes Alignment",
+          "definition": "Assessment of how well the vendor's pricing model is aligned to measurable client outcomes - evaluating whether pricing components are tied to demonstrated business value, security outcomes, and operational improvements rather than purely input-based (seats, volume, hours). This dimension may complement or conflict with the other pricing dimensions depending on the vendor's maturity.",
+          "what_to_evaluate": [
+            "Pricing components explicitly tied to measurable security outcomes (MTTD/MTTR reduction, breach prevention, risk reduction)",
+            "Outcome-based SLA commitments with financial consequences (credits, rebates, penalties)",
+            "Value realization metrics shared with clients showing pricing-to-outcome correlation",
+            "Pricing adjustments based on demonstrated AI efficiency gains passed to clients",
+            "Avoidance of outcome-washing - pricing labeled as outcome-based but measured on inputs"
+          ],
+          "pricing_model_alignment": "Gartner research cautions that pure outcome-based pricing frequently fails due to measurement complexity and dispute potential. This dimension evaluates whether vendors have found a sustainable middle ground - tying pricing components to verifiable outcomes without creating unsustainable risk for either party. The most mature vendors embed outcome alignment within a composable model rather than making it the entire commercial construct.",
+          "complementarity_note": "PRC-OUT may be complementary to other pricing dimensions (e.g., a vendor with strong PRC-SUB and PRC-SUC that also aligns fees to outcomes) or it may stand alone. Vendors scoring high on PRC-COM but low on PRC-OUT have composable pricing without outcome linkage. Vendors scoring high on PRC-OUT but low on PRC-COM have outcome ambitions without composable structure."
+        }
+      },
+      "outcome_maturity_rating": {
+        "description": "Overall maturity rating for the vendor's alignment of pricing to business outcomes. This is NOT a pricing score - it evaluates the holistic maturity of the vendor's ability to demonstrate, measure, and align their commercial model to verifiable client outcomes across the MDR engagement lifecycle.",
+        "framework_source": "Derived from Gartner Research: 'Outcome-Based Pricing Fails Tech CEOs in Services' (G00846386, February 2026) and MDR market evolution toward value-based commercial models.",
+        "scale": {
+          "min": 0,
+          "max": 5,
+          "scoring_logic": {
+            "0": "No Evidence: No public information about outcome linkage in pricing or service delivery.",
+            "1": "Input-Only: Pricing is entirely input-based (per-seat, per-device, per-GB). No outcome metrics referenced in commercial constructs. Service value is assumed, not measured.",
+            "2": "Outcome-Aware: Vendor references outcomes (MTTD/MTTR improvement, risk reduction) in marketing but pricing model is not structurally linked to those outcomes. SLAs may exist but lack financial consequences.",
+            "3": "Outcome-Linked: Specific pricing components are tied to measurable outcomes. SLAs have financial consequences (credits, rebates). Value realization reporting demonstrates pricing-to-outcome correlation, though measurement methodology may be vendor-controlled.",
+            "4": "Outcome-Validated: Pricing model embeds verified outcome metrics with independent or jointly agreed measurement. Client-visible dashboards show real-time outcome performance. Pricing adjustments (up or down) occur based on demonstrated value delivery. Risk-sharing is balanced and documented.",
+            "5": "Outcome-Native: The entire commercial model is designed around verifiable outcome delivery with transparent measurement, balanced risk-sharing, AI-efficiency gain pass-through to clients, and continuous value optimization. Pricing, SLAs, and service delivery form an integrated outcome engine. Rare in current market - represents the theoretical ideal."
+          }
+        },
+        "evaluation_criteria": [
+          "Does the vendor's pricing change based on outcomes delivered (not just inputs consumed)?",
+          "Are outcome metrics independently verifiable or solely vendor-reported?",
+          "Does the vendor share AI-driven efficiency gains with clients through pricing adjustments?",
+          "Is outcome alignment embedded in the contract structure or limited to marketing claims?",
+          "Does the vendor demonstrate a track record of outcome-based client renewals and expansions?",
+          "Are outcome metrics aligned with the ROI measurement framework KPIs defined in this schema?"
+        ]
+      }
+    },
+
+    "roi_measurement_framework": {
+      "description": "Key performance indicators for measuring the ROI of AI-augmented MDR services. Focus shifts from cost savings to evaluating enhancements in speed, service quality, and expanded operational scope.",
+      "kpi_categories": {
+        "speed_metrics": {
+          "name": "Detection & Response Speed",
+          "kpis": [
+            "Mean Time to Detect (MTTD) reduction percentage",
+            "Mean Time to Respond (MTTR) reduction percentage",
+            "SLA adherence rate for detection and response phases"
+          ]
+        },
+        "autonomy_metrics": {
+          "name": "Resolution Autonomy & Efficiency",
+          "kpis": [
+            "Percentage of incidents resolved without client intervention",
+            "Volume of required client clarifications per month",
+            "AI autonomous resolution rate for defined incident classes"
+          ]
+        },
+        "coverage_metrics": {
+          "name": "Expanded Visibility & Coverage",
+          "kpis": [
+            "Percentage increase in alerts investigated vs. baseline",
+            "Number of telemetry sources and asset types covered",
+            "Expansion to new use cases or threat categories"
+          ]
+        },
+        "quality_metrics": {
+          "name": "Alert & Output Quality",
+          "kpis": [
+            "False positive rate trend (should decrease)",
+            "AI hallucination or degraded output incidents",
+            "Quality of investigation reports and recommendations"
+          ]
+        },
+        "resource_metrics": {
+          "name": "Internal Resource Impact",
+          "kpis": [
+            "Internal analyst time freed for higher-value tasks",
+            "Reduction in client-side triage burden",
+            "Analyst upskilling enabled by AI-augmented workflows"
+          ]
+        },
+        "impact_metrics": {
+          "name": "Business Impact KPIs",
+          "kpis": [
+            "Financial damage prevention (quantified or estimated)",
+            "Reputation damage prevention for disinformation threats",
+            "Regulatory penalty avoidance through compliance alignment"
+          ]
+        }
+      }
+    },
+
+    "vendor_fields": {
+      "vendor": { "type": "string", "description": "Official company name" },
+      "website": { "type": "string", "description": "Primary company URL" },
+      "headquarters": { "type": "string", "description": "HQ city, state/country" },
+      "year_founded": { "type": "integer", "description": "Year the company was founded" },
+      "employee_count_range": { "type": "string", "description": "Estimated employee bracket" },
+      "funding_stage": { "type": "string", "description": "Latest funding round: Seed, Series A-F, IPO, Acquired, Bootstrapped" },
+      "total_funding": { "type": "string", "description": "Total funding raised to date" },
+      "is_startup": { "type": "boolean", "description": "Founded within last 7 years OR pre-IPO with <500 employees" },
+      "is_ai_first": { "type": "boolean", "description": "AI/ML is a core differentiator in the MDR service delivery" },
+      "region": { "type": "string", "description": "Primary region of operation" },
+      "mdr_service_type": { "type": "string", "description": "Classification: Pureplay MDR, Extended MDR, Platform MDR, or IR-Enhanced MDR" },
+      "delivery_model": { "type": "string", "description": "How the vendor delivers to the end customer: Platform Only (customer operates), Platform + Partner (MSSP partner operates vendor platform), or Managed Service (vendor delivers platform + operations as unified service)" },
+      "ir_focus_type": { "type": "string", "description": "IR capability classification: Core Competency or Assistance Component" },
+      "target_market": { "type": "string", "description": "Primary market focus: SMB, Mid-Market, Enterprise, All" },
+      "primary_capability": { "type": "string", "description": "Single strongest capability pillar code (TDR, PTI, ADA, DIS, IRA, AIO, AID, SOG)" },
+      "capability_coverage": { "type": "array", "description": "List of sub-pillar codes where vendor has demonstrated capability" },
+      "capability_coverage_count": { "type": "integer", "description": "Number of capability sub-pillars covered out of 32 total" },
+      "pricing_model_type": { "type": "string", "description": "Primary pricing approach: Subscription-Only, Usage-Based, Composable, Outcome-Based, Hybrid" },
+      "outcome_maturity_rating": { "type": "integer", "description": "Overall maturity rating (0-5) for pricing-to-outcomes alignment per the outcome_maturity_rating scale" },
+      "description": { "type": "string", "description": "Brief description of the vendor and their MDR service approach" },
+      "key_differentiators": { "type": "string", "description": "What sets this vendor apart in the MDR market" },
+      "product_names": { "type": "array", "description": "Key product, platform, or service names" },
+      "telemetry_sources": { "type": "array", "description": "Supported telemetry types: Endpoint, Network, Cloud, Identity, Email, OT/IoT" },
+      "mitre_coverage": { "type": "string", "description": "Documented MITRE ATT&CK technique coverage level or percentage" }
+    }
+  }
+}

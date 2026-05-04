@@ -1,0 +1,3241 @@
+[
+  {
+    "vendor": "Cisco (Splunk)",
+    "headquarters": "San Jose, CA, USA",
+    "region": "Global",
+    "specialization": "Platform Security",
+    "is_startup": false,
+    "is_ai_first": true,
+    "primary_capability": "PPM",
+    "description": "Security platform with network security, observability, and threat intelligence.",
+    "key_differentiators": "Splunk for security analytics; Talos threat intelligence; networking-integrated security.",
+    "expected_coverage": [
+      "ADR-02",
+      "PPM-02",
+      "AMT-03"
+    ],
+    "capability_coverage_count": 24,
+    "ir_focus_type": "Enterprise",
+    "pillar_scores": {
+      "EXM": 2.75,
+      "AMT": 2.2,
+      "ADR": 2.1,
+      "PPM": 2.1,
+      "SVC": 2.5
+    },
+    "sub_pillar_scores_current": {
+      "EXM-01": 3.0,
+      "EXM-02": 2.25,
+      "EXM-03": 3.25,
+      "EXM-04": 3.25,
+      "AMT-01": 2.25,
+      "AMT-02": 2.25,
+      "AMT-03": 2.25,
+      "AMT-04": 2.25,
+      "ADR-01": 2.25,
+      "ADR-02": 2.0,
+      "ADR-03": 2.25,
+      "ADR-04": 2.0,
+      "PPM-01": 2.0,
+      "PPM-02": 2.25,
+      "PPM-03": 2.0,
+      "PPM-04": 2.25,
+      "EXM-05": 2.0,
+      "AMT-05": 2.0,
+      "ADR-05": 2.0,
+      "PPM-05": 2.0,
+      "SVC-01": 2.5,
+      "SVC-02": 2.5,
+      "SVC-03": 2.5,
+      "SVC-04": 2.5
+    },
+    "sub_pillar_schema_labels": {
+      "EXM-01": "Attack Surface Management",
+      "EXM-02": "Continuous Threat Exposure Management",
+      "EXM-03": "Vulnerability Prioritization & Management",
+      "EXM-04": "Third-Party & Supply Chain Exposure",
+      "AMT-01": "Polymorphic & Morphing Defense",
+      "AMT-02": "Runtime Application Protection",
+      "AMT-03": "Dynamic Network & Infrastructure Defense",
+      "AMT-04": "Identity & Credential Rotation",
+      "ADR-01": "Deception Technology",
+      "ADR-02": "Threat Intelligence Operationalization",
+      "ADR-03": "Proactive Threat Hunting",
+      "ADR-04": "Counter-Adversary Operations",
+      "PPM-01": "Breach & Attack Simulation",
+      "PPM-02": "Security Control Validation",
+      "PPM-03": "Penetration Testing & Red Teaming",
+      "PPM-04": "Cloud Security Posture Management"
+    },
+    "sub_pillar_evidence": {
+      "EXM-01": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "matched_terms": [
+              "cloud",
+              "across",
+              "multi",
+              "environments"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "cloud",
+              "open source risk"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "matched_terms": [
+              "cloud",
+              "across",
+              "multi",
+              "environments"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments. Security analytics and response",
+            "matched_terms": [
+              "cloud",
+              "across",
+              "multi",
+              "environments"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "cloud",
+              "open source risk"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "EXM-02": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud. Explore Hypershield",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Choose your firewall Cloud security Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "capabilities",
+              "operation"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 4,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "EXM-03": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud. Explore Hypershield",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Choose your firewall Cloud security Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Detect the most sophisticated threats sooner across all vectors and prioritize by impact for faster responses.",
+            "matched_terms": [
+              "threat",
+              "impact"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 4,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "EXM-04": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Choose your firewall Cloud security Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "security",
+              "open source risk"
+            ],
+            "relevance_score": 10
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud. Explore Hypershield",
+            "matched_terms": [
+              "open source risk"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Browse trials and offers Quick Links About Cisco Contact Us Careers Connect with a partner Resources and Legal Feedback Help Terms & Conditions Privacy Cookies / Do not sell or share my personal data Accessibility Trademarks Supply Chain Transparency Newsroom…",
+            "matched_terms": [
+              "supply",
+              "chain",
+              "source",
+              "partner"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 2.0,
+        "schema_criteria_hits": 1,
+        "pillar_term_hits": 1,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "AMT-01": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Protect your organization using actionable insights across networks, clouds, endpoints, and email.",
+            "matched_terms": [
+              "network",
+              "endpoints",
+              "endpoint"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Firewalls Protect your organization using actionable insights across networks, clouds, endpoints, and email.",
+            "matched_terms": [
+              "network",
+              "endpoints",
+              "endpoint"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Protect your organization using actionable insights across networks, clouds, endpoints, and email. Choose your firewall",
+            "matched_terms": [
+              "network",
+              "endpoints",
+              "endpoint"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Explore Cisco Duo Network security Cisco Firewalls Protect your organization using actionable insights across networks, clouds, endpoints, and email.",
+            "matched_terms": [
+              "network",
+              "endpoints",
+              "endpoint"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Get secure access to any application, on any device, from anywhere. Defend against threats targeting users and deliver seamless access for hybrid work.",
+            "matched_terms": [
+              "application",
+              "targeting"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 4,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "AMT-02": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "matched_terms": [
+              "protection",
+              "applications",
+              "application"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Secure your applications and enable frictionless access with MFA to establish user and device trust.",
+            "matched_terms": [
+              "applications",
+              "application",
+              "less"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "matched_terms": [
+              "protection",
+              "applications",
+              "application"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments. Security analytics and response",
+            "matched_terms": [
+              "protection",
+              "applications",
+              "application"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco AI Defense Safeguard the development and usage of AI applications so your enterprise can advance its AI initiatives with confidence.",
+            "matched_terms": [
+              "applications",
+              "application",
+              "defense"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "AMT-03": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Explore Hypershield Identity security Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+            "matched_terms": [
+              "network",
+              "software",
+              "defined",
+              "access",
+              "security",
+              "automation"
+            ],
+            "relevance_score": 6
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Simplify highly secure network access control with software-defined access and automation.",
+            "matched_terms": [
+              "network",
+              "software",
+              "defined",
+              "access",
+              "automation"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "matched_terms": [
+              "network",
+              "zero",
+              "trust",
+              "access",
+              "security"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access. Explore Zero Trust Access",
+            "matched_terms": [
+              "network",
+              "zero",
+              "trust",
+              "access",
+              "security"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+            "matched_terms": [
+              "network",
+              "software",
+              "defined",
+              "access",
+              "automation"
+            ],
+            "relevance_score": 5
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "AMT-04": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "matched_terms": [
+              "identity",
+              "attack",
+              "time",
+              "service",
+              "access"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "matched_terms": [
+              "identity",
+              "attack",
+              "time",
+              "service",
+              "access"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access. Explore Zero Trust Access",
+            "matched_terms": [
+              "identity",
+              "attack",
+              "time",
+              "service",
+              "access"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Explore AI Defense Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "matched_terms": [
+              "identity",
+              "attack",
+              "time",
+              "service",
+              "access"
+            ],
+            "relevance_score": 5
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+            "matched_terms": [
+              "identity",
+              "service",
+              "automation",
+              "access"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "ADR-01": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "detect",
+              "capabilities",
+              "detection",
+              "response"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "detect",
+              "capabilities",
+              "detection",
+              "response"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [
+              "detect",
+              "capabilities",
+              "detection",
+              "response"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "detect",
+              "capabilities",
+              "detection",
+              "response"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Detect the most sophisticated threats sooner across all vectors and prioritize by impact for faster responses.",
+            "matched_terms": [
+              "across",
+              "detect",
+              "response"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "ADR-02": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "threat"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Detect the most sophisticated threats sooner across all vectors and prioritize by impact for faster responses.",
+            "matched_terms": [
+              "threat"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Get secure access to any application, on any device, from anywhere. Defend against threats targeting users and deliver seamless access for hybrid work.",
+            "matched_terms": [
+              "threat"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Secure your applications and data with a powerful, flexible framework for a hybrid and multicloud world.",
+            "matched_terms": [
+              "framework"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco deploys AI-powered Email Threat Defense with Splunk",
+            "matched_terms": [
+              "threat"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "ADR-03": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "operations",
+              "threat",
+              "detection"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "operations",
+              "threat",
+              "detection"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [
+              "operations",
+              "threat",
+              "detection"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "operations",
+              "threat",
+              "detection"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "matched_terms": [
+              "operations",
+              "attack"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 4,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "ADR-04": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Products and Services",
+            "matched_terms": [
+              "services",
+              "service"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "capabilities",
+              "detection"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Identity Services Engine (ISE)",
+            "matched_terms": [
+              "services",
+              "service"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Services for security",
+            "matched_terms": [
+              "services",
+              "service"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco.com Worldwide Products and Services",
+            "matched_terms": [
+              "services",
+              "service"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "PPM-01": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "detection",
+              "capabilities"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "detection",
+              "capabilities"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [
+              "detection",
+              "capabilities"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Overview Resources Trials and offers Product listing Webinars 3rd party validations Superior security outcomes User protection Deliver zero-trust security for users, devices, and things wherever they connect-onsite, remote, and hybrid environments.",
+            "matched_terms": [
+              "environments",
+              "validation"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "detection",
+              "capabilities"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "PPM-02": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are.",
+            "matched_terms": [
+              "security",
+              "network",
+              "protection"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Innovating where security meets the network Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are.",
+            "matched_terms": [
+              "security",
+              "network",
+              "protection"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are. Overview",
+            "matched_terms": [
+              "security",
+              "network",
+              "protection"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Data center security Network security",
+            "matched_terms": [
+              "security",
+              "network",
+              "data"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Network security Cisco Firewalls",
+            "matched_terms": [
+              "security",
+              "firewall",
+              "network"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "PPM-03": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "3rd party validations",
+            "matched_terms": [
+              "validation"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "capabilities"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "matched_terms": [
+              "attack"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Simplify highly secure network access control with software-defined access and automation.",
+            "matched_terms": [
+              "automation"
+            ],
+            "relevance_score": 1
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Global partnerships fight to end child exploitation together",
+            "matched_terms": [
+              "exploit"
+            ],
+            "relevance_score": 1
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 0,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "PPM-04": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "matched_terms": [
+              "cloud",
+              "workload",
+              "security",
+              "protection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "matched_terms": [
+              "cloud",
+              "workload",
+              "security",
+              "protection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments. Security analytics and response",
+            "matched_terms": [
+              "cloud",
+              "workload",
+              "security",
+              "protection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "matched_terms": [
+              "cloud",
+              "workload",
+              "security",
+              "protection"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Security Products and Solutions for Cloud and User Protection - Cisco",
+            "matched_terms": [
+              "cloud",
+              "security",
+              "protection"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "sub_pillar_specificity": 1.5,
+        "schema_criteria_hits": 0,
+        "pillar_term_hits": 0,
+        "criteria_hit_count": 5,
+        "notes": "PreCyber evidence extraction; 5 excerpts from 1 pages."
+      },
+      "_vendor_summary": {
+        "ok_pages": 1,
+        "total_pages": 5,
+        "excerpts_total": 80,
+        "flag": "good_evidence",
+        "confidence": 0.8
+      },
+      "EXM-05": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Security Products and Solutions for Cloud and User Protection - Cisco Skip to main content Skip to search Skip to footer Cisco.com Worldwide Products and Services Close Solutions Close Support Close Learn Close Why Cisco Close Partners Close Trials and …",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          }
+        ],
+        "search_term_hits": 0,
+        "criteria_text_hits": 3,
+        "score": 2.0,
+        "notes": "SVC evidence: 5 excerpts, 0 term hits, 3 criteria hits."
+      },
+      "AMT-05": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "matched_terms": [
+              "criteria:Managed micro-segmentation or zero trust network s"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access. Explore Zero Trust Access",
+            "matched_terms": [
+              "criteria:Managed micro-segmentation or zero trust network s"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Explore AI Defense Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "matched_terms": [
+              "criteria:Managed micro-segmentation or zero trust network s"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Explore Zero Trust Access Featured products and solutions Data center security Network security Cloud and application security User and device security Industrial security All security products and solutions Physical security Identity security Cisco Duo Secur…",
+            "matched_terms": [
+              "criteria:Managed micro-segmentation or zero trust network s"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          }
+        ],
+        "search_term_hits": 0,
+        "criteria_text_hits": 3,
+        "score": 2.0,
+        "notes": "SVC evidence: 5 excerpts, 0 term hits, 3 criteria hits."
+      },
+      "ADR-05": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html",
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "criteria:Managed threat intelligence operations with analys",
+              "criteria:SLA-backed adversary disruption operations with de"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "criteria:Managed threat intelligence operations with analys",
+              "criteria:SLA-backed adversary disruption operations with de"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [
+              "criteria:Managed threat intelligence operations with analys",
+              "criteria:SLA-backed adversary disruption operations with de"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "criteria:Managed threat intelligence operations with analys",
+              "criteria:SLA-backed adversary disruption operations with de"
+            ],
+            "relevance_score": 8
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Tap into our best-in-class data platform to modernize your security operations. Use advanced analytics and automated response with simple, predictable pricing.",
+            "matched_terms": [
+              "criteria:SLA-backed adversary disruption operations with de"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "search_term_hits": 0,
+        "criteria_text_hits": 3,
+        "score": 2.0,
+        "notes": "SVC evidence: 5 excerpts, 0 term hits, 3 criteria hits."
+      },
+      "PPM-05": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Explore Hypershield Identity security Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+            "matched_terms": [
+              "criteria:Managed security control validation with analyst-d",
+              "criteria:SLA-backed posture management services with define"
+            ],
+            "relevance_score": 7
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+            "matched_terms": [
+              "criteria:SLA-backed posture management services with define"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [],
+            "relevance_score": 2
+          }
+        ],
+        "search_term_hits": 0,
+        "criteria_text_hits": 3,
+        "score": 2.0,
+        "notes": "SVC evidence: 5 excerpts, 0 term hits, 3 criteria hits."
+      },
+      "SVC-01": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html",
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Power your SOC with market-leading SIEM SOAR",
+            "matched_terms": [
+              "criteria:Professional services for integration with existin"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Security Products and Solutions for Cloud and User Protection - Cisco Skip to main content Skip to search Skip to footer Cisco.com Worldwide Products and Services Close Solutions Close Support Close Learn Close Why Cisco Close Partners Close Trials and …",
+            "matched_terms": [],
+            "relevance_score": 2
+          }
+        ],
+        "search_term_hits": 1,
+        "criteria_text_hits": 2,
+        "score": 2.5,
+        "notes": "SVC evidence: 5 excerpts, 1 term hits, 2 criteria hits."
+      },
+      "SVC-02": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Cisco Security Products and Solutions for Cloud and User Protection - Cisco Skip to main content Skip to search Skip to footer Cisco.com Worldwide Products and Services Close Solutions Close Support Close Learn Close Why Cisco Close Partners Close Trials and …",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          }
+        ],
+        "search_term_hits": 1,
+        "criteria_text_hits": 4,
+        "score": 2.5,
+        "notes": "SVC evidence: 5 excerpts, 1 term hits, 4 criteria hits."
+      },
+      "SVC-03": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html",
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "security operations"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "security operations"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+            "matched_terms": [
+              "security operations"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [
+              "security operations"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Tap into our best-in-class data platform to modernize your security operations. Use advanced analytics and automated response with simple, predictable pricing.",
+            "matched_terms": [
+              "security operations"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "search_term_hits": 1,
+        "criteria_text_hits": 3,
+        "score": 2.5,
+        "notes": "SVC evidence: 5 excerpts, 1 term hits, 3 criteria hits."
+      },
+      "SVC-04": {
+        "source_urls": [
+          "https://www.cisco.com/site/us/en/products/security/index.html",
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Alert Noise Reduction",
+            "matched_terms": [
+              "criteria:AI/ML-powered alert triage, prioritization, and no"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Use Cases Alert Noise Reduction",
+            "matched_terms": [
+              "criteria:AI/ML-powered alert triage, prioritization, and no"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Alert Noise Reduction Prioritize alerts to lower MTTD/MTTR",
+            "matched_terms": [
+              "criteria:AI/ML-powered alert triage, prioritization, and no"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.cisco.com/site/us/en/products/security/index.html",
+            "excerpt": "Protect your business by investigating, prioritizing, and resolving incidents through unified defense and contextual insights from data-backed, AI-powered security.",
+            "matched_terms": [
+              "AI-powered"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "search_term_hits": 1,
+        "criteria_text_hits": 4,
+        "score": 2.5,
+        "notes": "SVC evidence: 5 excerpts, 1 term hits, 4 criteria hits."
+      }
+    },
+    "sub_pillar_scores_validated": {
+      "EXM-01": 2.25,
+      "EXM-02": 2.25,
+      "EXM-03": 2.25,
+      "EXM-04": 2.25,
+      "AMT-01": 2.25,
+      "AMT-02": 2.25,
+      "AMT-03": 2.25,
+      "AMT-04": 2.25,
+      "ADR-01": 2.25,
+      "ADR-02": 2.0,
+      "ADR-03": 2.25,
+      "ADR-04": 2.0,
+      "PPM-01": 2.0,
+      "PPM-02": 2.25,
+      "PPM-03": 2.0,
+      "PPM-04": 2.25
+    },
+    "pillar_scores_validated": {
+      "EXM": 2.25,
+      "AMT": 2.25,
+      "ADR": 2.12,
+      "PPM": 2.12
+    },
+    "sub_pillar_rationale_validated": {
+      "EXM-01": "EXM-01 - Attack Surface Management. Score: 2.25/5. Maturity Level: Generic Claims (specificity=2.0). Evidence flag: good_evidence. Evidence: \"Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.\". Also: \"Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "EXM-02": "EXM-02 - Continuous Threat Exposure Management. Score: 2.25/5. Maturity Level: Generic Claims (specificity=2.0). Evidence flag: good_evidence. Evidence: \"Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\". Also: \"Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "EXM-03": "EXM-03 - Vulnerability Prioritization & Management. Score: 2.25/5. Maturity Level: Generic Claims (specificity=2.0). Evidence flag: good_evidence. Evidence: \"Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\". Also: \"Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "EXM-04": "EXM-04 - Third-Party & Supply Chain Exposure. Score: 2.25/5. Maturity Level: Generic Claims (specificity=2.0). Evidence flag: good_evidence. Evidence: \"Choose your firewall Cloud security Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\". Also: \"Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "AMT-01": "AMT-01 - Polymorphic & Morphing Defense. Score: 2.25/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Protect your organization using actionable insights across networks, clouds, endpoints, and email.\". Also: \"Cisco Firewalls Protect your organization using actionable insights across networks, clouds, endpoints, and email.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "AMT-02": "AMT-02 - Runtime Application Protection. Score: 2.25/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.\". Also: \"Secure your applications and enable frictionless access with MFA to establish user and device trust.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "AMT-03": "AMT-03 - Dynamic Network & Infrastructure Defense. Score: 2.25/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Explore Hypershield Identity security Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.\". Also: \"Simplify highly secure network access control with software-defined access and automation.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "AMT-04": "AMT-04 - Identity & Credential Rotation. Score: 2.25/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.\". Also: \"Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero…\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "ADR-01": "ADR-01 - Deception Technology. Score: 2.25/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". Also: \"Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "ADR-02": "ADR-02 - Threat Intelligence Operationalization. Score: 2.00/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". Also: \"Detect the most sophisticated threats sooner across all vectors and prioritize by impact for faster responses.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "ADR-03": "ADR-03 - Proactive Threat Hunting. Score: 2.25/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". Also: \"Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "ADR-04": "ADR-04 - Counter-Adversary Operations. Score: 2.00/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Products and Services\". Also: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "PPM-01": "PPM-01 - Breach & Attack Simulation. Score: 2.00/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". Also: \"Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "PPM-02": "PPM-02 - Security Control Validation. Score: 2.25/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are.\". Also: \"Innovating where security meets the network Unify network and security to deliver powerful protection for your users, workloads, devices, and things-…\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "PPM-03": "PPM-03 - Penetration Testing & Red Teaming. Score: 2.00/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"3rd party validations\". Also: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details.",
+      "PPM-04": "PPM-04 - Cloud Security Posture Management. Score: 2.25/5. Maturity Level: Generic Claims (specificity=1.5). Evidence flag: good_evidence. Evidence: \"Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.\". Also: \"Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.\". To improve: Publicly document specific preemptive capabilities with named products, measurable outcomes, and technical details."
+    },
+    "research_flag": "good_evidence",
+    "research_confidence": 0.8,
+    "research": {
+      "status": "precyber_validated_v1",
+      "source": "public_web_text",
+      "timestamp_utc": "2026-02-24T15:59:42.248822+00:00",
+      "urls_used": [
+        "https://www.cisco.com/site/us/en/solutions/security/index.html",
+        "https://www.cisco.com/site/us/en/products/security/index.html",
+        "https://www.splunk.com/en_us/products/security-analytics.html",
+        "https://www.cisco.com/site/us/en/products/security/zero-trust.html",
+        "https://www.splunk.com/en_us/products/unified-security-and-observability-platform.html"
+      ],
+      "pages_ok": 1,
+      "schema": "Preemptive_Cybersecurity_Schema.json",
+      "tool": "research_precyber_v1_evidence.py",
+      "cap_applied": false
+    },
+    "sub_pillar_rationale_v2": {
+      "EXM-01": {
+        "sub_pillar_id": "EXM-01",
+        "sub_pillar_name": "Attack Surface Management",
+        "original_score": 2.25,
+        "adjusted_score": 3.0,
+        "scoring_level": 3,
+        "score_rationale": "Cisco (Splunk) scores 3.00/5.0 (Level 3: Demonstrated — Documented capability with named products or features, some technical detail, identifiable use cases.). Moderate evidence: coverage=20%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0. Partially met (2): Cloud resource discovery across multi-cloud environments; Integration with CMDB and asset management systems. Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 41.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is low (0.10). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Automated discovery of internet-facing assets and shadow IT",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/5 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Real-time asset inventory with risk scoring",
+            "status": "unmet",
+            "evidence": "Explore ISE\nUser security\nCisco Secure Access (SSE)\nUse a converged cybersecurity solution, grounded in zero trust, to cut risk and safely connect anything to anywhere.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Cloud resource discovery across multi-cloud environments",
+            "status": "partial",
+            "evidence": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Integration with CMDB and asset management systems",
+            "status": "partial",
+            "evidence": "Latest security innovations\nHybrid Mesh Firewall\nApply distributed, optimized enforcement with unified management across your hybrid enterprise.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Continuous monitoring for new or changed assets",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          }
+        ],
+        "scoring_level_justification": "Moderate evidence: coverage=20%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0.",
+        "key_evidence": [
+          "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+          "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+          "Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+          "Overview\nResources\nTrials and offers\nProduct listing\nWebinars\n3rd party validations\nSuperior security outcomes\nUser protection\nDeliver zero-trust security for users, devices, and things wherever they ",
+          "Cloud protection\nGain security and advanced protection for your workloads and applications across hybrid and multicloud environments."
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 3.0,
+          "reason": "Score increased from 2.25 to 3.00: deeper analysis found stronger evidence (0/5 criteria met)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.415
+      },
+      "EXM-02": {
+        "sub_pillar_id": "EXM-02",
+        "sub_pillar_name": "Continuous Threat Exposure Management",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (1): Prioritization based on exploitability and business context. Unmet criteria (4): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 32.0% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is low (0.12). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "CTEM program capabilities or alignment",
+            "status": "unmet",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Exposure scoping and discovery automation",
+            "status": "unmet",
+            "evidence": "Explore Hypershield\nIdentity security\nCisco Identity Services Engine (ISE)\nSimplify highly secure network access control with software-defined access and automation.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Prioritization based on exploitability and business context",
+            "status": "partial",
+            "evidence": "Explore Cloud Protection\nCisco Breach Protection Suite\nProtect your business by investigating, prioritizing, and resolving incidents through unified defense and contextual insights from data-backed, A",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Validation of exposure remediation effectiveness",
+            "status": "unmet",
+            "evidence": "Overview\nResources\nTrials and offers\nProduct listing\nWebinars\n3rd party validations\nSuperior security outcomes\nUser protection\nDeliver zero-trust security for users, devices, and things wherever they ",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Continuous cycle operation (not point-in-time)",
+            "status": "unmet",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+          "Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+          "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud. Explore Hypershield",
+          "Explore Cloud Protection\nCisco Breach Protection Suite\nProtect your business by investigating, prioritizing, and resolving incidents through unified defense and contextual insights from data-backed, A"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.32
+      },
+      "EXM-03": {
+        "sub_pillar_id": "EXM-03",
+        "sub_pillar_name": "Vulnerability Prioritization & Management",
+        "original_score": 2.25,
+        "adjusted_score": 3.25,
+        "scoring_level": 3,
+        "score_rationale": "Cisco (Splunk) scores 3.25/5.0 (Level 3: Demonstrated — Documented capability with named products or features, some technical detail, identifiable use cases.). Moderate evidence: coverage=30%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0. Partially met (3): Exploitability context from threat intelligence; Asset criticality and business impact weighting. Unmet criteria (2): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 32.0% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is low (0.12). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Risk-based vulnerability scoring beyond CVSS",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/5 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Exploitability context from threat intelligence",
+            "status": "partial",
+            "evidence": "Detect the most sophisticated threats sooner across all vectors and prioritize by impact for faster responses.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Asset criticality and business impact weighting",
+            "status": "partial",
+            "evidence": "Detect the most sophisticated threats sooner across all vectors and prioritize by impact for faster responses.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Automated remediation prioritization and tracking",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Integration with patch management and ticketing systems",
+            "status": "partial",
+            "evidence": "Latest security innovations\nHybrid Mesh Firewall\nApply distributed, optimized enforcement with unified management across your hybrid enterprise.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Moderate evidence: coverage=30%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0.",
+        "key_evidence": [
+          "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+          "Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+          "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud. Explore Hypershield"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 3.25,
+          "reason": "Score increased from 2.25 to 3.25: deeper analysis found stronger evidence (0/5 criteria met)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.32
+      },
+      "EXM-04": {
+        "sub_pillar_id": "EXM-04",
+        "sub_pillar_name": "Third-Party & Supply Chain Exposure",
+        "original_score": 2.25,
+        "adjusted_score": 3.25,
+        "scoring_level": 3,
+        "score_rationale": "Cisco (Splunk) scores 3.25/5.0 (Level 3: Demonstrated — Documented capability with named products or features, some technical detail, identifiable use cases.). Moderate evidence: coverage=50%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0. Criteria fully met (2/5): Software supply chain monitoring (SBOM analysis); Supply chain attack detection and alerting. Partially met (1): Third-party vendor risk assessment capabilities. Unmet criteria (2): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 36.5% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is moderate (0.20). Some cross-source confirmation exists. Schema criteria coverage: 2/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Third-party vendor risk assessment capabilities",
+            "status": "partial",
+            "evidence": "Security analytics and response\nPrepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Software supply chain monitoring (SBOM analysis)",
+            "status": "met",
+            "evidence": "Browse trials and offers Quick Links About Cisco Contact Us Careers Connect with a partner Resources and Legal Feedback Help Terms & Conditions Privacy Cookies / Do not sell or share my personal data ",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Open-source component vulnerability tracking",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Continuous monitoring of vendor security posture",
+            "status": "unmet",
+            "evidence": "Choose your firewall Cloud security Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Supply chain attack detection and alerting",
+            "status": "met",
+            "evidence": "Browse trials and offers Quick Links About Cisco Contact Us Careers Connect with a partner Resources and Legal Feedback Help Terms & Conditions Privacy Cookies / Do not sell or share my personal data ",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Moderate evidence: coverage=50%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0.",
+        "key_evidence": [
+          "Choose your firewall Cloud security Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+          "Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+          "Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+          "Browse trials and offers\nQuick Links\nAbout Cisco\nContact Us\nCareers\nConnect with a partner\nResources and Legal\nFeedback\nHelp\nTerms & Conditions\nPrivacy\nCookies / Do not sell or share my personal data\n"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 3.25,
+          "reason": "Score increased from 2.25 to 3.25: deeper analysis found stronger evidence (2/5 criteria met)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.365
+      },
+      "AMT-01": {
+        "sub_pillar_id": "AMT-01",
+        "sub_pillar_name": "Polymorphic & Morphing Defense",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Unmet criteria (5): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 46.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Runtime address space or memory layout randomization",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/6 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "API endpoint mutation or obfuscation",
+            "status": "unmet",
+            "evidence": "Protect your organization using actionable insights across networks, clouds, endpoints, and email.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Network configuration morphing",
+            "status": "unmet",
+            "evidence": "Protect your organization using actionable insights across networks, clouds, endpoints, and email.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "System identifier rotation",
+            "status": "unmet",
+            "evidence": "Browse trials and offers\nQuick Links\nAbout Cisco\nContact Us\nCareers\nConnect with a partner\nResources and Legal\nFeedback\nHelp\nTerms & Conditions\nPrivacy\nCookies / Do not sell or share my personal data\n",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Evidence of increased attacker cost through dynamic changes",
+            "status": "unmet",
+            "evidence": "Explore Cloud Protection\nCisco Breach Protection Suite\nProtect your business by investigating, prioritizing, and resolving incidents through unified defense and contextual insights from data-backed, A",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Protect your organization using actionable insights across networks, clouds, endpoints, and email.",
+          "Cisco Firewalls Protect your organization using actionable insights across networks, clouds, endpoints, and email.",
+          "Protect your organization using actionable insights across networks, clouds, endpoints, and email. Choose your firewall"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.465
+      },
+      "AMT-02": {
+        "sub_pillar_id": "AMT-02",
+        "sub_pillar_name": "Runtime Application Protection",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (2): RASP or in-app runtime protection capabilities; Signature-less exploit detection at runtime. Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 47.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "RASP or in-app runtime protection capabilities",
+            "status": "partial",
+            "evidence": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Code instrumentation for exploit prevention",
+            "status": "unmet",
+            "evidence": "Explore Breach Protection\nExplore Cisco Security Cloud\nSuccess stories and insights\nGlobal partnerships fight to end child exploitation together\n\"Marriott has long championed human rights and human tr",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Application hardening and anti-tampering",
+            "status": "unmet",
+            "evidence": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Memory corruption defense (ROP, buffer overflow prevention)",
+            "status": "unmet",
+            "evidence": "Cisco AI Defense Safeguard the development and usage of AI applications so your enterprise can advance its AI initiatives with confidence.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Signature-less exploit detection at runtime",
+            "status": "partial",
+            "evidence": "Security analytics and response\nPrepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+          "Secure your applications and enable frictionless access with MFA to establish user and device trust.",
+          "Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments."
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.475
+      },
+      "AMT-03": {
+        "sub_pillar_id": "AMT-03",
+        "sub_pillar_name": "Dynamic Network & Infrastructure Defense",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Criteria fully met (1/5): Software-defined perimeter or zero trust network access. Partially met (3): Network topology reconfiguration capabilities; Infrastructure-as-code security automation. Unmet criteria (1): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 57.5% — Grade B (Good). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 1/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Automated micro-segmentation with dynamic policy",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Network topology reconfiguration capabilities",
+            "status": "partial",
+            "evidence": "Explore Hypershield Identity security Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Software-defined perimeter or zero trust network access",
+            "status": "met",
+            "evidence": "Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Infrastructure-as-code security automation",
+            "status": "partial",
+            "evidence": "Explore Hypershield Identity security Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Adaptive access controls based on risk signals",
+            "status": "partial",
+            "evidence": "Explore ISE\nUser security\nCisco Secure Access (SSE)\nUse a converged cybersecurity solution, grounded in zero trust, to cut risk and safely connect anything to anywhere.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Explore Hypershield Identity security Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+          "Simplify highly secure network access control with software-defined access and automation.",
+          "Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+          "Explore AI Defense\nZero Trust Access\nImplement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+          "Explore Zero Trust Access\nFeatured products and solutions\nData center security\nNetwork security\nCloud and application security\nUser and device security\nIndustrial security\nAll security products and so"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=0.00)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.575
+      },
+      "AMT-04": {
+        "sub_pillar_id": "AMT-04",
+        "sub_pillar_name": "Identity & Credential Rotation",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (1): Service account and API key lifecycle management. Unmet criteria (4): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 56.5% — Grade B (Good). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Automated credential and secret rotation",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Ephemeral or just-in-time credential provisioning",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Service account and API key lifecycle management",
+            "status": "partial",
+            "evidence": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Certificate and token rotation automation",
+            "status": "unmet",
+            "evidence": "Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Privileged access session isolation",
+            "status": "unmet",
+            "evidence": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+          "Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+          "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access. Explore Zero Trust Access"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.565
+      },
+      "ADR-01": {
+        "sub_pillar_id": "ADR-01",
+        "sub_pillar_name": "Deception Technology",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Unmet criteria (5): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 51.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Honeypot and honeytoken deployment capabilities",
+            "status": "unmet",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Decoy systems mimicking production assets",
+            "status": "unmet",
+            "evidence": "Browse trials and offers\nQuick Links\nAbout Cisco\nContact Us\nCareers\nConnect with a partner\nResources and Legal\nFeedback\nHelp\nTerms & Conditions\nPrivacy\nCookies / Do not sell or share my personal data\n",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Breadcrumb placement for lateral movement detection",
+            "status": "unmet",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "High-fidelity alerting with low false-positive rates",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Integration with SIEM/SOAR for automated response",
+            "status": "unmet",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.515
+      },
+      "ADR-02": {
+        "sub_pillar_id": "ADR-02",
+        "sub_pillar_name": "Threat Intelligence Operationalization",
+        "original_score": 2.0,
+        "adjusted_score": 2.0,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (1): Threat intelligence platform or feed integration. Unmet criteria (4): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 37.5% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Threat intelligence platform or feed integration",
+            "status": "partial",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Automated IOC ingestion and correlation",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/3 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "TTP mapping to MITRE ATT&CK framework",
+            "status": "unmet",
+            "evidence": "Secure your applications and data with a powerful, flexible framework for a hybrid and multicloud world.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Automated blocking based on threat intelligence",
+            "status": "unmet",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Intelligence-driven hunting query generation",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Detect the most sophisticated threats sooner across all vectors and prioritize by impact for faster responses.",
+          "Get secure access to any application, on any device, from anywhere. Defend against threats targeting users and deliver seamless access for hybrid work."
+        ],
+        "score_adjustment": {
+          "original": 2.0,
+          "adjusted": 2.0,
+          "reason": "Score confirmed at 2.00 — rationale analysis supports current score (level=2, diff=0.00)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.375
+      },
+      "ADR-03": {
+        "sub_pillar_id": "ADR-03",
+        "sub_pillar_name": "Proactive Threat Hunting",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (2): Managed or automated threat hunting services; Hunt findings feeding back to detection engineering. Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 46.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Managed or automated threat hunting services",
+            "status": "partial",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Hypothesis-driven hunting methodologies",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/3 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Hunt query libraries and playbooks",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Integration with telemetry sources (EDR, NDR, SIEM)",
+            "status": "unmet",
+            "evidence": "Overview\nResources\nTrials and offers\nProduct listing\nWebinars\n3rd party validations\nSuperior security outcomes\nUser protection\nDeliver zero-trust security for users, devices, and things wherever they ",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Hunt findings feeding back to detection engineering",
+            "status": "partial",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "low"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.465
+      },
+      "ADR-04": {
+        "sub_pillar_id": "ADR-04",
+        "sub_pillar_name": "Counter-Adversary Operations",
+        "original_score": 2.0,
+        "adjusted_score": 2.0,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (3): Brand protection and impersonation detection; Takedown service capabilities (domains, phishing, infrastruc. Unmet criteria (2): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 42.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Dark web monitoring and intelligence gathering",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Brand protection and impersonation detection",
+            "status": "partial",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Takedown service capabilities (domains, phishing, infrastructure)",
+            "status": "partial",
+            "evidence": "Products and Services",
+            "confidence": "low"
+          },
+          {
+            "criterion": "Adversary attribution and campaign tracking",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Digital risk protection services",
+            "status": "partial",
+            "evidence": "Products and Services",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Products and Services",
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Cisco Identity Services Engine (ISE)"
+        ],
+        "score_adjustment": {
+          "original": 2.0,
+          "adjusted": 2.0,
+          "reason": "Score confirmed at 2.00 — rationale analysis supports current score (level=2, diff=0.25)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.425
+      },
+      "PPM-01": {
+        "sub_pillar_id": "PPM-01",
+        "sub_pillar_name": "Breach & Attack Simulation",
+        "original_score": 2.0,
+        "adjusted_score": 2.0,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (2): Automated attack chain simulation capabilities; Continuous validation against production controls. Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 42.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Automated attack chain simulation capabilities",
+            "status": "partial",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Continuous validation against production controls",
+            "status": "partial",
+            "evidence": "Overview Resources Trials and offers Product listing Webinars 3rd party validations Superior security outcomes User protection Deliver zero-trust security for users, devices, and things wherever they ",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "MITRE ATT&CK technique coverage",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/4 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Control gap identification and remediation guidance",
+            "status": "unmet",
+            "evidence": "Explore Hypershield\nIdentity security\nCisco Identity Services Engine (ISE)\nSimplify highly secure network access control with software-defined access and automation.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Reporting on detection and prevention effectiveness",
+            "status": "unmet",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations"
+        ],
+        "score_adjustment": {
+          "original": 2.0,
+          "adjusted": 2.0,
+          "reason": "Score confirmed at 2.00 — rationale analysis supports current score (level=2, diff=0.00)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.425
+      },
+      "PPM-02": {
+        "sub_pillar_id": "PPM-02",
+        "sub_pillar_name": "Security Control Validation",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (3): SIEM detection rule validation and testing; Firewall and network control validation. Unmet criteria (2): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 47.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "SIEM detection rule validation and testing",
+            "status": "partial",
+            "evidence": "Overview\nResources\nTrials and offers\nProduct listing\nWebinars\n3rd party validations\nSuperior security outcomes\nUser protection\nDeliver zero-trust security for users, devices, and things wherever they ",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "EDR policy effectiveness verification",
+            "status": "unmet",
+            "evidence": "No direct evidence (0/3 terms)",
+            "confidence": "high"
+          },
+          {
+            "criterion": "Firewall and network control validation",
+            "status": "partial",
+            "evidence": "Network security Cisco Firewalls",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "DLP and data protection control testing",
+            "status": "partial",
+            "evidence": "Explore User Protection\nCisco Cloud Protection Suite\nSecure your applications and data with a powerful, flexible framework for a hybrid and multicloud world.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Configuration drift detection and alerting",
+            "status": "unmet",
+            "evidence": "Security analytics and response\nPrepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are.",
+          "Innovating where security meets the network Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are.",
+          "Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are. Overview",
+          "Explore Cisco Duo\nNetwork security\nCisco Firewalls\nProtect your organization using actionable insights across networks, clouds, endpoints, and email.",
+          "Explore Hypershield\nIdentity security\nCisco Identity Services Engine (ISE)\nSimplify highly secure network access control with software-defined access and automation."
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=0.00)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.475
+      },
+      "PPM-03": {
+        "sub_pillar_id": "PPM-03",
+        "sub_pillar_name": "Penetration Testing & Red Teaming",
+        "original_score": 2.0,
+        "adjusted_score": 2.0,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (2): Exploit validation and proof-of-concept generation; Red team exercise automation (PTaaS). Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 37.5% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Automated penetration testing platform",
+            "status": "unmet",
+            "evidence": "Find out more\nCisco Security trials and offers\nBuild a future-ready security platform with Cisco trials and offers.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Continuous or on-demand pen testing capabilities",
+            "status": "unmet",
+            "evidence": "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Attack path analysis and visualization",
+            "status": "unmet",
+            "evidence": "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Exploit validation and proof-of-concept generation",
+            "status": "partial",
+            "evidence": "3rd party validations",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Red team exercise automation (PTaaS)",
+            "status": "partial",
+            "evidence": "Simplify highly secure network access control with software-defined access and automation.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "3rd party validations",
+          "Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.",
+          "Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access."
+        ],
+        "score_adjustment": {
+          "original": 2.0,
+          "adjusted": 2.0,
+          "reason": "Score confirmed at 2.00 — rationale analysis supports current score (level=2, diff=0.00)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.375
+      },
+      "PPM-04": {
+        "sub_pillar_id": "PPM-04",
+        "sub_pillar_name": "Cloud Security Posture Management",
+        "original_score": 2.25,
+        "adjusted_score": 2.25,
+        "scoring_level": 2,
+        "score_rationale": "Cisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Criteria fully met (1/5): Cloud workload protection capabilities. Partially met (1): Cloud misconfiguration detection (AWS, Azure, GCP). Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.",
+        "evidence_quality_rationale": "Evidence quality: 51.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 1/5 met.",
+        "criteria_assessment": [
+          {
+            "criterion": "Cloud misconfiguration detection (AWS, Azure, GCP)",
+            "status": "partial",
+            "evidence": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "confidence": "low"
+          },
+          {
+            "criterion": "Cloud entitlement and permissions analysis (CIEM)",
+            "status": "unmet",
+            "evidence": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Compliance framework mapping and reporting",
+            "status": "unmet",
+            "evidence": "Explore User Protection\nCisco Cloud Protection Suite\nSecure your applications and data with a powerful, flexible framework for a hybrid and multicloud world.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Cloud workload protection capabilities",
+            "status": "met",
+            "evidence": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "confidence": "medium"
+          },
+          {
+            "criterion": "Infrastructure-as-code security scanning",
+            "status": "unmet",
+            "evidence": "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+            "confidence": "medium"
+          }
+        ],
+        "scoring_level_justification": "Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found.",
+        "key_evidence": [
+          "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+          "Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+          "Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments. Security analytics and response"
+        ],
+        "score_adjustment": {
+          "original": 2.25,
+          "adjusted": 2.25,
+          "reason": "Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=0.00)."
+        },
+        "additional_sources_found": 0,
+        "confidence": "medium",
+        "evidence_quality_factor": 0.515
+      }
+    },
+    "sub_pillar_scores_v2_researched": {
+      "EXM-01": 3.0,
+      "EXM-02": 2.25,
+      "EXM-03": 3.25,
+      "EXM-04": 3.25,
+      "AMT-01": 2.25,
+      "AMT-02": 2.25,
+      "AMT-03": 2.25,
+      "AMT-04": 2.25,
+      "ADR-01": 2.25,
+      "ADR-02": 2.0,
+      "ADR-03": 2.25,
+      "ADR-04": 2.0,
+      "PPM-01": 2.0,
+      "PPM-02": 2.25,
+      "PPM-03": 2.0,
+      "PPM-04": 2.25
+    },
+    "pillar_scores_v2_researched": {
+      "EXM": 2.94,
+      "AMT": 2.25,
+      "ADR": 2.12,
+      "PPM": 2.12
+    },
+    "evidence_quality_analysis": {
+      "EXM-01": {
+        "quality_factor": 0.415,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.1,
+          "term_density": 0.64,
+          "preemptive_signal": 0.4,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 5,
+          "specific_hit_count": 1,
+          "preemptive_signal": 2.0
+        },
+        "notes": "Single source only; Low specificity; Moderate evidence"
+      },
+      "EXM-02": {
+        "quality_factor": 0.32,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.125,
+          "term_density": 0.24,
+          "preemptive_signal": 0.4,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 4,
+          "specific_hit_count": 1,
+          "preemptive_signal": 2.0
+        },
+        "notes": "Single source only; Low specificity; Weak evidence"
+      },
+      "EXM-03": {
+        "quality_factor": 0.32,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.125,
+          "term_density": 0.24,
+          "preemptive_signal": 0.4,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 4,
+          "specific_hit_count": 1,
+          "preemptive_signal": 2.0
+        },
+        "notes": "Single source only; Low specificity; Weak evidence"
+      },
+      "EXM-04": {
+        "quality_factor": 0.365,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.2,
+          "term_density": 0.36,
+          "preemptive_signal": 0.4,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 5,
+          "specific_hit_count": 2,
+          "preemptive_signal": 2.0
+        },
+        "notes": "Single source only; Low specificity; Weak evidence"
+      },
+      "AMT-01": {
+        "quality_factor": 0.465,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.56,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 4,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "AMT-02": {
+        "quality_factor": 0.475,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.6,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 5,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "AMT-03": {
+        "quality_factor": 0.575,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 1.0,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 5,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "AMT-04": {
+        "quality_factor": 0.565,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.96,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 5,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "ADR-01": {
+        "quality_factor": 0.515,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.76,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 5,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "ADR-02": {
+        "quality_factor": 0.375,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.2,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 0,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Weak evidence"
+      },
+      "ADR-03": {
+        "quality_factor": 0.465,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.56,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 4,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "ADR-04": {
+        "quality_factor": 0.425,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.4,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 0,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "PPM-01": {
+        "quality_factor": 0.425,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.4,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 0,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "PPM-02": {
+        "quality_factor": 0.475,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.6,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 5,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      },
+      "PPM-03": {
+        "quality_factor": 0.375,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.2,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 0,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Weak evidence"
+      },
+      "PPM-04": {
+        "quality_factor": 0.515,
+        "components": {
+          "source_diversity": 0.2,
+          "evidence_volume": 0.625,
+          "specificity_ratio": 0.5,
+          "term_density": 0.76,
+          "preemptive_signal": 0.3,
+          "consistency": 0.4
+        },
+        "raw_counts": {
+          "source_count": 1,
+          "excerpt_count": 5,
+          "hit_count": 5,
+          "specific_hit_count": 0,
+          "preemptive_signal": 1.5
+        },
+        "notes": "Single source only; Moderate evidence"
+      }
+    },
+    "sub_pillar_rationale_v2_consolidated": {
+      "EXM-01": "EXM-01 – Attack Surface Management: Score 3.00/5.0 (Level 3). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 3.00/5.0 (Level 3: Demonstrated — Documented capability with named products or features, some technical detail, identifiable use cases.). Moderate evidence: coverage=20%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0. Partially met (2): Cloud resource discovery across multi-cloud environments; Integration with CMDB and asset management systems. Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 41.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is low (0.10). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 3.00: Score increased from 2.25 to 3.00: deeper analysis found stronger evidence (0/5 criteria met).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.\n  • Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\n  • Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+      "EXM-02": "EXM-02 – Continuous Threat Exposure Management: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (1): Prioritization based on exploitability and business context. Unmet criteria (4): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 32.0% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is low (0.12). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\n  • Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\n  • Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud. Explore Hypershield",
+      "EXM-03": "EXM-03 – Vulnerability Prioritization & Management: Score 3.25/5.0 (Level 3). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 3.25/5.0 (Level 3: Demonstrated — Documented capability with named products or features, some technical detail, identifiable use cases.). Moderate evidence: coverage=30%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0. Partially met (3): Exploitability context from threat intelligence; Asset criticality and business impact weighting. Unmet criteria (2): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 32.0% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is low (0.12). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 3.25: Score increased from 2.25 to 3.25: deeper analysis found stronger evidence (0/5 criteria met).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\n  • Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\n  • Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud. Explore Hypershield",
+      "EXM-04": "EXM-04 – Third-Party & Supply Chain Exposure: Score 3.25/5.0 (Level 3). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 3.25/5.0 (Level 3: Demonstrated — Documented capability with named products or features, some technical detail, identifiable use cases.). Moderate evidence: coverage=50%, V1 signal=0.35. Pillar terms: 1, schema criteria: 0. Criteria fully met (2/5): Software supply chain monitoring (SBOM analysis); Supply chain attack detection and alerting. Partially met (1): Third-party vendor risk assessment capabilities. Unmet criteria (2): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 36.5% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is moderate (0.20). Some cross-source confirmation exists. Schema criteria coverage: 2/5 met.\n\n[Score Adjustment] 2.25 → 3.25: Score increased from 2.25 to 3.25: deeper analysis found stronger evidence (2/5 criteria met).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Choose your firewall Cloud security Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\n  • Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.\n  • Cisco Hypershield Use the power of hyperscaler technology to defend modern, AI-scale data centers and cloud.",
+      "AMT-01": "AMT-01 – Polymorphic & Morphing Defense: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Unmet criteria (5): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 46.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Protect your organization using actionable insights across networks, clouds, endpoints, and email.\n  • Cisco Firewalls Protect your organization using actionable insights across networks, clouds, endpoints, and email.\n  • Protect your organization using actionable insights across networks, clouds, endpoints, and email. Choose your firewall",
+      "AMT-02": "AMT-02 – Runtime Application Protection: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (2): RASP or in-app runtime protection capabilities; Signature-less exploit detection at runtime. Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 47.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.\n  • Secure your applications and enable frictionless access with MFA to establish user and device trust.\n  • Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.",
+      "AMT-03": "AMT-03 – Dynamic Network & Infrastructure Defense: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Criteria fully met (1/5): Software-defined perimeter or zero trust network access. Partially met (3): Network topology reconfiguration capabilities; Infrastructure-as-code security automation. Unmet criteria (1): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 57.5% — Grade B (Good). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=0.00).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Explore Hypershield Identity security Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined acce...\n  • Simplify highly secure network access control with software-defined access and automation.\n  • Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives ze...",
+      "AMT-04": "AMT-04 – Identity & Credential Rotation: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (1): Service account and API key lifecycle management. Unmet criteria (4): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 56.5% — Grade B (Good). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime networ...\n  • Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives ze...\n  • Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime networ...",
+      "ADR-01": "ADR-01 – Deception Technology: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Unmet criteria (5): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 51.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+      "ADR-02": "ADR-02 – Threat Intelligence Operationalization: Score 2.00/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (1): Threat intelligence platform or feed integration. Unmet criteria (4): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 37.5% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.00 → 2.00: Score confirmed at 2.00 — rationale analysis supports current score (level=2, diff=0.00).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Detect the most sophisticated threats sooner across all vectors and prioritize by impact for faster responses.\n  • Get secure access to any application, on any device, from anywhere. Defend against threats targeting users and deliver seamless access for hybrid w...",
+      "ADR-03": "ADR-03 – Proactive Threat Hunting: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (2): Managed or automated threat hunting services; Hunt findings feeding back to detection engineering. Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 46.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=-0.25).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+      "ADR-04": "ADR-04 – Counter-Adversary Operations: Score 2.00/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (3): Brand protection and impersonation detection; Takedown service capabilities (domains, phishing, infrastruc. Unmet criteria (2): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 42.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.00 → 2.00: Score confirmed at 2.00 — rationale analysis supports current score (level=2, diff=0.25).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Products and Services\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Cisco Identity Services Engine (ISE)",
+      "PPM-01": "PPM-01 – Breach & Attack Simulation: Score 2.00/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (2): Automated attack chain simulation capabilities; Continuous validation against production controls. Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 42.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.00 → 2.00: Score confirmed at 2.00 — rationale analysis supports current score (level=2, diff=0.00).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities. Latest security innovations",
+      "PPM-02": "PPM-02 – Security Control Validation: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (3): SIEM detection rule validation and testing; Firewall and network control validation. Unmet criteria (2): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 47.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=0.00).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are.\n  • Innovating where security meets the network Unify network and security to deliver powerful protection for your users, workloads, devices, and thing...\n  • Unify network and security to deliver powerful protection for your users, workloads, devices, and things-wherever they are. Overview",
+      "PPM-03": "PPM-03 – Penetration Testing & Red Teaming: Score 2.00/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Partially met (2): Exploit validation and proof-of-concept generation; Red team exercise automation (PTaaS). Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 37.5% — Grade D (Weak). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 2.00 → 2.00: Score confirmed at 2.00 — rationale analysis supports current score (level=2, diff=0.00).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • 3rd party validations\n  • Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\n  • Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime networ...",
+      "PPM-04": "PPM-04 – Cloud Security Posture Management: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCisco (Splunk) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 0 pillar terms, specificity=1.5. Marketing-level claims without substantive depth. 5 excerpt(s) found. Criteria fully met (1/5): Cloud workload protection capabilities. Partially met (1): Cloud misconfiguration detection (AWS, Azure, GCP). Unmet criteria (3): evidence gaps exist. Evidence basis: 5 excerpts from 1 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=1.5.\n\n[Evidence Quality]\nEvidence quality: 51.5% — Grade C (Moderate). Source diversity is weak (1 source(s)). Volume is moderate (5 excerpts). Term specificity is good (0.50). Some cross-source confirmation exists. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 2.25 → 2.25: Score confirmed at 2.25 — rationale analysis supports current score (level=2, diff=0.00).\n\n[Criteria Assessment] ✅ 0  ⚠️ 0  ❌ 5\n\n[Key Evidence]\n  • Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.\n  • Cloud protection Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments.\n  • Gain security and advanced protection for your workloads and applications across hybrid and multicloud environments. Security analytics and response",
+      "EXM-05": "EXM-05 - Exposure Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". Also: \"Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detec…\".",
+      "AMT-05": "AMT-05 - AMTD Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Zero Trust Access Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and drives zero downtime network access.\". Also: \"Implement an identity-first approach to security service edge (SSE) that thwarts attacks, simplifies IT operations, and…\".",
+      "ADR-05": "ADR-05 - Adversary Disruption Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". Also: \"Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detec…\".",
+      "PPM-05": "PPM-05 - Posture Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Explore Hypershield Identity security Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and automation.\". Also: \"Cisco Identity Services Engine (ISE) Simplify highly secure network access control with software-defined access and aut…\".",
+      "SVC-01": "SVC-01 - Implementation & Onboarding. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Power your SOC with market-leading SIEM SOAR\". Also: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\".",
+      "SVC-02": "SVC-02 - Consultative & Advisory Services. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". Also: \"Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detec…\".",
+      "SVC-03": "SVC-03 - Managed Operations & Continuous Delivery. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Prepare your security operations center (SOC) for the future with enhanced threat detection and response capabilities.\". Also: \"Security analytics and response Prepare your security operations center (SOC) for the future with enhanced threat detec…\".",
+      "SVC-04": "SVC-04 - AI-Driven & Autonomous Delivery. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Alert Noise Reduction\". Also: \"Use Cases Alert Noise Reduction\"."
+    },
+    "vendor_summary_v2_1": {
+      "coverage_count": 16,
+      "coverage_grade": "A",
+      "quality_avg": 0.442,
+      "quality_grade": "C",
+      "pillar_averages": {
+        "EXM": 2.94,
+        "AMT": 2.25,
+        "ADR": 2.12,
+        "PPM": 2.12
+      }
+    },
+    "pricing_dimension_scores": {
+      "PRC-SUB": 2.5,
+      "PRC-USG": 3.0,
+      "PRC-FIX": 3.0,
+      "PRC-SUC": 3.0,
+      "PRC-COM": 2.5,
+      "PRC-OUT": 3.0
+    },
+    "pricing_evidence": {
+      "PRC-SUB": {
+        "source_urls": [
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "PRICING PLANS",
+            "matched_terms": [
+              "plan"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Align what you pay with the types of workload running with Splunk Platform. This pricing plan makes it very economical to bring more data into Splunk that are less frequently searched.",
+            "matched_terms": [
+              "plan"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Submit your request PRICING PLANS",
+            "matched_terms": [
+              "plan"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "PRICING PLANS Choose a plan based on your business drivers",
+            "matched_terms": [
+              "plan"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Choose a plan based on your business drivers Work with your data, your way. With a variety of pricing models to choose from, you can find the approach that works best for you.",
+            "matched_terms": [
+              "plan"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "search_term_hits": 1,
+        "criteria_text_hits": 1,
+        "criteria_results": [
+          {
+            "criterion": "Published subscription pricing tiers or structure",
+            "status": "partial"
+          },
+          {
+            "criterion": "Component breakdown visible to buyers (platform vs. managed service vs. AI features)",
+            "status": "partial"
+          },
+          {
+            "criterion": "Predictability of recurring costs for client budgeting",
+            "status": "met"
+          },
+          {
+            "criterion": "Flexibility in subscription scope adjustment (scale up/down)",
+            "status": "met"
+          },
+          {
+            "criterion": "Transparency about what is included vs. excluded at each tier",
+            "status": "met"
+          }
+        ],
+        "has_prices": false,
+        "has_per_unit": false,
+        "score": 2.5,
+        "notes": "Pricing evidence: 5 excerpts, 1 term hits, 1 criteria hits."
+      },
+      "PRC-USG": {
+        "source_urls": [
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Activity-based pricing Connect costs directly to activities being monitored by Splunk observability products like metric time series (MTS), traces analyzed per minute, sessions or uptime requests.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Connect costs directly to activities being monitored by Splunk observability products like metric time series (MTS), traces analyzed per minute, sessions or uptime requests. Product Pricing Options",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Product Pricing Options Understand your costs by Splunk product",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Understand your costs by Splunk product Find the right pricing approach based on the solutions you use. Our goal is to help you make the most of your Splunk investments.",
+            "matched_terms": [],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Activity-based pricing Connect costs directly to activities being monitored by Splunk observability products like metric time series (MTS), traces analyzed per minute, sessions or uptime requests.",
+            "matched_terms": [],
+            "relevance_score": 2
+          }
+        ],
+        "search_term_hits": 0,
+        "criteria_text_hits": 3,
+        "criteria_results": [
+          {
+            "criterion": "Usage-based pricing components clearly defined (per-asset, per-scan, per-simulation)",
+            "status": "met"
+          },
+          {
+            "criterion": "Measurement systems for quantifying consumption",
+            "status": "partial"
+          },
+          {
+            "criterion": "Real-time usage dashboards or monitoring available to clients",
+            "status": "met"
+          },
+          {
+            "criterion": "Clear overage policies and escalation thresholds",
+            "status": "unmet"
+          },
+          {
+            "criterion": "Alignment of usage fees with computational effort and value delivered",
+            "status": "met"
+          }
+        ],
+        "has_prices": false,
+        "has_per_unit": false,
+        "score": 3.0,
+        "notes": "Pricing evidence: 5 excerpts, 0 term hits, 3 criteria hits."
+      },
+      "PRC-FIX": {
+        "source_urls": [
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "A Strategic Approach for AI Implementation in Discrete Manufacturing",
+            "matched_terms": [
+              "implementation"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Read the brief A Strategic Approach for AI Implementation in Discrete Manufacturing",
+            "matched_terms": [
+              "implementation"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "A Strategic Approach for AI Implementation in Discrete Manufacturing Download now",
+            "matched_terms": [
+              "implementation"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "I am having trouble with setup or a download",
+            "matched_terms": [
+              "setup"
+            ],
+            "relevance_score": 2
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "I would like to consult an expert on how my company can leverage Splunk I am having trouble with setup or a download",
+            "matched_terms": [
+              "setup"
+            ],
+            "relevance_score": 2
+          }
+        ],
+        "search_term_hits": 2,
+        "criteria_text_hits": 2,
+        "criteria_results": [
+          {
+            "criterion": "Clear one-time fees defined for setup and implementation",
+            "status": "met"
+          },
+          {
+            "criterion": "Scope definition for fixed-fee deliverables",
+            "status": "unmet"
+          },
+          {
+            "criterion": "Separation of project costs from ongoing service costs",
+            "status": "met"
+          },
+          {
+            "criterion": "Change request and scope adjustment processes",
+            "status": "met"
+          },
+          {
+            "criterion": "Implementation timeline and milestone-based payment structure",
+            "status": "met"
+          }
+        ],
+        "has_prices": false,
+        "has_per_unit": false,
+        "score": 3.0,
+        "notes": "Pricing evidence: 5 excerpts, 2 term hits, 2 criteria hits."
+      },
+      "PRC-SUC": {
+        "source_urls": [
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Prioritize alerts to lower MTTD/MTTR",
+            "matched_terms": [
+              "mttd",
+              "mttr"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Alert Noise Reduction Prioritize alerts to lower MTTD/MTTR",
+            "matched_terms": [
+              "mttd",
+              "mttr"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Prioritize alerts to lower MTTD/MTTR Cloud Monitoring Optimization",
+            "matched_terms": [
+              "mttd",
+              "mttr"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Optimize applications performance and your customer experiences with our observability solutions. Whatever your need, whatever your scale, we have pricing options that fit.",
+            "matched_terms": [
+              "performance"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Cook Islands Costa Rica",
+            "matched_terms": [
+              "sla"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "search_term_hits": 4,
+        "criteria_text_hits": 1,
+        "criteria_results": [
+          {
+            "criterion": "Defined success metrics tied to pricing (exposure reduction, control effectiveness, vulnerability SLAs)",
+            "status": "met"
+          },
+          {
+            "criterion": "Fees-at-risk component in service agreements",
+            "status": "met"
+          },
+          {
+            "criterion": "Per-finding or per-validation pricing for pen test and BAS outcomes",
+            "status": "met"
+          },
+          {
+            "criterion": "Clear measurement methodology and dispute resolution",
+            "status": "unmet"
+          },
+          {
+            "criterion": "Balance of risk between provider and client",
+            "status": "partial"
+          }
+        ],
+        "has_prices": false,
+        "has_per_unit": false,
+        "score": 3.0,
+        "notes": "Pricing evidence: 5 excerpts, 4 term hits, 1 criteria hits."
+      },
+      "PRC-COM": {
+        "source_urls": [
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Explore Splunk pricing options that align with your business needs. Our goal is to help you get more value from your data. Whether you need predictability or the flexibility to scale, you have options with Splunk.",
+            "matched_terms": [
+              "predictability"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "We have pricing options for predictability and flexibility.",
+            "matched_terms": [
+              "predictability"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Pricing Explore Splunk pricing options that align with your business needs. Our goal is to help you get more value from your data. Whether you need predictability or the flexibility to scale, you have options with Splunk.",
+            "matched_terms": [
+              "predictability"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "How does pricing work? We have pricing options for predictability and flexibility.",
+            "matched_terms": [
+              "predictability"
+            ],
+            "relevance_score": 3
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "We have pricing options for predictability and flexibility. See our brochure",
+            "matched_terms": [
+              "predictability"
+            ],
+            "relevance_score": 3
+          }
+        ],
+        "search_term_hits": 2,
+        "criteria_text_hits": 1,
+        "criteria_results": [
+          {
+            "criterion": "Multiple pricing components available and combinable",
+            "status": "partial"
+          },
+          {
+            "criterion": "Client budgeting predictability with spending expectations set upfront",
+            "status": "met"
+          },
+          {
+            "criterion": "Demonstrated risk-sharing with clear rewards and penalties",
+            "status": "partial"
+          },
+          {
+            "criterion": "Avoidance of excessive variability and dispute potential",
+            "status": "unmet"
+          },
+          {
+            "criterion": "Demystification of what the client pays for, when, and why",
+            "status": "partial"
+          }
+        ],
+        "has_prices": false,
+        "has_per_unit": false,
+        "score": 2.5,
+        "notes": "Pricing evidence: 5 excerpts, 2 term hits, 1 criteria hits."
+      },
+      "PRC-OUT": {
+        "source_urls": [
+          "https://www.splunk.com/en_us/products/pricing.html"
+        ],
+        "excerpts": [
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Explore Splunk pricing options that align with your business needs. Our goal is to help you get more value from your data. Whether you need predictability or the flexibility to scale, you have options with Splunk.",
+            "matched_terms": [
+              "criteria:Value realization metrics shared with clients show"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Gain More Value With Workload Pricing",
+            "matched_terms": [
+              "criteria:Value realization metrics shared with clients show"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Pricing Explore Splunk pricing options that align with your business needs. Our goal is to help you get more value from your data. Whether you need predictability or the flexibility to scale, you have options with Splunk.",
+            "matched_terms": [
+              "criteria:Value realization metrics shared with clients show"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Review the Pricing Brochure Gain More Value With Workload Pricing",
+            "matched_terms": [
+              "criteria:Value realization metrics shared with clients show"
+            ],
+            "relevance_score": 4
+          },
+          {
+            "url": "https://www.splunk.com/en_us/products/pricing.html",
+            "excerpt": "Gain More Value With Workload Pricing See the Getting Started Guide",
+            "matched_terms": [
+              "criteria:Value realization metrics shared with clients show"
+            ],
+            "relevance_score": 4
+          }
+        ],
+        "search_term_hits": 1,
+        "criteria_text_hits": 3,
+        "criteria_results": [
+          {
+            "criterion": "Pricing components explicitly tied to measurable security outcomes (exposure reduction, control gap closure, mean-time-to-remediation)",
+            "status": "met"
+          },
+          {
+            "criterion": "Outcome-based SLA commitments with financial consequences (credits, rebates, penalties)",
+            "status": "met"
+          },
+          {
+            "criterion": "Value realization metrics shared with clients showing pricing-to-outcome correlation",
+            "status": "met"
+          },
+          {
+            "criterion": "Pricing adjustments based on demonstrated AI efficiency gains passed to clients",
+            "status": "partial"
+          },
+          {
+            "criterion": "Avoidance of outcome-washing — pricing labeled as outcome-based but measured on inputs",
+            "status": "partial"
+          }
+        ],
+        "has_prices": false,
+        "has_per_unit": false,
+        "score": 3.0,
+        "notes": "Pricing evidence: 5 excerpts, 1 term hits, 3 criteria hits."
+      }
+    },
+    "pricing_rationales": {
+      "PRC-SUB": "PRC-SUB - Subscription Transparency. Score: 2.50/5. Basic pricing information available but limited detail. Evidence: \"PRICING PLANS\".",
+      "PRC-USG": "PRC-USG - Usage-Based Alignment. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Activity-based pricing Connect costs directly to activities being monitored by Splunk observability products like metric time series (MTS), traces analyzed per minute, sessions or…\".",
+      "PRC-FIX": "PRC-FIX - Fixed Delivery Pricing. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"A Strategic Approach for AI Implementation in Discrete Manufacturing\".",
+      "PRC-SUC": "PRC-SUC - Success & Outcome Fees. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Prioritize alerts to lower MTTD/MTTR\".",
+      "PRC-COM": "PRC-COM - Composability & Overall Model Maturity. Score: 2.50/5. Basic pricing information available but limited detail. Evidence: \"Explore Splunk pricing options that align with your business needs. Our goal is to help you get more value from your data. Whether you need predictability or the flexibility to sc…\".",
+      "PRC-OUT": "PRC-OUT - Pricing-to-Outcomes Alignment. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Explore Splunk pricing options that align with your business needs. Our goal is to help you get more value from your data. Whether you need predictability or the flexibility to sc…\"."
+    },
+    "outcome_maturity_rating": 2.84,
+    "outcome_maturity_label": "Outcome-Aware",
+    "services_maturity_level": "consultative",
+    "capability_coverage": [
+      "ADR-01",
+      "ADR-02",
+      "ADR-03",
+      "ADR-04",
+      "ADR-05",
+      "AMT-01",
+      "AMT-02",
+      "AMT-03",
+      "AMT-04",
+      "AMT-05",
+      "EXM-01",
+      "EXM-02",
+      "EXM-03",
+      "EXM-04",
+      "EXM-05",
+      "PPM-01",
+      "PPM-02",
+      "PPM-03",
+      "PPM-04",
+      "PPM-05",
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "SVC-04"
+    ],
+    "coverage_grade": "A",
+    "svc_pricing_research": {
+      "researched_at": "2026-03-19T18:04:40.363939+00:00",
+      "cached_pages_used": 1,
+      "new_pages_fetched": 1,
+      "total_pages_analyzed": 2,
+      "svc_subpillars_scored": 8,
+      "pricing_dimensions_scored": 6
+    }
+  }
+]
