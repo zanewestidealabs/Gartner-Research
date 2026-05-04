@@ -1,0 +1,591 @@
+{
+  "mq_gap_schema_template_v1.0": {
+    "schema_lineage": {
+      "schema_id": "TEMPLATE_MQ_Gap_Schema — replace with your schema ID (e.g., MyMarket_MQ_Gap_Schema)",
+      "version": "1.0",
+      "parent_schema": "TEMPLATE — filename of the corresponding capability schema this supplements (e.g., My_Market_Capability_Schema.json)",
+      "related_schemas": [
+        "TEMPLATE — list related capability or pricing schema filenames, or remove this array"
+      ],
+      "purpose": "TEMPLATE — one sentence: 'Supplemental MQ evaluation criteria NOT addressed by the [MARKET NAME] capability schema. Scored independently, then combined via mq_scoring_mode to produce final Magic Quadrant positions for the [MARKET NAME] market.'"
+    },
+    "intent": "TEMPLATE — 2-3 sentences: What does this schema evaluate? Which 7 MQ criteria gaps does it cover? How do these scores combine with capability scores? Example: 'Evaluate [MARKET NAME] vendors against the 7 Magic Quadrant criteria gaps: Financial Viability, Sales Execution, Market Responsiveness, Marketing Execution, Customer Experience Quality, Market Understanding & Vision, and Vertical & Geographic Strategy. These supplement the [MARKET NAME] technical capability assessment to complete the full MQ evaluation framework. Combined scores produce the Ability to Execute and Completeness of Vision axis positions used in Magic Quadrant placement.'",
+    "metadata": {
+      "framework_alignment": "TEMPLATE — cite the specific Gartner MQ methodology document this schema aligns to (e.g., 'Gartner Magic Quadrant Evaluation Framework — G00802987 (2 July 2025); Gartner Market Guide for [MARKET NAME]'). The document ID ensures the schema stays tied to a specific methodology version.",
+      "applies_to": "TEMPLATE — short market name (e.g., CNAPP, MDR, OffSec, PreCyber). This value appears in UI labels.",
+      "capability_scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No Evidence — No public data or documentation found",
+        "_note": "MQ Gap schemas use a slightly different scoring vocabulary than capability schemas — emphasizing evidence breadth and business indicators rather than technical depth. The 0-5 scale is shared across all schemas in this platform. Do not modify scale values.",
+        "scoring_logic": {
+          "0": "No Evidence — no public data, documentation, or third-party references available.",
+          "1": "Minimal — vague or unsubstantiated claims only; no verifiable evidence.",
+          "2": "Basic — some evidence found but significant gaps remain; limited depth.",
+          "3": "Demonstrated — clear evidence of capability with moderate depth across multiple sources.",
+          "4": "Strong — well-documented with multiple proof points from credible sources.",
+          "5": "Market-Leading — best-in-class with extensive evidence and third-party validation."
+        }
+      },
+      "source_policy": {
+        "_note": "MQ Gap schemas require different evidence sources than capability schemas — financial, business, and market-execution evidence rather than technical documentation. The tiering below reflects this. Adjust examples to match the specific market.",
+        "valid_sources": [
+          {
+            "tier": 1,
+            "_note": "Tier 1 sources are authoritative and carry full weight. Required for scores of 4+.",
+            "type": "Company filings and financial records",
+            "examples": [
+              "SEC filings (10-K, 10-Q, 8-K)",
+              "Annual reports and investor presentations",
+              "S-1 or IPO prospectus filings",
+              "Earnings call transcripts"
+            ],
+            "weight": 1.0
+          },
+          {
+            "tier": 1,
+            "type": "Analyst reports",
+            "examples": [
+              "TEMPLATE — name the specific Gartner MQ or Market Guide for this market",
+              "Forrester Wave for the relevant market category",
+              "IDC MarketScape for the relevant market category",
+              "KuppingerCole Leadership Compass"
+            ],
+            "weight": 1.0
+          },
+          {
+            "tier": 2,
+            "_note": "Tier 2 sources are valid supporting evidence. Sufficient for scores up to 3-4 when multiple Tier 2 sources agree.",
+            "type": "Peer review platforms",
+            "examples": [
+              "TEMPLATE — Gartner Peer Insights category for this market",
+              "G2 category for this market",
+              "TrustRadius",
+              "PeerSpot"
+            ],
+            "weight": 0.8
+          },
+          {
+            "tier": 2,
+            "type": "Vendor website",
+            "examples": [
+              "Product pages",
+              "Partner program pages",
+              "Press releases",
+              "Corporate blog posts",
+              "Customer success stories"
+            ],
+            "weight": 0.7
+          },
+          {
+            "tier": 3,
+            "_note": "Tier 3 sources alone cannot justify scores above 2. Use only as corroborating signals.",
+            "type": "Third-party research",
+            "examples": [
+              "Crunchbase funding data",
+              "LinkedIn company data",
+              "News articles and trade press",
+              "Job postings as proxy for investment"
+            ],
+            "weight": 0.6
+          },
+          {
+            "tier": 3,
+            "type": "Community sources",
+            "examples": [
+              "Reddit discussions",
+              "Industry forums",
+              "Conference presentation recordings",
+              "Podcast interviews with executives"
+            ],
+            "weight": 0.4
+          }
+        ],
+        "invalid_sources": [
+          "Wikipedia (unverified and editable)",
+          "Vendor-paid advertorials without disclosure",
+          "Anonymous or unverifiable claims"
+        ]
+      },
+      "coverage_grade": {
+        "_note": "Same grading scale as capability schemas. Adjust thresholds to match your total sub-pillar count across all 7 MQ Gap pillars.",
+        "scale": {
+          "A": ">=90% sub-pillars scored with Tier-1/2 evidence",
+          "B": ">=75% sub-pillars scored with evidence",
+          "C": ">=60% sub-pillars scored",
+          "D": ">=40% sub-pillars scored",
+          "F": "<40% sub-pillars scored or mostly heuristic-derived"
+        }
+      },
+      "mq_axis_mapping": {
+        "_note": "This block maps pillar codes to the two MQ axes. The standard 7 pillars (VIA, SLE, MKR, MKE, CXQ, MKU, VIG) map to axes as shown below. SLE and MKE contribute to BOTH axes per Gartner MQ methodology. Adjust the lists if your schema uses different pillar codes or a different axis weighting model.",
+        "ability_to_execute": [
+          "VIA",
+          "SLE",
+          "MKR",
+          "MKE",
+          "CXQ"
+        ],
+        "completeness_of_vision": [
+          "SLE",
+          "MKE",
+          "MKU",
+          "VIG"
+        ],
+        "note": "SLE (Sales Execution) and MKE (Marketing Execution) contribute to BOTH axes per Gartner MQ methodology — sales strategy feeds Completeness of Vision while execution feeds Ability to Execute."
+      }
+    },
+    "pillars": {
+      "_note": "The 7 pillars below are the standard Gartner MQ Gap criteria used across all MQ Gap schemas in this platform. Keep the pillar codes (VIA, SLE, MKR, MKE, CXQ, MKU, VIG) consistent — the platform uses them to map to MQ axes. Customize the focus descriptions, mq_criterion references, and evidence_signals to match your specific market. The mq_criterion codes (ATE-N, COV-N) reference the Gartner MQ evaluation framework document cited in metadata.framework_alignment above.",
+      "VIA": {
+        "name": "Financial Viability & Stability",
+        "focus": "TEMPLATE — overall financial health of the vendor in this specific market, business unit investment level, and likelihood of continued product development and support. Maps to MQ criterion ATE-2 (Overall Viability). For pure-play vendors, assess startup runway and funding. For platform vendors, assess how strategically important this market is within the broader portfolio.",
+        "mq_criterion": "ATE-2",
+        "mq_criterion_name": "Overall Viability",
+        "mq_weight": "High",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": [
+          "TEMPLATE — SEC filings or annual reports showing revenue in this market segment",
+          "TEMPLATE — Funding announcements or valuation milestones specific to this market",
+          "TEMPLATE — Analyst estimates of market share in this segment",
+          "TEMPLATE — Headcount growth in this market as a proxy for investment"
+        ]
+      },
+      "SLE": {
+        "name": "Sales Execution & Channel",
+        "focus": "TEMPLATE — presales depth, direct sales team quality, channel strategy (MSSP, SI, reseller), and marketplace reach relevant to this specific market. Maps to MQ criteria ATE-3 (Sales Execution) and COV-3 (Sales Strategy). Consider which channels are most relevant to buyers in this market — enterprise direct, SMB PLG, channel-heavy, or hyperscaler co-sell.",
+        "mq_criterion": "ATE-3 + COV-3",
+        "mq_criterion_name": "Sales Execution + Sales Strategy",
+        "mq_weight": "Medium",
+        "mq_axis": "Both (Execute + Vision)",
+        "evidence_signals": [
+          "TEMPLATE — Marketplace listings relevant to this market (e.g., AWS, Azure, GCP for cloud markets; MSSP partner programs for services markets)",
+          "TEMPLATE — Channel partner program documentation and named partners",
+          "TEMPLATE — Self-service trial or POV program availability",
+          "TEMPLATE — Sales team geographic coverage (office locations, job postings)"
+        ]
+      },
+      "MKR": {
+        "name": "Market Responsiveness & Track Record",
+        "focus": "TEMPLATE — ability to respond to market shifts specific to this segment. What are the key market trends vendors must respond to? What does a fast responder look like vs. a laggard? Maps to MQ criterion ATE-4. Example for MDR: vendors responding to AI-assisted triage and autonomous detection. Example for CNAPP: vendors responding to AI-SPM, runtime convergence, and agentless adoption.",
+        "mq_criterion": "ATE-4",
+        "mq_criterion_name": "Market Responsiveness & Track Record",
+        "mq_weight": "Medium",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": [
+          "TEMPLATE — Release notes and changelogs showing response to market trends in this segment",
+          "TEMPLATE — Major capability additions responding to market evolution over the last 12-24 months",
+          "TEMPLATE — M&A or partnership activity expanding market coverage",
+          "TEMPLATE — Time lag between market trend emergence and vendor response (faster = higher score)"
+        ]
+      },
+      "MKE": {
+        "name": "Marketing Execution & Brand",
+        "focus": "TEMPLATE — quality, reach, and effectiveness of marketing programs in this specific market. How well does the vendor stand out in a competitive landscape? Maps to MQ criteria ATE-5 (Marketing Execution) and COV-2 (Marketing Strategy). Consider the key marketing channels for this market — research reports, conference presence, community, social media.",
+        "mq_criterion": "ATE-5 + COV-2",
+        "mq_criterion_name": "Marketing Execution + Marketing Strategy",
+        "mq_weight": "Low (ATE) / Medium (COV)",
+        "mq_axis": "Both (Execute + Vision)",
+        "evidence_signals": [
+          "TEMPLATE — Conference presence at key events for this market (e.g., RSA, Black Hat, market-specific summits)",
+          "TEMPLATE — Original research reports, threat intelligence publications, or thought leadership",
+          "TEMPLATE — Social media presence and SEO ranking on key category terms",
+          "TEMPLATE — Earned media coverage in relevant trade press"
+        ]
+      },
+      "CXQ": {
+        "name": "Customer Experience Quality",
+        "focus": "TEMPLATE — quantitative and qualitative customer experience indicators for buyers in this specific market. Maps to MQ criterion ATE-6. Focus on onboarding experience, support quality, and post-sales success programs most relevant to this market. Example: time-to-value metrics for SaaS markets; service delivery quality for managed services markets.",
+        "mq_criterion": "ATE-6",
+        "mq_criterion_name": "Customer Experience",
+        "mq_weight": "High",
+        "mq_axis": "Ability to Execute",
+        "evidence_signals": [
+          "TEMPLATE — Gartner Peer Insights category rating and review count for this market",
+          "TEMPLATE — G2 or TrustRadius category position for this market",
+          "TEMPLATE — Published NRR (Net Revenue Retention) or DBNRR data",
+          "TEMPLATE — SLA documentation and support tier descriptions",
+          "TEMPLATE — Customer success program evidence (TAM, CSM, onboarding)"
+        ]
+      },
+      "MKU": {
+        "name": "Market Understanding & Vision",
+        "focus": "TEMPLATE — depth of understanding of buyer needs in this market, quality of product vision, and completeness of platform roadmap. Maps to MQ criteria COV-1 (Market Understanding) and COV-4 (Offering Strategy). What does a vendor who truly understands this market look like vs. one that is entering from an adjacent space without full understanding?",
+        "mq_criterion": "COV-1 + COV-4",
+        "mq_criterion_name": "Market Understanding + Offering Strategy",
+        "mq_weight": "High",
+        "mq_axis": "Completeness of Vision",
+        "evidence_signals": [
+          "TEMPLATE — CEO/CTO keynotes or blog posts articulating market direction",
+          "TEMPLATE — Public product roadmap or innovation announcements",
+          "TEMPLATE — Consumption-based or usage-based pricing models (evidence of understanding modern buyer expectations)",
+          "TEMPLATE — Patent filings or research investment evidence in core market technologies"
+        ]
+      },
+      "VIG": {
+        "name": "Vertical & Geographic Strategy",
+        "focus": "TEMPLATE — strategy for regulated verticals and geographic regions relevant to this market. Which verticals are most important for buyers in this market (financial services, healthcare, government, critical infrastructure)? Which geographic regions require specific compliance or data sovereignty considerations? Maps to MQ criteria COV-6 (Vertical/Industry Strategy) and COV-8 (Geographic Strategy).",
+        "mq_criterion": "COV-6 + COV-8",
+        "mq_criterion_name": "Vertical/Industry Strategy + Geographic Strategy",
+        "mq_weight": "Low",
+        "mq_axis": "Completeness of Vision",
+        "evidence_signals": [
+          "TEMPLATE — Regulatory compliance packs or certifications for relevant verticals (e.g., FedRAMP for US public sector, HIPAA for healthcare, PCI-DSS for financial services)",
+          "TEMPLATE — Regional availability and data residency options",
+          "TEMPLATE — Vertical-specific solution pages, case studies, or reference architectures",
+          "TEMPLATE — GovCloud, sovereign cloud, or regional cloud support where relevant"
+        ]
+      }
+    },
+    "sub_pillars": {
+      "_note": "Sub-pillars for MQ Gap schemas include scoring_guidance fields (unlike capability schemas) because MQ Gap criteria are harder to calibrate — what score-3 vs. score-5 means for 'Financial Viability' is less intuitive than a technical capability score. Include explicit scoring_guidance for each sub-pillar so different analysts reach consistent scores. Typical MQ Gap schema has 2-4 sub-pillars per pillar (14-28 total).",
+      "VIA-01": {
+        "name": "Revenue & Market Growth Trajectory",
+        "expanded_definition": "TEMPLATE — annual revenue (total and market-segment-specific where available), year-over-year ARR or revenue growth, and trend over the last 3 years. For pure-play vendors, focus on segment ARR. For platform vendors, identify the specific business unit's contribution. Adjust the score-5 benchmark to match the scale of the target market.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — SEC filings or press releases showing segment revenue or ARR milestones",
+          "TEMPLATE — Funding announcements with valuation data (Crunchbase, press releases)",
+          "TEMPLATE — Analyst estimates of market share or revenue position in this segment",
+          "TEMPLATE — Cloud-security or market-specific headcount as a proxy for investment scale"
+        ],
+        "search_terms": [
+          "revenue",
+          "ARR",
+          "growth",
+          "funding",
+          "valuation",
+          "market share",
+          "TEMPLATE — add market-specific qualifier (e.g., '[market name] revenue')"
+        ],
+        "scoring_guidance": {
+          "1": "No revenue or ARR data publicly available",
+          "2": "Revenue disclosed but flat or declining; no market-segment breakdown available",
+          "3": "Positive growth documented; market segment identifiable; customer base growing",
+          "4": "Strong documented growth (>30% YoY) with specific market-segment revenue; clear upward trajectory",
+          "5": "TEMPLATE — define what market-leading revenue looks like for this specific market (e.g., '>$500M ARR' for CNAPP, '>$200M ARR' for a smaller market). Sustained high growth; transparent financials."
+        }
+      },
+      "VIA-02": {
+        "name": "Profitability & Financial Health",
+        "expanded_definition": "TEMPLATE — profitability indicators, cash position, burn rate for pure-play startups, and parent-company financial backing for platform vendors. This sub-pillar assesses whether the vendor will remain a viable long-term option for buyers making multi-year commitments.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Profitability evidence (EBITDA, operating income from SEC filings)",
+          "TEMPLATE — Recent funding rounds indicating runway (ideally 2+ years)",
+          "TEMPLATE — Parent company financial backing and strategic commitment evidence",
+          "TEMPLATE — Rule of 40 score or free cash flow data where available"
+        ],
+        "search_terms": [
+          "profitable",
+          "EBITDA",
+          "cash",
+          "burn rate",
+          "runway",
+          "Rule of 40",
+          "free cash flow"
+        ],
+        "scoring_guidance": {
+          "1": "No financial health data available; high-risk funding stage with no recent rounds",
+          "2": "Recent funding secured but high burn rate implied; or parent-company CNAPP is a minor underfunded initiative",
+          "3": "Adequate runway (2+ years) for pure-plays; stable parent backing for platform vendors; breakeven trajectory",
+          "4": "Profitable or near-profitable; strong cash position; documented commitment to sustained R&D in this market",
+          "5": "Profitable with strong margins; investment-grade parent or unicorn-level valuation; substantial war chest for market investment"
+        }
+      },
+      "VIA-03": {
+        "name": "Customer Base & Retention",
+        "expanded_definition": "TEMPLATE — published customer count for this market, enterprise logos, net retention rate, and customer base growth. Strong retention is a leading indicator of product-market fit and execution quality.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Website customer logos page or published customer count",
+          "TEMPLATE — Market-specific case studies across multiple verticals",
+          "TEMPLATE — G2 / Gartner Peer Insights review counts as proxy for customer base size",
+          "TEMPLATE — SEC filings with customer metrics (NRR, DBNRR, customer count)"
+        ],
+        "search_terms": [
+          "customers",
+          "Fortune 500",
+          "retention",
+          "NRR",
+          "DBNRR",
+          "churn",
+          "TEMPLATE — add market-specific term"
+        ],
+        "scoring_guidance": {
+          "1": "No customer count or logos published",
+          "2": "A few customer logos or case studies; no count or retention data",
+          "3": "Published customer count (100+); multiple case studies across sectors",
+          "4": "Large customer base (500+); net retention data; expansion revenue documented; diverse verticals",
+          "5": "TEMPLATE — define what a market-leading customer base looks like for this market size (e.g., 1000+ enterprise customers; published NRR >120%; multiple Fortune 100 logos)"
+        }
+      },
+      "SLE-01": {
+        "name": "Channel & Marketplace Presence",
+        "expanded_definition": "TEMPLATE — marketplace listings, hyperscaler co-sell tiers (where applicable to this market), MSP/MSSP partner programs, and technology alliances with complementary vendors. Adjust focus based on dominant channel motions in this market — direct enterprise for some markets, heavy MSSP channel for services markets, hyperscaler marketplace for cloud markets.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Marketplace listings with details (AWS, Azure, GCP for cloud; distributor listings for services)",
+          "TEMPLATE — Partner program tiers, named partners, and MSSP program documentation",
+          "TEMPLATE — Technology alliance pages with complementary vendor integrations"
+        ],
+        "search_terms": [
+          "TEMPLATE — marketplace term for this market",
+          "partner",
+          "channel",
+          "MSSP",
+          "reseller",
+          "co-sell"
+        ],
+        "scoring_guidance": {
+          "1": "No marketplace or channel presence",
+          "2": "Minimal partner mentions; limited or undocumented channel",
+          "3": "Documented partner program; some named partners; at least one relevant marketplace listing",
+          "4": "Mature partner program (50+ partners); MSSP program with named providers; co-sell tier on major platforms",
+          "5": "Best-in-class channel strategy for this market; 100+ partners; flagship MSSP/SI relationships; top co-sell tiers"
+        }
+      },
+      "SLE-02": {
+        "name": "Buying Experience & Trial Motion",
+        "expanded_definition": "TEMPLATE — ease of evaluation for prospects: free trial availability, self-service onboarding, time-to-first-value, and product-led growth motion. The best-scoring vendors in modern markets (especially SaaS and cloud) enable prospects to evaluate the product without heavy sales friction. Adjust this sub-pillar to match the typical buying motion in this market.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Free trial or POV program documentation",
+          "TEMPLATE — Self-service signup and onboarding flow",
+          "TEMPLATE — G2 reviews on buying and onboarding experience",
+          "TEMPLATE — Sales engineering job postings as proxy for pre-sales investment"
+        ],
+        "search_terms": [
+          "free trial",
+          "self-service",
+          "POV",
+          "POC",
+          "TEMPLATE — market-specific term (e.g., 'cloud connector' for CNAPP, 'free scan' for ASM)"
+        ],
+        "scoring_guidance": {
+          "1": "Contact-us only; no trial or POV evidence",
+          "2": "Demo request form only; no self-service evaluation path",
+          "3": "Free trial or POV documented; onboarding guide available; sales team responsive",
+          "4": "Self-service trial with rapid time-to-value; enterprise sales overlay for larger deals",
+          "5": "Best-in-class PLG motion; sign-up and achieve first meaningful finding within 1 hour; multi-motion sales"
+        }
+      },
+      "MKR-01": {
+        "name": "Product Release Cadence & Velocity",
+        "expanded_definition": "TEMPLATE — frequency and substance of product releases over the last 12-24 months. Fast-moving markets (AI security, cloud security) require higher release velocity to maintain competitiveness. Evaluate whether the vendor's release cadence keeps pace with market evolution.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Release notes or changelog page (publicly accessible)",
+          "TEMPLATE — Blog posts announcing major new capabilities",
+          "TEMPLATE — What's New page or product update newsletters"
+        ],
+        "search_terms": [
+          "release notes",
+          "changelog",
+          "what's new",
+          "feature launch",
+          "version history"
+        ],
+        "scoring_guidance": {
+          "1": "No release history or changelog publicly available",
+          "2": "Infrequent updates; quarterly+ releases with minor features",
+          "3": "Monthly release cadence; meaningful feature additions; new capabilities documented",
+          "4": "Bi-weekly releases; major capability additions; rapid coverage of market evolution",
+          "5": "Continuous delivery; weekly releases; documented velocity metrics; same-week coverage of major market developments"
+        }
+      },
+      "MKR-02": {
+        "name": "Strategic Investment & M&A Activity",
+        "expanded_definition": "TEMPLATE — evidence of strategic investment in this market through acquisitions, key technology partnerships, or major R&D investments. M&A activity can dramatically accelerate market position (see Palo Alto Prisma CNAPP acquisitions) or signal commitment to a market. Evaluate the strategic coherence and execution quality of any M&A.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Acquisition announcements specific to this market",
+          "TEMPLATE — Technology partnership announcements expanding market capabilities",
+          "TEMPLATE — R&D investment announcements (headcount, lab openings, patent filings)"
+        ],
+        "search_terms": [
+          "acquires",
+          "acquisition",
+          "partnership",
+          "investment",
+          "TEMPLATE — add market-specific technology terms"
+        ],
+        "scoring_guidance": {
+          "1": "No M&A or strategic investment evidence in this market",
+          "2": "Minor partnerships; no acquisitions; limited strategic investment signals",
+          "3": "At least one meaningful strategic move (acquisition or major partnership) in the last 2 years",
+          "4": "2+ strategic acquisitions or partnerships that materially expand market capability; demonstrated integration success",
+          "5": "Market-shaping M&A track record; multiple successful acquisitions integrated into coherent platform; defines market consolidation direction"
+        }
+      },
+      "MKE-01": {
+        "name": "Conference & Event Presence",
+        "expanded_definition": "TEMPLATE — presence at key industry events relevant to this market. First-tier presence includes sponsoring or speaking at marquee events (RSA, Black Hat, market-specific summits). Second-tier includes presence at regional events. Score reflects both spend level and content quality — a gold sponsor with mediocre content scores lower than a thought-leadership speaker.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Sponsorship tiers at key events for this market (website, event programs)",
+          "TEMPLATE — Speaking session recordings or abstracts at major events",
+          "TEMPLATE — Proprietary flagship event (e.g., annual user conference)"
+        ],
+        "search_terms": [
+          "TEMPLATE — key conference names for this market (e.g., RSA, KubeCon for cloud; Gartner Summit)",
+          "sponsor",
+          "keynote",
+          "session"
+        ],
+        "scoring_guidance": {
+          "1": "No event presence evidence",
+          "2": "Minimal presence; exhibitor-only at one event",
+          "3": "Sponsor and/or speaker at 1-2 major events; consistent annual presence",
+          "4": "Prominent presence (title sponsor, keynote) at major events; multiple events annually",
+          "5": "Defines conference presence in this market; hosts flagship user event; title sponsor at marquee shows; earned keynote positions"
+        }
+      },
+      "MKE-02": {
+        "name": "Content Marketing & Thought Leadership",
+        "expanded_definition": "TEMPLATE — quality and reach of original research, threat intelligence, or thought leadership content specifically relevant to this market. High-quality, original content that shapes market conversation earns a score-5. Generic vendor blog posts with no original data earn a score-1 or score-2.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Original research reports published in this market (annual threat reports, market analyses)",
+          "TEMPLATE — Blog post cadence and technical depth",
+          "TEMPLATE — SEO ranking on key category terms for this market",
+          "TEMPLATE — Social media presence and engagement (LinkedIn, X/Twitter)"
+        ],
+        "search_terms": [
+          "TEMPLATE — market report term",
+          "threat report",
+          "research",
+          "thought leadership",
+          "TEMPLATE — add market-specific content terms"
+        ],
+        "scoring_guidance": {
+          "1": "No original content; corporate website only",
+          "2": "Generic blog posts; no original research or data",
+          "3": "Regular blog cadence with some original insights; 1 annual research report",
+          "4": "Recognized thought leader in this market; multiple high-quality research publications; strong SEO presence",
+          "5": "Defines thought leadership in this market; annual flagship research cited by competitors and analysts; community-building content"
+        }
+      },
+      "CXQ-01": {
+        "name": "Customer Satisfaction & Peer Review Ratings",
+        "expanded_definition": "TEMPLATE — quantitative satisfaction metrics from peer review platforms relevant to this market. Look for market-specific categories on Gartner Peer Insights and G2. Review count matters as well as rating — a 4.9/5 from 10 reviews is less meaningful than a 4.6/5 from 500 reviews.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Gartner Peer Insights category and rating for this market",
+          "TEMPLATE — G2 category position and overall rating for this market",
+          "TEMPLATE — TrustRadius or PeerSpot data if available for this market",
+          "TEMPLATE — Customer testimonials citing specific value delivered"
+        ],
+        "search_terms": [
+          "Gartner Peer Insights",
+          "G2",
+          "TrustRadius",
+          "reviews",
+          "NPS",
+          "customer satisfaction",
+          "TEMPLATE — add market-specific review platform terms"
+        ],
+        "scoring_guidance": {
+          "1": "No peer review data available",
+          "2": "Minimal reviews (<20); below-average rating; or no market-specific category",
+          "3": "Adequate review base (50+); average or above-average rating (4.0+); market-specific category present",
+          "4": "Strong review base (200+); high rating (4.4+); consistent positive themes across reviews",
+          "5": "Market-leading peer review position; 500+ reviews; category leader on major platforms; 4.6+ rating; Gartner Peer Insights 'Voice of the Customer' recognition"
+        }
+      },
+      "CXQ-02": {
+        "name": "Support Quality & Customer Success",
+        "expanded_definition": "TEMPLATE — post-sales support quality, customer success program maturity, and documented time-to-value. For services markets, this includes service delivery quality. For product markets, this includes implementation support and onboarding speed.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — SLA documentation (response times, uptime guarantees)",
+          "TEMPLATE — Customer success program evidence (dedicated TAM, CSM programs, named accounts)",
+          "TEMPLATE — Onboarding or implementation documentation",
+          "TEMPLATE — Reviews mentioning support quality specifically"
+        ],
+        "search_terms": [
+          "support",
+          "SLA",
+          "customer success",
+          "TAM",
+          "onboarding",
+          "implementation"
+        ],
+        "scoring_guidance": {
+          "1": "No SLA or support documentation; no customer success evidence",
+          "2": "Basic support documentation; no dedicated customer success motion",
+          "3": "Documented SLA tiers; customer success program described; positive support reviews",
+          "4": "Named TAM/CSM programs for enterprise accounts; strong SLA tiers; documented fast time-to-value",
+          "5": "Best-in-class support in this market; proactive customer success; industry-leading SLA; documented retention programs"
+        }
+      },
+      "MKU-01": {
+        "name": "Market Vision & Innovation Roadmap",
+        "expanded_definition": "TEMPLATE — clarity and ambition of market vision, public roadmap communications, and alignment between stated direction and actual execution. Vendors who articulate where the market is going (and deliver on it) score higher. Vendors who are reactive or whose roadmap is opaque score lower.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — CEO/CTO public statements on market direction (keynotes, interviews)",
+          "TEMPLATE — Public roadmap page or roadmap blog posts",
+          "TEMPLATE — Analyst briefing summaries or third-party coverage of vendor vision",
+          "TEMPLATE — Patent filings in core market technology areas"
+        ],
+        "search_terms": [
+          "roadmap",
+          "vision",
+          "future",
+          "strategy",
+          "innovation",
+          "TEMPLATE — add market-specific forward-looking terms"
+        ],
+        "scoring_guidance": {
+          "1": "No vision or roadmap information publicly available",
+          "2": "Vague vision; no specific roadmap commitments; reactive positioning",
+          "3": "Documented vision with some roadmap details; reasonable alignment to market trends",
+          "4": "Compelling market vision; specific roadmap with milestone tracking; ahead of market curve on at least one dimension",
+          "5": "Market-shaping vision; defined the conversation in this market; roadmap demonstrates deep buyer understanding; first-mover on emerging trends"
+        }
+      },
+      "VIG-01": {
+        "name": "Vertical Industry Strategy",
+        "expanded_definition": "TEMPLATE — dedicated vertical solutions, compliance packs, or reference architectures for regulated industries most important to this market. Identify the top 2-3 verticals for this market and evaluate the depth of vertical-specific investment.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Vertical solution pages (financial services, healthcare, government, critical infrastructure)",
+          "TEMPLATE — Compliance certifications most relevant to verticals in this market",
+          "TEMPLATE — Vertical-specific case studies or reference architectures",
+          "TEMPLATE — Vertical-specific sales or customer success teams"
+        ],
+        "search_terms": [
+          "financial services",
+          "healthcare",
+          "government",
+          "FedRAMP",
+          "HIPAA",
+          "vertical",
+          "TEMPLATE — add market-specific vertical terms"
+        ],
+        "scoring_guidance": {
+          "1": "No vertical-specific content, certifications, or solutions",
+          "2": "Generic compliance mentions; no vertical-specific depth or dedicated resources",
+          "3": "1-2 key verticals addressed with specific solutions or case studies",
+          "4": "3+ verticals with dedicated resources; relevant compliance certifications documented; vertical-specific marketing",
+          "5": "Comprehensive vertical strategy; leading certifications (FedRAMP, IL5 where relevant); multiple regulated verticals with dedicated teams and named reference customers"
+        }
+      },
+      "VIG-02": {
+        "name": "Geographic Coverage & Data Sovereignty",
+        "expanded_definition": "TEMPLATE — geographic availability, data residency options, and support for regional regulatory requirements relevant to buyers in this market. For globally-deployed products, evaluate breadth of regional availability. For data-sensitive markets, evaluate the depth of data residency and sovereignty options.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Regional availability pages or documentation",
+          "TEMPLATE — Data residency documentation (where data is stored, processed, and retained)",
+          "TEMPLATE — Sovereign cloud or GovCloud support where relevant to this market",
+          "TEMPLATE — Regional partner or support infrastructure evidence"
+        ],
+        "search_terms": [
+          "EMEA",
+          "APAC",
+          "LATAM",
+          "data residency",
+          "sovereign cloud",
+          "GovCloud",
+          "regional",
+          "TEMPLATE — add market-specific geographic terms"
+        ],
+        "scoring_guidance": {
+          "1": "Single-region only; no data residency options",
+          "2": "2 regions; limited data residency documentation",
+          "3": "3 major regions (Americas, EMEA, APAC); basic data residency options",
+          "4": "4+ regions; documented data residency by region; sovereign or GovCloud options for key markets",
+          "5": "Global presence; comprehensive data residency options for all major regulatory regimes; dedicated sovereign cloud or GovCloud with named customers; 20+ country coverage"
+        }
+      }
+    }
+  }
+}

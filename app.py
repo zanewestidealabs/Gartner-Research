@@ -73,6 +73,8 @@ SCHEMA_REGISTRY = {
     'MDR_MQ_Gap_Schema_App.json': {'top_key': 'mq_gap_taxonomy_v1.0', 'structure': 'flat'},
     'CNAPP_Schema.json': {'top_key': 'cnapp_taxonomy_v1.1', 'structure': 'flat'},
     'CNAPP_MQ_Gap_Schema_App.json': {'top_key': 'cnapp_mq_gap_taxonomy_v1.0', 'structure': 'flat'},
+    'Schema_Template_Capability.json': {'top_key': 'capability_schema_template_v1.0', 'structure': 'flat'},
+    'Schema_Template_MQ_Gap.json': {'top_key': 'mq_gap_schema_template_v1.0', 'structure': 'flat'},
 }
 
 # Schema display metadata: maps schema filename to title, abbreviation, subtitle
@@ -92,6 +94,8 @@ SCHEMA_DISPLAY = {
     'MDR_MQ_Gap_Schema_App.json': {'title': 'MDR Magic Quadrant — Gap Criteria Analysis 2026', 'abbr': 'MDR-MQ', 'subtitle': 'Evaluate MDR vendors against 7 MQ criteria not covered by capability or pricing schemas'},
     'CNAPP_Schema.json': {'title': 'CNAPP Vendor Capability Analysis 2026', 'abbr': 'CNAPP', 'subtitle': 'Evaluate cloud-native application protection platform vendors across CSPM, CWPP, CIEM, DevSecOps, CDR, DSPM, and fringe differentiators'},
     'CNAPP_MQ_Gap_Schema_App.json': {'title': 'CNAPP Magic Quadrant — Gap Criteria Analysis 2026', 'abbr': 'CNAPP-MQ', 'subtitle': 'Evaluate CNAPP vendors against the 7 Magic Quadrant criteria not covered by the CNAPP capability schema'},
+    'Schema_Template_Capability.json': {'title': 'Schema Template — Capability Assessment', 'abbr': 'TEMPLATE-CAP', 'subtitle': 'Blank capability schema template with annotated structure — use as the starting point for a new market capability assessment schema'},
+    'Schema_Template_MQ_Gap.json': {'title': 'Schema Template — MQ Gap Criteria', 'abbr': 'TEMPLATE-MQ', 'subtitle': 'Blank MQ Gap schema template with annotated structure — use as the starting point for Magic Quadrant supplemental criteria scoring'},
 }
 
 def discover_schema_files():
@@ -126,12 +130,27 @@ def load_schema_data(schema_file=None):
                     top_key = k
                     break
             if top_key is None:
-                return data  # return as-is
+                return _strip_schema_notes(data)  # return as-is
 
-        return data.get(top_key, {})
+        return _strip_schema_notes(data.get(top_key, {}))
     except Exception as e:
         print(f"Error loading schema {schema_file}: {e}")
     return {}
+
+def _strip_schema_notes(body):
+    """Remove documentation-only keys (those starting with '_') from pillars/sub_pillars dicts.
+
+    Templates use '_note' entries to document structure inline. These would break
+    code that iterates pillars/sub_pillars expecting every value to be a dict.
+    """
+    if not isinstance(body, dict):
+        return body
+    for section in ('pillars', 'sub_pillars'):
+        sect = body.get(section)
+        if isinstance(sect, dict):
+            body[section] = {k: v for k, v in sect.items()
+                             if not (isinstance(k, str) and k.startswith('_'))}
+    return body
 
 def _schema_structure(schema_file=None):
     """Return 'nested' or 'flat' for the given schema."""
@@ -583,6 +602,8 @@ def get_vendor_files():
     def _detect_project(name):
         """Return project tag from a filename (schema or vendor)."""
         lower = name.lower()
+        if 'schema_template' in lower:
+            return 'template'
         if 'trism' in lower:
             return 'trism'
         if 'preemptive' in lower or 'precyber' in lower:
@@ -739,6 +760,7 @@ _PROJECT_SCHEMA_MAP = {
 def _detect_project_from_name(name):
     """Return project tag from a filename."""
     lower = name.lower()
+    if 'schema_template' in lower: return 'template'
     if 'trism' in lower: return 'trism'
     if 'preemptive' in lower or 'precyber' in lower: return 'precyber'
     if 'secure_by_design' in lower or 'sbd_ai' in lower or 'sbdai' in lower: return 'sbdai'

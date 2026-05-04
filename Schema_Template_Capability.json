@@ -1,0 +1,314 @@
+{
+  "capability_schema_template_v1.0": {
+    "schema_lineage": {
+      "schema_id": "TEMPLATE — replace with a unique schema ID (e.g., My_Market_Schema)",
+      "version": "1.0",
+      "parent": "TEMPLATE — filename of any parent schema this extends, or null if none",
+      "related_schemas": [
+        "TEMPLATE — list any related schema filenames, or remove this array if none"
+      ],
+      "purpose": "TEMPLATE — one sentence describing the market segment or capability area this schema evaluates (e.g., 'Evaluate vendors providing endpoint detection and response products across detection, investigation, and response pillars.')"
+    },
+    "intent": "TEMPLATE — two to three sentences describing the evaluation goal and scoring philosophy. What will analysts learn by scoring vendors against this schema? Who is the audience? What decisions will the output inform? Example: 'Assess [MARKET] vendor capability depth across [N] pillars aligned to Gartner's [FRAMEWORK] framework. Vendors are scored on demonstrated, publicly verifiable capability — not marketing claims. Scores support Magic Quadrant positioning, market guide vendor selection, and buyer comparison tooling.'",
+    "metadata": {
+      "framework_alignment": "TEMPLATE — list the external frameworks this schema aligns to (e.g., Gartner Market Guide 2025 + NIST CSF 2.0 + CIS Benchmarks + MITRE ATT&CK). Use this to anchor scoring criteria to recognized standards.",
+      "scoring_scale": {
+        "min": 0,
+        "max": 5,
+        "meaning_of_zero": "No publicly verifiable evidence of capability in this area",
+        "_note": "The 0-5 scale below is the standard across all Gartner research schemas in this platform. Do not modify the scale values. Customize the descriptions only if this schema has a meaningfully different evidence bar (e.g., a services schema vs. a product capability schema).",
+        "scoring_logic": {
+          "0": "No Evidence: No publicly verifiable evidence of capability in this sub-pillar.",
+          "1": "Minimal: Basic or manual capability; limited automation, minimal technical specifics, or niche-only applicability.",
+          "2": "Generic Claims: Marketing mentions the capability but lacks named products, technical documentation, metrics, or meaningful specifics.",
+          "3": "Demonstrated: Documented capability with named products or features, some technical depth, identifiable use cases, and available customer validation.",
+          "4": "Advanced: Named products with measurable outcomes, analyst recognition, deep integration points, and automation-forward architecture.",
+          "5": "Market-Leading: Best-in-class capability with deep technical evidence, breadth across environments, analyst leadership recognition, measurable impact metrics, and continuous innovation. Reference customers and third-party validation available."
+        }
+      },
+      "source_policy": {
+        "description": "Evidence must be publicly accessible and verifiable. Scores based on unverifiable internal briefings or analyst intuition alone should be flagged. Tier determines the evidence weight applied during quality review.",
+        "valid_sources": [
+          {
+            "tier": "A",
+            "_note": "Tier A sources carry full weight — use these as the primary basis for scores of 3 or higher.",
+            "type": "Vendor documentation",
+            "examples": [
+              "Product pages",
+              "Technical documentation",
+              "API references",
+              "Release notes",
+              "Security whitepapers",
+              "Compliance documentation"
+            ],
+            "weight": 1.0
+          },
+          {
+            "tier": "A",
+            "type": "Analyst reports",
+            "examples": [
+              "Gartner Market Guide / Magic Quadrant / Hype Cycle",
+              "Forrester Wave",
+              "IDC MarketScape",
+              "KuppingerCole Leadership Compass",
+              "ESG Technical Validation"
+            ],
+            "weight": 1.0
+          },
+          {
+            "tier": "B",
+            "_note": "Tier B sources are valid corroborating evidence. Sufficient for scores up to 3-4 when multiple B sources agree.",
+            "type": "Technical media",
+            "examples": [
+              "SecurityWeek",
+              "Dark Reading",
+              "Help Net Security",
+              "CSO Online",
+              "The Hacker News",
+              "SC Media"
+            ],
+            "weight": 0.85
+          },
+          {
+            "tier": "B",
+            "type": "Benchmarks and case studies",
+            "examples": [
+              "Customer case studies",
+              "Cloud provider marketplace listings",
+              "CISA advisories referencing vendor tools",
+              "Certification body listings"
+            ],
+            "weight": 0.85
+          },
+          {
+            "tier": "C",
+            "_note": "Tier C sources alone are insufficient to justify scores above 2. Use only as supporting signals or for 0-1 scoring.",
+            "type": "Conference and academic",
+            "examples": [
+              "RSAC",
+              "Black Hat",
+              "conference presentations",
+              "arXiv or academic papers"
+            ],
+            "weight": 0.7
+          },
+          {
+            "tier": "C",
+            "type": "Professional networks",
+            "examples": [
+              "Engineer-authored LinkedIn posts or blogs with technical detail",
+              "GitHub repositories with documented integrations"
+            ],
+            "weight": 0.7
+          }
+        ],
+        "invalid_sources": [
+          "Wikipedia (unverified and editable)",
+          "Vendor-paid advertorials without disclosure",
+          "Anonymous or unverifiable claims"
+        ]
+      },
+      "coverage_grade": {
+        "description": "Letter grade based on percentage of capability sub-pillars covered (score >= 1). Adjust the thresholds below to match your total sub-pillar count. The example thresholds assume approximately 20-30 sub-pillars total — recalibrate for significantly larger or smaller schemas.",
+        "scale": {
+          "A": "TEMPLATE — e.g., 22-28 sub-pillars (>=79% covered with Tier A/B evidence)",
+          "B": "TEMPLATE — e.g., 17-21 sub-pillars (61-75% covered)",
+          "C": "TEMPLATE — e.g., 11-16 sub-pillars (39-57% covered)",
+          "D": "TEMPLATE — e.g., 6-10 sub-pillars (21-36% covered)",
+          "F": "TEMPLATE — e.g., 1-5 sub-pillars (<21% covered or mostly heuristic-derived)"
+        }
+      },
+      "market_position_definitions": {
+        "_note": "OPTIONAL. Define vendor classification categories relevant to your market — these appear as filter options in the vendor table. Remove this block if classification is not applicable to your schema.",
+        "vendor_type": {
+          "TEMPLATE — Pure-Play": "TEMPLATE — Vendors whose primary commercial offering is this specific market product. The market is their core business.",
+          "TEMPLATE — Platform Vendor": "TEMPLATE — Large platform vendors who deliver this capability as a deeply integrated component of a broader product suite.",
+          "TEMPLATE — Adjacent Entrant": "TEMPLATE — Vendors entering this market from an adjacent segment who have expanded their platform to cover relevant use cases.",
+          "TEMPLATE — Emerging": "TEMPLATE — Early-stage vendors building differentiated capabilities, often with novel architectures not yet reflected in mainstream frameworks."
+        }
+      }
+    },
+    "pillars": {
+      "_note": "Define 4-10 pillars. Each pillar is a major capability area evaluated by this schema. Pillar codes (keys) should be short uppercase abbreviations that will appear in the vendor table as column headers (e.g., CSPM, CWPP, CIEM). Use tier='core' for mandatory evaluation areas and tier='non-core (evaluate if present)' for differentiating capabilities that not all vendors will offer.",
+      "PIL1": {
+        "name": "TEMPLATE — First Pillar Full Name (e.g., Threat Detection & Analysis)",
+        "focus": "TEMPLATE — 2-3 sentences describing what this pillar evaluates. What core problem does this pillar address? What should a vendor demonstrate to score well here? What is the minimum bar vs. the market-leading bar? Be specific enough that two different analysts would agree on what constitutes a score-4 vs. score-5 vendor.",
+        "evidence_signals": [
+          "TEMPLATE — Evidence signal 1: specific, named capability the vendor must publicly demonstrate (e.g., 'Named detection engine with documented MITRE ATT&CK coverage percentage')",
+          "TEMPLATE — Evidence signal 2: integration depth or coverage breadth signal (e.g., 'Support for at least 3 major log source types with documented normalization')",
+          "TEMPLATE — Evidence signal 3: outcome or quality signal (e.g., 'Customer case studies showing measurable mean-time-to-detect improvements')",
+          "TEMPLATE — Evidence signal 4: analyst or third-party recognition signal (e.g., 'Named in Gartner Market Guide or equivalent analyst report in this capability')"
+        ],
+        "tier": "core"
+      },
+      "PIL2": {
+        "name": "TEMPLATE — Second Pillar Full Name (e.g., Investigation & Forensics)",
+        "focus": "TEMPLATE — describe this pillar's scope and what separates vendors at different scoring levels.",
+        "evidence_signals": [
+          "TEMPLATE — evidence signal 1",
+          "TEMPLATE — evidence signal 2",
+          "TEMPLATE — evidence signal 3"
+        ],
+        "tier": "core"
+      },
+      "PIL3": {
+        "name": "TEMPLATE — Third Pillar Full Name (e.g., Containment & Response)",
+        "focus": "TEMPLATE — describe this pillar.",
+        "evidence_signals": [
+          "TEMPLATE — evidence signal 1",
+          "TEMPLATE — evidence signal 2",
+          "TEMPLATE — evidence signal 3"
+        ],
+        "tier": "core"
+      },
+      "PIL4": {
+        "name": "TEMPLATE — Fourth Pillar Full Name (e.g., Automation & Orchestration)",
+        "focus": "TEMPLATE — describe this pillar.",
+        "evidence_signals": [
+          "TEMPLATE — evidence signal 1",
+          "TEMPLATE — evidence signal 2"
+        ],
+        "tier": "core"
+      },
+      "PIL5": {
+        "name": "TEMPLATE — Fifth Pillar Full Name — Differentiating / Non-Core Capability",
+        "focus": "TEMPLATE — describe a differentiating capability not all vendors will offer. Non-core pillars identify market leaders and emerging differentiators. Example: AI-native capabilities, novel integrations, or next-generation approaches that extend beyond the market baseline.",
+        "evidence_signals": [
+          "TEMPLATE — evidence signal 1",
+          "TEMPLATE — evidence signal 2"
+        ],
+        "tier": "non-core (evaluate if present)"
+      }
+    },
+    "sub_pillars": {
+      "_note": "Define 3-6 sub-pillars per pillar (total 15-40 sub-pillars is typical). Sub-pillar codes follow the pattern PILLARCODE-NN (e.g., PIL1-01, PIL1-02). Each sub-pillar scores a specific, narrow capability facet — precise enough that a researcher can determine the correct score from publicly available evidence in 15-30 minutes. Avoid overlapping definitions between sub-pillars in the same pillar.",
+      "PIL1-01": {
+        "name": "TEMPLATE — Sub-pillar Name (e.g., Real-Time Threat Detection Engine)",
+        "expanded_definition": "TEMPLATE — Write 2-4 sentences precisely defining what capability is being measured. Be specific: name the technical approach, the coverage breadth required, and what distinguishes each score level. Example: 'Evaluates the vendor's core detection engine — whether it processes telemetry in real-time vs. batch, the rule or ML model approach, coverage breadth across attack techniques, and the freshness of threat intelligence integration. A score-3 requires a named detection product with documented technique coverage. A score-5 requires measurable false-positive rates, MITRE ATT&CK mapping with coverage percentages, and continuous threat-intel feed integration.'",
+        "what_to_verify_publicly": [
+          "TEMPLATE — Specific verification point 1: what document or page should the researcher look for? (e.g., 'Product datasheet naming the detection engine and listing supported log source types')",
+          "TEMPLATE — Specific verification point 2: what measurable evidence should be present? (e.g., 'MITRE ATT&CK coverage heatmap or percentage documented on website or in a report')",
+          "TEMPLATE — Specific verification point 3: what customer validation should exist? (e.g., 'Case study or peer review citing detection accuracy or alert reduction metrics')",
+          "TEMPLATE — Specific verification point 4: what analyst recognition should exist? (e.g., 'Named in Gartner or Forrester report specifically for this capability')"
+        ],
+        "search_terms": [
+          "TEMPLATE — primary search term (exact product name or category term)",
+          "TEMPLATE — secondary search term (technical capability term)",
+          "TEMPLATE — tertiary search term (outcome or metric term)",
+          "TEMPLATE — vendor qualifier term (e.g., '[VendorName] detection engine')"
+        ]
+      },
+      "PIL1-02": {
+        "name": "TEMPLATE — Second Sub-pillar for Pillar 1 (e.g., Threat Intelligence Integration)",
+        "expanded_definition": "TEMPLATE — precise definition of what this sub-pillar measures. Differentiate clearly from PIL1-01 to avoid scorer ambiguity.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2",
+          "TEMPLATE — verification point 3"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2",
+          "TEMPLATE — search term 3"
+        ]
+      },
+      "PIL1-03": {
+        "name": "TEMPLATE — Third Sub-pillar for Pillar 1",
+        "expanded_definition": "TEMPLATE — definition.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2"
+        ]
+      },
+      "PIL2-01": {
+        "name": "TEMPLATE — First Sub-pillar for Pillar 2",
+        "expanded_definition": "TEMPLATE — definition. Note: as you add sub-pillars, use the PILLARCODE-NN naming pattern consistently. If a pillar has more than 9 sub-pillars use PIL2-10, PIL2-11, etc.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2",
+          "TEMPLATE — verification point 3"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2"
+        ]
+      },
+      "PIL2-02": {
+        "name": "TEMPLATE — Second Sub-pillar for Pillar 2",
+        "expanded_definition": "TEMPLATE — definition.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2"
+        ]
+      },
+      "PIL3-01": {
+        "name": "TEMPLATE — First Sub-pillar for Pillar 3",
+        "expanded_definition": "TEMPLATE — definition.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2"
+        ]
+      },
+      "PIL3-02": {
+        "name": "TEMPLATE — Second Sub-pillar for Pillar 3",
+        "expanded_definition": "TEMPLATE — definition.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2"
+        ]
+      },
+      "PIL4-01": {
+        "name": "TEMPLATE — First Sub-pillar for Pillar 4",
+        "expanded_definition": "TEMPLATE — definition.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2"
+        ]
+      },
+      "PIL4-02": {
+        "name": "TEMPLATE — Second Sub-pillar for Pillar 4",
+        "expanded_definition": "TEMPLATE — definition.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2"
+        ]
+      },
+      "PIL5-01": {
+        "name": "TEMPLATE — First Sub-pillar for Pillar 5 (Differentiating Capability)",
+        "expanded_definition": "TEMPLATE — definition. Non-core sub-pillars should document what a vendor earns by scoring above 0 here — it signals differentiation, not a baseline requirement.",
+        "what_to_verify_publicly": [
+          "TEMPLATE — verification point 1",
+          "TEMPLATE — verification point 2"
+        ],
+        "search_terms": [
+          "TEMPLATE — search term 1",
+          "TEMPLATE — search term 2"
+        ]
+      }
+    }
+  }
+}
