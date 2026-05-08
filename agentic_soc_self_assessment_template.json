@@ -1,0 +1,486 @@
+{
+  "assessment_metadata": {
+    "framework": "Agentic SOC Maturity Framework (ASMF)",
+    "framework_version": "1.0.0",
+    "assessment_version": "1.0",
+    "organization": "ORGANIZATION NAME",
+    "assessor": "ASSESSOR NAME / TEAM",
+    "assessment_date": "YYYY-MM-DD",
+    "assessment_type": "Self-Assessment",
+    "scope": "Describe the scope of this assessment (e.g., 'Enterprise SOC', 'MSSP delivery operations', 'Hybrid SOC/MDR function')",
+    "current_soc_model": "Describe your current SOC model briefly (e.g., 'Internal L1/L2/L3 with MDR retainer', 'Co-managed MSSP')",
+    "headcount": null,
+    "locations": [],
+    "regulatory_context": "Describe key regulatory requirements relevant to this assessment (e.g., DORA, NIS2, HIPAA, FedRAMP)",
+    "notes": "General notes about the assessment context, constraints, or caveats"
+  },
+
+  "assessment_summary": {
+    "overall_current_stage": null,
+    "overall_current_label": "",
+    "overall_target_stage": null,
+    "overall_target_label": "",
+    "assessment_confidence": "high | medium | low",
+    "top_strengths": [],
+    "top_gaps": [],
+    "strategic_recommendation": "",
+    "_note": "This section is auto-populated by the report generator. Do not fill manually."
+  },
+
+  "dimensions": {
+
+    "SEN": {
+      "dimension_notes": "Notes about your sensing and detection architecture context",
+      "sub_dimensions": {
+        "SEN-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "Describe what is currently in place to justify your current_stage rating",
+          "gap_note": "Describe the key gap between current and target stage",
+          "owner": "Role or team responsible"
+        },
+        "SEN-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "SEN-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "SEN-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "RSN": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "RSN-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "RSN-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "RSN-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "RSN-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "ACT": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "ACT-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "ACT-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "ACT-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "ACT-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "GOV": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "GOV-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "GOV-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "GOV-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "GOV-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "LRN": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "LRN-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "LRN-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "LRN-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "LRN-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "OPS": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "OPS-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "OPS-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "OPS-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "OPS-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "HUM": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "HUM-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "HUM-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "HUM-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "HUM-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "AGT": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "AGT-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "AGT-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "AGT-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "AGT-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "SKG": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "SKG-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "SKG-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "SKG-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "SKG-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "MET": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "MET-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "MET-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "MET-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "MET-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    },
+
+    "TRN": {
+      "dimension_notes": "",
+      "sub_dimensions": {
+        "TRN-01": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "TRN-02": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "TRN-03": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        },
+        "TRN-04": {
+          "current_stage": null,
+          "target_stage": null,
+          "priority": "critical | high | medium | low",
+          "evidence_note": "",
+          "gap_note": "",
+          "owner": ""
+        }
+      }
+    }
+
+  },
+
+  "transformation_priorities": {
+    "horizon_1": {
+      "label": "Immediate (0-6 months)",
+      "focus": "",
+      "key_actions": []
+    },
+    "horizon_2": {
+      "label": "Near-term (6-18 months)",
+      "focus": "",
+      "key_actions": []
+    },
+    "horizon_3": {
+      "label": "Strategic (18-36 months)",
+      "focus": "",
+      "key_actions": []
+    }
+  },
+
+  "example_completed_assessment": {
+    "_description": "This is an illustrative example showing a mid-size enterprise at Stage 1 targeting Stage 3 in 24 months",
+    "metadata": {
+      "organization": "Example Enterprise Corp",
+      "current_soc_model": "Internal SOC with SOAR, 8 analysts in L1/L2/L3 tiers, MDR retainer for after-hours",
+      "assessment_date": "2026-05-06"
+    },
+    "sample_scores": {
+      "SEN-01": { "current_stage": 1.5, "target_stage": 3, "priority": "high", "evidence_note": "Coverage exists for endpoint, network, and cloud but SaaS coverage is partial. No identity signal fusion." },
+      "SEN-02": { "current_stage": 1, "target_stage": 3, "priority": "high", "evidence_note": "Detection logic is 60% vendor signatures. Some ATT&CK mapping done. Manual tuning cycle is quarterly." },
+      "GOV-01": { "current_stage": 0, "target_stage": 3, "priority": "critical", "evidence_note": "Authority defined only in RACI. No technical enforcement. Automation actions approved per-analyst judgment." },
+      "GOV-02": { "current_stage": 0, "target_stage": 2, "priority": "critical", "evidence_note": "Ethics is a section in the security policy document. No operational integration." },
+      "SKG-01": { "current_stage": 1, "target_stage": 3, "priority": "high", "evidence_note": "Asset and identity data in CMDB and AD. Threat intel in a separate platform. No unified graph." },
+      "TRN-01": { "current_stage": 2, "target_stage": 4, "priority": "high", "evidence_note": "CISO has articulated agentic vision. CTO aligned. Board briefed Q1 2026. Budget committed for 2026-2027." }
+    }
+  }
+}

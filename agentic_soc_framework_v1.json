@@ -1,0 +1,1014 @@
+{
+  "schema_version": "1.0.0",
+  "framework_name": "Agentic SOC Maturity Framework",
+  "framework_abbrev": "ASMF",
+  "created": "2026-05-06",
+  "description": "A systems-level framework for designing, assessing, and evolving Security Operations from traditional tiered models to fully autonomous, agentic, ethics-aware security control systems by 2030.",
+  "scope": "This framework applies to enterprise security operations functions considering or undergoing agentic transformation. It is vendor-neutral, technology-agnostic, and focused on operating model, governance architecture, and capability maturity.",
+
+  "principles": [
+    {
+      "id": "P1",
+      "label": "Cybernetic System",
+      "statement": "Security Operations is a cybernetic system — a continuous feedback loop of sensing, reasoning, action, and learning — not a linear workflow of tiered human escalations."
+    },
+    {
+      "id": "P2",
+      "label": "Governance as Control Signal",
+      "statement": "Ethics, governance, and authority are operational control signals that shape every action in real time. They are not oversight layers applied after the fact."
+    },
+    {
+      "id": "P3",
+      "label": "Bounded Autonomy",
+      "statement": "Autonomy must be scoped, proportional, explainable, auditable, and revocable. Unbounded autonomy is an architectural failure, not a capability goal."
+    },
+    {
+      "id": "P4",
+      "label": "Continuous Bidirectional Operation",
+      "statement": "Planning, detection, response, and learning operate continuously and bidirectionally. Every action feeds the knowledge model; every new signal may alter the operational plan."
+    },
+    {
+      "id": "P5",
+      "label": "Human Governance of Intent",
+      "statement": "Humans govern intent, scope, and legitimacy — not alert queues. Human value is derived from judgment, authority, and ethical accountability, not task throughput."
+    },
+    {
+      "id": "P6",
+      "label": "Knowledge Graph as Spine",
+      "statement": "The Security Knowledge Graph is the operational spine — connecting policy, evidence, adversary intelligence, confidence, authority, and audit artifacts as first-class entities."
+    },
+    {
+      "id": "P7",
+      "label": "Non-Linear Operations",
+      "statement": "Agentic operations do not follow linear kill-chain or escalation models. They operate as competing hypotheses, parallel investigations, and continuous exposure management."
+    },
+    {
+      "id": "P8",
+      "label": "Traceability",
+      "statement": "Every decision, action, and outcome must be traceable through the system to its authorizing scope, evidence chain, confidence level, and governance approval."
+    }
+  ],
+
+  "maturity_stages": {
+    "0": {
+      "id": 0,
+      "label": "Traditional",
+      "tag": "Tiered SOC",
+      "description": "Classic L1/L2/L3 analyst model. Operations are alert-driven, reactive, and reliant on human throughput. SIEM, SOAR, and ticketing systems are the primary tools. Governance is documented in policy files and reviewed episodically.",
+      "autonomy_level": "None — humans execute all detection, triage, investigation, and response actions",
+      "human_model": "Tiered analysts; senior analysts as escalation endpoints; manager as approver",
+      "governance_model": "Static policy documents; periodic compliance reviews; no real-time enforcement",
+      "detection_posture": "Alert-queue processing; signature and rule-based detection; SIEM correlation",
+      "knowledge_model": "Tribal knowledge; runbooks; unstructured wikis",
+      "typical_year": "2020-2024"
+    },
+    "1": {
+      "id": 1,
+      "label": "Assisted",
+      "tag": "AI-Augmented",
+      "description": "AI and automation assist analysts with triage, enrichment, and playbook execution. Humans still own all decisions. Automation reduces MTTR for known threat patterns. Alert fatigue begins to be addressed but the tier model remains.",
+      "autonomy_level": "Low — automation executes pre-approved playbooks; humans approve all significant actions",
+      "human_model": "Tiered analysts assisted by automation; senior analysts focus on complex investigations",
+      "governance_model": "Policy codified in playbooks; automated compliance checks on known scenarios",
+      "detection_posture": "ML-assisted prioritization; behavioral anomaly detection augmenting signature rules",
+      "knowledge_model": "Structured runbooks; case management with enrichment; basic threat intel integration",
+      "typical_year": "2024-2025"
+    },
+    "2": {
+      "id": 2,
+      "label": "Supervised Autonomy",
+      "tag": "Agents with Approval Gates",
+      "description": "Agents execute bounded, pre-authorized investigation and response tasks autonomously. Humans approve significant actions via intent-based authorization. The tier model weakens as agents handle L1/L2 workloads completely.",
+      "autonomy_level": "Moderate — agents autonomously investigate and contain within pre-authorized scope; humans approve scope-expanding actions",
+      "human_model": "Analysts become agent supervisors; role identity shifts from throughput to oversight and exception handling",
+      "governance_model": "Governance rules embedded in agent execution frameworks; authority scope defined per agent class",
+      "detection_posture": "Agent-driven detection hypotheses; continuous signal fusion; CTEM begins integration",
+      "knowledge_model": "Structured knowledge graph prototype; policy and evidence begin to link; adversary model tracked",
+      "typical_year": "2025-2026"
+    },
+    "3": {
+      "id": 3,
+      "label": "Directed Autonomy",
+      "tag": "Intent-Driven Operations",
+      "description": "Humans define operational intent, scope constraints, and ethical boundaries. Agents plan, reason, and execute autonomously within those bounds. Escalation is replaced by bounded exception handling. The tier model is fully eliminated.",
+      "autonomy_level": "High — agents plan multi-step investigation and response chains; humans define scope and handle genuine novelty",
+      "human_model": "Post-tier roles: Security Architects define scope/intent; Response Authorities approve novel actions; Governance Officers maintain ethical bounds",
+      "governance_model": "Machine-interpretable policy; ethics engine runs as operational control loop; authority modeled in graph",
+      "detection_posture": "Competing hypothesis model; continuous pre-emptive and reactive operations; exposure-driven prioritization",
+      "knowledge_model": "Active Security Knowledge Graph; governance, confidence, and adversary entities as first-class nodes",
+      "typical_year": "2026-2027"
+    },
+    "4": {
+      "id": 4,
+      "label": "Collaborative Agentic",
+      "tag": "Agent-First with Human Governance",
+      "description": "Agent-first operations across all security functions. Humans govern legitimacy, ethics, and organizational intent. Agents coordinate, compete, and resolve conflicts autonomously. DFIR, threat research, and exposure management are continuous functions — not projects.",
+      "autonomy_level": "Very high — agents handle all operational execution; humans maintain governance authority and handle ethics-boundary decisions",
+      "human_model": "Governance Officers hold ethical veto authority; Security Strategists define long-horizon intent; Assurance Officers validate agent behavior",
+      "governance_model": "Governance as continuous operational signal; ethics engine enforces proportionality, legality, and scope in real time",
+      "detection_posture": "Fully continuous; CTEM, DFIR, threat research, and response are unified and simultaneously active",
+      "knowledge_model": "Full SKG operational; graph drives planning, reasoning, orchestration, and artifact generation",
+      "typical_year": "2027-2028"
+    },
+    "5": {
+      "id": 5,
+      "label": "Fully Agentic",
+      "tag": "Autonomous Control System",
+      "description": "Security Operations is a self-regulating autonomous control system. Agents continuously sense, reason, act, and learn across all security domains. Humans govern intent, audit outcomes, and hold constitutional authority over the system's ethical and legal boundaries.",
+      "autonomy_level": "Full — agents operate the security control system; humans govern the governing model itself",
+      "human_model": "Constitutional Governance role defines system values and authority; Chief Trust Officer owns audit and legitimacy; Strategic Security Architect owns long-horizon system design",
+      "governance_model": "Ethics and governance are part of the operating kernel; every action is governed, logged, explainable, and revocable",
+      "detection_posture": "Predictive and pre-emptive by default; adversary modeling informs continuous exposure management and detection architecture",
+      "knowledge_model": "SKG is self-evolving; continuously integrating threat intelligence, incident learning, and governance updates",
+      "typical_year": "2028-2030"
+    }
+  },
+
+  "dimensions": {
+
+    "SEN": {
+      "id": "SEN",
+      "name": "Sensing Fabric & Detection Architecture",
+      "plane": "Sensing",
+      "description": "The capability to continuously ingest, fuse, and interpret signals across the full threat surface. Includes sensor coverage, adversary-informed detection logic, exposure surface awareness, and the evolution from reactive alert processing to continuous sensing.",
+      "weight": 0.10,
+      "sub_dimensions": {
+        "SEN-01": {
+          "id": "SEN-01",
+          "name": "Signal Coverage & Sensor Breadth",
+          "description": "The scope and depth of signal sources monitored, from endpoint and network through cloud, identity, SaaS, OT, and supply chain.",
+          "assessment_question": "How comprehensively does your sensing infrastructure cover the full threat surface, including cloud, identity, SaaS, OT, and third-party signals?",
+          "stage_descriptors": {
+            "0": "Coverage limited to endpoint and network logs forwarded to SIEM; significant blind spots in cloud, identity, and SaaS; sensor configuration is manual and static.",
+            "1": "Coverage extended to cloud and identity sources; log normalization automated; some behavioral sensors deployed; coverage gaps known but accepted.",
+            "2": "Comprehensive multi-domain coverage including cloud-native, identity, SaaS, and supply chain signals; sensor health monitored autonomously; coverage gaps trigger automated remediation workflows.",
+            "3": "Coverage scope driven by adversary model and exposure surface; sensor deployment is risk-informed; continuous coverage validation against threat-actor TTPs.",
+            "4": "Self-configuring sensing fabric adapts to new environments and emerging attack surfaces without human intervention; coverage tied to SKG exposure nodes.",
+            "5": "Fully autonomous sensing fabric continuously discovers, integrates, and validates new signal sources; sensor posture is a live function of the adversary model and organizational risk."
+          }
+        },
+        "SEN-02": {
+          "id": "SEN-02",
+          "name": "Detection Logic Architecture",
+          "description": "The design and governance of detection rules, behavioral models, and ML-based detectors — how they are created, tuned, validated, and retired.",
+          "assessment_question": "How is detection logic created, maintained, and validated — and how quickly does it adapt to new adversary techniques?",
+          "stage_descriptors": {
+            "0": "Detection relies on static vendor signatures and manually-written correlation rules; tuning is reactive and episodic; high false positive rates accepted.",
+            "1": "Behavioral analytics and ML models supplement signatures; some automated tuning; detection coverage mapped to MITRE ATT&CK; still manually maintained.",
+            "2": "Detection logic generated and validated by agents; automated false positive reduction; adversary technique coverage tracked continuously against the threat model.",
+            "3": "Detection hypotheses generated from the adversary model and SKG; competing detectors tested against each other; logic is evidence-backed and confidence-rated.",
+            "4": "Detection architecture is fully dynamic; agents generate, test, and retire detection logic autonomously based on observed adversary behavior and SKG signals.",
+            "5": "Detection logic evolves in real time through continuous learning; adversary model changes instantly update detection posture; every detector has a traceable evidence chain."
+          }
+        },
+        "SEN-03": {
+          "id": "SEN-03",
+          "name": "Adversary Modeling Integration",
+          "description": "The degree to which adversary intelligence, threat actor profiles, and TTP libraries are operationalized into detection and sensing decisions.",
+          "assessment_question": "How directly does your adversary and threat intelligence model influence your detection architecture and sensor prioritization?",
+          "stage_descriptors": {
+            "0": "Threat intelligence consumed as reports; MITRE ATT&CK used as reference only; no operational integration with detection or sensing decisions.",
+            "1": "Threat intel feeds mapped to detection rules; ATT&CK coverage tracked; intel integrated into playbooks but not dynamically into detection logic.",
+            "2": "Adversary profiles maintained as structured data; detection gaps mapped to adversary TTPs; agent-driven correlation between intel and detection coverage.",
+            "3": "Adversary model is an active SKG entity; detection hypothesis generation driven by actor-specific TTPs and observed behaviors in the environment.",
+            "4": "Adversary modeling is continuous; agents update actor profiles from incident data and external feeds; detection architecture adapts to actor evolution.",
+            "5": "Adversary model and detection architecture form a closed feedback loop; actor behavior observed in the environment immediately updates TTPs, which update detectors."
+          }
+        },
+        "SEN-04": {
+          "id": "SEN-04",
+          "name": "Exposure Surface Awareness (CTEM Integration)",
+          "description": "Continuous Threat Exposure Management — the real-time understanding of the organization's exploitable attack surface and how it informs sensing priority.",
+          "assessment_question": "How dynamically does your exposure surface awareness (assets, vulnerabilities, misconfigs) feed your detection and sensing priorities?",
+          "stage_descriptors": {
+            "0": "Vulnerability scans run periodically; no integration between exposure data and detection priorities; asset inventory is static and incomplete.",
+            "1": "Continuous vulnerability scanning in place; CVSS scoring used for prioritization; some integration between exposure data and patch management; not linked to detection.",
+            "2": "Exposure surface mapped in a structured inventory; agent-driven correlation between high-risk exposures and detection coverage; CTEM workflow initiated.",
+            "3": "Exposure surface is a live SKG entity; detection priority weighted by exploitability and adversary interest; CTEM and detection share a unified risk model.",
+            "4": "Exposure changes trigger autonomous detection posture adjustments; new attack paths identified by agents and immediately reflected in sensing priorities.",
+            "5": "Exposure management and detection architecture are unified; the sensing fabric continuously adapts to the live exposure surface as a first-order control loop."
+          }
+        }
+      }
+    },
+
+    "RSN": {
+      "id": "RSN",
+      "name": "Reasoning & Planning",
+      "plane": "Reasoning",
+      "description": "The capacity of the system to form hypotheses, build investigation plans, reason about causality and temporality, and generate actionable security decisions without requiring human escalation for analysis.",
+      "weight": 0.12,
+      "sub_dimensions": {
+        "RSN-01": {
+          "id": "RSN-01",
+          "name": "Hypothesis Generation & Competition",
+          "description": "The ability to generate multiple competing explanations for observed signals and evaluate them in parallel without collapsing to a single early conclusion.",
+          "assessment_question": "Does your detection and investigation process generate and maintain competing hypotheses, or does it commit to a single explanation early in the process?",
+          "stage_descriptors": {
+            "0": "Single-thread investigation model; analysts commit to a hypothesis at first triage; alternative explanations rarely explored; anchoring bias is systemic.",
+            "1": "Some hypothesis branching in playbooks; limited parallel investigation; senior analysts may consider alternatives but this is informal.",
+            "2": "Agents generate multiple hypotheses from initial signals; competing theories tracked in case management; human analyst selects winning hypothesis with evidence.",
+            "3": "Competing hypothesis generation is automated; agents gather evidence for each branch simultaneously; confidence scoring determines which paths are pursued.",
+            "4": "Hypothesis competition is continuous and autonomous; agents prune low-confidence theories, elevate high-confidence branches, and escalate only unresolvable conflicts.",
+            "5": "Full Bayesian-style hypothesis competition; the system continuously updates belief states across all open investigations; no single hypothesis is committed to without overwhelming evidence."
+          }
+        },
+        "RSN-02": {
+          "id": "RSN-02",
+          "name": "Contextual & Causal Reasoning",
+          "description": "The depth of contextual understanding applied to security events — correlating identity, asset, behavior, history, and business context to reason about root cause.",
+          "assessment_question": "How deeply does your system reason about the full context of a security event — including identity, asset sensitivity, business process, and historical behavior?",
+          "stage_descriptors": {
+            "0": "Context limited to log fields and basic asset data; investigation is signal-local; business context never integrated into triage decisions.",
+            "1": "Asset criticality and user context added to enrichment; some business context available but not systematically applied; causal reasoning is manual.",
+            "2": "Agents access identity, asset, network, and business-process context; context scores influence investigation priority; causal chains partially automated.",
+            "3": "Full contextual graph available to reasoning agents; causal analysis considers business process, user behavior baseline, and historical incident patterns.",
+            "4": "Agents reason across the full knowledge graph to establish causal chains; confidence-rated causal conclusions fed back to the SKG for future reasoning.",
+            "5": "Causal and contextual reasoning is continuous and self-improving; the system learns from reasoning errors and updates its causal models autonomously."
+          }
+        },
+        "RSN-03": {
+          "id": "RSN-03",
+          "name": "Temporal & Campaign-level Analysis",
+          "description": "The ability to reason across time — connecting events separated by days or weeks as part of a single adversary campaign or persistent threat.",
+          "assessment_question": "Can your system identify and reason about adversary campaigns that span weeks or months, connecting apparently unrelated events across time?",
+          "stage_descriptors": {
+            "0": "Alert handling is event-local; no temporal correlation beyond narrow correlation windows; multi-stage attack patterns are frequently missed.",
+            "1": "Basic temporal correlation rules in SIEM; some campaign tracking in case management; limited automation for long-duration patterns.",
+            "2": "Agents maintain campaign-level tracking; events linked across extended time windows; persistent threat hypotheses maintained as ongoing cases.",
+            "3": "Campaign reasoning integrated into the SKG; agents connect dormant and active attack phases; temporal graph queries inform current investigation posture.",
+            "4": "Agents autonomously identify and track multi-stage campaigns; campaign state is a live SKG entity updated continuously by all sensing and response agents.",
+            "5": "Full adversary lifecycle reasoning from initial access to exfiltration or impact; the system predicts likely next steps in observed campaigns and pre-positions defenses."
+          }
+        },
+        "RSN-04": {
+          "id": "RSN-04",
+          "name": "Predictive & Pre-emptive Planning",
+          "description": "The capability to reason ahead of observed events — modeling likely adversary moves and pre-positioning detection, controls, or responses before attacks occur.",
+          "assessment_question": "Does your security operations function proactively plan detection and defensive posture changes based on adversary modeling and threat forecasting?",
+          "stage_descriptors": {
+            "0": "No pre-emptive planning; operations are entirely reactive; threat hunting is ad hoc and resource-constrained.",
+            "1": "Periodic threat hunting programs; purple team exercises inform detection gaps; planning is project-based, not continuous.",
+            "2": "Agents generate threat hunt hypotheses from the adversary model; exposure-driven pre-emptive actions initiated for high-risk scenarios.",
+            "3": "Predictive reasoning generates proactive detection deployments and defensive posture changes; pre-emptive actions governed by authority scope.",
+            "4": "Agents continuously model adversary behavior, forecast likely attack paths, and autonomously pre-position defenses and detectors within governed scope.",
+            "5": "Pre-emptive planning is a primary operational mode; the system spends more resources preventing anticipated attacks than responding to active ones."
+          }
+        }
+      }
+    },
+
+    "ACT": {
+      "id": "ACT",
+      "name": "Autonomous Action & Response",
+      "plane": "Action",
+      "description": "The ability to execute detection, containment, remediation, and recovery actions autonomously — with bounded authority, proportionality controls, and full auditability.",
+      "weight": 0.12,
+      "sub_dimensions": {
+        "ACT-01": {
+          "id": "ACT-01",
+          "name": "Response Execution Autonomy",
+          "description": "The scope of response actions that can be executed without human approval — from containment and isolation to remediation and recovery.",
+          "assessment_question": "What range of response actions can your system execute autonomously, and what is the approval process for actions outside that scope?",
+          "stage_descriptors": {
+            "0": "All response actions require human execution; automation limited to ticket creation and notification; no autonomous containment or remediation.",
+            "1": "Pre-approved playbooks execute autonomously for known scenarios (e.g., malware isolation, password reset); novel situations always require human action.",
+            "2": "Agents execute containment, isolation, and enrichment autonomously; remediation requires human approval; authority scope explicitly defined per agent class.",
+            "3": "Agents execute full response chains within defined scope; humans approve scope-expanding actions; authority boundaries machine-enforced, not procedural.",
+            "4": "Full response execution within governed scope; agents request scope expansion through the authority model in real time; rare human intervention for genuinely novel events.",
+            "5": "Autonomous response across all domains within constitutional authority model; humans govern the authority model itself rather than individual response decisions."
+          }
+        },
+        "ACT-02": {
+          "id": "ACT-02",
+          "name": "Bounded Authority & Scope Enforcement",
+          "description": "The technical implementation of authority boundaries — ensuring agents can only act within defined scope, with machine-enforced limits rather than procedural controls.",
+          "assessment_question": "Are agent authority boundaries machine-enforced at execution time, or are they primarily procedural controls that rely on human compliance?",
+          "stage_descriptors": {
+            "0": "Authority boundaries defined only in policy documents; enforcement relies entirely on human compliance; no technical scope enforcement.",
+            "1": "Playbook scope defined in automation tools; some technical enforcement of action limits; boundaries checked at playbook initiation but not continuously.",
+            "2": "Authority model codified in agent execution frameworks; scope validated at every action; boundary violations trigger human escalation.",
+            "3": "Authority scope is a live graph entity; agents query authority model before every action; scope violations are technically impossible, not just discouraged.",
+            "4": "Authority model is dynamic — agents can request scope expansion through a governed process; expansions are logged, justified, and auditable.",
+            "5": "Constitutional authority model governs all agent behavior; the authority graph is self-consistent, continuously audited, and the foundation of all operational trust."
+          }
+        },
+        "ACT-03": {
+          "id": "ACT-03",
+          "name": "Proportionality & Reversibility",
+          "description": "The principle that response actions are proportional to the confirmed threat level and, wherever possible, reversible — minimizing collateral impact.",
+          "assessment_question": "Does your system enforce proportionality and reversibility as technical constraints on response actions, or are these judgments left to individual analysts?",
+          "stage_descriptors": {
+            "0": "Proportionality is an informal principle; response actions often over-broad (e.g., full network segment isolation for a single endpoint); reversibility rarely considered.",
+            "1": "Playbooks include proportionality guidance; some staged response logic (isolate → escalate → broader action); reversibility considered in playbook design.",
+            "2": "Proportionality scoring built into agent response selection; irreversible actions flagged and require elevated authority; reversibility tracked per action.",
+            "3": "Proportionality is a machine-enforced constraint; agents select minimum-effective-response by default; irreversible actions require explicit governance approval.",
+            "4": "Response proportionality optimized continuously against confirmed threat confidence; the system prefers reversible actions and documents justification for irreversible ones.",
+            "5": "Proportionality and reversibility are first-order control signals in every response decision; the authority model enforces them constitutionally and every exception is logged."
+          }
+        },
+        "ACT-04": {
+          "id": "ACT-04",
+          "name": "Cross-domain Action Coordination",
+          "description": "The ability to coordinate response actions across network, endpoint, identity, cloud, and application domains simultaneously without creating conflicts or gaps.",
+          "assessment_question": "How effectively does your response capability coordinate simultaneous actions across endpoint, network, identity, cloud, and application domains?",
+          "stage_descriptors": {
+            "0": "Response is domain-siloed; different teams own different domains; coordination requires human hand-offs and is frequently incomplete or conflicting.",
+            "1": "SOAR orchestrates some cross-domain playbooks; coordination is playbook-limited; gaps between domains still create response failures.",
+            "2": "Agents coordinate across domains within defined response workflows; conflict detection prevents contradictory actions; cross-domain state tracked in case graph.",
+            "3": "Full cross-domain response coordination driven by the SKG; agents share state and negotiate action sequencing; no human hand-offs required.",
+            "4": "Cross-domain coordination is autonomous and continuous; agents from different domains form dynamic coalitions for complex response scenarios.",
+            "5": "Unified response control plane coordinates all domains seamlessly; cross-domain actions are sequenced, validated, and rolled back if necessary by the governance engine."
+          }
+        }
+      }
+    },
+
+    "GOV": {
+      "id": "GOV",
+      "name": "Ethics, Governance & Authority",
+      "plane": "Governance",
+      "description": "The architecture and operational integration of ethics, authority modeling, and governance controls — treating them as real-time control signals rather than documentary oversight layers.",
+      "weight": 0.15,
+      "sub_dimensions": {
+        "GOV-01": {
+          "id": "GOV-01",
+          "name": "Authority & Scope Modeling",
+          "description": "The formal modeling of who (human or agent) is authorized to take what actions, under what conditions, and within what scope — as machine-interpretable data.",
+          "assessment_question": "Is your authority model machine-interpretable and enforced at execution time, or is it documented in policy and enforced through human review?",
+          "stage_descriptors": {
+            "0": "Authority defined in RACI matrices and policy documents; enforcement is entirely human; no technical representation of authority.",
+            "1": "Role-based access controls mapped to some automation actions; authority partially encoded in ITSM workflows; technical enforcement inconsistent.",
+            "2": "Agent authority classes defined and technically enforced; scope boundaries validated at action execution; authority model maintained in structured form.",
+            "3": "Authority is a live graph entity in the SKG; scope, conditions, and exceptions modeled formally; dynamic authority grant/revocation supported.",
+            "4": "Authority model is continuously validated against regulatory and policy requirements; authority changes trigger automated impact assessment across the agent fleet.",
+            "5": "Constitutional authority model is the foundation of all system operations; every action is authorized by the authority graph; the model is self-auditing and transparent."
+          }
+        },
+        "GOV-02": {
+          "id": "GOV-02",
+          "name": "Ethics Guardrail Architecture",
+          "description": "The definition and technical implementation of ethical boundaries — proportionality, legality, privacy, non-maleficence — as machine-interpretable constraints.",
+          "assessment_question": "Are your ethical boundaries (proportionality, legality, privacy, non-maleficence) formally defined and technically enforced, or are they principles in a policy document?",
+          "stage_descriptors": {
+            "0": "Ethics addressed in security policy documents; no operational integration; ethical review is periodic and manual.",
+            "1": "Some ethical constraints built into playbooks (e.g., no automated user account deletion without approval); coverage is narrow and playbook-specific.",
+            "2": "Ethics guardrail classes defined (proportionality, legality, privacy, non-maleficence); agents check guardrails before action execution; violations halt execution.",
+            "3": "Ethics guardrails are machine-interpretable constraints in the governance engine; guardrail violations are technically impossible, not just procedurally discouraged.",
+            "4": "Ethics engine operates as a continuous control loop; guardrails evolve as regulatory and organizational requirements change; ethics violations trigger system-level alerts.",
+            "5": "Ethics is a foundational operational kernel; the governance engine continuously validates all agent behaviors against the ethical model; constitutional review is built-in."
+          }
+        },
+        "GOV-03": {
+          "id": "GOV-03",
+          "name": "Real-time Policy Enforcement",
+          "description": "The continuous application of security, regulatory, and organizational policy at the moment of decision-making — not as a post-hoc review process.",
+          "assessment_question": "Is security policy enforced at the point of every operational decision in real time, or primarily through periodic audits and reviews?",
+          "stage_descriptors": {
+            "0": "Policy enforced through manual review and periodic audits; no real-time policy check at operational decision points; violations discovered after the fact.",
+            "1": "Some automated policy checks in SOAR playbooks; compliance integration limited to specific use cases; most policy enforcement remains manual.",
+            "2": "Policy engine integrated into agent execution workflow; actions validated against policy at execution time; policy violations create mandatory escalation paths.",
+            "3": "Policy is a live SKG entity; the governance engine validates every agent action against current policy in real time; policy updates propagate immediately to agent behavior.",
+            "4": "Policy enforcement is continuous and self-consistent; conflicting policies detected and flagged to human governance roles for resolution; no policy gaps.",
+            "5": "Policy, ethics, authority, and governance form an integrated control plane; every action is simultaneously governed, audited, and explained in real time."
+          }
+        },
+        "GOV-04": {
+          "id": "GOV-04",
+          "name": "Governance Transparency & Human Oversight",
+          "description": "The degree to which governance decisions are visible, explainable, and accessible to human governance officers — ensuring meaningful oversight without requiring constant intervention.",
+          "assessment_question": "Can your governance officers see exactly what governance decisions were made, why, and by what authority — for any action at any point in time?",
+          "stage_descriptors": {
+            "0": "Governance visibility limited to audit logs; no explainability of automated decisions; retrospective review only.",
+            "1": "Playbook execution logs provide some decision trail; limited natural-language explanation of automated actions; human review required to interpret.",
+            "2": "Agents generate decision rationale for significant actions; governance dashboard provides real-time view of agent activity within authority scope.",
+            "3": "Every governance decision is logged with full context, evidence chain, confidence score, and authority basis; explainable to non-technical governance officers.",
+            "4": "Governance transparency is continuous; governance officers receive proactive alerts for high-stakes decisions; all decisions are self-documenting.",
+            "5": "Full governance auditability — every action is traceable from stimulus to decision to authority basis to outcome; the system can explain any decision in plain language."
+          }
+        }
+      }
+    },
+
+    "LRN": {
+      "id": "LRN",
+      "name": "Learning & Continuous DFIR",
+      "plane": "Learning",
+      "description": "The capacity of the system to learn from every incident, near-miss, and threat intelligence update — treating DFIR not as a project but as a continuous operational function that feeds back into detection, response, and knowledge architecture.",
+      "weight": 0.10,
+      "sub_dimensions": {
+        "LRN-01": {
+          "id": "LRN-01",
+          "name": "Incident Learning Integration",
+          "description": "The systematic extraction of detection improvements, behavioral indicators, and governance lessons from resolved incidents back into the operational system.",
+          "assessment_question": "How systematically does your organization extract and integrate detection and response improvements from resolved incidents — and how quickly do they appear in production?",
+          "stage_descriptors": {
+            "0": "Post-incident reviews are episodic and findings rarely implemented; lessons learned captured in documents not operationalized.",
+            "1": "Formal post-incident review process; some findings implemented as new playbook steps or detection rules; improvement cycle measured in weeks to months.",
+            "2": "Agents extract behavioral indicators from resolved incidents; new detectors proposed automatically; improvement cycle measured in days.",
+            "3": "Incident learning is automated; new indicators, detectors, and authority adjustments generated from every incident; confidence-rated before deployment.",
+            "4": "Continuous DFIR feeds a live learning pipeline; every incident — active or historical — continuously contributes to SKG evolution and detection improvement.",
+            "5": "DFIR is a permanent operational function, not a post-incident activity; the system learns from normal operations and near-misses as continuously as from active incidents."
+          }
+        },
+        "LRN-02": {
+          "id": "LRN-02",
+          "name": "Detection Improvement Loops",
+          "description": "The automated feedback loop from detection performance (false positive rate, coverage gaps, missed detections) back into detection logic and sensor configuration.",
+          "assessment_question": "How automatically does detection performance feedback (false positives, coverage gaps, missed events) drive improvements to detection logic?",
+          "stage_descriptors": {
+            "0": "Detection tuning is manual and infrequent; false positive reduction depends on analyst initiative; no systematic detection performance tracking.",
+            "1": "Detection performance metrics tracked; periodic tuning cycles; some automated FP suppression; improvement cycle is human-driven.",
+            "2": "Agents monitor detection performance continuously; automated FP reduction proposals generated; coverage gaps mapped to adversary TTPs and reported.",
+            "3": "Detection improvement is fully automated within governed scope; low-performing detectors automatically tuned or retired; coverage gaps drive new detector generation.",
+            "4": "Detection improvement loop is continuous and self-optimizing; the system tracks recall, precision, and coverage simultaneously and balances them autonomously.",
+            "5": "Detection architecture is self-improving at the rate of new threat intelligence and incident data; the system's detection capability increases measurably without human-driven tuning cycles."
+          }
+        },
+        "LRN-03": {
+          "id": "LRN-03",
+          "name": "Adversary Intelligence Absorption",
+          "description": "The speed and depth with which external threat intelligence (new TTPs, actor campaigns, IOCs, vulnerability research) is absorbed and operationalized.",
+          "assessment_question": "How quickly and completely does new external threat intelligence (new actor TTPs, campaign reports, zero-days) translate into updated detection and response posture?",
+          "stage_descriptors": {
+            "0": "Threat intel consumed as reports; operationalization is manual and slow; Intel-to-detection cycle measured in weeks.",
+            "1": "Threat intel feeds connected to detection platforms; IOC matching automated; TTP-level detection requires manual rule writing.",
+            "2": "Agents parse and structure new intelligence; new detectors proposed for emerging TTPs; intel-to-detection cycle measured in hours.",
+            "3": "Adversary model in SKG automatically updated from structured intel sources; new TTPs generate detection hypotheses and coverage gap analyses.",
+            "4": "Intelligence absorption is continuous; new actor reports processed immediately; detection and response posture updated autonomously within governed scope.",
+            "5": "Real-time intelligence fusion; the adversary model is continuously current; the system's detection posture adapts faster than adversary technique adoption cycles."
+          }
+        },
+        "LRN-04": {
+          "id": "LRN-04",
+          "name": "Knowledge Graph Evolution",
+          "description": "The capacity of the Security Knowledge Graph to evolve — incorporating new entities, relationships, and confidence updates from operations, incidents, and intelligence — without manual curation.",
+          "assessment_question": "How autonomously does your security knowledge model evolve based on operational experience — without requiring manual data entry or curation?",
+          "stage_descriptors": {
+            "0": "Knowledge is captured in runbooks and wikis; updates require manual curation; knowledge is stale relative to operational reality.",
+            "1": "Case management system captures some structured incident data; limited automated knowledge extraction; knowledge base updated through post-incident reviews.",
+            "2": "SKG prototype ingests structured outputs from agents and incidents; entity creation partially automated; confidence scores tracked per entity.",
+            "3": "SKG evolves continuously from agent outputs, incident data, and intel feeds; automated entity resolution and relationship inference; human curation for high-stakes changes.",
+            "4": "SKG evolution is largely autonomous; agents maintain, validate, and retire knowledge entities; confidence-based entity lifecycle management in place.",
+            "5": "The SKG is a living operational system that continuously improves its own models; knowledge quality is measurably higher over time without increasing human curation effort."
+          }
+        }
+      }
+    },
+
+    "OPS": {
+      "id": "OPS",
+      "name": "Operational Interaction Model",
+      "plane": "Operations",
+      "description": "The design of how operational activities interact — from linear escalation chains toward a non-linear, graph-based operational model where exposure management, detection, response, and DFIR operate as concurrent, interconnected functions.",
+      "weight": 0.10,
+      "sub_dimensions": {
+        "OPS-01": {
+          "id": "OPS-01",
+          "name": "Non-linear Workflow Architecture",
+          "description": "The degree to which operational workflows are structured as dynamic, context-driven graphs rather than fixed linear sequences or escalation chains.",
+          "assessment_question": "Are your security operation workflows fundamentally designed as linear sequences and escalation chains, or as dynamic, context-driven operational graphs?",
+          "stage_descriptors": {
+            "0": "All operations follow linear playbook sequences; escalation chain is the primary coordination mechanism; no dynamic workflow branching.",
+            "1": "Some conditional logic in playbooks; limited workflow branching based on triage outcomes; escalation chain still dominant.",
+            "2": "Workflows modeled as directed graphs; branching driven by evidence and confidence levels; multiple parallel paths can be active simultaneously.",
+            "3": "Operations modeled as a dynamic graph; workflow paths selected by agents based on real-time context; no fixed escalation chain required.",
+            "4": "Fully dynamic operational graph; agents spawn, merge, and terminate workflow threads autonomously; the operational model adapts to each unique scenario.",
+            "5": "Operations are continuous, non-linear, and self-organizing; the system maintains optimal operational posture across all active threads simultaneously."
+          }
+        },
+        "OPS-02": {
+          "id": "OPS-02",
+          "name": "Exposure-driven Operational Prioritization",
+          "description": "The use of real-time exposure data to prioritize operational attention and resource allocation across prevention, detection, and response.",
+          "assessment_question": "Does your operational prioritization dynamically reflect current exposure levels, or is it primarily driven by alert severity and analyst availability?",
+          "stage_descriptors": {
+            "0": "Priority driven by alert severity scores; no integration of exposure context; critical alerts for non-critical assets treated equally to critical assets.",
+            "1": "Asset criticality factored into alert priority; some exposure data available but not systematically integrated into operational decisions.",
+            "2": "Exposure surface mapped and integrated into operational priority model; agents weight responses by exploitability and business impact of affected assets.",
+            "3": "Exposure-driven prioritization is the primary operational model; the SKG exposure graph drives all detection, response, and investigation priority.",
+            "4": "Real-time exposure changes automatically reprioritize active operational threads; emerging exposures trigger immediate detection posture adjustments.",
+            "5": "Operational priority is a continuous function of live exposure, active adversary activity, and organizational risk posture — updated in real time without human intervention."
+          }
+        },
+        "OPS-03": {
+          "id": "OPS-03",
+          "name": "Continuous DFIR as Operational Posture",
+          "description": "The transformation of Digital Forensics and Incident Response from a reactive, project-based activity to a continuous operational discipline that permanently informs the rest of the security system.",
+          "assessment_question": "Is DFIR a reactive project triggered by incidents, or a continuous operational function that operates alongside detection and prevention at all times?",
+          "stage_descriptors": {
+            "0": "DFIR is entirely reactive; activated only after confirmed incidents; forensic capability limited; significant evidence lost due to log retention gaps.",
+            "1": "DFIR capability available on-demand; retainer or internal team; some forensic readiness (log retention, evidence preservation); primarily reactive.",
+            "2": "DFIR tooling continuously active; agents perform ongoing forensic collection in high-risk environments; DFIR findings fed back into detection.",
+            "3": "Continuous DFIR is an operational mode; agents maintain forensic state across high-risk assets continuously; DFIR and detection share a unified investigation graph.",
+            "4": "DFIR is permanently integrated into operations; every significant event generates a forensic artifact chain; DFIR learning continuously updates detection and response.",
+            "5": "DFIR is indistinguishable from normal operations; the system maintains complete forensic state across the environment continuously; incident investigation is always pre-populated."
+          }
+        },
+        "OPS-04": {
+          "id": "OPS-04",
+          "name": "Decision Propagation Without Escalation",
+          "description": "The capability to propagate security decisions across the operational system without requiring human escalation — through confidence-rated automated decisions and bounded authority models.",
+          "assessment_question": "Can your system resolve the majority of security decisions autonomously within defined authority scope — without requiring human escalation as the coordination mechanism?",
+          "stage_descriptors": {
+            "0": "Escalation is the only coordination mechanism; all decisions above analyst authority require human hand-off; significant latency at every tier boundary.",
+            "1": "Some decisions automated at tier 1 level; escalation reduced for known scenarios; novel events still require full escalation chain.",
+            "2": "Agent authority model allows direct decision execution without escalation; only scope-exceeding decisions escalate to humans; escalation is the exception, not the rule.",
+            "3": "Decisions propagate through the operational graph via confidence and authority signals; humans receive decisions for approval, not for analysis.",
+            "4": "Near-zero escalation for operational decisions within governed scope; humans receive strategic decisions requiring intent-level judgment.",
+            "5": "Escalation is structurally eliminated; the authority model handles all decision routing; humans are engaged as principals, not as escalation endpoints."
+          }
+        }
+      }
+    },
+
+    "HUM": {
+      "id": "HUM",
+      "name": "Human Roles & Governance Interface",
+      "plane": "Human",
+      "description": "The redefinition of human roles from tier-based task executors to authority-bearing governors of agent intent, scope, and legitimacy — and the design of how humans interact with the agentic system.",
+      "weight": 0.12,
+      "sub_dimensions": {
+        "HUM-01": {
+          "id": "HUM-01",
+          "name": "Post-tier Role Architecture",
+          "description": "The definition of human roles based on authority, accountability, and scope — eliminating L1/L2/L3 tier identities and replacing them with authority-based positions.",
+          "assessment_question": "Have you defined security operations roles based on authority and accountability rather than task tier — and have tier-based job descriptions been eliminated?",
+          "stage_descriptors": {
+            "0": "L1/L2/L3 tiering is the primary role model; roles defined by task complexity and escalation authority; career progression is tier advancement.",
+            "1": "Some role evolution underway; senior analysts taking on threat hunting and architecture tasks; tier model remains but is weakening.",
+            "2": "New role categories emerging (e.g., Agent Supervisor, Detection Architect, Response Authority); tier model partially replaced but not fully dismantled.",
+            "3": "Tier model eliminated; roles defined by authority scope (e.g., Governance Officer, Security Strategist, Response Authority, DFIR Lead); role clarity high.",
+            "4": "Post-tier role model fully implemented; authority hierarchy clear; roles focused on intent, governance, exception handling, and strategic direction.",
+            "5": "Human roles are constitutionally defined; the authority model specifies exactly what each human role can authorize, approve, override, and govern."
+          }
+        },
+        "HUM-02": {
+          "id": "HUM-02",
+          "name": "Human-Agent Interaction Design",
+          "description": "The quality of the interfaces and protocols through which humans govern, direct, and oversee agents — ensuring meaningful human control without overwhelming human attention.",
+          "assessment_question": "Are your human-agent interfaces designed to support governance and intent direction — or are they primarily alert queues and approval pop-ups?",
+          "stage_descriptors": {
+            "0": "Human interface is the SIEM alert queue and ticketing system; humans are overwhelmed by volume; no meaningful governance interface.",
+            "1": "Dashboards and case management provide better visibility; some SOAR human-approval interfaces; interaction is still primarily alert-driven.",
+            "2": "Human interfaces designed for governance rather than throughput; humans see agent activity summaries, exceptions, and governance requests — not raw alerts.",
+            "3": "Interaction model based on intent direction and exception approval; humans set scope, approve novel actions, and receive strategic briefings from agents.",
+            "4": "Human-agent interaction is continuous but low-volume; governance officers receive governance signals, not operational noise; interaction quality over quantity.",
+            "5": "Human-agent interaction is a governance-level exchange; humans define constitutional boundaries and review outcomes; agent-to-human communication is by exception and by design."
+          }
+        },
+        "HUM-03": {
+          "id": "HUM-03",
+          "name": "Intent & Scope Governance",
+          "description": "The human capacity to define, adjust, and revoke operational intent and scope — and the technical mechanisms through which those decisions propagate to the agent fleet.",
+          "assessment_question": "Can your governance officers define operational intent and scope constraints and have those constraints immediately reflected in all agent behavior across the system?",
+          "stage_descriptors": {
+            "0": "Operational intent communicated through meetings and policy documents; no technical mechanism to propagate intent to operational systems.",
+            "1": "Some intent communicated through SOAR configuration and playbook parameters; propagation is manual and slow.",
+            "2": "Governance officers can update operational scope in structured form; changes propagate to agent configurations within hours; some actions require redeployment.",
+            "3": "Intent and scope changes propagate to the agent fleet in real time through the governance engine; every agent reflects current intent at all times.",
+            "4": "Governance officers have a live governance console; intent and scope updates take effect immediately; scope revocation is instantaneous system-wide.",
+            "5": "Intent governance is the primary human activity; the system's entire operational posture flows from governance-defined intent; revocation is always instant and complete."
+          }
+        },
+        "HUM-04": {
+          "id": "HUM-04",
+          "name": "Skills Evolution & Career Architecture",
+          "description": "The organizational model for developing human talent appropriate for agentic operations — emphasizing judgment, governance, systems thinking, and adversary modeling over task execution.",
+          "assessment_question": "Is your security talent development model explicitly oriented toward the skills required in an agentic SOC — governance, judgment, systems thinking — rather than tier-advancement skills?",
+          "stage_descriptors": {
+            "0": "Career model is tier advancement; skills valued are tool proficiency and ticket throughput; no structured development toward governance or systems roles.",
+            "1": "Some awareness of skill evolution needs; threat hunting and architecture training introduced; tier advancement still the primary career model.",
+            "2": "New role profiles defined with associated skill requirements; training programs for agent supervision and governance emerging; career paths beginning to diverge from tiers.",
+            "3": "Formal career architecture for post-tier roles; skills in governance, adversary modeling, systems design, and ethics are primary development targets.",
+            "4": "Talent development is explicitly aligned with the agentic model; governance and judgment skills are core competencies; security professionals develop alongside agents.",
+            "5": "Human talent strategy is optimized for the governance model; the organization systematically develops judgment, ethics, and strategic security capability as competitive advantages."
+          }
+        }
+      }
+    },
+
+    "AGT": {
+      "id": "AGT",
+      "name": "Agent Architecture & Coordination",
+      "plane": "Agents",
+      "description": "The design, classification, and coordination of the agent fleet — defining how different agent classes collaborate, resolve conflicts, handle uncertainty, and escalate genuinely novel situations to humans.",
+      "weight": 0.10,
+      "sub_dimensions": {
+        "AGT-01": {
+          "id": "AGT-01",
+          "name": "Agent Class Definition & Specialization",
+          "description": "The formal definition of agent classes by function (sensing, reasoning, response, governance, learning) and their respective authority, scope, and interaction protocols.",
+          "assessment_question": "Are your security automation agents formally classified by function and authority — with distinct interaction protocols for each class?",
+          "stage_descriptors": {
+            "0": "Automation implemented as ad hoc scripts and playbooks; no formal agent classification; automation scope and authority poorly defined.",
+            "1": "Automation tools organized by function (enrichment, response, ticketing) but not formally classified as agents; authority informal.",
+            "2": "Agent classes defined (Sensing, Reasoning, Response, Governance, Learning); each class has defined authority scope and interaction protocols.",
+            "3": "Agent class taxonomy formally maintained; each class has published capability interfaces; governance and learning agents are first-class operational entities.",
+            "4": "Agent specialization is deep; sub-classes developed for specific adversary techniques, environments, or regulatory contexts; specialization governed by the SKG.",
+            "5": "Agent taxonomy is self-consistent and continuously maintained; new agent classes and capabilities are derived from operational need and governed through the authority model."
+          }
+        },
+        "AGT-02": {
+          "id": "AGT-02",
+          "name": "Agent Collaboration & Conflict Resolution",
+          "description": "The protocols by which agents collaborate on shared tasks, share evidence and context, and resolve conflicts when their assessments or proposed actions disagree.",
+          "assessment_question": "When multiple agents reach conflicting conclusions or propose conflicting actions, how is that conflict resolved — and does it require human intervention?",
+          "stage_descriptors": {
+            "0": "Automation tools operate independently; conflicts result in duplicated or contradictory actions; no coordination mechanism.",
+            "1": "SOAR provides limited orchestration; some conflict avoidance through sequential playbook execution; coordination gaps remain.",
+            "2": "Agents share state through a common evidence store; conflicts detected and flagged; resolution rules defined for known conflict patterns.",
+            "3": "Conflict resolution protocols built into agent coordination framework; confidence-weighted resolution for known conflict types; novel conflicts escalate to governance.",
+            "4": "Agents negotiate conflicts autonomously for most scenarios; the governance engine mediates high-stakes conflicts; conflict resolution is logged and analyzed.",
+            "5": "Agent coordination is fully autonomous; conflicts are resolved through evidence and confidence arbitration; human involvement reserved for constitutional-level disagreements."
+          }
+        },
+        "AGT-03": {
+          "id": "AGT-03",
+          "name": "Uncertainty & Novelty Handling",
+          "description": "How the agent system handles low-confidence situations and genuinely novel scenarios — knowing when to act under uncertainty and when to invoke human judgment.",
+          "assessment_question": "Does your agent system have well-defined thresholds for confidence and novelty — and does it reliably invoke human judgment for genuinely novel situations without over-escalating routine uncertainty?",
+          "stage_descriptors": {
+            "0": "Agents do not model uncertainty; automation either executes or fails; novel situations cause automation to halt and require complete human takeover.",
+            "1": "Some confidence thresholds in playbooks; low-confidence alerts escalated to humans; no formal novelty detection.",
+            "2": "Confidence scoring built into agent outputs; uncertainty thresholds defined per action class; novelty detection identifies events outside known patterns.",
+            "3": "Agents explicitly model and communicate uncertainty; escalation is calibrated to confidence, not alert severity; genuine novelty reliably identified and routed to humans.",
+            "4": "Uncertainty management is sophisticated; agents operate effectively under uncertainty within defined bounds; novelty handling includes partial action with human ratification.",
+            "5": "The agent system is optimally calibrated for uncertainty; it neither over-escalates routine ambiguity nor under-escalates genuine novelty; human judgment is invoked precisely."
+          }
+        },
+        "AGT-04": {
+          "id": "AGT-04",
+          "name": "Orchestration Architecture",
+          "description": "The technical design of how agents are coordinated — including workflow orchestration, state management, and the ability to compose ad hoc agent coalitions for complex scenarios.",
+          "assessment_question": "Can your system dynamically compose agent coalitions for complex, non-standard scenarios — or is coordination limited to pre-defined workflows?",
+          "stage_descriptors": {
+            "0": "No orchestration layer; automation tools are independently triggered and share no state.",
+            "1": "SOAR platform provides linear orchestration; agent chaining limited to pre-defined playbooks; state shared only within a single playbook execution.",
+            "2": "Orchestration layer supports parallel execution and shared state across agents; workflow graphs replace linear playbooks; basic coalition formation supported.",
+            "3": "Dynamic orchestration enables ad hoc coalition formation; agents selected for tasks based on capability and availability; orchestration state managed in the SKG.",
+            "4": "Orchestration is adaptive; the system selects and composes the optimal agent coalition for each scenario based on current context and agent capability.",
+            "5": "Self-organizing orchestration; agents form, dissolve, and reform coalitions autonomously based on operational need; orchestration is indistinguishable from emergent coordination."
+          }
+        }
+      }
+    },
+
+    "SKG": {
+      "id": "SKG",
+      "name": "Security Knowledge Graph",
+      "plane": "Knowledge",
+      "description": "The operational knowledge infrastructure that connects entities — assets, identities, adversaries, policies, evidence, authority, confidence — as a live, queryable graph that drives planning, reasoning, governance, and artifact generation.",
+      "weight": 0.11,
+      "sub_dimensions": {
+        "SKG-01": {
+          "id": "SKG-01",
+          "name": "Entity Model Completeness",
+          "description": "The breadth and depth of entity types modeled in the knowledge graph — from assets and identities through adversary profiles, policies, confidence scores, and governance entities.",
+          "assessment_question": "How comprehensively does your knowledge model represent all operationally relevant entities — including governance, ethics, authority, and confidence as first-class objects?",
+          "stage_descriptors": {
+            "0": "Knowledge limited to asset inventory, user directory, and CMDB; no threat, policy, or governance entities; data is siloed across tools.",
+            "1": "Asset, identity, vulnerability, and basic threat data linked in a structured model; limited governance representation; primarily for enrichment not reasoning.",
+            "2": "Core entity types defined: Asset, Identity, Adversary, TTP, Vulnerability, Policy, Evidence, Alert, Incident; basic relationships modeled; graph queryable.",
+            "3": "Full entity model including Confidence, Authority, Ethics, Governance Decision, and Audit Artifact as first-class entities; bi-directional relationships maintained.",
+            "4": "Entity model is comprehensive and continuously validated; orphaned entities detected and resolved; entity quality metrics tracked.",
+            "5": "Entity model is self-consistent and self-completing; agents continuously discover and register new entities; model completeness is measurably high and improving."
+          }
+        },
+        "SKG-02": {
+          "id": "SKG-02",
+          "name": "Governance & Policy as Graph Objects",
+          "description": "The representation of security policy, authority, ethics, and governance decisions as queryable graph objects — enabling agents to reason about governance constraints as first-class operational inputs.",
+          "assessment_question": "Are your security policies, authority boundaries, and ethical constraints represented as queryable graph objects that agents can reason over at execution time?",
+          "stage_descriptors": {
+            "0": "Policy exists only as documents; not accessible to automated systems at execution time; governance is external to operational data.",
+            "1": "Some policy codified in SOAR playbook logic; limited queryability; policy-as-code for specific use cases but not systemically.",
+            "2": "Security policies modeled as structured objects in the knowledge graph; agents can query applicable policy at execution time; policy version control maintained.",
+            "3": "Policy, authority, ethics, and governance decisions are full graph citizens; relationships between policies, actions, and actors are explicitly modeled; graph-queryable.",
+            "4": "Policy graph is continuously validated for consistency; conflicting policies detected and resolved; policy impact analysis automated before policy changes take effect.",
+            "5": "Governance graph is the authoritative source of truth for all operational decision-making; every action references the governance graph and every decision is logged in it."
+          }
+        },
+        "SKG-03": {
+          "id": "SKG-03",
+          "name": "Evidence & Audit Artifact Generation",
+          "description": "The automatic generation of audit trails, forensic artifacts, and governance records from operational activity — ensuring that every significant action produces a tamper-evident evidence record.",
+          "assessment_question": "Does your system automatically generate comprehensive, tamper-evident evidence and audit artifacts for every significant operational action — without relying on human documentation?",
+          "stage_descriptors": {
+            "0": "Audit records are system logs; interpretation requires manual effort; forensic artifacts depend on analyst documentation.",
+            "1": "Case management captures some structured incident data; SOAR logs playbook execution; audit trail incomplete and fragmented across tools.",
+            "2": "Agents generate structured evidence records for significant actions; audit artifacts linked to incidents in the knowledge graph; chain-of-custody partially automated.",
+            "3": "Every significant action generates a linked evidence artifact in the SKG; chain-of-custody is automated; audit trail is comprehensive and queryable.",
+            "4": "Evidence generation is continuous and tamper-evident; audit artifacts are self-describing and include confidence, authority, and governance basis.",
+            "5": "The SKG is the system-of-record for all evidence; every action, decision, and governance determination is permanently and immutably recorded with full provenance."
+          }
+        },
+        "SKG-04": {
+          "id": "SKG-04",
+          "name": "Planning & Reasoning Integration",
+          "description": "The use of the knowledge graph as the primary substrate for planning, hypothesis generation, and reasoning — enabling agents to query the graph to inform every operational decision.",
+          "assessment_question": "Is the knowledge graph actively used as the substrate for operational planning and reasoning — or is it primarily a reporting and logging store?",
+          "stage_descriptors": {
+            "0": "No graph-based reasoning; knowledge accessed through search interfaces by human analysts; not used for operational planning.",
+            "1": "Threat intelligence graph used for enrichment queries; some automated graph lookups in playbooks; primarily reactive, not reasoning-oriented.",
+            "2": "Agents query the knowledge graph to inform investigation hypotheses; graph patterns used to detect attack campaigns; planning begins to use graph traversal.",
+            "3": "SKG is the primary reasoning substrate; agents traverse the graph to plan actions, evaluate hypotheses, and assess exposure; planning and reasoning are graph-native.",
+            "4": "Graph-based reasoning drives all operational planning; agents use graph inference to predict threats and pre-position responses; graph quality directly determines operational effectiveness.",
+            "5": "The SKG is the operational brain; all sensing, reasoning, action, and governance decisions originate from and record back to the graph; the graph is the system."
+          }
+        }
+      }
+    },
+
+    "MET": {
+      "id": "MET",
+      "name": "Metrics, Audit & Assurance",
+      "plane": "Assurance",
+      "description": "The metrics framework, audit architecture, and board-level reporting designed for autonomous operations — replacing throughput-based analyst metrics with system-level confidence, coverage, and governance assurance measures.",
+      "weight": 0.09,
+      "sub_dimensions": {
+        "MET-01": {
+          "id": "MET-01",
+          "name": "Autonomous Operations KPIs",
+          "description": "Metrics designed for agentic operations — coverage, confidence, autonomy rate, governance compliance, and reduction in mean time to understand — rather than tickets-closed and alert-processed.",
+          "assessment_question": "Have you replaced or augmented traditional analyst throughput metrics (alerts handled, tickets closed) with metrics appropriate for autonomous operations?",
+          "stage_descriptors": {
+            "0": "Metrics focused on analyst throughput: alerts handled, MTTR, ticket closure rate; no coverage or confidence metrics.",
+            "1": "MTTR, MTTD, false positive rate tracked; some coverage metrics against ATT&CK framework; throughput metrics still dominant.",
+            "2": "Detection coverage, confidence scores, and automation rate tracked alongside throughput; beginning to measure reduction in human operational load.",
+            "3": "Primary KPIs: detection coverage by adversary TTP, agent autonomy rate, governance compliance rate, mean time to understand (MTTU), exposure reduction velocity.",
+            "4": "Full autonomous operations metric suite: coverage, confidence, autonomy rate, governance adherence, evidence quality, and system stability; board-reportable.",
+            "5": "Metrics capture system-level security posture improvement over time; the organization can demonstrate measurable, continuous security improvement as a system outcome."
+          }
+        },
+        "MET-02": {
+          "id": "MET-02",
+          "name": "Continuous Audit & Compliance",
+          "description": "The shift from periodic compliance audit cycles to continuous, automated compliance monitoring and evidence generation — eliminating audit preparation as a discrete activity.",
+          "assessment_question": "Is your compliance evidence generated continuously by the system as a byproduct of operations — or does compliance preparation require a distinct periodic effort?",
+          "stage_descriptors": {
+            "0": "Compliance audit is a quarterly or annual project; evidence gathering requires significant manual effort; gaps discovered during audits.",
+            "1": "Some automated compliance evidence collection; continuous monitoring for specific controls; audit preparation still requires significant effort.",
+            "2": "Agents generate compliance evidence as a byproduct of operations; coverage gaps identified continuously; audit-readiness is near-continuous.",
+            "3": "Continuous compliance monitoring across all applicable frameworks; evidence generated, linked, and maintained automatically; audit readiness is a standing state.",
+            "4": "Compliance is a real-time function; new regulatory requirements are modeled in the governance graph and immediately reflected in monitoring and evidence generation.",
+            "5": "Compliance is indistinguishable from governance; every operational action generates compliance evidence; audit response time is measured in minutes, not weeks."
+          }
+        },
+        "MET-03": {
+          "id": "MET-03",
+          "name": "Trust, Explainability & Validation",
+          "description": "The mechanisms by which the organization validates that the agentic system is operating correctly, that its decisions are explainable, and that trust in the system is warranted and continuously maintained.",
+          "assessment_question": "Do you have formal mechanisms to validate that the agentic system is operating correctly and that its decisions are explainable to governance stakeholders?",
+          "stage_descriptors": {
+            "0": "No systematic validation of automation decisions; trust in automation based on initial testing; no ongoing explainability mechanisms.",
+            "1": "Playbook outputs reviewed periodically; some explainability of automation actions; trust based on observed performance over time.",
+            "2": "Agent decision rationale generated and logged; systematic validation sampling in place; governance officers can review agent reasoning for any decision.",
+            "3": "Formal explainability framework; all significant decisions accompanied by natural-language rationale, evidence references, and confidence scores.",
+            "4": "Continuous system-level validation; agent behavior sampled and reviewed against expected patterns; anomalous agent behavior detected and flagged automatically.",
+            "5": "Trust is continuously earned and demonstrated; the system generates its own assurance evidence; governance officers have real-time confidence in system behavior."
+          }
+        },
+        "MET-04": {
+          "id": "MET-04",
+          "name": "Board-level Security Posture Reporting",
+          "description": "The capability to generate board-appropriate security posture reports that reflect autonomous operations — communicating risk, coverage, governance compliance, and system trust in business terms.",
+          "assessment_question": "Can your security function generate board-level reports that accurately reflect agentic operations — including autonomous decisions made, governance compliance, and demonstrated risk reduction?",
+          "stage_descriptors": {
+            "0": "Board reporting focuses on incidents, compliance status, and analyst headcount; no reflection of operational capability or system posture.",
+            "1": "Board reports include MTTD/MTTR trends and compliance status; some risk quantification; still primarily incident-focused.",
+            "2": "Board reports include detection coverage, automation rate, and risk posture trends; beginning to reflect system capability rather than analyst activity.",
+            "3": "Board reports cover: autonomous operations rate, governance compliance, detection coverage, exposure reduction trend, and key risk drivers; business-language ready.",
+            "4": "Board reporting is continuous and on-demand; the system generates real-time posture dashboards; board-level narrative generated automatically from system metrics.",
+            "5": "Board reporting demonstrates continuous security posture improvement as a measurable system outcome; includes governance health, agent trust metrics, and strategic risk reduction."
+          }
+        }
+      }
+    },
+
+    "TRN": {
+      "id": "TRN",
+      "name": "Transformation Readiness",
+      "plane": "Transformation",
+      "description": "The organizational, cultural, and technical readiness to execute the transformation from traditional to agentic security operations — including change management, risk tolerance, and leadership alignment.",
+      "weight": 0.09,
+      "sub_dimensions": {
+        "TRN-01": {
+          "id": "TRN-01",
+          "name": "Leadership Alignment & Vision",
+          "description": "The degree to which executive and security leadership have a shared, specific vision for agentic operations — and are prepared to sponsor the organizational changes required.",
+          "assessment_question": "Do your CISO, CTO, and executive leadership have a shared, specific understanding of the target agentic operating model and are they aligned on the transformation investment?",
+          "stage_descriptors": {
+            "0": "Leadership awareness of AI/automation is general; no specific agentic SOC vision articulated; investment decisions made reactively.",
+            "1": "CISO has articulated an automation and AI strategy; leadership alignment on direction but not on specific operating model; investment partially committed.",
+            "2": "Shared agentic SOC vision articulated at CISO and CTO level; transformation roadmap under development; executive sponsorship confirmed.",
+            "3": "Full executive alignment on the post-tier operating model; transformation funded and staffed; board briefed and supportive.",
+            "4": "Leadership-level governance of the transformation; regular board-level reporting on progress; leadership actively manages cultural and organizational change.",
+            "5": "Agentic operations is a board-level strategic commitment; executive accountability for transformation outcomes; the organization is recognized as an industry leader."
+          }
+        },
+        "TRN-02": {
+          "id": "TRN-02",
+          "name": "Cultural & Organizational Readiness",
+          "description": "The organizational culture's readiness to accept reduced human task execution, increased agent authority, and redefined human roles — without resistance or governance failure.",
+          "assessment_question": "Is your security organization culturally prepared to transition from task-execution roles to governance and oversight roles — and has this transition been actively managed?",
+          "stage_descriptors": {
+            "0": "Culture is strongly attached to tier model identity; automation seen as threat to headcount; change resistance high.",
+            "1": "Culture warming to automation as assistance; SOAR adoption progressing; concern about role displacement but not actively managed.",
+            "2": "Active change management program underway; new role identities being established; some staff transitioning successfully to governance roles.",
+            "3": "Culture has transitioned; post-tier roles are established and valued; staff identify with governance and judgment responsibilities over task execution.",
+            "4": "Cultural transformation complete for core security team; agency and judgment are the primary professional values; the organization attracts governance-oriented talent.",
+            "5": "Security operations culture is a competitive advantage; the organization leads in defining what it means to be a security professional in an agentic world."
+          }
+        },
+        "TRN-03": {
+          "id": "TRN-03",
+          "name": "Technical Debt & Integration Readiness",
+          "description": "The state of the existing technical environment — legacy tools, data quality, integration capability — and its readiness to support an agentic operating model.",
+          "assessment_question": "How well does your existing technical environment (data quality, API integration, tool consolidation) support the integration requirements of an agentic operating model?",
+          "stage_descriptors": {
+            "0": "High technical debt; siloed tools with poor API coverage; log quality and normalization poor; significant foundational work required before automation can scale.",
+            "1": "Core log pipeline consolidated; SIEM and SOAR integrated; some API connectivity; foundational data quality improvement underway.",
+            "2": "Data pipeline consolidated and normalized; core tools integrated via APIs; agent platform capable of running; knowledge graph foundation being built.",
+            "3": "Technical environment is agent-ready; data quality sufficient for automated reasoning; integration layer supports real-time coordination between agent classes.",
+            "4": "Technical environment purpose-built for agentic operations; legacy constraints eliminated or isolated; integration capability is a strategic asset.",
+            "5": "Technical architecture fully supports the agentic operating model; every component is agent-accessible, API-driven, and continuously monitored for health."
+          }
+        },
+        "TRN-04": {
+          "id": "TRN-04",
+          "name": "Failure Mode Awareness & Resilience",
+          "description": "The organization's understanding of the specific failure modes of agentic systems — over-autonomy, governance drift, adversarial manipulation, compounding errors — and the resilience mechanisms in place.",
+          "assessment_question": "Has your organization identified and formally planned mitigations for the key failure modes of agentic security operations — including governance drift, adversarial manipulation, and compounding errors?",
+          "stage_descriptors": {
+            "0": "No formal analysis of agentic failure modes; reliance on existing change management and audit processes; failure modes not modeled.",
+            "1": "Some awareness of automation failure risks; basic safeguards in place for playbook errors; no formal failure mode taxonomy.",
+            "2": "Agentic failure modes documented: over-autonomy, governance drift, hallucination, adversarial manipulation; mitigations planned but not fully implemented.",
+            "3": "Failure mode taxonomy maintained; mitigations implemented and tested; governance engine includes failure detection logic; circuit breakers in place for critical failures.",
+            "4": "Failure mode management is continuous; the governance engine monitors for signs of drift, manipulation, and error compounding; human governance officers have override authority.",
+            "5": "Failure resilience is a constitutional design principle; the system is designed to degrade gracefully, self-report anomalous behavior, and invoke human governance under distress."
+          }
+        }
+      }
+    }
+
+  },
+
+  "transformation_journey": {
+    "phases": [
+      {
+        "phase": 1,
+        "label": "Tiered SOC → Assisted Operations",
+        "stage_range": "0 → 1",
+        "approximate_duration": "6-18 months",
+        "description": "Introduce AI-assisted triage and automation playbooks while maintaining the tier model. Focus on data quality, log normalization, and playbook reliability.",
+        "key_activities": [
+          "Consolidate and normalize the log pipeline",
+          "Deploy behavioral analytics alongside signature detection",
+          "Implement SOAR with pre-approved playbooks for high-volume known scenarios",
+          "Map existing detection coverage against ATT&CK framework",
+          "Define and document automation authority boundaries for playbooks",
+          "Begin measuring MTTD and false positive rate as primary KPIs"
+        ],
+        "inflection_points": [
+          "SOAR adoption reaches >70% of known-scenario alert volume",
+          "Analyst capacity freed by automation is redirected to hunting and architecture",
+          "Leadership sees measurable MTTR improvement from automation"
+        ],
+        "failure_modes": [
+          "Automation debt: playbooks proliferate without governance or maintenance",
+          "Alert suppression disguised as automation: FP rates hidden behind automated closures",
+          "Analyst resistance: automation seen as replacement rather than enablement",
+          "Data quality ignored: automation built on poor-quality log data"
+        ]
+      },
+      {
+        "phase": 2,
+        "label": "Assisted Operations → Supervised Autonomy",
+        "stage_range": "1 → 2",
+        "approximate_duration": "12-24 months",
+        "description": "Introduce agent classes with defined authority scopes. Eliminate L1 workload through automation. Begin building the Security Knowledge Graph prototype.",
+        "key_activities": [
+          "Define formal agent class taxonomy with authority scope per class",
+          "Deploy agent-driven investigation workflows replacing L1/L2 analyst functions",
+          "Build SKG prototype with core entity types (asset, identity, adversary, TTP, evidence)",
+          "Implement authority enforcement layer for agent actions",
+          "Introduce confidence scoring for agent outputs",
+          "Redefine analyst roles from tier executors to agent supervisors"
+        ],
+        "inflection_points": [
+          "L1 analyst role becomes structurally unnecessary for known threat patterns",
+          "SKG prototype is actively used by agents for investigation enrichment",
+          "Agent authority boundaries are technically enforced for the first time"
+        ],
+        "failure_modes": [
+          "Governance theater: authority boundaries defined but not enforced technically",
+          "Knowledge graph abandonment: SKG built but not maintained or used operationally",
+          "Tier model inertia: new tools deployed but analyst behaviors unchanged",
+          "Over-trust: agent outputs accepted without validation sampling"
+        ]
+      },
+      {
+        "phase": 3,
+        "label": "Supervised Autonomy → Directed Autonomy",
+        "stage_range": "2 → 3",
+        "approximate_duration": "12-24 months",
+        "description": "Eliminate the tier model. Define post-tier human roles. Deploy ethics and governance engine. Make the SKG the operational reasoning substrate.",
+        "key_activities": [
+          "Eliminate L1/L2/L3 role designations; implement post-tier authority roles",
+          "Deploy governance engine with machine-interpretable policy and ethics guardrails",
+          "Make SKG the primary reasoning substrate for agent decision-making",
+          "Implement intent-based authorization replacing per-action approval",
+          "Deploy continuous DFIR as an operational function",
+          "Update board reporting to reflect autonomous operations metrics"
+        ],
+        "inflection_points": [
+          "Escalation volume drops by >80%; humans engaged for intent, not analysis",
+          "Governance engine prevents its first significant unauthorized action autonomously",
+          "Board receives first autonomous-operations posture report"
+        ],
+        "failure_modes": [
+          "Governance engine gap: ethics and authority modeled incompletely; edge cases exposed in incidents",
+          "Human role identity crisis: governance roles feel less valued than operational roles",
+          "SKG quality debt: graph entities become stale; reasoning quality degrades",
+          "Regulatory scrutiny: autonomous response actions challenged in compliance review"
+        ]
+      },
+      {
+        "phase": 4,
+        "label": "Directed Autonomy → Collaborative Agentic",
+        "stage_range": "3 → 4",
+        "approximate_duration": "12-24 months",
+        "description": "Move to agent-first operations. Integrate CTEM, DFIR, threat research, and response as unified continuous functions. Governance becomes the primary human activity.",
+        "key_activities": [
+          "Integrate CTEM, DFIR, threat research, and detection into a unified continuous operational model",
+          "Deploy full agent collaboration and conflict resolution architecture",
+          "Implement continuous compliance monitoring replacing periodic audit cycles",
+          "Develop constitutional authority model with human veto and override mechanisms",
+          "Train governance officers in the new constitutional oversight model",
+          "Establish board-level governance committee for the agentic security system"
+        ],
+        "inflection_points": [
+          "Security operations runs continuously without human-initiated operational actions",
+          "First governance officer exercises constitutional override successfully",
+          "Compliance audit preparation time drops to near zero"
+        ],
+        "failure_modes": [
+          "Governance overconfidence: governance officers trust system without adequate oversight",
+          "Adversarial manipulation: threat actors probe governance boundaries and authority models",
+          "Vendor concentration: platform dependencies limit constitutional authority",
+          "Talent scarcity: governance officer role cannot be filled from existing talent pool"
+        ]
+      },
+      {
+        "phase": 5,
+        "label": "Collaborative Agentic → Fully Agentic Control System",
+        "stage_range": "4 → 5",
+        "approximate_duration": "12-24 months",
+        "description": "Achieve a self-regulating autonomous security control system. Human roles become constitutional: governing the governing model itself.",
+        "key_activities": [
+          "Implement self-evolving SKG with autonomous entity lifecycle management",
+          "Deploy constitutional governance model with board-level human oversight",
+          "Achieve continuous, board-reportable security posture improvement demonstration",
+          "Implement full failure-mode resilience architecture including circuit breakers and graceful degradation",
+          "Publish organizational trust model for external stakeholders (customers, regulators, partners)",
+          "Institutionalize continuous red team / adversarial testing of the governance model"
+        ],
+        "inflection_points": [
+          "Security posture measurably improves quarter-over-quarter as a system outcome",
+          "Regulatory body accepts continuous audit evidence in lieu of periodic assessments",
+          "Security operations is recognized as a strategic organizational differentiator"
+        ],
+        "failure_modes": [
+          "Constitutional drift: governance model evolves without adequate human oversight",
+          "Black box governance: governance decisions no longer explainable to human governors",
+          "Systemic attack surface: the agentic system itself becomes a high-value target",
+          "Over-reliance: graceful degradation to human operations atrophies through disuse"
+        ]
+      }
+    ]
+  },
+
+  "assessment_guidance": {
+    "scoring_method": "Rate each sub-dimension on a 0-5 integer scale matching the stage descriptors. Decimal scores (e.g., 2.5) are permitted to indicate partial progression between stages.",
+    "aggregation": "Dimension scores are the arithmetic mean of sub-dimension scores. Overall maturity is the weighted mean of dimension scores. See dimension weights.",
+    "target_setting": "Target stage should reflect desired maturity in 18-24 months, not aspirational end-state. Targets should be achievable with planned investment.",
+    "recommended_reviewers": [
+      "CISO and direct security leadership team",
+      "SOC Manager and senior analyst representatives",
+      "Security Architect",
+      "Compliance and Risk Officer",
+      "CISO-1 governance or assurance function"
+    ],
+    "review_frequency": "Quarterly for organizations actively transforming; semi-annually for stable organizations",
+    "evidence_requirement": "Each rating should be accompanied by a brief evidence note (1-3 sentences describing what is in place) to prevent score inflation",
+    "stage_label_thresholds": {
+      "0.0-0.9": "Traditional",
+      "1.0-1.9": "Assisted",
+      "2.0-2.9": "Supervised Autonomy",
+      "3.0-3.9": "Directed Autonomy",
+      "4.0-4.9": "Collaborative Agentic",
+      "5.0": "Fully Agentic"
+    }
+  }
+}

@@ -2320,6 +2320,8 @@ function handleNavigation(e) {
             populateReportsView();
         } else if (view === 'roadmap') {
             populateRoadmapView();
+        } else if (view === 'asmf') {
+            populateASMFView();
         }
     }
 }
@@ -4584,6 +4586,19 @@ function activateReportTab(tabId) {
         }
     } else if (tabId === 'innovation-profile') {
         populateInnovationProfile();
+    } else if (tabId === 'asmf-matrix') {
+        // Mark the default first pane rendered and populate it
+        const firstPane = document.getElementById('asmf-matrix-pane-matrix');
+        if (firstPane && !firstPane.dataset.rendered) {
+            firstPane.dataset.rendered = '1';
+            populateASMFMatrix();
+        }
+    } else if (tabId === 'asmf-graph') {
+        const firstPane = document.getElementById('asmf-graph-pane-force');
+        if (firstPane && !firstPane.dataset.rendered) {
+            firstPane.dataset.rendered = '1';
+            populateASMFGraph();
+        }
     } else if (tabId.startsWith('report-')) {
         const reportId = tabId.replace('report-', '');
         populateMarketInsightReport(reportId);
@@ -12889,6 +12904,2095 @@ const GANTT_RMF_COLORS = { Govern: '#0078d4', Map: '#107c10', Measure: '#d83b01'
 const GANTT_PILLAR_COLORS = { INF: '#0078d4', IAM: '#107c10', NDS: '#d83b01', DSO: '#5c2d91', TRM: '#008080' };
 let _ganttPlanData = null;
 let _ganttDragState = null;
+
+// ── Agentic SOC Maturity Framework (ASMF) View ─────────────────────────────
+
+// ── ASMF Target Radar ────────────────────────────────────────────────────────
+
+async function populateASMFRadar() {
+    const el = document.getElementById('asmf-radar-content');
+    if (!el) return;
+    if (!_asmfFramework) {
+        try { const r = await fetch('/api/asmf-framework'); _asmfFramework = await r.json(); }
+        catch(e) { el.innerHTML = `<p style="color:#ef4444">${escapeHtml(String(e))}</p>`; return; }
+    }
+    const fw = _asmfFramework;
+    const dims = Object.entries(fw.dimensions || {});
+    const labels = dims.map(([id, d]) => `${id}\n${d.name}`);
+    const weights = dims.map(([,d]) => Math.round((d.weight||0)*100));
+
+    // Stage 5 = max (100% normalised), stage 0 = min typical
+    // We represent capability coverage per dimension per stage as 0-100
+    const stage5  = dims.map(() => 100);
+    const stage3  = dims.map(([,d]) => 62);
+    const stage1  = dims.map(([,d]) => 22);
+
+    el.innerHTML = `
+    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:700px;">
+      Each axis represents one of the 11 ASMF dimensions. The outer ring (Stage 5 — Fully Agentic) shows the target state.
+      The middle band is Stage 3 (Directed Autonomy) — a realistic 3-year goal for most enterprises.
+      The inner band is Stage 1 (Assisted) — typical today.
+    </div>
+    <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
+      <canvas id="asmf-radar-chart" width="560" height="600" style="max-width:560px;"></canvas>
+      <div style="flex:1;min-width:220px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">Dimension Weights</div>
+        ${dims.map(([id, d]) => {
+            const w = Math.round((d.weight||0)*100);
+            const col = _asmfDimColor(d.plane||'');
+            return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:${col};flex-shrink:0;display:inline-block;"></span>
+              <span style="font-size:12px;color:var(--text-secondary);flex:1;">${escapeHtml(id)} — ${escapeHtml(d.name)}</span>
+              <span style="font-size:12px;font-weight:700;color:${col};" title="Framework maturity weight — this dimension's share of overall ASMF score">${w}% <span style="font-size:10px;font-weight:400;color:#475569;">weight</span></span>
+            </div>`;
+        }).join('')}
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border-color);">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Legend</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#22c55e;display:inline-block;border-radius:2px;"></span><span style="color:var(--text-secondary);">Stage 5 — Fully Agentic (target)</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#f59e0b;display:inline-block;border-radius:2px;"></span><span style="color:var(--text-secondary);">Stage 3 — Directed Autonomy (3-yr goal)</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#6b7280;display:inline-block;border-radius:2px;border-style:dashed;"></span><span style="color:var(--text-secondary);">Stage 1 — Assisted (typical today)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+    // Draw radar with Canvas API (no external dep)
+    const canvas = document.getElementById('asmf-radar-chart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const cx = 280, cy = 310, R = 205; // extra top/bottom room for axis labels
+    const n = dims.length;
+    const angle0 = -Math.PI/2;
+
+    function radarPoint(i, val) {
+        const a = angle0 + (2*Math.PI*i/n);
+        const r = R * val / 100;
+        return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
+    }
+
+ctx.clearRect(0,0,560,600);
+
+    // Grid rings
+    [20,40,60,80,100].forEach(pct => {
+        ctx.beginPath();
+        for (let i=0;i<n;i++) {
+            const [x,y]=radarPoint(i,pct);
+            i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = pct===100 ? '#334155' : '#1e293b';
+        ctx.lineWidth = pct===100?1.5:0.8;
+        ctx.stroke();
+        ctx.fillStyle='#475569';
+        ctx.font='10px system-ui';
+        ctx.textAlign='center';
+        const [lx,ly]=radarPoint(0,pct);
+        ctx.fillText(pct+'%', lx+4, ly-4);
+    });
+
+    // Axis spokes + labels
+    dims.forEach(([id,d],i) => {
+        const a = angle0 + (2*Math.PI*i/n);
+        const [x2,y2]=radarPoint(i,105);
+        ctx.beginPath();
+        ctx.moveTo(cx,cy);
+        ctx.lineTo(x2,y2);
+        ctx.strokeStyle='#1e293b';ctx.lineWidth=0.8;ctx.stroke();
+        // Label
+        const [lx,ly]=radarPoint(i,120);
+        ctx.fillStyle=_asmfDimColor(d.plane||'');
+        ctx.font='bold 11px system-ui';
+        ctx.textAlign=lx>cx+5?'left':lx<cx-5?'right':'center';
+        ctx.fillText(id,lx,ly);
+    });
+
+    function drawDataset(values, color, fillAlpha) {
+        ctx.beginPath();
+        values.forEach((v,i) => {
+            const [x,y]=radarPoint(i,v);
+            i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+        });
+        ctx.closePath();
+        ctx.fillStyle = color + Math.round(fillAlpha*255).toString(16).padStart(2,'0');
+        ctx.fill();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+
+    drawDataset(stage1, '#6b7280', 0.12);
+    drawDataset(stage3, '#f59e0b', 0.14);
+    drawDataset(stage5, '#22c55e', 0.18);
+
+    // Centre dot
+    ctx.beginPath();ctx.arc(cx,cy,5,0,2*Math.PI);ctx.fillStyle='#f1f5f9';ctx.fill();
+}
+
+// ── ASMF Effort Flow (Sankey-style SVG) ──────────────────────────────────────
+
+async function populateASMFSankey() {
+    const el = document.getElementById('asmf-sankey-content');
+    if (!el) return;
+
+    const W = 900, H = 520;
+    const stageLabels = ASMF_STAGE_LABELS;
+    const stageColors = ASMF_STAGE_COLORS;
+
+    // Nodes: columns = operational layers, rows = effort actors
+    // Layout: left = inputs, right = outcomes, rows = human/agentic split
+    const cols = [
+        { x: 60,  label: 'Signal\nSources',    color: '#06b6d4' },
+        { x: 220, label: 'Detection &\nEnrichment', color: '#8b5cf6' },
+        { x: 380, label: 'AI Reasoning\nEngine', color: '#3b82f6' },
+        { x: 540, label: 'Response\nOrchestration', color: '#f59e0b' },
+        { x: 700, label: 'Human\nOversight', color: '#f97316' },
+        { x: 860, label: 'Business\nOutcomes', color: '#22c55e' },
+    ];
+
+    // Effort bands per stage (human% vs agentic%)
+    const stages = [
+        { human: 95, agentic: 5,  label: 'Stage 0\nTraditional' },
+        { human: 75, agentic: 25, label: 'Stage 1\nAssisted' },
+        { human: 55, agentic: 45, label: 'Stage 2\nSupervised' },
+        { human: 35, agentic: 65, label: 'Stage 3\nDirected' },
+        { human: 15, agentic: 85, label: 'Stage 4\nCollaborative' },
+        { human: 5,  agentic: 95, label: 'Stage 5\nFully Agentic' },
+    ];
+
+    // Shift everything right to give labels room on the left
+    const labelW = 110; // px reserved for stage labels
+    const barX   = labelW + 10;
+    const barW2  = W - barX - 20;
+    const nodeW = 100, nodeH = 40, rowH = 72, topY = 60;
+
+    let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${W}px;overflow:visible;" font-family="system-ui,sans-serif">`;
+
+    // Column headers (shifted right)
+    cols.forEach(c => {
+        const cx2 = barX + (c.x / 860) * barW2;
+        const lines = c.label.split('\n');
+        svg += `<rect x="${cx2-nodeW/2}" y="${topY-32}" width="${nodeW}" height="26" rx="4" fill="${c.color}22" stroke="${c.color}" stroke-width="1.5"/>`;
+        lines.forEach((l,i) => svg += `<text x="${cx2}" y="${topY-32+10+(i*12)}" text-anchor="middle" font-size="10" font-weight="700" fill="${c.color}">${escapeHtml(l)}</text>`);
+    });
+
+    // Stage rows — horizontal bands showing human/agentic split
+    stages.forEach((s, si) => {
+        const y = topY + si * rowH;
+        const color = stageColors[si];
+        const agW = barW2 * s.agentic / 100;
+        const humW = barW2 * s.human / 100;
+
+        svg += `<rect x="${barX}" y="${y}" width="${humW}" height="28" rx="3" fill="#6b728033"/>`;
+        svg += `<rect x="${barX+humW}" y="${y}" width="${agW}" height="28" rx="3" fill="${color}44"/>`;
+        svg += `<rect x="${barX}" y="${y}" width="${barW2}" height="28" rx="3" fill="none" stroke="${color}33" stroke-width="1"/>`;
+
+        // Labels fully inside the left margin — two lines, right-aligned at labelW-4
+        const lines = s.label.split('\n');
+        lines.forEach((l,i) => svg += `<text x="${labelW-4}" y="${y+10+(i*12)}" text-anchor="end" font-size="10" font-weight="${i===0?'700':'400'}" fill="${color}">${escapeHtml(l)}</text>`);
+
+        svg += `<text x="${barX+humW/2}" y="${y+18}" text-anchor="middle" font-size="11" fill="#94a3b8">${s.human}% human</text>`;
+        svg += `<text x="${barX+humW+agW/2}" y="${y+18}" text-anchor="middle" font-size="11" fill="${color}" font-weight="600">${s.agentic}% agentic</text>`;
+    });
+
+    // Column lines (shifted)
+    cols.forEach(c => {
+        const cx2 = barX + (c.x / 860) * barW2;
+        svg += `<line x1="${cx2}" y1="${topY}" x2="${cx2}" y2="${topY+stages.length*rowH}" stroke="${c.color}40" stroke-width="1" stroke-dasharray="3,3"/>`;
+    });
+
+    // Legend
+    svg += `<text x="${W/2}" y="${H-10}" text-anchor="middle" font-size="11" fill="#475569">Width of each band = proportion of work handled by humans (grey) vs. agentic systems (colored)</text>`;
+
+    svg += `</svg>`;
+
+    el.innerHTML = `
+    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:760px;">
+      Each horizontal band represents a maturity stage. As you move from Stage 0 (Traditional) to Stage 5 (Fully Agentic),
+      agentic systems absorb an increasing proportion of the work across every operational layer — from signal ingestion through to business outcomes.
+    </div>
+    <div style="overflow-x:auto;">${svg}</div>
+    <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;">
+      ${stages.map((s,i)=>`<div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);">
+        <span style="width:14px;height:14px;border-radius:3px;background:${stageColors[i]};display:inline-block;"></span>
+        ${escapeHtml(s.label.replace('\n',' — '))}
+      </div>`).join('')}
+    </div>`;
+}
+
+// ── ASMF Capability Pyramid ───────────────────────────────────────────────────
+
+async function populateASMFPyramid() {
+    const el = document.getElementById('asmf-pyramid-content');
+    if (!el) return;
+    if (!_asmfFramework) {
+        try { const r = await fetch('/api/asmf-framework'); _asmfFramework = await r.json(); }
+        catch(e) { el.innerHTML = `<p style="color:#ef4444">${escapeHtml(String(e))}</p>`; return; }
+    }
+
+    // 6 pyramid layers, bottom = foundation, top = fully agentic
+    const layers = [
+        { stage: 0, label: 'Traditional SOC Foundation', color: '#6b7280',
+          cap: 'Manual SIEM triage, rule-based alerts, L1/L2/L3 tiering',
+          dims: ['SEN','RSN'], outcome: 'Reactive incident response with significant human backlog' },
+        { stage: 1, label: 'AI-Assisted Operations', color: '#3b82f6',
+          cap: 'ML-aided alert triage, automated enrichment, SOAR playbooks',
+          dims: ['SEN','RSN','ACT'], outcome: 'Reduced MTTD, analyst augmentation, faster playbook execution' },
+        { stage: 2, label: 'Supervised Autonomy', color: '#8b5cf6',
+          cap: 'Agents execute bounded tasks autonomously with human approval gates',
+          dims: ['ACT','GOV','HUM'], outcome: 'MTTD < 1hr, automated containment for known threat classes' },
+        { stage: 3, label: 'Directed Autonomy', color: '#f59e0b',
+          cap: 'Agents define and execute multi-step response chains; humans set objectives',
+          dims: ['GOV','LRN','AGT'], outcome: 'Sub-minute response for common threats, strategic human focus' },
+        { stage: 4, label: 'Collaborative Agentic', color: '#10b981',
+          cap: 'Agent swarms coordinate across domains; humans focus on novel threats and governance',
+          dims: ['AGT','SKG','MET'], outcome: 'MTTD seconds, predictive threat disruption, adaptive learning' },
+        { stage: 5, label: 'Fully Agentic SOC', color: '#22c55e',
+          cap: 'Continuous self-improving autonomous operations; humans set strategy and policy',
+          dims: ['TRN','OPS','MET'], outcome: 'Near-zero dwell time, autonomous adversary modeling, self-healing infrastructure' },
+    ];
+
+    const totalW = 760;
+    const layerH = 72;
+
+    const layerHTML = layers.slice().reverse().map((l, ri) => {
+        const si = layers.length - 1 - ri;
+        const widthPct = 38 + (si / (layers.length-1)) * 62; // 38% to 100%
+        const dimBadges = l.dims.map(d =>
+            `<span style="background:${l.color}33;color:${l.color};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700;margin-right:4px;">${d}</span>`
+        ).join('');
+        return `
+        <div style="display:flex;justify-content:center;margin-bottom:3px;" title="${escapeHtml(l.outcome)}">
+          <div style="width:${widthPct}%;min-height:${layerH}px;background:${l.color}22;border:2px solid ${l.color}66;
+                      border-radius:6px;padding:10px 16px;position:relative;transition:all 0.2s;cursor:default;"
+               onmouseenter="this.style.background='${l.color}44'" onmouseleave="this.style.background='${l.color}22'">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div>
+                <div style="font-size:11px;font-weight:800;color:${l.color};text-transform:uppercase;letter-spacing:0.5px;">Stage ${l.stage} — ${escapeHtml(l.label)}</div>
+                <div style="font-size:12px;color:var(--text-secondary);margin-top:3px;line-height:1.4;">${escapeHtml(l.cap)}</div>
+                <div style="margin-top:5px;">${dimBadges}</div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+
+    el.innerHTML = `
+    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:700px;">
+      Each layer represents a maturity stage. The pyramid grows narrower at the top — fewer organizations reach higher stages,
+      but those that do achieve exponentially better outcomes. Hover any layer to see the expected outcome.
+    </div>
+    <div style="padding:0 20px;">
+      <div style="text-align:center;margin-bottom:6px;font-size:11px;color:var(--text-muted);">▲ Increasing autonomy, decreasing mean time to detect &amp; respond</div>
+      ${layerHTML}
+      <div style="text-align:center;margin-top:6px;font-size:11px;color:var(--text-muted);">▼ Foundation: data sources, sensors, security tooling</div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border-color);">
+      <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">Outcome by stage (hover layers for detail)</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        ${layers.map(l=>`<div style="display:flex;align-items:baseline;gap:10px;font-size:12px;">
+          <span style="color:${l.color};font-weight:700;white-space:nowrap;min-width:70px;">Stage ${l.stage}</span>
+          <span style="color:var(--text-secondary);">${escapeHtml(l.outcome)}</span>
+        </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+// ── ASMF Journey Timeline ─────────────────────────────────────────────────────
+
+async function populateASMFTimeline() {
+    const el = document.getElementById('asmf-timeline-content');
+    if (!el) return;
+    if (!_asmfFramework) {
+        try { const r = await fetch('/api/asmf-framework'); _asmfFramework = await r.json(); }
+        catch(e) { el.innerHTML = `<p style="color:#ef4444">${escapeHtml(String(e))}</p>`; return; }
+    }
+
+    const phases = (_asmfFramework.transformation_journey?.phases) || [];
+
+    const phaseCards = phases.map((p, i) => {
+        const color = ASMF_STAGE_COLORS[i + 1] || '#64748b';
+        const acts = (p.key_activities || []).map(a => `<li style="padding:2px 0;">${escapeHtml(a)}</li>`).join('');
+        const fails = (p.failure_modes || []).map(f => `<li style="padding:2px 0;color:#ef4444;">${escapeHtml(f)}</li>`).join('');
+        const inflections = (p.inflection_points || []).map(ip => `<li style="padding:2px 0;color:#22c55e;">${escapeHtml(ip)}</li>`).join('');
+        return `
+        <div style="position:relative;flex:1;min-width:180px;background:var(--bg-secondary);border:1px solid var(--border-color);
+                    border-top:4px solid ${color};border-radius:8px;padding:16px 14px;">
+          <!-- Phase number bubble -->
+          <div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+                      width:32px;height:32px;border-radius:50%;background:${color};
+                      display:flex;align-items:center;justify-content:center;
+                      font-size:14px;font-weight:800;color:#fff;border:3px solid var(--bg-primary);">${i+1}</div>
+          <div style="font-size:11px;color:${color};font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;margin-top:8px;">${escapeHtml(p.transition||'')}</div>
+          <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">${escapeHtml(p.label||'')}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px;">⏱ ${escapeHtml(p.approximate_duration||'')}</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:10px;">${escapeHtml(p.description||'')}</div>
+          ${acts ? `<div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:4px;">Key activities</div>
+          <ul style="margin:0 0 10px;padding-left:14px;font-size:11px;">${acts}</ul>` : ''}
+          ${inflections ? `<div style="font-size:11px;font-weight:700;color:#22c55e;margin-bottom:4px;">✓ Inflection points</div>
+          <ul style="margin:0 0 10px;padding-left:14px;font-size:11px;">${inflections}</ul>` : ''}
+          ${fails ? `<div style="font-size:11px;font-weight:700;color:#ef4444;margin-bottom:4px;">⚠ Failure modes</div>
+          <ul style="margin:0;padding-left:14px;font-size:11px;">${fails}</ul>` : ''}
+        </div>`;
+    }).join('');
+
+    // Arc connector SVG
+    const arcW = phases.length * 210;
+    let arcSvg = `<svg width="${arcW}" height="30" viewBox="0 0 ${arcW} 30" style="width:100%;overflow:visible;">`;
+    for (let i = 0; i < phases.length - 1; i++) {
+        const x1 = 105 + i * 210, x2 = x1 + 210;
+        const color = ASMF_STAGE_COLORS[i + 2] || '#64748b';
+        arcSvg += `<path d="M${x1} 15 Q${(x1+x2)/2} 2 ${x2} 15" fill="none" stroke="${color}" stroke-width="2.5" stroke-dasharray="5,3"/>`;
+        arcSvg += `<polygon points="${x2-6},10 ${x2},15 ${x2-6},20" fill="${color}"/>`;
+    }
+    arcSvg += `</svg>`;
+
+    el.innerHTML = `
+    <div style="margin-bottom:28px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:800px;">
+      The transformation is not linear — each phase has specific inflection points that must be reached before the next phase becomes accessible.
+      Organizations that skip phases typically encounter compounding failure modes.
+    </div>
+    <div style="padding:24px 0 0;overflow-x:auto;">
+      <div style="min-width:${phases.length*200}px;">
+        <div style="margin-bottom:4px;">${arcSvg}</div>
+        <div style="display:flex;gap:12px;">${phaseCards}</div>
+      </div>
+    </div>`;
+}
+
+// ── ASMF Orbital Model (concentric rings canvas) ──────────────────────────────
+
+async function populateASMFOrbital() {
+    const el = document.getElementById('asmf-orbital-content');
+    if (!el) return;
+
+    // ── Load data (framework + relationship map) ──────────────────────────
+    try {
+        const toFetch = [];
+        if (!_asmfFramework)  toFetch.push(fetch('/api/asmf-framework').then(r=>r.json()).then(d=>{ _asmfFramework=d; }));
+        if (!_asmfOrbitalMap) toFetch.push(fetch('/api/asmf-orbital-map').then(r=>r.json()).then(d=>{ _asmfOrbitalMap=d; }));
+        if (toFetch.length) await Promise.all(toFetch);
+    } catch(e) {
+        el.innerHTML = `<p style="color:#ef4444;padding:20px;">${escapeHtml(String(e))}</p>`;
+        return;
+    }
+
+    const fw       = _asmfFramework;
+    const orbMap   = _asmfOrbitalMap;
+    const dims     = Object.entries(fw.dimensions || {});
+    const rels     = orbMap.relationships     || [];
+    const relTypes = orbMap.relationship_types || {};
+    const dimCfg   = orbMap.dim_config         || {};
+
+    // ── Layout constants ──────────────────────────────────────────────────
+    const OV_RING_R  = 215;   // overview dim ring
+    const FO_INNER_R = 125;   // focus: sub-dim ring
+    const FO_OUTER_R = 285;   // focus: outer dim ring
+
+    // ── Build node list ───────────────────────────────────────────────────
+    const allNodes = [];
+    function mkNode(o) { return Object.assign({ tx:0, ty:0, alpha:1, talpha:1, tr:20, r:4 }, o); }
+
+    // Root node
+    allNodes.push(mkNode({ id:'__root__', type:'root', label:'SOC CORE', x:0, y:0, tx:0, ty:0, r:34, tr:34, color:'#3b82f6' }));
+
+    // Dimension nodes
+    const dimCount = dims.length;
+    dims.forEach(([id, dim], i) => {
+        const cfg   = dimCfg[id] || {};
+        const color = cfg.color  || '#3b82f6';
+        const a     = (2 * Math.PI * i / dimCount) - Math.PI / 2;
+        const ox    = OV_RING_R * Math.cos(a);
+        const oy    = OV_RING_R * Math.sin(a);
+        allNodes.push(mkNode({
+            id, type:'dim', label:id, name:dim.name||id, color,
+            plane: cfg.plane||'', overviewAngle:a, overviewX:ox, overviewY:oy,
+            x:ox, y:oy, tx:ox, ty:oy, r:24, tr:24, alpha:1, talpha:1,
+            dim
+        }));
+    });
+
+    // Sub-dim nodes (start collapsed at parent position, invisible)
+    dims.forEach(([dimId, dim]) => {
+        const parent = allNodes.find(n => n.id === dimId);
+        const subArr = Object.entries(dim.sub_dimensions || {});
+        subArr.forEach(([sdId, sd], si) => {
+            allNodes.push(mkNode({
+                id:`${dimId}__${sdId}`, type:'subdim', parentId:dimId,
+                label:sdId, name:sd.name||sdId, color:parent.color,
+                x:parent.x, y:parent.y, tx:parent.x, ty:parent.y,
+                r:4, tr:4, alpha:0, talpha:0,
+                sd, parentNode:parent, subIdx:si, subCount:subArr.length
+            }));
+        });
+    });
+
+    // ── App state ─────────────────────────────────────────────────────────
+    let mode='overview', selectedDim=null, selectedSub=null, hoverId=null;
+    let camX=0, camY=0, camZ=1, tX=0, tY=0, tZ=1;
+    let dragging=false, dragSX=0, dragSY=0, camSX=0, camSY=0;
+    let raf;
+
+    // ── HTML scaffold ─────────────────────────────────────────────────────
+    el.style.cssText = 'background:#0a0f1a;position:relative;display:flex;overflow:hidden;';
+    el.innerHTML = `
+      <canvas id="asmf-orbital-canvas" style="flex:1;min-width:0;cursor:grab;display:block;"></canvas>
+      <div id="asmf-orbital-detail" style="width:320px;flex-shrink:0;background:#0f172a;border-left:1px solid #1e293b;display:flex;flex-direction:column;overflow:hidden;">
+        <div id="asmf-orbital-hdr" style="padding:14px 18px 12px;border-bottom:1px solid #1e293b;flex-shrink:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#475569;">ASMF Integration Map</div>
+            <div style="display:flex;gap:6px;align-items:center;">
+              <button id="asmf-orbital-back" style="display:none;background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;white-space:nowrap;">← All</button>
+              <button id="asmf-orbital-export" style="background:#1e3a5f;border:1px solid #1d4ed8;color:#93c5fd;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;white-space:nowrap;" title="Export as interactive standalone HTML">⬇ Export</button>
+            </div>
+          </div>
+          <div id="asmf-orbital-crumb" style="font-size:12px;color:#64748b;margin-top:5px;">All 11 Dimensions</div>
+        </div>
+        <div id="asmf-orbital-body" style="flex:1;overflow-y:auto;padding:16px 18px;font-size:12px;color:#94a3b8;"></div>
+      </div>`;
+
+    const canvas  = document.getElementById('asmf-orbital-canvas');
+    const detBody = document.getElementById('asmf-orbital-body');
+    const crumb   = document.getElementById('asmf-orbital-crumb');
+    const backBtn   = document.getElementById('asmf-orbital-back');
+    const exportBtn = document.getElementById('asmf-orbital-export');
+    backBtn.addEventListener('click', () => enterOverview());
+    exportBtn.addEventListener('click', () => exportASMFOrbitalAsHTML(_asmfFramework, _asmfOrbitalMap));
+
+    function resizeCanvas() { canvas.width = canvas.offsetWidth||700; canvas.height = canvas.offsetHeight||600; }
+    resizeCanvas();
+
+    // ── Layout transitions ────────────────────────────────────────────────
+    function setLayout(newMode, selId) {
+        mode = newMode;
+        if (newMode === 'overview') {
+            allNodes.find(n=>n.id==='__root__').tx=0; allNodes.find(n=>n.id==='__root__').ty=0;
+            allNodes.find(n=>n.id==='__root__').tr=34; allNodes.find(n=>n.id==='__root__').talpha=1;
+            allNodes.filter(n=>n.type==='dim').forEach(n => { n.tx=n.overviewX; n.ty=n.overviewY; n.tr=24; n.talpha=1; });
+            allNodes.filter(n=>n.type==='subdim').forEach(n => { n.tx=n.parentNode.overviewX; n.ty=n.parentNode.overviewY; n.tr=4; n.talpha=0; });
+            tX=0; tY=0; tZ=1;
+        } else if (newMode === 'dimfocus') {
+            // Selected dim → center
+            const focDim = allNodes.find(n=>n.id===selId);
+            focDim.tx=0; focDim.ty=0; focDim.tr=44; focDim.talpha=1;
+            // Root → faded corner
+            const root = allNodes.find(n=>n.id==='__root__');
+            root.tx=-310; root.ty=-200; root.tr=18; root.talpha=0.3;
+            // Other dims → outer ring
+            const otherDims = allNodes.filter(n=>n.type==='dim' && n.id!==selId);
+            otherDims.forEach((n,i) => {
+                const a = (2*Math.PI*i/otherDims.length) - Math.PI/2;
+                n.tx=FO_OUTER_R*Math.cos(a); n.ty=FO_OUTER_R*Math.sin(a); n.tr=20; n.talpha=1;
+            });
+            // Selected dim's sub-dims → inner ring, full circle
+            const mySubs = allNodes.filter(n=>n.type==='subdim' && n.parentId===selId);
+            mySubs.forEach((n,i) => {
+                const a = (2*Math.PI*i/mySubs.length) - Math.PI/2;
+                n.tx=FO_INNER_R*Math.cos(a); n.ty=FO_INNER_R*Math.sin(a); n.tr=17; n.talpha=1;
+            });
+            // Other sub-dims → collapse to their parent's outer-ring target position
+            allNodes.filter(n=>n.type==='subdim' && n.parentId!==selId).forEach(n => {
+                const p = otherDims.find(d=>d.id===n.parentId);
+                if (p) { n.tx=p.tx; n.ty=p.ty; }
+                n.tr=4; n.talpha=0;
+            });
+            tX=0; tY=0; tZ=1;
+        }
+    }
+
+    // ── Side panel renderers ──────────────────────────────────────────────
+    function renderOverviewPanel() {
+        crumb.textContent = 'All 11 Dimensions';
+        backBtn.style.display = 'none';
+        const typeHtml = Object.entries(relTypes).map(([k,v]) => `
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;">
+            <span style="width:24px;height:3px;background:${v.color};border-radius:2px;flex-shrink:0;display:inline-block;"></span>
+            <span style="color:#94a3b8;">${escapeHtml(v.label)}</span>
+          </div>`).join('');
+        detBody.innerHTML = `
+          <p style="line-height:1.75;margin-bottom:16px;">This map shows how all 11 ASMF dimensions integrate to form a fully autonomous SOC. <strong style="color:#f1f5f9;">Click any dimension</strong> to bring it to the center and reveal every integration link, sub-dimension and capability flow.</p>
+          <div style="border-top:1px solid #1e293b;padding-top:14px;margin-bottom:14px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship Types</div>
+            ${typeHtml}
+          </div>
+          <div style="border-top:1px solid #1e293b;padding-top:14px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Controls</div>
+            <div style="line-height:2.1;color:#64748b;">🖱 Click dim — focus &amp; see all links<br>🖱 Hover outer dim — see relationship<br>🖱 Click outer dim — shift focus<br>🖱 Click sub-dim — stage descriptors<br>🖱 Scroll — zoom · Drag — pan<br>🖱 Click background or ← All — reset</div>
+          </div>`;
+    }
+
+    function renderDimPanel(dimId, hoverOtherId) {
+        const dn = allNodes.find(n=>n.id===dimId);
+        if (!dn) return;
+        const weight  = Math.round((dn.dim.weight||0)*100);
+        const outRels = rels.filter(r=>r.from===dimId);
+        const inRels  = rels.filter(r=>r.to===dimId);
+
+        if (hoverOtherId) {
+            // Hover mode: show relationship details for the hovered dim
+            const on = allNodes.find(n=>n.id===hoverOtherId);
+            if (!on) return;
+            const mutual = [
+                ...outRels.filter(r=>r.to===hoverOtherId),
+                ...inRels.filter(r=>r.from===hoverOtherId)
+            ];
+            const relHtml = mutual.length
+                ? mutual.map(r => {
+                    const rt = relTypes[r.type]||{color:'#94a3b8',label:r.type};
+                    const dir = r.from===dimId ? `${dimId} → ${r.to}` : `${r.from} → ${dimId}`;
+                    return `<div style="margin-bottom:10px;padding:10px 12px;background:#1e293b;border-radius:6px;border-left:3px solid ${rt.color};">
+                      <div style="font-size:10px;font-weight:700;color:${rt.color};text-transform:uppercase;margin-bottom:5px;">${escapeHtml(rt.label)} · ${escapeHtml(dir)}</div>
+                      <div style="line-height:1.6;color:#cbd5e1;">${escapeHtml(r.label)}</div>
+                    </div>`;
+                  }).join('')
+                : `<div style="color:#475569;font-style:italic;padding:8px 0;">No direct relationship defined.</div>`;
+            detBody.innerHTML = `
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                <span style="width:11px;height:11px;border-radius:50%;background:${on.color};flex-shrink:0;display:inline-block;"></span>
+                <span style="font-size:16px;font-weight:700;color:#f1f5f9;">${escapeHtml(hoverOtherId)}</span>
+                <span style="font-size:10px;color:#475569;margin-left:auto;">${escapeHtml(on.plane||'')}</span>
+              </div>
+              <div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">${escapeHtml(on.name)}</div>
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship with ${escapeHtml(dimId)}</div>
+              ${relHtml}
+              <div style="margin-top:12px;font-size:11px;color:#475569;">Click to shift focus to ${escapeHtml(hoverOtherId)}</div>`;
+            return;
+        }
+
+        // Full dim detail view
+        const subHtml = allNodes.filter(n=>n.type==='subdim'&&n.parentId===dimId).map(sn => `
+          <div style="margin-bottom:7px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid ${dn.color};cursor:pointer;" data-subdim="${escapeHtml(sn.id)}">
+            <div style="font-size:11px;font-weight:700;color:${dn.color};">${escapeHtml(sn.id.replace(dimId+'__',''))}</div>
+            <div style="font-size:11px;color:#cbd5e1;margin-top:2px;">${escapeHtml(sn.name)}</div>
+          </div>`).join('');
+
+        const allDimRels = [
+            ...outRels.map(r => ({ dir:'→', other:r.to,   r, rt:relTypes[r.type]||{color:'#94a3b8',label:r.type} })),
+            ...inRels.map( r => ({ dir:'←', other:r.from, r, rt:relTypes[r.type]||{color:'#94a3b8',label:r.type} }))
+        ].sort((a,b) => a.other.localeCompare(b.other));
+
+        const relHtml = allDimRels.map(({dir, other, r, rt}) => {
+            const on = allNodes.find(n=>n.id===other);
+            return `<div style="margin-bottom:7px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid ${rt.color};">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+                <span style="font-size:11px;font-weight:700;color:${rt.color};">${dir}</span>
+                <span style="font-size:11px;font-weight:700;color:${on?on.color:'#94a3b8'};">${escapeHtml(other)}</span>
+                <span style="font-size:10px;color:#475569;margin-left:auto;">${escapeHtml(rt.label)}</span>
+              </div>
+              <div style="font-size:11px;color:#94a3b8;line-height:1.5;">${escapeHtml(r.label)}</div>
+            </div>`;
+        }).join('');
+
+        detBody.innerHTML = `
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="width:12px;height:12px;border-radius:50%;background:${dn.color};flex-shrink:0;display:inline-block;"></span>
+            <span style="font-size:18px;font-weight:700;color:#f1f5f9;">${escapeHtml(dimId)}</span>
+          </div>
+          <div style="font-size:12px;color:#94a3b8;margin-bottom:2px;">${escapeHtml(dn.name)}</div>
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:14px;">${escapeHtml(dn.plane)} · Weight: ${weight}%</div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Sub-Dimensions</div>
+          ${subHtml}
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:6px;margin-top:16px;">Integration Links <span style="color:#334155;font-weight:400;">${allDimRels.length} connections</span></div>
+          <div style="font-size:11px;color:#475569;margin-bottom:10px;">Hover outer nodes to inspect each relationship.</div>
+          ${relHtml}`;
+
+        detBody.querySelectorAll('[data-subdim]').forEach(el2 => {
+            el2.addEventListener('click', () => {
+                const sn = allNodes.find(n=>n.id===el2.dataset.subdim);
+                if (sn) { selectedSub=sn.id; renderSubPanel(sn); }
+            });
+        });
+    }
+
+    function renderSubPanel(sn) {
+        const sdLabel = sn.id.replace(sn.parentId+'__','');
+        const stagesHtml = ['0','1','2','3','4','5'].map(sk => {
+            const text  = (sn.sd.stage_descriptors||{})[sk] || '—';
+            const color = ASMF_STAGE_COLORS[+sk];
+            const lbl   = ASMF_STAGE_LABELS[+sk];
+            return `<div style="margin-bottom:8px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid ${color};">
+              <div style="font-size:10px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Stage ${sk} — ${escapeHtml(lbl)}</div>
+              <div style="font-size:11px;color:#cbd5e1;line-height:1.55;">${escapeHtml(text)}</div>
+            </div>`;
+        }).join('');
+        crumb.textContent = `${selectedDim} › ${sdLabel}`;
+        detBody.innerHTML = `
+          <div style="font-size:10px;color:#475569;margin-bottom:6px;">↑ ${escapeHtml(sn.parentId)}</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="width:10px;height:10px;border-radius:50%;background:${sn.color};flex-shrink:0;display:inline-block;"></span>
+            <span style="font-size:15px;font-weight:700;color:#f1f5f9;">${escapeHtml(sdLabel)}</span>
+          </div>
+          <div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">${escapeHtml(sn.name)}</div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Maturity Stage Descriptors</div>
+          ${stagesHtml}
+          <div style="margin-top:14px;">
+            <button id="asmf-back-to-dim" style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;">← Back to ${escapeHtml(sn.parentId)}</button>
+          </div>`;
+        document.getElementById('asmf-back-to-dim')?.addEventListener('click', () => {
+            selectedSub = null;
+            crumb.textContent = selectedDim;
+            renderDimPanel(selectedDim, null);
+        });
+    }
+
+    function enterOverview() {
+        selectedDim=null; selectedSub=null;
+        setLayout('overview', null);
+        renderOverviewPanel();
+    }
+
+    function enterDimFocus(dimId) {
+        selectedDim=dimId; selectedSub=null;
+        setLayout('dimfocus', dimId);
+        const dn = allNodes.find(n=>n.id===dimId);
+        crumb.textContent = `${dimId} — ${dn?.name||''}`;
+        backBtn.style.display = 'block';
+        renderDimPanel(dimId, null);
+    }
+
+    // ── Coord helpers ─────────────────────────────────────────────────────
+    function w2s(wx, wy) { return [canvas.width/2+(wx+camX)*camZ, canvas.height/2+(wy+camY)*camZ]; }
+    function s2w(sx, sy) { return [(sx-canvas.width/2)/camZ-camX, (sy-canvas.height/2)/camZ-camY]; }
+
+    function hitNode(sx, sy) {
+        const [wx,wy] = s2w(sx,sy);
+        const candidates = allNodes.filter(n => {
+            if (n.alpha < 0.15) return false;
+            if (n.type==='subdim' && n.parentId!==selectedDim) return false;
+            return true;
+        });
+        for (let i=candidates.length-1; i>=0; i--) {
+            const n=candidates[i];
+            const dx=n.x-wx, dy=n.y-wy;
+            if (dx*dx+dy*dy <= (n.r+5)*(n.r+5)) return n;
+        }
+        return null;
+    }
+
+    // ── Arrow drawing helper ──────────────────────────────────────────────
+    function drawArrow(ctx, fx,fy,fr, tx2,ty2,tr2, color, lw, dash) {
+        const dx=tx2-fx, dy=ty2-fy, len=Math.sqrt(dx*dx+dy*dy);
+        if (len < fr+tr2+8) return;
+        const ux=dx/len, uy=dy/len;
+        const sx=fx+ux*(fr+2), sy=fy+uy*(fr+2);
+        const ex=tx2-ux*(tr2+2), ey=ty2-uy*(tr2+2);
+        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(ex,ey);
+        ctx.strokeStyle=color; ctx.lineWidth=lw;
+        ctx.setLineDash(dash||[]); ctx.stroke(); ctx.setLineDash([]);
+        // Arrowhead
+        const hs = Math.max(5, 7*camZ);
+        ctx.beginPath();
+        ctx.moveTo(ex, ey);
+        ctx.lineTo(ex - ux*hs + uy*hs*0.45, ey - uy*hs - ux*hs*0.45);
+        ctx.lineTo(ex - ux*hs - uy*hs*0.45, ey - uy*hs + ux*hs*0.45);
+        ctx.closePath(); ctx.fillStyle=color; ctx.fill();
+    }
+
+    // ── Draw loop ─────────────────────────────────────────────────────────
+    function draw() {
+        // Lerp nodes toward targets
+        allNodes.forEach(n => {
+            n.x     += (n.tx     - n.x)     * 0.10;
+            n.y     += (n.ty     - n.y)     * 0.10;
+            n.r     += (n.tr     - n.r)     * 0.12;
+            n.alpha += (n.talpha - n.alpha) * 0.10;
+        });
+        // Lerp camera
+        camX += (tX-camX)*0.12; camY += (tY-camY)*0.12; camZ += (tZ-camZ)*0.12;
+
+        const W=canvas.width, H=canvas.height;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0,0,W,H);
+        ctx.fillStyle='#0a0f1a'; ctx.fillRect(0,0,W,H);
+
+        // Stars (deterministic)
+        for (let i=0;i<120;i++) {
+            ctx.globalAlpha=0.06+(i%7)*0.02; ctx.fillStyle='#fff';
+            ctx.beginPath(); ctx.arc((i*137.508+11)%W,(i*91.3+17)%H,(i%3)*0.35+0.3,0,Math.PI*2); ctx.fill();
+        }
+        ctx.globalAlpha=1;
+
+        // Guide rings
+        const [ocx,ocy] = w2s(0,0);
+        ctx.lineWidth=1;
+        if (mode==='overview') {
+            ctx.beginPath(); ctx.arc(ocx,ocy,OV_RING_R*camZ,0,Math.PI*2);
+            ctx.strokeStyle='#1e293b55'; ctx.setLineDash([4,8]); ctx.stroke(); ctx.setLineDash([]);
+        } else {
+            ctx.beginPath(); ctx.arc(ocx,ocy,FO_INNER_R*camZ,0,Math.PI*2);
+            ctx.strokeStyle='#1e293b77'; ctx.setLineDash([3,6]); ctx.stroke(); ctx.setLineDash([]);
+            ctx.beginPath(); ctx.arc(ocx,ocy,FO_OUTER_R*camZ,0,Math.PI*2);
+            ctx.strokeStyle='#1e293b33'; ctx.setLineDash([4,10]); ctx.stroke(); ctx.setLineDash([]);
+        }
+
+        // ── Cross-dim relationship arrows (focus mode) ────────────────────
+        if (mode==='dimfocus' && selectedDim) {
+            const cenNode = allNodes.find(n=>n.id===selectedDim);
+            const [csx,csy] = w2s(cenNode.x,cenNode.y);
+            const dimRels = rels.filter(r=>r.from===selectedDim || r.to===selectedDim);
+
+            dimRels.forEach(r => {
+                const othId  = r.from===selectedDim ? r.to : r.from;
+                const oth    = allNodes.find(n=>n.id===othId);
+                if (!oth || oth.alpha<0.1) return;
+                const [osx,osy] = w2s(oth.x,oth.y);
+                const rt   = relTypes[r.type]||{color:'#94a3b8',dash:[]};
+                const isHov= (hoverId===othId);
+                const alpha= isHov ? 0.95 : 0.5;
+                const col  = rt.color + Math.round(alpha*255).toString(16).padStart(2,'0');
+                const lw   = ((r.strength||1)*0.7 + 0.4) * Math.max(0.6,camZ);
+
+                if (r.from===selectedDim) {
+                    drawArrow(ctx, csx,csy,cenNode.r*camZ, osx,osy,oth.r*camZ, col, lw, rt.dash||[]);
+                } else {
+                    drawArrow(ctx, osx,osy,oth.r*camZ, csx,csy,cenNode.r*camZ, col, lw, rt.dash||[]);
+                }
+
+                // Type badge at midpoint (only when visible enough)
+                if (camZ > 0.5 && !isHov) {
+                    const mx=(csx+osx)/2, my=(csy+osy)/2;
+                    const abbr = rt.abbr||r.type.slice(0,2).toUpperCase();
+                    const bfs  = Math.max(8, Math.round(8.5*camZ));
+                    ctx.font   = `bold ${bfs}px system-ui`;
+                    const bw   = ctx.measureText(abbr).width + 6;
+                    const bh   = bfs + 4;
+                    ctx.fillStyle='#0a0f1aee';
+                    ctx.beginPath();
+                    ctx.roundRect(mx-bw/2, my-bh/2, bw, bh, 3);
+                    ctx.fill();
+                    ctx.fillStyle=rt.color;
+                    ctx.textAlign='center'; ctx.textBaseline='middle';
+                    ctx.fillText(abbr, mx, my);
+                    ctx.textBaseline='alphabetic';
+                }
+            });
+        }
+
+        // ── Sub-dim spoke lines ───────────────────────────────────────────
+        if (mode==='dimfocus' && selectedDim) {
+            const cen = allNodes.find(n=>n.id===selectedDim);
+            const [csx,csy] = w2s(cen.x,cen.y);
+            allNodes.filter(n=>n.type==='subdim'&&n.parentId===selectedDim&&n.alpha>0.05).forEach(sn=>{
+                const [sx2,sy2]=w2s(sn.x,sn.y);
+                ctx.beginPath(); ctx.moveTo(csx,csy); ctx.lineTo(sx2,sy2);
+                ctx.strokeStyle=sn.color+'44'; ctx.lineWidth=1.5;
+                ctx.setLineDash([3,5]); ctx.stroke(); ctx.setLineDash([]);
+            });
+        }
+
+        // ── Nodes ─────────────────────────────────────────────────────────
+        allNodes.forEach(n => {
+            if (n.alpha < 0.02) return;
+            const [sx,sy] = w2s(n.x,n.y);
+            const isHov = hoverId===n.id;
+            const isSel = n.id===selectedDim || n.id===selectedSub;
+            const nr    = n.r * camZ * (isHov||isSel ? 1.2 : 1);
+            ctx.globalAlpha = n.alpha;
+
+            // Glow for selected/hovered
+            if (isHov||isSel) {
+                const g = ctx.createRadialGradient(sx,sy,nr*0.2,sx,sy,nr*3.2);
+                g.addColorStop(0, n.color+'55'); g.addColorStop(1,'transparent');
+                ctx.fillStyle=g; ctx.beginPath(); ctx.arc(sx,sy,nr*3.2,0,Math.PI*2); ctx.fill();
+            }
+
+            // Circle fill
+            ctx.beginPath(); ctx.arc(sx,sy,nr,0,Math.PI*2);
+            if (n.type==='root') {
+                const g2=ctx.createRadialGradient(sx,sy,0,sx,sy,nr);
+                g2.addColorStop(0,'#93c5fd'); g2.addColorStop(1,'#1d4ed8');
+                ctx.fillStyle=g2;
+            } else {
+                ctx.fillStyle = n.color + (isSel?'ff':isHov?'dd':'88');
+            }
+            ctx.fill();
+            ctx.strokeStyle = isSel ? '#fff' : (isHov ? n.color : '#1e293b');
+            ctx.lineWidth   = (isSel ? 2.5 : 1.5) * Math.min(1.5,camZ);
+            ctx.stroke();
+
+            // Inner label
+            const isCen = (mode==='dimfocus' && n.id===selectedDim);
+            const fscale = Math.max(0.55, Math.min(1.8, camZ));
+            const fs = Math.round((n.type==='root'?12 : isCen?13 : n.type==='dim'?11:9) * fscale);
+            ctx.font=`bold ${fs}px system-ui`;
+            ctx.fillStyle='#f1f5f9'; ctx.textAlign='center'; ctx.textBaseline='middle';
+
+            if (n.type==='root') {
+                ctx.fillText('SOC',sx,sy-5*Math.min(1.5,camZ));
+                ctx.font=`${Math.round(9*fscale)}px system-ui`;
+                ctx.fillStyle='#94a3b8'; ctx.fillText('CORE',sx,sy+7*Math.min(1.5,camZ));
+            } else if (isCen) {
+                // Centered dim: fit full name inside circle — auto-reduce font until it fits
+                const maxW = nr * 1.55; // usable chord width inside the circle
+                const words = n.name.split(' ');
+                // Find most balanced 2-line split
+                let cenLines = [n.name];
+                if (words.length > 1) {
+                    let best = Infinity;
+                    for (let wi = 1; wi < words.length; wi++) {
+                        const a = words.slice(0, wi).join(' '), b = words.slice(wi).join(' ');
+                        const diff = Math.abs(a.length - b.length);
+                        if (diff < best) { best = diff; cenLines = [a, b]; }
+                    }
+                }
+                // Shrink font until longest line fits
+                let cfs = fs;
+                ctx.font = `bold ${cfs}px system-ui`;
+                while (cfs > 7 && Math.max(...cenLines.map(l => ctx.measureText(l).width)) > maxW) {
+                    cfs--;
+                    ctx.font = `bold ${cfs}px system-ui`;
+                }
+                const clh = cfs * 1.3;
+                cenLines.forEach((l, i) => ctx.fillText(l, sx, sy - clh*(cenLines.length-1)/2 + clh*i));
+            } else {
+                ctx.fillText(n.type==='subdim' ? n.id.replace(n.parentId+'__','') : n.id, sx, sy);
+            }
+
+            // Name label outside (dims) — skip for centered node (labeled inside); wrap long names into 2 lines
+            if (n.type==='dim' && n.alpha > 0.35 && !isCen) {
+                const ang2    = Math.atan2(sy-ocy, sx-ocx);
+                const nameOff = nr + 22; // push well clear of the node edge
+                const lx=sx+Math.cos(ang2)*nameOff, ly=sy+Math.sin(ang2)*nameOff;
+                const nfs = Math.round(9*Math.max(0.5,Math.min(1.5,camZ)));
+                ctx.font=`${nfs}px system-ui`;
+                ctx.textAlign = lx>sx+3?'left':lx<sx-3?'right':'center';
+                ctx.textBaseline='middle';
+                // Split name into at most 2 lines at nearest space to midpoint
+                const nameFull = n.name;
+                const mid = Math.floor(nameFull.length/2);
+                const spaceLeft  = nameFull.lastIndexOf(' ', mid);
+                const spaceRight = nameFull.indexOf(' ', mid);
+                let line1=nameFull, line2=null;
+                if(nameFull.length > 14) {
+                    const splitAt = (spaceLeft>-1&&spaceRight>-1) ? (Math.abs(spaceLeft-mid)<Math.abs(spaceRight-mid)?spaceLeft:spaceRight) : (spaceLeft>-1?spaceLeft:spaceRight);
+                    if(splitAt>-1){line1=nameFull.slice(0,splitAt);line2=nameFull.slice(splitAt+1);}
+                }
+                const lh = nfs*1.3;
+                const lines = line2 ? [line1, line2] : [line1];
+                // Draw dark pill background for readability
+                const maxW = Math.max(...lines.map(l=>ctx.measureText(l).width));
+                const totalH = lines.length * lh;
+                const padX=5, padY=3;
+                const bgX = ctx.textAlign==='left'?lx-padX : ctx.textAlign==='right'?lx-maxW-padX : lx-maxW/2-padX;
+                ctx.fillStyle='#0a0f1acc';
+                ctx.beginPath();
+                if(ctx.roundRect) ctx.roundRect(bgX, ly-totalH/2-padY, maxW+padX*2, totalH+padY*2, 3);
+                else ctx.rect(bgX, ly-totalH/2-padY, maxW+padX*2, totalH+padY*2);
+                ctx.fill();
+                ctx.fillStyle = n.color + 'ee';
+                lines.forEach((l,i)=>ctx.fillText(l, lx, ly - totalH/2 + lh*(i+0.5)));
+            }
+
+            ctx.globalAlpha=1; ctx.textBaseline='alphabetic'; ctx.textAlign='center';
+        });
+
+        raf = requestAnimationFrame(draw);
+    }
+
+    // ── Event listeners ───────────────────────────────────────────────────
+    canvas.addEventListener('mousedown', e => {
+        dragging=true; dragSX=e.clientX; dragSY=e.clientY;
+        camSX=camX; camSY=camY; canvas.style.cursor='grabbing';
+    });
+    canvas.addEventListener('mousemove', e => {
+        if (dragging) {
+            tX=camSX+(e.clientX-dragSX)/camZ;
+            tY=camSY+(e.clientY-dragSY)/camZ;
+        } else {
+            const rect=canvas.getBoundingClientRect();
+            const hit=hitNode(e.clientX-rect.left, e.clientY-rect.top);
+            const nid=hit?hit.id:null;
+            if (nid !== hoverId) {
+                hoverId=nid;
+                canvas.style.cursor = hit?'pointer':'grab';
+                // Update side panel on hover in dim-focus mode
+                if (mode==='dimfocus' && selectedDim && !selectedSub) {
+                    if (hit && hit.type==='dim' && hit.id!==selectedDim) {
+                        renderDimPanel(selectedDim, hit.id);
+                    } else if (!hit || hit.id===selectedDim || hit.type==='subdim') {
+                        renderDimPanel(selectedDim, null);
+                    }
+                }
+            }
+        }
+    });
+    canvas.addEventListener('mouseup', e => {
+        const moved = Math.abs(e.clientX-dragSX)>5 || Math.abs(e.clientY-dragSY)>5;
+        dragging=false; canvas.style.cursor='grab';
+        if (moved) return;
+        const rect=canvas.getBoundingClientRect();
+        const hit=hitNode(e.clientX-rect.left, e.clientY-rect.top);
+        if (!hit || hit.type==='root') { enterOverview(); return; }
+        if (hit.type==='dim') { enterDimFocus(hit.id); return; }
+        if (hit.type==='subdim') {
+            selectedSub=hit.id;
+            const sn=allNodes.find(n=>n.id===hit.id);
+            if (sn) renderSubPanel(sn);
+        }
+    });
+    canvas.addEventListener('mouseleave', () => {
+        dragging=false; canvas.style.cursor='grab'; hoverId=null;
+        if (mode==='dimfocus' && selectedDim && !selectedSub) renderDimPanel(selectedDim, null);
+    });
+    canvas.addEventListener('wheel', e => {
+        e.preventDefault();
+        tZ=Math.min(4.5,Math.max(0.3,tZ*(e.deltaY<0?1.13:0.88)));
+    }, {passive:false});
+
+    // ── Init ──────────────────────────────────────────────────────────────
+    setLayout('overview', null);
+    renderOverviewPanel();
+    raf = requestAnimationFrame(draw);
+
+    const ro = new ResizeObserver(() => { canvas.width=canvas.offsetWidth||700; canvas.height=canvas.offsetHeight||600; });
+    ro.observe(canvas);
+
+    // ── Cleanup ───────────────────────────────────────────────────────────
+    const graphPanel  = document.getElementById('report-panel-asmf-graph');
+    const orbitalPane = document.getElementById('asmf-graph-pane-orbital');
+    function stopOrbital() { cancelAnimationFrame(raf); ro.disconnect(); obs.disconnect(); if(paneObs)paneObs.disconnect(); }
+    const obs = new MutationObserver(() => { if (!graphPanel?.classList.contains('active')) stopOrbital(); });
+    if (graphPanel) obs.observe(graphPanel,{attributes:true,attributeFilter:['class']});
+    let paneObs=null;
+    if (orbitalPane) {
+        paneObs=new MutationObserver(()=>{ if(!orbitalPane.classList.contains('active')) stopOrbital(); });
+        paneObs.observe(orbitalPane,{attributes:true,attributeFilter:['class']});
+    }
+}
+
+// ── ASMF Matrix Report ───────────────────────────────────────────────────────
+
+async function populateASMFMatrix() {
+    const el = document.getElementById('asmf-matrix-content');
+    if (!el) return;
+    el.innerHTML = '<div style="color:var(--text-muted);padding:24px;">Loading framework…</div>';
+    try {
+        if (!_asmfFramework) {
+            const resp = await fetch('/api/asmf-framework');
+            _asmfFramework = await resp.json();
+        }
+        el.innerHTML = _asmfBuildMatrix(_asmfFramework);
+        _asmfBindTooltips(el);
+    } catch (e) {
+        el.innerHTML = `<div style="color:#ef4444;padding:24px;">Error: ${escapeHtml(String(e))}</div>`;
+    }
+}
+
+function _asmfCellBg(stageIdx, opacity = 0.28) {
+    const hex = ASMF_STAGE_COLORS[Math.min(5, Math.max(0, stageIdx))];
+    // Convert hex to rgba
+    const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+    return `rgba(${r},${g},${b},${opacity})`;
+}
+
+function _asmfBuildMatrix(fw) {
+    const dims = fw.dimensions || {};
+    const stages = fw.maturity_stages || {};
+    const principles = fw.principles || [];
+    const journey = (fw.transformation_journey && fw.transformation_journey.phases) ? fw.transformation_journey.phases : (Array.isArray(fw.transformation_journey) ? fw.transformation_journey : []);
+    const stageKeys = ['0','1','2','3','4','5'];
+
+    // ── Stage header row ──
+    const stageHeaders = stageKeys.map(sk => {
+        const s = stages[sk] || {};
+        const color = ASMF_STAGE_COLORS[parseInt(sk)];
+        return `
+        <th style="padding:10px 8px;min-width:148px;text-align:center;border-bottom:3px solid ${color};
+                   background:${_asmfCellBg(parseInt(sk), 0.18)};">
+          <div style="font-size:20px;font-weight:800;color:${color};">${sk}</div>
+          <div style="font-size:11px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:0.4px;line-height:1.3;">${escapeHtml(s.label || '')}</div>
+          <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">${escapeHtml(s.typical_year || '')}</div>
+        </th>`;
+    }).join('');
+
+    // ── Dimension rows ──
+    const PLANE_COLORS = {
+        'Sensing & Signal': '#06b6d4',
+        'Reasoning & Action': '#8b5cf6',
+        'Governance & Trust': '#ef4444',
+        'Learning & Knowledge': '#10b981',
+        'Human & Org': '#f59e0b',
+        'Measurement': '#64748b',
+    };
+
+    const dimRows = Object.entries(dims).map(([dimId, dim]) => {
+        const weight = Math.round((dim.weight || 0) * 100);
+        const planeColor = Object.entries(PLANE_COLORS).find(([k]) => (dim.plane||'').includes(k.split(' ')[0]))?.[1] || '#3b82f6';
+        const subDims = dim.sub_dimensions || {};
+
+        // Per sub-dimension: one sub-row per sub-dim (4 sub-rows per dimension)
+        const subRows = Object.entries(subDims).map(([sdId, sd], sdIdx) => {
+            const cells = stageKeys.map(sk => {
+                const desc = (sd.stage_descriptors || {})[sk] || '';
+                const short = desc.length > 58 ? desc.substring(0, 55) + '…' : desc;
+                const bg = _asmfCellBg(parseInt(sk), 0.15);
+                const borderColor = _asmfCellBg(parseInt(sk), 0.4);
+                return `
+                <td style="padding:6px 8px;font-size:11px;color:var(--text-secondary);background:${bg};
+                           border:1px solid ${borderColor};line-height:1.4;cursor:default;vertical-align:top;"
+                    data-full="${escapeHtml(desc)}">
+                  ${escapeHtml(short)}
+                </td>`;
+            }).join('');
+
+            // Left label cell (only show dim id on first sub-dim row)
+            const isFirst = sdIdx === 0;
+            const rowspan = Object.keys(subDims).length;
+            const dimCell = isFirst ? `
+                <td rowspan="${rowspan}" style="padding:10px 8px;vertical-align:top;border-right:3px solid ${planeColor};
+                            background:var(--bg-secondary);width:100px;min-width:100px;max-width:100px;">
+                  <div style="font-size:13px;font-weight:800;color:${planeColor};">${escapeHtml(dimId)}</div>
+                  <div style="font-size:11px;color:var(--text-primary);font-weight:600;line-height:1.3;margin-top:2px;white-space:normal;word-break:break-word;">${escapeHtml(dim.name||'')}</div>
+                  <div style="font-size:10px;color:var(--text-muted);margin-top:4px;display:inline-block;
+                              background:${planeColor}22;padding:1px 5px;border-radius:8px;">${weight}% <span style='opacity:0.6;font-size:9px;'>wt</span></div>
+                </td>` : '';
+
+            const sdColor = planeColor;
+            return `
+            <tr style="border-bottom:1px solid var(--border-color);">
+              ${dimCell}
+              <td style="padding:5px 8px;font-size:11px;color:${sdColor};font-weight:600;width:140px;min-width:140px;max-width:140px;
+                         background:var(--bg-secondary);border-right:1px solid var(--border-color);">
+                <span>
+                  ${escapeHtml(sdId)}<br>
+                  <span style="font-weight:400;color:var(--text-muted);font-size:10px;word-break:break-word;">${escapeHtml(sd.name||'')}</span>
+                </span>
+              </td>
+              ${cells}
+            </tr>`;
+        }).join('');
+
+        // Dim separator row
+        return subRows + `<tr style="height:4px;background:var(--bg-primary);"><td colspan="8"></td></tr>`;
+    }).join('');
+
+    // ── Principles grid ──
+    const principleCards = principles.map(p => `
+    <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-left:3px solid #3b82f6;
+                border-radius:6px;padding:12px 14px;flex:1;min-width:220px;">
+      <div style="font-size:11px;font-weight:700;color:#3b82f6;margin-bottom:4px;">${escapeHtml(p.id||'')} — ${escapeHtml(p.label||'')}</div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">${escapeHtml(p.statement||'')}</div>
+    </div>`).join('');
+
+    // ── Journey arc ──
+    const journeySteps = journey.map((phase, i) => {
+        const color = ASMF_STAGE_COLORS[i + 1] || '#64748b';
+        const acts = (phase.key_activities||[]).slice(0,3);
+        const fails = (phase.failure_modes||[]).slice(0,2);
+        return `
+        <div style="flex:1;min-width:160px;background:var(--bg-secondary);border:1px solid var(--border-color);
+                    border-top:3px solid ${color};border-radius:6px;padding:12px 14px;position:relative;">
+          <div style="font-size:12px;font-weight:700;color:${color};margin-bottom:6px;">${escapeHtml(phase.transition||'')}</div>
+          <ul style="margin:0 0 8px;padding-left:14px;">
+            ${acts.map(a=>`<li style="font-size:11px;color:var(--text-secondary);padding:1px 0;">${escapeHtml(a)}</li>`).join('')}
+          </ul>
+          ${fails.length ? `<div style="font-size:10px;color:#ef4444;margin-top:4px;">⚠ ${escapeHtml(fails[0])}</div>` : ''}
+        </div>`;
+    }).join('');
+
+    // ── Plane legend ──
+    const planeLegend = Object.entries(PLANE_COLORS).map(([label, color]) =>
+        `<span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px;">
+           <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block;"></span>
+           <span style="font-size:11px;color:var(--text-muted);">${label}</span>
+         </span>`
+    ).join('');
+
+    return `
+    <!-- Framework intro -->
+    <div style="margin-bottom:24px;">
+      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:800px;">${escapeHtml(fw.description||'')}</p>
+      <div style="margin-top:10px;">${planeLegend}</div>
+    </div>
+
+    <!-- THE MATRIX -->
+    <div style="overflow-x:auto;margin-bottom:32px;">
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">
+        Hover any cell to read the full stage descriptor. Each row = one sub-dimension across 6 maturity stages.
+      </div>
+      <table style="border-collapse:collapse;width:100%;min-width:1100px;">
+        <thead>
+          <tr>
+            <th style="padding:10px 8px;text-align:left;background:var(--bg-secondary);border-right:3px solid var(--border-color);min-width:90px;">
+              <span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;">Dimension</span>
+            </th>
+            <th style="padding:10px 8px;text-align:left;background:var(--bg-secondary);border-right:1px solid var(--border-color);min-width:140px;">
+              <span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;">Sub-Dimension</span>
+            </th>
+            ${stageHeaders}
+          </tr>
+        </thead>
+        <tbody>${dimRows}</tbody>
+      </table>
+    </div>
+
+    <!-- Transformation Journey -->
+    <div style="margin-bottom:28px;">
+      <h3 style="font-size:15px;font-weight:700;color:var(--text-primary);margin:0 0 12px;border-bottom:1px solid var(--border-color);padding-bottom:8px;">Transformation Journey</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">${journeySteps}</div>
+    </div>
+
+    <!-- Governing Principles -->
+    <div style="margin-bottom:16px;">
+      <h3 style="font-size:15px;font-weight:700;color:var(--text-primary);margin:0 0 12px;border-bottom:1px solid var(--border-color);padding-bottom:8px;">Governing Principles</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">${principleCards}</div>
+    </div>
+
+    <!-- Tooltip overlay (hidden by default) -->
+    <div id="asmf-tooltip" style="display:none;position:fixed;z-index:9999;background:#0f172a;border:1px solid #334155;
+         border-radius:8px;padding:12px 16px;max-width:360px;font-size:12px;color:#e2e8f0;line-height:1.6;
+         box-shadow:0 8px 32px rgba(0,0,0,0.5);pointer-events:none;"></div>`;
+}
+
+function _asmfBindTooltips(container) {
+    const tooltip = document.getElementById('asmf-tooltip');
+    if (!tooltip) return;
+    container.querySelectorAll('td[data-full]').forEach(cell => {
+        cell.addEventListener('mouseenter', (e) => {
+            const text = cell.dataset.full;
+            if (!text) return;
+            tooltip.textContent = text;
+            tooltip.style.display = 'block';
+        });
+        cell.addEventListener('mousemove', (e) => {
+            let left = e.clientX + 16;
+            let top = e.clientY + 10;
+            const w = tooltip.offsetWidth, h = tooltip.offsetHeight;
+            if (left + w > window.innerWidth - 8) left = e.clientX - w - 12;
+            if (top + h > window.innerHeight - 8) top = e.clientY - h - 12;
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        });
+        cell.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+        });
+    });
+}
+
+function exportASMFOrbitalAsHTML(fw, orbMap) {
+    const fwJson  = JSON.stringify(fw).replace(/<\/script>/gi, '<\\/script>');
+    const mapJson = JSON.stringify(orbMap).replace(/<\/script>/gi, '<\\/script>');
+    const stageColors = JSON.stringify(ASMF_STAGE_COLORS);
+    const stageLabels = JSON.stringify(ASMF_STAGE_LABELS);
+    const ts = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASMF Integration Map — Agentic SOC Framework</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#0a0f1a;font-family:'Segoe UI',system-ui,sans-serif;color:#94a3b8}
+#app{display:flex;flex-direction:column;height:100%}
+#topbar{display:flex;align-items:center;gap:16px;padding:10px 20px;background:#0f172a;border-bottom:1px solid #1e293b;flex-shrink:0;}
+#topbar h1{font-size:14px;font-weight:700;color:#f1f5f9;letter-spacing:0.3px}
+#topbar .sub{font-size:11px;color:#475569;margin-left:auto}
+#main{display:flex;flex:1;min-height:0}
+canvas{flex:1;min-width:0;cursor:grab;display:block}
+#panel{width:320px;flex-shrink:0;background:#0f172a;border-left:1px solid #1e293b;display:flex;flex-direction:column;overflow:hidden}
+#panel-hdr{padding:14px 18px 12px;border-bottom:1px solid #1e293b;flex-shrink:0}
+#panel-hdr .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#panel-hdr .title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#475569}
+#back-btn{display:none;background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer}
+#crumb{font-size:12px;color:#64748b;margin-top:5px}
+#body{flex:1;overflow-y:auto;padding:16px 18px;font-size:12px}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="topbar">
+    <h1>ASMF — Agentic SOC Integration Map</h1>
+    <span class="sub">Exported ${ts}</span>
+  </div>
+  <div id="main">
+    <canvas id="canvas"></canvas>
+    <div id="panel">
+      <div id="panel-hdr">
+        <div class="row">
+          <div class="title">ASMF Integration Map</div>
+          <button id="back-btn">← All</button>
+        </div>
+        <div id="crumb">All 11 Dimensions</div>
+      </div>
+      <div id="body"></div>
+    </div>
+  </div>
+</div>
+<script>
+const FW      = ${fwJson};
+const ORBMAP  = ${mapJson};
+const STAGE_COLORS = ${stageColors};
+const STAGE_LABELS = ${stageLabels};
+
+// ── helpers ───────────────────────────────────────────────────────────────
+function esc(s){const d=document.createElement('div');d.textContent=String(s??'');return d.innerHTML;}
+
+const dims      = Object.entries(FW.dimensions||{});
+const rels      = ORBMAP.relationships||[];
+const relTypes  = ORBMAP.relationship_types||{};
+const dimCfg    = ORBMAP.dim_config||{};
+
+const OV_RING_R  = 215;
+const FO_INNER_R = 125;
+const FO_OUTER_R = 285;
+
+const allNodes = [];
+function mkNode(o){return Object.assign({tx:0,ty:0,alpha:1,talpha:1,tr:20,r:4},o);}
+
+allNodes.push(mkNode({id:'__root__',type:'root',label:'SOC CORE',x:0,y:0,tx:0,ty:0,r:34,tr:34,color:'#3b82f6'}));
+const dimCount=dims.length;
+dims.forEach(([id,dim],i)=>{
+    const cfg=dimCfg[id]||{};
+    const color=cfg.color||'#3b82f6';
+    const a=(2*Math.PI*i/dimCount)-Math.PI/2;
+    const ox=OV_RING_R*Math.cos(a),oy=OV_RING_R*Math.sin(a);
+    allNodes.push(mkNode({id,type:'dim',label:id,name:dim.name||id,color,plane:cfg.plane||'',overviewAngle:a,overviewX:ox,overviewY:oy,x:ox,y:oy,tx:ox,ty:oy,r:24,tr:24,alpha:1,talpha:1,dim}));
+});
+dims.forEach(([dimId,dim])=>{
+    const parent=allNodes.find(n=>n.id===dimId);
+    const subArr=Object.entries(dim.sub_dimensions||{});
+    subArr.forEach(([sdId,sd],si)=>{
+        allNodes.push(mkNode({id:dimId+'__'+sdId,type:'subdim',parentId:dimId,label:sdId,name:sd.name||sdId,color:parent.color,x:parent.x,y:parent.y,tx:parent.x,ty:parent.y,r:4,tr:4,alpha:0,talpha:0,sd,parentNode:parent,subIdx:si,subCount:subArr.length}));
+    });
+});
+
+let mode='overview',selectedDim=null,selectedSub=null,hoverId=null;
+let camX=0,camY=0,camZ=1,tX=0,tY=0,tZ=1;
+let dragging=false,dragSX=0,dragSY=0,camSX=0,camSY=0;
+
+const canvas=document.getElementById('canvas');
+const detBody=document.getElementById('body');
+const crumb=document.getElementById('crumb');
+const backBtn=document.getElementById('back-btn');
+backBtn.addEventListener('click',()=>enterOverview());
+
+function resizeCanvas(){canvas.width=canvas.offsetWidth||800;canvas.height=canvas.offsetHeight||600;}
+resizeCanvas();
+window.addEventListener('resize',resizeCanvas);
+
+function setLayout(newMode,selId){
+    mode=newMode;
+    if(newMode==='overview'){
+        allNodes.find(n=>n.id==='__root__').tx=0; allNodes.find(n=>n.id==='__root__').ty=0;
+        allNodes.find(n=>n.id==='__root__').tr=34; allNodes.find(n=>n.id==='__root__').talpha=1;
+        allNodes.filter(n=>n.type==='dim').forEach(n=>{n.tx=n.overviewX;n.ty=n.overviewY;n.tr=24;n.talpha=1;});
+        allNodes.filter(n=>n.type==='subdim').forEach(n=>{n.tx=n.parentNode.overviewX;n.ty=n.parentNode.overviewY;n.tr=4;n.talpha=0;});
+        tX=0;tY=0;tZ=1;
+    } else if(newMode==='dimfocus'){
+        const focDim=allNodes.find(n=>n.id===selId);
+        focDim.tx=0;focDim.ty=0;focDim.tr=44;focDim.talpha=1;
+        const root=allNodes.find(n=>n.id==='__root__');
+        root.tx=-310;root.ty=-200;root.tr=18;root.talpha=0.3;
+        const otherDims=allNodes.filter(n=>n.type==='dim'&&n.id!==selId);
+        otherDims.forEach((n,i)=>{const a=(2*Math.PI*i/otherDims.length)-Math.PI/2;n.tx=FO_OUTER_R*Math.cos(a);n.ty=FO_OUTER_R*Math.sin(a);n.tr=20;n.talpha=1;});
+        const mySubs=allNodes.filter(n=>n.type==='subdim'&&n.parentId===selId);
+        mySubs.forEach((n,i)=>{const a=(2*Math.PI*i/mySubs.length)-Math.PI/2;n.tx=FO_INNER_R*Math.cos(a);n.ty=FO_INNER_R*Math.sin(a);n.tr=17;n.talpha=1;});
+        allNodes.filter(n=>n.type==='subdim'&&n.parentId!==selId).forEach(n=>{const p=otherDims.find(d=>d.id===n.parentId);if(p){n.tx=p.tx;n.ty=p.ty;}n.tr=4;n.talpha=0;});
+        tX=0;tY=0;tZ=1;
+    }
+}
+
+function renderOverviewPanel(){
+    crumb.textContent='All 11 Dimensions';
+    backBtn.style.display='none';
+    const typeHtml=Object.entries(relTypes).map(([k,v])=>'<div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="width:24px;height:3px;background:'+v.color+';border-radius:2px;flex-shrink:0;display:inline-block;"></span><span>'+esc(v.label)+'</span></div>').join('');
+    detBody.innerHTML='<p style="line-height:1.75;margin-bottom:16px;color:#94a3b8;"><strong style="color:#f1f5f9;">Click any dimension</strong> to bring it to center and reveal every integration link, sub-dimension and capability flow.</p><div style="border-top:1px solid #1e293b;padding-top:14px;margin-bottom:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship Types</div>'+typeHtml+'</div><div style="border-top:1px solid #1e293b;padding-top:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Controls</div><div style="line-height:2.1;color:#64748b;">🖱 Click dim — focus &amp; see all links<br>🖱 Hover outer dim — see relationship<br>🖱 Click outer dim — shift focus<br>🖱 Click sub-dim — stage descriptors<br>🖱 Scroll — zoom · Drag — pan<br>🖱 Click background or ← All — reset</div></div>';
+}
+
+function renderDimPanel(dimId,hoverOtherId){
+    const dn=allNodes.find(n=>n.id===dimId);if(!dn)return;
+    const weight=Math.round((dn.dim.weight||0)*100);
+    const outRels=rels.filter(r=>r.from===dimId);
+    const inRels=rels.filter(r=>r.to===dimId);
+    if(hoverOtherId){
+        const on=allNodes.find(n=>n.id===hoverOtherId);if(!on)return;
+        const mutual=[...outRels.filter(r=>r.to===hoverOtherId),...inRels.filter(r=>r.from===hoverOtherId)];
+        const relHtml=mutual.length?mutual.map(r=>{const rt=relTypes[r.type]||{color:'#94a3b8',label:r.type};const dir=r.from===dimId?dimId+' → '+r.to:r.from+' → '+dimId;return'<div style="margin-bottom:10px;padding:10px 12px;background:#1e293b;border-radius:6px;border-left:3px solid '+rt.color+'"><div style="font-size:10px;font-weight:700;color:'+rt.color+';text-transform:uppercase;margin-bottom:5px;">'+esc(rt.label)+' · '+esc(dir)+'</div><div style="line-height:1.6;color:#cbd5e1;">'+esc(r.label)+'</div></div>';}).join(''):'<div style="color:#475569;font-style:italic;padding:8px 0;">No direct relationship defined.</div>';
+        detBody.innerHTML='<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"><span style="width:11px;height:11px;border-radius:50%;background:'+on.color+';flex-shrink:0;display:inline-block;"></span><span style="font-size:16px;font-weight:700;color:#f1f5f9;">'+esc(hoverOtherId)+'</span><span style="font-size:10px;color:#475569;margin-left:auto;">'+esc(on.plane||'')+'</span></div><div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">'+esc(on.name)+'</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship with '+esc(dimId)+'</div>'+relHtml+'<div style="margin-top:12px;font-size:11px;color:#475569;">Click to shift focus to '+esc(hoverOtherId)+'</div>';
+        return;
+    }
+    const subHtml=allNodes.filter(n=>n.type==='subdim'&&n.parentId===dimId).map(sn=>'<div style="margin-bottom:7px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid '+dn.color+';cursor:pointer;" data-subdim="'+esc(sn.id)+'"><div style="font-size:11px;font-weight:700;color:'+dn.color+';">'+esc(sn.id.replace(dimId+'__',''))+'</div><div style="font-size:11px;color:#cbd5e1;margin-top:2px;">'+esc(sn.name)+'</div></div>').join('');
+    const allDimRels=[...outRels.map(r=>({dir:'→',other:r.to,r,rt:relTypes[r.type]||{color:'#94a3b8',label:r.type}})),...inRels.map(r=>({dir:'←',other:r.from,r,rt:relTypes[r.type]||{color:'#94a3b8',label:r.type}}))].sort((a,b)=>a.other.localeCompare(b.other));
+    const relHtml=allDimRels.map(({dir,other,r,rt})=>{const on=allNodes.find(n=>n.id===other);return'<div style="margin-bottom:7px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid '+rt.color+'"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><span style="font-size:11px;font-weight:700;color:'+rt.color+';">'+dir+'</span><span style="font-size:11px;font-weight:700;color:'+(on?on.color:'#94a3b8')+';">'+esc(other)+'</span><span style="font-size:10px;color:#475569;margin-left:auto;">'+esc(rt.label)+'</span></div><div style="font-size:11px;color:#94a3b8;line-height:1.5;">'+esc(r.label)+'</div></div>';}).join('');
+    detBody.innerHTML='<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="width:12px;height:12px;border-radius:50%;background:'+dn.color+';flex-shrink:0;display:inline-block;"></span><span style="font-size:18px;font-weight:700;color:#f1f5f9;">'+esc(dimId)+'</span></div><div style="font-size:12px;color:#94a3b8;margin-bottom:2px;">'+esc(dn.name)+'</div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:14px;">'+esc(dn.plane)+' · Weight: '+weight+'%</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Sub-Dimensions</div>'+subHtml+'<div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:6px;margin-top:16px;">Integration Links <span style="color:#334155;font-weight:400;">'+allDimRels.length+' connections</span></div><div style="font-size:11px;color:#475569;margin-bottom:10px;">Hover outer nodes to inspect each relationship.</div>'+relHtml;
+    detBody.querySelectorAll('[data-subdim]').forEach(el2=>{el2.addEventListener('click',()=>{const sn=allNodes.find(n=>n.id===el2.dataset.subdim);if(sn){selectedSub=sn.id;renderSubPanel(sn);}});});
+}
+
+function renderSubPanel(sn){
+    const sdLabel=sn.id.replace(sn.parentId+'__','');
+    const stagesHtml=['0','1','2','3','4','5'].map(sk=>{const text=(sn.sd.stage_descriptors||{})[sk]||'—';const color=STAGE_COLORS[+sk];const lbl=STAGE_LABELS[+sk];return'<div style="margin-bottom:8px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid '+color+'"><div style="font-size:10px;font-weight:700;color:'+color+';text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Stage '+sk+' — '+esc(lbl)+'</div><div style="font-size:11px;color:#cbd5e1;line-height:1.55;">'+esc(text)+'</div></div>';}).join('');
+    crumb.textContent=selectedDim+' › '+sdLabel;
+    detBody.innerHTML='<div style="font-size:10px;color:#475569;margin-bottom:6px;">↑ '+esc(sn.parentId)+'</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="width:10px;height:10px;border-radius:50%;background:'+sn.color+';flex-shrink:0;display:inline-block;"></span><span style="font-size:15px;font-weight:700;color:#f1f5f9;">'+esc(sdLabel)+'</span></div><div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">'+esc(sn.name)+'</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Maturity Stage Descriptors</div>'+stagesHtml+'<div style="margin-top:14px;"><button id="back-to-dim" style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;">← Back to '+esc(sn.parentId)+'</button></div>';
+    document.getElementById('back-to-dim')?.addEventListener('click',()=>{selectedSub=null;crumb.textContent=selectedDim;renderDimPanel(selectedDim,null);});
+}
+
+function enterOverview(){selectedDim=null;selectedSub=null;setLayout('overview',null);renderOverviewPanel();}
+function enterDimFocus(dimId){
+    selectedDim=dimId;selectedSub=null;
+    setLayout('dimfocus',dimId);
+    const dn=allNodes.find(n=>n.id===dimId);
+    crumb.textContent=dimId+' — '+(dn?.name||'');
+    backBtn.style.display='block';
+    renderDimPanel(dimId,null);
+}
+
+function w2s(wx,wy){return[canvas.width/2+(wx+camX)*camZ,canvas.height/2+(wy+camY)*camZ];}
+function s2w(sx,sy){return[(sx-canvas.width/2)/camZ-camX,(sy-canvas.height/2)/camZ-camY];}
+function hitNode(sx,sy){
+    const[wx,wy]=s2w(sx,sy);
+    const candidates=allNodes.filter(n=>{if(n.alpha<0.15)return false;if(n.type==='subdim'&&n.parentId!==selectedDim)return false;return true;});
+    for(let i=candidates.length-1;i>=0;i--){const n=candidates[i];const dx=n.x-wx,dy=n.y-wy;if(dx*dx+dy*dy<=(n.r+5)*(n.r+5))return n;}
+    return null;
+}
+
+function drawArrow(ctx,fx,fy,fr,tx2,ty2,tr2,color,lw,dash){
+    const dx=tx2-fx,dy=ty2-fy,len=Math.sqrt(dx*dx+dy*dy);
+    if(len<fr+tr2+8)return;
+    const ux=dx/len,uy=dy/len;
+    const sx=fx+ux*(fr+2),sy=fy+uy*(fr+2),ex=tx2-ux*(tr2+2),ey=ty2-uy*(tr2+2);
+    ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(ex,ey);
+    ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);ctx.stroke();ctx.setLineDash([]);
+    const hs=Math.max(5,7*camZ);
+    ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex-ux*hs+uy*hs*0.45,ey-uy*hs-ux*hs*0.45);ctx.lineTo(ex-ux*hs-uy*hs*0.45,ey-uy*hs+ux*hs*0.45);ctx.closePath();ctx.fillStyle=color;ctx.fill();
+}
+
+function toHex(n){return Math.round(n).toString(16).padStart(2,'0');}
+
+function draw(){
+    allNodes.forEach(n=>{n.x+=(n.tx-n.x)*0.10;n.y+=(n.ty-n.y)*0.10;n.r+=(n.tr-n.r)*0.12;n.alpha+=(n.talpha-n.alpha)*0.10;});
+    camX+=(tX-camX)*0.12;camY+=(tY-camY)*0.12;camZ+=(tZ-camZ)*0.12;
+    const W=canvas.width,H=canvas.height;
+    const ctx=canvas.getContext('2d');
+    ctx.clearRect(0,0,W,H);ctx.fillStyle='#0a0f1a';ctx.fillRect(0,0,W,H);
+    for(let i=0;i<120;i++){ctx.globalAlpha=0.06+(i%7)*0.02;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc((i*137.508+11)%W,(i*91.3+17)%H,(i%3)*0.35+0.3,0,Math.PI*2);ctx.fill();}
+    ctx.globalAlpha=1;
+    const[ocx,ocy]=w2s(0,0);
+    ctx.lineWidth=1;
+    if(mode==='overview'){ctx.beginPath();ctx.arc(ocx,ocy,OV_RING_R*camZ,0,Math.PI*2);ctx.strokeStyle='#1e293b55';ctx.setLineDash([4,8]);ctx.stroke();ctx.setLineDash([]);}
+    else{ctx.beginPath();ctx.arc(ocx,ocy,FO_INNER_R*camZ,0,Math.PI*2);ctx.strokeStyle='#1e293b77';ctx.setLineDash([3,6]);ctx.stroke();ctx.setLineDash([]);ctx.beginPath();ctx.arc(ocx,ocy,FO_OUTER_R*camZ,0,Math.PI*2);ctx.strokeStyle='#1e293b33';ctx.setLineDash([4,10]);ctx.stroke();ctx.setLineDash([]);}
+    if(mode==='dimfocus'&&selectedDim){
+        const cenNode=allNodes.find(n=>n.id===selectedDim);
+        const[csx,csy]=w2s(cenNode.x,cenNode.y);
+        const dimRels=rels.filter(r=>r.from===selectedDim||r.to===selectedDim);
+        dimRels.forEach(r=>{
+            const othId=r.from===selectedDim?r.to:r.from;
+            const oth=allNodes.find(n=>n.id===othId);
+            if(!oth||oth.alpha<0.1)return;
+            const[osx,osy]=w2s(oth.x,oth.y);
+            const rt=relTypes[r.type]||{color:'#94a3b8',dash:[]};
+            const isHov=(hoverId===othId);
+            const alpha=isHov?0.95:0.5;
+            const col=rt.color+toHex(alpha*255);
+            const lw=((r.strength||1)*0.7+0.4)*Math.max(0.6,camZ);
+            if(r.from===selectedDim)drawArrow(ctx,csx,csy,cenNode.r*camZ,osx,osy,oth.r*camZ,col,lw,rt.dash||[]);
+            else drawArrow(ctx,osx,osy,oth.r*camZ,csx,csy,cenNode.r*camZ,col,lw,rt.dash||[]);
+            if(camZ>0.5&&!isHov){
+                const mx=(csx+osx)/2,my=(csy+osy)/2;
+                const abbr=rt.abbr||r.type.slice(0,2).toUpperCase();
+                const bfs=Math.max(8,Math.round(8.5*camZ));
+                ctx.font='bold '+bfs+'px system-ui';
+                const bw=ctx.measureText(abbr).width+6,bh=bfs+4;
+                ctx.fillStyle='#0a0f1aee';
+                ctx.beginPath();if(ctx.roundRect)ctx.roundRect(mx-bw/2,my-bh/2,bw,bh,3);else ctx.rect(mx-bw/2,my-bh/2,bw,bh);ctx.fill();
+                ctx.fillStyle=rt.color;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(abbr,mx,my);ctx.textBaseline='alphabetic';
+            }
+        });
+        allNodes.filter(n=>n.type==='subdim'&&n.parentId===selectedDim&&n.alpha>0.05).forEach(sn=>{
+            const[sx2,sy2]=w2s(sn.x,sn.y);
+            ctx.beginPath();ctx.moveTo(csx,csy);ctx.lineTo(sx2,sy2);ctx.strokeStyle=sn.color+'44';ctx.lineWidth=1.5;ctx.setLineDash([3,5]);ctx.stroke();ctx.setLineDash([]);
+        });
+    }
+    allNodes.forEach(n=>{
+        if(n.alpha<0.02)return;
+        const[sx,sy]=w2s(n.x,n.y);
+        const isHov=hoverId===n.id,isSel=n.id===selectedDim||n.id===selectedSub;
+        const nr=n.r*camZ*(isHov||isSel?1.2:1);
+        ctx.globalAlpha=n.alpha;
+        if(isHov||isSel){const g=ctx.createRadialGradient(sx,sy,nr*0.2,sx,sy,nr*3.2);g.addColorStop(0,n.color+'55');g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.beginPath();ctx.arc(sx,sy,nr*3.2,0,Math.PI*2);ctx.fill();}
+        ctx.beginPath();ctx.arc(sx,sy,nr,0,Math.PI*2);
+        if(n.type==='root'){const g2=ctx.createRadialGradient(sx,sy,0,sx,sy,nr);g2.addColorStop(0,'#93c5fd');g2.addColorStop(1,'#1d4ed8');ctx.fillStyle=g2;}
+        else ctx.fillStyle=n.color+(isSel?'ff':isHov?'dd':'88');
+        ctx.fill();
+        ctx.strokeStyle=isSel?'#fff':(isHov?n.color:'#1e293b');ctx.lineWidth=(isSel?2.5:1.5)*Math.min(1.5,camZ);ctx.stroke();
+        const isCen=(mode==='dimfocus'&&n.id===selectedDim);
+        const fscale=Math.max(0.55,Math.min(1.8,camZ));
+        const fs=Math.round((n.type==='root'?12:isCen?13:n.type==='dim'?11:9)*fscale);
+        ctx.font='bold '+fs+'px system-ui';ctx.fillStyle='#f1f5f9';ctx.textAlign='center';ctx.textBaseline='middle';
+        if(n.type==='root'){ctx.fillText('SOC',sx,sy-5*Math.min(1.5,camZ));ctx.font=Math.round(9*fscale)+'px system-ui';ctx.fillStyle='#94a3b8';ctx.fillText('CORE',sx,sy+7*Math.min(1.5,camZ));}
+        else if(isCen){
+            const _mw=nr*1.55,_ws=n.name.split(' ');
+            let _cl=[n.name];
+            if(_ws.length>1){let _bf=Infinity;for(let _wi=1;_wi<_ws.length;_wi++){const _a=_ws.slice(0,_wi).join(' '),_b=_ws.slice(_wi).join(' '),_d=Math.abs(_a.length-_b.length);if(_d<_bf){_bf=_d;_cl=[_a,_b];}}}
+            let _cfs=fs;ctx.font='bold '+_cfs+'px system-ui';
+            while(_cfs>7&&Math.max(..._cl.map(l=>ctx.measureText(l).width))>_mw){_cfs--;ctx.font='bold '+_cfs+'px system-ui';}
+            const _clh=_cfs*1.3;_cl.forEach((_l,_i)=>ctx.fillText(_l,sx,sy-_clh*(_cl.length-1)/2+_clh*_i));
+        }
+        else ctx.fillText(n.type==='subdim'?n.id.replace(n.parentId+'__',''):n.id,sx,sy);
+        if(n.type==='dim'&&n.alpha>0.35&&!(mode==='dimfocus'&&n.id===selectedDim)){
+                const ang2=Math.atan2(sy-ocy,sx-ocx);
+                const lx=sx+Math.cos(ang2)*(nr+22),ly=sy+Math.sin(ang2)*(nr+22);
+                const nfs=Math.round(9*Math.max(0.5,Math.min(1.5,camZ)));
+                ctx.font=nfs+'px system-ui';ctx.fillStyle=n.color+'ee';
+                ctx.textAlign=lx>sx+3?'left':lx<sx-3?'right':'center';ctx.textBaseline='middle';
+                const _nf=n.name,_mid=Math.floor(_nf.length/2),_sl=_nf.lastIndexOf(' ',_mid),_sr=_nf.indexOf(' ',_mid);
+                let _l1=_nf,_l2=null;
+                if(_nf.length>14){const _sp=(_sl>-1&&_sr>-1)?(Math.abs(_sl-_mid)<Math.abs(_sr-_mid)?_sl:_sr):(_sl>-1?_sl:_sr);if(_sp>-1){_l1=_nf.slice(0,_sp);_l2=_nf.slice(_sp+1);}}
+                const _lines=_l2?[_l1,_l2]:[_l1];const _lh=nfs*1.3;const _totalH=_lines.length*_lh;
+                const _maxW=Math.max(..._lines.map(l=>ctx.measureText(l).width));
+                const _px=5,_py=3;const _bgX=ctx.textAlign==='left'?lx-_px:ctx.textAlign==='right'?lx-_maxW-_px:lx-_maxW/2-_px;
+                ctx.fillStyle='#0a0f1acc';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(_bgX,ly-_totalH/2-_py,_maxW+_px*2,_totalH+_py*2,3);else ctx.rect(_bgX,ly-_totalH/2-_py,_maxW+_px*2,_totalH+_py*2);ctx.fill();
+                ctx.fillStyle=n.color+'ee';_lines.forEach((_l,_i)=>ctx.fillText(_l,lx,ly-_totalH/2+_lh*(_i+0.5)));
+            }
+        ctx.globalAlpha=1;ctx.textBaseline='alphabetic';ctx.textAlign='center';
+    });
+    requestAnimationFrame(draw);
+}
+
+canvas.addEventListener('mousedown',e=>{dragging=true;dragSX=e.clientX;dragSY=e.clientY;camSX=camX;camSY=camY;canvas.style.cursor='grabbing';});
+canvas.addEventListener('mousemove',e=>{
+    if(dragging){tX=camSX+(e.clientX-dragSX)/camZ;tY=camSY+(e.clientY-dragSY)/camZ;}
+    else{const rect=canvas.getBoundingClientRect();const hit=hitNode(e.clientX-rect.left,e.clientY-rect.top);const nid=hit?hit.id:null;
+        if(nid!==hoverId){hoverId=nid;canvas.style.cursor=hit?'pointer':'grab';
+            if(mode==='dimfocus'&&selectedDim&&!selectedSub){if(hit&&hit.type==='dim'&&hit.id!==selectedDim)renderDimPanel(selectedDim,hit.id);else if(!hit||hit.id===selectedDim||hit.type==='subdim')renderDimPanel(selectedDim,null);}}}
+});
+canvas.addEventListener('mouseup',e=>{
+    const moved=Math.abs(e.clientX-dragSX)>5||Math.abs(e.clientY-dragSY)>5;
+    dragging=false;canvas.style.cursor='grab';if(moved)return;
+    const rect=canvas.getBoundingClientRect();const hit=hitNode(e.clientX-rect.left,e.clientY-rect.top);
+    if(!hit||hit.type==='root'){enterOverview();return;}
+    if(hit.type==='dim'){enterDimFocus(hit.id);return;}
+    if(hit.type==='subdim'){selectedSub=hit.id;const sn=allNodes.find(n=>n.id===hit.id);if(sn)renderSubPanel(sn);}
+});
+canvas.addEventListener('mouseleave',()=>{dragging=false;canvas.style.cursor='grab';hoverId=null;if(mode==='dimfocus'&&selectedDim&&!selectedSub)renderDimPanel(selectedDim,null);});
+canvas.addEventListener('wheel',e=>{e.preventDefault();tZ=Math.min(4.5,Math.max(0.3,tZ*(e.deltaY<0?1.13:0.88)));},{passive:false});
+
+setLayout('overview',null);
+renderOverviewPanel();
+requestAnimationFrame(draw);
+<\/script>
+</body>
+</html>`;
+
+    const blob = new Blob([html], {type:'text/html'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'ASMF_Integration_Map.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+async function exportASMFPosterAsHTML() {
+    if (!_asmfFramework) {
+        try {
+            const resp = await fetch('/api/asmf-framework');
+            _asmfFramework = await resp.json();
+        } catch(e) {
+            alert('Could not load framework data.');
+            return;
+        }
+    }
+    const fw = _asmfFramework;
+    const matrixInner = _asmfBuildMatrix(fw);
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASMF — Agentic SOC Maturity Framework</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:32px 28px}
+:root{--bg-primary:#0a0f1a;--bg-secondary:#0f172a;--border-color:#1e293b;--text-primary:#f1f5f9;--text-secondary:#94a3b8;--text-muted:#475569}
+h1{font-size:28px;font-weight:800;color:#f8fafc;margin-bottom:6px}
+h3{font-size:15px;font-weight:700;color:var(--text-primary);margin:0 0 12px;border-bottom:1px solid var(--border-color);padding-bottom:8px}
+table{border-collapse:collapse}
+</style>
+</head>
+<body>
+<div style="margin-bottom:28px;">
+  <div style="font-size:11px;color:#3b82f6;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:4px;">
+    ${escapeHtml(fw.framework_abbrev||'ASMF')} ${escapeHtml(fw.schema_version||'v1.0')}
+  </div>
+  <h1>${escapeHtml(fw.framework_name||'Agentic SOC Maturity Framework')}</h1>
+  <p style="font-size:13px;color:#64748b;margin-top:6px;">${escapeHtml(fw.scope||'')}</p>
+</div>
+${matrixInner.replace(/var\(--bg-primary\)/g,'#0a0f1a').replace(/var\(--bg-secondary\)/g,'#0f172a').replace(/var\(--border-color\)/g,'#1e293b').replace(/var\(--text-primary\)/g,'#f1f5f9').replace(/var\(--text-secondary\)/g,'#94a3b8').replace(/var\(--text-muted\)/g,'#475569')}
+<script>
+document.querySelectorAll('td[data-full]').forEach(cell=>{
+  const t=document.createElement('div');
+  t.style.cssText='display:none;position:fixed;z-index:9999;background:#0f172a;border:1px solid #334155;border-radius:8px;padding:12px 16px;max-width:360px;font-size:12px;color:#e2e8f0;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.5);pointer-events:none;';
+  document.body.appendChild(t);
+  cell.addEventListener('mouseenter',e=>{t.textContent=cell.dataset.full;t.style.display='block';});
+  cell.addEventListener('mousemove',e=>{
+    let l=e.clientX+16,top=e.clientY+10;
+    if(l+t.offsetWidth>window.innerWidth-8)l=e.clientX-t.offsetWidth-12;
+    if(top+t.offsetHeight>window.innerHeight-8)top=e.clientY-t.offsetHeight-12;
+    t.style.left=l+'px';t.style.top=top+'px';
+  });
+  cell.addEventListener('mouseleave',()=>t.style.display='none');
+});
+</script>
+</body></html>`;
+
+    const blob = new Blob([html], {type:'text/html'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'ASMF_Maturity_Matrix_Poster.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+
+
+const ASMF_STAGE_COLORS = ['#6b7280','#3b82f6','#8b5cf6','#f59e0b','#10b981','#22c55e'];
+const ASMF_STAGE_LABELS = ['Traditional','Assisted','Supervised Autonomy','Directed Autonomy','Collaborative Agentic','Fully Agentic'];
+
+let _asmfFramework = null;
+let _asmfOrbitalMap = null;
+
+// ── ASMF inner-tab switching (event delegation — always works) ──────────────
+
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.asmf-inner-tab');
+    if (!btn) return;
+
+    const tab   = btn.dataset.asmfTab;
+    const panel = btn.dataset.panel; // 'asmf-matrix' or 'asmf-graph'
+    const parentPanel = btn.closest('.asmf-panel-full');
+    if (!parentPanel) return;
+
+    // Activate tab button
+    parentPanel.querySelectorAll('.asmf-inner-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Activate pane — pane IDs are like "asmf-matrix-pane-matrix", "asmf-graph-pane-force"
+    // panel is already "asmf-matrix" / "asmf-graph", so just use `${panel}-pane-${tab}`
+    parentPanel.querySelectorAll('.asmf-inner-pane').forEach(p => p.classList.remove('active'));
+    const pane = document.getElementById(`${panel}-pane-${tab}`);
+    if (!pane) { console.error('[ASMF] pane not found:', `${panel}-pane-${tab}`); return; }
+    pane.classList.add('active');
+
+    // Lazy-render (only once per pane)
+    if (pane.dataset.rendered === '1') return;
+    pane.dataset.rendered = '1';
+
+    if (panel === 'asmf-matrix') {
+        if (tab === 'matrix')   populateASMFMatrix();
+        if (tab === 'radar')    populateASMFRadar();
+        if (tab === 'sankey')   populateASMFSankey();
+        if (tab === 'pyramid')  populateASMFPyramid();
+        if (tab === 'timeline') populateASMFTimeline();
+    } else if (panel === 'asmf-graph') {
+        if (tab === 'force')   populateASMFGraph();
+        if (tab === 'orbital') populateASMFOrbital();
+    }
+});
+
+// ── ASMF 3D Knowledge Graph ───────────────────────────────────────────────
+
+let _asmfGraph = null; // ForceGraph3D instance
+
+const ASMF_PLANE_COLORS = {
+    'Sensing':        '#06b6d4',
+    'Reasoning':      '#8b5cf6',
+    'Governance':     '#ef4444',
+    'Learning':       '#10b981',
+    'Human':          '#f59e0b',
+    'Agentic':        '#ec4899',
+    'Measurement':    '#64748b',
+    'Transformation': '#14b8a6',
+    'Operations':     '#f97316',
+    'Skill':          '#a78bfa',
+};
+
+function _asmfDimColor(plane) {
+    if (!plane) return '#3b82f6';
+    for (const [key, color] of Object.entries(ASMF_PLANE_COLORS)) {
+        if (plane.includes(key)) return color;
+    }
+    return '#3b82f6';
+}
+
+function _asmfBuildGraphData(fw) {
+    const nodes = [], links = [];
+    const dims   = fw.dimensions || {};
+    const stages = fw.maturity_stages || {};
+    const principles = fw.principles || [];
+    const phases = (fw.transformation_journey?.phases) || [];
+
+    // ── Root ──
+    nodes.push({ id: 'root', name: fw.framework_abbrev || 'ASMF', type: 'root',
+        color: '#ffffff', size: 14, desc: fw.description || '' });
+
+    // ── Stages ──
+    Object.entries(stages).forEach(([sk, s]) => {
+        nodes.push({ id: `stage-${sk}`, name: `Stage ${sk}: ${s.label}`, type: 'stage',
+            color: ASMF_STAGE_COLORS[parseInt(sk)], size: 9,
+            detail: `<b>Stage ${sk} — ${escapeHtml(s.label)}</b><br>${escapeHtml(s.typical_year||'')}<br><br>${escapeHtml(s.description||'')}` });
+        links.push({ source: 'root', target: `stage-${sk}`, color: ASMF_STAGE_COLORS[parseInt(sk)] + '55', value: 1 });
+    });
+
+    // ── Dimensions + Sub-dims ──
+    Object.entries(dims).forEach(([dimId, dim]) => {
+        const col = _asmfDimColor(dim.plane || '');
+        const weight = Math.round((dim.weight || 0) * 100);
+        nodes.push({ id: `dim-${dimId}`, name: `${dimId}: ${dim.name}`, type: 'dimension',
+            color: col, size: 7,
+            detail: `<b style="color:${col}">${escapeHtml(dimId)}</b> — ${escapeHtml(dim.name)}<br><span style="color:#64748b">${escapeHtml(dim.plane||'')}</span><br>Weight: ${weight}%<br><br>${escapeHtml(dim.description||'')}` });
+        links.push({ source: 'root', target: `dim-${dimId}`, color: col + '66', value: 2 });
+
+        Object.entries(dim.sub_dimensions || {}).forEach(([sdId, sd]) => {
+            const stageDescs = Object.entries(sd.stage_descriptors || {})
+                .map(([sk, d]) => `<div style="margin-bottom:6px;"><span style="color:${ASMF_STAGE_COLORS[parseInt(sk)]};font-size:10px;font-weight:700;">Stage ${sk}</span><br>${escapeHtml(d)}</div>`)
+                .join('');
+            nodes.push({ id: `sd-${sdId}`, name: sd.name, type: 'subdim',
+                color: col + 'cc', size: 4,
+                detail: `<b style="color:${col}">${escapeHtml(sdId)}</b> — ${escapeHtml(sd.name)}<br><br><i style="color:#64748b;font-size:11px;">${escapeHtml(sd.assessment_question||'')}</i><br><br>${stageDescs}` });
+            links.push({ source: `dim-${dimId}`, target: `sd-${sdId}`, color: col + '33', value: 1 });
+        });
+    });
+
+    // ── Principles ──
+    principles.forEach(p => {
+        nodes.push({ id: `p-${p.id}`, name: `${p.id}: ${p.label}`, type: 'principle',
+            color: '#3b82f6', size: 6,
+            detail: `<b style="color:#3b82f6">${escapeHtml(p.id)} — ${escapeHtml(p.label)}</b><br><br>${escapeHtml(p.statement||'')}` });
+        links.push({ source: 'root', target: `p-${p.id}`, color: '#3b82f633', value: 1 });
+    });
+
+    // ── Journey phases (chain) ──
+    phases.forEach((phase, i) => {
+        const col = ASMF_STAGE_COLORS[i + 1] || '#64748b';
+        const acts = (phase.key_activities || []).slice(0, 5).map(a => `<li>${escapeHtml(a)}</li>`).join('');
+        nodes.push({ id: `phase-${i}`, name: `Phase ${i+1}: ${phase.label||phase.transition||''}`, type: 'phase',
+            color: col, size: 6,
+            detail: `<b style="color:${col}">Phase ${i+1}</b><br>${escapeHtml(phase.transition||'')}<br><span style="color:#64748b;font-size:11px;">${escapeHtml(phase.approximate_duration||'')}</span><br><br>${escapeHtml(phase.description||'')}<br><br><ul style="padding-left:14px;font-size:11px;">${acts}</ul>` });
+        if (i === 0) links.push({ source: 'root', target: 'phase-0', color: col + '44', value: 1 });
+        else links.push({ source: `phase-${i-1}`, target: `phase-${i}`, color: col + '88', value: 2 });
+    });
+
+    return { nodes, links };
+}
+
+function _asmfShowNodeDetail(node) {
+    const panel = document.getElementById('asmf-graph-detail');
+    if (!panel) return;
+    const typeColors = { root:'#ffffff', stage:'', dimension:'', subdim:'', principle:'#3b82f6', phase:'' };
+    const typeLabels = { root:'Framework', stage:'Maturity Stage', dimension:'Dimension', subdim:'Sub-Dimension', principle:'Principle', phase:'Journey Phase' };
+    const typeBadgeColor = node.color || '#3b82f6';
+    panel.innerHTML = `
+        <div style="margin-bottom:16px;">
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;
+                      color:${typeBadgeColor};margin-bottom:4px;">${typeLabels[node.type] || node.type}</div>
+          <div style="font-size:15px;font-weight:700;color:#f1f5f9;line-height:1.4;">${escapeHtml(node.name)}</div>
+        </div>
+        <div style="font-size:12px;color:#94a3b8;line-height:1.7;border-top:1px solid #1e293b;padding-top:14px;">
+          ${node.detail || node.desc || ''}
+        </div>`;
+}
+
+async function _loadForceGraph3D() {
+    if (window.ForceGraph3D) return;
+    return new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://unpkg.com/3d-force-graph@1/dist/3d-force-graph.min.js';
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+    });
+}
+
+async function populateASMFGraph() {
+    const container = document.getElementById('asmf-graph-3d');
+    const detail    = document.getElementById('asmf-graph-detail');
+    if (!container) return;
+
+    // Don't re-init if graph already rendered
+    if (container.dataset.rendered === '1') return;
+
+    container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#64748b;font-size:13px;">Loading 3D engine…</div>';
+
+    try {
+        await _loadForceGraph3D();
+        if (!_asmfFramework) {
+            const resp = await fetch('/api/asmf-framework');
+            _asmfFramework = await resp.json();
+        }
+    } catch (e) {
+        container.innerHTML = `<div style="color:#ef4444;padding:24px;">Error: ${escapeHtml(String(e))}</div>`;
+        return;
+    }
+
+    container.innerHTML = '';
+    const gData = _asmfBuildGraphData(_asmfFramework);
+
+    const W = container.offsetWidth  || 800;
+    const H = container.offsetHeight || 700;
+
+    _asmfGraph = ForceGraph3D({ controlType: 'orbit' })(container)
+        .width(W)
+        .height(H)
+        .backgroundColor('#0a0f1a')
+        .graphData(gData)
+        .nodeLabel('name')
+        .nodeColor(n => n.color)
+        .nodeVal(n => n.size)
+        .nodeOpacity(0.92)
+        .nodeResolution(16)
+        .linkColor(l => l.color || '#334155')
+        .linkWidth(l => (l.value || 1) * 0.4)
+        .linkOpacity(0.55)
+        .linkDirectionalParticles(l => l.value > 1 ? 2 : 0)
+        .linkDirectionalParticleSpeed(0.004)
+        .linkDirectionalParticleWidth(1.5)
+        .onNodeClick(node => {
+            _asmfShowNodeDetail(node);
+            // Fly camera to clicked node
+            const dist = 80;
+            const distRatio = 1 + dist / Math.hypot(node.x, node.y, node.z);
+            _asmfGraph.cameraPosition(
+                { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+                node,
+                1200
+            );
+        })
+        .onNodeHover(node => {
+            container.style.cursor = node ? 'pointer' : 'default';
+        });
+
+    // Initial camera position
+    _asmfGraph.cameraPosition({ z: 320 });
+
+    // Resize observer
+    const ro = new ResizeObserver(() => {
+        const w = container.offsetWidth, h = container.offsetHeight;
+        if (w > 0 && h > 0) _asmfGraph.width(w).height(h);
+    });
+    ro.observe(container);
+
+    container.dataset.rendered = '1';
+
+    // Show default detail
+    _asmfShowNodeDetail({ type: 'root', name: _asmfFramework.framework_abbrev || 'ASMF',
+        color: '#ffffff', desc: _asmfFramework.description || '', detail: null });
+}
+
+async function populateASMFView() {
+    const el = document.getElementById('asmf-content');
+    if (!el) return;
+    el.innerHTML = '<div style="color:#64748b;padding:32px;">Loading framework…</div>';
+    try {
+        if (!_asmfFramework) {
+            const resp = await fetch('/api/asmf-framework');
+            _asmfFramework = await resp.json();
+        }
+        el.innerHTML = _asmfRender(_asmfFramework);
+    } catch (e) {
+        el.innerHTML = `<div style="color:#ef4444;padding:32px;">Error loading ASMF: ${escapeHtml(String(e))}</div>`;
+    }
+}
+
+function _asmfStageColor(idx) {
+    return ASMF_STAGE_COLORS[Math.min(5, Math.max(0, idx))];
+}
+
+async function exportASMFFrameworkAsHTML() {
+    if (!_asmfFramework) {
+        try {
+            const resp = await fetch('/api/asmf-framework');
+            _asmfFramework = await resp.json();
+        } catch(e) {
+            alert('Could not load framework data.');
+            return;
+        }
+    }
+    const fw = _asmfFramework;
+    const inner = _asmfRender(fw)
+        // Remove the export button from the exported copy to avoid confusion
+        .replace(/<button onclick="exportASMFFrameworkAsHTML\(\)"[^>]*>[\s\S]*?<\/button>/, '')
+        // Resolve CSS variables
+        .replace(/var\(--bg-primary\)/g,'#0a0f1a')
+        .replace(/var\(--bg-secondary\)/g,'#0f172a')
+        .replace(/var\(--border-color\)/g,'#1e293b')
+        .replace(/var\(--text-primary\)/g,'#f1f5f9')
+        .replace(/var\(--text-secondary\)/g,'#94a3b8')
+        .replace(/var\(--text-muted\)/g,'#475569');
+
+    const exportDate = new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASMF — Agentic SOC Maturity Framework Reference</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:32px 28px;max-width:1400px;margin:0 auto;}
+h1{font-size:26px;font-weight:800;color:#f8fafc}
+h2{font-size:18px;font-weight:700;color:#f1f5f9}
+table{border-collapse:collapse;width:100%}
+details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}
+a{color:#3b82f6}
+</style>
+</head>
+<body>
+${inner}
+<p style="margin-top:32px;font-size:11px;color:#334155;border-top:1px solid #1e293b;padding-top:12px;font-style:italic;">Exported ${exportDate} — ASMF v1.0 — Zach West, Gartner. Research-in-progress; not official Gartner published research.</p>
+</body>
+</html>`;
+
+    const blob = new Blob([html], {type:'text/html'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'ASMF_Framework_Reference.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+function _asmfStagePill(idx) {
+    const color = _asmfStageColor(idx);
+    const label = ASMF_STAGE_LABELS[idx] || `Stage ${idx}`;
+    return `<span style="background:${color};color:#fff;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700;">${idx} — ${label}</span>`;
+}
+
+function _asmfRender(fw) {
+    const dims = fw.dimensions || {};
+    const stages = fw.maturity_stages || {};
+    const principles = fw.principles || [];
+    const journey = (fw.transformation_journey && fw.transformation_journey.phases) ? fw.transformation_journey.phases : (Array.isArray(fw.transformation_journey) ? fw.transformation_journey : []);
+
+    // Header
+    let html = `
+    <div style="margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:11px;color:#3b82f6;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:4px;">
+          ${escapeHtml(fw.framework_name || 'Agentic SOC Maturity Framework')} ${escapeHtml(fw.schema_version || 'v1.0')}
+        </div>
+        <h1 style="font-size:26px;font-weight:800;color:#f8fafc;margin-bottom:6px;">${escapeHtml(fw.framework_abbrev || 'ASMF')}</h1>
+        <p style="font-size:14px;color:#64748b;max-width:740px;line-height:1.6;">${escapeHtml(fw.description || '')}</p>
+      </div>
+      <button onclick="exportASMFFrameworkAsHTML()" style="flex-shrink:0;background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+        🌐 Export Framework HTML
+      </button>
+    </div>`;
+
+    // Stats bar
+    const dimCount = Object.keys(dims).length;
+    const subDimCount = Object.values(dims).reduce((a, d) => a + Object.keys(d.sub_dimensions || {}).length, 0);
+    html += `
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px;">
+      ${[
+        ['Dimensions', dimCount, '#3b82f6'],
+        ['Sub-Dimensions', subDimCount, '#8b5cf6'],
+        ['Maturity Stages', Object.keys(stages).length, '#10b981'],
+        ['Governing Principles', principles.length, '#f59e0b'],
+      ].map(([label, val, color]) => `
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px 20px;flex:1;min-width:130px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:${color};">${val}</div>
+        <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">${label}</div>
+      </div>`).join('')}
+    </div>`;
+
+    // Maturity Stage Reference
+    html += `<h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">Maturity Stages</h2>`;
+    html += `<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;">`;
+    Object.entries(stages).forEach(([sid, s]) => {
+        const idx = parseInt(sid, 10);
+        const color = _asmfStageColor(idx);
+        html += `
+        <div style="background:#0f172a;border:1px solid #1e293b;border-left:4px solid ${color};border-radius:8px;padding:14px 16px;flex:1;min-width:200px;">
+          <div style="font-size:20px;font-weight:800;color:${color};">${sid} — ${escapeHtml(s.label || '')}</div>
+          <div style="font-size:11px;color:#64748b;margin:4px 0 8px;">${escapeHtml(s.typical_year || '')}</div>
+          <div style="font-size:12px;color:#94a3b8;line-height:1.5;margin-bottom:4px;"><strong style="color:#64748b;">Autonomy:</strong> ${escapeHtml(s.autonomy_level || '')}</div>
+          <div style="font-size:12px;color:#94a3b8;line-height:1.5;"><strong style="color:#64748b;">Human model:</strong> ${escapeHtml(s.human_model || '')}</div>
+        </div>`;
+    });
+    html += `</div>`;
+
+    // Dimensions
+    html += `<h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">11 Dimensions</h2>`;
+    Object.entries(dims).forEach(([dimId, dim]) => {
+        const subDims = dim.sub_dimensions || {};
+        const weight = Math.round((dim.weight || 0) * 100);
+        html += `
+        <details style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;margin-bottom:10px;overflow:hidden;">
+          <summary style="padding:14px 18px;cursor:pointer;display:flex;align-items:center;gap:12px;list-style:none;">
+            <span style="background:#1e293b;color:#3b82f6;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;white-space:nowrap;">${escapeHtml(dimId)}</span>
+            <span style="font-size:15px;font-weight:700;color:#f1f5f9;flex:1;">${escapeHtml(dim.name || '')}</span>
+            <span style="font-size:11px;color:#64748b;">Weight: ${weight}%</span>
+            <span style="font-size:11px;color:#475569;font-style:italic;">${escapeHtml(dim.plane || '')}</span>
+          </summary>
+          <div style="padding:0 18px 16px;">
+            <p style="font-size:13px;color:#64748b;margin:0 0 12px;line-height:1.5;">${escapeHtml(dim.description || '')}</p>
+            <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+              <colgroup>
+                <col style="width:7%;">
+                <col style="width:16%;">
+                <col style="width:35%;">
+                <col style="width:42%;">
+              </colgroup>
+              <thead>
+                <tr style="border-bottom:1px solid #1e293b;">
+                  <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">ID</th>
+                  <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">Sub-Dimension</th>
+                  <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">Assessment Question</th>
+                  <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">Stage 0 → Stage 5</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${Object.entries(subDims).map(([sdId, sd]) => {
+                    const s0 = (sd.stage_descriptors || {})['0'] || '';
+                    const s5 = (sd.stage_descriptors || {})['5'] || '';
+                    return `
+                    <tr style="border-bottom:1px solid #0f172a;">
+                      <td style="padding:8px;font-size:11px;color:#3b82f6;font-weight:700;vertical-align:top;word-break:break-word;">${escapeHtml(sdId)}</td>
+                      <td style="padding:8px;font-size:12px;color:#e2e8f0;vertical-align:top;word-break:break-word;"><strong>${escapeHtml(sd.name || '')}</strong></td>
+                      <td style="padding:8px;font-size:12px;color:#94a3b8;vertical-align:top;line-height:1.4;word-break:break-word;">${escapeHtml(sd.assessment_question || '')}</td>
+                      <td style="padding:8px;vertical-align:top;word-break:break-word;">
+                        <div style="font-size:10px;color:#6b7280;margin-bottom:4px;line-height:1.4;">
+                          <span style="color:${_asmfStageColor(0)};font-weight:700;">0:</span> ${escapeHtml(s0)}
+                        </div>
+                        <div style="font-size:10px;color:#6b7280;line-height:1.4;">
+                          <span style="color:${_asmfStageColor(5)};font-weight:700;">5:</span> ${escapeHtml(s5)}
+                        </div>
+                      </td>
+                    </tr>`;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </details>`;
+    });
+
+    // Governing Principles
+    html += `<h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">Governing Principles</h2>`;
+    html += `<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;">`;
+    principles.forEach(p => {
+        html += `
+        <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px 16px;flex:1;min-width:240px;">
+          <div style="font-size:12px;font-weight:700;color:#3b82f6;margin-bottom:4px;">${escapeHtml(p.id || '')} — ${escapeHtml(p.label || '')}</div>
+          <div style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(p.statement || '')}</div>
+        </div>`;
+    });
+    html += `</div>`;
+
+    // Transformation Journey
+    if (journey.length) {
+        html += `<h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">Transformation Journey</h2>`;
+        html += `<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;">`;
+        journey.forEach((phase, i) => {
+            const color = ASMF_STAGE_COLORS[i + 1] || '#64748b';
+            const acts = (phase.key_activities || []).slice(0, 4);
+            html += `
+            <div style="background:#0f172a;border:1px solid #1e293b;border-left:4px solid ${color};border-radius:8px;padding:14px 16px;flex:1;min-width:200px;">
+              <div style="font-size:13px;font-weight:700;color:${color};margin-bottom:4px;">${escapeHtml(phase.transition || '')}</div>
+              <ul style="margin:0;padding-left:14px;">
+                ${acts.map(a => `<li style="font-size:12px;color:#94a3b8;padding:2px 0;">${escapeHtml(a)}</li>`).join('')}
+              </ul>
+            </div>`;
+        });
+        html += `</div>`;
+    }
+
+    // Download button
+    html += `
+    <div style="margin-top:8px;padding:20px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#f1f5f9;">Generate Self-Assessment Report</div>
+        <div style="font-size:12px;color:#64748b;">Run the Python report generator to produce a standalone HTML assessment for your organization.</div>
+      </div>
+      <code style="font-size:12px;background:#1e293b;color:#34d399;padding:8px 14px;border-radius:6px;white-space:nowrap;">python _create_agentic_soc_report.py --demo</code>
+    </div>`;
+
+    // ── Theoretical Foundations ──
+    const foundations = [
+      {
+        label: 'CMMI / Capability Maturity Model Integration',
+        org: 'CMMI Institute / SEI',
+        note: 'The 0–5 stage maturity ladder structure — including the concept of staged capability levels, continuous improvement, and process institutionalization — is directly adapted from CMMI.',
+        url: 'https://cmmiinstitute.com/cmmi'
+      },
+      {
+        label: 'MITRE ATT&CK Framework',
+        org: 'MITRE Corporation',
+        note: 'ATT&CK is explicitly referenced throughout ASMF stage descriptors as the adversary behavior taxonomy for detection coverage mapping, threat intelligence operationalization, and hunting hypothesis generation.',
+        url: 'https://attack.mitre.org/'
+      },
+      {
+        label: 'NIST Cybersecurity Framework (CSF)',
+        org: 'National Institute of Standards and Technology',
+        note: 'The Identify / Protect / Detect / Respond / Recover function model loosely maps to ASMF\'s sensing-reasoning-acting-learning-governing dimensions. CSF 2.0\'s addition of "Govern" aligns with ASMF\'s GOV dimension.',
+        url: 'https://www.nist.gov/cyberframework'
+      },
+      {
+        label: 'SOC-CMM',
+        org: 'Sander Prins (via SANS/ESC)',
+        note: 'The SOC-CMM provides a SOC-specific capability maturity model covering people, process, and technology dimensions. ASMF extends this into the agentic era by reorienting around autonomous decision architecture rather than task execution.',
+        url: 'https://www.soc-cmm.com/'
+      },
+      {
+        label: 'Cybernetics — The Control of Communication in the Animal and the Machine',
+        org: 'Norbert Wiener (1948)',
+        note: 'ASMF Principle P1 ("Security Operations is a cybernetic system") is grounded in Wiener\'s cybernetics: the feedback loop of sensing → reasoning → action → learning is the foundational operating model.',
+        url: 'https://en.wikipedia.org/wiki/Cybernetics_(Wiener_book)'
+      },
+      {
+        label: 'Constitutional AI & Bounded Autonomy',
+        org: 'Anthropic (2022–2024)',
+        note: 'The concept of embedding governance as a real-time operational control signal — rather than post-hoc oversight — draws from Constitutional AI principles and the idea of value-aligned autonomous systems.',
+        url: 'https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback'
+      },
+      {
+        label: 'Agentic AI Systems Research',
+        org: 'OpenAI, Anthropic, DeepMind (2024–2026)',
+        note: 'Multi-agent orchestration, dynamic agent coalition formation, and the concept of agents operating over a shared knowledge graph draw from recent agentic AI systems research across the major AI labs.',
+        url: 'https://openai.com/research/'
+      },
+      {
+        label: 'Gartner SOC Research & Magic Quadrant',
+        org: 'Gartner, Inc.',
+        note: 'ASMF reflects Gartner\'s published positions on SOC modernization: elimination of L1/L2/L3 tier models, pivot to outcome-based roles, MDR market evolution, and the integration of AI into security operations workflows.',
+        url: 'https://www.gartner.com/en/security/topics/security-operations-center'
+      }
+    ];
+
+    html += `
+    <h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:36px 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">
+      Theoretical Foundations &amp; Influences
+    </h2>
+    <p style="font-size:13px;color:#64748b;margin:0 0 16px;line-height:1.6;">
+      ASMF is an original synthesis, but draws on established frameworks, research traditions, and published theory. The table below documents the primary intellectual sources and how each influenced the framework's design.
+    </p>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="border-bottom:2px solid #1e293b;">
+          <th style="padding:8px 10px;text-align:left;color:#475569;font-size:11px;width:22%;">Framework / Source</th>
+          <th style="padding:8px 10px;text-align:left;color:#475569;font-size:11px;width:18%;">Origin</th>
+          <th style="padding:8px 10px;text-align:left;color:#475569;font-size:11px;">Influence on ASMF</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${foundations.map((f, i) => `
+        <tr style="border-bottom:1px solid #1e293b;background:${i % 2 === 0 ? '#0f172a' : 'transparent'};">
+          <td style="padding:10px;vertical-align:top;">
+            <a href="${escapeHtml(f.url)}" target="_blank" rel="noopener noreferrer"
+               style="color:#3b82f6;font-weight:600;text-decoration:none;line-height:1.4;word-break:break-word;"
+               onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+              ${escapeHtml(f.label)}
+            </a>
+          </td>
+          <td style="padding:10px;color:#94a3b8;vertical-align:top;line-height:1.4;">${escapeHtml(f.org)}</td>
+          <td style="padding:10px;color:#64748b;vertical-align:top;line-height:1.5;">${escapeHtml(f.note)}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:#334155;margin:12px 0 0;font-style:italic;">
+      ASMF v1.0 — Created ${escapeHtml(new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'}))} — Zach West, Gartner. This framework is research-in-progress and does not represent official Gartner published research.
+    </p>`;
+
+    return html;
+}
 
 async function populateRoadmapView() {
     const chart = document.getElementById('gantt-chart');
@@ -25061,3 +27165,278 @@ function exportCNAPPMarketInsightHTML() {
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
+
+// ═══════════════════════════════════════════════════════════════
+//  DOCUMENTATION PANEL
+// ═══════════════════════════════════════════════════════════════
+(function initDocsPanel() {
+    'use strict';
+
+    const panel       = document.getElementById('docs-panel');
+    const backdrop    = document.getElementById('docs-panel-backdrop');
+    const toggleBtn   = document.getElementById('docs-panel-toggle');
+    const closeBtn    = document.getElementById('docs-panel-close');
+    const tabsEl      = document.getElementById('docs-tabs');
+    const bodyEl      = document.getElementById('docs-panel-body');
+    const loadingEl   = document.getElementById('docs-panel-loading');
+
+    if (!panel || !toggleBtn) return;
+
+    let docsData      = null;
+    let activeTabId   = null;
+    let mermaidSeq    = 0;
+
+    // ── Open / close ────────────────────────────────────────────
+    function openPanel() {
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden', 'false');
+        backdrop.classList.add('open');
+        toggleBtn.classList.add('active');
+        if (!docsData) loadDocs();
+    }
+    function closePanel() {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+        backdrop.classList.remove('open');
+        toggleBtn.classList.remove('active');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        panel.classList.contains('open') ? closePanel() : openPanel();
+    });
+    closeBtn.addEventListener('click', closePanel);
+    backdrop.addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+
+    // ── Fetch docs JSON ─────────────────────────────────────────
+    async function loadDocs() {
+        loadingEl.style.display = 'block';
+        bodyEl.innerHTML = '<div class="docs-panel-loading" id="docs-panel-loading">Loading documentation…</div>';
+        try {
+            const res = await fetch('/api/docs/architecture');
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            docsData = await res.json();
+            renderPanel(docsData);
+        } catch (err) {
+            bodyEl.innerHTML = `<div class="docs-panel-loading" style="color:#e74c3c">Failed to load documentation: ${escapeHtml(err.message)}</div>`;
+        }
+    }
+
+    // ── Render full panel ────────────────────────────────────────
+    function renderPanel(data) {
+        // Build tab buttons
+        tabsEl.innerHTML = '';
+        (data.tabs || []).forEach((tab, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'docs-tab-btn' + (i === 0 ? ' active' : '');
+            btn.dataset.tabId = tab.id;
+            btn.textContent = (tab.icon ? tab.icon + ' ' : '') + tab.label;
+            btn.addEventListener('click', () => switchTab(tab.id));
+            tabsEl.appendChild(btn);
+        });
+
+        // Build tab content panes
+        bodyEl.innerHTML = '';
+        (data.tabs || []).forEach((tab, i) => {
+            const pane = document.createElement('div');
+            pane.className = 'docs-tab-content' + (i === 0 ? ' active' : '');
+            pane.id = `docs-tab-${tab.id}`;
+            pane.appendChild(buildTabLayout(tab));
+            bodyEl.appendChild(pane);
+        });
+
+        if (data.tabs && data.tabs.length > 0) {
+            activeTabId = data.tabs[0].id;
+            // Render Mermaid diagrams for first tab
+            renderMermaidInTab(data.tabs[0].id);
+        }
+    }
+
+    // ── Build two-column layout for a tab ────────────────────────
+    function buildTabLayout(tab) {
+        const layout = document.createElement('div');
+        layout.className = 'docs-tab-layout';
+
+        // Left: section nav
+        const nav = document.createElement('nav');
+        nav.className = 'docs-section-nav';
+        nav.setAttribute('aria-label', tab.label + ' sections');
+
+        // Right: section content
+        const contentArea = document.createElement('div');
+        contentArea.className = 'docs-section-content';
+        contentArea.id = `docs-content-${tab.id}`;
+
+        (tab.sections || []).forEach((section, idx) => {
+            // Nav button
+            const navBtn = document.createElement('button');
+            navBtn.className = 'docs-section-nav-btn' + (idx === 0 ? ' active' : '');
+            navBtn.dataset.sectionId = section.id;
+            navBtn.dataset.tabId = tab.id;
+            navBtn.textContent = section.title;
+            navBtn.addEventListener('click', () => scrollToSection(tab.id, section.id, navBtn));
+            nav.appendChild(navBtn);
+
+            // Section pane
+            const pane = document.createElement('div');
+            pane.className = 'docs-section-pane' + (idx === 0 ? ' active' : '');
+            pane.id = `docs-section-${section.id}`;
+
+            const h2 = document.createElement('h2');
+            h2.className = 'docs-section-title';
+            h2.textContent = section.title;
+            pane.appendChild(h2);
+
+            (section.content || []).forEach(block => {
+                pane.appendChild(renderBlock(block, section.id));
+            });
+
+            contentArea.appendChild(pane);
+        });
+
+        layout.appendChild(nav);
+        layout.appendChild(contentArea);
+        return layout;
+    }
+
+    // ── Switch active tab ────────────────────────────────────────
+    function switchTab(tabId) {
+        activeTabId = tabId;
+        document.querySelectorAll('.docs-tab-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.tabId === tabId);
+        });
+        document.querySelectorAll('.docs-tab-content').forEach(p => {
+            p.classList.toggle('active', p.id === `docs-tab-${tabId}`);
+        });
+        renderMermaidInTab(tabId);
+    }
+
+    // ── Scroll to / activate section ─────────────────────────────
+    function scrollToSection(tabId, sectionId, clickedBtn) {
+        // Update nav highlight
+        const nav = document.querySelector(`#docs-tab-${tabId} .docs-section-nav`);
+        if (nav) {
+            nav.querySelectorAll('.docs-section-nav-btn').forEach(b => b.classList.remove('active'));
+        }
+        if (clickedBtn) clickedBtn.classList.add('active');
+
+        // Show pane (scroll-based alternative: all panes visible, scroll to it)
+        const pane = document.getElementById(`docs-section-${sectionId}`);
+        if (pane) {
+            // Make all panes visible for single-scroll layout
+            const contentArea = document.getElementById(`docs-content-${tabId}`);
+            if (contentArea) {
+                contentArea.querySelectorAll('.docs-section-pane').forEach(p => p.classList.add('active'));
+            }
+            pane.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // ── Render a single content block ────────────────────────────
+    function renderBlock(block, sectionId) {
+        switch (block.type) {
+
+            case 'heading': {
+                const el = document.createElement('h3');
+                el.className = 'docs-heading';
+                el.textContent = block.value;
+                return el;
+            }
+
+            case 'text': {
+                const el = document.createElement('p');
+                el.className = 'docs-text';
+                el.textContent = block.value;
+                return el;
+            }
+
+            case 'list': {
+                const ul = document.createElement('ul');
+                ul.className = 'docs-list';
+                (block.items || []).forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+                return ul;
+            }
+
+            case 'table': {
+                const wrap = document.createElement('div');
+                wrap.className = 'docs-table-wrap';
+                const table = document.createElement('table');
+                table.className = 'docs-table';
+                // Header
+                const thead = document.createElement('thead');
+                const hrow = document.createElement('tr');
+                (block.headers || []).forEach(h => {
+                    const th = document.createElement('th');
+                    th.textContent = h;
+                    hrow.appendChild(th);
+                });
+                thead.appendChild(hrow);
+                table.appendChild(thead);
+                // Body
+                const tbody = document.createElement('tbody');
+                (block.rows || []).forEach(row => {
+                    const tr = document.createElement('tr');
+                    row.forEach(cell => {
+                        const td = document.createElement('td');
+                        td.textContent = cell;
+                        tr.appendChild(td);
+                    });
+                    tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+                wrap.appendChild(table);
+                return wrap;
+            }
+
+            case 'code': {
+                const pre = document.createElement('pre');
+                pre.className = 'docs-code';
+                pre.textContent = block.value;
+                return pre;
+            }
+
+            case 'mermaid': {
+                const wrap = document.createElement('div');
+                wrap.className = 'docs-mermaid-wrap';
+                wrap.dataset.mermaidDef = block.value;
+                wrap.dataset.mermaidId = `docs-mmd-${++mermaidSeq}`;
+                wrap.innerHTML = '<div class="docs-mermaid-error" style="color:var(--text-secondary);font-size:11px">Rendering diagram…</div>';
+                return wrap;
+            }
+
+            default: {
+                const frag = document.createDocumentFragment();
+                return frag;
+            }
+        }
+    }
+
+    // ── Render all Mermaid diagrams in a tab ─────────────────────
+    async function renderMermaidInTab(tabId) {
+        const tabPane = document.getElementById(`docs-tab-${tabId}`);
+        if (!tabPane) return;
+        const wraps = tabPane.querySelectorAll('.docs-mermaid-wrap[data-mermaid-def]');
+        if (!wraps.length) return;
+        if (typeof mermaid === 'undefined') return;
+
+        for (const wrap of wraps) {
+            if (wrap.dataset.mermaidRendered === '1') continue;
+            const def = wrap.dataset.mermaidDef;
+            const id  = wrap.dataset.mermaidId;
+            try {
+                const { svg } = await mermaid.render(id, def);
+                wrap.innerHTML = svg;
+                wrap.dataset.mermaidRendered = '1';
+            } catch (err) {
+                wrap.innerHTML = `<div class="docs-mermaid-error">Diagram error: ${escapeHtml(String(err))}</div>`;
+            }
+        }
+    }
+
+})();

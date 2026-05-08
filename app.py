@@ -75,6 +75,7 @@ SCHEMA_REGISTRY = {
     'CNAPP_MQ_Gap_Schema_App.json': {'top_key': 'cnapp_mq_gap_taxonomy_v1.0', 'structure': 'flat'},
     'Schema_Template_Capability.json': {'top_key': 'capability_schema_template_v1.0', 'structure': 'flat'},
     'Schema_Template_MQ_Gap.json': {'top_key': 'mq_gap_schema_template_v1.0', 'structure': 'flat'},
+    'agentic_soc_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
 }
 
 # Schema display metadata: maps schema filename to title, abbreviation, subtitle
@@ -96,6 +97,7 @@ SCHEMA_DISPLAY = {
     'CNAPP_MQ_Gap_Schema_App.json': {'title': 'CNAPP Magic Quadrant — Gap Criteria Analysis 2026', 'abbr': 'CNAPP-MQ', 'subtitle': 'Evaluate CNAPP vendors against the 7 Magic Quadrant criteria not covered by the CNAPP capability schema'},
     'Schema_Template_Capability.json': {'title': 'Schema Template — Capability Assessment', 'abbr': 'TEMPLATE-CAP', 'subtitle': 'Blank capability schema template with annotated structure — use as the starting point for a new market capability assessment schema'},
     'Schema_Template_MQ_Gap.json': {'title': 'Schema Template — MQ Gap Criteria', 'abbr': 'TEMPLATE-MQ', 'subtitle': 'Blank MQ Gap schema template with annotated structure — use as the starting point for Magic Quadrant supplemental criteria scoring'},
+    'agentic_soc_framework_v1.json': {'title': 'Agentic SOC Maturity Framework 2026', 'abbr': 'ASMF', 'subtitle': 'Vendor-neutral maturity framework for autonomous security operations — 11 dimensions, 44 sub-dimensions, 6 stages'},
 }
 
 def discover_schema_files():
@@ -604,6 +606,8 @@ def get_vendor_files():
         lower = name.lower()
         if 'schema_template' in lower:
             return 'template'
+        if 'agentic_soc' in lower or 'asmf' in lower:
+            return 'asmf'
         if 'trism' in lower:
             return 'trism'
         if 'preemptive' in lower or 'precyber' in lower:
@@ -761,6 +765,7 @@ def _detect_project_from_name(name):
     """Return project tag from a filename."""
     lower = name.lower()
     if 'schema_template' in lower: return 'template'
+    if 'agentic_soc' in lower or 'asmf' in lower: return 'asmf'
     if 'trism' in lower: return 'trism'
     if 'preemptive' in lower or 'precyber' in lower: return 'precyber'
     if 'secure_by_design' in lower or 'sbd_ai' in lower or 'sbdai' in lower: return 'sbdai'
@@ -6869,6 +6874,44 @@ def blumira_deep_dive():
     }
 
     return jsonify(result)
+
+
+@app.route('/api/asmf-framework', methods=['GET'])
+def get_asmf_framework():
+    """Return the Agentic SOC Maturity Framework schema."""
+    filepath = os.path.join(os.path.dirname(__file__), 'agentic_soc_framework_v1.json')
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/asmf-orbital-map', methods=['GET'])
+def get_asmf_orbital_map():
+    """Return the ASMF orbital integration map (relationship config + dim colors)."""
+    filepath = os.path.join(os.path.dirname(__file__), 'static', 'asmf_orbital_map.json')
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/docs/architecture', methods=['GET'])
+def get_docs_architecture():
+    """Serve the platform architecture documentation as structured JSON."""
+    filepath = os.path.join(os.path.dirname(__file__), 'static', 'docs_architecture.json')
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except FileNotFoundError:
+        return jsonify({'error': 'Architecture documentation not found'}), 404
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':

@@ -3307,8 +3307,10 @@ body.dark-mode .vendors-export-fields-list {
 /* ── Tab content area ── */
 .reports-tab-content {
     flex: 1;
-    overflow-y: auto;
+    min-height: 0;         /* critical: allows flex child to shrink below content size */
+    overflow: hidden;      /* clip absolutely-positioned ASMF panels; non-ASMF panels scroll within .report-panel */
     padding: 0;
+    position: relative;    /* containing block for .asmf-panel-full */
 }
 
 .report-panel {
@@ -7830,3 +7832,74 @@ body.dark-mode .mi-dim-row .mi-dim-label strong {
     line-height: 1.45;
     color: var(--text-primary);
 }
+
+/* ── ASMF Matrix panel — full-width, no max-width cap ── */
+#report-panel-asmf-matrix .report-document {
+    max-width: none;
+    padding: 24px 32px 60px;
+}
+
+/* ── ASMF inner-tab system ── */
+.asmf-panel-full {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+}
+.asmf-panel-full.active {
+    display: flex;
+}
+
+.asmf-inner-tabbar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 16px 0;
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--border-color);
+    flex-shrink: 0;
+    overflow-x: auto;
+}
+
+.asmf-inner-tab {
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    top: 2px;
+    transition: color 0.15s, background 0.15s;
+}
+.asmf-inner-tab:hover { color: var(--text-primary); background: var(--bg-tertiary); }
+.asmf-inner-tab.active {
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    border-color: var(--border-color);
+    border-bottom: 2px solid var(--bg-primary);
+}
+
+.asmf-inner-panels {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.asmf-inner-pane {
+    display: none;
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.asmf-inner-pane.active { display: block; }
+
+.asmf-pane-full {
+    overflow: hidden;
+}
+.asmf-pane-full.active { display: flex; flex-direction: column; }

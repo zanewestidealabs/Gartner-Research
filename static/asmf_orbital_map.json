@@ -1,0 +1,184 @@
+{
+  "meta": {
+    "version": "1.0",
+    "title": "Agentic SOC Framework — Integration Relationship Map",
+    "description": "Edit this file to update cross-dimension relationship labels, add connections, or adjust visual config. Each relationship has a direction (from → to), a type, a strength (1-3) and a label describing the integration."
+  },
+  "dim_config": {
+    "SEN": { "color": "#06b6d4", "plane": "Sensing & Signal",      "short": "Sensing"      },
+    "RSN": { "color": "#0ea5e9", "plane": "Sensing & Signal",      "short": "Reasoning"    },
+    "ACT": { "color": "#8b5cf6", "plane": "Response & Action",     "short": "Action"       },
+    "GOV": { "color": "#ef4444", "plane": "Governance & Trust",    "short": "Governance"   },
+    "LRN": { "color": "#10b981", "plane": "Learning & Adaptation", "short": "Learning"     },
+    "OPS": { "color": "#f97316", "plane": "Operations",            "short": "Operations"   },
+    "HUM": { "color": "#f59e0b", "plane": "Human & Org",           "short": "Human"        },
+    "AGT": { "color": "#fbbf24", "plane": "Agentic Autonomy",      "short": "Agentic"      },
+    "SKG": { "color": "#a78bfa", "plane": "Skill & Knowledge",     "short": "Skills"       },
+    "MET": { "color": "#64748b", "plane": "Measurement",           "short": "Metrics"      },
+    "TRN": { "color": "#14b8a6", "plane": "Transformation",        "short": "Transform"    }
+  },
+  "relationship_types": {
+    "data_flow":    { "color": "#06b6d4", "label": "Data Flow",    "abbr": "DF", "dash": []    },
+    "execution":    { "color": "#8b5cf6", "label": "Execution",    "abbr": "EX", "dash": []    },
+    "feedback":     { "color": "#10b981", "label": "Feedback",     "abbr": "FB", "dash": [4,4] },
+    "governance":   { "color": "#ef4444", "label": "Governance",   "abbr": "GV", "dash": [6,3] },
+    "augmentation": { "color": "#f59e0b", "label": "Augmentation", "abbr": "AU", "dash": [3,6] }
+  },
+  "relationships": [
+    {
+      "from": "SEN", "to": "RSN",
+      "label": "Telemetry and signals feed the analytical reasoning engine",
+      "type": "data_flow", "strength": 3
+    },
+    {
+      "from": "SEN", "to": "ACT",
+      "label": "High-confidence detections trigger automated response playbooks",
+      "type": "execution", "strength": 2
+    },
+    {
+      "from": "SEN", "to": "LRN",
+      "label": "Detection patterns and false-positive rates feed learning models",
+      "type": "feedback", "strength": 2
+    },
+    {
+      "from": "RSN", "to": "ACT",
+      "label": "Analytical decisions and risk assessments direct precise response execution",
+      "type": "execution", "strength": 3
+    },
+    {
+      "from": "RSN", "to": "LRN",
+      "label": "Reasoning outcomes and decision accuracy data feed continuous learning loops",
+      "type": "feedback", "strength": 3
+    },
+    {
+      "from": "RSN", "to": "GOV",
+      "label": "High-risk escalations and policy-relevant decisions surface to governance",
+      "type": "governance", "strength": 2
+    },
+    {
+      "from": "RSN", "to": "SKG",
+      "label": "Reasoning draws on structured playbook and threat-knowledge context",
+      "type": "data_flow", "strength": 2
+    },
+    {
+      "from": "ACT", "to": "OPS",
+      "label": "Response actions execute within and depend on operational service workflows",
+      "type": "execution", "strength": 3
+    },
+    {
+      "from": "ACT", "to": "AGT",
+      "label": "Agents carry out directed autonomous response and containment actions",
+      "type": "execution", "strength": 3
+    },
+    {
+      "from": "ACT", "to": "MET",
+      "label": "Action outcomes, MTTR and containment success feed effectiveness metrics",
+      "type": "feedback", "strength": 2
+    },
+    {
+      "from": "GOV", "to": "HUM",
+      "label": "Governance frameworks define human oversight boundaries and escalation authority",
+      "type": "governance", "strength": 3
+    },
+    {
+      "from": "GOV", "to": "MET",
+      "label": "Governance establishes compliance thresholds and risk measurement requirements",
+      "type": "governance", "strength": 2
+    },
+    {
+      "from": "GOV", "to": "TRN",
+      "label": "Governance review boards gate and approve transformation program investments",
+      "type": "governance", "strength": 2
+    },
+    {
+      "from": "GOV", "to": "AGT",
+      "label": "Governance policy defines the authority levels and autonomy boundaries for agents",
+      "type": "governance", "strength": 3
+    },
+    {
+      "from": "LRN", "to": "SKG",
+      "label": "Newly learned threat patterns and validated TTPs enrich the knowledge base",
+      "type": "augmentation", "strength": 3
+    },
+    {
+      "from": "LRN", "to": "AGT",
+      "label": "Continuous learning improves the accuracy of agent decision and reasoning models",
+      "type": "augmentation", "strength": 3
+    },
+    {
+      "from": "LRN", "to": "TRN",
+      "label": "Measured improvement data and capability gaps drive transformation priorities",
+      "type": "feedback", "strength": 2
+    },
+    {
+      "from": "HUM", "to": "GOV",
+      "label": "Human analyst judgment and field expertise informs governance policy formation",
+      "type": "governance", "strength": 2
+    },
+    {
+      "from": "HUM", "to": "AGT",
+      "label": "Humans supervise, calibrate, and selectively override agent decisions and actions",
+      "type": "governance", "strength": 3
+    },
+    {
+      "from": "HUM", "to": "SKG",
+      "label": "Human analyst expertise is codified and structured into skill and playbook frameworks",
+      "type": "augmentation", "strength": 2
+    },
+    {
+      "from": "AGT", "to": "ACT",
+      "label": "Agents autonomously execute containment and response actions at machine speed",
+      "type": "execution", "strength": 3
+    },
+    {
+      "from": "AGT", "to": "OPS",
+      "label": "Agents augment and scale operational detection, triage and response capacity",
+      "type": "augmentation", "strength": 3
+    },
+    {
+      "from": "AGT", "to": "SEN",
+      "label": "Agents dynamically direct and tune sensor coverage and collection priorities",
+      "type": "data_flow", "strength": 2
+    },
+    {
+      "from": "SKG", "to": "RSN",
+      "label": "Structured playbooks and threat-knowledge context improve analytical reasoning quality",
+      "type": "data_flow", "strength": 3
+    },
+    {
+      "from": "SKG", "to": "OPS",
+      "label": "Skills and runbooks enable consistent, repeatable operational execution",
+      "type": "execution", "strength": 2
+    },
+    {
+      "from": "MET", "to": "TRN",
+      "label": "Performance metrics identify capability gaps and prioritize transformation investments",
+      "type": "feedback", "strength": 3
+    },
+    {
+      "from": "MET", "to": "GOV",
+      "label": "Measured risk posture and coverage data validates governance effectiveness",
+      "type": "feedback", "strength": 2
+    },
+    {
+      "from": "OPS", "to": "MET",
+      "label": "Daily operations generate the performance, coverage and SLA data for metrics",
+      "type": "data_flow", "strength": 3
+    },
+    {
+      "from": "OPS", "to": "LRN",
+      "label": "Operational incidents, near-misses and outcomes feed learning and improvement cycles",
+      "type": "feedback", "strength": 2
+    },
+    {
+      "from": "TRN", "to": "AGT",
+      "label": "Transformation programs advance the autonomy level and scope of agentic operations",
+      "type": "augmentation", "strength": 2
+    },
+    {
+      "from": "TRN", "to": "OPS",
+      "label": "Transformation delivers new tools, capabilities and integrations into operational workflows",
+      "type": "augmentation", "strength": 2
+    }
+  ]
+}

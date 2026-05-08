@@ -1,0 +1,809 @@
+{
+  "version": "1.0",
+  "updated": "May 2026",
+  "tabs": [
+    {
+      "id": "architecture",
+      "label": "Architecture",
+      "icon": "🏗️",
+      "sections": [
+        {
+          "id": "s1",
+          "title": "1. Executive Summary",
+          "content": [
+            {
+              "type": "text",
+              "value": "The Gartner Research Intelligence Platform replaces a local Flask/single-file application with a cloud-native, collaborative research platform deployed on Google Kubernetes Engine. All access is gated by Google Workspace SSO via GCP Identity-Aware Proxy — zero custom auth code required."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Build and publish research schemas via a UI-driven schema builder",
+                "Execute AI-assisted research through configurable agent tasks with model selection",
+                "Collaborate in real time — scores, excerpts, and vendor data shared across all analysts",
+                "Work offline via PouchDB selective sync to IndexedDB",
+                "Access and cite Gartner research, external reports, and scraped data with full audit trail"
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Version: 1.0 | Date: May 2026 | Status: Design Reference | Scope: Post-Phase 4 target state — full production deployment on GKE"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "title": "2. System Architecture Overview",
+          "content": [
+            {
+              "type": "mermaid",
+              "value": "flowchart TB\n    subgraph BROWSER[\"Analyst Browser\"]\n        direction LR\n        RW[\"Research Workspace\\n(Charts, Matrices, Orbital, Radar)\"]\n        SB[\"Schema Builder\\n(Drag/Drop, Versioning, Publishing)\"]\n        AC[\"Agent Console\\n(LLM Tasks, Streaming, Model Select)\"]\n        PDB[\"Offline Mode\\n(PouchDB / IndexedDB)\"]\n    end\n    CA[\"Cloud Armor WAF\\nOWASP CRS · DDoS · Rate Limit · Geo-block\"]\n    LB[\"GCP Load Balancer + Cloud CDN\\nManaged TLS Certificate\"]\n    IAP[\"Identity-Aware Proxy\\n@gartner.com · BeyondCorp Zero Trust\"]\n    subgraph GKE[\"GKE Autopilot Cluster — us-central1 (multi-zone)\"]\n        API[\"Fastify API\\nNode.js · 3–12 replicas · HPA\"]\n        WRK[\"FastAPI Workers\\nPython · 1–20 replicas · HPA\"]\n        R[\"Redis\\nCache + Queue\"]\n        DB[\"CouchDB 3-node HA\\n200 GB pd-ssd · W=2 Quorum\"]\n        GCS[\"Cloud Storage GCS\\nScrape cache · Uploads · Exports\"]\n    end\n    subgraph LLMs[\"External Model APIs\"]\n        direction LR\n        G[\"Vertex AI\\nGemini 3.1 Pro\"]\n        O[\"OpenAI\\nGPT-5\"]\n        An[\"Anthropic\\nClaude Sonnet 4.6\"]\n    end\n    BROWSER -->|HTTPS/WSS| CA\n    CA --> LB\n    LB --> IAP\n    IAP --> API\n    API <-->|Redis Queue| R\n    API <-->|port 5984| DB\n    API <-->|port 8000| WRK\n    WRK <-->|Redis Queue| R\n    WRK <-->|port 5984| DB\n    WRK --> GCS\n    WRK --> G\n    WRK --> O\n    WRK --> An"
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "title": "3. Technology Stack",
+          "content": [
+            {
+              "type": "heading",
+              "value": "Frontend"
+            },
+            {
+              "type": "table",
+              "headers": ["Layer", "Technology", "Rationale"],
+              "rows": [
+                ["Framework", "React 18 + TypeScript", "Component reuse, type safety, team scale"],
+                ["Build tool", "Vite", "Sub-second HMR, optimized prod bundles, code splitting"],
+                ["State management", "Zustand", "Lightweight, no boilerplate, works with PouchDB reactively"],
+                ["Charts/Viz", "D3.js (existing logic migrated)", "Orbital map, radar, sankey — preserve existing visualizations"],
+                ["Offline DB", "PouchDB", "IndexedDB wrapper, CouchDB-compatible replication"],
+                ["WebSockets", "Socket.io client", "Agent streaming, live collaboration"],
+                ["Styling", "Tailwind CSS", "Consistent design system, purged in prod"],
+                ["HTTP client", "TanStack Query", "Caching, background refetch, optimistic updates"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "API Gateway"
+            },
+            {
+              "type": "table",
+              "headers": ["Layer", "Technology", "Rationale"],
+              "rows": [
+                ["Runtime", "Node.js 22 LTS", "Native async, same language as frontend"],
+                ["Framework", "Fastify 5", "2-3x faster than Express, schema validation built-in"],
+                ["WebSockets", "Socket.io", "Agent task streaming to browser"],
+                ["Auth", "GCP IAP middleware", "Validates X-Goog-IAP-JWT-Assertion header"],
+                ["Validation", "Zod", "Runtime schema validation on all inputs"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Worker Service"
+            },
+            {
+              "type": "table",
+              "headers": ["Layer", "Technology", "Rationale"],
+              "rows": [
+                ["Runtime", "Python 3.12", "Preserves all existing scripts"],
+                ["Framework", "FastAPI", "Async, Pydantic validation, native background tasks"],
+                ["Agent orchestration", "Google ADK / LangChain", "Multi-model, tool use, streaming"],
+                ["Task queue", "Redis + Bull (Node side)", "Job queuing between Fastify and FastAPI workers"],
+                ["Scraping", "Playwright + BeautifulSoup", "Existing scraping logic migrated"],
+                ["PDF extraction", "pdfplumber", "Existing capability"],
+                ["LLM clients", "google-genai, openai, anthropic", "Direct SDK calls"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Infrastructure"
+            },
+            {
+              "type": "table",
+              "headers": ["Component", "Technology"],
+              "rows": [
+                ["Container orchestration", "GKE Autopilot (us-central1)"],
+                ["Container registry", "Artifact Registry"],
+                ["Database", "CouchDB 3.4 (StatefulSet, 3 nodes)"],
+                ["Cache / queue", "Redis 7 (Cloud Memorystore or pod)"],
+                ["Object storage", "Cloud Storage (GCS)"],
+                ["CDN", "Cloud CDN (static assets)"],
+                ["TLS", "Google-managed certificate"],
+                ["Auth", "GCP Identity-Aware Proxy"],
+                ["Secrets", "GCP Secret Manager"],
+                ["Monitoring", "Cloud Monitoring + Cloud Logging"],
+                ["CI/CD", "GitHub Actions → Cloud Build → GKE"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "title": "4. GKE Deployment Architecture",
+          "content": [
+            {
+              "type": "heading",
+              "value": "4.1 Cluster Configuration"
+            },
+            {
+              "type": "table",
+              "headers": ["Setting", "Value"],
+              "rows": [
+                ["Mode", "Autopilot (Google-managed nodes, no SSH access)"],
+                ["Region", "us-central1 (zones a, b, c — multi-zone HA)"],
+                ["Network", "gartner-research-vpc (private subnet 10.0.0.0/20)"],
+                ["Node IPs", "No public IPs — private nodes only"],
+                ["Control plane", "Private endpoint + Authorized Networks only"],
+                ["Release channel", "Regular (auto-patched)"],
+                ["Workload Identity", "Enabled (no service account key files)"],
+                ["Binary Authorization", "Enabled (only Artifact Registry images)"],
+                ["Shielded nodes", "Enabled (secure boot + vTPM)"]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Namespaces: gartner-prod (production workloads), gartner-staging (pre-prod/testing), monitoring (Prometheus, Grafana), external-secrets (ExternalSecrets operator)"
+            },
+            {
+              "type": "heading",
+              "value": "4.2 Workload Sizing & HPA"
+            },
+            {
+              "type": "table",
+              "headers": ["Workload", "CPU Request/Limit", "RAM Request/Limit", "Min Replicas", "Max Replicas", "HPA Trigger"],
+              "rows": [
+                ["api (Fastify)", "1 / 2 CPU", "2 GB / 4 GB", "3", "12", "CPU > 70%"],
+                ["worker (FastAPI)", "2 / 4 CPU", "4 GB / 8 GB", "2", "20", "CPU > 60% OR Redis queue > 10"],
+                ["couchdb-0/1/2", "2 / 4 CPU", "12 GB / 16 GB", "3 (fixed)", "3 (fixed)", "StatefulSet — no autoscale"],
+                ["redis (Memorystore)", "0.5 / 1 CPU", "4 GB / 4 GB", "1 (fixed)", "1 (fixed)", "Memorystore HA tier"],
+                ["ingress-nginx", "0.5 / 1 CPU", "512 MB / 1 GB", "2", "4", "CPU > 80%"]
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["State", "CPU", "RAM"],
+              "rows": [
+                ["Steady state (3 api + 2 worker + 3 couch + ingress)", "~18 vCPU", "~72 GB"],
+                ["Peak (12 api + 20 worker)", "~58 vCPU", "~188 GB"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "4.3 Networking & Ingress"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    Internet([Internet]) --> CA[Cloud Armor WAF]\n    CA --> LB[GCP Global Load Balancer]\n    LB --> IAP[\"Identity-Aware Proxy\\n@gartner.com only\"]\n    IAP --> NG[\"nginx-ingress\\n(GKE Autopilot)\"]\n    NG -->|\"/api/* + /socket.io/*\"| API[\"api-svc:3000\\n(Fastify)\"]\n    NG -->|\"/static/*\"| CDN[\"Cloud CDN\\n→ GCS Bucket\"]\n    API -->|\"5984/TLS\"| Couch[\"couchdb-svc\\n(ClusterIP)\"]\n    API -->|\"6379/TLS\"| Redis[\"redis-svc\\n(ClusterIP)\"]\n    API -->|\"8000\"| Worker[\"worker-svc\\n(ClusterIP)\"]\n    Worker -->|\"443/HTTPS via Cloud NAT\"| LLMs[\"External LLM APIs\"]"
+            },
+            {
+              "type": "text",
+              "value": "Security headers enforced by nginx: Strict-Transport-Security (max-age=31536000), X-Content-Type-Options (nosniff), X-Frame-Options (DENY), Content-Security-Policy (strict), Referrer-Policy (strict-origin-when-cross-origin)"
+            },
+            {
+              "type": "heading",
+              "value": "4.4 Secrets & Identity"
+            },
+            {
+              "type": "code",
+              "value": "GCP Secret Manager (source of truth)\n├── gartner/couchdb-admin-password\n├── gartner/openai-api-key\n├── gartner/anthropic-api-key\n├── gartner/redis-auth-string\n└── gartner/jwt-signing-key\n\nExternalSecrets Operator syncs to K8s Secrets:\n├── gartner-api-secret     (mounted into api pods)\n└── gartner-worker-secret  (mounted into worker pods)\n\nWorkload Identity bindings (no service account JSON keys):\n├── api ServiceAccount        → roles/secretmanager.secretAccessor\n│                             → roles/storage.objectAdmin (GCS)\n├── worker ServiceAccount     → roles/secretmanager.secretAccessor\n│                             → roles/storage.objectAdmin (GCS)\n│                             → roles/aiplatform.user (Vertex AI)\n└── couchdb ServiceAccount    → roles/storage.objectAdmin (backup bucket)"
+            }
+          ]
+        },
+        {
+          "id": "s5",
+          "title": "5. Authentication & Authorization",
+          "content": [
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    A([\"Analyst Browser\\nGET https://research.gartner.com\"]) --> B{\"IAP cookie\\nvalid?\"}\n    B -->|No| C[\"Redirect to\\naccounts.google.com\"]\n    C --> D{\"@gartner.com\\naccount?\"}\n    D -->|Yes| E[\"Issue IAP cookie\"]\n    D -->|No| F[\"403 Forbidden\"]\n    E --> G[\"Inject headers:\\nX-Goog-Authenticated-User-Email\\nX-Goog-IAP-JWT-Assertion\"]\n    B -->|Yes| H[\"Validate JWT signature\"]\n    H --> G\n    G --> API[\"Fastify API\\n(verified identity)\"]\n    API --> RA{User role?}\n    RA -->|all-analysts| P1[\"Read schemas + vendors\\nCreate annotations\\nRun agent tasks\"]\n    RA -->|senior-analysts| P2[\"All above + Publish schemas\\nApprove scores\\nManage references\"]\n    RA -->|platform-admins| P3[\"All above + Manage CouchDB\\nView audit logs\\nConfigure agent models\"]"
+            },
+            {
+              "type": "text",
+              "value": "Roles are controlled via Google Groups mapped to IAP Access Levels. No custom session tokens or JWT signing — GCP handles all identity. Fastify middleware extracts the verified email from X-Goog-Authenticated-User-Email and resolves group membership for RBAC."
+            }
+          ]
+        },
+        {
+          "id": "s6",
+          "title": "6. Data Architecture",
+          "content": [
+            {
+              "type": "heading",
+              "value": "6.1 CouchDB Document Types"
+            },
+            {
+              "type": "table",
+              "headers": ["doc_type", "Key Fields", "Purpose"],
+              "rows": [
+                ["vendor", "_id, name, aliases, website, schemas_present", "Canonical entity — one per vendor, shared across all schemas"],
+                ["vendor_score", "vendor_id, schema_type, cycle, pillars, excerpt_ids", "Per-vendor per-schema per-cycle assessment scores"],
+                ["schema", "_id, schema_type, version, pillars, published, published_by", "Schema definition with pillar weights and scoring descriptors"],
+                ["reference", "_id, source, title, url, access_level, linked_schemas", "Source material metadata (Gartner reports, external links)"],
+                ["excerpt", "_id, reference_id, vendor_id, pillar, text, score_influence", "Quoted evidence linked to vendor + pillar + reference"],
+                ["upload", "_id, filename, gcs_path, extracted_text_gcs, uploaded_by", "PDF/DOCX upload metadata; raw files live in GCS"],
+                ["agent_job", "_id, task, models, params, status, result_doc_ids, created_by", "Agent task record with model list and result pointers"],
+                ["annotation", "_id, target_id, target_type, text, created_by", "Analyst notes attached to any entity"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "6.2 Storage Decision Matrix"
+            },
+            {
+              "type": "table",
+              "headers": ["Data Type", "CouchDB", "GCS"],
+              "rows": [
+                ["Vendor identity (canonical)", "✓", ""],
+                ["Schema definitions", "✓", ""],
+                ["Vendor scores per cycle", "✓", ""],
+                ["Reference metadata + URLs", "✓", ""],
+                ["Excerpts (quoted text)", "✓", ""],
+                ["Upload metadata + tags", "✓", ""],
+                ["Agent job records", "✓", ""],
+                ["User annotations", "✓", ""],
+                ["Raw PDF / DOCX / XLSX files", "", "✓"],
+                ["Extracted text from PDFs", "", "✓"],
+                ["HTML scrape cache", "", "✓"],
+                ["Agent raw research output", "", "✓"],
+                ["Generated HTML exports", "", "✓"],
+                ["Static frontend assets (CDN)", "", "✓"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s7",
+          "title": "7. Frontend Architecture (React)",
+          "content": [
+            {
+              "type": "heading",
+              "value": "Component Tree"
+            },
+            {
+              "type": "code",
+              "value": "src/\n├── App.tsx                    ← Root, router, auth context\n├── main.tsx                   ← Vite entry, PouchDB init\n│\n├── components/\n│   ├── layout/\n│   │   ├── Sidebar.tsx        ← Navigation\n│   │   ├── Header.tsx         ← User info, breadcrumb\n│   │   └── StatusBar.tsx      ← Sync status, agent activity\n│   │\n│   ├── research/\n│   │   ├── VendorMatrix.tsx   ← ASMF maturity matrix\n│   │   ├── RadarChart.tsx     ← Pillar radar (D3)\n│   │   ├── OrbitalMap.tsx     ← 3D orbital canvas (D3)\n│   │   ├── SankeyFlow.tsx     ← Effort flow (D3)\n│   │   └── ScoreCard.tsx      ← Vendor score summary\n│   │\n│   ├── schema/\n│   │   ├── SchemaBuilder.tsx  ← Drag/drop pillar builder\n│   │   └── SchemaPublish.tsx  ← Publish flow (senior analyst)\n│   │\n│   ├── agent/\n│   │   ├── AgentConsole.tsx   ← Task input, model selector\n│   │   ├── AgentStream.tsx    ← Live output via Socket.io\n│   │   └── ModelSelector.tsx  ← Gemini / GPT-5 / Claude Sonnet 4.6\n│   │\n│   └── references/\n│       ├── FileUpload.tsx     ← Drag/drop PDF upload\n│       └── ExcerptLinker.tsx  ← Link text to vendor/pillar\n│\n├── hooks/\n│   ├── useVendors.ts          ← TanStack Query + PouchDB\n│   ├── useAgentJob.ts         ← Socket.io subscription\n│   ├── useSync.ts             ← PouchDB replication state\n│   └── useAuth.ts             ← IAP user identity\n│\n└── lib/\n    ├── db.ts                  ← PouchDB singleton + replication\n    ├── api.ts                 ← Fastify API client (typed)\n    ├── socket.ts              ← Socket.io client singleton\n    └── export.ts              ← HTML/PDF export utilities"
+            },
+            {
+              "type": "heading",
+              "value": "Code Splitting Strategy"
+            },
+            {
+              "type": "table",
+              "headers": ["Bundle", "Contents", "Load trigger"],
+              "rows": [
+                ["Initial bundle (< 150KB gzipped)", "React runtime, Router, Auth/Layout, Dashboard skeleton", "App start"],
+                ["research-viz.chunk.js", "D3 + all chart components", "Research view"],
+                ["schema-builder.chunk.js", "Schema editor + versioning UI", "Schema view"],
+                ["agent-console.chunk.js", "Agent UI + Socket.io client", "Agent view"],
+                ["vendor-profile.chunk.js", "Cross-schema vendor view", "Vendor detail"],
+                ["references.chunk.js", "Reference/upload management", "References view"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s8",
+          "title": "8. API Layer (Fastify)",
+          "content": [
+            {
+              "type": "heading",
+              "value": "8.1 Route Structure"
+            },
+            {
+              "type": "code",
+              "value": "FASTIFY API — PORT 3000\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n/api/vendors\n  GET    /                   ← list all canonical vendors\n  GET    /:id                ← vendor + all schema scores\n  POST   /                   ← create vendor (senior analyst)\n  PATCH  /:id                ← update vendor identity\n\n/api/vendors/:id/scores\n  GET    /                   ← all score docs for vendor\n  GET    /:schema/:cycle     ← specific score document\n  PUT    /:schema/:cycle     ← upsert score (with audit)\n\n/api/schemas\n  GET    /                   ← list published schemas\n  POST   /                   ← create draft (any analyst)\n  POST   /:id/publish        ← publish (senior analyst only)\n\n/api/agents/jobs\n  GET    /                   ← job history for analyst\n  POST   /                   ← submit new agent task\n  GET    /:id                ← job status + result\n\nWebSocket: /socket.io\n  event: \"job:update\"        ← agent task progress\n  event: \"job:complete\"      ← task finished with result\n  event: \"sync:vendor\"       ← live vendor score update\n  event: \"schema:published\"  ← new schema available"
+            },
+            {
+              "type": "heading",
+              "value": "8.2 CouchDB Proxy Pattern"
+            },
+            {
+              "type": "code",
+              "value": "// Fastify never exposes CouchDB directly to browser\n// All CouchDB access goes through validated API routes\n\nfastify.get('/api/vendors/:id', async (req, reply) => {\n  const { id } = req.params  // Zod-validated, safe\n  const vendor = await couch.get(`vendor_${id}`)\n  const scores = await couch.find({\n    selector: { doc_type: 'vendor_score', vendor_id: `vendor_${id}` }\n  })\n  return { vendor, scores: scores.docs }\n})\n\n// PouchDB replication is the ONLY direct browser→CouchDB path\n// and is restricted by CouchDB user permissions to read-only"
+            }
+          ]
+        },
+        {
+          "id": "s9",
+          "title": "9. Agent Platform (FastAPI Workers)",
+          "content": [
+            {
+              "type": "heading",
+              "value": "9.1 Agent Task Flow"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    UI([\"Analyst UI\"]) -->|\"POST /api/agents/jobs\"| API[\"Fastify API\"]\n    API -->|\"Create job doc (status: queued)\"| DB[(CouchDB)]\n    API -->|\"Push job_id\"| Queue[(Redis Queue)]\n    API -->|\"Returns job_id immediately\"| UI\n    UI -->|\"Subscribe via Socket.io\"| WS[WebSocket stream]\n    Queue --> Worker[\"FastAPI Worker\"]\n    Worker --> S1[\"Step 1: Context Loading\\nFetch vendor docs + excerpts from CouchDB\"]\n    S1 --> S2[\"Step 2: Live Research\\nPlaywright scrape + news + Peer Insights\"]\n    S2 --> S3[\"Step 3: LLM Synthesis (parallel)\\nGemini 3.1 Pro + Claude Sonnet 4.6\\nFlag pillar divergence > 20%\"]\n    S3 --> S4[\"Step 4: Structured Extraction\\nPillar JSON scores + excerpts + rationale\"]\n    S4 --> S5[\"Step 5: Draft Commit\\nWrite vendor_score doc (status: draft)\"]\n    S5 -->|\"job:complete event\"| WS\n    WS --> UI"
+            },
+            {
+              "type": "heading",
+              "value": "9.2 Model Router"
+            },
+            {
+              "type": "table",
+              "headers": ["Tier", "Models", "Use Case"],
+              "rows": [
+                ["Default (all tiers)", "Gemini 3.1 Pro + Claude Sonnet 4.6", "All research tasks — minimum 2 models in parallel"],
+                ["Draft / refresh", "gemini-3.1-flash", "Fast, cheap refresh jobs and drafts"],
+                ["Power tier (opt-in)", "+ GPT-5", "Add on top of dual default for complex reasoning"],
+                ["Full (power tier)", "All 3 models", "Maximum confidence — senior analyst opt-in"]
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["Role", "Default Models", "Budget/task", "Budget/month"],
+              "rows": [
+                ["analyst", "Gemini + Claude (dual)", "$20.00", "$100.00"],
+                ["senior-analyst", "All 3 models", "$40.00", "$300.00"],
+                ["admin", "All models", "Unlimited", "Unlimited"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s10",
+          "title": "10. Research Workflow — Full Phase Flow",
+          "content": [
+            {
+              "type": "heading",
+              "value": "Phase 1: Schema Creation"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    A([Analyst opens Schema Builder]) --> B[\"Name schema, add pillars\\n(drag/drop, set weights + sub-pillars)\"]\n    B --> C[\"Set maturity descriptors\\nper scoring stage\"]\n    C --> D[\"POST /api/schemas\\n(status: draft)\"]\n    D --> E[\"Collaborate: other analysts\\nview draft, suggest changes\"]\n    E --> F[\"Senior analyst review\"]\n    F --> G[\"POST /api/schemas/:id/publish\"]\n    G --> H([\"Schema published in CouchDB\\nAll analysts see new schema\\nPouchDB syncs to offline cache\"])"
+            },
+            {
+              "type": "heading",
+              "value": "Phase 2: Vendor Research"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    Start([New vendor or new research cycle]) --> Check{Canonical\\nvendor doc exists?}\n    Check -->|No| Create[\"Analyst creates vendor:\\nname, website, HQ, ticker\\nPOST /api/vendors\"]\n    Check -->|Yes| Load[Load existing vendor profile]\n    Create --> Methods\n    Load --> Methods\n    Methods{Research\\nmethod?}\n    Methods -->|Manual| M1[\"Analyst reads sources\\nPastes excerpts to Evidence panel\\nEnters pillar scores manually\"]\n    Methods -->|Agent-Assisted| M2[\"Launch agent task\\nAgent scrapes + synthesizes\\nDraft scores populated\"]\n    Methods -->|Hybrid (most common)| M3[\"Agent generates draft\\nAnalyst adds Gartner-internal refs\\nAdjusts scores with annotations\"]\n    M1 --> Review\n    M2 --> Review\n    M3 --> Review\n    Review[\"Senior analyst review:\\nScore distribution, evidence quality,\\nrationale completeness\"]\n    Review --> Pub([Published vendor_score\\nsynced to all analysts via PouchDB])"
+            },
+            {
+              "type": "heading",
+              "value": "Phase 3: Reference Management"
+            },
+            {
+              "type": "table",
+              "headers": ["Source Type", "Handling", "Access Level"],
+              "rows": [
+                ["Gartner Research Link", "Stores: title, doc_id, URL, date", "gartner_internal — NOT synced offline"],
+                ["External Report Upload (PDF/DOCX)", "Streams to GCS → pdfplumber extracts → LLM identifies vendors + schema linkage", "Public — syncs offline (metadata only)"],
+                ["Web Source (scraped)", "Agent fetches + caches to GCS, reference doc created automatically", "Public"],
+                ["Manual Excerpt", "Analyst pastes text, links to vendor + pillar + reference", "Inherits from source"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Phase 4: Publishing & Sharing"
+            },
+            {
+              "type": "table",
+              "headers": ["Export Type", "Description"],
+              "rows": [
+                ["In-App View", "Live charts, matrices, orbital — shareable URL for colleagues (IAP-gated)"],
+                ["HTML Export", "Self-contained HTML file with all charts inline (SVG). No server required to view."],
+                ["Structured Data Export", "JSON dump of vendor scores with full evidence chain. Machine-readable."],
+                ["Live Share", "URL to app with filters — recipient sees live data (must be @gartner.com via IAP)"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s11",
+          "title": "11. PouchDB Offline Sync Strategy",
+          "content": [
+            {
+              "type": "table",
+              "headers": ["Data Type", "Syncs Offline", "Notes"],
+              "rows": [
+                ["All canonical vendor docs", "✓", "~200 docs, ~200KB"],
+                ["Published vendor scores (selected schema)", "✓", "Schema-filtered replication"],
+                ["Published schema definitions", "✓", ""],
+                ["Public reference metadata (URLs, titles)", "✓", ""],
+                ["ASMF framework docs", "✓", ""],
+                ["User's own annotations", "✓", ""],
+                ["Gartner-internal references", "✗", "Requires online access"],
+                ["Draft/unpublished scores", "✗", "Server-only"],
+                ["Upload files (GCS)", "✗", "Too large for IndexedDB"],
+                ["Agent job results (raw)", "✗", "Server-only"],
+                ["Other analysts' private annotations", "✗", "Privacy restriction"]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Sync uses CouchDB's filtered replication with Mango selectors. PouchDB.replicate() pulls on app load, then live: true keeps a continuous replication open. On reconnect after offline, PouchDB.sync() pushes queued local writes to CouchDB and pulls remote changes down — conflict resolution uses last-write-wins with timestamp comparison."
+            }
+          ]
+        },
+        {
+          "id": "s12",
+          "title": "12. Storage Architecture",
+          "content": [
+            {
+              "type": "heading",
+              "value": "CouchDB Data Volumes (tiered realistic scenario)"
+            },
+            {
+              "type": "table",
+              "headers": ["doc_type", "Count", "Avg Size", "Total"],
+              "rows": [
+                ["vendor", "200", "22 KB", "4.4 MB"],
+                ["vendor_score (6-mo rolling)", "17,500", "22 KB", "385 MB"],
+                ["schema", "50", "10 KB", "0.5 MB"],
+                ["reference", "2,000", "5 KB", "10 MB"],
+                ["excerpt", "50,000", "2 KB", "100 MB"],
+                ["upload (meta)", "5,000", "2 KB", "10 MB"],
+                ["agent_job", "10,000", "5 KB", "50 MB"],
+                ["annotation", "20,000", "1 KB", "20 MB"],
+                ["Raw data total", "", "", "~580 MB"],
+                ["CouchDB indexes + B-trees (×3.5)", "", "", "~2 GB"],
+                ["Compaction working space (×2)", "", "", "~5 GB"],
+                ["WAL + replication logs", "", "", "~1 GB"],
+                ["Working set per node", "", "", "~8 GB"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Cloud Storage (GCS) Layout"
+            },
+            {
+              "type": "code",
+              "value": "gs://gartner-research-prod/\n│\n├── scrape-cache/\n│   ├── pages_mdr/        (HTML files — 90 day lifecycle)\n│   ├── pages_cnapp/\n│   ├── pages_trism/\n│   ├── pages_offsec/\n│   └── pages_precyber/\n│\n├── uploads/\n│   └── {user_id}/\n│       ├── {uuid}.pdf     (originals — never auto-deleted)\n│       └── {uuid}_text.txt (extracted text)\n│\n├── agent-outputs/\n│   └── {job_id}/          (30 day lifecycle)\n│       ├── raw_research.txt\n│       └── structured_scores.json\n│\n└── exports/\n    ├── {user_id}/\n    └── public/  (shared exports)"
+            },
+            {
+              "type": "table",
+              "headers": ["Service", "Size", "Purpose"],
+              "rows": [
+                ["CouchDB pd-ssd PVCs (3 nodes)", "3 × 200 GB", "Database + indexes + compaction headroom"],
+                ["Cloud Storage GCS (active)", "~100 GB", "Scrape cache, uploads, exports"],
+                ["Redis (Memorystore)", "4 GB", "Job queue, session cache, rate limiting"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s13",
+          "title": "13. CI/CD Pipeline",
+          "content": [
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    Dev([\"Developer\\ngit push to GitHub\"]) --> GHA[\"GitHub Actions CI\\nLint (ESLint + Ruff)\\nType check (tsc --noEmit)\\nUnit tests (Vitest + pytest)\\nDocker build (validate only)\"]\n    GHA -->|\"on: push to main\"| CB[\"Cloud Build\\nBuild api image (node:22-slim)\\nBuild worker image (python:3.12-slim)\\nPush to Artifact Registry with git SHA\"]\n    CB --> AR[\"Artifact Registry\\ngcr.io/gartner-research/{image}:{SHA}\"]\n    CB --> GCSS[\"Cloud Storage\\ndist/ static assets → CDN\\n(cache invalidation triggered)\"]\n    AR --> BA[\"Binary Authorization\\nBuild provenance attestation\\nVulnerability scan — block HIGH/CRIT CVEs\"]\n    BA --> GKE[\"GKE Rolling Update\\nmaxSurge: 1, maxUnavailable: 0\\n(zero downtime deployment)\"]\n    GKE -->|\"health check fails\"| RB([Automatic Rollback])"
+            },
+            {
+              "type": "table",
+              "headers": ["Branch", "Environment", "URL"],
+              "rows": [
+                ["feature/*", "—", "Local only"],
+                ["develop", "staging", "staging.research.gartner.com"],
+                ["main", "production", "research.gartner.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s14",
+          "title": "14. Build Phases",
+          "content": [
+            {
+              "type": "table",
+              "headers": ["Phase", "Target", "Key Deliverables"],
+              "rows": [
+                ["Phase 1 — Backend Foundation", "Weeks 1–2", "Flask → FastAPI migration; CouchDB install; JSON → CouchDB migration scripts; dual-read (CouchDB first, JSON fallback)"],
+                ["Phase 2 — GKE Deployment", "Weeks 3–4", "GKE Autopilot cluster; CouchDB StatefulSet + PVC; GCP Load Balancer + TLS; IAP for @gartner.com; Secret Manager; Cloud Monitoring"],
+                ["Phase 3 — Fastify API + WebSockets", "Weeks 5–6", "Fastify TypeScript project; Socket.io server; Redis Bull queue; FastAPI becomes worker-only; file upload → GCS; IAP JWT middleware; RBAC"],
+                ["Phase 4 — React Frontend", "Weeks 7–10", "Vite + React 18 + TypeScript; all D3 visualizations as React components; PouchDB integration; TanStack Query; Zustand; code splitting; replaces app.js monolith"],
+                ["Phase 5 — Agent Platform", "Weeks 11–14", "Agent Console UI; model selector (Gemini/GPT-5/Claude); dual-model parallel dispatch with diff view; PDF extraction pipeline; evidence linking; cost guardrails"],
+                ["Phase 6 — Collaboration + Polish", "Weeks 15–16", "Live score notifications; annotation system; review/approval workflow; audit log UI; HTML/JSON export pipeline; k6 performance testing to 5,000 concurrent users"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s15",
+          "title": "15. Cost Model",
+          "content": [
+            {
+              "type": "heading",
+              "value": "15.1 GCP Infrastructure (Monthly, 5,000 users)"
+            },
+            {
+              "type": "table",
+              "headers": ["Line Item", "Details", "Est. Cost/mo"],
+              "rows": [
+                ["API pods (3×, 1 CPU / 2 GB)", "Fastify", "~$65"],
+                ["Worker pods (2× avg, 2 CPU / 4 GB)", "FastAPI", "~$90"],
+                ["CouchDB pods (3×, 2 CPU / 12 GB)", "StatefulSet", "~$185"],
+                ["Redis (Memorystore HA, 4 GB)", "Cache + Queue", "~$65"],
+                ["CouchDB pd-ssd PVCs (3× 200 GB)", "Storage", "~$102"],
+                ["Cloud Storage GCS (~100 GB)", "Uploads/cache", "~$2"],
+                ["Artifact Registry", "", "~$2"],
+                ["Load Balancer", "", "~$18"],
+                ["Cloud CDN (static assets)", "", "~$5"],
+                ["Cloud NAT (worker egress)", "", "~$5"],
+                ["Egress (~200 GB/mo at scale)", "", "~$18"],
+                ["Secret Manager", "", "~$1"],
+                ["Cloud Monitoring + Logging", "", "~$10"],
+                ["Infrastructure subtotal", "", "~$568/mo"],
+                ["Security services (WAF, KMS, etc.)", "§18.9", "~$56/mo"],
+                ["BeyondCorp Enterprise (200 power users)", "§18.4", "~$240/mo"],
+                ["Infrastructure + security total", "", "~$864/mo"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s16",
+          "title": "16. LLM Token Cost Analysis",
+          "content": [
+            {
+              "type": "heading",
+              "value": "16.2 Model Pricing (estimated late 2026)"
+            },
+            {
+              "type": "table",
+              "headers": ["Model", "Input (per MTok)", "Output (per MTok)", "Billing", "Notes"],
+              "rows": [
+                ["Gemini 3.1 Pro", "$2.00*", "$8.00*", "GCP / Vertex AI", "Default primary; GCP credits apply"],
+                ["GPT-5", "$5.00*", "$20.00*", "OpenAI", "Power tier add-on; separate billing"],
+                ["Claude Sonnet 4.6", "$3.00", "$15.00", "Anthropic", "Default secondary; separate billing"],
+                ["gemini-3.1-flash", "~$0.10*", "~$0.40*", "GCP / Vertex AI", "Draft/refresh use cases only"]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "* Gemini 3.1 Pro and GPT-5 pricing estimated. Adjust when official pricing is published. Default policy: minimum 2 models (Gemini + Claude) per research task, run in parallel."
+            },
+            {
+              "type": "heading",
+              "value": "16.3 Cost Per Vendor Research"
+            },
+            {
+              "type": "table",
+              "headers": ["Model", "Input $", "Output $", "Total/vendor"],
+              "rows": [
+                ["Gemini 3.1 Pro", "$0.042", "$0.064", "$0.106"],
+                ["GPT-5", "$0.105", "$0.160", "$0.265"],
+                ["Claude Sonnet 4.6", "$0.063", "$0.120", "$0.183"],
+                ["Dual default (Gemini + Claude)", "—", "—", "$0.289"],
+                ["All 3 models", "—", "—", "$0.554"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "16.5 Tiered Scenario (Recommended)"
+            },
+            {
+              "type": "table",
+              "headers": ["Tier", "Users", "Tasks/yr", "Models", "Vendors/task", "Annual Cost"],
+              "rows": [
+                ["Power (senior analysts)", "500", "2,000", "All 3 models", "50", "$55,400/yr"],
+                ["Standard (analysts)", "1,500", "1,500", "Dual default", "20", "$8,670/yr"],
+                ["Consumer (read-only)", "3,000", "0", "—", "—", "$0/yr"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "16.8 Total Monthly Cost Summary"
+            },
+            {
+              "type": "table",
+              "headers": ["Line Item", "Full Scale", "Tiered (recommended)"],
+              "rows": [
+                ["GCP Infrastructure", "$320/mo", "$320/mo"],
+                ["LLM — Gemini 3.1 Pro (GCP)", "$8,833/mo", "$1,148/mo"],
+                ["LLM — GPT-5 (OpenAI)", "$8,750/mo", "$2,208/mo"],
+                ["LLM — Claude Sonnet 4.6", "$6,500/mo", "$1,983/mo"],
+                ["Storage (research data)", "$5/mo", "$1/mo"],
+                ["Annual refresh (amortized)", "$7/mo", "$7/mo"],
+                ["TOTAL (dual default)", "$24,415/mo", "$5,667/mo"],
+                ["TOTAL (Gemini only)", "$3,628/mo", "$814/mo"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s17",
+          "title": "17. CouchDB Cluster Sizing",
+          "content": [
+            {
+              "type": "heading",
+              "value": "17.2 Node Specification (per node — 3 nodes total)"
+            },
+            {
+              "type": "table",
+              "headers": ["Resource", "Request", "Limit", "Notes"],
+              "rows": [
+                ["CPU", "2 vCPU", "4 vCPU", "Index builds use burst capacity"],
+                ["RAM", "12 GB", "16 GB", "Working set 6–8 GB + B-trees 2–3 GB + Erlang VM 2 GB + burst 3 GB"],
+                ["Storage", "200 GB pd-ssd", "200 GB", "NVMe SSD. Active data 8–50 GB, compaction overhead ×2.5, backup + WAL ~10 GB, 2-year headroom"],
+                ["Network", "GKE internal fabric", "10 Gbps shared", "CouchDB cluster replication on ports 5986, 4369"]
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["Metric", "Value"],
+              "rows": [
+                ["Total cluster CPU", "3 nodes × 4 vCPU = 12 vCPU"],
+                ["Total cluster RAM", "3 nodes × 16 GB = 48 GB"],
+                ["Total cluster storage", "3 nodes × 200 GB = 600 GB raw (every document replicated on all 3 nodes)"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "17.3 Replication & Quorum"
+            },
+            {
+              "type": "table",
+              "headers": ["Parameter", "Value", "Meaning"],
+              "rows": [
+                ["cluster/n", "3", "Number of nodes holding each shard"],
+                ["cluster/q", "1", "Number of shards per database"],
+                ["cluster/r", "2", "Nodes that must respond to a read"],
+                ["cluster/w", "2", "Nodes that must acknowledge a write"],
+                ["Failure tolerance", "1 node", "Zero downtime if 1 node fails; read-only if 2 nodes fail"],
+                ["couch-0", "us-central1-a", "Zone anti-affinity (topologySpreadConstraints)"],
+                ["couch-1", "us-central1-b", ""],
+                ["couch-2", "us-central1-c", ""]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "17.4 Performance Envelope"
+            },
+            {
+              "type": "table",
+              "headers": ["Operation", "Throughput", "Latency p99"],
+              "rows": [
+                ["Single-doc read", "~6,000 req/s", "< 5 ms"],
+                ["Single-doc write (W=2)", "~800 req/s", "< 20 ms"],
+                ["Mango query (indexed)", "~1,500 req/s", "< 30 ms"],
+                ["Bulk insert (100 docs)", "~200 batch/s", "< 100 ms"],
+                ["PouchDB sync (replication)", "~200 concurrent", "1–5 sec full sync"],
+                ["Agent job write burst", "~50 docs/s", "< 50 ms"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "17.5 Backup Strategy"
+            },
+            {
+              "type": "table",
+              "headers": ["Backup Type", "Frequency", "Retention", "Destination"],
+              "rows": [
+                ["Cross-region replication", "Continuous (< 30s lag)", "Live", "us-east1 read replica"],
+                ["_changes feed snapshot", "Hourly", "48 hours", "GCS gs://gartner-couchdb-backup/"],
+                ["Full database dump (couchdb-backup)", "Daily", "30 days", "GCS"],
+                ["Full dump + PVC snapshot", "Weekly", "1 year", "GCS + GKE snapshot policy"]
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["Metric", "Value"],
+              "rows": [
+                ["RTO (Recovery Time Objective)", "< 1 hour (from daily backup)"],
+                ["RPO (Recovery Point Objective)", "< 30 minutes (from cross-region replica)"],
+                ["Backup bucket storage class", "Nearline (> 30 days → auto-Coldline)"],
+                ["Object Lock", "Enabled for compliance"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s18",
+          "title": "18. Security Architecture & Controls",
+          "content": [
+            {
+              "type": "heading",
+              "value": "18.1 Defence-in-Depth Overview"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TB\n    L1[\"Layer 1: PERIMETER\\nCloud Armor WAF (OWASP CRS) · Global Load Balancer · Cloud CDN\\nDDoS L3/L4/L7 · Rate Limiting · Geo-blocking\"]\n    L2[\"Layer 2: IDENTITY AND ACCESS\\nIdentity-Aware Proxy · Google Workspace SSO\\nBeyondCorp device posture · Context-aware access · MFA enforced\"]\n    L3[\"Layer 3: NETWORK SEGMENTATION\\nVPC private subnets · No public node IPs\\nVPC Firewall allow-list · K8s NetworkPolicy · Cloud NAT egress\"]\n    L4[\"Layer 4: WORKLOAD SECURITY\\nGKE Shielded Nodes (secure boot + vTPM) · Workload Identity (no key files)\\nBinary Authorization · Pod Security Standards · K8s RBAC least-privilege\"]\n    L5[\"Layer 5: DATA SECURITY\\nCloud KMS CMEK (90-day key rotation) · GCS AES-256\\nSecret Manager · TLS 1.3 everywhere · VPC Service Controls\"]\n    L6[\"Layer 6: DETECTION AND RESPONSE\\nSecurity Command Center · Cloud Audit Logs · VPC Flow Logs\\nContainer Threat Detection · Cloud Armor events · PagerDuty\"]\n    L1 --> L2 --> L3 --> L4 --> L5 --> L6"
+            },
+            {
+              "type": "heading",
+              "value": "18.3 Cloud Armor WAF Policy"
+            },
+            {
+              "type": "table",
+              "headers": ["Priority", "Rule", "Action"],
+              "rows": [
+                ["100", "IP allowlist (Gartner offices + VPN)", "ALLOW"],
+                ["200", "Geo-restrict: US, UK, SG, AU, DE, JP, IN only", "ALLOW / DENY all others"],
+                ["300", "OWASP CRS ModSec ruleset (SQLi, XSS, RCE, Path Traversal)", "DENY"],
+                ["400", "Rate limit: 100 req/min /api/*, 10 req/min /api/agents/jobs", "THROTTLE"],
+                ["500", "Adaptive protection: ML-based DDoS detection", "DENY"],
+                ["2147483647", "Default", "DENY"]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Additional controls: reCAPTCHA Enterprise on agent job submissions; JSON threat protection (max 1 MB body on /api/*); HTTP method restriction (GET, POST, PUT, PATCH, DELETE only); all WAF logs → Cloud Logging → SCC."
+            },
+            {
+              "type": "heading",
+              "value": "18.5 Kubernetes NetworkPolicy (Pod Micro-Segmentation)"
+            },
+            {
+              "type": "table",
+              "headers": ["Pod", "Ingress Allowed From", "Egress Allowed To"],
+              "rows": [
+                ["api pods", "nginx-ingress (port 3000)", "couchdb-svc:5984, redis-svc:6379, worker-svc:8000, kube-dns:53"],
+                ["worker pods", "api pods (port 8000)", "couchdb-svc:5984, redis-svc:6379, 0.0.0.0/0:443 (LLM APIs), kube-dns:53"],
+                ["couchdb pods", "api + worker pods (5984), couchdb pods (5986, 4369 cluster)", "couchdb pods (cluster ports), kube-dns:53"],
+                ["redis pods", "api + worker pods (6379)", "kube-dns:53"]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Default policy: deny all ingress + egress on all pods. Implemented via Calico NetworkPolicy (GKE Dataplane V2). No pod can reach any other pod unless explicitly allowed."
+            },
+            {
+              "type": "heading",
+              "value": "18.7 Data Encryption"
+            },
+            {
+              "type": "table",
+              "headers": ["Layer", "Mechanism", "Details"],
+              "rows": [
+                ["GCS at rest", "CMEK via Cloud KMS", "Key ring: gartner-research-keyring. Auto-rotation: 90 days"],
+                ["CouchDB PVCs", "GCE Disk encryption", "Google-managed (CMEK optional upgrade)"],
+                ["Secret Manager", "Google-managed HSM keys", ""],
+                ["Browser → GLB", "TLS 1.3", "Minimum TLS 1.2"],
+                ["Pod → CouchDB", "mTLS (Istio sidecar) or CouchDB native TLS", ""],
+                ["Pod → Redis", "TLS (Memorystore in-transit encryption)", ""],
+                ["Pod → LLM APIs", "TLS 1.3", "HTTPS to external endpoints"],
+                ["CouchDB ↔ CouchDB", "Erlang cluster TLS", "Internal cluster replication"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "18.9 Required GCP Security Services"
+            },
+            {
+              "type": "table",
+              "headers": ["Service", "Tier", "Est. Cost/mo"],
+              "rows": [
+                ["Cloud Armor WAF", "Plus (WAF)", "~$35"],
+                ["Identity-Aware Proxy", "Included with IAM", "$0"],
+                ["BeyondCorp Enterprise (device posture, 200 power users)", "Standard", "~$240"],
+                ["Security Command Center", "Essential (free tier)", "~$0"],
+                ["Cloud KMS (CMEK keys)", "—", "~$6"],
+                ["VPC Service Controls", "Included with VPC", "$0"],
+                ["Binary Authorization", "Included with GKE", "$0"],
+                ["Artifact Registry scanning", "Included", "$0"],
+                ["VPC Flow Logs", "Per-GB", "~$10"],
+                ["Cloud NAT", "—", "~$5"],
+                ["Security subtotal (excl. BeyondCorp)", "", "~$56/mo"],
+                ["With BeyondCorp (200 power users)", "", "~$296/mo"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "18.10 Revised Monthly Total (with Security)"
+            },
+            {
+              "type": "table",
+              "headers": ["Line Item", "Cost/mo"],
+              "rows": [
+                ["GCP Infrastructure (§15.1)", "$320"],
+                ["Security services (WAF, KMS, etc.)", "$56"],
+                ["BeyondCorp Enterprise (200 users)", "$240"],
+                ["LLM — Gemini 3.1 Pro (GCP)", "$1,148"],
+                ["LLM — GPT-5 (OpenAI)", "$2,208"],
+                ["LLM — Claude Sonnet 4.6 (Anthropic)", "$1,983"],
+                ["Storage + refresh", "$8"],
+                ["TOTAL (tiered, with full security)", "$5,963/mo"],
+                ["TOTAL (tiered, IAP-only security)", "$5,667/mo"],
+                ["TOTAL (Gemini only + security)", "$772/mo"]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

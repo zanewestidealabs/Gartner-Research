@@ -14259,6 +14259,327 @@
         "AID": 0.5,
         "SOG": 3.0
       }
+    },
+    {
+      "vendor": "CBS HOLDING S.A.",
+      "description": "CBS HOLDING S.A. (operating as SEK) is Brazil's Pátria-backed cybersecurity holding company delivering managed security services across five Latin American countries with ~USD $100M annual revenue and 650 enterprise clients.",
+      "region": "Latin America",
+      "headquarters": "São Paulo, Brazil",
+      "mdr_service_type": "Extended MDR",
+      "target_market": "Enterprise (LatAm)",
+      "product_names": [
+        "SEK MDR",
+        "SEK SOC",
+        "SEK Incident Response & Forensics",
+        "SEK Managed Threat Intelligence",
+        "SEK Cybersecurity Consulting"
+      ],
+      "website": "https://sek.com.br",
+      "research_status": "seed",
+      "pricing_analysis": "CBS HOLDING / SEK operates as a large-scale Latin American MSSP with bespoke enterprise contract structures. Pricing is not publicly disclosed. Expected model: per-endpoint/per-asset subscription for SOC and MDR tiers, fixed onboarding and integration fees, retainer for IR, and consulting-led project pricing. Pátria investment backing implies private equity growth pricing posture — competitive on volume to gain market share ahead of the USD $500M revenue target. No public outcome-based or success-fee pricing mechanisms identified.",
+      "pricing_model_type": "Subscription + Consulting + IR Retainer",
+      "pricing_model_details": {
+        "subscription_components": [
+          "MDR / SOC monitoring tier subscription (per endpoint / per asset)",
+          "Managed Threat Intelligence subscription",
+          "Technology partner license pass-through (Palo Alto, CrowdStrike)"
+        ],
+        "usage_components": [
+          "Number of endpoints / assets monitored",
+          "Log volume / SIEM ingestion",
+          "Number of integrated data sources"
+        ],
+        "fixed_components": [
+          "Onboarding and integration project fee",
+          "Incident response retainer",
+          "Security consulting engagement fees"
+        ],
+        "success_fee_components": [],
+        "outcome_linked_components": [],
+        "published_pricing": false,
+        "pricing_calculator_available": false,
+        "usage_dashboard_available": false
+      },
+      "pricing_dimension_scores": {
+        "PRC-SUB": 2,
+        "PRC-USG": 2,
+        "PRC-FIX": 2,
+        "PRC-SUC": 1,
+        "PRC-COM": 2,
+        "PRC-OUT": 1
+      },
+      "pricing_dimension_scores_v2": {
+        "PRC-SUB": 2.0,
+        "PRC-USG": 2.0,
+        "PRC-FIX": 2.0,
+        "PRC-SUC": 1.0,
+        "PRC-COM": 2.0,
+        "PRC-OUT": 1.0
+      },
+      "pricing_overall_score": 1.67,
+      "pricing_overall_score_v2": 1.67,
+      "pricing_dimension_labels": {
+        "PRC-SUB": "Subscription Transparency",
+        "PRC-USG": "Usage-Based Alignment",
+        "PRC-FIX": "Fixed Delivery Pricing",
+        "PRC-SUC": "Success & Outcome Fees",
+        "PRC-COM": "Composability & Overall Model Maturity",
+        "PRC-OUT": "Pricing-to-Outcomes Alignment"
+      },
+      "pricing_dimension_rationale_v2": {
+        "PRC-SUB": {
+          "dimension_id": "PRC-SUB",
+          "dimension_name": "Subscription Transparency",
+          "score": 2.0,
+          "score_rationale": "CBS HOLDING / SEK operates a subscription-based managed service model for 650 enterprise clients, typical of large LatAm MSSPs. No publicly documented pricing tiers, list prices, or subscription structure transparency.",
+          "evidence_summary": "Score inferred from MSSP operating model; no public pricing documentation found.",
+          "confidence": "low"
+        },
+        "PRC-USG": {
+          "dimension_id": "PRC-USG",
+          "dimension_name": "Usage-Based Alignment",
+          "score": 1.5,
+          "score_rationale": "No evidence of usage-based pricing model (asset count, event volume, etc.). Enterprise contracts likely include scope-defined service tiers but no consumption-based alignment documented.",
+          "evidence_summary": "No public usage-based pricing documentation.",
+          "confidence": "low"
+        },
+        "PRC-FIX": {
+          "dimension_id": "PRC-FIX",
+          "dimension_name": "Fixed Delivery Pricing",
+          "score": 2.5,
+          "score_rationale": "Fixed-fee managed service delivery is the dominant model for LatAm enterprise MSSPs. CBS HOLDING / SEK enterprise contracts likely include fixed-scope MDR + IR retainer bundles. No public pricing confirmation.",
+          "evidence_summary": "MSSP enterprise model implies fixed delivery pricing; no public confirmation.",
+          "confidence": "low"
+        },
+        "PRC-SUC": {
+          "dimension_id": "PRC-SUC",
+          "dimension_name": "Success & Outcome Fees",
+          "score": 0.5,
+          "score_rationale": "No success or outcome-based fee structure identified. PE-backed growth trajectory suggests possible future adoption but no current evidence.",
+          "evidence_summary": "No evidence of outcome or success-based fees.",
+          "confidence": "low"
+        },
+        "PRC-COM": {
+          "dimension_id": "PRC-COM",
+          "dimension_name": "Composability & Overall Model Maturity",
+          "score": 2.0,
+          "score_rationale": "40-vendor partner portfolio suggests modular service composition capability. Enterprise clients can likely combine MDR, IR, consulting, and technology services. No documented composability framework.",
+          "evidence_summary": "40-vendor portfolio implies composability; no formal documentation.",
+          "confidence": "low"
+        },
+        "PRC-OUT": {
+          "dimension_id": "PRC-OUT",
+          "dimension_name": "Pricing-to-Outcomes Alignment",
+          "score": 1.5,
+          "score_rationale": "No evidence of pricing-to-outcomes alignment. 156M attacks prevented metric shows outcome measurement capability but is not linked to commercial pricing model.",
+          "evidence_summary": "Outcome metrics exist (156M attacks prevented); not linked to pricing.",
+          "confidence": "low"
+        }
+      },
+      "pricing_dimension_rationale_v2_text": {
+        "PRC-SUB": "PRC-SUB – Subscription Transparency: Score 2.0/5\n\nScore 2.0/5. CBS HOLDING / SEK uses a subscription-based managed service model for 650 enterprise clients. No publicly documented pricing tiers or list prices. Typical LatAm enterprise MSSP subscription model — not transparent.",
+        "PRC-USG": "PRC-USG – Usage-Based Alignment: Score 1.5/5\n\nScore 1.5/5. No evidence of usage-based pricing (asset count, event volume, endpoint count tiers). Scope-defined enterprise contracts are the likely model. No public documentation.",
+        "PRC-FIX": "PRC-FIX – Fixed Delivery Pricing: Score 2.5/5\n\nScore 2.5/5. Fixed-fee managed service delivery is standard for LatAm enterprise MSSPs. CBS HOLDING / SEK enterprise contracts likely include fixed MDR + IR retainer bundles. No public pricing confirmation.",
+        "PRC-SUC": "PRC-SUC – Success & Outcome Fees: Score 0.5/5\n\nScore 0.5/5. No success or outcome-based fee structure identified in any available source. PE backing (Pátria) creates future commercial pressure for outcome alignment but no current evidence.",
+        "PRC-COM": "PRC-COM – Composability & Overall Model Maturity: Score 2.0/5\n\nScore 2.0/5. 40-vendor partner portfolio enables modular service composition (MDR + IR + consulting + technology). No formal composability documentation. Enterprise-grade bundling likely available on request.",
+        "PRC-OUT": "PRC-OUT – Pricing-to-Outcomes Alignment: Score 1.5/5\n\nScore 1.5/5. 156M attacks prevented (2022) and 500K assets protected are published outcome metrics. These are not linked to commercial pricing model. No outcome-linked pricing evidence."
+      },
+      "pricing_evidence": {
+        "PRC-SUB": {
+          "source_urls": [
+            "https://sek.com.br",
+            "https://itforum.com.br/noticias/sek-ciberseguranca-patria/"
+          ],
+          "excerpts": [
+            {
+              "url": "https://itforum.com.br/noticias/sek-ciberseguranca-patria/",
+              "excerpt": "CBS HOLDING / SEK operates as a subscription-based managed security services provider for 650 enterprise clients across 5 LatAm countries. No public pricing tiers or list prices identified.",
+              "matched_terms": [
+                "subscription",
+                "pricing transparency"
+              ],
+              "relevance_score": 5
+            }
+          ],
+          "notes": "Score 2.0/5. Subscription model inferred from MSSP positioning; no public pricing documentation."
+        },
+        "PRC-USG": {
+          "source_urls": [
+            "https://sek.com.br"
+          ],
+          "excerpts": [
+            {
+              "url": "https://sek.com.br",
+              "excerpt": "No usage-based pricing documentation found for CBS HOLDING / SEK.",
+              "matched_terms": [
+                "usage-based pricing"
+              ],
+              "relevance_score": 3
+            }
+          ],
+          "notes": "Score 1.5/5. No usage-based pricing model documented."
+        },
+        "PRC-FIX": {
+          "source_urls": [
+            "https://sek.com.br",
+            "https://itforum.com.br/noticias/sek-ciberseguranca-patria/"
+          ],
+          "excerpts": [
+            {
+              "url": "https://itforum.com.br/noticias/sek-ciberseguranca-patria/",
+              "excerpt": "CBS HOLDING / SEK delivers managed security services under enterprise contracts. Fixed-scope MDR + IR retainer model is typical for LatAm enterprise MSSPs of this scale.",
+              "matched_terms": [
+                "fixed pricing",
+                "managed service contracts"
+              ],
+              "relevance_score": 5
+            }
+          ],
+          "notes": "Score 2.5/5. Fixed delivery model inferred from enterprise MSSP positioning."
+        },
+        "PRC-SUC": {
+          "source_urls": [
+            "https://sek.com.br"
+          ],
+          "excerpts": [
+            {
+              "url": "https://sek.com.br",
+              "excerpt": "No success-based or outcome-based fee structure documented for CBS HOLDING / SEK.",
+              "matched_terms": [
+                "success fees",
+                "outcome fees"
+              ],
+              "relevance_score": 2
+            }
+          ],
+          "notes": "Score 0.5/5. No outcome or success fee structure identified."
+        },
+        "PRC-COM": {
+          "source_urls": [
+            "https://sek.com.br",
+            "https://itforum.com.br/noticias/sek-ciberseguranca-patria/"
+          ],
+          "excerpts": [
+            {
+              "url": "https://itforum.com.br/noticias/sek-ciberseguranca-patria/",
+              "excerpt": "SEK's portfolio covers 60% of information security technologies available in the market through 40 certified vendor partnerships, enabling composable service bundles for enterprise clients.",
+              "matched_terms": [
+                "composability",
+                "modular",
+                "partner portfolio"
+              ],
+              "relevance_score": 6
+            }
+          ],
+          "notes": "Score 2.0/5. 40-vendor portfolio enables composable delivery; no formal composability documentation."
+        },
+        "PRC-OUT": {
+          "source_urls": [
+            "https://sek.com.br",
+            "https://itforum.com.br/noticias/sek-ciberseguranca-patria/"
+          ],
+          "excerpts": [
+            {
+              "url": "https://itforum.com.br/noticias/sek-ciberseguranca-patria/",
+              "excerpt": "SEK protected 500,000 critical business assets and prevented approximately 156 million attacks in 2022 — outcome metrics that are published but not linked to commercial pricing structure.",
+              "matched_terms": [
+                "pricing outcomes",
+                "outcome metrics",
+                "attacks prevented"
+              ],
+              "relevance_score": 6
+            }
+          ],
+          "notes": "Score 1.5/5. Outcome metrics exist; not linked to pricing model."
+        }
+      },
+      "pricing_adjustment_summary": {
+        "increased": 0,
+        "decreased": 0,
+        "validated": 0,
+        "no_change": 6
+      },
+      "pricing_research_confidence": "low",
+      "outcome_maturity_rating": 1,
+      "outcome_maturity_rating_v2": 1,
+      "outcome_maturity_rationale_v2": "Seed rating — no outcome-based pricing evidence found. CBS HOLDING / SEK uses a subscription + consulting + IR retainer model typical of large LatAm MSSP operations. Private equity backing (Pátria) may create pressure to adopt outcome-linked pricing as the company scales toward its USD $500M revenue target, but no public evidence of this yet.",
+      "outcome_signals_v2": {
+        "pricing_changes_on_outcomes": false,
+        "metrics_verifiable": false,
+        "ai_efficiency_shared": false,
+        "contract_embedded": false,
+        "track_record": false,
+        "roi_aligned": false
+      },
+      "outcome_evidence": {
+        "source_urls": [
+          "https://sek.com.br",
+          "https://itforum.com.br/noticias/sek-ciberseguranca-patria/"
+        ],
+        "excerpts": [],
+        "notes": "Seed entry — no outcome-pricing evidence found. IT Forum launch article (March 2023) describes business model as 'managed security services provider' and 'solutions and services provider' without mentioning outcome-based pricing constructs."
+      },
+      "capability_analysis": "CBS HOLDING S.A. (SEK) delivers 24/7 managed security from four cyber defense and incident response centers across Latin America. MDR delivery relies on Palo Alto Networks Cortex/XSIAM, CrowdStrike Falcon, Nozomi (OT/IoT), and F5, among 40 certified technology partnerships. Notably, 156 million attacks were reportedly prevented in 2022, and the company protects 500K critical business assets. Strong IR capability from NeoSecure (Chile) and Proteus (Brazil) heritage. Two R&D centers support innovation. Funded by Pátria Investimentos for aggressive LatAm market expansion.",
+      "granular_mapping": {
+        "TDR": {
+          "TDR-01": 3.0,
+          "TDR-02": 3.0,
+          "TDR-03": 3.0,
+          "TDR-04": 2.0
+        },
+        "PTI": {
+          "PTI-01": 3.0,
+          "PTI-02": 2.0,
+          "PTI-03": 3.0,
+          "PTI-04": 2.0
+        },
+        "ADA": {
+          "ADA-01": 1.0,
+          "ADA-02": 0.5,
+          "ADA-03": 1.5,
+          "ADA-04": 0.5
+        },
+        "DIS": {
+          "DIS-01": 0.0,
+          "DIS-02": 2.0,
+          "DIS-03": 1.5,
+          "DIS-04": 1.5
+        },
+        "IRA": {
+          "IRA-01": 3.0,
+          "IRA-02": 4.0,
+          "IRA-03": 3.0,
+          "IRA-04": 3.0
+        },
+        "AIO": {
+          "AIO-01": 2.0,
+          "AIO-02": 2.0,
+          "AIO-03": 2.0,
+          "AIO-04": 2.0
+        },
+        "AID": {
+          "AID-01": 2.0,
+          "AID-02": 1.0,
+          "AID-03": 1.0,
+          "AID-04": 2.0
+        },
+        "SOG": {
+          "SOG-01": 4.0,
+          "SOG-02": 3.0,
+          "SOG-03": 3.0,
+          "SOG-04": 3.0
+        }
+      },
+      "pillar_scores": {
+        "TDR": 2.75,
+        "PTI": 2.5,
+        "ADA": 0.88,
+        "DIS": 1.25,
+        "IRA": 3.25,
+        "AIO": 2.0,
+        "AID": 1.5,
+        "SOG": 3.25
+      }
     }
   ]
 }

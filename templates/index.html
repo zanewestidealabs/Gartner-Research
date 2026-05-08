@@ -42,9 +42,17 @@
                     <span class="icon">🗓️</span>
                     <span class="label">Roadmap</span>
                 </button>
+                <button class="nav-item" data-view="asmf" data-requires-schema="agentic_soc_framework_v1.json">
+                    <span class="icon">🤖</span>
+                    <span class="label">Framework</span>
+                </button>
                 <button class="nav-item" data-view="reports">
                     <span class="icon">📋</span>
                     <span class="label">Reports</span>
+                </button>
+                <button class="nav-item" id="docs-panel-toggle" title="Documentation">
+                    <span class="icon">📐</span>
+                    <span class="label">Docs</span>
                 </button>
             </div>
             
@@ -219,6 +227,11 @@
                         <!-- Field descriptions will be inserted here -->
                     </div>
                 </div>
+            </section>
+
+            <!-- ASMF View -->
+            <section id="asmf-view" class="view-container">
+                <div id="asmf-content" style="padding:24px 32px;"></div>
             </section>
 
             <!-- Roadmap View (90-Day Adoption Plan Gantt Chart) -->
@@ -772,6 +785,16 @@
                             <button class="reports-tab" data-report-tab="innovation-profile" data-schema="Secure_by_Design_AI_Controls_Schema_v2.json" type="button">
                                 <span class="reports-tab-icon">💡</span>
                                 <span class="reports-tab-label">Innovation Profile</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="asmf-matrix" data-schema="agentic_soc_framework_v1.json" type="button">
+                                <span class="reports-tab-icon">🤖</span>
+                                <span class="reports-tab-label">ASMF Maturity Matrix</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="asmf-graph" data-schema="agentic_soc_framework_v1.json" type="button">
+                                <span class="reports-tab-icon">🌐</span>
+                                <span class="reports-tab-label">ASMF Knowledge Graph</span>
                                 <span class="reports-tab-close" title="Close tab">&times;</span>
                             </button>
                         </div>
@@ -1421,10 +1444,107 @@
                         </div>
                     </div>
 
+                    <!-- ASMF Maturity Matrix Panel -->
+                    <!-- ASMF Knowledge Graph panel with inner tabs -->
+                    <div id="report-panel-asmf-graph" class="report-panel asmf-panel-full">
+                        <div class="asmf-inner-tabbar">
+                            <button class="asmf-inner-tab active" data-asmf-tab="force" data-panel="asmf-graph">🌐 Force Graph</button>
+                            <button class="asmf-inner-tab" data-asmf-tab="orbital" data-panel="asmf-graph">🪐 Orbital Model</button>
+                        </div>
+                        <div class="asmf-inner-panels">
+                            <div id="asmf-graph-pane-force" class="asmf-inner-pane active asmf-pane-full">
+                                <div style="display:flex;height:100%;">
+                                    <div id="asmf-graph-3d" style="flex:1;min-width:0;"></div>
+                                    <div id="asmf-graph-detail" style="width:320px;flex-shrink:0;background:var(--bg-secondary);border-left:1px solid var(--border-color);overflow-y:auto;padding:20px 18px;">
+                                        <div style="font-size:13px;color:var(--text-muted);line-height:1.6;">
+                                            <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">ASMF Knowledge Graph</div>
+                                            <p>Click any node to explore its details.</p>
+                                            <div style="margin-top:16px;">
+                                                <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Node types</div>
+                                                <div class="asmf-legend-item" data-filter="root">⬤ Framework root</div>
+                                                <div class="asmf-legend-item" data-filter="stage">⬤ Maturity stage</div>
+                                                <div class="asmf-legend-item" data-filter="dimension">⬤ Dimension</div>
+                                                <div class="asmf-legend-item" data-filter="subdim">⬤ Sub-dimension</div>
+                                                <div class="asmf-legend-item" data-filter="principle">⬤ Principle</div>
+                                                <div class="asmf-legend-item" data-filter="phase">⬤ Journey phase</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="asmf-graph-pane-orbital" class="asmf-inner-pane asmf-pane-full">
+                                <div id="asmf-orbital-content" style="height:100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ASMF Maturity Matrix panel with inner tabs -->
+                    <div id="report-panel-asmf-matrix" class="report-panel asmf-panel-full">
+                        <div class="asmf-inner-tabbar">
+                            <button class="asmf-inner-tab active" data-asmf-tab="matrix" data-panel="asmf-matrix">📊 Matrix</button>
+                            <button class="asmf-inner-tab" data-asmf-tab="radar" data-panel="asmf-matrix">🎯 Target Radar</button>
+                            <button class="asmf-inner-tab" data-asmf-tab="sankey" data-panel="asmf-matrix">🌊 Effort Flow</button>
+                            <button class="asmf-inner-tab" data-asmf-tab="pyramid" data-panel="asmf-matrix">🏔 Capability Stack</button>
+                            <button class="asmf-inner-tab" data-asmf-tab="timeline" data-panel="asmf-matrix">🗺 Journey Timeline</button>
+                        </div>
+                        <div class="asmf-inner-panels">
+                            <div id="asmf-matrix-pane-matrix" class="asmf-inner-pane active">
+                                <div class="report-document" style="max-width:none;padding:20px 28px 60px;">
+                                    <div class="report-doc-header">
+                                        <div class="report-doc-header-row">
+                                            <h1>Agentic SOC Maturity Framework &mdash; Visual Matrix</h1>
+                                            <div style="display:flex;align-items:center;gap:10px;">
+                                                <button class="report-export-btn" onclick="exportASMFPosterAsHTML()" title="Export standalone poster HTML">
+                                                    <span class="icon">🌐</span> Export Poster
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <p class="report-doc-subtitle">11 dimensions &times; 6 maturity stages &mdash; vendor-neutral, technology-agnostic</p>
+                                    </div>
+                                    <div id="asmf-matrix-content"></div>
+                                </div>
+                            </div>
+                            <div id="asmf-matrix-pane-radar" class="asmf-inner-pane">
+                                <div class="report-document" style="max-width:900px;">
+                                    <div class="report-doc-header">
+                                        <h1>Target State — Fully Agentic Radar</h1>
+                                        <p class="report-doc-subtitle">What Stage 5 looks like across all 11 dimensions vs. where most SOCs start</p>
+                                    </div>
+                                    <div id="asmf-radar-content"></div>
+                                </div>
+                            </div>
+                            <div id="asmf-matrix-pane-sankey" class="asmf-inner-pane">
+                                <div class="report-document" style="max-width:1000px;">
+                                    <div class="report-doc-header">
+                                        <h1>Agentic SOC — Effort Flow</h1>
+                                        <p class="report-doc-subtitle">How work transitions from human-heavy operations to agentic outcomes</p>
+                                    </div>
+                                    <div id="asmf-sankey-content"></div>
+                                </div>
+                            </div>
+                            <div id="asmf-matrix-pane-pyramid" class="asmf-inner-pane">
+                                <div class="report-document" style="max-width:860px;">
+                                    <div class="report-doc-header">
+                                        <h1>SOC Capability Stack</h1>
+                                        <p class="report-doc-subtitle">From raw signal ingestion to fully autonomous response — the agentic SOC capability pyramid</p>
+                                    </div>
+                                    <div id="asmf-pyramid-content"></div>
+                                </div>
+                            </div>
+                            <div id="asmf-matrix-pane-timeline" class="asmf-inner-pane">
+                                <div class="report-document" style="max-width:1100px;">
+                                    <div class="report-doc-header">
+                                        <h1>Transformation Journey</h1>
+                                        <p class="report-doc-subtitle">5 phases from Traditional SOC to Fully Agentic — milestones, gates, and failure modes</p>
+                                    </div>
+                                    <div id="asmf-timeline-content"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
-
-            <!-- Cross-Section Sheet View -->
             <section id="cross-section-view" class="view-container">
                 <div class="cross-section-container">
                     <div class="cross-section-header">
@@ -1691,6 +1811,249 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({ startOnLoad: false, theme: 'dark' });</script>
     <script src="{{ url_for('static', filename='rough.min.js') }}"></script>
+
+    <!-- Documentation Slideout Panel -->
+    <div id="docs-panel" class="docs-panel" aria-hidden="true">
+        <div class="docs-panel-header">
+            <div class="docs-panel-tabs" id="docs-tabs"></div>
+            <button class="docs-panel-close" id="docs-panel-close" title="Close documentation" aria-label="Close documentation">&times;</button>
+        </div>
+        <div class="docs-panel-body" id="docs-panel-body">
+            <div class="docs-panel-loading" id="docs-panel-loading">Loading documentation…</div>
+        </div>
+    </div>
+    <div id="docs-panel-backdrop" class="docs-panel-backdrop"></div>
+
+    <style>
+    /* ── Documentation Slideout Panel ───────────────────────── */
+    .docs-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(820px, 92vw);
+        height: 100vh;
+        background: var(--bg-secondary);
+        border-left: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        z-index: 1200;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -4px 0 32px rgba(0,0,0,0.35);
+    }
+    .docs-panel.open {
+        transform: translateX(0);
+    }
+    .docs-panel-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 1199;
+        background: rgba(0,0,0,0.4);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    .docs-panel-backdrop.open {
+        opacity: 1;
+        pointer-events: all;
+    }
+    .docs-panel-header {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+        background: var(--bg-tertiary, var(--bg-secondary));
+        flex-shrink: 0;
+        min-height: 44px;
+    }
+    .docs-panel-tabs {
+        display: flex;
+        align-items: stretch;
+        flex: 1;
+        overflow-x: auto;
+        gap: 0;
+    }
+    .docs-tab-btn {
+        padding: 10px 18px;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        white-space: nowrap;
+        border-bottom: 2px solid transparent;
+        transition: color 0.15s, border-color 0.15s;
+    }
+    .docs-tab-btn:hover { color: var(--text-primary); }
+    .docs-tab-btn.active {
+        color: var(--color-primary, #0078d4);
+        border-bottom-color: var(--color-primary, #0078d4);
+    }
+    .docs-panel-close {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 22px;
+        line-height: 1;
+        flex-shrink: 0;
+        border-radius: 6px;
+        margin: 2px;
+        transition: background 0.15s, color 0.15s;
+    }
+    .docs-panel-close:hover {
+        background: var(--bg-primary, rgba(255,255,255,0.08));
+        color: var(--text-primary);
+    }
+    .docs-panel-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 0;
+    }
+    .docs-panel-loading {
+        padding: 40px;
+        color: var(--text-secondary);
+        text-align: center;
+    }
+    /* Tab content */
+    .docs-tab-content { display: none; }
+    .docs-tab-content.active { display: block; }
+    /* Section nav + content layout */
+    .docs-tab-layout {
+        display: flex;
+        height: 100%;
+    }
+    .docs-section-nav {
+        width: 210px;
+        flex-shrink: 0;
+        border-right: 1px solid var(--border-color);
+        overflow-y: auto;
+        padding: 12px 0;
+        background: var(--bg-tertiary, var(--bg-secondary));
+    }
+    .docs-section-nav-btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 7px 16px;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 1.4;
+        transition: background 0.12s, color 0.12s;
+    }
+    .docs-section-nav-btn:hover {
+        background: rgba(0,120,212,0.1);
+        color: var(--text-primary);
+    }
+    .docs-section-nav-btn.active {
+        background: rgba(0,120,212,0.18);
+        color: var(--color-primary, #0078d4);
+        font-weight: 600;
+    }
+    .docs-section-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 24px 28px;
+    }
+    /* Section rendering */
+    .docs-section-pane { display: none; }
+    .docs-section-pane.active { display: block; }
+    .docs-section-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 20px 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .docs-heading {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--color-primary, #0078d4);
+        margin: 20px 0 10px 0;
+    }
+    .docs-text {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 14px;
+    }
+    .docs-list {
+        margin: 0 0 14px 0;
+        padding-left: 20px;
+    }
+    .docs-list li {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 4px;
+    }
+    .docs-table-wrap {
+        overflow-x: auto;
+        margin-bottom: 18px;
+    }
+    .docs-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+    }
+    .docs-table th {
+        background: var(--bg-tertiary, rgba(0,0,0,0.15));
+        color: var(--text-primary);
+        padding: 7px 10px;
+        text-align: left;
+        font-weight: 600;
+        border: 1px solid var(--border-color);
+        white-space: nowrap;
+    }
+    .docs-table td {
+        padding: 6px 10px;
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        vertical-align: top;
+    }
+    .docs-table tr:nth-child(even) td {
+        background: rgba(0,0,0,0.06);
+    }
+    .docs-code {
+        background: var(--bg-primary, #1e1e1e);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 14px 16px;
+        font-size: 11.5px;
+        font-family: 'Consolas', 'Cascadia Code', monospace;
+        color: var(--text-primary);
+        white-space: pre;
+        overflow-x: auto;
+        margin-bottom: 14px;
+        line-height: 1.55;
+    }
+    .docs-mermaid-wrap {
+        background: var(--bg-primary, #1a1a2e);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 18px;
+        overflow: auto;
+        text-align: center;
+    }
+    .docs-mermaid-wrap svg {
+        max-width: 100%;
+        height: auto;
+    }
+    .docs-mermaid-error {
+        color: #e74c3c;
+        font-size: 12px;
+        font-family: monospace;
+        padding: 12px;
+    }
+    </style>
+
     <script src="{{ url_for('static', filename='app.js', v=(static_versions.app_js if static_versions else 1)) }}"></script>
 </body>
 </html>
