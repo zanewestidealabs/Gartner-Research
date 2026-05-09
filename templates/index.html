@@ -50,10 +50,15 @@
                     <span class="icon">📋</span>
                     <span class="label">Reports</span>
                 </button>
-                <button class="nav-item" id="docs-panel-toggle" title="Documentation">
-                    <span class="icon">📐</span>
-                    <span class="label">Docs</span>
-                </button>
+                <div class="nav-item-group" id="docs-rail-group">
+                    <button class="nav-item" id="docs-rail-toggle" title="Documentation" aria-expanded="false">
+                        <span class="icon">📐</span>
+                        <span class="label">Docs</span>
+                    </button>
+                    <div class="nav-submenu" id="docs-rail-submenu" hidden>
+                        <button class="nav-subitem" data-doc-id="architecture" data-doc-title="📐 Architecture">Architecture</button>
+                    </div>
+                </div>
             </div>
             
             <div class="nav-rail-footer">
@@ -232,6 +237,21 @@
             <!-- ASMF View -->
             <section id="asmf-view" class="view-container">
                 <div id="asmf-content" style="padding:24px 32px;"></div>
+            </section>
+
+            <!-- Documentation View (loaded dynamically when a Docs sub-item is clicked) -->
+            <section id="docs-view" class="view-container">
+                <div class="docs-view-layout">
+                    <aside class="docs-view-nav" id="docs-view-nav" aria-label="Documentation sections">
+                        <div class="docs-view-nav-header">
+                            <span class="docs-view-nav-title" id="docs-view-nav-title">Documentation</span>
+                        </div>
+                        <div class="docs-view-nav-list" id="docs-view-nav-list"></div>
+                    </aside>
+                    <div class="docs-view-body" id="docs-view-body">
+                        <div class="docs-view-loading">Select a topic from the Docs menu.</div>
+                    </div>
+                </div>
             </section>
 
             <!-- Roadmap View (90-Day Adoption Plan Gantt Chart) -->
@@ -1812,246 +1832,94 @@
     <script>mermaid.initialize({ startOnLoad: false, theme: 'dark' });</script>
     <script src="{{ url_for('static', filename='rough.min.js') }}"></script>
 
-    <!-- Documentation Slideout Panel -->
-    <div id="docs-panel" class="docs-panel" aria-hidden="true">
-        <div class="docs-panel-header">
-            <div class="docs-panel-tabs" id="docs-tabs"></div>
-            <button class="docs-panel-close" id="docs-panel-close" title="Close documentation" aria-label="Close documentation">&times;</button>
-        </div>
-        <div class="docs-panel-body" id="docs-panel-body">
-            <div class="docs-panel-loading" id="docs-panel-loading">Loading documentation…</div>
-        </div>
-    </div>
-    <div id="docs-panel-backdrop" class="docs-panel-backdrop"></div>
-
     <style>
-    /* ── Documentation Slideout Panel ───────────────────────── */
-    .docs-panel {
+    /* ── Documentation View ──────────────────────────────────── */
+    /* Nav rail submenu (Docs → topics) — fixed so the rail's overflow doesn't clip it */
+    .nav-item-group { position: relative; }
+    .nav-submenu {
         position: fixed;
-        top: 0;
-        right: 0;
-        width: min(820px, 92vw);
-        height: 100vh;
+        min-width: 180px;
         background: var(--bg-secondary);
-        border-left: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-        z-index: 1200;
-        transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -4px 0 32px rgba(0,0,0,0.35);
-    }
-    .docs-panel.open {
-        transform: translateX(0);
-    }
-    .docs-panel-backdrop {
-        position: fixed;
-        inset: 0;
-        z-index: 1199;
-        background: rgba(0,0,0,0.4);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-    .docs-panel-backdrop.open {
-        opacity: 1;
-        pointer-events: all;
-    }
-    .docs-panel-header {
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid var(--border-color);
-        background: var(--bg-tertiary, var(--bg-secondary));
-        flex-shrink: 0;
-        min-height: 44px;
-    }
-    .docs-panel-tabs {
-        display: flex;
-        align-items: stretch;
-        flex: 1;
-        overflow-x: auto;
-        gap: 0;
-    }
-    .docs-tab-btn {
-        padding: 10px 18px;
-        border: none;
-        background: transparent;
-        color: var(--text-secondary);
-        cursor: pointer;
-        font-size: 13px;
-        font-weight: 500;
-        white-space: nowrap;
-        border-bottom: 2px solid transparent;
-        transition: color 0.15s, border-color 0.15s;
-    }
-    .docs-tab-btn:hover { color: var(--text-primary); }
-    .docs-tab-btn.active {
-        color: var(--color-primary, #0078d4);
-        border-bottom-color: var(--color-primary, #0078d4);
-    }
-    .docs-panel-close {
-        width: 40px;
-        height: 40px;
-        border: none;
-        background: transparent;
-        color: var(--text-secondary);
-        cursor: pointer;
-        font-size: 22px;
-        line-height: 1;
-        flex-shrink: 0;
+        border: 1px solid var(--border-color);
         border-radius: 6px;
-        margin: 2px;
-        transition: background 0.15s, color 0.15s;
+        box-shadow: 4px 4px 18px rgba(0,0,0,0.35);
+        padding: 6px;
+        display: flex; flex-direction: column; gap: 2px;
+        z-index: 1100;
     }
-    .docs-panel-close:hover {
-        background: var(--bg-primary, rgba(255,255,255,0.08));
-        color: var(--text-primary);
-    }
-    .docs-panel-body {
-        flex: 1;
-        overflow-y: auto;
-        padding: 0;
-    }
-    .docs-panel-loading {
-        padding: 40px;
+    .nav-submenu[hidden] { display: none; }
+    .nav-subitem {
+        background: transparent; border: none;
         color: var(--text-secondary);
-        text-align: center;
+        text-align: left; padding: 7px 12px;
+        font-size: 13px; cursor: pointer;
+        border-radius: 4px;
+        white-space: nowrap;
     }
-    /* Tab content */
+    .nav-subitem:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+    .nav-subitem.active { color: var(--color-primary, #0078d4); background: rgba(0,120,212,0.13); }
+
+    /* Docs view layout: nav sidebar + body, fills the view-container */
+    #docs-view { padding: 0; }
+    .docs-view-layout { display: flex; flex-direction: row; height: 100%; min-height: 0; }
+    .docs-view-nav {
+        width: 240px; flex-shrink: 0;
+        border-right: 1px solid var(--border-color);
+        background: var(--bg-tertiary, var(--bg-secondary));
+        display: flex; flex-direction: column;
+        overflow: hidden;
+    }
+    .docs-view-nav-header {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border-color);
+        flex-shrink: 0;
+    }
+    .docs-view-nav-title {
+        font-size: 13px; font-weight: 700;
+        color: var(--text-primary);
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        display: block;
+    }
+    .docs-view-nav-list {
+        flex: 1; overflow-y: auto; padding: 6px 0;
+        scrollbar-width: thin; scrollbar-color: var(--border-color) transparent;
+    }
+    .docs-view-nav-list::-webkit-scrollbar { width: 4px; }
+    .docs-view-nav-list::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+    .docs-nav-btn {
+        display: block; width: 100%; text-align: left;
+        padding: 8px 16px; border: none; background: transparent;
+        color: var(--text-secondary); cursor: pointer;
+        font-size: 12px; line-height: 1.4;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        border-left: 2px solid transparent;
+        transition: background 0.12s, color 0.12s, border-color 0.12s;
+    }
+    .docs-nav-btn:hover { background: rgba(0,120,212,0.08); color: var(--text-primary); }
+    .docs-nav-btn.active {
+        background: rgba(0,120,212,0.15);
+        color: var(--color-primary, #0078d4);
+        border-left-color: var(--color-primary, #0078d4);
+        font-weight: 600;
+    }
+    .docs-view-body { flex: 1; min-width: 0; overflow-y: auto; padding: 28px 36px; }
+    .docs-view-loading { padding: 40px; color: var(--text-secondary); text-align: center; }
     .docs-tab-content { display: none; }
     .docs-tab-content.active { display: block; }
-    /* Section nav + content layout */
-    .docs-tab-layout {
-        display: flex;
-        height: 100%;
-    }
-    .docs-section-nav {
-        width: 210px;
-        flex-shrink: 0;
-        border-right: 1px solid var(--border-color);
-        overflow-y: auto;
-        padding: 12px 0;
-        background: var(--bg-tertiary, var(--bg-secondary));
-    }
-    .docs-section-nav-btn {
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 7px 16px;
-        border: none;
-        background: transparent;
-        color: var(--text-secondary);
-        cursor: pointer;
-        font-size: 12px;
-        line-height: 1.4;
-        transition: background 0.12s, color 0.12s;
-    }
-    .docs-section-nav-btn:hover {
-        background: rgba(0,120,212,0.1);
-        color: var(--text-primary);
-    }
-    .docs-section-nav-btn.active {
-        background: rgba(0,120,212,0.18);
-        color: var(--color-primary, #0078d4);
-        font-weight: 600;
-    }
-    .docs-section-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 24px 28px;
-    }
-    /* Section rendering */
-    .docs-section-pane { display: none; }
-    .docs-section-pane.active { display: block; }
-    .docs-section-title {
-        font-size: 17px;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin: 0 0 20px 0;
-        padding-bottom: 10px;
-        border-bottom: 1px solid var(--border-color);
-    }
-    .docs-heading {
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--color-primary, #0078d4);
-        margin: 20px 0 10px 0;
-    }
-    .docs-text {
-        font-size: 13px;
-        color: var(--text-secondary);
-        line-height: 1.7;
-        margin-bottom: 14px;
-    }
-    .docs-list {
-        margin: 0 0 14px 0;
-        padding-left: 20px;
-    }
-    .docs-list li {
-        font-size: 13px;
-        color: var(--text-secondary);
-        line-height: 1.7;
-        margin-bottom: 4px;
-    }
-    .docs-table-wrap {
-        overflow-x: auto;
-        margin-bottom: 18px;
-    }
-    .docs-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 12px;
-    }
-    .docs-table th {
-        background: var(--bg-tertiary, rgba(0,0,0,0.15));
-        color: var(--text-primary);
-        padding: 7px 10px;
-        text-align: left;
-        font-weight: 600;
-        border: 1px solid var(--border-color);
-        white-space: nowrap;
-    }
-    .docs-table td {
-        padding: 6px 10px;
-        border: 1px solid var(--border-color);
-        color: var(--text-secondary);
-        vertical-align: top;
-    }
-    .docs-table tr:nth-child(even) td {
-        background: rgba(0,0,0,0.06);
-    }
-    .docs-code {
-        background: var(--bg-primary, #1e1e1e);
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        padding: 14px 16px;
-        font-size: 11.5px;
-        font-family: 'Consolas', 'Cascadia Code', monospace;
-        color: var(--text-primary);
-        white-space: pre;
-        overflow-x: auto;
-        margin-bottom: 14px;
-        line-height: 1.55;
-    }
-    .docs-mermaid-wrap {
-        background: var(--bg-primary, #1a1a2e);
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 18px;
-        overflow: auto;
-        text-align: center;
-    }
-    .docs-mermaid-wrap svg {
-        max-width: 100%;
-        height: auto;
-    }
-    .docs-mermaid-error {
-        color: #e74c3c;
-        font-size: 12px;
-        font-family: monospace;
-        padding: 12px;
-    }
+    .docs-section-title { font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0 0 22px 0; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+    .docs-heading { font-size: 14px; font-weight: 700; color: var(--color-primary, #0078d4); margin: 20px 0 10px 0; }
+    .docs-text { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+    .docs-list { margin: 0 0 14px 0; padding-left: 20px; }
+    .docs-list li { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 4px; }
+    .docs-table-wrap { overflow-x: auto; margin-bottom: 18px; }
+    .docs-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .docs-table th { background: var(--bg-tertiary, rgba(0,0,0,0.15)); color: var(--text-primary); padding: 7px 10px; text-align: left; font-weight: 600; border: 1px solid var(--border-color); white-space: nowrap; }
+    .docs-table td { padding: 6px 10px; border: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: top; }
+    .docs-table tr:nth-child(even) td { background: rgba(0,0,0,0.06); }
+    .docs-code { background: var(--bg-primary, #1e1e1e); border: 1px solid var(--border-color); border-radius: 6px; padding: 14px 16px; font-size: 11.5px; font-family: 'Consolas','Cascadia Code',monospace; color: var(--text-primary); white-space: pre; overflow-x: auto; margin-bottom: 14px; line-height: 1.55; }
+    .docs-mermaid-wrap { background: var(--bg-primary, #1a1a2e); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 18px; overflow: auto; text-align: center; }
+    .docs-mermaid-wrap svg { max-width: 100%; height: auto; }
+    .docs-mermaid-error { color: #e74c3c; font-size: 12px; font-family: monospace; padding: 12px; }
     </style>
 
     <script src="{{ url_for('static', filename='app.js', v=(static_versions.app_js if static_versions else 1)) }}"></script>

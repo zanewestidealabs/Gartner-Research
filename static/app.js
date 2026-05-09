@@ -1,4 +1,4 @@
-// Application State
+﻿// Application State
 const appState = {
     vendors: [],
     filteredVendors: [],
@@ -16,7 +16,7 @@ const appState = {
     subPillars: [],
     selectedSubPillars: [], // Array of sub-pillar IDs to display as columns
     pillarMetadata: {}, // Pillar codes and their names
-    pillarVisibility: {}, // Track pillar expand/collapse — populated dynamically
+    pillarVisibility: {}, // Track pillar expand/collapse â€” populated dynamically
     columnVisibility: {
         // Base columns
         vendor: true,
@@ -64,10 +64,10 @@ function isActiveSubPillarCode(code) {
  */
 function resetPillarState() {
     const codes = getActivePillarCodes();
-    // Reset pillar visibility — all expanded by default
+    // Reset pillar visibility â€” all expanded by default
     appState.pillarVisibility = {};
     codes.forEach(c => { appState.pillarVisibility[c] = true; });
-    // Reset column visibility — keep base columns, add new pillars
+    // Reset column visibility â€” keep base columns, add new pillars
     const base = { vendor: true, region: true, specialization: true, is_ai_first: true, is_startup: true };
     getSchemaExtraVendorAttrs().forEach(a => { base[a.field] = true; });
     appState.columnVisibility = { ...base };
@@ -160,7 +160,7 @@ function resetCrossSectionForSchema() {
         if (cleaned.length) {
             axis.items = cleaned;
         } else {
-            // Nothing survived — replace with all pillars from the current schema
+            // Nothing survived â€” replace with all pillars from the current schema
             axis.items = getActivePillarCodes().map(p => `score|pillar|${p}`);
         }
     };
@@ -544,7 +544,7 @@ function exportVendorsCsv({ scope = 'table', fields = [] } = {}) {
 
     let cols = [];
     if (scope === 'table') {
-        // Full “spreadsheet” export: one column per dot-path across the vendor JSON.
+        // Full â€œspreadsheetâ€ export: one column per dot-path across the vendor JSON.
         const paths = getAllDotPathsFromVendors(vendors);
         cols = paths.map(path => ({
             key: path,
@@ -1574,7 +1574,7 @@ function setupCrossSectionSheet() {
         renderCrossSectionSheet();
     });
 
-    // Use dynamic getter — do NOT capture pillarOrder as a closure constant.
+    // Use dynamic getter â€” do NOT capture pillarOrder as a closure constant.
     // This ensures "Add all pillars" and "Add all sub-pillars" always use
     // the active schema's pillars, even after a schema switch.
 
@@ -2066,7 +2066,7 @@ function renderCrossSectionSheet() {
         if (vfCount) parts.push(`${vfCount} vendor filter(s)`);
         if (search) parts.push('search');
         if (qbCount) parts.push(`${qbCount} analysis filter(s)`);
-        filtersSummary.textContent = parts.length ? `${parts.join(' + ')} • base vendors: ${vendors.length}` : `None • base vendors: ${vendors.length}`;
+        filtersSummary.textContent = parts.length ? `${parts.join(' + ')} â€¢ base vendors: ${vendors.length}` : `None â€¢ base vendors: ${vendors.length}`;
     }
 
     normalizeAxisTypes();
@@ -2334,7 +2334,7 @@ function toggleDarkMode() {
 
 async function loadVendorFileSelector() {
     try {
-        // ── Load schema selector first ──
+        // â”€â”€ Load schema selector first â”€â”€
         await loadSchemaFileSelector();
 
         const schemaParam = appState.currentSchemaFile ? `?schema=${encodeURIComponent(appState.currentSchemaFile)}` : '';
@@ -2379,8 +2379,8 @@ async function loadVendorFileSelector() {
 
 /**
  * Extract a version string from a filename.
- * Handles patterns like: schema3-3.json → "3.3", AI TriSM Schema 1_1.json → "1.1",
- * Preemptive_Cybersecurity_Schema.json → "1.0", Vendor 2-0 Researched.json → "2.0"
+ * Handles patterns like: schema3-3.json â†’ "3.3", AI TriSM Schema 1_1.json â†’ "1.1",
+ * Preemptive_Cybersecurity_Schema.json â†’ "1.0", Vendor 2-0 Researched.json â†’ "2.0"
  */
 function extractVersion(filename) {
     // Known schemas without version in filename
@@ -2400,10 +2400,10 @@ function extractVersion(filename) {
 
 /**
  * Build a short vendor-file display label.
- * "Preemptive Cybersecurity Vendor 2-0 Researched" → "PreCyber v2.0 Researched"
- * "AI TRiSM Vendor 1-1 Validated" → "TRiSM v1.1 Validated"
- * "Vendor 3-7 Consolidated" → "DFIR v3.7 Consolidated"
- * "Offensive Security Vendor 1-0 Seed" → "OffSec v1.0 Seed"
+ * "Preemptive Cybersecurity Vendor 2-0 Researched" â†’ "PreCyber v2.0 Researched"
+ * "AI TRiSM Vendor 1-1 Validated" â†’ "TRiSM v1.1 Validated"
+ * "Vendor 3-7 Consolidated" â†’ "DFIR v3.7 Consolidated"
+ * "Offensive Security Vendor 1-0 Seed" â†’ "OffSec v1.0 Seed"
  */
 function shortVendorLabel(name) {
     const ver = extractVersion(name);
@@ -2697,7 +2697,7 @@ async function switchSchema(schemaFilename) {
         if (data.files.length > 0) {
             await switchVendorFile();
         } else {
-            // No vendor data — clear all stale vendor state
+            // No vendor data â€” clear all stale vendor state
             appState.vendors = [];
             appState.filteredVendors = [];
             appState.currentVendorFile = '';
@@ -2731,7 +2731,7 @@ function updateSidebarSubPillarLabels() {
     const detail = appState.schemaDetail;
     if (!detail || !detail.sub_pillars) return;
 
-    // Build lookup: ID → name
+    // Build lookup: ID â†’ name
     const lookup = {};
     detail.sub_pillars.forEach(sp => { lookup[sp.id] = sp.name; });
 
@@ -3151,7 +3151,7 @@ function rebuildTableHeader() {
         const th = document.createElement('th');
         th.className = 'pillar-column';
         th.title = name;
-        th.innerHTML = `<span class="header-text">${code}</span><span class="info-icon" data-field="${code}">ℹ️</span>`;
+        th.innerHTML = `<span class="header-text">${code}</span><span class="info-icon" data-field="${code}">â„¹ï¸</span>`;
         headerRow.appendChild(th);
     });
     
@@ -3181,7 +3181,7 @@ function rebuildTableHeader() {
         if (pillarGroups[pillarCode] && pillarGroups[pillarCode].length > 0) {
             const toggleBtn = document.createElement('button');
             toggleBtn.className = 'pillar-toggle';
-            toggleBtn.textContent = appState.pillarVisibility[pillarCode] ? '▼' : '▶';
+            toggleBtn.textContent = appState.pillarVisibility[pillarCode] ? 'â–¼' : 'â–¶';
             toggleBtn.title = appState.pillarVisibility[pillarCode] ? 'Collapse' : 'Expand';
             toggleBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -3528,7 +3528,7 @@ function renderVendorReportPanels(vendor) {
     `;
 
     if (isPricing) {
-        // Pricing: show dimension scores and outcome maturity — no sub-pillar table
+        // Pricing: show dimension scores and outcome maturity â€” no sub-pillar table
         const omr = vendor.outcome_maturity_rating_v2 !== undefined ? vendor.outcome_maturity_rating_v2 : (vendor.outcome_maturity_rating || '-');
         const overallScore = vendor.pricing_overall_score_v2 !== undefined ? Number(vendor.pricing_overall_score_v2).toFixed(2) : '-';
         const adjSummary = vendor.pricing_adjustment_summary || {};
@@ -3578,7 +3578,7 @@ function renderVendorFieldTable(vendor) {
         if (v === null || v === undefined) {
             display = '-';
         } else if (typeof v === 'string') {
-            display = v.length > 400 ? (v.slice(0, 400) + '…') : v;
+            display = v.length > 400 ? (v.slice(0, 400) + 'â€¦') : v;
         } else if (typeof v === 'number' || typeof v === 'boolean') {
             display = String(v);
         } else if (Array.isArray(v)) {
@@ -3660,19 +3660,19 @@ function renderEvidenceAndRationale(vendor, granular) {
     const groups = appState.pillarsGrouped || [];
     const isPricing = (appState.scoreMode === 'pricing_v2');
 
-    // ── Pricing mode: render pricing dimension rationale/evidence ──
+    // â”€â”€ Pricing mode: render pricing dimension rationale/evidence â”€â”€
     if (isPricing) {
         return renderPricingEvidenceAndRationale(vendor);
     }
 
-    // ── PMR mode: evidence/rationale live inside sub_pillar_scores ──
+    // â”€â”€ PMR mode: evidence/rationale live inside sub_pillar_scores â”€â”€
     const pmrScores = vendor.sub_pillar_scores && typeof vendor.sub_pillar_scores === 'object' ? vendor.sub_pillar_scores : null;
     const isPMR = pmrScores && Object.values(pmrScores).some(v => v && typeof v === 'object' && v.gtm_rationale !== undefined);
     if (isPMR) {
         return renderPMREvidenceAndRationale(vendor, granular, pmrScores);
     }
 
-    // ── Capability mode: standard sub-pillar rationale ──
+    // â”€â”€ Capability mode: standard sub-pillar rationale â”€â”€
     // Prefer v2.1 evidence-validated rationale, then v2.1 consolidated (strings), then v2 structured objects, then v1 strings
     const v21Rationale = (vendor.sub_pillar_rationale_v2_1 && typeof vendor.sub_pillar_rationale_v2_1 === 'object' && Object.keys(vendor.sub_pillar_rationale_v2_1).length > 0)
         ? vendor.sub_pillar_rationale_v2_1
@@ -3721,7 +3721,7 @@ function renderEvidenceAndRationale(vendor, granular) {
             r = (rawRat.score_rationale || rawRat.rationale || '').trim();
             rationaleExtra = rawRat;
         }
-        // v2.1 structured rationale has no score_rationale — use the companion text dict or consolidated text
+        // v2.1 structured rationale has no score_rationale â€” use the companion text dict or consolidated text
         if (!r && v21RationaleText && v21RationaleText[sid]) {
             r = String(v21RationaleText[sid]).trim();
         }
@@ -3754,7 +3754,7 @@ function renderEvidenceAndRationale(vendor, granular) {
             ? `<div class="vendor-report-sources"><strong>Sources:</strong> ${escapeHtml(urls.slice(0, 8).join(' | '))}</div>`
             : `<div class="vendor-report-sources"><strong>Sources:</strong> none captured</div>`;
 
-        // Build rationale HTML — rich rendering for v2 structured data
+        // Build rationale HTML â€” rich rendering for v2 structured data
         let rationaleHtml;
         if (r) {
             // Format consolidated rationale: convert [Section Headers] to bold,
@@ -3771,9 +3771,9 @@ function renderEvidenceAndRationale(vendor, granular) {
                 // Score adjustment (v2 nested or v2.1 flat)
                 const adj = rationaleExtra.score_adjustment;
                 if (adj && adj.original !== undefined) {
-                    parts.push(`<div style="margin-top:6px;"><strong>Score Adjustment:</strong> ${Number(adj.original).toFixed(2)} → ${Number(adj.adjusted).toFixed(2)}${adj.reason ? ' — ' + escapeHtml(adj.reason) : ''}</div>`);
+                    parts.push(`<div style="margin-top:6px;"><strong>Score Adjustment:</strong> ${Number(adj.original).toFixed(2)} â†’ ${Number(adj.adjusted).toFixed(2)}${adj.reason ? ' â€” ' + escapeHtml(adj.reason) : ''}</div>`);
                 } else if (rationaleExtra.original_score !== undefined && rationaleExtra.adjusted_score !== undefined) {
-                    parts.push(`<div style="margin-top:6px;"><strong>Score Adjustment:</strong> ${Number(rationaleExtra.original_score).toFixed(2)} → ${Number(rationaleExtra.adjusted_score).toFixed(2)}${rationaleExtra.adjustment_reason ? ' — ' + escapeHtml(rationaleExtra.adjustment_reason) : ''}</div>`);
+                    parts.push(`<div style="margin-top:6px;"><strong>Score Adjustment:</strong> ${Number(rationaleExtra.original_score).toFixed(2)} â†’ ${Number(rationaleExtra.adjusted_score).toFixed(2)}${rationaleExtra.adjustment_reason ? ' â€” ' + escapeHtml(rationaleExtra.adjustment_reason) : ''}</div>`);
                 }
                 // Confidence & evidence quality
                 if (rationaleExtra.confidence) {
@@ -3791,11 +3791,11 @@ function renderEvidenceAndRationale(vendor, granular) {
                 // Criteria assessment table
                 const ca = rationaleExtra.criteria_assessment;
                 if (Array.isArray(ca) && ca.length) {
-                    const statusIcon = (s) => s === 'met' ? '✅' : s === 'partial' ? '⚠️' : '❌';
+                    const statusIcon = (s) => s === 'met' ? 'âœ…' : s === 'partial' ? 'âš ï¸' : 'âŒ';
                     const caRows = ca.map(c => `<tr>
                         <td style="padding:4px 8px; border-bottom:1px solid var(--border-color);">${statusIcon(c.status)} ${escapeHtml(c.status || '')}</td>
                         <td style="padding:4px 8px; border-bottom:1px solid var(--border-color);">${escapeHtml(c.criterion || '')}</td>
-                        <td style="padding:4px 8px; border-bottom:1px solid var(--border-color); font-size:12px;">${escapeHtml((c.evidence || '').substring(0, 120))}${(c.evidence || '').length > 120 ? '…' : ''}</td>
+                        <td style="padding:4px 8px; border-bottom:1px solid var(--border-color); font-size:12px;">${escapeHtml((c.evidence || '').substring(0, 120))}${(c.evidence || '').length > 120 ? 'â€¦' : ''}</td>
                     </tr>`).join('');
                     parts.push(`<div style="margin-top:8px;"><strong>Criteria Assessment:</strong>
                         <table style="width:100%; border-collapse:collapse; margin-top:4px; font-size:12px;">
@@ -3811,7 +3811,7 @@ function renderEvidenceAndRationale(vendor, granular) {
                 // Key evidence snippets from v2
                 const ke = rationaleExtra.key_evidence;
                 if (Array.isArray(ke) && ke.length && !(excerpts && excerpts.length)) {
-                    const keHtml = ke.slice(0, 4).map((e, i) => `<div style="margin-bottom:6px;"><strong>Excerpt ${i + 1}:</strong> ${escapeHtml(String(e).substring(0, 200))}${String(e).length > 200 ? '…' : ''}</div>`).join('');
+                    const keHtml = ke.slice(0, 4).map((e, i) => `<div style="margin-bottom:6px;"><strong>Excerpt ${i + 1}:</strong> ${escapeHtml(String(e).substring(0, 200))}${String(e).length > 200 ? 'â€¦' : ''}</div>`).join('');
                     parts.push(`<div style="margin-top:8px;"><strong>Key Evidence:</strong>${keHtml}</div>`);
                 }
                 if (parts.length) {
@@ -4126,7 +4126,7 @@ function renderPricingEvidenceAndRationale(vendor) {
 }
 
 function populateLegendView() {
-    // ── Schema intent banner ──
+    // â”€â”€ Schema intent banner â”€â”€
     const legendContainer = document.querySelector('.legend-container');
     let existingBanner = document.getElementById('schema-intent-banner');
     if (existingBanner) existingBanner.remove();
@@ -4140,7 +4140,7 @@ function populateLegendView() {
         if (firstH2) legendContainer.insertBefore(banner, firstH2);
     }
 
-    // ── Scoring legend with full text from schema ──
+    // â”€â”€ Scoring legend with full text from schema â”€â”€
     const legendGrid = document.querySelector('.legend-grid');
     const escapeAttr = (str) => String(str || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;');
 
@@ -4155,7 +4155,7 @@ function populateLegendView() {
             <div class="legend-item-header">
                 <div class="legend-score">${score}</div>
                 <div style="flex: 1;"><strong style="font-size: 13px;">${label}</strong></div>
-                <button class="edit-btn edit-score" data-score="${score}" data-description="${escapeAttr(description)}" title="Edit">✏️</button>
+                <button class="edit-btn edit-score" data-score="${score}" data-description="${escapeAttr(description)}" title="Edit">âœï¸</button>
             </div>
             <div class="legend-description">${body}</div>
         </div>
@@ -4183,7 +4183,7 @@ function populateLegendView() {
         });
     });
 
-    // ── Pillars and sub-pillars with enriched schema data ──
+    // â”€â”€ Pillars and sub-pillars with enriched schema data â”€â”€
     const pillarsGrid = document.querySelector('.pillars-grid');
     if (appState.pillarsGrouped && appState.pillarsGrouped.length > 0) {
         pillarsGrid.innerHTML = appState.pillarsGrouped.map(pillar => {
@@ -4192,7 +4192,7 @@ function populateLegendView() {
                 <div class="pillar-header clickable-pillar" data-pillar-code="${pillar.code}" style="cursor: pointer;">
                     <div class="header-with-edit">
                         <h3>${pillar.code} - ${pillar.name}</h3>
-                        <button class="edit-btn edit-pillar" data-pillar-code="${pillar.code}" data-pillar-name="${escapeAttr(pillar.name)}" data-pillar-desc="${escapeAttr(pillar.description || '')}" title="Edit">✏️</button>
+                        <button class="edit-btn edit-pillar" data-pillar-code="${pillar.code}" data-pillar-name="${escapeAttr(pillar.name)}" data-pillar-desc="${escapeAttr(pillar.description || '')}" title="Edit">âœï¸</button>
                     </div>
                     <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px; line-height: 1.4;">${pillar.description || ''}</div>
                 </div>
@@ -4206,7 +4206,7 @@ function populateLegendView() {
                                     <div class="sub-pillar-name">${sp.name}</div>
                                     <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; line-height: 1.3;">${sp.definition ? (sp.definition.length > 120 ? sp.definition.substring(0, 117) + '...' : sp.definition) : ''}</div>
                                 </div>
-                                <button class="edit-btn edit-sub-pillar" data-sub-pillar-id="${sp.id}" data-sub-pillar-name="${escapeAttr(sp.name)}" data-sub-pillar-def="${escapeAttr(sp.definition || '')}" title="Edit">✏️</button>
+                                <button class="edit-btn edit-sub-pillar" data-sub-pillar-id="${sp.id}" data-sub-pillar-name="${escapeAttr(sp.name)}" data-sub-pillar-def="${escapeAttr(sp.definition || '')}" title="Edit">âœï¸</button>
                             </div>
                         </div>
                     `;
@@ -4259,7 +4259,7 @@ function populateLegendView() {
         });
     }
 
-    // ── Field descriptions ──
+    // â”€â”€ Field descriptions â”€â”€
     const fieldDescriptions = document.querySelector('.field-descriptions');
     const baseFields = ['vendor', 'region', 'specialization', getVendorTypeField(), 'is_ai_first', 'is_startup'];
     // Derive pillar codes dynamically from the current schema
@@ -4275,7 +4275,7 @@ function populateLegendView() {
                 <div class="field-desc-item">
                     <div class="field-desc-header">
                         <div class="field-desc-title">${meta.name}</div>
-                        <button class="edit-btn edit-field" data-field-id="${field}" data-field-name="${meta.name}" data-field-desc="${meta.description}" title="Edit">✏️</button>
+                        <button class="edit-btn edit-field" data-field-id="${field}" data-field-name="${meta.name}" data-field-desc="${meta.description}" title="Edit">âœï¸</button>
                     </div>
                     <div class="field-desc-text">${meta.description}</div>
                 </div>
@@ -4292,7 +4292,7 @@ function populateLegendView() {
                 <div class="field-desc-item">
                     <div class="field-desc-header">
                         <div class="field-desc-title">${meta.name}</div>
-                        <button class="edit-btn edit-field" data-field-id="${field}" data-field-name="${meta.name}" data-field-desc="${meta.description}" title="Edit">✏️</button>
+                        <button class="edit-btn edit-field" data-field-id="${field}" data-field-name="${meta.name}" data-field-desc="${meta.description}" title="Edit">âœï¸</button>
                     </div>
                     <div class="field-desc-text">${meta.description}</div>
                 </div>
@@ -4311,7 +4311,7 @@ function populateLegendView() {
         });
     });
 
-    // ── Pricing Model Evaluation section (MDR schema only) ──
+    // â”€â”€ Pricing Model Evaluation section (MDR schema only) â”€â”€
     let existingPricing = document.getElementById('pricing-evaluation-section');
     if (existingPricing) existingPricing.remove();
 
@@ -4329,7 +4329,7 @@ function populateLegendView() {
 
         // Pricing scoring scale
         if (Object.keys(psl).length > 0) {
-            pricingHtml += `<h3 style="margin-bottom: 12px;">Pricing Scoring Scale (0–5)</h3>`;
+            pricingHtml += `<h3 style="margin-bottom: 12px;">Pricing Scoring Scale (0â€“5)</h3>`;
             pricingHtml += `<div class="legend-grid">`;
             Object.entries(psl).forEach(([score, description]) => {
                 const colonIdx = description.indexOf(':');
@@ -4358,7 +4358,7 @@ function populateLegendView() {
                 pricingHtml += `
                     <div class="pillar-section" style="border-left-color: #e67e22;">
                         <div class="pillar-header">
-                            <h3>${code} — ${dim.name || ''}</h3>
+                            <h3>${code} â€” ${dim.name || ''}</h3>
                             <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px; line-height: 1.4;">${dim.definition || ''}</div>
                         </div>
                         ${evalItems ? `<ul style="margin: 8px 0 4px 16px; padding: 0;">${evalItems}</ul>` : ''}
@@ -4374,9 +4374,9 @@ function populateLegendView() {
     }
 }
 
-// ══════════════════════════════════════════════════════════
-// ██  Reports View
-// ══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// â–ˆâ–ˆ  Reports View
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 function populateReportsView() {
     setupReportsTabListeners();
@@ -4651,7 +4651,7 @@ function populateLegendReport() {
 
     let html = '';
 
-    // ── Pillars & Sub-Pillars ──
+    // â”€â”€ Pillars & Sub-Pillars â”€â”€
     html += `<h2 class="report-section-title">Pillar & Sub-Pillar Reference</h2>
              <p class="report-section-subtitle">Complete breakdown of every pillar and its constituent sub-pillars, including definitions, evaluation criteria, and evidence requirements.</p>`;
 
@@ -4766,7 +4766,7 @@ function populateLegendReport() {
     body.innerHTML = html;
 }
 
-// ── Export Legend Report as Markdown ──
+// â”€â”€ Export Legend Report as Markdown â”€â”€
 
 function exportLegendReportAsMarkdown() {
     const schemaName = appState.currentSchemaFileName || appState.currentSchemaFile || 'Default';
@@ -4783,10 +4783,10 @@ function exportLegendReportAsMarkdown() {
 
     let md = '';
 
-    // Title — dynamic based on selected schema
+    // Title â€” dynamic based on selected schema
     const display = (appState.schemaDisplayMap || {})[appState.currentSchemaFile] || {};
     const schemaAbbr = display.abbr || 'DFIR';
-    md += `# ${schemaAbbr} Capability Taxonomy — Pillar & Sub-Pillar Reference\n\n`;
+    md += `# ${schemaAbbr} Capability Taxonomy â€” Pillar & Sub-Pillar Reference\n\n`;
     md += `**Schema:** ${schemaName}\n\n`;
     if (appState.schemaIntent) {
         md += `> ${appState.schemaIntent}\n\n`;
@@ -4799,7 +4799,7 @@ function exportLegendReportAsMarkdown() {
         const scoreRule = enrichedPillar.validated_pillar_score_rule || '';
         const aiSignals = enrichedPillar.ai_evidence_signals || [];
 
-        md += `---\n\n### ${pillar.code} — ${pillar.name}\n\n`;
+        md += `---\n\n### ${pillar.code} â€” ${pillar.name}\n\n`;
         if (pillar.description) {
             md += `**Focus:** ${pillar.description}\n\n`;
         }
@@ -4822,7 +4822,7 @@ function exportLegendReportAsMarkdown() {
             const whatToVerify = enriched.what_to_verify_publicly || [];
             const aiSpecific = enriched.ai_specific_evidence || [];
 
-            md += `#### ${idx + 1}. ${sp.id} — ${sp.name}\n\n`;
+            md += `#### ${idx + 1}. ${sp.id} â€” ${sp.name}\n\n`;
 
             if (sp.definition) {
                 md += `**Definition:** ${sp.definition}\n\n`;
@@ -4872,94 +4872,94 @@ function exportLegendReportAsMarkdown() {
     URL.revokeObjectURL(url);
 }
 
-// ── Market Insight Template ──
+// â”€â”€ Market Insight Template â”€â”€
 
-// Editable sections data — module-level so editor can mutate and re-render
+// Editable sections data â€” module-level so editor can mutate and re-render
 const _miTemplateSections = [
     {
         id: 'mi-title', name: 'Title', required: true, headerPublish: false,
-        limits: '20–65 characters', icon: '🏷️',
+        limits: '20â€“65 characters', icon: 'ðŸ·ï¸',
         guidelines: [
             'No set structure; keep to a single line.',
             'Suggested formats: "Technology Insight: [name], [period]", "[Industry] Insight: [description]", "[Role] Insight: [description]".',
             'Do not use a period at the end of the title.',
-            'Ideal length: 20–65 characters. Titles over 65 characters will be flagged.'
+            'Ideal length: 20â€“65 characters. Titles over 65 characters will be flagged.'
         ],
         examples: ['Technology Insight: Agentic AI in Digital Forensics','Agentic AI: The New Digital Forensics Workhorse']
     },
     {
         id: 'mi-summary', name: 'Summary', required: true, headerPublish: false,
-        limits: '300 characters HARD LIMIT', icon: '📝',
-        guidelines: ['2–3 sentences that contextualize the research.','300 characters is a HARD LIMIT — not a target; it is the absolute maximum.','Should convey the core argument and audience relevance.'],
+        limits: '300 characters HARD LIMIT', icon: 'ðŸ“',
+        guidelines: ['2â€“3 sentences that contextualize the research.','300 characters is a HARD LIMIT â€” not a target; it is the absolute maximum.','Should convey the core argument and audience relevance.'],
         examples: []
     },
     {
         id: 'mi-exec-summary', name: 'Executive Summary', required: true, headerPublish: false,
-        limits: '300 words maximum', icon: '📋',
+        limits: '300 words maximum', icon: 'ðŸ“‹',
         guidelines: ['Contains two required subsections: Key Findings and Recommendations.','Total word count for both subsections must not exceed 300 words.'],
         subsections: [
-            { name: 'Key Findings', required: true, detail: '2–4 bulleted insight statements. Each bullet should convey a standalone finding that the analysis supports.' },
+            { name: 'Key Findings', required: true, detail: '2â€“4 bulleted insight statements. Each bullet should convey a standalone finding that the analysis supports.' },
             { name: 'Recommendations', required: true, detail: '4 bullets maximum. Must be action-oriented and specific. Each recommendation should be something the reader can act on.' }
         ],
         examples: []
     },
     {
         id: 'mi-spa', name: 'Strategic Planning Assumption(s)', required: false, headerPublish: true,
-        limits: 'No explicit word limit', icon: '🎯',
-        guidelines: ['Include relevant Strategic Planning Assumptions if your team uses them.','Optional — omit if not applicable.'],
+        limits: 'No explicit word limit', icon: 'ðŸŽ¯',
+        guidelines: ['Include relevant Strategic Planning Assumptions if your team uses them.','Optional â€” omit if not applicable.'],
         examples: ['By 2030, the traditional models of manual, human-dependent forensic investigation will largely be irrelevant.']
     },
     {
         id: 'mi-analysis', name: 'Analysis', required: true, headerPublish: true,
-        limits: 'No explicit word limit (body of the document)', icon: '🔬',
-        guidelines: ['This is the substance of the document — the single argument the research makes.','Structure with 2–4 clear subheads.','Include figures and charts as appropriate.','Each subhead should advance a distinct facet of the argument.','Avoid repeating content from Key Findings or Conclusion.'],
+        limits: 'No explicit word limit (body of the document)', icon: 'ðŸ”¬',
+        guidelines: ['This is the substance of the document â€” the single argument the research makes.','Structure with 2â€“4 clear subheads.','Include figures and charts as appropriate.','Each subhead should advance a distinct facet of the argument.','Avoid repeating content from Key Findings or Conclusion.'],
         examples: []
     },
     {
         id: 'mi-background', name: 'Background and Context', required: false, headerPublish: true,
-        limits: 'Up to 500 words', icon: '📚',
+        limits: 'Up to 500 words', icon: 'ðŸ“š',
         guidelines: ['Profile or describe the market or technology being examined.','Provide necessary context for readers unfamiliar with the space.','Up to 500 words maximum.'],
         examples: []
     },
     {
         id: 'mi-impact', name: 'The Impact', required: false, headerPublish: true,
-        limits: 'Up to 2,000 words', icon: '💥',
+        limits: 'Up to 2,000 words', icon: 'ðŸ’¥',
         guidelines: ['Describe the implications for the audience.','Address: Who is affected? When and how?','Up to 2,000 words maximum.'],
         examples: []
     },
     {
         id: 'mi-conclusion', name: 'Conclusion', required: false, headerPublish: true,
-        limits: 'Up to 500 words', icon: '✅',
+        limits: 'Up to 500 words', icon: 'âœ…',
         guidelines: ['What should the audience do?','Include strategy reassessment and short/long-term actions.','Up to 500 words maximum.','Should not repeat content from the Analysis section.'],
         examples: []
     },
     {
         id: 'mi-contributors', name: 'Contributors', required: false, headerPublish: true,
-        limits: 'Names only', icon: '👥',
-        guidelines: ['Names only — no titles, roles, or affiliations.','Present alphabetically by last name.','Separated by commas. This is a HARD RULE.'],
+        limits: 'Names only', icon: 'ðŸ‘¥',
+        guidelines: ['Names only â€” no titles, roles, or affiliations.','Present alphabetically by last name.','Separated by commas. This is a HARD RULE.'],
         examples: ['Doe, Jane, Smith, John']
     },
     {
         id: 'mi-rec-reading', name: 'Recommended Reading', required: true, headerPublish: true,
-        limits: 'Managed externally', icon: '📖',
+        limits: 'Managed externally', icon: 'ðŸ“–',
         guidelines: ['Managed through the Gartner Add-On or Item Detail page.','Do not include inline in the document body.'],
         examples: []
     },
     {
         id: 'mi-acronyms', name: 'Acronym Key and Glossary Terms', required: false, headerPublish: true,
-        limits: 'As needed', icon: '🔤',
+        limits: 'As needed', icon: 'ðŸ”¤',
         guidelines: ['Define market- or technology-specific terms.','Include acronyms used in the document with their expansions.'],
-        examples: ['DFIR — Digital Forensics and Incident Response','SHAP — Shapley Additive Explanations']
+        examples: ['DFIR â€” Digital Forensics and Incident Response','SHAP â€” Shapley Additive Explanations']
     },
     {
         id: 'mi-evidence', name: 'Evidence', required: false, headerPublish: true,
-        limits: 'As needed', icon: '🔗',
+        limits: 'As needed', icon: 'ðŸ”—',
         guidelines: ['Include secondary research sources and qualifications.','Provide links to referenced studies, papers, or data sources.'],
         examples: []
     },
     {
         id: 'mi-notes', name: 'Notes', required: false, headerPublish: true,
-        limits: 'As needed', icon: '📌',
+        limits: 'As needed', icon: 'ðŸ“Œ',
         guidelines: ['Non-essential detail that supports or extends the analysis.','Format: "Note X: [Title]."'],
         examples: []
     }
@@ -4989,7 +4989,7 @@ const _miOverviewBlocks = [
     }
 ];
 
-// ── Guidelines persistence (localStorage) ──
+// â”€â”€ Guidelines persistence (localStorage) â”€â”€
 const MI_GUIDELINES_KEY = 'mi_template_guidelines';
 
 function _loadGuidelinesOverrides() {
@@ -5011,7 +5011,7 @@ function _getEffectiveGuidelines(blockId, defaults) {
     return null; // use defaults
 }
 
-// ── Guidelines Editor Modal ──
+// â”€â”€ Guidelines Editor Modal â”€â”€
 function _ensureGuidelinesModal() {
     if (document.getElementById('guidelines-editor-modal')) return;
 
@@ -5139,7 +5139,7 @@ function _closeGuidelinesEditor() {
     _guidelinesEditorContext = null;
 }
 
-// Build default HTML for a guidelines list (array of strings → <ul>)
+// Build default HTML for a guidelines list (array of strings â†’ <ul>)
 function _buildDefaultGuidelinesHtml(items) {
     return '<ul>' + items.map(g => `<li>${g}</li>`).join('') + '</ul>';
 }
@@ -5156,7 +5156,7 @@ function populateMarketInsightTemplate() {
     let html = '';
     html += `<div class="report-pillar-section" style="margin-bottom: 24px;">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">ℹ️</span>`;
+    html += `<span class="report-pillar-code">â„¹ï¸</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Document Overview</h2>`;
     html += `<p class="report-pillar-desc">Market Insight is a short-form content type for examining markets and vendors. It examines impacts and implications, and includes a conclusion section oriented toward vendors and Product Leaders.</p>`;
@@ -5202,7 +5202,7 @@ function populateMarketInsightTemplate() {
 
         html += `<div class="report-sp-longform-card">`;
 
-        // Guidelines — editable block with pencil icon
+        // Guidelines â€” editable block with pencil icon
         const guideDefaultHtml = _buildDefaultGuidelinesHtml(sec.guidelines);
         const guideSaved = _getEffectiveGuidelines(sec.id, null);
         const guideDisplayHtml = guideSaved !== null ? guideSaved : guideDefaultHtml;
@@ -5210,7 +5210,7 @@ function populateMarketInsightTemplate() {
         html += `<div class="report-sp-section guidelines-block" data-guidelines-id="${sec.id}">`;
         html += `<div class="guidelines-header-row">`;
         html += `<h4>Guidelines</h4>`;
-        html += `<button class="guidelines-edit-btn" data-block-id="${sec.id}" data-section-name="${sec.name} — Guidelines" title="Edit guidelines">`;
+        html += `<button class="guidelines-edit-btn" data-block-id="${sec.id}" data-section-name="${sec.name} â€” Guidelines" title="Edit guidelines">`;
         html += `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.793 9.793a.5.5 0 0 1-.168.11l-3.5 1.5a.5.5 0 0 1-.65-.65l1.5-3.5a.5.5 0 0 1 .11-.168L12.146.854zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 3.75 9.957l-.293.293 2.293 2.293.293-.293L12.793 5.5zM2.038 11.962l-.58 1.354.007.007 1.354-.58-1.181-1.181z"/></svg>`;
         html += `</button>`;
         html += `</div>`;
@@ -5266,7 +5266,7 @@ function populateMarketInsightTemplate() {
 }
 
 function exportMarketInsightTemplateAsMarkdown() {
-    let md = `# Market Insight — Content Type Guidance\n\n`;
+    let md = `# Market Insight â€” Content Type Guidance\n\n`;
     md += `Reference guide for the Market Insight document structure.\n\n`;
     md += `---\n\n`;
 
@@ -5283,11 +5283,11 @@ function exportMarketInsightTemplateAsMarkdown() {
     md += `- **Be specific, not hedging.** Replace vague qualifiers with direct claims.\n\n`;
 
     const templateSections = [
-        { name: 'Title', req: 'Required', limits: '20–65 characters', notes: 'Suggested formats: "Technology Insight: [name], [period]". No period at end.' },
-        { name: 'Summary', req: 'Required', limits: '300 characters HARD LIMIT', notes: '2–3 sentences contextualizing the research.' },
-        { name: 'Executive Summary', req: 'Required', limits: '300 words maximum', notes: 'Two subsections: Key Findings (2–4 bullets) and Recommendations (4 bullets max, action-oriented).' },
+        { name: 'Title', req: 'Required', limits: '20â€“65 characters', notes: 'Suggested formats: "Technology Insight: [name], [period]". No period at end.' },
+        { name: 'Summary', req: 'Required', limits: '300 characters HARD LIMIT', notes: '2â€“3 sentences contextualizing the research.' },
+        { name: 'Executive Summary', req: 'Required', limits: '300 words maximum', notes: 'Two subsections: Key Findings (2â€“4 bullets) and Recommendations (4 bullets max, action-oriented).' },
         { name: 'Strategic Planning Assumption(s)', req: 'Optional', limits: 'No explicit limit', notes: 'Relevant SPAs if team uses them.' },
-        { name: 'Analysis', req: 'Required', limits: 'Body of document', notes: 'Single argument, 2–4 subheads, figures as appropriate.' },
+        { name: 'Analysis', req: 'Required', limits: 'Body of document', notes: 'Single argument, 2â€“4 subheads, figures as appropriate.' },
         { name: 'Background and Context', req: 'Optional', limits: 'Up to 500 words', notes: 'Profile/describe market or technology.' },
         { name: 'The Impact', req: 'Optional', limits: 'Up to 2,000 words', notes: 'Implications for audience; who, when, how affected.' },
         { name: 'Conclusion', req: 'Optional', limits: 'Up to 500 words', notes: 'What audience should do. Strategy reassessment, actions.' },
@@ -5318,15 +5318,15 @@ function exportMarketInsightTemplateAsMarkdown() {
     URL.revokeObjectURL(url);
 }
 
-// ══════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  POSITIONING STATEMENT TEMPLATE (PJA Framework)
-// ══════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const _pjaOverviewBlocks = [
     {
         id: 'pja-overview-framework', title: 'PJA Framework Overview',
         items: [
-            'PJA stands for <strong>Position, Justification, Actions</strong> — the three pillars of every Gartner research position.',
+            'PJA stands for <strong>Position, Justification, Actions</strong> â€” the three pillars of every Gartner research position.',
             'A research note\'s strength is determined by the quality and coherence of these three components working as a unit.',
             'The Position captures attention and frames the issue. The Justification builds credibility and urgency. The Actions deliver value by telling clients what to do differently.',
             'Every Market Insight, Market Guide, and research note should be anchored by one or more strong PJA threads.',
@@ -5349,7 +5349,7 @@ const _pjaOverviewBlocks = [
 const _pjaTemplateSections = [
     {
         id: 'pja-position', name: 'Position Statement', required: true,
-        limits: '1–2 sentences; maximum 40 words recommended', icon: '🎯',
+        limits: '1â€“2 sentences; maximum 40 words recommended', icon: 'ðŸŽ¯',
         guidelines: [
             'A powerful position is a <strong>declarative statement</strong> providing Gartner\'s judgment on the current or future state of an important issue.',
             'The primary goals are to: <strong>command reader attention</strong>, <strong>surface an unavoidable challenge or opportunity</strong>, and <strong>motivate the desire to act</strong>.',
@@ -5375,12 +5375,12 @@ const _pjaTemplateSections = [
     },
     {
         id: 'pja-anti-patterns', name: 'Position Anti-Patterns', required: false,
-        limits: 'Reference only — examples to avoid', icon: '⚠️',
+        limits: 'Reference only â€” examples to avoid', icon: 'âš ï¸',
         guidelines: [
-            '<strong>Too vague / descriptive:</strong> "The New C-Suite AI Advisory Cabinet for Tech CEOs" — This reads like a title, not a position. No judgment, no state, no drama.',
-            '<strong>Missing judgment:</strong> "Domain Specific Language Models (DSLMs), not LLMs, are the Future of AI in Business" — has an issue and state but the judgment is passive. Compare with the modified: "Domain-Specific Language Models are a Disruptive Future Opportunity in a Woefully Unprepared IT Services Market."',
+            '<strong>Too vague / descriptive:</strong> "The New C-Suite AI Advisory Cabinet for Tech CEOs" â€” This reads like a title, not a position. No judgment, no state, no drama.',
+            '<strong>Missing judgment:</strong> "Domain Specific Language Models (DSLMs), not LLMs, are the Future of AI in Business" â€” has an issue and state but the judgment is passive. Compare with the modified: "Domain-Specific Language Models are a Disruptive Future Opportunity in a Woefully Unprepared IT Services Market."',
             '<strong>No motivation to act:</strong> if your position can be read and forgotten, it is not strong enough.',
-            'Test: If the position cannot be argued against, it is not a position — it is a description.'
+            'Test: If the position cannot be argued against, it is not a position â€” it is a description.'
         ],
         examples: [
             'WEAK: "The New C-Suite AI Advisory Cabinet for Tech CEOs"',
@@ -5391,17 +5391,17 @@ const _pjaTemplateSections = [
     },
     {
         id: 'pja-justification', name: 'Justification', required: true,
-        limits: '2–4 paragraphs; concise supporting arguments', icon: '📐',
+        limits: '2â€“4 paragraphs; concise supporting arguments', icon: 'ðŸ“',
         guidelines: [
             'The justification explains <strong>why the position is valid</strong> and <strong>why action is necessary</strong>.',
             'It must follow the content type structure of the associated research note (if applicable).',
             'Set the proper <strong>context</strong> for the reader to care and understand.',
             'Keep it <strong>concise</strong>: fewer, clearer arguments are stronger than long rationalizations. Move detail into notes.',
-            'Connect the positions to the recommended actions — the justification is the bridge between "what is happening" and "what to do."',
+            'Connect the positions to the recommended actions â€” the justification is the bridge between "what is happening" and "what to do."',
             'The justification must <strong>convince the reader</strong> that the positions are valid and merit action.'
         ],
         subsections: [
-            { name: 'Context', required: true, detail: 'Situation and importance — why does the reader need to care about this right now?' },
+            { name: 'Context', required: true, detail: 'Situation and importance â€” why does the reader need to care about this right now?' },
             { name: 'Evidence & Logic', required: true, detail: 'Data, case studies, vendor examples, surveys, prior art, or academic references that validate the position.' },
             { name: 'Action Bridge', required: true, detail: 'Set up the reasoning for why specific actions are necessary. This transitions the reader from "I believe you" to "tell me what to do."' }
         ],
@@ -5413,11 +5413,11 @@ const _pjaTemplateSections = [
     },
     {
         id: 'pja-actions', name: 'Recommended Actions', required: true,
-        limits: '3–5 actions; each with specific outcome', icon: '🚀',
+        limits: '3â€“5 actions; each with specific outcome', icon: 'ðŸš€',
         guidelines: [
             'Actions list how clients <strong>should respond</strong> to the stated positions to achieve success in their roles.',
             'Cover <strong>"how to"</strong> level actions that address the challenge or opportunity in the position.',
-            'Actions must be <strong>non-obvious and meaningful in impact</strong> — not generic best-practice advice.',
+            'Actions must be <strong>non-obvious and meaningful in impact</strong> â€” not generic best-practice advice.',
             'Include the <strong>results achieved</strong> if actions are successfully implemented.',
             'Actions should provide <strong>previously unknown or little-known remedies</strong> to the challenge or opportunity.',
             'Ensure actions are <strong>insightful</strong>: little-known, unconventional, or often ignored.',
@@ -5437,7 +5437,7 @@ const _pjaTemplateSections = [
     },
     {
         id: 'pja-alignment', name: 'Report Alignment', required: true,
-        limits: 'Cross-reference table', icon: '🔗',
+        limits: 'Cross-reference table', icon: 'ðŸ”—',
         guidelines: [
             'Every positioning statement should map directly to the <strong>Key Findings and Recommendations</strong> of the parent Market Insight report.',
             'The primary position should align with <strong>Key Finding #1</strong> of the report.',
@@ -5446,18 +5446,18 @@ const _pjaTemplateSections = [
             'Document this mapping explicitly in the Cross-Reference Map below.'
         ],
         subsections: [
-            { name: 'Position → Key Finding', required: true, detail: 'Map each position statement to a specific Key Finding number.' },
-            { name: 'Action → Recommendation', required: true, detail: 'Map each recommended action to corresponding report Recommendations.' },
-            { name: 'Justification → Analysis/Evidence', required: true, detail: 'Map justification elements to specific Analysis sections or Evidence items.' }
+            { name: 'Position â†’ Key Finding', required: true, detail: 'Map each position statement to a specific Key Finding number.' },
+            { name: 'Action â†’ Recommendation', required: true, detail: 'Map each recommended action to corresponding report Recommendations.' },
+            { name: 'Justification â†’ Analysis/Evidence', required: true, detail: 'Map justification elements to specific Analysis sections or Evidence items.' }
         ],
         examples: [
-            'Position: "AI efficiency dividends are being captured by vendors" → Key Finding #1: "67% of vendors use subscription-only pricing"',
-            'Action: "Require AI efficiency sharing clauses" → Recommendation #3: "Negotiate outcome-based pricing tiers"'
+            'Position: "AI efficiency dividends are being captured by vendors" â†’ Key Finding #1: "67% of vendors use subscription-only pricing"',
+            'Action: "Require AI efficiency sharing clauses" â†’ Recommendation #3: "Negotiate outcome-based pricing tiers"'
         ]
     },
     {
         id: 'pja-checklist', name: 'Quality Checklist', required: false,
-        limits: 'Self-assessment', icon: '✅',
+        limits: 'Self-assessment', icon: 'âœ…',
         guidelines: [
             '<strong>Position:</strong> Is it declarative? Can it be argued against? Does it command attention? Does it surface an unavoidable challenge? Does it motivate action?',
             '<strong>Justification:</strong> Is context set properly? Is evidence concise and credible? Does it connect positions to actions? Would a skeptical reader be convinced?',
@@ -5481,7 +5481,7 @@ function populatePositioningStatementTemplate() {
     // Overview section
     html += `<div class="report-pillar-section" style="margin-bottom: 24px;">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">ℹ️</span>`;
+    html += `<span class="report-pillar-code">â„¹ï¸</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">PJA Framework Overview</h2>`;
     html += `<p class="report-pillar-desc">The Position, Justification, Actions framework is Gartner's approach for crafting powerful, defensible, actionable research positions. Every research note should be anchored by one or more strong PJA threads aligned with its Key Findings.</p>`;
@@ -5492,13 +5492,13 @@ function populatePositioningStatementTemplate() {
     html += `<div class="report-sp-section" style="text-align: center; padding: 20px 0;">`;
     html += `<div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">`;
     html += `<div style="background: var(--color-primary); color: #fff; padding: 14px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; min-width: 140px;">`;
-    html += `🎯 POSITION<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Declarative stance on<br>an important issue</span></div>`;
-    html += `<span style="font-size: 24px; color: var(--text-secondary);">→</span>`;
+    html += `ðŸŽ¯ POSITION<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Declarative stance on<br>an important issue</span></div>`;
+    html += `<span style="font-size: 24px; color: var(--text-secondary);">â†’</span>`;
     html += `<div style="background: #0078d4; color: #fff; padding: 14px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; min-width: 140px;">`;
-    html += `📐 JUSTIFICATION<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Evidence & logic that<br>validates the position</span></div>`;
-    html += `<span style="font-size: 24px; color: var(--text-secondary);">→</span>`;
+    html += `ðŸ“ JUSTIFICATION<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Evidence & logic that<br>validates the position</span></div>`;
+    html += `<span style="font-size: 24px; color: var(--text-secondary);">â†’</span>`;
     html += `<div style="background: #107c10; color: #fff; padding: 14px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; min-width: 140px;">`;
-    html += `🚀 ACTIONS<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Specific client response<br>to achieve success</span></div>`;
+    html += `ðŸš€ ACTIONS<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Specific client response<br>to achieve success</span></div>`;
     html += `</div></div>`;
 
     // Overview blocks
@@ -5544,7 +5544,7 @@ function populatePositioningStatementTemplate() {
         html += `<div class="report-sp-section guidelines-block" data-guidelines-id="${sec.id}">`;
         html += `<div class="guidelines-header-row">`;
         html += `<h4>Guidelines</h4>`;
-        html += `<button class="guidelines-edit-btn" data-block-id="${sec.id}" data-section-name="${sec.name} — Guidelines" title="Edit guidelines">`;
+        html += `<button class="guidelines-edit-btn" data-block-id="${sec.id}" data-section-name="${sec.name} â€” Guidelines" title="Edit guidelines">`;
         html += `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.793 9.793a.5.5 0 0 1-.168.11l-3.5 1.5a.5.5 0 0 1-.65-.65l1.5-3.5a.5.5 0 0 1 .11-.168L12.146.854zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 3.75 9.957l-.293.293 2.293 2.293.293-.293L12.793 5.5zM2.038 11.962l-.58 1.354.007.007 1.354-.58-1.181-1.181z"/></svg>`;
         html += `</button>`;
         html += `</div>`;
@@ -5599,17 +5599,17 @@ function populatePositioningStatementTemplate() {
 }
 
 function exportPositioningStatementTemplateAsMarkdown() {
-    let md = `# Positioning Statement — PJA Framework Guidance\n\n`;
+    let md = `# Positioning Statement â€” PJA Framework Guidance\n\n`;
     md += `Reference guide for the Position, Justification, Actions framework.\n\n`;
     md += `---\n\n`;
 
     md += `## PJA Framework Overview\n\n`;
-    md += `PJA stands for **Position, Justification, Actions** — the three pillars of every Gartner research position.\n\n`;
+    md += `PJA stands for **Position, Justification, Actions** â€” the three pillars of every Gartner research position.\n\n`;
     md += `| Step | Purpose |\n`;
     md += `|------|---------|\n`;
-    md += `| 🎯 Position | Declarative stance on an important issue |\n`;
-    md += `| 📐 Justification | Evidence & logic that validates the position |\n`;
-    md += `| 🚀 Actions | Specific client response to achieve success |\n\n`;
+    md += `| ðŸŽ¯ Position | Declarative stance on an important issue |\n`;
+    md += `| ðŸ“ Justification | Evidence & logic that validates the position |\n`;
+    md += `| ðŸš€ Actions | Specific client response to achieve success |\n\n`;
 
     md += `## Writing & Style\n\n`;
     md += `- **Be declarative, not descriptive.** Positions are judgments, not summaries.\n`;
@@ -5655,7 +5655,7 @@ function exportPositioningStatementTemplateAsMarkdown() {
     URL.revokeObjectURL(url);
 }
 
-// ── Magic Quadrant Methodology Template ──
+// â”€â”€ Magic Quadrant Methodology Template â”€â”€
 // Source: Gartner G00802987 "How Markets and Vendors Are Evaluated in Gartner Magic Quadrants"
 
 const _mqAbilityToExecuteCriteria = [
@@ -5672,7 +5672,7 @@ const _mqAbilityToExecuteCriteria = [
     { id: 'ATE-6', name: 'Customer Experience', weight: 'High',
         desc: 'Relationships, products and services, and programs that enable clients to succeed with the products being evaluated. Includes technical/account support, ancillary tools, customer support programs (and quality), user groups and SLAs.' },
     { id: 'ATE-7', name: 'Operations', weight: 'Medium',
-        desc: 'The vendor\'s ability to meet its goals and commitments. Includes quality of organizational structure — skills, experiences, programs, systems and other vehicles that enable the vendor to operate effectively and efficiently.' },
+        desc: 'The vendor\'s ability to meet its goals and commitments. Includes quality of organizational structure â€” skills, experiences, programs, systems and other vehicles that enable the vendor to operate effectively and efficiently.' },
 ];
 
 const _mqCompletenessOfVisionCriteria = [
@@ -5691,69 +5691,69 @@ const _mqCompletenessOfVisionCriteria = [
     { id: 'COV-7', name: 'Innovation', weight: 'High',
         desc: 'Marshaling of resources, expertise or capital for competitive advantage, investment, consolidation or defense against acquisition.' },
     { id: 'COV-8', name: 'Geographic Strategy', weight: 'Low',
-        desc: 'A vendor\'s strategy to direct resources, skills and offerings to meet the needs of regions beyond its "home" area — directly or through partners, channels and subsidiaries — as appropriate for that region and market.' },
+        desc: 'A vendor\'s strategy to direct resources, skills and offerings to meet the needs of regions beyond its "home" area â€” directly or through partners, channels and subsidiaries â€” as appropriate for that region and market.' },
 ];
 
 const _mqQuadrantDefs = [
-    { name: 'Leaders', icon: '👑', color: '#107c10',
+    { name: 'Leaders', icon: 'ðŸ‘‘', color: '#107c10',
         desc: 'Provide mature offerings that meet market demand and have demonstrated the vision necessary to sustain their market position as requirements evolve. They focus on and invest in their offerings to the point where they lead the market and can affect its overall direction.',
         detail: 'Leaders typically possess a large, satisfied customer base (relative to market size) and enjoy high visibility. Their size and financial strength enable them to remain viable in a challenging economy. They respond to a wide market audience by supporting broad requirements. However, they may fail to meet the specific needs of vertical markets or more specialized segments.' },
-    { name: 'Challengers', icon: '⚔️', color: '#0078d4',
+    { name: 'Challengers', icon: 'âš”ï¸', color: '#0078d4',
         desc: 'Have a strong Ability to Execute but may not have a plan that will maintain a strong value proposition for new customers. Larger vendors in mature markets may be positioned as Challengers because they choose to minimize risk or avoid disrupting their customers.',
         detail: 'Challengers typically have significant size and financial resources but may lack strong vision, innovation or an overall understanding of market needs. They may offer products nearing end of life that dominate a large but shrinking segment. They can become Leaders if their vision develops.' },
-    { name: 'Visionaries', icon: '🔭', color: '#8661c5',
+    { name: 'Visionaries', icon: 'ðŸ”­', color: '#8661c5',
         desc: 'Align with Gartner\'s view of how a market will evolve, but their ability to deliver against that vision is less proven. In growing markets, this status is typical. In more mature markets, it may reflect a competitive strategy for a smaller vendor.',
         detail: 'Visionaries fall into the higher-risk-higher-reward category. They often introduce new technology, services or business models, and may need to build financial strength, service and support, and sales/distribution channels. They are sometimes attractive acquisition targets for Leaders or Challengers.' },
-    { name: 'Niche Players', icon: '🎯', color: '#c19c00',
+    { name: 'Niche Players', icon: 'ðŸŽ¯', color: '#c19c00',
         desc: 'Do well in a segment of a market, or have a limited ability to innovate or outperform other vendors in the wider market. This may be because they focus on a particular functionality or geographic region, or because they are new entrants.',
         detail: 'Niche Players may have reasonably broad functionality but with limited implementation and support capabilities and relatively limited customer bases. A Niche Player may be a perfect fit for your requirements. However, if it goes against the direction of the market, it may be a risky choice because its long-term viability will be threatened.' },
 ];
 
 const _mqMarketMaturityPhases = [
-    { phase: 'Emerging', icon: '🌱', researchType: 'Market Guide',
+    { phase: 'Emerging', icon: 'ðŸŒ±', researchType: 'Market Guide',
         desc: 'Market lacks definition, many vendors offering point solutions. Low barriers to entry. Comparative vendor assessments difficult if not impossible.' },
-    { phase: 'High-Growth', icon: '📈', researchType: 'Magic Quadrant transition',
+    { phase: 'High-Growth', icon: 'ðŸ“ˆ', researchType: 'Magic Quadrant transition',
         desc: 'Market crystallizing with distinguishable vendor differentiation. Provider strategies becoming clearer and customer requirements firming up.' },
-    { phase: 'Established', icon: '🏛️', researchType: 'Magic Quadrant',
-        desc: 'Provider differentiation is distinct and market growth remains strong. Magic Quadrant methodology applies — vendors evaluated on Ability to Execute and Completeness of Vision.' },
-    { phase: 'Consolidating', icon: '🔗', researchType: 'Magic Quadrant / Market Guide transition',
+    { phase: 'Established', icon: 'ðŸ›ï¸', researchType: 'Magic Quadrant',
+        desc: 'Provider differentiation is distinct and market growth remains strong. Magic Quadrant methodology applies â€” vendors evaluated on Ability to Execute and Completeness of Vision.' },
+    { phase: 'Consolidating', icon: 'ðŸ”—', researchType: 'Magic Quadrant / Market Guide transition',
         desc: 'Offerings becoming relatively interchangeable. Fewer vendors, less differentiation. Market Guide may become more appropriate.' },
-    { phase: 'Declining', icon: '📉', researchType: 'Market Guide',
+    { phase: 'Declining', icon: 'ðŸ“‰', researchType: 'Market Guide',
         desc: 'Products/services provided by only a few vendors. Solution features lack differentiation. Comparative positioning less important than market-level analysis.' },
 ];
 
 const _mqResearchProcess = [
-    { step: 'Market Identification', icon: '🔍',
+    { step: 'Market Identification', icon: 'ðŸ”',
         desc: 'Market must be established, distinct and viable. Selected based on impact of emerging trends and users\' need to understand changing market dynamics.' },
-    { step: 'Vendor Selection', icon: '📋',
+    { step: 'Vendor Selection', icon: 'ðŸ“‹',
         desc: 'Focused analysis of the most relevant providers for end-user clients. Criteria may consist of installed base, product/service features, customer interest or other defining characteristics.' },
-    { step: 'Market Research', icon: '📚',
+    { step: 'Market Research', icon: 'ðŸ“š',
         items: ['Attending vendor briefings and product demonstrations', 'Conducting surveys', 'Reviewing vendor-submitted information', 'Reviewing customer feedback available to Gartner', 'Interacting with industry contacts', 'Discussing topics with clients and non-clients', 'Consulting public sources (SEC filings, articles, papers)', 'Seeking input from other Gartner analysts'] },
-    { step: 'Vendor Evaluation', icon: '⚖️',
+    { step: 'Vendor Evaluation', icon: 'âš–ï¸',
         desc: 'Teams of analysts collaborate to evaluate and rate each vendor against each weighted criterion. Resulting scores generate the Magic Quadrant graphic.' },
-    { step: 'Research Publication', icon: '📰',
+    { step: 'Research Publication', icon: 'ðŸ“°',
         desc: 'Published as interactive tool and static HTML/PDF. Explains vendors\' comparative positions and ratings plus market developments. Undergoes rigorous internal review and validation, plus factual review by included vendors.' },
 ];
 
 const _mqCompanionResearch = [
-    { name: 'Critical Capabilities', icon: '📐',
+    { name: 'Critical Capabilities', icon: 'ðŸ“',
         desc: 'Analyzes products/services based on use cases matching client deployment scenarios. Shows which products are best fit in various use cases. Only Product/Service scores under Ability to Execute are closely connected to MQ positioning.' },
-    { name: 'Peer Insights', icon: '👥',
+    { name: 'Peer Insights', icon: 'ðŸ‘¥',
         desc: 'Ratings and reviews contributed by end-user professionals. Contributors share firsthand experience from evaluation through deployment. One single review will not affect vendor placement.' },
-    { name: 'Voice of the Customer', icon: '📣',
+    { name: 'Voice of the Customer', icon: 'ðŸ“£',
         desc: 'Aggregated view of end-user reviews published on Gartner Peer Insights, calculated under the Voice of the Customer methodology.' },
-    { name: 'Additional Perspectives', icon: '🌐',
+    { name: 'Additional Perspectives', icon: 'ðŸŒ',
         desc: 'Context for specified geography, industry or company size where differentiation is relevant. Notable Vendors section may include vendors not meeting the full MQ inclusion criteria.' },
 ];
 
 const _mqUsageGuidelines = [
-    'Do NOT evaluate vendors in the Leaders quadrant only — a Niche Player may offer functions ideally suited to your needs.',
+    'Do NOT evaluate vendors in the Leaders quadrant only â€” a Niche Player may offer functions ideally suited to your needs.',
     'A Leader may cost more, not support your region/industry, or have delivery styles that don\'t align with your requirements.',
-    'If making a strategic investment, weigh Ability to Execute more heavily — evaluate Challengers before Visionaries.',
+    'If making a strategic investment, weigh Ability to Execute more heavily â€” evaluate Challengers before Visionaries.',
     'If seeking competitive advantage through emerging technology, evaluate Visionaries before Challengers.',
     'In an established, mature market, most vendors cluster in Leaders (similar complete offerings); in a growing market, most cluster in Niche Players (incomplete but distinctive).',
-    'Use the Customize tab to adjust weightings to your own requirements — client-customized views are for internal use only.',
-    'The "as of" date indicates when research was closed to further input — events after that date are not considered.',
+    'Use the Customize tab to adjust weightings to your own requirements â€” client-customized views are for internal use only.',
+    'The "as of" date indicates when research was closed to further input â€” events after that date are not considered.',
     'Year-to-year comparisons: market definition, criteria and weightings may change, affecting vendor positions and/or ratings.',
 ];
 
@@ -5764,10 +5764,10 @@ function populateMagicQuadrantTemplate() {
 
     let html = '';
 
-    // ── Overview ──
+    // â”€â”€ Overview â”€â”€
     html += `<div class="report-pillar-section" style="margin-bottom: 24px;">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">ℹ️</span>`;
+    html += `<span class="report-pillar-code">â„¹ï¸</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Overview</h2>`;
     html += `<p class="report-pillar-desc">Magic Quadrants offer visual snapshots, in-depth analyses and actionable advice that provide insight into a market's direction, maturity and participants. Based on rigorous, fact-based analysis backed by a highly structured methodology.</p>`;
@@ -5779,7 +5779,7 @@ function populateMagicQuadrantTemplate() {
     html += `<h4>Key Findings</h4>`;
     html += `<ul style="margin: 8px 0; padding-left: 20px;">`;
     html += `<li>Gartner Magic Quadrants are based on rigorous, fact-based analysis backed by a highly structured methodology</li>`;
-    html += `<li>Your understanding and interpretation is crucial — it enables you to get the most from the market analysis based on your unique business and technology needs</li>`;
+    html += `<li>Your understanding and interpretation is crucial â€” it enables you to get the most from the market analysis based on your unique business and technology needs</li>`;
     html += `<li>Magic Quadrants depict markets that are established, but not yet consolidated or in decline</li>`;
     html += `<li>The Magic Quadrant has <strong>15 weighted criteria</strong> across two axes: Ability to Execute (7) and Completeness of Vision (8)</li>`;
     html += `</ul></div>`;
@@ -5788,17 +5788,17 @@ function populateMagicQuadrantTemplate() {
     html += `<div class="report-sp-section" style="text-align: center; padding: 20px 0;">`;
     html += `<div style="display: flex; align-items: stretch; justify-content: center; gap: 24px; flex-wrap: wrap;">`;
     html += `<div style="background: #0078d4; color: #fff; padding: 18px 28px; border-radius: 10px; font-weight: 700; font-size: 15px; min-width: 200px; flex: 1; max-width: 340px;">`;
-    html += `📊 ABILITY TO EXECUTE<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Y-axis — 7 criteria<br>Product, viability, sales, market responsiveness,<br>marketing, customer experience, operations</span></div>`;
+    html += `ðŸ“Š ABILITY TO EXECUTE<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Y-axis â€” 7 criteria<br>Product, viability, sales, market responsiveness,<br>marketing, customer experience, operations</span></div>`;
     html += `<div style="background: #8661c5; color: #fff; padding: 18px 28px; border-radius: 10px; font-weight: 700; font-size: 15px; min-width: 200px; flex: 1; max-width: 340px;">`;
-    html += `🔭 COMPLETENESS OF VISION<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">X-axis — 8 criteria<br>Market understanding, strategies (marketing, sales,<br>product, vertical, geographic), business model, innovation</span></div>`;
+    html += `ðŸ”­ COMPLETENESS OF VISION<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">X-axis â€” 8 criteria<br>Market understanding, strategies (marketing, sales,<br>product, vertical, geographic), business model, innovation</span></div>`;
     html += `</div></div>`;
 
     html += `</div></div>`;
 
-    // ── The Four Quadrants ──
+    // â”€â”€ The Four Quadrants â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">◆</span>`;
+    html += `<span class="report-pillar-code">â—†</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">The Four Quadrants</h2>`;
     html += `<p class="report-pillar-desc">Vendors are positioned in four quadrants based on their relative scores on both axes</p>`;
@@ -5815,12 +5815,12 @@ function populateMagicQuadrantTemplate() {
     });
     html += `</div></div>`;
 
-    // ── Ability to Execute Criteria (7) ──
+    // â”€â”€ Ability to Execute Criteria (7) â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📊</span>`;
+    html += `<span class="report-pillar-code">ðŸ“Š</span>`;
     html += `<div class="report-pillar-header-text">`;
-    html += `<h2 class="report-pillar-name">Ability to Execute — 7 Criteria</h2>`;
+    html += `<h2 class="report-pillar-name">Ability to Execute â€” 7 Criteria</h2>`;
     html += `<p class="report-pillar-desc">Summarizes factors such as the vendor's product development, overall viability, market responsiveness, sales channels, customer experiences and customer base</p>`;
     html += `</div></div>`;
 
@@ -5838,12 +5838,12 @@ function populateMagicQuadrantTemplate() {
     });
     html += `</div>`;
 
-    // ── Completeness of Vision Criteria (8) ──
+    // â”€â”€ Completeness of Vision Criteria (8) â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🔭</span>`;
+    html += `<span class="report-pillar-code">ðŸ”­</span>`;
     html += `<div class="report-pillar-header-text">`;
-    html += `<h2 class="report-pillar-name">Completeness of Vision — 8 Criteria</h2>`;
+    html += `<h2 class="report-pillar-name">Completeness of Vision â€” 8 Criteria</h2>`;
     html += `<p class="report-pillar-desc">Reflects the vendor's innovation, whether the vendor drives or follows the market, and if the vendor's view of how the market will develop matches Gartner's perspective</p>`;
     html += `</div></div>`;
 
@@ -5861,10 +5861,10 @@ function populateMagicQuadrantTemplate() {
     });
     html += `</div>`;
 
-    // ── Research Process ──
+    // â”€â”€ Research Process â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🔬</span>`;
+    html += `<span class="report-pillar-code">ðŸ”¬</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Research Process</h2>`;
     html += `<p class="report-pillar-desc">The comprehensive process Gartner uses to define market boundaries, research focus and evaluation steps</p>`;
@@ -5889,13 +5889,13 @@ function populateMagicQuadrantTemplate() {
     });
     html += `</div>`;
 
-    // ── Market Maturity & Research Type ──
+    // â”€â”€ Market Maturity & Research Type â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📈</span>`;
+    html += `<span class="report-pillar-code">ðŸ“ˆ</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Market Maturity & Research Type</h2>`;
-    html += `<p class="report-pillar-desc">All markets follow a predictable life cycle — maturity determines whether Gartner publishes a Magic Quadrant or Market Guide</p>`;
+    html += `<p class="report-pillar-desc">All markets follow a predictable life cycle â€” maturity determines whether Gartner publishes a Magic Quadrant or Market Guide</p>`;
     html += `</div></div>`;
 
     html += `<div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0;">`;
@@ -5910,10 +5910,10 @@ function populateMagicQuadrantTemplate() {
     });
     html += `</div></div>`;
 
-    // ── Companion Research ──
+    // â”€â”€ Companion Research â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📚</span>`;
+    html += `<span class="report-pillar-code">ðŸ“š</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Companion Research & Peer Insights</h2>`;
     html += `<p class="report-pillar-desc">The Magic Quadrant is part of an ecosystem of complementary Gartner research deliverables</p>`;
@@ -5931,10 +5931,10 @@ function populateMagicQuadrantTemplate() {
     });
     html += `</div>`;
 
-    // ── Usage Guidelines ──
+    // â”€â”€ Usage Guidelines â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📌</span>`;
+    html += `<span class="report-pillar-code">ðŸ“Œ</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Usage Guidelines & Best Practices</h2>`;
     html += `<p class="report-pillar-desc">How to interpret and apply Magic Quadrant analysis to your requirements</p>`;
@@ -5948,11 +5948,11 @@ function populateMagicQuadrantTemplate() {
     });
     html += `</ul></div></div></div>`;
 
-    // ── Source ──
+    // â”€â”€ Source â”€â”€
     html += `<div class="report-pillar-section" style="margin-top: 24px;">`;
     html += `<div class="report-sp-longform-card" style="background: var(--bg-secondary); border: 1px dashed var(--border-color);">`;
     html += `<div class="report-sp-section" style="text-align: center; font-size: 12px; color: var(--text-muted);">`;
-    html += `Source: Gartner, Inc. | G00802987 — "How Markets and Vendors Are Evaluated in Gartner Magic Quadrants" | 2 July 2025<br>`;
+    html += `Source: Gartner, Inc. | G00802987 â€” "How Markets and Vendors Are Evaluated in Gartner Magic Quadrants" | 2 July 2025<br>`;
     html += `By Megan Flewelling, Tim Weaver, David Black | Initiatives: Delivery of Functional Responsibilities`;
     html += `</div></div></div>`;
 
@@ -5960,15 +5960,15 @@ function populateMagicQuadrantTemplate() {
 }
 
 function exportMagicQuadrantTemplateAsMarkdown() {
-    let md = '# Magic Quadrant — Methodology & Evaluation Framework\n\n';
-    md += '*Gartner G00802987 — "How Markets and Vendors Are Evaluated in Gartner Magic Quadrants"*\n';
+    let md = '# Magic Quadrant â€” Methodology & Evaluation Framework\n\n';
+    md += '*Gartner G00802987 â€” "How Markets and Vendors Are Evaluated in Gartner Magic Quadrants"*\n';
     md += '*2 July 2025 | By Megan Flewelling, Tim Weaver, David Black*\n\n---\n\n';
 
     md += '## Overview\n\n';
     md += 'Magic Quadrants offer visual snapshots, in-depth analyses and actionable advice that provide insight into a market\'s direction, maturity and participants. Based on rigorous, fact-based analysis backed by a highly structured methodology.\n\n';
     md += '**15 weighted criteria** across two axes:\n';
-    md += '- **Ability to Execute** (Y-axis) — 7 criteria\n';
-    md += '- **Completeness of Vision** (X-axis) — 8 criteria\n\n---\n\n';
+    md += '- **Ability to Execute** (Y-axis) â€” 7 criteria\n';
+    md += '- **Completeness of Vision** (X-axis) â€” 8 criteria\n\n---\n\n';
 
     md += '## The Four Quadrants\n\n';
     _mqQuadrantDefs.forEach(q => {
@@ -5976,13 +5976,13 @@ function exportMagicQuadrantTemplateAsMarkdown() {
     });
     md += '---\n\n';
 
-    md += '## Ability to Execute — 7 Criteria\n\n';
+    md += '## Ability to Execute â€” 7 Criteria\n\n';
     _mqAbilityToExecuteCriteria.forEach(c => {
         md += `### ${c.id}: ${c.name} (Weight: ${c.weight})\n\n${c.desc}\n\n`;
     });
     md += '---\n\n';
 
-    md += '## Completeness of Vision — 8 Criteria\n\n';
+    md += '## Completeness of Vision â€” 8 Criteria\n\n';
     _mqCompletenessOfVisionCriteria.forEach(c => {
         md += `### ${c.id}: ${c.name} (Weight: ${c.weight})\n\n${c.desc}\n\n`;
     });
@@ -5998,7 +5998,7 @@ function exportMagicQuadrantTemplateAsMarkdown() {
 
     md += '## Market Maturity & Research Type\n\n';
     _mqMarketMaturityPhases.forEach(p => {
-        md += `### ${p.icon} ${p.phase} → ${p.researchType}\n\n${p.desc}\n\n`;
+        md += `### ${p.icon} ${p.phase} â†’ ${p.researchType}\n\n${p.desc}\n\n`;
     });
     md += '---\n\n';
 
@@ -6025,10 +6025,10 @@ function exportMagicQuadrantTemplateAsMarkdown() {
     URL.revokeObjectURL(url);
 }
 
-// ── Hype Cycle Template ──────────────────────────────────────────────
+// â”€â”€ Hype Cycle Template â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const _hcReportSections = [
-    { id: 'title', name: 'Title', icon: '📝', required: true,
+    { id: 'title', name: 'Title', icon: 'ðŸ“', required: true,
         limits: 'Up to 200 characters (including spaces)',
         guidelines: [
             'Format: <strong>Hype Cycle for [Area], 20xx</strong>',
@@ -6036,43 +6036,43 @@ const _hcReportSections = [
             'The area should be a space that will endure for several years so Gartner can track progress over time in annual updates'
         ]
     },
-    { id: 'summary', name: 'Summary', icon: '📋', required: true,
+    { id: 'summary', name: 'Summary', icon: 'ðŸ“‹', required: true,
         limits: 'No more than 300 characters (including spaces). HARD LIMIT',
         guidelines: [
-            'In 2–3 sentences, convey the challenge, opportunity or situation your research pertains to, then outline how this innovation could help clients',
+            'In 2â€“3 sentences, convey the challenge, opportunity or situation your research pertains to, then outline how this innovation could help clients',
             'Write to the approved target role',
             'Use sentence case except for proper nouns and acronyms',
             'The number of innovations appearing on the Hype Cycle may be mentioned'
         ]
     },
-    { id: 'spa', name: 'Strategic Planning Assumption', icon: '🎯', required: false,
-        limits: 'Brief — typically 1–2 predictions',
+    { id: 'spa', name: 'Strategic Planning Assumption', icon: 'ðŸŽ¯', required: false,
+        limits: 'Brief â€” typically 1â€“2 predictions',
         guidelines: [
             'Provide overview predictions on the market or area covered by the Hype Cycle',
-            'Provide forecasts on specific technologies — if so, include the SPA in the associated Innovation Profile\'s "Position and Adoption Speed Justification" or "User Advice" area'
+            'Provide forecasts on specific technologies â€” if so, include the SPA in the associated Innovation Profile\'s "Position and Adoption Speed Justification" or "User Advice" area'
         ]
     },
-    { id: 'wynk', name: 'What You Need to Know', icon: '💡', required: true,
+    { id: 'wynk', name: 'What You Need to Know', icon: 'ðŸ’¡', required: true,
         limits: 'Up to 150 words',
         guidelines: [
-            'Tell a brief story about the Hype Cycle — avoid "history lessons"',
+            'Tell a brief story about the Hype Cycle â€” avoid "history lessons"',
             'Identify the audience; state the challenge; issue a call to action',
             '<strong>NEW:</strong> Describe the current status of the space based on patterns (e.g., distribution of IPs, lots vs. little action, fast moving vs. slow changes, major new themes, bald areas, comparisons with last year, future directions)',
             'This section will appear in the interactive hype cycle'
         ]
     },
-    { id: 'hc-intro', name: 'The Hype Cycle', icon: '📈', required: true,
+    { id: 'hc-intro', name: 'The Hype Cycle', icon: 'ðŸ“ˆ', required: true,
         limits: 'Up to 300 words',
         guidelines: [
             'Directly beneath the heading, describe or define the area or market the Hype Cycle will address',
-            'Identify key trends or drivers that affect the rate of adoption — note trends that affect the area most at the present time',
+            'Identify key trends or drivers that affect the rate of adoption â€” note trends that affect the area most at the present time',
             'Highlight fast-moving innovations or failures (new entrants, fast movers, most hyped, most undervalued, obsolete before plateau)',
-            '<strong>Do NOT</strong> use names of Hype Cycle curve positions in the text (e.g., "post-trigger 25%"). Instead use natural language such as "climbing the peak…"',
+            '<strong>Do NOT</strong> use names of Hype Cycle curve positions in the text (e.g., "post-trigger 25%"). Instead use natural language such as "climbing the peakâ€¦"',
             'This section will <strong>not</strong> appear on the interactive hype cycle',
             'Optional: Show relationships to other research (map IPs to architecture layers, tie hype levels to inquiry volumes or survey results)'
         ]
     },
-    { id: 'pm-intro', name: 'The Priority Matrix', icon: '📊', required: true,
+    { id: 'pm-intro', name: 'The Priority Matrix', icon: 'ðŸ“Š', required: true,
         limits: 'Up to 200 words',
         guidelines: [
             'Identify transformative or high-impact technologies likely to mature during the next two years',
@@ -6080,7 +6080,7 @@ const _hcReportSections = [
             'Explain the impact that transformational innovations will have, on what roles, and in what time frame'
         ]
     },
-    { id: 'off-hc', name: 'Off the Hype Cycle', icon: '🚪', required: false,
+    { id: 'off-hc', name: 'Off the Hype Cycle', icon: 'ðŸšª', required: false,
         limits: 'Limit 100 words per IP description',
         guidelines: [
             'List Innovation Profiles from the previous version that were removed',
@@ -6089,7 +6089,7 @@ const _hcReportSections = [
             'Section is optional but <strong>strongly encouraged</strong>'
         ]
     },
-    { id: 'appendixes', name: 'Appendixes', icon: '📎', required: true,
+    { id: 'appendixes', name: 'Appendixes', icon: 'ðŸ“Ž', required: true,
         limits: 'Include link to prior-year Hype Cycle',
         guidelines: [
             'Insert the Hype Cycle link from the prior year',
@@ -6097,14 +6097,14 @@ const _hcReportSections = [
             'Three tables are auto-included: Hype Cycle Phases, Benefit Ratings and Maturity Levels'
         ]
     },
-    { id: 'evidence', name: 'Evidence', icon: '🔬', required: false,
+    { id: 'evidence', name: 'Evidence', icon: 'ðŸ”¬', required: false,
         limits: 'No specific limit',
         guidelines: [
             'Provide the factual basis for your analysis',
             'Include relevant data points, survey results and market research'
         ]
     },
-    { id: 'notes', name: 'Notes', icon: '📝', required: false,
+    { id: 'notes', name: 'Notes', icon: 'ðŸ“', required: false,
         limits: 'No specific limit',
         guidelines: [
             'Use notes to add non-essential detail or context',
@@ -6114,29 +6114,29 @@ const _hcReportSections = [
 ];
 
 const _hcPhases = [
-    { name: 'Innovation Trigger', range: 'Trigger', icon: '💥',
+    { name: 'Innovation Trigger', range: 'Trigger', icon: 'ðŸ’¥',
         desc: 'A potential technology breakthrough kicks things off. Early proof-of-concept stories and media interest trigger significant publicity. Often no usable products exist, and commercial viability is unproven.' },
-    { name: 'Peak of Inflated Expectations', range: 'Pre-Peak → Peak → Post-Peak', icon: '🏔️',
-        desc: 'Early publicity produces a number of success stories — often accompanied by scores of failures. Some companies take action; many do not.' },
-    { name: 'Trough of Disillusionment', range: 'Post-Peak → Trough', icon: '📉',
+    { name: 'Peak of Inflated Expectations', range: 'Pre-Peak â†’ Peak â†’ Post-Peak', icon: 'ðŸ”ï¸',
+        desc: 'Early publicity produces a number of success stories â€” often accompanied by scores of failures. Some companies take action; many do not.' },
+    { name: 'Trough of Disillusionment', range: 'Post-Peak â†’ Trough', icon: 'ðŸ“‰',
         desc: 'Interest wanes as experiments and implementations fail to deliver. Producers of the technology shake out or fail. Investments continue only if surviving providers improve their products to the satisfaction of early adopters.' },
-    { name: 'Slope of Enlightenment', range: 'Post-Trough → Pre-Plateau', icon: '📈',
+    { name: 'Slope of Enlightenment', range: 'Post-Trough â†’ Pre-Plateau', icon: 'ðŸ“ˆ',
         desc: 'More instances of how the technology can benefit the enterprise start to crystallize and become more widely understood. Second- and third-generation products appear. More enterprises fund pilots; conservative companies remain cautious.' },
-    { name: 'Plateau of Productivity', range: 'Plateau', icon: '✅',
+    { name: 'Plateau of Productivity', range: 'Plateau', icon: 'âœ…',
         desc: 'Mainstream adoption starts to take off. Criteria for assessing provider viability are more clearly defined. The technology\'s broad market applicability and relevance are clearly paying off.' },
 ];
 
 const _hcIPPlacement = [
     { section: 'On the Rise', range: 'Trigger to Pre-Peak 25%', maturity: 'Embryonic or Emerging',
-        timeToPlateau: 'More than 10 years, or 5–10 years', penetration: 'Less than 1%, or 1%–5%' },
+        timeToPlateau: 'More than 10 years, or 5â€“10 years', penetration: 'Less than 1%, or 1%â€“5%' },
     { section: 'At the Peak', range: 'Pre-Peak 20% to Post-Peak 20%', maturity: 'Emerging or Adolescent',
-        timeToPlateau: 'More than 10 years, 5–10 years, or 2–5 years', penetration: '1%–5%, or 5%–20%' },
+        timeToPlateau: 'More than 10 years, 5â€“10 years, or 2â€“5 years', penetration: '1%â€“5%, or 5%â€“20%' },
     { section: 'Sliding Into the Trough', range: 'Post-Peak 25% to Post-Trough 15%', maturity: 'Emerging or Adolescent',
-        timeToPlateau: '5–10 years, 2–5 years, or Less than 2 years', penetration: '1%–5%, or 5%–20%' },
+        timeToPlateau: '5â€“10 years, 2â€“5 years, or Less than 2 years', penetration: '1%â€“5%, or 5%â€“20%' },
     { section: 'Climbing the Slope', range: 'Post-Trough 20% to Pre-Plateau 25%', maturity: 'Adolescent or Early Mainstream',
-        timeToPlateau: '2–5 years, or Less than 2 years', penetration: '5%–20%, or 20%–50%' },
+        timeToPlateau: '2â€“5 years, or Less than 2 years', penetration: '5%â€“20%, or 20%â€“50%' },
     { section: 'Entering the Plateau', range: 'Pre-Plateau 20% to Plateau', maturity: 'Early Mainstream or Mature Mainstream (rare)',
-        timeToPlateau: 'Less than 2 years', penetration: '20%–50%, or More than 50% (rare)' },
+        timeToPlateau: 'Less than 2 years', penetration: '20%â€“50%, or More than 50% (rare)' },
 ];
 
 const _hcBenefitRatings = [
@@ -6151,26 +6151,26 @@ const _hcMaturityLevels = [
     { level: 'Emerging', desc: 'Commercial pilots; first-generation/customized products; vendor investment. Supplier product and market positioning are evolving.' },
     { level: 'Adolescent', desc: 'Second-generation; some services. Market still growing; multiple proven business models. Still evolving.' },
     { level: 'Early Mainstream', desc: 'Third-generation; out-of-the-box solutions. Market growth is transitioning from rapid to steady. Proven technology; standards emerging.' },
-    { level: 'Mature Mainstream', desc: 'Multiple proven business models. Robust technology — not necessarily heavy investment in R&D. Rarely used on Hype Cycle.' },
+    { level: 'Mature Mainstream', desc: 'Multiple proven business models. Robust technology â€” not necessarily heavy investment in R&D. Rarely used on Hype Cycle.' },
 ];
 
 const _hcIPSections = [
     { name: 'Analysis', required: true,
-        desc: 'Provide a short description of the innovation, why it is important and how it works. One paragraph, approximately 100–150 words.' },
+        desc: 'Provide a short description of the innovation, why it is important and how it works. One paragraph, approximately 100â€“150 words.' },
     { name: 'Position and Adoption Speed Justification', required: true,
         desc: 'Justify the innovation\'s position on the Hype Cycle and its expected adoption speed. Reference market data, vendor traction and maturity indicators.' },
     { name: 'User Advice', required: true,
         desc: 'Provide actionable guidance for the target audience. What should they do now? What should they plan for? Include timeline and risk considerations.' },
     { name: 'Sample Vendors', required: true,
-        desc: 'List example vendors active in this space. This is not a ranking or endorsement — include a representative mix of established and emerging vendors.' },
+        desc: 'List example vendors active in this space. This is not a ranking or endorsement â€” include a representative mix of established and emerging vendors.' },
     { name: 'Recommended Reading', required: false,
         desc: 'List relevant Gartner research for deeper exploration of this innovation.' },
 ];
 
 const _hcGraphicTips = [
-    'Move labels so they can be read clearly — avoid overlapping',
+    'Move labels so they can be read clearly â€” avoid overlapping',
     'Use the "Nudge" function to separate dots that obscure each other; use "Reset" to return a dot to its original position',
-    'As a general rule, the Peak and the Trough should always have IPs in them — empty positions may indicate unwillingness to take a position',
+    'As a general rule, the Peak and the Trough should always have IPs in them â€” empty positions may indicate unwillingness to take a position',
     'Check that each IP\'s position is consistent with its maturity level, time to plateau, and market penetration',
     'Maximum 35 Innovation Profiles per Hype Cycle; ideal number is 25',
     'Exceptions and unusual situations should be explained in the IP and the HC introduction',
@@ -6178,14 +6178,14 @@ const _hcGraphicTips = [
 
 const _hcQualityChecklist = [
     'Title follows format: "Hype Cycle for [Area], 20xx" (max 200 chars)',
-    'Summary is 2–3 sentences, max 300 characters (HARD LIMIT)',
+    'Summary is 2â€“3 sentences, max 300 characters (HARD LIMIT)',
     'What You Need to Know: max 150 words; addresses target audience with a call to action',
     'Hype Cycle Introduction: max 300 words; does NOT use curve position names in text',
     'Priority Matrix Introduction: max 200 words; highlights transformative & high-impact techs maturing in 2 years',
     'Off the Hype Cycle section included and explains removed IPs',
     'Each Innovation Profile has: Analysis, Position & Adoption Speed Justification, User Advice, Sample Vendors',
     'All IP positions are consistent with maturity level, time-to-plateau, and market penetration bands',
-    'Peak and Trough both have IPs — empty positions explained if exceptions',
+    'Peak and Trough both have IPs â€” empty positions explained if exceptions',
     'No more than 35 IPs; ideal 25',
     'Prior year Hype Cycle linked in Appendixes',
     'Three appendix tables present: Hype Cycle Phases, Benefit Ratings, Maturity Levels',
@@ -6198,10 +6198,10 @@ function populateHypeCycleTemplate() {
 
     let html = '';
 
-    // ── Overview ──
+    // â”€â”€ Overview â”€â”€
     html += `<div class="report-pillar-section" style="margin-bottom: 24px;">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🔄</span>`;
+    html += `<span class="report-pillar-code">ðŸ”„</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Document Overview</h2>`;
     html += `<p class="report-pillar-desc">Hype Cycles provide clients with an overview and graphical depiction of the relative maturity of technologies and innovations, offering a simple way to understand and communicate the complex issues related to maturing innovations and their associated benefits.</p>`;
@@ -6241,10 +6241,10 @@ function populateHypeCycleTemplate() {
 
     html += `</div></div>`;
 
-    // ── Report Sections ──
+    // â”€â”€ Report Sections â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📄</span>`;
+    html += `<span class="report-pillar-code">ðŸ“„</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Report Sections</h2>`;
     html += `<p class="report-pillar-desc">Each section of the Hype Cycle report with requirements, guidelines and limits</p>`;
@@ -6268,10 +6268,10 @@ function populateHypeCycleTemplate() {
     });
     html += `</div>`;
 
-    // ── Hype Cycle Phases ──
+    // â”€â”€ Hype Cycle Phases â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🔄</span>`;
+    html += `<span class="report-pillar-code">ðŸ”„</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Hype Cycle Phases</h2>`;
     html += `<p class="report-pillar-desc">The five phases every innovation traverses on the Hype Cycle curve</p>`;
@@ -6289,13 +6289,13 @@ function populateHypeCycleTemplate() {
     });
     html += `</div></div>`;
 
-    // ── Innovation Profile Placement ──
+    // â”€â”€ Innovation Profile Placement â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📍</span>`;
+    html += `<span class="report-pillar-code">ðŸ“</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Innovation Profile Placement Guidelines</h2>`;
-    html += `<p class="report-pillar-desc">Use these guidelines to place IPs correctly on the curve — position must be consistent with maturity, time-to-plateau and market penetration</p>`;
+    html += `<p class="report-pillar-desc">Use these guidelines to place IPs correctly on the curve â€” position must be consistent with maturity, time-to-plateau and market penetration</p>`;
     html += `</div></div>`;
 
     html += `<div style="overflow-x: auto;">`;
@@ -6319,13 +6319,13 @@ function populateHypeCycleTemplate() {
     });
     html += `</tbody></table></div></div>`;
 
-    // ── Innovation Profile Structure ──
+    // â”€â”€ Innovation Profile Structure â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🧩</span>`;
+    html += `<span class="report-pillar-code">ðŸ§©</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Innovation Profile Structure</h2>`;
-    html += `<p class="report-pillar-desc">Each Innovation Profile is the building block of the Hype Cycle — authored and edited separately in CPP. A single IP may appear in multiple Hype Cycles.</p>`;
+    html += `<p class="report-pillar-desc">Each Innovation Profile is the building block of the Hype Cycle â€” authored and edited separately in CPP. A single IP may appear in multiple Hype Cycles.</p>`;
     html += `</div></div>`;
 
     _hcIPSections.forEach(sec => {
@@ -6342,10 +6342,10 @@ function populateHypeCycleTemplate() {
     });
     html += `</div>`;
 
-    // ── Benefit Ratings ──
+    // â”€â”€ Benefit Ratings â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">⭐</span>`;
+    html += `<span class="report-pillar-code">â­</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Benefit Ratings</h2>`;
     html += `<p class="report-pillar-desc">Assigned to each Innovation Profile based on expected enterprise impact</p>`;
@@ -6363,10 +6363,10 @@ function populateHypeCycleTemplate() {
     });
     html += `</div>`;
 
-    // ── Maturity Levels ──
+    // â”€â”€ Maturity Levels â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📊</span>`;
+    html += `<span class="report-pillar-code">ðŸ“Š</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Maturity Levels</h2>`;
     html += `<p class="report-pillar-desc">Maturity classifications for each Innovation Profile on the Hype Cycle</p>`;
@@ -6381,10 +6381,10 @@ function populateHypeCycleTemplate() {
     });
     html += `</div>`;
 
-    // ── Graphic Tips ──
+    // â”€â”€ Graphic Tips â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🎨</span>`;
+    html += `<span class="report-pillar-code">ðŸŽ¨</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Graphic Editing Tips</h2>`;
     html += `<p class="report-pillar-desc">Best practices for working with the Hype Cycle and Priority Matrix graphics in CPP Workspace</p>`;
@@ -6398,10 +6398,10 @@ function populateHypeCycleTemplate() {
     });
     html += `</ul></div></div></div>`;
 
-    // ── Quality Checklist ──
+    // â”€â”€ Quality Checklist â”€â”€
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">✅</span>`;
+    html += `<span class="report-pillar-code">âœ…</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Quality Checklist</h2>`;
     html += `<p class="report-pillar-desc">Verify each item before submitting your Hype Cycle for review</p>`;
@@ -6411,13 +6411,13 @@ function populateHypeCycleTemplate() {
     html += `<div class="report-sp-section">`;
     _hcQualityChecklist.forEach((item, i) => {
         html += `<div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; padding: 8px 12px; background: var(--bg-tertiary); border-radius: 6px;">`;
-        html += `<span style="font-size: 16px; flex-shrink: 0;">☐</span>`;
+        html += `<span style="font-size: 16px; flex-shrink: 0;">â˜</span>`;
         html += `<span style="font-size: 13px; color: var(--text-secondary);">${item}</span>`;
         html += `</div>`;
     });
     html += `</div></div></div>`;
 
-    // ── Source ──
+    // â”€â”€ Source â”€â”€
     html += `<div class="report-pillar-section" style="margin-top: 24px;">`;
     html += `<div class="report-sp-longform-card" style="background: var(--bg-secondary); border: 1px dashed var(--border-color);">`;
     html += `<div class="report-sp-section" style="text-align: center; font-size: 12px; color: var(--text-muted);">`;
@@ -6429,8 +6429,8 @@ function populateHypeCycleTemplate() {
 }
 
 function exportHypeCycleTemplateAsMarkdown() {
-    let md = '# Hype Cycle — Methodology & Writing Template\n\n';
-    md += '*Gartner Hype Cycle Guidance — Last updated December 2025*\n';
+    let md = '# Hype Cycle â€” Methodology & Writing Template\n\n';
+    md += '*Gartner Hype Cycle Guidance â€” Last updated December 2025*\n';
     md += '*Client Utility: Get Foresight | Research Model: A&E*\n\n---\n\n';
 
     md += '## Overview\n\n';
@@ -6496,7 +6496,7 @@ function exportHypeCycleTemplateAsMarkdown() {
     URL.revokeObjectURL(url);
 }
 
-// ── Innovation Profile Report ─────────────────────────────────────────
+// â”€â”€ Innovation Profile Report â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let _ipCachedProfile = null;
 
@@ -6562,7 +6562,7 @@ function _ipRenderOverview(d) {
     // Summary card
     html += `<div class="report-pillar-section" style="margin-bottom: 24px;">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">💡</span>`;
+    html += `<span class="report-pillar-code">ðŸ’¡</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">${escapeHtml(d.title)}</h2>`;
     html += `<p class="report-pillar-desc">${escapeHtml(d.summary)}</p>`;
@@ -6605,7 +6605,7 @@ function _ipRenderOverview(d) {
         const glow = p.active ? 'box-shadow: 0 0 8px #0078d466;' : '';
         html += `<div style="flex: 1; height: ${p.height}px; background: ${bg}; border-radius: 3px 3px 0 0; ${glow} position: relative;" title="${p.name}">`;
         if (p.active) {
-            html += `<div style="position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 14px;">📍</div>`;
+            html += `<div style="position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 14px;">ðŸ“</div>`;
         }
         html += `</div>`;
     });
@@ -6634,10 +6634,10 @@ function _ipRenderAnalysis(d) {
     let html = '';
 
     const sections = [
-        { title: 'Overview', icon: '📖', content: a.overview },
-        { title: 'Market Context', icon: '🌍', content: a.market_context },
-        { title: 'The Role of Knowledge Graphs', icon: '🔗', content: a.knowledge_graph_role },
-        { title: 'Why It Matters', icon: '⚡', content: a.why_it_matters },
+        { title: 'Overview', icon: 'ðŸ“–', content: a.overview },
+        { title: 'Market Context', icon: 'ðŸŒ', content: a.market_context },
+        { title: 'The Role of Knowledge Graphs', icon: 'ðŸ”—', content: a.knowledge_graph_role },
+        { title: 'Why It Matters', icon: 'âš¡', content: a.why_it_matters },
     ];
 
     sections.forEach(s => {
@@ -6663,7 +6663,7 @@ function _ipRenderPosition(d) {
     // Current State
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📍</span>`;
+    html += `<span class="report-pillar-code">ðŸ“</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Current State</h2>`;
     html += `</div></div>`;
@@ -6674,7 +6674,7 @@ function _ipRenderPosition(d) {
     // Evidence Points
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🔬</span>`;
+    html += `<span class="report-pillar-code">ðŸ”¬</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Evidence Points</h2>`;
     html += `</div></div>`;
@@ -6688,7 +6688,7 @@ function _ipRenderPosition(d) {
     // Adoption Speed Factors
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">⚡</span>`;
+    html += `<span class="report-pillar-code">âš¡</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Adoption Speed Factors</h2>`;
     html += `</div></div>`;
@@ -6699,14 +6699,14 @@ function _ipRenderPosition(d) {
     html += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">`;
 
     html += `<div class="report-sp-longform-card" style="margin: 0;"><div class="report-sp-section">`;
-    html += `<h4 style="color: #107c10;">🟢 Accelerators</h4>`;
+    html += `<h4 style="color: #107c10;">ðŸŸ¢ Accelerators</h4>`;
     accelerators.forEach(a => {
         html += `<div style="padding: 8px 12px; background: #107c1008; border-radius: 6px; margin-bottom: 6px; font-size: 13px; color: var(--text-secondary);">${escapeHtml(a.replace('Accelerator: ', ''))}</div>`;
     });
     html += `</div></div>`;
 
     html += `<div class="report-sp-longform-card" style="margin: 0;"><div class="report-sp-section">`;
-    html += `<h4 style="color: #c50f1f;">🔴 Inhibitors</h4>`;
+    html += `<h4 style="color: #c50f1f;">ðŸ”´ Inhibitors</h4>`;
     inhibitors.forEach(i => {
         html += `<div style="padding: 8px 12px; background: #c50f1f08; border-radius: 6px; margin-bottom: 6px; font-size: 13px; color: var(--text-secondary);">${escapeHtml(i.replace('Inhibitor: ', ''))}</div>`;
     });
@@ -6725,7 +6725,7 @@ function _ipRenderSBDMapping(d) {
     // Intro
     html += `<div class="report-pillar-section" style="margin-bottom: 24px;">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🛡️</span>`;
+    html += `<span class="report-pillar-code">ðŸ›¡ï¸</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">SBD-AI Controls Framework Mapping</h2>`;
     html += `<p class="report-pillar-desc">${escapeHtml(m.description)}</p>`;
@@ -6734,7 +6734,7 @@ function _ipRenderSBDMapping(d) {
     // Primary Controls
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🎯</span>`;
+    html += `<span class="report-pillar-code">ðŸŽ¯</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Primary Controls (Direct Alignment)</h2>`;
     html += `</div></div>`;
@@ -6760,7 +6760,7 @@ function _ipRenderSBDMapping(d) {
     // Supporting Controls
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🔗</span>`;
+    html += `<span class="report-pillar-code">ðŸ”—</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Supporting Controls</h2>`;
     html += `</div></div>`;
@@ -6789,7 +6789,7 @@ function _ipRenderKnowledgeGraphs(d) {
     // Header
     html += `<div class="report-pillar-section" style="margin-bottom: 24px;">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🔗</span>`;
+    html += `<span class="report-pillar-code">ðŸ”—</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Knowledge Graphs as Architectural Enabler</h2>`;
     html += `<p class="report-pillar-desc">${escapeHtml(kg.summary)}</p>`;
@@ -6798,17 +6798,17 @@ function _ipRenderKnowledgeGraphs(d) {
     // Capabilities
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">🧩</span>`;
+    html += `<span class="report-pillar-code">ðŸ§©</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Key Capabilities</h2>`;
     html += `</div></div>`;
 
     kg.capabilities.forEach((cap, i) => {
-        const icons = ['🏗️', '📜', '⏰', '🌐', '👤'];
+        const icons = ['ðŸ—ï¸', 'ðŸ“œ', 'â°', 'ðŸŒ', 'ðŸ‘¤'];
         html += `<div class="report-sp-longform-card" style="margin-bottom: 10px;">`;
         html += `<div class="report-sp-section">`;
         html += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">`;
-        html += `<span style="font-size: 18px;">${icons[i] || '📌'}</span>`;
+        html += `<span style="font-size: 18px;">${icons[i] || 'ðŸ“Œ'}</span>`;
         html += `<span style="font-weight: 700; font-size: 14px;">${escapeHtml(cap.name)}</span>`;
         html += `</div>`;
         html += `<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">${escapeHtml(cap.description)}</p>`;
@@ -6819,7 +6819,7 @@ function _ipRenderKnowledgeGraphs(d) {
     // Adoption Barriers
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">⚠️</span>`;
+    html += `<span class="report-pillar-code">âš ï¸</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Adoption Barriers</h2>`;
     html += `</div></div>`;
@@ -6839,9 +6839,9 @@ function _ipRenderUserAdvice(d) {
     let html = '';
 
     const timeframes = [
-        { key: 'short_term', icon: '🏃', color: '#0078d4', label: 'Short-Term' },
-        { key: 'medium_term', icon: '🎯', color: '#8661c5', label: 'Medium-Term' },
-        { key: 'long_term', icon: '🔭', color: '#107c10', label: 'Long-Term' },
+        { key: 'short_term', icon: 'ðŸƒ', color: '#0078d4', label: 'Short-Term' },
+        { key: 'medium_term', icon: 'ðŸŽ¯', color: '#8661c5', label: 'Medium-Term' },
+        { key: 'long_term', icon: 'ðŸ”­', color: '#107c10', label: 'Long-Term' },
     ];
 
     timeframes.forEach(tf => {
@@ -6874,7 +6874,7 @@ function _ipRenderVendors(d) {
 
     // Disclaimer
     html += `<div style="background: #c19c0010; border: 1px solid #c19c0033; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 12px; color: var(--text-secondary);">`;
-    html += `<strong>⚠️ Note:</strong> ${escapeHtml(sv.note)}`;
+    html += `<strong>âš ï¸ Note:</strong> ${escapeHtml(sv.note)}`;
     html += `</div>`;
 
     const catColors = ['#0078d4', '#8661c5', '#107c10', '#c19c00'];
@@ -6901,7 +6901,7 @@ function _ipRenderVendors(d) {
     // Recommended Reading
     html += `<div class="report-pillar-section">`;
     html += `<div class="report-pillar-header">`;
-    html += `<span class="report-pillar-code">📚</span>`;
+    html += `<span class="report-pillar-code">ðŸ“š</span>`;
     html += `<div class="report-pillar-header-text">`;
     html += `<h2 class="report-pillar-name">Recommended Reading</h2>`;
     html += `</div></div>`;
@@ -6984,7 +6984,7 @@ function _ipExportV1Markdown(d) {
     });
     md += `### Supporting Controls\n\n`;
     d.sbd_ai_mapping.supporting_controls.forEach(c => {
-        md += `- **${c.id} — ${c.name}:** ${c.relevance}\n`;
+        md += `- **${c.id} â€” ${c.name}:** ${c.relevance}\n`;
     });
     md += `\n---\n\n`;
 
@@ -7018,7 +7018,7 @@ function _ipExportV1Markdown(d) {
 
     md += `## Recommended Reading\n\n`;
     d.recommended_reading.forEach(r => {
-        md += `- **${r.title}** (${r.type}) — ${r.relevance}\n`;
+        md += `- **${r.title}** (${r.type}) â€” ${r.relevance}\n`;
     });
     md += `\n---\n\n`;
     md += `*Generated on ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}*\n`;
@@ -7027,7 +7027,7 @@ function _ipExportV1Markdown(d) {
     return md;
 }
 
-// ── Innovation Profile v2 (Gartner IP Template) ──────────────────────
+// â”€â”€ Innovation Profile v2 (Gartner IP Template) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function onIPVersionChange() {
     const sel = document.getElementById('ip-version-select');
@@ -7077,7 +7077,7 @@ function _ipRenderV2(d) {
 
     // Edit button helper
     function editBtn(sectionKey) {
-        return `<button class="ip-edit-btn" onclick="_ipEditSection('${sectionKey}')" title="Edit this section" style="background: none; border: 1px solid var(--border-color); border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer; color: var(--text-muted); margin-left: auto; flex-shrink: 0;">✏️ Edit</button>`;
+        return `<button class="ip-edit-btn" onclick="_ipEditSection('${sectionKey}')" title="Edit this section" style="background: none; border: 1px solid var(--border-color); border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer; color: var(--text-muted); margin-left: auto; flex-shrink: 0;">âœï¸ Edit</button>`;
     }
 
     // Section renderer helper
@@ -7109,12 +7109,12 @@ function _ipRenderV2(d) {
         el.innerHTML = h;
     }
 
-    renderSection('ip-v2-definition', '📋', 'Definition', v2.definition, 'text', 'definition');
-    renderSection('ip-v2-why-important', '⚡', 'Why This Is Important', v2.why_important, 'text', 'why_important');
-    renderSection('ip-v2-business-impact', '💼', 'Business Impact', v2.business_impact, 'text', 'business_impact');
-    renderSection('ip-v2-drivers', '🚀', 'Drivers', v2.drivers, 'bullets', 'drivers');
-    renderSection('ip-v2-obstacles', '⚠️', 'Obstacles', v2.obstacles, 'bullets', 'obstacles');
-    renderSection('ip-v2-user-recommendations', '🎯', 'User Recommendations', v2.user_recommendations, 'bullets', 'user_recommendations');
+    renderSection('ip-v2-definition', 'ðŸ“‹', 'Definition', v2.definition, 'text', 'definition');
+    renderSection('ip-v2-why-important', 'âš¡', 'Why This Is Important', v2.why_important, 'text', 'why_important');
+    renderSection('ip-v2-business-impact', 'ðŸ’¼', 'Business Impact', v2.business_impact, 'text', 'business_impact');
+    renderSection('ip-v2-drivers', 'ðŸš€', 'Drivers', v2.drivers, 'bullets', 'drivers');
+    renderSection('ip-v2-obstacles', 'âš ï¸', 'Obstacles', v2.obstacles, 'bullets', 'obstacles');
+    renderSection('ip-v2-user-recommendations', 'ðŸŽ¯', 'User Recommendations', v2.user_recommendations, 'bullets', 'user_recommendations');
 
     // SBD-AI Mapping (compact version for v2)
     const sbdEl = document.getElementById('ip-v2-sbd-mapping');
@@ -7122,7 +7122,7 @@ function _ipRenderV2(d) {
         const m = d.sbd_ai_mapping;
         let sh = '<div class="report-pillar-section" style="margin-bottom: 28px;">';
         sh += '<div class="report-pillar-header">';
-        sh += '<span class="report-pillar-code">🛡️</span>';
+        sh += '<span class="report-pillar-code">ðŸ›¡ï¸</span>';
         sh += '<div class="report-pillar-header-text">';
         sh += '<h2 class="report-pillar-name">SBD-AI Controls Mapping</h2>';
         sh += `<p class="report-pillar-desc">${escapeHtml(m.description)}</p>`;
@@ -7150,7 +7150,7 @@ function _ipRenderV2(d) {
         const kg = d.knowledge_graph_analysis;
         let kh = '<div class="report-pillar-section" style="margin-bottom: 28px;">';
         kh += '<div class="report-pillar-header">';
-        kh += '<span class="report-pillar-code">🔗</span>';
+        kh += '<span class="report-pillar-code">ðŸ”—</span>';
         kh += '<div class="report-pillar-header-text">';
         kh += '<h2 class="report-pillar-name">Knowledge Graphs as Enabler</h2>';
         kh += `<p class="report-pillar-desc">${escapeHtml(kg.summary)}</p>`;
@@ -7173,7 +7173,7 @@ function _ipRenderV2(d) {
         const sv = d.sample_vendors;
         let vh = '<div class="report-pillar-section" style="margin-bottom: 28px;">';
         vh += '<div class="report-pillar-header">';
-        vh += '<span class="report-pillar-code">🏢</span>';
+        vh += '<span class="report-pillar-code">ðŸ¢</span>';
         vh += '<div class="report-pillar-header-text">';
         vh += '<h2 class="report-pillar-name">Sample Vendors</h2>';
         vh += '</div></div>';
@@ -7194,7 +7194,7 @@ function _ipRenderV2(d) {
     }
 }
 
-/* ── IP v2 inline editing ─────────────────────────────────────────── */
+/* â”€â”€ IP v2 inline editing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 function _ipEditSection(sectionKey) {
     if (!_ipCachedProfile || !_ipCachedProfile.v2) return;
@@ -7276,7 +7276,7 @@ function _ipCancelEdit(sectionKey) {
     if (_ipCachedProfile) _ipRenderV2(_ipCachedProfile);
 }
 
-/* ── IP HTML Export ───────────────────────────────────────────────── */
+/* â”€â”€ IP HTML Export â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 function exportInnovationProfileAsHTML() {
     if (!_ipCachedProfile) { alert('No Innovation Profile loaded.'); return; }
@@ -7476,20 +7476,20 @@ function _ipExportV2Markdown(d) {
     return md;
 }
 
-// ── Magic Quadrant Analysis Report (MDR + CNAPP) ──────────────────────
+// â”€â”€ Magic Quadrant Analysis Report (MDR + CNAPP) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let _mqScoresCache = null;
 let _mqCurrentSchema = 'mdr';
 const _mqScoresCacheBySchema = {};
 
 const _mqQuadColors = { Leaders: '#107c10', Challengers: '#0078d4', Visionaries: '#8764b8', 'Niche Players': '#797775' };
-const _mqQuadIcons  = { Leaders: '👑', Challengers: '💪', Visionaries: '🔭', 'Niche Players': '🎯' };
+const _mqQuadIcons  = { Leaders: 'ðŸ‘‘', Challengers: 'ðŸ’ª', Visionaries: 'ðŸ”­', 'Niche Players': 'ðŸŽ¯' };
 
-// ── Schema definitions ──
+// â”€â”€ Schema definitions â”€â”€
 const _MQ_SCHEMAS = {
     mdr: {
         api: '/api/mdr-mq-scores',
-        title: 'Magic Quadrant — Managed Detection & Response Services',
+        title: 'Magic Quadrant â€” Managed Detection & Response Services',
         subtitleSchema: 'MDR_MQ_Gap_Schema_App.json',
         subtitleCriteriaCount: 15,
         ate: [
@@ -7514,7 +7514,7 @@ const _MQ_SCHEMAS = {
     },
     cnapp: {
         api: '/api/cnapp-mq-scores',
-        title: 'Magic Quadrant — Cloud-Native Application Protection Platforms',
+        title: 'Magic Quadrant â€” Cloud-Native Application Protection Platforms',
         subtitleSchema: 'CNAPP_MQ_Gap_Schema_App.json',
         subtitleCriteriaCount: 14,
         ate: [
@@ -7595,7 +7595,7 @@ async function populateMQAnalysisReport() {
     const overview = document.getElementById('mq-panel-quadrant-overview');
     if (!overview) return;
     if (overview.dataset.populated) return;
-    overview.innerHTML = '<p style="padding:20px;color:var(--text-secondary);">Loading MQ Analysis…</p>';
+    overview.innerHTML = '<p style="padding:20px;color:var(--text-secondary);">Loading MQ Analysisâ€¦</p>';
 
     // Setup inner tab switching
     const tabContainer = document.getElementById('mq-inner-tabs');
@@ -7635,9 +7635,9 @@ async function populateMQAnalysisReport() {
     }
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Tab 1: Quadrant Overview
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function _mqRenderQuadrantOverview(data) {
     const panel = document.getElementById('mq-panel-quadrant-overview');
     if (!panel) return;
@@ -7648,7 +7648,7 @@ function _mqRenderQuadrantOverview(data) {
 
     let html = '';
 
-    // ── KPI Row ──
+    // â”€â”€ KPI Row â”€â”€
     const leaders = vendors.filter(v => v.quadrant === 'Leaders');
     const topVendor = vendors.length ? vendors.reduce((best, v) => {
         const sc = v.ability_to_execute.composite_score + v.completeness_of_vision.composite_score;
@@ -7660,10 +7660,10 @@ function _mqRenderQuadrantOverview(data) {
         <div class="pa-kpi"><div class="pa-kpi-value" style="color:#107c10">${dist.Leaders || 0}</div><div class="pa-kpi-label">Leaders</div></div>
         <div class="pa-kpi"><div class="pa-kpi-value" style="color:${_mqScoreColor(stats.ability_to_execute?.mean||0)}">${(stats.ability_to_execute?.mean||0).toFixed(2)}</div><div class="pa-kpi-label">ATE Market Avg</div></div>
         <div class="pa-kpi"><div class="pa-kpi-value" style="color:${_mqScoreColor(stats.completeness_of_vision?.mean||0)}">${(stats.completeness_of_vision?.mean||0).toFixed(2)}</div><div class="pa-kpi-label">COV Market Avg</div></div>
-        <div class="pa-kpi"><div class="pa-kpi-value" style="color:#107c10">${topVendor ? escapeHtml(topVendor.vendor) : '—'}</div><div class="pa-kpi-label">Top Ranked Vendor</div></div>
+        <div class="pa-kpi"><div class="pa-kpi-value" style="color:#107c10">${topVendor ? escapeHtml(topVendor.vendor) : 'â€”'}</div><div class="pa-kpi-label">Top Ranked Vendor</div></div>
     </div>`;
 
-    // ── Executive Summary ──
+    // â”€â”€ Executive Summary â”€â”€
     const ateStats = stats.ability_to_execute || {};
     const covStats = stats.completeness_of_vision || {};
     const leaderPct = Math.round((dist.Leaders || 0) / vendors.length * 100);
@@ -7692,11 +7692,11 @@ function _mqRenderQuadrantOverview(data) {
     html += `<div class="pa-section">
         <h3>Executive Summary</h3>
         <p>This Magic Quadrant evaluates <strong>${vendors.length} MDR service providers</strong> across 15 weighted criteria spanning both Ability to Execute (7 criteria) and Completeness of Vision (8 criteria). The market's average ATE score is <strong>${ateStats.mean?.toFixed(2) || 'N/A'}</strong> and COV average is <strong>${covStats.mean?.toFixed(2) || 'N/A'}</strong>, with a combined standard deviation indicating ${ateStats.stdev < 0.4 ? 'moderate clustering' : 'healthy differentiation'} among vendors.</p>
-        <p><strong>${leaderPct}% of vendors qualify as Leaders</strong> while <strong>${nichePct}% remain Niche Players</strong>, reflecting ${leaderPct > 30 ? 'a maturing market with strong competitive positioning' : 'a competitive market where substantial differentiation exists'}. The strongest market-wide criterion is <strong>${strongestName}</strong> (avg ${strongestCrit[1].toFixed(2)}), while <strong>${weakestName}</strong> (avg ${weakestCrit[1].toFixed(2)}) represents the greatest collective gap — an area for competitive investment.</p>
+        <p><strong>${leaderPct}% of vendors qualify as Leaders</strong> while <strong>${nichePct}% remain Niche Players</strong>, reflecting ${leaderPct > 30 ? 'a maturing market with strong competitive positioning' : 'a competitive market where substantial differentiation exists'}. The strongest market-wide criterion is <strong>${strongestName}</strong> (avg ${strongestCrit[1].toFixed(2)}), while <strong>${weakestName}</strong> (avg ${weakestCrit[1].toFixed(2)}) represents the greatest collective gap â€” an area for competitive investment.</p>
         <p><strong>${topRegion ? topRegion[0] : 'N/A'}</strong> dominates vendor headquarters (${topRegion ? topRegion[1] : 0} of ${vendors.length}), {{with IPO-funded vendors leading in both axes. Quadrant boundaries are set at the population median: ATE ${bounds.ate_threshold?.toFixed(2) || 'N/A'} and COV ${bounds.cov_threshold?.toFixed(2) || 'N/A'}.}}</p>
     </div>`.replace('{{', '').replace('}}', '');
 
-    // ── Quadrant Summary Cards ──
+    // â”€â”€ Quadrant Summary Cards â”€â”€
     html += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;">';
     for (const [q, count] of Object.entries(dist)) {
         const qVendors = vendors.filter(v => v.quadrant === q);
@@ -7712,26 +7712,26 @@ function _mqRenderQuadrantOverview(data) {
     }
     html += '</div>';
 
-    // ── Axis Statistics ──
+    // â”€â”€ Axis Statistics â”€â”€
     html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">';
     for (const [label, key, color] of [['Ability to Execute (Y-axis)', 'ability_to_execute', '#0078d4'], ['Completeness of Vision (X-axis)', 'completeness_of_vision', '#8764b8']]) {
         const s = stats[key] || {};
         html += `<div style="padding:14px;background:var(--bg-secondary);border-radius:8px;border-left:4px solid ${color};">
             <h4 style="margin:0 0 10px;font-size:13px;color:${color};">${label}</h4>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px;">
-                <div><span style="color:var(--text-secondary);">Mean:</span> <strong>${s.mean?.toFixed(2)||'—'}</strong></div>
-                <div><span style="color:var(--text-secondary);">Median:</span> <strong>${s.median?.toFixed(2)||'—'}</strong></div>
-                <div><span style="color:var(--text-secondary);">Std Dev:</span> <strong>${s.stdev?.toFixed(2)||'—'}</strong></div>
-                <div><span style="color:var(--text-secondary);">Min:</span> <strong>${s.min?.toFixed(2)||'—'}</strong></div>
-                <div><span style="color:var(--text-secondary);">Max:</span> <strong>${s.max?.toFixed(2)||'—'}</strong></div>
-                <div><span style="color:var(--text-secondary);">Range:</span> <strong>${s.min != null && s.max != null ? (s.max - s.min).toFixed(2) : '—'}</strong></div>
+                <div><span style="color:var(--text-secondary);">Mean:</span> <strong>${s.mean?.toFixed(2)||'â€”'}</strong></div>
+                <div><span style="color:var(--text-secondary);">Median:</span> <strong>${s.median?.toFixed(2)||'â€”'}</strong></div>
+                <div><span style="color:var(--text-secondary);">Std Dev:</span> <strong>${s.stdev?.toFixed(2)||'â€”'}</strong></div>
+                <div><span style="color:var(--text-secondary);">Min:</span> <strong>${s.min?.toFixed(2)||'â€”'}</strong></div>
+                <div><span style="color:var(--text-secondary);">Max:</span> <strong>${s.max?.toFixed(2)||'â€”'}</strong></div>
+                <div><span style="color:var(--text-secondary);">Range:</span> <strong>${s.min != null && s.max != null ? (s.max - s.min).toFixed(2) : 'â€”'}</strong></div>
             </div>
         </div>`;
     }
     html += '</div>';
 
-    // ── Scatter Plot (CSS-based) ──
-    html += '<h3 style="margin:20px 0 12px;font-size:16px;">◆ Quadrant Positioning</h3>';
+    // â”€â”€ Scatter Plot (CSS-based) â”€â”€
+    html += '<h3 style="margin:20px 0 12px;font-size:16px;">â—† Quadrant Positioning</h3>';
     html += '<div id="mq-scatter-container" style="position:relative;width:100%;max-width:1000px;margin:0 auto 32px;aspect-ratio:4/3;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:8px;overflow:visible;padding:30px 40px 40px 40px;">';
 
     // Use data range with padding so dots spread across the full area
@@ -7792,17 +7792,17 @@ function _mqRenderQuadrantOverview(data) {
     }
 
     // Axis labels
-    html += `<div style="position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--text-secondary);">Completeness of Vision →</div>`;
-    html += `<div style="position:absolute;left:-38px;top:50%;transform:translateY(-50%) rotate(-90deg);font-size:12px;font-weight:600;color:var(--text-secondary);white-space:nowrap;">Ability to Execute →</div>`;
+    html += `<div style="position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--text-secondary);">Completeness of Vision â†’</div>`;
+    html += `<div style="position:absolute;left:-38px;top:50%;transform:translateY(-50%) rotate(-90deg);font-size:12px;font-weight:600;color:var(--text-secondary);white-space:nowrap;">Ability to Execute â†’</div>`;
 
-    // Vendor dots — now spread across full data range
+    // Vendor dots â€” now spread across full data range
     vendors.forEach(v => {
         const ate = v.ability_to_execute.composite_score;
         const cov = v.completeness_of_vision.composite_score;
         const xPct = ((cov - plotCovMin) / covRange) * 100;
         const yPct = ((ate - plotAteMin) / ateRange) * 100;
         const color = _mqQuadColors[v.quadrant] || '#555';
-        const shortName = v.vendor.length > 18 ? v.vendor.substring(0, 16) + '…' : v.vendor;
+        const shortName = v.vendor.length > 18 ? v.vendor.substring(0, 16) + 'â€¦' : v.vendor;
         html += `<div class="mq-dot" data-vendor="${escapeHtml(v.vendor)}" style="position:absolute;left:${xPct}%;bottom:${yPct}%;transform:translate(-50%,50%);cursor:pointer;z-index:2;" title="${escapeHtml(v.vendor)}\nATE: ${ate.toFixed(2)} | COV: ${cov.toFixed(2)}\nQuadrant: ${v.quadrant}">`;
         html += `<div style="width:12px;height:12px;border-radius:50%;background:${color};border:2px solid ${color};box-shadow:0 1px 4px rgba(0,0,0,0.3);"></div>`;
         html += `<div style="position:absolute;left:16px;top:-4px;font-size:9px;white-space:nowrap;color:var(--text-primary);font-weight:500;pointer-events:none;text-shadow:1px 1px 2px var(--bg-primary),-1px -1px 2px var(--bg-primary),1px -1px 2px var(--bg-primary),-1px 1px 2px var(--bg-primary);">${escapeHtml(shortName)}</div>`;
@@ -7812,7 +7812,7 @@ function _mqRenderQuadrantOverview(data) {
     html += '</div>'; // close inner plot area
     html += '</div>'; // close scatter container
 
-    // ── Per-Quadrant Summaries ──
+    // â”€â”€ Per-Quadrant Summaries â”€â”€
     html += '<h3 style="margin:28px 0 12px;font-size:16px;">Quadrant Profiles</h3>';
     for (const qName of ['Leaders', 'Challengers', 'Visionaries', 'Niche Players']) {
         const qVendors = vendors.filter(v => v.quadrant === qName).sort((a,b) => {
@@ -7844,8 +7844,8 @@ function _mqRenderQuadrantOverview(data) {
             <strong>Top vendors:</strong> ${qVendors.slice(0, 5).map(v => escapeHtml(v.vendor)).join(', ')}${qVendors.length > 5 ? ` + ${qVendors.length - 5} more` : ''}
         </div>`;
         html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;">
-            <div style="color:#107c10;">✓ <strong>Strength:</strong> ${topCrit?.name || qSorted[0][0]} (avg ${qSorted[0][1].toFixed(2)})</div>
-            <div style="color:#d29200;">⚠ <strong>Gap:</strong> ${botCrit?.name || qSorted[qSorted.length-1][0]} (avg ${qSorted[qSorted.length-1][1].toFixed(2)})</div>
+            <div style="color:#107c10;">âœ“ <strong>Strength:</strong> ${topCrit?.name || qSorted[0][0]} (avg ${qSorted[0][1].toFixed(2)})</div>
+            <div style="color:#d29200;">âš  <strong>Gap:</strong> ${botCrit?.name || qSorted[qSorted.length-1][0]} (avg ${qSorted[qSorted.length-1][1].toFixed(2)})</div>
         </div>`;
         html += '</div>';
     }
@@ -7854,9 +7854,9 @@ function _mqRenderQuadrantOverview(data) {
     panel.dataset.populated = 'true';
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Tab 2: Criteria Analysis
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function _mqRenderCriteriaAnalysis(data) {
     const panel = document.getElementById('mq-panel-criteria-analysis');
     if (!panel) return;
@@ -7883,7 +7883,7 @@ function _mqRenderCriteriaAnalysis(data) {
     const covStats = critStats(_mqCovCriteria, 'completeness_of_vision');
 
     // ATE criteria
-    html += `<h3 style="margin:0 0 16px;font-size:16px;color:#0078d4;">Ability to Execute — Criteria Breakdown</h3>`;
+    html += `<h3 style="margin:0 0 16px;font-size:16px;color:#0078d4;">Ability to Execute â€” Criteria Breakdown</h3>`;
     html += `<p style="font-size:12px;color:var(--text-secondary);margin-bottom:16px;">7 criteria measuring operational strength, product maturity, customer experience, and financial viability.</p>`;
 
     ateStats.forEach(c => {
@@ -7891,7 +7891,7 @@ function _mqRenderCriteriaAnalysis(data) {
     });
 
     // COV criteria
-    html += `<h3 style="margin:28px 0 16px;font-size:16px;color:#8764b8;">Completeness of Vision — Criteria Breakdown</h3>`;
+    html += `<h3 style="margin:28px 0 16px;font-size:16px;color:#8764b8;">Completeness of Vision â€” Criteria Breakdown</h3>`;
     html += `<p style="font-size:12px;color:var(--text-secondary);margin-bottom:16px;">8 criteria measuring strategic vision, innovation, market understanding, and go-to-market strategy.</p>`;
 
     covStats.forEach(c => {
@@ -7899,7 +7899,7 @@ function _mqRenderCriteriaAnalysis(data) {
     });
 
     // Combined ranking by weighted contribution
-    html += `<h3 style="margin:28px 0 16px;font-size:16px;">📊 Criteria Impact Ranking (Weight × Market Average)</h3>`;
+    html += `<h3 style="margin:28px 0 16px;font-size:16px;">ðŸ“Š Criteria Impact Ranking (Weight Ã— Market Average)</h3>`;
     const allCrit = [...ateStats.map(s => ({...s, axis: 'ATE'})), ...covStats.map(s => ({...s, axis: 'COV'}))];
     allCrit.sort((a,b) => (b.weight * b.mean) - (a.weight * a.mean));
     html += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;">';
@@ -7948,13 +7948,13 @@ function _mqRenderCriterionCard(c, accentColor) {
             <div style="width:${pct}%;height:100%;background:${accentColor};border-radius:6px;opacity:0.8;"></div>
             <span style="position:absolute;right:8px;top:2px;font-size:11px;font-weight:700;color:var(--text-primary);">${c.mean.toFixed(2)} / 5.0</span>
         </div>
-        <span style="font-size:11px;color:var(--text-secondary);min-width:70px;">Range: ${c.min.toFixed(1)}–${c.max.toFixed(1)}</span>
+        <span style="font-size:11px;color:var(--text-secondary);min-width:70px;">Range: ${c.min.toFixed(1)}â€“${c.max.toFixed(1)}</span>
     </div>`;
 
     // Top & Bottom performers
     html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">`;
 
-    html += `<div><div style="font-size:11px;font-weight:600;color:#107c10;margin-bottom:4px;">🏆 Top 5 Performers</div>`;
+    html += `<div><div style="font-size:11px;font-weight:600;color:#107c10;margin-bottom:4px;">ðŸ† Top 5 Performers</div>`;
     c.top5.forEach((v, i) => {
         html += `<div style="font-size:11px;display:flex;justify-content:space-between;padding:1px 0;">
             <span>${i+1}. ${escapeHtml(v.vendor)}</span>
@@ -7963,7 +7963,7 @@ function _mqRenderCriterionCard(c, accentColor) {
     });
     html += '</div>';
 
-    html += `<div><div style="font-size:11px;font-weight:600;color:#d29200;margin-bottom:4px;">⚠ Bottom 5 Performers</div>`;
+    html += `<div><div style="font-size:11px;font-weight:600;color:#d29200;margin-bottom:4px;">âš  Bottom 5 Performers</div>`;
     c.bot5.forEach((v, i) => {
         html += `<div style="font-size:11px;display:flex;justify-content:space-between;padding:1px 0;">
             <span>${i+1}. ${escapeHtml(v.vendor)}</span>
@@ -7975,16 +7975,16 @@ function _mqRenderCriterionCard(c, accentColor) {
     return html;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Tab 3: Vendor Rankings
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function _mqRenderVendorRankings(data) {
     const panel = document.getElementById('mq-panel-vendor-rankings');
     if (!panel) return;
     const vendors = data.vendors || [];
     let html = '';
 
-    // ── Per-Quadrant Tables with expandable detail rows ──
+    // â”€â”€ Per-Quadrant Tables with expandable detail rows â”€â”€
     for (const qName of ['Leaders', 'Challengers', 'Visionaries', 'Niche Players']) {
         const qVendors = vendors.filter(v => v.quadrant === qName).sort((a, b) => {
             return (b.ability_to_execute.composite_score + b.completeness_of_vision.composite_score) -
@@ -8064,7 +8064,7 @@ function _mqRenderVendorRankings(data) {
 
             html += '</div>'; // grid
             html += `<div style="margin-top:8px;font-size:10px;color:var(--text-secondary);">
-                ${v.headquarters ? `📍 ${escapeHtml(v.headquarters)}` : ''} ${v.employee_count_range ? `👥 ${escapeHtml(v.employee_count_range)} employees` : ''} ${v.website ? `🔗 ${escapeHtml(v.website)}` : ''}
+                ${v.headquarters ? `ðŸ“ ${escapeHtml(v.headquarters)}` : ''} ${v.employee_count_range ? `ðŸ‘¥ ${escapeHtml(v.employee_count_range)} employees` : ''} ${v.website ? `ðŸ”— ${escapeHtml(v.website)}` : ''}
             </div>`;
             html += '</td></tr>';
         });
@@ -8074,9 +8074,9 @@ function _mqRenderVendorRankings(data) {
     panel.innerHTML = html;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Tab 4: Score Heatmap
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function _mqRenderScoreHeatmap(data) {
     const panel = document.getElementById('mq-panel-score-heatmap');
     if (!panel) return;
@@ -8090,8 +8090,8 @@ function _mqRenderScoreHeatmap(data) {
 
     const allCrit = [..._mqAteCriteria.map(c => ({...c, axis: 'ability_to_execute'})), ..._mqCovCriteria.map(c => ({...c, axis: 'completeness_of_vision'}))];
 
-    let html = '<h3 style="margin:0 0 8px;font-size:16px;">Score Heatmap — All 15 Criteria</h3>';
-    html += '<p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">Color intensity indicates criterion score (0–5). Click column headers to see criterion details. Top 40 vendors shown by default.</p>';
+    let html = '<h3 style="margin:0 0 8px;font-size:16px;">Score Heatmap â€” All 15 Criteria</h3>';
+    html += '<p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">Color intensity indicates criterion score (0â€“5). Click column headers to see criterion details. Top 40 vendors shown by default.</p>';
 
     // Filter control
     html += `<div style="margin-bottom:12px;display:flex;gap:12px;align-items:center;">
@@ -8144,7 +8144,7 @@ function _mqBuildHeatmapTable(vendors, allCrit) {
     vendors.forEach((v, i) => {
         const bg = i % 2 === 0 ? '' : 'background:var(--bg-secondary);';
         html += `<tr style="${bg}">`;
-        html += `<td style="padding:3px 6px;font-weight:600;white-space:nowrap;position:sticky;left:0;${i % 2 === 0 ? 'background:var(--bg-primary);' : 'background:var(--bg-secondary);'}z-index:1;">${escapeHtml(v.vendor.length > 22 ? v.vendor.substring(0,20)+'…' : v.vendor)}</td>`;
+        html += `<td style="padding:3px 6px;font-weight:600;white-space:nowrap;position:sticky;left:0;${i % 2 === 0 ? 'background:var(--bg-primary);' : 'background:var(--bg-secondary);'}z-index:1;">${escapeHtml(v.vendor.length > 22 ? v.vendor.substring(0,20)+'â€¦' : v.vendor)}</td>`;
         const qAbbr = { Leaders: 'L', Challengers: 'Ch', Visionaries: 'V', 'Niche Players': 'N' };
         html += `<td style="padding:3px 4px;text-align:center;color:${_mqQuadColors[v.quadrant]};font-weight:700;font-size:10px;">${qAbbr[v.quadrant] || '?'}</td>`;
 
@@ -8166,9 +8166,9 @@ function _mqBuildHeatmapTable(vendors, allCrit) {
     return html;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Tab 5: Boundary Analysis
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function _mqRenderBoundaryAnalysis(data) {
     const panel = document.getElementById('mq-panel-boundary-analysis');
     if (!panel) return;
@@ -8195,10 +8195,10 @@ function _mqRenderBoundaryAnalysis(data) {
         // Determine potential destination quadrant
         let destQuadrant = v.quadrant;
         if (nearAxis === 'ATE') {
-            if (ate > ateTh && cov > covTh) destQuadrant = 'Visionaries'; // Leader → Visionary
-            else if (ate > ateTh && cov <= covTh) destQuadrant = 'Niche Players'; // Challenger → Niche
-            else if (ate <= ateTh && cov > covTh) destQuadrant = 'Leaders'; // Visionary → Leader
-            else destQuadrant = 'Challengers'; // Niche → Challenger
+            if (ate > ateTh && cov > covTh) destQuadrant = 'Visionaries'; // Leader â†’ Visionary
+            else if (ate > ateTh && cov <= covTh) destQuadrant = 'Niche Players'; // Challenger â†’ Niche
+            else if (ate <= ateTh && cov > covTh) destQuadrant = 'Leaders'; // Visionary â†’ Leader
+            else destQuadrant = 'Challengers'; // Niche â†’ Challenger
         } else {
             if (ate > ateTh && cov > covTh) destQuadrant = 'Challengers';
             else if (ate > ateTh && cov <= covTh) destQuadrant = 'Leaders';
@@ -8216,13 +8216,13 @@ function _mqRenderBoundaryAnalysis(data) {
     const potentialMovers = vendorsWithDist.filter(v => v.minDist < 0.25);
 
     html += `<div style="margin-bottom:20px;padding:14px;background:var(--bg-secondary);border-radius:8px;border-left:4px solid #d29200;">`;
-    html += `<h4 style="margin:0 0 8px;font-size:14px;color:#d29200;">⚠ ${potentialMovers.length} Vendors Within 0.25 Points of a Boundary</h4>`;
+    html += `<h4 style="margin:0 0 8px;font-size:14px;color:#d29200;">âš  ${potentialMovers.length} Vendors Within 0.25 Points of a Boundary</h4>`;
     if (potentialMovers.length) {
         html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;">';
         potentialMovers.forEach(v => {
             html += `<div style="padding:8px 12px;background:var(--bg-primary);border-radius:6px;border:1px solid var(--border-color);font-size:11px;">
                 <div style="font-weight:600;">${escapeHtml(v.vendor)}</div>
-                <div style="color:var(--text-secondary);"><span style="color:${_mqQuadColors[v.quadrant]}">${v.quadrant}</span> → could become <span style="color:${_mqQuadColors[v.destQuadrant]}">${v.destQuadrant}</span></div>
+                <div style="color:var(--text-secondary);"><span style="color:${_mqQuadColors[v.quadrant]}">${v.quadrant}</span> â†’ could become <span style="color:${_mqQuadColors[v.destQuadrant]}">${v.destQuadrant}</span></div>
                 <div>Distance: <strong>${v.minDist.toFixed(3)}</strong> on ${v.nearAxis} axis</div>
             </div>`;
         });
@@ -8254,7 +8254,7 @@ function _mqRenderBoundaryAnalysis(data) {
         html += `<td style="padding:5px 8px;text-align:center;">${v.covDist.toFixed(3)}</td>`;
         html += `<td style="padding:5px 8px;text-align:center;font-weight:600;">${v.nearAxis}</td>`;
         html += `<td style="padding:5px 8px;text-align:center;font-weight:700;color:${distColor};">${v.minDist.toFixed(3)}</td>`;
-        html += `<td style="padding:5px 8px;text-align:center;font-size:11px;"><span style="color:${_mqQuadColors[v.quadrant]}">${v.quadrant}</span> → <span style="color:${_mqQuadColors[v.destQuadrant]}">${v.destQuadrant}</span></td>`;
+        html += `<td style="padding:5px 8px;text-align:center;font-size:11px;"><span style="color:${_mqQuadColors[v.quadrant]}">${v.quadrant}</span> â†’ <span style="color:${_mqQuadColors[v.destQuadrant]}">${v.destQuadrant}</span></td>`;
         html += '</tr>';
     });
     html += '</tbody></table></div>';
@@ -8280,9 +8280,9 @@ function _mqRenderBoundaryAnalysis(data) {
     panel.innerHTML = html;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Tab 6: Methodology
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function _mqRenderMethodology(data) {
     const panel = document.getElementById('mq-panel-methodology');
     if (!panel) return;
@@ -8293,7 +8293,7 @@ function _mqRenderMethodology(data) {
 
     // Schema reference
     html += `<div style="margin-bottom:20px;padding:14px;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);">
-        <h4 style="margin:0 0 8px;font-size:14px;">📋 Schema Reference</h4>
+        <h4 style="margin:0 0 8px;font-size:14px;">ðŸ“‹ Schema Reference</h4>
         <div style="font-size:12px;">
             <div style="margin-bottom:4px;"><strong>Schema File:</strong> MDR_MQ_Gap_Schema_App.json</div>
             <div style="margin-bottom:4px;"><strong>Schema Version:</strong> 1.0 (mq_gap_taxonomy_v1.0)</div>
@@ -8305,9 +8305,9 @@ function _mqRenderMethodology(data) {
 
     // Scoring framework
     html += `<div style="margin-bottom:20px;padding:14px;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);">
-        <h4 style="margin:0 0 8px;font-size:14px;">📐 Scoring Framework</h4>
+        <h4 style="margin:0 0 8px;font-size:14px;">ðŸ“ Scoring Framework</h4>
         <div style="font-size:12px;margin-bottom:8px;">
-            <p>Each vendor is evaluated on a <strong>0–5 scale</strong> across 15 weighted criteria. Composite scores for each axis are calculated as the weighted sum of their constituent criteria.</p>
+            <p>Each vendor is evaluated on a <strong>0â€“5 scale</strong> across 15 weighted criteria. Composite scores for each axis are calculated as the weighted sum of their constituent criteria.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:11px;">
             ${[{s:0,l:'No Evidence',c:'#797775'},{s:1,l:'Minimal',c:'#d13438'},{s:2,l:'Basic',c:'#d29200'},{s:3,l:'Demonstrated',c:'#0078d4'},{s:4,l:'Strong',c:'#107c10'},{s:5,l:'Market-Leading',c:'#107c10'}].map(x =>
@@ -8356,22 +8356,22 @@ function _mqRenderMethodology(data) {
     const ateMed = bounds.ate_threshold || 3;
     const covTh = bounds.cov_threshold || 3;
     html += `<div style="margin-bottom:20px;padding:14px;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);">
-        <h4 style="margin:0 0 8px;font-size:14px;">◆ Quadrant Placement</h4>
+        <h4 style="margin:0 0 8px;font-size:14px;">â—† Quadrant Placement</h4>
         <div style="font-size:12px;">
             <p><strong>Method:</strong> ${bounds.method || 'Population median split'}</p>
             <p>Vendors are placed into quadrants based on their composite ATE (Y-axis) and COV (X-axis) scores relative to the population median:</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
                 <div style="padding:8px;background:rgba(16,124,16,0.08);border-radius:4px;border:1px solid rgba(16,124,16,0.2);">
-                    <strong style="color:#107c10;">👑 Leaders</strong>: ATE ≥ ${ateMed.toFixed(2)} AND COV ≥ ${covTh.toFixed(2)}
+                    <strong style="color:#107c10;">ðŸ‘‘ Leaders</strong>: ATE â‰¥ ${ateMed.toFixed(2)} AND COV â‰¥ ${covTh.toFixed(2)}
                 </div>
                 <div style="padding:8px;background:rgba(0,120,212,0.08);border-radius:4px;border:1px solid rgba(0,120,212,0.2);">
-                    <strong style="color:#0078d4;">💪 Challengers</strong>: ATE ≥ ${ateMed.toFixed(2)} AND COV < ${covTh.toFixed(2)}
+                    <strong style="color:#0078d4;">ðŸ’ª Challengers</strong>: ATE â‰¥ ${ateMed.toFixed(2)} AND COV < ${covTh.toFixed(2)}
                 </div>
                 <div style="padding:8px;background:rgba(135,100,184,0.08);border-radius:4px;border:1px solid rgba(135,100,184,0.2);">
-                    <strong style="color:#8764b8;">🔭 Visionaries</strong>: ATE < ${ateMed.toFixed(2)} AND COV ≥ ${covTh.toFixed(2)}
+                    <strong style="color:#8764b8;">ðŸ”­ Visionaries</strong>: ATE < ${ateMed.toFixed(2)} AND COV â‰¥ ${covTh.toFixed(2)}
                 </div>
                 <div style="padding:8px;background:rgba(121,119,117,0.08);border-radius:4px;border:1px solid rgba(121,119,117,0.2);">
-                    <strong style="color:#797775;">🎯 Niche Players</strong>: ATE < ${ateMed.toFixed(2)} AND COV < ${covTh.toFixed(2)}
+                    <strong style="color:#797775;">ðŸŽ¯ Niche Players</strong>: ATE < ${ateMed.toFixed(2)} AND COV < ${covTh.toFixed(2)}
                 </div>
             </div>
         </div>
@@ -8379,12 +8379,12 @@ function _mqRenderMethodology(data) {
 
     // Data composition
     html += `<div style="padding:14px;background:var(--bg-secondary);border-radius:8px;border-left:3px solid #0078d4;font-size:12px;">
-        <h4 style="margin:0 0 8px;font-size:14px;">📊 Data Composition</h4>
+        <h4 style="margin:0 0 8px;font-size:14px;">ðŸ“Š Data Composition</h4>
         <p>Scores combine three complementary evaluation layers:</p>
         <ol style="margin:8px 0;padding-left:20px;">
-            <li><strong>MDR Capability Assessment</strong> (8 pillars, 32 sub-pillars) — Technical detection, response, and operational capabilities evaluated via the MDR Services Schema</li>
-            <li><strong>Pricing Model Analysis</strong> (6 dimensions) — Commercial model maturity, subscription transparency, and outcome-based pricing via the MDR Pricing Schema</li>
-            <li><strong>MQ Gap Research</strong> (7 pillars, 28 sub-pillars) — Supplemental business and strategic criteria covering financial viability, sales execution, market responsiveness, marketing, customer experience, market vision, and geographic strategy via the MDR MQ Gap Schema</li>
+            <li><strong>MDR Capability Assessment</strong> (8 pillars, 32 sub-pillars) â€” Technical detection, response, and operational capabilities evaluated via the MDR Services Schema</li>
+            <li><strong>Pricing Model Analysis</strong> (6 dimensions) â€” Commercial model maturity, subscription transparency, and outcome-based pricing via the MDR Pricing Schema</li>
+            <li><strong>MQ Gap Research</strong> (7 pillars, 28 sub-pillars) â€” Supplemental business and strategic criteria covering financial viability, sales execution, market responsiveness, marketing, customer experience, market vision, and geographic strategy via the MDR MQ Gap Schema</li>
         </ol>
         <p style="margin-top:8px;color:var(--text-secondary);">The 15 MQ criteria (ATE-1 through ATE-7, COV-1 through COV-8) are derived by mapping capability, pricing, and gap scores to Gartner's standard Magic Quadrant evaluation framework (G00802987, 2 July 2025). Quadrant boundaries use ${bounds.method || 'population median split'}.</p>
     </div>`;
@@ -8392,9 +8392,9 @@ function _mqRenderMethodology(data) {
     panel.innerHTML = html;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Tab 7: Vendor Deep Dive
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function _mqRenderVendorDeepDive(data) {
     const panel = document.getElementById('mq-panel-vendor-deep-dive');
     if (!panel) return;
@@ -8415,11 +8415,11 @@ function _mqRenderVendorDeepDive(data) {
     // Sorted vendor list for dropdown
     const sorted = [...vendors].sort((a,b) => a.vendor.localeCompare(b.vendor));
 
-    let html = '<h3 style="margin:0 0 16px;font-size:16px;">🔍 Vendor Deep Dive Analysis</h3>';
+    let html = '<h3 style="margin:0 0 16px;font-size:16px;">ðŸ” Vendor Deep Dive Analysis</h3>';
     html += '<div style="margin-bottom:20px;display:flex;align-items:center;gap:12px;">';
     html += '<label style="font-size:13px;font-weight:600;">Select Vendor:</label>';
     html += '<select id="mq-dd-vendor-select" onchange="_mqRenderDeepDiveDetail()" style="font-size:13px;padding:8px 12px;border-radius:6px;border:1px solid var(--border-color);background:var(--bg-primary);color:var(--text-primary);min-width:300px;">';
-    html += '<option value="">— Choose a vendor —</option>';
+    html += '<option value="">â€” Choose a vendor â€”</option>';
     sorted.forEach(v => {
         html += `<option value="${escapeHtml(v.vendor)}">${escapeHtml(v.vendor)} (${v.quadrant})</option>`;
     });
@@ -8467,7 +8467,7 @@ function _mqRenderDeepDiveDetail() {
     const quadrantVendors = ranked.filter(x => x.quadrant === v.quadrant);
     const quadRank = quadrantVendors.findIndex(x => x.vendor === vendorName) + 1;
 
-    // Criteria analysis — above/below market
+    // Criteria analysis â€” above/below market
     const critScores = [];
     allCritMeta.forEach(c => {
         const axis = c.id.startsWith('ATE') ? 'ability_to_execute' : 'completeness_of_vision';
@@ -8481,7 +8481,7 @@ function _mqRenderDeepDiveDetail() {
     const topStrengths = strengths.slice(0, 5);
     const topWeaknesses = weaknesses.slice(0, 5);
 
-    // Growth opportunities — lowest absolute scores
+    // Growth opportunities â€” lowest absolute scores
     const growthOps = [...critScores].sort((a,b) => a.score - b.score).slice(0, 5);
 
     // Boundary proximity
@@ -8491,16 +8491,16 @@ function _mqRenderDeepDiveDetail() {
 
     let html = '';
 
-    // ── Vendor Header Card ──
+    // â”€â”€ Vendor Header Card â”€â”€
     const qColor = _mqQuadColors[v.quadrant] || '#555';
     html += `<div style="padding:20px;background:var(--bg-secondary);border-radius:10px;border:2px solid ${qColor};margin-bottom:20px;">`;
     html += `<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">`;
     html += `<div style="flex:1;min-width:250px;">`;
     html += `<h2 style="margin:0 0 4px;font-size:22px;">${escapeHtml(v.vendor)}</h2>`;
     html += `<div style="font-size:13px;color:var(--text-secondary);">`;
-    if (v.headquarters) html += `📍 ${escapeHtml(v.headquarters)} &nbsp;`;
-    if (v.employee_count_range) html += `👥 ${escapeHtml(v.employee_count_range)} &nbsp;`;
-    if (v.website) html += `🔗 <a href="${escapeHtml(v.website)}" target="_blank" rel="noopener" style="color:var(--text-secondary);">${escapeHtml(v.website)}</a>`;
+    if (v.headquarters) html += `ðŸ“ ${escapeHtml(v.headquarters)} &nbsp;`;
+    if (v.employee_count_range) html += `ðŸ‘¥ ${escapeHtml(v.employee_count_range)} &nbsp;`;
+    if (v.website) html += `ðŸ”— <a href="${escapeHtml(v.website)}" target="_blank" rel="noopener" style="color:var(--text-secondary);">${escapeHtml(v.website)}</a>`;
     html += `</div></div>`;
     html += `<div style="display:flex;gap:12px;flex-wrap:wrap;">`;
     html += `<div style="text-align:center;padding:10px 16px;background:var(--bg-primary);border-radius:8px;border:1px solid var(--border-color);">`;
@@ -8527,7 +8527,7 @@ function _mqRenderDeepDiveDetail() {
     });
     html += '</div></div>';
 
-    // ── Composite Score Cards ──
+    // â”€â”€ Composite Score Cards â”€â”€
     html += '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">';
     const scoreCards = [
         { label: 'Ability to Execute', score: ate.composite_score, market: marketAteAvg, color: '#0078d4' },
@@ -8537,7 +8537,7 @@ function _mqRenderDeepDiveDetail() {
     scoreCards.forEach(sc => {
         const diff = sc.score - sc.market;
         const diffColor = diff >= 0 ? '#107c10' : '#d13438';
-        const diffIcon = diff >= 0 ? '▲' : '▼';
+        const diffIcon = diff >= 0 ? 'â–²' : 'â–¼';
         html += `<div style="padding:16px;background:var(--bg-secondary);border-radius:8px;border-top:3px solid ${sc.color};text-align:center;">`;
         html += `<div style="font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">${sc.label}</div>`;
         html += `<div style="font-size:28px;font-weight:700;color:${_mqScoreColor(sc.score)};">${sc.score.toFixed(2)}</div>`;
@@ -8546,9 +8546,9 @@ function _mqRenderDeepDiveDetail() {
     });
     html += '</div>';
 
-    // ── Narrative Analysis ──
+    // â”€â”€ Narrative Analysis â”€â”€
     html += '<div style="margin-bottom:24px;padding:16px;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);">';
-    html += '<h3 style="margin:0 0 12px;font-size:15px;">📋 Analyst Narrative</h3>';
+    html += '<h3 style="margin:0 0 12px;font-size:15px;">ðŸ“‹ Analyst Narrative</h3>';
 
     // Generate narrative
     const ateVsMkt = ate.composite_score - marketAteAvg;
@@ -8580,17 +8580,17 @@ function _mqRenderDeepDiveDetail() {
 
     // Boundary note
     if (minDist < 0.3) {
-        html += `<p style="font-size:13px;line-height:1.6;"><strong style="color:#d29200;">⚠ Boundary Alert:</strong> This vendor is only <strong>${minDist.toFixed(3)} points</strong> from a quadrant boundary (${ateDist < covDist ? 'ATE' : 'COV'} axis). A modest score change could shift their quadrant placement.</p>`;
+        html += `<p style="font-size:13px;line-height:1.6;"><strong style="color:#d29200;">âš  Boundary Alert:</strong> This vendor is only <strong>${minDist.toFixed(3)} points</strong> from a quadrant boundary (${ateDist < covDist ? 'ATE' : 'COV'} axis). A modest score change could shift their quadrant placement.</p>`;
     }
 
     html += '</div>';
 
-    // ── Full Criteria Radar — ATE vs Market ──
+    // â”€â”€ Full Criteria Radar â€” ATE vs Market â”€â”€
     html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">';
 
     // ATE Criteria Detail
     html += '<div style="padding:14px;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);">';
-    html += '<h4 style="margin:0 0 12px;font-size:14px;color:#0078d4;">Ability to Execute — 7 Criteria</h4>';
+    html += '<h4 style="margin:0 0 12px;font-size:14px;color:#0078d4;">Ability to Execute â€” 7 Criteria</h4>';
     _mqAteCriteria.forEach(c => {
         const score = ate.criteria?.[c.id]?.score || 0;
         const mktAvg = marketAvgs[c.id] || 0;
@@ -8612,7 +8612,7 @@ function _mqRenderDeepDiveDetail() {
 
     // COV Criteria Detail
     html += '<div style="padding:14px;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);">';
-    html += '<h4 style="margin:0 0 12px;font-size:14px;color:#8764b8;">Completeness of Vision — 8 Criteria</h4>';
+    html += '<h4 style="margin:0 0 12px;font-size:14px;color:#8764b8;">Completeness of Vision â€” 8 Criteria</h4>';
     _mqCovCriteria.forEach(c => {
         const score = cov.criteria?.[c.id]?.score || 0;
         const mktAvg = marketAvgs[c.id] || 0;
@@ -8633,11 +8633,11 @@ function _mqRenderDeepDiveDetail() {
     html += '<div style="margin-top:8px;font-size:10px;color:var(--text-secondary);">Blue/purple bars = vendor score | Orange line = market average</div>';
     html += '</div></div>';
 
-    // ── Strengths & Weaknesses Summary ──
+    // â”€â”€ Strengths & Weaknesses Summary â”€â”€
     html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">';
 
     html += '<div style="padding:14px;background:var(--bg-secondary);border-radius:8px;border-left:4px solid #107c10;">';
-    html += '<h4 style="margin:0 0 10px;font-size:14px;color:#107c10;">✓ Strengths (Above Market Average)</h4>';
+    html += '<h4 style="margin:0 0 10px;font-size:14px;color:#107c10;">âœ“ Strengths (Above Market Average)</h4>';
     if (strengths.length === 0) {
         html += '<p style="font-size:12px;color:var(--text-secondary);">No criteria above market average.</p>';
     } else {
@@ -8651,7 +8651,7 @@ function _mqRenderDeepDiveDetail() {
     html += '</div>';
 
     html += '<div style="padding:14px;background:var(--bg-secondary);border-radius:8px;border-left:4px solid #d13438;">';
-    html += '<h4 style="margin:0 0 10px;font-size:14px;color:#d13438;">✗ Below Market Average</h4>';
+    html += '<h4 style="margin:0 0 10px;font-size:14px;color:#d13438;">âœ— Below Market Average</h4>';
     if (weaknesses.length === 0) {
         html += '<p style="font-size:12px;color:var(--text-secondary);">All criteria at or above market average.</p>';
     } else {
@@ -8664,10 +8664,10 @@ function _mqRenderDeepDiveDetail() {
     }
     html += '</div></div>';
 
-    // ── Growth Opportunities ──
+    // â”€â”€ Growth Opportunities â”€â”€
     html += '<div style="margin-bottom:24px;padding:16px;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);">';
-    html += '<h3 style="margin:0 0 12px;font-size:15px;">🚀 Growth Opportunities</h3>';
-    html += '<p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">Criteria with the lowest absolute scores — areas where targeted investment would have the greatest impact on quadrant positioning.</p>';
+    html += '<h3 style="margin:0 0 12px;font-size:15px;">ðŸš€ Growth Opportunities</h3>';
+    html += '<p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">Criteria with the lowest absolute scores â€” areas where targeted investment would have the greatest impact on quadrant positioning.</p>';
 
     growthOps.forEach((g, i) => {
         const potentialGain = (marketAvgs[g.id] - g.score);
@@ -8709,9 +8709,9 @@ function _mqRenderDeepDiveDetail() {
     if (v.quadrant === 'Leaders') {
         html += `As a Leader, ${escapeHtml(v.vendor)} needs to maintain scores above the ATE threshold (${ateTh.toFixed(2)}) and COV threshold (${covThresh.toFixed(2)}). Current margins: ATE +${(ate.composite_score - ateTh).toFixed(2)}, COV +${(cov.composite_score - covThresh).toFixed(2)}.`;
     } else if (v.quadrant === 'Challengers') {
-        html += `To move to Leaders, ${escapeHtml(v.vendor)} needs to increase COV from ${cov.composite_score.toFixed(2)} to ≥${covThresh.toFixed(2)} (+${(covThresh - cov.composite_score).toFixed(2)} needed). Focus investment on Vision criteria.`;
+        html += `To move to Leaders, ${escapeHtml(v.vendor)} needs to increase COV from ${cov.composite_score.toFixed(2)} to â‰¥${covThresh.toFixed(2)} (+${(covThresh - cov.composite_score).toFixed(2)} needed). Focus investment on Vision criteria.`;
     } else if (v.quadrant === 'Visionaries') {
-        html += `To move to Leaders, ${escapeHtml(v.vendor)} needs to increase ATE from ${ate.composite_score.toFixed(2)} to ≥${ateTh.toFixed(2)} (+${(ateTh - ate.composite_score).toFixed(2)} needed). Focus investment on Execution criteria.`;
+        html += `To move to Leaders, ${escapeHtml(v.vendor)} needs to increase ATE from ${ate.composite_score.toFixed(2)} to â‰¥${ateTh.toFixed(2)} (+${(ateTh - ate.composite_score).toFixed(2)} needed). Focus investment on Execution criteria.`;
     } else {
         const needAte = ateTh - ate.composite_score;
         const needCov = covThresh - cov.composite_score;
@@ -8719,9 +8719,9 @@ function _mqRenderDeepDiveDetail() {
     }
     html += '</div></div>';
 
-    // ── Peer Comparison (same quadrant) ──
+    // â”€â”€ Peer Comparison (same quadrant) â”€â”€
     html += '<div style="margin-bottom:24px;padding:16px;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);">';
-    html += `<h3 style="margin:0 0 12px;font-size:15px;">👥 Peer Comparison — ${v.quadrant}</h3>`;
+    html += `<h3 style="margin:0 0 12px;font-size:15px;">ðŸ‘¥ Peer Comparison â€” ${v.quadrant}</h3>`;
     html += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;">';
     html += '<thead><tr style="background:var(--bg-primary);">';
     html += '<th style="padding:6px 8px;text-align:left;border-bottom:2px solid var(--border-color);">Vendor</th>';
@@ -8735,7 +8735,7 @@ function _mqRenderDeepDiveDetail() {
         const bg = isSelected ? `background:${qColor}15;font-weight:700;` : (i % 2 === 0 ? '' : 'background:var(--bg-primary);');
         const peerCombined = peer.ability_to_execute.composite_score + peer.completeness_of_vision.composite_score;
         html += `<tr style="${bg}">`;
-        html += `<td style="padding:5px 8px;${isSelected ? 'font-weight:700;' : ''}">${isSelected ? '→ ' : ''}${escapeHtml(peer.vendor)}</td>`;
+        html += `<td style="padding:5px 8px;${isSelected ? 'font-weight:700;' : ''}">${isSelected ? 'â†’ ' : ''}${escapeHtml(peer.vendor)}</td>`;
         html += `<td style="padding:5px 8px;text-align:center;color:${_mqScoreColor(peer.ability_to_execute.composite_score)};font-weight:600;">${peer.ability_to_execute.composite_score.toFixed(2)}</td>`;
         html += `<td style="padding:5px 8px;text-align:center;color:${_mqScoreColor(peer.completeness_of_vision.composite_score)};font-weight:600;">${peer.completeness_of_vision.composite_score.toFixed(2)}</td>`;
         html += `<td style="padding:5px 8px;text-align:center;font-weight:600;">${peerCombined.toFixed(2)}</td>`;
@@ -8767,7 +8767,7 @@ function exportMQAnalysisAsHTML() {
     const genDate = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
 
     let h = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Magic Quadrant — ${_shortTitle}</title>
+<title>Magic Quadrant â€” ${_shortTitle}</title>
 <style>
 :root{--bg:#fff;--bg2:#f4f4f4;--bg3:#e8e8e8;--text:#222;--text2:#666;--brd:#ddd;--radius:8px}
 @media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--bg2:#2a2a2a;--bg3:#333;--text:#e0e0e0;--text2:#999;--brd:#444}}
@@ -8802,7 +8802,7 @@ h2{font-size:18px;margin:0 0 12px} h3{font-size:15px;margin:0 0 10px} h4{font-si
 </style></head><body>
 
 <div class="header">
-<h1>Magic Quadrant &mdash; ${_cfg.title.replace(/^Magic Quadrant\s*[—-]\s*/, '')}</h1>
+<h1>Magic Quadrant &mdash; ${_cfg.title.replace(/^Magic Quadrant\s*[â€”-]\s*/, '')}</h1>
 <p class="subtitle">Generated ${genDate} &bull; Interactive Report &bull; Schema: ${_schemaFile}</p>
 </div>
 
@@ -8810,7 +8810,7 @@ h2{font-size:18px;margin:0 0 12px} h3{font-size:15px;margin:0 0 10px} h4{font-si
 <div id="panels"></div>
 
 <script>
-// ── Embedded Data ──
+// â”€â”€ Embedded Data â”€â”€
 const DATA = ${jsonData};
 const ATE_CRIT = ${jsonAte};
 const COV_CRIT = ${jsonCov};
@@ -8839,7 +8839,7 @@ const ranked = [...vendors].sort((a,b)=>(b.ability_to_execute.composite_score+b.
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function sc(s){return s>=4?'#107c10':s>=3?'#0078d4':s>=2?'#d29200':'#d13438'}
 
-// ── Tab Management ──
+// â”€â”€ Tab Management â”€â”€
 const TAB_DEFS = [
     {id:'overview',label:'Quadrant Overview'},
     {id:'criteria',label:'Criteria Analysis'},
@@ -8870,7 +8870,7 @@ function initTabs(){
     });
 }
 
-// ══════════ Tab 1: Quadrant Overview ══════════
+// â•â•â•â•â•â•â•â•â•â• Tab 1: Quadrant Overview â•â•â•â•â•â•â•â•â•â•
 function renderOverview(){
     const p=document.getElementById('p-overview');
     const topV=ranked[0];
@@ -8890,7 +8890,7 @@ function renderOverview(){
     h+='<div class="kpi"><div class="kpi-val" style="color:#107c10">'+(dist.Leaders||0)+'</div><div class="kpi-label">Leaders</div></div>';
     h+='<div class="kpi"><div class="kpi-val" style="color:'+sc(stats.ability_to_execute?.mean||0)+'">'+(stats.ability_to_execute?.mean||0).toFixed(2)+'</div><div class="kpi-label">ATE Avg</div></div>';
     h+='<div class="kpi"><div class="kpi-val" style="color:'+sc(stats.completeness_of_vision?.mean||0)+'">'+(stats.completeness_of_vision?.mean||0).toFixed(2)+'</div><div class="kpi-label">COV Avg</div></div>';
-    h+='<div class="kpi"><div class="kpi-val" style="color:#107c10">'+(topV?esc(topV.vendor):'—')+'</div><div class="kpi-label">Top Vendor</div></div>';
+    h+='<div class="kpi"><div class="kpi-val" style="color:#107c10">'+(topV?esc(topV.vendor):'â€”')+'</div><div class="kpi-label">Top Vendor</div></div>';
     h+='</div></div>';
 
     // Executive Summary
@@ -8919,8 +8919,8 @@ function renderOverview(){
         h+='<div style="padding:14px;background:var(--bg2);border-radius:8px;border-left:4px solid '+clr+'">';
         h+='<h4 style="color:'+clr+'">'+lbl+'</h4>';
         h+='<div class="grid-3" style="font-size:12px">';
-        h+='<div>Mean: <b>'+(s.mean?.toFixed(2)||'—')+'</b></div><div>Median: <b>'+(s.median?.toFixed(2)||'—')+'</b></div><div>StdDev: <b>'+(s.stdev?.toFixed(2)||'—')+'</b></div>';
-        h+='<div>Min: <b>'+(s.min?.toFixed(2)||'—')+'</b></div><div>Max: <b>'+(s.max?.toFixed(2)||'—')+'</b></div><div>Range: <b>'+(s.min!=null&&s.max!=null?(s.max-s.min).toFixed(2):'—')+'</b></div>';
+        h+='<div>Mean: <b>'+(s.mean?.toFixed(2)||'â€”')+'</b></div><div>Median: <b>'+(s.median?.toFixed(2)||'â€”')+'</b></div><div>StdDev: <b>'+(s.stdev?.toFixed(2)||'â€”')+'</b></div>';
+        h+='<div>Min: <b>'+(s.min?.toFixed(2)||'â€”')+'</b></div><div>Max: <b>'+(s.max?.toFixed(2)||'â€”')+'</b></div><div>Range: <b>'+(s.min!=null&&s.max!=null?(s.max-s.min).toFixed(2):'â€”')+'</b></div>';
         h+='</div></div>';
     });
     h+='</div>';
@@ -9002,7 +9002,7 @@ function buildScatterSVG(){
     return s;
 }
 
-// ══════════ Tab 2: Criteria Analysis ══════════
+// â•â•â•â•â•â•â•â•â•â• Tab 2: Criteria Analysis â•â•â•â•â•â•â•â•â•â•
 function renderCriteria(){
     const p=document.getElementById('p-criteria');
     let h='';
@@ -9049,7 +9049,7 @@ function renderCriteria(){
     p.innerHTML=h;
 }
 
-// ══════════ Tab 3: Vendor Rankings ══════════
+// â•â•â•â•â•â•â•â•â•â• Tab 3: Vendor Rankings â•â•â•â•â•â•â•â•â•â•
 function renderRankings(){
     const p=document.getElementById('p-rankings');
     let h='';
@@ -9085,7 +9085,7 @@ function renderRankings(){
     p.innerHTML=h;
 }
 
-// ══════════ Tab 4: Score Heatmap ══════════
+// â•â•â•â•â•â•â•â•â•â• Tab 4: Score Heatmap â•â•â•â•â•â•â•â•â•â•
 function renderHeatmap(){
     const p=document.getElementById('p-heatmap');
     let h='<h3>Score Heatmap \\u2014 All 15 Criteria</h3>';
@@ -9125,7 +9125,7 @@ function buildHeatmap(vs){
     return h;
 }
 
-// ══════════ Tab 5: Boundary Analysis ══════════
+// â•â•â•â•â•â•â•â•â•â• Tab 5: Boundary Analysis â•â•â•â•â•â•â•â•â•â•
 function renderBoundary(){
     const p=document.getElementById('p-boundary');
     const vwd=vendors.map(v=>{
@@ -9167,7 +9167,7 @@ function renderBoundary(){
     p.innerHTML=h;
 }
 
-// ══════════ Tab 6: Methodology ══════════
+// â•â•â•â•â•â•â•â•â•â• Tab 6: Methodology â•â•â•â•â•â•â•â•â•â•
 function renderMethodology(){
     const p=document.getElementById('p-methodology');
     let h='<h3>Evaluation Methodology</h3>';
@@ -9195,7 +9195,7 @@ function renderMethodology(){
     p.innerHTML=h;
 }
 
-// ══════════ Tab 7: Vendor Deep Dive ══════════
+// â•â•â•â•â•â•â•â•â•â• Tab 7: Vendor Deep Dive â•â•â•â•â•â•â•â•â•â•
 function renderDeepDive(){
     const p=document.getElementById('p-deepdive');
     const sorted=[...vendors].sort((a,b)=>a.vendor.localeCompare(b.vendor));
@@ -9324,7 +9324,7 @@ function renderDeepDiveDetail(){
     container.innerHTML=h;
 }
 
-// ── Init ──
+// â”€â”€ Init â”€â”€
 initTabs();
 renderOverview();
 renderCriteria();
@@ -9435,7 +9435,7 @@ function exportMQAnalysisAsMarkdown() {
     URL.revokeObjectURL(url);
 }
 
-// ── Market Insight Report Renderer ──
+// â”€â”€ Market Insight Report Renderer â”€â”€
 
 const _reportCache = {};
 
@@ -9446,7 +9446,7 @@ async function populateMarketInsightReport(reportId) {
     if (!body) return;
     if (body.dataset.populated) return;
 
-    body.innerHTML = '<p style="padding: 20px; color: var(--text-secondary);">Loading report…</p>';
+    body.innerHTML = '<p style="padding: 20px; color: var(--text-secondary);">Loading reportâ€¦</p>';
 
     try {
         if (!_reportCache[reportId]) {
@@ -9729,7 +9729,7 @@ function exportMarketInsightReportAsMarkdown(reportId) {
     URL.revokeObjectURL(url);
 }
 
-// ── Read-only detail modals ──
+// â”€â”€ Read-only detail modals â”€â”€
 
 function showScoreDetailsModal(score, description) {
     const modal = document.getElementById('pillar-details-modal');
@@ -10049,12 +10049,12 @@ function renderPillarChart(data) {
     `;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   OVERALL VENDOR RANKING  –  Evidence-Quality Refined Scoring
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   OVERALL VENDOR RANKING  â€“  Evidence-Quality Refined Scoring
    Score range 0-5 in 0.2 increments (25 discrete values).
    Each integer band (e.g. 4.0-4.8) has 5 sub-scores:
-   4.0, 4.2, 4.4, 4.6, 4.8  –  determined by evidence quality.
-   ═══════════════════════════════════════════════════════════════════ */
+   4.0, 4.2, 4.4, 4.6, 4.8  â€“  determined by evidence quality.
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /**
  * Compute an evidence quality factor (0-1) for a vendor + sub-pillar.
@@ -10113,7 +10113,7 @@ function computeEvidenceQuality(vendor, subPillarId) {
 /**
  * Refine a base score (integer 0-5) into a 0.2-increment score (e.g. 4.0-4.8)
  * based on the evidence quality factor (0-1).
- * Maps quality 0..1 → sub-score index 0..4 → offset 0.0, 0.2, 0.4, 0.6, 0.8
+ * Maps quality 0..1 â†’ sub-score index 0..4 â†’ offset 0.0, 0.2, 0.4, 0.6, 0.8
  */
 function refineScoreWithEvidence(baseScore, evidenceQuality) {
     if (baseScore === null || baseScore === undefined || isNaN(baseScore)) return null;
@@ -10135,20 +10135,20 @@ function refineScoreWithEvidence(baseScore, evidenceQuality) {
 
 /**
  * Return a color for a 0-5 score value, matching the level-N badge palette.
- *   0-1: red (#d13438)   — No evidence / No AI
- *   1-2: orange (#ff8c00) — Generic claims
- *   2-3: gold (#c19c00)   — AI-Augmented
- *   3-4: green (#107c10)  — Advanced AI
- *   4-5: blue (#005a9e)   — Fully Agentic / Best-in-class
+ *   0-1: red (#d13438)   â€” No evidence / No AI
+ *   1-2: orange (#ff8c00) â€” Generic claims
+ *   2-3: gold (#c19c00)   â€” AI-Augmented
+ *   3-4: green (#107c10)  â€” Advanced AI
+ *   4-5: blue (#005a9e)   â€” Fully Agentic / Best-in-class
  */
 function getScoreColor(score) {
     if (score == null || isNaN(score)) return 'var(--text-secondary)';
     const s = Number(score);
-    if (s >= 4)   return '#005a9e';   // blue   — level 5/4+
-    if (s >= 3)   return '#107c10';   // green  — level 4/3+
-    if (s >= 2)   return '#c19c00';   // gold   — level 3/2+
-    if (s >= 1)   return '#ff8c00';   // orange — level 2/1+
-    return '#d13438';                 // red    — level 1/0
+    if (s >= 4)   return '#005a9e';   // blue   â€” level 5/4+
+    if (s >= 3)   return '#107c10';   // green  â€” level 4/3+
+    if (s >= 2)   return '#c19c00';   // gold   â€” level 3/2+
+    if (s >= 1)   return '#ff8c00';   // orange â€” level 2/1+
+    return '#d13438';                 // red    â€” level 1/0
 }
 
 function computeVendorRefinedScoring(vendor) {
@@ -10230,7 +10230,7 @@ function computeOverallRanking(vendors) {
         return a.vendor.localeCompare(b.vendor);
     });
 
-    // Assign ranks (handle ties – same refined score = same rank)
+    // Assign ranks (handle ties â€“ same refined score = same rank)
     let rank = 1;
     scored.forEach((item, idx) => {
         if (idx > 0 && scored[idx - 1].overallRefined === item.overallRefined &&
@@ -10312,7 +10312,7 @@ function renderRankingTable() {
     let bodyHtml = '';
     displayData.forEach(item => {
         const rankClass = item.rank <= 3 ? `rank-top-${item.rank}` : '';
-        const rankIcon = item.rank === 1 ? '🥇' : item.rank === 2 ? '🥈' : item.rank === 3 ? '🥉' : '';
+        const rankIcon = item.rank === 1 ? 'ðŸ¥‡' : item.rank === 2 ? 'ðŸ¥ˆ' : item.rank === 3 ? 'ðŸ¥‰' : '';
         const evPct = (item.evidenceAvg * 100).toFixed(0);
         const evColor = item.evidenceAvg >= 0.7 ? '#107c10' : item.evidenceAvg >= 0.4 ? '#ff8c00' : '#d13438';
 
@@ -10328,7 +10328,7 @@ function renderRankingTable() {
         pillarCodes.forEach(p => {
             const pd = item.pillarData[p];
             const scoreVal = pd && pd.refined !== null ? pd.refined : (pd && pd.base !== null ? pd.base : null);
-            const scoreText = scoreVal !== null ? scoreVal.toFixed(2) : '–';
+            const scoreText = scoreVal !== null ? scoreVal.toFixed(2) : 'â€“';
             const scoreClr = scoreVal !== null ? getScoreColor(scoreVal) : 'var(--text-secondary)';
             bodyHtml += `<td class="score-col pillar-detail-col"><span style="color:${scoreClr}">${scoreText}</span></td>`;
             if (isEvMode) {
@@ -10356,7 +10356,7 @@ function renderRankingTable() {
                         const spScoreColor = getScoreColor(d.refined);
                         bodyHtml += `<td class="score-col sub-pillar-detail-col" title="Base: ${d.base}, Evidence: ${(d.evidenceQuality * 100).toFixed(0)}%"><span style="color:${spScoreColor}">${d.refined.toFixed(1)}</span></td>`;
                     } else {
-                        bodyHtml += `<td class="score-col sub-pillar-detail-col">–</td>`;
+                        bodyHtml += `<td class="score-col sub-pillar-detail-col">â€“</td>`;
                     }
                 });
             });
@@ -10372,7 +10372,7 @@ function renderRankingTable() {
         </table>
         <div class="ranking-footer">
             <span>Showing ${displayData.length} of ${ranking.length} vendors</span>
-            <span>Score mode: <strong>${modeLabel}</strong> · Refined in 0.2 increments via evidence quality</span>
+            <span>Score mode: <strong>${modeLabel}</strong> Â· Refined in 0.2 increments via evidence quality</span>
         </div>
     `;
 }
@@ -10390,7 +10390,7 @@ function initRankingControls() {
             const container = document.getElementById('ranking-table-container');
             if (container) {
                 container.classList.toggle('ranking-expanded');
-                expandBtn.textContent = container.classList.contains('ranking-expanded') ? 'Detail ◂' : 'Detail ▸';
+                expandBtn.textContent = container.classList.contains('ranking-expanded') ? 'Detail â—‚' : 'Detail â–¸';
                 renderRankingTable();
             }
         });
@@ -10712,7 +10712,7 @@ function populateComparisonRadarDropdowns() {
     const effectiveType = typeSelect ? typeSelect.value : comparisonRadarState.type;
 
     const opts = getComparisonOptions(effectiveType);
-    const emptyLabel = effectiveType === 'vendor' ? 'Select vendor…' : 'Select value…';
+    const emptyLabel = effectiveType === 'vendor' ? 'Select vendorâ€¦' : 'Select valueâ€¦';
     const ids = ['s1', 's2', 's3', 's4', 's5'];
 
     const previousValues = ids.map((sid) => {
@@ -10866,7 +10866,7 @@ function renderComparisonRadar(vendorsForAverages = null) {
         .filter(x => x.v && x.v.trim().length > 0);
 
     if (selected.length === 0) {
-        container.innerHTML = '<div style="color: var(--text-secondary); font-size: 12px; padding: 10px;">Click the gear (⚙) to configure up to 5 comparison series.</div>';
+        container.innerHTML = '<div style="color: var(--text-secondary); font-size: 12px; padding: 10px;">Click the gear (âš™) to configure up to 5 comparison series.</div>';
         return;
     }
 
@@ -11492,7 +11492,7 @@ function renderValidationComparison(vendorsForAverages = null) {
     const filteredVendors = filterVendorsByValidationCategory(baseVendors, categoryType, categoryValue);
     
     if (filteredVendors.length === 0) {
-        container.innerHTML = '<div style="color: var(--text-secondary); font-size: 12px; padding: 16px; text-align: center;">No vendors match the selected category. Click the gear (⚙) to configure.</div>';
+        container.innerHTML = '<div style="color: var(--text-secondary); font-size: 12px; padding: 16px; text-align: center;">No vendors match the selected category. Click the gear (âš™) to configure.</div>';
         return;
     }
     
@@ -11573,8 +11573,8 @@ function renderValidationComparison(vendorsForAverages = null) {
                             <th style="color: #107c10;">Valid.</th>
                             <th style="color: #0078d4;">Res.</th>
                             <th style="color: #8b5cf6;">AI Res.</th>
-                            <th>Δ V-R</th>
-                            <th>Δ AI-R</th>
+                            <th>Î” V-R</th>
+                            <th>Î” AI-R</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -11697,8 +11697,8 @@ function buildWidgetPreviewGrid() {
         previewWidget.style.gridRow = `span ${rowSpan}`;
         previewWidget.innerHTML = `
             <div style="text-align: center; width: 100%; cursor: grab; user-select: none;">
-                <div style="font-weight: 500; margin-bottom: 4px;">⋮⋮ ${widgetTitle}</div>
-                <div style="font-size: 10px; color: var(--text-secondary);">${colSpan}×${rowSpan}</div>
+                <div style="font-weight: 500; margin-bottom: 4px;">â‹®â‹® ${widgetTitle}</div>
+                <div style="font-size: 10px; color: var(--text-secondary);">${colSpan}Ã—${rowSpan}</div>
             </div>
             <div class="preview-resize-handle"></div>
         `;
@@ -11784,7 +11784,7 @@ function buildWidgetPreviewGrid() {
                 // Update size indicator
                 const sizeDiv = previewWidget.querySelector('div:last-of-type');
                 if (sizeDiv) {
-                    sizeDiv.innerHTML = `${newColSpan}×${newRowSpan}`;
+                    sizeDiv.innerHTML = `${newColSpan}Ã—${newRowSpan}`;
                 }
                 
                 // Update stored size
@@ -12239,7 +12239,7 @@ function renderQueryFilters() {
         // Remove button
         const removeBtn = document.createElement('button');
         removeBtn.className = 'remove-filter-btn';
-        removeBtn.textContent = '✕';
+        removeBtn.textContent = 'âœ•';
         removeBtn.addEventListener('click', () => removeQueryFilter(index));
         
         row.appendChild(fieldSelect);
@@ -12895,9 +12895,9 @@ function resetAnalyticsFilters() {
     updateAnalytics();
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-// 90-Day Adoption Roadmap — Interactive Gantt Chart
-// ═══════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// 90-Day Adoption Roadmap â€” Interactive Gantt Chart
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const GANTT_PHASE_COLORS = ['#0078d4', '#107c10', '#d83b01', '#5c2d91'];
 const GANTT_RMF_COLORS = { Govern: '#0078d4', Map: '#107c10', Measure: '#d83b01', Manage: '#5c2d91' };
@@ -12905,9 +12905,9 @@ const GANTT_PILLAR_COLORS = { INF: '#0078d4', IAM: '#107c10', NDS: '#d83b01', DS
 let _ganttPlanData = null;
 let _ganttDragState = null;
 
-// ── Agentic SOC Maturity Framework (ASMF) View ─────────────────────────────
+// â”€â”€ Agentic SOC Maturity Framework (ASMF) View â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-// ── ASMF Target Radar ────────────────────────────────────────────────────────
+// â”€â”€ ASMF Target Radar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function populateASMFRadar() {
     const el = document.getElementById('asmf-radar-content');
@@ -12929,9 +12929,9 @@ async function populateASMFRadar() {
 
     el.innerHTML = `
     <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:700px;">
-      Each axis represents one of the 11 ASMF dimensions. The outer ring (Stage 5 — Fully Agentic) shows the target state.
-      The middle band is Stage 3 (Directed Autonomy) — a realistic 3-year goal for most enterprises.
-      The inner band is Stage 1 (Assisted) — typical today.
+      Each axis represents one of the 11 ASMF dimensions. The outer ring (Stage 5 â€” Fully Agentic) shows the target state.
+      The middle band is Stage 3 (Directed Autonomy) â€” a realistic 3-year goal for most enterprises.
+      The inner band is Stage 1 (Assisted) â€” typical today.
     </div>
     <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
       <canvas id="asmf-radar-chart" width="560" height="600" style="max-width:560px;"></canvas>
@@ -12942,16 +12942,16 @@ async function populateASMFRadar() {
             const col = _asmfDimColor(d.plane||'');
             return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
               <span style="width:8px;height:8px;border-radius:50%;background:${col};flex-shrink:0;display:inline-block;"></span>
-              <span style="font-size:12px;color:var(--text-secondary);flex:1;">${escapeHtml(id)} — ${escapeHtml(d.name)}</span>
-              <span style="font-size:12px;font-weight:700;color:${col};" title="Framework maturity weight — this dimension's share of overall ASMF score">${w}% <span style="font-size:10px;font-weight:400;color:#475569;">weight</span></span>
+              <span style="font-size:12px;color:var(--text-secondary);flex:1;">${escapeHtml(id)} â€” ${escapeHtml(d.name)}</span>
+              <span style="font-size:12px;font-weight:700;color:${col};" title="Framework maturity weight â€” this dimension's share of overall ASMF score">${w}% <span style="font-size:10px;font-weight:400;color:#475569;">weight</span></span>
             </div>`;
         }).join('')}
         <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border-color);">
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Legend</div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;">
-            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#22c55e;display:inline-block;border-radius:2px;"></span><span style="color:var(--text-secondary);">Stage 5 — Fully Agentic (target)</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#f59e0b;display:inline-block;border-radius:2px;"></span><span style="color:var(--text-secondary);">Stage 3 — Directed Autonomy (3-yr goal)</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#6b7280;display:inline-block;border-radius:2px;border-style:dashed;"></span><span style="color:var(--text-secondary);">Stage 1 — Assisted (typical today)</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#22c55e;display:inline-block;border-radius:2px;"></span><span style="color:var(--text-secondary);">Stage 5 â€” Fully Agentic (target)</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#f59e0b;display:inline-block;border-radius:2px;"></span><span style="color:var(--text-secondary);">Stage 3 â€” Directed Autonomy (3-yr goal)</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:3px;background:#6b7280;display:inline-block;border-radius:2px;border-style:dashed;"></span><span style="color:var(--text-secondary);">Stage 1 â€” Assisted (typical today)</span></div>
           </div>
         </div>
       </div>
@@ -13029,7 +13029,7 @@ ctx.clearRect(0,0,560,600);
     ctx.beginPath();ctx.arc(cx,cy,5,0,2*Math.PI);ctx.fillStyle='#f1f5f9';ctx.fill();
 }
 
-// ── ASMF Effort Flow (Sankey-style SVG) ──────────────────────────────────────
+// â”€â”€ ASMF Effort Flow (Sankey-style SVG) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function populateASMFSankey() {
     const el = document.getElementById('asmf-sankey-content');
@@ -13076,7 +13076,7 @@ async function populateASMFSankey() {
         lines.forEach((l,i) => svg += `<text x="${cx2}" y="${topY-32+10+(i*12)}" text-anchor="middle" font-size="10" font-weight="700" fill="${c.color}">${escapeHtml(l)}</text>`);
     });
 
-    // Stage rows — horizontal bands showing human/agentic split
+    // Stage rows â€” horizontal bands showing human/agentic split
     stages.forEach((s, si) => {
         const y = topY + si * rowH;
         const color = stageColors[si];
@@ -13087,7 +13087,7 @@ async function populateASMFSankey() {
         svg += `<rect x="${barX+humW}" y="${y}" width="${agW}" height="28" rx="3" fill="${color}44"/>`;
         svg += `<rect x="${barX}" y="${y}" width="${barW2}" height="28" rx="3" fill="none" stroke="${color}33" stroke-width="1"/>`;
 
-        // Labels fully inside the left margin — two lines, right-aligned at labelW-4
+        // Labels fully inside the left margin â€” two lines, right-aligned at labelW-4
         const lines = s.label.split('\n');
         lines.forEach((l,i) => svg += `<text x="${labelW-4}" y="${y+10+(i*12)}" text-anchor="end" font-size="10" font-weight="${i===0?'700':'400'}" fill="${color}">${escapeHtml(l)}</text>`);
 
@@ -13109,18 +13109,18 @@ async function populateASMFSankey() {
     el.innerHTML = `
     <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:760px;">
       Each horizontal band represents a maturity stage. As you move from Stage 0 (Traditional) to Stage 5 (Fully Agentic),
-      agentic systems absorb an increasing proportion of the work across every operational layer — from signal ingestion through to business outcomes.
+      agentic systems absorb an increasing proportion of the work across every operational layer â€” from signal ingestion through to business outcomes.
     </div>
     <div style="overflow-x:auto;">${svg}</div>
     <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;">
       ${stages.map((s,i)=>`<div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);">
         <span style="width:14px;height:14px;border-radius:3px;background:${stageColors[i]};display:inline-block;"></span>
-        ${escapeHtml(s.label.replace('\n',' — '))}
+        ${escapeHtml(s.label.replace('\n',' â€” '))}
       </div>`).join('')}
     </div>`;
 }
 
-// ── ASMF Capability Pyramid ───────────────────────────────────────────────────
+// â”€â”€ ASMF Capability Pyramid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function populateASMFPyramid() {
     const el = document.getElementById('asmf-pyramid-content');
@@ -13168,7 +13168,7 @@ async function populateASMFPyramid() {
                onmouseenter="this.style.background='${l.color}44'" onmouseleave="this.style.background='${l.color}22'">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div>
-                <div style="font-size:11px;font-weight:800;color:${l.color};text-transform:uppercase;letter-spacing:0.5px;">Stage ${l.stage} — ${escapeHtml(l.label)}</div>
+                <div style="font-size:11px;font-weight:800;color:${l.color};text-transform:uppercase;letter-spacing:0.5px;">Stage ${l.stage} â€” ${escapeHtml(l.label)}</div>
                 <div style="font-size:12px;color:var(--text-secondary);margin-top:3px;line-height:1.4;">${escapeHtml(l.cap)}</div>
                 <div style="margin-top:5px;">${dimBadges}</div>
               </div>
@@ -13179,13 +13179,13 @@ async function populateASMFPyramid() {
 
     el.innerHTML = `
     <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:700px;">
-      Each layer represents a maturity stage. The pyramid grows narrower at the top — fewer organizations reach higher stages,
+      Each layer represents a maturity stage. The pyramid grows narrower at the top â€” fewer organizations reach higher stages,
       but those that do achieve exponentially better outcomes. Hover any layer to see the expected outcome.
     </div>
     <div style="padding:0 20px;">
-      <div style="text-align:center;margin-bottom:6px;font-size:11px;color:var(--text-muted);">▲ Increasing autonomy, decreasing mean time to detect &amp; respond</div>
+      <div style="text-align:center;margin-bottom:6px;font-size:11px;color:var(--text-muted);">â–² Increasing autonomy, decreasing mean time to detect &amp; respond</div>
       ${layerHTML}
-      <div style="text-align:center;margin-top:6px;font-size:11px;color:var(--text-muted);">▼ Foundation: data sources, sensors, security tooling</div>
+      <div style="text-align:center;margin-top:6px;font-size:11px;color:var(--text-muted);">â–¼ Foundation: data sources, sensors, security tooling</div>
     </div>
     <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border-color);">
       <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">Outcome by stage (hover layers for detail)</div>
@@ -13198,7 +13198,7 @@ async function populateASMFPyramid() {
     </div>`;
 }
 
-// ── ASMF Journey Timeline ─────────────────────────────────────────────────────
+// â”€â”€ ASMF Journey Timeline â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function populateASMFTimeline() {
     const el = document.getElementById('asmf-timeline-content');
@@ -13225,13 +13225,13 @@ async function populateASMFTimeline() {
                       font-size:14px;font-weight:800;color:#fff;border:3px solid var(--bg-primary);">${i+1}</div>
           <div style="font-size:11px;color:${color};font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;margin-top:8px;">${escapeHtml(p.transition||'')}</div>
           <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">${escapeHtml(p.label||'')}</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px;">⏱ ${escapeHtml(p.approximate_duration||'')}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px;">â± ${escapeHtml(p.approximate_duration||'')}</div>
           <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:10px;">${escapeHtml(p.description||'')}</div>
           ${acts ? `<div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:4px;">Key activities</div>
           <ul style="margin:0 0 10px;padding-left:14px;font-size:11px;">${acts}</ul>` : ''}
-          ${inflections ? `<div style="font-size:11px;font-weight:700;color:#22c55e;margin-bottom:4px;">✓ Inflection points</div>
+          ${inflections ? `<div style="font-size:11px;font-weight:700;color:#22c55e;margin-bottom:4px;">âœ“ Inflection points</div>
           <ul style="margin:0 0 10px;padding-left:14px;font-size:11px;">${inflections}</ul>` : ''}
-          ${fails ? `<div style="font-size:11px;font-weight:700;color:#ef4444;margin-bottom:4px;">⚠ Failure modes</div>
+          ${fails ? `<div style="font-size:11px;font-weight:700;color:#ef4444;margin-bottom:4px;">âš  Failure modes</div>
           <ul style="margin:0;padding-left:14px;font-size:11px;">${fails}</ul>` : ''}
         </div>`;
     }).join('');
@@ -13249,7 +13249,7 @@ async function populateASMFTimeline() {
 
     el.innerHTML = `
     <div style="margin-bottom:28px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:800px;">
-      The transformation is not linear — each phase has specific inflection points that must be reached before the next phase becomes accessible.
+      The transformation is not linear â€” each phase has specific inflection points that must be reached before the next phase becomes accessible.
       Organizations that skip phases typically encounter compounding failure modes.
     </div>
     <div style="padding:24px 0 0;overflow-x:auto;">
@@ -13260,13 +13260,13 @@ async function populateASMFTimeline() {
     </div>`;
 }
 
-// ── ASMF Orbital Model (concentric rings canvas) ──────────────────────────────
+// â”€â”€ ASMF Orbital Model (concentric rings canvas) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function populateASMFOrbital() {
     const el = document.getElementById('asmf-orbital-content');
     if (!el) return;
 
-    // ── Load data (framework + relationship map) ──────────────────────────
+    // â”€â”€ Load data (framework + relationship map) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     try {
         const toFetch = [];
         if (!_asmfFramework)  toFetch.push(fetch('/api/asmf-framework').then(r=>r.json()).then(d=>{ _asmfFramework=d; }));
@@ -13284,12 +13284,12 @@ async function populateASMFOrbital() {
     const relTypes = orbMap.relationship_types || {};
     const dimCfg   = orbMap.dim_config         || {};
 
-    // ── Layout constants ──────────────────────────────────────────────────
+    // â”€â”€ Layout constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const OV_RING_R  = 215;   // overview dim ring
     const FO_INNER_R = 125;   // focus: sub-dim ring
     const FO_OUTER_R = 285;   // focus: outer dim ring
 
-    // ── Build node list ───────────────────────────────────────────────────
+    // â”€â”€ Build node list â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const allNodes = [];
     function mkNode(o) { return Object.assign({ tx:0, ty:0, alpha:1, talpha:1, tr:20, r:4 }, o); }
 
@@ -13327,13 +13327,13 @@ async function populateASMFOrbital() {
         });
     });
 
-    // ── App state ─────────────────────────────────────────────────────────
+    // â”€â”€ App state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     let mode='overview', selectedDim=null, selectedSub=null, hoverId=null;
     let camX=0, camY=0, camZ=1, tX=0, tY=0, tZ=1;
     let dragging=false, dragSX=0, dragSY=0, camSX=0, camSY=0;
     let raf;
 
-    // ── HTML scaffold ─────────────────────────────────────────────────────
+    // â”€â”€ HTML scaffold â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     el.style.cssText = 'background:#0a0f1a;position:relative;display:flex;overflow:hidden;';
     el.innerHTML = `
       <canvas id="asmf-orbital-canvas" style="flex:1;min-width:0;cursor:grab;display:block;"></canvas>
@@ -13342,8 +13342,8 @@ async function populateASMFOrbital() {
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
             <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#475569;">ASMF Integration Map</div>
             <div style="display:flex;gap:6px;align-items:center;">
-              <button id="asmf-orbital-back" style="display:none;background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;white-space:nowrap;">← All</button>
-              <button id="asmf-orbital-export" style="background:#1e3a5f;border:1px solid #1d4ed8;color:#93c5fd;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;white-space:nowrap;" title="Export as interactive standalone HTML">⬇ Export</button>
+              <button id="asmf-orbital-back" style="display:none;background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;white-space:nowrap;">â† All</button>
+              <button id="asmf-orbital-export" style="background:#1e3a5f;border:1px solid #1d4ed8;color:#93c5fd;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;white-space:nowrap;" title="Export as interactive standalone HTML">â¬‡ Export</button>
             </div>
           </div>
           <div id="asmf-orbital-crumb" style="font-size:12px;color:#64748b;margin-top:5px;">All 11 Dimensions</div>
@@ -13362,7 +13362,7 @@ async function populateASMFOrbital() {
     function resizeCanvas() { canvas.width = canvas.offsetWidth||700; canvas.height = canvas.offsetHeight||600; }
     resizeCanvas();
 
-    // ── Layout transitions ────────────────────────────────────────────────
+    // â”€â”€ Layout transitions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function setLayout(newMode, selId) {
         mode = newMode;
         if (newMode === 'overview') {
@@ -13372,25 +13372,25 @@ async function populateASMFOrbital() {
             allNodes.filter(n=>n.type==='subdim').forEach(n => { n.tx=n.parentNode.overviewX; n.ty=n.parentNode.overviewY; n.tr=4; n.talpha=0; });
             tX=0; tY=0; tZ=1;
         } else if (newMode === 'dimfocus') {
-            // Selected dim → center
+            // Selected dim â†’ center
             const focDim = allNodes.find(n=>n.id===selId);
             focDim.tx=0; focDim.ty=0; focDim.tr=44; focDim.talpha=1;
-            // Root → faded corner
+            // Root â†’ faded corner
             const root = allNodes.find(n=>n.id==='__root__');
             root.tx=-310; root.ty=-200; root.tr=18; root.talpha=0.3;
-            // Other dims → outer ring
+            // Other dims â†’ outer ring
             const otherDims = allNodes.filter(n=>n.type==='dim' && n.id!==selId);
             otherDims.forEach((n,i) => {
                 const a = (2*Math.PI*i/otherDims.length) - Math.PI/2;
                 n.tx=FO_OUTER_R*Math.cos(a); n.ty=FO_OUTER_R*Math.sin(a); n.tr=20; n.talpha=1;
             });
-            // Selected dim's sub-dims → inner ring, full circle
+            // Selected dim's sub-dims â†’ inner ring, full circle
             const mySubs = allNodes.filter(n=>n.type==='subdim' && n.parentId===selId);
             mySubs.forEach((n,i) => {
                 const a = (2*Math.PI*i/mySubs.length) - Math.PI/2;
                 n.tx=FO_INNER_R*Math.cos(a); n.ty=FO_INNER_R*Math.sin(a); n.tr=17; n.talpha=1;
             });
-            // Other sub-dims → collapse to their parent's outer-ring target position
+            // Other sub-dims â†’ collapse to their parent's outer-ring target position
             allNodes.filter(n=>n.type==='subdim' && n.parentId!==selId).forEach(n => {
                 const p = otherDims.find(d=>d.id===n.parentId);
                 if (p) { n.tx=p.tx; n.ty=p.ty; }
@@ -13400,7 +13400,7 @@ async function populateASMFOrbital() {
         }
     }
 
-    // ── Side panel renderers ──────────────────────────────────────────────
+    // â”€â”€ Side panel renderers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function renderOverviewPanel() {
         crumb.textContent = 'All 11 Dimensions';
         backBtn.style.display = 'none';
@@ -13417,7 +13417,7 @@ async function populateASMFOrbital() {
           </div>
           <div style="border-top:1px solid #1e293b;padding-top:14px;">
             <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Controls</div>
-            <div style="line-height:2.1;color:#64748b;">🖱 Click dim — focus &amp; see all links<br>🖱 Hover outer dim — see relationship<br>🖱 Click outer dim — shift focus<br>🖱 Click sub-dim — stage descriptors<br>🖱 Scroll — zoom · Drag — pan<br>🖱 Click background or ← All — reset</div>
+            <div style="line-height:2.1;color:#64748b;">ðŸ–± Click dim â€” focus &amp; see all links<br>ðŸ–± Hover outer dim â€” see relationship<br>ðŸ–± Click outer dim â€” shift focus<br>ðŸ–± Click sub-dim â€” stage descriptors<br>ðŸ–± Scroll â€” zoom Â· Drag â€” pan<br>ðŸ–± Click background or â† All â€” reset</div>
           </div>`;
     }
 
@@ -13439,9 +13439,9 @@ async function populateASMFOrbital() {
             const relHtml = mutual.length
                 ? mutual.map(r => {
                     const rt = relTypes[r.type]||{color:'#94a3b8',label:r.type};
-                    const dir = r.from===dimId ? `${dimId} → ${r.to}` : `${r.from} → ${dimId}`;
+                    const dir = r.from===dimId ? `${dimId} â†’ ${r.to}` : `${r.from} â†’ ${dimId}`;
                     return `<div style="margin-bottom:10px;padding:10px 12px;background:#1e293b;border-radius:6px;border-left:3px solid ${rt.color};">
-                      <div style="font-size:10px;font-weight:700;color:${rt.color};text-transform:uppercase;margin-bottom:5px;">${escapeHtml(rt.label)} · ${escapeHtml(dir)}</div>
+                      <div style="font-size:10px;font-weight:700;color:${rt.color};text-transform:uppercase;margin-bottom:5px;">${escapeHtml(rt.label)} Â· ${escapeHtml(dir)}</div>
                       <div style="line-height:1.6;color:#cbd5e1;">${escapeHtml(r.label)}</div>
                     </div>`;
                   }).join('')
@@ -13467,8 +13467,8 @@ async function populateASMFOrbital() {
           </div>`).join('');
 
         const allDimRels = [
-            ...outRels.map(r => ({ dir:'→', other:r.to,   r, rt:relTypes[r.type]||{color:'#94a3b8',label:r.type} })),
-            ...inRels.map( r => ({ dir:'←', other:r.from, r, rt:relTypes[r.type]||{color:'#94a3b8',label:r.type} }))
+            ...outRels.map(r => ({ dir:'â†’', other:r.to,   r, rt:relTypes[r.type]||{color:'#94a3b8',label:r.type} })),
+            ...inRels.map( r => ({ dir:'â†', other:r.from, r, rt:relTypes[r.type]||{color:'#94a3b8',label:r.type} }))
         ].sort((a,b) => a.other.localeCompare(b.other));
 
         const relHtml = allDimRels.map(({dir, other, r, rt}) => {
@@ -13489,7 +13489,7 @@ async function populateASMFOrbital() {
             <span style="font-size:18px;font-weight:700;color:#f1f5f9;">${escapeHtml(dimId)}</span>
           </div>
           <div style="font-size:12px;color:#94a3b8;margin-bottom:2px;">${escapeHtml(dn.name)}</div>
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:14px;">${escapeHtml(dn.plane)} · Weight: ${weight}%</div>
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:14px;">${escapeHtml(dn.plane)} Â· Weight: ${weight}%</div>
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Sub-Dimensions</div>
           ${subHtml}
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:6px;margin-top:16px;">Integration Links <span style="color:#334155;font-weight:400;">${allDimRels.length} connections</span></div>
@@ -13507,17 +13507,17 @@ async function populateASMFOrbital() {
     function renderSubPanel(sn) {
         const sdLabel = sn.id.replace(sn.parentId+'__','');
         const stagesHtml = ['0','1','2','3','4','5'].map(sk => {
-            const text  = (sn.sd.stage_descriptors||{})[sk] || '—';
+            const text  = (sn.sd.stage_descriptors||{})[sk] || 'â€”';
             const color = ASMF_STAGE_COLORS[+sk];
             const lbl   = ASMF_STAGE_LABELS[+sk];
             return `<div style="margin-bottom:8px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid ${color};">
-              <div style="font-size:10px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Stage ${sk} — ${escapeHtml(lbl)}</div>
+              <div style="font-size:10px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Stage ${sk} â€” ${escapeHtml(lbl)}</div>
               <div style="font-size:11px;color:#cbd5e1;line-height:1.55;">${escapeHtml(text)}</div>
             </div>`;
         }).join('');
-        crumb.textContent = `${selectedDim} › ${sdLabel}`;
+        crumb.textContent = `${selectedDim} â€º ${sdLabel}`;
         detBody.innerHTML = `
-          <div style="font-size:10px;color:#475569;margin-bottom:6px;">↑ ${escapeHtml(sn.parentId)}</div>
+          <div style="font-size:10px;color:#475569;margin-bottom:6px;">â†‘ ${escapeHtml(sn.parentId)}</div>
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
             <span style="width:10px;height:10px;border-radius:50%;background:${sn.color};flex-shrink:0;display:inline-block;"></span>
             <span style="font-size:15px;font-weight:700;color:#f1f5f9;">${escapeHtml(sdLabel)}</span>
@@ -13526,7 +13526,7 @@ async function populateASMFOrbital() {
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Maturity Stage Descriptors</div>
           ${stagesHtml}
           <div style="margin-top:14px;">
-            <button id="asmf-back-to-dim" style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;">← Back to ${escapeHtml(sn.parentId)}</button>
+            <button id="asmf-back-to-dim" style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;">â† Back to ${escapeHtml(sn.parentId)}</button>
           </div>`;
         document.getElementById('asmf-back-to-dim')?.addEventListener('click', () => {
             selectedSub = null;
@@ -13545,12 +13545,12 @@ async function populateASMFOrbital() {
         selectedDim=dimId; selectedSub=null;
         setLayout('dimfocus', dimId);
         const dn = allNodes.find(n=>n.id===dimId);
-        crumb.textContent = `${dimId} — ${dn?.name||''}`;
+        crumb.textContent = `${dimId} â€” ${dn?.name||''}`;
         backBtn.style.display = 'block';
         renderDimPanel(dimId, null);
     }
 
-    // ── Coord helpers ─────────────────────────────────────────────────────
+    // â”€â”€ Coord helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function w2s(wx, wy) { return [canvas.width/2+(wx+camX)*camZ, canvas.height/2+(wy+camY)*camZ]; }
     function s2w(sx, sy) { return [(sx-canvas.width/2)/camZ-camX, (sy-canvas.height/2)/camZ-camY]; }
 
@@ -13569,7 +13569,7 @@ async function populateASMFOrbital() {
         return null;
     }
 
-    // ── Arrow drawing helper ──────────────────────────────────────────────
+    // â”€â”€ Arrow drawing helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function drawArrow(ctx, fx,fy,fr, tx2,ty2,tr2, color, lw, dash) {
         const dx=tx2-fx, dy=ty2-fy, len=Math.sqrt(dx*dx+dy*dy);
         if (len < fr+tr2+8) return;
@@ -13588,7 +13588,7 @@ async function populateASMFOrbital() {
         ctx.closePath(); ctx.fillStyle=color; ctx.fill();
     }
 
-    // ── Draw loop ─────────────────────────────────────────────────────────
+    // â”€â”€ Draw loop â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function draw() {
         // Lerp nodes toward targets
         allNodes.forEach(n => {
@@ -13625,7 +13625,7 @@ async function populateASMFOrbital() {
             ctx.strokeStyle='#1e293b33'; ctx.setLineDash([4,10]); ctx.stroke(); ctx.setLineDash([]);
         }
 
-        // ── Cross-dim relationship arrows (focus mode) ────────────────────
+        // â”€â”€ Cross-dim relationship arrows (focus mode) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         if (mode==='dimfocus' && selectedDim) {
             const cenNode = allNodes.find(n=>n.id===selectedDim);
             const [csx,csy] = w2s(cenNode.x,cenNode.y);
@@ -13668,7 +13668,7 @@ async function populateASMFOrbital() {
             });
         }
 
-        // ── Sub-dim spoke lines ───────────────────────────────────────────
+        // â”€â”€ Sub-dim spoke lines â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         if (mode==='dimfocus' && selectedDim) {
             const cen = allNodes.find(n=>n.id===selectedDim);
             const [csx,csy] = w2s(cen.x,cen.y);
@@ -13680,7 +13680,7 @@ async function populateASMFOrbital() {
             });
         }
 
-        // ── Nodes ─────────────────────────────────────────────────────────
+        // â”€â”€ Nodes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         allNodes.forEach(n => {
             if (n.alpha < 0.02) return;
             const [sx,sy] = w2s(n.x,n.y);
@@ -13722,7 +13722,7 @@ async function populateASMFOrbital() {
                 ctx.font=`${Math.round(9*fscale)}px system-ui`;
                 ctx.fillStyle='#94a3b8'; ctx.fillText('CORE',sx,sy+7*Math.min(1.5,camZ));
             } else if (isCen) {
-                // Centered dim: fit full name inside circle — auto-reduce font until it fits
+                // Centered dim: fit full name inside circle â€” auto-reduce font until it fits
                 const maxW = nr * 1.55; // usable chord width inside the circle
                 const words = n.name.split(' ');
                 // Find most balanced 2-line split
@@ -13748,7 +13748,7 @@ async function populateASMFOrbital() {
                 ctx.fillText(n.type==='subdim' ? n.id.replace(n.parentId+'__','') : n.id, sx, sy);
             }
 
-            // Name label outside (dims) — skip for centered node (labeled inside); wrap long names into 2 lines
+            // Name label outside (dims) â€” skip for centered node (labeled inside); wrap long names into 2 lines
             if (n.type==='dim' && n.alpha > 0.35 && !isCen) {
                 const ang2    = Math.atan2(sy-ocy, sx-ocx);
                 const nameOff = nr + 22; // push well clear of the node edge
@@ -13789,7 +13789,7 @@ async function populateASMFOrbital() {
         raf = requestAnimationFrame(draw);
     }
 
-    // ── Event listeners ───────────────────────────────────────────────────
+    // â”€â”€ Event listeners â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     canvas.addEventListener('mousedown', e => {
         dragging=true; dragSX=e.clientX; dragSY=e.clientY;
         camSX=camX; camSY=camY; canvas.style.cursor='grabbing';
@@ -13839,7 +13839,7 @@ async function populateASMFOrbital() {
         tZ=Math.min(4.5,Math.max(0.3,tZ*(e.deltaY<0?1.13:0.88)));
     }, {passive:false});
 
-    // ── Init ──────────────────────────────────────────────────────────────
+    // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     setLayout('overview', null);
     renderOverviewPanel();
     raf = requestAnimationFrame(draw);
@@ -13847,7 +13847,7 @@ async function populateASMFOrbital() {
     const ro = new ResizeObserver(() => { canvas.width=canvas.offsetWidth||700; canvas.height=canvas.offsetHeight||600; });
     ro.observe(canvas);
 
-    // ── Cleanup ───────────────────────────────────────────────────────────
+    // â”€â”€ Cleanup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const graphPanel  = document.getElementById('report-panel-asmf-graph');
     const orbitalPane = document.getElementById('asmf-graph-pane-orbital');
     function stopOrbital() { cancelAnimationFrame(raf); ro.disconnect(); obs.disconnect(); if(paneObs)paneObs.disconnect(); }
@@ -13860,12 +13860,12 @@ async function populateASMFOrbital() {
     }
 }
 
-// ── ASMF Matrix Report ───────────────────────────────────────────────────────
+// â”€â”€ ASMF Matrix Report â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function populateASMFMatrix() {
     const el = document.getElementById('asmf-matrix-content');
     if (!el) return;
-    el.innerHTML = '<div style="color:var(--text-muted);padding:24px;">Loading framework…</div>';
+    el.innerHTML = '<div style="color:var(--text-muted);padding:24px;">Loading frameworkâ€¦</div>';
     try {
         if (!_asmfFramework) {
             const resp = await fetch('/api/asmf-framework');
@@ -13892,7 +13892,7 @@ function _asmfBuildMatrix(fw) {
     const journey = (fw.transformation_journey && fw.transformation_journey.phases) ? fw.transformation_journey.phases : (Array.isArray(fw.transformation_journey) ? fw.transformation_journey : []);
     const stageKeys = ['0','1','2','3','4','5'];
 
-    // ── Stage header row ──
+    // â”€â”€ Stage header row â”€â”€
     const stageHeaders = stageKeys.map(sk => {
         const s = stages[sk] || {};
         const color = ASMF_STAGE_COLORS[parseInt(sk)];
@@ -13905,7 +13905,7 @@ function _asmfBuildMatrix(fw) {
         </th>`;
     }).join('');
 
-    // ── Dimension rows ──
+    // â”€â”€ Dimension rows â”€â”€
     const PLANE_COLORS = {
         'Sensing & Signal': '#06b6d4',
         'Reasoning & Action': '#8b5cf6',
@@ -13924,7 +13924,7 @@ function _asmfBuildMatrix(fw) {
         const subRows = Object.entries(subDims).map(([sdId, sd], sdIdx) => {
             const cells = stageKeys.map(sk => {
                 const desc = (sd.stage_descriptors || {})[sk] || '';
-                const short = desc.length > 58 ? desc.substring(0, 55) + '…' : desc;
+                const short = desc.length > 58 ? desc.substring(0, 55) + 'â€¦' : desc;
                 const bg = _asmfCellBg(parseInt(sk), 0.15);
                 const borderColor = _asmfCellBg(parseInt(sk), 0.4);
                 return `
@@ -13966,15 +13966,15 @@ function _asmfBuildMatrix(fw) {
         return subRows + `<tr style="height:4px;background:var(--bg-primary);"><td colspan="8"></td></tr>`;
     }).join('');
 
-    // ── Principles grid ──
+    // â”€â”€ Principles grid â”€â”€
     const principleCards = principles.map(p => `
     <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-left:3px solid #3b82f6;
                 border-radius:6px;padding:12px 14px;flex:1;min-width:220px;">
-      <div style="font-size:11px;font-weight:700;color:#3b82f6;margin-bottom:4px;">${escapeHtml(p.id||'')} — ${escapeHtml(p.label||'')}</div>
+      <div style="font-size:11px;font-weight:700;color:#3b82f6;margin-bottom:4px;">${escapeHtml(p.id||'')} â€” ${escapeHtml(p.label||'')}</div>
       <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">${escapeHtml(p.statement||'')}</div>
     </div>`).join('');
 
-    // ── Journey arc ──
+    // â”€â”€ Journey arc â”€â”€
     const journeySteps = journey.map((phase, i) => {
         const color = ASMF_STAGE_COLORS[i + 1] || '#64748b';
         const acts = (phase.key_activities||[]).slice(0,3);
@@ -13986,11 +13986,11 @@ function _asmfBuildMatrix(fw) {
           <ul style="margin:0 0 8px;padding-left:14px;">
             ${acts.map(a=>`<li style="font-size:11px;color:var(--text-secondary);padding:1px 0;">${escapeHtml(a)}</li>`).join('')}
           </ul>
-          ${fails.length ? `<div style="font-size:10px;color:#ef4444;margin-top:4px;">⚠ ${escapeHtml(fails[0])}</div>` : ''}
+          ${fails.length ? `<div style="font-size:10px;color:#ef4444;margin-top:4px;">âš  ${escapeHtml(fails[0])}</div>` : ''}
         </div>`;
     }).join('');
 
-    // ── Plane legend ──
+    // â”€â”€ Plane legend â”€â”€
     const planeLegend = Object.entries(PLANE_COLORS).map(([label, color]) =>
         `<span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px;">
            <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block;"></span>
@@ -14081,7 +14081,7 @@ function exportASMFOrbitalAsHTML(fw, orbMap) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ASMF Integration Map — Agentic SOC Framework</title>
+<title>ASMF Integration Map â€” Agentic SOC Framework</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden;background:#0a0f1a;font-family:'Segoe UI',system-ui,sans-serif;color:#94a3b8}
@@ -14103,7 +14103,7 @@ canvas{flex:1;min-width:0;cursor:grab;display:block}
 <body>
 <div id="app">
   <div id="topbar">
-    <h1>ASMF — Agentic SOC Integration Map</h1>
+    <h1>ASMF â€” Agentic SOC Integration Map</h1>
     <span class="sub">Exported ${ts}</span>
   </div>
   <div id="main">
@@ -14112,7 +14112,7 @@ canvas{flex:1;min-width:0;cursor:grab;display:block}
       <div id="panel-hdr">
         <div class="row">
           <div class="title">ASMF Integration Map</div>
-          <button id="back-btn">← All</button>
+          <button id="back-btn">â† All</button>
         </div>
         <div id="crumb">All 11 Dimensions</div>
       </div>
@@ -14126,7 +14126,7 @@ const ORBMAP  = ${mapJson};
 const STAGE_COLORS = ${stageColors};
 const STAGE_LABELS = ${stageLabels};
 
-// ── helpers ───────────────────────────────────────────────────────────────
+// â”€â”€ helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function esc(s){const d=document.createElement('div');d.textContent=String(s??'');return d.innerHTML;}
 
 const dims      = Object.entries(FW.dimensions||{});
@@ -14198,7 +14198,7 @@ function renderOverviewPanel(){
     crumb.textContent='All 11 Dimensions';
     backBtn.style.display='none';
     const typeHtml=Object.entries(relTypes).map(([k,v])=>'<div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="width:24px;height:3px;background:'+v.color+';border-radius:2px;flex-shrink:0;display:inline-block;"></span><span>'+esc(v.label)+'</span></div>').join('');
-    detBody.innerHTML='<p style="line-height:1.75;margin-bottom:16px;color:#94a3b8;"><strong style="color:#f1f5f9;">Click any dimension</strong> to bring it to center and reveal every integration link, sub-dimension and capability flow.</p><div style="border-top:1px solid #1e293b;padding-top:14px;margin-bottom:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship Types</div>'+typeHtml+'</div><div style="border-top:1px solid #1e293b;padding-top:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Controls</div><div style="line-height:2.1;color:#64748b;">🖱 Click dim — focus &amp; see all links<br>🖱 Hover outer dim — see relationship<br>🖱 Click outer dim — shift focus<br>🖱 Click sub-dim — stage descriptors<br>🖱 Scroll — zoom · Drag — pan<br>🖱 Click background or ← All — reset</div></div>';
+    detBody.innerHTML='<p style="line-height:1.75;margin-bottom:16px;color:#94a3b8;"><strong style="color:#f1f5f9;">Click any dimension</strong> to bring it to center and reveal every integration link, sub-dimension and capability flow.</p><div style="border-top:1px solid #1e293b;padding-top:14px;margin-bottom:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship Types</div>'+typeHtml+'</div><div style="border-top:1px solid #1e293b;padding-top:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Controls</div><div style="line-height:2.1;color:#64748b;">ðŸ–± Click dim â€” focus &amp; see all links<br>ðŸ–± Hover outer dim â€” see relationship<br>ðŸ–± Click outer dim â€” shift focus<br>ðŸ–± Click sub-dim â€” stage descriptors<br>ðŸ–± Scroll â€” zoom Â· Drag â€” pan<br>ðŸ–± Click background or â† All â€” reset</div></div>';
 }
 
 function renderDimPanel(dimId,hoverOtherId){
@@ -14209,22 +14209,22 @@ function renderDimPanel(dimId,hoverOtherId){
     if(hoverOtherId){
         const on=allNodes.find(n=>n.id===hoverOtherId);if(!on)return;
         const mutual=[...outRels.filter(r=>r.to===hoverOtherId),...inRels.filter(r=>r.from===hoverOtherId)];
-        const relHtml=mutual.length?mutual.map(r=>{const rt=relTypes[r.type]||{color:'#94a3b8',label:r.type};const dir=r.from===dimId?dimId+' → '+r.to:r.from+' → '+dimId;return'<div style="margin-bottom:10px;padding:10px 12px;background:#1e293b;border-radius:6px;border-left:3px solid '+rt.color+'"><div style="font-size:10px;font-weight:700;color:'+rt.color+';text-transform:uppercase;margin-bottom:5px;">'+esc(rt.label)+' · '+esc(dir)+'</div><div style="line-height:1.6;color:#cbd5e1;">'+esc(r.label)+'</div></div>';}).join(''):'<div style="color:#475569;font-style:italic;padding:8px 0;">No direct relationship defined.</div>';
+        const relHtml=mutual.length?mutual.map(r=>{const rt=relTypes[r.type]||{color:'#94a3b8',label:r.type};const dir=r.from===dimId?dimId+' â†’ '+r.to:r.from+' â†’ '+dimId;return'<div style="margin-bottom:10px;padding:10px 12px;background:#1e293b;border-radius:6px;border-left:3px solid '+rt.color+'"><div style="font-size:10px;font-weight:700;color:'+rt.color+';text-transform:uppercase;margin-bottom:5px;">'+esc(rt.label)+' Â· '+esc(dir)+'</div><div style="line-height:1.6;color:#cbd5e1;">'+esc(r.label)+'</div></div>';}).join(''):'<div style="color:#475569;font-style:italic;padding:8px 0;">No direct relationship defined.</div>';
         detBody.innerHTML='<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"><span style="width:11px;height:11px;border-radius:50%;background:'+on.color+';flex-shrink:0;display:inline-block;"></span><span style="font-size:16px;font-weight:700;color:#f1f5f9;">'+esc(hoverOtherId)+'</span><span style="font-size:10px;color:#475569;margin-left:auto;">'+esc(on.plane||'')+'</span></div><div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">'+esc(on.name)+'</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship with '+esc(dimId)+'</div>'+relHtml+'<div style="margin-top:12px;font-size:11px;color:#475569;">Click to shift focus to '+esc(hoverOtherId)+'</div>';
         return;
     }
     const subHtml=allNodes.filter(n=>n.type==='subdim'&&n.parentId===dimId).map(sn=>'<div style="margin-bottom:7px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid '+dn.color+';cursor:pointer;" data-subdim="'+esc(sn.id)+'"><div style="font-size:11px;font-weight:700;color:'+dn.color+';">'+esc(sn.id.replace(dimId+'__',''))+'</div><div style="font-size:11px;color:#cbd5e1;margin-top:2px;">'+esc(sn.name)+'</div></div>').join('');
-    const allDimRels=[...outRels.map(r=>({dir:'→',other:r.to,r,rt:relTypes[r.type]||{color:'#94a3b8',label:r.type}})),...inRels.map(r=>({dir:'←',other:r.from,r,rt:relTypes[r.type]||{color:'#94a3b8',label:r.type}}))].sort((a,b)=>a.other.localeCompare(b.other));
+    const allDimRels=[...outRels.map(r=>({dir:'â†’',other:r.to,r,rt:relTypes[r.type]||{color:'#94a3b8',label:r.type}})),...inRels.map(r=>({dir:'â†',other:r.from,r,rt:relTypes[r.type]||{color:'#94a3b8',label:r.type}}))].sort((a,b)=>a.other.localeCompare(b.other));
     const relHtml=allDimRels.map(({dir,other,r,rt})=>{const on=allNodes.find(n=>n.id===other);return'<div style="margin-bottom:7px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid '+rt.color+'"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><span style="font-size:11px;font-weight:700;color:'+rt.color+';">'+dir+'</span><span style="font-size:11px;font-weight:700;color:'+(on?on.color:'#94a3b8')+';">'+esc(other)+'</span><span style="font-size:10px;color:#475569;margin-left:auto;">'+esc(rt.label)+'</span></div><div style="font-size:11px;color:#94a3b8;line-height:1.5;">'+esc(r.label)+'</div></div>';}).join('');
-    detBody.innerHTML='<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="width:12px;height:12px;border-radius:50%;background:'+dn.color+';flex-shrink:0;display:inline-block;"></span><span style="font-size:18px;font-weight:700;color:#f1f5f9;">'+esc(dimId)+'</span></div><div style="font-size:12px;color:#94a3b8;margin-bottom:2px;">'+esc(dn.name)+'</div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:14px;">'+esc(dn.plane)+' · Weight: '+weight+'%</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Sub-Dimensions</div>'+subHtml+'<div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:6px;margin-top:16px;">Integration Links <span style="color:#334155;font-weight:400;">'+allDimRels.length+' connections</span></div><div style="font-size:11px;color:#475569;margin-bottom:10px;">Hover outer nodes to inspect each relationship.</div>'+relHtml;
+    detBody.innerHTML='<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="width:12px;height:12px;border-radius:50%;background:'+dn.color+';flex-shrink:0;display:inline-block;"></span><span style="font-size:18px;font-weight:700;color:#f1f5f9;">'+esc(dimId)+'</span></div><div style="font-size:12px;color:#94a3b8;margin-bottom:2px;">'+esc(dn.name)+'</div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:14px;">'+esc(dn.plane)+' Â· Weight: '+weight+'%</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Sub-Dimensions</div>'+subHtml+'<div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:6px;margin-top:16px;">Integration Links <span style="color:#334155;font-weight:400;">'+allDimRels.length+' connections</span></div><div style="font-size:11px;color:#475569;margin-bottom:10px;">Hover outer nodes to inspect each relationship.</div>'+relHtml;
     detBody.querySelectorAll('[data-subdim]').forEach(el2=>{el2.addEventListener('click',()=>{const sn=allNodes.find(n=>n.id===el2.dataset.subdim);if(sn){selectedSub=sn.id;renderSubPanel(sn);}});});
 }
 
 function renderSubPanel(sn){
     const sdLabel=sn.id.replace(sn.parentId+'__','');
-    const stagesHtml=['0','1','2','3','4','5'].map(sk=>{const text=(sn.sd.stage_descriptors||{})[sk]||'—';const color=STAGE_COLORS[+sk];const lbl=STAGE_LABELS[+sk];return'<div style="margin-bottom:8px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid '+color+'"><div style="font-size:10px;font-weight:700;color:'+color+';text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Stage '+sk+' — '+esc(lbl)+'</div><div style="font-size:11px;color:#cbd5e1;line-height:1.55;">'+esc(text)+'</div></div>';}).join('');
-    crumb.textContent=selectedDim+' › '+sdLabel;
-    detBody.innerHTML='<div style="font-size:10px;color:#475569;margin-bottom:6px;">↑ '+esc(sn.parentId)+'</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="width:10px;height:10px;border-radius:50%;background:'+sn.color+';flex-shrink:0;display:inline-block;"></span><span style="font-size:15px;font-weight:700;color:#f1f5f9;">'+esc(sdLabel)+'</span></div><div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">'+esc(sn.name)+'</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Maturity Stage Descriptors</div>'+stagesHtml+'<div style="margin-top:14px;"><button id="back-to-dim" style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;">← Back to '+esc(sn.parentId)+'</button></div>';
+    const stagesHtml=['0','1','2','3','4','5'].map(sk=>{const text=(sn.sd.stage_descriptors||{})[sk]||'â€”';const color=STAGE_COLORS[+sk];const lbl=STAGE_LABELS[+sk];return'<div style="margin-bottom:8px;padding:8px 10px;background:#1e293b;border-radius:6px;border-left:3px solid '+color+'"><div style="font-size:10px;font-weight:700;color:'+color+';text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Stage '+sk+' â€” '+esc(lbl)+'</div><div style="font-size:11px;color:#cbd5e1;line-height:1.55;">'+esc(text)+'</div></div>';}).join('');
+    crumb.textContent=selectedDim+' â€º '+sdLabel;
+    detBody.innerHTML='<div style="font-size:10px;color:#475569;margin-bottom:6px;">â†‘ '+esc(sn.parentId)+'</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="width:10px;height:10px;border-radius:50%;background:'+sn.color+';flex-shrink:0;display:inline-block;"></span><span style="font-size:15px;font-weight:700;color:#f1f5f9;">'+esc(sdLabel)+'</span></div><div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">'+esc(sn.name)+'</div><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Maturity Stage Descriptors</div>'+stagesHtml+'<div style="margin-top:14px;"><button id="back-to-dim" style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;">â† Back to '+esc(sn.parentId)+'</button></div>';
     document.getElementById('back-to-dim')?.addEventListener('click',()=>{selectedSub=null;crumb.textContent=selectedDim;renderDimPanel(selectedDim,null);});
 }
 
@@ -14233,7 +14233,7 @@ function enterDimFocus(dimId){
     selectedDim=dimId;selectedSub=null;
     setLayout('dimfocus',dimId);
     const dn=allNodes.find(n=>n.id===dimId);
-    crumb.textContent=dimId+' — '+(dn?.name||'');
+    crumb.textContent=dimId+' â€” '+(dn?.name||'');
     backBtn.style.display='block';
     renderDimPanel(dimId,null);
 }
@@ -14399,7 +14399,7 @@ async function exportASMFPosterAsHTML() {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ASMF — Agentic SOC Maturity Framework</title>
+<title>ASMF â€” Agentic SOC Maturity Framework</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:32px 28px}
@@ -14451,7 +14451,7 @@ const ASMF_STAGE_LABELS = ['Traditional','Assisted','Supervised Autonomy','Direc
 let _asmfFramework = null;
 let _asmfOrbitalMap = null;
 
-// ── ASMF inner-tab switching (event delegation — always works) ──────────────
+// â”€â”€ ASMF inner-tab switching (event delegation â€” always works) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 document.addEventListener('click', function(e) {
     const btn = e.target.closest('.asmf-inner-tab');
@@ -14466,7 +14466,7 @@ document.addEventListener('click', function(e) {
     parentPanel.querySelectorAll('.asmf-inner-tab').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    // Activate pane — pane IDs are like "asmf-matrix-pane-matrix", "asmf-graph-pane-force"
+    // Activate pane â€” pane IDs are like "asmf-matrix-pane-matrix", "asmf-graph-pane-force"
     // panel is already "asmf-matrix" / "asmf-graph", so just use `${panel}-pane-${tab}`
     parentPanel.querySelectorAll('.asmf-inner-pane').forEach(p => p.classList.remove('active'));
     const pane = document.getElementById(`${panel}-pane-${tab}`);
@@ -14489,7 +14489,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// ── ASMF 3D Knowledge Graph ───────────────────────────────────────────────
+// â”€â”€ ASMF 3D Knowledge Graph â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let _asmfGraph = null; // ForceGraph3D instance
 
@@ -14521,25 +14521,25 @@ function _asmfBuildGraphData(fw) {
     const principles = fw.principles || [];
     const phases = (fw.transformation_journey?.phases) || [];
 
-    // ── Root ──
+    // â”€â”€ Root â”€â”€
     nodes.push({ id: 'root', name: fw.framework_abbrev || 'ASMF', type: 'root',
         color: '#ffffff', size: 14, desc: fw.description || '' });
 
-    // ── Stages ──
+    // â”€â”€ Stages â”€â”€
     Object.entries(stages).forEach(([sk, s]) => {
         nodes.push({ id: `stage-${sk}`, name: `Stage ${sk}: ${s.label}`, type: 'stage',
             color: ASMF_STAGE_COLORS[parseInt(sk)], size: 9,
-            detail: `<b>Stage ${sk} — ${escapeHtml(s.label)}</b><br>${escapeHtml(s.typical_year||'')}<br><br>${escapeHtml(s.description||'')}` });
+            detail: `<b>Stage ${sk} â€” ${escapeHtml(s.label)}</b><br>${escapeHtml(s.typical_year||'')}<br><br>${escapeHtml(s.description||'')}` });
         links.push({ source: 'root', target: `stage-${sk}`, color: ASMF_STAGE_COLORS[parseInt(sk)] + '55', value: 1 });
     });
 
-    // ── Dimensions + Sub-dims ──
+    // â”€â”€ Dimensions + Sub-dims â”€â”€
     Object.entries(dims).forEach(([dimId, dim]) => {
         const col = _asmfDimColor(dim.plane || '');
         const weight = Math.round((dim.weight || 0) * 100);
         nodes.push({ id: `dim-${dimId}`, name: `${dimId}: ${dim.name}`, type: 'dimension',
             color: col, size: 7,
-            detail: `<b style="color:${col}">${escapeHtml(dimId)}</b> — ${escapeHtml(dim.name)}<br><span style="color:#64748b">${escapeHtml(dim.plane||'')}</span><br>Weight: ${weight}%<br><br>${escapeHtml(dim.description||'')}` });
+            detail: `<b style="color:${col}">${escapeHtml(dimId)}</b> â€” ${escapeHtml(dim.name)}<br><span style="color:#64748b">${escapeHtml(dim.plane||'')}</span><br>Weight: ${weight}%<br><br>${escapeHtml(dim.description||'')}` });
         links.push({ source: 'root', target: `dim-${dimId}`, color: col + '66', value: 2 });
 
         Object.entries(dim.sub_dimensions || {}).forEach(([sdId, sd]) => {
@@ -14548,20 +14548,20 @@ function _asmfBuildGraphData(fw) {
                 .join('');
             nodes.push({ id: `sd-${sdId}`, name: sd.name, type: 'subdim',
                 color: col + 'cc', size: 4,
-                detail: `<b style="color:${col}">${escapeHtml(sdId)}</b> — ${escapeHtml(sd.name)}<br><br><i style="color:#64748b;font-size:11px;">${escapeHtml(sd.assessment_question||'')}</i><br><br>${stageDescs}` });
+                detail: `<b style="color:${col}">${escapeHtml(sdId)}</b> â€” ${escapeHtml(sd.name)}<br><br><i style="color:#64748b;font-size:11px;">${escapeHtml(sd.assessment_question||'')}</i><br><br>${stageDescs}` });
             links.push({ source: `dim-${dimId}`, target: `sd-${sdId}`, color: col + '33', value: 1 });
         });
     });
 
-    // ── Principles ──
+    // â”€â”€ Principles â”€â”€
     principles.forEach(p => {
         nodes.push({ id: `p-${p.id}`, name: `${p.id}: ${p.label}`, type: 'principle',
             color: '#3b82f6', size: 6,
-            detail: `<b style="color:#3b82f6">${escapeHtml(p.id)} — ${escapeHtml(p.label)}</b><br><br>${escapeHtml(p.statement||'')}` });
+            detail: `<b style="color:#3b82f6">${escapeHtml(p.id)} â€” ${escapeHtml(p.label)}</b><br><br>${escapeHtml(p.statement||'')}` });
         links.push({ source: 'root', target: `p-${p.id}`, color: '#3b82f633', value: 1 });
     });
 
-    // ── Journey phases (chain) ──
+    // â”€â”€ Journey phases (chain) â”€â”€
     phases.forEach((phase, i) => {
         const col = ASMF_STAGE_COLORS[i + 1] || '#64748b';
         const acts = (phase.key_activities || []).slice(0, 5).map(a => `<li>${escapeHtml(a)}</li>`).join('');
@@ -14611,7 +14611,7 @@ async function populateASMFGraph() {
     // Don't re-init if graph already rendered
     if (container.dataset.rendered === '1') return;
 
-    container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#64748b;font-size:13px;">Loading 3D engine…</div>';
+    container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#64748b;font-size:13px;">Loading 3D engineâ€¦</div>';
 
     try {
         await _loadForceGraph3D();
@@ -14681,7 +14681,7 @@ async function populateASMFGraph() {
 async function populateASMFView() {
     const el = document.getElementById('asmf-content');
     if (!el) return;
-    el.innerHTML = '<div style="color:#64748b;padding:32px;">Loading framework…</div>';
+    el.innerHTML = '<div style="color:#64748b;padding:32px;">Loading frameworkâ€¦</div>';
     try {
         if (!_asmfFramework) {
             const resp = await fetch('/api/asmf-framework');
@@ -14725,7 +14725,7 @@ async function exportASMFFrameworkAsHTML() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ASMF — Agentic SOC Maturity Framework Reference</title>
+<title>ASMF â€” Agentic SOC Maturity Framework Reference</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:32px 28px;max-width:1400px;margin:0 auto;}
@@ -14738,7 +14738,7 @@ a{color:#3b82f6}
 </head>
 <body>
 ${inner}
-<p style="margin-top:32px;font-size:11px;color:#334155;border-top:1px solid #1e293b;padding-top:12px;font-style:italic;">Exported ${exportDate} — ASMF v1.0 — Zach West, Gartner. Research-in-progress; not official Gartner published research.</p>
+<p style="margin-top:32px;font-size:11px;color:#334155;border-top:1px solid #1e293b;padding-top:12px;font-style:italic;">Exported ${exportDate} â€” ASMF v1.0 â€” Zach West, Gartner. Research-in-progress; not official Gartner published research.</p>
 </body>
 </html>`;
 
@@ -14753,7 +14753,7 @@ ${inner}
 function _asmfStagePill(idx) {
     const color = _asmfStageColor(idx);
     const label = ASMF_STAGE_LABELS[idx] || `Stage ${idx}`;
-    return `<span style="background:${color};color:#fff;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700;">${idx} — ${label}</span>`;
+    return `<span style="background:${color};color:#fff;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700;">${idx} â€” ${label}</span>`;
 }
 
 function _asmfRender(fw) {
@@ -14773,7 +14773,7 @@ function _asmfRender(fw) {
         <p style="font-size:14px;color:#64748b;max-width:740px;line-height:1.6;">${escapeHtml(fw.description || '')}</p>
       </div>
       <button onclick="exportASMFFrameworkAsHTML()" style="flex-shrink:0;background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
-        🌐 Export Framework HTML
+        ðŸŒ Export Framework HTML
       </button>
     </div>`;
 
@@ -14802,7 +14802,7 @@ function _asmfRender(fw) {
         const color = _asmfStageColor(idx);
         html += `
         <div style="background:#0f172a;border:1px solid #1e293b;border-left:4px solid ${color};border-radius:8px;padding:14px 16px;flex:1;min-width:200px;">
-          <div style="font-size:20px;font-weight:800;color:${color};">${sid} — ${escapeHtml(s.label || '')}</div>
+          <div style="font-size:20px;font-weight:800;color:${color};">${sid} â€” ${escapeHtml(s.label || '')}</div>
           <div style="font-size:11px;color:#64748b;margin:4px 0 8px;">${escapeHtml(s.typical_year || '')}</div>
           <div style="font-size:12px;color:#94a3b8;line-height:1.5;margin-bottom:4px;"><strong style="color:#64748b;">Autonomy:</strong> ${escapeHtml(s.autonomy_level || '')}</div>
           <div style="font-size:12px;color:#94a3b8;line-height:1.5;"><strong style="color:#64748b;">Human model:</strong> ${escapeHtml(s.human_model || '')}</div>
@@ -14837,7 +14837,7 @@ function _asmfRender(fw) {
                   <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">ID</th>
                   <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">Sub-Dimension</th>
                   <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">Assessment Question</th>
-                  <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">Stage 0 → Stage 5</th>
+                  <th style="padding:6px 8px;font-size:11px;color:#475569;text-align:left;">Stage 0 â†’ Stage 5</th>
                 </tr>
               </thead>
               <tbody>
@@ -14871,7 +14871,7 @@ function _asmfRender(fw) {
     principles.forEach(p => {
         html += `
         <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px 16px;flex:1;min-width:240px;">
-          <div style="font-size:12px;font-weight:700;color:#3b82f6;margin-bottom:4px;">${escapeHtml(p.id || '')} — ${escapeHtml(p.label || '')}</div>
+          <div style="font-size:12px;font-weight:700;color:#3b82f6;margin-bottom:4px;">${escapeHtml(p.id || '')} â€” ${escapeHtml(p.label || '')}</div>
           <div style="font-size:13px;color:#94a3b8;line-height:1.5;">${escapeHtml(p.statement || '')}</div>
         </div>`;
     });
@@ -14905,12 +14905,12 @@ function _asmfRender(fw) {
       <code style="font-size:12px;background:#1e293b;color:#34d399;padding:8px 14px;border-radius:6px;white-space:nowrap;">python _create_agentic_soc_report.py --demo</code>
     </div>`;
 
-    // ── Theoretical Foundations ──
+    // â”€â”€ Theoretical Foundations â”€â”€
     const foundations = [
       {
         label: 'CMMI / Capability Maturity Model Integration',
         org: 'CMMI Institute / SEI',
-        note: 'The 0–5 stage maturity ladder structure — including the concept of staged capability levels, continuous improvement, and process institutionalization — is directly adapted from CMMI.',
+        note: 'The 0â€“5 stage maturity ladder structure â€” including the concept of staged capability levels, continuous improvement, and process institutionalization â€” is directly adapted from CMMI.',
         url: 'https://cmmiinstitute.com/cmmi'
       },
       {
@@ -14932,20 +14932,20 @@ function _asmfRender(fw) {
         url: 'https://www.soc-cmm.com/'
       },
       {
-        label: 'Cybernetics — The Control of Communication in the Animal and the Machine',
+        label: 'Cybernetics â€” The Control of Communication in the Animal and the Machine',
         org: 'Norbert Wiener (1948)',
-        note: 'ASMF Principle P1 ("Security Operations is a cybernetic system") is grounded in Wiener\'s cybernetics: the feedback loop of sensing → reasoning → action → learning is the foundational operating model.',
+        note: 'ASMF Principle P1 ("Security Operations is a cybernetic system") is grounded in Wiener\'s cybernetics: the feedback loop of sensing â†’ reasoning â†’ action â†’ learning is the foundational operating model.',
         url: 'https://en.wikipedia.org/wiki/Cybernetics_(Wiener_book)'
       },
       {
         label: 'Constitutional AI & Bounded Autonomy',
-        org: 'Anthropic (2022–2024)',
-        note: 'The concept of embedding governance as a real-time operational control signal — rather than post-hoc oversight — draws from Constitutional AI principles and the idea of value-aligned autonomous systems.',
+        org: 'Anthropic (2022â€“2024)',
+        note: 'The concept of embedding governance as a real-time operational control signal â€” rather than post-hoc oversight â€” draws from Constitutional AI principles and the idea of value-aligned autonomous systems.',
         url: 'https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback'
       },
       {
         label: 'Agentic AI Systems Research',
-        org: 'OpenAI, Anthropic, DeepMind (2024–2026)',
+        org: 'OpenAI, Anthropic, DeepMind (2024â€“2026)',
         note: 'Multi-agent orchestration, dynamic agent coalition formation, and the concept of agents operating over a shared knowledge graph draw from recent agentic AI systems research across the major AI labs.',
         url: 'https://openai.com/research/'
       },
@@ -14988,7 +14988,7 @@ function _asmfRender(fw) {
       </tbody>
     </table>
     <p style="font-size:11px;color:#334155;margin:12px 0 0;font-style:italic;">
-      ASMF v1.0 — Created ${escapeHtml(new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'}))} — Zach West, Gartner. This framework is research-in-progress and does not represent official Gartner published research.
+      ASMF v1.0 â€” Created ${escapeHtml(new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'}))} â€” Zach West, Gartner. This framework is research-in-progress and does not represent official Gartner published research.
     </p>`;
 
     return html;
@@ -15002,7 +15002,7 @@ async function populateRoadmapView() {
     const rmfLegend = document.getElementById('gantt-rmf-legend');
     if (!chart) return;
 
-    chart.innerHTML = '<p style="color:var(--text-secondary);padding:24px;">Loading adoption plan…</p>';
+    chart.innerHTML = '<p style="color:var(--text-secondary);padding:24px;">Loading adoption planâ€¦</p>';
 
     try {
         const resp = await fetch('/api/adoption-plan');
@@ -15032,7 +15032,7 @@ function renderGanttChart() {
     const totalWeeks = data.total_weeks || 12;
     const phases = data.phases;
 
-    // ── Ruler ──
+    // â”€â”€ Ruler â”€â”€
     ruler.innerHTML = '';
     for (let w = 1; w <= totalWeeks; w++) {
         const cell = document.createElement('div');
@@ -15043,14 +15043,14 @@ function renderGanttChart() {
         ruler.appendChild(cell);
     }
 
-    // ── Phase swimlanes ──
+    // â”€â”€ Phase swimlanes â”€â”€
     chart.innerHTML = '';
     phases.forEach((phase, idx) => {
         const lane = document.createElement('div');
         lane.className = 'gantt-swimlane';
         lane.dataset.phaseKey = phase.key;
 
-        // Phase label (left side) — with expand/collapse toggle
+        // Phase label (left side) â€” with expand/collapse toggle
         const label = document.createElement('div');
         label.className = 'gantt-phase-label gantt-phase-toggle';
         label.innerHTML = `<span class="toggle-arrow">&#9656;</span> ${escapeHtml(phase.name)}`;
@@ -15070,12 +15070,12 @@ function renderGanttChart() {
         bar.style.left = `${leftPct}%`;
         bar.style.width = `${widthPct}%`;
         bar.dataset.phaseIdx = idx;
-        bar.title = `${phase.name} (Weeks ${phase.week_start}–${phase.week_end})`;
+        bar.title = `${phase.name} (Weeks ${phase.week_start}â€“${phase.week_end})`;
 
         // Bar content: week range + RMF badges
         const barContent = document.createElement('div');
         barContent.className = 'gantt-bar-content';
-        barContent.innerHTML = `<span class="gantt-bar-weeks">W${phase.week_start}–${phase.week_end}</span>`;
+        barContent.innerHTML = `<span class="gantt-bar-weeks">W${phase.week_start}â€“${phase.week_end}</span>`;
         const rmfBadges = document.createElement('span');
         rmfBadges.className = 'gantt-bar-rmf';
         (phase.ai_rmf_functions || []).forEach(fn => {
@@ -15122,7 +15122,7 @@ function renderGanttChart() {
         lane.appendChild(track);
         chart.appendChild(lane);
 
-        // ── Expandable sub-pillar rows ──
+        // â”€â”€ Expandable sub-pillar rows â”€â”€
         const subRowsContainer = document.createElement('div');
         subRowsContainer.className = 'gantt-sub-rows';
         subRowsContainer.id = `gantt-sub-rows-${idx}`;
@@ -15157,7 +15157,7 @@ function renderGanttChart() {
                 subBar.style.backgroundColor = pillarColor;
                 subBar.style.left = `${leftPct}%`;
                 subBar.style.width = `${widthPct}%`;
-                subBar.title = `${sp.code} — W${phase.week_start}–${phase.week_end}`;
+                subBar.title = `${sp.code} â€” W${phase.week_start}â€“${phase.week_end}`;
 
                 subTrack.appendChild(subBar);
                 row.appendChild(rowLabel);
@@ -15177,13 +15177,13 @@ function renderGanttChart() {
         });
     });
 
-    // ── Milestone markers layer ──
+    // â”€â”€ Milestone markers layer â”€â”€
     renderGanttMilestones(totalWeeks);
 
-    // ── Dependency arrows ──
+    // â”€â”€ Dependency arrows â”€â”€
     renderGanttArrows();
 
-    // ── RMF Legend ──
+    // â”€â”€ RMF Legend â”€â”€
     if (rmfLegend) {
         rmfLegend.innerHTML = '';
         Object.entries(GANTT_RMF_COLORS).forEach(([fn, color]) => {
@@ -15194,7 +15194,7 @@ function renderGanttChart() {
         rmfLegend.innerHTML += `<span class="gantt-legend-item"><span class="gantt-legend-swatch" style="background:var(--text-tertiary);transform:rotate(45deg);border-radius:2px;width:10px;height:10px;"></span>Checkpoint</span>`;
     }
 
-    // ── Phase details panel ──
+    // â”€â”€ Phase details panel â”€â”€
     if (detailsPanel) {
         detailsPanel.innerHTML = '<p class="gantt-hint">Click a phase bar to see details, drag bar edges to adjust timelines, or click phase labels to expand sub-pillars.</p>';
     }
@@ -15311,7 +15311,7 @@ function renderGanttArrows() {
     }
 }
 
-// ── Drag-to-resize ──
+// â”€â”€ Drag-to-resize â”€â”€
 
 function startGanttDrag(e, phaseIdx, side) {
     e.stopPropagation();
@@ -15369,7 +15369,7 @@ function onGanttDragMove(e) {
     const ws = Math.round(leftPct / weekPct) + 1;
     const we = ws + Math.round(widthPct / weekPct) - 1;
     const weeksLabel = bar.querySelector('.gantt-bar-weeks');
-    if (weeksLabel) weeksLabel.textContent = `W${ws}–${we}`;
+    if (weeksLabel) weeksLabel.textContent = `W${ws}â€“${we}`;
 
     renderGanttArrows();
 }
@@ -15405,7 +15405,7 @@ async function onGanttDragEnd(e) {
             phase.week_start = newStart;
             phase.week_end = newEnd;
             phase.key = `weeks_${newStart}_${newEnd}`;
-            bar.title = `${phase.name} (Weeks ${newStart}–${newEnd})`;
+            bar.title = `${phase.name} (Weeks ${newStart}â€“${newEnd})`;
         } catch (err) {
             console.error('Failed to save phase change:', err);
         }
@@ -15415,7 +15415,7 @@ async function onGanttDragEnd(e) {
     setTimeout(() => { _ganttDragState = null; }, 100);
 }
 
-// ── Click-to-edit modal ──
+// â”€â”€ Click-to-edit modal â”€â”€
 
 function openGanttEditModal(phaseIdx) {
     const phase = _ganttPlanData.phases[phaseIdx];
@@ -15509,7 +15509,7 @@ function addGanttActivity() {
     const row = document.createElement('div');
     row.className = 'gantt-edit-activity-row';
     row.innerHTML = `
-        <input type="text" class="gantt-activity-input" value="" placeholder="New activity…" />
+        <input type="text" class="gantt-activity-input" value="" placeholder="New activityâ€¦" />
         <button class="gantt-remove-btn" onclick="this.parentElement.remove()" title="Remove">&times;</button>
     `;
     container.appendChild(row);
@@ -15571,13 +15571,13 @@ function escapeHtml(str) {
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-// ── 90-Day Adoption Plan Report ──
+// â”€â”€ 90-Day Adoption Plan Report â”€â”€
 
 async function populateAdoptionPlanReport() {
     const body = document.getElementById('report-adoption-plan-body');
     if (!body) return;
 
-    body.innerHTML = '<p style="color:var(--text-secondary);">Loading…</p>';
+    body.innerHTML = '<p style="color:var(--text-secondary);">Loadingâ€¦</p>';
 
     try {
         const resp = await fetch('/api/adoption-plan');
@@ -15604,7 +15604,7 @@ async function populateAdoptionPlanReport() {
             ).join(' ');
             html += `<tr>
                 <td><strong>${escapeHtml(phase.name)}</strong></td>
-                <td>W${phase.week_start}–${phase.week_end}</td>
+                <td>W${phase.week_start}â€“${phase.week_end}</td>
                 <td><ul class="report-activity-list">${activities}</ul></td>
                 <td>${sps}</td>
                 <td>${rmf}</td>
@@ -15622,7 +15622,7 @@ async function populateAdoptionPlanReport() {
                 const bSPs = (phases[j].target_sub_pillars || []).map(s => s.code);
                 const shared = bSPs.filter(sp => aSPs.has(sp));
                 if (shared.length > 0) {
-                    html += `<li><strong>${escapeHtml(phases[i].name)}</strong> → <strong>${escapeHtml(phases[j].name)}</strong>: shared sub-pillars ${shared.join(', ')}</li>`;
+                    html += `<li><strong>${escapeHtml(phases[i].name)}</strong> â†’ <strong>${escapeHtml(phases[j].name)}</strong>: shared sub-pillars ${shared.join(', ')}</li>`;
                 }
             }
         }
@@ -15639,7 +15639,7 @@ function exportAdoptionPlanReportAsMarkdown() {
     if (!body || !_ganttPlanData) return;
 
     const data = _ganttPlanData;
-    let md = `# 90-Day Adoption Plan — Secure-by-Design AI Controls\n\n`;
+    let md = `# 90-Day Adoption Plan â€” Secure-by-Design AI Controls\n\n`;
     if (data.description) md += `${data.description}\n\n`;
 
     md += `| Phase | Weeks | Activities | Sub-Pillars | NIST Functions |\n`;
@@ -15649,7 +15649,7 @@ function exportAdoptionPlanReportAsMarkdown() {
         const acts = (phase.activities || []).map((a, i) => `${i + 1}. ${a}`).join('<br>');
         const sps = (phase.target_sub_pillars || []).map(sp => sp.code).join(', ');
         const rmf = (phase.ai_rmf_functions || []).join(', ');
-        md += `| ${phase.name} | W${phase.week_start}–${phase.week_end} | ${acts} | ${sps} | ${rmf} |\n`;
+        md += `| ${phase.name} | W${phase.week_start}â€“${phase.week_end} | ${acts} | ${sps} | ${rmf} |\n`;
     });
 
     md += `\n## Dependencies\n\n`;
@@ -15660,7 +15660,7 @@ function exportAdoptionPlanReportAsMarkdown() {
             const bSPs = (phases[j].target_sub_pillars || []).map(s => s.code);
             const shared = bSPs.filter(sp => aSPs.has(sp));
             if (shared.length > 0) {
-                md += `- **${phases[i].name}** → **${phases[j].name}**: shared sub-pillars ${shared.join(', ')}\n`;
+                md += `- **${phases[i].name}** â†’ **${phases[j].name}**: shared sub-pillars ${shared.join(', ')}\n`;
             }
         }
     }
@@ -15673,16 +15673,16 @@ function exportAdoptionPlanReportAsMarkdown() {
     URL.revokeObjectURL(a.href);
 }
 
-// ══════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  SELF-ASSESSMENT REPORT MODULE  (localStorage-persisted, per-product)
-// ══════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const SA_STORAGE_PREFIX = 'sbdai-assessment-';
 const SA_INDEX_KEY     = 'sbdai-assessment-index';   // JSON array of product names
 let _saAutoSaveTimer = null;
 let _saCurrentProduct = null;
 
-// ── Helpers ──
+// â”€â”€ Helpers â”€â”€
 
 function _saGetIndex() {
     try { return JSON.parse(localStorage.getItem(SA_INDEX_KEY)) || []; } catch { return []; }
@@ -15708,7 +15708,7 @@ function _saDelete(name) {
     _saSaveIndex(idx);
 }
 
-// ── Gather current form data ──
+// â”€â”€ Gather current form data â”€â”€
 
 function _saGatherFormData() {
     const body = document.getElementById('report-self-assessment-body');
@@ -15726,23 +15726,23 @@ function _saGatherFormData() {
     return { assessor, date, scores, updatedAt: new Date().toISOString() };
 }
 
-// ── Auto-save (debounced) ──
+// â”€â”€ Auto-save (debounced) â”€â”€
 
 function _saScheduleAutoSave() {
     if (!_saCurrentProduct) return;
     clearTimeout(_saAutoSaveTimer);
     const indicator = document.querySelector('.sa-autosave');
-    if (indicator) { indicator.textContent = 'Saving…'; indicator.className = 'sa-autosave saving'; }
+    if (indicator) { indicator.textContent = 'Savingâ€¦'; indicator.className = 'sa-autosave saving'; }
     _saAutoSaveTimer = setTimeout(() => {
         const payload = _saGatherFormData();
         if (payload && _saCurrentProduct) {
             _saSave(_saCurrentProduct, payload);
-            if (indicator) { indicator.textContent = 'Saved ✓'; indicator.className = 'sa-autosave saved'; }
+            if (indicator) { indicator.textContent = 'Saved âœ“'; indicator.className = 'sa-autosave saved'; }
         }
     }, 600);
 }
 
-// ── Populate Report ──
+// â”€â”€ Populate Report â”€â”€
 
 async function populateSelfAssessmentReport() {
     const body = document.getElementById('report-self-assessment-body');
@@ -15781,31 +15781,31 @@ async function populateSelfAssessmentReport() {
 
     const savedProducts = _saGetIndex();
 
-    // ── Product bar ──
+    // â”€â”€ Product bar â”€â”€
     let html = `<div class="sa-product-bar">
         <label>Product:</label>
         <select id="sa-product-select" onchange="saSelectProduct(this.value)">
-            <option value="">— Select —</option>
+            <option value="">â€” Select â€”</option>
             ${savedProducts.map(p => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`).join('')}
         </select>
-        <input type="text" id="sa-new-product-name" placeholder="New product name…" />
+        <input type="text" id="sa-new-product-name" placeholder="New product nameâ€¦" />
         <button class="sa-btn-new" onclick="saCreateProduct()">+ New</button>
         <button class="sa-btn-delete" onclick="saDeleteProduct()">Delete</button>
         <span class="sa-autosave"></span>
     </div>`;
 
-    // ── Header fields ──
+    // â”€â”€ Header fields â”€â”€
     html += `<div class="sa-product-bar" style="margin-top:-8px;">
         <label>Assessor:</label>
-        <input type="text" id="sa-assessor" placeholder="Name…" oninput="_saScheduleAutoSave()" />
+        <input type="text" id="sa-assessor" placeholder="Nameâ€¦" oninput="_saScheduleAutoSave()" />
         <label>Date:</label>
         <input type="date" id="sa-date" oninput="_saScheduleAutoSave()" />
     </div>`;
 
-    // ── Summary cards (filled dynamically) ──
+    // â”€â”€ Summary cards (filled dynamically) â”€â”€
     html += `<div class="sa-summary" id="sa-summary"></div>`;
 
-    // ── Pillar accordion sections ──
+    // â”€â”€ Pillar accordion sections â”€â”€
     pillars.forEach(pillar => {
         const pillarSPs = subPillars.filter(sp => (sp.pillar_code || sp.pillar || '') === pillar.code);
         const pillarColor = GANTT_PILLAR_COLORS[pillar.code] || '#666';
@@ -15814,7 +15814,7 @@ async function populateSelfAssessmentReport() {
                 <span class="toggle-arrow">&#9656;</span>
                 <span class="gantt-pillar-badge" style="background:${pillarColor}">${pillar.code}</span>
                 <span class="sa-pillar-title">${escapeHtml(pillar.name)}</span>
-                <span class="sa-pillar-avg" data-pillar="${pillar.code}">—</span>
+                <span class="sa-pillar-avg" data-pillar="${pillar.code}">â€”</span>
             </div>
             <div class="sa-pillar-body">`;
 
@@ -15822,14 +15822,14 @@ async function populateSelfAssessmentReport() {
             html += `<div class="sa-sp-row">
                 <span class="sa-sp-name"><span class="sa-sp-code">${sp.id}</span>${escapeHtml(sp.name)}</span>
                 <select class="sa-score-select" data-sp-code="${sp.id}" data-pillar="${pillar.code}" onchange="saScoreChanged()">
-                    <option value="0">—</option>
+                    <option value="0">â€”</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <input type="text" class="sa-notes-input" data-sp-code="${sp.id}" placeholder="Notes / evidence…" oninput="_saScheduleAutoSave()" />
+                <input type="text" class="sa-notes-input" data-sp-code="${sp.id}" placeholder="Notes / evidenceâ€¦" oninput="_saScheduleAutoSave()" />
             </div>`;
         });
 
@@ -15846,7 +15846,7 @@ async function populateSelfAssessmentReport() {
     }
 }
 
-// ── Product CRUD ──
+// â”€â”€ Product CRUD â”€â”€
 
 function saCreateProduct() {
     const input = document.getElementById('sa-new-product-name');
@@ -15892,7 +15892,7 @@ function saDeleteProduct() {
     populateSelfAssessmentReport();
 }
 
-// ── Score changed → update summary + auto-save ──
+// â”€â”€ Score changed â†’ update summary + auto-save â”€â”€
 
 function saScoreChanged() {
     saUpdateSummary();
@@ -15917,14 +15917,14 @@ function saUpdateSummary() {
     });
 
     // Overall avg
-    const overallAvg = allScores.length > 0 ? (allScores.reduce((a, b) => a + b, 0) / allScores.length).toFixed(1) : '—';
+    const overallAvg = allScores.length > 0 ? (allScores.reduce((a, b) => a + b, 0) / allScores.length).toFixed(1) : 'â€”';
 
     let html = `<div class="sa-summary-card"><div class="sa-score-big">${overallAvg}</div><div class="sa-score-label">Overall Avg</div></div>`;
 
     // Per-pillar avg
     Object.entries(GANTT_PILLAR_COLORS).forEach(([code, color]) => {
         const scores = pillarScores[code] || [];
-        const avg = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1) : '—';
+        const avg = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1) : 'â€”';
         html += `<div class="sa-summary-card" style="border-top:3px solid ${color};"><div class="sa-score-big">${avg}</div><div class="sa-score-label">${code}</div></div>`;
 
         // Update pillar header badge
@@ -15935,7 +15935,7 @@ function saUpdateSummary() {
     summaryEl.innerHTML = html;
 }
 
-// ── Pillar accordion toggle ──
+// â”€â”€ Pillar accordion toggle â”€â”€
 
 function saTogglePillar(header) {
     const isExpanded = header.classList.toggle('expanded');
@@ -15943,7 +15943,7 @@ function saTogglePillar(header) {
     if (body) body.classList.toggle('open', isExpanded);
 }
 
-// ── Export as Markdown ──
+// â”€â”€ Export as Markdown â”€â”€
 
 function exportSelfAssessmentAsMarkdown() {
     if (!_saCurrentProduct) { alert('Select a product first.'); return; }
@@ -15953,10 +15953,10 @@ function exportSelfAssessmentAsMarkdown() {
     const pillars = appState.pillarsGrouped || [];
     const subPillars = appState.subPillars || [];
 
-    let md = `# Maturity Self-Assessment — Secure-by-Design AI Controls\n\n`;
+    let md = `# Maturity Self-Assessment â€” Secure-by-Design AI Controls\n\n`;
     md += `**Product:** ${_saCurrentProduct}\n`;
-    md += `**Assessor:** ${data.assessor || '—'}\n`;
-    md += `**Date:** ${data.date || '—'}\n\n`;
+    md += `**Assessor:** ${data.assessor || 'â€”'}\n`;
+    md += `**Date:** ${data.date || 'â€”'}\n\n`;
 
     md += `| Pillar | Sub-Pillar | Code | Score (1-5) | Notes |\n`;
     md += `|--------|-----------|------|:-----------:|-------|\n`;
@@ -15965,9 +15965,9 @@ function exportSelfAssessmentAsMarkdown() {
         const pSPs = subPillars.filter(sp => sp.pillar_code === pillar.code);
         pSPs.forEach(sp => {
             const info = data.scores[sp.id] || {};
-            const score = info.score || '—';
+            const score = info.score || 'â€”';
             const notes = (info.notes || '').replace(/\|/g, '\\|');
-            md += `| ${pillar.code} — ${pillar.name} | ${sp.name} | ${sp.id} | ${score} | ${notes} |\n`;
+            md += `| ${pillar.code} â€” ${pillar.name} | ${sp.name} | ${sp.id} | ${score} | ${notes} |\n`;
         });
     });
 
@@ -15981,7 +15981,7 @@ function exportSelfAssessmentAsMarkdown() {
     URL.revokeObjectURL(a.href);
 }
 
-// ── Export as CSV ──
+// â”€â”€ Export as CSV â”€â”€
 
 function exportSelfAssessmentAsCsv() {
     if (!_saCurrentProduct) { alert('Select a product first.'); return; }
@@ -16011,9 +16011,9 @@ function exportSelfAssessmentAsCsv() {
     URL.revokeObjectURL(a.href);
 }
 
-// ══════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  EXPORT AS STATIC HTML  (Legend + Roadmap + Self-Assessment)
-// ══════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 function openExportHtmlModal() {
     const modal = document.getElementById('export-html-modal');
@@ -16068,9 +16068,9 @@ async function executeExportHtml() {
 
     const tabs = []; // {id, icon, label, html}
 
-    // ── LEGEND TAB ──
+    // â”€â”€ LEGEND TAB â”€â”€
     if (includeLegend) {
-        let h = `<h2>Capability Legend — Pillar &amp; Sub-Pillar Reference</h2>`;
+        let h = `<h2>Capability Legend â€” Pillar &amp; Sub-Pillar Reference</h2>`;
         h += `<p class="subtitle">Schema: Secure_by_Design_AI_Controls_Schema.json</p>`;
         if (schemaDetail.intent) h += `<p class="intent">${esc(schemaDetail.intent)}</p>`;
 
@@ -16137,10 +16137,10 @@ async function executeExportHtml() {
             h += `</div>`;
         });
 
-        tabs.push({ id: 'legend', icon: '📖', label: 'Capability Legend', html: h });
+        tabs.push({ id: 'legend', icon: 'ðŸ“–', label: 'Capability Legend', html: h });
     }
 
-    // ── ADOPTION PLAN TAB ──
+    // â”€â”€ ADOPTION PLAN TAB â”€â”€
     if (includeRoadmap && adoptionPlan) {
         let h = `<h2>90-Day Adoption Roadmap</h2>`;
         if (adoptionPlan.description) h += `<p class="subtitle">${esc(adoptionPlan.description)}</p>`;
@@ -16150,7 +16150,7 @@ async function executeExportHtml() {
         if (milestones.length > 0) {
             h += `<h3>Milestones</h3><table><thead><tr><th>Week</th><th>Type</th><th>Milestone</th></tr></thead><tbody>`;
             milestones.forEach(ms => {
-                const icon = ms.type === 'self-assessment' ? '🔶' : '⬥';
+                const icon = ms.type === 'self-assessment' ? 'ðŸ”¶' : 'â¬¥';
                 h += `<tr><td class="center">W${ms.week}</td><td>${icon} ${esc(ms.type)}</td><td>${esc(ms.label)}</td></tr>`;
             });
             h += `</tbody></table>`;
@@ -16166,7 +16166,7 @@ async function executeExportHtml() {
                 const fcolor = {Govern:'#0078d4',Map:'#107c10',Measure:'#d83b01',Manage:'#5c2d91'}[fn] || '#666';
                 return `<span class="badge" style="background:${fcolor}">${esc(fn)}</span>`;
             }).join(' ');
-            h += `<tr><td><strong>${esc(phase.name)}</strong></td><td>W${phase.week_start}–${phase.week_end}</td><td><ul class="compact-list">${activities}</ul></td><td>${sps}</td><td>${rmf}</td></tr>`;
+            h += `<tr><td><strong>${esc(phase.name)}</strong></td><td>W${phase.week_start}â€“${phase.week_end}</td><td><ul class="compact-list">${activities}</ul></td><td>${sps}</td><td>${rmf}</td></tr>`;
         });
         h += `</tbody></table>`;
 
@@ -16174,7 +16174,7 @@ async function executeExportHtml() {
         (adoptionPlan.phases || []).forEach((phase, i) => {
             const color = ['#0078d4','#107c10','#d83b01','#5c2d91'][i % 4];
             h += `<div class="phase-card" style="border-left:4px solid ${color};">`;
-            h += `<div class="phase-header"><span class="badge" style="background:${color}">W${phase.week_start}–${phase.week_end}</span> <strong>${esc(phase.name)}</strong></div>`;
+            h += `<div class="phase-header"><span class="badge" style="background:${color}">W${phase.week_start}â€“${phase.week_end}</span> <strong>${esc(phase.name)}</strong></div>`;
 
             if (phase.activities && phase.activities.length) {
                 h += `<p class="label">Activities:</p><ul>`;
@@ -16211,7 +16211,7 @@ async function executeExportHtml() {
                 const bSPs = (phases[j].target_sub_pillars || []).map(s => s.code);
                 const shared = bSPs.filter(sp => aSPs.has(sp));
                 if (shared.length > 0) {
-                    depHtml += `<li><strong>${esc(phases[i].name)}</strong> → <strong>${esc(phases[j].name)}</strong>: shared sub-pillars ${shared.join(', ')}</li>`;
+                    depHtml += `<li><strong>${esc(phases[i].name)}</strong> â†’ <strong>${esc(phases[j].name)}</strong>: shared sub-pillars ${shared.join(', ')}</li>`;
                 }
             }
         }
@@ -16221,10 +16221,10 @@ async function executeExportHtml() {
             h += `<p class="note"><strong>Self-Assessment Schedule:</strong> ${esc(adoptionPlan.self_assessment_schedule)}</p>`;
         }
 
-        tabs.push({ id: 'adoption', icon: '🗓️', label: '90-Day Adoption Plan', html: h });
+        tabs.push({ id: 'adoption', icon: 'ðŸ—“ï¸', label: '90-Day Adoption Plan', html: h });
     }
 
-    // ── SELF-ASSESSMENT TAB ──
+    // â”€â”€ SELF-ASSESSMENT TAB â”€â”€
     if (includeSA) {
         const saData = _saCurrentProduct ? _saGatherFormData() : null;
         const productName = _saCurrentProduct || '(No product selected)';
@@ -16233,8 +16233,8 @@ async function executeExportHtml() {
         h += `<table class="meta-table"><tbody>`;
         h += `<tr><td><strong>Product:</strong></td><td>${esc(productName)}</td></tr>`;
         if (saData) {
-            h += `<tr><td><strong>Assessor:</strong></td><td>${esc(saData.assessor || '—')}</td></tr>`;
-            h += `<tr><td><strong>Date:</strong></td><td>${esc(saData.date || '—')}</td></tr>`;
+            h += `<tr><td><strong>Assessor:</strong></td><td>${esc(saData.assessor || 'â€”')}</td></tr>`;
+            h += `<tr><td><strong>Date:</strong></td><td>${esc(saData.date || 'â€”')}</td></tr>`;
         }
         h += `</tbody></table>`;
 
@@ -16250,12 +16250,12 @@ async function executeExportHtml() {
                     pillarScores[pc].push(info.score);
                 }
             });
-            const overallAvg = allScores.length ? (allScores.reduce((a,b) => a+b, 0) / allScores.length).toFixed(1) : '—';
+            const overallAvg = allScores.length ? (allScores.reduce((a,b) => a+b, 0) / allScores.length).toFixed(1) : 'â€”';
 
             h += `<div class="summary-row"><div class="summary-card"><div class="score-big">${overallAvg}</div><div class="score-label">Overall</div></div>`;
             pillars.forEach(p => {
                 const ps = pillarScores[p.code] || [];
-                const avg = ps.length ? (ps.reduce((a,b) => a+b, 0) / ps.length).toFixed(1) : '—';
+                const avg = ps.length ? (ps.reduce((a,b) => a+b, 0) / ps.length).toFixed(1) : 'â€”';
                 h += `<div class="summary-card" style="border-top:3px solid ${_exportPillarColor(p.code)}"><div class="score-big">${avg}</div><div class="score-label">${esc(p.code)}</div></div>`;
             });
             h += `</div>`;
@@ -16272,17 +16272,17 @@ async function executeExportHtml() {
 
             pSPs.forEach(sp => {
                 const info = saData ? (saData.scores[sp.id] || {}) : {};
-                const score = info.score || '—';
+                const score = info.score || 'â€”';
                 const notes = info.notes || '';
                 h += `<tr><td class="mono">${esc(sp.id)}</td><td>${esc(sp.name)}</td><td class="center score-cell">${score}</td><td>${esc(notes)}</td></tr>`;
             });
             h += `</tbody></table>`;
         });
 
-        tabs.push({ id: 'assessment', icon: '📊', label: 'Self-Assessment', html: h });
+        tabs.push({ id: 'assessment', icon: 'ðŸ“Š', label: 'Self-Assessment', html: h });
     }
 
-    // ── ASSEMBLE FULL HTML ──
+    // â”€â”€ ASSEMBLE FULL HTML â”€â”€
     const fullHtml = _buildExportHtmlPage(tabs, now);
 
     const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
@@ -16314,7 +16314,7 @@ function _buildExportHtmlPage(tabs, dateStr) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Secure-by-Design AI Controls — Export</title>
+<title>Secure-by-Design AI Controls â€” Export</title>
 <style>
 :root { --bg: #fff; --bg2: #f6f8fa; --text: #1a1a2e; --text2: #555; --border: #dce0e5; --primary: #0078d4; }
 @media (prefers-color-scheme: dark) {
@@ -16331,14 +16331,14 @@ h5 { font-size: 0.88rem; margin: 8px 0 4px; color: var(--text2); text-transform:
 p { margin-bottom: 10px; }
 .header { margin-bottom: 0; padding-bottom: 16px; border-bottom: 3px solid var(--primary); }
 .header .date { color: var(--text2); font-size: 0.88rem; }
-/* ── Tab bar ── */
+/* â”€â”€ Tab bar â”€â”€ */
 .tab-bar { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 24px; position: sticky; top: 0; background: var(--bg); z-index: 10; padding-top: 12px; }
 .tab-btn { padding: 10px 20px; border: none; background: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--text2); border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s; }
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
-/* ── Content styles ── */
+/* â”€â”€ Content styles â”€â”€ */
 .section { margin-bottom: 40px; page-break-inside: avoid; }
 .subtitle { color: var(--text2); font-size: 0.92rem; margin-bottom: 16px; }
 .intent { background: var(--bg2); padding: 12px 16px; border-radius: 6px; border-left: 4px solid var(--primary); margin-bottom: 16px; font-style: italic; color: var(--text2); }
@@ -16361,7 +16361,7 @@ li { margin-bottom: 4px; }
 .pillar-header { margin-bottom: 8px; }
 .detail-block { margin: 8px 0 12px 16px; }
 .detail-label { font-size: 0.84rem; font-weight: 600; color: var(--text2); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
-/* ── Sub-pillar cards (matching live app) ── */
+/* â”€â”€ Sub-pillar cards (matching live app) â”€â”€ */
 .sp-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 12px; }
 .sp-card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
 .sp-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
@@ -16370,7 +16370,7 @@ li { margin-bottom: 4px; }
 .sp-section h5 { margin-bottom: 4px; }
 .sp-section p { margin-bottom: 4px; font-size: 0.88rem; }
 .sp-section ul { font-size: 0.86rem; }
-/* ── Phase & summary ── */
+/* â”€â”€ Phase & summary â”€â”€ */
 .phase-card { padding: 14px 16px; margin-bottom: 14px; background: var(--bg2); border-radius: 6px; }
 .phase-header { margin-bottom: 8px; }
 .meta-table { width: auto; margin-bottom: 16px; }
@@ -16427,7 +16427,7 @@ window.addEventListener('resize', () => {
    VENDOR ANALYSIS REPORT
    ================================================================ */
 
-/* Dynamic pillar accessors — read from appState.pillarsGrouped for any schema */
+/* Dynamic pillar accessors â€” read from appState.pillarsGrouped for any schema */
 function _vaGetPillarCodes() {
     return (appState.pillarsGrouped || []).map(g => g.code);
 }
@@ -17057,7 +17057,7 @@ function _vaRenderRoadmap(vendor, bm) {
         const importance = _vaGetPillarImportance(pillar);
 
         // Priority score: higher = more urgent
-        // Weight: gap × 2, importance × 1.5, feasibility bonus for partial criteria
+        // Weight: gap Ã— 2, importance Ã— 1.5, feasibility bonus for partial criteria
         const gapFactor = Math.max(gapTop10, 0) * 2;
         const importanceFactor = importance * 1.5;
         const feasibility = partial.length * 0.3 + (unmet.length > 0 ? 0.2 : 0);
@@ -17084,7 +17084,7 @@ function _vaRenderRoadmap(vendor, bm) {
     const phase3 = items.slice(phase1Count + phase2Count);
 
     const phases = [
-        { label: 'Phase 1: Quick Wins (0-6 months)', items: phase1, cls: 'phase1', desc: 'Focus on sub-pillars with partial criteria close to threshold — improvements through configuration, documentation, and process changes.' },
+        { label: 'Phase 1: Quick Wins (0-6 months)', items: phase1, cls: 'phase1', desc: 'Focus on sub-pillars with partial criteria close to threshold â€” improvements through configuration, documentation, and process changes.' },
         { label: 'Phase 2: Core Investment (6-12 months)', items: phase2, cls: 'phase2', desc: 'Address medium-gap capabilities requiring technology adoption, tooling enhancement, or process maturity improvements.' },
         { label: 'Phase 3: Strategic Differentiation (12-18 months)', items: phase3, cls: 'phase3', desc: 'Invest in advanced capabilities and emerging domains to achieve market leadership positions.' }
     ];
@@ -17486,14 +17486,14 @@ function _miRenderExecSummary(data, pd) {
     // Finding-Recommendation correlation matrix
     let matrixHtml = '';
     if (data.findings.length > 0 && data.recommendations.length > 0) {
-        matrixHtml = '<div class="mi-matrix"><h3>Finding ↔ Recommendation Alignment</h3><div class="mi-matrix-grid">';
+        matrixHtml = '<div class="mi-matrix"><h3>Finding â†” Recommendation Alignment</h3><div class="mi-matrix-grid">';
         const n = Math.min(data.findings.length, data.recommendations.length);
         for (let i = 0; i < n; i++) {
-            const fShort = data.findings[i].header.substring(0, 80) + (data.findings[i].header.length > 80 ? '…' : '');
-            const rShort = data.recommendations[i].header.substring(0, 80) + (data.recommendations[i].header.length > 80 ? '…' : '');
+            const fShort = data.findings[i].header.substring(0, 80) + (data.findings[i].header.length > 80 ? 'â€¦' : '');
+            const rShort = data.recommendations[i].header.substring(0, 80) + (data.recommendations[i].header.length > 80 ? 'â€¦' : '');
             matrixHtml += `<div class="mi-matrix-row">
                 <div class="mi-matrix-finding"><span class="mi-matrix-tag">F${i+1}</span> ${escapeHtml(fShort)}</div>
-                <div class="mi-matrix-arrow">→</div>
+                <div class="mi-matrix-arrow">â†’</div>
                 <div class="mi-matrix-rec"><span class="mi-matrix-tag mi-matrix-tag-rec">R${i+1}</span> ${escapeHtml(rShort)}</div>
             </div>`;
         }
@@ -17602,12 +17602,12 @@ function _miRenderBackground(data, pd) {
     if (pd && !pd.error) {
         const ds = pd.dimension_stats || {};
         const ais = pd.ai_influence_stats || {};
-        vizHtml = `<div class="mi-viz-box"><h4>Market Snapshot — 95 Vendors, 6 Pricing Dimensions</h4>
+        vizHtml = `<div class="mi-viz-box"><h4>Market Snapshot â€” 95 Vendors, 6 Pricing Dimensions</h4>
             <div class="mi-snapshot-grid">
                 <div class="mi-snap-item"><div class="mi-snap-val" style="color:${_paScoreColor(pd.overall_stats.mean)}">${pd.overall_stats.mean.toFixed(2)}/5</div><div class="mi-snap-lbl">Overall Avg</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val" style="color:#107c10">${(ds['PRC-SUB']?.mean || 0).toFixed(2)}/5</div><div class="mi-snap-lbl">Best: Subscription (PRC-SUB)</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val" style="color:#a80000">${(ds['PRC-SUC']?.mean || 0).toFixed(2)}/5</div><div class="mi-snap-lbl">Worst: Outcome Fees (PRC-SUC)</div></div>
-                <div class="mi-snap-item"><div class="mi-snap-val">${ais.mean?.toFixed(2) || '–'}/5</div><div class="mi-snap-lbl">AI Influence Avg</div></div>
+                <div class="mi-snap-item"><div class="mi-snap-val">${ais.mean?.toFixed(2) || 'â€“'}/5</div><div class="mi-snap-lbl">AI Influence Avg</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val">0</div><div class="mi-snap-lbl">Transformative Vendors</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val" style="color:#0078d4">${ais.by_label?.Significant || 0}</div><div class="mi-snap-lbl">Significant AI Influence</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val" style="color:#ca5010">${ais.by_label?.Emerging || 0}</div><div class="mi-snap-lbl">Emerging AI Influence</div></div>
@@ -17633,7 +17633,7 @@ function _miRenderImpact(data, pd) {
         const cs = pd.cohort_scores || {};
         const co = pd.cohorts?.mdr_service_type || {};
         const ais = pd.ai_influence_stats || {};
-        vizHtml = `<div class="mi-viz-box"><h4>Service Type Positioning — Pricing Score vs AI Influence</h4>
+        vizHtml = `<div class="mi-viz-box"><h4>Service Type Positioning â€” Pricing Score vs AI Influence</h4>
             <div class="mi-svc-grid">`;
         Object.entries(co).sort((a,b) => (cs.by_service_type?.[b[0]] || 0) - (cs.by_service_type?.[a[0]] || 0)).forEach(([st, count]) => {
             const avg = cs.by_service_type?.[st] || 0;
@@ -17664,17 +17664,17 @@ function _miRenderConclusion(data, pd) {
         <h4>Three Simultaneous Investments Required</h4>
         <div class="mi-invest-grid">
             <div class="mi-invest-card">
-                <div class="mi-invest-icon">🤖</div>
+                <div class="mi-invest-icon">ðŸ¤–</div>
                 <div class="mi-invest-title">AI Capability Maturity</div>
                 <div class="mi-invest-desc">To underwrite outcome guarantees with confidence in consistent delivery</div>
             </div>
             <div class="mi-invest-card">
-                <div class="mi-invest-icon">🧩</div>
+                <div class="mi-invest-icon">ðŸ§©</div>
                 <div class="mi-invest-title">Pricing Architecture</div>
                 <div class="mi-invest-desc">From subscription-only to composable models that can express outcome terms</div>
             </div>
             <div class="mi-invest-card">
-                <div class="mi-invest-icon">📏</div>
+                <div class="mi-invest-icon">ðŸ“</div>
                 <div class="mi-invest-title">Measurement Infrastructure</div>
                 <div class="mi-invest-desc">To enable transparent, trust-based outcome metrics both parties can rely on</div>
             </div>
@@ -17711,7 +17711,7 @@ function _miRenderGlossary(data) {
     panel.innerHTML = html;
 }
 
-/* ─── MDR Market Insight Graphics Tab ─── */
+/* â”€â”€â”€ MDR Market Insight Graphics Tab â”€â”€â”€ */
 function _miRenderGraphics(data, pricingData) {
     const panel = document.getElementById('mi-panel-graphics');
     if (!panel) return;
@@ -17725,7 +17725,7 @@ function _miRenderGraphics(data, pricingData) {
         </button>
     </div>`;
 
-    // ── Graphic 1: Pricing Dimension Heatmap ──
+    // â”€â”€ Graphic 1: Pricing Dimension Heatmap â”€â”€
     const dimData = [
         { dim: 'Subscription Transparency', code: 'PRC-SUB', compAvg: 3.80, subAvg: 3.42, mktAvg: 3.52 },
         { dim: 'Usage-Based Alignment',     code: 'PRC-USG', compAvg: 2.60, subAvg: 1.90, mktAvg: 2.14 },
@@ -17766,23 +17766,23 @@ function _miRenderGraphics(data, pricingData) {
         <td style="text-align:center;padding:8px;${mdrHmClass(2.35)}">2.35</td>
     </tr></tbody></table></div>
     <div style="display:flex;gap:18px;margin-top:10px;font-size:12px;flex-wrap:wrap">
-        <span style="color:#107c10;font-weight:700">■ ≥ 3.50 Strong</span>
-        <span style="color:#0078d4;font-weight:700">■ 2.50–3.49 Competitive</span>
-        <span style="color:#ca5010;font-weight:700">■ 2.00–2.49 Below Target</span>
-        <span style="color:#a80000;font-weight:700">■ < 2.00 Critical Gap</span>
+        <span style="color:#107c10;font-weight:700">â–  â‰¥ 3.50 Strong</span>
+        <span style="color:#0078d4;font-weight:700">â–  2.50â€“3.49 Competitive</span>
+        <span style="color:#ca5010;font-weight:700">â–  2.00â€“2.49 Below Target</span>
+        <span style="color:#a80000;font-weight:700">â–  < 2.00 Critical Gap</span>
     </div></div>`;
 
-    // ── Graphic 2: 2028 Outcome Pricing Roadmap ──
+    // â”€â”€ Graphic 2: 2028 Outcome Pricing Roadmap â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>2. Path to 2028: Outcome-Based Pricing Roadmap</h2>
         <p class="dfi-graphic-subtitle">Current maturity of each pricing dimension relative to the 3.0/5.0 commercial viability target.</p>`;
     const roadmapDims = [
-        { name: 'Subscription Transparency', score: 3.52, target: 3.5, color: '#107c10', note: '✓ Only mature dimension — already at target' },
-        { name: 'Usage-Based Alignment', score: 2.14, target: 3.0, color: '#ca5010', note: '⚠ Buyers see no AI cost reduction benefits' },
-        { name: 'Composability & Maturity', score: 2.30, target: 3.0, color: '#0078d4', note: '⚠ 67% still subscription-only monoliths' },
-        { name: 'Fixed Delivery Pricing', score: 2.38, target: 3.0, color: '#8764b8', note: '⚠ Limited retainer / project-based options' },
-        { name: 'Pricing-to-Outcomes', score: 1.77, target: 3.0, color: '#a80000', note: '⚠ No measurement infrastructure' },
-        { name: 'Success & Outcome Fees', score: 1.63, target: 3.0, color: '#a80000', note: '⚠ 86% score ≤ 2.0 — median is 1.0' },
+        { name: 'Subscription Transparency', score: 3.52, target: 3.5, color: '#107c10', note: 'âœ“ Only mature dimension â€” already at target' },
+        { name: 'Usage-Based Alignment', score: 2.14, target: 3.0, color: '#ca5010', note: 'âš  Buyers see no AI cost reduction benefits' },
+        { name: 'Composability & Maturity', score: 2.30, target: 3.0, color: '#0078d4', note: 'âš  67% still subscription-only monoliths' },
+        { name: 'Fixed Delivery Pricing', score: 2.38, target: 3.0, color: '#8764b8', note: 'âš  Limited retainer / project-based options' },
+        { name: 'Pricing-to-Outcomes', score: 1.77, target: 3.0, color: '#a80000', note: 'âš  No measurement infrastructure' },
+        { name: 'Success & Outcome Fees', score: 1.63, target: 3.0, color: '#a80000', note: 'âš  86% score â‰¤ 2.0 â€” median is 1.0' },
     ];
     roadmapDims.forEach(d => {
         const pct = Math.min(d.score / 5.0 * 100, 100);
@@ -17800,11 +17800,11 @@ function _miRenderGraphics(data, pricingData) {
         </div>`;
     });
     html += `<div style="background:#fff5f5;border:2px solid #a80000;border-radius:10px;padding:14px 18px;margin-top:12px">
-        <strong style="color:#a80000">SPA — 2028 Strategic Planning Assumption</strong><br>
+        <strong style="color:#a80000">SPA â€” 2028 Strategic Planning Assumption</strong><br>
         <span style="color:#555;font-size:13px">"By 2028, 40% of MDR contracts will include at least one outcome-linked pricing component tied to measurable security improvements, up from &lt;5% today."</span>
     </div></div>`;
 
-    // ── Graphic 3: AI Influence Investment Mismatch ──
+    // â”€â”€ Graphic 3: AI Influence Investment Mismatch â”€â”€
     const mismatchMDR = [
         { dim: 'Subscription Transparency', sigAvg: 3.72, minAvg: 3.30, ideal: 3.5 },
         { dim: 'Usage-Based Alignment',     sigAvg: 2.58, minAvg: 1.60, ideal: 3.0 },
@@ -17816,9 +17816,9 @@ function _miRenderGraphics(data, pricingData) {
         <h2>3. Investment Mismatch: AI-Significant vs AI-Minimal Vendors</h2>
         <p class="dfi-graphic-subtitle">1.02-point gap between AI-Significant (19 vendors, avg 2.86) and AI-Minimal (27 vendors, avg 1.84) across all pricing dimensions.</p>`;
     html += `<div style="display:flex;gap:16px;margin-bottom:12px;font-size:12px;flex-wrap:wrap">
-        <span style="color:#0078d4;font-weight:700">■ AI-Significant (19 vendors)</span>
-        <span style="color:#ca5010;font-weight:700">■ AI-Minimal (27 vendors)</span>
-        <span style="color:#107c10;font-weight:700">■ Recommended Target</span>
+        <span style="color:#0078d4;font-weight:700">â–  AI-Significant (19 vendors)</span>
+        <span style="color:#ca5010;font-weight:700">â–  AI-Minimal (27 vendors)</span>
+        <span style="color:#107c10;font-weight:700">â–  Recommended Target</span>
     </div>`;
     mismatchMDR.forEach(d => {
         const w = 600;
@@ -17846,20 +17846,20 @@ function _miRenderGraphics(data, pricingData) {
         <span style="color:#555;font-size:13px">AI-Significant vendors score 55% higher than AI-Minimal across all dimensions. The gap is widest on Pricing-to-Outcomes (2.58 vs 1.04 = +148%).</span>
     </div></div>`;
 
-    // ── Graphic 4: Executive Summary Poster ──
+    // â”€â”€ Graphic 4: Executive Summary Poster â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>4. The 40% Forecast — Executive Summary</h2>
+        <h2>4. The 40% Forecast â€” Executive Summary</h2>
         <p class="dfi-graphic-subtitle">By 2028, 40% of MDR contracts will include outcome-linked pricing. Today, fewer than 5% do.</p>
         <div class="dfi-nbm-infographic" style="background:linear-gradient(135deg,#f0faff,#f8f8f5);border:2px solid #0078d4;border-radius:16px;padding:28px 32px;max-width:1080px">
             <div style="text-align:center;margin-bottom:20px">
-                <div style="font-size:28px;font-weight:800;color:#0078d4">AI Is Reshaping MDR Pricing — But Most Vendors Aren't Ready</div>
-                <div style="font-size:14px;color:#666;margin-top:6px">Market Insight Executive Summary — 95 vendors across 6 pricing dimensions</div>
+                <div style="font-size:28px;font-weight:800;color:#0078d4">AI Is Reshaping MDR Pricing â€” But Most Vendors Aren't Ready</div>
+                <div style="font-size:14px;color:#666;margin-top:6px">Market Insight Executive Summary â€” 95 vendors across 6 pricing dimensions</div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px">
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
                     <div style="font-size:28px;font-weight:800;color:#0078d4">95</div><div style="font-size:11px;color:#666">Vendors Assessed</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#a80000">86%</div><div style="font-size:11px;color:#666">Score ≤ 2.0 on PRC-SUC</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#a80000">86%</div><div style="font-size:11px;color:#666">Score â‰¤ 2.0 on PRC-SUC</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
                     <div style="font-size:28px;font-weight:800;color:#ca5010">67%</div><div style="font-size:11px;color:#666">Subscription-Only</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
@@ -17870,11 +17870,11 @@ function _miRenderGraphics(data, pricingData) {
             <div style="font-size:13px;font-weight:700;color:#0078d4;margin-bottom:8px">KEY FINDINGS</div>
             <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #a80000">
-                    <strong>📉 Outcome Adoption Vanishingly Low</strong><br><span style="color:#555;font-size:13px">82 of 95 vendors (86%) score ≤ 2.0 on success-linked fees. Median is 1.0 — the lowest possible score.</span></div>
+                    <strong>ðŸ“‰ Outcome Adoption Vanishingly Low</strong><br><span style="color:#555;font-size:13px">82 of 95 vendors (86%) score â‰¤ 2.0 on success-linked fees. Median is 1.0 â€” the lowest possible score.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #0078d4">
-                    <strong>🤖 AI-Mature Benchmark 55% Higher</strong><br><span style="color:#555;font-size:13px">AI-Significant vendors average 2.86 vs AI-Minimal 1.84. Most pronounced on PRC-OUT: 2.58 vs 1.04.</span></div>
+                    <strong>ðŸ¤– AI-Mature Benchmark 55% Higher</strong><br><span style="color:#555;font-size:13px">AI-Significant vendors average 2.86 vs AI-Minimal 1.84. Most pronounced on PRC-OUT: 2.58 vs 1.04.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #107c10">
-                    <strong>🧩 Composable Is Prerequisite</strong><br><span style="color:#555;font-size:13px">Composable vendors score 2.41 on PRC-SUC vs 1.34 for subscription-only — an 80% premium.</span></div>
+                    <strong>ðŸ§© Composable Is Prerequisite</strong><br><span style="color:#555;font-size:13px">Composable vendors score 2.41 on PRC-SUC vs 1.34 for subscription-only â€” an 80% premium.</span></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#ca5010;margin-bottom:8px">RECOMMENDATIONS</div>
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
@@ -17893,14 +17893,14 @@ function _miRenderGraphics(data, pricingData) {
                 <div style="background:#fff;border-radius:10px;padding:12px;border:2px solid #8764b8;text-align:center">
                     <div style="font-size:10px;font-weight:700;color:#8764b8">04</div>
                     <div style="font-size:14px;font-weight:700;color:#8764b8">Phased Roadmap</div>
-                    <div style="font-size:10px;color:#555">Transparency → Usage → Composable → Outcomes</div></div>
+                    <div style="font-size:10px;color:#555">Transparency â†’ Usage â†’ Composable â†’ Outcomes</div></div>
             </div>
             <div style="background:#fff5f5;border:2px solid #a80000;border-radius:10px;padding:12px 16px;text-align:center">
-                <strong style="color:#a80000">⚠ "By 2028, 40% of MDR contracts will include outcome-linked pricing — up from &lt;5% today."</strong><br>
-                <span style="color:#888;font-size:11px">— Strategic Planning Assumption</span></div>
+                <strong style="color:#a80000">âš  "By 2028, 40% of MDR contracts will include outcome-linked pricing â€” up from &lt;5% today."</strong><br>
+                <span style="color:#888;font-size:11px">â€” Strategic Planning Assumption</span></div>
         </div></div>`;
 
-    // ── Graphic 5: Subscription vs Outcome-Based (VS poster) ──
+    // â”€â”€ Graphic 5: Subscription vs Outcome-Based (VS poster) â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>5. Subscription-Only vs Outcome-Based: The Pricing Divide</h2>
         <p class="dfi-graphic-subtitle">Two-thirds of vendors remain subscription-only. This poster contrasts the old model with where the market must go.</p>
@@ -17911,27 +17911,27 @@ function _miRenderGraphics(data, pricingData) {
             </div>
             <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:10px;margin-bottom:20px">
                 <div style="background:#fff5f0;border:2px solid #ca5010;border-radius:14px;padding:20px">
-                    <div style="text-align:center;font-size:18px;font-weight:700;color:#ca5010;margin-bottom:12px">⚙ Subscription-Only (The Old Model)</div>
+                    <div style="text-align:center;font-size:18px;font-weight:700;color:#ca5010;margin-bottom:12px">âš™ Subscription-Only (The Old Model)</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
-                        🔴 64 of 95 vendors (67%)<br>
-                        🔴 Average score: 2.16 / 5.0<br>
-                        🔴 PRC-SUC score: 1.34 (outcome fees)<br>
-                        🔴 Flat-rate, predictable, opaque pricing<br>
-                        🔴 AI efficiency captured as vendor margin<br>
-                        🔴 Buyer bears all risk — no warranties<br>
-                        🔴 No usage alignment to actual workload</div>
+                        ðŸ”´ 64 of 95 vendors (67%)<br>
+                        ðŸ”´ Average score: 2.16 / 5.0<br>
+                        ðŸ”´ PRC-SUC score: 1.34 (outcome fees)<br>
+                        ðŸ”´ Flat-rate, predictable, opaque pricing<br>
+                        ðŸ”´ AI efficiency captured as vendor margin<br>
+                        ðŸ”´ Buyer bears all risk â€” no warranties<br>
+                        ðŸ”´ No usage alignment to actual workload</div>
                 </div>
                 <div style="display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#888">VS</div>
                 <div style="background:#f0faff;border:2px solid #0078d4;border-radius:14px;padding:20px">
-                    <div style="text-align:center;font-size:18px;font-weight:700;color:#0078d4;margin-bottom:12px">🚀 Composable / Outcome-Based</div>
+                    <div style="text-align:center;font-size:18px;font-weight:700;color:#0078d4;margin-bottom:12px">ðŸš€ Composable / Outcome-Based</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
-                        🔵 27 of 95 vendors (28%)<br>
-                        🔵 Average score: 2.80 / 5.0 (+30%)<br>
-                        🔵 PRC-SUC score: 2.41 (outcome fees, +80%)<br>
-                        🔵 Modular: detect + respond + hunt + outcomes<br>
-                        🔵 AI efficiency shared via dashboards<br>
-                        🔵 Vendor co-owns risk via breach warranties<br>
-                        🔵 Performance-linked, transparent models</div>
+                        ðŸ”µ 27 of 95 vendors (28%)<br>
+                        ðŸ”µ Average score: 2.80 / 5.0 (+30%)<br>
+                        ðŸ”µ PRC-SUC score: 2.41 (outcome fees, +80%)<br>
+                        ðŸ”µ Modular: detect + respond + hunt + outcomes<br>
+                        ðŸ”µ AI efficiency shared via dashboards<br>
+                        ðŸ”µ Vendor co-owns risk via breach warranties<br>
+                        ðŸ”µ Performance-linked, transparent models</div>
                 </div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#0078d4;margin-bottom:8px">THE AI PRICING INFLUENCE SPECTRUM</div>
@@ -17939,46 +17939,46 @@ function _miRenderGraphics(data, pricingData) {
                 <div style="background:#ffe0e0;border-radius:10px;padding:12px;text-align:center;border:2px solid #a80000">
                     <div style="font-size:22px;font-weight:800;color:#a80000">27</div>
                     <div style="font-size:12px;font-weight:700;color:#a80000">AI-Minimal</div>
-                    <div style="font-size:10px;color:#555">Avg 1.84 — no AI pricing</div></div>
+                    <div style="font-size:10px;color:#555">Avg 1.84 â€” no AI pricing</div></div>
                 <div style="background:#fff0e0;border-radius:10px;padding:12px;text-align:center;border:2px solid #ca5010">
                     <div style="font-size:22px;font-weight:800;color:#ca5010">49</div>
                     <div style="font-size:12px;font-weight:700;color:#ca5010">AI-Emerging</div>
-                    <div style="font-size:10px;color:#555">Avg 2.20 — SOAR swap, no value</div></div>
+                    <div style="font-size:10px;color:#555">Avg 2.20 â€” SOAR swap, no value</div></div>
                 <div style="background:#e0f0ff;border-radius:10px;padding:12px;text-align:center;border:2px solid #0078d4">
                     <div style="font-size:22px;font-weight:800;color:#0078d4">19</div>
                     <div style="font-size:12px;font-weight:700;color:#0078d4">AI-Significant</div>
-                    <div style="font-size:10px;color:#555">Avg 2.86 — real commercial impact</div></div>
+                    <div style="font-size:10px;color:#555">Avg 2.86 â€” real commercial impact</div></div>
                 <div style="background:#e6f4e6;border-radius:10px;padding:12px;text-align:center;border:2px solid #107c10">
                     <div style="font-size:22px;font-weight:800;color:#107c10">0</div>
                     <div style="font-size:12px;font-weight:700;color:#107c10">AI-Transformative</div>
                     <div style="font-size:10px;color:#555">No vendor has reached this tier</div></div>
             </div>
             <div style="background:#fff0f0;border:2px solid #a80000;border-radius:10px;padding:12px 16px;text-align:center">
-                <strong style="color:#a80000">The question is not whether MDR pricing will change — but which vendors will lead the shift.</strong></div>
+                <strong style="color:#a80000">The question is not whether MDR pricing will change â€” but which vendors will lead the shift.</strong></div>
         </div></div>`;
 
-    // ── Graphic 6: Three Investments Model (Tandem poster) ──
+    // â”€â”€ Graphic 6: Three Investments Model (Tandem poster) â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>6. The Three Simultaneous Investments Required</h2>
         <p class="dfi-graphic-subtitle">Outcome-based pricing requires vendors to invest simultaneously in AI capability, pricing architecture, and measurement infrastructure.</p>
         <div class="dfi-nbm-infographic" style="background:linear-gradient(135deg,#f0fff0,#f8f8f5);border:2px solid #107c10;border-radius:16px;padding:28px 32px;max-width:1080px">
             <div style="text-align:center;margin-bottom:20px">
                 <div style="font-size:26px;font-weight:800;color:#107c10">The Composable Pricing Imperative</div>
-                <div style="font-size:13px;color:#666">Three simultaneous investments — none is sufficient alone</div>
+                <div style="font-size:13px;color:#666">Three simultaneous investments â€” none is sufficient alone</div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px">
                 <div style="background:#f0faff;border:2px solid #0078d4;border-radius:14px;padding:20px;text-align:center">
-                    <div style="font-size:36px;margin-bottom:8px">🤖</div>
+                    <div style="font-size:36px;margin-bottom:8px">ðŸ¤–</div>
                     <div style="font-size:16px;font-weight:700;color:#0078d4;margin-bottom:8px">AI Capability Maturity</div>
                     <div style="font-size:12px;color:#555;line-height:1.6">Underwrite outcome guarantees<br>Usage-based metering<br>Outcome confidence scoring<br>Cost-per-incident trending</div>
                     <div style="margin-top:12px;background:#e0f0ff;border-radius:8px;padding:8px;font-size:11px;color:#0078d4;font-weight:700">Gap: PRC-USG avg 2.14/5</div></div>
                 <div style="background:#fff8f0;border:2px solid #ca5010;border-radius:14px;padding:20px;text-align:center">
-                    <div style="font-size:36px;margin-bottom:8px">🧩</div>
+                    <div style="font-size:36px;margin-bottom:8px">ðŸ§©</div>
                     <div style="font-size:16px;font-weight:700;color:#ca5010;margin-bottom:8px">Pricing Architecture</div>
                     <div style="font-size:12px;color:#555;line-height:1.6">Composable, modular components<br>Base detect + response + hunt<br>Outcome guarantees layer<br>Efficiency sharing layer</div>
                     <div style="margin-top:12px;background:#fff0e0;border-radius:8px;padding:8px;font-size:11px;color:#ca5010;font-weight:700">Gap: 67% still subscription-only</div></div>
                 <div style="background:#f5f0ff;border:2px solid #8764b8;border-radius:14px;padding:20px;text-align:center">
-                    <div style="font-size:36px;margin-bottom:8px">📊</div>
+                    <div style="font-size:36px;margin-bottom:8px">ðŸ“Š</div>
                     <div style="font-size:16px;font-weight:700;color:#8764b8;margin-bottom:8px">Measurement Infrastructure</div>
                     <div style="font-size:12px;color:#555;line-height:1.6">Transparent outcome metrics<br>MTTD/MTTR reduction proof<br>Risk-score improvement tracking<br>AI utilization dashboards</div>
                     <div style="margin-top:12px;background:#f0e8ff;border-radius:8px;padding:8px;font-size:11px;color:#8764b8;font-weight:700">Gap: PRC-OUT avg 1.77/5</div></div>
@@ -17987,24 +17987,24 @@ function _miRenderGraphics(data, pricingData) {
             <div style="display:flex;gap:4px;margin-bottom:16px">
                 <div style="flex:1;background:#107c10;color:#fff;border-radius:10px;padding:10px;text-align:center;font-size:12px">
                     <strong>Phase 1</strong><br>Transparency<br><span style="font-size:10px;opacity:0.9">Publish tiers + metrics</span></div>
-                <div style="font-size:18px;display:flex;align-items:center;color:#888">→</div>
+                <div style="font-size:18px;display:flex;align-items:center;color:#888">â†’</div>
                 <div style="flex:1;background:#0078d4;color:#fff;border-radius:10px;padding:10px;text-align:center;font-size:12px">
                     <strong>Phase 2</strong><br>Usage-Aligned<br><span style="font-size:10px;opacity:0.9">Consumption metering</span></div>
-                <div style="font-size:18px;display:flex;align-items:center;color:#888">→</div>
+                <div style="font-size:18px;display:flex;align-items:center;color:#888">â†’</div>
                 <div style="flex:1;background:#ca5010;color:#fff;border-radius:10px;padding:10px;text-align:center;font-size:12px">
                     <strong>Phase 3</strong><br>Composable<br><span style="font-size:10px;opacity:0.9">Modular components</span></div>
-                <div style="font-size:18px;display:flex;align-items:center;color:#888">→</div>
+                <div style="font-size:18px;display:flex;align-items:center;color:#888">â†’</div>
                 <div style="flex:1;background:#8764b8;color:#fff;border-radius:10px;padding:10px;text-align:center;font-size:12px">
                     <strong>Phase 4</strong><br>Outcomes<br><span style="font-size:10px;opacity:0.9">Breach warranties</span></div>
-                <div style="font-size:18px;display:flex;align-items:center;color:#888">→</div>
+                <div style="font-size:18px;display:flex;align-items:center;color:#888">â†’</div>
                 <div style="flex:1;background:#a80000;color:#fff;border-radius:10px;padding:10px;text-align:center;font-size:12px">
                     <strong>Phase 5</strong><br>Full Risk-Share<br><span style="font-size:10px;opacity:0.9">Co-owned outcomes</span></div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
                 <div style="background:#fff;border-radius:10px;padding:12px;border:1px solid #e0ddd5;text-align:center">
-                    <div style="font-size:24px;font-weight:800;color:#ca5010">2.35</div><div style="font-size:11px;color:#666">Market Average — "Developing"</div></div>
+                    <div style="font-size:24px;font-weight:800;color:#ca5010">2.35</div><div style="font-size:11px;color:#666">Market Average â€” "Developing"</div></div>
                 <div style="background:#fff;border-radius:10px;padding:12px;border:1px solid #e0ddd5;text-align:center">
-                    <div style="font-size:24px;font-weight:800;color:#0078d4">3.65</div><div style="font-size:11px;color:#666">Top-10 Average — "Advancing"</div></div>
+                    <div style="font-size:24px;font-weight:800;color:#0078d4">3.65</div><div style="font-size:11px;color:#666">Top-10 Average â€” "Advancing"</div></div>
                 <div style="background:#fff;border-radius:10px;padding:12px;border:1px solid #e0ddd5;text-align:center">
                     <div style="font-size:24px;font-weight:800;color:#a80000">1.30</div><div style="font-size:11px;color:#666">Leader / Market Gap (widening)</div></div>
             </div>
@@ -18012,29 +18012,29 @@ function _miRenderGraphics(data, pricingData) {
                 <strong style="color:#107c10">Product leaders not invested in composable, AI-enabled pricing will face structural competitive disadvantage by 2027.</strong></div>
         </div></div>`;
 
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     //  GRAPHIC 7: HAND-DRAWN WORKFLOW INFOGRAPHIC (rough.js sketch style)
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     html += `<div class="dfi-graphic-section">
-        <h2>7. MDR Pricing Evolution — Hand-Drawn Workflow</h2>
+        <h2>7. MDR Pricing Evolution â€” Hand-Drawn Workflow</h2>
         <p class="dfi-graphic-subtitle">A sketch-style infographic showing the transition from subscription-only MDR pricing to AI-driven outcome-based models.</p>
         <div style="display:flex;gap:8px;margin-bottom:16px">
             <button class="report-export-btn" onclick="exportMDRInfographicPPTX()" title="Export as editable PowerPoint">
-                <span class="icon">📎</span> Export PPTX
+                <span class="icon">ðŸ“Ž</span> Export PPTX
             </button>
         </div>
         <div id="mi-sketch-infographic" class="dfi-sketch-container"></div>
     </div>`;
 
     //  GRAPHIC 8: WHITEBOARD-STYLE PRICING INFOGRAPHIC
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     html += `<div class="dfi-graphic-section">
-        <h2>8. MDR Pricing — Whiteboard Session</h2>
-        <p class="dfi-graphic-subtitle">A whiteboard-style breakdown: how AI is reshaping MDR pricing models — marker strokes, sticky notes, and analyst scribbles.</p>
+        <h2>8. MDR Pricing â€” Whiteboard Session</h2>
+        <p class="dfi-graphic-subtitle">A whiteboard-style breakdown: how AI is reshaping MDR pricing models â€” marker strokes, sticky notes, and analyst scribbles.</p>
         <div id="mi-whiteboard-infographic" class="dfi-sketch-container"></div>
     </div>`;
 
-    // ── Graphic 9: Outcome Metric Framework (cpo-outcome-metrics perspective) ──
+    // â”€â”€ Graphic 9: Outcome Metric Framework (cpo-outcome-metrics perspective) â”€â”€
     if (data && data.id === 'cpo-outcome-metrics') {
         html += _miRenderOutcomeMetricFramework();
     }
@@ -18101,21 +18101,21 @@ function _miRenderOutcomeMetricFramework() {
     const metrics = [
         {
             category: 'Speed',
-            icon: '⚡',
+            icon: 'âš¡',
             color: '#107c10',
             measures: ['MTTD reduction %', 'MTTR reduction %', 'Severity-weighted response time'],
             pricingUnlock: 'MTTR/MTTD Guarantees with Service Credits',
             aiEnablers: ['Pipeline instrumentation', 'Auto-timestamping', 'Per-incident severity classification'],
             readiness: 'High',
-            readinessNote: '~16% of vendors at outcome maturity ≥3 publish speed data',
+            readinessNote: '~16% of vendors at outcome maturity â‰¥3 publish speed data',
             readinessColor: '#107c10',
             phase: 'Phase 1',
-            phaseDetail: 'Months 1–3',
+            phaseDetail: 'Months 1â€“3',
             analysisRef: 'S3: The Speed Metric Trap'
         },
         {
             category: 'Autonomy',
-            icon: '🤖',
+            icon: 'ðŸ¤–',
             color: '#0078d4',
             measures: ['% incidents auto-resolved', 'AI vs human attribution', 'Cost-per-incident (AI vs analyst)'],
             pricingUnlock: 'Efficiency-Sharing & Cost-Per-Incident Pricing',
@@ -18124,12 +18124,12 @@ function _miRenderOutcomeMetricFramework() {
             readinessNote: '<10% of vendors track per-customer autonomy rates',
             readinessColor: '#ca5010',
             phase: 'Phase 2',
-            phaseDetail: 'Months 3–6',
+            phaseDetail: 'Months 3â€“6',
             analysisRef: 'S4: Autonomy as Commercial Currency'
         },
         {
             category: 'Coverage',
-            icon: '🛡️',
+            icon: 'ðŸ›¡ï¸',
             color: '#8764b8',
             measures: ['Telemetry source breadth', 'Attack surface mapped %', 'Visibility gap trending'],
             pricingUnlock: 'Risk-Score-Tied Subscriptions',
@@ -18138,12 +18138,12 @@ function _miRenderOutcomeMetricFramework() {
             readinessNote: '28% composable vendors lead; 66% subscription-only treat as static',
             readinessColor: '#ca5010',
             phase: 'Phase 3',
-            phaseDetail: 'Months 6–12',
+            phaseDetail: 'Months 6â€“12',
             analysisRef: 'S5: Coverage & Quality'
         },
         {
             category: 'Quality',
-            icon: '🎯',
+            icon: 'ðŸŽ¯',
             color: '#e3008c',
             measures: ['False positive rate trend', 'Detection confidence scores', 'AI hallucination rate'],
             pricingUnlock: 'Detection Confidence Warranties',
@@ -18152,18 +18152,18 @@ function _miRenderOutcomeMetricFramework() {
             readinessNote: '~19% AI-mature vendors have infrastructure but do not commercialize it',
             readinessColor: '#ca5010',
             phase: 'Phase 3',
-            phaseDetail: 'Months 6–12',
+            phaseDetail: 'Months 6â€“12',
             analysisRef: 'S5: Coverage & Quality'
         },
         {
             category: 'Resource',
-            icon: '👤',
+            icon: 'ðŸ‘¤',
             color: '#00b7c3',
             measures: ['Analyst time saved (hrs)', 'Internal SOC workload shift', 'Pre/post-AI baseline comparison'],
             pricingUnlock: 'Analyst-Time-Saved Rebates',
             aiEnablers: ['SOC integration telemetry', 'Time-per-incident measurement', 'Workload attribution models'],
             readiness: 'Very Low',
-            readinessNote: 'Requires customer SOC integration — complex instrumentation',
+            readinessNote: 'Requires customer SOC integration â€” complex instrumentation',
             readinessColor: '#a80000',
             phase: 'Phase 4',
             phaseDetail: '12+ months',
@@ -18171,7 +18171,7 @@ function _miRenderOutcomeMetricFramework() {
         },
         {
             category: 'Impact',
-            icon: '💰',
+            icon: 'ðŸ’°',
             color: '#a80000',
             measures: ['Damage prevention ($)', 'Regulatory penalty avoidance', 'Risk score improvement'],
             pricingUnlock: 'Breach Warranties & Damage-Cap Guarantees',
@@ -18186,7 +18186,7 @@ function _miRenderOutcomeMetricFramework() {
     ];
 
     let html = `<div class="dfi-graphic-section">
-        <h2>9. Outcome Metric Framework — Cross-Section Matrix</h2>
+        <h2>9. Outcome Metric Framework â€” Cross-Section Matrix</h2>
         <p class="dfi-graphic-subtitle">Six AI-enabled metric categories mapped to the pricing mechanisms they unlock, current market readiness, and deployment sequencing. Each category aligns to the analysis sections in this report.</p>
         <div style="overflow-x:auto">
         <table style="width:100%;max-width:1200px;border-collapse:collapse;font-size:13px;border:2px solid ${tableBorder};border-radius:12px;">
@@ -18245,14 +18245,14 @@ function _miRenderOutcomeMetricFramework() {
     // Legend / key insight bar
     html += `<div style="display:flex;gap:16px;margin-top:14px;font-size:12px;flex-wrap:wrap;align-items:center;">
         <span style="font-weight:700;color:${txtMuted};">Readiness:</span>
-        <span style="color:${accent('#107c10')};font-weight:700;">■ High</span>
-        <span style="color:${accent('#ca5010')};font-weight:700;">■ Low / Medium</span>
-        <span style="color:${accent('#a80000')};font-weight:700;">■ Very Low</span>
+        <span style="color:${accent('#107c10')};font-weight:700;">â–  High</span>
+        <span style="color:${accent('#ca5010')};font-weight:700;">â–  Low / Medium</span>
+        <span style="color:${accent('#a80000')};font-weight:700;">â–  Very Low</span>
         <span style="margin-left:16px;color:${dk ? '#555' : '#888'};">|</span>
         <span style="font-weight:700;color:${txtMuted};">Phases:</span>
-        <span style="color:${accent('#107c10')};">P1: Months 1–3</span>
-        <span style="color:${accent('#0078d4')};">P2: Months 3–6</span>
-        <span style="color:${accent('#8764b8')};">P3: Months 6–12</span>
+        <span style="color:${accent('#107c10')};">P1: Months 1â€“3</span>
+        <span style="color:${accent('#0078d4')};">P2: Months 3â€“6</span>
+        <span style="color:${accent('#8764b8')};">P3: Months 6â€“12</span>
         <span style="color:${accent('#a80000')};">P4: 12+ months</span>
     </div>`;
 
@@ -18263,14 +18263,14 @@ function _miRenderOutcomeMetricFramework() {
     const arrowClr = dk ? '#666' : '#888';
 
     html += `<div style="margin-top:24px;">
-        <h3 style="color:${headingClr};font-size:16px;margin-bottom:12px;">Metric Deployment Sequence — From Measurable to Commercially Viable</h3>
+        <h3 style="color:${headingClr};font-size:16px;margin-bottom:12px;">Metric Deployment Sequence â€” From Measurable to Commercially Viable</h3>
         <div style="display:flex;gap:4px;align-items:stretch;">`;
 
     const phases = [
-        { label: 'Phase 1', time: 'Months 1–3', title: 'Speed Metrics', icon: '⚡', color: '#107c10', desc: 'MTTD/MTTR per-customer, baselines, trending', unlock: '→ MTTR guarantees' },
-        { label: 'Phase 2', time: 'Months 3–6', title: 'Autonomy Metrics', icon: '🤖', color: '#0078d4', desc: 'AI vs human resolution attribution per customer', unlock: '→ Efficiency-sharing' },
-        { label: 'Phase 3', time: 'Months 6–12', title: 'Coverage + Quality', icon: '🛡️🎯', color: '#8764b8', desc: 'Telemetry breadth, FP rates, detection confidence', unlock: '→ Risk-score pricing + confidence warranties' },
-        { label: 'Phase 4', time: '12+ months', title: 'Resource + Impact', icon: '👤💰', color: '#a80000', desc: 'Analyst time freed, damage prevention, risk quant', unlock: '→ Rebates + breach warranties' },
+        { label: 'Phase 1', time: 'Months 1â€“3', title: 'Speed Metrics', icon: 'âš¡', color: '#107c10', desc: 'MTTD/MTTR per-customer, baselines, trending', unlock: 'â†’ MTTR guarantees' },
+        { label: 'Phase 2', time: 'Months 3â€“6', title: 'Autonomy Metrics', icon: 'ðŸ¤–', color: '#0078d4', desc: 'AI vs human resolution attribution per customer', unlock: 'â†’ Efficiency-sharing' },
+        { label: 'Phase 3', time: 'Months 6â€“12', title: 'Coverage + Quality', icon: 'ðŸ›¡ï¸ðŸŽ¯', color: '#8764b8', desc: 'Telemetry breadth, FP rates, detection confidence', unlock: 'â†’ Risk-score pricing + confidence warranties' },
+        { label: 'Phase 4', time: '12+ months', title: 'Resource + Impact', icon: 'ðŸ‘¤ðŸ’°', color: '#a80000', desc: 'Analyst time freed, damage prevention, risk quant', unlock: 'â†’ Rebates + breach warranties' },
     ];
 
     phases.forEach((p, i) => {
@@ -18284,7 +18284,7 @@ function _miRenderOutcomeMetricFramework() {
             <div style="font-size:10px;font-weight:700;color:${pAc};background:${unlockBg};border-radius:6px;padding:3px 6px;display:inline-block;">${p.unlock}</div>
         </div>`;
         if (i < phases.length - 1) {
-            html += `<div style="display:flex;align-items:center;font-size:22px;font-weight:800;color:${arrowClr};">→</div>`;
+            html += `<div style="display:flex;align-items:center;font-size:22px;font-weight:800;color:${arrowClr};">â†’</div>`;
         }
     });
 
@@ -18305,42 +18305,42 @@ function _miRenderOutcomeMetricFramework() {
         <p style="font-size:12px;color:${txtMuted};margin-bottom:14px;">Individual metrics are necessary for transparency but insufficient for commercial structures. Composite indices combine metrics into contractable scores.</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
             <div style="background:${dk ? 'linear-gradient(135deg,#1a3a1a,#0d2a4a)' : 'linear-gradient(135deg,#e6f4e6,#f0faff)'};border:2px solid ${accent('#107c10')};border-radius:14px;padding:18px;text-align:center;">
-                <div style="font-size:28px;margin-bottom:6px;">📊</div>
+                <div style="font-size:28px;margin-bottom:6px;">ðŸ“Š</div>
                 <div style="font-size:15px;font-weight:700;color:${accent('#107c10')};margin-bottom:8px;">Detection Efficacy Index</div>
                 <div style="font-size:11px;color:${txtSecondary};line-height:1.6;text-align:left;">
                     <strong>Combines:</strong><br>
-                    • MTTD (speed)<br>
-                    • False positive rate (quality)<br>
-                    • Detection confidence (quality)<br>
-                    • Scope breadth (coverage)
+                    â€¢ MTTD (speed)<br>
+                    â€¢ False positive rate (quality)<br>
+                    â€¢ Detection confidence (quality)<br>
+                    â€¢ Scope breadth (coverage)
                 </div>
                 <div style="margin-top:10px;background:${rdBgDk('#107c10')};border-radius:8px;padding:6px;font-size:10px;color:${accent('#107c10')};font-weight:700;">
                     Solves: Speed metric gaming (F3)
                 </div>
             </div>
             <div style="background:${dk ? 'linear-gradient(135deg,#0d2a4a,#2a1a3a)' : 'linear-gradient(135deg,#e0f0ff,#f0e8ff)'};border:2px solid ${accent('#0078d4')};border-radius:14px;padding:18px;text-align:center;">
-                <div style="font-size:28px;margin-bottom:6px;">⚡</div>
+                <div style="font-size:28px;margin-bottom:6px;">âš¡</div>
                 <div style="font-size:15px;font-weight:700;color:${accent('#0078d4')};margin-bottom:8px;">Response Value Index</div>
                 <div style="font-size:11px;color:${txtSecondary};line-height:1.6;text-align:left;">
                     <strong>Combines:</strong><br>
-                    • MTTR (speed)<br>
-                    • Autonomy rate (autonomy)<br>
-                    • Containment completeness<br>
-                    • Severity-weighted response
+                    â€¢ MTTR (speed)<br>
+                    â€¢ Autonomy rate (autonomy)<br>
+                    â€¢ Containment completeness<br>
+                    â€¢ Severity-weighted response
                 </div>
                 <div style="margin-top:10px;background:${rdBgDk('#0078d4')};border-radius:8px;padding:6px;font-size:10px;color:${accent('#0078d4')};font-weight:700;">
                     Captures: AI efficiency value (F4)
                 </div>
             </div>
             <div style="background:${dk ? 'linear-gradient(135deg,#2a1a3a,#3a1010)' : 'linear-gradient(135deg,#f0e8ff,#ffe0e0)'};border:2px solid ${accent('#8764b8')};border-radius:14px;padding:18px;text-align:center;">
-                <div style="font-size:28px;margin-bottom:6px;">🛡️</div>
+                <div style="font-size:28px;margin-bottom:6px;">ðŸ›¡ï¸</div>
                 <div style="font-size:15px;font-weight:700;color:${accent('#8764b8')};margin-bottom:8px;">Coverage Health Score</div>
                 <div style="font-size:11px;color:${txtSecondary};line-height:1.6;text-align:left;">
                     <strong>Combines:</strong><br>
-                    • Telemetry breadth (coverage)<br>
-                    • Telemetry depth (coverage)<br>
-                    • Data freshness (coverage)<br>
-                    • Visibility gap count (coverage)
+                    â€¢ Telemetry breadth (coverage)<br>
+                    â€¢ Telemetry depth (coverage)<br>
+                    â€¢ Data freshness (coverage)<br>
+                    â€¢ Visibility gap count (coverage)
                 </div>
                 <div style="margin-top:10px;background:${rdBgDk('#8764b8')};border-radius:8px;padding:6px;font-size:10px;color:${accent('#8764b8')};font-weight:700;">
                     Addresses: Post-breach buyer concern (F5)
@@ -18388,12 +18388,12 @@ function _miDrawSketchInfographic() {
         lines.forEach((line, i) => addText(x, y + i * (lineH || size * 1.4), line, size, '400', color || '#555', anchor));
     }
 
-    // ── Title banner ──
+    // â”€â”€ Title banner â”€â”€
     svg.appendChild(rc.rectangle(0, 0, W, 70, { ...opt, fill: '#1a3a5c', fillStyle: 'solid', stroke: '#1a3a5c' }));
-    addText(W / 2, 30, 'AI Is Reshaping MDR Pricing — But Most Vendors Aren\'t Ready', 22, '800', '#fff', 'middle');
-    addText(W / 2, 55, 'From subscription-only models → outcome-based, AI-driven commercial innovation', 12, '400', '#ccd8e8', 'middle');
+    addText(W / 2, 30, 'AI Is Reshaping MDR Pricing â€” But Most Vendors Aren\'t Ready', 22, '800', '#fff', 'middle');
+    addText(W / 2, 55, 'From subscription-only models â†’ outcome-based, AI-driven commercial innovation', 12, '400', '#ccd8e8', 'middle');
 
-    // ── Left column: Subscription-Only ──
+    // â”€â”€ Left column: Subscription-Only â”€â”€
     svg.appendChild(rc.rectangle(20, 85, 520, 32, { ...opt, fill: '#e0ddd5', fillStyle: 'solid', stroke: '#b0a898' }));
     addText(280, 107, 'SUBSCRIPTION-ONLY: THE OLD MODEL', 11, '700', '#5a503c', 'middle');
 
@@ -18408,11 +18408,11 @@ function _miDrawSketchInfographic() {
     svg.appendChild(rc.rectangle(290, 135, 240, 130, optFill('#f5f0f0')));
     addText(410, 160, '1.63 / 5.0', 24, '800', '#a80000', 'middle');
     addText(410, 185, 'Outcome Pricing Score', 13, '700', '#5a503c', 'middle');
-    addMultiText(410, 210, ['86% of vendors score 2.0 or', 'below — median is just 1.0'], 11, '#777', 14, 'middle');
+    addMultiText(410, 210, ['86% of vendors score 2.0 or', 'below â€” median is just 1.0'], 11, '#777', 14, 'middle');
 
     // Box 3: Efficiency Capture
     svg.appendChild(rc.rectangle(30, 280, 240, 120, optFill('#fff5f5')));
-    addText(150, 305, '💰', 24, '400', '#a80000', 'middle');
+    addText(150, 305, 'ðŸ’°', 24, '400', '#a80000', 'middle');
     addText(150, 328, 'AI Dividend Captured', 14, '700', '#a80000', 'middle');
     addMultiText(150, 348, ['Vendors keep AI efficiency', 'gains as margin, not', 'sharing with buyers'], 10, '#777', 13, 'middle');
 
@@ -18422,9 +18422,9 @@ function _miDrawSketchInfographic() {
     addText(410, 325, 'Market Average', 14, '700', '#5a503c', 'middle');
     addMultiText(410, 345, ['Overall pricing maturity:','"Developing" stage'], 11, '#777', 14, 'middle');
 
-    // ── Center: Arrow / Catalyst ──
+    // â”€â”€ Center: Arrow / Catalyst â”€â”€
     svg.appendChild(rc.rectangle(520, 420, 160, 160, { ...opt, fill: '#e8f4ff', fillStyle: 'solid', stroke: '#0078d4' }));
-    addText(600, 460, '🤖', 28, '400', '#0078d4', 'middle');
+    addText(600, 460, 'ðŸ¤–', 28, '400', '#0078d4', 'middle');
     addText(600, 488, 'AI Pricing', 14, '700', '#1a3a5c', 'middle');
     addText(600, 506, 'Catalyst', 14, '700', '#1a3a5c', 'middle');
     addMultiText(600, 528, ['1.02-point gap between', 'AI-mature & minimal', 'vendors on all dimensions'], 10, '#555', 13, 'middle');
@@ -18440,7 +18440,7 @@ function _miDrawSketchInfographic() {
     svg.appendChild(rc.line(660, 400, 630, 420, { ...opt, stroke: '#0078d4' }));
     svg.appendChild(rc.line(600, 580, 600, 600, { ...opt, stroke: '#107c10' }));
 
-    // ── Right column: AI-Driven Outcomes ──
+    // â”€â”€ Right column: AI-Driven Outcomes â”€â”€
     svg.appendChild(rc.rectangle(660, 85, 520, 32, { ...opt, fill: '#00b4d8', fillStyle: 'solid', stroke: '#0095b3' }));
     addText(920, 107, 'AI-DRIVEN: OUTCOME-BASED FUTURE', 11, '700', '#ffffff', 'middle');
 
@@ -18459,20 +18459,20 @@ function _miDrawSketchInfographic() {
 
     // Box 3: Breach Warranties
     svg.appendChild(rc.rectangle(670, 280, 240, 120, optFill('#f5f0ff')));
-    addText(790, 305, '🛡️', 24, '400', '#8764b8', 'middle');
+    addText(790, 305, 'ðŸ›¡ï¸', 24, '400', '#8764b8', 'middle');
     addText(790, 328, 'Breach Warranties', 14, '700', '#8764b8', 'middle');
     addMultiText(790, 348, ['Performance credits, risk-', 'score pricing, shared', 'savings models'], 10, '#555', 13, 'middle');
 
     // Box 4: Transparency
     svg.appendChild(rc.rectangle(930, 280, 240, 120, optFill('#fffff0')));
-    addText(1050, 305, '📊', 24, '400', '#0078d4', 'middle');
+    addText(1050, 305, 'ðŸ“Š', 24, '400', '#0078d4', 'middle');
     addText(1050, 328, 'AI Efficiency Sharing', 14, '700', '#0078d4', 'middle');
     addMultiText(1050, 348, ['Cost-per-incident trending,', 'AI utilization dashboards,', 'graduated discounts'], 10, '#555', 13, 'middle');
 
-    // ── Stat callouts ──
+    // â”€â”€ Stat callouts â”€â”€
     svg.appendChild(rc.rectangle(40, 425, 180, 75, optFill('#fff5f0')));
     addText(130, 458, '86%', 22, '800', '#ca5010', 'middle');
-    addText(130, 480, 'Score ≤ 2.0 on PRC-SUC', 10, '400', '#5a503c', 'middle');
+    addText(130, 480, 'Score â‰¤ 2.0 on PRC-SUC', 10, '400', '#5a503c', 'middle');
 
     svg.appendChild(rc.rectangle(300, 440, 160, 70, optFill('#f0f8ff')));
     addText(380, 470, '19', 22, '800', '#0078d4', 'middle');
@@ -18490,7 +18490,7 @@ function _miDrawSketchInfographic() {
     addText(848, 520, '3.52', 20, '800', '#0078d4', 'middle');
     addText(848, 540, 'Best: Subscription Transparency', 9, '400', '#1a3a5c', 'middle');
 
-    // ── Bottom comparison bars ──
+    // â”€â”€ Bottom comparison bars â”€â”€
     svg.appendChild(rc.rectangle(20, 730, 1160, 170, { ...opt, fill: '#f8f8f5', fillStyle: 'solid', stroke: '#e0ddd5' }));
 
     addText(50, 748, 'SUBSCRIPTION-ONLY', 11, '700', '#ca5010');
@@ -18506,17 +18506,17 @@ function _miDrawSketchInfographic() {
     bars.forEach(([y, left, right]) => {
         svg.appendChild(rc.rectangle(50, y, 460, 28, { ...opt, fill: '#fce8d8', fillStyle: 'solid', stroke: '#ca5010' }));
         addText(280, y + 18, left, 10, '400', '#ca5010', 'middle');
-        addText(600, y + 18, '→', 14, '700', '#107c10', 'middle');
+        addText(600, y + 18, 'â†’', 14, '700', '#107c10', 'middle');
         svg.appendChild(rc.rectangle(690, y, 460, 28, { ...opt, fill: '#d8eeff', fillStyle: 'solid', stroke: '#0078d4' }));
         addText(920, y + 18, right, 10, '400', '#0078d4', 'middle');
     });
 
-    addText(1150, 915, '© Gartner Research • MDR Market Insight 2026', 9, '400', '#aaa', 'end');
+    addText(1150, 915, 'Â© Gartner Research â€¢ MDR Market Insight 2026', 9, '400', '#aaa', 'end');
 }
 
-// ═══════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  GRAPHIC 8: WHITEBOARD-STYLE MDR PRICING SESSION
-// ═══════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 function _miDrawWhiteboardInfographic() {
     const container = document.getElementById('mi-whiteboard-infographic');
     if (!container || typeof rough === 'undefined') return;
@@ -18542,7 +18542,7 @@ function _miDrawWhiteboardInfographic() {
     const stickyOpt = (c, s) => ({ roughness: 1.8, bowing: 1.5, seed, strokeWidth: 1.5, fill: c, fillStyle: 'solid', stroke: s || c });
     const hatchOpt = (c) => ({ roughness: 2, bowing: 2, seed, strokeWidth: 1.5, fill: c, fillStyle: 'hachure', fillWeight: 1.2, hachureGap: 7 });
 
-    // Colors — whiteboard markers
+    // Colors â€” whiteboard markers
     const RED = dk ? '#ff6b6b' : '#c0392b';
     const BLUE = dk ? '#64b5f6' : '#2471a3';
     const GREEN = dk ? '#66bb6a' : '#1e8449';
@@ -18575,21 +18575,21 @@ function _miDrawWhiteboardInfographic() {
         lines.forEach((ln, i) => addText(x, y + i * (lineH || size * 1.45), ln, size, '400', color || MED, anchor));
     }
 
-    // ═══ WHITEBOARD FRAME — dashed border like a real board edge ═══
+    // â•â•â• WHITEBOARD FRAME â€” dashed border like a real board edge â•â•â•
     svg.appendChild(rc.rectangle(8, 8, W - 16, H - 16, { roughness: 3, bowing: 1, seed, strokeWidth: 1.5, stroke: BOARD_LINE, strokeLineDash: [12, 8] }));
 
-    // ═══ TITLE — hand-scrawled banner ═══
+    // â•â•â• TITLE â€” hand-scrawled banner â•â•â•
     svg.appendChild(rc.rectangle(40, 20, W - 80, 65, { ...markerOpt, fill: dk ? '#1a3a5c' : '#1a3a5c', fillStyle: 'solid', stroke: dk ? '#4a7ab5' : '#1a3a5c' }));
     addText(W / 2, 47, 'AI Is Reshaping MDR Pricing', 24, '800', '#fff', 'middle');
     addText(W / 2, 70, 'But Most Vendors Aren\'t Ready', 15, '600', dk ? '#aac8e8' : '#ccd8e8', 'middle');
 
     // Subtitle scribble
     svg.appendChild(rc.line(200, 100, W - 200, 100, { roughness: 3, bowing: 3, seed, strokeWidth: 1, stroke: BOARD_LINE }));
-    addText(W / 2, 118, 'subscription-only models  ───►  outcome-based, AI-driven commercial innovation', 12, '400', MED, 'middle');
+    addText(W / 2, 118, 'subscription-only models  â”€â”€â”€â–º  outcome-based, AI-driven commercial innovation', 12, '400', MED, 'middle');
 
-    // ═══ LEFT ZONE — "THE OLD MODEL" (red marker zone) ═══
+    // â•â•â• LEFT ZONE â€” "THE OLD MODEL" (red marker zone) â•â•â•
     svg.appendChild(rc.rectangle(30, 140, 540, 38, { ...markerOpt, fill: dk ? '#5a2020' : '#f5d5d5', fillStyle: 'solid', stroke: RED }));
-    addText(300, 166, '⚠  SUBSCRIPTION-ONLY: THE OLD MODEL', 13, '800', RED, 'middle');
+    addText(300, 166, 'âš   SUBSCRIPTION-ONLY: THE OLD MODEL', 13, '800', RED, 'middle');
 
     // Sticky note 1: 67%
     svg.appendChild(rc.rectangle(40, 195, 250, 145, stickyOpt(STICKY_PINK, dk ? '#6a4040' : '#e57373')));
@@ -18605,16 +18605,16 @@ function _miDrawWhiteboardInfographic() {
     svg.appendChild(rc.rectangle(405, 188, 60, 14, { roughness: 1, bowing: 0.5, seed, fill: dk ? '#555' : '#e0dad0', fillStyle: 'solid', stroke: 'none' }));
     addText(435, 228, '1.63 / 5.0', 28, '900', ORANGE, 'middle');
     addText(435, 255, 'Outcome Pricing Score', 12, '700', dk ? '#ffab70' : '#8d4004', 'middle');
-    addMultiText(435, 278, ['86% of vendors score ≤ 2.0', 'Median is just 1.0'], 10, MED, 14, 'middle');
+    addMultiText(435, 278, ['86% of vendors score â‰¤ 2.0', 'Median is just 1.0'], 10, MED, 14, 'middle');
     // Underline scribble
     svg.appendChild(rc.line(370, 235, 500, 235, { roughness: 3, bowing: 2, seed, strokeWidth: 1.5, stroke: ORANGE }));
 
     // Sticky note 3: AI Dividend Captured
     svg.appendChild(rc.rectangle(40, 360, 250, 135, stickyOpt(STICKY_ORANGE, dk ? '#6a4a20' : '#ffb74d')));
     svg.appendChild(rc.rectangle(135, 353, 60, 14, { roughness: 1, bowing: 0.5, seed, fill: dk ? '#555' : '#e0dad0', fillStyle: 'solid', stroke: 'none' }));
-    addText(165, 390, '💰', 28, '400', RED, 'middle');
+    addText(165, 390, 'ðŸ’°', 28, '400', RED, 'middle');
     addText(165, 418, 'AI Dividend Captured', 13, '700', RED, 'middle');
-    addMultiText(165, 438, ['Vendors keep AI efficiency', 'gains as margin — not', 'sharing with buyers'], 10, MED, 13, 'middle');
+    addMultiText(165, 438, ['Vendors keep AI efficiency', 'gains as margin â€” not', 'sharing with buyers'], 10, MED, 13, 'middle');
 
     // Sticky note 4: Market Avg 2.35
     svg.appendChild(rc.rectangle(310, 360, 250, 135, stickyOpt(STICKY_BLUE, dk ? '#2a3555' : '#bbdefb')));
@@ -18623,27 +18623,27 @@ function _miDrawWhiteboardInfographic() {
     addText(435, 418, 'Market Average', 13, '700', dk ? '#ce93d8' : '#4a148c', 'middle');
     addMultiText(435, 438, ['Overall maturity:', '"Developing" stage'], 11, MED, 14, 'middle');
 
-    // ═══ CENTER ZONE — AI Pricing Catalyst (circled, like drawn on board) ═══
+    // â•â•â• CENTER ZONE â€” AI Pricing Catalyst (circled, like drawn on board) â•â•â•
     // Big hand-drawn circle
     svg.appendChild(rc.circle(630, 580, 180, { ...markerOpt, stroke: BLUE, strokeWidth: 3, fill: dk ? '#1a3050' : '#e8f4fd', fillStyle: 'solid' }));
-    addText(630, 548, '🤖', 30, '400', BLUE, 'middle');
+    addText(630, 548, 'ðŸ¤–', 30, '400', BLUE, 'middle');
     addText(630, 578, 'AI Pricing', 16, '800', dk ? '#90caf9' : '#1a3a5c', 'middle');
     addText(630, 598, 'Catalyst', 16, '800', dk ? '#90caf9' : '#1a3a5c', 'middle');
     addText(630, 625, '1.02-point gap', 12, '700', BLUE, 'middle');
     addMultiText(630, 642, ['between AI-mature &', 'minimal vendors'], 9, MED, 12, 'middle');
 
-    // Arrows: left → center
+    // Arrows: left â†’ center
     svg.appendChild(rc.line(480, 430, 545, 530, { ...markerOpt, stroke: RED, strokeWidth: 2 }));
     // Arrowhead
     svg.appendChild(rc.line(545, 530, 535, 515, { roughness: 1.5, seed, strokeWidth: 2, stroke: RED }));
     svg.appendChild(rc.line(545, 530, 530, 530, { roughness: 1.5, seed, strokeWidth: 2, stroke: RED }));
 
-    // Arrows: center → right
+    // Arrows: center â†’ right
     svg.appendChild(rc.line(720, 530, 780, 430, { ...markerOpt, stroke: BLUE, strokeWidth: 2 }));
     svg.appendChild(rc.line(780, 430, 770, 445, { roughness: 1.5, seed, strokeWidth: 2, stroke: BLUE }));
     svg.appendChild(rc.line(780, 430, 765, 430, { roughness: 1.5, seed, strokeWidth: 2, stroke: BLUE }));
 
-    // ═══ CENTER BOTTOM — Composable Models box ═══
+    // â•â•â• CENTER BOTTOM â€” Composable Models box â•â•â•
     svg.appendChild(rc.rectangle(530, 700, 200, 90, stickyOpt(STICKY_GREEN, dk ? '#2a5530' : '#81c784')));
     svg.appendChild(rc.rectangle(600, 693, 60, 14, { roughness: 1, bowing: 0.5, seed, fill: dk ? '#555' : '#e0dad0', fillStyle: 'solid', stroke: 'none' }));
     addText(630, 730, 'Composable Models', 13, '700', GREEN, 'middle');
@@ -18652,9 +18652,9 @@ function _miDrawWhiteboardInfographic() {
     // Arrow from catalyst to composable
     svg.appendChild(rc.line(630, 670, 630, 700, { ...markerOpt, stroke: GREEN, strokeWidth: 2 }));
 
-    // ═══ RIGHT ZONE — "AI-DRIVEN FUTURE" (blue marker zone) ═══
+    // â•â•â• RIGHT ZONE â€” "AI-DRIVEN FUTURE" (blue marker zone) â•â•â•
     svg.appendChild(rc.rectangle(690, 140, 540, 38, { ...markerOpt, fill: dk ? '#1a4a6a' : '#d4eaf7', fillStyle: 'solid', stroke: BLUE }));
-    addText(960, 166, '✦  AI-DRIVEN: OUTCOME-BASED FUTURE', 13, '800', BLUE, 'middle');
+    addText(960, 166, 'âœ¦  AI-DRIVEN: OUTCOME-BASED FUTURE', 13, '800', BLUE, 'middle');
 
     // Sticky note 5: 40% by 2028
     svg.appendChild(rc.rectangle(700, 195, 250, 145, stickyOpt(STICKY_BLUE, dk ? '#2a3555' : '#90caf9')));
@@ -18676,22 +18676,22 @@ function _miDrawWhiteboardInfographic() {
     // Sticky note 7: Breach Warranties
     svg.appendChild(rc.rectangle(700, 360, 250, 135, stickyOpt(STICKY_YELLOW, dk ? '#4a4530' : '#fff59d')));
     svg.appendChild(rc.rectangle(795, 353, 60, 14, { roughness: 1, bowing: 0.5, seed, fill: dk ? '#555' : '#e0dad0', fillStyle: 'solid', stroke: 'none' }));
-    addText(825, 393, '🛡️', 26, '400', PURPLE, 'middle');
+    addText(825, 393, 'ðŸ›¡ï¸', 26, '400', PURPLE, 'middle');
     addText(825, 418, 'Breach Warranties', 13, '700', PURPLE, 'middle');
     addMultiText(825, 438, ['Performance credits,', 'risk-score pricing,', 'shared savings models'], 10, MED, 13, 'middle');
 
     // Sticky note 8: AI Efficiency Sharing
     svg.appendChild(rc.rectangle(970, 360, 250, 135, stickyOpt(STICKY_ORANGE, dk ? '#4a3a28' : '#ffe0b2')));
     svg.appendChild(rc.rectangle(1065, 353, 60, 14, { roughness: 1, bowing: 0.5, seed, fill: dk ? '#555' : '#e0dad0', fillStyle: 'solid', stroke: 'none' }));
-    addText(1095, 393, '📊', 26, '400', BLUE, 'middle');
+    addText(1095, 393, 'ðŸ“Š', 26, '400', BLUE, 'middle');
     addText(1095, 418, 'AI Efficiency Sharing', 12, '700', BLUE, 'middle');
     addMultiText(1095, 438, ['Cost-per-incident trending,', 'AI utilization dashboards,', 'graduated discounts'], 10, MED, 13, 'middle');
 
-    // ═══ STAT CALLOUTS — scattered like whiteboard scribbles ═══
+    // â•â•â• STAT CALLOUTS â€” scattered like whiteboard scribbles â•â•â•
     // 86% callout (tilted)
     svg.appendChild(rc.rectangle(38, 520, 175, 70, hatchOpt(dk ? '#4a3030' : '#fce8d8')));
     addText(125, 550, '86%', 22, '900', RED, 'middle');
-    addText(125, 570, 'Score ≤ 2.0', 10, '600', RED, 'middle');
+    addText(125, 570, 'Score â‰¤ 2.0', 10, '600', RED, 'middle');
 
     // 19 AI-Significant
     svg.appendChild(rc.rectangle(230, 530, 155, 65, hatchOpt(dk ? '#2a3555' : '#dbeeff')));
@@ -18713,10 +18713,10 @@ function _miDrawWhiteboardInfographic() {
     addText(953, 548, '3.52', 20, '900', BLUE, 'middle');
     addText(953, 568, 'Best: Sub Transparency', 9, '600', BLUE, 'middle');
 
-    // ═══ Hand-drawn separator line ═══
+    // â•â•â• Hand-drawn separator line â•â•â•
     svg.appendChild(rc.line(50, 815, W - 50, 815, { roughness: 3, bowing: 3, seed, strokeWidth: 1.5, stroke: BOARD_LINE }));
 
-    // ═══ BOTTOM — Comparison Table (whiteboard columns) ═══
+    // â•â•â• BOTTOM â€” Comparison Table (whiteboard columns) â•â•â•
     addText(W / 2, 845, 'SUBSCRIPTION-ONLY   vs.   OUTCOME-BASED', 14, '800', DARK, 'middle');
     // Underline
     svg.appendChild(rc.line(380, 852, 880, 852, { roughness: 3, bowing: 2, seed, strokeWidth: 1.5, stroke: DARK }));
@@ -18736,7 +18736,7 @@ function _miDrawWhiteboardInfographic() {
         addText(290, ry + 28, left, 10, '400', dk ? '#ffab91' : '#a0462b', 'middle');
 
         // Arrow
-        addText(W / 2, ry + 24, '───►', 13, '700', GREEN, 'middle');
+        addText(W / 2, ry + 24, 'â”€â”€â”€â–º', 13, '700', GREEN, 'middle');
 
         // Right bar
         svg.appendChild(rc.rectangle(730, ry, 480, 36, { ...opt, fill: dk ? '#1a3050' : '#d8eeff', fillStyle: 'solid', stroke: BLUE, strokeWidth: 1.2 }));
@@ -18745,7 +18745,7 @@ function _miDrawWhiteboardInfographic() {
     });
 
     // Footer scribble
-    addText(W / 2, H - 18, '© Gartner Research  •  MDR Whiteboard Session 2026', 9, '400', LIGHT, 'middle');
+    addText(W / 2, H - 18, 'Â© Gartner Research  â€¢  MDR Whiteboard Session 2026', 9, '400', LIGHT, 'middle');
 }
 
 async function exportMDRInfographicPPTX() {
@@ -18785,7 +18785,7 @@ async function exportMDRAllGraphicsPPTX() {
     }
 }
 
-/* ── MDR Positioning Statements (PJA Framework) ── */
+/* â”€â”€ MDR Positioning Statements (PJA Framework) â”€â”€ */
 
 const _miPositioningStatements = {
     'buyer-facing': {
@@ -19013,7 +19013,7 @@ function _miRenderPositioning(data) {
     html += '\uD83D\uDE80 ACTIONS<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Specific client response<br>to achieve success</span></div>';
     html += '</div></div>';
 
-    // ── Position Statement ──
+    // â”€â”€ Position Statement â”€â”€
     html += '<div class="report-pillar-section">';
     html += '<div class="report-pillar-header">';
     html += '<span class="report-pillar-code">\uD83C\uDFAF</span>';
@@ -19044,7 +19044,7 @@ function _miRenderPositioning(data) {
     html += '</div>';
     html += '</div></div>';
 
-    // ── Justification ──
+    // â”€â”€ Justification â”€â”€
     html += '<div class="report-pillar-section">';
     html += '<div class="report-pillar-header">';
     html += '<span class="report-pillar-code">\uD83D\uDCD0</span>';
@@ -19065,7 +19065,7 @@ function _miRenderPositioning(data) {
     });
     html += '</div></div>';
 
-    // ── Recommended Actions ──
+    // â”€â”€ Recommended Actions â”€â”€
     html += '<div class="report-pillar-section">';
     html += '<div class="report-pillar-header">';
     html += '<span class="report-pillar-code">\uD83D\uDE80</span>';
@@ -19089,7 +19089,7 @@ function _miRenderPositioning(data) {
     });
     html += '</div></div>';
 
-    // ── Report Alignment ──
+    // â”€â”€ Report Alignment â”€â”€
     html += '<div class="report-pillar-section">';
     html += '<div class="report-pillar-header">';
     html += '<span class="report-pillar-code">\uD83D\uDD17</span>';
@@ -19098,13 +19098,13 @@ function _miRenderPositioning(data) {
     html += '</div></div>';
     html += '<div class="report-sp-longform-card">';
 
-    // Position → Finding
+    // Position â†’ Finding
     html += '<div class="report-sp-section">';
     html += '<h4>Position \u2192 Key Finding</h4>';
     html += '<p style="font-size: 13px; color: var(--text-secondary); padding: 8px 14px; background: var(--bg-tertiary); border-radius: 6px;">' + escapeHtml(pja.alignment.positionToFinding) + '</p>';
     html += '</div>';
 
-    // Actions → Recommendations
+    // Actions â†’ Recommendations
     html += '<div class="report-sp-section">';
     html += '<h4>Actions \u2192 Recommendations</h4>';
     html += '<div style="display: flex; flex-direction: column; gap: 6px;">';
@@ -19113,7 +19113,7 @@ function _miRenderPositioning(data) {
     });
     html += '</div></div>';
 
-    // Justification → Sources
+    // Justification â†’ Sources
     html += '<div class="report-sp-section">';
     html += '<h4>Justification Sources</h4>';
     html += '<p style="font-size: 13px; color: var(--text-secondary); padding: 8px 14px; background: var(--bg-tertiary); border-radius: 6px;">' + escapeHtml(pja.alignment.justificationSources) + '</p>';
@@ -19349,7 +19349,7 @@ function _pciRenderExecSummary(data, st) {
     if (!panel) return;
     let html = '';
 
-    // ── Live KPI bar ──
+    // â”€â”€ Live KPI bar â”€â”€
     if (st) {
         const dmDirect = st.delivery_models?.direct_service || {};
         const dmPlatform = st.delivery_models?.platform_only || {};
@@ -19357,13 +19357,13 @@ function _pciRenderExecSummary(data, st) {
             <div class="mi-kpi"><div class="mi-kpi-val">${st.vendor_count}</div><div class="mi-kpi-lbl">Vendors Assessed</div></div>
             <div class="mi-kpi"><div class="mi-kpi-val">${st.avg_coverage}</div><div class="mi-kpi-lbl">Avg Pillars Covered</div></div>
             <div class="mi-kpi"><div class="mi-kpi-val" style="color:#107c10">${st.full_spectrum_pct}%</div><div class="mi-kpi-lbl">Full Spectrum (5/5)</div></div>
-            <div class="mi-kpi"><div class="mi-kpi-val" style="color:#a80000">${st.narrow_pct}%</div><div class="mi-kpi-lbl">Narrow (≤3 Pillars)</div></div>
+            <div class="mi-kpi"><div class="mi-kpi-val" style="color:#a80000">${st.narrow_pct}%</div><div class="mi-kpi-lbl">Narrow (â‰¤3 Pillars)</div></div>
             <div class="mi-kpi"><div class="mi-kpi-val" style="color:#0078d4">${st.pillar_penetration?.EXM?.pct || 0}%</div><div class="mi-kpi-lbl">Exposure Mgmt Penetration (Best)</div></div>
             <div class="mi-kpi"><div class="mi-kpi-val" style="color:#a80000">${st.pillar_penetration?.AMT?.pct || 0}%</div><div class="mi-kpi-lbl">Adversary Mgmt Penetration (Worst)</div></div>
         </div>`;
     }
 
-    // ── SPA callout ──
+    // â”€â”€ SPA callout â”€â”€
     if (data.spa) {
         html += `<div class="mi-spa-box">
             <div class="mi-spa-label">Strategic Planning Assumption</div>
@@ -19371,7 +19371,7 @@ function _pciRenderExecSummary(data, st) {
         </div>`;
     }
 
-    // ── Findings with numbered badges ──
+    // â”€â”€ Findings with numbered badges â”€â”€
     if (data.findings && data.findings.length) {
         html += '<div class="mi-findings"><h3>Key Findings</h3>';
         data.findings.forEach((f, i) => {
@@ -19383,7 +19383,7 @@ function _pciRenderExecSummary(data, st) {
         html += '</div>';
     }
 
-    // ── Recommendations with numbered badges ──
+    // â”€â”€ Recommendations with numbered badges â”€â”€
     if (data.recommendations && data.recommendations.length) {
         html += '<div class="mi-recs"><h3>Recommendations</h3>';
         data.recommendations.forEach((r, i) => {
@@ -19395,16 +19395,16 @@ function _pciRenderExecSummary(data, st) {
         html += '</div>';
     }
 
-    // ── Finding ↔ Recommendation alignment matrix ──
+    // â”€â”€ Finding â†” Recommendation alignment matrix â”€â”€
     if (data.findings && data.recommendations && data.findings.length > 0 && data.recommendations.length > 0) {
-        html += '<div class="mi-matrix"><h3>Finding ↔ Recommendation Alignment</h3><div class="mi-matrix-grid">';
+        html += '<div class="mi-matrix"><h3>Finding â†” Recommendation Alignment</h3><div class="mi-matrix-grid">';
         const n = Math.min(data.findings.length, data.recommendations.length);
         for (let i = 0; i < n; i++) {
-            const fShort = data.findings[i].header.substring(0, 80) + (data.findings[i].header.length > 80 ? '…' : '');
-            const rShort = data.recommendations[i].header.substring(0, 80) + (data.recommendations[i].header.length > 80 ? '…' : '');
+            const fShort = data.findings[i].header.substring(0, 80) + (data.findings[i].header.length > 80 ? 'â€¦' : '');
+            const rShort = data.recommendations[i].header.substring(0, 80) + (data.recommendations[i].header.length > 80 ? 'â€¦' : '');
             html += `<div class="mi-matrix-row">
                 <div class="mi-matrix-finding"><span class="mi-matrix-tag">F${i+1}</span> ${escapeHtml(fShort)}</div>
-                <div class="mi-matrix-arrow">→</div>
+                <div class="mi-matrix-arrow">â†’</div>
                 <div class="mi-matrix-rec"><span class="mi-matrix-tag mi-matrix-tag-rec">R${i+1}</span> ${escapeHtml(rShort)}</div>
             </div>`;
         }
@@ -19424,7 +19424,7 @@ function _pciRenderAnalysis(data, st) {
             let vizHtml = '';
 
             if (st && isKillChain) {
-                // ── Kill Chain Perspective Visualizations ──
+                // â”€â”€ Kill Chain Perspective Visualizations â”€â”€
                 const dm = st.delivery_models || {};
                 const direct = dm.direct_service || {};
                 const partner = dm.platform_plus_partner || {};
@@ -19443,11 +19443,11 @@ function _pciRenderAnalysis(data, st) {
                         { phase: '7. Actions on Objectives', pillars: ['ADR','SVC'], color: '#600000', zone: 'REACTIVE', desc: 'Managed response, containment' },
                     ];
                     vizHtml = `<div class="mi-viz-box">
-                        <h4>🛡️ Cyber Kill Chain → Preemptive Pillar Mapping</h4>
+                        <h4>ðŸ›¡ï¸ Cyber Kill Chain â†’ Preemptive Pillar Mapping</h4>
                         <div style="display:flex;gap:8px;margin:8px 0 12px;font-size:12px;font-weight:600">
-                            <span style="color:#107c10">■ Preemptive Zone (Phases 1-3)</span>
-                            <span style="color:#ca5010">■ Transition (Phase 4)</span>
-                            <span style="color:#a80000">■ Reactive Zone (Phases 5-7)</span>
+                            <span style="color:#107c10">â–  Preemptive Zone (Phases 1-3)</span>
+                            <span style="color:#ca5010">â–  Transition (Phase 4)</span>
+                            <span style="color:#a80000">â–  Reactive Zone (Phases 5-7)</span>
                         </div>
                         <div class="mi-dim-compare">`;
                     phases.forEach(p => {
@@ -19483,7 +19483,7 @@ function _pciRenderAnalysis(data, st) {
                     const preemptAvg = (phaseScores[0].score + phaseScores[1].score + phaseScores[2].score) / 3;
                     const reactAvg = (phaseScores[4].score + phaseScores[5].score + phaseScores[6].score) / 3;
                     vizHtml = `<div class="mi-viz-box">
-                        <h4>📊 Average Vendor Score by Kill Chain Phase (Market-Wide)</h4>
+                        <h4>ðŸ“Š Average Vendor Score by Kill Chain Phase (Market-Wide)</h4>
                         <div style="display:flex;gap:16px;margin:6px 0 10px;font-size:12px">
                             <span><strong style="color:#107c10">Preemptive Avg: ${preemptAvg.toFixed(2)}</strong></span>
                             <span><strong style="color:#a80000">Reactive Avg: ${reactAvg.toFixed(2)}</strong></span>
@@ -19506,7 +19506,7 @@ function _pciRenderAnalysis(data, st) {
 
                 // Section 2: AMT Sub-Pillar Breakdown (reuse AMT data)
                 if (idx === 2) {
-                    vizHtml = '<div class="mi-viz-box"><h4>⚠️ AMT Sub-Pillar Penetration: The Shift-Left Bottleneck</h4><div class="mi-dim-compare">';
+                    vizHtml = '<div class="mi-viz-box"><h4>âš ï¸ AMT Sub-Pillar Penetration: The Shift-Left Bottleneck</h4><div class="mi-dim-compare">';
                     const amtSubs = st.amt_sub_pillars || {};
                     Object.entries(amtSubs).forEach(([key, s]) => {
                         const isLow = s.pct_above < 60;
@@ -19524,11 +19524,11 @@ function _pciRenderAnalysis(data, st) {
                 // Section 3: Delivery Model Kill Chain Profiles
                 if (idx === 3) {
                     const models = [
-                        { name: '🎯 Direct Service', data: direct, color: '#107c10' },
-                        { name: '🤝 Platform + Partner', data: partner, color: '#0078d4' },
-                        { name: '💻 Platform-Only', data: plat, color: '#ca5010' },
+                        { name: 'ðŸŽ¯ Direct Service', data: direct, color: '#107c10' },
+                        { name: 'ðŸ¤ Platform + Partner', data: partner, color: '#0078d4' },
+                        { name: 'ðŸ’» Platform-Only', data: plat, color: '#ca5010' },
                     ];
-                    vizHtml = `<div class="mi-viz-box"><h4>Kill Chain Coverage by Delivery Model — Pillar Averages</h4>
+                    vizHtml = `<div class="mi-viz-box"><h4>Kill Chain Coverage by Delivery Model â€” Pillar Averages</h4>
                         <div class="mi-tier-grid">`;
                     models.forEach(m => {
                         const md = m.data;
@@ -19555,10 +19555,10 @@ function _pciRenderAnalysis(data, st) {
                     const pa = st.pillar_avgs || {};
                     const preemptPen = Math.round(((pp.EXM?.pct||0) + (pp.PPM?.pct||0) + (pp.AMT?.pct||0)) / 3);
                     const reactPen = Math.round(((pp.ADR?.pct||0) + (pp.SVC?.pct||0)) / 2);
-                    vizHtml = `<div class="mi-viz-box"><h4>💰 Shift-Left vs Reactive: Investment Readiness Summary</h4>
+                    vizHtml = `<div class="mi-viz-box"><h4>ðŸ’° Shift-Left vs Reactive: Investment Readiness Summary</h4>
                         <div class="mi-tier-grid">
                             <div class="mi-tier-card mi-tier-sig" style="border-top:4px solid #107c10">
-                                <div class="mi-tier-title" style="color:#107c10">🛡️ Preemptive Zone (Phases 1-3)</div>
+                                <div class="mi-tier-title" style="color:#107c10">ðŸ›¡ï¸ Preemptive Zone (Phases 1-3)</div>
                                 <div class="mi-tier-stat" style="font-size:32px;color:#107c10">${preemptPen}%</div>
                                 <div class="mi-tier-metric">Avg vendor penetration</div>
                                 <div class="mi-tier-metric">EXM: ${pp.EXM?.pct||0}% | PPM: ${pp.PPM?.pct||0}% | AMT: ${pp.AMT?.pct||0}%</div>
@@ -19566,7 +19566,7 @@ function _pciRenderAnalysis(data, st) {
                                 <div class="mi-tier-metric" style="color:#a80000"><strong>Gap:</strong> AMT disruption (55%)</div>
                             </div>
                             <div class="mi-tier-card mi-tier-min" style="border-top:4px solid #a80000">
-                                <div class="mi-tier-title" style="color:#a80000">⚔️ Reactive Zone (Phases 5-7)</div>
+                                <div class="mi-tier-title" style="color:#a80000">âš”ï¸ Reactive Zone (Phases 5-7)</div>
                                 <div class="mi-tier-stat" style="font-size:32px;color:#a80000">${reactPen}%</div>
                                 <div class="mi-tier-metric">Avg vendor penetration</div>
                                 <div class="mi-tier-metric">ADR: ${pp.ADR?.pct||0}% | SVC: ${pp.SVC?.pct||0}%</div>
@@ -19581,11 +19581,11 @@ function _pciRenderAnalysis(data, st) {
                 // Section 5: CPO Roadmap Timeline
                 if (idx === 5) {
                     const roadmapPhases = [
-                        { phase: '2025-2026', title: 'Assess & Map', desc: 'Kill chain mapping exercise, identify phase gaps, develop Shift-Left Readiness Index', color: '#0078d4', icon: '🗺️' },
-                        { phase: '2026-2027', title: 'Build Preemptive Core', desc: 'Invest in AMT (polymorphic defense, MTD, credential rotation), target AMT > 3.0', color: '#107c10', icon: '🏗️' },
-                        { phase: '2027-2028', title: 'Complete Kill Chain', desc: 'Close SVC gap, develop outcome-based delivery, launch full kill chain positioning', color: '#8764b8', icon: '🚀' },
+                        { phase: '2025-2026', title: 'Assess & Map', desc: 'Kill chain mapping exercise, identify phase gaps, develop Shift-Left Readiness Index', color: '#0078d4', icon: 'ðŸ—ºï¸' },
+                        { phase: '2026-2027', title: 'Build Preemptive Core', desc: 'Invest in AMT (polymorphic defense, MTD, credential rotation), target AMT > 3.0', color: '#107c10', icon: 'ðŸ—ï¸' },
+                        { phase: '2027-2028', title: 'Complete Kill Chain', desc: 'Close SVC gap, develop outcome-based delivery, launch full kill chain positioning', color: '#8764b8', icon: 'ðŸš€' },
                     ];
-                    vizHtml = `<div class="mi-viz-box"><h4>📅 CPO Roadmap: Path to Full Kill Chain Coverage</h4>
+                    vizHtml = `<div class="mi-viz-box"><h4>ðŸ“… CPO Roadmap: Path to Full Kill Chain Coverage</h4>
                         <div style="display:flex;gap:12px;margin:12px 0">`;
                     roadmapPhases.forEach((p, i) => {
                         vizHtml += `<div style="flex:1;background:#f8f8f5;border:2px solid ${p.color};border-radius:8px;padding:12px;text-align:center">
@@ -19594,17 +19594,17 @@ function _pciRenderAnalysis(data, st) {
                             <div style="font-weight:700;font-size:16px;margin:4px 0">${p.title}</div>
                             <div style="font-size:11px;color:#555">${p.desc}</div>
                         </div>`;
-                        if (i < roadmapPhases.length - 1) vizHtml += `<div style="display:flex;align-items:center;font-size:24px;color:#888">→</div>`;
+                        if (i < roadmapPhases.length - 1) vizHtml += `<div style="display:flex;align-items:center;font-size:24px;color:#888">â†’</div>`;
                     });
                     vizHtml += `</div>
                         <div style="background:#f0fff0;border:1px solid #107c10;border-radius:6px;padding:10px;margin-top:8px;font-size:12px;color:#107c10;font-weight:600;text-align:center">
-                            🎯 Target by 2028: All 7 kill chain phases scored ≥ 2.5 • AMT ≥ 3.0 • Shift-Left Readiness Index deployed
+                            ðŸŽ¯ Target by 2028: All 7 kill chain phases scored â‰¥ 2.5 â€¢ AMT â‰¥ 3.0 â€¢ Shift-Left Readiness Index deployed
                         </div>
                     </div>`;
                 }
 
             } else if (st && (data.id === 'cpo-killchain-mitre-v2' || data.id === 'cpo-killchain-mitre-v3')) {
-                // ── Kill Chain + MITRE ATT&CK v2/v3 Perspective Visualizations ──
+                // â”€â”€ Kill Chain + MITRE ATT&CK v2/v3 Perspective Visualizations â”€â”€
                 const dm = st.delivery_models || {};
                 const direct = dm.direct_service || {};
                 const partner = dm.platform_plus_partner || {};
@@ -19634,9 +19634,9 @@ function _pciRenderAnalysis(data, st) {
                     vizHtml = `<div class="mi-viz-box">
                         <h4>Dual Framework Alignment: Kill Chain Phases and MITRE ATT&CK Tactics</h4>
                         <div style="display:flex;gap:8px;margin:8px 0 12px;font-size:12px;font-weight:600">
-                            <span style="color:${preCol}">■ Preemptive Zone (Phases 1-3)</span>
-                            <span style="color:${transCol}">■ Transition (Phase 4)</span>
-                            <span style="color:${reactCol}">■ Reactive Zone (Phases 5-7)</span>
+                            <span style="color:${preCol}">â–  Preemptive Zone (Phases 1-3)</span>
+                            <span style="color:${transCol}">â–  Transition (Phase 4)</span>
+                            <span style="color:${reactCol}">â–  Reactive Zone (Phases 5-7)</span>
                         </div>
                         <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px">
                         <thead><tr>
@@ -19762,9 +19762,9 @@ function _pciRenderAnalysis(data, st) {
                 // Section 4: Delivery Model Adversary Lifecycle Profiles
                 if (idx === 4) {
                     const models = [
-                        { name: 'Direct Service', data: direct, color: '#107c10', icon: '🎯' },
-                        { name: 'Platform + Partner', data: partner, color: '#0078d4', icon: '🤝' },
-                        { name: 'Platform-Only', data: plat, color: '#ca5010', icon: '💻' },
+                        { name: 'Direct Service', data: direct, color: '#107c10', icon: 'ðŸŽ¯' },
+                        { name: 'Platform + Partner', data: partner, color: '#0078d4', icon: 'ðŸ¤' },
+                        { name: 'Platform-Only', data: plat, color: '#ca5010', icon: 'ðŸ’»' },
                     ];
                     vizHtml = `<div class="mi-viz-box"><h4>Services Maturity as Cross-Cutting Differentiator by Delivery Model</h4>
                         <div class="mi-tier-grid">`;
@@ -19793,9 +19793,9 @@ function _pciRenderAnalysis(data, st) {
                 // Section 5: Strategic Roadmap Timeline
                 if (idx === 5) {
                     const roadmapPhases = [
-                        { phase: '2025-2026', title: 'Assess & Map', desc: 'Dual-framework mapping, identify phase/tactic gaps, assess services maturity across all pillars', color: '#0078d4', icon: '🗺️' },
-                        { phase: '2026-2027', title: 'Build Preemptive Core', desc: 'Invest in adversary management and services maturity as cross-cutting enabler', color: '#107c10', icon: '🏗️' },
-                        { phase: '2027-2028', title: 'Maturity-Amplified Coverage', desc: 'Full lifecycle coverage, services maturity across all pillars, outcome-based delivery', color: '#8764b8', icon: '🚀' },
+                        { phase: '2025-2026', title: 'Assess & Map', desc: 'Dual-framework mapping, identify phase/tactic gaps, assess services maturity across all pillars', color: '#0078d4', icon: 'ðŸ—ºï¸' },
+                        { phase: '2026-2027', title: 'Build Preemptive Core', desc: 'Invest in adversary management and services maturity as cross-cutting enabler', color: '#107c10', icon: 'ðŸ—ï¸' },
+                        { phase: '2027-2028', title: 'Maturity-Amplified Coverage', desc: 'Full lifecycle coverage, services maturity across all pillars, outcome-based delivery', color: '#8764b8', icon: 'ðŸš€' },
                     ];
                     vizHtml = `<div class="mi-viz-box"><h4>CPO Roadmap: Path to Full Adversary Lifecycle Coverage</h4>
                         <div style="display:flex;gap:12px;margin:12px 0">`;
@@ -19806,7 +19806,7 @@ function _pciRenderAnalysis(data, st) {
                             <div style="font-weight:700;font-size:16px;margin:4px 0">${p.title}</div>
                             <div style="font-size:11px;color:#555">${p.desc}</div>
                         </div>`;
-                        if (i < roadmapPhases.length - 1) vizHtml += `<div style="display:flex;align-items:center;font-size:24px;color:#888">→</div>`;
+                        if (i < roadmapPhases.length - 1) vizHtml += `<div style="display:flex;align-items:center;font-size:24px;color:#888">â†’</div>`;
                     });
                     vizHtml += `</div>
                         <div style="display:flex;gap:8px;margin-top:8px;font-size:11px">
@@ -19818,7 +19818,7 @@ function _pciRenderAnalysis(data, st) {
                 }
 
             } else if (st) {
-                // Section 0: Five Pillars — Pillar penetration bar chart
+                // Section 0: Five Pillars â€” Pillar penetration bar chart
                 if (idx === 0) {
                     vizHtml = '<div class="mi-viz-box"><h4>Pillar Penetration Across 51 Vendors (2.0+ Threshold)</h4><div class="mi-dim-compare">';
                     (st.pillars || []).forEach(p => {
@@ -19837,7 +19837,7 @@ function _pciRenderAnalysis(data, st) {
                     vizHtml += '</div></div>';
                 }
 
-                // Section 1: Fragmentation by Numbers — Coverage distribution chart
+                // Section 1: Fragmentation by Numbers â€” Coverage distribution chart
                 if (idx === 1) {
                     vizHtml = '<div class="mi-viz-box"><h4>Vendor Coverage Distribution: How Many Pillars Does Each Vendor Cover?</h4><div class="mi-dim-compare">';
                     const cd = st.coverage_distribution || {};
@@ -19858,7 +19858,7 @@ function _pciRenderAnalysis(data, st) {
                     vizHtml += '</div></div>';
                 }
 
-                // Section 2: Service Delivery Gap — SVC sub-pillar breakdown
+                // Section 2: Service Delivery Gap â€” SVC sub-pillar breakdown
                 if (idx === 2) {
                     vizHtml = '<div class="mi-viz-box"><h4>Services Sub-Pillar Average Scores (SVC-01 through SVC-05)</h4><div class="mi-dim-compare">';
                     const svcSubs = st.svc_sub_pillars || {};
@@ -19876,9 +19876,9 @@ function _pciRenderAnalysis(data, st) {
                     vizHtml += '</div></div>';
                 }
 
-                // Section 3: Adversary Intelligence Deficit — AMT sub-pillar breakdown
+                // Section 3: Adversary Intelligence Deficit â€” AMT sub-pillar breakdown
                 if (idx === 3) {
-                    vizHtml = '<div class="mi-viz-box"><h4>Adversary Management Sub-Pillar Penetration (% Vendors ≥ 2.0)</h4><div class="mi-dim-compare">';
+                    vizHtml = '<div class="mi-viz-box"><h4>Adversary Management Sub-Pillar Penetration (% Vendors â‰¥ 2.0)</h4><div class="mi-dim-compare">';
                     const amtSubs = st.amt_sub_pillars || {};
                     Object.entries(amtSubs).forEach(([key, s]) => {
                         const isLow = s.pct_above < 60;
@@ -19893,7 +19893,7 @@ function _pciRenderAnalysis(data, st) {
                     vizHtml += '</div></div>';
                 }
 
-                // Section 4: Three Delivery Models — Tier comparison cards
+                // Section 4: Three Delivery Models â€” Tier comparison cards
                 if (idx === 4) {
                     const dm = st.delivery_models || {};
                     const direct = dm.direct_service || {};
@@ -19902,21 +19902,21 @@ function _pciRenderAnalysis(data, st) {
                     vizHtml = `<div class="mi-viz-box"><h4>Delivery Model Comparison: Vendor Count, Coverage & Service Scores</h4>
                         <div class="mi-tier-grid">
                             <div class="mi-tier-card mi-tier-sig">
-                                <div class="mi-tier-title">🎯 Direct Service</div>
+                                <div class="mi-tier-title">ðŸŽ¯ Direct Service</div>
                                 <div class="mi-tier-stat">${direct.count || 0} vendors</div>
                                 <div class="mi-tier-metric">Avg Pillars: <strong style="color:#0078d4">${direct.avg_coverage || 0}</strong></div>
                                 <div class="mi-tier-metric">Avg Services & Capabilities: <strong style="color:#0078d4">${(direct.svc_avg || 0).toFixed(2)}</strong></div>
                                 <div class="mi-tier-metric">Avg Exposure Management: <strong>${(direct.pillar_avgs?.EXM || 0).toFixed(2)}</strong></div>
                             </div>
                             <div class="mi-tier-card mi-tier-emg">
-                                <div class="mi-tier-title">🤝 Platform + Partner</div>
+                                <div class="mi-tier-title">ðŸ¤ Platform + Partner</div>
                                 <div class="mi-tier-stat">${partner.count || 0} vendors</div>
                                 <div class="mi-tier-metric">Avg Pillars: <strong style="color:#ca5010">${partner.avg_coverage || 0}</strong></div>
                                 <div class="mi-tier-metric">Avg Services & Capabilities: <strong style="color:#ca5010">${(partner.svc_avg || 0).toFixed(2)}</strong></div>
                                 <div class="mi-tier-metric">Avg Exposure Management: <strong>${(partner.pillar_avgs?.EXM || 0).toFixed(2)}</strong></div>
                             </div>
                             <div class="mi-tier-card mi-tier-min">
-                                <div class="mi-tier-title">💻 Platform Only</div>
+                                <div class="mi-tier-title">ðŸ’» Platform Only</div>
                                 <div class="mi-tier-stat">${plat.count || 0} vendors</div>
                                 <div class="mi-tier-metric">Avg Pillars: <strong style="color:#a80000">${plat.avg_coverage || 0}</strong></div>
                                 <div class="mi-tier-metric">Avg Services & Capabilities: <strong style="color:#a80000">${(plat.svc_avg || 0).toFixed(2)}</strong></div>
@@ -19927,12 +19927,12 @@ function _pciRenderAnalysis(data, st) {
                     </div>`;
                 }
 
-                // Section 5: Full-Spectrum Opportunity (2030) — Top balanced vendors
+                // Section 5: Full-Spectrum Opportunity (2030) â€” Top balanced vendors
                 if (idx === 5 && st.top_balanced) {
                     vizHtml = '<div class="mi-viz-box"><h4>Most Balanced Vendors: Highest Minimum Pillar Score</h4><div class="mi-dim-compare">';
                     st.top_balanced.forEach(v => {
                         const pct = (v.min_score / 5) * 100;
-                        const dmLabel = v.delivery_model === 'direct_service' ? '🎯' : v.delivery_model === 'platform_plus_partner' ? '🤝' : '💻';
+                        const dmLabel = v.delivery_model === 'direct_service' ? 'ðŸŽ¯' : v.delivery_model === 'platform_plus_partner' ? 'ðŸ¤' : 'ðŸ’»';
                         vizHtml += `<div class="mi-dim-row ${v.coverage >= 5 ? 'mi-dim-highlight-good' : ''}">
                             <div class="mi-dim-label">${dmLabel} ${escapeHtml(v.vendor)}</div>
                             <div class="mi-dim-track">
@@ -19970,7 +19970,7 @@ function _pciRenderBackground(data, st) {
                 <div class="mi-snap-item"><div class="mi-snap-val" style="color:#107c10">${pp.EXM?.pct || 0}%</div><div class="mi-snap-lbl">Exposure Mgmt Coverage (Best)</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val" style="color:#a80000">${pp.AMT?.pct || 0}%</div><div class="mi-snap-lbl">Adversary Mgmt Coverage (Worst)</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val" style="color:#0078d4">${st.full_spectrum_count}</div><div class="mi-snap-lbl">Full Spectrum Vendors</div></div>
-                <div class="mi-snap-item"><div class="mi-snap-val" style="color:#a80000">${st.narrow_count}</div><div class="mi-snap-lbl">Narrow Coverage (≤3)</div></div>
+                <div class="mi-snap-item"><div class="mi-snap-val" style="color:#a80000">${st.narrow_count}</div><div class="mi-snap-lbl">Narrow Coverage (â‰¤3)</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val">${dm.direct_service?.count || 0}</div><div class="mi-snap-lbl">Direct Service</div></div>
                 <div class="mi-snap-item"><div class="mi-snap-val">${dm.platform_only?.count || 0}</div><div class="mi-snap-lbl">Platform Only</div></div>
             </div>
@@ -19990,7 +19990,7 @@ function _pciRenderImpact(data, st) {
 
     let vizHtml = '';
     if (st) {
-        // Pillar average scores by delivery model — shows where each model is strong/weak
+        // Pillar average scores by delivery model â€” shows where each model is strong/weak
         const dm = st.delivery_models || {};
         const pillars = st.pillars || [];
         const pillarLabels = st.pillar_labels || {};
@@ -20026,17 +20026,17 @@ function _pciRenderConclusion(data, st) {
         <h4>Three Strategic Paths to Full-Spectrum Coverage</h4>
         <div class="mi-invest-grid">
             <div class="mi-invest-card">
-                <div class="mi-invest-icon">🎯</div>
+                <div class="mi-invest-icon">ðŸŽ¯</div>
                 <div class="mi-invest-title">Build Service Capabilities</div>
                 <div class="mi-invest-desc">Platform vendors invest in SOC, analysts, and managed services to move from technology licensing to outcome delivery</div>
             </div>
             <div class="mi-invest-card">
-                <div class="mi-invest-icon">🤝</div>
+                <div class="mi-invest-icon">ðŸ¤</div>
                 <div class="mi-invest-title">Structured Partner Programs</div>
                 <div class="mi-invest-desc">Create certified delivery partner ecosystems with shared SLAs, integrated telemetry, and co-managed response workflows</div>
             </div>
             <div class="mi-invest-card">
-                <div class="mi-invest-icon">🔗</div>
+                <div class="mi-invest-icon">ðŸ”—</div>
                 <div class="mi-invest-title">Acquire Missing Pillars</div>
                 <div class="mi-invest-desc">Fill adversary intelligence and autonomous response gaps through strategic M&A to compress time-to-coverage from years to months</div>
             </div>
@@ -20074,7 +20074,7 @@ function _pciRenderGlossary(data) {
     panel.innerHTML = html;
 }
 
-/* ─── PreCyber Market Insight Graphics Tab ─── */
+/* â”€â”€â”€ PreCyber Market Insight Graphics Tab â”€â”€â”€ */
 function _pciRenderGraphics(data, stats) {
     const panel = document.getElementById('pci-panel-graphics');
     if (!panel) return;
@@ -20088,19 +20088,19 @@ function _pciRenderGraphics(data, stats) {
         </button>
     </div>`;
 
-    // ── Kill Chain Perspective: 7 unique graphics ──
+    // â”€â”€ Kill Chain Perspective: 7 unique graphics â”€â”€
     if (data.id === 'cpo-killchain-shift-left') {
         _pciRenderKillChainGraphics(panel, stats);
         return;
     }
 
-    // ── Kill Chain + MITRE ATT&CK v2/v3 Perspective: 7 unique graphics ──
+    // â”€â”€ Kill Chain + MITRE ATT&CK v2/v3 Perspective: 7 unique graphics â”€â”€
     if (data.id === 'cpo-killchain-mitre-v2' || data.id === 'cpo-killchain-mitre-v3') {
         _pciRenderKCMitreGraphics(panel, stats);
         return;
     }
 
-    // ── Graphic 1: Five-Pillar Coverage Heatmap ──
+    // â”€â”€ Graphic 1: Five-Pillar Coverage Heatmap â”€â”€
     const pillarData = [
         { pillar: 'Exposure Management', code: 'EXM', direct: 3.60, partner: 3.69, platform: 3.07, pct: '92%' },
         { pillar: 'Posture & Policy Mgmt', code: 'PPM', direct: 2.97, partner: 3.21, platform: 2.84, pct: '86%' },
@@ -20137,23 +20137,23 @@ function _pciRenderGraphics(data, stats) {
     });
     html += `</tbody></table></div>
     <div style="display:flex;gap:18px;margin-top:10px;font-size:12px;flex-wrap:wrap">
-        <span style="color:#107c10;font-weight:700">■ ≥ 3.00 Strong</span>
-        <span style="color:#0078d4;font-weight:700">■ 2.50–2.99 Competitive</span>
-        <span style="color:#ca5010;font-weight:700">■ 2.00–2.49 Below Target</span>
-        <span style="color:#a80000;font-weight:700">■ < 2.00 Critical Gap</span>
+        <span style="color:#107c10;font-weight:700">â–  â‰¥ 3.00 Strong</span>
+        <span style="color:#0078d4;font-weight:700">â–  2.50â€“2.99 Competitive</span>
+        <span style="color:#ca5010;font-weight:700">â–  2.00â€“2.49 Below Target</span>
+        <span style="color:#a80000;font-weight:700">â–  < 2.00 Critical Gap</span>
     </div></div>`;
 
-    // ── Graphic 2: Full-Spectrum Coverage Roadmap ──
+    // â”€â”€ Graphic 2: Full-Spectrum Coverage Roadmap â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>2. Path to Full-Spectrum: Delivery Model Maturity</h2>
         <p class="dfi-graphic-subtitle">Current average score per delivery model relative to 2.0 baseline competency threshold across all 5 pillars.</p>`;
     const modelRoadmap = [
         { name: 'Direct Service Providers', count: '11 vendors (22%)', avg: 3.03, pct: 60.6, color: '#107c10',
-          gaps: ['⚠ Limited platform depth', '✓ Highest SVC: 2.74', '✓ Highest ADR: 3.38', '✓ Own SOCs + analysts'] },
+          gaps: ['âš  Limited platform depth', 'âœ“ Highest SVC: 2.74', 'âœ“ Highest ADR: 3.38', 'âœ“ Own SOCs + analysts'] },
         { name: 'Platform + Partner', count: '15 vendors (29%)', avg: 2.96, pct: 59.2, color: '#0078d4',
-          gaps: ['⚠ Partner accountability gaps', '⚠ SVC via partners: 2.32', '✓ Highest AMT: 2.74', '✓ Broadest coverage'] },
+          gaps: ['âš  Partner accountability gaps', 'âš  SVC via partners: 2.32', 'âœ“ Highest AMT: 2.74', 'âœ“ Broadest coverage'] },
         { name: 'Platform-Only', count: '25 vendors (49%)', avg: 2.36, pct: 47.2, color: '#ca5010',
-          gaps: ['⚠ SVC: 1.49 (structural gap)', '⚠ AMT: 1.87 (weak intel)', '⚠ 88% below 2.0 on SVC', '⚠ No service delivery'] },
+          gaps: ['âš  SVC: 1.49 (structural gap)', 'âš  AMT: 1.87 (weak intel)', 'âš  88% below 2.0 on SVC', 'âš  No service delivery'] },
     ];
     modelRoadmap.forEach(d => {
         const barPct = Math.min(d.avg / 5.0 * 100, 100);
@@ -20161,7 +20161,7 @@ function _pciRenderGraphics(data, stats) {
         html += `<div style="margin-bottom:22px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
                 <strong style="color:${d.color}">${d.name}</strong>
-                <span style="font-size:12px;color:#888">${d.count} • ${d.avg.toFixed(2)} avg</span>
+                <span style="font-size:12px;color:#888">${d.count} â€¢ ${d.avg.toFixed(2)} avg</span>
             </div>
             <div style="position:relative;height:32px;background:#e8e8e5;border-radius:6px;overflow:visible;border:1px solid #ccc">
                 <div style="height:100%;width:${barPct}%;background:${d.color};border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px">${d.avg.toFixed(2)} / 5.00</div>
@@ -20169,7 +20169,7 @@ function _pciRenderGraphics(data, stats) {
             </div>
             <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
                 ${d.gaps.map(g => {
-                    const isWarn = g.startsWith('⚠');
+                    const isWarn = g.startsWith('âš ');
                     return `<span style="background:${isWarn ? '#fff0f0' : '#f0fff0'};color:${isWarn ? '#a80000' : '#107c10'};border:1px solid ${isWarn ? '#a80000' : '#107c10'};border-radius:6px;padding:2px 10px;font-size:11px">${g}</span>`;
                 }).join('')}
             </div>
@@ -20177,17 +20177,17 @@ function _pciRenderGraphics(data, stats) {
     });
     html += `<div style="background:#fff5f5;border:2px solid #a80000;border-radius:10px;padding:12px 16px;margin-top:12px">
         <strong style="color:#a80000">Key Insight</strong><br>
-        <span style="color:#555;font-size:13px">No platform-only vendor achieves full-spectrum coverage. Service delivery (SVC) is the structural missing link — 88% of platform-only vendors score below 2.0.</span>
+        <span style="color:#555;font-size:13px">No platform-only vendor achieves full-spectrum coverage. Service delivery (SVC) is the structural missing link â€” 88% of platform-only vendors score below 2.0.</span>
     </div></div>`;
 
-    // ── Graphic 3: Pillar Penetration Gap Analysis ──
+    // â”€â”€ Graphic 3: Pillar Penetration Gap Analysis â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>3. Pillar Penetration Gap: Where the Market Falls Short</h2>
-        <p class="dfi-graphic-subtitle">Percentage of 51 vendors scoring ≥ 2.0 on each pillar. Exposure Management dominates; SVC and AMT are critically under-served.</p>`;
+        <p class="dfi-graphic-subtitle">Percentage of 51 vendors scoring â‰¥ 2.0 on each pillar. Exposure Management dominates; SVC and AMT are critically under-served.</p>`;
     html += `<div style="display:flex;gap:16px;margin-bottom:12px;font-size:12px;flex-wrap:wrap">
-        <span style="color:#107c10;font-weight:700">■ Direct Service</span>
-        <span style="color:#0078d4;font-weight:700">■ Platform+Partner</span>
-        <span style="color:#ca5010;font-weight:700">■ Platform-Only</span>
+        <span style="color:#107c10;font-weight:700">â–  Direct Service</span>
+        <span style="color:#0078d4;font-weight:700">â–  Platform+Partner</span>
+        <span style="color:#ca5010;font-weight:700">â–  Platform-Only</span>
     </div>`;
     const gapData = [
         { pillar: 'Exposure Mgmt (EXM)', pct: 92, direct: 3.60, partner: 3.69, platform: 3.07 },
@@ -20225,20 +20225,20 @@ function _pciRenderGraphics(data, stats) {
         <span style="color:#555;font-size:13px">The 37-point penetration gap between EXM (92%) and AMT (55%) reveals where the market clusters. Vendors flock to exposure scanning but ignore adversary intelligence and service delivery.</span>
     </div></div>`;
 
-    // ── Graphic 4: Executive Summary Poster ──
+    // â”€â”€ Graphic 4: Executive Summary Poster â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>4. Market Fragmentation — Executive Summary</h2>
+        <h2>4. Market Fragmentation â€” Executive Summary</h2>
         <p class="dfi-graphic-subtitle">Only 27% of 51 vendors achieve full-spectrum coverage. The rest leave critical gaps in adversary intelligence and service delivery.</p>
         <div class="dfi-nbm-infographic" style="background:linear-gradient(135deg,#fff5f5,#f8f8f5);border:2px solid #a80000;border-radius:16px;padding:28px 32px;max-width:1080px">
             <div style="text-align:center;margin-bottom:20px">
                 <div style="font-size:28px;font-weight:800;color:#a80000">The Preemptive Cybersecurity Market Is Dangerously Fragmented</div>
-                <div style="font-size:14px;color:#666;margin-top:6px">Market Insight — 51 vendors across 5 capability pillars × 3 delivery models</div>
+                <div style="font-size:14px;color:#666;margin-top:6px">Market Insight â€” 51 vendors across 5 capability pillars Ã— 3 delivery models</div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px">
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
                     <div style="font-size:28px;font-weight:800;color:#0078d4">51</div><div style="font-size:11px;color:#666">Vendors Assessed</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#a80000">73%</div><div style="font-size:11px;color:#666">Have ≥ 1 Blind Spot</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#a80000">73%</div><div style="font-size:11px;color:#666">Have â‰¥ 1 Blind Spot</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
                     <div style="font-size:28px;font-weight:800;color:#ca5010">45%</div><div style="font-size:11px;color:#666">No AMT Capability</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
@@ -20249,11 +20249,11 @@ function _pciRenderGraphics(data, stats) {
             <div style="font-size:13px;font-weight:700;color:#a80000;margin-bottom:8px">KEY FINDINGS</div>
             <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #a80000">
-                    <strong>🔴 Service Delivery Crisis</strong><br><span style="color:#555;font-size:13px">25 of 51 vendors (49%) are platform-only. Average SVC score: 1.49. 88% of platform-only vendors score below 2.0 on services.</span></div>
+                    <strong>ðŸ”´ Service Delivery Crisis</strong><br><span style="color:#555;font-size:13px">25 of 51 vendors (49%) are platform-only. Average SVC score: 1.49. 88% of platform-only vendors score below 2.0 on services.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #ca5010">
-                    <strong>⚠ Adversary Intelligence Deficit</strong><br><span style="color:#555;font-size:13px">45% of vendors lack AMT capability. Among platform-only: 64% score below 2.0 on adversary management.</span></div>
+                    <strong>âš  Adversary Intelligence Deficit</strong><br><span style="color:#555;font-size:13px">45% of vendors lack AMT capability. Among platform-only: 64% score below 2.0 on adversary management.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #107c10">
-                    <strong>✓ Rare Full-Spectrum Excellence</strong><br><span style="color:#555;font-size:13px">Only 3 vendors maintain min score ≥ 2.5 across all 5 pillars: Mandiant, SentinelOne, Fortinet.</span></div>
+                    <strong>âœ“ Rare Full-Spectrum Excellence</strong><br><span style="color:#555;font-size:13px">Only 3 vendors maintain min score â‰¥ 2.5 across all 5 pillars: Mandiant, SentinelOne, Fortinet.</span></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#0078d4;margin-bottom:8px">RECOMMENDATIONS</div>
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
@@ -20275,51 +20275,51 @@ function _pciRenderGraphics(data, stats) {
                     <div style="font-size:10px;color:#555">Tie pricing to preemptive results</div></div>
             </div>
             <div style="background:#fff0f0;border:2px solid #a80000;border-radius:10px;padding:12px 16px;text-align:center">
-                <strong style="color:#a80000">⚠ Service delivery (SVC) is the missing link: no platform-only vendor achieves full-spectrum coverage.</strong></div>
+                <strong style="color:#a80000">âš  Service delivery (SVC) is the missing link: no platform-only vendor achieves full-spectrum coverage.</strong></div>
         </div></div>`;
 
-    // ── Graphic 5: Delivery Model Trade-offs (VS poster) ──
+    // â”€â”€ Graphic 5: Delivery Model Trade-offs (VS poster) â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>5. Three Delivery Models: Trade-offs & Tensions</h2>
         <p class="dfi-graphic-subtitle">Each delivery model excels in different pillars but none solves the full-spectrum challenge alone.</p>
         <div class="dfi-nbm-infographic" style="background:linear-gradient(135deg,#f0fff0,#f0faff);border:2px solid #107c10;border-radius:16px;padding:28px 32px;max-width:1080px">
             <div style="text-align:center;margin-bottom:20px">
                 <div style="font-size:26px;font-weight:800;color:#1a3a5c">No Single Delivery Model Solves Full-Spectrum</div>
-                <div style="font-size:13px;color:#666">Three models, three trade-offs — accountability vs breadth vs technical depth</div>
+                <div style="font-size:13px;color:#666">Three models, three trade-offs â€” accountability vs breadth vs technical depth</div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px">
                 <div style="background:#f0fff4;border:2px solid #107c10;border-radius:14px;padding:20px">
-                    <div style="text-align:center;font-size:18px;font-weight:700;color:#107c10;margin-bottom:8px">🟢 Direct Service</div>
+                    <div style="text-align:center;font-size:18px;font-weight:700;color:#107c10;margin-bottom:8px">ðŸŸ¢ Direct Service</div>
                     <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">11 vendors (22%)</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
-                        ✓ Own SOC + analyst teams<br>
-                        ✓ Single accountability point<br>
-                        ✓ <strong>Highest SVC: 2.74</strong><br>
-                        ✓ <strong>Highest ADR: 3.38</strong><br>
-                        ⚠ Limited platform depth<br>
-                        ⚠ Narrower tech coverage</div>
+                        âœ“ Own SOC + analyst teams<br>
+                        âœ“ Single accountability point<br>
+                        âœ“ <strong>Highest SVC: 2.74</strong><br>
+                        âœ“ <strong>Highest ADR: 3.38</strong><br>
+                        âš  Limited platform depth<br>
+                        âš  Narrower tech coverage</div>
                     <div style="margin-top:12px;background:#e6f4e6;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#107c10;font-weight:700">Strength: Operational Accountability</div></div>
                 <div style="background:#f0faff;border:2px solid #0078d4;border-radius:14px;padding:20px">
-                    <div style="text-align:center;font-size:18px;font-weight:700;color:#0078d4;margin-bottom:8px">🔵 Platform + Partner</div>
+                    <div style="text-align:center;font-size:18px;font-weight:700;color:#0078d4;margin-bottom:8px">ðŸ”µ Platform + Partner</div>
                     <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">15 vendors (29%)</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
-                        ✓ Tech platform + MSSP delivery<br>
-                        ✓ Broadest pillar coverage<br>
-                        ✓ <strong>Highest AMT: 2.74</strong><br>
-                        ✓ <strong>Highest PPM: 3.21</strong><br>
-                        ⚠ Partner accountability gaps<br>
-                        ⚠ SVC via partners: 2.32</div>
+                        âœ“ Tech platform + MSSP delivery<br>
+                        âœ“ Broadest pillar coverage<br>
+                        âœ“ <strong>Highest AMT: 2.74</strong><br>
+                        âœ“ <strong>Highest PPM: 3.21</strong><br>
+                        âš  Partner accountability gaps<br>
+                        âš  SVC via partners: 2.32</div>
                     <div style="margin-top:12px;background:#e0f0ff;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#0078d4;font-weight:700">Strength: Breadth of Coverage</div></div>
                 <div style="background:#fff8f0;border:2px solid #ca5010;border-radius:14px;padding:20px">
-                    <div style="text-align:center;font-size:18px;font-weight:700;color:#ca5010;margin-bottom:8px">🟠 Platform-Only</div>
+                    <div style="text-align:center;font-size:18px;font-weight:700;color:#ca5010;margin-bottom:8px">ðŸŸ  Platform-Only</div>
                     <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">25 vendors (49%)</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
-                        ✓ Technology licensing model<br>
-                        ✓ Focus on core platform depth<br>
-                        🔴 <strong>SVC: 1.49 (structural gap)</strong><br>
-                        🔴 <strong>AMT: 1.87 (weak intel)</strong><br>
-                        🔴 88% below 2.0 on SVC<br>
-                        🔴 No service delivery mechanism</div>
+                        âœ“ Technology licensing model<br>
+                        âœ“ Focus on core platform depth<br>
+                        ðŸ”´ <strong>SVC: 1.49 (structural gap)</strong><br>
+                        ðŸ”´ <strong>AMT: 1.87 (weak intel)</strong><br>
+                        ðŸ”´ 88% below 2.0 on SVC<br>
+                        ðŸ”´ No service delivery mechanism</div>
                     <div style="margin-top:12px;background:#fff0e0;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#ca5010;font-weight:700">Weakness: Structural Service Deficit</div></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#1a3a5c;margin-bottom:8px">MARKET SPECTRUM SEGMENTATION</div>
@@ -20327,21 +20327,21 @@ function _pciRenderGraphics(data, stats) {
                 <div style="background:#e6f4e6;border:2px solid #107c10;border-radius:10px;padding:14px;text-align:center">
                     <div style="font-size:28px;font-weight:800;color:#107c10">14</div>
                     <div style="font-size:13px;font-weight:700;color:#107c10">Full-Spectrum (27%)</div>
-                    <div style="font-size:10px;color:#555">All 5 pillars ≥ 2.0 — best positioned</div></div>
+                    <div style="font-size:10px;color:#555">All 5 pillars â‰¥ 2.0 â€” best positioned</div></div>
                 <div style="background:#fff0e0;border:2px solid #ca5010;border-radius:10px;padding:14px;text-align:center">
                     <div style="font-size:28px;font-weight:800;color:#ca5010">19</div>
                     <div style="font-size:13px;font-weight:700;color:#ca5010">Majority-Spectrum (37%)</div>
-                    <div style="font-size:10px;color:#555">4 pillars — one investment from full</div></div>
+                    <div style="font-size:10px;color:#555">4 pillars â€” one investment from full</div></div>
                 <div style="background:#ffe0e0;border:2px solid #a80000;border-radius:10px;padding:14px;text-align:center">
                     <div style="font-size:28px;font-weight:800;color:#a80000">18</div>
                     <div style="font-size:13px;font-weight:700;color:#a80000">Narrow-Spectrum (35%)</div>
-                    <div style="font-size:10px;color:#555">≤ 3 pillars — niche specialists</div></div>
+                    <div style="font-size:10px;color:#555">â‰¤ 3 pillars â€” niche specialists</div></div>
             </div>
             <div style="background:#fff0f0;border:2px solid #a80000;border-radius:10px;padding:12px 16px;text-align:center">
                 <strong style="color:#a80000">73% of vendors have at least one structural blind spot. Buyers cannot assume any single vendor covers the full attack surface.</strong></div>
         </div></div>`;
 
-    // ── Graphic 6: 2030 Market Evolution Poster ──
+    // â”€â”€ Graphic 6: 2030 Market Evolution Poster â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>6. The 2030 Market Evolution: From Fragmentation to Convergence</h2>
         <p class="dfi-graphic-subtitle">Three phases of market consolidation will reshape the preemptive cybersecurity landscape.</p>
@@ -20352,17 +20352,17 @@ function _pciRenderGraphics(data, stats) {
             </div>
             <div style="display:flex;gap:6px;margin-bottom:24px">
                 <div style="flex:1;background:#0078d4;color:#fff;border-radius:10px;padding:14px;text-align:center">
-                    <div style="font-size:14px;font-weight:700">Phase 1 (2025–26)</div>
+                    <div style="font-size:14px;font-weight:700">Phase 1 (2025â€“26)</div>
                     <div style="font-size:18px;font-weight:800;margin:6px 0">Platform Extension</div>
                     <div style="font-size:11px;opacity:0.9">M&A wave to fill pillar gaps.<br>Platform vendors acquire service capabilities.</div></div>
-                <div style="font-size:22px;display:flex;align-items:center;color:#888">→</div>
+                <div style="font-size:22px;display:flex;align-items:center;color:#888">â†’</div>
                 <div style="flex:1;background:#107c10;color:#fff;border-radius:10px;padding:14px;text-align:center">
-                    <div style="font-size:14px;font-weight:700">Phase 2 (2026–28)</div>
+                    <div style="font-size:14px;font-weight:700">Phase 2 (2026â€“28)</div>
                     <div style="font-size:18px;font-weight:800;margin:6px 0">Service Layer Dev</div>
                     <div style="font-size:11px;opacity:0.9">Build out managed services.<br>MSSP integration matures.</div></div>
-                <div style="font-size:22px;display:flex;align-items:center;color:#888">→</div>
+                <div style="font-size:22px;display:flex;align-items:center;color:#888">â†’</div>
                 <div style="flex:1;background:#8764b8;color:#fff;border-radius:10px;padding:14px;text-align:center">
-                    <div style="font-size:14px;font-weight:700">Phase 3 (2028–30)</div>
+                    <div style="font-size:14px;font-weight:700">Phase 3 (2028â€“30)</div>
                     <div style="font-size:18px;font-weight:800;margin:6px 0">Outcome-Based Delivery</div>
                     <div style="font-size:11px;opacity:0.9">Full-spectrum outcome pricing.<br>Risk-sharing models emerge.</div></div>
             </div>
@@ -20377,32 +20377,32 @@ function _pciRenderGraphics(data, stats) {
                     <div style="font-size:12px;color:#333;font-weight:700">Addressable Market</div>
                     <div style="font-size:10px;color:#666">Preemptive cybersecurity TAM</div></div>
                 <div style="background:#fff;border-radius:10px;padding:16px;border:2px solid #8764b8;text-align:center">
-                    <div style="font-size:32px;font-weight:800;color:#8764b8">30–40%</div>
+                    <div style="font-size:32px;font-weight:800;color:#8764b8">30â€“40%</div>
                     <div style="font-size:12px;color:#333;font-weight:700">MSSP Premium</div>
                     <div style="font-size:10px;color:#666">For full-spectrum managed delivery</div></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#a80000;margin-bottom:8px">WHAT MUST CHANGE</div>
             <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
                 <div style="background:#fff;border-radius:10px;padding:12px 18px;border-left:4px solid #ca5010">
-                    <strong style="color:#ca5010">🔧 Platform Vendors Must Do:</strong> <span style="color:#555;font-size:13px">Develop or acquire service delivery capabilities. No SVC = no full-spectrum = structural ceiling.</span></div>
+                    <strong style="color:#ca5010">ðŸ”§ Platform Vendors Must Do:</strong> <span style="color:#555;font-size:13px">Develop or acquire service delivery capabilities. No SVC = no full-spectrum = structural ceiling.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:12px 18px;border-left:4px solid #107c10">
-                    <strong style="color:#107c10">🏗 Service Providers Must Do:</strong> <span style="color:#555;font-size:13px">Invest in platform depth & adversary management technology. SOC teams alone aren't enough.</span></div>
+                    <strong style="color:#107c10">ðŸ— Service Providers Must Do:</strong> <span style="color:#555;font-size:13px">Invest in platform depth & adversary management technology. SOC teams alone aren't enough.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:12px 18px;border-left:4px solid #0078d4">
-                    <strong style="color:#0078d4">🤝 MSSPs Must Do:</strong> <span style="color:#555;font-size:13px">Position as the integration layer solving fragmentation. Multi-vendor orchestration = premium opportunity.</span></div>
+                    <strong style="color:#0078d4">ðŸ¤ MSSPs Must Do:</strong> <span style="color:#555;font-size:13px">Position as the integration layer solving fragmentation. Multi-vendor orchestration = premium opportunity.</span></div>
             </div>
             <div style="background:#f5f0ff;border:2px solid #8764b8;border-radius:10px;padding:12px 16px;text-align:center">
                 <strong style="color:#8764b8">The preemptive cybersecurity market will consolidate around full-spectrum, outcome-based delivery by 2030.</strong></div>
         </div></div>`;
 
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     //  GRAPHIC 7: HAND-DRAWN WORKFLOW INFOGRAPHIC (rough.js sketch style)
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     html += `<div class="dfi-graphic-section">
-        <h2>7. Preemptive Cybersecurity Market Fragmentation — Hand-Drawn Workflow</h2>
+        <h2>7. Preemptive Cybersecurity Market Fragmentation â€” Hand-Drawn Workflow</h2>
         <p class="dfi-graphic-subtitle">A sketch-style infographic showing the five-pillar fragmentation of the preemptive cybersecurity market.</p>
         <div style="display:flex;gap:8px;margin-bottom:16px">
             <button class="report-export-btn" onclick="exportPreCyberInfographicPPTX()" title="Export as editable PowerPoint">
-                <span class="icon">📎</span> Export PPTX
+                <span class="icon">ðŸ“Ž</span> Export PPTX
             </button>
         </div>
         <div id="pci-sketch-infographic" class="dfi-sketch-container"></div>
@@ -20447,12 +20447,12 @@ function _pciDrawSketchInfographic() {
         lines.forEach((line, i) => addText(x, y + i * (lineH || size * 1.4), line, size, '400', color || '#555', anchor));
     }
 
-    // ── Title banner ──
+    // â”€â”€ Title banner â”€â”€
     svg.appendChild(rc.rectangle(0, 0, W, 70, { ...opt, fill: '#1a3a5c', fillStyle: 'solid', stroke: '#1a3a5c' }));
     addText(W / 2, 30, 'The Preemptive Cybersecurity Market Is Dangerously Fragmented', 22, '800', '#fff', 'middle');
     addText(W / 2, 55, 'Only 27% of 51 vendors achieve full-spectrum coverage across all five pillars', 12, '400', '#ccd8e8', 'middle');
 
-    // ── Five Pillars Row ──
+    // â”€â”€ Five Pillars Row â”€â”€
     svg.appendChild(rc.rectangle(20, 85, 1160, 32, { ...opt, fill: '#e0ddd5', fillStyle: 'solid', stroke: '#b0a898' }));
     addText(600, 107, 'THE FIVE PILLARS OF PREEMPTIVE CYBERSECURITY', 11, '700', '#5a503c', 'middle');
 
@@ -20476,52 +20476,52 @@ function _pciDrawSketchInfographic() {
         svg.appendChild(rc.rectangle(x + 10, 225, 195, 12, { ...opt, fill: 'none', stroke: '#ccc' }));
     });
 
-    // ── Three Delivery Models ──
+    // â”€â”€ Three Delivery Models â”€â”€
     svg.appendChild(rc.rectangle(20, 270, 1160, 28, { ...opt, fill: '#00b4d8', fillStyle: 'solid', stroke: '#0095b3' }));
-    addText(600, 290, 'THREE DELIVERY MODELS — THREE STRATEGIC TRADE-OFFS', 11, '700', '#fff', 'middle');
+    addText(600, 290, 'THREE DELIVERY MODELS â€” THREE STRATEGIC TRADE-OFFS', 11, '700', '#fff', 'middle');
 
     // Direct Service Providers
     svg.appendChild(rc.rectangle(30, 310, 360, 170, optFill('#f0fff4')));
-    addText(210, 335, '🟢 Direct Service Providers', 14, '700', '#107c10', 'middle');
+    addText(210, 335, 'ðŸŸ¢ Direct Service Providers', 14, '700', '#107c10', 'middle');
     addText(210, 358, '11 vendors (22%)', 12, '700', '#1a3a5c', 'middle');
     addMultiText(210, 380, [
-        'SVC: 2.74 (highest) • ADR: 3.38',
+        'SVC: 2.74 (highest) â€¢ ADR: 3.38',
         'Own SOC + analyst teams',
         'Single accountability point',
-        '⚠ Limited platform depth',
+        'âš  Limited platform depth',
         '(EXM: 3.60, PPM: 2.97)'
     ], 10, '#555', 14, 'middle');
 
     // Platform-Plus-Partner
     svg.appendChild(rc.rectangle(420, 310, 360, 170, optFill('#f0faff')));
-    addText(600, 335, '🔵 Platform + Partner', 14, '700', '#0078d4', 'middle');
+    addText(600, 335, 'ðŸ”µ Platform + Partner', 14, '700', '#0078d4', 'middle');
     addText(600, 358, '15 vendors (29%)', 12, '700', '#1a3a5c', 'middle');
     addMultiText(600, 380, [
-        'AMT: 2.74 (highest) • PPM: 3.21',
+        'AMT: 2.74 (highest) â€¢ PPM: 3.21',
         'Tech platform + MSSP delivery',
         'Broadest pillar coverage',
-        '⚠ Accountability gaps',
+        'âš  Accountability gaps',
         '(SVC only 2.32 via partners)'
     ], 10, '#555', 14, 'middle');
 
     // Platform-Only
     svg.appendChild(rc.rectangle(810, 310, 360, 170, optFill('#fff8f0')));
-    addText(990, 335, '🟠 Platform-Only', 14, '700', '#ca5010', 'middle');
+    addText(990, 335, 'ðŸŸ  Platform-Only', 14, '700', '#ca5010', 'middle');
     addText(990, 358, '25 vendors (49%)', 12, '700', '#1a3a5c', 'middle');
     addMultiText(990, 380, [
-        'SVC: 1.49 • AMT: 1.87 (lowest)',
+        'SVC: 1.49 â€¢ AMT: 1.87 (lowest)',
         'No service delivery mechanism',
         '88% score < 2.0 on services',
-        '⚠ Structural service deficit',
+        'âš  Structural service deficit',
         '(Cannot deliver managed outcomes)'
     ], 10, '#555', 14, 'middle');
 
-    // ── Center: Full-Spectrum Achievement ──
+    // â”€â”€ Center: Full-Spectrum Achievement â”€â”€
     svg.appendChild(rc.rectangle(370, 500, 460, 110, { ...opt, fill: '#e8f4ff', fillStyle: 'solid', stroke: '#0078d4' }));
-    addText(600, 530, '🎯 Full-Spectrum Vendors', 16, '800', '#1a3a5c', 'middle');
+    addText(600, 530, 'ðŸŽ¯ Full-Spectrum Vendors', 16, '800', '#1a3a5c', 'middle');
     addText(600, 555, '14 of 51 (27%) score 2.0+ across all 5 pillars', 13, '700', '#0078d4', 'middle');
     addMultiText(600, 578, [
-        'Top 3: Mandiant • SentinelOne • Fortinet (min score > 2.5)',
+        'Top 3: Mandiant â€¢ SentinelOne â€¢ Fortinet (min score > 2.5)',
         'No platform-only vendor achieves full-spectrum coverage'
     ], 10, '#555', 14, 'middle');
 
@@ -20530,10 +20530,10 @@ function _pciDrawSketchInfographic() {
     svg.appendChild(rc.line(600, 480, 600, 500, { ...opt, stroke: '#0078d4' }));
     svg.appendChild(rc.line(990, 480, 700, 500, { ...opt, stroke: '#ca5010' }));
 
-    // ── Stat callout ellipses ──
+    // â”€â”€ Stat callout ellipses â”€â”€
     svg.appendChild(rc.rectangle(30, 520, 160, 75, optFill('#fff5f0')));
     addText(110, 550, '73%', 22, '800', '#ca5010', 'middle');
-    addText(110, 572, 'Have ≥1 Blind Spot', 10, '400', '#5a503c', 'middle');
+    addText(110, 572, 'Have â‰¥1 Blind Spot', 10, '400', '#5a503c', 'middle');
 
     svg.appendChild(rc.rectangle(210, 545, 140, 65, optFill('#f8f0ff')));
     addText(280, 572, '45%', 20, '800', '#8764b8', 'middle');
@@ -20545,31 +20545,31 @@ function _pciDrawSketchInfographic() {
 
     svg.appendChild(rc.rectangle(1030, 545, 145, 65, optFill('#f0faff')));
     addText(1103, 572, '35%', 20, '800', '#0078d4', 'middle');
-    addText(1103, 590, 'Narrow (≤3 pillars)', 9, '400', '#1a3a5c', 'middle');
+    addText(1103, 590, 'Narrow (â‰¤3 pillars)', 9, '400', '#1a3a5c', 'middle');
 
-    // ── Bottom: Market Segments Bars ──
+    // â”€â”€ Bottom: Market Segments Bars â”€â”€
     svg.appendChild(rc.rectangle(20, 640, 1160, 260, { ...opt, fill: '#f8f8f5', fillStyle: 'solid', stroke: '#e0ddd5' }));
     addText(600, 663, 'MARKET SEGMENT BREAKDOWN', 12, '700', '#5a503c', 'middle');
 
     // Full-spectrum
     svg.appendChild(rc.rectangle(50, 680, 308, 55, { ...opt, fill: '#107c10', fillStyle: 'solid', stroke: '#107c10' }));
-    addText(204, 703, '14 vendors – Full Spectrum (27%)', 12, '700', '#fff', 'middle');
-    addText(204, 720, 'All 5 pillars ≥ 2.0  •  Best positioned', 10, '400', '#c0efc0', 'middle');
+    addText(204, 703, '14 vendors â€“ Full Spectrum (27%)', 12, '700', '#fff', 'middle');
+    addText(204, 720, 'All 5 pillars â‰¥ 2.0  â€¢  Best positioned', 10, '400', '#c0efc0', 'middle');
 
     // Majority-spectrum
     svg.appendChild(rc.rectangle(50, 745, 422, 55, { ...opt, fill: '#0078d4', fillStyle: 'solid', stroke: '#0078d4' }));
-    addText(261, 768, '19 vendors – Majority Spectrum (37%)', 12, '700', '#fff', 'middle');
-    addText(261, 785, '4 pillars covered  •  One investment from full coverage', 10, '400', '#b0d8ff', 'middle');
+    addText(261, 768, '19 vendors â€“ Majority Spectrum (37%)', 12, '700', '#fff', 'middle');
+    addText(261, 785, '4 pillars covered  â€¢  One investment from full coverage', 10, '400', '#b0d8ff', 'middle');
 
     // Narrow-spectrum
     svg.appendChild(rc.rectangle(50, 810, 400, 55, { ...opt, fill: '#ca5010', fillStyle: 'solid', stroke: '#ca5010' }));
-    addText(250, 833, '18 vendors – Narrow Spectrum (35%)', 12, '700', '#fff', 'middle');
-    addText(250, 850, '≤3 pillars  •  Niche specialists or incomplete presence', 10, '400', '#fce0c8', 'middle');
+    addText(250, 833, '18 vendors â€“ Narrow Spectrum (35%)', 12, '700', '#fff', 'middle');
+    addText(250, 850, 'â‰¤3 pillars  â€¢  Niche specialists or incomplete presence', 10, '400', '#fce0c8', 'middle');
 
     // Key insight
-    addText(600, 890, '→ Service delivery (SVC) is the missing link: no platform-only vendor achieves full-spectrum ←', 11, '700', '#1a3a5c', 'middle');
+    addText(600, 890, 'â†’ Service delivery (SVC) is the missing link: no platform-only vendor achieves full-spectrum â†', 11, '700', '#1a3a5c', 'middle');
 
-    addText(1150, 915, '© Gartner Research • PreCyber Market Insight 2026', 9, '400', '#aaa', 'end');
+    addText(1150, 915, 'Â© Gartner Research â€¢ PreCyber Market Insight 2026', 9, '400', '#aaa', 'end');
 }
 
 /** Render 7 Kill Chain + MITRE ATT&CK graphics for the v2 dual-framework perspective */
@@ -20606,7 +20606,7 @@ function _pciRenderKCMitreGraphics(panel, stats) {
         </button>
     </div>`;
 
-    // ── Graphic 1: Dual Framework Alignment Table ──
+    // â”€â”€ Graphic 1: Dual Framework Alignment Table â”€â”€
     const mapping = [
         { kc: '1. Reconnaissance', att: 'Reconnaissance (TA0043)', pillars: ['EXM','AMT'], zone: 'Preemptive', color: dk?'#66bb6a':'#107c10' },
         { kc: '2. Weaponization', att: 'Resource Development (TA0042)', pillars: ['AMT','PPM'], zone: 'Preemptive', color: dk?'#66bb6a':'#107c10' },
@@ -20645,14 +20645,14 @@ function _pciRenderKCMitreGraphics(panel, stats) {
     });
     html += `</tbody></table></div>
         <div style="display:flex;gap:14px;margin-top:10px;font-size:12px;font-weight:600;flex-wrap:wrap">
-            <span style="color:${g1preCol}">■ Preemptive Zone (Phases 1-3)</span>
-            <span style="color:${g1transCol}">■ Transition (Phase 4)</span>
-            <span style="color:${g1reactCol}">■ Reactive Zone (Phases 5-7)</span>
+            <span style="color:${g1preCol}">â–  Preemptive Zone (Phases 1-3)</span>
+            <span style="color:${g1transCol}">â–  Transition (Phase 4)</span>
+            <span style="color:${g1reactCol}">â–  Reactive Zone (Phases 5-7)</span>
         </div>
         ${pillarKey}
     </div>`;
 
-    // ── Graphic 2: ATT&CK Tactic Coverage Heat Strip ──
+    // â”€â”€ Graphic 2: ATT&CK Tactic Coverage Heat Strip â”€â”€
     const tactics = [
         { tactic: 'Reconnaissance (TA0043)', pillar: 'EXM', strength: 'Strong' },
         { tactic: 'Resource Development (TA0042)', pillar: 'AMT', strength: 'Weak' },
@@ -20687,18 +20687,18 @@ function _pciRenderKCMitreGraphics(panel, stats) {
     });
     html += `</div>
         <div style="display:flex;gap:14px;margin-top:6px;font-size:12px;font-weight:600">
-            <span style="color:${dk?'#66bb6a':'#107c10'}">■ Strong: Most vendors provide meaningful coverage</span>
-            <span style="color:${dk?'#64b5f6':'#0078d4'}">■ Moderate: Partial coverage via detection or validation</span>
-            <span style="color:${dk?'#ef5350':'#a80000'}">■ Weak: Fewer than half of vendors meet threshold</span>
+            <span style="color:${dk?'#66bb6a':'#107c10'}">â–  Strong: Most vendors provide meaningful coverage</span>
+            <span style="color:${dk?'#64b5f6':'#0078d4'}">â–  Moderate: Partial coverage via detection or validation</span>
+            <span style="color:${dk?'#ef5350':'#a80000'}">â–  Weak: Fewer than half of vendors meet threshold</span>
         </div>
         ${pillarKey}
     </div>`;
 
-    // ── Graphic 3: Shift-Left Readiness by Delivery Model ──
+    // â”€â”€ Graphic 3: Shift-Left Readiness by Delivery Model â”€â”€
     const models = [
-        { name: 'Direct Service', data: direct, color: '#107c10', icon: '🎯' },
-        { name: 'Platform + Partner', data: partner, color: '#0078d4', icon: '🤝' },
-        { name: 'Platform-Only', data: plat, color: '#ca5010', icon: '💻' },
+        { name: 'Direct Service', data: direct, color: '#107c10', icon: 'ðŸŽ¯' },
+        { name: 'Platform + Partner', data: partner, color: '#0078d4', icon: 'ðŸ¤' },
+        { name: 'Platform-Only', data: plat, color: '#ca5010', icon: 'ðŸ’»' },
     ];
     html += `<div class="dfi-graphic-section">
         <h2>3. Delivery Model Adversary Lifecycle Profiles</h2>
@@ -20739,13 +20739,13 @@ function _pciRenderKCMitreGraphics(panel, stats) {
             </div>
             <div style="font-size:11px;color:${dk?'#e0e0e0':'#555'};text-align:center;border-top:1px solid ${dk?'#404040':'#e0ddd5'};padding-top:6px">
                 ${shiftAvg >= 2.5 && reactAvg >= 2.0 ? 'Full adversary lifecycle coverage' : shiftAvg >= 2.5 ? 'Strong early phases, late-phase gap' : reactAvg >= 2.0 ? 'Strong late phases, preemptive gap' : 'Confined to middle lifecycle phases'}
-                ${svcMaturity < 2.0 ? ' • Low services maturity limits effectiveness' : ''}
+                ${svcMaturity < 2.0 ? ' â€¢ Low services maturity limits effectiveness' : ''}
             </div>
         </div>`;
     });
     html += `</div>${pillarKey}</div>`;
 
-    // ── Graphic 4: Executive Summary Poster ──
+    // â”€â”€ Graphic 4: Executive Summary Poster â”€â”€
     const preemptPen = Math.round(((pp.EXM?.pct||0)+(pp.PPM?.pct||0)+(pp.AMT?.pct||0))/3);
     const reactPen = pp.ADR?.pct||0;
     html += `<div class="dfi-graphic-section">
@@ -20789,7 +20789,7 @@ function _pciRenderKCMitreGraphics(panel, stats) {
         </div>
     </div>`;
 
-    // ── Graphic 5: Preemptive vs Reactive Comparison ──
+    // â”€â”€ Graphic 5: Preemptive vs Reactive Comparison â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>5. Preemptive vs Reactive: The Adversary Lifecycle Divide</h2>
         <p class="dfi-graphic-subtitle">Side-by-side comparison of market coverage in the preemptive and reactive zones through both framework lenses.</p>
@@ -20830,13 +20830,13 @@ function _pciRenderKCMitreGraphics(panel, stats) {
         ${pillarKey}
     </div>`;
 
-    // ── Graphic 6: CPO Roadmap ──
+    // â”€â”€ Graphic 6: CPO Roadmap â”€â”€
     const roadmapItems = [
-        { year: '2025-2026', title: 'Assess & Map', icon: '🗺️', color: '#0078d4',
+        { year: '2025-2026', title: 'Assess & Map', icon: 'ðŸ—ºï¸', color: '#0078d4',
           items: ['Dual-framework portfolio mapping', 'Identify KC phase + ATT&CK tactic gaps', 'Develop Shift-Left Readiness Index', 'Competitive phase coverage benchmarking'] },
-        { year: '2026-2027', title: 'Build Preemptive Core', icon: '🏗️', color: '#107c10',
+        { year: '2026-2027', title: 'Build Preemptive Core', icon: 'ðŸ—ï¸', color: '#107c10',
           items: ['Invest in adversary management capabilities', 'Polymorphic defense + credential rotation', 'Runtime protection + dynamic infrastructure', 'Strengthen posture validation (BAS, CSPM)'] },
-        { year: '2027-2028', title: 'Maturity-Amplified Coverage', icon: '🚀', color: '#8764b8',
+        { year: '2027-2028', title: 'Maturity-Amplified Coverage', icon: 'ðŸš€', color: '#8764b8',
           items: ['Services maturity across all pillars', 'Outcome-based delivery models', 'Full adversary lifecycle positioning', 'Phase coverage + maturity as standard'] },
     ];
     html += `<div class="dfi-graphic-section">
@@ -20863,7 +20863,7 @@ function _pciRenderKCMitreGraphics(panel, stats) {
         </div>
     </div>`;
 
-    // ── Graphic 7: Hand-Drawn Dual Framework Infographic ──
+    // â”€â”€ Graphic 7: Hand-Drawn Dual Framework Infographic â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>7. Dual Framework Defense Architecture</h2>
         <p class="dfi-graphic-subtitle">Visual overview showing how preemptive pillars create layered defense mapped to both kill chain phases and ATT&CK tactics.</p>
@@ -21015,7 +21015,7 @@ function _pciDrawKCMitreInfographic() {
     // Roadmap arrow at very bottom
     const arY = 870;
     svg.appendChild(rc.rectangle(20, arY, 1160, 80, { ...opt, fill: '#1a3a5c', fillStyle: 'solid', stroke: '#1a3a5c' }));
-    addText(600, arY + 25, 'ROADMAP: Assess & Map (2025-26) → Build Preemptive Core (2026-27) → Maturity-Amplified Coverage (2027-28)', 13, '600', '#fff', 'middle');
+    addText(600, arY + 25, 'ROADMAP: Assess & Map (2025-26) â†’ Build Preemptive Core (2026-27) â†’ Maturity-Amplified Coverage (2027-28)', 13, '600', '#fff', 'middle');
     addText(600, arY + 50, 'By 2028, defensive coverage + services maturity transitions from advantage to minimum buyer expectation.', 12, '400', '#aac8e8', 'middle');
     addText(600, arY + 68, 'Measurable through Kill Chain phases, ATT&CK tactics, and services maturity dimensions.', 11, '400', '#aac8e8', 'middle');
 }
@@ -21043,7 +21043,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
         </button>
     </div>`;
 
-    // ── Graphic 1: Kill Chain Phase Mapping Diagram ──
+    // â”€â”€ Graphic 1: Kill Chain Phase Mapping Diagram â”€â”€
     const kcPhases = [
         { num: 1, name: 'Reconnaissance', pillars: ['EXM','AMT'], zone: 'PREEMPTIVE', color: '#107c10', desc: 'Reduce attack surface, disrupt adversary targeting and intelligence gathering' },
         { num: 2, name: 'Weaponization', pillars: ['AMT','PPM'], zone: 'PREEMPTIVE', color: '#107c10', desc: 'Invalidate adversary preparation through moving target defense and control validation' },
@@ -21057,12 +21057,12 @@ function _pciRenderKillChainGraphics(panel, stats) {
     const pillarColors = { EXM: '#107c10', AMT: '#a80000', ADR: '#8764b8', PPM: '#0078d4', SVC: '#ca5010' };
 
     html += `<div class="dfi-graphic-section">
-        <h2>1. Cyber Kill Chain → Preemptive Pillar Mapping</h2>
+        <h2>1. Cyber Kill Chain â†’ Preemptive Pillar Mapping</h2>
         <p class="dfi-graphic-subtitle">How the five preemptive cybersecurity pillars map to each phase of the Lockheed Martin Cyber Kill Chain. Phases 1-3 are the "shift-left" preemptive zone.</p>
         <div style="display:flex;gap:12px;margin:8px 0 16px;font-size:13px;font-weight:600">
-            <span style="color:#107c10">■ Preemptive Zone (Phases 1-3)</span>
-            <span style="color:#ca5010">■ Transition (Phase 4)</span>
-            <span style="color:#a80000">■ Reactive Zone (Phases 5-7)</span>
+            <span style="color:#107c10">â–  Preemptive Zone (Phases 1-3)</span>
+            <span style="color:#ca5010">â–  Transition (Phase 4)</span>
+            <span style="color:#a80000">â–  Reactive Zone (Phases 5-7)</span>
         </div>
         <div style="overflow-x:auto"><table style="width:100%;max-width:1100px;border-collapse:collapse;font-size:14px">
         <thead><tr>
@@ -21086,7 +21086,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
     });
     html += `</tbody></table></div></div>`;
 
-    // ── Graphic 2: Kill Chain Phase Coverage Scores ──
+    // â”€â”€ Graphic 2: Kill Chain Phase Coverage Scores â”€â”€
     const phaseScores = [
         { phase: 'Phase 1: Reconnaissance', score: ((pa.EXM||0) + (pa.AMT||0)) / 2, color: '#107c10', zone: 'P' },
         { phase: 'Phase 2: Weaponization', score: ((pa.AMT||0) + (pa.PPM||0)) / 2, color: '#107c10', zone: 'P' },
@@ -21103,8 +21103,8 @@ function _pciRenderKillChainGraphics(panel, stats) {
         <h2>2. Kill Chain Phase Coverage Scores (Market Average)</h2>
         <p class="dfi-graphic-subtitle">Average vendor capability score at each kill chain phase, derived from pillar mapping. Target: 3.0+ for competitive coverage.</p>
         <div style="display:flex;gap:20px;margin:10px 0 16px;font-size:14px">
-            <span>🛡️ <strong style="color:#107c10">Preemptive Avg: ${preemptAvg.toFixed(2)}</strong></span>
-            <span>⚔️ <strong style="color:#a80000">Reactive Avg: ${reactAvg.toFixed(2)}</strong></span>
+            <span>ðŸ›¡ï¸ <strong style="color:#107c10">Preemptive Avg: ${preemptAvg.toFixed(2)}</strong></span>
+            <span>âš”ï¸ <strong style="color:#a80000">Reactive Avg: ${reactAvg.toFixed(2)}</strong></span>
             <span>Gap: <strong style="color:${preemptAvg > reactAvg ? '#107c10' : '#a80000'}">${(preemptAvg - reactAvg) > 0 ? '+' : ''}${(preemptAvg - reactAvg).toFixed(2)}</strong></span>
         </div>
         <div style="max-width:900px">`;
@@ -21120,14 +21120,14 @@ function _pciRenderKillChainGraphics(panel, stats) {
         </div>`;
     });
     html += `<div style="margin-top:10px;padding:8px;background:#fff8f0;border:1px solid #ca5010;border-radius:6px;font-size:12px;color:#ca5010;font-weight:600;text-align:center">
-        ⚠️ Phase 7 (Actions on Objectives) is weakest due to SVC gap (57% penetration) — platform-only vendors average just 1.49 on services
+        âš ï¸ Phase 7 (Actions on Objectives) is weakest due to SVC gap (57% penetration) â€” platform-only vendors average just 1.49 on services
     </div></div></div>`;
 
-    // ── Graphic 3: Shift-Left Readiness by Delivery Model ──
+    // â”€â”€ Graphic 3: Shift-Left Readiness by Delivery Model â”€â”€
     const models = [
-        { name: '🎯 Direct Service', data: direct, color: '#107c10', border: '#107c10' },
-        { name: '🤝 Platform + Partner', data: partner, color: '#0078d4', border: '#0078d4' },
-        { name: '💻 Platform-Only', data: plat, color: '#ca5010', border: '#ca5010' },
+        { name: 'ðŸŽ¯ Direct Service', data: direct, color: '#107c10', border: '#107c10' },
+        { name: 'ðŸ¤ Platform + Partner', data: partner, color: '#0078d4', border: '#0078d4' },
+        { name: 'ðŸ’» Platform-Only', data: plat, color: '#ca5010', border: '#ca5010' },
     ];
     html += `<div class="dfi-graphic-section">
         <h2>3. Shift-Left Readiness by Delivery Model</h2>
@@ -21169,18 +21169,18 @@ function _pciRenderKillChainGraphics(panel, stats) {
     });
     html += `</div>
         <div style="margin-top:12px;padding:10px;background:#f0faff;border:1px solid #0078d4;border-radius:6px;font-size:12px;text-align:center;max-width:1100px">
-            <strong style="color:#0078d4">Key Insight:</strong> Platform-only vendors are structurally confined to Phases 3-5 (AMT: ${(plat.pillar_avgs?.AMT||0).toFixed(2)}, SVC: ${(plat.svc_avg||0).toFixed(2)}) — cannot defend the earliest or latest kill chain phases.
+            <strong style="color:#0078d4">Key Insight:</strong> Platform-only vendors are structurally confined to Phases 3-5 (AMT: ${(plat.pillar_avgs?.AMT||0).toFixed(2)}, SVC: ${(plat.svc_avg||0).toFixed(2)}) â€” cannot defend the earliest or latest kill chain phases.
         </div></div>`;
 
-    // ── Graphic 4: "The Shift-Left Imperative" Executive Summary Poster ──
+    // â”€â”€ Graphic 4: "The Shift-Left Imperative" Executive Summary Poster â”€â”€
     const preemptPen = Math.round(((pp.EXM?.pct||0) + (pp.PPM?.pct||0) + (pp.AMT?.pct||0)) / 3);
     const reactPen = Math.round(((pp.ADR?.pct||0) + (pp.SVC?.pct||0)) / 2);
     html += `<div class="dfi-graphic-section">
-        <h2>4. The Shift-Left Imperative — Executive Summary</h2>
+        <h2>4. The Shift-Left Imperative â€” Executive Summary</h2>
         <p class="dfi-graphic-subtitle">Why preemptive cybersecurity must be understood through the kill chain lens, and what the data reveals about market readiness.</p>
         <div style="max-width:1100px;background:linear-gradient(135deg,#1a3a5c,#0a2540);border-radius:12px;padding:24px;color:#fff">
             <div style="text-align:center;font-size:24px;font-weight:800;margin-bottom:4px">Reimagining Threat Defense Through Preemptive Cybersecurity</div>
-            <div style="text-align:center;font-size:14px;color:#8cb8e0;margin-bottom:16px">Kill Chain Phase Coverage Analysis — 51 Vendors, 5 Pillars, 7 Phases</div>
+            <div style="text-align:center;font-size:14px;color:#8cb8e0;margin-bottom:16px">Kill Chain Phase Coverage Analysis â€” 51 Vendors, 5 Pillars, 7 Phases</div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px">
                 ${[
                     {v:'51', l:'Vendors Assessed', c:'#0078d4'},
@@ -21196,16 +21196,16 @@ function _pciRenderKillChainGraphics(panel, stats) {
             <div style="font-size:13px;font-weight:600;color:#ffcc00;margin-bottom:8px">KEY FINDINGS</div>
             <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
                 <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:10px;border-left:3px solid #ff8c00">
-                    <strong style="color:#ff8c00">📊 Preemptive Zone Is Stronger — But AMT Undermines It</strong>
+                    <strong style="color:#ff8c00">ðŸ“Š Preemptive Zone Is Stronger â€” But AMT Undermines It</strong>
                     <div style="font-size:12px;color:#ccc;margin-top:4px">EXM 92% + PPM 86% penetration, but AMT at 55% creates a single point of failure at Phases 1-2.</div>
                 </div>
                 <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:10px;border-left:3px solid #a80000">
-                    <strong style="color:#f88">📉 Platform-Only Vendors: Phases 3-5 Only</strong>
-                    <div style="font-size:12px;color:#ccc;margin-top:4px">49% of the market (25 vendors) score AMT 1.87 and SVC 1.49 — structurally unable to defend the full kill chain.</div>
+                    <strong style="color:#f88">ðŸ“‰ Platform-Only Vendors: Phases 3-5 Only</strong>
+                    <div style="font-size:12px;color:#ccc;margin-top:4px">49% of the market (25 vendors) score AMT 1.87 and SVC 1.49 â€” structurally unable to defend the full kill chain.</div>
                 </div>
                 <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:10px;border-left:3px solid #107c10">
-                    <strong style="color:#8eff8e">✅ 27% Achieve Full Kill Chain Coverage</strong>
-                    <div style="font-size:12px;color:#ccc;margin-top:4px">14 full-spectrum vendors maintain ≥ 2.0 across all pillars — genuine defense-in-depth across all 7 phases.</div>
+                    <strong style="color:#8eff8e">âœ… 27% Achieve Full Kill Chain Coverage</strong>
+                    <div style="font-size:12px;color:#ccc;margin-top:4px">14 full-spectrum vendors maintain â‰¥ 2.0 across all pillars â€” genuine defense-in-depth across all 7 phases.</div>
                 </div>
             </div>
             <div style="font-size:13px;font-weight:600;color:#ffcc00;margin-bottom:8px">RECOMMENDATIONS FOR CPOs</div>
@@ -21222,18 +21222,18 @@ function _pciRenderKillChainGraphics(panel, stats) {
                 </div>`).join('')}
             </div>
             <div style="margin-top:16px;padding:10px;background:rgba(168,0,0,.2);border:1px solid #a80000;border-radius:6px;text-align:center;font-size:13px">
-                <strong style="color:#ff8888">⚠️ SPA:</strong> <span style="color:#eee">By 2028, 35% of enterprise evaluations will use kill chain phase coverage as a primary vendor selection criterion — up from &lt;10% today.</span>
+                <strong style="color:#ff8888">âš ï¸ SPA:</strong> <span style="color:#eee">By 2028, 35% of enterprise evaluations will use kill chain phase coverage as a primary vendor selection criterion â€” up from &lt;10% today.</span>
             </div>
         </div></div>`;
 
-    // ── Graphic 5: Preemptive vs Reactive "VS" Poster ──
+    // â”€â”€ Graphic 5: Preemptive vs Reactive "VS" Poster â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>5. The Great Divide: Preemptive vs Reactive Coverage</h2>
-        <p class="dfi-graphic-subtitle">Two fundamentally different defensive postures — vendors that shift investment left to Phases 1-3 vs those anchored in Phases 5-7.</p>
+        <p class="dfi-graphic-subtitle">Two fundamentally different defensive postures â€” vendors that shift investment left to Phases 1-3 vs those anchored in Phases 5-7.</p>
         <div style="display:flex;gap:16px;max-width:1100px;flex-wrap:wrap">
             <div style="flex:1;min-width:400px;background:#f0fff4;border:2px solid #107c10;border-radius:12px;padding:20px">
-                <div style="text-align:center;font-size:20px;font-weight:800;color:#107c10;margin-bottom:4px">🛡️ PREEMPTIVE ZONE</div>
-                <div style="text-align:center;font-size:12px;color:#555;margin-bottom:12px">Kill Chain Phases 1-3: Reconnaissance → Weaponization → Delivery</div>
+                <div style="text-align:center;font-size:20px;font-weight:800;color:#107c10;margin-bottom:4px">ðŸ›¡ï¸ PREEMPTIVE ZONE</div>
+                <div style="text-align:center;font-size:12px;color:#555;margin-bottom:12px">Kill Chain Phases 1-3: Reconnaissance â†’ Weaponization â†’ Delivery</div>
                 <div style="text-align:center;font-size:36px;font-weight:800;color:#107c10">${preemptPen}%</div>
                 <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">Average vendor penetration</div>
                 ${[
@@ -21246,13 +21246,13 @@ function _pciRenderKillChainGraphics(panel, stats) {
                     <div style="font-weight:700;font-size:16px;color:${i.v>=80?'#107c10':i.v>=60?'#0078d4':'#a80000'}">${i.v}%</div>
                 </div>`).join('')}
                 <div style="margin-top:12px;padding:8px;background:#107c10;color:#fff;border-radius:6px;text-align:center;font-size:12px;font-weight:600">
-                    ✅ Prevents incidents before exploitation occurs
+                    âœ… Prevents incidents before exploitation occurs
                 </div>
             </div>
             <div style="display:flex;align-items:center;font-size:32px;font-weight:800;color:#888">VS</div>
             <div style="flex:1;min-width:400px;background:#fff5f5;border:2px solid #a80000;border-radius:12px;padding:20px">
-                <div style="text-align:center;font-size:20px;font-weight:800;color:#a80000;margin-bottom:4px">⚔️ REACTIVE ZONE</div>
-                <div style="text-align:center;font-size:12px;color:#555;margin-bottom:12px">Kill Chain Phases 5-7: Installation → C2 → Actions on Objectives</div>
+                <div style="text-align:center;font-size:20px;font-weight:800;color:#a80000;margin-bottom:4px">âš”ï¸ REACTIVE ZONE</div>
+                <div style="text-align:center;font-size:12px;color:#555;margin-bottom:12px">Kill Chain Phases 5-7: Installation â†’ C2 â†’ Actions on Objectives</div>
                 <div style="text-align:center;font-size:36px;font-weight:800;color:#a80000">${reactPen}%</div>
                 <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">Average vendor penetration</div>
                 ${[
@@ -21265,22 +21265,22 @@ function _pciRenderKillChainGraphics(panel, stats) {
                 </div>`).join('')}
                 <div style="margin-top:12px;padding:8px;background:#e0e0e0;color:#555;border-radius:6px;text-align:center;font-size:12px;height:14px">&nbsp;</div>
                 <div style="margin-top:8px;padding:8px;background:#a80000;color:#fff;border-radius:6px;text-align:center;font-size:12px;font-weight:600">
-                    ⚠️ Responds after damage has begun
+                    âš ï¸ Responds after damage has begun
                 </div>
             </div>
         </div>
         <div style="margin-top:12px;padding:10px;background:#fff8f0;border:1px solid #ca5010;border-radius:6px;max-width:1100px;text-align:center;font-size:13px">
-            <strong style="color:#ca5010">The Paradox:</strong> A market labeled "preemptive" that is structurally more reactive than preemptive — because the AMT gap (55%) undermines the left side of the kill chain.
+            <strong style="color:#ca5010">The Paradox:</strong> A market labeled "preemptive" that is structurally more reactive than preemptive â€” because the AMT gap (55%) undermines the left side of the kill chain.
         </div></div>`;
 
-    // ── Graphic 6: CPO Investment Roadmap Poster ──
+    // â”€â”€ Graphic 6: CPO Investment Roadmap Poster â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>6. CPO Roadmap: Full Kill Chain Coverage by 2028</h2>
         <p class="dfi-graphic-subtitle">Three-phase investment strategy for Chief Product Officers to achieve full kill chain coverage and differentiated positioning.</p>
         <div style="max-width:1100px">
             <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
                 <div style="flex:1;min-width:280px;background:#f0faff;border:2px solid #0078d4;border-radius:12px;padding:16px">
-                    <div style="text-align:center;font-size:28px">🗺️</div>
+                    <div style="text-align:center;font-size:28px">ðŸ—ºï¸</div>
                     <div style="text-align:center;font-size:16px;font-weight:700;color:#0078d4">Phase 1: 2025-2026</div>
                     <div style="text-align:center;font-size:18px;font-weight:800;margin:4px 0">Assess & Map</div>
                     <ul style="font-size:12px;color:#333;padding-left:18px;margin:8px 0">
@@ -21291,9 +21291,9 @@ function _pciRenderKillChainGraphics(panel, stats) {
                         <li>Benchmark against market averages</li>
                     </ul>
                 </div>
-                <div style="display:flex;align-items:center;font-size:28px;color:#888">→</div>
+                <div style="display:flex;align-items:center;font-size:28px;color:#888">â†’</div>
                 <div style="flex:1;min-width:280px;background:#f0fff4;border:2px solid #107c10;border-radius:12px;padding:16px">
-                    <div style="text-align:center;font-size:28px">🏗️</div>
+                    <div style="text-align:center;font-size:28px">ðŸ—ï¸</div>
                     <div style="text-align:center;font-size:16px;font-weight:700;color:#107c10">Phase 2: 2026-2027</div>
                     <div style="text-align:center;font-size:18px;font-weight:800;margin:4px 0">Build Preemptive Core</div>
                     <ul style="font-size:12px;color:#333;padding-left:18px;margin:8px 0">
@@ -21304,9 +21304,9 @@ function _pciRenderKillChainGraphics(panel, stats) {
                         <li>Embed BAS + continuous validation</li>
                     </ul>
                 </div>
-                <div style="display:flex;align-items:center;font-size:28px;color:#888">→</div>
+                <div style="display:flex;align-items:center;font-size:28px;color:#888">â†’</div>
                 <div style="flex:1;min-width:280px;background:#f5f0ff;border:2px solid #8764b8;border-radius:12px;padding:16px">
-                    <div style="text-align:center;font-size:28px">🚀</div>
+                    <div style="text-align:center;font-size:28px">ðŸš€</div>
                     <div style="text-align:center;font-size:16px;font-weight:700;color:#8764b8">Phase 3: 2027-2028</div>
                     <div style="text-align:center;font-size:18px;font-weight:800;margin:4px 0">Complete Kill Chain</div>
                     <ul style="font-size:12px;color:#333;padding-left:18px;margin:8px 0">
@@ -21318,14 +21318,14 @@ function _pciRenderKillChainGraphics(panel, stats) {
                     </ul>
                 </div>
             </div>
-            <div style="font-size:14px;font-weight:700;color:#1a3a5c;margin-bottom:8px">🎯 SUCCESS METRICS BY 2028</div>
+            <div style="font-size:14px;font-weight:700;color:#1a3a5c;margin-bottom:8px">ðŸŽ¯ SUCCESS METRICS BY 2028</div>
             <div style="display:flex;gap:10px;flex-wrap:wrap">
                 ${[
-                    {metric: 'All 7 Phases ≥ 2.5', icon: '✅', color: '#107c10'},
-                    {metric: 'AMT Score ≥ 3.0', icon: '🛡️', color: '#0078d4'},
-                    {metric: 'Shift-Left Index Deployed', icon: '📊', color: '#8764b8'},
-                    {metric: 'Kill Chain GTM Messaging', icon: '📣', color: '#ca5010'},
-                    {metric: '2x Win Rate Premium', icon: '🏆', color: '#107c10'},
+                    {metric: 'All 7 Phases â‰¥ 2.5', icon: 'âœ…', color: '#107c10'},
+                    {metric: 'AMT Score â‰¥ 3.0', icon: 'ðŸ›¡ï¸', color: '#0078d4'},
+                    {metric: 'Shift-Left Index Deployed', icon: 'ðŸ“Š', color: '#8764b8'},
+                    {metric: 'Kill Chain GTM Messaging', icon: 'ðŸ“£', color: '#ca5010'},
+                    {metric: '2x Win Rate Premium', icon: 'ðŸ†', color: '#107c10'},
                 ].map(m => `<div style="flex:1;min-width:140px;text-align:center;padding:10px;background:#f8f8f5;border-radius:8px;border:1px solid #e0ddd5">
                     <div style="font-size:20px">${m.icon}</div>
                     <div style="font-size:12px;font-weight:700;color:${m.color}">${m.metric}</div>
@@ -21336,9 +21336,9 @@ function _pciRenderKillChainGraphics(panel, stats) {
             </div>
         </div></div>`;
 
-    // ── Graphic 7: Hand-Drawn Kill Chain Infographic ──
+    // â”€â”€ Graphic 7: Hand-Drawn Kill Chain Infographic â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>7. Kill Chain Defense Architecture — Hand-Drawn Infographic</h2>
+        <h2>7. Kill Chain Defense Architecture â€” Hand-Drawn Infographic</h2>
         <p class="dfi-graphic-subtitle">Visual overview of the shift-left thesis: how preemptive pillars create layered defense across the Lockheed Martin kill chain.</p>
         <div style="text-align:right;margin-bottom:8px">
             <button class="report-export-btn" onclick="exportPreCyberKillChainPPTX()" title="Export to PowerPoint">&#128196; Export as PPTX</button>
@@ -21350,7 +21350,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
 
     panel.innerHTML = html;
 
-    // ── Draw rough.js infographic ──
+    // â”€â”€ Draw rough.js infographic â”€â”€
     _pciDrawKillChainInfographic();
 }
 
@@ -21399,19 +21399,19 @@ function _pciDrawKillChainInfographic() {
         addText(x + w/2, arrowY + 40, p.pillars, 10, '600', '#ffffffcc', 'middle');
         addText(x + w/2, arrowY + 58, p.zone, 9, '700', '#ffffffaa', 'middle');
         if (i < 6) {
-            addText(x + w + 3, arrowY + 35, '→', 18, '700', '#888', 'middle');
+            addText(x + w + 3, arrowY + 35, 'â†’', 18, '700', '#888', 'middle');
         }
     });
 
     // Shift-Left bracket
     svg.appendChild(rc.rectangle(20, 168, 498, 24, { ...opt, fill: '#107c10', fillStyle: 'solid', stroke: '#107c10' }));
-    addText(269, 185, '← SHIFT LEFT: Preemptive Zone (Phases 1-3) →', 11, '700', '#fff', 'middle');
+    addText(269, 185, 'â† SHIFT LEFT: Preemptive Zone (Phases 1-3) â†’', 11, '700', '#fff', 'middle');
 
     svg.appendChild(rc.rectangle(530, 168, 155, 24, { ...opt, fill: '#ca5010', fillStyle: 'solid', stroke: '#ca5010' }));
     addText(607, 185, 'Transition (4)', 10, '700', '#fff', 'middle');
 
     svg.appendChild(rc.rectangle(698, 168, 498, 24, { ...opt, fill: '#a80000', fillStyle: 'solid', stroke: '#a80000' }));
-    addText(947, 185, '← Reactive Zone (Phases 5-7) →', 11, '700', '#fff', 'middle');
+    addText(947, 185, 'â† Reactive Zone (Phases 5-7) â†’', 11, '700', '#fff', 'middle');
 
     // Five Pillar Cards
     const pillarCards = [
@@ -21435,12 +21435,12 @@ function _pciDrawKillChainInfographic() {
     addText(600, 365, 'KILL CHAIN COVERAGE BY DELIVERY MODEL', 12, '700', '#fff', 'middle');
 
     const dmCards = [
-        { name: '🎯 Direct Service', count: '11 (22%)', shift: '3.01', react: '3.06', color: '#107c10', bg: '#f0fff4',
-          lines: ['EXM: 3.60 | AMT: 2.45 | PPM: 2.97', 'ADR: 3.38 | SVC: 2.74', 'Full kill chain coverage', '✓ Phases 1-7 all above 2.0'] },
-        { name: '🤝 Platform + Partner', count: '15 (29%)', shift: '3.21', react: '2.58', color: '#0078d4', bg: '#f0faff',
-          lines: ['EXM: 3.69 | AMT: 2.74 | PPM: 3.21', 'ADR: 2.83 | SVC: 2.32', 'Best shift-left scores', '⚠ SVC via partners (gaps)'] },
-        { name: '💻 Platform-Only', count: '25 (49%)', shift: '2.59', react: '2.01', color: '#ca5010', bg: '#fff8f0',
-          lines: ['EXM: 3.07 | AMT: 1.87 | PPM: 2.84', 'ADR: 2.52 | SVC: 1.49', '⚠ Phases 1-2 & 5-7 gaps', '⚠ Structural ceiling'] },
+        { name: 'ðŸŽ¯ Direct Service', count: '11 (22%)', shift: '3.01', react: '3.06', color: '#107c10', bg: '#f0fff4',
+          lines: ['EXM: 3.60 | AMT: 2.45 | PPM: 2.97', 'ADR: 3.38 | SVC: 2.74', 'Full kill chain coverage', 'âœ“ Phases 1-7 all above 2.0'] },
+        { name: 'ðŸ¤ Platform + Partner', count: '15 (29%)', shift: '3.21', react: '2.58', color: '#0078d4', bg: '#f0faff',
+          lines: ['EXM: 3.69 | AMT: 2.74 | PPM: 3.21', 'ADR: 2.83 | SVC: 2.32', 'Best shift-left scores', 'âš  SVC via partners (gaps)'] },
+        { name: 'ðŸ’» Platform-Only', count: '25 (49%)', shift: '2.59', react: '2.01', color: '#ca5010', bg: '#fff8f0',
+          lines: ['EXM: 3.07 | AMT: 1.87 | PPM: 2.84', 'ADR: 2.52 | SVC: 1.49', 'âš  Phases 1-2 & 5-7 gaps', 'âš  Structural ceiling'] },
     ];
     dmCards.forEach((d, i) => {
         const x = 20 + i * 390;
@@ -21454,8 +21454,8 @@ function _pciDrawKillChainInfographic() {
 
     // Key Insight Box
     svg.appendChild(rc.rectangle(20, 575, 1160, 60, { ...opt, fill: '#fff0f0', fillStyle: 'solid', stroke: '#a80000' }));
-    addText(600, 600, '⚠ THE SHIFT-LEFT BOTTLENECK: AMT at 55% penetration undermines the entire preemptive value proposition', 13, '700', '#a80000', 'middle');
-    addText(600, 622, '49% of vendors (platform-only) cannot defend Phases 1-2 or Phases 5-7 — confined to the middle of the kill chain', 11, '400', '#666', 'middle');
+    addText(600, 600, 'âš  THE SHIFT-LEFT BOTTLENECK: AMT at 55% penetration undermines the entire preemptive value proposition', 13, '700', '#a80000', 'middle');
+    addText(600, 622, '49% of vendors (platform-only) cannot defend Phases 1-2 or Phases 5-7 â€” confined to the middle of the kill chain', 11, '400', '#666', 'middle');
 
     // Stat boxes
     const statBoxes = [
@@ -21476,23 +21476,23 @@ function _pciDrawKillChainInfographic() {
     addText(600, 762, 'CPO ACTION PLAN: FROM FEATURE VENDOR TO KILL CHAIN DEFENDER', 12, '700', '#1a3a5c', 'middle');
 
     const actions = [
-        { title: '01 – Map', desc: 'Kill chain scoring', color: '#0078d4' },
-        { title: '02 – Invest', desc: 'AMT to 3.0+', color: '#107c10' },
-        { title: '03 – Reframe', desc: 'Kill chain GTM', color: '#8764b8' },
-        { title: '04 – Close SVC', desc: 'Build/acquire/partner', color: '#ca5010' },
-        { title: '05 – Index', desc: 'Shift-Left metric', color: '#a80000' },
+        { title: '01 â€“ Map', desc: 'Kill chain scoring', color: '#0078d4' },
+        { title: '02 â€“ Invest', desc: 'AMT to 3.0+', color: '#107c10' },
+        { title: '03 â€“ Reframe', desc: 'Kill chain GTM', color: '#8764b8' },
+        { title: '04 â€“ Close SVC', desc: 'Build/acquire/partner', color: '#ca5010' },
+        { title: '05 â€“ Index', desc: 'Shift-Left metric', color: '#a80000' },
     ];
     actions.forEach((a, i) => {
         const x = 40 + i * 226;
         svg.appendChild(rc.rectangle(x, 780, 210, 60, { ...opt, fill: a.color, fillStyle: 'solid', stroke: a.color }));
         addText(x + 105, 805, a.title, 13, '700', '#fff', 'middle');
         addText(x + 105, 825, a.desc, 10, '400', '#ffffffcc', 'middle');
-        if (i < 4) addText(x + 218, 810, '→', 16, '700', '#888', 'middle');
+        if (i < 4) addText(x + 218, 810, 'â†’', 16, '700', '#888', 'middle');
     });
 
     addText(600, 878, 'By 2028, kill chain phase coverage will transition from competitive advantage to minimum buyer expectation.', 12, '700', '#1a3a5c', 'middle');
     addText(600, 895, 'CPOs who act now define the market standard. Those who wait will be measured against it.', 11, '400', '#666', 'middle');
-    addText(1150, 915, '© Gartner Research • Preemptive Cybersecurity Kill Chain 2026', 9, '400', '#aaa', 'end');
+    addText(1150, 915, 'Â© Gartner Research â€¢ Preemptive Cybersecurity Kill Chain 2026', 9, '400', '#aaa', 'end');
 }
 
 /** Export Kill Chain graphics as multi-slide PowerPoint */
@@ -21569,7 +21569,7 @@ async function exportPreCyberAllGraphicsPPTX() {
     }
 }
 
-/* ── PreCyber Positioning Statements (PJA Framework) ── */
+/* â”€â”€ PreCyber Positioning Statements (PJA Framework) â”€â”€ */
 
 const _pciPositioningStatements = {
     'cpo-fragmentation-strategy': {
@@ -21596,12 +21596,12 @@ const _pciPositioningStatements = {
         alignment: {
             positionToFinding: 'Position aligns with Finding #1: "The preemptive cybersecurity market is heavily fragmented, with most vendors concentrating in three or fewer capability domains."',
             actionsToRecs: [
-                'Action 1 (Gap analysis) → Recommendation #1 (Map portfolio against five pillars)',
-                'Action 2 (Service strategy) → Recommendation #2 (Platform vendors must develop service delivery)',
-                'Action 3 (Invest upstream) → Recommendation #3 (Escape the MDR commodity trap)',
-                'Action 4 (Strategic M&A) → Recommendation #4 (Pursue M&A to accelerate)',
-                'Action 5 (Outcome pricing) → Recommendation #5 (Develop outcome-based models)',
-                'Action 6 (MSSP integration) → Recommendation #6 (MSSPs as integration layer)'
+                'Action 1 (Gap analysis) â†’ Recommendation #1 (Map portfolio against five pillars)',
+                'Action 2 (Service strategy) â†’ Recommendation #2 (Platform vendors must develop service delivery)',
+                'Action 3 (Invest upstream) â†’ Recommendation #3 (Escape the MDR commodity trap)',
+                'Action 4 (Strategic M&A) â†’ Recommendation #4 (Pursue M&A to accelerate)',
+                'Action 5 (Outcome pricing) â†’ Recommendation #5 (Develop outcome-based models)',
+                'Action 6 (MSSP integration) â†’ Recommendation #6 (MSSPs as integration layer)'
             ],
             justificationSources: 'Analysis sections on pillar penetration rates, delivery model segmentation, and the three-vendor elite tier (Mandiant, SentinelOne, Fortinet) provide the evidence base.'
         }
@@ -21630,12 +21630,12 @@ const _pciPositioningStatements = {
         alignment: {
             positionToFinding: 'Position aligns with Finding #1: "Most vendors specialize in three or fewer capability domains."',
             actionsToRecs: [
-                'Action 1 (Honest gap map) → Recommendation #1',
-                'Action 2 (Service strategy) → Recommendation #2',
-                'Action 3 (Invest upstream) → Recommendation #3',
-                'Action 4 (M&A acceleration) → Recommendation #4',
-                'Action 5 (Outcome pricing) → Recommendation #5',
-                'Action 6 (MSSP integration) → Recommendation #6'
+                'Action 1 (Honest gap map) â†’ Recommendation #1',
+                'Action 2 (Service strategy) â†’ Recommendation #2',
+                'Action 3 (Invest upstream) â†’ Recommendation #3',
+                'Action 4 (M&A acceleration) â†’ Recommendation #4',
+                'Action 5 (Outcome pricing) â†’ Recommendation #5',
+                'Action 6 (MSSP integration) â†’ Recommendation #6'
             ],
             justificationSources: 'Evidence drawn from pillar penetration analysis, delivery model segmentation, and the <6% no-blind-spot finding.'
         }
@@ -21663,11 +21663,11 @@ const _pciPositioningStatements = {
         alignment: {
             positionToFinding: 'Position aligns with Finding #1: "Preemptive cybersecurity capabilities map directly to the first three phases of the Kill Chain, but most vendors fail to articulate this shift-left value proposition."',
             actionsToRecs: [
-                'Action 1 (Kill chain mapping) → Recommendation #1 (Map portfolio against seven phases)',
-                'Action 2 (Adversary Management investment) → Recommendation #2 (Prioritize as highest-leverage initiative)',
-                'Action 3 (GTM reframing) → Recommendation #3 (Kill chain messaging over feature lists)',
-                'Action 4 (Service delivery) → Recommendation #4 (Build/acquire for Phases 5-7)',
-                'Action 5 (Shift-Left Index) → Recommendation #5 (Develop customer-facing metric)'
+                'Action 1 (Kill chain mapping) â†’ Recommendation #1 (Map portfolio against seven phases)',
+                'Action 2 (Adversary Management investment) â†’ Recommendation #2 (Prioritize as highest-leverage initiative)',
+                'Action 3 (GTM reframing) â†’ Recommendation #3 (Kill chain messaging over feature lists)',
+                'Action 4 (Service delivery) â†’ Recommendation #4 (Build/acquire for Phases 5-7)',
+                'Action 5 (Shift-Left Index) â†’ Recommendation #5 (Develop customer-facing metric)'
             ],
             justificationSources: 'Kill chain phase mapping analysis, pillar-to-phase alignment data, and the reactive capability concentration finding (Phases 4-7 dominance).'
         }
@@ -21695,11 +21695,11 @@ const _pciPositioningStatements = {
         alignment: {
             positionToFinding: 'Position aligns with Finding #1: "Four defensive pillars map directly to the adversary lifecycle, while services maturity operates as a cross-cutting enabler."',
             actionsToRecs: [
-                'Action 1 (Dual-framework mapping) → Recommendation #1',
-                'Action 2 (Adversary Management investment) → Recommendation #2',
-                'Action 3 (GTM reframing) → Recommendation #3',
-                'Action 4 (Services maturity) → Recommendation #4',
-                'Action 5 (Shift-Left Index) → Recommendation #5'
+                'Action 1 (Dual-framework mapping) â†’ Recommendation #1',
+                'Action 2 (Adversary Management investment) â†’ Recommendation #2',
+                'Action 3 (GTM reframing) â†’ Recommendation #3',
+                'Action 4 (Services maturity) â†’ Recommendation #4',
+                'Action 5 (Shift-Left Index) â†’ Recommendation #5'
             ],
             justificationSources: 'Dual-framework evidence: kill chain phase mapping, ATT&CK tactic coverage analysis, services maturity correlation with full-spectrum coverage, and the ~25% full-spectrum finding validated across both frameworks.'
         }
@@ -21727,11 +21727,11 @@ const _pciPositioningStatements = {
         alignment: {
             positionToFinding: 'Position aligns with Findings #1-2: "Four defensive pillars map to adversary lifecycle phases; services maturity is the cross-cutting enabler" and "~68% of vendor capability concentrates in the reactive lifecycle half."',
             actionsToRecs: [
-                'Action 1 (Dual-framework mapping) → Recommendation #1',
-                'Action 2 (Adversary Management) → Recommendation #2',
-                'Action 3 (GTM reframing) → Recommendation #3',
-                'Action 4 (Services maturity) → Recommendation #4',
-                'Action 5 (Shift-Left Index) → Recommendation #5'
+                'Action 1 (Dual-framework mapping) â†’ Recommendation #1',
+                'Action 2 (Adversary Management) â†’ Recommendation #2',
+                'Action 3 (GTM reframing) â†’ Recommendation #3',
+                'Action 4 (Services maturity) â†’ Recommendation #4',
+                'Action 5 (Shift-Left Index) â†’ Recommendation #5'
             ],
             justificationSources: 'Dual-framework mapping data (kill chain + ATT&CK), adversary management penetration gap, services maturity correlation analysis, and the ~25% full-spectrum finding.'
         }
@@ -21763,7 +21763,7 @@ function _pciRenderPositioning(data) {
     html += '\uD83D\uDE80 ACTIONS<br><span style="font-weight: 400; font-size: 11px; opacity: 0.85;">Specific client response<br>to achieve success</span></div>';
     html += '</div></div>';
 
-    // ── Position Statement ──
+    // â”€â”€ Position Statement â”€â”€
     html += '<div class="report-pillar-section">';
     html += '<div class="report-pillar-header">';
     html += '<span class="report-pillar-code">\uD83C\uDFAF</span>';
@@ -21794,7 +21794,7 @@ function _pciRenderPositioning(data) {
     html += '</div>';
     html += '</div></div>';
 
-    // ── Justification ──
+    // â”€â”€ Justification â”€â”€
     html += '<div class="report-pillar-section">';
     html += '<div class="report-pillar-header">';
     html += '<span class="report-pillar-code">\uD83D\uDCD0</span>';
@@ -21815,7 +21815,7 @@ function _pciRenderPositioning(data) {
     });
     html += '</div></div>';
 
-    // ── Recommended Actions ──
+    // â”€â”€ Recommended Actions â”€â”€
     html += '<div class="report-pillar-section">';
     html += '<div class="report-pillar-header">';
     html += '<span class="report-pillar-code">\uD83D\uDE80</span>';
@@ -21839,7 +21839,7 @@ function _pciRenderPositioning(data) {
     });
     html += '</div></div>';
 
-    // ── Report Alignment ──
+    // â”€â”€ Report Alignment â”€â”€
     html += '<div class="report-pillar-section">';
     html += '<div class="report-pillar-header">';
     html += '<span class="report-pillar-code">\uD83D\uDD17</span>';
@@ -21848,13 +21848,13 @@ function _pciRenderPositioning(data) {
     html += '</div></div>';
     html += '<div class="report-sp-longform-card">';
 
-    // Position → Finding
+    // Position â†’ Finding
     html += '<div class="report-sp-section">';
     html += '<h4>Position \u2192 Key Finding</h4>';
     html += '<p style="font-size: 13px; color: var(--text-secondary); padding: 8px 14px; background: var(--bg-tertiary); border-radius: 6px;">' + escapeHtml(pja.alignment.positionToFinding) + '</p>';
     html += '</div>';
 
-    // Actions → Recommendations
+    // Actions â†’ Recommendations
     html += '<div class="report-sp-section">';
     html += '<h4>Actions \u2192 Recommendations</h4>';
     html += '<div style="display: flex; flex-direction: column; gap: 6px;">';
@@ -21863,7 +21863,7 @@ function _pciRenderPositioning(data) {
     });
     html += '</div></div>';
 
-    // Justification → Sources
+    // Justification â†’ Sources
     html += '<div class="report-sp-section">';
     html += '<h4>Justification Sources</h4>';
     html += '<p style="font-size: 13px; color: var(--text-secondary); padding: 8px 14px; background: var(--bg-tertiary); border-radius: 6px;">' + escapeHtml(pja.alignment.justificationSources) + '</p>';
@@ -21874,7 +21874,7 @@ function _pciRenderPositioning(data) {
     panel.innerHTML = html;
 }
 
-/* ── PreCyber Market Insight Edit Mode ── */
+/* â”€â”€ PreCyber Market Insight Edit Mode â”€â”€ */
 
 function pciToggleEdit() {
     _pciEditMode = true;
@@ -21990,7 +21990,7 @@ function pciCancelEdit() {
     populatePreCyberMarketInsight(_pciCurrentPerspective);
 }
 
-// ── DFIR Market Insight ────────────────────────────────────────────────
+// â”€â”€ DFIR Market Insight â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let _dfiCurrentPerspective = null;
 let _dfiEditMode = false;
@@ -22376,7 +22376,7 @@ function _dfiRenderGlossary(data) {
     panel.innerHTML = html;
 }
 
-/** DFIR Graphics tab — 3 data-driven visualizations */
+/** DFIR Graphics tab â€” 3 data-driven visualizations */
 function _dfiRenderGraphics(data) {
     const panel = document.getElementById('dfi-panel-graphics');
     if (!panel) return;
@@ -22390,38 +22390,38 @@ function _dfiRenderGraphics(data) {
         </button>
     </div>`;
 
-    // ═══════════════════════════════════════════════════════════════════
-    //  MERMAID STORY ARC — Complete Research Narrative
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    //  MERMAID STORY ARC â€” Complete Research Narrative
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
     html += `<div style="margin-bottom:24px;padding:16px 20px;background:var(--bg-tertiary);border-radius:12px;border-left:4px solid #0078d4">
-        <div style="font-size:15px;font-weight:700;color:#0078d4;margin-bottom:4px">📖 Story Arc — The Complete DFIR Narrative</div>
-        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">Six diagrams trace the full story of this research note: who's in the market, what blocks AI adoption, how the technology transformation works, and where the industry is headed by 2030. <em>Rendered with Mermaid.js — preview these in VS Code with Ctrl+Shift+V.</em></div>
+        <div style="font-size:15px;font-weight:700;color:#0078d4;margin-bottom:4px">ðŸ“– Story Arc â€” The Complete DFIR Narrative</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">Six diagrams trace the full story of this research note: who's in the market, what blocks AI adoption, how the technology transformation works, and where the industry is headed by 2030. <em>Rendered with Mermaid.js â€” preview these in VS Code with Ctrl+Shift+V.</em></div>
     </div>`;
 
-    // ── Story 1: Market Landscape Pie ──────────────────────────────────
+    // â”€â”€ Story 1: Market Landscape Pie â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>📊 The DFIR Market Landscape</h2>
+        <h2>ðŸ“Š The DFIR Market Landscape</h2>
         <p class="dfi-graphic-subtitle">138 vendors analyzed across three distinct investment profiles. Traditional vendors still dominate by count, but AI-first entrants outperform on the capabilities that drive incident outcomes.</p>
         <div class="dfi-graphic-box" style="display:flex;justify-content:center;overflow-x:auto">
             <pre class="mermaid">
 %%{init: {'theme': 'dark'}}%%
 pie showData title 138 DFIR Vendors by Category
-    "Traditional — 86 vendors" : 62
-    "AI-First Startups — 32 vendors" : 23
-    "AI-First Non-Startups — 15 vendors" : 11
-    "Other — 5 vendors" : 4
+    "Traditional â€” 86 vendors" : 62
+    "AI-First Startups â€” 32 vendors" : 23
+    "AI-First Non-Startups â€” 15 vendors" : 11
+    "Other â€” 5 vendors" : 4
             </pre>
         </div>
         <div style="margin-top:14px;padding:12px 16px;background:var(--bg-tertiary);border-radius:8px;border-left:4px solid #0078d4">
-            <div style="font-size:13px;color:var(--text-primary);line-height:1.6"><strong style="color:#0078d4">Key Insight:</strong> Traditional vendors (62%) average 3.92 across five capability pillars. AI-first startups (23%) average 4.11, outperforming significantly on the investigative critical path. Neither category scores above 4.0 in every pillar — each has structural gaps reflecting their organizational DNA.</div>
+            <div style="font-size:13px;color:var(--text-primary);line-height:1.6"><strong style="color:#0078d4">Key Insight:</strong> Traditional vendors (62%) average 3.92 across five capability pillars. AI-first startups (23%) average 4.11, outperforming significantly on the investigative critical path. Neither category scores above 4.0 in every pillar â€” each has structural gaps reflecting their organizational DNA.</div>
         </div>
     </div>`;
 
-    // ── Story 2: Trust Barrier Mindmap ─────────────────────────────────
+    // â”€â”€ Story 2: Trust Barrier Mindmap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>🧠 The Trust Barrier: Why AI Adoption Stalls</h2>
-        <p class="dfi-graphic-subtitle">Trust — not capability — is the primary barrier to AI adoption in DFIR. Three dimensions of the trust deficit and four solution pathways that bridge the gap.</p>
+        <h2>ðŸ§  The Trust Barrier: Why AI Adoption Stalls</h2>
+        <p class="dfi-graphic-subtitle">Trust â€” not capability â€” is the primary barrier to AI adoption in DFIR. Three dimensions of the trust deficit and four solution pathways that bridge the gap.</p>
         <div class="dfi-graphic-box" style="display:flex;justify-content:center;overflow-x:auto">
             <pre class="mermaid">
 %%{init: {'theme': 'dark'}}%%
@@ -22453,14 +22453,14 @@ mindmap
             </pre>
         </div>
         <div style="margin-top:14px;padding:12px 16px;background:var(--bg-tertiary);border-radius:8px;border-left:4px solid #ca5010">
-            <div style="font-size:13px;color:var(--text-primary);line-height:1.6"><strong style="color:#ca5010">Bottom Line:</strong> The largest obstacle is not the capability of AI but rather trust, driven by concerns about the "black box." Frameworks like SHAP and LIME already exist to satisfy chain of custody, Daubert, and Federal Rule 901 requirements — the barrier is adoption, not technology.</div>
+            <div style="font-size:13px;color:var(--text-primary);line-height:1.6"><strong style="color:#ca5010">Bottom Line:</strong> The largest obstacle is not the capability of AI but rather trust, driven by concerns about the "black box." Frameworks like SHAP and LIME already exist to satisfy chain of custody, Daubert, and Federal Rule 901 requirements â€” the barrier is adoption, not technology.</div>
         </div>
     </div>`;
 
-    // ── Story 3: Detection → Methodology Engine Flowchart ──────────────
+    // â”€â”€ Story 3: Detection â†’ Methodology Engine Flowchart â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>🔄 From Detection Tool to Methodology Engine</h2>
-        <p class="dfi-graphic-subtitle">The core transformation: AI evolving from automating reports and admin tasks to powering the investigative critical path. Traditional vendors focus AI on the left; the opportunity — and competitive advantage — lives on the right.</p>
+        <h2>ðŸ”„ From Detection Tool to Methodology Engine</h2>
+        <p class="dfi-graphic-subtitle">The core transformation: AI evolving from automating reports and admin tasks to powering the investigative critical path. Traditional vendors focus AI on the left; the opportunity â€” and competitive advantage â€” lives on the right.</p>
         <div class="dfi-graphic-box" style="overflow-x:auto">
             <pre class="mermaid">
 %%{init: {'theme': 'dark'}}%%
@@ -22505,19 +22505,19 @@ flowchart LR
         </div>
     </div>`;
 
-    // ── Story 4: Tandem Operating Model Sequence ──────────────────────
+    // â”€â”€ Story 4: Tandem Operating Model Sequence â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>🤝 The Tandem Operating Model</h2>
+        <h2>ðŸ¤ The Tandem Operating Model</h2>
         <p class="dfi-graphic-subtitle">Neither full automation nor manual-only approaches deliver optimal outcomes. This sequence shows the interaction flow from raw evidence to court-admissible deliverables, with AI speed and human judgment working in concert.</p>
         <div class="dfi-graphic-box" style="display:flex;justify-content:center;overflow-x:auto">
             <pre class="mermaid">
 %%{init: {'theme': 'dark', 'sequence': {'mirrorActors': false, 'width': 180}}}%%
 sequenceDiagram
-    participant E as 📦 Evidence
-    participant AI as 🤖 AI Agent
-    participant K as 🕸️ DFKG
-    participant H as 👤 Analyst
-    participant O as 📊 Output
+    participant E as ðŸ“¦ Evidence
+    participant AI as ðŸ¤– AI Agent
+    participant K as ðŸ•¸ï¸ DFKG
+    participant H as ðŸ‘¤ Analyst
+    participant O as ðŸ“Š Output
 
     E->>AI: Raw telemetry & artifacts
     AI->>AI: Data ingestion & correlation
@@ -22525,7 +22525,7 @@ sequenceDiagram
     K-->>AI: Linkages & timeline
     AI->>H: Findings + methodology doc
     Note over AI,H: SHAP/LIME explains each decision
-    H->>AI: Methodology validated ✓
+    H->>AI: Methodology validated âœ“
     AI->>AI: Deep forensic analysis
     AI->>H: Results + evidence lineage
     H->>H: Strategic interpretation
@@ -22534,14 +22534,14 @@ sequenceDiagram
             </pre>
         </div>
         <div style="margin-top:14px;padding:12px 16px;background:var(--bg-tertiary);border-radius:8px;border-left:4px solid #8764b8">
-            <div style="font-size:13px;color:var(--text-primary);line-height:1.6"><strong style="color:#8764b8">Operating Principle:</strong> AI agents handle data ingestion, correlation, and timeline reconstruction. Human experts validate methodology and provide strategic interpretation. Every agent action — model versions, prompts, tool invocations — is logged in an immutable audit trail.</div>
+            <div style="font-size:13px;color:var(--text-primary);line-height:1.6"><strong style="color:#8764b8">Operating Principle:</strong> AI agents handle data ingestion, correlation, and timeline reconstruction. Human experts validate methodology and provide strategic interpretation. Every agent action â€” model versions, prompts, tool invocations â€” is logged in an immutable audit trail.</div>
         </div>
     </div>`;
 
-    // ── Story 5: Evidence Chain of Custody State Diagram ───────────────
+    // â”€â”€ Story 5: Evidence Chain of Custody State Diagram â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>⛓️ Evidence Chain of Custody Lifecycle</h2>
-        <p class="dfi-graphic-subtitle">How AI maintains defensible chain of custody through every stage — from raw evidence acquisition to court-ready deliverables. Each state transition is documented, hashed, and verifiable.</p>
+        <h2>â›“ï¸ Evidence Chain of Custody Lifecycle</h2>
+        <p class="dfi-graphic-subtitle">How AI maintains defensible chain of custody through every stage â€” from raw evidence acquisition to court-ready deliverables. Each state transition is documented, hashed, and verifiable.</p>
         <div class="dfi-graphic-box" style="overflow-x:auto">
             <pre class="mermaid">
 %%{init: {'theme': 'dark'}}%%
@@ -22570,9 +22570,9 @@ stateDiagram-v2
         </div>
     </div>`;
 
-    // ── Story 6: Path to 2030 Timeline ────────────────────────────────
+    // â”€â”€ Story 6: Path to 2030 Timeline â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>📅 Path to 2030: The DFIR AI Convergence</h2>
+        <h2>ðŸ“… Path to 2030: The DFIR AI Convergence</h2>
         <p class="dfi-graphic-subtitle">The strategic planning assumption: "By 2030, the traditional models of manual, human-dependent forensic investigation will largely be irrelevant." This timeline maps the key milestones from today's trust deficit to full convergence.</p>
         <div class="dfi-graphic-box" style="overflow-x:auto">
             <pre class="mermaid" style="min-width:900px">
@@ -22600,20 +22600,20 @@ timeline
             </pre>
         </div>
         <div style="margin-top:14px;padding:12px 16px;background:var(--bg-tertiary);border-radius:8px;border-left:4px solid #a80000">
-            <div style="font-size:13px;color:var(--text-primary);line-height:1.6"><strong style="color:#a80000">Critical Threshold — 2028:</strong> Vendors scoring below 4.0 in investigative and remediation pillars by 2028 risk being unable to compete for enterprise DFIR engagements by 2030. Today, 100% of traditional vendors are legacy-integrated; only 50% of AI-first startups have moved to AI-native architecture.</div>
+            <div style="font-size:13px;color:var(--text-primary);line-height:1.6"><strong style="color:#a80000">Critical Threshold â€” 2028:</strong> Vendors scoring below 4.0 in investigative and remediation pillars by 2028 risk being unable to compete for enterprise DFIR engagements by 2030. Today, 100% of traditional vendors are legacy-integrated; only 50% of AI-first startups have moved to AI-native architecture.</div>
         </div>
     </div>`;
 
-    // ═══════════════════════════════════════════════════════════════════
-    //  DATA DEEP DIVES — Evidence & Analysis
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    //  DATA DEEP DIVES â€” Evidence & Analysis
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
     html += `<div style="margin:32px 0 24px;padding:16px 20px;background:var(--bg-tertiary);border-radius:12px;border-left:4px solid #ca5010">
-        <div style="font-size:15px;font-weight:700;color:#ca5010;margin-bottom:4px">📊 Data Deep Dives — Evidence & Analysis</div>
+        <div style="font-size:15px;font-weight:700;color:#ca5010;margin-bottom:4px">ðŸ“Š Data Deep Dives â€” Evidence & Analysis</div>
         <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">The detailed data graphics below provide the quantitative evidence backing the narrative above: capability scores across 138 vendors, investment gap analysis, competitive dynamics, and the full research summary.</div>
     </div>`;
 
-    // ── Graphic 1: Five-Pillar Capability Heatmap ──────────────────────
+    // â”€â”€ Graphic 1: Five-Pillar Capability Heatmap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const heatmapData = [
         { pillar: 'Investigation',                trad: 4.02, aiStartup: 4.55, aiNonStartup: 4.52 },
         { pillar: 'Planning & Preparation',       trad: 3.94, aiStartup: 4.26, aiNonStartup: 4.12 },
@@ -22654,21 +22654,21 @@ timeline
     </tr>`;
     html += `</tbody></table>
         <div class="dfi-heatmap-legend">
-            <span style="color:#107c10">■ ≥ 4.30 Strong</span>
-            <span style="color:#0078d4">■ 4.00–4.29 Competitive</span>
-            <span style="color:#ca5010">■ 3.85–3.99 Below Target</span>
-            <span style="color:#a80000">■ < 3.85 Critical Gap</span>
+            <span style="color:#107c10">â–  â‰¥ 4.30 Strong</span>
+            <span style="color:#0078d4">â–  4.00â€“4.29 Competitive</span>
+            <span style="color:#ca5010">â–  3.85â€“3.99 Below Target</span>
+            <span style="color:#a80000">â–  < 3.85 Critical Gap</span>
         </div>
     </div></div>`;
 
-    // ── Graphic 2: 2030 Convergence Roadmap ────────────────────────────
+    // â”€â”€ Graphic 2: 2030 Convergence Roadmap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>2. Path to 2030: Vendor Category Convergence Roadmap</h2>
         <p class="dfi-graphic-subtitle">Each vendor category must close specific capability gaps to remain competitive by 2030. The bars represent current overall maturity as a percentage of the 5.0 target, with gap tags showing what each category must address. No single category scores above 4.0 in every pillar today.</p>
         <div class="dfi-graphic-box">
             <div class="dfi-roadmap">
                 <div class="dfi-roadmap-row">
-                    <div class="dfi-roadmap-category">Traditional<small>86 vendors · 3.92 avg</small></div>
+                    <div class="dfi-roadmap-category">Traditional<small>86 vendors Â· 3.92 avg</small></div>
                     <div>
                         <div class="dfi-roadmap-track">
                             <div class="dfi-roadmap-fill" style="width:78.4%;background:linear-gradient(90deg,#ca5010,#ca5010dd)">
@@ -22677,16 +22677,16 @@ timeline
                             <div class="dfi-roadmap-target"><div class="dfi-roadmap-target-label">4.00 Target</div></div>
                         </div>
                         <div class="dfi-roadmap-gaps">
-                            <div class="dfi-roadmap-gap gap-critical">⚠ Containment 3.72</div>
-                            <div class="dfi-roadmap-gap gap-critical">⚠ Investigation 4.02 → needs AI lift</div>
+                            <div class="dfi-roadmap-gap gap-critical">âš  Containment 3.72</div>
+                            <div class="dfi-roadmap-gap gap-critical">âš  Investigation 4.02 â†’ needs AI lift</div>
                             <div class="dfi-roadmap-gap">100% legacy-integrated</div>
-                            <div class="dfi-roadmap-gap gap-strength">✓ Program Mgmt 3.97</div>
-                            <div class="dfi-roadmap-gap gap-strength">✓ Legal/Compliance 3.95</div>
+                            <div class="dfi-roadmap-gap gap-strength">âœ“ Program Mgmt 3.97</div>
+                            <div class="dfi-roadmap-gap gap-strength">âœ“ Legal/Compliance 3.95</div>
                         </div>
                     </div>
                 </div>
                 <div class="dfi-roadmap-row">
-                    <div class="dfi-roadmap-category">AI-First Startups<small>32 vendors · 4.11 avg</small></div>
+                    <div class="dfi-roadmap-category">AI-First Startups<small>32 vendors Â· 4.11 avg</small></div>
                     <div>
                         <div class="dfi-roadmap-track">
                             <div class="dfi-roadmap-fill" style="width:82.2%;background:linear-gradient(90deg,#0078d4,#0078d4dd)">
@@ -22695,16 +22695,16 @@ timeline
                             <div class="dfi-roadmap-target"><div class="dfi-roadmap-target-label">4.00 Target</div></div>
                         </div>
                         <div class="dfi-roadmap-gaps">
-                            <div class="dfi-roadmap-gap gap-critical">⚠ Legal/Compliance 3.77</div>
-                            <div class="dfi-roadmap-gap gap-critical">⚠ Chain of Custody −0.37 vs Traditional</div>
+                            <div class="dfi-roadmap-gap gap-critical">âš  Legal/Compliance 3.77</div>
+                            <div class="dfi-roadmap-gap gap-critical">âš  Chain of Custody âˆ’0.37 vs Traditional</div>
                             <div class="dfi-roadmap-gap">50% AI-native architecture</div>
-                            <div class="dfi-roadmap-gap gap-strength">✓ Investigation 4.55</div>
-                            <div class="dfi-roadmap-gap gap-strength">✓ Planning 4.26</div>
+                            <div class="dfi-roadmap-gap gap-strength">âœ“ Investigation 4.55</div>
+                            <div class="dfi-roadmap-gap gap-strength">âœ“ Planning 4.26</div>
                         </div>
                     </div>
                 </div>
                 <div class="dfi-roadmap-row">
-                    <div class="dfi-roadmap-category">AI-First Non-Startups<small>15 vendors · 4.04 avg</small></div>
+                    <div class="dfi-roadmap-category">AI-First Non-Startups<small>15 vendors Â· 4.04 avg</small></div>
                     <div>
                         <div class="dfi-roadmap-track">
                             <div class="dfi-roadmap-fill" style="width:80.8%;background:linear-gradient(90deg,#8764b8,#8764b8dd)">
@@ -22713,21 +22713,21 @@ timeline
                             <div class="dfi-roadmap-target"><div class="dfi-roadmap-target-label">4.00 Target</div></div>
                         </div>
                         <div class="dfi-roadmap-gaps">
-                            <div class="dfi-roadmap-gap gap-critical">⚠ Program Mgmt 3.82 (lowest)</div>
-                            <div class="dfi-roadmap-gap gap-critical">⚠ Containment 3.93</div>
-                            <div class="dfi-roadmap-gap gap-strength">✓ Investigation 4.52</div>
+                            <div class="dfi-roadmap-gap gap-critical">âš  Program Mgmt 3.82 (lowest)</div>
+                            <div class="dfi-roadmap-gap gap-critical">âš  Containment 3.93</div>
+                            <div class="dfi-roadmap-gap gap-strength">âœ“ Investigation 4.52</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div style="margin-top:20px;padding:14px 16px;background:var(--bg-tertiary);border-radius:8px;border-left:4px solid #a80000">
-                <div style="font-size:13px;font-weight:700;color:#a80000;margin-bottom:4px">SPA — 2030 Strategic Planning Assumption</div>
+                <div style="font-size:13px;font-weight:700;color:#a80000;margin-bottom:4px">SPA â€” 2030 Strategic Planning Assumption</div>
                 <div style="font-size:13px;color:var(--text-primary);line-height:1.6">"By 2030, the traditional models of manual, human-dependent forensic investigation will largely be irrelevant." Vendors scoring below 4.0 in investigative and remediation pillars by 2028 risk being unable to compete for enterprise DFIR engagements by 2030.</div>
             </div>
         </div>
     </div>`;
 
-    // ── Graphic 3: Investment Mismatch — Where Industry IS vs. SHOULD ──
+    // â”€â”€ Graphic 3: Investment Mismatch â€” Where Industry IS vs. SHOULD â”€â”€
     const mismatchData = [
         { pillar: 'Investigation', tradInvest: 40, aiInvest: 85, ideal: 90 },
         { pillar: 'Containment', tradInvest: 30, aiInvest: 70, ideal: 85 },
@@ -22738,7 +22738,7 @@ timeline
 
     html += `<div class="dfi-graphic-section">
         <h2>3. Investment Mismatch: Where the Industry Is vs. Where It Should Be</h2>
-        <p class="dfi-graphic-subtitle">Traditional vendors concentrate investment on program management and legal/compliance — process-driven, compliance-adjacent functions. AI-first entrants invest in technical execution (investigation, containment). The "Ideal Focus" column shows where investment should concentrate based on incident outcome impact.</p>
+        <p class="dfi-graphic-subtitle">Traditional vendors concentrate investment on program management and legal/compliance â€” process-driven, compliance-adjacent functions. AI-first entrants invest in technical execution (investigation, containment). The "Ideal Focus" column shows where investment should concentrate based on incident outcome impact.</p>
         <div class="dfi-graphic-box">
             <div style="display:flex;gap:16px;margin-bottom:16px;font-size:12px;font-weight:600">
                 <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#ca5010;vertical-align:middle;margin-right:4px"></span> Traditional Focus</span>
@@ -22777,20 +22777,20 @@ timeline
 
     html += `<div style="margin-top:16px;padding:14px 16px;background:var(--bg-tertiary);border-radius:8px;border-left:4px solid #0078d4">
             <div style="font-size:13px;font-weight:700;color:#0078d4;margin-bottom:4px">Key Insight</div>
-            <div style="font-size:13px;color:var(--text-primary);line-height:1.6">Traditional vendors over-invest in governance (+40 points above recommended in Program Mgmt) while under-investing in investigation (−50 points below recommended). AI-first startups are closer to the recommended investment profile but under-invest in legal/compliance, leaving them exposed on enterprise trust requirements.</div>
+            <div style="font-size:13px;color:var(--text-primary);line-height:1.6">Traditional vendors over-invest in governance (+40 points above recommended in Program Mgmt) while under-investing in investigation (âˆ’50 points below recommended). AI-first startups are closer to the recommended investment profile but under-invest in legal/compliance, leaving them exposed on enterprise trust requirements.</div>
         </div>
     </div></div>`;
 
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     //  INFOGRAPHIC-STYLE PANELS (NotebookLM / poster format)
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-    // ── Infographic 4: The Full Story — Report-Wide Executive Summary ──
+    // â”€â”€ Infographic 4: The Full Story â€” Report-Wide Executive Summary â”€â”€
     html += `<div class="dfi-infographic" style="border-color:#0078d444">
         <div class="dfi-ig-header" style="background:linear-gradient(135deg,#0078d412,#0078d406)">
             <div class="dfi-ig-header-tag" style="background:#0078d420;color:#0078d4">MARKET INSIGHT INFOGRAPHIC</div>
             <h2>Agentic AI Is the New Digital Forensics Workhorse</h2>
-            <p>Agentic AI will dramatically enhance digital forensics, enabling faster, deeper, and trustworthy incident response — but only for vendors that invest in the right capabilities. Here is the full picture from 138 vendors across 5 capability pillars.</p>
+            <p>Agentic AI will dramatically enhance digital forensics, enabling faster, deeper, and trustworthy incident response â€” but only for vendors that invest in the right capabilities. Here is the full picture from 138 vendors across 5 capability pillars.</p>
         </div>
         <div class="dfi-ig-body">
             <div class="dfi-ig-stats">
@@ -22805,19 +22805,19 @@ timeline
                 <div class="dfi-ig-section-title" style="color:#0078d4;border-color:#0078d444">Key Findings</div>
                 <div class="dfi-ig-rows">
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#107c1015;color:#107c10">🔗</div>
+                        <div class="dfi-ig-row-icon" style="background:#107c1015;color:#107c10">ðŸ”—</div>
                         <div><div class="dfi-ig-row-title">Trust Through Transparency</div>
-                        <div class="dfi-ig-row-text">SHAP + LIME explainability frameworks already exist to satisfy chain of custody, Daubert, and Federal Rule 901 court admissibility — the barrier is adoption, not technology.</div></div>
+                        <div class="dfi-ig-row-text">SHAP + LIME explainability frameworks already exist to satisfy chain of custody, Daubert, and Federal Rule 901 court admissibility â€” the barrier is adoption, not technology.</div></div>
                     </div>
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#0078d415;color:#0078d4">🧠</div>
+                        <div class="dfi-ig-row-icon" style="background:#0078d415;color:#0078d4">ðŸ§ </div>
                         <div><div class="dfi-ig-row-title">AI-Driven Investigation Is Viable</div>
                         <div class="dfi-ig-row-text">ForensicLLM achieves 80%+ source attribution accuracy. Digital Forensic Knowledge Graphs shift focus from "what happened" to "how evidence was collected," enabling real-time AI reasoning verification.</div></div>
                     </div>
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#a8000015;color:#a80000">⚡</div>
-                        <div><div class="dfi-ig-row-title">Offensive–Defensive Gap Is Widening</div>
-                        <div class="dfi-ig-row-text">Threat actors weaponize zero-days in hours, not months. Defensive AI adoption lags due to regulatory constraints and cultural tradition — this asymmetry is a growing strategic risk.</div></div>
+                        <div class="dfi-ig-row-icon" style="background:#a8000015;color:#a80000">âš¡</div>
+                        <div><div class="dfi-ig-row-title">Offensiveâ€“Defensive Gap Is Widening</div>
+                        <div class="dfi-ig-row-text">Threat actors weaponize zero-days in hours, not months. Defensive AI adoption lags due to regulatory constraints and cultural tradition â€” this asymmetry is a growing strategic risk.</div></div>
                     </div>
                 </div>
             </div>
@@ -22828,21 +22828,21 @@ timeline
                     <div class="dfi-ig-flow-step" style="background:#0078d412;color:#0078d4">
                         <div class="dfi-ig-flow-step-num">01</div>
                         <div class="dfi-ig-flow-step-title">Explainable AI</div>
-                        <div class="dfi-ig-flow-step-text" style="color:var(--text-secondary)">Prioritize SHAP/LIME workflows — focus on <em>how</em> evidence is collected</div>
+                        <div class="dfi-ig-flow-step-text" style="color:var(--text-secondary)">Prioritize SHAP/LIME workflows â€” focus on <em>how</em> evidence is collected</div>
                     </div>
-                    <div class="dfi-ig-flow-arrow">→</div>
+                    <div class="dfi-ig-flow-arrow">â†’</div>
                     <div class="dfi-ig-flow-step" style="background:#107c1012;color:#107c10">
                         <div class="dfi-ig-flow-step-num">02</div>
                         <div class="dfi-ig-flow-step-title">Tandem Model</div>
                         <div class="dfi-ig-flow-step-text" style="color:var(--text-secondary)">AI handles ingestion + correlation; humans validate methodology</div>
                     </div>
-                    <div class="dfi-ig-flow-arrow">→</div>
+                    <div class="dfi-ig-flow-arrow">â†’</div>
                     <div class="dfi-ig-flow-step" style="background:#ca501012;color:#ca5010">
                         <div class="dfi-ig-flow-step-num">03</div>
                         <div class="dfi-ig-flow-step-title">Evidence Lineage</div>
                         <div class="dfi-ig-flow-step-text" style="color:var(--text-secondary)">Require UIDs + system location records in all AI-generated reports</div>
                     </div>
-                    <div class="dfi-ig-flow-arrow">→</div>
+                    <div class="dfi-ig-flow-arrow">â†’</div>
                     <div class="dfi-ig-flow-step" style="background:#8764b812;color:#8764b8">
                         <div class="dfi-ig-flow-step-num">04</div>
                         <div class="dfi-ig-flow-step-title">Immutable Audit</div>
@@ -22852,13 +22852,13 @@ timeline
             </div>
 
             <div class="dfi-ig-callout" style="background:#a8000010;border:2px solid #a8000033;color:#a80000;text-align:center">
-                ⚠ "By 2030, the traditional models of manual, human-dependent forensic investigation will largely be irrelevant."<br>
-                <span style="font-size:12px;font-weight:400;color:var(--text-secondary)">— Strategic Planning Assumption</span>
+                âš  "By 2030, the traditional models of manual, human-dependent forensic investigation will largely be irrelevant."<br>
+                <span style="font-size:12px;font-weight:400;color:var(--text-secondary)">â€” Strategic Planning Assumption</span>
             </div>
         </div>
     </div>`;
 
-    // ── Infographic 5: Offensive vs. Defensive — The AI Arms Race ──
+    // â”€â”€ Infographic 5: Offensive vs. Defensive â€” The AI Arms Race â”€â”€
     html += `<div class="dfi-infographic" style="border-color:#a8000044">
         <div class="dfi-ig-header" style="background:linear-gradient(135deg,#a8000012,#a8000006)">
             <div class="dfi-ig-header-tag" style="background:#a8000020;color:#a80000">THREAT LANDSCAPE</div>
@@ -22868,24 +22868,24 @@ timeline
         <div class="dfi-ig-body">
             <div class="dfi-ig-vs">
                 <div class="dfi-ig-vs-side" style="background:#a8000008;border:1.5px solid #a8000033">
-                    <div class="dfi-ig-vs-title" style="color:#a80000">⚔ Offensive (Threat Actors)</div>
+                    <div class="dfi-ig-vs-title" style="color:#a80000">âš” Offensive (Threat Actors)</div>
                     <ul class="dfi-ig-vs-list">
-                        <li>🔴 Zero-day weaponization: <strong>months → hours</strong></li>
-                        <li>🔴 Nation-state AI agents casting wider nets</li>
-                        <li>🔴 No regulatory constraints on AI usage</li>
-                        <li>🔴 Automated reconnaissance at machine speed</li>
-                        <li>🔴 Polymorphic malware generated by LLMs</li>
+                        <li>ðŸ”´ Zero-day weaponization: <strong>months â†’ hours</strong></li>
+                        <li>ðŸ”´ Nation-state AI agents casting wider nets</li>
+                        <li>ðŸ”´ No regulatory constraints on AI usage</li>
+                        <li>ðŸ”´ Automated reconnaissance at machine speed</li>
+                        <li>ðŸ”´ Polymorphic malware generated by LLMs</li>
                     </ul>
                 </div>
                 <div class="dfi-ig-vs-divider">VS</div>
                 <div class="dfi-ig-vs-side" style="background:#0078d408;border:1.5px solid #0078d433">
-                    <div class="dfi-ig-vs-title" style="color:#0078d4">🛡 Defensive (DFIR Vendors)</div>
+                    <div class="dfi-ig-vs-title" style="color:#0078d4">ðŸ›¡ Defensive (DFIR Vendors)</div>
                     <ul class="dfi-ig-vs-list">
-                        <li>🔵 AI adoption: <strong>lagging significantly</strong></li>
-                        <li>🔵 Regulatory & legislative constraints</li>
-                        <li>🔵 "Black box" trust deficit with practitioners</li>
-                        <li>🔵 100% of traditional vendors still legacy-integrated</li>
-                        <li>🔵 AI focused on reports & admin, not investigation</li>
+                        <li>ðŸ”µ AI adoption: <strong>lagging significantly</strong></li>
+                        <li>ðŸ”µ Regulatory & legislative constraints</li>
+                        <li>ðŸ”µ "Black box" trust deficit with practitioners</li>
+                        <li>ðŸ”µ 100% of traditional vendors still legacy-integrated</li>
+                        <li>ðŸ”µ AI focused on reports & admin, not investigation</li>
                     </ul>
                 </div>
             </div>
@@ -22894,7 +22894,7 @@ timeline
                 <div class="dfi-ig-section-title" style="color:#a80000;border-color:#a8000044">Where AI Is Applied Today vs. Where It Should Be</div>
                 <div class="dfi-ig-cols">
                     <div>
-                        <div style="font-size:13px;font-weight:700;color:var(--text-secondary);margin-bottom:10px">🟠 Current AI Focus (Traditional)</div>
+                        <div style="font-size:13px;font-weight:700;color:var(--text-secondary);margin-bottom:10px">ðŸŸ  Current AI Focus (Traditional)</div>
                         <div class="dfi-ig-badges">
                             <span class="dfi-ig-badge" style="background:#ca501010;border-color:#ca501044;color:#ca5010">Report Writing</span>
                             <span class="dfi-ig-badge" style="background:#ca501010;border-color:#ca501044;color:#ca5010">Program Mgmt</span>
@@ -22904,7 +22904,7 @@ timeline
                         </div>
                     </div>
                     <div>
-                        <div style="font-size:13px;font-weight:700;color:var(--text-secondary);margin-bottom:10px">🟢 Where AI Should Focus (Critical Path)</div>
+                        <div style="font-size:13px;font-weight:700;color:var(--text-secondary);margin-bottom:10px">ðŸŸ¢ Where AI Should Focus (Critical Path)</div>
                         <div class="dfi-ig-badges">
                             <span class="dfi-ig-badge" style="background:#107c1010;border-color:#107c1044;color:#107c10">Deep Forensic Analysis</span>
                             <span class="dfi-ig-badge" style="background:#107c1010;border-color:#107c1044;color:#107c10">Triage & Scoping</span>
@@ -22920,17 +22920,17 @@ timeline
                 <div class="dfi-ig-section-title" style="color:#0078d4;border-color:#0078d444">Bridging the Trust Divide</div>
                 <div class="dfi-ig-rows">
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#0078d415;color:#0078d4">📋</div>
+                        <div class="dfi-ig-row-icon" style="background:#0078d415;color:#0078d4">ðŸ“‹</div>
                         <div><div class="dfi-ig-row-title">Evidentiary Standards</div>
                         <div class="dfi-ig-row-text">Daubert and Federal Rule 901 govern court admissibility. AI must produce repeatable, documented processes for every evidence acquisition step.</div></div>
                     </div>
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#107c1015;color:#107c10">🕸</div>
+                        <div class="dfi-ig-row-icon" style="background:#107c1015;color:#107c10">ðŸ•¸</div>
                         <div><div class="dfi-ig-row-title">Digital Forensic Knowledge Graphs</div>
-                        <div class="dfi-ig-row-text">DFKGs visualize timelines and evidence linkages at speeds impossible manually. They shift the narrative from "what happened" to "how we know" — building courtroom-grade confidence.</div></div>
+                        <div class="dfi-ig-row-text">DFKGs visualize timelines and evidence linkages at speeds impossible manually. They shift the narrative from "what happened" to "how we know" â€” building courtroom-grade confidence.</div></div>
                     </div>
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#8764b815;color:#8764b8">🏛</div>
+                        <div class="dfi-ig-row-icon" style="background:#8764b815;color:#8764b8">ðŸ›</div>
                         <div><div class="dfi-ig-row-title">Government & Insurance Validation</div>
                         <div class="dfi-ig-row-text">Expect government oversight of AI forensic tools and cyber insurance validation of AI-powered LLMs for investigation. Governance standards must evolve rapidly to keep pace.</div></div>
                     </div>
@@ -22938,17 +22938,17 @@ timeline
             </div>
 
             <div class="dfi-ig-callout" style="background:#a8000010;border:2px solid #a8000033;color:var(--text-primary);text-align:center;font-size:15px">
-                The question is not <em>whether</em> AI will transform digital forensics —<br>but <strong style="color:#a80000">which vendors will lead</strong> and which will be left behind.
+                The question is not <em>whether</em> AI will transform digital forensics â€”<br>but <strong style="color:#a80000">which vendors will lead</strong> and which will be left behind.
             </div>
         </div>
     </div>`;
 
-    // ── Infographic 6: The Tandem Model — How AI + Humans Work Together ──
+    // â”€â”€ Infographic 6: The Tandem Model â€” How AI + Humans Work Together â”€â”€
     html += `<div class="dfi-infographic" style="border-color:#107c1044">
         <div class="dfi-ig-header" style="background:linear-gradient(135deg,#107c1012,#107c1006)">
             <div class="dfi-ig-header-tag" style="background:#107c1020;color:#107c10">OPERATING MODEL</div>
             <h2>The Tandem Model: AI + Human Investigation</h2>
-            <p>Neither full automation nor manual-only approaches deliver optimal outcomes. The tandem operating model pairs AI speed with human judgment — and the data from 138 vendors shows which side of the equation each category has mastered.</p>
+            <p>Neither full automation nor manual-only approaches deliver optimal outcomes. The tandem operating model pairs AI speed with human judgment â€” and the data from 138 vendors shows which side of the equation each category has mastered.</p>
         </div>
         <div class="dfi-ig-body">
 
@@ -22956,19 +22956,19 @@ timeline
                 <div class="dfi-ig-section-title" style="color:#107c10;border-color:#107c1044">How the Tandem Model Works</div>
                 <div class="dfi-ig-flow">
                     <div class="dfi-ig-flow-step" style="background:#0078d412;color:#0078d4">
-                        <div class="dfi-ig-flow-step-num" style="font-size:20px">🤖</div>
+                        <div class="dfi-ig-flow-step-num" style="font-size:20px">ðŸ¤–</div>
                         <div class="dfi-ig-flow-step-title">AI Agent Layer</div>
                         <div class="dfi-ig-flow-step-text" style="color:var(--text-secondary)">Data ingestion, correlation, timeline reconstruction, artifact search</div>
                     </div>
-                    <div class="dfi-ig-flow-arrow">⟷</div>
+                    <div class="dfi-ig-flow-arrow">âŸ·</div>
                     <div class="dfi-ig-flow-step" style="background:#107c1012;color:#107c10">
-                        <div class="dfi-ig-flow-step-num" style="font-size:20px">🤝</div>
+                        <div class="dfi-ig-flow-step-num" style="font-size:20px">ðŸ¤</div>
                         <div class="dfi-ig-flow-step-title">Validation Layer</div>
                         <div class="dfi-ig-flow-step-text" style="color:var(--text-secondary)">Human experts verify methodology, check reasoning, confirm evidence chain</div>
                     </div>
-                    <div class="dfi-ig-flow-arrow">→</div>
+                    <div class="dfi-ig-flow-arrow">â†’</div>
                     <div class="dfi-ig-flow-step" style="background:#8764b812;color:#8764b8">
-                        <div class="dfi-ig-flow-step-num" style="font-size:20px">📊</div>
+                        <div class="dfi-ig-flow-step-num" style="font-size:20px">ðŸ“Š</div>
                         <div class="dfi-ig-flow-step-title">Actionable Output</div>
                         <div class="dfi-ig-flow-step-text" style="color:var(--text-secondary)">Court-admissible reports with evidence lineage, UIDs, and audit trails</div>
                     </div>
@@ -22983,21 +22983,21 @@ timeline
                             <div class="dfi-ig-donut-inner" style="color:#ca5010">3.92</div>
                         </div>
                         <div class="dfi-ig-donut-lbl">Traditional</div>
-                        <div style="font-size:10px;color:#107c10;margin-top:2px">✓ Governance, CoC</div>
+                        <div style="font-size:10px;color:#107c10;margin-top:2px">âœ“ Governance, CoC</div>
                     </div>
                     <div class="dfi-ig-donut">
                         <div class="dfi-ig-donut-ring" style="background:conic-gradient(#0078d4 0% 82.2%, var(--bg-tertiary) 82.2% 100%)">
                             <div class="dfi-ig-donut-inner" style="color:#0078d4">4.11</div>
                         </div>
                         <div class="dfi-ig-donut-lbl">AI-First Startups</div>
-                        <div style="font-size:10px;color:#107c10;margin-top:2px">✓ Investigation, Speed</div>
+                        <div style="font-size:10px;color:#107c10;margin-top:2px">âœ“ Investigation, Speed</div>
                     </div>
                     <div class="dfi-ig-donut">
                         <div class="dfi-ig-donut-ring" style="background:conic-gradient(#8764b8 0% 80.8%, var(--bg-tertiary) 80.8% 100%)">
                             <div class="dfi-ig-donut-inner" style="color:#8764b8">4.04</div>
                         </div>
                         <div class="dfi-ig-donut-lbl">AI-First Non-Startups</div>
-                        <div style="font-size:10px;color:#107c10;margin-top:2px">✓ Investigation, Balance</div>
+                        <div style="font-size:10px;color:#107c10;margin-top:2px">âœ“ Investigation, Balance</div>
                     </div>
                 </div>
             </div>
@@ -23006,7 +23006,7 @@ timeline
                 <div class="dfi-ig-section-title" style="color:#ca5010;border-color:#ca501044">Critical Sub-Capability Gaps (AI-First vs. Traditional)</div>
                 <div class="dfi-ig-cols">
                     <div>
-                        <div style="font-size:12px;font-weight:700;color:#0078d4;margin-bottom:8px">🔵 AI-First Leads</div>
+                        <div style="font-size:12px;font-weight:700;color:#0078d4;margin-bottom:8px">ðŸ”µ AI-First Leads</div>
                         <div class="dfi-ig-rows" style="gap:8px">
                             <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#0078d408;border-radius:8px;border:1px solid #0078d422">
                                 <span style="font-size:12px;color:var(--text-primary)">Containment & Isolation</span>
@@ -23027,7 +23027,7 @@ timeline
                         </div>
                     </div>
                     <div>
-                        <div style="font-size:12px;font-weight:700;color:#ca5010;margin-bottom:8px">🟠 Traditional Leads</div>
+                        <div style="font-size:12px;font-weight:700;color:#ca5010;margin-bottom:8px">ðŸŸ  Traditional Leads</div>
                         <div class="dfi-ig-rows" style="gap:8px">
                             <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#ca501008;border-radius:8px;border:1px solid #ca501022">
                                 <span style="font-size:12px;color:var(--text-primary)">Chain of Custody</span>
@@ -23053,19 +23053,19 @@ timeline
                 <div class="dfi-ig-section-title" style="color:#107c10;border-color:#107c1044">The Path to Convergence</div>
                 <div class="dfi-ig-rows">
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#ca501015;color:#ca5010">🔧</div>
+                        <div class="dfi-ig-row-icon" style="background:#ca501015;color:#ca5010">ðŸ”§</div>
                         <div><div class="dfi-ig-row-title">Traditional Must Do</div>
                         <div class="dfi-ig-row-text">Apply AI to investigation and remediation workstreams. Move beyond SOAR and report automation toward the technical critical path that drives incident outcomes.</div></div>
                     </div>
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#0078d415;color:#0078d4">🏗</div>
+                        <div class="dfi-ig-row-icon" style="background:#0078d415;color:#0078d4">ðŸ—</div>
                         <div><div class="dfi-ig-row-title">AI-First Must Do</div>
                         <div class="dfi-ig-row-text">Build governance, compliance, and legal defensibility infrastructure. Enterprise clients and courts require chain of custody maturity, expert witness support, and post-incident documentation.</div></div>
                     </div>
                     <div class="dfi-ig-row">
-                        <div class="dfi-ig-row-icon" style="background:#107c1015;color:#107c10">🎯</div>
+                        <div class="dfi-ig-row-icon" style="background:#107c1015;color:#107c10">ðŸŽ¯</div>
                         <div><div class="dfi-ig-row-title">The Destination</div>
-                        <div class="dfi-ig-row-text">Vendors that close their respective gaps first will define the market. AI will not replace investigators — it shifts their focus from data grinding to validation and interpretation of actionable evidence.</div></div>
+                        <div class="dfi-ig-row-text">Vendors that close their respective gaps first will define the market. AI will not replace investigators â€” it shifts their focus from data grinding to validation and interpretation of actionable evidence.</div></div>
                     </div>
                 </div>
             </div>
@@ -23077,15 +23077,15 @@ timeline
         </div>
     </div>`;
 
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     //  HAND-DRAWN WORKFLOW INFOGRAPHIC (rough.js sketch style)
-    // ═══════════════════════════════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     html += `<div class="dfi-graphic-section">
-        <h2>7. The Agentic Shift — Hand-Drawn Workflow</h2>
+        <h2>7. The Agentic Shift â€” Hand-Drawn Workflow</h2>
         <p class="dfi-graphic-subtitle">A sketch-style workflow showing the transition from traditional manual DFIR to AI-powered investigation. Mirrors the NotebookLM infographic format with hand-drawn boxes, connectors, and callout stats.</p>
         <div style="display:flex;gap:8px;margin-bottom:16px">
             <button class="report-export-btn" onclick="exportDFIRInfographicPPTX()" title="Export as editable PowerPoint">
-                <span class="icon">📎</span> Export PPTX
+                <span class="icon">ðŸ“Ž</span> Export PPTX
             </button>
         </div>
         <div id="dfi-sketch-infographic" class="dfi-sketch-container"></div>
@@ -23116,7 +23116,7 @@ timeline
     requestAnimationFrame(() => _dfiDrawSketchInfographic());
 }
 
-/* ─── Hand-drawn infographic renderer using rough.js ─── */
+/* â”€â”€â”€ Hand-drawn infographic renderer using rough.js â”€â”€â”€ */
 function _dfiDrawSketchInfographic() {
     const container = document.getElementById('dfi-sketch-infographic');
     if (!container || typeof rough === 'undefined') return;
@@ -23160,26 +23160,26 @@ function _dfiDrawSketchInfographic() {
         });
     }
 
-    // ── Title banner ──
+    // â”€â”€ Title banner â”€â”€
     svg.appendChild(rc.rectangle(0, 0, W, 70, { ...opt, fill: '#1a3a5c', fillStyle: 'solid', stroke: '#1a3a5c' }));
     addText(W / 2, 30, 'The Agentic Shift: Revolutionizing Digital Forensics & Incident Response', 22, '800', '#fff', 'middle');
-    addText(W / 2, 55, 'From manual, human-dependent investigation → high-speed, transparent, legally defensible AI models', 12, '400', '#ccd8e8', 'middle');
+    addText(W / 2, 55, 'From manual, human-dependent investigation â†’ high-speed, transparent, legally defensible AI models', 12, '400', '#ccd8e8', 'middle');
 
-    // ── Left column: Traditional DFIR ──
+    // â”€â”€ Left column: Traditional DFIR â”€â”€
     // Section header bar
     svg.appendChild(rc.rectangle(20, 85, 520, 32, { ...opt, fill: '#e0ddd5', fillStyle: 'solid', stroke: '#b0a898' }));
     addText(280, 107, 'TRADITIONAL MANUAL DFIR: FROM MANUAL GRINDING', 11, '700', '#5a503c', 'middle');
 
     // Box 1: Hours to Days
     svg.appendChild(rc.rectangle(30, 135, 240, 130, optFill('#fff8f0')));
-    addText(150, 163, '⏱', 28, '400', '#ca5010', 'middle');
+    addText(150, 163, 'â±', 28, '400', '#ca5010', 'middle');
     addText(150, 192, 'Hours to Days', 16, '700', '#ca5010', 'middle');
     addText(150, 210, 'Analysis Speed', 13, '700', '#5a503c', 'middle');
     addMultiText(150, 232, ['Manual data grinding through', 'massive evidence sets'], 11, '#777', 14, 'middle');
 
     // Box 2: Methodology
     svg.appendChild(rc.rectangle(290, 135, 240, 130, optFill('#f5f0f0')));
-    addText(410, 163, '🔍', 28, '400', '#a80000', 'middle');
+    addText(410, 163, 'ðŸ”', 28, '400', '#a80000', 'middle');
     addText(410, 192, 'Human-Driven', 16, '700', '#a80000', 'middle');
     addText(410, 210, 'Opaque Methodology', 13, '700', '#5a503c', 'middle');
     addMultiText(410, 232, ['"Black box" concern blocks', 'AI adoption in investigation'], 11, '#777', 14, 'middle');
@@ -23193,22 +23193,22 @@ function _dfiDrawSketchInfographic() {
 
     // Box 4: Core Focus
     svg.appendChild(rc.rectangle(290, 280, 240, 120, optFill('#f8f5ff')));
-    addText(410, 310, '📋', 28, '400', '#5a503c', 'middle');
+    addText(410, 310, 'ðŸ“‹', 28, '400', '#5a503c', 'middle');
     addText(410, 340, 'Core Focus:', 14, '700', '#5a503c', 'middle');
     addText(410, 358, 'Reporting & Admin', 14, '700', '#ca5010', 'middle');
-    addMultiText(410, 378, ['AI applied to reports, planning,', 'compliance — not critical path'], 11, '#777', 14, 'middle');
+    addMultiText(410, 378, ['AI applied to reports, planning,', 'compliance â€” not critical path'], 11, '#777', 14, 'middle');
 
-    // ── Center: Tandem Model + DFKG ──
+    // â”€â”€ Center: Tandem Model + DFKG â”€â”€
     // DFKG circle
     svg.appendChild(rc.circle(600, 500, 160, optFill('#e8f4ff')));
-    addText(600, 475, '🕸', 32, '400', '#0078d4', 'middle');
+    addText(600, 475, 'ðŸ•¸', 32, '400', '#0078d4', 'middle');
     addText(600, 505, 'Digital Forensic', 13, '700', '#1a3a5c', 'middle');
     addText(600, 522, 'Knowledge Graph', 13, '700', '#1a3a5c', 'middle');
     addText(600, 542, '(DFKGs)', 12, '600', '#0078d4', 'middle');
 
     // Tandem handshake below
     svg.appendChild(rc.rectangle(505, 600, 190, 100, optFill('#f0fff0')));
-    addText(600, 630, '🤝', 28, '400', '#107c10', 'middle');
+    addText(600, 630, 'ðŸ¤', 28, '400', '#107c10', 'middle');
     addText(600, 658, 'Tandem Human-AI', 13, '700', '#107c10', 'middle');
     addText(600, 675, 'Model', 13, '700', '#107c10', 'middle');
     addText(600, 695, 'AI speed + human validation', 10, '400', '#555', 'middle');
@@ -23217,44 +23217,44 @@ function _dfiDrawSketchInfographic() {
     svg.appendChild(rc.rectangle(440, 415, 320, 35, { ...opt, fill: '#fff', fillStyle: 'solid', stroke: '#0078d488' }));
     addText(600, 438, 'Visualizes linkages + timelines at machine speed', 10, '600', '#0078d4', 'middle');
 
-    // Arrows left→center
+    // Arrows leftâ†’center
     svg.appendChild(rc.line(530, 300, 540, 470, { ...opt, stroke: '#b0a898', strokeWidth: 2 }));
-    // Arrow center→right
+    // Arrow centerâ†’right
     svg.appendChild(rc.line(660, 470, 680, 300, { ...opt, stroke: '#0078d4', strokeWidth: 2 }));
 
-    // ── Right column: Agentic AI DFIR ──
+    // â”€â”€ Right column: Agentic AI DFIR â”€â”€
     svg.appendChild(rc.rectangle(660, 85, 520, 32, { ...opt, fill: '#00b4d8', fillStyle: 'solid', stroke: '#0095b3' }));
     addText(920, 107, 'AGENTIC AI DFIR: TO MACHINE-SPEED ANALYSIS', 11, '700', '#fff', 'middle');
 
     // Box R1: Under 12 Minutes
     svg.appendChild(rc.rectangle(670, 135, 240, 130, optFill('#f0faff')));
-    addText(790, 163, '⚡', 28, '400', '#0078d4', 'middle');
+    addText(790, 163, 'âš¡', 28, '400', '#0078d4', 'middle');
     addText(790, 192, 'Under 12 Minutes', 16, '700', '#0078d4', 'middle');
     addText(790, 210, 'Investigation Speed', 13, '700', '#1a3a5c', 'middle');
     addMultiText(790, 232, ['AI agents complete complex', 'investigations replacing hours', 'of manual data ingestion'], 11, '#555', 14, 'middle');
 
     // Box R2: 85% Accuracy
     svg.appendChild(rc.rectangle(930, 135, 240, 130, optFill('#f0fff4')));
-    addText(1050, 163, '🎯', 28, '400', '#107c10', 'middle');
+    addText(1050, 163, 'ðŸŽ¯', 28, '400', '#107c10', 'middle');
     addText(1050, 188, '85%', 28, '800', '#107c10', 'middle');
     addText(1050, 210, 'Source Attribution', 13, '700', '#1a3a5c', 'middle');
     addMultiText(1050, 232, ['ForensicLLM pinpoints specific', 'file paths for every claim'], 11, '#555', 14, 'middle');
 
     // Box R3: Legal Admissibility
     svg.appendChild(rc.rectangle(670, 280, 240, 120, optFill('#f5f0ff')));
-    addText(790, 310, '⚖', 28, '400', '#8764b8', 'middle');
+    addText(790, 310, 'âš–', 28, '400', '#8764b8', 'middle');
     addText(790, 340, 'Legal Admissibility', 14, '700', '#8764b8', 'middle');
     addText(790, 358, '& Rule 901', 14, '700', '#8764b8', 'middle');
     addMultiText(790, 378, ['Documented agent interactions meet', 'Daubert + Federal Rule standards'], 11, '#555', 14, 'middle');
 
     // Box R4: Explainable
     svg.appendChild(rc.rectangle(930, 280, 240, 120, optFill('#fffff0')));
-    addText(1050, 310, '🧠', 28, '400', '#0078d4', 'middle');
+    addText(1050, 310, 'ðŸ§ ', 28, '400', '#0078d4', 'middle');
     addText(1050, 340, 'Explainable /', 14, '700', '#0078d4', 'middle');
     addText(1050, 358, 'Methodology Engine', 14, '700', '#0078d4', 'middle');
     addMultiText(1050, 378, ['SHAP + LIME frameworks deliver', 'transparent, auditable reasoning'], 11, '#555', 14, 'middle');
 
-    // ── Bottom comparison bars ──
+    // â”€â”€ Bottom comparison bars â”€â”€
     svg.appendChild(rc.rectangle(20, 730, W - 40, 150, optFill('#f8f8f5')));
 
     // Comparison header
@@ -23269,7 +23269,7 @@ function _dfiDrawSketchInfographic() {
     addText(920, 794, 'Analysis Speed: Under 12 Minutes', 11, '600', '#0078d4', 'middle');
     // Arrow between
     svg.appendChild(rc.line(520, 789, 680, 789, { ...opt, stroke: '#888', strokeWidth: 2 }));
-    addText(600, 785, '→', 18, '700', '#107c10', 'middle');
+    addText(600, 785, 'â†’', 18, '700', '#107c10', 'middle');
 
     // Bar 2: Methodology
     svg.appendChild(rc.rectangle(50, 810, 460, 28, { ...opt, fill: '#ca501025', fillStyle: 'solid', stroke: '#ca5010' }));
@@ -23277,7 +23277,7 @@ function _dfiDrawSketchInfographic() {
     svg.appendChild(rc.rectangle(690, 810, 460, 28, { ...opt, fill: '#0078d425', fillStyle: 'solid', stroke: '#0078d4' }));
     addText(920, 829, 'Methodology: Explainable / Methodology-Engine', 11, '600', '#0078d4', 'middle');
     svg.appendChild(rc.line(520, 824, 680, 824, { ...opt, stroke: '#888', strokeWidth: 2 }));
-    addText(600, 820, '→', 18, '700', '#107c10', 'middle');
+    addText(600, 820, 'â†’', 18, '700', '#107c10', 'middle');
 
     // Bar 3: Core Focus
     svg.appendChild(rc.rectangle(50, 845, 460, 28, { ...opt, fill: '#ca501025', fillStyle: 'solid', stroke: '#ca5010' }));
@@ -23285,9 +23285,9 @@ function _dfiDrawSketchInfographic() {
     svg.appendChild(rc.rectangle(690, 845, 460, 28, { ...opt, fill: '#0078d425', fillStyle: 'solid', stroke: '#0078d4' }));
     addText(920, 864, 'Core Focus: Triage, Containment & Forensics', 11, '600', '#0078d4', 'middle');
     svg.appendChild(rc.line(520, 859, 680, 859, { ...opt, stroke: '#888', strokeWidth: 2 }));
-    addText(600, 855, '→', 18, '700', '#107c10', 'middle');
+    addText(600, 855, 'â†’', 18, '700', '#107c10', 'middle');
 
-    // ── Vendor stats scattered as callouts ──
+    // â”€â”€ Vendor stats scattered as callouts â”€â”€
     // Left stat callouts
     svg.appendChild(rc.ellipse(150, 460, 170, 80, optFill('#fff5f0')));
     addText(150, 448, '62%', 22, '800', '#ca5010', 'middle');
@@ -23325,7 +23325,7 @@ function _dfiDrawSketchInfographic() {
     svg.appendChild(rc.line(680, 500, 760, 470, { ...opt, stroke: '#0078d4', strokeWidth: 2 }));
 
     // Footer tag
-    addText(W - 30, H - 12, '© Gartner Research · DFIR Market Insight 2026', 9, '400', '#aaa', 'end');
+    addText(W - 30, H - 12, 'Â© Gartner Research Â· DFIR Market Insight 2026', 9, '400', '#aaa', 'end');
 }
 
 /** Export DFIR infographic as editable PowerPoint */
@@ -23477,7 +23477,7 @@ function exportPreCyberMarketInsightHTML() {
     );
 }
 
-// ── Analyst Take (cross-schema) ──────────────────────────────────────────
+// â”€â”€ Analyst Take (cross-schema) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let _atCurrentPerspective = '';
 let _atCachedData = null;
@@ -23667,7 +23667,7 @@ function _atRenderGraphics(data) {
     if (!graphics.length) {
         panel.innerHTML = `<div class="mi-analysis-section">
             <h3>Graphics</h3>
-            <p style="color:var(--text-muted);margin-bottom:16px;">Every Analyst Take should include 2 original graphics that visually articulate the core argument. Graphics should be simple, high-contrast, and scannable — readers should grasp the insight within 5 seconds.</p>
+            <p style="color:var(--text-muted);margin-bottom:16px;">Every Analyst Take should include 2 original graphics that visually articulate the core argument. Graphics should be simple, high-contrast, and scannable â€” readers should grasp the insight within 5 seconds.</p>
             <p class="mi-empty">No graphics have been created for this report yet.</p>
         </div>`;
         return;
@@ -23678,7 +23678,7 @@ function _atRenderGraphics(data) {
         <h3 style="margin:0;">Graphics</h3>
         <span style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:2px 10px;font-size:11px;font-weight:700;color:var(--text-muted);">${graphics.length} of 2</span>
         <button class="report-export-btn" onclick="exportAnalystTakeGraphicsPPTX()" title="Export graphics as PowerPoint" style="margin-left:auto;">
-            <span class="icon">📊</span> Export .pptx
+            <span class="icon">ðŸ“Š</span> Export .pptx
         </button>
     </div>`;
 
@@ -23757,7 +23757,7 @@ function _atRenderGuidance(data) {
         html += '<div class="mi-analysis-section" style="margin-bottom:20px;"><h3>Workflow</h3><div class="at-workflow">';
         g.workflow.forEach((step, i) => {
             html += `<span class="at-workflow-step">${escapeHtml(step)}</span>`;
-            if (i < g.workflow.length - 1) html += '<span class="at-workflow-arrow"> → </span>';
+            if (i < g.workflow.length - 1) html += '<span class="at-workflow-arrow"> â†’ </span>';
         });
         html += '</div></div>';
     }
@@ -23769,7 +23769,7 @@ function _atRenderGuidance(data) {
 
     // Length & Expiry
     html += `<div class="mi-kpi-bar" style="margin-bottom:20px;">
-        <div class="mi-kpi"><div class="mi-kpi-val">${escapeHtml(g.length || '400–900 words')}</div><div class="mi-kpi-lbl">Target Length</div></div>
+        <div class="mi-kpi"><div class="mi-kpi-val">${escapeHtml(g.length || '400â€“900 words')}</div><div class="mi-kpi-lbl">Target Length</div></div>
         <div class="mi-kpi"><div class="mi-kpi-val">${escapeHtml(g.expiry || '9 months')}</div><div class="mi-kpi-lbl">Expiry</div></div>
     </div>`;
 
@@ -23806,7 +23806,7 @@ function _atRenderPositioning(data) {
         tabBtn.className = 'mi-inner-tab';
         tabBtn.setAttribute('data-at-tab', 'positioning');
         tabBtn.type = 'button';
-        tabBtn.textContent = '🎯 Positioning Statements';
+        tabBtn.textContent = 'ðŸŽ¯ Positioning Statements';
         // Insert before the guidance tab
         const guidanceTab = tabContainer.querySelector('[data-at-tab="guidance"]');
         if (guidanceTab) tabContainer.insertBefore(tabBtn, guidanceTab);
@@ -23846,10 +23846,10 @@ function _atRenderPositioning(data) {
             const pc = ps.positionComponents;
             html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">';
             const compLabels = {
-                importantIssue: '🔴 Important Issue',
-                judgment: '⚖️ Judgment',
-                state: '📍 State',
-                drama: '🎭 Drama / Attention'
+                importantIssue: 'ðŸ”´ Important Issue',
+                judgment: 'âš–ï¸ Judgment',
+                state: 'ðŸ“ State',
+                drama: 'ðŸŽ­ Drama / Attention'
             };
             for (const [key, label] of Object.entries(compLabels)) {
                 if (pc[key]) {
@@ -23893,10 +23893,10 @@ function _atRenderPositioning(data) {
             const al = ps.alignment;
             html += '<div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:8px;padding:14px;margin-bottom:8px;">';
             html += '<div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Report Alignment</div>';
-            if (al.positionToFinding) html += `<p style="font-size:12px;margin-bottom:6px;">📌 ${_miInlineFormat(al.positionToFinding)}</p>`;
+            if (al.positionToFinding) html += `<p style="font-size:12px;margin-bottom:6px;">ðŸ“Œ ${_miInlineFormat(al.positionToFinding)}</p>`;
             if (al.actionsToRecs) {
                 al.actionsToRecs.forEach(m => {
-                    html += `<p style="font-size:12px;margin-bottom:4px;color:var(--text-secondary);">↳ ${escapeHtml(m)}</p>`;
+                    html += `<p style="font-size:12px;margin-bottom:4px;color:var(--text-secondary);">â†³ ${escapeHtml(m)}</p>`;
                 });
             }
             if (al.justificationSources) html += `<p style="font-size:11px;margin-top:8px;color:var(--text-muted);">Sources: ${escapeHtml(al.justificationSources)}</p>`;
@@ -24012,7 +24012,7 @@ async function exportAnalystTakeGraphicsPPTX() {
         return;
     }
     const btn = document.querySelector('#at-panel-graphics .report-export-btn');
-    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="icon">⏳</span> Generating…'; }
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="icon">â³</span> Generatingâ€¦'; }
     try {
         const perspectiveId = _atCachedData.id || _atCurrentPerspective || '';
         const resp = await fetch('/api/analyst-take-graphics-pptx?perspective=' + encodeURIComponent(perspectiveId));
@@ -24032,7 +24032,7 @@ async function exportAnalystTakeGraphicsPPTX() {
     } catch (e) {
         alert('Export failed: ' + e.message);
     } finally {
-        if (btn) { btn.disabled = false; btn.innerHTML = '<span class="icon">📊</span> Export .pptx'; }
+        if (btn) { btn.disabled = false; btn.innerHTML = '<span class="icon">ðŸ“Š</span> Export .pptx'; }
     }
 }
 
@@ -24230,17 +24230,17 @@ function _paRenderMarketOverview(data) {
     html += `<div class="pa-section">
         <h3>Executive Summary</h3>
         <p>Across <strong>${data.vendor_count} MDR service providers</strong>, the average pricing maturity score is <strong>${os.mean.toFixed(2)} / 5.0</strong>, indicating the market is still predominantly in the <strong>${_paScoreLabel(os.mean)}</strong> stage of pricing sophistication. Subscription transparency (PRC-SUB) is the strongest dimension at ${ds['PRC-SUB']?.mean.toFixed(2) || 'N/A'}, while success and outcome-based fees (PRC-SUC) lag at ${ds['PRC-SUC']?.mean.toFixed(2) || 'N/A'}, reflecting the industry's early-stage adoption of outcome-aligned commercial models.</p>
-        <p>Composable pricing models — where buyers can mix and match service tiers, add-on modules, and consumption-based features — are used by <strong>${cohorts.pricing_model_type['Composable'] || 0} vendors (${Math.round((cohorts.pricing_model_type['Composable'] || 0)/data.vendor_count*100)}%)</strong> and score significantly higher (avg ${data.cohort_scores.by_model_type['Composable']?.toFixed(2) || 'N/A'}) than subscription-only models (avg ${data.cohort_scores.by_model_type['Subscription-Only']?.toFixed(2) || 'N/A'}).</p>
+        <p>Composable pricing models â€” where buyers can mix and match service tiers, add-on modules, and consumption-based features â€” are used by <strong>${cohorts.pricing_model_type['Composable'] || 0} vendors (${Math.round((cohorts.pricing_model_type['Composable'] || 0)/data.vendor_count*100)}%)</strong> and score significantly higher (avg ${data.cohort_scores.by_model_type['Composable']?.toFixed(2) || 'N/A'}) than subscription-only models (avg ${data.cohort_scores.by_model_type['Subscription-Only']?.toFixed(2) || 'N/A'}).</p>
         ${ais ? (() => {
             const sigPlus = data.vendors.filter(v => v.ai_pricing_influence_label === 'Significant' || v.ai_pricing_influence_label === 'Transformative');
             const minimal = data.vendors.filter(v => v.ai_pricing_influence_label === 'Minimal');
             const sigAvg = sigPlus.length ? (sigPlus.reduce((a,v) => a + (v.pricing_overall_score||0), 0) / sigPlus.length) : 0;
             const minAvg = minimal.length ? (minimal.reduce((a,v) => a + (v.pricing_overall_score||0), 0) / minimal.length) : 0;
-            return `<p><strong>AI-Pricing Connection:</strong> Vendors with <em>Significant</em> or higher AI pricing influence (${sigPlus.length} vendors) average <strong>${sigAvg.toFixed(2)}</strong> across pricing dimensions versus <strong>${minAvg.toFixed(2)}</strong> for <em>Minimal</em>-influence vendors (${minimal.length} vendors) — a <strong>${(sigAvg - minAvg).toFixed(2)}-point gap</strong> indicating that AI maturity correlates with pricing sophistication.</p>`;
+            return `<p><strong>AI-Pricing Connection:</strong> Vendors with <em>Significant</em> or higher AI pricing influence (${sigPlus.length} vendors) average <strong>${sigAvg.toFixed(2)}</strong> across pricing dimensions versus <strong>${minAvg.toFixed(2)}</strong> for <em>Minimal</em>-influence vendors (${minimal.length} vendors) â€” a <strong>${(sigAvg - minAvg).toFixed(2)}-point gap</strong> indicating that AI maturity correlates with pricing sophistication.</p>`;
         })() : ''}
     </div>`;
 
-    // Pricing Evaluation Framework Matrix (6 dimensions × 5 criteria)
+    // Pricing Evaluation Framework Matrix (6 dimensions Ã— 5 criteria)
     html += _paRenderFrameworkMatrix(data);
 
     // Dimension scores bar chart
@@ -24256,7 +24256,7 @@ function _paRenderMarketOverview(data) {
                 <div class="pa-dim-bar-fill" style="width:${pct}%;background:${_paScoreColor(s.mean)}"></div>
                 <span class="pa-dim-bar-value">${s.mean.toFixed(2)}</span>
             </div>
-            <div class="pa-dim-bar-range">${s.min}–${s.max}</div>
+            <div class="pa-dim-bar-range">${s.min}â€“${s.max}</div>
         </div>`;
     });
     html += `</div></div>`;
@@ -24284,7 +24284,7 @@ function _paRenderMarketOverview(data) {
         const avg = data.cohort_scores.by_service_type[type] || 0;
         const pct = Math.round(count / data.vendor_count * 100);
         const aiSvc = ais?.by_service_type?.[type];
-        html += `<tr><td>${escapeHtml(type)}</td><td>${count}</td><td style="color:${_paScoreColor(avg)};font-weight:600;">${avg.toFixed(2)}</td><td>${pct}%</td>${ais ? `<td style="color:${_paScoreColor(aiSvc||0)};font-weight:600;">${aiSvc ? aiSvc.toFixed(2) : '–'}</td>` : ''}</tr>`;
+        html += `<tr><td>${escapeHtml(type)}</td><td>${count}</td><td style="color:${_paScoreColor(avg)};font-weight:600;">${avg.toFixed(2)}</td><td>${pct}%</td>${ais ? `<td style="color:${_paScoreColor(aiSvc||0)};font-weight:600;">${aiSvc ? aiSvc.toFixed(2) : 'â€“'}</td>` : ''}</tr>`;
     });
     html += `</tbody></table></div></div>`;
 
@@ -24390,7 +24390,7 @@ function _paRenderFrameworkMatrix(data) {
         dim.criteria.forEach(c => {
             h += `<td class="pa-fw-crit-cell">${c}</td>`;
         });
-        h += `<td class="pa-fw-avg-cell" style="color:${avgColor};font-weight:700">${avg != null ? avg.toFixed(2) : '–'}</td>`;
+        h += `<td class="pa-fw-avg-cell" style="color:${avgColor};font-weight:700">${avg != null ? avg.toFixed(2) : 'â€“'}</td>`;
         h += `</tr>`;
     });
     h += `</tbody></table></div></div>`;
@@ -24416,7 +24416,7 @@ function _paRenderDimensionDeepDive(data) {
 
     let html = `<div class="pa-section">
         <h3>Pricing Dimensions Framework</h3>
-        <p>The MDR pricing assessment evaluates ${dims.length} dimensions that collectively measure pricing model maturity — from basic subscription transparency to advanced outcome-aligned pricing. Each vendor receives a 1-5 score per dimension.</p>
+        <p>The MDR pricing assessment evaluates ${dims.length} dimensions that collectively measure pricing model maturity â€” from basic subscription transparency to advanced outcome-aligned pricing. Each vendor receives a 1-5 score per dimension.</p>
     </div>`;
 
     dims.forEach(dim => {
@@ -24431,7 +24431,7 @@ function _paRenderDimensionDeepDive(data) {
         html += `<div class="pa-dim-card">
             <div class="pa-dim-card-header">
                 <div>
-                    <h4>${escapeHtml(dim)} — ${escapeHtml(s.label)}</h4>
+                    <h4>${escapeHtml(dim)} â€” ${escapeHtml(s.label)}</h4>
                     <p class="pa-dim-description">${dimDescriptions[dim] || ''}</p>
                 </div>
                 <div class="pa-dim-card-score" style="color:${_paScoreColor(s.mean)}">
@@ -24442,8 +24442,8 @@ function _paRenderDimensionDeepDive(data) {
             <div class="pa-dim-card-body">
                 <div class="pa-dim-stats-row">
                     <span><strong>Median:</strong> ${s.median}</span>
-                    <span><strong>Range:</strong> ${s.min} – ${s.max}</span>
-                    ${data.pricing_benchmarks?.[dim] ? `<span><strong>Top 10 Avg:</strong> <span style="color:#107c10;font-weight:600">${data.pricing_benchmarks[dim].top10_avg?.toFixed(2) || '–'}</span></span>` : ''}
+                    <span><strong>Range:</strong> ${s.min} â€“ ${s.max}</span>
+                    ${data.pricing_benchmarks?.[dim] ? `<span><strong>Top 10 Avg:</strong> <span style="color:#107c10;font-weight:600">${data.pricing_benchmarks[dim].top10_avg?.toFixed(2) || 'â€“'}</span></span>` : ''}
                     <span><strong>Assessed:</strong> ${s.count} vendors</span>
                 </div>
                 <div class="pa-distribution">
@@ -24571,7 +24571,7 @@ function _paRenderVendorComparison(data) {
         tbody.innerHTML = vendors.map((v, idx) => {
             const dimCells = dims.map(d => {
                 const s = v.pricing_dimension_scores?.[d] || 0;
-                return `<td style="color:${_paScoreColor(s)};font-weight:600;text-align:center;">${s || '–'}</td>`;
+                return `<td style="color:${_paScoreColor(s)};font-weight:600;text-align:center;">${s || 'â€“'}</td>`;
             }).join('');
             return `<tr>
                 <td>${idx+1}</td>
@@ -24582,7 +24582,7 @@ function _paRenderVendorComparison(data) {
                 <td style="color:${_paScoreColor(v.pricing_overall_score)};font-weight:700;text-align:center;">${v.pricing_overall_score.toFixed(1)}</td>
                 ${dimCells}
                 <td style="color:${_paScoreColor(v.outcome_maturity_rating)};text-align:center;">${v.outcome_maturity_rating}</td>
-                ${data.is_ai_enriched ? `<td style="text-align:center;"><span style="color:${_paScoreColor(v.ai_pricing_influence||0)};font-weight:600;">${(v.ai_pricing_influence||0).toFixed(2)}</span> <span class="pa-ai-label-badge pa-ai-label-${(v.ai_pricing_influence_label||'').toLowerCase()}">${v.ai_pricing_influence_label||'–'}</span></td><td style="text-align:center;color:#107c10;font-weight:600;">${v.pricing_strengths?.length || 0}</td><td style="text-align:center;color:#a80000;font-weight:600;">${v.pricing_weaknesses?.length || 0}</td>` : ''}
+                ${data.is_ai_enriched ? `<td style="text-align:center;"><span style="color:${_paScoreColor(v.ai_pricing_influence||0)};font-weight:600;">${(v.ai_pricing_influence||0).toFixed(2)}</span> <span class="pa-ai-label-badge pa-ai-label-${(v.ai_pricing_influence_label||'').toLowerCase()}">${v.ai_pricing_influence_label||'â€“'}</span></td><td style="text-align:center;color:#107c10;font-weight:600;">${v.pricing_strengths?.length || 0}</td><td style="text-align:center;color:#a80000;font-weight:600;">${v.pricing_weaknesses?.length || 0}</td>` : ''}
                 <td>${escapeHtml(v.region)}</td>
             </tr>`;
         }).join('');
@@ -24744,7 +24744,7 @@ function _paRenderSingleVendor(v, data, container) {
             const text = rationale[dim];
             if (text) {
                 html += `<div class="pa-rationale-block">
-                    <h4>${escapeHtml(dim)} — ${escapeHtml(dl[dim] || dim)}</h4>
+                    <h4>${escapeHtml(dim)} â€” ${escapeHtml(dl[dim] || dim)}</h4>
                     <p>${escapeHtml(text)}</p>
                 </div>`;
             }
@@ -24774,13 +24774,13 @@ function _paRenderSingleVendor(v, data, container) {
             const excerpts = ev.excerpts || [];
             if (urls.length || notes || excerpts.length) {
                 html += `<details class="pa-evidence-block">
-                    <summary><strong>${escapeHtml(dim)}</strong> — ${escapeHtml(dl[dim] || dim)} (${excerpts.length} excerpt${excerpts.length !== 1 ? 's' : ''})</summary>`;
+                    <summary><strong>${escapeHtml(dim)}</strong> â€” ${escapeHtml(dl[dim] || dim)} (${excerpts.length} excerpt${excerpts.length !== 1 ? 's' : ''})</summary>`;
                 if (notes) html += `<p class="pa-evidence-notes">${escapeHtml(notes)}</p>`;
-                if (urls.length) html += `<div class="pa-evidence-urls">${urls.map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(u.length > 60 ? u.slice(0, 60) + '…' : u)}</a>`).join('<br>')}</div>`;
+                if (urls.length) html += `<div class="pa-evidence-urls">${urls.map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(u.length > 60 ? u.slice(0, 60) + 'â€¦' : u)}</a>`).join('<br>')}</div>`;
                 if (excerpts.length) {
                     html += `<div class="pa-evidence-excerpts">`;
                     excerpts.slice(0, 3).forEach(ex => {
-                        html += `<blockquote class="pa-excerpt">${escapeHtml((ex.excerpt || '').slice(0, 300))}${(ex.excerpt||'').length > 300 ? '…' : ''}</blockquote>`;
+                        html += `<blockquote class="pa-excerpt">${escapeHtml((ex.excerpt || '').slice(0, 300))}${(ex.excerpt||'').length > 300 ? 'â€¦' : ''}</blockquote>`;
                     });
                     if (excerpts.length > 3) html += `<p class="pa-more-excerpts">+ ${excerpts.length - 3} more excerpts</p>`;
                     html += `</div>`;
@@ -24791,7 +24791,7 @@ function _paRenderSingleVendor(v, data, container) {
         html += `</div>`;
     }
 
-    // ── AI Pricing Influence Section ──
+    // â”€â”€ AI Pricing Influence Section â”€â”€
     if (v.ai_pricing_influence !== undefined) {
         const aiScore = v.ai_pricing_influence;
         const aiLabel = v.ai_pricing_influence_label || '';
@@ -24810,7 +24810,7 @@ function _paRenderSingleVendor(v, data, container) {
             <div class="pa-ai-cap-grid">
                 <div class="pa-ai-cap-item"><span class="pa-ai-cap-label">AIO (AI Operations)</span><span class="pa-ai-cap-val" style="color:${_paScoreColor(aiCap.AIO||0)}">${(aiCap.AIO||0).toFixed(1)}</span></div>
                 <div class="pa-ai-cap-item"><span class="pa-ai-cap-label">AID (AI Development)</span><span class="pa-ai-cap-val" style="color:${_paScoreColor(aiCap.AID||0)}">${(aiCap.AID||0).toFixed(1)}</span></div>
-                <div class="pa-ai-cap-item"><span class="pa-ai-cap-label">AI-First</span><span class="pa-ai-cap-val">${aiCap.is_ai_first ? '✓ Yes' : '✗ No'}</span></div>
+                <div class="pa-ai-cap-item"><span class="pa-ai-cap-label">AI-First</span><span class="pa-ai-cap-val">${aiCap.is_ai_first ? 'âœ“ Yes' : 'âœ— No'}</span></div>
             </div>`;
         if (v.ai_pricing_narrative) {
             html += `<p class="pa-ai-narrative">${escapeHtml(v.ai_pricing_narrative)}</p>`;
@@ -24818,7 +24818,7 @@ function _paRenderSingleVendor(v, data, container) {
         html += `</div>`;
     }
 
-    // ── Strengths & Weaknesses ──
+    // â”€â”€ Strengths & Weaknesses â”€â”€
     if ((v.pricing_strengths?.length) || (v.pricing_weaknesses?.length)) {
         html += `<div class="pa-section pa-sw-section"><h3>Strengths & Weaknesses</h3><div class="pa-sw-grid">`;
 
@@ -24884,7 +24884,7 @@ function _paRenderSingleVendor(v, data, container) {
         html += `</div></div></div>`; // close sw-grid, sw-section
     }
 
-    // ── Improvement Roadmap ──
+    // â”€â”€ Improvement Roadmap â”€â”€
     if (v.pricing_roadmap?.length) {
         html += `<div class="pa-section pa-roadmap-section"><h3>Pricing Improvement Roadmap</h3>`;
         const phases = [1, 2, 3];
@@ -24904,7 +24904,7 @@ function _paRenderSingleVendor(v, data, container) {
                     </div>
                     <div class="pa-roadmap-scores">
                         <span>Current: <strong style="color:${_paScoreColor(item.current_score)}">${item.current_score}</strong></span>
-                        <span>→ Target: <strong style="color:${_paScoreColor(item.target_score)}">${item.target_score.toFixed(1)}</strong></span>
+                        <span>â†’ Target: <strong style="color:${_paScoreColor(item.target_score)}">${item.target_score.toFixed(1)}</strong></span>
                         <span>Gap to Top 10: <strong>${item.gap_to_top10.toFixed(1)}</strong></span>
                     </div>`;
                 if (item.actions?.length) {
@@ -24919,7 +24919,7 @@ function _paRenderSingleVendor(v, data, container) {
         html += `</div>`;
     }
 
-    // ── Recommendations ──
+    // â”€â”€ Recommendations â”€â”€
     if (v.pricing_recommendations?.length) {
         html += `<div class="pa-section pa-rec-section"><h3>Recommendations</h3>`;
         v.pricing_recommendations.forEach(rec => {
@@ -25014,7 +25014,7 @@ function _paRenderCohortAnalysis(data) {
     // AI Influence Tier cohort (additional table)
     if (data.is_ai_enriched) {
         const aiTiers = ['Transformative', 'Significant', 'Emerging', 'Minimal'];
-        html += `<div class="pa-section"><h3>By AI Influence Tier</h3><p>How pricing maturity varies by AI adoption level — the strongest signal for future pricing model evolution.</p>`;
+        html += `<div class="pa-section"><h3>By AI Influence Tier</h3><p>How pricing maturity varies by AI adoption level â€” the strongest signal for future pricing model evolution.</p>`;
         html += `<div class="pa-cohort-table"><table>
             <thead><tr><th>AI Tier</th><th>Count</th><th>Overall Avg</th>`;
         dims.forEach(dim => { html += `<th title="${escapeHtml(dl[dim])}">${dim.replace('PRC-','')}</th>`; });
@@ -25055,7 +25055,7 @@ function _paRenderAIPricing(data) {
 
     let html = '';
 
-    // ── Thesis Statement ──
+    // â”€â”€ Thesis Statement â”€â”€
     html += `<div class="pa-section pa-ai-thesis-section">
         <h3>Research Thesis: AI Adoption & Pricing Model Evolution</h3>
         <div class="pa-ai-thesis-box">
@@ -25064,7 +25064,7 @@ function _paRenderAIPricing(data) {
         </div>
     </div>`;
 
-    // ── AI Influence Distribution ──
+    // â”€â”€ AI Influence Distribution â”€â”€
     html += `<div class="pa-section">
         <h3>AI Pricing Influence Distribution</h3>
         <div class="pa-kpi-row">
@@ -25096,7 +25096,7 @@ function _paRenderAIPricing(data) {
     });
     html += `</div></div>`;
 
-    // ── AI Influence by Model Type ──
+    // â”€â”€ AI Influence by Model Type â”€â”€
     html += `<div class="pa-section"><h3>AI Influence by Pricing Model Type</h3>
         <p class="pa-ai-insight">Composable and usage-based models correlate with higher AI pricing influence, supporting the thesis that modular architectures enable AI-driven pricing evolution.</p>
         <div class="pa-cohort-table"><table>
@@ -25110,7 +25110,7 @@ function _paRenderAIPricing(data) {
     }
     html += `</tbody></table></div></div>`;
 
-    // ── AI Influence by Service Type ──
+    // â”€â”€ AI Influence by Service Type â”€â”€
     html += `<div class="pa-section"><h3>AI Influence by Service Type</h3>
         <div class="pa-cohort-table"><table>
         <thead><tr><th>Service Type</th><th>Avg AI Influence</th><th>Vendor Count</th></tr></thead><tbody>`;
@@ -25123,7 +25123,7 @@ function _paRenderAIPricing(data) {
     }
     html += `</tbody></table></div></div>`;
 
-    // ── Top & Bottom Vendors by AI Influence ──
+    // â”€â”€ Top & Bottom Vendors by AI Influence â”€â”€
     const sorted = [...vendors].sort((a,b) => (b.ai_pricing_influence || 0) - (a.ai_pricing_influence || 0));
     const top10 = sorted.slice(0, 10);
     const bottom10 = sorted.slice(-10).reverse();
@@ -25168,14 +25168,14 @@ function _paRenderAIPricing(data) {
     });
     html += `</tbody></table></div></div>`;
 
-    // ── AI vs Pricing Scatter (text-based) ──
+    // â”€â”€ AI vs Pricing Scatter (text-based) â”€â”€
     html += `<div class="pa-section"><h3>AI Operational Maturity vs Pricing Maturity</h3>
         <p class="pa-ai-insight">This table reveals the correlation between AI operational investment and pricing model sophistication across all vendors.</p>
         <div class="pa-scatter-grid">`;
 
-    // Create a 5x5 grid (AIO rows ← 5 to 1, Pricing cols 1 → 5)
+    // Create a 5x5 grid (AIO rows â† 5 to 1, Pricing cols 1 â†’ 5)
     html += `<div class="pa-scatter-table"><table>
-        <thead><tr><th class="pa-scatter-corner">AIO ↓ / Price →</th>`;
+        <thead><tr><th class="pa-scatter-corner">AIO â†“ / Price â†’</th>`;
     for (let p = 1; p <= 5; p++) {
         html += `<th>${p}.0</th>`;
     }
@@ -25202,12 +25202,12 @@ function _paRenderAIPricing(data) {
     }
     html += `</tbody></table></div></div></div>`;
 
-    // ── Market-Level Recommendations ──
+    // â”€â”€ Market-Level Recommendations â”€â”€
     html += `<div class="pa-section pa-ai-market-recs">
         <h3>Market-Level Observations</h3>
         <div class="pa-rec-card">
             <div class="pa-rec-header"><span class="pa-rec-priority" style="background:#a8000022;color:#a80000;border:1px solid #a8000044;">Key Finding</span><span class="pa-rec-category">AI-Pricing Gap</span></div>
-            <p class="pa-rec-text">Despite ${vendors.filter(v => (v.ai_capability_scores?.AIO||0) >= 3).length} vendors achieving AIO ≥ 3.0, only ${vendors.filter(v => (v.ai_pricing_influence||0) >= 3).length} translate this into significant+ pricing influence. This gap represents the primary opportunity for pricing model innovation in MDR services.</p>
+            <p class="pa-rec-text">Despite ${vendors.filter(v => (v.ai_capability_scores?.AIO||0) >= 3).length} vendors achieving AIO â‰¥ 3.0, only ${vendors.filter(v => (v.ai_pricing_influence||0) >= 3).length} translate this into significant+ pricing influence. This gap represents the primary opportunity for pricing model innovation in MDR services.</p>
         </div>
         <div class="pa-rec-card">
             <div class="pa-rec-header"><span class="pa-rec-priority" style="background:#0078d422;color:#0078d4;border:1px solid #0078d444;">Trend</span><span class="pa-rec-category">Model Type Correlation</span></div>
@@ -25622,9 +25622,9 @@ document.addEventListener('click', function(e) {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════════════
- *  PMR (Product Market Readiness) — Credibility Gap Market Insight
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+ *  PMR (Product Market Readiness) â€” Credibility Gap Market Insight
+ * â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 let _pmrCurrentPerspective = '';
 let _pmrCachedData = null;
@@ -25684,7 +25684,7 @@ async function populatePMRMarketInsight(forcePerspective) {
     panel.dataset.loaded = perspectiveId;
 
     const titleEl = document.getElementById('pmr-title');
-    titleEl.textContent = data.title || 'Product Market Readiness — Credibility Gap Analysis';
+    titleEl.textContent = data.title || 'Product Market Readiness â€” Credibility Gap Analysis';
     titleEl.setAttribute('data-pmr-field', 'title');
     const summaryEl = document.getElementById('pmr-summary');
     summaryEl.textContent = data.summary || '';
@@ -25725,7 +25725,7 @@ async function populatePMRMarketInsight(forcePerspective) {
     _pmrRenderGraphics(data, stats);
 }
 
-/* ── PMR Exec Summary ── */
+/* â”€â”€ PMR Exec Summary â”€â”€ */
 function _pmrRenderExecSummary(data, stats) {
     const panel = document.getElementById('pmr-panel-exec-summary');
     if (!panel) return;
@@ -25759,7 +25759,7 @@ function _pmrRenderExecSummary(data, stats) {
             </div>
             <div class="mi-stat-card" style="background:#1a1a2e;border:1px solid #333;border-radius:8px;padding:14px;text-align:center;">
                 <div style="font-size:28px;font-weight:700;color:#a78bfa;">5</div>
-                <div style="font-size:11px;color:#999;margin-top:4px;">Pillars × 5 Subs</div>
+                <div style="font-size:11px;color:#999;margin-top:4px;">Pillars Ã— 5 Subs</div>
             </div>
         </div>`;
     }
@@ -25789,7 +25789,7 @@ function _pmrRenderExecSummary(data, stats) {
     panel.innerHTML = html;
 }
 
-/* ── PMR Analysis ── */
+/* â”€â”€ PMR Analysis â”€â”€ */
 function _pmrRenderAnalysis(data, stats) {
     const panel = document.getElementById('pmr-panel-analysis');
     if (!panel) return;
@@ -25813,7 +25813,7 @@ function _pmrRenderAnalysis(data, stats) {
             const severity = Math.abs(gap) < 0.5 ? 'Aligned' : Math.abs(gap) < 1.0 ? 'Moderate' : Math.abs(gap) < 2.0 ? 'Significant' : 'Critical';
             const gapColor = Math.abs(gap) < 0.5 ? '#34d399' : Math.abs(gap) < 1.0 ? '#f59e0b' : '#ef4444';
             html += `<tr>
-                <td style="padding:8px;border-bottom:1px solid #333;"><strong>${p}</strong> — ${escapeHtml(ps.label)}</td>
+                <td style="padding:8px;border-bottom:1px solid #333;"><strong>${p}</strong> â€” ${escapeHtml(ps.label)}</td>
                 <td style="text-align:center;padding:8px;border-bottom:1px solid #333;color:#34d399;font-weight:700;">${ps.gtm_avg}</td>
                 <td style="text-align:center;padding:8px;border-bottom:1px solid #333;color:#f59e0b;font-weight:700;">${ps.proof_avg}</td>
                 <td style="text-align:center;padding:8px;border-bottom:1px solid #333;color:${gapColor};font-weight:700;">${gap > 0 ? '+' : ''}${gap}</td>
@@ -25860,7 +25860,7 @@ function _pmrRenderAnalysis(data, stats) {
     panel.innerHTML = html;
 }
 
-/* ── PMR Background ── */
+/* â”€â”€ PMR Background â”€â”€ */
 function _pmrRenderBackground(data) {
     const panel = document.getElementById('pmr-panel-background');
     if (!panel) return;
@@ -25870,7 +25870,7 @@ function _pmrRenderBackground(data) {
     </div>`;
 }
 
-/* ── PMR Impact ── */
+/* â”€â”€ PMR Impact â”€â”€ */
 function _pmrRenderImpact(data) {
     const panel = document.getElementById('pmr-panel-impact');
     if (!panel) return;
@@ -25880,7 +25880,7 @@ function _pmrRenderImpact(data) {
     </div>`;
 }
 
-/* ── PMR Conclusion ── */
+/* â”€â”€ PMR Conclusion â”€â”€ */
 function _pmrRenderConclusion(data) {
     const panel = document.getElementById('pmr-panel-conclusion');
     if (!panel) return;
@@ -25890,7 +25890,7 @@ function _pmrRenderConclusion(data) {
     </div>`;
 }
 
-/* ── PMR Glossary & Evidence ── */
+/* â”€â”€ PMR Glossary & Evidence â”€â”€ */
 function _pmrRenderGlossary(data) {
     const panel = document.getElementById('pmr-panel-glossary');
     if (!panel) return;
@@ -25923,7 +25923,7 @@ function _pmrRenderGlossary(data) {
     panel.innerHTML = html;
 }
 
-/* ── PMR Graphics Tab ── */
+/* â”€â”€ PMR Graphics Tab â”€â”€ */
 function _pmrRenderGraphics(data, stats) {
     const panel = document.getElementById('pmr-panel-graphics');
     if (!panel) return;
@@ -25935,10 +25935,10 @@ function _pmrRenderGraphics(data, stats) {
         </button>
     </div>`;
 
-    // ── Graphic 1: Pillar Credibility Gap Bar Chart ──
+    // â”€â”€ Graphic 1: Pillar Credibility Gap Bar Chart â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>1. Pillar-Level Credibility Gap — GTM vs. Proof of Execution</h2>
-        <p class="dfi-graphic-subtitle">Average GTM messaging score vs. proof-of-execution score across ${stats ? stats.vendor_count : 208} vendors. Gap = GTM − Proof.</p>`;
+        <h2>1. Pillar-Level Credibility Gap â€” GTM vs. Proof of Execution</h2>
+        <p class="dfi-graphic-subtitle">Average GTM messaging score vs. proof-of-execution score across ${stats ? stats.vendor_count : 208} vendors. Gap = GTM âˆ’ Proof.</p>`;
     if (stats && stats.pillar_stats) {
         html += `<div style="max-width:800px;">`;
         for (const p of stats.pillars) {
@@ -25948,7 +25948,7 @@ function _pmrRenderGraphics(data, stats) {
             const gap = ps.gap_avg;
             const gapColor = Math.abs(gap) < 0.5 ? '#34d399' : Math.abs(gap) < 1.0 ? '#f59e0b' : '#ef4444';
             html += `<div style="margin-bottom:14px;">
-                <div style="font-size:13px;font-weight:600;margin-bottom:4px;">${p} — ${escapeHtml(ps.label)}</div>
+                <div style="font-size:13px;font-weight:600;margin-bottom:4px;">${p} â€” ${escapeHtml(ps.label)}</div>
                 <div style="display:flex;align-items:center;gap:8px;">
                     <div style="width:80px;font-size:11px;color:#34d399;">GTM ${ps.gtm_avg}</div>
                     <div style="flex:1;height:16px;background:#1a1a2e;border-radius:4px;overflow:hidden;">
@@ -25966,14 +25966,14 @@ function _pmrRenderGraphics(data, stats) {
         }
         html += `</div>`;
     } else {
-        html += `<p class="mi-empty">Live statistics not available — seed data may not be scored yet.</p>`;
+        html += `<p class="mi-empty">Live statistics not available â€” seed data may not be scored yet.</p>`;
     }
     html += `</div>`;
 
-    // ── Graphic 2: Coverage Grade Distribution ──
+    // â”€â”€ Graphic 2: Coverage Grade Distribution â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>2. Coverage Grade Distribution</h2>
-        <p class="dfi-graphic-subtitle">Letter grades (A–F) based on percentage of 25 sub-pillars with non-zero GTM messaging scores.</p>`;
+        <p class="dfi-graphic-subtitle">Letter grades (Aâ€“F) based on percentage of 25 sub-pillars with non-zero GTM messaging scores.</p>`;
     if (stats && stats.grade_distribution) {
         const grades = ['A', 'B', 'C', 'D', 'F'];
         const gradeColors = { A: '#34d399', B: '#60a5fa', C: '#f59e0b', D: '#f97316', F: '#ef4444' };
@@ -25992,13 +25992,13 @@ function _pmrRenderGraphics(data, stats) {
     }
     html += `</div>`;
 
-    // ── Graphic 3: Gap Severity Distribution ──
+    // â”€â”€ Graphic 3: Gap Severity Distribution â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>3. Gap Severity Distribution (All Vendors × All Sub-Pillars)</h2>
+        <h2>3. Gap Severity Distribution (All Vendors Ã— All Sub-Pillars)</h2>
         <p class="dfi-graphic-subtitle">Count of vendor-sub-pillar combinations in each gap severity band.</p>`;
     if (stats && stats.gap_severity_totals) {
         const bands = ['aligned', 'minor', 'moderate', 'significant', 'critical'];
-        const bandLabels = { aligned: 'Aligned (0–0.5)', minor: 'Minor (0.5–1.0)', moderate: 'Moderate (1.0–1.5)', significant: 'Significant (1.5–2.0)', critical: 'Critical (2.0+)' };
+        const bandLabels = { aligned: 'Aligned (0â€“0.5)', minor: 'Minor (0.5â€“1.0)', moderate: 'Moderate (1.0â€“1.5)', significant: 'Significant (1.5â€“2.0)', critical: 'Critical (2.0+)' };
         const bandColors = { aligned: '#34d399', minor: '#60a5fa', moderate: '#f59e0b', significant: '#f97316', critical: '#ef4444' };
         const maxBand = Math.max(1, ...bands.map(b => stats.gap_severity_totals[b] || 0));
         html += `<div style="max-width:700px;margin-top:12px;">`;
@@ -26016,9 +26016,9 @@ function _pmrRenderGraphics(data, stats) {
     }
     html += `</div>`;
 
-    // ── Graphic 4: Top Over-Claimers ──
+    // â”€â”€ Graphic 4: Top Over-Claimers â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>4. Top 10 Over-Claimers — Largest Positive Credibility Gaps</h2>
+        <h2>4. Top 10 Over-Claimers â€” Largest Positive Credibility Gaps</h2>
         <p class="dfi-graphic-subtitle">Vendors whose GTM messaging most exceeds their proof of execution.</p>`;
     if (stats && stats.over_claimers && stats.over_claimers.length) {
         html += `<div style="overflow-x:auto;">
@@ -26045,9 +26045,9 @@ function _pmrRenderGraphics(data, stats) {
     }
     html += `</div>`;
 
-    // ── Graphic 5: Best Aligned Vendors ──
+    // â”€â”€ Graphic 5: Best Aligned Vendors â”€â”€
     html += `<div class="dfi-graphic-section">
-        <h2>5. Top 10 Best-Aligned Vendors — Smallest Credibility Gaps</h2>
+        <h2>5. Top 10 Best-Aligned Vendors â€” Smallest Credibility Gaps</h2>
         <p class="dfi-graphic-subtitle">Vendors with the closest alignment between claims and proof.</p>`;
     if (stats && stats.best_aligned && stats.best_aligned.length) {
         html += `<div style="overflow-x:auto;">
@@ -26073,7 +26073,7 @@ function _pmrRenderGraphics(data, stats) {
     }
     html += `</div>`;
 
-    // ── Graphic 6: Cross-Schema Coverage ──
+    // â”€â”€ Graphic 6: Cross-Schema Coverage â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>6. Cross-Schema Vendor Coverage</h2>
         <p class="dfi-graphic-subtitle">Number of PMR vendors also appearing in other Gartner capability schemas.</p>`;
@@ -26096,7 +26096,7 @@ function _pmrRenderGraphics(data, stats) {
     }
     html += `</div>`;
 
-    // ── Graphic 7: Vendor Type Distribution ──
+    // â”€â”€ Graphic 7: Vendor Type Distribution â”€â”€
     html += `<div class="dfi-graphic-section">
         <h2>7. Vendor Type Distribution & Gap Comparison</h2>
         <p class="dfi-graphic-subtitle">Vendor count and average credibility gap by vendor type classification.</p>`;
@@ -26120,7 +26120,7 @@ function _pmrRenderGraphics(data, stats) {
     panel.innerHTML = html;
 }
 
-/* ── PMR Edit Mode ── */
+/* â”€â”€ PMR Edit Mode â”€â”€ */
 function pmrToggleEdit() {
     _pmrEditMode = true;
     document.getElementById('pmr-edit-btn').style.display = 'none';
@@ -26206,7 +26206,7 @@ function pmrCancelEdit() {
     populatePMRMarketInsight(_pmrCurrentPerspective);
 }
 
-/* ── PMR HTML Export ── */
+/* â”€â”€ PMR HTML Export â”€â”€ */
 function exportPMRMarketInsightHTML() {
     const reportPanel = document.getElementById('report-panel-pmr-market-insight');
     if (!reportPanel) return;
@@ -26230,7 +26230,7 @@ table{border-collapse:collapse;width:100%}th,td{padding:8px;border-bottom:1px so
     URL.revokeObjectURL(url);
 }
 
-/* ── PMR PPTX Export ── */
+/* â”€â”€ PMR PPTX Export â”€â”€ */
 async function exportPMRAllGraphicsPPTX() {
     try {
         const resp = await fetch('/api/pmr-all-graphics-pptx');
@@ -26249,9 +26249,9 @@ async function exportPMRAllGraphicsPPTX() {
     }
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Blumira Vendor Deep-Dive Report
-   ═══════════════════════════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 let _bddData = null;
 
@@ -26287,7 +26287,7 @@ async function populateBlumiraDeepDive() {
     _bddRenderUnmapped(_bddData.unmapped);
 }
 
-/* ── helpers ──────────────────────────────────────────────────────────────── */
+/* â”€â”€ helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function _bddScoreColor(score, max) {
     const pct = score / max;
     if (pct >= 0.8) return '#2e7d32';
@@ -26347,7 +26347,7 @@ function _bddPillarTable(pillarScores, subScores, labels, scale, max) {
     return html;
 }
 
-/* ── Overview Tab ─────────────────────────────────────────────────────────── */
+/* â”€â”€ Overview Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function _bddRenderOverview(data) {
     const panel = document.getElementById('bdd-panel-overview');
     const mdr = data.mdr, pc = data.precyber, dfir = data.dfir, pmr = data.pmr, unm = data.unmapped;
@@ -26366,7 +26366,7 @@ function _bddRenderOverview(data) {
 
     panel.innerHTML = `
     <div style="margin-bottom:24px">
-        <h2 style="margin:0 0 6px;font-size:20px;color:var(--text-primary)">Blumira — Cross-Schema Capability Assessment</h2>
+        <h2 style="margin:0 0 6px;font-size:20px;color:var(--text-primary)">Blumira â€” Cross-Schema Capability Assessment</h2>
         <p style="color:var(--text-secondary);margin:0 0 16px;font-size:14px">
             ${mdr ? mdr.description : 'Cloud SIEM/XDR platform for SMBs.'}
         </p>
@@ -26437,11 +26437,11 @@ function _bddRenderOverview(data) {
 
     <!-- Key Takeaway -->
     <div style="background:linear-gradient(135deg,#1a237e11,#0078d411);border:1px solid #0078d444;border-radius:10px;padding:18px;margin-bottom:20px">
-        <h3 style="margin:0 0 8px;font-size:14px;color:#0078d4">📋 Analyst Assessment</h3>
+        <h3 style="margin:0 0 8px;font-size:14px;color:#0078d4">ðŸ“‹ Analyst Assessment</h3>
         <p style="margin:0;font-size:13px;color:var(--text-primary);line-height:1.6">
             Blumira is a strong SMB-focused platform MDR with meaningful capability coverage across MDR Services (${mdrAvg} avg) 
-            and partial applicability to Preemptive Cyber (${pcAvg}) and DFIR (${dfirAvg}). Its core strengths — cloud SIEM/XDR, 
-            endpoint detection, automated containment, and compliance automation — serve the SMB segment well. However, 
+            and partial applicability to Preemptive Cyber (${pcAvg}) and DFIR (${dfirAvg}). Its core strengths â€” cloud SIEM/XDR, 
+            endpoint detection, automated containment, and compliance automation â€” serve the SMB segment well. However, 
             <strong>${unmCount} significant capabilities</strong> fall outside all three schemas, including compliance automation, 
             MSP multi-tenant platform, executive ROI reporting, and SMB-optimized security economics. These unmapped capabilities 
             represent Blumira's primary market differentiation and should be considered in any vendor evaluation.
@@ -26450,7 +26450,7 @@ function _bddRenderOverview(data) {
 }
 
 function _bddSchemaRow(name, avg, cov, total, vendor, type) {
-    const topPillar = vendor ? Object.entries(vendor.pillar_scores).sort((a,b) => b[1]-a[1])[0] : ['—', 0];
+    const topPillar = vendor ? Object.entries(vendor.pillar_scores).sort((a,b) => b[1]-a[1])[0] : ['â€”', 0];
     const covPct = Math.round((cov/total)*100);
     const fitLabel = covPct >= 80 ? 'Strong' : covPct >= 50 ? 'Moderate' : 'Partial';
     const fitColor = covPct >= 80 ? '#2e7d32' : covPct >= 50 ? '#ed6c02' : '#d84315';
@@ -26466,11 +26466,11 @@ function _bddSchemaRow(name, avg, cov, total, vendor, type) {
 function _bddProfileRow(label, value) {
     return `<div style="display:flex;gap:8px">
         <span style="color:var(--text-secondary);min-width:110px">${label}:</span>
-        <span style="color:var(--text-primary);font-weight:500">${value || '—'}</span>
+        <span style="color:var(--text-primary);font-weight:500">${value || 'â€”'}</span>
     </div>`;
 }
 
-/* ── MDR Services Tab ─────────────────────────────────────────────────────── */
+/* â”€â”€ MDR Services Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function _bddRenderMDR(mdr, pricing) {
     const panel = document.getElementById('bdd-panel-mdr');
     if (!mdr) { panel.innerHTML = '<p style="padding:20px;color:var(--text-secondary)">No MDR data available.</p>'; return; }
@@ -26510,22 +26510,22 @@ function _bddRenderMDR(mdr, pricing) {
     panel.innerHTML = `
     <h2 style="margin:0 0 4px;font-size:18px;color:var(--text-primary)">MDR Services Schema Analysis</h2>
     <p style="color:var(--text-secondary);margin:0 0 20px;font-size:13px">
-        8 pillars × 4 sub-pillars = 32 capability dimensions | Scoring: 0–5 (No Evidence → Market-Leading)
+        8 pillars Ã— 4 sub-pillars = 32 capability dimensions | Scoring: 0â€“5 (No Evidence â†’ Market-Leading)
     </p>
 
     <!-- Strengths & Gaps -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
         <div style="background:#2e7d3211;border:1px solid #2e7d3244;border-radius:10px;padding:14px">
-            <h4 style="margin:0 0 8px;color:#2e7d32;font-size:13px">✅ Strengths (Score ≥ 3)</h4>
+            <h4 style="margin:0 0 8px;color:#2e7d32;font-size:13px">âœ… Strengths (Score â‰¥ 3)</h4>
             ${strengths.map(([k,v]) => `<div style="font-size:12px;margin-bottom:4px;display:flex;justify-content:space-between">
-                <span>${k} — ${labels[k] || k}</span>
+                <span>${k} â€” ${labels[k] || k}</span>
                 <span style="font-weight:700;color:#2e7d32">${v}/5</span>
             </div>`).join('') || '<div style="font-size:12px;color:var(--text-tertiary)">None</div>'}
         </div>
         <div style="background:#c6282811;border:1px solid #c6282844;border-radius:10px;padding:14px">
-            <h4 style="margin:0 0 8px;color:#c62828;font-size:13px">⚠️ Gaps (Score ≤ 1)</h4>
+            <h4 style="margin:0 0 8px;color:#c62828;font-size:13px">âš ï¸ Gaps (Score â‰¤ 1)</h4>
             ${gaps.map(([k,v]) => `<div style="font-size:12px;margin-bottom:4px;display:flex;justify-content:space-between">
-                <span>${k} — ${labels[k] || k}</span>
+                <span>${k} â€” ${labels[k] || k}</span>
                 <span style="font-weight:700;color:#c62828">${v}/5</span>
             </div>`).join('') || '<div style="font-size:12px;color:var(--text-tertiary)">None</div>'}
         </div>
@@ -26540,7 +26540,7 @@ function _bddRenderMDR(mdr, pricing) {
     </div>`;
 }
 
-/* ── Preemptive Cyber Tab ─────────────────────────────────────────────────── */
+/* â”€â”€ Preemptive Cyber Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function _bddRenderPreCyber(pc) {
     const panel = document.getElementById('bdd-panel-precyber');
     if (!pc) { panel.innerHTML = '<p style="padding:20px;color:var(--text-secondary)">No Preemptive Cyber data available.</p>'; return; }
@@ -26557,29 +26557,29 @@ function _bddRenderPreCyber(pc) {
     panel.innerHTML = `
     <h2 style="margin:0 0 4px;font-size:18px;color:var(--text-primary)">Preemptive Cybersecurity Schema Analysis</h2>
     <p style="color:var(--text-secondary);margin:0 0 20px;font-size:13px">
-        4 pillars × 4 sub-pillars = 16 capability dimensions | Scoring: 0–5 (No Evidence → Market-Leading)
+        4 pillars Ã— 4 sub-pillars = 16 capability dimensions | Scoring: 0â€“5 (No Evidence â†’ Market-Leading)
     </p>
 
     <!-- Score Distribution -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px">
         <div style="background:#2e7d3211;border:1px solid #2e7d3244;border-radius:10px;padding:14px">
-            <h4 style="margin:0 0 8px;color:#2e7d32;font-size:13px">✅ Demonstrated (≥ 3)</h4>
+            <h4 style="margin:0 0 8px;color:#2e7d32;font-size:13px">âœ… Demonstrated (â‰¥ 3)</h4>
             ${strengths.map(([k,v]) => `<div style="font-size:12px;margin-bottom:4px;display:flex;justify-content:space-between">
-                <span>${k} — ${labels[k] || k}</span>
+                <span>${k} â€” ${labels[k] || k}</span>
                 <span style="font-weight:700;color:#2e7d32">${v}/5</span>
             </div>`).join('') || '<div style="font-size:12px;color:var(--text-tertiary)">None at this level</div>'}
         </div>
         <div style="background:#ed6c0211;border:1px solid #ed6c0244;border-radius:10px;padding:14px">
-            <h4 style="margin:0 0 8px;color:#ed6c02;font-size:13px">🔶 Generic Claims (= 2)</h4>
+            <h4 style="margin:0 0 8px;color:#ed6c02;font-size:13px">ðŸ”¶ Generic Claims (= 2)</h4>
             ${moderate.map(([k,v]) => `<div style="font-size:12px;margin-bottom:4px;display:flex;justify-content:space-between">
-                <span>${k} — ${labels[k] || k}</span>
+                <span>${k} â€” ${labels[k] || k}</span>
                 <span style="font-weight:700;color:#ed6c02">${v}/5</span>
             </div>`).join('') || '<div style="font-size:12px;color:var(--text-tertiary)">None</div>'}
         </div>
         <div style="background:#c6282811;border:1px solid #c6282844;border-radius:10px;padding:14px">
-            <h4 style="margin:0 0 8px;color:#c62828;font-size:13px">⚠️ Minimal / None (≤ 1)</h4>
+            <h4 style="margin:0 0 8px;color:#c62828;font-size:13px">âš ï¸ Minimal / None (â‰¤ 1)</h4>
             ${gaps.map(([k,v]) => `<div style="font-size:12px;margin-bottom:4px;display:flex;justify-content:space-between">
-                <span>${k} — ${labels[k] || k}</span>
+                <span>${k} â€” ${labels[k] || k}</span>
                 <span style="font-weight:700;color:#c62828">${v}/5</span>
             </div>`).join('') || '<div style="font-size:12px;color:var(--text-tertiary)">None</div>'}
         </div>
@@ -26587,12 +26587,12 @@ function _bddRenderPreCyber(pc) {
 
     <!-- Fit Assessment -->
     <div style="background:linear-gradient(135deg,#ed6c0211,#d8431511);border:1px solid #ed6c0244;border-radius:10px;padding:16px;margin-bottom:20px">
-        <h3 style="margin:0 0 8px;font-size:14px;color:#ed6c02">🔍 Preemptive Cyber Fit Assessment</h3>
+        <h3 style="margin:0 0 8px;font-size:14px;color:#ed6c02">ðŸ” Preemptive Cyber Fit Assessment</h3>
         <p style="margin:0;font-size:13px;color:var(--text-primary);line-height:1.6">
             Blumira's preemptive capabilities are concentrated in <strong>Adversary Disruption (ADR: ${pillars.ADR})</strong>, 
             anchored by built-in honeypot/deception technology (ADR-01: ${subs['ADR-01']}). Supporting capabilities include 
             managed detection rules for threat intelligence operationalization and dynamic blocklists for network defense. 
-            The platform lacks Breach & Attack Simulation, AMTD, penetration testing, and dedicated EASM — reflecting its 
+            The platform lacks Breach & Attack Simulation, AMTD, penetration testing, and dedicated EASM â€” reflecting its 
             positioning as a detection-and-response platform rather than a preemptive security solution.
         </p>
     </div>
@@ -26604,7 +26604,7 @@ function _bddRenderPreCyber(pc) {
     </div>`;
 }
 
-/* ── DFIR Tab ─────────────────────────────────────────────────────────────── */
+/* â”€â”€ DFIR Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function _bddRenderDFIR(dfir) {
     const panel = document.getElementById('bdd-panel-dfir');
     if (!dfir) { panel.innerHTML = '<p style="padding:20px;color:var(--text-secondary)">No DFIR data available.</p>'; return; }
@@ -26639,21 +26639,21 @@ function _bddRenderDFIR(dfir) {
     panel.innerHTML = `
     <h2 style="margin:0 0 4px;font-size:18px;color:var(--text-primary)">DFIR Schema Analysis</h2>
     <p style="color:var(--text-secondary);margin:0 0 20px;font-size:13px">
-        5 pillars × 4 sub-pillars = 20 capability dimensions | Scoring: 1–5 (Manual → Fully Agentic)
+        5 pillars Ã— 4 sub-pillars = 20 capability dimensions | Scoring: 1â€“5 (Manual â†’ Fully Agentic)
     </p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
         <div style="background:#0078d411;border:1px solid #0078d444;border-radius:10px;padding:14px">
-            <h4 style="margin:0 0 8px;color:#0078d4;font-size:13px">✅ AI-Augmented+ (≥ 3)</h4>
+            <h4 style="margin:0 0 8px;color:#0078d4;font-size:13px">âœ… AI-Augmented+ (â‰¥ 3)</h4>
             ${capable.map(([k,v]) => `<div style="font-size:12px;margin-bottom:4px;display:flex;justify-content:space-between">
-                <span>${k} — ${dfirLabels[k] || k}</span>
+                <span>${k} â€” ${dfirLabels[k] || k}</span>
                 <span style="font-weight:700;color:#0078d4">${v}/5</span>
             </div>`).join('') || '<div style="font-size:12px;color:var(--text-tertiary)">None at this level</div>'}
         </div>
         <div style="background:#c6282811;border:1px solid #c6282844;border-radius:10px;padding:14px">
-            <h4 style="margin:0 0 8px;color:#c62828;font-size:13px">⚠️ Manual Only (= 1)</h4>
+            <h4 style="margin:0 0 8px;color:#c62828;font-size:13px">âš ï¸ Manual Only (= 1)</h4>
             ${minimal.map(([k,v]) => `<div style="font-size:12px;margin-bottom:4px;display:flex;justify-content:space-between">
-                <span>${k} — ${dfirLabels[k] || k}</span>
+                <span>${k} â€” ${dfirLabels[k] || k}</span>
                 <span style="font-weight:700;color:#c62828">${v}/5</span>
             </div>`).join('') || '<div style="font-size:12px;color:var(--text-tertiary)">None</div>'}
         </div>
@@ -26661,14 +26661,14 @@ function _bddRenderDFIR(dfir) {
 
     <!-- Fit Assessment -->
     <div style="background:linear-gradient(135deg,#d8431511,#c6282811);border:1px solid #d8431544;border-radius:10px;padding:16px;margin-bottom:20px">
-        <h3 style="margin:0 0 8px;font-size:14px;color:#d84315">🔍 DFIR Fit Assessment</h3>
+        <h3 style="margin:0 0 8px;font-size:14px;color:#d84315">ðŸ” DFIR Fit Assessment</h3>
         <p style="margin:0;font-size:13px;color:var(--text-primary);line-height:1.6">
             Blumira provides DFIR-adjacent capabilities, not dedicated forensics. Its strongest contributions are in 
             <strong>automated containment (REM-01: ${allSubs['REM-01']})</strong> via host isolation and dynamic blocklists, 
             and <strong>AI-augmented triage (INV-01: ${allSubs['INV-01']})</strong> via SOC Auto-Focus. The platform supports 
             incident coordination through 24/7 SecOps and compliance reporting. Critical DFIR gaps include malware reverse 
             engineering (INV-04: ${allSubs['INV-04']}), ransomware negotiation (REM-04: ${allSubs['REM-04']}), and the entire 
-            Legal/Evidentiary pillar (LAW: ${pillars.LAW}) — expected for a detection platform vs. a DFIR specialist.
+            Legal/Evidentiary pillar (LAW: ${pillars.LAW}) â€” expected for a detection platform vs. a DFIR specialist.
         </p>
     </div>
 
@@ -26679,7 +26679,7 @@ function _bddRenderDFIR(dfir) {
     </div>`;
 }
 
-/* ── Unmapped Capabilities Tab ────────────────────────────────────────────── */
+/* â”€â”€ Unmapped Capabilities Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function _bddRenderUnmapped(unmapped) {
     const panel = document.getElementById('bdd-panel-unmapped');
     if (!unmapped || !unmapped.capabilities) {
@@ -26693,7 +26693,7 @@ function _bddRenderUnmapped(unmapped) {
     const high = caps.filter(c => c.maturity >= 4);
 
     panel.innerHTML = `
-    <h2 style="margin:0 0 4px;font-size:18px;color:var(--text-primary)">Unmapped Capabilities — Beyond Schema Coverage</h2>
+    <h2 style="margin:0 0 4px;font-size:18px;color:var(--text-primary)">Unmapped Capabilities â€” Beyond Schema Coverage</h2>
     <p style="color:var(--text-secondary);margin:0 0 20px;font-size:13px">
         Capabilities Blumira demonstrates that are not captured by MDR Services, Preemptive Cyber, or DFIR schemas
     </p>
@@ -26714,19 +26714,19 @@ function _bddRenderUnmapped(unmapped) {
         </div>
         <div class="mi-kpi">
             <div style="font-size:22px;font-weight:800;color:#2e7d32">${high.length}</div>
-            <div style="font-size:11px;color:var(--text-secondary)">High Maturity (≥ 4)</div>
+            <div style="font-size:11px;color:var(--text-secondary)">High Maturity (â‰¥ 4)</div>
         </div>
     </div>
 
     <!-- Key insight -->
     <div style="background:linear-gradient(135deg,#6a1b9a11,#2e7d3211);border:1px solid #6a1b9a44;border-radius:10px;padding:16px;margin-bottom:24px">
-        <h3 style="margin:0 0 8px;font-size:14px;color:#6a1b9a">💡 Schema Blind Spots</h3>
+        <h3 style="margin:0 0 8px;font-size:14px;color:#6a1b9a">ðŸ’¡ Schema Blind Spots</h3>
         <p style="margin:0;font-size:13px;color:var(--text-primary);line-height:1.6">
             These ${caps.length} capabilities represent significant vendor value that existing schemas fail to capture. 
             For Blumira specifically, the strongest unmapped capabilities are in 
             <strong>${high.map(c => c.name).join(', ')}</strong>. 
             These gaps suggest that current schemas may under-value vendors with strong operational, economic, 
-            and GTM differentiation — particularly those targeting the SMB segment where deployment simplicity, 
+            and GTM differentiation â€” particularly those targeting the SMB segment where deployment simplicity, 
             compliance automation, and predictable economics are primary purchase drivers.
         </p>
     </div>
@@ -26749,7 +26749,7 @@ function _bddUnmappedCard(cap) {
             </div>
             <div style="text-align:right">
                 <div style="display:inline-block;background:${matCol}22;color:${matCol};padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700">
-                    ${cap.maturity}/5 — ${matLabels[cap.maturity] || ''}
+                    ${cap.maturity}/5 â€” ${matLabels[cap.maturity] || ''}
                 </div>
                 <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px">${cap.market_category}</div>
             </div>
@@ -26769,7 +26769,7 @@ function _bddUnmappedCard(cap) {
     </div>`;
 }
 
-/* ── HTML Export ──────────────────────────────────────────────────────────── */
+/* â”€â”€ HTML Export â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function exportBlumiraDeepDiveHTML() {
     const panels = ['overview','mdr','precyber','dfir','unmapped'];
     const labels = ['Overview','MDR Services','Preemptive Cyber','DFIR','Unmapped Capabilities'];
@@ -26791,7 +26791,7 @@ function exportBlumiraDeepDiveHTML() {
     const tabPanels = tabs.map((t,i) => `<div id="tab-${i}" class="tab-panel${i===0?' active':''}">${t.html}</div>`).join('');
 
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Blumira Deep Dive</title>${styles}</head><body>
-        <h1 style="margin-bottom:4px">Blumira — Vendor Capability Deep Dive</h1>
+        <h1 style="margin-bottom:4px">Blumira â€” Vendor Capability Deep Dive</h1>
         <p style="color:#666;margin-bottom:20px">Cross-schema capability analysis | Generated ${new Date().toLocaleDateString()}</p>
         <div class="tab-nav">${tabNav}</div>${tabPanels}</body></html>`;
 
@@ -26953,14 +26953,14 @@ function _cmiRenderExecSummary(data, scores) {
 
     let matrixHtml = '';
     if ((data.findings || []).length && (data.recommendations || []).length) {
-        matrixHtml = '<div class="mi-matrix"><h3>Finding ↔ Recommendation Alignment</h3><div class="mi-matrix-grid">';
+        matrixHtml = '<div class="mi-matrix"><h3>Finding â†” Recommendation Alignment</h3><div class="mi-matrix-grid">';
         const n = Math.min(data.findings.length, data.recommendations.length);
         for (let i = 0; i < n; i++) {
-            const fShort = data.findings[i].header.substring(0, 80) + (data.findings[i].header.length > 80 ? '…' : '');
-            const rShort = data.recommendations[i].header.substring(0, 80) + (data.recommendations[i].header.length > 80 ? '…' : '');
+            const fShort = data.findings[i].header.substring(0, 80) + (data.findings[i].header.length > 80 ? 'â€¦' : '');
+            const rShort = data.recommendations[i].header.substring(0, 80) + (data.recommendations[i].header.length > 80 ? 'â€¦' : '');
             matrixHtml += `<div class="mi-matrix-row">
                 <div class="mi-matrix-finding"><span class="mi-matrix-tag">F${i+1}</span> ${escapeHtml(fShort)}</div>
-                <div class="mi-matrix-arrow">→</div>
+                <div class="mi-matrix-arrow">â†’</div>
                 <div class="mi-matrix-rec"><span class="mi-matrix-tag mi-matrix-tag-rec">R${i+1}</span> ${escapeHtml(rShort)}</div>
             </div>`;
         }
@@ -27166,271 +27166,198 @@ function exportCNAPPMarketInsightHTML() {
     URL.revokeObjectURL(url);
 }
 
-// ═══════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  DOCUMENTATION PANEL
-// ═══════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 (function initDocsPanel() {
     'use strict';
 
-    const panel       = document.getElementById('docs-panel');
-    const backdrop    = document.getElementById('docs-panel-backdrop');
-    const toggleBtn   = document.getElementById('docs-panel-toggle');
-    const closeBtn    = document.getElementById('docs-panel-close');
-    const tabsEl      = document.getElementById('docs-tabs');
-    const bodyEl      = document.getElementById('docs-panel-body');
-    const loadingEl   = document.getElementById('docs-panel-loading');
+    const railToggle   = document.getElementById('docs-rail-toggle');
+    const railSubmenu  = document.getElementById('docs-rail-submenu');
+    const railGroup    = document.getElementById('docs-rail-group');
+    const docsView     = document.getElementById('docs-view');
+    const bodyEl       = document.getElementById('docs-view-body');
+    const navListEl    = document.getElementById('docs-view-nav-list');
+    const navTitleEl   = document.getElementById('docs-view-nav-title');
 
-    if (!panel || !toggleBtn) return;
+    if (!railToggle || !docsView) return;
 
-    let docsData      = null;
-    let activeTabId   = null;
-    let mermaidSeq    = 0;
+    const docsCache    = {};      // { docId: data }
+    let activeDocId    = null;
+    let activeSect     = null;
+    let mermaidSeq     = 0;
 
-    // ── Open / close ────────────────────────────────────────────
-    function openPanel() {
-        panel.classList.add('open');
-        panel.setAttribute('aria-hidden', 'false');
-        backdrop.classList.add('open');
-        toggleBtn.classList.add('active');
-        if (!docsData) loadDocs();
+    // ── Submenu open/close (rail flyout) ───────────────────────────────────
+    function openSubmenu()  {
+        const r = railToggle.getBoundingClientRect();
+        railSubmenu.style.left = (r.right + 6) + 'px';
+        railSubmenu.style.top  = r.top + 'px';
+        railSubmenu.hidden = false;
+        railToggle.setAttribute('aria-expanded', 'true');
+        railToggle.classList.add('active');
     }
-    function closePanel() {
-        panel.classList.remove('open');
-        panel.setAttribute('aria-hidden', 'true');
-        backdrop.classList.remove('open');
-        toggleBtn.classList.remove('active');
+    function closeSubmenu() {
+        railSubmenu.hidden = true;
+        railToggle.setAttribute('aria-expanded', 'false');
+        // Keep rail button highlighted while docs view is the active view
+        if (!docsView.classList.contains('active')) railToggle.classList.remove('active');
+    }
+    railToggle.addEventListener('click', e => {
+        e.stopPropagation();
+        railSubmenu.hidden ? openSubmenu() : closeSubmenu();
+    });
+    document.addEventListener('click', e => {
+        if (railGroup && !railGroup.contains(e.target)) closeSubmenu();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSubmenu(); });
+
+    // When user clicks any other rail item (data-view), drop docs active state
+    document.querySelectorAll('.nav-item[data-view]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            railToggle.classList.remove('active');
+            railSubmenu.querySelectorAll('.nav-subitem').forEach(s => s.classList.remove('active'));
+        });
+    });
+
+    // ── Submenu items: switch to docs view + load that doc ─────────────────
+    railSubmenu.querySelectorAll('.nav-subitem').forEach(item => {
+        item.addEventListener('click', e => {
+            e.stopPropagation();
+            const docId    = item.dataset.docId;
+            const docTitle = item.dataset.docTitle || item.textContent;
+            // mark active subitem
+            railSubmenu.querySelectorAll('.nav-subitem').forEach(s => s.classList.toggle('active', s === item));
+            showDocsView(docId, docTitle);
+            closeSubmenu();
+        });
+    });
+
+    // ── Show docs view (replace main content) ──────────────────────────────
+    function showDocsView(docId, docTitle) {
+        // Activate this view, deactivate others
+        document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
+        docsView.classList.add('active');
+        // Deactivate other rail buttons; mark Docs as active
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        railToggle.classList.add('active');
+        if (window.appState) window.appState.currentView = 'docs';
+        if (navTitleEl && docTitle) navTitleEl.textContent = docTitle;
+        if (docId && docId !== activeDocId) loadDocs(docId);
     }
 
-    toggleBtn.addEventListener('click', () => {
-        panel.classList.contains('open') ? closePanel() : openPanel();
-    });
-    closeBtn.addEventListener('click', closePanel);
-    backdrop.addEventListener('click', closePanel);
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
-    });
-
-    // ── Fetch docs JSON ─────────────────────────────────────────
-    async function loadDocs() {
-        loadingEl.style.display = 'block';
-        bodyEl.innerHTML = '<div class="docs-panel-loading" id="docs-panel-loading">Loading documentation…</div>';
+    // ── Fetch docs JSON ────────────────────────────────────────────────────
+    async function loadDocs(docId) {
+        activeDocId = docId;
+        if (docsCache[docId]) { renderPanel(docsCache[docId]); return; }
+        bodyEl.innerHTML  = '<div class="docs-view-loading">Loading documentation…</div>';
+        if (navListEl) navListEl.innerHTML = '';
         try {
-            const res = await fetch('/api/docs/architecture');
+            const res = await fetch(`/api/docs/${encodeURIComponent(docId)}`);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            docsData = await res.json();
-            renderPanel(docsData);
+            const data = await res.json();
+            docsCache[docId] = data;
+            renderPanel(data);
         } catch (err) {
-            bodyEl.innerHTML = `<div class="docs-panel-loading" style="color:#e74c3c">Failed to load documentation: ${escapeHtml(err.message)}</div>`;
+            bodyEl.innerHTML = `<div class="docs-view-loading" style="color:#e74c3c">Failed to load: ${escapeHtml(err.message)}</div>`;
         }
     }
 
-    // ── Render full panel ────────────────────────────────────────
+    // ── Render panel: left nav, single body pane per section ───────────────
     function renderPanel(data) {
-        // Build tab buttons
-        tabsEl.innerHTML = '';
-        (data.tabs || []).forEach((tab, i) => {
-            const btn = document.createElement('button');
-            btn.className = 'docs-tab-btn' + (i === 0 ? ' active' : '');
-            btn.dataset.tabId = tab.id;
-            btn.textContent = (tab.icon ? tab.icon + ' ' : '') + tab.label;
-            btn.addEventListener('click', () => switchTab(tab.id));
-            tabsEl.appendChild(btn);
-        });
+        const sections = (data.tabs || []).flatMap(t => t.sections || []);
+        if (!sections.length) { bodyEl.innerHTML = '<div class="docs-view-loading">No content.</div>'; return; }
 
-        // Build tab content panes
+        // Left nav buttons
+        if (navListEl) {
+            navListEl.innerHTML = '';
+            sections.forEach((sec, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'docs-nav-btn' + (i === 0 ? ' active' : '');
+                btn.dataset.sectId = sec.id;
+                btn.textContent = sec.title;
+                btn.title = sec.title;
+                btn.addEventListener('click', () => switchSection(sec.id));
+                navListEl.appendChild(btn);
+            });
+        }
+
+        // Content panes
         bodyEl.innerHTML = '';
-        (data.tabs || []).forEach((tab, i) => {
+        sections.forEach((sec, i) => {
             const pane = document.createElement('div');
             pane.className = 'docs-tab-content' + (i === 0 ? ' active' : '');
-            pane.id = `docs-tab-${tab.id}`;
-            pane.appendChild(buildTabLayout(tab));
+            pane.id = `docs-sec-${sec.id}`;
+            const h2 = document.createElement('h2');
+            h2.className = 'docs-section-title';
+            h2.textContent = sec.title;
+            pane.appendChild(h2);
+            (sec.content || []).forEach(block => pane.appendChild(renderBlock(block)));
             bodyEl.appendChild(pane);
         });
 
-        if (data.tabs && data.tabs.length > 0) {
-            activeTabId = data.tabs[0].id;
-            // Render Mermaid diagrams for first tab
-            renderMermaidInTab(data.tabs[0].id);
-        }
+        activeSect = sections[0].id;
+        renderMermaidInPane(sections[0].id);
     }
 
-    // ── Build two-column layout for a tab ────────────────────────
-    function buildTabLayout(tab) {
-        const layout = document.createElement('div');
-        layout.className = 'docs-tab-layout';
-
-        // Left: section nav
-        const nav = document.createElement('nav');
-        nav.className = 'docs-section-nav';
-        nav.setAttribute('aria-label', tab.label + ' sections');
-
-        // Right: section content
-        const contentArea = document.createElement('div');
-        contentArea.className = 'docs-section-content';
-        contentArea.id = `docs-content-${tab.id}`;
-
-        (tab.sections || []).forEach((section, idx) => {
-            // Nav button
-            const navBtn = document.createElement('button');
-            navBtn.className = 'docs-section-nav-btn' + (idx === 0 ? ' active' : '');
-            navBtn.dataset.sectionId = section.id;
-            navBtn.dataset.tabId = tab.id;
-            navBtn.textContent = section.title;
-            navBtn.addEventListener('click', () => scrollToSection(tab.id, section.id, navBtn));
-            nav.appendChild(navBtn);
-
-            // Section pane
-            const pane = document.createElement('div');
-            pane.className = 'docs-section-pane' + (idx === 0 ? ' active' : '');
-            pane.id = `docs-section-${section.id}`;
-
-            const h2 = document.createElement('h2');
-            h2.className = 'docs-section-title';
-            h2.textContent = section.title;
-            pane.appendChild(h2);
-
-            (section.content || []).forEach(block => {
-                pane.appendChild(renderBlock(block, section.id));
+    // ── Switch to a section ────────────────────────────────────────────────
+    function switchSection(sectId) {
+        activeSect = sectId;
+        if (navListEl) {
+            navListEl.querySelectorAll('.docs-nav-btn').forEach(b => {
+                const isActive = b.dataset.sectId === sectId;
+                b.classList.toggle('active', isActive);
+                if (isActive) b.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
-
-            contentArea.appendChild(pane);
-        });
-
-        layout.appendChild(nav);
-        layout.appendChild(contentArea);
-        return layout;
-    }
-
-    // ── Switch active tab ────────────────────────────────────────
-    function switchTab(tabId) {
-        activeTabId = tabId;
-        document.querySelectorAll('.docs-tab-btn').forEach(b => {
-            b.classList.toggle('active', b.dataset.tabId === tabId);
-        });
-        document.querySelectorAll('.docs-tab-content').forEach(p => {
-            p.classList.toggle('active', p.id === `docs-tab-${tabId}`);
-        });
-        renderMermaidInTab(tabId);
-    }
-
-    // ── Scroll to / activate section ─────────────────────────────
-    function scrollToSection(tabId, sectionId, clickedBtn) {
-        // Update nav highlight
-        const nav = document.querySelector(`#docs-tab-${tabId} .docs-section-nav`);
-        if (nav) {
-            nav.querySelectorAll('.docs-section-nav-btn').forEach(b => b.classList.remove('active'));
         }
-        if (clickedBtn) clickedBtn.classList.add('active');
-
-        // Show pane (scroll-based alternative: all panes visible, scroll to it)
-        const pane = document.getElementById(`docs-section-${sectionId}`);
-        if (pane) {
-            // Make all panes visible for single-scroll layout
-            const contentArea = document.getElementById(`docs-content-${tabId}`);
-            if (contentArea) {
-                contentArea.querySelectorAll('.docs-section-pane').forEach(p => p.classList.add('active'));
-            }
-            pane.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        bodyEl.querySelectorAll('.docs-tab-content').forEach(p => p.classList.toggle('active', p.id === `docs-sec-${sectId}`));
+        bodyEl.scrollTop = 0;
+        renderMermaidInPane(sectId);
     }
 
-    // ── Render a single content block ────────────────────────────
-    function renderBlock(block, sectionId) {
+    // â”€â”€ Render a content block â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    function renderBlock(block) {
         switch (block.type) {
-
-            case 'heading': {
-                const el = document.createElement('h3');
-                el.className = 'docs-heading';
-                el.textContent = block.value;
-                return el;
-            }
-
-            case 'text': {
-                const el = document.createElement('p');
-                el.className = 'docs-text';
-                el.textContent = block.value;
-                return el;
-            }
-
+            case 'heading': { const el = document.createElement('h3'); el.className = 'docs-heading'; el.textContent = block.value; return el; }
+            case 'text':    { const el = document.createElement('p');  el.className = 'docs-text';    el.textContent = block.value; return el; }
             case 'list': {
-                const ul = document.createElement('ul');
-                ul.className = 'docs-list';
-                (block.items || []).forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-                    ul.appendChild(li);
-                });
+                const ul = document.createElement('ul'); ul.className = 'docs-list';
+                (block.items || []).forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
                 return ul;
             }
-
             case 'table': {
-                const wrap = document.createElement('div');
-                wrap.className = 'docs-table-wrap';
-                const table = document.createElement('table');
-                table.className = 'docs-table';
-                // Header
-                const thead = document.createElement('thead');
-                const hrow = document.createElement('tr');
-                (block.headers || []).forEach(h => {
-                    const th = document.createElement('th');
-                    th.textContent = h;
-                    hrow.appendChild(th);
-                });
-                thead.appendChild(hrow);
-                table.appendChild(thead);
-                // Body
+                const wrap = document.createElement('div'); wrap.className = 'docs-table-wrap';
+                const table = document.createElement('table'); table.className = 'docs-table';
+                const thead = document.createElement('thead'); const hrow = document.createElement('tr');
+                (block.headers || []).forEach(h => { const th = document.createElement('th'); th.textContent = h; hrow.appendChild(th); });
+                thead.appendChild(hrow); table.appendChild(thead);
                 const tbody = document.createElement('tbody');
                 (block.rows || []).forEach(row => {
                     const tr = document.createElement('tr');
-                    row.forEach(cell => {
-                        const td = document.createElement('td');
-                        td.textContent = cell;
-                        tr.appendChild(td);
-                    });
+                    row.forEach(cell => { const td = document.createElement('td'); td.textContent = cell; tr.appendChild(td); });
                     tbody.appendChild(tr);
                 });
-                table.appendChild(tbody);
-                wrap.appendChild(table);
-                return wrap;
+                table.appendChild(tbody); wrap.appendChild(table); return wrap;
             }
-
-            case 'code': {
-                const pre = document.createElement('pre');
-                pre.className = 'docs-code';
-                pre.textContent = block.value;
-                return pre;
-            }
-
+            case 'code': { const pre = document.createElement('pre'); pre.className = 'docs-code'; pre.textContent = block.value; return pre; }
             case 'mermaid': {
-                const wrap = document.createElement('div');
-                wrap.className = 'docs-mermaid-wrap';
+                const wrap = document.createElement('div'); wrap.className = 'docs-mermaid-wrap';
                 wrap.dataset.mermaidDef = block.value;
-                wrap.dataset.mermaidId = `docs-mmd-${++mermaidSeq}`;
-                wrap.innerHTML = '<div class="docs-mermaid-error" style="color:var(--text-secondary);font-size:11px">Rendering diagram…</div>';
+                wrap.dataset.mermaidId  = `docs-mmd-${++mermaidSeq}`;
+                wrap.innerHTML = '<div class="docs-mermaid-error" style="color:var(--text-secondary);font-size:11px">Renderingâ€¦</div>';
                 return wrap;
             }
-
-            default: {
-                const frag = document.createDocumentFragment();
-                return frag;
-            }
+            default: return document.createDocumentFragment();
         }
     }
 
-    // ── Render all Mermaid diagrams in a tab ─────────────────────
-    async function renderMermaidInTab(tabId) {
-        const tabPane = document.getElementById(`docs-tab-${tabId}`);
-        if (!tabPane) return;
-        const wraps = tabPane.querySelectorAll('.docs-mermaid-wrap[data-mermaid-def]');
-        if (!wraps.length) return;
-        if (typeof mermaid === 'undefined') return;
-
-        for (const wrap of wraps) {
+    // â”€â”€ Render Mermaid diagrams in a section pane â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    async function renderMermaidInPane(sectId) {
+        const pane = document.getElementById(`docs-sec-${sectId}`);
+        if (!pane || typeof mermaid === 'undefined') return;
+        for (const wrap of pane.querySelectorAll('.docs-mermaid-wrap[data-mermaid-def]')) {
             if (wrap.dataset.mermaidRendered === '1') continue;
-            const def = wrap.dataset.mermaidDef;
-            const id  = wrap.dataset.mermaidId;
             try {
-                const { svg } = await mermaid.render(id, def);
+                const { svg } = await mermaid.render(wrap.dataset.mermaidId, wrap.dataset.mermaidDef);
                 wrap.innerHTML = svg;
                 wrap.dataset.mermaidRendered = '1';
             } catch (err) {
@@ -27440,3 +27367,4 @@ function exportCNAPPMarketInsightHTML() {
     }
 
 })();
+// -- END OF FILE --
