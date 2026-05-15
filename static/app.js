@@ -3900,6 +3900,33 @@ function renderEvidenceAndRationale(vendor, granular) {
                     rationaleHtml += `<div style="margin-top:8px; padding:8px; background:var(--bg-secondary); border-radius:6px; font-size:13px;">${parts.join('')}</div>`;
                 }
             }
+            // When consolidated text is used (rationaleExtra is null), still render per-criterion
+            // detail table from sub_pillar_rationale_v2 structured data if available
+            if (!rationaleExtra) {
+                const v2Data = vendor.sub_pillar_rationale_v2 && vendor.sub_pillar_rationale_v2[sid];
+                if (v2Data && typeof v2Data === 'object') {
+                    const ca = v2Data.criteria_assessment;
+                    if (Array.isArray(ca) && ca.length) {
+                        const statusIcon = (s) => s === 'met' ? '✅' : s === 'partial' ? '⚠️' : '❌';
+                        const caRows = ca.map(c => `<tr>
+                            <td style="padding:4px 8px; border-bottom:1px solid var(--border-color);">${statusIcon(c.status)} ${escapeHtml(c.status || '')}</td>
+                            <td style="padding:4px 8px; border-bottom:1px solid var(--border-color);">${escapeHtml(c.criterion || '')}</td>
+                            <td style="padding:4px 8px; border-bottom:1px solid var(--border-color); font-size:12px;">${escapeHtml((c.evidence || '').substring(0, 120))}${(c.evidence || '').length > 120 ? '…' : ''}</td>
+                        </tr>`).join('');
+                        rationaleHtml += `<div style="margin-top:8px; padding:8px; background:var(--bg-secondary); border-radius:6px; font-size:13px;">
+                            <strong>Criteria Assessment (per-criterion detail):</strong>
+                            <table style="width:100%; border-collapse:collapse; margin-top:4px; font-size:12px;">
+                                <thead><tr>
+                                    <th style="text-align:left; padding:4px 8px; border-bottom:2px solid var(--border-color);">Status</th>
+                                    <th style="text-align:left; padding:4px 8px; border-bottom:2px solid var(--border-color);">Criterion</th>
+                                    <th style="text-align:left; padding:4px 8px; border-bottom:2px solid var(--border-color);">Evidence</th>
+                                </tr></thead>
+                                <tbody>${caRows}</tbody>
+                            </table>
+                        </div>`;
+                    }
+                }
+            }
         } else {
             rationaleHtml = `<div class="vendor-report-text">No researched sub-pillar rationale text is present for this item in the current dataset.</div>`;
         }
@@ -9979,9 +10006,11 @@ function showSubPillarDetailsModal(spObj) {
                 `;
             }
 
-            // What to verify publicly (v4.0)
+            // What to verify publicly (v4.0) - only show if different from activities already rendered
             const verify = enriched.what_to_verify_publicly || [];
-            if (verify.length > 0 && activities !== verify) {
+            const activitiesJson = JSON.stringify(activities);
+            const verifyJson = JSON.stringify(verify);
+            if (verify.length > 0 && verifyJson !== activitiesJson) {
                 html += `
                     <div style="margin-bottom: 16px;">
                         <h4 style="margin: 0 0 8px 0; color: var(--color-primary); font-size: 13px;">What to Verify Publicly</h4>
