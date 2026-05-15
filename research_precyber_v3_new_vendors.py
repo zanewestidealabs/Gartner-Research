@@ -215,9 +215,13 @@ def run_stage3(vendor: dict) -> dict:
         elif reason:
             parts.append(f"\n[Score Adjustment] {reason}")
 
-        criteria = entry.get("criteria_assessment", "")
-        if criteria:
-            parts.append(f"\n[Criteria Assessment] {criteria}")
+        criteria_list = entry.get("criteria_assessment") or []
+        if criteria_list and isinstance(criteria_list, list):
+            c_met = sum(1 for c in criteria_list if c.get("status") == "met")
+            c_partial = sum(1 for c in criteria_list if c.get("status") == "partial")
+            c_unmet = sum(1 for c in criteria_list if c.get("status") == "unmet")
+            icons = f"\u2705 {c_met}  \u26a0\ufe0f {c_partial}  \u274c {c_unmet}"
+            parts.append(f"\n[Criteria Assessment] {icons}")
 
         key_evidence = entry.get("key_evidence") or []
         if key_evidence:

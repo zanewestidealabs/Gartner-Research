@@ -4265,6 +4265,23 @@ function populateLegendView() {
         });
     });
 
+    // ── Scoring Methodology Note ──
+    let methodNote = document.getElementById('scoring-methodology-note');
+    if (!methodNote) {
+        methodNote = document.createElement('div');
+        methodNote.id = 'scoring-methodology-note';
+        methodNote.style.cssText = 'margin: 16px 0; padding: 12px 16px; background: var(--bg-secondary); border-left: 4px solid #0078d4; border-radius: 4px; font-size: 13px; color: var(--text-primary); line-height: 1.6;';
+        methodNote.innerHTML = `
+            <strong style="color:#0078d4;">Scoring Methodology</strong>
+            <ul style="margin:8px 0 0 0; padding-left:20px;">
+                <li><strong>Sub-pillar scores (0–5)</strong> are determined by evaluating publicly available vendor evidence against each sub-pillar's evaluation criteria (<em>what_to_verify_publicly</em>). Each criterion is assessed as <strong>Met</strong>, <strong>Partial</strong>, or <strong>Unmet</strong> based on keyword coverage, concept-pair matching, and supporting excerpts from vendor pages.</li>
+                <li><strong>Pillar scores</strong> are the <strong>unweighted average</strong> of their constituent sub-pillar scores. For example, a pillar with 4 sub-pillars each scoring 3.0, 4.0, 2.5, and 4.5 yields a pillar score of 3.50.</li>
+                <li><strong>Criteria assessment counts</strong> shown per sub-pillar reflect how many of the defined evaluation criteria were fully met, partially met, or unmet by the evidence gathered.</li>
+            </ul>`;
+        const pillarsGrid = document.querySelector('.pillars-grid');
+        if (pillarsGrid) pillarsGrid.parentNode.insertBefore(methodNote, pillarsGrid);
+    }
+
     // ── Pillars and sub-pillars with enriched schema data ──
     const pillarsGrid = document.querySelector('.pillars-grid');
     if (appState.pillarsGrouped && appState.pillarsGrouped.length > 0) {
@@ -9879,6 +9896,9 @@ function showPillarDetailsModal(pillarObj) {
         html += `
             <div style="margin-bottom: 8px;">
                 <h4 style="margin: 0 0 8px 0; color: var(--color-primary); font-size: 13px;">Sub-Pillars</h4>
+                <div style="font-size:11px; color:var(--text-secondary); margin-bottom:6px; padding:6px 10px; background:var(--bg-tertiary,rgba(0,0,0,0.1)); border-radius:4px;">
+                    📊 <strong>Pillar score = unweighted average of its ${subs.length} sub-pillar scores.</strong>
+                </div>
                 ${subs.map(sp => `
                     <div style="padding: 8px 12px; margin-bottom: 6px; background: var(--bg-secondary); border-radius: 4px; border-left: 3px solid var(--color-primary);">
                         <div style="font-weight: 600; font-size: 12px;">${sp.id} - ${sp.name}</div>
@@ -9929,10 +9949,11 @@ function showSubPillarDetailsModal(spObj) {
     if (activities.length > 0) {
         // Determine the label based on schema
         const isAISchema = (appState.currentSchemaFileName || '').includes('5-0');
-        const label = isAISchema ? 'AI Evaluation Criteria' : 'What to Verify Publicly';
+        const label = isAISchema ? 'AI Evaluation Criteria' : 'Evaluation Criteria (What to Verify Publicly)';
         html += `
             <div style="margin-bottom: 16px;">
-                <h4 style="margin: 0 0 8px 0; color: var(--color-primary); font-size: 13px;">${label}</h4>
+                <h4 style="margin: 0 0 4px 0; color: var(--color-primary); font-size: 13px;">${label}</h4>
+                <div style="font-size:11px; color:var(--text-secondary); margin-bottom:6px;">Evidence is assessed as <strong>Met</strong> / <strong>Partial</strong> / <strong>Unmet</strong> for each criterion. Sub-pillar score reflects how many criteria are supported by public evidence.</div>
                 <ul style="margin: 0; padding-left: 20px;">
                     ${activities.map(a => `<li style="font-size: 12px; color: var(--text-primary); margin-bottom: 8px; line-height: 1.5;">${a}</li>`).join('')}
                 </ul>
@@ -16642,6 +16663,7 @@ function _vaGetSpLabel(spId) {
 function _vaGetRationale(vendor, spId) {
     const r = vendor.sub_pillar_rationale_v2_1
         || vendor.sub_pillar_rationale_v2_researched
+        || vendor.sub_pillar_rationale_v2
         || vendor.sub_pillar_rationale
         || {};
     return r[spId] || {};

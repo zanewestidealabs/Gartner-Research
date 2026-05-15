@@ -122,9 +122,9 @@ def consolidate_rationale(entry: dict) -> str:
     # 4) Criteria Assessment summary
     criteria = entry.get("criteria_assessment") or []
     if criteria and isinstance(criteria, list):
-        met = sum(1 for c in criteria if c.get("met") is True)
-        partial = sum(1 for c in criteria if c.get("partially_met") is True)
-        unmet = len(criteria) - met - partial
+        met = sum(1 for c in criteria if c.get("status") == "met")
+        partial = sum(1 for c in criteria if c.get("status") == "partial")
+        unmet = sum(1 for c in criteria if c.get("status") == "unmet")
         icons = f"✅ {met}  ⚠️ {partial}  ❌ {unmet}"
         parts.append(f"\n[Criteria Assessment] {icons}")
 
