@@ -572,7 +572,9 @@ def determine_scoring_level(
     met_count = sum(1 for c in criteria_results if c.status == "met")
     partial_count = sum(1 for c in criteria_results if c.status == "partial")
     total_criteria = len(criteria_results)
-    coverage = (met_count + partial_count * 0.5) / max(total_criteria, 1)
+    # Partial weight 0.3 (matches the score-boost formula) so that all-partial
+    # never inflates coverage above the "1–2 met" threshold.
+    coverage = (met_count + partial_count * 0.3) / max(total_criteria, 1)
 
     v1_signal_strength = (
         min(existing_specificity / 5.0, 1.0) * 0.3 +
@@ -588,8 +590,11 @@ def determine_scoring_level(
         justification_parts.append(f"Exclusion terms ({exclusion_hits}) outweigh positive signals.")
         return 1, " ".join(justification_parts)
 
-    if total_excerpts == 0 and pillar_term_hits == 0 and schema_criteria_hits == 0:
-        justification_parts.append("No evidence excerpts and no term matches found.")
+    # No evidence at all AND no criteria met/partial → truly nothing found
+    no_signals = (total_excerpts == 0 and pillar_term_hits == 0 and schema_criteria_hits == 0)
+    no_criteria = (met_count == 0 and partial_count == 0)
+    if no_signals and no_criteria:
+        justification_parts.append("No evidence excerpts, no term matches, and no criteria met.")
         return 0, " ".join(justification_parts)
 
     # ── Primary: criteria-anchored base level ──────────────────────────
