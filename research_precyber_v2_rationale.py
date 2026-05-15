@@ -552,8 +552,23 @@ def determine_scoring_level(
     existing_score: float,
     existing_specificity: float,
 ) -> Tuple[int, str]:
-    """Determine the appropriate scoring level (0-5) with justification."""
+    """Determine scoring level (0-5) anchored primarily on criteria assessment.
 
+    Criteria coverage is the primary driver. How many of the sub-pillar's
+    evaluation criteria (what_to_verify_publicly) are met by evidence determines
+    the base level. Evidence quality signals can then raise or lower by at most
+    one level, keeping the score firmly tied to criteria outcomes.
+
+    Criteria coverage → base level:
+      ≥85% met (4-5/5) → base 5
+      ≥65% met (3-4/5) → base 4
+      ≥45% met (2-3/5) → base 3
+      ≥25% met (1-2/5) → base 2
+      > 0%  (some partial) → base 1
+      = 0%  no criteria met → based on presence signals only (max base 2)
+    Evidence quality modifier: strong evidence with metrics/architecture can
+    push +1 level; missing evidence penalises -1 level.
+    """
     met_count = sum(1 for c in criteria_results if c.status == "met")
     partial_count = sum(1 for c in criteria_results if c.status == "partial")
     total_criteria = len(criteria_results)
@@ -568,67 +583,64 @@ def determine_scoring_level(
 
     justification_parts = []
 
-    # Exclusion override
+    # Hard overrides
     if exclusion_hits > pillar_term_hits + schema_criteria_hits:
         justification_parts.append(f"Exclusion terms ({exclusion_hits}) outweigh positive signals.")
         return 1, " ".join(justification_parts)
 
-    # No evidence
     if total_excerpts == 0 and pillar_term_hits == 0 and schema_criteria_hits == 0:
         justification_parts.append("No evidence excerpts and no term matches found.")
         return 0, " ".join(justification_parts)
 
-    # Level 5: Market-Leading
-    if (v1_signal_strength >= 0.7 and coverage >= 0.6
-            and schema_criteria_hits >= 3 and (has_metrics or has_architecture_detail)
-            and specificity >= 4.0):
+    # ── Primary: criteria-anchored base level ──────────────────────────
+    if coverage >= 0.85:          # 4–5 of 5 criteria met
+        base_level = 5
+    elif coverage >= 0.65:        # 3–4 of 5 criteria met
+        base_level = 4
+    elif coverage >= 0.45:        # 2–3 of 5 criteria met
+        base_level = 3
+    elif coverage >= 0.25:        # 1–2 of 5 criteria met
+        base_level = 2
+    elif coverage > 0.0:          # only partial credit
+        base_level = 1
+    else:
+        # Zero criteria met — cap at 2 based on general presence only
+        if v1_signal_strength >= 0.5 and pillar_term_hits >= 6:
+            base_level = 2   # Vendor is clearly in this space but criteria unverifiable
+        elif v1_signal_strength >= 0.25 or pillar_term_hits >= 2 or total_excerpts >= 1:
+            base_level = 1   # Minimal presence
+        else:
+            base_level = 0
+
+    # ── Secondary: evidence quality modifier (±1 level, max 5) ─────────
+    if (base_level >= 3 and v1_signal_strength >= 0.65
+            and specificity >= 4.0 and (has_metrics or has_architecture_detail)):
+        level = min(5, base_level + 1)
         justification_parts.append(
-            f"Strong evidence: {met_count}/{total_criteria} criteria met, coverage={coverage:.0%}. "
-            f"V1 signal={v1_signal_strength:.2f}, specificity={specificity:.1f}. "
-            f"{'Has metrics. ' if has_metrics else ''}{'Has architecture detail. ' if has_architecture_detail else ''}"
+            f"Evidence-boosted: {met_count}/{total_criteria} criteria met, coverage={coverage:.0%}. "
+            f"Strong evidence quality (signal={v1_signal_strength:.2f}, specificity={specificity:.1f}) "
+            f"with {'metrics' if has_metrics else 'architecture detail'} elevated level "
+            f"from {base_level} to {level}. "
             f"Schema hits: {schema_criteria_hits}, pillar hits: {pillar_term_hits}."
         )
-        return 5, " ".join(justification_parts)
-
-    # Level 4: Advanced
-    if (v1_signal_strength >= 0.5 and coverage >= 0.4
-            and (schema_criteria_hits >= 2 or pillar_term_hits >= 4)
-            and specificity >= 3.0):
+    elif base_level >= 2 and total_excerpts == 0:
+        level = max(1, base_level - 1)
         justification_parts.append(
-            f"Good evidence: {met_count}/{total_criteria} criteria met, coverage={coverage:.0%}. "
+            f"Evidence-penalized: {met_count}/{total_criteria} criteria met, coverage={coverage:.0%}. "
+            f"No evidence excerpts; level reduced from {base_level} to {level}. "
+            f"Signal={v1_signal_strength:.2f}, specificity={specificity:.1f}."
+        )
+    else:
+        level = base_level
+        signal_label = "Strong" if v1_signal_strength >= 0.6 else ("Moderate" if v1_signal_strength >= 0.35 else "Limited")
+        justification_parts.append(
+            f"{signal_label} evidence: {met_count}/{total_criteria} criteria met, coverage={coverage:.0%}. "
             f"V1 signal={v1_signal_strength:.2f}, specificity={specificity:.1f}. "
-            f"Schema hits: {schema_criteria_hits}, pillar hits: {pillar_term_hits}."
+            f"Schema hits: {schema_criteria_hits}, pillar hits: {pillar_term_hits}. "
+            f"Excerpts: {total_excerpts}."
         )
-        return 4, " ".join(justification_parts)
 
-    # Level 3: Demonstrated
-    if (v1_signal_strength >= 0.3 and
-            (coverage >= 0.2 or pillar_term_hits >= 2 or schema_criteria_hits >= 1)):
-        justification_parts.append(
-            f"Moderate evidence: coverage={coverage:.0%}, "
-            f"V1 signal={v1_signal_strength:.2f}. "
-            f"Pillar terms: {pillar_term_hits}, schema criteria: {schema_criteria_hits}."
-        )
-        return 3, " ".join(justification_parts)
-
-    # Level 2: Generic Claims
-    if pillar_term_hits >= 1 or specificity >= 1.5 or total_excerpts >= 1:
-        justification_parts.append(
-            f"Limited evidence: {pillar_term_hits} pillar terms, specificity={specificity:.1f}. "
-            f"Marketing-level claims without substantive depth. "
-            f"{total_excerpts} excerpt(s) found."
-        )
-        return 2, " ".join(justification_parts)
-
-    # Level 1: Minimal
-    if total_excerpts > 0:
-        justification_parts.append(
-            f"Found {total_excerpts} excerpt(s) but no pillar-specific or schema matches. "
-            f"Basic capability without automation or depth."
-        )
-        return 1, " ".join(justification_parts)
-
-    return 0, "No relevant public evidence found for this sub-pillar."
+    return level, " ".join(justification_parts)
 
 
 # Metric / architecture detection patterns

@@ -4301,14 +4301,31 @@ function populateLegendView() {
         methodNote.innerHTML = `
             <strong style="color:#0078d4;">Scoring Methodology</strong>
             <ul style="margin:8px 0 0 0; padding-left:20px;">
-                <li><strong>Sub-pillar scores (0–5)</strong> are determined by evaluating publicly available vendor evidence against each sub-pillar's evaluation criteria (<em>what_to_verify_publicly</em>). Each criterion is assessed as <strong>Met</strong>, <strong>Partial</strong>, or <strong>Unmet</strong> based on keyword coverage, concept-pair matching, and supporting excerpts from vendor pages.</li>
-                <li><strong>Pillar scores</strong> are the <strong>unweighted average</strong> of their constituent sub-pillar scores. For example, a pillar with 4 sub-pillars each scoring 3.0, 4.0, 2.5, and 4.5 yields a pillar score of 3.50.</li>
-                <li><strong>Criteria assessment counts</strong> shown per sub-pillar reflect how many of the defined evaluation criteria were fully met, partially met, or unmet by the evidence gathered.</li>
+                <li><strong>Sub-pillar scores (0–5) are anchored to criteria assessment.</strong>
+                    Each sub-pillar has 5 evaluation criteria (<em>what_to_verify_publicly</em>). Evidence is assessed
+                    per criterion as <strong>Met</strong>, <strong>Partial</strong>, or <strong>Unmet</strong> via keyword
+                    coverage, concept-pair matching, and excerpt analysis against vendor pages.
+                    The number of criteria met directly determines the base scoring level:
+                    <span style="margin-left:6px; font-family:monospace; font-size:11px;">
+                    5/5 met → Level 5 (≥4.5) &nbsp;|&nbsp;
+                    4/5 met → Level 4 (≥3.5) &nbsp;|&nbsp;
+                    3/5 met → Level 3 (≥2.5) &nbsp;|&nbsp;
+                    2/5 met → Level 2 (≥1.5) &nbsp;|&nbsp;
+                    1/5 met → Level 1 (&lt;1.5) &nbsp;|&nbsp;
+                    0/5 met → Level 0–1 (presence only)</span>.
+                    Evidence quality (source diversity, term specificity, excerpt volume) can shift the final score
+                    by at most ±1 level.</li>
+                <li><strong>Pillar scores</strong> are the <strong>unweighted average</strong> of their 4 sub-pillar scores.
+                    A pillar with sub-pillar scores of 3.0, 4.0, 2.5, and 4.5 yields a pillar score of 3.50.</li>
+                <li><strong>Criteria assessment counts</strong> (✅ Met / ⚠️ Partial / ❌ Unmet) shown per sub-pillar
+                    directly drove the score — the two should always align. The per-criterion detail table
+                    in Evidence &amp; Rationale shows which specific criteria were met and the supporting evidence.</li>
             </ul>`;
         const pillarsGrid = document.querySelector('.pillars-grid');
         if (pillarsGrid) pillarsGrid.parentNode.insertBefore(methodNote, pillarsGrid);
     }
 
+    // ── Pillars and sub-pillars with enriched schema data ──
     // ── Pillars and sub-pillars with enriched schema data ──
     const pillarsGrid = document.querySelector('.pillars-grid');
     if (appState.pillarsGrouped && appState.pillarsGrouped.length > 0) {
