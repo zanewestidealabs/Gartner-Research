@@ -40,7 +40,7 @@ new_report = {
             "header": "The majority of vendor capability concentrates in the reactive half of the kill chain (Exploitation through Actions on Objectives), perpetuating the detection-and-response paradigm that preemptive cybersecurity is designed to replace.",
             "body": (
                 "Despite the 'preemptive' label, the market's actual capability distribution reveals a reactive bias. "
-                "Autonomous Detection & Response (ADR) maps primarily to Phases 4-6 (Exploitation, Installation, C2) — territory traditionally claimed by EDR, XDR, and SIEM vendors. "
+                "Adversary Disruption (ADR) maps primarily to Phases 4-6 (Exploitation, Installation, C2) — territory traditionally claimed by EDR, XDR, and SIEM vendors. "
                 "Services & Capability (SVC) maps to Phases 5-7 (Installation through Actions on Objectives), providing managed response capabilities. "
                 "ADR penetration stands at 78%, and SVC at 57%, meaning the mid-to-right kill chain phases are better served than the preemptive left side for AMT (55%). "
                 "This paradox — a preemptive market that is structurally more reactive than preemptive — presents a critical product strategy opportunity for CPOs. "
@@ -169,7 +169,7 @@ new_report = {
                 "- **Phases 2-3 (Weaponization & Delivery)**: Posture & Policy Management (PPM) validates that security controls will stop known weapons. "
                 "Breach and attack simulation tests defenses before real adversaries do. Cloud security posture management closes delivery vectors.\n"
                 "- **Phase 3 (Delivery)**: EXM's supply chain exposure management and PPM's cloud posture management close the pathways adversaries use to deliver payloads.\n"
-                "- **Phases 4-6 (Exploitation through C2)**: Autonomous Detection & Response (ADR) provides deception, threat hunting, "
+                "- **Phases 4-6 (Exploitation through C2)**: Adversary Disruption (ADR) provides deception, threat hunting, "
                 "and counter-adversary operations — still valuable, but operating in the traditional reactive zone.\n"
                 "- **Phases 5-7 (Installation through Actions)**: Services & Capability (SVC) provides managed response — essential for full kill chain coverage "
                 "but firmly on the right (reactive) side.\n\n"
@@ -296,7 +296,7 @@ new_report = {
         "threat intelligence analysts, and enterprise security architects. Originally developed to analyze advanced persistent threats, the kill chain framework "
         "has become the lingua franca for describing how attacks progress from initial reconnaissance through mission completion.\n\n"
         "Simultaneously, the preemptive cybersecurity market has emerged as a category distinct from traditional detection-and-response solutions. "
-        "Defined by five capability pillars — Exposure Management (EXM), Adversary Management (AMT), Autonomous Detection & Response (ADR), "
+        "Defined by five capability pillars — Exposure Management (EXM), Adversary Management (AMT), Adversary Disruption (ADR), "
         "Posture & Policy Management (PPM), and Services & Capability (SVC) — preemptive cybersecurity aims to neutralize threats before they cause damage, "
         "rather than detecting and remediating after the fact.\n\n"
         "This research note bridges these two frameworks, mapping the five preemptive pillars onto the seven kill chain phases to provide CPOs with a "
@@ -343,7 +343,7 @@ new_report = {
         {"term": "Reactive Zone", "definition": "Kill Chain Phases 5-7 (Installation, Command & Control, Actions on Objectives) where traditional security capabilities detect and respond after exploitation."},
         {"term": "EXM", "definition": "Exposure Management. Continuous discovery, prioritization, and remediation of exploitable vulnerabilities and attack surface exposures. Maps primarily to Kill Chain Phase 1 (Reconnaissance)."},
         {"term": "AMT", "definition": "Adversary Management & Threat Intelligence. Polymorphic defense, moving target defense, runtime protection, and credential rotation. Maps to Kill Chain Phases 1-2 (Reconnaissance and Weaponization). The critical bottleneck in the preemptive market."},
-        {"term": "ADR", "definition": "Autonomous Detection & Response. Deception technology, threat intelligence operationalization, proactive threat hunting, and counter-adversary operations. Maps to Kill Chain Phases 4-6 (Exploitation through C2)."},
+        {"term": "ADR", "definition": "Adversary Disruption. Deception technology, threat intelligence operationalization, proactive threat hunting, and counter-adversary operations. Maps to Kill Chain Phases 4-6 (Exploitation through C2)."},
         {"term": "PPM", "definition": "Posture & Policy Management. Breach & attack simulation, security control validation, pen testing, and cloud security posture management. Maps to Kill Chain Phases 2-3 (Weaponization and Delivery)."},
         {"term": "SVC", "definition": "Services & Capability Maturity. Implementation, advisory, managed operations, and AI-driven delivery. Maps to Kill Chain Phases 5-7 (Installation through Actions on Objectives)."},
         {"term": "Full-Spectrum Vendor", "definition": "A vendor scoring above 2.0 on all five preemptive pillars, providing meaningful coverage across all seven kill chain phases. Only 27% of assessed vendors (14 of 51) achieve this status."},

@@ -737,6 +737,203 @@ VENDOR_URLS: Dict[str, List[str]] = {
         "https://www.cisco.com/site/us/en/products/security/zero-trust.html",
         "https://www.splunk.com/en_us/products/unified-security-and-observability-platform.html",
     ],
+
+    # ── SVC: MSSPs & SIs (added v3) ──────────────────────────────────
+    "Trustwave": [
+        "https://www.trustwave.com/en-us/services/managed-security-services/",
+        "https://www.trustwave.com/en-us/services/managed-detection-and-response/",
+        "https://www.trustwave.com/en-us/capabilities/threat-intelligence/",
+        "https://www.trustwave.com/en-us/services/security-testing/",
+        "https://www.trustwave.com/en-us/resources/",
+    ],
+    "Cyderes": [
+        "https://www.cyderes.com/services/",
+        "https://www.cyderes.com/services/managed-detection-response/",
+        "https://www.cyderes.com/services/security-operations/",
+        "https://www.cyderes.com/technology-partners/",
+        "https://www.cyderes.com/about/",
+    ],
+    "Optiv": [
+        "https://www.optiv.com/services/managed-security-services",
+        "https://www.optiv.com/services/security-operations",
+        "https://www.optiv.com/services/threat-intelligence",
+        "https://www.optiv.com/services/vulnerability-management",
+        "https://www.optiv.com/services/",
+    ],
+    "Leidos Cybersecurity": [
+        "https://www.leidos.com/markets/defense/cybersecurity",
+        "https://www.leidos.com/capabilities/cybersecurity",
+        "https://www.leidos.com/services/cybersecurity",
+        "https://www.leidos.com/resources/",
+    ],
+    "BT Security": [
+        "https://www.bt.com/business/security",
+        "https://www.bt.com/business/security/managed-security-services",
+        "https://www.bt.com/business/security/threat-intelligence",
+        "https://www.bt.com/business/security/soc-services",
+        "https://www.bt.com/business/security/partners",
+    ],
+    "Orange Cyberdefense": [
+        "https://www.orangecyberdefense.com/global/services/managed-detection-response/",
+        "https://www.orangecyberdefense.com/global/services/threat-intelligence/",
+        "https://www.orangecyberdefense.com/global/services/security-monitoring/",
+        "https://www.orangecyberdefense.com/global/services/vulnerability-intelligence/",
+    ],
+    "Wipro CyberTransformation": [
+        "https://www.wipro.com/cybersecurity/",
+        "https://www.wipro.com/cybersecurity/managed-detection-and-response/",
+        "https://www.wipro.com/cybersecurity/vulnerability-risk-management/",
+        "https://www.wipro.com/cybersecurity/cyber-defense-services/",
+    ],
+    "Infosys Cybersecurity": [
+        "https://www.infosys.com/services/cybersecurity.html",
+        "https://www.infosys.com/services/cybersecurity/offerings/managed-detection-response.html",
+        "https://www.infosys.com/services/cybersecurity/offerings/threat-intelligence.html",
+        "https://www.infosys.com/about/partners/technology-alliances.html",
+        "https://www.infosys.com/services/cybersecurity/partners.html",
+    ],
+    "NTT Data": [
+        "https://www.nttdata.com/global/en/services/security",
+        "https://www.nttdata.com/global/en/services/security/managed-security-services",
+        "https://www.nttdata.com/global/en/services/security/threat-intelligence",
+        "https://www.nttdata.com/global/en/about-us/alliances",
+        "https://www.nttdata.com/global/en/partners",
+    ],
+    "Tata Consultancy Services (TCS) Security": [
+        "https://www.tcs.com/what-we-do/industries/cybersecurity",
+        "https://www.tcs.com/what-we-do/products-platforms/cyber-defense-suite",
+        "https://www.tcs.com/what-we-do/industries/cybersecurity/managed-security-services",
+        "https://www.tcs.com/who-we-are/alliances",
+        "https://www.tcs.com/who-we-are/alliances/cybersecurity",
+    ],
+    # ── EXM additions (added v3) ──────────────────────────────────────
+    "Noetic Cyber": [
+        "https://www.noeticcyber.com/platform/",
+        "https://www.noeticcyber.com/solutions/cyber-asset-attack-surface-management/",
+        "https://www.noeticcyber.com/solutions/vulnerability-management/",
+        "https://www.noeticcyber.com/solutions/cloud-security/",
+    ],
+    "Ionix (formerly Cyberpion)": [
+        "https://ionix.io/platform/",
+        "https://ionix.io/solutions/external-attack-surface-management/",
+        "https://ionix.io/solutions/digital-supply-chain/",
+        "https://ionix.io/solutions/threat-intelligence/",
+    ],
+    "Silentpush": [
+        "https://www.silentpush.com/platform/",
+        "https://www.silentpush.com/products/",
+        "https://www.silentpush.com/solutions/attack-surface-management/",
+        "https://www.silentpush.com/solutions/threat-intelligence/",
+    ],
+    "Fletch (formerly Cronus Cyber)": [
+        "https://fletch.ai/platform/",
+        "https://fletch.ai/solutions/",
+        "https://fletch.ai/products/continuous-threat-exposure/",
+        "https://fletch.ai/resources/",
+    ],
+    # ── ADR additions (added v3) ──────────────────────────────────────
+    "Flashpoint": [
+        "https://flashpoint.io/platform/",
+        "https://flashpoint.io/products/threat-intelligence/",
+        "https://flashpoint.io/products/vulnerability-intelligence/",
+        "https://flashpoint.io/resources/",
+    ],
+    "Cyberint (Check Point)": [
+        "https://cyberint.com/platform/",
+        "https://cyberint.com/solutions/threat-intelligence/",
+        "https://cyberint.com/solutions/digital-risk-protection/",
+        "https://cyberint.com/solutions/attack-surface-management/",
+    ],
+    "Cybersixgill": [
+        "https://cybersixgill.com/platform/",
+        "https://cybersixgill.com/products/darkfeed/",
+        "https://cybersixgill.com/solutions/threat-intelligence/",
+        "https://cybersixgill.com/resources/",
+    ],
+    "Illusive Networks": [
+        "https://www.illusive.com/platform/",
+        "https://www.illusive.com/solutions/deception/",
+        "https://www.illusive.com/solutions/attack-surface-reduction/",
+        "https://www.illusive.com/solutions/identity-security/",
+    ],
+    "Sygnia": [
+        "https://www.sygnia.co/services/",
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/threat-intelligence/",
+        "https://www.sygnia.co/services/proactive-security/",
+    ],
+    "Stroz Friedberg (Aon)": [
+        "https://www.aon.com/cyber-solutions/stroz-friedberg/",
+        "https://www.aon.com/cyber-solutions/incident-response/",
+        "https://www.aon.com/cyber-solutions/digital-forensics/",
+    ],
+    # ── PPM additions (added v3) ──────────────────────────────────────
+    "Zafran Security": [
+        "https://www.zafran.io/platform/",
+        "https://www.zafran.io/solutions/vulnerability-management/",
+        "https://www.zafran.io/solutions/risk-prioritization/",
+        "https://www.zafran.io/resources/",
+    ],
+    "Opus Security": [
+        "https://www.opus.security/platform/",
+        "https://www.opus.security/solutions/cloud-security-posture/",
+        "https://www.opus.security/solutions/vulnerability-management/",
+        "https://www.opus.security/integrations/",
+    ],
+    "Brinqa": [
+        "https://www.brinqa.com/platform/",
+        "https://www.brinqa.com/solutions/vulnerability-management/",
+        "https://www.brinqa.com/solutions/attack-surface-intelligence/",
+        "https://www.brinqa.com/solutions/risk-prioritization/",
+    ],
+    "PlexTrac": [
+        "https://plextrac.com/platform/",
+        "https://plextrac.com/solutions/penetration-testing/",
+        "https://plextrac.com/solutions/vulnerability-management/",
+        "https://plextrac.com/solutions/red-team/",
+    ],
+    "Hadrian": [
+        "https://www.hadrian.io/platform/",
+        "https://www.hadrian.io/solutions/autonomous-security-testing/",
+        "https://www.hadrian.io/solutions/attack-surface-management/",
+    ],
+    "Veracode": [
+        "https://www.veracode.com/platform",
+        "https://www.veracode.com/products/binary-static-analysis-sast",
+        "https://www.veracode.com/products/dynamic-analysis-dast",
+        "https://www.veracode.com/products/software-composition-analysis",
+        "https://www.veracode.com/products/penetration-testing",
+    ],
+    "Vulcan Cyber": [
+        "https://vulcan.io/platform/",
+        "https://vulcan.io/solutions/vulnerability-management/",
+        "https://vulcan.io/solutions/risk-based-prioritization/",
+        "https://vulcan.io/integrations/",
+        "https://vulcan.io/resources/",
+    ],
+    # ── AMT additions (added v3) ──────────────────────────────────────
+    "ColorTokens": [
+        "https://colortokens.com/platform/",
+        "https://colortokens.com/solutions/microsegmentation/",
+        "https://colortokens.com/solutions/zero-trust/",
+        "https://colortokens.com/solutions/ransomware-protection/",
+    ],
+    "Titaniam": [
+        "https://titaniam.io/platform/",
+        "https://titaniam.io/solutions/data-in-use-encryption/",
+        "https://titaniam.io/solutions/ransomware-protection/",
+    ],
+    "Akeyless": [
+        "https://www.akeyless.io/platform/",
+        "https://www.akeyless.io/solutions/secrets-management/",
+        "https://www.akeyless.io/solutions/machine-identity/",
+        "https://www.akeyless.io/solutions/zero-trust/",
+    ],
+    "Aembit": [
+        "https://aembit.io/platform/",
+        "https://aembit.io/solutions/workload-identity/",
+        "https://aembit.io/solutions/non-human-identity/",
+    ],
 }
 
 # 3rd-party sources queried for ALL vendors (vendor name substituted)

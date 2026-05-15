@@ -97,7 +97,7 @@ SCHEMA_DISPLAY = {
     'CNAPP_MQ_Gap_Schema_App.json': {'title': 'CNAPP Magic Quadrant — Gap Criteria Analysis 2026', 'abbr': 'CNAPP-MQ', 'subtitle': 'Evaluate CNAPP vendors against the 7 Magic Quadrant criteria not covered by the CNAPP capability schema'},
     'Schema_Template_Capability.json': {'title': 'Schema Template — Capability Assessment', 'abbr': 'TEMPLATE-CAP', 'subtitle': 'Blank capability schema template with annotated structure — use as the starting point for a new market capability assessment schema'},
     'Schema_Template_MQ_Gap.json': {'title': 'Schema Template — MQ Gap Criteria', 'abbr': 'TEMPLATE-MQ', 'subtitle': 'Blank MQ Gap schema template with annotated structure — use as the starting point for Magic Quadrant supplemental criteria scoring'},
-    'agentic_soc_framework_v1.json': {'title': 'Agentic SOC Maturity Framework 2026', 'abbr': 'ASMF', 'subtitle': 'Vendor-neutral maturity framework for autonomous security operations — 11 dimensions, 44 sub-dimensions, 6 stages'},
+    'agentic_soc_framework_v1.json': {'title': 'Agentic Security Operations Adoption Framework 2026', 'abbr': 'ASAF', 'subtitle': 'Vendor-neutral adoption framework for autonomous security operations — 11 dimensions, 44 sub-dimensions, 6 stages'},
 }
 
 def discover_schema_files():
@@ -1640,7 +1640,11 @@ def save_mdr_market_insight():
 def get_precyber_stats():
     """Return computed statistics from PreCyber vendor data for live visualizations."""
     vendor_file = os.path.join(os.path.dirname(__file__),
-                               'Preemptive Cybersecurity Vendor 3-0 SVC Pricing.json')
+                               'Preemptive Cybersecurity Vendor 5-0 Combined.json')
+    if not os.path.exists(vendor_file):
+        # Fall back to older file
+        vendor_file = os.path.join(os.path.dirname(__file__),
+                                   'Preemptive Cybersecurity Vendor 3-0 SVC Pricing.json')
     if not os.path.exists(vendor_file):
         return jsonify({'error': 'PreCyber vendor data not found'}), 404
     try:
@@ -1651,18 +1655,27 @@ def get_precyber_stats():
         pillar_labels = {
             'EXM': 'Exposure Management',
             'AMT': 'Adversary Management & Threat Intelligence',
-            'ADR': 'Autonomous Detection & Response',
+            'ADR': 'Adversary Disruption',
             'PPM': 'Posture & Policy Management',
             'SVC': 'Services Maturity & Delivery',
         }
         threshold = 2.0
         n = len(vendors)
 
+        def get_pillar_avg(vendor, pillar_code):
+            """Compute pillar score from sub_pillar_scores_current (mean of sub-pillars);
+            falls back to pillar_scores if sub-pillars not available."""
+            sub = vendor.get('sub_pillar_scores_current', {})
+            keys = [k for k in sub if k.startswith(pillar_code + '-') and sub[k] > 0]
+            if keys:
+                return sum(sub[k] for k in keys) / len(keys)
+            return vendor.get('pillar_scores', {}).get(pillar_code, 0)
+
         # Pillar penetration (% vendors >= threshold)
         pillar_penetration = {}
         pillar_avgs = {}
         for p in pillars:
-            scores = [v['pillar_scores'].get(p, 0) for v in vendors]
+            scores = [get_pillar_avg(v, p) for v in vendors]
             above = sum(1 for s in scores if s >= threshold)
             pillar_penetration[p] = {
                 'label': pillar_labels[p],
@@ -1675,13 +1688,13 @@ def get_precyber_stats():
         # Coverage distribution (how many pillars each vendor covers)
         coverage_dist = {i: 0 for i in range(6)}
         for v in vendors:
-            cnt = sum(1 for p in pillars if v['pillar_scores'].get(p, 0) >= threshold)
+            cnt = sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
             coverage_dist[cnt] += 1
 
         full_spectrum = coverage_dist.get(5, 0)
         narrow = sum(coverage_dist.get(i, 0) for i in range(4))
         avg_coverage = round(sum(
-            sum(1 for p in pillars if v['pillar_scores'].get(p, 0) >= threshold)
+            sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
             for v in vendors
         ) / n, 1) if n else 0
 
@@ -1693,8 +1706,8 @@ def get_precyber_stats():
                 dm_stats[dm] = {'count': 0, 'pillar_totals': {p: 0 for p in pillars}, 'coverage_sum': 0}
             dm_stats[dm]['count'] += 1
             for p in pillars:
-                dm_stats[dm]['pillar_totals'][p] += v['pillar_scores'].get(p, 0)
-            dm_stats[dm]['coverage_sum'] += sum(1 for p in pillars if v['pillar_scores'].get(p, 0) >= threshold)
+                dm_stats[dm]['pillar_totals'][p] += get_pillar_avg(v, p)
+            dm_stats[dm]['coverage_sum'] += sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
 
         delivery_models = {}
         dm_labels = {
@@ -1715,14 +1728,13 @@ def get_precyber_stats():
         # Top balanced vendors (highest min pillar score)
         vendor_balance = []
         for v in vendors:
-            ps = v['pillar_scores']
-            scores = [ps.get(p, 0) for p in pillars]
+            scores = {p: get_pillar_avg(v, p) for p in pillars}
             vendor_balance.append({
                 'vendor': v['vendor'],
-                'min_score': round(min(scores), 2),
+                'min_score': round(min(scores.values()), 2),
                 'delivery_model': v.get('delivery_model', ''),
-                'pillar_scores': {p: ps.get(p, 0) for p in pillars},
-                'coverage': sum(1 for s in scores if s >= threshold),
+                'pillar_scores': {p: round(scores[p], 2) for p in pillars},
+                'coverage': sum(1 for s in scores.values() if s >= threshold),
             })
         vendor_balance.sort(key=lambda x: x['min_score'], reverse=True)
         top_balanced = vendor_balance[:6]
@@ -4720,7 +4732,7 @@ def precyber_all_graphics_pptx():
         gap_data = [
             ('Exposure Mgmt (EXM)', '92%', 3.60, 3.69, 3.07),
             ('Posture & Policy (PPM)', '86%', 2.97, 3.21, 2.84),
-            ('Detection & Response (ADR)', '78%', 3.38, 2.83, 2.52),
+            ('Adversary Disruption (ADR)', '78%', 3.38, 2.83, 2.52),
             ('Services & Capability (SVC)', '57%', 2.74, 2.32, 1.49),
             ('Adversary Mgmt (AMT)', '55%', 2.45, 2.74, 1.87),
         ]
@@ -5732,7 +5744,7 @@ def precyber_kcmitre_pptx():
         tb(s5, sx(55), sy(26), sw(40), sh(3), 'ATT&CK: Execution through Impact', 10, False, '888888', 'center')
         tb(s5, sx(55), sy(32), sw(40), sh(8), '~68%', 30, True, 'a80000', 'center')
         tb(s5, sx(55), sy(40), sw(40), sh(3), 'Detection & Response penetration', 10, False, '888888', 'center')
-        react_pillars = [('Autonomous Detection & Response', 'Covers Phases 4-7', '8764b8')]
+        react_pillars = [('Adversary Disruption', 'Covers Phases 4-7', '8764b8')]
         for pi, (plbl, pstr, pcol) in enumerate(react_pillars):
             py = sy(46) + pi * sh(6)
             tb(s5, sx(58), py, sw(25), sh(5), plbl, 11, False, '333333')
@@ -6878,7 +6890,7 @@ def blumira_deep_dive():
 
 @app.route('/api/asmf-framework', methods=['GET'])
 def get_asmf_framework():
-    """Return the Agentic SOC Maturity Framework schema."""
+    """Return the Agentic Security Operations Adoption Framework schema."""
     filepath = os.path.join(os.path.dirname(__file__), 'agentic_soc_framework_v1.json')
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -6900,16 +6912,21 @@ def get_asmf_orbital_map():
         return jsonify({'error': str(e)}), 500
 
 
-@app.route('/api/docs/architecture', methods=['GET'])
-def get_docs_architecture():
-    """Serve the platform architecture documentation as structured JSON."""
-    filepath = os.path.join(os.path.dirname(__file__), 'static', 'docs_architecture.json')
+# Allowed doc IDs to prevent path traversal
+_ALLOWED_DOCS = {'precyber_methodology', 'architecture'}
+
+@app.route('/api/docs/<doc_id>', methods=['GET'])
+def get_docs(doc_id):
+    """Serve a docs JSON file from static/ by safe doc_id."""
+    if doc_id not in _ALLOWED_DOCS:
+        return jsonify({'error': 'Not found'}), 404
+    filepath = os.path.join(os.path.dirname(__file__), 'static', f'docs_{doc_id}.json')
+    if not os.path.exists(filepath):
+        return jsonify({'error': 'Not found'}), 404
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
         return jsonify(data)
-    except FileNotFoundError:
-        return jsonify({'error': 'Architecture documentation not found'}), 404
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

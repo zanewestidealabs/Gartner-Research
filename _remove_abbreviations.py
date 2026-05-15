@@ -10,7 +10,7 @@ PILLARS = {
     "EXM": "Exposure Management",
     "AMT": "Adversary Management",
     "PPM": "Posture & Policy Management",
-    "ADR": "Autonomous Detection & Response",
+    "ADR": "Adversary Disruption",
     "SVC": "Services & Capability Maturity",
 }
 

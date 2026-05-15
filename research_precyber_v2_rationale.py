@@ -114,7 +114,7 @@ def _html_to_text(html: str) -> str:
     return text.strip()
 
 
-def _fetch_url_with_retry(url: str, retries: int = 2) -> Tuple[Optional[str], Optional[str]]:
+def _fetch_url_with_retry(url: str, retries: int = 1) -> Tuple[Optional[str], Optional[str]]:
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -123,7 +123,7 @@ def _fetch_url_with_retry(url: str, retries: int = 2) -> Tuple[Optional[str], Op
     for attempt in range(retries + 1):
         try:
             req = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(req, timeout=15) as resp:
+            with urllib.request.urlopen(req, timeout=6) as resp:
                 ctype = resp.headers.get("Content-Type", "")
                 raw = resp.read(500_000)
                 encoding = "utf-8"
@@ -141,6 +141,34 @@ def _fetch_url_with_retry(url: str, retries: int = 2) -> Tuple[Optional[str], Op
             if attempt < retries:
                 time.sleep(2 * (attempt + 1))
     return None, None
+
+
+def _fetch_url_playwright(url: str) -> Tuple[Optional[str], Optional[str]]:
+    """Playwright headless-browser fallback for JS-heavy / bot-protected pages."""
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch(headless=True)
+            try:
+                ctx = browser.new_context(
+                    user_agent=(
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+                    ),
+                    locale="en-US",
+                )
+                page = ctx.new_page()
+                page.goto(url, timeout=20_000, wait_until="domcontentloaded")
+                html = page.content()
+            finally:
+                browser.close()
+        return "text/html", html
+    except ImportError:
+        return None, None
+    except KeyboardInterrupt:
+        raise
+    except Exception:
+        return None, None
 
 
 def _cache_path_for_url(url: str) -> Path:
@@ -162,16 +190,24 @@ def get_or_fetch_page_local(url: str, *, force: bool = False) -> Dict[str, Any]:
             pass
 
     ctype, html = _fetch_url_with_retry(url)
-    if html is None:
+    # Playwright fallback: fires when urllib fails or returns bot-blocked content
+    # Check extracted text (not raw HTML) so Cloudflare challenge pages trigger the fallback
+    _extracted = _html_to_text(html) if html else ""
+    if not _extracted or len(_extracted.strip()) < 200:
+        pw_ctype, pw_html = _fetch_url_playwright(url)
+        if pw_html:
+            pw_text = _html_to_text(pw_html)
+            if len(pw_text.strip()) > len(_extracted.strip()):
+                ctype, html, _extracted = pw_ctype, pw_html, pw_text
+    if not _extracted.strip():
         record = {
             "url": url, "fetched_at": datetime.now(timezone.utc).isoformat(),
             "ok": False, "content_type": ctype, "text": "", "error": "fetch_failed",
         }
     else:
-        text = _html_to_text(html)
         record = {
             "url": url, "fetched_at": datetime.now(timezone.utc).isoformat(),
-            "ok": True, "content_type": ctype, "text": text[:200_000], "error": None,
+            "ok": True, "content_type": ctype, "text": _extracted[:200_000], "error": None,
         }
     cache_path.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
     return record
@@ -246,7 +282,7 @@ def discover_additional_urls(vendor_name: str, existing_urls: List[str]) -> List
                 additional.append(candidate)
                 seen.add(candidate.lower().rstrip("/"))
 
-    return additional[:15]
+    return additional[:5]
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -832,10 +868,14 @@ def analyse_sub_pillar(
     adjusted = min(5.0, max(0.0, adjusted))
     adjusted = round(adjusted * 4) / 4  # Round to 0.25
 
-    # 8. Compare with original — cap adjustment at ±1.5
+    # 8. Compare with original — cap adjustment at ±1.5 (only for re-scoring vendors with a prior score)
     MAX_ADJUSTMENT = 1.5
     score_diff = adjusted - original_score
-    if abs(score_diff) >= 0.5:
+    if original_score == 0.0:
+        # Fresh scoring — no prior validated score exists; use analysis result directly
+        adj_reason = (f"Fresh score {adjusted:.2f}: no prior validated score "
+                     f"({met_count}/{total_criteria} criteria met, level={level}).")
+    elif abs(score_diff) >= 0.5:
         if abs(score_diff) > MAX_ADJUSTMENT:
             adjusted = original_score + (MAX_ADJUSTMENT if score_diff > 0 else -MAX_ADJUSTMENT)
             adjusted = round(adjusted * 4) / 4  # re-snap to 0.25

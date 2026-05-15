@@ -1,0 +1,1257 @@
+{
+  "version": "1.0",
+  "updated": "May 2026",
+  "tabs": [
+    {
+      "id": "research_methodology",
+      "label": "Research Methodology",
+      "sections": [
+        {
+          "id": "s1",
+          "title": "Table of Contents",
+          "content": [
+            {
+              "type": "list",
+              "items": [
+                "[End-to-End Pipeline](#1-end-to-end-pipeline)",
+                "[Schema Definition](#2-schema-definition)",
+                "[Vendor Seed Structure](#3-vendor-seed-structure)",
+                "[URL Discovery & Curation](#4-url-discovery--curation)",
+                "[Playwright Rendering](#5-playwright-rendering)",
+                "[Evidence Harvesting](#6-evidence-harvesting)",
+                "[Holistic Per-Criterion Scoring](#7-holistic-per-criterion-scoring)",
+                "[Worked Example: Vendor A EXP-04](#8-worked-example-vendor-a-exp-04)",
+                "[Structured Rationale Overlay](#9-structured-rationale-overlay)",
+                "[Output Files & Versioning](#10-output-files--versioning)",
+                "[Operational Runbook](#11-operational-runbook)",
+                "[Validation Targets (Polarity Test)](#12-validation-targets-polarity-test)",
+                "[Anti-Patterns & Common Failures](#13-anti-patterns--common-failures)",
+                "[Known Limitations](#14-known-limitations)",
+                "[File Map](#15-file-map)",
+                "[Change Log](#16-change-log)"
+              ]
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "title": "End-to-End Pipeline",
+          "content": [
+            {
+              "type": "text",
+              "value": "The full lifecycle from schema authorship to UI surfacing. Each stage is deterministic and idempotent: re-running with the same cache produces the same scores."
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    A[Schema v2.0<br/>5 pillars x 4-5 sub-pillars] --> B[Vendor Seed<br/>Vendor_Research_Data.json]\n    B --> C[URL Catalog<br/>VENDOR_URLS + PRIORITY_VENDOR_URLS]\n    C --> D[Playwright Render<br/>stealth + 2-pass hydration]\n    D --> E[Evidence Cache<br/>research/cache/pages_cache/<br/>sha1 url .json]\n    E --> F[Excerpt Harvester<br/>evidence_harvester.py<br/>service_evidence_harvester.py]\n    F --> G[Strict Re-Scorer<br/>holistic_scorer.py]\n    G --> H1[v2-3 Holistic Validated.json]\n    G --> H2[score_delta_report.json]\n    G --> H3[research_targets.json]\n    H1 --> I[UI Overlay<br/>app.py + app.js]\n    H2 --> J[Audit / Polarity Analysis]\n    H3 --> K[Targeted Re-render Loop]\n    K --> D"
+            },
+            {
+              "type": "text",
+              "value": "Stage responsibilities:"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Stage",
+                "Inputs",
+                "Outputs",
+                "Cacheable?"
+              ],
+              "rows": [
+                [
+                  "Schema",
+                  "analyst",
+                  "`Research_Schema_v2.json`",
+                  "n/a (versioned)"
+                ],
+                [
+                  "Seed",
+                  "analyst + schema",
+                  "vendor records in 3-0 file",
+                  "n/a"
+                ],
+                [
+                  "URL Catalog",
+                  "analyst + vendor specialization",
+                  "`PRIORITY_VENDOR_URLS` dict",
+                  "code"
+                ],
+                [
+                  "Render",
+                  "URL list",
+                  "`sha1(url).json` page cache",
+                  "yes (file-based)"
+                ],
+                [
+                  "Harvest",
+                  "page cache + schema search_terms",
+                  "`sub_pillar_evidence` blocks",
+                  "implicit"
+                ],
+                [
+                  "Re-score",
+                  "evidence + schema",
+                  "structured rationale + scores",
+                  "no (always re-run)"
+                ],
+                [
+                  "Polarity audit",
+                  "re-score output",
+                  "console report",
+                  "no"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Trigger matrix — what change forces what re-run:"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Change",
+                "Re-render?",
+                "Re-harvest?",
+                "Re-score?"
+              ],
+              "rows": [
+                [
+                  "New schema sub-pillar",
+                  "❌",
+                  "✅",
+                  "✅"
+                ],
+                [
+                  "New `search_terms` synonyms",
+                  "❌",
+                  "✅",
+                  "✅"
+                ],
+                [
+                  "Scoring algorithm tweak",
+                  "❌",
+                  "❌",
+                  "✅"
+                ],
+                [
+                  "New vendor seed",
+                  "✅ (vendor only)",
+                  "✅",
+                  "✅"
+                ],
+                [
+                  "Bot-walled pages discovered",
+                  "✅ (`--headed`)",
+                  "✅",
+                  "✅"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "title": "Schema Definition",
+          "content": [
+            {
+              "type": "text",
+              "value": "Five pillars, 24 sub-pillars total. Every sub-pillar carries the four fields the scorer depends on."
+            },
+            {
+              "type": "heading",
+              "value": "2.1 Taxonomy"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    SCH[Schema v2.0<br/>24 sub-pillars]\n    SCH --> DET[DET<br/>Detection & Response<br/>5 sub-pillars]\n    SCH --> PRV[PRV<br/>Prevention & Hardening<br/>5 sub-pillars]\n    SCH --> EXP[EXP<br/>Exposure Management<br/>5 sub-pillars]\n    SCH --> ANL[ANL<br/>Analytics & Intelligence<br/>5 sub-pillars]\n    SCH --> SVC[SVC<br/>Service Delivery<br/>4 sub-pillars]\n\n    DET --> D1[DET-01 Alert Triage]\n    DET --> D2[DET-02 Behavioral Monitoring]\n    DET --> D3[DET-03 Network Detection]\n    DET --> D4[DET-04 Endpoint Coverage]\n    DET --> D5[DET-05 Threat Correlation]\n\n    SVC --> S1[SVC-01 Implementation & Onboarding]\n    SVC --> S2[SVC-02 Consultative & Advisory]\n    SVC --> S3[SVC-03 Managed Operations]\n    SVC --> S4[SVC-04 Automated Delivery]"
+            },
+            {
+              "type": "heading",
+              "value": "2.2 Sub-pillar field contract"
+            },
+            {
+              "type": "text",
+              "value": "Every sub-pillar must carry these four fields:"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Field",
+                "Purpose",
+                "Used by"
+              ],
+              "rows": [
+                [
+                  "`name`",
+                  "Short label",
+                  "UI, reports"
+                ],
+                [
+                  "`expanded_definition`",
+                  "Plain-language scope",
+                  "Analyst review"
+                ],
+                [
+                  "`what_to_verify_publicly`",
+                  "List of testable capability claims",
+                  "**Scorer** (each becomes a per-criterion verdict)"
+                ],
+                [
+                  "`search_terms`",
+                  "Synonyms vendors actually use in marketing",
+                  "**Scorer anchors** + **Harvester queries**"
+                ],
+                [
+                  "`maturity_guidance`",
+                  "L1–L5 prose definitions",
+                  "Justification text + analyst review"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Rule: When you add or rename a criterion, add the synonym list to search_terms in the same commit. The scorer's anchor matching depends on both."
+            },
+            {
+              "type": "heading",
+              "value": "2.3 Example sub-pillar definition"
+            },
+            {
+              "type": "code",
+              "value": "\"SVC-01\": {\n  \"name\": \"Implementation & Onboarding\",\n  \"expanded_definition\": \"Vendor's ability to deploy, configure and bring a customer to operational steady-state.\",\n  \"what_to_verify_publicly\": [\n    \"Documented onboarding methodology with phases and milestones\",\n    \"Onboarding documentation, runbooks, and knowledge transfer programs\",\n    \"Time-to-value commitments (days to initial detection, weeks to full deployment)\",\n    \"Post-deployment validation and tuning services\",\n    \"API-first integration architecture supporting custom workflows\"\n  ],\n  \"search_terms\": [\n    \"professional services\", \"onboarding\", \"time-to-value\",\n    \"deployment services\", \"implementation services\", \"white-glove\"\n  ],\n  \"maturity_guidance\": {\n    \"L1\": \"Self-service deployment, no formal onboarding program.\",\n    \"L3\": \"Documented onboarding methodology with assigned engineers.\",\n    \"L5\": \"Time-to-value SLAs, named program manager, success metrics in contract.\"\n  }\n}"
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "title": "Vendor Seed Structure",
+          "content": [
+            {
+              "type": "text",
+              "value": "The canonical vendor file is Vendor_Research_Data.json — a flat JSON list, currently 55 vendors."
+            },
+            {
+              "type": "heading",
+              "value": "3.1 Seed schema"
+            },
+            {
+              "type": "mermaid",
+              "value": "classDiagram\n    class Vendor {\n        +string vendor\n        +string headquarters\n        +string region\n        +string specialization\n        +bool is_startup\n        +bool is_ai_first\n        +string primary_capability\n        +string description\n        +list~string~ key_differentiators\n        +list~string~ expected_coverage\n        +int capability_coverage_count\n        +string ir_focus_type\n        +string delivery_model\n        +int services_maturity_level\n        +int outcome_maturity_rating\n        +string outcome_maturity_label\n        +string research_flag\n        +string research_confidence\n        +dict pillar_scores\n        +dict sub_pillar_scores_current\n        +dict sub_pillar_evidence\n        +dict sub_pillar_rationale_v2\n        +dict sub_pillar_scores_v2_researched\n        +dict pricing_dimension_scores\n        +dict svc_pricing_research\n    }\n    Vendor --> SubPillarEvidence : contains 24\n    Vendor --> SubPillarRationale : contains 24\n    class SubPillarEvidence {\n        +list excerpts\n        +int schema_criteria_hits\n        +int pillar_term_hits\n        +float sub_pillar_specificity\n    }\n    class SubPillarRationale {\n        +string score_rationale\n        +float original_score\n        +float adjusted_score\n        +string adjustment_reason\n        +string confidence\n        +float evidence_quality_factor\n        +string evidence_quality_grade\n        +int excerpt_count\n        +list criteria_assessment\n        +list key_evidence\n        +int scoring_level\n        +string scoring_level_justification\n    }"
+            },
+            {
+              "type": "heading",
+              "value": "3.2 Required fields when seeding"
+            },
+            {
+              "type": "code",
+              "value": "{\n  \"vendor\": \"Vendor B\",\n  \"headquarters\": \"London, UK\",\n  \"region\": \"Global\",\n  \"specialization\": \"Cybersecurity Consulting & Managed Services\",\n  \"primary_capability\": \"SVC\",\n  \"expected_coverage\": [\"SVC-01\",\"SVC-02\",\"SVC-03\",\"SVC-04\",\n                         \"EXP-04\",\"DET-02\",\"DET-03\",\"ANL-03\"],\n  \"delivery_model\": \"Consulting + Managed Services\",\n  \"services_maturity_level\": 5,\n  \"outcome_maturity_rating\": 4,\n  \"outcome_maturity_label\": \"Outcome-Aligned\",\n  \"research_flag\": \"seed_consultancy_benchmark\"\n}"
+            },
+            {
+              "type": "text",
+              "value": "expected_coverage is the analyst-asserted capability footprint. The scorer uses it to apply a small within-level lift (+0.25) when partial evidence exists, but never to bypass the L3 met-≥1 requirement."
+            },
+            {
+              "type": "text",
+              "value": "vendor_seeder.py is the canonical pattern for seeding new vendors."
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s5",
+          "title": "URL Discovery & Curation",
+          "content": [
+            {
+              "type": "text",
+              "value": "Two URL catalogs feed Playwright:"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    DISC[URL Discovery]\n    DISC --> V1[VENDOR_URLS<br/>evidence_harvester.py<br/>broad capability catalog]\n    DISC --> ZV[PRIORITY_VENDOR_URLS<br/>vendor_renderer.py<br/>curated re-render targets]\n    V1 --> SEL{Pages selected per vendor}\n    ZV --> SEL\n    SEL --> SKIP{Cache hit?}\n    SKIP -- yes --> REUSE[Reuse cached page]\n    SKIP -- no --> FETCH[Render + cache]\n    REUSE --> HARVEST[Harvest excerpts]\n    FETCH --> HARVEST"
+            },
+            {
+              "type": "heading",
+              "value": "4.1 Curation rules"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Rule",
+                "Why"
+              ],
+              "rows": [
+                [
+                  "8–12 URLs per vendor",
+                  "Excerpts cap at 80 per vendor; >12 URLs has diminishing returns"
+                ],
+                [
+                  "Prefer `/products/*`, `/platform/*`, `/services/*`",
+                  "Capability-dense"
+                ],
+                [
+                  "Avoid `/about`, `/news`, `/press-releases`",
+                  "Marketing noise"
+                ],
+                [
+                  "Include 1–2 datasheets / white-paper landing pages",
+                  "Often enumerate criteria explicitly"
+                ],
+                [
+                  "For consultancies, target `/services/cybersecurity/*`, `/insights/*`",
+                  "Closest to capability claims"
+                ],
+                [
+                  "Avoid blog posts deeper than top-level",
+                  "Time-bound, not capability claims"
+                ],
+                [
+                  "Add `/pricing` if available",
+                  "Drives PRC-* sub-dimensions"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "4.2 Curation by vendor archetype"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Archetype",
+                "URL pattern"
+              ],
+              "rows": [
+                [
+                  "EDR/XDR",
+                  "`/platform`, `/endpoint`, `/services/managed-detection`, `/threat-intel`"
+                ],
+                [
+                  "BAS",
+                  "`/platform`, `/use-cases/breach-attack-simulation`, `/integrations`"
+                ],
+                [
+                  "Vulnerability Mgmt",
+                  "`/products`, `/exposure-management`, `/research`, `/datasheets`"
+                ],
+                [
+                  "MDR",
+                  "`/services/mdr`, `/soc-as-a-service`, `/platform`, `/onboarding`"
+                ],
+                [
+                  "Consultancy",
+                  "`/services/cybersecurity`, `/services/cyber-resilience`, `/insights/security`"
+                ],
+                [
+                  "Mega-platform",
+                  "`/cortex`, `/products/security`, `/platform`, `/unit42`"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s6",
+          "title": "Playwright Rendering",
+          "content": [
+            {
+              "type": "text",
+              "value": "vendor_renderer.py is the canonical renderer. It writes one JSON per URL keyed by sha1(url) to research/cache/pages_cache/."
+            },
+            {
+              "type": "heading",
+              "value": "5.1 Render flow"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    START[URL list] --> CACHE{In cache?}\n    CACHE -- yes --> SKIP[Reuse cached page]\n    CACHE -- no --> NAV[page.goto<br/>networkidle, timeout 45s]\n    NAV --> STEALTH[apply STEALTH_INIT_JS<br/>navigator.webdriver=undefined<br/>plugins, languages, chrome runtime,<br/>WebGL spoof]\n    STEALTH --> EXTRACT[Extract body innerText]\n    EXTRACT --> LEN{length 500+ chars?<br/>MIN_USEFUL_TEXT}\n    LEN -- yes --> SAVE[Write cache file<br/>status=ok]\n    LEN -- no --> WAIT[wait 6000 ms<br/>SECOND_WAIT_MS]\n    WAIT --> EXTRACT2[Extract again]\n    EXTRACT2 --> LEN2{length 500+ chars?}\n    LEN2 -- yes --> SAVE\n    LEN2 -- no --> SHORT[Write cache file<br/>status=short<br/>likely bot-walled]\n    SAVE --> NEXT[Next URL]\n    SHORT --> NEXT"
+            },
+            {
+              "type": "heading",
+              "value": "5.2 Operational settings"
+            },
+            {
+              "type": "code",
+              "value": "CONCURRENCY     = 2     # polite; many vendor sites rate-limit at 4+\nMIN_USEFUL_TEXT = 500   # below this, treated as bot-blocked\nSECOND_WAIT_MS  = 6000  # extra wait for SPA hydration"
+            },
+            {
+              "type": "heading",
+              "value": "5.3 Stealth fingerprint patches"
+            },
+            {
+              "type": "text",
+              "value": "The init script clears the most obvious headless-Chromium tells. Sufficient for Vercel/Cloudflare \"easy\" challenges; not a full anti-bot framework."
+            },
+            {
+              "type": "code",
+              "value": "// Excerpt from STEALTH_INIT_JS\nObject.defineProperty(navigator, 'webdriver', { get: () => undefined });\nObject.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });\nObject.defineProperty(navigator, 'plugins', {\n  get: () => [1,2,3,4,5].map(() => ({ name: 'Chrome PDF Plugin' }))\n});\nwindow.chrome = { runtime: {}, loadTimes: () => ({}), csi: () => ({}) };\n// WebGL vendor / renderer spoof\nWebGLRenderingContext.prototype.getParameter = function (parameter) {\n  if (parameter === 37445) return 'Intel Inc.';\n  if (parameter === 37446) return 'Intel Iris OpenGL Engine';\n  return getParameter.call(this, parameter);\n};"
+            },
+            {
+              "type": "heading",
+              "value": "5.4 Bot-wall detection signals"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Signal",
+                "Action"
+              ],
+              "rows": [
+                [
+                  "Cache file < 1 KB",
+                  "Likely placeholder; flag for `--headed` retry"
+                ],
+                [
+                  "`status=\"short\"`",
+                  "Two-pass hydration failed; flag"
+                ],
+                [
+                  "888-byte placeholder body (Vendor M SPA)",
+                  "JS-challenge gate; treat as real \"no public capability density\""
+                ],
+                [
+                  "HTML contains \"access denied\", \"verify you are a human\", \"perimeterx\"",
+                  "Detected; written to cache as blocked"
+                ],
+                [
+                  "HTML < 4000 chars",
+                  "`_looks_bot_blocked()` returns True"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "5.5 Bot-wall recovery"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    R1[Headless render] --> CHECK{>30% SHORT/BLOCK<br/>for vendor?}\n    CHECK -- yes --> R2[Headed retry<br/>--headed --vendor X]\n    CHECK -- no --> DONE[Done]\n    R2 --> CHECK2{Still flat?}\n    CHECK2 -- yes --> ACCEPT[Accept low score -<br/>no public capability density]\n    CHECK2 -- no --> DONE"
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s7",
+          "title": "Evidence Harvesting",
+          "content": [
+            {
+              "type": "text",
+              "value": "Two harvesters consume the page cache and emit per-sub-pillar evidence blocks back into the vendor record:"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Harvester",
+                "Writes"
+              ],
+              "rows": [
+                [
+                  "[evidence_harvester.py](evidence_harvester.py)",
+                  "`sub_pillar_evidence[sid]` = `{excerpts:[{url,excerpt}], schema_criteria_hits, pillar_term_hits, sub_pillar_specificity}`"
+                ],
+                [
+                  "[service_evidence_harvester.py](service_evidence_harvester.py)",
+                  "`pricing_evidence`, `svc_pricing_research`, SVC-* and PRC-* dimension scores"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "6.1 Excerpt selection logic"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    PAGE[Cached page text] --> SPLIT[Split on sentence boundaries]\n    SPLIT --> MATCH{Contains any search term for sub pillar}\n    MATCH -- yes --> KEEP[Keep sentence plus context window]\n    MATCH -- no --> DROP[Drop]\n    KEEP --> RANK[Rank by density length and metrics or arch presence]\n    RANK --> CAP[Cap at 5 excerpts per sub pillar]\n    CAP --> WRITE[Write to sub pillar evidence]"
+            },
+            {
+              "type": "text",
+              "value": "excerpts_total per vendor is bounded ≈ 80 (= 5 × ~16 active sub-pillars)."
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s8",
+          "title": "Holistic Per-Criterion Scoring",
+          "content": [
+            {
+              "type": "text",
+              "value": "The heart of the holistic standard. Every cell (vendor × sub-pillar) is re-scored from raw excerpts using a multi-anchor, density-aware evaluator."
+            },
+            {
+              "type": "heading",
+              "value": "7.1 Anchor construction"
+            },
+            {
+              "type": "text",
+              "value": "For each criterion × search_terms, build the anchor list:"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    C[criterion text] --> P[Extract parenthetical content]\n    C --> L3W[Extract last 3 content words]\n    ST[sub pillar search terms] --> MW[Multi word terms]\n    ST --> SW[Single word terms 7 or more chars excluding stopwords]\n    P --> ANC[Anchor list]\n    L3W --> ANC\n    MW --> ANC\n    SW --> ANC\n    ANC --> NOTE[Used by anchor matcher whole word or two word slice]"
+            },
+            {
+              "type": "text",
+              "value": "Why multi-anchor? The criterion text alone (e.g., \"Time-to-value commitments (days to initial detection, weeks to full deployment)\") rarely appears verbatim. Vendors paraphrase using terms like \"professional services\", \"managed services\", \"time-to-value\", \"onboarding\" — exactly the strings curated in search_terms. Combining both sources lets the scorer recognize paraphrased capability claims while still rejecting unrelated marketing copy."
+            },
+            {
+              "type": "heading",
+              "value": "7.2 Per-excerpt support score"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    EX[excerpt text] --> A[anchor_hit any anchor present whole word or two word slice]\n    EX --> D[density count of concept tokens hit]\n    EX --> LEN[length 80 chars long enough 140 chars rich]\n    A --> SC{Score 0 to 3}\n    D --> SC\n    LEN --> SC\n    SC -->|strong rule met| S3[score 3 strong]\n    SC -->|partial rule met| S2[score 2 partial]\n    SC -->|weak rule met| S1[score 1 weak]\n    SC -->|no rule met| S0[score 0 none]"
+            },
+            {
+              "type": "heading",
+              "value": "7.3 Aggregation to per-criterion verdict"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    SCORES[per excerpt scores 0 to 3] --> V{verdict}\n    V -->|met rule| MET[met]\n    V -->|partial rule| PART[partial]\n    V -->|otherwise| UN[unmet]\n    MET --> CONF1{confidence}\n    PART --> CONF2{confidence}\n    UN --> CONFL[confidence low]\n    CONF1 -->|strong evidence| HIGH[high]\n    CONF1 -->|else| MED1[medium]\n    CONF2 -->|anchored| MED2[medium]\n    CONF2 -->|else| LOW[low]"
+            },
+            {
+              "type": "heading",
+              "value": "7.4 Sub-pillar level (L0–L5)"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    IN[per criterion verdicts plus schema hits plus specificity metrics arch] --> L0Q{no excerpts and no term hits}\n    L0Q -- yes --> R0[L0 No Evidence]\n    L0Q -- no --> L5Q{L5 rule satisfied}\n    L5Q -- yes --> R5[L5 Market Leading]\n    L5Q -- no --> L4Q{L4 rule satisfied}\n    L4Q -- yes --> R4[L4 Advanced]\n    L4Q -- no --> L3Q{at least one met}\n    L3Q -- yes --> R3[L3 Demonstrated]\n    L3Q -- no --> L2Q{partial language present}\n    L2Q -- yes --> R2[L2 Partial Language]\n    L2Q -- no --> R1[L1 Minimal]\n    R3 --> FINE[fine grain adjustment snapped to 0.25]\n    R4 --> FINE\n    R5 --> FINE\n    R2 --> FINE\n    FINE --> OUT[final score 0.00 to 5.00]"
+            },
+            {
+              "type": "text",
+              "value": "Critical rule: Bare schema-keyword hits never promote past L2. L3 strictly requires met_count ≥ 1 — at least one criterion verifiably satisfied by an excerpt."
+            },
+            {
+              "type": "heading",
+              "value": "7.5 Fine-grain math"
+            },
+            {
+              "type": "code",
+              "value": "# inside fine_grain()\nfine_ratio = (met_count + 0.3 * partial_count) / total_criteria\nadjusted   = level + 0.5 * min(fine_ratio, 1.0)\nfinal      = round(adjusted * 4) / 4   # snap to 0.25 steps"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Level",
+                "met",
+                "partial",
+                "total",
+                "fine_ratio",
+                "adjusted",
+                "final"
+              ],
+              "rows": [
+                [
+                  "2",
+                  "0",
+                  "1",
+                  "5",
+                  "0.060",
+                  "2.030",
+                  "**2.00**"
+                ],
+                [
+                  "2",
+                  "0",
+                  "5",
+                  "5",
+                  "0.300",
+                  "2.150",
+                  "**2.25**"
+                ],
+                [
+                  "3",
+                  "1",
+                  "0",
+                  "5",
+                  "0.200",
+                  "3.100",
+                  "**3.00**"
+                ],
+                [
+                  "3",
+                  "1",
+                  "3",
+                  "5",
+                  "0.380",
+                  "3.190",
+                  "**3.25**"
+                ],
+                [
+                  "4",
+                  "2",
+                  "1",
+                  "5",
+                  "0.460",
+                  "4.230",
+                  "**4.25**"
+                ],
+                [
+                  "4",
+                  "3",
+                  "2",
+                  "5",
+                  "0.720",
+                  "4.360",
+                  "**4.50**"
+                ],
+                [
+                  "5",
+                  "4",
+                  "1",
+                  "5",
+                  "0.860",
+                  "5.430 → cap",
+                  "**5.00**"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "7.6 Evidence quality factor"
+            },
+            {
+              "type": "text",
+              "value": "evidence_quality_factor is a 0–1 score combining:"
+            },
+            {
+              "type": "text",
+              "value": "$$"
+            },
+            {
+              "type": "text",
+              "value": "Q = 0.30 \\cdot \\frac{\\text{excerpts}}{5} + 0.25 \\cdot \\frac{\\text{sources}}{4} + 0.20 \\cdot \\text{met\\_ratio} + 0.15 \\cdot \\text{partial\\_ratio} + 0.10 \\cdot [\\text{has\\_metrics\\_or\\_arch}]"
+            },
+            {
+              "type": "text",
+              "value": "$$"
+            },
+            {
+              "type": "text",
+              "value": "Mapped to letter grade:"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Q range",
+                "Grade"
+              ],
+              "rows": [
+                [
+                  "≥ 0.85",
+                  "A"
+                ],
+                [
+                  "0.70–0.84",
+                  "B"
+                ],
+                [
+                  "0.55–0.69",
+                  "C"
+                ],
+                [
+                  "0.40–0.54",
+                  "D"
+                ],
+                [
+                  "< 0.40",
+                  "F"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s9",
+          "title": "Worked Example: Score Correction (Vendor A, EXP-04)",
+          "content": [
+            {
+              "type": "text",
+              "value": "This is the canonical example of why the holistic re-score exists. Pre-strict validated, Vendor A's EXP-04 (Third-Party & Supply Chain Exposure) was scored 4.75/5.0 based on schema-keyword density alone. The strict re-score correctly drops it to 2.25/5.0."
+            },
+            {
+              "type": "heading",
+              "value": "8.1 Input evidence"
+            },
+            {
+              "type": "code",
+              "value": "sub_pillar_evidence[\"EXP-04\"]:\n  excerpts: 5\n  sources:  3 (vendor-a.example.com pages)\n  schema_criteria_hits: 3\n  pillar_term_hits:     10\n  sub_pillar_specificity: 4.0"
+            },
+            {
+              "type": "text",
+              "value": "Top excerpt (used for all 5 criteria):"
+            },
+            {
+              "type": "text",
+              "value": "*\"Solution to modernize your governance, risk, and compliance function with automation. Software Supply Chain Security\"*"
+            },
+            {
+              "type": "heading",
+              "value": "8.2 Per-criterion evaluation"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "#",
+                "Criterion",
+                "anchor_hit",
+                "density",
+                "length",
+                "score",
+                "status"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Third-party vendor risk assessment capabilities",
+                  "✓ (`supply chain`)",
+                  "2",
+                  "105",
+                  "2",
+                  "partial"
+                ],
+                [
+                  "2",
+                  "Software supply chain monitoring (SBOM analysis)",
+                  "✓ (`supply chain`)",
+                  "2",
+                  "105",
+                  "2",
+                  "partial"
+                ],
+                [
+                  "3",
+                  "Open-source component vulnerability tracking",
+                  "✓ (`supply chain`)",
+                  "2",
+                  "105",
+                  "2",
+                  "partial"
+                ],
+                [
+                  "4",
+                  "Continuous monitoring of vendor security posture",
+                  "✓ (`supply chain`)",
+                  "2",
+                  "105",
+                  "2",
+                  "partial"
+                ],
+                [
+                  "5",
+                  "Supply chain attack detection and alerting",
+                  "✓ (`supply chain`)",
+                  "2",
+                  "105",
+                  "2",
+                  "partial"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "→ met=0, partial=5, unmet=0 of 5"
+            },
+            {
+              "type": "heading",
+              "value": "8.3 Level decision"
+            },
+            {
+              "type": "code",
+              "value": "L5? met≥3 AND schema_hits≥3 AND coverage≥0.6 AND spec≥4 AND metrics AND arch\n    met=0  → NO\n\nL4? met≥2 AND schema_hits≥2 AND spec≥3 AND (metrics OR arch)\n    met=0  → NO\n\nL3? met ≥ 1\n    met=0  → NO\n\nL2? schema_hits≥2 OR partial≥1\n    schema_hits=3, partial=5 → YES\n    → Level = 2 (Partial Language)\n\nfine = (0 + 0.3·5) / 5 = 0.30\nadjusted = 2 + 0.5 · 0.30 = 2.15\nfinal = round(2.15 · 4) / 4 = 2.25"
+            },
+            {
+              "type": "heading",
+              "value": "8.4 Resulting structured rationale"
+            },
+            {
+              "type": "code",
+              "value": "{\n  \"score_rationale\": \"EXP-04 – Third-Party & Supply Chain Exposure: Score 2.25/5.0 (Level 2). Confidence: medium. Partial language: schema_hits=3, 5 partial / 0 met of 5; no criterion verifiably satisfied. ... Original v2 score was 4.75 (Δ-2.50).\",\n  \"original_score\": 4.75,\n  \"adjusted_score\": 2.25,\n  \"adjustment_reason\": \"Strict revalidation (Level 2): 0/5 met, 5 partial. Holistic per-criterion match against schema 'what_to_verify' with anchor-phrase + concept-density + multi-excerpt corroboration.\",\n  \"confidence\": \"medium\",\n  \"evidence_quality_factor\": 0.64,\n  \"evidence_quality_grade\": \"C\",\n  \"scoring_level\": 2,\n  \"scoring_level_justification\": \"Partial language: schema_hits=3, 5 partial / 0 met of 5; no criterion verifiably satisfied.\"\n}"
+            },
+            {
+              "type": "text",
+              "value": "Why this is correct: Vendor A mentions supply-chain security in its GRC pitch but does not enumerate any of the five testable claims (no SBOM tool, no vendor-posture monitoring product, no supply-chain attack detection feature). The 4.75 was inflated by a single repeated phrase. The 2.25 reflects \"language present, no capability verifiable from public marketing.\""
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s10",
+          "title": "Structured Rationale Overlay",
+          "content": [
+            {
+              "type": "text",
+              "value": "For every cell, the scorer emits a structured rationale block written to sub_pillar_rationale_v2[sid]. This is the contract the UI reads."
+            },
+            {
+              "type": "heading",
+              "value": "9.1 Schema"
+            },
+            {
+              "type": "code",
+              "value": "{\n  \"score_rationale\": \"<vendor> exhibits <Level-name> capability in <SID> ...\",\n  \"original_score\": 3.5,\n  \"adjusted_score\": 2.0,\n  \"adjustment_reason\": \"Strict revalidation (Level N): X/Y met, Z partial. ...\",\n  \"confidence\": \"high|medium|low\",\n  \"evidence_quality_factor\": 0.62,\n  \"evidence_quality_grade\": \"A|B|C|D|F\",\n  \"evidence_quality_rationale\": \"Evidence quality: 62% — Grade C. ...\",\n  \"excerpt_count\": 5,\n  \"criteria_assessment\": [\n    { \"criterion\": \"...\", \"status\": \"met|partial|unmet\",\n      \"evidence\": \"<snippet ≤ 220 chars>\", \"confidence\": \"high|medium|low\" }\n  ],\n  \"key_evidence\": [\"snippet1\", \"snippet2\", \"snippet3\", \"snippet4\"],\n  \"scoring_level\": 2,\n  \"scoring_level_justification\": \"Partial language: schema_hits=3, ...\"\n}"
+            },
+            {
+              "type": "heading",
+              "value": "9.2 UI surfacing path"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    JSON[Vendor Vendor_Research_Data.json] --> APP[app.py / Flask]\n    APP --> JS[app.js renderer]\n    JS --> CARD[Vendor card]\n    CARD --> SUMMARY[score_rationale<br/>1-line summary]\n    CARD --> EXPAND[Expandable panel]\n    EXPAND --> TABLE[criteria_assessment table]\n    EXPAND --> EVID[key_evidence quotes]\n    EXPAND --> META[evidence_quality_grade<br/>+ confidence]"
+            },
+            {
+              "type": "text",
+              "value": "The pre-overlay state is preserved at sub_pillar_rationale_v2_pre_v22 for diff/audit."
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s11",
+          "title": "Output Files & Versioning",
+          "content": [
+            {
+              "type": "table",
+              "headers": [
+                "File",
+                "Role",
+                "State"
+              ],
+              "rows": [
+                [
+                  "Vendor 1-0 Seed",
+                  "Original analyst seed",
+                  "Frozen"
+                ],
+                [
+                  "Vendor 1-1 Validated",
+                  "First validation pass",
+                  "Frozen"
+                ],
+                [
+                  "Vendor 2-0 Researched",
+                  "Initial automated research",
+                  "Frozen"
+                ],
+                [
+                  "Vendor 2-1 Consolidated",
+                  "Cross-vendor consolidation",
+                  "Frozen"
+                ],
+                [
+                  "Vendor 2-2 Validated",
+                  "Strict re-score baseline (single-anchor)",
+                  "**Audit baseline — keep**"
+                ],
+                [
+                  "Vendor 2-3 Holistic Validated",
+                  "Holistic re-score (multi-anchor)",
+                  "**Live standard**"
+                ],
+                [
+                  "Vendor Research Data",
+                  "Canonical UI source — full superset",
+                  "**Live (read by app.py)**"
+                ],
+                [
+                  "`research_score_delta_report.json`",
+                  "Per-cell delta vs prior version",
+                  "Per re-run"
+                ],
+                [
+                  "`research_research_targets.json`",
+                  "Cells flagged for fresh scraping",
+                  "Per re-run"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "10.1 Versioning rule"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    CHANGE{Change type?}\n    CHANGE -->|data only| OVER[Overwrite in place<br/>same version]\n    CHANGE -->|algorithm change| BUMP[Bump minor version<br/>2-3 to 2-4]\n    CHANGE -->|schema overhaul| MAJOR[Bump major version<br/>2-x to 3-x]\n    OVER --> KEEP[Keep prior version frozen]\n    BUMP --> KEEP\n    MAJOR --> KEEP"
+            },
+            {
+              "type": "text",
+              "value": "Never overwrite a frozen file. Frozen files are immutable audit references."
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s12",
+          "title": "Operational Runbook",
+          "content": [
+            {
+              "type": "heading",
+              "value": "11.1 Add a new vendor"
+            },
+            {
+              "type": "mermaid",
+              "value": "sequenceDiagram\n    participant A as Analyst\n    participant SEED as vendor_seeder.py\n    participant URL as PRIORITY_VENDOR_URLS\n    participant REND as vendor_renderer.py\n    participant SCORE as holistic_scorer.py\n    participant POL as polarity_validator.py\n    A->>SEED: Define vendor record\n    SEED->>SEED: Append to Vendor_Research_Data.json\n    A->>URL: Add 8-12 curated URLs\n    A->>REND: python vendor_renderer.py --vendor \"Vendor Name\"\n    REND->>REND: Render URLs (stealth + 2-pass)\n    REND->>REND: Auto-rescore vendor with evidence pipeline\n    A->>SCORE: python holistic_scorer.py\n    SCORE->>SCORE: Holistic per-criterion verdicts to output file\n    A->>POL: python polarity_validator.py\n    POL-->>A: Verify peak pillar matches archetype"
+            },
+            {
+              "type": "heading",
+              "value": "11.2 Standard re-run commands"
+            },
+            {
+              "type": "code",
+              "value": "# Full re-render + rescore for one vendor\n$env:PYTHONIOENCODING='utf-8'\n.\\.venv\\Scripts\\python.exe vendor_renderer.py --vendor \"Vendor H\"\n\n# Headed retry for bot-walled vendor\n.\\.venv\\Scripts\\python.exe vendor_renderer.py --vendor Vendor B --headed\n\n# Re-score all vendors (no render)\n.\\.venv\\Scripts\\python.exe holistic_scorer.py\n\n# Polarity audit\n.\\.venv\\Scripts\\python.exe polarity_validator.py\n\n# Compression diagnostics (if scores look flat)\n.\\.venv\\Scripts\\python.exe score_diagnostics.py"
+            },
+            {
+              "type": "heading",
+              "value": "11.3 Re-score after schema change"
+            },
+            {
+              "type": "code",
+              "value": "$env:PYTHONIOENCODING='utf-8'\n.\\.venv\\Scripts\\python.exe holistic_scorer.py\n.\\.venv\\Scripts\\python.exe polarity_validator.py"
+            },
+            {
+              "type": "text",
+              "value": "No render needed — the cache is unchanged. Schema additions to search_terms will alter anchor sets and may shift per-criterion verdicts; check research_score_delta_report.json for the per-cell diff."
+            },
+            {
+              "type": "heading",
+              "value": "11.4 Bot-walled vendor recovery"
+            },
+            {
+              "type": "text",
+              "value": "If render output shows many SHORT / BLOCK lines:"
+            },
+            {
+              "type": "code",
+              "value": ".\\.venv\\Scripts\\python.exe vendor_renderer.py --vendor X --headed"
+            },
+            {
+              "type": "text",
+              "value": "A visible Chromium clears most bot walls (Vendor B, Palo Alto). Some heavy SPAs (e.g., www2.deloitte.com) return 888-byte placeholder bodies regardless — that's a real signal: their public pages don't carry capability density and the low score is correct."
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s13",
+          "title": "Validation Targets (Polarity Test)",
+          "content": [
+            {
+              "type": "text",
+              "value": "The standard is calibrated against archetype expectations. Each archetype should peak in its expected pillar with a clear delta over the rest."
+            },
+            {
+              "type": "heading",
+              "value": "12.1 Reference table (current scoring actuals)"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Vendor archetype",
+                "Expected peak pillar",
+                "Reference example & score"
+              ],
+              "rows": [
+                [
+                  "Threat Intelligence / DRP",
+                  "DET",
+                  "Vendor C DET=3.40"
+                ],
+                [
+                  "EDR / XDR",
+                  "DET",
+                  "Vendor D DET=2.85"
+                ],
+                [
+                  "BAS",
+                  "ANL",
+                  "Vendor E ANL=3.20, Vendor F ANL=2.90"
+                ],
+                [
+                  "Vulnerability Management",
+                  "EXP",
+                  "Vendor G EXP=3.20, Vendor H EXP=3.10"
+                ],
+                [
+                  "CAASM",
+                  "EXP",
+                  "Vendor I EXP=3.15"
+                ],
+                [
+                  "MDR",
+                  "SVC + EXP",
+                  "Vendor J EXP=2.70 / SVC=2.25"
+                ],
+                [
+                  "Security Ratings",
+                  "SVC + EXP",
+                  "Vendor K SVC=2.75 / EXP=2.70"
+                ],
+                [
+                  "Mega-Platform",
+                  "EXP peak",
+                  "Vendor H μ=2.60, EXP=3.30"
+                ],
+                [
+                  "Big-3 Consultancy",
+                  "flat (public-web blind spot)",
+                  "Vendor B/Vendor L/Vendor M μ ≈ 1.2–1.5"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "12.2 Distribution sanity (55 vendors × 24 cells = 1,320 cells)"
+            },
+            {
+              "type": "mermaid",
+              "value": "pie title Criterion verdict distribution (example: 7,040 verdicts)\n    \"unmet\" : 5238\n    \"met\" : 1039\n    \"partial\" : 763"
+            },
+            {
+              "type": "mermaid",
+              "value": "pie title Sub-pillar level distribution (example: 1,320 cells)\n    \"L1 Minimal\" : 686\n    \"L2 Partial\" : 247\n    \"L3 Demonstrated\" : 206\n    \"L0 No Evidence\" : 147\n    \"L4 Advanced\" : 34"
+            },
+            {
+              "type": "text",
+              "value": "Drift threshold: If a re-run drifts >5% on any of these distributions, audit the anchor logic before promoting."
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s14",
+          "title": "Anti-Patterns & Common Failures",
+          "content": [
+            {
+              "type": "table",
+              "headers": [
+                "Anti-pattern",
+                "Symptom",
+                "Fix"
+              ],
+              "rows": [
+                [
+                  "Single-anchor scorer (pre-holistic)",
+                  "96% unmet rate; mean ≤ 1.2; flat distribution",
+                  "Multi-anchor: parenthetical + last-3-words + all multi-word search_terms"
+                ],
+                [
+                  "Schema-keyword promotion to L3+",
+                  "Vendor scores 4.75 with 0/5 criteria met",
+                  "L3 strictly requires `met_count ≥ 1`"
+                ],
+                [
+                  "Excerpt under 80 chars driving \"met\"",
+                  "Marketing tagline wins",
+                  "`_MIN_EXCERPT_LEN_FOR_SUPPORT = 80`"
+                ],
+                [
+                  "Bot-walled cache treated as evidence",
+                  "Vendor scored on 888-byte placeholders",
+                  "`MIN_USEFUL_TEXT = 500` + `_looks_bot_blocked()`"
+                ],
+                [
+                  "Overwriting frozen files",
+                  "Audit history lost",
+                  "Bump version on algorithm change"
+                ],
+                [
+                  "Adding criteria without `search_terms`",
+                  "Anchor list collapses to derived-only",
+                  "Schema lint: every criterion change ships with synonyms"
+                ],
+                [
+                  "Concurrency > 2",
+                  "Rate-limit responses misread as content",
+                  "Keep `CONCURRENCY = 2`"
+                ],
+                [
+                  "No `--headed` retry for known SPAs",
+                  "Whole-vendor flat profile",
+                  "Document required `--headed` vendors"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s15",
+          "title": "Known Limitations",
+          "content": [
+            {
+              "type": "list",
+              "items": [
+                "**Public-web blind spot for consultancies.** Vendor B, Vendor L, Vendor M score flat (μ ≈ 1.2–1.5) because their marketing copy is brand-level, not capability-specific. **This is a real finding for the public-web evidence band, not a scoring bug.** Promoting them requires a different evidence source (analyst profiles, RFP narratives, case studies).",
+                "**Bot walls bias evidence volume.** Vendors with aggressive bot-detection get fewer cached pages and therefore systematically less evidence. Use `--headed` retries and document `excerpts_total` per vendor in audits.",
+                "**No semantic embeddings.** The scorer uses lexical anchors + concept density, not embeddings. This is intentional (deterministic, auditable, fast) but misses pure paraphrase that doesn't share vocabulary.",
+                "**Per-criterion verdicts re-use the same best-snippet.** When all five criteria of a sub-pillar match the same dense passage, they all get \"partial\". The scorer doesn't distinguish \"five criteria each verified by different evidence\" from \"one passage tagged five times\" — the level rubric corrects this through the `met_count` requirement.",
+                "**No temporal weighting.** A 2019 datasheet and a 2026 product page count equally. Acceptable today; revisit if the corpus drifts older than 2 years."
+              ]
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s16",
+          "title": "File Map",
+          "content": [
+            {
+              "type": "table",
+              "headers": [
+                "Concern",
+                "File"
+              ],
+              "rows": [
+                [
+                  "Schema",
+                  "[Research_Schema_v2.json](Research_Schema_v2.json)"
+                ],
+                [
+                  "Vendor canonical",
+                  "Vendor_Research_Data.json"
+                ],
+                [
+                  "Holistic validated",
+                  "Vendor_Research_Holistic_v2-3.json"
+                ],
+                [
+                  "Strict strict baseline",
+                  "Vendor_Research_strict validated_Validated.json"
+                ],
+                [
+                  "Renderer",
+                  "[vendor_renderer.py](vendor_renderer.py)"
+                ],
+                [
+                  "Evidence harvester",
+                  "[evidence_harvester.py](evidence_harvester.py)"
+                ],
+                [
+                  "Pricing harvester",
+                  "[service_evidence_harvester.py](service_evidence_harvester.py)"
+                ],
+                [
+                  "Re-scorer",
+                  "[holistic_scorer.py](holistic_scorer.py)"
+                ],
+                [
+                  "Polarity analysis",
+                  "[polarity_validator.py](polarity_validator.py)"
+                ],
+                [
+                  "Holistic check",
+                  "[score_auditor.py](score_auditor.py)"
+                ],
+                [
+                  "Compression diagnostics",
+                  "[score_diagnostics.py](score_diagnostics.py)"
+                ],
+                [
+                  "UI server",
+                  "[app.py](app.py)"
+                ],
+                [
+                  "Vendor seeder example",
+                  "[vendor_seeder.py](vendor_seeder.py)"
+                ],
+                [
+                  "Delta report",
+                  "[research_score_delta_report.json](research_score_delta_report.json)"
+                ],
+                [
+                  "Research targets",
+                  "[research_research_targets.json](research_research_targets.json)"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "---"
+            }
+          ]
+        },
+        {
+          "id": "s17",
+          "title": "Change Log",
+          "content": [
+            {
+              "type": "table",
+              "headers": [
+                "Date",
+                "Change",
+                "Files"
+              ],
+              "rows": [
+                [
+                  "2026-05-14",
+                  "Holistic validated baseline established. Multi-anchor (criterion + search_terms) per-criterion evaluator. Big-3 archetypes seeded as benchmark. Tech-vendor URL set extended (SentinelOne, Vendor G, Lacework, Palo Alto, Cisco/Splunk).",
+                  "`holistic_scorer.py`, `vendor_renderer.py`, `vendor_seeder.py`, 2-3 + 3-0 JSON"
+                ],
+                [
+                  "2026-05-14",
+                  "strict baseline (single-anchor) frozen for audit comparison.",
+                  "Vendor_Research_strict validated_Validated.json"
+                ],
+                [
+                  "2026-05-14",
+                  "Standards document v1.0 published.",
+                  "Research_Methodology_Standard.md"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

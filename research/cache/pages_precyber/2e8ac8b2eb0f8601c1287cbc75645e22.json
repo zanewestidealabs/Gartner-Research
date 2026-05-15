@@ -1,0 +1,8 @@
+{
+  "url": "https://www.aon.com/cyber-solutions/stroz-friedberg/",
+  "fetched_at": "2026-05-15T03:47:11.697640+00:00",
+  "ok": true,
+  "content_type": null,
+  "text": "Bad gateway\nError code 502\nVisit cloudflare.com for more information.\n2026-05-15 03:47:11 UTC\nYou\nBrowser\nWorking\nAtlanta\nCloudflare\nWorking\nwww.aon.com\nHost\nError\nWhat happened?\nThe web server reported a bad gateway error.\nWhat can I do?\nPlease try again in a few minutes.\nCloudflare Ray ID: 9fbf28eb1b208bfe\n•\nYour IP:\nClick to reveal\n104.129.207.107\n•\nPerformance & security by Cloudflare",
+  "error": null
+}

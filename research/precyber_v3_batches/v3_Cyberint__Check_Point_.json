@@ -1,0 +1,1847 @@
+{
+  "vendor": "Cyberint (Check Point)",
+  "headquarters": "Tel Aviv, Israel",
+  "region": "Global",
+  "specialization": "Threat Intelligence & Digital Risk Protection",
+  "primary_capability": "ADR",
+  "expected_coverage": [
+    "ADR-02",
+    "EXM-04",
+    "ADR-01"
+  ],
+  "delivery_model": "SaaS + Managed",
+  "services_maturity_level": "consultative",
+  "outcome_maturity_rating": 2.75,
+  "outcome_maturity_label": "Process-Mature",
+  "is_startup": false,
+  "is_ai_first": false,
+  "research_flag": "threat_intel",
+  "sub_pillar_rationale_v2": {
+    "EXM-01": {
+      "sub_pillar_id": "EXM-01",
+      "sub_pillar_name": "Attack Surface Management",
+      "original_score": 0,
+      "adjusted_score": 2.5,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (3/5): Automated discovery of internet-facing assets and shadow IT; Real-time asset inventory with risk scoring; Continuous monitoring for new or changed assets. Partially met (2): Cloud resource discovery across multi-cloud environments; Integration with CMDB and asset management systems. Evidence basis: 0 excerpts from 0 source(s), 6 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 3/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated discovery of internet-facing assets and shadow IT",
+          "status": "met",
+          "evidence": "internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Real-time asset inventory with risk scoring",
+          "status": "met",
+          "evidence": "Risk-scoring asset and exposure; focusing on prioritisation rather than noise.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud resource discovery across multi-cloud environments",
+          "status": "partial",
+          "evidence": "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with CMDB and asset management systems",
+          "status": "partial",
+          "evidence": "With Exposure Management, I can continuously monitor not only all of Phoenix Petroleum’s domains, but all our digital assets, plus we get relevant intelligence from the deep and dark web.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring for new or changed assets",
+          "status": "met",
+          "evidence": "With Exposure Management, I can continuously monitor not only all of Phoenix Petroleum’s domains, but all our digital assets, plus we get relevant intelligence from the deep and dark web.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.",
+        "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).",
+        "Risk-scoring asset and exposure; focusing on prioritisation rather than noise."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.5,
+        "reason": "Fresh score 2.50: no prior validated score (3/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-02": {
+      "sub_pillar_id": "EXM-02",
+      "sub_pillar_name": "Continuous Threat Exposure Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): CTEM program capabilities or alignment; Exposure scoping and discovery automation. Evidence basis: 0 excerpts from 0 source(s), 6 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "CTEM program capabilities or alignment",
+          "status": "partial",
+          "evidence": "What this means for customers:\n\nYou’ll see tighter linkage between external risk management capabilities and Check Point’s broader product ecosystem, meaning more data and faster fixes.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exposure scoping and discovery automation",
+          "status": "partial",
+          "evidence": "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Prioritization based on exploitability and business context",
+          "status": "partial",
+          "evidence": "Reduce Analyst Fatigue\r\n                        \nWith a 93% true positive rate and plenty of context enabling quick decisions, analysts can focus on fixing, not verifying.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Validation of exposure remediation effectiveness",
+          "status": "partial",
+          "evidence": "See the Bigger Picture\r\n                        \nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous cycle operation (not point-in-time)",
+          "status": "partial",
+          "evidence": "Techniques used:\n\nContinuous monitoring and correlation of intelligence (not just raw feeds).",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc)."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-03": {
+      "sub_pillar_id": "EXM-03",
+      "sub_pillar_name": "Vulnerability Prioritization & Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Exploitability context from threat intelligence. Partially met (4): Risk-based vulnerability scoring beyond CVSS; Asset criticality and business impact weighting. Evidence basis: 0 excerpts from 0 source(s), 6 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Risk-based vulnerability scoring beyond CVSS",
+          "status": "partial",
+          "evidence": "Risk-scoring asset and exposure; focusing on prioritisation rather than noise.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploitability context from threat intelligence",
+          "status": "met",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                            \n\n                            \n                        \n                                ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Asset criticality and business impact weighting",
+          "status": "partial",
+          "evidence": "With Exposure Management, I can continuously monitor not only all of Phoenix Petroleum’s domains, but all our digital assets, plus we get relevant intelligence from the deep and dark web.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated remediation prioritization and tracking",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with patch management and ticketing systems",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                            \n\n                            \n                        \n                                ",
+        "Thorough Threat Intelligence coverage, from tactical alerts to strategic trends.",
+        "Threat intelligence / deep & dark web: monitoring what is being said, leaked, sold, or impersonated about your organization.",
+        "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.",
+        "Correlation between Attack Surface Management and Threat Intelligence – We only alert when intelligence matches your real assets, not generic internet noise."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-04": {
+      "sub_pillar_id": "EXM-04",
+      "sub_pillar_name": "Third-Party & Supply Chain Exposure",
+      "original_score": 0,
+      "adjusted_score": 2.5,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (4/5): Third-party vendor risk assessment capabilities; Software supply chain monitoring (SBOM analysis); Continuous monitoring of vendor security posture.... Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 6 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 4/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Third-party vendor risk assessment capabilities",
+          "status": "met",
+          "evidence": "﹙implied by the platform messaging﹚\n\nThird-party / supply-chain risk: risks arising from vendors or technologies you depend on.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software supply chain monitoring (SBOM analysis)",
+          "status": "met",
+          "evidence": "See the Bigger Picture\r\n                        \nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Open-source component vulnerability tracking",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring of vendor security posture",
+          "status": "met",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nSupply Chain",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Supply chain attack detection and alerting",
+          "status": "met",
+          "evidence": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.",
+        "﹙implied by the platform messaging﹚\n\nThird-party / supply-chain risk: risks arising from vendors or technologies you depend on.",
+        "See the Bigger Picture\r\n                        \nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.",
+        "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nSupply Chain",
+        "Which modules can I activate/pay for separately (e.g., brand protection, supply-chain intelligence) vs."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.5,
+        "reason": "Fresh score 2.50: no prior validated score (4/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-01": {
+      "sub_pillar_id": "AMT-01",
+      "sub_pillar_name": "Polymorphic & Morphing Defense",
+      "original_score": 0,
+      "adjusted_score": 0.0,
+      "scoring_level": 0,
+      "score_rationale": "Cyberint (Check Point) scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Network configuration morphing; Evidence of increased attacker cost through dynamic changes. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Runtime address space or memory layout randomization",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/6 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "API endpoint mutation or obfuscation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Network configuration morphing",
+          "status": "partial",
+          "evidence": "internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "System identifier rotation",
+          "status": "unmet",
+          "evidence": "What this means for customers:\n\nYou’ll see tighter linkage between external risk management capabilities and Check Point’s broader product ecosystem, meaning more data and faster fixes.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Evidence of increased attacker cost through dynamic changes",
+          "status": "partial",
+          "evidence": "Intelligence, prevention, and response operate through a single ecosystem rather than a patched-together stack.",
+          "confidence": "low"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.0,
+        "reason": "Fresh score 0.00: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-02": {
+      "sub_pillar_id": "AMT-02",
+      "sub_pillar_name": "Runtime Application Protection",
+      "original_score": 0,
+      "adjusted_score": 0.25,
+      "scoring_level": 0,
+      "score_rationale": "Cyberint (Check Point) scores 0.25/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (3): RASP or in-app runtime protection capabilities; Code instrumentation for exploit prevention. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "RASP or in-app runtime protection capabilities",
+          "status": "partial",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nBrand Protec",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Code instrumentation for exploit prevention",
+          "status": "partial",
+          "evidence": "See the Bigger Picture\r\n                        \nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Application hardening and anti-tampering",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Memory corruption defense (ROP, buffer overflow prevention)",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/7 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Signature-less exploit detection at runtime",
+          "status": "partial",
+          "evidence": "See the Bigger Picture\r\n                        \nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.25,
+        "reason": "Fresh score 0.25: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-03": {
+      "sub_pillar_id": "AMT-03",
+      "sub_pillar_name": "Dynamic Network & Infrastructure Defense",
+      "original_score": 0,
+      "adjusted_score": 0.25,
+      "scoring_level": 0,
+      "score_rationale": "Cyberint (Check Point) scores 0.25/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (4): Automated micro-segmentation with dynamic policy; Network topology reconfiguration capabilities. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated micro-segmentation with dynamic policy",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Network topology reconfiguration capabilities",
+          "status": "partial",
+          "evidence": "What this means for customers:\n\nYou’ll see tighter linkage between external risk management capabilities and Check Point’s broader product ecosystem, meaning more data and faster fixes.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software-defined perimeter or zero trust network access",
+          "status": "partial",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nBrand Protec",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Infrastructure-as-code security automation",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/3 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Adaptive access controls based on risk signals",
+          "status": "partial",
+          "evidence": "Because we’re a small team they are like an extension of us – which really helps from a risk management standpoint.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.25,
+        "reason": "Fresh score 0.25: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-04": {
+      "sub_pillar_id": "AMT-04",
+      "sub_pillar_name": "Identity & Credential Rotation",
+      "original_score": 0,
+      "adjusted_score": 0.0,
+      "scoring_level": 0,
+      "score_rationale": "Cyberint (Check Point) scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Automated credential and secret rotation; Service account and API key lifecycle management. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated credential and secret rotation",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Ephemeral or just-in-time credential provisioning",
+          "status": "unmet",
+          "evidence": "internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Service account and API key lifecycle management",
+          "status": "partial",
+          "evidence": "Attack Surface Management\n                    \nMap your digital footprint in real time, find true exposures, validate them and cut your attack surface.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Certificate and token rotation automation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Privileged access session isolation",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.0,
+        "reason": "Fresh score 0.00: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-01": {
+      "sub_pillar_id": "ADR-01",
+      "sub_pillar_name": "Deception Technology",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Integration with SIEM/SOAR for automated response. Partially met (2): Honeypot and honeytoken deployment capabilities; Decoy systems mimicking production assets. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 3 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Honeypot and honeytoken deployment capabilities",
+          "status": "partial",
+          "evidence": "What this means for customers:\n\nYou’ll see tighter linkage between external risk management capabilities and Check Point’s broader product ecosystem, meaning more data and faster fixes.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Decoy systems mimicking production assets",
+          "status": "partial",
+          "evidence": "With Exposure Management, I can continuously monitor not only all of Phoenix Petroleum’s domains, but all our digital assets, plus we get relevant intelligence from the deep and dark web.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Breadcrumb placement for lateral movement detection",
+          "status": "unmet",
+          "evidence": "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "High-fidelity alerting with low false-positive rates",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Integration with SIEM/SOAR for automated response",
+          "status": "met",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-02": {
+      "sub_pillar_id": "ADR-02",
+      "sub_pillar_name": "Threat Intelligence Operationalization",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Threat intelligence platform or feed integration; Automated blocking based on threat intelligence. Partially met (1): Automated IOC ingestion and correlation. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 3 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Threat intelligence platform or feed integration",
+          "status": "met",
+          "evidence": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated IOC ingestion and correlation",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "TTP mapping to MITRE ATT&CK framework",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Automated blocking based on threat intelligence",
+          "status": "met",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                            \n\n                            \n                        \n                                ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Intelligence-driven hunting query generation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                            \n\n                            \n                        \n                                ",
+        "Thorough Threat Intelligence coverage, from tactical alerts to strategic trends.",
+        "Start With a Demo\r\n        \r\n    \n\n            \n\n                            \n                    \nFAQs\n                                            \n\n                                                  ",
+        "Threat intelligence / deep & dark web: monitoring what is being said, leaked, sold, or impersonated about your organization.",
+        "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (2/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-03": {
+      "sub_pillar_id": "ADR-03",
+      "sub_pillar_name": "Proactive Threat Hunting",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Managed or automated threat hunting services; Integration with telemetry sources (EDR, NDR, SIEM). Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 3 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Managed or automated threat hunting services",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Hypothesis-driven hunting methodologies",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Hunt query libraries and playbooks",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Integration with telemetry sources (EDR, NDR, SIEM)",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Hunt findings feeding back to detection engineering",
+          "status": "partial",
+          "evidence": "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).",
+          "confidence": "low"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-04": {
+      "sub_pillar_id": "ADR-04",
+      "sub_pillar_name": "Counter-Adversary Operations",
+      "original_score": 0,
+      "adjusted_score": 2.5,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Dark web monitoring and intelligence gathering; Brand protection and impersonation detection. Partially met (2): Takedown service capabilities (domains, phishing, infrastruc; Digital risk protection services. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 3 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Dark web monitoring and intelligence gathering",
+          "status": "met",
+          "evidence": "Threat intelligence / deep & dark web: monitoring what is being said, leaked, sold, or impersonated about your organization.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Brand protection and impersonation detection",
+          "status": "met",
+          "evidence": "Brand protection: detection of fraudulent websites, social media impersonation, etc.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Takedown service capabilities (domains, phishing, infrastructure)",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Adversary attribution and campaign tracking",
+          "status": "unmet",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nBrand Protec",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Digital risk protection services",
+          "status": "partial",
+          "evidence": "Attack Surface Management\n                    \nMap your digital footprint in real time, find true exposures, validate them and cut your attack surface.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Threat intelligence / deep & dark web: monitoring what is being said, leaked, sold, or impersonated about your organization.",
+        "Techniques used:\n\nContinuous monitoring and correlation of intelligence (not just raw feeds).",
+        "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nBrand Protec",
+        "internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.",
+        "Brand protection: detection of fraudulent websites, social media impersonation, etc."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.5,
+        "reason": "Fresh score 2.50: no prior validated score (2/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-01": {
+      "sub_pillar_id": "PPM-01",
+      "sub_pillar_name": "Breach & Attack Simulation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Automated attack chain simulation capabilities; MITRE ATT&CK technique coverage. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated attack chain simulation capabilities",
+          "status": "partial",
+          "evidence": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous validation against production controls",
+          "status": "unmet",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nSupply Chain",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "MITRE ATT&CK technique coverage",
+          "status": "partial",
+          "evidence": "Thorough Threat Intelligence coverage, from tactical alerts to strategic trends.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Control gap identification and remediation guidance",
+          "status": "unmet",
+          "evidence": "Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the information feeds into the sol",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Reporting on detection and prevention effectiveness",
+          "status": "partial",
+          "evidence": "Intelligence, prevention, and response operate through a single ecosystem rather than a patched-together stack.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-02": {
+      "sub_pillar_id": "PPM-02",
+      "sub_pillar_name": "Security Control Validation",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): DLP and data protection control testing; Configuration drift detection and alerting. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "SIEM detection rule validation and testing",
+          "status": "unmet",
+          "evidence": "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "EDR policy effectiveness verification",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/3 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Firewall and network control validation",
+          "status": "unmet",
+          "evidence": "The platform combines multiple data streams (Check Point’s global network data + Cyberint’s intelligence + OSINT) for higher confidence in IOCs.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "DLP and data protection control testing",
+          "status": "partial",
+          "evidence": "See the Bigger Picture\r\n                        \nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Configuration drift detection and alerting",
+          "status": "partial",
+          "evidence": "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-03": {
+      "sub_pillar_id": "PPM-03",
+      "sub_pillar_name": "Penetration Testing & Red Teaming",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): Automated penetration testing platform; Continuous or on-demand pen testing capabilities. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated penetration testing platform",
+          "status": "partial",
+          "evidence": "Cut Time to Resolution\r\n                        \nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous or on-demand pen testing capabilities",
+          "status": "partial",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nSupply Chain",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Attack path analysis and visualization",
+          "status": "unmet",
+          "evidence": "Attack Surface Management\n                    \nMap your digital footprint in real time, find true exposures, validate them and cut your attack surface.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploit validation and proof-of-concept generation",
+          "status": "unmet",
+          "evidence": "See the Bigger Picture\r\n                        \nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Red team exercise automation (PTaaS)",
+          "status": "unmet",
+          "evidence": "A Solution and a Partnership\n        \nFrom self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-04": {
+      "sub_pillar_id": "PPM-04",
+      "sub_pillar_name": "Cloud Security Posture Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Cloud misconfiguration detection (AWS, Azure, GCP). Partially met (1): Cloud workload protection capabilities. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Cloud misconfiguration detection (AWS, Azure, GCP)",
+          "status": "met",
+          "evidence": "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud entitlement and permissions analysis (CIEM)",
+          "status": "unmet",
+          "evidence": "internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Compliance framework mapping and reporting",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Cloud workload protection capabilities",
+          "status": "partial",
+          "evidence": "Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                                \n                \n\n                    \nBrand Protec",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Infrastructure-as-code security scanning",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/3 terms)",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.",
+        "Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc)."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    }
+  },
+  "sub_pillar_scores_v2_researched": {
+    "EXM-01": 2.5,
+    "EXM-02": 2.25,
+    "EXM-03": 2.25,
+    "EXM-04": 2.5,
+    "AMT-01": 0.0,
+    "AMT-02": 0.25,
+    "AMT-03": 0.25,
+    "AMT-04": 0.0,
+    "ADR-01": 2.25,
+    "ADR-02": 2.25,
+    "ADR-03": 2.25,
+    "ADR-04": 2.5,
+    "PPM-01": 2.25,
+    "PPM-02": 2.0,
+    "PPM-03": 2.0,
+    "PPM-04": 2.25
+  },
+  "pillar_scores_v2_researched": {
+    "EXM": 2.38,
+    "AMT": 0.12,
+    "ADR": 2.31,
+    "PPM": 2.12
+  },
+  "evidence_quality_analysis": {
+    "EXM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    }
+  },
+  "sub_pillar_rationale_v2_consolidated": {
+    "EXM-01": "EXM-01 – Attack Surface Management: Score 2.50/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (3/5): Automated discovery of internet-facing assets and shadow IT; Real-time asset inventory with risk scoring; Continuous monitoring for new or changed assets. Partially met (2): Cloud resource discovery across multi-cloud environments; Integration with CMDB and asset management systems. Evidence basis: 0 excerpts from 0 source(s), 6 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 3/5 met.\n\n[Score Adjustment] 0.00 → 2.50: Fresh score 2.50: no prior validated score (3/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated discovery of internet-facing assets and shadow IT', 'status': 'met', 'evidence': 'internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.', 'confidence': 'medium'}, {'criterion': 'Real-time asset inventory with risk scoring', 'status': 'met', 'evidence': 'Risk-scoring asset and exposure; focusing on prioritisation rather than noise.', 'confidence': 'medium'}, {'criterion': 'Cloud resource discovery across multi-cloud environments', 'status': 'partial', 'evidence': 'Key risk vectors covered by the platform:\\n\\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).', 'confidence': 'medium'}, {'criterion': 'Integration with CMDB and asset management systems', 'status': 'partial', 'evidence': 'With Exposure Management, I can continuously monitor not only all of Phoenix Petroleum’s domains, but all our digital assets, plus we get relevant intelligence from the deep and dark web.', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring for new or changed assets', 'status': 'met', 'evidence': 'With Exposure Management, I can continuously monitor not only all of Phoenix Petroleum’s domains, but all our digital assets, plus we get relevant intelligence from the deep and dark web.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep...\n  • Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exp...\n  • Risk-scoring asset and exposure; focusing on prioritisation rather than noise....",
+    "EXM-02": "EXM-02 – Continuous Threat Exposure Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): CTEM program capabilities or alignment; Exposure scoping and discovery automation. Evidence basis: 0 excerpts from 0 source(s), 6 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'CTEM program capabilities or alignment', 'status': 'partial', 'evidence': 'What this means for customers:\\n\\nYou’ll see tighter linkage between external risk management capabilities and Check Point’s broader product ecosystem, meaning more data and faster fixes.', 'confidence': 'medium'}, {'criterion': 'Exposure scoping and discovery automation', 'status': 'partial', 'evidence': 'Key risk vectors covered by the platform:\\n\\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).', 'confidence': 'medium'}, {'criterion': 'Prioritization based on exploitability and business context', 'status': 'partial', 'evidence': 'Reduce Analyst Fatigue\\r\\n                        \\nWith a 93% true positive rate and plenty of context enabling quick decisions, analysts can focus on fixing, not verifying.', 'confidence': 'medium'}, {'criterion': 'Validation of exposure remediation effectiveness', 'status': 'partial', 'evidence': 'See the Bigger Picture\\r\\n                        \\nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.', 'confidence': 'medium'}, {'criterion': 'Continuous cycle operation (not point-in-time)', 'status': 'partial', 'evidence': 'Techniques used:\\n\\nContinuous monitoring and correlation of intelligence (not just raw feeds).', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exp...",
+    "EXM-03": "EXM-03 – Vulnerability Prioritization & Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Exploitability context from threat intelligence. Partially met (4): Risk-based vulnerability scoring beyond CVSS; Asset criticality and business impact weighting. Evidence basis: 0 excerpts from 0 source(s), 6 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Risk-based vulnerability scoring beyond CVSS', 'status': 'partial', 'evidence': 'Risk-scoring asset and exposure; focusing on prioritisation rather than noise.', 'confidence': 'medium'}, {'criterion': 'Exploitability context from threat intelligence', 'status': 'met', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                            \\n\\n                            \\n                        \\n                                ', 'confidence': 'medium'}, {'criterion': 'Asset criticality and business impact weighting', 'status': 'partial', 'evidence': 'With Exposure Management, I can continuously monitor not only all of Phoenix Petroleum’s domains, but all our digital assets, plus we get relevant intelligence from the deep and dark web.', 'confidence': 'medium'}, {'criterion': 'Automated remediation prioritization and tracking', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}, {'criterion': 'Integration with patch management and ticketing systems', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                            \n\n                          ...\n  • Thorough Threat Intelligence coverage, from tactical alerts to strategic trends....\n  • Threat intelligence / deep & dark web: monitoring what is being said, leaked, sold, or impersonated about your organization....",
+    "EXM-04": "EXM-04 – Third-Party & Supply Chain Exposure: Score 2.50/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 6 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (4/5): Third-party vendor risk assessment capabilities; Software supply chain monitoring (SBOM analysis); Continuous monitoring of vendor security posture.... Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 6 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 4/5 met.\n\n[Score Adjustment] 0.00 → 2.50: Fresh score 2.50: no prior validated score (4/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Third-party vendor risk assessment capabilities', 'status': 'met', 'evidence': '﹙implied by the platform messaging﹚\\n\\nThird-party / supply-chain risk: risks arising from vendors or technologies you depend on.', 'confidence': 'medium'}, {'criterion': 'Software supply chain monitoring (SBOM analysis)', 'status': 'met', 'evidence': 'See the Bigger Picture\\r\\n                        \\nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.', 'confidence': 'medium'}, {'criterion': 'Open-source component vulnerability tracking', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring of vendor security posture', 'status': 'met', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                                                                \\n                \\n\\n                    \\nSupply Chain', 'confidence': 'medium'}, {'criterion': 'Supply chain attack detection and alerting', 'status': 'met', 'evidence': 'The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep...\n  • ﹙implied by the platform messaging﹚\n\nThird-party / supply-chain risk: risks arising from vendors or technologies you depend on....\n  • See the Bigger Picture\r\n                        \nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before t...",
+    "AMT-01": "AMT-01 – Polymorphic & Morphing Defense: Score 0.00/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Network configuration morphing; Evidence of increased attacker cost through dynamic changes. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.00: Fresh score 0.00: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Runtime address space or memory layout randomization', 'status': 'unmet', 'evidence': 'No direct evidence (1/6 terms)', 'confidence': 'medium'}, {'criterion': 'API endpoint mutation or obfuscation', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Network configuration morphing', 'status': 'partial', 'evidence': 'internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.', 'confidence': 'medium'}, {'criterion': 'System identifier rotation', 'status': 'unmet', 'evidence': 'What this means for customers:\\n\\nYou’ll see tighter linkage between external risk management capabilities and Check Point’s broader product ecosystem, meaning more data and faster fixes.', 'confidence': 'medium'}, {'criterion': 'Evidence of increased attacker cost through dynamic changes', 'status': 'partial', 'evidence': 'Intelligence, prevention, and response operate through a single ecosystem rather than a patched-together stack.', 'confidence': 'low'}]",
+    "AMT-02": "AMT-02 – Runtime Application Protection: Score 0.25/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 0.25/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (3): RASP or in-app runtime protection capabilities; Code instrumentation for exploit prevention. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.25: Fresh score 0.25: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'RASP or in-app runtime protection capabilities', 'status': 'partial', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                                                                \\n                \\n\\n                    \\nBrand Protec', 'confidence': 'medium'}, {'criterion': 'Code instrumentation for exploit prevention', 'status': 'partial', 'evidence': 'See the Bigger Picture\\r\\n                        \\nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.', 'confidence': 'medium'}, {'criterion': 'Application hardening and anti-tampering', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Memory corruption defense (ROP, buffer overflow prevention)', 'status': 'unmet', 'evidence': 'No direct evidence (0/7 terms)', 'confidence': 'high'}, {'criterion': 'Signature-less exploit detection at runtime', 'status': 'partial', 'evidence': 'See the Bigger Picture\\r\\n                        \\nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.', 'confidence': 'medium'}]",
+    "AMT-03": "AMT-03 – Dynamic Network & Infrastructure Defense: Score 0.25/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 0.25/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (4): Automated micro-segmentation with dynamic policy; Network topology reconfiguration capabilities. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.25: Fresh score 0.25: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Automated micro-segmentation with dynamic policy', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}, {'criterion': 'Network topology reconfiguration capabilities', 'status': 'partial', 'evidence': 'What this means for customers:\\n\\nYou’ll see tighter linkage between external risk management capabilities and Check Point’s broader product ecosystem, meaning more data and faster fixes.', 'confidence': 'medium'}, {'criterion': 'Software-defined perimeter or zero trust network access', 'status': 'partial', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                                                                \\n                \\n\\n                    \\nBrand Protec', 'confidence': 'medium'}, {'criterion': 'Infrastructure-as-code security automation', 'status': 'unmet', 'evidence': 'No direct evidence (1/3 terms)', 'confidence': 'medium'}, {'criterion': 'Adaptive access controls based on risk signals', 'status': 'partial', 'evidence': 'Because we’re a small team they are like an extension of us – which really helps from a risk management standpoint.', 'confidence': 'medium'}]",
+    "AMT-04": "AMT-04 – Identity & Credential Rotation: Score 0.00/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Automated credential and secret rotation; Service account and API key lifecycle management. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.00: Fresh score 0.00: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Automated credential and secret rotation', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}, {'criterion': 'Ephemeral or just-in-time credential provisioning', 'status': 'unmet', 'evidence': 'internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.', 'confidence': 'medium'}, {'criterion': 'Service account and API key lifecycle management', 'status': 'partial', 'evidence': 'Attack Surface Management\\n                    \\nMap your digital footprint in real time, find true exposures, validate them and cut your attack surface.', 'confidence': 'medium'}, {'criterion': 'Certificate and token rotation automation', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Privileged access session isolation', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}]",
+    "ADR-01": "ADR-01 – Deception Technology: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Integration with SIEM/SOAR for automated response. Partially met (2): Honeypot and honeytoken deployment capabilities; Decoy systems mimicking production assets. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 3 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Honeypot and honeytoken deployment capabilities', 'status': 'partial', 'evidence': 'What this means for customers:\\n\\nYou’ll see tighter linkage between external risk management capabilities and Check Point’s broader product ecosystem, meaning more data and faster fixes.', 'confidence': 'medium'}, {'criterion': 'Decoy systems mimicking production assets', 'status': 'partial', 'evidence': 'With Exposure Management, I can continuously monitor not only all of Phoenix Petroleum’s domains, but all our digital assets, plus we get relevant intelligence from the deep and dark web.', 'confidence': 'medium'}, {'criterion': 'Breadcrumb placement for lateral movement detection', 'status': 'unmet', 'evidence': 'Key risk vectors covered by the platform:\\n\\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).', 'confidence': 'medium'}, {'criterion': 'High-fidelity alerting with low false-positive rates', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Integration with SIEM/SOAR for automated response', 'status': 'met', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}]",
+    "ADR-02": "ADR-02 – Threat Intelligence Operationalization: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Threat intelligence platform or feed integration; Automated blocking based on threat intelligence. Partially met (1): Automated IOC ingestion and correlation. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 3 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (2/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Threat intelligence platform or feed integration', 'status': 'met', 'evidence': 'The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.', 'confidence': 'medium'}, {'criterion': 'Automated IOC ingestion and correlation', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}, {'criterion': 'TTP mapping to MITRE ATT&CK framework', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Automated blocking based on threat intelligence', 'status': 'met', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                            \\n\\n                            \\n                        \\n                                ', 'confidence': 'medium'}, {'criterion': 'Intelligence-driven hunting query generation', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}]\n\n[Key Evidence]\n  • Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                            \n\n                          ...\n  • Thorough Threat Intelligence coverage, from tactical alerts to strategic trends....\n  • Start With a Demo\r\n        \r\n    \n\n            \n\n                            \n                    \nFAQs\n                                    ...",
+    "ADR-03": "ADR-03 – Proactive Threat Hunting: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Managed or automated threat hunting services; Integration with telemetry sources (EDR, NDR, SIEM). Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 3 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Managed or automated threat hunting services', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}, {'criterion': 'Hypothesis-driven hunting methodologies', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Hunt query libraries and playbooks', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Integration with telemetry sources (EDR, NDR, SIEM)', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}, {'criterion': 'Hunt findings feeding back to detection engineering', 'status': 'partial', 'evidence': 'Key risk vectors covered by the platform:\\n\\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).', 'confidence': 'low'}]",
+    "ADR-04": "ADR-04 – Counter-Adversary Operations: Score 2.50/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 3 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Dark web monitoring and intelligence gathering; Brand protection and impersonation detection. Partially met (2): Takedown service capabilities (domains, phishing, infrastruc; Digital risk protection services. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 3 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.\n\n[Score Adjustment] 0.00 → 2.50: Fresh score 2.50: no prior validated score (2/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Dark web monitoring and intelligence gathering', 'status': 'met', 'evidence': 'Threat intelligence / deep & dark web: monitoring what is being said, leaked, sold, or impersonated about your organization.', 'confidence': 'medium'}, {'criterion': 'Brand protection and impersonation detection', 'status': 'met', 'evidence': 'Brand protection: detection of fraudulent websites, social media impersonation, etc.', 'confidence': 'medium'}, {'criterion': 'Takedown service capabilities (domains, phishing, infrastructure)', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}, {'criterion': 'Adversary attribution and campaign tracking', 'status': 'unmet', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                                                                \\n                \\n\\n                    \\nBrand Protec', 'confidence': 'medium'}, {'criterion': 'Digital risk protection services', 'status': 'partial', 'evidence': 'Attack Surface Management\\n                    \\nMap your digital footprint in real time, find true exposures, validate them and cut your attack surface.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Threat intelligence / deep & dark web: monitoring what is being said, leaked, sold, or impersonated about your organization....\n  • Techniques used:\n\nContinuous monitoring and correlation of intelligence (not just raw feeds)....\n  • Learn More\n\t\t\t\t            \n                    \n\n                \n\n                                                                        ...",
+    "PPM-01": "PPM-01 – Breach & Attack Simulation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Automated attack chain simulation capabilities; MITRE ATT&CK technique coverage. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated attack chain simulation capabilities', 'status': 'partial', 'evidence': 'The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.', 'confidence': 'medium'}, {'criterion': 'Continuous validation against production controls', 'status': 'unmet', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                                                                \\n                \\n\\n                    \\nSupply Chain', 'confidence': 'medium'}, {'criterion': 'MITRE ATT&CK technique coverage', 'status': 'partial', 'evidence': 'Thorough Threat Intelligence coverage, from tactical alerts to strategic trends.', 'confidence': 'medium'}, {'criterion': 'Control gap identification and remediation guidance', 'status': 'unmet', 'evidence': 'Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the information feeds into the sol', 'confidence': 'medium'}, {'criterion': 'Reporting on detection and prevention effectiveness', 'status': 'partial', 'evidence': 'Intelligence, prevention, and response operate through a single ecosystem rather than a patched-together stack.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Prot...",
+    "PPM-02": "PPM-02 – Security Control Validation: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): DLP and data protection control testing; Configuration drift detection and alerting. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'SIEM detection rule validation and testing', 'status': 'unmet', 'evidence': 'Key risk vectors covered by the platform:\\n\\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).', 'confidence': 'medium'}, {'criterion': 'EDR policy effectiveness verification', 'status': 'unmet', 'evidence': 'No direct evidence (1/3 terms)', 'confidence': 'medium'}, {'criterion': 'Firewall and network control validation', 'status': 'unmet', 'evidence': 'The platform combines multiple data streams (Check Point’s global network data + Cyberint’s intelligence + OSINT) for higher confidence in IOCs.', 'confidence': 'medium'}, {'criterion': 'DLP and data protection control testing', 'status': 'partial', 'evidence': 'See the Bigger Picture\\r\\n                        \\nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.', 'confidence': 'medium'}, {'criterion': 'Configuration drift detection and alerting', 'status': 'partial', 'evidence': 'Key risk vectors covered by the platform:\\n\\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).', 'confidence': 'medium'}]",
+    "PPM-03": "PPM-03 – Penetration Testing & Red Teaming: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): Automated penetration testing platform; Continuous or on-demand pen testing capabilities. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated penetration testing platform', 'status': 'partial', 'evidence': 'Cut Time to Resolution\\r\\n                        \\nOne-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.', 'confidence': 'medium'}, {'criterion': 'Continuous or on-demand pen testing capabilities', 'status': 'partial', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                                                                \\n                \\n\\n                    \\nSupply Chain', 'confidence': 'medium'}, {'criterion': 'Attack path analysis and visualization', 'status': 'unmet', 'evidence': 'Attack Surface Management\\n                    \\nMap your digital footprint in real time, find true exposures, validate them and cut your attack surface.', 'confidence': 'medium'}, {'criterion': 'Exploit validation and proof-of-concept generation', 'status': 'unmet', 'evidence': 'See the Bigger Picture\\r\\n                        \\nUnify data across intelligence, brand, and supply chain to reveal hidden exposures before they’re exploited.', 'confidence': 'medium'}, {'criterion': 'Red team exercise automation (PTaaS)', 'status': 'unmet', 'evidence': 'A Solution and a Partnership\\n        \\nFrom self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.', 'confidence': 'medium'}]",
+    "PPM-04": "PPM-04 – Cloud Security Posture Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyberint (Check Point) scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Cloud misconfiguration detection (AWS, Azure, GCP). Partially met (1): Cloud workload protection capabilities. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Cloud misconfiguration detection (AWS, Azure, GCP)', 'status': 'met', 'evidence': 'Key risk vectors covered by the platform:\\n\\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exposure detection (open ports, misconfigurations etc).', 'confidence': 'medium'}, {'criterion': 'Cloud entitlement and permissions analysis (CIEM)', 'status': 'unmet', 'evidence': 'internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep & dark web activity.', 'confidence': 'medium'}, {'criterion': 'Compliance framework mapping and reporting', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Cloud workload protection capabilities', 'status': 'partial', 'evidence': 'Learn More\\n\\t\\t\\t\\t            \\n                    \\n\\n                \\n\\n                                                                                \\n                \\n\\n                    \\nBrand Protec', 'confidence': 'medium'}, {'criterion': 'Infrastructure-as-code security scanning', 'status': 'unmet', 'evidence': 'No direct evidence (1/3 terms)', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • internet-facing assets, cloud storage misconfigurations, leaked credentials, third-party vendor exposures, impersonation of your brand, deep...\n  • Key risk vectors covered by the platform:\n\nAttack surface management: discovery of assets (domains, subdomains, IPs, cloud storage) plus exp...",
+    "EXM-05": "EXM-05 - Exposure Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"One brain powering Threat Intelligence, Dark Web Monitoring, Attack Surface Management, Brand Protection, and Supply Chain Intelligence, because when everything thinks together, a…\". Also: \"Solution One brain powering Threat Intelligence, Dark Web Monitoring, Attack Surface Management, Brand Protection, and …\".",
+    "AMT-05": "AMT-05 - AMTD Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.\". Also: \"Yet, you can still buy External Risk Management as a standalone offering, speak to External Risk Management salespeople…\".",
+    "ADR-05": "ADR-05 - Adversary Disruption Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small tea…\". Also: \"The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Int…\".",
+    "PPM-05": "PPM-05 - Posture Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small tea…\". Also: \"Check it Out We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are const…\".",
+    "SVC-01": "SVC-01 - Implementation & Onboarding. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"What’s the onboarding timeline - how quickly can we get up and running and see value? We can deliver actionable intelligence within 20 minutes after setup. Since it’s an agentless…\". Also: \"What’s the onboarding timeline - how quickly can we get up and running and see value?\".",
+    "SVC-02": "SVC-02 - Consultative & Advisory Services. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small tea…\". Also: \"Check it Out We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are const…\".",
+    "SVC-03": "SVC-03 - Managed Operations & Continuous Delivery. Score: 3.00/5. Demonstrated services capability with documented offerings. Evidence: \"Continuous monitoring and correlation of intelligence (not just raw feeds).\". Also: \"Techniques used: Continuous monitoring and correlation of intelligence (not just raw feeds).\".",
+    "SVC-04": "SVC-04 - AI-Driven & Autonomous Delivery. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.\". Also: \"Yet, you can still buy External Risk Management as a standalone offering, speak to External Risk Management salespeople…\"."
+  },
+  "coverage_grade": "A",
+  "capability_coverage": [
+    "EXM-01",
+    "EXM-02",
+    "EXM-03",
+    "EXM-04",
+    "AMT-02",
+    "AMT-03",
+    "ADR-01",
+    "ADR-02",
+    "ADR-03",
+    "ADR-04",
+    "PPM-01",
+    "PPM-02",
+    "PPM-03",
+    "PPM-04",
+    "EXM-05",
+    "AMT-05",
+    "ADR-05",
+    "PPM-05",
+    "SVC-01",
+    "SVC-02",
+    "SVC-03",
+    "SVC-04"
+  ],
+  "vendor_summary_v2_1": {
+    "coverage_count": 14,
+    "coverage_grade": "C",
+    "pillar_averages": {
+      "EXM": 2.38,
+      "AMT": 0.12,
+      "ADR": 2.31,
+      "PPM": 2.12
+    }
+  },
+  "svc_evidence": {
+    "EXM-05": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "One brain powering Threat Intelligence, Dark Web Monitoring, Attack Surface Management, Brand Protection, and Supply Chain Intelligence, because when everything thinks together, accuracy follows.",
+          "matched_terms": [
+            "criteria:Managed attack surface management (managed ASM) se",
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 7
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Solution One brain powering Threat Intelligence, Dark Web Monitoring, Attack Surface Management, Brand Protection, and Supply Chain Intelligence, because when everything thinks together, accuracy follows.",
+          "matched_terms": [
+            "criteria:Managed attack surface management (managed ASM) se",
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 7
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "One brain powering Threat Intelligence, Dark Web Monitoring, Attack Surface Management, Brand Protection, and Supply Chain Intelligence, because when everything thinks together, accuracy follows. Request a Demo",
+          "matched_terms": [
+            "criteria:Managed attack surface management (managed ASM) se",
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 7
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small team they are like an extension of us - which really helps from a risk management s…",
+          "matched_terms": [
+            "criteria:Dedicated exposure management analyst teams or SOC"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.",
+          "matched_terms": [
+            "criteria:Managed attack surface management (managed ASM) se"
+          ],
+          "relevance_score": 4
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 6,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 6 criteria hits."
+    },
+    "AMT-05": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Yet, you can still buy External Risk Management as a standalone offering, speak to External Risk Management salespeople and analysts and have your own External Risk Management customer support rep.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "A Solution and a Partnership From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence. A Solution and a Partnership",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence. Resources",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 2,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 2 criteria hits."
+    },
+    "ADR-05": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small team they are like an extension of us - which really helps from a risk management s…",
+          "matched_terms": [
+            "criteria:Managed digital risk protection services with 24/7"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.",
+          "matched_terms": [
+            "criteria:Managed threat intelligence operations with analys"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Check it Out We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small team they are like an extension of us - which really helps from a risk…",
+          "matched_terms": [
+            "criteria:Managed digital risk protection services with 24/7"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "We were looking to establish a new threat intelligence capability within Questrade and, in order to support that, we needed to have a platform that would give us deep insights. With Infinity ERM, we’re not only getting intelligence from the general landscape …",
+          "matched_terms": [
+            "criteria:Managed threat intelligence operations with analys"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Which modules can I activate/pay for separately (e.g., brand protection, supply-chain intelligence) vs. all-in-one? The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protect…",
+          "matched_terms": [
+            "criteria:Managed threat intelligence operations with analys"
+          ],
+          "relevance_score": 4
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 3,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 3 criteria hits."
+    },
+    "PPM-05": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small team they are like an extension of us - which really helps from a risk management s…",
+          "matched_terms": [
+            "criteria:Dedicated posture management analyst teams with co"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Check it Out We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small team they are like an extension of us - which really helps from a risk…",
+          "matched_terms": [
+            "criteria:Dedicated posture management analyst teams with co"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Yet, you can still buy External Risk Management as a standalone offering, speak to External Risk Management salespeople and analysts and have your own External Risk Management customer support rep.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "A Solution and a Partnership From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 2,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 2 criteria hits."
+    },
+    "SVC-01": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "What’s the onboarding timeline - how quickly can we get up and running and see value? We can deliver actionable intelligence within 20 minutes after setup. Since it’s an agentless SaaS offering (no on-prem installation), deployment time is faster than typical…",
+          "matched_terms": [
+            "onboarding",
+            "criteria:Time-to-value commitments (days to initial detecti"
+          ],
+          "relevance_score": 7
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "What’s the onboarding timeline - how quickly can we get up and running and see value?",
+          "matched_terms": [
+            "onboarding"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the information feeds into the solution to enable a high true positive rate.",
+          "matched_terms": [
+            "criteria:Time-to-value commitments (days to initial detecti"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "These are only some of the ways we make sure our alerts are true positives. What’s the onboarding timeline - how quickly can we get up and running and see value?",
+          "matched_terms": [
+            "onboarding"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 3,
+      "score": 2.5,
+      "notes": "SVC evidence: 5 excerpts, 1 term hits, 3 criteria hits."
+    },
+    "SVC-02": {
+      "source_urls": [
+        "https://cyberint.com/platform/",
+        "https://cyberint.com/solutions/threat-intelligence/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small team they are like an extension of us - which really helps from a risk management s…",
+          "matched_terms": [
+            "criteria:Ongoing advisory retainer or customer success mana"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Check it Out We have a really good relationship with customer support and the analyst teams.” Said Evans, “We are constantly being alerted about things to respond to. Because we’re a small team they are like an extension of us - which really helps from a risk…",
+          "matched_terms": [
+            "criteria:Ongoing advisory retainer or customer success mana"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "We were looking to establish a new threat intelligence capability within Questrade and, in order to support that, we needed to have a platform that would give us deep insights. With Infinity ERM, we’re not only getting intelligence from the general landscape …",
+          "matched_terms": [
+            "criteria:Threat landscape briefings and strategic intellige"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Strategic Threat Intelligence Deep & Dark Web Monitoring",
+          "matched_terms": [
+            "criteria:Threat landscape briefings and strategic intellige"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/solutions/threat-intelligence/",
+          "excerpt": "Strategic Threat Intelligence Deep & Dark Web Monitoring",
+          "matched_terms": [
+            "criteria:Threat landscape briefings and strategic intellige"
+          ],
+          "relevance_score": 4
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 4,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 4 criteria hits."
+    },
+    "SVC-03": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Continuous monitoring and correlation of intelligence (not just raw feeds).",
+          "matched_terms": [
+            "continuous monitoring"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Techniques used: Continuous monitoring and correlation of intelligence (not just raw feeds).",
+          "matched_terms": [
+            "continuous monitoring"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Continuous monitoring and correlation of intelligence (not just raw feeds). The platform combines multiple data streams (Check Point’s global network data + Cyberint’s intelligence + OSINT) for higher confidence in IOCs.",
+          "matched_terms": [
+            "continuous monitoring"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Techniques used: Continuous monitoring and correlation of intelligence (not just raw feeds).",
+          "matched_terms": [
+            "continuous monitoring"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "MSSP Partners⌄",
+          "matched_terms": [
+            "MSSP"
+          ],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 2,
+      "criteria_text_hits": 1,
+      "score": 3.0,
+      "notes": "SVC evidence: 5 excerpts, 2 term hits, 1 criteria hits."
+    },
+    "SVC-04": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Yet, you can still buy External Risk Management as a standalone offering, speak to External Risk Management salespeople and analysts and have your own External Risk Management customer support rep.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "A Solution and a Partnership From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence. A Solution and a Partnership",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "From self-managed to fully supported, Cyberint, now a Check Point Company adapts to your team’s needs so you can act with speed, accuracy, and confidence. Resources",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 4,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 4 criteria hits."
+    }
+  },
+  "pricing_evidence": {
+    "PRC-SUB": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the information feeds into the solution to enable a high true positive rate.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "You will be able to consolidate your cyber tech stack even further. Intelligence, prevention, and response operate through a single ecosystem rather than a patched-together stack. Can I still engage with Cyberint as a standalone contract or do I have to go th…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately. But the solution offers the most value when these modules are bought together as they combin…",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Published subscription pricing tiers or structure",
+          "status": "partial"
+        },
+        {
+          "criterion": "Component breakdown visible to buyers (platform vs. managed service vs. AI features)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Predictability of recurring costs for client budgeting",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Flexibility in subscription scope adjustment (scale up/down)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Transparency about what is included vs. excluded at each tier",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.5,
+      "notes": "Pricing evidence: 3 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "PRC-USG": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Gain the context to act fast. Thorough Threat Intelligence coverage, from tactical alerts to strategic trends.",
+          "matched_terms": [
+            "overage"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "In the POV we realized that Exposure Management was much more than an EASM solution, it delivered much value with highly relevant intelligence from the deep and dark web.",
+          "matched_terms": [
+            "criteria:Alignment of usage fees with computational effort "
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Threat Intelligence Gain the context to act fast. Thorough Threat Intelligence coverage, from tactical alerts to strategic trends.",
+          "matched_terms": [
+            "overage"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Gain the context to act fast. Thorough Threat Intelligence coverage, from tactical alerts to strategic trends. Learn More",
+          "matched_terms": [
+            "overage"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Read The Case Study In the POV we realized that Exposure Management was much more than an EASM solution, it delivered much value with highly relevant intelligence from the deep and dark web.",
+          "matched_terms": [
+            "criteria:Alignment of usage fees with computational effort "
+          ],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 3,
+      "criteria_results": [
+        {
+          "criterion": "Usage-based pricing components clearly defined (per-asset, per-scan, per-simulation)",
+          "status": "met"
+        },
+        {
+          "criterion": "Measurement systems for quantifying consumption",
+          "status": "partial"
+        },
+        {
+          "criterion": "Real-time usage dashboards or monitoring available to clients",
+          "status": "met"
+        },
+        {
+          "criterion": "Clear overage policies and escalation thresholds",
+          "status": "met"
+        },
+        {
+          "criterion": "Alignment of usage fees with computational effort and value delivered",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 5 excerpts, 1 term hits, 3 criteria hits."
+    },
+    "PRC-FIX": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "What’s the onboarding timeline - how quickly can we get up and running and see value? We can deliver actionable intelligence within 20 minutes after setup. Since it’s an agentless SaaS offering (no on-prem installation), deployment time is faster than typical…",
+          "matched_terms": [
+            "setup",
+            "deployment",
+            "onboarding",
+            "installation"
+          ],
+          "relevance_score": 8
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "We can deliver actionable intelligence within 20 minutes after setup. Since it’s an agentless SaaS offering (no on-prem installation), deployment time is faster than typical enterprise installs.",
+          "matched_terms": [
+            "setup",
+            "deployment",
+            "installation"
+          ],
+          "relevance_score": 6
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the information feeds into the solution to enable a high true positive rate.",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Since it’s an agentless SaaS offering (no on-prem installation), deployment time is faster than typical enterprise installs.",
+          "matched_terms": [
+            "deployment",
+            "installation"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "How does the integration with Check Point affect the Cyberint platform’s roadmap and support? After the acquisition by Check Point Software Technologies Ltd. (October 2024), Cyberint platform has been integrated into Check Point’s Infinity architecture.",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 6,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Clear one-time fees defined for setup and implementation",
+          "status": "met"
+        },
+        {
+          "criterion": "Scope definition for fixed-fee deliverables",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Separation of project costs from ongoing service costs",
+          "status": "partial"
+        },
+        {
+          "criterion": "Change request and scope adjustment processes",
+          "status": "met"
+        },
+        {
+          "criterion": "Implementation timeline and milestone-based payment structure",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 5 excerpts, 6 term hits, 1 criteria hits."
+    },
+    "PRC-SUC": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "One-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "matched_terms": [
+            "sla"
+          ],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the information feeds into the solution to enable a high true positive rate.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Cut Time to Resolution One-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.",
+          "matched_terms": [
+            "sla"
+          ],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "One-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching. Attack Surface Management",
+          "matched_terms": [
+            "sla"
+          ],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "You will be able to consolidate your cyber tech stack even further. Intelligence, prevention, and response operate through a single ecosystem rather than a patched-together stack. Can I still engage with Cyberint as a standalone contract or do I have to go th…",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 2,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Defined success metrics tied to pricing (exposure reduction, control effectiveness, vulnerability SLAs)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Fees-at-risk component in service agreements",
+          "status": "partial"
+        },
+        {
+          "criterion": "Per-finding or per-validation pricing for pen test and BAS outcomes",
+          "status": "partial"
+        },
+        {
+          "criterion": "Clear measurement methodology and dispute resolution",
+          "status": "met"
+        },
+        {
+          "criterion": "Balance of risk between provider and client",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.5,
+      "notes": "Pricing evidence: 5 excerpts, 2 term hits, 1 criteria hits."
+    },
+    "PRC-COM": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately. But the solution offers the most value when these modules are bought together as they combin…",
+          "matched_terms": [
+            "modular"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately.",
+          "matched_terms": [
+            "modular"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Which modules can I activate/pay for separately (e.g., brand protection, supply-chain intelligence) vs. all-in-one? The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protect…",
+          "matched_terms": [
+            "modular"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the information feeds into the solution to enable a high true positive rate.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "You will be able to consolidate your cyber tech stack even further. Intelligence, prevention, and response operate through a single ecosystem rather than a patched-together stack. Can I still engage with Cyberint as a standalone contract or do I have to go th…",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Multiple pricing components available and combinable",
+          "status": "met"
+        },
+        {
+          "criterion": "Client budgeting predictability with spending expectations set upfront",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Demonstrated risk-sharing with clear rewards and penalties",
+          "status": "met"
+        },
+        {
+          "criterion": "Avoidance of excessive variability and dispute potential",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Demystification of what the client pays for, when, and why",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.5,
+      "notes": "Pricing evidence: 5 excerpts, 1 term hits, 1 criteria hits."
+    },
+    "PRC-OUT": {
+      "source_urls": [
+        "https://cyberint.com/platform/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the information feeds into the solution to enable a high true positive rate.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "You will be able to consolidate your cyber tech stack even further. Intelligence, prevention, and response operate through a single ecosystem rather than a patched-together stack. Can I still engage with Cyberint as a standalone contract or do I have to go th…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://cyberint.com/platform/",
+          "excerpt": "The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately. But the solution offers the most value when these modules are bought together as they combin…",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 3,
+      "criteria_results": [
+        {
+          "criterion": "Pricing components explicitly tied to measurable security outcomes (exposure reduction, control gap closure, mean-time-to-remediation)",
+          "status": "met"
+        },
+        {
+          "criterion": "Outcome-based SLA commitments with financial consequences (credits, rebates, penalties)",
+          "status": "met"
+        },
+        {
+          "criterion": "Value realization metrics shared with clients showing pricing-to-outcome correlation",
+          "status": "met"
+        },
+        {
+          "criterion": "Pricing adjustments based on demonstrated AI efficiency gains passed to clients",
+          "status": "partial"
+        },
+        {
+          "criterion": "Avoidance of outcome-washing — pricing labeled as outcome-based but measured on inputs",
+          "status": "partial"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 3 excerpts, 0 term hits, 3 criteria hits."
+    }
+  },
+  "pricing_rationales": {
+    "PRC-SUB": "PRC-SUB - Subscription Transparency. Score: 2.50/5. Basic pricing information available but limited detail. Evidence: \"Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the informati…\".",
+    "PRC-USG": "PRC-USG - Usage-Based Alignment. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Gain the context to act fast. Thorough Threat Intelligence coverage, from tactical alerts to strategic trends.\".",
+    "PRC-FIX": "PRC-FIX - Fixed Delivery Pricing. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"What’s the onboarding timeline - how quickly can we get up and running and see value? We can deliver actionable intelligence within 20 minutes after setup. Since it’s an agentless…\".",
+    "PRC-SUC": "PRC-SUC - Success & Outcome Fees. Score: 2.50/5. Basic pricing information available but limited detail. Evidence: \"One-click takedowns, integrations, and automated workflows slash response times and eliminate tool-switching.\".",
+    "PRC-COM": "PRC-COM - Composability & Overall Model Maturity. Score: 2.50/5. Basic pricing information available but limited detail. Evidence: \"The platform supports modular architecture, with Attack Surface Management (ASM), Threat Intelligence, Supply Chain Intelligence, Brand Protection offered separately. But the solu…\".",
+    "PRC-OUT": "PRC-OUT - Pricing-to-Outcomes Alignment. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Full value (dashboarding, integration, remediation workflow) may take a few days to a couple of weeks depending on your complexity, as AI optimizes to your needs and the informati…\"."
+  },
+  "svc_pricing_research": {
+    "researched_at": "2026-05-15T03:00:37.620811+00:00",
+    "pipeline_version": "v3_new_vendors",
+    "pages_fetched": 4,
+    "svc_subpillars_scored": 8,
+    "pricing_dimensions_scored": 6
+  }
+}

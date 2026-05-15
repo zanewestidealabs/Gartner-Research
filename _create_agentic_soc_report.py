@@ -1,5 +1,5 @@
 """
-Agentic SOC Maturity Framework — Report Generator
+Agentic Security Operations Adoption Framework — Report Generator
 Reads an ASMF self-assessment JSON and produces a standalone HTML report.
 
 Usage:
@@ -582,7 +582,7 @@ def generate_html(framework, assessment, dim_scores, overall_current, overall_ta
   <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px;">
     <div>
       <div style="font-size:11px;color:#3b82f6;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:4px;">
-        Agentic SOC Maturity Framework (ASMF v1.0)
+        Agentic Security Operations Adoption Framework (ASAF v1.0)
       </div>
       <h1>{org}</h1>
       <div style="font-size:13px;color:#64748b;margin-top:6px;">
@@ -591,7 +591,7 @@ def generate_html(framework, assessment, dim_scores, overall_current, overall_ta
       {f'<div style="font-size:12px;color:#475569;margin-top:4px;">{scope}</div>' if scope else ''}
     </div>
     <div style="text-align:right;">
-      <div style="font-size:11px;color:#64748b;margin-bottom:4px;">Overall Maturity</div>
+      <div style="font-size:11px;color:#64748b;margin-bottom:4px;">Overall Adoption</div>
       <div style="font-size:42px;font-weight:800;color:{cur_color};line-height:1;">{overall_current:.2f}</div>
       <div style="font-size:14px;color:{cur_color};font-weight:600;">{cur_label}</div>
       <div style="font-size:12px;color:#10b981;margin-top:4px;">Target: {overall_target:.2f} — {tgt_label}</div>
@@ -637,8 +637,8 @@ def generate_html(framework, assessment, dim_scores, overall_current, overall_ta
     {f'<div style="margin-top:8px;padding:12px;background:#1e293b;border-radius:6px;"><div style="font-size:11px;color:#475569;margin-bottom:4px;">Regulatory Context</div><div style="font-size:13px;color:#94a3b8;">{regulatory}</div></div>' if regulatory else ''}
   </div>
 
-  <!-- MATURITY STAGE OVERVIEW -->
-  <h2>Maturity Stage Positioning</h2>
+  <!-- ADOPTION STAGE OVERVIEW -->
+  <h2>Adoption Stage Positioning</h2>
   <div class="card">
     {stage_bar}
     <div style="font-size:11px;color:#475569;text-align:center;margin-top:8px;">
@@ -651,7 +651,7 @@ def generate_html(framework, assessment, dim_scores, overall_current, overall_ta
   <div class="card" style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:24px;">
     <div>{radar_js}</div>
     <div style="flex:1;min-width:200px;">
-      <div style="font-size:13px;color:#64748b;margin-bottom:12px;">Scores by dimension (0–5 scale, matching maturity stage)</div>
+      <div style="font-size:13px;color:#64748b;margin-bottom:12px;">Scores by dimension (0–5 scale, matching adoption stage)</div>
       <table style="width:100%;border-collapse:collapse;">
         <thead>
           <tr style="border-bottom:1px solid #1e293b;">
@@ -690,8 +690,8 @@ def generate_html(framework, assessment, dim_scores, overall_current, overall_ta
   <h2>Framework Principles</h2>
   <div class="card">{principles}</div>
 
-  <!-- MATURITY STAGE REFERENCE -->
-  <h2>Maturity Stage Reference</h2>
+  <!-- ADOPTION STAGE REFERENCE -->
+  <h2>Adoption Stage Reference</h2>
   <div class="card" style="overflow-x:auto;">
     <table style="width:100%;border-collapse:collapse;min-width:700px;">
       <thead>
@@ -722,7 +722,7 @@ def generate_html(framework, assessment, dim_scores, overall_current, overall_ta
 
   <!-- FOOTER -->
   <div style="margin-top:40px;padding-top:16px;border-top:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center;">
-    <div style="font-size:11px;color:#334155;">Agentic SOC Maturity Framework (ASMF) v1.0 &nbsp;|&nbsp; {date}</div>
+    <div style="font-size:11px;color:#334155;">Agentic Security Operations Adoption Framework (ASAF) v1.0 &nbsp;|&nbsp; {date}</div>
     <div style="font-size:11px;color:#334155;">{org} &nbsp;|&nbsp; Confidential</div>
   </div>
 

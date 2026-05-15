@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "framework_name": "Agentic SOC Maturity Framework",
-  "framework_abbrev": "ASMF",
+  "framework_name": "Agentic Security Operations Adoption Framework",
+  "framework_abbrev": "ASAF",
   "created": "2026-05-06",
   "description": "A systems-level framework for designing, assessing, and evolving Security Operations from traditional tiered models to fully autonomous, agentic, ethics-aware security control systems by 2030.",
-  "scope": "This framework applies to enterprise security operations functions considering or undergoing agentic transformation. It is vendor-neutral, technology-agnostic, and focused on operating model, governance architecture, and capability maturity.",
+  "scope": "This framework applies to enterprise security operations functions considering or undergoing agentic transformation. It is vendor-neutral, technology-agnostic, and focused on operating model, governance architecture, and capability adoption.",
 
   "principles": [
     {
@@ -991,8 +991,8 @@
 
   "assessment_guidance": {
     "scoring_method": "Rate each sub-dimension on a 0-5 integer scale matching the stage descriptors. Decimal scores (e.g., 2.5) are permitted to indicate partial progression between stages.",
-    "aggregation": "Dimension scores are the arithmetic mean of sub-dimension scores. Overall maturity is the weighted mean of dimension scores. See dimension weights.",
-    "target_setting": "Target stage should reflect desired maturity in 18-24 months, not aspirational end-state. Targets should be achievable with planned investment.",
+    "aggregation": "Dimension scores are the arithmetic mean of sub-dimension scores. Overall adoption is the weighted mean of dimension scores. See dimension weights.",
+    "target_setting": "Target stage should reflect desired adoption in 18-24 months, not aspirational end-state. Targets should be achievable with planned investment.",
     "recommended_reviewers": [
       "CISO and direct security leadership team",
       "SOC Manager and senior analyst representatives",

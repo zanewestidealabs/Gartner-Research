@@ -15,7 +15,7 @@ v3 = {
     "summary": (
         "Most preemptive cybersecurity vendors cluster capability in the reactive half of the adversary lifecycle. "
         "Four defensive pillars map directly to kill chain phases and MITRE ATT\u0026CK tactics: exposure management anchors the left, "
-        "adversary management is the critical bottleneck, posture management validates delivery-phase controls, and autonomous detection "
+        "adversary management is the critical bottleneck, posture management validates delivery-phase controls, and adversary disruption "
         "and response covers the right. Services maturity operates as a cross-cutting enabler\u2014vendors with mature service delivery "
         "achieve meaningfully higher effective coverage across all four pillars. ~75% of vendors have at least one lifecycle phase gap. "
         "~25% qualify as full-spectrum. CPOs who invest in both early-phase coverage and services maturity will capture the emerging market."
@@ -34,7 +34,7 @@ v3 = {
                 "Exposure management \u2192 KC Phase 1 / ATT\u0026CK TA0043, TA0007. "
                 "Adversary management \u2192 Phases 1\u20132 / TA0042, TA0005, TA0006. "
                 "Posture and policy management \u2192 Phases 2\u20133 / TA0001, TA0004. "
-                "Autonomous detection and response \u2192 Phases 4\u20137 / TA0002 through TA0040. "
+                "Adversary disruption \u2192 Phases 4\u20137 / TA0002 through TA0040. "
                 "Services maturity does not map to specific phases\u2014it determines how effectively each pillar is delivered. "
                 "High-maturity vendors translate technology into operational defence; low-maturity vendors cannot."
             )
@@ -42,7 +42,7 @@ v3 = {
         {
             "header": "~68% of vendor capability concentrates in the reactive lifecycle half, perpetuating the detection-and-response paradigm.",
             "body": (
-                "Despite the preemptive label, autonomous detection and response dominates market investment. "
+                "Despite the preemptive label, adversary disruption dominates market investment. "
                 "ADR maps to Phases 4\u20137 and ATT\u0026CK Execution through Impact\u2014territory traditionally claimed by EDR, XDR, and SIEM. "
                 "Market penetration is strongest in these late phases, making the right side of the lifecycle better served than the left. "
                 "Services maturity determines whether reactive technology translates into effective containment: "
@@ -288,7 +288,7 @@ v3 = {
         {"term": "EXM \u2013 Exposure Management", "definition": "Attack surface discovery, vulnerability prioritisation, CTEM. Maps to KC Phase 1 / TA0043, TA0007."},
         {"term": "AMT \u2013 Adversary Management", "definition": "Polymorphic defence, MTD, runtime protection, credential rotation. Maps to KC Phases 1\u20132 / TA0042, TA0005, TA0006. Critical market bottleneck."},
         {"term": "PPM \u2013 Posture and Policy Management", "definition": "BAS, CSPM, control validation, pen testing. Maps to KC Phases 2\u20133 / TA0001, TA0004."},
-        {"term": "ADR \u2013 Autonomous Detection and Response", "definition": "Deception, threat hunting, counter-adversary ops, containment, IR. Maps to KC Phases 4\u20137 / TA0002 through TA0040."},
+        {"term": "ADR \u2013 Adversary Disruption", "definition": "Deception, threat hunting, counter-adversary ops, containment, IR. Maps to KC Phases 4\u20137 / TA0002 through TA0040."},
         {"term": "SVC \u2013 Services and Capability Maturity", "definition": "Implementation, advisory, managed operations, autonomous delivery. Cross-cutting enablement layer\u2014determines delivered effectiveness of all four pillars. Primary vendor differentiator."},
         {"term": "Adversary Lifecycle", "definition": "Complete adversary action sequence from reconnaissance through mission completion, described by either Kill Chain (7 phases) or ATT\u0026CK (14 tactics)."},
         {"term": "Full-Spectrum Vendor", "definition": "Vendor with meaningful competency across all four pillars and strong SVC, providing effective coverage across the full adversary lifecycle. ~25% of assessed vendors."},

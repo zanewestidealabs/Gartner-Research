@@ -1,8 +1,10 @@
 {
   "url": "https://www.axonius.com/solutions/cloud-security",
-  "fetched_at": "2026-02-24T18:50:05.411553+00:00",
+  "fetched_at": "2026-05-14T15:48:44.790636+00:00",
   "ok": false,
-  "content_type": null,
+  "content_type": "text/html",
   "text": "",
-  "error": "fetch_failed"
+  "error": "too_short",
+  "render_engine": "playwright",
+  "raw_text_len": 255
 }

@@ -935,6 +935,13 @@ function getEffectiveGranularMapping(vendor) {
     if (vendor.sub_pillar_scores && typeof vendor.sub_pillar_scores === 'object') {
         return buildGranularMappingFromSubScores(vendor.sub_pillar_scores);
     }
+    // CNAPP MQ fallback: mq_gap_sub_pillar_scores / sub_pillar_scores_v12
+    if (vendor.mq_gap_sub_pillar_scores && typeof vendor.mq_gap_sub_pillar_scores === 'object') {
+        return buildGranularMappingFromSubScores(vendor.mq_gap_sub_pillar_scores);
+    }
+    if (vendor.sub_pillar_scores_v12 && typeof vendor.sub_pillar_scores_v12 === 'object') {
+        return buildGranularMappingFromSubScores(vendor.sub_pillar_scores_v12);
+    }
     return {};
 }
 
@@ -3695,6 +3702,44 @@ function renderEvidenceAndRationale(vendor, granular) {
         ? vendor.sub_pillar_evidence
         : {};
 
+    // ── CNAPP MQ fallback: synthesize from mq_gap_rationales + evidence_ledger ──
+    // Activated only when standard keys are empty (raw CNAPP MQ vendor file
+    // that hasn't been run through _adapt_cnapp_mq_rationale.py).
+    if (Object.keys(rationale).length === 0
+        && vendor.mq_gap_rationales && typeof vendor.mq_gap_rationales === 'object') {
+        const mqRat = vendor.mq_gap_rationales;
+        Object.values(mqRat).forEach(subMap => {
+            if (!subMap || typeof subMap !== 'object') return;
+            Object.entries(subMap).forEach(([sid, info]) => {
+                if (!info || typeof info !== 'object') return;
+                rationale[sid] = {
+                    score_rationale: info.rationale || '',
+                    confidence: info.confidence || 'unknown',
+                    evidence_sources: Array.isArray(info.evidence_sources) ? info.evidence_sources : []
+                };
+            });
+        });
+    }
+    if (Object.keys(evidenceAll).length === 0 && Array.isArray(vendor.evidence_ledger)) {
+        vendor.evidence_ledger.forEach(e => {
+            const sid = e && e.sub_pillar;
+            if (!sid) return;
+            const fact = e.fact || '';
+            const url  = e.source_url || '';
+            if (!evidenceAll[sid]) evidenceAll[sid] = { source_urls: [], excerpts: [] };
+            if (fact) {
+                evidenceAll[sid].excerpts.push({
+                    excerpt: fact,
+                    url,
+                    matched_terms: e.source_type ? [e.source_type] : []
+                });
+            }
+            if (url && !evidenceAll[sid].source_urls.includes(url)) {
+                evidenceAll[sid].source_urls.push(url);
+            }
+        });
+    }
+
     const flag = vendor.research_flag ? String(vendor.research_flag) : 'unknown';
 
     const header = `
@@ -3731,6 +3776,13 @@ function renderEvidenceAndRationale(vendor, granular) {
         const ev = evidenceAll[sid];
         const urls = (ev && typeof ev === 'object' && Array.isArray(ev.source_urls)) ? ev.source_urls : [];
         const excerpts = (ev && typeof ev === 'object' && Array.isArray(ev.excerpts)) ? ev.excerpts : [];
+        // Offsec/CNAPP-MQ v2.1 schema: sources[] with {type, tier, url, title}
+        const sourcesV21 = (ev && typeof ev === 'object' && Array.isArray(ev.sources)) ? ev.sources : [];
+        const enrichmentStatus = ev && typeof ev === 'object' ? (ev.enrichment_status || '') : '';
+        // Pull rationale text from sub_pillar_evidence if not already set
+        if (!r && ev && typeof ev === 'object' && typeof ev.rationale === 'string') {
+            r = ev.rationale.trim();
+        }
 
         const excerptLines = [];
         excerpts.slice(0, 6).forEach((it, idx) => {
@@ -3750,9 +3802,34 @@ function renderEvidenceAndRationale(vendor, granular) {
             }
         });
 
-        const urlsHtml = urls && urls.length
-            ? `<div class="vendor-report-sources"><strong>Sources:</strong> ${escapeHtml(urls.slice(0, 8).join(' | '))}</div>`
-            : `<div class="vendor-report-sources"><strong>Sources:</strong> none captured</div>`;
+        // Tier-graded source list (offsec / CNAPP-MQ v2.1 schema). When
+        // sources[] is present, render an itemized list with type + tier badge,
+        // otherwise fall back to the legacy comma-joined source_urls line.
+        let urlsHtml;
+        if (sourcesV21.length) {
+            const tierBadge = (t) => {
+                const tier = String(t || 'C').toUpperCase();
+                const color = tier === 'A' ? '#2ecc71' : tier === 'B' ? '#f39c12' : '#95a5a6';
+                return `<span style="display:inline-block; padding:1px 6px; border-radius:3px; background:${color}; color:#fff; font-size:10px; font-weight:700; margin-right:6px;">${tier}</span>`;
+            };
+            const items = sourcesV21.slice(0, 8).map(s => {
+                const url   = s && s.url   ? String(s.url)   : '';
+                const title = s && s.title ? String(s.title) : (url || 'source');
+                const type  = s && s.type  ? String(s.type).replace(/_/g, ' ') : '';
+                const linkHtml = url
+                    ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener" style="color:var(--color-primary);">${escapeHtml(title)}</a>`
+                    : escapeHtml(title);
+                return `<li style="margin-bottom:4px;">${tierBadge(s && s.tier)}${linkHtml}${type ? ` <span style="color:var(--text-secondary); font-size:11px;">— ${escapeHtml(type)}</span>` : ''}</li>`;
+            }).join('');
+            const statusBadge = enrichmentStatus
+                ? `<span style="margin-left:8px; padding:1px 6px; border-radius:3px; background:var(--bg-tertiary, rgba(0,0,0,0.2)); color:var(--text-secondary); font-size:10px;">${escapeHtml(enrichmentStatus)}</span>`
+                : '';
+            urlsHtml = `<div class="vendor-report-sources" style="margin-top:6px;"><strong>Sources (${sourcesV21.length})${statusBadge}:</strong><ul style="margin:6px 0 0 0; padding-left:18px; list-style:none;">${items}</ul></div>`;
+        } else if (urls && urls.length) {
+            urlsHtml = `<div class="vendor-report-sources"><strong>Sources:</strong> ${escapeHtml(urls.slice(0, 8).join(' | '))}</div>`;
+        } else {
+            urlsHtml = `<div class="vendor-report-sources"><strong>Sources:</strong> none captured</div>`;
+        }
 
         // Build rationale HTML — rich rendering for v2 structured data
         let rationaleHtml;
@@ -12905,7 +12982,7 @@ const GANTT_PILLAR_COLORS = { INF: '#0078d4', IAM: '#107c10', NDS: '#d83b01', DS
 let _ganttPlanData = null;
 let _ganttDragState = null;
 
-// ── Agentic SOC Maturity Framework (ASMF) View ─────────────────────────────
+// ── Agentic Security Operations Adoption Framework (ASAF) View ──────────────
 
 // ── ASMF Target Radar ────────────────────────────────────────────────────────
 
@@ -12943,7 +13020,7 @@ async function populateASMFRadar() {
             return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
               <span style="width:8px;height:8px;border-radius:50%;background:${col};flex-shrink:0;display:inline-block;"></span>
               <span style="font-size:12px;color:var(--text-secondary);flex:1;">${escapeHtml(id)} — ${escapeHtml(d.name)}</span>
-              <span style="font-size:12px;font-weight:700;color:${col};" title="Framework maturity weight — this dimension's share of overall ASMF score">${w}% <span style="font-size:10px;font-weight:400;color:#475569;">weight</span></span>
+              <span style="font-size:12px;font-weight:700;color:${col};" title="Framework adoption weight — this dimension's share of overall ASAF score">${w}% <span style="font-size:10px;font-weight:400;color:#475569;">weight</span></span>
             </div>`;
         }).join('')}
         <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border-color);">
@@ -13108,7 +13185,7 @@ async function populateASMFSankey() {
 
     el.innerHTML = `
     <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:760px;">
-      Each horizontal band represents a maturity stage. As you move from Stage 0 (Traditional) to Stage 5 (Fully Agentic),
+      Each horizontal band represents an adoption stage. As you move from Stage 0 (Traditional) to Stage 5 (Fully Agentic),
       agentic systems absorb an increasing proportion of the work across every operational layer — from signal ingestion through to business outcomes.
     </div>
     <div style="overflow-x:auto;">${svg}</div>
@@ -13179,7 +13256,7 @@ async function populateASMFPyramid() {
 
     el.innerHTML = `
     <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:700px;">
-      Each layer represents a maturity stage. The pyramid grows narrower at the top — fewer organizations reach higher stages,
+      Each layer represents an adoption stage. The pyramid grows narrower at the top — fewer organizations reach higher stages,
       but those that do achieve exponentially better outcomes. Hover any layer to see the expected outcome.
     </div>
     <div style="padding:0 20px;">
@@ -13523,7 +13600,7 @@ async function populateASMFOrbital() {
             <span style="font-size:15px;font-weight:700;color:#f1f5f9;">${escapeHtml(sdLabel)}</span>
           </div>
           <div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">${escapeHtml(sn.name)}</div>
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Maturity Stage Descriptors</div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Adoption Stage Descriptors</div>
           ${stagesHtml}
           <div style="margin-top:14px;">
             <button id="asmf-back-to-dim" style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;">← Back to ${escapeHtml(sn.parentId)}</button>
@@ -14008,7 +14085,7 @@ function _asmfBuildMatrix(fw) {
     <!-- THE MATRIX -->
     <div style="overflow-x:auto;margin-bottom:32px;">
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">
-        Hover any cell to read the full stage descriptor. Each row = one sub-dimension across 6 maturity stages.
+        Hover any cell to read the full stage descriptor. Each row = one sub-dimension across 6 adoption stages.
       </div>
       <table style="border-collapse:collapse;width:100%;min-width:1100px;">
         <thead>
@@ -14399,7 +14476,7 @@ async function exportASMFPosterAsHTML() {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ASMF — Agentic SOC Maturity Framework</title>
+<title>ASAF — Agentic Security Operations Adoption Framework</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:32px 28px}
@@ -14412,9 +14489,9 @@ table{border-collapse:collapse}
 <body>
 <div style="margin-bottom:28px;">
   <div style="font-size:11px;color:#3b82f6;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:4px;">
-    ${escapeHtml(fw.framework_abbrev||'ASMF')} ${escapeHtml(fw.schema_version||'v1.0')}
+    ${escapeHtml(fw.framework_abbrev||'ASAF')} ${escapeHtml(fw.schema_version||'v1.0')}
   </div>
-  <h1>${escapeHtml(fw.framework_name||'Agentic SOC Maturity Framework')}</h1>
+  <h1>${escapeHtml(fw.framework_name||'Agentic Security Operations Adoption Framework')}</h1>
   <p style="font-size:13px;color:#64748b;margin-top:6px;">${escapeHtml(fw.scope||'')}</p>
 </div>
 ${matrixInner.replace(/var\(--bg-primary\)/g,'#0a0f1a').replace(/var\(--bg-secondary\)/g,'#0f172a').replace(/var\(--border-color\)/g,'#1e293b').replace(/var\(--text-primary\)/g,'#f1f5f9').replace(/var\(--text-secondary\)/g,'#94a3b8').replace(/var\(--text-muted\)/g,'#475569')}
@@ -14438,7 +14515,7 @@ document.querySelectorAll('td[data-full]').forEach(cell=>{
     const blob = new Blob([html], {type:'text/html'});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'ASMF_Maturity_Matrix_Poster.html';
+    a.download = 'ASAF_Adoption_Matrix_Poster.html';
     a.click();
     URL.revokeObjectURL(a.href);
 }
@@ -14522,7 +14599,7 @@ function _asmfBuildGraphData(fw) {
     const phases = (fw.transformation_journey?.phases) || [];
 
     // ── Root ──
-    nodes.push({ id: 'root', name: fw.framework_abbrev || 'ASMF', type: 'root',
+    nodes.push({ id: 'root', name: fw.framework_abbrev || 'ASAF', type: 'root',
         color: '#ffffff', size: 14, desc: fw.description || '' });
 
     // ── Stages ──
@@ -14579,7 +14656,7 @@ function _asmfShowNodeDetail(node) {
     const panel = document.getElementById('asmf-graph-detail');
     if (!panel) return;
     const typeColors = { root:'#ffffff', stage:'', dimension:'', subdim:'', principle:'#3b82f6', phase:'' };
-    const typeLabels = { root:'Framework', stage:'Maturity Stage', dimension:'Dimension', subdim:'Sub-Dimension', principle:'Principle', phase:'Journey Phase' };
+    const typeLabels = { root:'Framework', stage:'Adoption Stage', dimension:'Dimension', subdim:'Sub-Dimension', principle:'Principle', phase:'Journey Phase' };
     const typeBadgeColor = node.color || '#3b82f6';
     panel.innerHTML = `
         <div style="margin-bottom:16px;">
@@ -14674,7 +14751,7 @@ async function populateASMFGraph() {
     container.dataset.rendered = '1';
 
     // Show default detail
-    _asmfShowNodeDetail({ type: 'root', name: _asmfFramework.framework_abbrev || 'ASMF',
+    _asmfShowNodeDetail({ type: 'root', name: _asmfFramework.framework_abbrev || 'ASAF',
         color: '#ffffff', desc: _asmfFramework.description || '', detail: null });
 }
 
@@ -14689,7 +14766,7 @@ async function populateASMFView() {
         }
         el.innerHTML = _asmfRender(_asmfFramework);
     } catch (e) {
-        el.innerHTML = `<div style="color:#ef4444;padding:32px;">Error loading ASMF: ${escapeHtml(String(e))}</div>`;
+        el.innerHTML = `<div style="color:#ef4444;padding:32px;">Error loading ASAF: ${escapeHtml(String(e))}</div>`;
     }
 }
 
@@ -14725,7 +14802,7 @@ async function exportASMFFrameworkAsHTML() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ASMF — Agentic SOC Maturity Framework Reference</title>
+<title>ASAF — Agentic Security Operations Adoption Framework Reference</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:32px 28px;max-width:1400px;margin:0 auto;}
@@ -14738,14 +14815,14 @@ a{color:#3b82f6}
 </head>
 <body>
 ${inner}
-<p style="margin-top:32px;font-size:11px;color:#334155;border-top:1px solid #1e293b;padding-top:12px;font-style:italic;">Exported ${exportDate} — ASMF v1.0 — Zach West, Gartner. Research-in-progress; not official Gartner published research.</p>
+<p style="margin-top:32px;font-size:11px;color:#334155;border-top:1px solid #1e293b;padding-top:12px;font-style:italic;">Exported ${exportDate} — ASAF v1.0 — Zach West, Gartner. Research-in-progress; not official Gartner published research.</p>
 </body>
 </html>`;
 
     const blob = new Blob([html], {type:'text/html'});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'ASMF_Framework_Reference.html';
+    a.download = 'ASAF_Framework_Reference.html';
     a.click();
     URL.revokeObjectURL(a.href);
 }
@@ -14767,9 +14844,9 @@ function _asmfRender(fw) {
     <div style="margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;">
       <div>
         <div style="font-size:11px;color:#3b82f6;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:4px;">
-          ${escapeHtml(fw.framework_name || 'Agentic SOC Maturity Framework')} ${escapeHtml(fw.schema_version || 'v1.0')}
+          ${escapeHtml(fw.framework_name || 'Agentic Security Operations Adoption Framework')} ${escapeHtml(fw.schema_version || 'v1.0')}
         </div>
-        <h1 style="font-size:26px;font-weight:800;color:#f8fafc;margin-bottom:6px;">${escapeHtml(fw.framework_abbrev || 'ASMF')}</h1>
+        <h1 style="font-size:26px;font-weight:800;color:#f8fafc;margin-bottom:6px;">${escapeHtml(fw.framework_abbrev || 'ASAF')}</h1>
         <p style="font-size:14px;color:#64748b;max-width:740px;line-height:1.6;">${escapeHtml(fw.description || '')}</p>
       </div>
       <button onclick="exportASMFFrameworkAsHTML()" style="flex-shrink:0;background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
@@ -14785,7 +14862,7 @@ function _asmfRender(fw) {
       ${[
         ['Dimensions', dimCount, '#3b82f6'],
         ['Sub-Dimensions', subDimCount, '#8b5cf6'],
-        ['Maturity Stages', Object.keys(stages).length, '#10b981'],
+        ['Adoption Stages', Object.keys(stages).length, '#10b981'],
         ['Governing Principles', principles.length, '#f59e0b'],
       ].map(([label, val, color]) => `
       <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:14px 20px;flex:1;min-width:130px;text-align:center;">
@@ -14794,8 +14871,8 @@ function _asmfRender(fw) {
       </div>`).join('')}
     </div>`;
 
-    // Maturity Stage Reference
-    html += `<h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">Maturity Stages</h2>`;
+    // Adoption Stage Reference
+    html += `<h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">Adoption Stages</h2>`;
     html += `<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;">`;
     Object.entries(stages).forEach(([sid, s]) => {
         const idx = parseInt(sid, 10);
@@ -14928,7 +15005,7 @@ function _asmfRender(fw) {
       {
         label: 'SOC-CMM',
         org: 'Sander Prins (via SANS/ESC)',
-        note: 'The SOC-CMM provides a SOC-specific capability maturity model covering people, process, and technology dimensions. ASMF extends this into the agentic era by reorienting around autonomous decision architecture rather than task execution.',
+        note: 'The SOC-CMM provides a SOC-specific capability maturity model covering people, process, and technology dimensions. ASAF extends this into the agentic era by reorienting around autonomous decision architecture rather than task execution.',
         url: 'https://www.soc-cmm.com/'
       },
       {
@@ -19664,7 +19741,7 @@ function _pciRenderAnalysis(data, st) {
                             <span style="background:#107c10;color:#fff;padding:1px 6px;border-radius:10px;font-size:10px">EXM</span> Exposure Mgmt
                             <span style="background:#a80000;color:#fff;padding:1px 6px;border-radius:10px;font-size:10px">AMT</span> Adversary Mgmt
                             <span style="background:#0078d4;color:#fff;padding:1px 6px;border-radius:10px;font-size:10px">PPM</span> Posture & Policy
-                            <span style="background:#8764b8;color:#fff;padding:1px 6px;border-radius:10px;font-size:10px">ADR</span> Detection & Response
+                            <span style="background:#8764b8;color:#fff;padding:1px 6px;border-radius:10px;font-size:10px">ADR</span> Adversary Disruption
                             <span style="color:${svcColor};font-style:italic">SVC = cross-cutting enabler (not phase-mapped)</span>
                         </div>
                     </div>`;
@@ -19689,8 +19766,8 @@ function _pciRenderAnalysis(data, st) {
                                 <div class="mi-tier-title" style="color:#a80000">Reactive Zone</div>
                                 <div style="font-size:11px;color:#888;margin-bottom:6px">Kill Chain Phases 4-7 / ATT&CK: Execution through Impact</div>
                                 <div class="mi-tier-stat" style="font-size:28px;color:#a80000">${reactPen}%</div>
-                                <div class="mi-tier-metric">Detection & Response penetration</div>
-                                <div class="mi-tier-metric" style="color:#8764b8">ADR covers Phases 4-7</div>
+                                <div class="mi-tier-metric">Adversary Disruption penetration</div>
+                                <div class="mi-tier-metric" style="color:#8764b8">ADR (Adversary Disruption) covers Phases 4-7</div>
                                 <div class="mi-tier-metric" style="color:#ca5010">SVC maturity amplifies effectiveness</div>
                             </div>
                         </div>
@@ -19753,7 +19830,7 @@ function _pciRenderAnalysis(data, st) {
                             <span>EXM = Exposure Mgmt</span>
                             <span>AMT = Adversary Mgmt</span>
                             <span>PPM = Posture & Policy</span>
-                            <span>ADR = Detection & Response</span>
+                            <span>ADR = Adversary Disruption</span>
                             <span style="color:#888;font-style:italic">SVC = cross-cutting enabler (not tactic-mapped)</span>
                         </div>
                     </div>`;
@@ -19820,7 +19897,7 @@ function _pciRenderAnalysis(data, st) {
             } else if (st) {
                 // Section 0: Five Pillars — Pillar penetration bar chart
                 if (idx === 0) {
-                    vizHtml = '<div class="mi-viz-box"><h4>Pillar Penetration Across 51 Vendors (2.0+ Threshold)</h4><div class="mi-dim-compare">';
+                    vizHtml = '<div class="mi-viz-box"><h4>Pillar Penetration Across 86 Vendors (2.0+ Threshold)</h4><div class="mi-dim-compare">';
                     (st.pillars || []).forEach(p => {
                         const pp = st.pillar_penetration?.[p];
                         if (!pp) return;
@@ -20100,31 +20177,37 @@ function _pciRenderGraphics(data, stats) {
         return;
     }
 
+    // ── Reimagining Operations v3: D3.js-enhanced delivery model / maturity graphics ──
+    if (data.id === 'cpo-reimagining-operations-v3') {
+        _pciRenderReimaginGraphics(panel, stats);
+        return;
+    }
+
     // ── Graphic 1: Five-Pillar Coverage Heatmap ──
     const pillarData = [
-        { pillar: 'Exposure Management', code: 'EXM', direct: 3.60, partner: 3.69, platform: 3.07, pct: '92%' },
-        { pillar: 'Posture & Policy Mgmt', code: 'PPM', direct: 2.97, partner: 3.21, platform: 2.84, pct: '86%' },
-        { pillar: 'Detection & Response', code: 'ADR', direct: 3.38, partner: 2.83, platform: 2.52, pct: '78%' },
-        { pillar: 'Services & Capability', code: 'SVC', direct: 2.74, partner: 2.32, platform: 1.49, pct: '57%' },
-        { pillar: 'Adversary Management', code: 'AMT', direct: 2.45, partner: 2.74, platform: 1.87, pct: '55%' },
+        { pillar: 'Exposure Management', code: 'EXM', direct: 1.74, partner: 1.89, platform: 1.86, pct: '49%' },
+        { pillar: 'Posture & Policy Mgmt', code: 'PPM', direct: 1.72, partner: 1.37, platform: 1.90, pct: '37%' },
+        { pillar: 'Adversary Disruption', code: 'ADR', direct: 1.91, partner: 1.47, platform: 1.46, pct: '33%' },
+        { pillar: 'Services & Capability', code: 'SVC', direct: 1.82, partner: 1.90, platform: 1.42, pct: '41%' },
+        { pillar: 'Adversary Management', code: 'AMT', direct: 1.17, partner: 1.29, platform: 1.15, pct: '16%' },
     ];
     function pciHmClass(v) {
-        if (v >= 3.0) return 'background:#e6f4e6;color:#107c10;font-weight:700';
-        if (v >= 2.5) return 'background:#e0f0ff;color:#0078d4;font-weight:700';
-        if (v >= 2.0) return 'background:#fff0e0;color:#ca5010;font-weight:700';
+        if (v >= 1.75) return 'background:#e6f4e6;color:#107c10;font-weight:700';
+        if (v >= 1.50) return 'background:#e0f0ff;color:#0078d4;font-weight:700';
+        if (v >= 1.25) return 'background:#fff0e0;color:#ca5010;font-weight:700';
         return 'background:#ffe0e0;color:#a80000;font-weight:700';
     }
     html += `<div class="dfi-graphic-section">
         <h2>1. Five-Pillar Coverage Heatmap by Delivery Model</h2>
-        <p class="dfi-graphic-subtitle">51 preemptive cybersecurity vendors scored across 5 capability pillars by delivery model. Service delivery (SVC) is the critical gap.</p>
+        <p class="dfi-graphic-subtitle">86 preemptive cybersecurity vendors scored across 5 capability pillars by delivery model. Adversary Management (AMT) is the critical gap.</p>
         <div style="overflow-x:auto">
         <table class="dfi-heatmap-table" style="width:100%;max-width:1000px;border-collapse:collapse;font-size:14px;">
         <thead><tr>
             <th style="text-align:left;padding:10px 12px;background:#1a3a5c;color:#fff;border-radius:8px 0 0 0;">Pillar</th>
             <th style="text-align:center;padding:10px 8px;background:#1a3a5c;color:#fff;">Penetration</th>
-            <th style="text-align:center;padding:10px 8px;background:#107c10;color:#fff;">Direct Service<br><small>11 vendors (22%)</small></th>
-            <th style="text-align:center;padding:10px 8px;background:#0078d4;color:#fff;">Platform+Partner<br><small>15 vendors (29%)</small></th>
-            <th style="text-align:center;padding:10px 8px;background:#ca5010;color:#fff;border-radius:0 8px 0 0;">Platform-Only<br><small>25 vendors (49%)</small></th>
+            <th style="text-align:center;padding:10px 8px;background:#107c10;color:#fff;">Direct Service<br><small>11 vendors (13%)</small></th>
+            <th style="text-align:center;padding:10px 8px;background:#0078d4;color:#fff;">Platform+Partner<br><small>15 vendors (17%)</small></th>
+            <th style="text-align:center;padding:10px 8px;background:#ca5010;color:#fff;border-radius:0 8px 0 0;">Platform-Only<br><small>25 vendors (29%)</small></th>
         </tr></thead><tbody>`;
     pillarData.forEach(d => {
         html += `<tr>
@@ -20137,23 +20220,65 @@ function _pciRenderGraphics(data, stats) {
     });
     html += `</tbody></table></div>
     <div style="display:flex;gap:18px;margin-top:10px;font-size:12px;flex-wrap:wrap">
-        <span style="color:#107c10;font-weight:700">■ ≥ 3.00 Strong</span>
-        <span style="color:#0078d4;font-weight:700">■ 2.50–2.99 Competitive</span>
-        <span style="color:#ca5010;font-weight:700">■ 2.00–2.49 Below Target</span>
-        <span style="color:#a80000;font-weight:700">■ < 2.00 Critical Gap</span>
-    </div></div>`;
+        <span style="color:#107c10;font-weight:700">■ ≥ 1.75 Above Average</span>
+        <span style="color:#0078d4;font-weight:700">■ 1.50–1.74 Near Threshold</span>
+        <span style="color:#ca5010;font-weight:700">■ 1.25–1.49 Below Threshold</span>
+        <span style="color:#a80000;font-weight:700">■ < 1.25 Critical Gap</span>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;align-items:flex-start">
+        <div id="pci-d3-radar-g1" style="flex:0 0 520px;min-width:280px"></div>
+        <div style="flex:1;min-width:220px;background:#f8f8f5;border:1px solid #e0ddd5;border-radius:10px;padding:16px">
+            <div style="font-weight:700;color:#1a3a5c;margin-bottom:10px">Delivery Model Score Profiles</div>
+            <div id="pci-d3-hbar-g1" style="width:100%"></div>
+        </div>
+    </div>
+    </div>`;
+    requestAnimationFrame(() => {
+        _pciDrawD3Radar('pci-d3-radar-g1', [
+            { label: 'Direct Service (11)', color: '#107c10', values: { EXM: 1.74, AMT: 1.17, ADR: 1.91, PPM: 1.72, SVC: 1.82 } },
+            { label: 'Platform+Partner (15)', color: '#0078d4', values: { EXM: 1.89, AMT: 1.29, ADR: 1.47, PPM: 1.37, SVC: 1.90 } },
+            { label: 'Platform-Only (25)', color: '#ca5010', values: { EXM: 1.86, AMT: 1.15, ADR: 1.46, PPM: 1.90, SVC: 1.42 } },
+        ], 3);
+        _pciDrawD3HBar('pci-d3-hbar-g1', [
+            { label: 'EXM', bars: [
+                { label: 'Direct', value: 1.74, color: '#107c10' },
+                { label: 'Partner', value: 1.89, color: '#0078d4' },
+                { label: 'Platform', value: 1.86, color: '#ca5010' },
+            ]},
+            { label: 'AMT', bars: [
+                { label: 'Direct', value: 1.17, color: '#107c10' },
+                { label: 'Partner', value: 1.29, color: '#0078d4' },
+                { label: 'Platform', value: 1.15, color: '#ca5010' },
+            ]},
+            { label: 'ADR', bars: [
+                { label: 'Direct', value: 1.91, color: '#107c10' },
+                { label: 'Partner', value: 1.47, color: '#0078d4' },
+                { label: 'Platform', value: 1.46, color: '#ca5010' },
+            ]},
+            { label: 'PPM', bars: [
+                { label: 'Direct', value: 1.72, color: '#107c10' },
+                { label: 'Partner', value: 1.37, color: '#0078d4' },
+                { label: 'Platform', value: 1.90, color: '#ca5010' },
+            ]},
+            { label: 'SVC', bars: [
+                { label: 'Direct', value: 1.82, color: '#107c10' },
+                { label: 'Partner', value: 1.90, color: '#0078d4' },
+                { label: 'Platform', value: 1.42, color: '#ca5010' },
+            ]},
+        ], { maxVal: 3 });
+    });
 
     // ── Graphic 2: Full-Spectrum Coverage Roadmap ──
     html += `<div class="dfi-graphic-section">
         <h2>2. Path to Full-Spectrum: Delivery Model Maturity</h2>
         <p class="dfi-graphic-subtitle">Current average score per delivery model relative to 2.0 baseline competency threshold across all 5 pillars.</p>`;
     const modelRoadmap = [
-        { name: 'Direct Service Providers', count: '11 vendors (22%)', avg: 3.03, pct: 60.6, color: '#107c10',
-          gaps: ['⚠ Limited platform depth', '✓ Highest SVC: 2.74', '✓ Highest ADR: 3.38', '✓ Own SOCs + analysts'] },
-        { name: 'Platform + Partner', count: '15 vendors (29%)', avg: 2.96, pct: 59.2, color: '#0078d4',
-          gaps: ['⚠ Partner accountability gaps', '⚠ SVC via partners: 2.32', '✓ Highest AMT: 2.74', '✓ Broadest coverage'] },
-        { name: 'Platform-Only', count: '25 vendors (49%)', avg: 2.36, pct: 47.2, color: '#ca5010',
-          gaps: ['⚠ SVC: 1.49 (structural gap)', '⚠ AMT: 1.87 (weak intel)', '⚠ 88% below 2.0 on SVC', '⚠ No service delivery'] },
+        { name: 'Direct Service Providers', count: '11 vendors (13%)', avg: 1.67, pct: 33.4, color: '#107c10',
+          gaps: ['⚠ Limited platform depth', '✓ Highest ADR: 1.91', '✓ Highest SVC: 1.82', '✓ Own SOCs + analysts'] },
+        { name: 'Platform + Partner', count: '15 vendors (17%)', avg: 1.58, pct: 31.6, color: '#0078d4',
+          gaps: ['⚠ Partner accountability gaps', '⚠ PPM gap: 1.37', '✓ Highest SVC: 1.90', '✓ Broadest EXM: 1.89'] },
+        { name: 'Platform-Only', count: '25 vendors (29%)', avg: 1.56, pct: 31.2, color: '#ca5010',
+          gaps: ['⚠ AMT: 1.15 (critical gap)', '⚠ ADR: 1.46 (below threshold)', '✓ Highest PPM: 1.90', '⚠ No managed services delivery'] },
     ];
     modelRoadmap.forEach(d => {
         const barPct = Math.min(d.avg / 5.0 * 100, 100);
@@ -20177,24 +20302,24 @@ function _pciRenderGraphics(data, stats) {
     });
     html += `<div style="background:#fff5f5;border:2px solid #a80000;border-radius:10px;padding:12px 16px;margin-top:12px">
         <strong style="color:#a80000">Key Insight</strong><br>
-        <span style="color:#555;font-size:13px">No platform-only vendor achieves full-spectrum coverage. Service delivery (SVC) is the structural missing link — 88% of platform-only vendors score below 2.0.</span>
+        <span style="color:#555;font-size:13px">No platform-only vendor achieves full-spectrum coverage. Adversary Management (AMT) is the critical differentiator — only 16% of vendors meet the 2.0 threshold on adversary intelligence and counter-operations.</span>
     </div></div>`;
 
     // ── Graphic 3: Pillar Penetration Gap Analysis ──
     html += `<div class="dfi-graphic-section">
         <h2>3. Pillar Penetration Gap: Where the Market Falls Short</h2>
-        <p class="dfi-graphic-subtitle">Percentage of 51 vendors scoring ≥ 2.0 on each pillar. Exposure Management dominates; SVC and AMT are critically under-served.</p>`;
+        <p class="dfi-graphic-subtitle">Percentage of 86 vendors scoring ≥ 2.0 on each pillar. Exposure Management leads at 49%; Adversary Management (AMT) is critically under-served at 16%.</p>`;
     html += `<div style="display:flex;gap:16px;margin-bottom:12px;font-size:12px;flex-wrap:wrap">
         <span style="color:#107c10;font-weight:700">■ Direct Service</span>
         <span style="color:#0078d4;font-weight:700">■ Platform+Partner</span>
         <span style="color:#ca5010;font-weight:700">■ Platform-Only</span>
     </div>`;
     const gapData = [
-        { pillar: 'Exposure Mgmt (EXM)', pct: 92, direct: 3.60, partner: 3.69, platform: 3.07 },
-        { pillar: 'Posture & Policy (PPM)', pct: 86, direct: 2.97, partner: 3.21, platform: 2.84 },
-        { pillar: 'Detection & Response (ADR)', pct: 78, direct: 3.38, partner: 2.83, platform: 2.52 },
-        { pillar: 'Services & Capability (SVC)', pct: 57, direct: 2.74, partner: 2.32, platform: 1.49 },
-        { pillar: 'Adversary Mgmt (AMT)', pct: 55, direct: 2.45, partner: 2.74, platform: 1.87 },
+        { pillar: 'Exposure Mgmt (EXM)', pct: 49, direct: 1.74, partner: 1.89, platform: 1.86 },
+        { pillar: 'Services & Capability (SVC)', pct: 41, direct: 1.82, partner: 1.90, platform: 1.42 },
+        { pillar: 'Posture & Policy (PPM)', pct: 37, direct: 1.72, partner: 1.37, platform: 1.90 },
+        { pillar: 'Adversary Disruption (ADR)', pct: 33, direct: 1.91, partner: 1.47, platform: 1.46 },
+        { pillar: 'Adversary Mgmt (AMT)', pct: 16, direct: 1.17, partner: 1.29, platform: 1.15 },
     ];
     gapData.forEach(d => {
         const w = 550;
@@ -20222,38 +20347,69 @@ function _pciRenderGraphics(data, stats) {
     });
     html += `<div style="background:#f0faff;border:2px solid #0078d4;border-radius:10px;padding:12px 16px;margin-top:8px">
         <strong style="color:#0078d4">Key Insight</strong><br>
-        <span style="color:#555;font-size:13px">The 37-point penetration gap between EXM (92%) and AMT (55%) reveals where the market clusters. Vendors flock to exposure scanning but ignore adversary intelligence and service delivery.</span>
-    </div></div>`;
+        <span style="color:#555;font-size:13px">The 33-point penetration gap between EXM (49%) and AMT (16%) reveals where the market clusters. Vendors flock to exposure scanning but ignore adversary intelligence and counter-operations.</span>
+    </div>
+    <div id="pci-d3-hbar-g3" style="margin-top:18px;max-width:750px"></div>
+    </div>`;
+    requestAnimationFrame(() => {
+        _pciDrawD3HBar('pci-d3-hbar-g3', [
+            { label: 'EXM 49%', bars: [
+                { label: 'Direct', value: 1.74, color: '#107c10' },
+                { label: 'Partner', value: 1.89, color: '#0078d4' },
+                { label: 'Platform', value: 1.86, color: '#ca5010' },
+            ]},
+            { label: 'SVC 41%', bars: [
+                { label: 'Direct', value: 1.82, color: '#107c10' },
+                { label: 'Partner', value: 1.90, color: '#0078d4' },
+                { label: 'Platform', value: 1.42, color: '#ca5010' },
+            ]},
+            { label: 'PPM 37%', bars: [
+                { label: 'Direct', value: 1.72, color: '#107c10' },
+                { label: 'Partner', value: 1.37, color: '#0078d4' },
+                { label: 'Platform', value: 1.90, color: '#ca5010' },
+            ]},
+            { label: 'ADR 33%', bars: [
+                { label: 'Direct', value: 1.91, color: '#107c10' },
+                { label: 'Partner', value: 1.47, color: '#0078d4' },
+                { label: 'Platform', value: 1.46, color: '#ca5010' },
+            ]},
+            { label: 'AMT 16%', bars: [
+                { label: 'Direct', value: 1.17, color: '#107c10' },
+                { label: 'Partner', value: 1.29, color: '#0078d4' },
+                { label: 'Platform', value: 1.15, color: '#ca5010' },
+            ]},
+        ], { maxVal: 2.5, title: 'Pillar Scores by Delivery Model (sorted by market penetration %)' });
+    });
 
     // ── Graphic 4: Executive Summary Poster ──
     html += `<div class="dfi-graphic-section">
         <h2>4. Market Fragmentation — Executive Summary</h2>
-        <p class="dfi-graphic-subtitle">Only 27% of 51 vendors achieve full-spectrum coverage. The rest leave critical gaps in adversary intelligence and service delivery.</p>
+        <p class="dfi-graphic-subtitle">Only 6% of 86 vendors achieve full-spectrum coverage. The rest leave critical gaps — especially in adversary intelligence and counter-operations.</p>
         <div class="dfi-nbm-infographic" style="background:linear-gradient(135deg,#fff5f5,#f8f8f5);border:2px solid #a80000;border-radius:16px;padding:28px 32px;max-width:1080px">
             <div style="text-align:center;margin-bottom:20px">
                 <div style="font-size:28px;font-weight:800;color:#a80000">The Preemptive Cybersecurity Market Is Dangerously Fragmented</div>
-                <div style="font-size:14px;color:#666;margin-top:6px">Market Insight — 51 vendors across 5 capability pillars × 3 delivery models</div>
+                <div style="font-size:14px;color:#666;margin-top:6px">Market Insight — 86 vendors across 5 capability pillars × 3 delivery models</div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px">
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#0078d4">51</div><div style="font-size:11px;color:#666">Vendors Assessed</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#0078d4">86</div><div style="font-size:11px;color:#666">Vendors Assessed</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#a80000">73%</div><div style="font-size:11px;color:#666">Have ≥ 1 Blind Spot</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#a80000">94%</div><div style="font-size:11px;color:#666">Have ≥ 1 Blind Spot</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#ca5010">45%</div><div style="font-size:11px;color:#666">No AMT Capability</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#ca5010">84%</div><div style="font-size:11px;color:#666">No AMT Capability</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#107c10">27%</div><div style="font-size:11px;color:#666">Full-Spectrum Coverage</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#107c10">6%</div><div style="font-size:11px;color:#666">Full-Spectrum Coverage</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#8764b8">49%</div><div style="font-size:11px;color:#666">Platform-Only (No SVC)</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#8764b8">29%</div><div style="font-size:11px;color:#666">Platform-Only (No SVC)</div></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#a80000;margin-bottom:8px">KEY FINDINGS</div>
             <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #a80000">
-                    <strong>🔴 Service Delivery Crisis</strong><br><span style="color:#555;font-size:13px">25 of 51 vendors (49%) are platform-only. Average SVC score: 1.49. 88% of platform-only vendors score below 2.0 on services.</span></div>
+                    <strong>🔴 Adversary Intelligence Crisis</strong><br><span style="color:#555;font-size:13px">84% of 86 vendors fail to meet the 2.0 competency threshold on AMT. This is the single largest capability gap in the market.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #ca5010">
-                    <strong>⚠ Adversary Intelligence Deficit</strong><br><span style="color:#555;font-size:13px">45% of vendors lack AMT capability. Among platform-only: 64% score below 2.0 on adversary management.</span></div>
+                    <strong>⚠ Platform-Only Proliferation</strong><br><span style="color:#555;font-size:13px">25 of 86 vendors (29%) are platform-only with no managed service delivery. AMT avg 1.15 — the lowest of any delivery model on any pillar.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #107c10">
-                    <strong>✓ Rare Full-Spectrum Excellence</strong><br><span style="color:#555;font-size:13px">Only 3 vendors maintain min score ≥ 2.5 across all 5 pillars: Mandiant, SentinelOne, Fortinet.</span></div>
+                    <strong>✓ Rare Full-Spectrum Excellence</strong><br><span style="color:#555;font-size:13px">Only 5 of 86 vendors (6%) achieve full-spectrum coverage scoring ≥ 2.0 across all 5 pillars.</span></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#0078d4;margin-bottom:8px">RECOMMENDATIONS</div>
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
@@ -20290,37 +20446,37 @@ function _pciRenderGraphics(data, stats) {
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px">
                 <div style="background:#f0fff4;border:2px solid #107c10;border-radius:14px;padding:20px">
                     <div style="text-align:center;font-size:18px;font-weight:700;color:#107c10;margin-bottom:8px">🟢 Direct Service</div>
-                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">11 vendors (22%)</div>
+                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">11 vendors (13%)</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
                         ✓ Own SOC + analyst teams<br>
                         ✓ Single accountability point<br>
-                        ✓ <strong>Highest SVC: 2.74</strong><br>
-                        ✓ <strong>Highest ADR: 3.38</strong><br>
+                        ✓ <strong>Highest ADR: 1.91</strong><br>
+                        ✓ <strong>Highest SVC: 1.82</strong><br>
                         ⚠ Limited platform depth<br>
                         ⚠ Narrower tech coverage</div>
                     <div style="margin-top:12px;background:#e6f4e6;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#107c10;font-weight:700">Strength: Operational Accountability</div></div>
                 <div style="background:#f0faff;border:2px solid #0078d4;border-radius:14px;padding:20px">
                     <div style="text-align:center;font-size:18px;font-weight:700;color:#0078d4;margin-bottom:8px">🔵 Platform + Partner</div>
-                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">15 vendors (29%)</div>
+                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">15 vendors (17%)</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
                         ✓ Tech platform + MSSP delivery<br>
-                        ✓ Broadest pillar coverage<br>
-                        ✓ <strong>Highest AMT: 2.74</strong><br>
-                        ✓ <strong>Highest PPM: 3.21</strong><br>
+                        ✓ Broadest EXM coverage: 1.89<br>
+                        ✓ <strong>Highest SVC: 1.90</strong><br>
+                        ✓ <strong>Best AMT: 1.29</strong><br>
                         ⚠ Partner accountability gaps<br>
-                        ⚠ SVC via partners: 2.32</div>
+                        ⚠ PPM gap: 1.37 (structural)</div>
                     <div style="margin-top:12px;background:#e0f0ff;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#0078d4;font-weight:700">Strength: Breadth of Coverage</div></div>
                 <div style="background:#fff8f0;border:2px solid #ca5010;border-radius:14px;padding:20px">
                     <div style="text-align:center;font-size:18px;font-weight:700;color:#ca5010;margin-bottom:8px">🟠 Platform-Only</div>
-                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">25 vendors (49%)</div>
+                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">25 vendors (29%)</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
                         ✓ Technology licensing model<br>
-                        ✓ Focus on core platform depth<br>
-                        🔴 <strong>SVC: 1.49 (structural gap)</strong><br>
-                        🔴 <strong>AMT: 1.87 (weak intel)</strong><br>
-                        🔴 88% below 2.0 on SVC<br>
-                        🔴 No service delivery mechanism</div>
-                    <div style="margin-top:12px;background:#fff0e0;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#ca5010;font-weight:700">Weakness: Structural Service Deficit</div></div>
+                        ✓ Highest PPM: 1.90<br>
+                        🔴 <strong>AMT: 1.15 (critical gap)</strong><br>
+                        🔴 <strong>ADR: 1.46 (below threshold)</strong><br>
+                        🔴 84% below 2.0 on AMT<br>
+                        🔴 No managed service delivery</div>
+                    <div style="margin-top:12px;background:#fff0e0;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#ca5010;font-weight:700">Weakness: Critical AMT Gap (16% penetration)</div></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#1a3a5c;margin-bottom:8px">MARKET SPECTRUM SEGMENTATION</div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
@@ -20338,7 +20494,7 @@ function _pciRenderGraphics(data, stats) {
                     <div style="font-size:10px;color:#555">≤ 3 pillars — niche specialists</div></div>
             </div>
             <div style="background:#fff0f0;border:2px solid #a80000;border-radius:10px;padding:12px 16px;text-align:center">
-                <strong style="color:#a80000">73% of vendors have at least one structural blind spot. Buyers cannot assume any single vendor covers the full attack surface.</strong></div>
+                <strong style="color:#a80000">94% of vendors have at least one structural blind spot. Buyers cannot assume any single vendor covers the full attack surface.</strong></div>
         </div></div>`;
 
     // ── Graphic 6: 2030 Market Evolution Poster ──
@@ -20348,7 +20504,7 @@ function _pciRenderGraphics(data, stats) {
         <div class="dfi-nbm-infographic" style="background:linear-gradient(135deg,#f5f0ff,#f8f8f5);border:2px solid #8764b8;border-radius:16px;padding:28px 32px;max-width:1080px">
             <div style="text-align:center;margin-bottom:20px">
                 <div style="font-size:26px;font-weight:800;color:#8764b8">From Fragmentation to Full-Spectrum: The 2030 Journey</div>
-                <div style="font-size:13px;color:#666">Full-spectrum vendors projected to grow from 27% to 50%+ by 2030</div>
+                <div style="font-size:13px;color:#666">Full-spectrum vendors projected to grow from 6% to 50%+ by 2030</div>
             </div>
             <div style="display:flex;gap:6px;margin-bottom:24px">
                 <div style="flex:1;background:#0078d4;color:#fff;border-radius:10px;padding:14px;text-align:center">
@@ -20450,18 +20606,18 @@ function _pciDrawSketchInfographic() {
     // ── Title banner ──
     svg.appendChild(rc.rectangle(0, 0, W, 70, { ...opt, fill: '#1a3a5c', fillStyle: 'solid', stroke: '#1a3a5c' }));
     addText(W / 2, 30, 'The Preemptive Cybersecurity Market Is Dangerously Fragmented', 22, '800', '#fff', 'middle');
-    addText(W / 2, 55, 'Only 27% of 51 vendors achieve full-spectrum coverage across all five pillars', 12, '400', '#ccd8e8', 'middle');
+    addText(W / 2, 55, 'Only 6% of 86 vendors achieve full-spectrum coverage across all five pillars', 12, '400', '#ccd8e8', 'middle');
 
     // ── Five Pillars Row ──
     svg.appendChild(rc.rectangle(20, 85, 1160, 32, { ...opt, fill: '#e0ddd5', fillStyle: 'solid', stroke: '#b0a898' }));
     addText(600, 107, 'THE FIVE PILLARS OF PREEMPTIVE CYBERSECURITY', 11, '700', '#5a503c', 'middle');
 
     const pillars = [
-        { label: 'EXM', name: 'Exposure Mgmt', pct: '92%', color: '#107c10', bg: '#f0fff4' },
-        { label: 'PPM', name: 'Posture & Policy', pct: '86%', color: '#0078d4', bg: '#f0faff' },
-        { label: 'ADR', name: 'Detection & Response', pct: '78%', color: '#8764b8', bg: '#f5f0ff' },
-        { label: 'SVC', name: 'Services & Capability', pct: '57%', color: '#ca5010', bg: '#fff8f0' },
-        { label: 'AMT', name: 'Adversary Mgmt', pct: '55%', color: '#a80000', bg: '#fff5f5' },
+        { label: 'EXM', name: 'Exposure Mgmt', pct: '49%', color: '#107c10', bg: '#f0fff4' },
+        { label: 'PPM', name: 'Posture & Policy', pct: '37%', color: '#0078d4', bg: '#f0faff' },
+        { label: 'ADR', name: 'Adversary Disruption', pct: '33%', color: '#8764b8', bg: '#f5f0ff' },
+        { label: 'SVC', name: 'Services & Capability', pct: '41%', color: '#ca5010', bg: '#fff8f0' },
+        { label: 'AMT', name: 'Adversary Mgmt', pct: '16%', color: '#a80000', bg: '#fff5f5' },
     ];
     pillars.forEach((p, i) => {
         const x = 30 + i * 232;
@@ -20483,45 +20639,45 @@ function _pciDrawSketchInfographic() {
     // Direct Service Providers
     svg.appendChild(rc.rectangle(30, 310, 360, 170, optFill('#f0fff4')));
     addText(210, 335, '🟢 Direct Service Providers', 14, '700', '#107c10', 'middle');
-    addText(210, 358, '11 vendors (22%)', 12, '700', '#1a3a5c', 'middle');
+    addText(210, 358, '11 vendors (13%)', 12, '700', '#1a3a5c', 'middle');
     addMultiText(210, 380, [
-        'SVC: 2.74 (highest) • ADR: 3.38',
+        'ADR: 1.91 (highest) • SVC: 1.82',
         'Own SOC + analyst teams',
         'Single accountability point',
         '⚠ Limited platform depth',
-        '(EXM: 3.60, PPM: 2.97)'
+        '(EXM: 1.74, PPM: 1.72)'
     ], 10, '#555', 14, 'middle');
 
     // Platform-Plus-Partner
     svg.appendChild(rc.rectangle(420, 310, 360, 170, optFill('#f0faff')));
     addText(600, 335, '🔵 Platform + Partner', 14, '700', '#0078d4', 'middle');
-    addText(600, 358, '15 vendors (29%)', 12, '700', '#1a3a5c', 'middle');
+    addText(600, 358, '15 vendors (17%)', 12, '700', '#1a3a5c', 'middle');
     addMultiText(600, 380, [
-        'AMT: 2.74 (highest) • PPM: 3.21',
+        'AMT: 1.29 (best) • EXM: 1.89',
         'Tech platform + MSSP delivery',
-        'Broadest pillar coverage',
+        'Highest SVC: 1.90 (via partners)',
         '⚠ Accountability gaps',
-        '(SVC only 2.32 via partners)'
+        '(PPM: 1.37 — structural weakness)'
     ], 10, '#555', 14, 'middle');
 
     // Platform-Only
     svg.appendChild(rc.rectangle(810, 310, 360, 170, optFill('#fff8f0')));
     addText(990, 335, '🟠 Platform-Only', 14, '700', '#ca5010', 'middle');
-    addText(990, 358, '25 vendors (49%)', 12, '700', '#1a3a5c', 'middle');
+    addText(990, 358, '25 vendors (29%)', 12, '700', '#1a3a5c', 'middle');
     addMultiText(990, 380, [
-        'SVC: 1.49 • AMT: 1.87 (lowest)',
-        'No service delivery mechanism',
-        '88% score < 2.0 on services',
-        '⚠ Structural service deficit',
-        '(Cannot deliver managed outcomes)'
+        'AMT: 1.15 (lowest) • PPM: 1.90',
+        'No managed service delivery',
+        'Highest PPM: 1.90 (tech strength)',
+        '⚠ Critical AMT gap',
+        '(84% score < 2.0 on AMT)'
     ], 10, '#555', 14, 'middle');
 
     // ── Center: Full-Spectrum Achievement ──
     svg.appendChild(rc.rectangle(370, 500, 460, 110, { ...opt, fill: '#e8f4ff', fillStyle: 'solid', stroke: '#0078d4' }));
     addText(600, 530, '🎯 Full-Spectrum Vendors', 16, '800', '#1a3a5c', 'middle');
-    addText(600, 555, '14 of 51 (27%) score 2.0+ across all 5 pillars', 13, '700', '#0078d4', 'middle');
+    addText(600, 555, '5 of 86 (6%) score 2.0+ across all 5 pillars', 13, '700', '#0078d4', 'middle');
     addMultiText(600, 578, [
-        'Top 3: Mandiant • SentinelOne • Fortinet (min score > 2.5)',
+        'Only 6% of vendors achieve full-spectrum coverage',
         'No platform-only vendor achieves full-spectrum coverage'
     ], 10, '#555', 14, 'middle');
 
@@ -20532,44 +20688,492 @@ function _pciDrawSketchInfographic() {
 
     // ── Stat callout ellipses ──
     svg.appendChild(rc.rectangle(30, 520, 160, 75, optFill('#fff5f0')));
-    addText(110, 550, '73%', 22, '800', '#ca5010', 'middle');
+    addText(110, 550, '94%', 22, '800', '#ca5010', 'middle');
     addText(110, 572, 'Have ≥1 Blind Spot', 10, '400', '#5a503c', 'middle');
 
     svg.appendChild(rc.rectangle(210, 545, 140, 65, optFill('#f8f0ff')));
-    addText(280, 572, '45%', 20, '800', '#8764b8', 'middle');
+    addText(280, 572, '84%', 20, '800', '#8764b8', 'middle');
     addText(280, 590, 'No AMT Capability', 9, '400', '#5a3c7c', 'middle');
 
     svg.appendChild(rc.rectangle(850, 520, 160, 75, optFill('#f0fff4')));
-    addText(930, 550, '51', 26, '800', '#107c10', 'middle');
+    addText(930, 550, '86', 26, '800', '#107c10', 'middle');
     addText(930, 572, 'Vendors Assessed', 10, '400', '#1a3a5c', 'middle');
 
     svg.appendChild(rc.rectangle(1030, 545, 145, 65, optFill('#f0faff')));
-    addText(1103, 572, '35%', 20, '800', '#0078d4', 'middle');
-    addText(1103, 590, 'Narrow (≤3 pillars)', 9, '400', '#1a3a5c', 'middle');
+    addText(1103, 572, '6%', 20, '800', '#0078d4', 'middle');
+    addText(1103, 590, 'Full-Spectrum Only', 9, '400', '#1a3a5c', 'middle');
 
     // ── Bottom: Market Segments Bars ──
     svg.appendChild(rc.rectangle(20, 640, 1160, 260, { ...opt, fill: '#f8f8f5', fillStyle: 'solid', stroke: '#e0ddd5' }));
     addText(600, 663, 'MARKET SEGMENT BREAKDOWN', 12, '700', '#5a503c', 'middle');
 
     // Full-spectrum
-    svg.appendChild(rc.rectangle(50, 680, 308, 55, { ...opt, fill: '#107c10', fillStyle: 'solid', stroke: '#107c10' }));
-    addText(204, 703, '14 vendors – Full Spectrum (27%)', 12, '700', '#fff', 'middle');
-    addText(204, 720, 'All 5 pillars ≥ 2.0  •  Best positioned', 10, '400', '#c0efc0', 'middle');
+    svg.appendChild(rc.rectangle(50, 680, 90, 55, { ...opt, fill: '#107c10', fillStyle: 'solid', stroke: '#107c10' }));
+    addText(95, 703, '5 vendors – Full Spectrum (6%)', 12, '700', '#fff', 'middle');
+    addText(95, 720, 'All 5 pillars ≥ 2.0  •  Best positioned', 10, '400', '#c0efc0', 'middle');
 
-    // Majority-spectrum
-    svg.appendChild(rc.rectangle(50, 745, 422, 55, { ...opt, fill: '#0078d4', fillStyle: 'solid', stroke: '#0078d4' }));
-    addText(261, 768, '19 vendors – Majority Spectrum (37%)', 12, '700', '#fff', 'middle');
-    addText(261, 785, '4 pillars covered  •  One investment from full coverage', 10, '400', '#b0d8ff', 'middle');
+    // Near-full-spectrum
+    svg.appendChild(rc.rectangle(50, 745, 130, 55, { ...opt, fill: '#0078d4', fillStyle: 'solid', stroke: '#0078d4' }));
+    addText(115, 768, '9 vendors – Near Full-Spectrum (10%)', 12, '700', '#fff', 'middle');
+    addText(115, 785, '4 pillars covered  •  One investment from full coverage', 10, '400', '#b0d8ff', 'middle');
 
-    // Narrow-spectrum
-    svg.appendChild(rc.rectangle(50, 810, 400, 55, { ...opt, fill: '#ca5010', fillStyle: 'solid', stroke: '#ca5010' }));
-    addText(250, 833, '18 vendors – Narrow Spectrum (35%)', 12, '700', '#fff', 'middle');
-    addText(250, 850, '≤3 pillars  •  Niche specialists or incomplete presence', 10, '400', '#fce0c8', 'middle');
+    // Partial-spectrum
+    svg.appendChild(rc.rectangle(50, 810, 1130, 55, { ...opt, fill: '#ca5010', fillStyle: 'solid', stroke: '#ca5010' }));
+    addText(615, 833, '72 vendors – Partial Coverage (84%)', 12, '700', '#fff', 'middle');
+    addText(615, 850, '≤3 pillars  •  Significant coverage gaps across multiple capability areas', 10, '400', '#fce0c8', 'middle');
 
     // Key insight
-    addText(600, 890, '→ Service delivery (SVC) is the missing link: no platform-only vendor achieves full-spectrum ←', 11, '700', '#1a3a5c', 'middle');
+    addText(600, 890, '→ AMT (Adversary Intelligence) is the critical differentiator: only 16% of 86 vendors meet the 2.0 threshold ←', 11, '700', '#1a3a5c', 'middle');
 
     addText(1150, 915, '© Gartner Research • PreCyber Market Insight 2026', 9, '400', '#aaa', 'end');
+}
+
+// ══════════════════════════════════════════════════════════════════════
+//  REIMAGINING OPERATIONS v3 — D3.js Enhanced Graphics
+// ══════════════════════════════════════════════════════════════════════
+
+/** Custom graphics for cpo-reimagining-operations-v3 report */
+function _pciRenderReimaginGraphics(panel, stats) {
+    const pp = stats?.pillar_penetration || {};
+    const dm = stats?.delivery_models || {};
+    const direct = dm.direct_service || {};
+    const partner = dm.platform_plus_partner || {};
+    const plat = dm.platform_only || {};
+    const dk = document.body.classList.contains('dark-mode');
+
+    const pillars = ['EXM', 'AMT', 'ADR', 'PPM', 'SVC'];
+    const pillarLabels = { EXM: 'Exposure Mgmt', AMT: 'Adversary Mgmt', ADR: 'Adversary Disruption', PPM: 'Posture & Policy', SVC: 'Services & Capability' };
+    const pillarColors = { EXM: '#107c10', AMT: '#a80000', ADR: '#8764b8', PPM: '#0078d4', SVC: '#ca5010' };
+
+    // Live stats from API where available, fallback to 86-vendor hardcoded
+    const liveEXM = pp.EXM?.pct || 49;
+    const liveAMT = pp.AMT?.pct || 16;
+    const liveADR = pp.ADR?.pct || 33;
+    const livePPM = pp.PPM?.pct || 37;
+    const liveSVC = pp.SVC?.pct || 41;
+    const totalN = stats?.total_vendors || 86;
+    const fullSpectrum = stats?.full_spectrum || 5;
+
+    let html = `<div style="text-align:right;margin-bottom:14px">
+        <button class="report-export-btn" onclick="exportPreCyberAllGraphicsPPTX()" title="Export all graphics as PowerPoint">
+            &#128196; Export All Graphics as PPTX
+        </button>
+    </div>`;
+
+    // ── Graphic R1: Market at a Glance ──
+    html += `<div class="dfi-graphic-section">
+        <h2>1. Reimagining Operations — Market at a Glance</h2>
+        <p class="dfi-graphic-subtitle">86-vendor cohort: preemptive capability maturity across 5 pillars × 3 delivery models. All scores from sub-pillar scoring (0–5 scale).</p>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px">
+            ${[
+                { code: 'EXM', pct: liveEXM, avg: pp.EXM?.avg || 1.84, color: '#107c10' },
+                { code: 'SVC', pct: liveSVC, avg: pp.SVC?.avg || 1.80, color: '#ca5010' },
+                { code: 'PPM', pct: livePPM, avg: pp.PPM?.avg || 1.67, color: '#0078d4' },
+                { code: 'ADR', pct: liveADR, avg: pp.ADR?.avg || 1.47, color: '#8764b8' },
+                { code: 'AMT', pct: liveAMT, avg: pp.AMT?.avg || 1.13, color: '#a80000' },
+            ].map(p => `
+            <div style="background:#fff;border-radius:12px;padding:14px;border-top:4px solid ${p.color};box-shadow:0 2px 8px rgba(0,0,0,0.07);text-align:center">
+                <div style="font-size:24px;font-weight:800;color:${p.color}">${p.pct}%</div>
+                <div style="font-size:11px;color:#888;margin:2px 0">${p.code} penetration</div>
+                <div style="font-size:13px;font-weight:700;color:#555">${p.avg.toFixed(2)} avg</div>
+                <div style="font-size:10px;color:#999">${pillarLabels[p.code]}</div>
+            </div>`).join('')}
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px">
+            <div style="background:#fff5f5;border-radius:10px;padding:12px;text-align:center;border:1px solid #f0c0c0">
+                <div style="font-size:22px;font-weight:800;color:#a80000">${totalN}</div>
+                <div style="font-size:11px;color:#666">Vendors Assessed</div>
+            </div>
+            <div style="background:#fff5f5;border-radius:10px;padding:12px;text-align:center;border:1px solid #f0c0c0">
+                <div style="font-size:22px;font-weight:800;color:#a80000">${fullSpectrum}</div>
+                <div style="font-size:11px;color:#666">Full-Spectrum (${Math.round(fullSpectrum/totalN*100)}%)</div>
+            </div>
+            <div style="background:#fff5f5;border-radius:10px;padding:12px;text-align:center;border:1px solid #f0c0c0">
+                <div style="font-size:22px;font-weight:800;color:#ca5010">29%</div>
+                <div style="font-size:11px;color:#666">Platform-Only</div>
+            </div>
+            <div style="background:#fff5f5;border-radius:10px;padding:12px;text-align:center;border:1px solid #f0c0c0">
+                <div style="font-size:22px;font-weight:800;color:#8764b8">84%</div>
+                <div style="font-size:11px;color:#666">No AMT Capability</div>
+            </div>
+        </div>
+        <div id="pci-reimagin-radar-1" style="max-width:560px;margin:0 auto"></div>
+    </div>`;
+
+    // ── Graphic R2: Delivery Model Radar Comparison ──
+    html += `<div class="dfi-graphic-section">
+        <h2>2. Delivery Model Capability Profiles</h2>
+        <p class="dfi-graphic-subtitle">D3.js radar comparison: three delivery models across all 5 preemptive pillars. Scale 0–3 (max observed score). Dashed ring = 2.0 competency threshold.</p>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
+            <div id="pci-reimagin-radar-2" style="flex:0 0 520px;min-width:280px"></div>
+            <div style="flex:1;min-width:220px">
+                <div style="font-weight:700;color:#1a3a5c;margin-bottom:10px;font-size:13px">Key Observations</div>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                    <div style="background:#f0fff4;border-left:3px solid #107c10;padding:10px;border-radius:6px;font-size:12px">
+                        <strong style="color:#107c10">Direct Service (11 vendors)</strong><br>
+                        Strongest ADR (1.91) and SVC (1.82). Best managed-outcome delivery. Own SOC infrastructure drives operational depth.
+                    </div>
+                    <div style="background:#f0faff;border-left:3px solid #0078d4;padding:10px;border-radius:6px;font-size:12px">
+                        <strong style="color:#0078d4">Platform+Partner (15 vendors)</strong><br>
+                        Highest SVC (1.90 via partners) and EXM (1.89). Critical PPM gap (1.37) suggests policy enforcement weakness.
+                    </div>
+                    <div style="background:#fff8f0;border-left:3px solid #ca5010;padding:10px;border-radius:6px;font-size:12px">
+                        <strong style="color:#ca5010">Platform-Only (25 vendors)</strong><br>
+                        Strongest PPM (1.90) but critical AMT floor (1.15). No managed delivery mechanism. Cannot provide adversary intelligence operations.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+
+    // ── Graphic R3: Pillar Maturity Bar Chart ──
+    html += `<div class="dfi-graphic-section">
+        <h2>3. Pillar Maturity by Delivery Model</h2>
+        <p class="dfi-graphic-subtitle">D3.js grouped bar chart: average sub-pillar score per delivery model. Red dashed line = 2.0 competency threshold. No delivery model crosses the threshold on AMT.</p>
+        <div id="pci-reimagin-hbar-3" style="max-width:780px"></div>
+    </div>`;
+
+    // ── Graphic R4: Coverage Gap Bubble Matrix ──
+    html += `<div class="dfi-graphic-section">
+        <h2>4. Coverage Gap: The AMT Blind Spot</h2>
+        <p class="dfi-graphic-subtitle">With only 16% of vendors meeting the 2.0 threshold on Adversary Management, the market has a structural blind spot in counter-intelligence and pre-exploitation operations.</p>
+        <div style="background:linear-gradient(135deg,#fff5f5,#fafaf8);border:2px solid #a80000;border-radius:14px;padding:22px 28px;max-width:900px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                <div>
+                    <div style="font-size:14px;font-weight:700;color:#a80000;margin-bottom:10px">AMT Sub-capability Breakdown</div>
+                    ${(stats?.amt_sub_pillars ? Object.entries(stats.amt_sub_pillars) : [
+                        ['AMT-01', { label: 'Threat Intelligence Collection', pct_above: 22 }],
+                        ['AMT-02', { label: 'Adversary Profiling', pct_above: 14 }],
+                        ['AMT-03', { label: 'Counter-Operations', pct_above: 9 }],
+                        ['AMT-04', { label: 'Deception & Disruption', pct_above: 11 }],
+                    ]).map(([k, s]) => {
+                        const pct = s.pct_above || 0;
+                        const color = pct < 20 ? '#a80000' : pct < 40 ? '#ca5010' : '#107c10';
+                        return `<div style="margin-bottom:8px">
+                            <div style="display:flex;justify-content:space-between;font-size:11px;color:#555;margin-bottom:3px">
+                                <span>${s.label || k}</span><span style="font-weight:700;color:${color}">${pct}%</span>
+                            </div>
+                            <div style="height:14px;background:#f0e0e0;border-radius:4px">
+                                <div style="height:100%;width:${pct}%;background:${color};border-radius:4px"></div>
+                            </div>
+                        </div>`;
+                    }).join('')}
+                </div>
+                <div>
+                    <div style="font-size:14px;font-weight:700;color:#1a3a5c;margin-bottom:10px">Why AMT Matters</div>
+                    <div style="font-size:12px;color:#555;line-height:1.7">
+                        <p>Adversary Management (AMT) represents the intelligence-operations layer: knowing <em>who</em> is attacking, <em>how</em> they operate, and <em>disrupting</em> them before they execute.</p>
+                        <p>Without AMT capability:</p>
+                        <ul style="margin:6px 0 0 14px">
+                            <li>Vendors respond to attacks rather than anticipate them</li>
+                            <li>Threat intel is generic, not adversary-specific</li>
+                            <li>No counter-deception or attribution capability</li>
+                            <li>Kill chain intervention limited to Phases 4-7 only</li>
+                        </ul>
+                    </div>
+                    <div style="background:#fff0f0;border-radius:8px;padding:10px;margin-top:12px;font-size:12px;border:1px solid #f0c0c0">
+                        <strong style="color:#a80000">Bottom Line:</strong> 84% of the preemptive cybersecurity market operates without adversary intelligence — reactive by design, regardless of marketing claims.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+
+    // ── Graphic R5: Reimagining Operations Roadmap ──
+    html += `<div class="dfi-graphic-section">
+        <h2>5. The Reimagined Operations Model</h2>
+        <p class="dfi-graphic-subtitle">From reactive SOC to preemptive operations: the capability journey required to achieve full-spectrum adversary disruption.</p>
+        <div style="overflow-x:auto">
+        <div style="min-width:700px;padding:8px 0">
+        ${[
+            { phase: 'Phase 1', title: 'Expose', pillar: 'EXM', score: '1.84', pct: '49%', color: '#107c10',
+              desc: 'Attack surface mapping, external exposure assessment, vulnerability prioritization' },
+            { phase: 'Phase 2', title: 'Profile', pillar: 'AMT', score: '1.13', pct: '16%', color: '#a80000',
+              desc: 'Adversary identification, TTP modeling, threat intelligence operationalization' },
+            { phase: 'Phase 3', title: 'Harden', pillar: 'PPM', score: '1.67', pct: '37%', color: '#0078d4',
+              desc: 'Policy enforcement, configuration hardening, compliance posture management' },
+            { phase: 'Phase 4', title: 'Disrupt', pillar: 'ADR', score: '1.47', pct: '33%', color: '#8764b8',
+              desc: 'Active adversary disruption, deception operations, response orchestration' },
+            { phase: 'Phase 5', title: 'Sustain', pillar: 'SVC', score: '1.80', pct: '41%', color: '#ca5010',
+              desc: 'Managed service delivery, outcome accountability, continuous improvement loop' },
+        ].map((s, i) => `
+        <div style="display:flex;align-items:stretch;margin-bottom:8px">
+            <div style="width:80px;min-width:80px;background:${s.color};color:#fff;padding:10px;border-radius:8px 0 0 8px;text-align:center;display:flex;flex-direction:column;justify-content:center">
+                <div style="font-size:10px;opacity:0.8">${s.phase}</div>
+                <div style="font-size:16px;font-weight:800">${s.title}</div>
+            </div>
+            <div style="flex:1;background:#fff;border:1px solid ${s.color};border-left:none;padding:12px 16px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+                    <strong style="color:${s.color}">${s.pillar}: ${pillarLabels[s.pillar]}</strong>
+                    <span style="font-size:12px;color:#888">${s.pct} penetration • ${s.score} avg</span>
+                </div>
+                <div style="font-size:12px;color:#555">${s.desc}</div>
+                <div style="height:6px;background:#f0e8e0;border-radius:3px;margin-top:8px">
+                    <div style="height:100%;width:${parseFloat(s.score)/3*100}%;background:${s.color};border-radius:3px;opacity:0.7"></div>
+                </div>
+            </div>
+            <div style="width:70px;min-width:70px;background:#f8f8f5;border:1px solid ${s.color};border-left:none;padding:10px;border-radius:0 8px 8px 0;text-align:center;display:flex;flex-direction:column;justify-content:center">
+                <div style="font-size:20px;font-weight:800;color:${s.color}">${s.pct}</div>
+                <div style="font-size:9px;color:#888">market<br>reach</div>
+            </div>
+        </div>`).join('')}
+        </div></div>
+        <div style="background:#f0faff;border:2px solid #0078d4;border-radius:10px;padding:12px 16px;margin-top:8px">
+            <strong style="color:#0078d4">Reimagined Operations Thesis</strong><br>
+            <span style="color:#555;font-size:13px">The most defensible security posture combines Phase 2 (AMT: Adversary Profiling) with Phase 4 (ADR: Adversary Disruption). Currently, only 16% and 33% of vendors deliver these capabilities at threshold — the biggest opportunity in preemptive cybersecurity.</span>
+        </div>
+    </div>`;
+
+    panel.innerHTML = html;
+
+    // Initialize D3 charts
+    requestAnimationFrame(() => {
+        _pciDrawD3Radar('pci-reimagin-radar-1', [
+            { label: 'Direct Service (11)', color: '#107c10', values: { EXM: pp.EXM?.direct_avg || 1.74, AMT: pp.AMT?.direct_avg || 1.17, ADR: pp.ADR?.direct_avg || 1.91, PPM: pp.PPM?.direct_avg || 1.72, SVC: pp.SVC?.direct_avg || 1.82 } },
+            { label: 'Platform+Partner (15)', color: '#0078d4', values: { EXM: pp.EXM?.partner_avg || 1.89, AMT: pp.AMT?.partner_avg || 1.29, ADR: pp.ADR?.partner_avg || 1.47, PPM: pp.PPM?.partner_avg || 1.37, SVC: pp.SVC?.partner_avg || 1.90 } },
+            { label: 'Platform-Only (25)', color: '#ca5010', values: { EXM: pp.EXM?.platform_avg || 1.86, AMT: pp.AMT?.platform_avg || 1.15, ADR: pp.ADR?.platform_avg || 1.46, PPM: pp.PPM?.platform_avg || 1.90, SVC: pp.SVC?.platform_avg || 1.42 } },
+        ], 3);
+
+        _pciDrawD3Radar('pci-reimagin-radar-2', [
+            { label: 'Direct Service (11)', color: '#107c10', values: { EXM: 1.74, AMT: 1.17, ADR: 1.91, PPM: 1.72, SVC: 1.82 } },
+            { label: 'Platform+Partner (15)', color: '#0078d4', values: { EXM: 1.89, AMT: 1.29, ADR: 1.47, PPM: 1.37, SVC: 1.90 } },
+            { label: 'Platform-Only (25)', color: '#ca5010', values: { EXM: 1.86, AMT: 1.15, ADR: 1.46, PPM: 1.90, SVC: 1.42 } },
+        ], 3);
+
+        _pciDrawD3HBar('pci-reimagin-hbar-3', [
+            { label: 'EXM', bars: [
+                { label: 'Direct', value: 1.74, color: '#107c10' },
+                { label: 'Partner', value: 1.89, color: '#0078d4' },
+                { label: 'Platform', value: 1.86, color: '#ca5010' },
+            ]},
+            { label: 'AMT', bars: [
+                { label: 'Direct', value: 1.17, color: '#107c10' },
+                { label: 'Partner', value: 1.29, color: '#0078d4' },
+                { label: 'Platform', value: 1.15, color: '#ca5010' },
+            ]},
+            { label: 'ADR', bars: [
+                { label: 'Direct', value: 1.91, color: '#107c10' },
+                { label: 'Partner', value: 1.47, color: '#0078d4' },
+                { label: 'Platform', value: 1.46, color: '#ca5010' },
+            ]},
+            { label: 'PPM', bars: [
+                { label: 'Direct', value: 1.72, color: '#107c10' },
+                { label: 'Partner', value: 1.37, color: '#0078d4' },
+                { label: 'Platform', value: 1.90, color: '#ca5010' },
+            ]},
+            { label: 'SVC', bars: [
+                { label: 'Direct', value: 1.82, color: '#107c10' },
+                { label: 'Partner', value: 1.90, color: '#0078d4' },
+                { label: 'Platform', value: 1.42, color: '#ca5010' },
+            ]},
+        ], { maxVal: 2.5 });
+    });
+}
+
+// ══════════════════════════════════════════════════════════════════════
+//  D3.js ENHANCED CHART HELPERS
+// ══════════════════════════════════════════════════════════════════════
+
+/**
+ * Draw a spider/radar chart for 5 pillars × 3 delivery models.
+ * @param {string} containerId  - DOM id of the container <div>
+ * @param {Array}  modelData    - [{label, color, values: {EXM,AMT,ADR,PPM,SVC}}]
+ * @param {number} maxVal       - max axis value (default 5)
+ */
+function _pciDrawD3Radar(containerId, modelData, maxVal) {
+    const container = document.getElementById(containerId);
+    if (!container || typeof d3 === 'undefined') return;
+    container.innerHTML = '';
+
+    const pillars = ['EXM', 'AMT', 'ADR', 'PPM', 'SVC'];
+    const pillarLabels = { EXM: 'Exposure\nMgmt', AMT: 'Adversary\nMgmt', ADR: 'Adversary\nDisruption', PPM: 'Posture &\nPolicy', SVC: 'Services\nCapability' };
+    const max = maxVal || 5;
+    const w = 520, h = 420;
+    const cx = w / 2, cy = h / 2 - 10;
+    const r = Math.min(cx, cy) - 60;
+    const levels = 4;
+    const angleSlice = (Math.PI * 2) / pillars.length;
+
+    const svg = d3.select(container).append('svg')
+        .attr('viewBox', `0 0 ${w} ${h}`)
+        .attr('width', '100%')
+        .attr('height', 'auto')
+        .style('max-width', `${w}px`);
+
+    const g = svg.append('g').attr('transform', `translate(${cx},${cy})`);
+
+    // Grid levels
+    for (let lv = 1; lv <= levels; lv++) {
+        const rr = r * lv / levels;
+        g.append('polygon')
+            .attr('points', pillars.map((_, i) => {
+                const angle = angleSlice * i - Math.PI / 2;
+                return `${rr * Math.cos(angle)},${rr * Math.sin(angle)}`;
+            }).join(' '))
+            .attr('fill', 'none')
+            .attr('stroke', '#d0ccc5')
+            .attr('stroke-width', 0.8);
+        // Level label on top axis
+        g.append('text')
+            .attr('x', 4)
+            .attr('y', -(rr + 4))
+            .attr('font-size', 9)
+            .attr('fill', '#999')
+            .text((max * lv / levels).toFixed(1));
+    }
+
+    // Axes
+    pillars.forEach((_, i) => {
+        const angle = angleSlice * i - Math.PI / 2;
+        g.append('line')
+            .attr('x1', 0).attr('y1', 0)
+            .attr('x2', r * Math.cos(angle))
+            .attr('y2', r * Math.sin(angle))
+            .attr('stroke', '#c0bbb0').attr('stroke-width', 1);
+    });
+
+    // Axis labels (handle newlines)
+    pillars.forEach((p, i) => {
+        const angle = angleSlice * i - Math.PI / 2;
+        const lx = (r + 32) * Math.cos(angle);
+        const ly = (r + 32) * Math.sin(angle);
+        const lines = (pillarLabels[p] || p).split('\n');
+        const anchor = Math.cos(angle) > 0.1 ? 'start' : Math.cos(angle) < -0.1 ? 'end' : 'middle';
+        lines.forEach((line, li) => {
+            g.append('text')
+                .attr('x', lx)
+                .attr('y', ly + li * 12 - (lines.length - 1) * 5)
+                .attr('text-anchor', anchor)
+                .attr('font-size', 10)
+                .attr('font-weight', '700')
+                .attr('fill', '#444')
+                .text(line);
+        });
+    });
+
+    // 2.0 threshold ring (dashed)
+    const threshR = r * 2.0 / max;
+    g.append('polygon')
+        .attr('points', pillars.map((_, i) => {
+            const angle = angleSlice * i - Math.PI / 2;
+            return `${threshR * Math.cos(angle)},${threshR * Math.sin(angle)}`;
+        }).join(' '))
+        .attr('fill', 'none')
+        .attr('stroke', '#a80000')
+        .attr('stroke-width', 1.5)
+        .attr('stroke-dasharray', '4,3')
+        .attr('opacity', 0.6);
+
+    // Data polygons
+    const rScale = v => r * Math.min(v, max) / max;
+    modelData.forEach(m => {
+        const points = pillars.map((p, i) => {
+            const angle = angleSlice * i - Math.PI / 2;
+            const rv = rScale(m.values[p] || 0);
+            return [rv * Math.cos(angle), rv * Math.sin(angle)];
+        });
+        g.append('polygon')
+            .attr('points', points.map(pt => pt.join(',')).join(' '))
+            .attr('fill', m.color)
+            .attr('fill-opacity', 0.12)
+            .attr('stroke', m.color)
+            .attr('stroke-width', 2.5);
+        // Dots
+        points.forEach((pt, i) => {
+            g.append('circle').attr('cx', pt[0]).attr('cy', pt[1]).attr('r', 4)
+                .attr('fill', m.color).attr('stroke', '#fff').attr('stroke-width', 1.5);
+        });
+    });
+
+    // Legend
+    const legX = 6, legY = h - 16 - modelData.length * 18;
+    modelData.forEach((m, i) => {
+        svg.append('rect').attr('x', legX).attr('y', legY + i * 18).attr('width', 12).attr('height', 12)
+            .attr('fill', m.color).attr('rx', 2);
+        svg.append('text').attr('x', legX + 16).attr('y', legY + i * 18 + 10)
+            .attr('font-size', 11).attr('fill', '#444').text(m.label);
+    });
+    // Threshold note
+    svg.append('text').attr('x', w - 6).attr('y', h - 4)
+        .attr('text-anchor', 'end').attr('font-size', 9).attr('fill', '#a80000')
+        .text('--- 2.0 competency threshold');
+}
+
+/**
+ * Draw a grouped horizontal bar chart.
+ * @param {string} containerId
+ * @param {Array}  data  - [{label, bars:[{label,value,color}]}]
+ * @param {Object} opts  - {maxVal, title}
+ */
+function _pciDrawD3HBar(containerId, data, opts) {
+    const container = document.getElementById(containerId);
+    if (!container || typeof d3 === 'undefined') return;
+    container.innerHTML = '';
+
+    const { maxVal = 5, title = '' } = opts || {};
+    const margin = { top: title ? 36 : 12, right: 60, bottom: 28, left: 160 };
+    const W = container.clientWidth || 700;
+    const rowH = 24, groupGap = 8;
+    const totalRows = data.reduce((s, d) => s + d.bars.length, 0) + data.length * 0;
+    const H = margin.top + margin.bottom + totalRows * rowH + data.length * groupGap;
+
+    const svg = d3.select(container).append('svg')
+        .attr('width', '100%')
+        .attr('viewBox', `0 0 ${W} ${H}`)
+        .attr('height', 'auto');
+
+    const iW = W - margin.left - margin.right;
+    const xScale = d3.scaleLinear().domain([0, maxVal]).range([0, iW]);
+
+    if (title) {
+        svg.append('text').attr('x', W / 2).attr('y', 20)
+            .attr('text-anchor', 'middle').attr('font-size', 13)
+            .attr('font-weight', '700').attr('fill', '#1a3a5c').text(title);
+    }
+
+    // Threshold line
+    svg.append('line')
+        .attr('x1', margin.left + xScale(2.0)).attr('x2', margin.left + xScale(2.0))
+        .attr('y1', margin.top).attr('y2', H - margin.bottom)
+        .attr('stroke', '#a80000').attr('stroke-width', 1.5)
+        .attr('stroke-dasharray', '4,3').attr('opacity', 0.7);
+
+    let y = margin.top;
+    data.forEach(group => {
+        // Group label
+        svg.append('text').attr('x', margin.left - 8).attr('y', y + rowH * group.bars.length / 2 + 4)
+            .attr('text-anchor', 'end').attr('font-size', 11).attr('font-weight', '700').attr('fill', '#1a3a5c')
+            .text(group.label);
+
+        group.bars.forEach(bar => {
+            const bw = xScale(Math.min(bar.value, maxVal));
+            svg.append('rect')
+                .attr('x', margin.left).attr('y', y + 2)
+                .attr('width', bw).attr('height', rowH - 4)
+                .attr('fill', bar.color).attr('rx', 3).attr('opacity', 0.85);
+            svg.append('rect')
+                .attr('x', margin.left).attr('y', y + 2)
+                .attr('width', iW).attr('height', rowH - 4)
+                .attr('fill', 'none').attr('stroke', '#e0ddd5').attr('rx', 3);
+            svg.append('text')
+                .attr('x', margin.left + bw + 4).attr('y', y + rowH / 2 + 4)
+                .attr('font-size', 10).attr('font-weight', '700').attr('fill', bar.color)
+                .text(bar.value.toFixed(2));
+            svg.append('text')
+                .attr('x', margin.left - 8).attr('y', y + rowH / 2 + 4)
+                .attr('text-anchor', 'end').attr('font-size', 10).attr('fill', '#666')
+                .text(bar.label);
+            y += rowH;
+        });
+        y += groupGap;
+    });
+
+    // X axis ticks
+    [0, 1, 2, 3, 4, 5].forEach(t => {
+        if (t > maxVal) return;
+        svg.append('text').attr('x', margin.left + xScale(t)).attr('y', H - margin.bottom + 14)
+            .attr('text-anchor', 'middle').attr('font-size', 9).attr('fill', '#999').text(t);
+    });
 }
 
 /** Render 7 Kill Chain + MITRE ATT&CK graphics for the v2 dual-framework perspective */
@@ -20596,7 +21200,7 @@ function _pciRenderKCMitreGraphics(panel, stats) {
         <span><strong>EXM</strong> = Exposure Management</span>
         <span><strong>AMT</strong> = Adversary Management</span>
         <span><strong>PPM</strong> = Posture & Policy Management</span>
-        <span><strong>ADR</strong> = Autonomous Detection & Response</span>
+        <span><strong>ADR</strong> = Adversary Disruption</span>
         <span style="color:${_pkSvc};font-style:italic"><strong>SVC</strong> = Services & Capability Maturity (cross-cutting enabler)</span>
     </div>`;
 
@@ -20754,7 +21358,7 @@ function _pciRenderKCMitreGraphics(panel, stats) {
         <div style="background:linear-gradient(135deg,#1a3a5c,#0a2a4c);border-radius:12px;padding:24px;color:#fff">
             <div style="text-align:center;margin-bottom:18px">
                 <div style="font-size:20px;font-weight:700">Reimagining Threat Defense Through Preemptive Cybersecurity</div>
-                <div style="font-size:13px;opacity:0.8;margin-top:4px">51 vendors assessed across Kill Chain and ATT&CK frameworks</div>
+                <div style="font-size:13px;opacity:0.8;margin-top:4px">86 vendors assessed across Kill Chain and ATT&CK frameworks</div>
             </div>
             <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px">
                 <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.1);border-radius:8px;padding:14px;text-align:center">
@@ -20813,8 +21417,8 @@ function _pciRenderKCMitreGraphics(panel, stats) {
                 <div style="text-align:center;font-size:18px;font-weight:700;color:${dk?'#ef5350':'#a80000'};margin-bottom:12px">Reactive Zone</div>
                 <div style="text-align:center;font-size:11px;color:${dk?'#e0e0e0':'#555'};margin-bottom:12px">Kill Chain Phases 4-7 / ATT&CK: Execution through Impact</div>
                 <div style="text-align:center;font-size:36px;font-weight:700;color:${dk?'#ef5350':'#a80000'}">${reactPen}%</div>
-                <div style="text-align:center;font-size:11px;color:${dk?'#a0a0a0':'#888'};margin-bottom:12px">Detection & Response penetration</div>
-                ${[{p:'Autonomous Detection & Response',s:'Covers Phases 4-7',c:'#8764b8'}].map(i=>`
+                <div style="text-align:center;font-size:11px;color:${dk?'#a0a0a0':'#888'};margin-bottom:12px">Adversary Disruption penetration</div>
+                ${[{p:'Adversary Disruption',s:'Covers Phases 4-7',c:'#8764b8'}].map(i=>`
                 <div style="display:flex;justify-content:space-between;padding:4px 8px;font-size:12px;border-bottom:1px solid ${dk?'#4a2a2a':'#e8d0d0'}">
                     <span>${i.p}</span><span style="font-weight:700;color:${i.c}">${i.s}</span>
                 </div>`).join('')}
@@ -21004,7 +21608,7 @@ function _pciDrawKCMitreInfographic() {
         { label: 'EXM = Exposure Mgmt', color: '#107c10', x: 80 },
         { label: 'AMT = Adversary Mgmt', color: '#d32f2f', x: 300 },
         { label: 'PPM = Posture & Policy', color: '#0078d4', x: 520 },
-        { label: 'ADR = Detection & Response', color: '#8764b8', x: 740 },
+        { label: 'ADR = Adversary Disruption', color: '#8764b8', x: 740 },
         { label: 'SVC = Cross-Cutting Enabler', color: '#ca5010', x: 1000 },
     ];
     keyItems.forEach(k => {
@@ -21053,7 +21657,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
         { num: 6, name: 'Command & Control', pillars: ['AMT','ADR'], zone: 'REACTIVE', color: '#a80000', desc: 'Disrupt C2 channels, rotate credentials, counter adversary infrastructure' },
         { num: 7, name: 'Actions on Objectives', pillars: ['ADR','SVC'], zone: 'REACTIVE', color: '#600000', desc: 'Managed response, containment, and remediation operations' },
     ];
-    const pillarNames = { EXM: 'Exposure Mgmt', AMT: 'Adversary Mgmt', ADR: 'Detection & Response', PPM: 'Posture & Policy', SVC: 'Services & Capability' };
+    const pillarNames = { EXM: 'Exposure Mgmt', AMT: 'Adversary Mgmt', ADR: 'Adversary Disruption', PPM: 'Posture & Policy', SVC: 'Services & Capability' };
     const pillarColors = { EXM: '#107c10', AMT: '#a80000', ADR: '#8764b8', PPM: '#0078d4', SVC: '#ca5010' };
 
     html += `<div class="dfi-graphic-section">
@@ -21120,7 +21724,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
         </div>`;
     });
     html += `<div style="margin-top:10px;padding:8px;background:#fff8f0;border:1px solid #ca5010;border-radius:6px;font-size:12px;color:#ca5010;font-weight:600;text-align:center">
-        ⚠️ Phase 7 (Actions on Objectives) is weakest due to SVC gap (57% penetration) — platform-only vendors average just 1.49 on services
+        ⚠️ Phase 7 (Actions on Objectives) reflects AMT gap (16% penetration) — adversary intelligence operations are the weakest link across all delivery models
     </div></div></div>`;
 
     // ── Graphic 3: Shift-Left Readiness by Delivery Model ──
@@ -21180,7 +21784,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
         <p class="dfi-graphic-subtitle">Why preemptive cybersecurity must be understood through the kill chain lens, and what the data reveals about market readiness.</p>
         <div style="max-width:1100px;background:linear-gradient(135deg,#1a3a5c,#0a2540);border-radius:12px;padding:24px;color:#fff">
             <div style="text-align:center;font-size:24px;font-weight:800;margin-bottom:4px">Reimagining Threat Defense Through Preemptive Cybersecurity</div>
-            <div style="text-align:center;font-size:14px;color:#8cb8e0;margin-bottom:16px">Kill Chain Phase Coverage Analysis — 51 Vendors, 5 Pillars, 7 Phases</div>
+            <div style="text-align:center;font-size:14px;color:#8cb8e0;margin-bottom:16px">Kill Chain Phase Coverage Analysis — 86 Vendors, 5 Pillars, 7 Phases</div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px">
                 ${[
                     {v:'51', l:'Vendors Assessed', c:'#0078d4'},
@@ -21197,7 +21801,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
             <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
                 <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:10px;border-left:3px solid #ff8c00">
                     <strong style="color:#ff8c00">📊 Preemptive Zone Is Stronger — But AMT Undermines It</strong>
-                    <div style="font-size:12px;color:#ccc;margin-top:4px">EXM 92% + PPM 86% penetration, but AMT at 55% creates a single point of failure at Phases 1-2.</div>
+                    <div style="font-size:12px;color:#ccc;margin-top:4px">EXM 49% + PPM 37% penetration; AMT at 16% creates the critical shift-left bottleneck at Phases 1-2.</div>
                 </div>
                 <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:10px;border-left:3px solid #a80000">
                     <strong style="color:#f88">📉 Platform-Only Vendors: Phases 3-5 Only</strong>
@@ -21256,7 +21860,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
                 <div style="text-align:center;font-size:36px;font-weight:800;color:#a80000">${reactPen}%</div>
                 <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">Average vendor penetration</div>
                 ${[
-                    {p:'ADR', s:'Detection & Response', v: pp.ADR?.pct||0, note: 'Detects after exploitation occurs'},
+                    {p:'ADR', s:'Adversary Disruption', v: pp.ADR?.pct||0, note: 'Neutralizes active threats, disrupts adversary operations'},
                     {p:'SVC', s:'Services & Capability', v: pp.SVC?.pct||0, note: 'Managed response after breach'},
                 ].map(i => `<div style="display:flex;align-items:center;gap:8px;margin:6px 0;padding:6px 8px;background:rgba(255,255,255,.7);border-radius:6px">
                     <div style="min-width:40px;font-weight:700;color:${pillarColors[i.p]}">${i.p}</div>
@@ -21415,11 +22019,11 @@ function _pciDrawKillChainInfographic() {
 
     // Five Pillar Cards
     const pillarCards = [
-        { code: 'EXM', name: 'Exposure Mgmt', phases: '1, 3', pen: '92%', score: '3.33', color: '#107c10', bg: '#f0fff4' },
-        { code: 'AMT', name: 'Adversary Mgmt', phases: '1, 2, 4, 6', pen: '55%', score: '2.36', color: '#a80000', bg: '#fff5f5' },
-        { code: 'PPM', name: 'Posture & Policy', phases: '2, 3, 4', pen: '86%', score: '2.98', color: '#0078d4', bg: '#f0faff' },
-        { code: 'ADR', name: 'Detection & Resp', phases: '3, 4, 5, 6, 7', pen: '78%', score: '2.85', color: '#8764b8', bg: '#f5f0ff' },
-        { code: 'SVC', name: 'Services & Cap', phases: '7', pen: '57%', score: '2.18', color: '#ca5010', bg: '#fff8f0' },
+        { code: 'EXM', name: 'Exposure Mgmt', phases: '1, 3', pen: '49%', score: '1.84', color: '#107c10', bg: '#f0fff4' },
+        { code: 'AMT', name: 'Adversary Mgmt', phases: '1, 2, 4, 6', pen: '16%', score: '1.13', color: '#a80000', bg: '#fff5f5' },
+        { code: 'PPM', name: 'Posture & Policy', phases: '2, 3, 4', pen: '37%', score: '1.67', color: '#0078d4', bg: '#f0faff' },
+        { code: 'ADR', name: 'Adversary Disruption', phases: '3, 4, 5, 6, 7', pen: '33%', score: '1.47', color: '#8764b8', bg: '#f5f0ff' },
+        { code: 'SVC', name: 'Services & Cap', phases: '7', pen: '41%', score: '1.80', color: '#ca5010', bg: '#fff8f0' },
     ];
     pillarCards.forEach((p, i) => {
         const x = 20 + i * 234;
@@ -21435,12 +22039,12 @@ function _pciDrawKillChainInfographic() {
     addText(600, 365, 'KILL CHAIN COVERAGE BY DELIVERY MODEL', 12, '700', '#fff', 'middle');
 
     const dmCards = [
-        { name: '🎯 Direct Service', count: '11 (22%)', shift: '3.01', react: '3.06', color: '#107c10', bg: '#f0fff4',
-          lines: ['EXM: 3.60 | AMT: 2.45 | PPM: 2.97', 'ADR: 3.38 | SVC: 2.74', 'Full kill chain coverage', '✓ Phases 1-7 all above 2.0'] },
-        { name: '🤝 Platform + Partner', count: '15 (29%)', shift: '3.21', react: '2.58', color: '#0078d4', bg: '#f0faff',
-          lines: ['EXM: 3.69 | AMT: 2.74 | PPM: 3.21', 'ADR: 2.83 | SVC: 2.32', 'Best shift-left scores', '⚠ SVC via partners (gaps)'] },
-        { name: '💻 Platform-Only', count: '25 (49%)', shift: '2.59', react: '2.01', color: '#ca5010', bg: '#fff8f0',
-          lines: ['EXM: 3.07 | AMT: 1.87 | PPM: 2.84', 'ADR: 2.52 | SVC: 1.49', '⚠ Phases 1-2 & 5-7 gaps', '⚠ Structural ceiling'] },
+        { name: '🎯 Direct Service', count: '11 (13%)', shift: '1.68', react: '1.65', color: '#107c10', bg: '#f0fff4',
+          lines: ['EXM: 1.74 | AMT: 1.17 | PPM: 1.72', 'ADR: 1.91 | SVC: 1.82', 'Highest ADR + SVC scores', '✓ Best managed-service depth'] },
+        { name: '🤝 Platform + Partner', count: '15 (17%)', shift: '1.52', react: '1.69', color: '#0078d4', bg: '#f0faff',
+          lines: ['EXM: 1.89 | AMT: 1.29 | PPM: 1.37', 'ADR: 1.47 | SVC: 1.90', 'Highest SVC via partners', '⚠ PPM gap (1.37 — structural)'] },
+        { name: '💻 Platform-Only', count: '25 (29%)', shift: '1.57', react: '1.44', color: '#ca5010', bg: '#fff8f0',
+          lines: ['EXM: 1.86 | AMT: 1.15 | PPM: 1.90', 'ADR: 1.46 | SVC: 1.42', '⚠ AMT: 1.15 (critical intel gap)', '⚠ No managed service delivery'] },
     ];
     dmCards.forEach((d, i) => {
         const x = 20 + i * 390;
@@ -21454,16 +22058,16 @@ function _pciDrawKillChainInfographic() {
 
     // Key Insight Box
     svg.appendChild(rc.rectangle(20, 575, 1160, 60, { ...opt, fill: '#fff0f0', fillStyle: 'solid', stroke: '#a80000' }));
-    addText(600, 600, '⚠ THE SHIFT-LEFT BOTTLENECK: AMT at 55% penetration undermines the entire preemptive value proposition', 13, '700', '#a80000', 'middle');
-    addText(600, 622, '49% of vendors (platform-only) cannot defend Phases 1-2 or Phases 5-7 — confined to the middle of the kill chain', 11, '400', '#666', 'middle');
+    addText(600, 600, '⚠ THE AMT BOTTLENECK: Only 16% of 86 vendors meet the 2.0 threshold on Adversary Management', 13, '700', '#a80000', 'middle');
+    addText(600, 622, '84% of vendors lack adversary intelligence capability — the critical missing link in preemptive defense', 11, '400', '#666', 'middle');
 
     // Stat boxes
     const statBoxes = [
-        { x: 30, y: 655, v: '92%', l: 'EXM Penetration', c: '#107c10', bg: '#f0fff4' },
-        { x: 250, y: 655, v: '55%', l: 'AMT Penetration', c: '#a80000', bg: '#fff5f5' },
-        { x: 470, y: 655, v: '86%', l: 'PPM Penetration', c: '#0078d4', bg: '#f0faff' },
-        { x: 690, y: 655, v: '78%', l: 'ADR Penetration', c: '#8764b8', bg: '#f5f0ff' },
-        { x: 910, y: 655, v: '57%', l: 'SVC Penetration', c: '#ca5010', bg: '#fff8f0' },
+        { x: 30, y: 655, v: '49%', l: 'EXM Penetration', c: '#107c10', bg: '#f0fff4' },
+        { x: 250, y: 655, v: '16%', l: 'AMT Penetration', c: '#a80000', bg: '#fff5f5' },
+        { x: 470, y: 655, v: '37%', l: 'PPM Penetration', c: '#0078d4', bg: '#f0faff' },
+        { x: 690, y: 655, v: '33%', l: 'ADR Penetration', c: '#8764b8', bg: '#f5f0ff' },
+        { x: 910, y: 655, v: '41%', l: 'SVC Penetration', c: '#ca5010', bg: '#fff8f0' },
     ];
     statBoxes.forEach(s => {
         svg.appendChild(rc.rectangle(s.x, s.y, 200, 65, optFill(s.bg)));
@@ -21576,12 +22180,12 @@ const _pciPositioningStatements = {
         position: 'The preemptive cybersecurity market is dangerously fragmented. Vendors that achieve full-spectrum capability across all five pillars by 2028 will capture disproportionate market share as buyers consolidate.',
         positionComponents: {
             importantIssue: 'Market fragmentation forces buyers into multi-vendor stacks with structural blind spots, increasing complexity and reducing defensive coherence.',
-            judgment: 'Only 27% of vendors demonstrate competency across all five pillars. The remaining 73% compete in narrow lanes with at least one critical gap. This fragmentation is unsustainable as buyer expectations shift toward integrated outcomes.',
+            judgment: 'Only 6% of 86 vendors demonstrate competency across all five pillars. The remaining 94% compete in narrow lanes with at least one critical gap. This fragmentation is unsustainable as buyer expectations shift toward integrated outcomes.',
             state: '49% of vendors operate as platform-only providers with no meaningful service delivery. Adversary Management reaches only 55% of the market. The structural gaps are widening, not closing.',
             drama: 'Vendors that do not close their pillar gaps within the next three years will find themselves locked out of enterprise deals as procurement consolidates around full-spectrum providers.'
         },
         justification: {
-            context: 'Of 51 vendors assessed across five preemptive cybersecurity pillars, the market reveals extreme specialization. Exposure Management (92% penetration) and Posture Management (86%) are crowded; Adversary Management (55%) and Services (~50%) remain structural blind spots. Platform-only vendors average just 1.49/5.0 on services; 88% fall below the 2.0 competency threshold.',
+            context: 'Of 86 vendors assessed across five preemptive cybersecurity pillars, the market reveals extreme specialization. Exposure Management (49% penetration) leads, while Adversary Management (16%) is the critical blind spot. Platform-only vendors average 1.15/5.0 on AMT; 84% fall below the 2.0 competency threshold on adversary intelligence.',
             evidence: 'Direct service providers lead in operational delivery (Services: 2.74, Detection: 3.38) but lack platform depth. Platform-plus-partner vendors show the broadest coverage but dilute service accountability (Services: 2.32). Only three vendors (Mandiant, SentinelOne, Fortinet) maintain minimum pillar scores above 2.5 across all five domains, representing three distinct delivery models.',
             actionBridge: 'The market rewards breadth. Full-spectrum vendors score highest overall and face the least competitive pressure. With the SPA projecting 30% of programs on integrated platform-plus-service models by 2030 (up from <5% today), an M&A-driven consolidation wave will reshape vendor positioning. Vendors that wait will find acquisition targets already claimed.'
         },
@@ -21650,7 +22254,7 @@ const _pciPositioningStatements = {
         },
         justification: {
             context: 'Preemptive cybersecurity maps directly to the first three phases of the Lockheed Martin Cyber Kill Chain: Exposure Management to Reconnaissance (Phase 1), Adversary Management to Weaponization (Phase 2), and Posture Management to Delivery (Phase 3). But most vendors fail to articulate this shift-left value proposition, marketing capabilities as feature lists instead of defensive coverage.',
-            evidence: 'Autonomous Detection & Response maps to Phases 4 through 6, traditional EDR/XDR territory. Services & Capability spans Phases 5 through 7 (incident response, threat hunting). Platform-only vendors (49% of market) cluster around Phases 3 through 5 with strong Exposure Management (3.07) providing Phase 1 scanning but virtually no Phase 2 (Adversary Management: 1.87) offensive disruption. Only 14 full-spectrum vendors (27%) achieve meaningful coverage across both preemptive (1 through 3) and reactive (5 through 7) phases.',
+            evidence: 'Adversary Disruption maps to Phases 4 through 6, traditional EDR/XDR territory. Services & Capability spans Phases 5 through 7 (incident response, threat hunting). Platform-only vendors (49% of market) cluster around Phases 3 through 5 with strong Exposure Management (3.07) providing Phase 1 scanning but virtually no Phase 2 (Adversary Management: 1.87) offensive disruption. Only 14 full-spectrum vendors (27%) achieve meaningful coverage across both preemptive (1 through 3) and reactive (5 through 7) phases.',
             actionBridge: 'Vendors that achieve dual-sided kill chain coverage command significantly higher overall scores and market positioning. The 14 full-spectrum vendors maintain minimum pillar scores of 2.5+, meaning no kill chain phase goes undefended. This validates the full-spectrum thesis through a defense-in-depth lens.'
         },
         actions: [
@@ -21681,7 +22285,7 @@ const _pciPositioningStatements = {
             drama: 'By 2028, ~35% of evaluations will use adversary lifecycle phase coverage as a primary selection criterion. Vendors without demonstrable dual-framework coverage across kill chain phases and ATT&CK tactics will be excluded from enterprise shortlists.'
         },
         justification: {
-            context: 'Two complementary frameworks reveal the same structural story. The Lockheed Martin Kill Chain provides a linear seven-phase model: Exposure Management maps to Phase 1 (Reconnaissance), Adversary Management to Phases 1-2 (Reconnaissance/Weaponization), Posture Management to Phases 2-3 (Weaponization/Delivery), and Autonomous Detection & Response to Phases 4-7. Services maturity does not map to specific phases; it multiplies the delivered value of every pillar at every phase.',
+            context: 'Two complementary frameworks reveal the same structural story. The Lockheed Martin Kill Chain provides a linear seven-phase model: Exposure Management maps to Phase 1 (Reconnaissance), Adversary Management to Phases 1-2 (Reconnaissance/Weaponization), Posture Management to Phases 2-3 (Weaponization/Delivery), and Adversary Disruption to Phases 4-7. Services maturity does not map to specific phases; it multiplies the delivered value of every pillar at every phase.',
             evidence: 'MITRE ATT&CK mapping confirms the kill chain findings through a more granular lens. Exposure Management addresses TA0043 (Reconnaissance) and TA0007 (Discovery). Adversary Management covers TA0042 (Resource Development), TA0005 (Defense Evasion), and TA0006 (Credential Access). ATT&CK reveals the same critical gap: Resource Development (TA0042) has the weakest coverage because ~45% of the market lacks Adversary Management. Only ~25% of vendors achieve full-spectrum coverage regardless of which framework is used.',
             actionBridge: 'Services maturity correlates more strongly with full-spectrum coverage than any individual technology pillar. The four services dimensions (implementation, advisory, managed operations, autonomous delivery) form a maturity spectrum that determines whether technology capability translates into operational defensive value. Vendors that invest in services alongside technology will demonstrate superior framework coverage.'
         },
@@ -21713,7 +22317,7 @@ const _pciPositioningStatements = {
             drama: 'By 2028, ~35% of evaluations will use lifecycle phase coverage as a selection criterion. Technology without operational depth delivers inferior outcomes. Vendors that cannot prove dual-framework coverage will be structurally excluded.'
         },
         justification: {
-            context: 'Four pillars map directly to adversary lifecycle phases: Exposure Management to Kill Chain Phase 1 / ATT&CK TA0043, TA0007; Adversary Management to Phases 1-2 / TA0042, TA0005, TA0006; Posture Management to Phases 2-3 / TA0001, TA0004; Autonomous Detection & Response to Phases 4-7 / TA0002 through TA0040. Services maturity does not map to specific phases; it multiplies delivered value at every phase.',
+            context: 'Four pillars map directly to adversary lifecycle phases: Exposure Management to Kill Chain Phase 1 / ATT&CK TA0043, TA0007; Adversary Management to Phases 1-2 / TA0042, TA0005, TA0006; Posture Management to Phases 2-3 / TA0001, TA0004; Adversary Disruption to Phases 4-7 / TA0002 through TA0040. Services maturity does not map to specific phases; it multiplies delivered value at every phase.',
             evidence: 'Adversary Management covers the most technically demanding capabilities (polymorphic defense, moving target defense, runtime protection, credential rotation) yet only ~55% of vendors offer meaningful capability. Resource Development (TA0042) has the weakest ATT&CK coverage because ~45% of the market lacks Adversary Management. The dual-framework analysis validates the same structural gaps through two independent lenses.',
             actionBridge: 'Roughly one quarter of assessed vendors demonstrate meaningful competency across all four defensive pillars with coverage spanning both preemptive phases (1-3) and reactive phases (4-7). Services maturity is the strongest predictor of which vendors achieve this status. The consolidation opportunity is clear.'
         },
@@ -27167,7 +27771,7 @@ function exportCNAPPMarketInsightHTML() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-//  DOCUMENTATION PANEL
+//  DOCUMENTATION PANEL  (rail removed; IIFE no-ops if elements absent)
 // ═══════════════════════════════════════════════════════════════
 (function initDocsPanel() {
     'use strict';

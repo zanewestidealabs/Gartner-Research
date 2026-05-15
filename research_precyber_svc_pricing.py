@@ -532,7 +532,35 @@ def _cache_path(url: str) -> Path:
     return CACHE_DIR / f"{_sha1(url)}.json"
 
 
-def fetch_page(url: str, *, force: bool = False) -> Dict[str, Any]:
+def _fetch_url_playwright_svc(url: str) -> Optional[str]:
+    """Playwright headless-browser fallback for JS-heavy / bot-protected pages."""
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch(headless=True)
+            try:
+                ctx = browser.new_context(
+                    user_agent=(
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+                    ),
+                    locale="en-US",
+                )
+                page = ctx.new_page()
+                page.goto(url, timeout=20_000, wait_until="domcontentloaded")
+                html = page.content()
+            finally:
+                browser.close()
+        return html
+    except ImportError:
+        return None
+    except KeyboardInterrupt:
+        raise
+    except Exception:
+        return None
+
+
+def fetch_page(url: str, *, force: bool = False, _timeout: int = 6) -> Dict[str, Any]:
     """Fetch a URL with caching. Reuses the existing precyber cache."""
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     cp = _cache_path(url)
@@ -554,28 +582,40 @@ def fetch_page(url: str, *, force: bool = False) -> Dict[str, Any]:
         "Connection": "keep-alive",
     }, method="GET")
 
+    html = None
     for attempt in range(2):
         try:
-            with urllib.request.urlopen(req, timeout=15) as resp:
+            with urllib.request.urlopen(req, timeout=6) as resp:
                 raw = resp.read()
                 try:
                     html = raw.decode("utf-8", errors="replace")
                 except Exception:
                     html = raw.decode(errors="replace")
-                text = _html_to_text(html)
-                record = {
-                    "url": url,
-                    "fetched_at": datetime.now(timezone.utc).isoformat(),
-                    "ok": True,
-                    "content_type": resp.headers.get("Content-Type"),
-                    "text": text[:200_000],
-                    "error": None,
-                }
-                cp.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
-                return record
+                break
         except Exception:
-            if attempt == 0:
-                time.sleep(2 + random.uniform(0.5, 2.0))
+            pass  # skip on any error, no retry sleep
+
+    # Playwright fallback: fires when urllib fails or returns bot-blocked content.
+    # Check extracted text (not raw HTML) so Cloudflare challenge pages trigger the fallback.
+    _extracted = _html_to_text(html) if html else ""
+    if not _extracted or len(_extracted.strip()) < 200:
+        pw_html = _fetch_url_playwright_svc(url)
+        if pw_html:
+            pw_text = _html_to_text(pw_html)
+            if len(pw_text.strip()) > len(_extracted.strip()):
+                html, _extracted = pw_html, pw_text
+
+    if _extracted.strip():
+        record = {
+            "url": url,
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
+            "ok": True,
+            "content_type": None,
+            "text": _extracted[:200_000],
+            "error": None,
+        }
+        cp.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+        return record
 
     record = {
         "url": url,

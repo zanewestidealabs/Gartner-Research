@@ -1,8 +1,10 @@
 {
   "url": "https://www.axonius.com/solutions/vulnerability-management",
-  "fetched_at": "2026-02-24T18:50:05.167601+00:00",
+  "fetched_at": "2026-05-14T15:48:37.791499+00:00",
   "ok": false,
-  "content_type": null,
+  "content_type": "text/html",
   "text": "",
-  "error": "fetch_failed"
+  "error": "too_short",
+  "render_engine": "playwright",
+  "raw_text_len": 255
 }

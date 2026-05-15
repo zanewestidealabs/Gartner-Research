@@ -1,0 +1,8 @@
+{
+  "url": "https://www.aon.com/cyber-solutions/incident-response/",
+  "fetched_at": "2026-05-15T03:03:00.472219+00:00",
+  "ok": true,
+  "content_type": "text/html",
+  "text": "www.aon.com | 502: Bad gateway\n\n    \n\n        \n            \n\n                Bad gateway\n                Error code 502\n            \n            \n\n                Visit cloudflare.com for more information.\n            \n            \n2026-05-15 03:02:59 UTC\n        \n        \n\n            \n\n                \n\n                    \n\n  \n\n    \n    \n    \n    \n  \n  You\n  \n\n  \n    Browser\n  \n  \n  \n  Working\n  \n\n                    \n\n  \n\n    \n    \n    \n    \n  \n  Atlanta\n  \n\n  \n    Cloudflare\n  \n  \n  \n  Working\n  \n\n                    \n\n  \n\n    \n    \n    \n    \n  \n  www.aon.com\n  \n\n  \n    Host\n  \n  \n  \n  Error\n  \n\n                \n            \n        \n\n        \n\n            \n\n                \n\n                    \nWhat happened?\n                    \nThe web server reported a bad gateway error.\n                \n                \n\n                    \nWhat can I do?\n                    \nPlease try again in a few minutes.\n                \n            \n        \n\n        \n\n    \n\n      Cloudflare Ray ID: 9fbee82b6f9e53ed\n      •\n      \n        Your IP:\n        Click to reveal\n        104.129.207.107\n        •\n      \n      Performance & security by Cloudflare",
+  "error": null
+}

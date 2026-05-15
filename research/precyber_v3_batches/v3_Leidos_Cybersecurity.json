@@ -1,0 +1,1644 @@
+{
+  "vendor": "Leidos Cybersecurity",
+  "headquarters": "Reston, VA, USA",
+  "region": "North America",
+  "specialization": "Government & Enterprise Managed Security",
+  "primary_capability": "SVC",
+  "expected_coverage": [
+    "SVC-01",
+    "SVC-02",
+    "SVC-03",
+    "ADR-03",
+    "EXM-01",
+    "AMT-03"
+  ],
+  "delivery_model": "Systems Integrator + Managed Services",
+  "services_maturity_level": "implementation_only",
+  "outcome_maturity_rating": 1.75,
+  "outcome_maturity_label": "Process-Mature",
+  "is_startup": false,
+  "is_ai_first": false,
+  "research_flag": "si_govt",
+  "sub_pillar_rationale_v2": {
+    "EXM-01": {
+      "sub_pillar_id": "EXM-01",
+      "sub_pillar_name": "Attack Surface Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated discovery of internet-facing assets and shadow IT; Real-time asset inventory with risk scoring. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated discovery of internet-facing assets and shadow IT",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Real-time asset inventory with risk scoring",
+          "status": "partial",
+          "evidence": "AFT (Adaptive Fusion Tracker)\n  \n\n  \n  \n\n          \nOur Adaptive Fusion Tracker (AFT) system is a real-time multi-sensor correlation system, designed to perform data fusion and composite tracking acro",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud resource discovery across multi-cloud environments",
+          "status": "partial",
+          "evidence": "Aeronautical Source Packaging Service (ASPS)\n  \n\n  \n  \n\n          \nASPS is a digital warehouse of aeronautical source, as well as a collection of services geared toward continual maintenance of that i",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with CMDB and asset management systems",
+          "status": "partial",
+          "evidence": "Capabilities include content management, sensor management, automated fusion, and data integration.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring for new or changed assets",
+          "status": "partial",
+          "evidence": "Inability to identify changing populace sentiment – Our 24/7 automated sentiment monitoring, with predictive analysis provides early threat warning, or continuous evaluation/reporting of MISO results.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Learn more about OUR PX SOLUTIONS\n      \n\n  \n  \n\n        \n  \n    PXP (Publicly Available Information (PAI) Exploitation Platform)\n  \n\n  \n  \n\n          \nProvides real-time collection, discovery and ana"
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-02": {
+      "sub_pillar_id": "EXM-02",
+      "sub_pillar_name": "Continuous Threat Exposure Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): CTEM program capabilities or alignment; Exposure scoping and discovery automation. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "CTEM program capabilities or alignment",
+          "status": "partial",
+          "evidence": "To get back on the right track, why not learn more about our company, markets, or core capabilities?",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exposure scoping and discovery automation",
+          "status": "partial",
+          "evidence": "Contact Information\n\nEmail: [email protected]\n      \n\n  \n  \n\n        \n  \n    En Route Automation Modernization (ERAM)\n  \n\n  \n  \n\n          \n\n  \n  \n        \n\n  \n\nEn Route Automation Modernization (ERAM",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Prioritization based on exploitability and business context",
+          "status": "partial",
+          "evidence": "Goodwin (Business)\n\nEmail: [email protected]\n      \n\n  \n  \n\n        \n  \n    AIMES\n  \n\n  \n  \n\n          \n\n  \n  \n        \n\n  \n\nLeidos delivers a Motion Imagery (MI) system that receives, processes, and ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Validation of exposure remediation effectiveness",
+          "status": "unmet",
+          "evidence": "It has evolved and matured through extensive validation efforts with the Air Force Research Laboratory (AFRL).",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous cycle operation (not point-in-time)",
+          "status": "partial",
+          "evidence": "Hours of Operation: Monday-Friday, 8 a.m.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-03": {
+      "sub_pillar_id": "EXM-03",
+      "sub_pillar_name": "Vulnerability Prioritization & Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Exploitability context from threat intelligence; Asset criticality and business impact weighting. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Risk-based vulnerability scoring beyond CVSS",
+          "status": "unmet",
+          "evidence": "DDAM goes beyond non-attribution and misattribution to obscure both the source (proxy server routing) and intent (technical personas and smart fog) of a query.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploitability context from threat intelligence",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Asset criticality and business impact weighting",
+          "status": "partial",
+          "evidence": "Explore internal job openings across Leidos and find your next opportunity to advance, learn, and make an even greater impact.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated remediation prioritization and tracking",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with patch management and ticketing systems",
+          "status": "partial",
+          "evidence": "Capabilities include content management, sensor management, automated fusion, and data integration.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-04": {
+      "sub_pillar_id": "EXM-04",
+      "sub_pillar_name": "Third-Party & Supply Chain Exposure",
+      "original_score": 0,
+      "adjusted_score": 2.5,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Software supply chain monitoring (SBOM analysis); Supply chain attack detection and alerting. Partially met (3): Third-party vendor risk assessment capabilities; Open-source component vulnerability tracking. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Third-party vendor risk assessment capabilities",
+          "status": "partial",
+          "evidence": "Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software supply chain monitoring (SBOM analysis)",
+          "status": "met",
+          "evidence": "Contact Information\n\nEmail: [email protected]\n      \n\n  \n  \n\n        \n  \n    Catena\n  \n\n  \n  \n\n          \nCatena is a real-time supply chain management solution that provides a holistic approach to ma",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Open-source component vulnerability tracking",
+          "status": "partial",
+          "evidence": "AFT (Adaptive Fusion Tracker)\n  \n\n  \n  \n\n          \nOur Adaptive Fusion Tracker (AFT) system is a real-time multi-sensor correlation system, designed to perform data fusion and composite tracking acro",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring of vendor security posture",
+          "status": "partial",
+          "evidence": "Inability to identify changing populace sentiment – Our 24/7 automated sentiment monitoring, with predictive analysis provides early threat warning, or continuous evaluation/reporting of MISO results.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Supply chain attack detection and alerting",
+          "status": "met",
+          "evidence": "Contact Information\n\nEmail: [email protected]\n      \n\n  \n  \n\n        \n  \n    Catena\n  \n\n  \n  \n\n          \nCatena is a real-time supply chain management solution that provides a holistic approach to ma",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,",
+        "Contact Information\n\nEmail: [email protected]\n      \n\n  \n  \n\n        \n  \n    Catena\n  \n\n  \n  \n\n          \nCatena is a real-time supply chain management solution that provides a holistic approach to ma",
+        "Internal shipping departments and 3rd-party logistics providers use TransVM to effectively measure and control end-to-end logistics, and synchronize their supply-chain."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.5,
+        "reason": "Fresh score 2.50: no prior validated score (2/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-01": {
+      "sub_pillar_id": "AMT-01",
+      "sub_pillar_name": "Polymorphic & Morphing Defense",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Evidence of increased attacker cost through dynamic changes. Partially met (3): Runtime address space or memory layout randomization; Network configuration morphing. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Runtime address space or memory layout randomization",
+          "status": "partial",
+          "evidence": "Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "API endpoint mutation or obfuscation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Network configuration morphing",
+          "status": "partial",
+          "evidence": "AIMES 2 is the latest generation MI processing, exploitation, and dissemination (PED) software suite that’s optimized for low bandwidth and high latency networks.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "System identifier rotation",
+          "status": "partial",
+          "evidence": "Your username and password are required to access any systems.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Evidence of increased attacker cost through dynamic changes",
+          "status": "met",
+          "evidence": "Through dynamic, centralized dashboards, Catena seamlessly integrates and organizes vital data, including supplier information, order updates, and report generation.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,"
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-02": {
+      "sub_pillar_id": "AMT-02",
+      "sub_pillar_name": "Runtime Application Protection",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): RASP or in-app runtime protection capabilities; Code instrumentation for exploit prevention. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "RASP or in-app runtime protection capabilities",
+          "status": "partial",
+          "evidence": "Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Code instrumentation for exploit prevention",
+          "status": "partial",
+          "evidence": "This includes addressing critical challenges like substance use disorder, anxiety, depression, suicide prevention, and reducing the stigma surrounding mental health.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Application hardening and anti-tampering",
+          "status": "unmet",
+          "evidence": "Learn more about aimes\n\nApplications\n\n\t\nAIMES Server™ software is a data archive element that catalogs, indexes, and stores MISP compliant video slice files from AIMES PICTE.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Memory corruption defense (ROP, buffer overflow prevention)",
+          "status": "partial",
+          "evidence": "ACAL performs nearly all vectorizable operations thus, minimizing memory bandwidth requirements.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Signature-less exploit detection at runtime",
+          "status": "partial",
+          "evidence": "AIMES 2 is the latest generation MI processing, exploitation, and dissemination (PED) software suite that’s optimized for low bandwidth and high latency networks.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,"
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-03": {
+      "sub_pillar_id": "AMT-03",
+      "sub_pillar_name": "Dynamic Network & Infrastructure Defense",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated micro-segmentation with dynamic policy; Network topology reconfiguration capabilities. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated micro-segmentation with dynamic policy",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Network topology reconfiguration capabilities",
+          "status": "partial",
+          "evidence": "To get back on the right track, why not learn more about our company, markets, or core capabilities?",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software-defined perimeter or zero trust network access",
+          "status": "partial",
+          "evidence": "Your username and password are required to access any systems.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Infrastructure-as-code security automation",
+          "status": "partial",
+          "evidence": "Explore ProSight\n            \n      \n      \n\n                                      \n  \n\n            \n              \n    \n  \n  \n  \n\n      \n\n      \n\n        \n                    Security Services\n      ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Adaptive access controls based on risk signals",
+          "status": "partial",
+          "evidence": "Your username and password are required to access any systems.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-04": {
+      "sub_pillar_id": "AMT-04",
+      "sub_pillar_name": "Identity & Credential Rotation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Service account and API key lifecycle management. Partially met (3): Automated credential and secret rotation; Certificate and token rotation automation. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated credential and secret rotation",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Ephemeral or just-in-time credential provisioning",
+          "status": "unmet",
+          "evidence": "VIEW FACT SHEET\n      \n\n  \n  \n\n        \n  \n    Unified-Flash Station\n  \n\n  \n  \n\n          \nA just-in-time module flashing station for vehicle production environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Service account and API key lifecycle management",
+          "status": "met",
+          "evidence": "FuelsManager\n  \n\n  \n  \n\n          \nFuelsManager assists oil companies, defense organizations, airlines and airline service providers with liquid petroleum stock management, asset visibility, accountab",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Certificate and token rotation automation",
+          "status": "partial",
+          "evidence": "Catena fact sheet\n      \n\n  \n  \n\n        \n  \n    CATS (Complex Axisymmetric Target Signatures)\n  \n\n  \n  \n\n          \nA computer code for the radar cross section analysis of objects that exhibit axisym",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Privileged access session isolation",
+          "status": "partial",
+          "evidence": "Your username and password are required to access any systems.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Learn more about ClearScan \n      \n\n  \n  \n\n        \n  \n    DDAM (Deep Dynamic Attribution Management)\n  \n\n  \n  \n\n          \nManaged attribution service for bulk and targeted browser collection of Publ",
+        "FuelsManager\n  \n\n  \n  \n\n          \nFuelsManager assists oil companies, defense organizations, airlines and airline service providers with liquid petroleum stock management, asset visibility, accountab",
+        "Leidos Performance Management (LPM)\n  \n\n  \n  \n\n          \nLPM is a portal solution with a focus on SLA management: it can work with Remedy or ServiceNow to efficiently handle and report on Service Lev",
+        "SIAM\n  \n\n  \n  \n\n          \nService Integration and Management (SIAM™) has proven to be one of the best solutions to address the increased popularity with Multi-sourced ICT environments knows as “Tower"
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-01": {
+      "sub_pillar_id": "ADR-01",
+      "sub_pillar_name": "Deception Technology",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Honeypot and honeytoken deployment capabilities; Decoy systems mimicking production assets. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Honeypot and honeytoken deployment capabilities",
+          "status": "partial",
+          "evidence": "To get back on the right track, why not learn more about our company, markets, or core capabilities?",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Decoy systems mimicking production assets",
+          "status": "partial",
+          "evidence": "Your username and password are required to access any systems.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Breadcrumb placement for lateral movement detection",
+          "status": "partial",
+          "evidence": "We deliver fast, frictionless and fully integrated solutions to help secure the movement of people, baggage and parcels at airports worldwide.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "High-fidelity alerting with low false-positive rates",
+          "status": "partial",
+          "evidence": "The pod incorporates key features such as inlets and exhausts to maintain sensor thermal management, a linear actuated bay door, machined aluminum strongback, custom mounting lugs, and composite body.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with SIEM/SOAR for automated response",
+          "status": "partial",
+          "evidence": "Capabilities include content management, sensor management, automated fusion, and data integration.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-02": {
+      "sub_pillar_id": "ADR-02",
+      "sub_pillar_name": "Threat Intelligence Operationalization",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Threat intelligence platform or feed integration; Automated IOC ingestion and correlation. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Threat intelligence platform or feed integration",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated IOC ingestion and correlation",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "TTP mapping to MITRE ATT&CK framework",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated blocking based on threat intelligence",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Intelligence-driven hunting query generation",
+          "status": "partial",
+          "evidence": "For symmetric matrices, this allows a twofold reduction in generation time.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+        "Today's threats are evolving faster than our existing platforms, architectures and processes can adapt.",
+        "We have designed, modified, integrated, tested, and certified the aircraft and all associated support equipment specifically for conducting a wide range of CONUS and OCONUS airborne missions, from aer",
+        "PROVM\n  \n\n  \n  \n\n          \n\n  \n  \n        \n\n  \n\nProVM is a data management tool that captures maintenance actions, material suppliers, and failure rates to deliver actionable intelligence to the warf",
+        "Learn more about ProPassage\n      \n\n  \n  \n\n        \n  \n    ProSight\n  \n\n  \n  \n\n          \nProSight™ is an open architecture, scalable and cyber secure software platform that integrates security screen"
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-03": {
+      "sub_pillar_id": "ADR-03",
+      "sub_pillar_name": "Proactive Threat Hunting",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Managed or automated threat hunting services; Hunt query libraries and playbooks. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Managed or automated threat hunting services",
+          "status": "partial",
+          "evidence": "Inability to identify changing populace sentiment – Our 24/7 automated sentiment monitoring, with predictive analysis provides early threat warning, or continuous evaluation/reporting of MISO results.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Hypothesis-driven hunting methodologies",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Hunt query libraries and playbooks",
+          "status": "partial",
+          "evidence": "DDAM goes beyond non-attribution and misattribution to obscure both the source (proxy server routing) and intent (technical personas and smart fog) of a query.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with telemetry sources (EDR, NDR, SIEM)",
+          "status": "partial",
+          "evidence": "Capabilities include content management, sensor management, automated fusion, and data integration.",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Hunt findings feeding back to detection engineering",
+          "status": "partial",
+          "evidence": "We may be a leader in science, engineering, and technology but sometimes even the best misplace a link.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Inability to identify changing populace sentiment – Our 24/7 automated sentiment monitoring, with predictive analysis provides early threat warning, or continuous evaluation/reporting of MISO results.",
+        "Engaging the services of a FedRAMP authorized Cloud Service Provider (CSP) gives federal agencies confidence to securely use CSP platforms for monitoring and managed services."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-04": {
+      "sub_pillar_id": "ADR-04",
+      "sub_pillar_name": "Counter-Adversary Operations",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Dark web monitoring and intelligence gathering; Brand protection and impersonation detection. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Dark web monitoring and intelligence gathering",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Brand protection and impersonation detection",
+          "status": "partial",
+          "evidence": "Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Takedown service capabilities (domains, phishing, infrastructure)",
+          "status": "partial",
+          "evidence": "To get back on the right track, why not learn more about our company, markets, or core capabilities?",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Adversary attribution and campaign tracking",
+          "status": "partial",
+          "evidence": "AFT (Adaptive Fusion Tracker)\n  \n\n  \n  \n\n          \nOur Adaptive Fusion Tracker (AFT) system is a real-time multi-sensor correlation system, designed to perform data fusion and composite tracking acro",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Digital risk protection services",
+          "status": "partial",
+          "evidence": "Aeronautical Source Packaging Service (ASPS)\n  \n\n  \n  \n\n          \nASPS is a digital warehouse of aeronautical source, as well as a collection of services geared toward continual maintenance of that i",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-01": {
+      "sub_pillar_id": "PPM-01",
+      "sub_pillar_name": "Breach & Attack Simulation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Automated attack chain simulation capabilities; Continuous validation against production controls. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated attack chain simulation capabilities",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous validation against production controls",
+          "status": "partial",
+          "evidence": "ADEPT (Assured Data Engine for Positioning and Timing)\n  \n\n  \n  \n\n          \nIn a contested environment, mission success depends on PNT data that is both accurate and continuously available.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "MITRE ATT&CK technique coverage",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Control gap identification and remediation guidance",
+          "status": "partial",
+          "evidence": "AIMES Restream works with existing files formatted as Moving Pictures Experts Group (MPEG) second compression standards for motion imagery (MPEG-2) Transport Streams (TS) (MPEG-2 TS)\n\t\nAIMES Reflector",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Reporting on detection and prevention effectiveness",
+          "status": "partial",
+          "evidence": "Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+        "Capabilities include content management, sensor management, automated fusion, and data integration."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-02": {
+      "sub_pillar_id": "PPM-02",
+      "sub_pillar_name": "Security Control Validation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): SIEM detection rule validation and testing; EDR policy effectiveness verification. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "SIEM detection rule validation and testing",
+          "status": "partial",
+          "evidence": "Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "EDR policy effectiveness verification",
+          "status": "partial",
+          "evidence": "ID Haystack Identity Service\n  \n\n  \n  \n\n          \nThe Leidos Identification as a Service platform, commercially available as IDHaystack℠, provides a biometric matching service that can serve as the c",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Firewall and network control validation",
+          "status": "partial",
+          "evidence": "AIMES 2 is the latest generation MI processing, exploitation, and dissemination (PED) software suite that’s optimized for low bandwidth and high latency networks.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "DLP and data protection control testing",
+          "status": "partial",
+          "evidence": "AIMES Restream works with existing files formatted as Moving Pictures Experts Group (MPEG) second compression standards for motion imagery (MPEG-2) Transport Streams (TS) (MPEG-2 TS)\n\t\nAIMES Reflector",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Configuration drift detection and alerting",
+          "status": "partial",
+          "evidence": "Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-03": {
+      "sub_pillar_id": "PPM-03",
+      "sub_pillar_name": "Penetration Testing & Red Teaming",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated penetration testing platform; Continuous or on-demand pen testing capabilities. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated penetration testing platform",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous or on-demand pen testing capabilities",
+          "status": "partial",
+          "evidence": "To get back on the right track, why not learn more about our company, markets, or core capabilities?",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Attack path analysis and visualization",
+          "status": "partial",
+          "evidence": "Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploit validation and proof-of-concept generation",
+          "status": "partial",
+          "evidence": "AIMES 2 is the latest generation MI processing, exploitation, and dissemination (PED) software suite that’s optimized for low bandwidth and high latency networks.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Red team exercise automation (PTaaS)",
+          "status": "partial",
+          "evidence": "Eastern Standard Time (Excluding national public holidays) \nNote: Calls outside operating hours are answered by the US Service Desk and escalated to the Australian team if necessary.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a "
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-04": {
+      "sub_pillar_id": "PPM-04",
+      "sub_pillar_name": "Cloud Security Posture Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Leidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Cloud misconfiguration detection (AWS, Azure, GCP); Cloud entitlement and permissions analysis (CIEM). Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Cloud misconfiguration detection (AWS, Azure, GCP)",
+          "status": "partial",
+          "evidence": "Aeronautical Source Packaging Service (ASPS)\n  \n\n  \n  \n\n          \nASPS is a digital warehouse of aeronautical source, as well as a collection of services geared toward continual maintenance of that i",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Cloud entitlement and permissions analysis (CIEM)",
+          "status": "partial",
+          "evidence": "Aeronautical Source Packaging Service (ASPS)\n  \n\n  \n  \n\n          \nASPS is a digital warehouse of aeronautical source, as well as a collection of services geared toward continual maintenance of that i",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Compliance framework mapping and reporting",
+          "status": "partial",
+          "evidence": "\"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nProvides automated capabilities, an open architecture, and a ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud workload protection capabilities",
+          "status": "partial",
+          "evidence": "To get back on the right track, why not learn more about our company, markets, or core capabilities?",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Infrastructure-as-code security scanning",
+          "status": "partial",
+          "evidence": "Explore ProSight\n            \n      \n      \n\n                                      \n  \n\n            \n              \n    \n  \n  \n  \n\n      \n\n      \n\n        \n                    Security Services\n      ",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    }
+  },
+  "sub_pillar_scores_v2_researched": {
+    "EXM-01": 2.25,
+    "EXM-02": 2.25,
+    "EXM-03": 2.25,
+    "EXM-04": 2.5,
+    "AMT-01": 2.25,
+    "AMT-02": 2.25,
+    "AMT-03": 2.25,
+    "AMT-04": 2.25,
+    "ADR-01": 2.25,
+    "ADR-02": 2.25,
+    "ADR-03": 2.25,
+    "ADR-04": 2.25,
+    "PPM-01": 2.25,
+    "PPM-02": 2.25,
+    "PPM-03": 2.25,
+    "PPM-04": 2.25
+  },
+  "pillar_scores_v2_researched": {
+    "EXM": 2.31,
+    "AMT": 2.25,
+    "ADR": 2.25,
+    "PPM": 2.25
+  },
+  "evidence_quality_analysis": {
+    "EXM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    }
+  },
+  "sub_pillar_rationale_v2_consolidated": {
+    "EXM-01": "EXM-01 – Attack Surface Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated discovery of internet-facing assets and shadow IT; Real-time asset inventory with risk scoring. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated discovery of internet-facing assets and shadow IT', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Real-time asset inventory with risk scoring', 'status': 'partial', 'evidence': 'AFT\\xa0(Adaptive Fusion Tracker)\\n  \\n\\n  \\n  \\n\\n          \\nOur Adaptive Fusion Tracker (AFT) system is a real-time multi-sensor correlation system, designed to perform data fusion and composite tracking acro', 'confidence': 'medium'}, {'criterion': 'Cloud resource discovery across multi-cloud environments', 'status': 'partial', 'evidence': 'Aeronautical Source Packaging Service (ASPS)\\n  \\n\\n  \\n  \\n\\n          \\nASPS is a digital warehouse of aeronautical source, as well as a collection of services geared toward continual maintenance of that i', 'confidence': 'medium'}, {'criterion': 'Integration with CMDB and asset management systems', 'status': 'partial', 'evidence': 'Capabilities include content management, sensor management, automated fusion, and data integration.', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring for new or changed assets', 'status': 'partial', 'evidence': 'Inability to identify changing populace sentiment – Our 24/7 automated sentiment monitoring, with predictive analysis provides early threat warning, or continuous evaluation/reporting of MISO results.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Learn more about OUR PX SOLUTIONS\n      \n\n  \n  \n\n        \n  \n    PXP (Publicly Available Information (PAI) Exploitation Platform)\n  \n\n  \n  \n...",
+    "EXM-02": "EXM-02 – Continuous Threat Exposure Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): CTEM program capabilities or alignment; Exposure scoping and discovery automation. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'CTEM program capabilities or alignment', 'status': 'partial', 'evidence': 'To get back on the right track, why not learn more about our company, markets, or core capabilities?', 'confidence': 'medium'}, {'criterion': 'Exposure scoping and discovery automation', 'status': 'partial', 'evidence': 'Contact Information\\n\\nEmail:\\xa0[email\\xa0protected]\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    En Route Automation Modernization (ERAM)\\n  \\n\\n  \\n  \\n\\n          \\n\\n  \\n  \\n        \\n\\n  \\n\\nEn Route Automation Modernization (ERAM', 'confidence': 'medium'}, {'criterion': 'Prioritization based on exploitability and business context', 'status': 'partial', 'evidence': 'Goodwin (Business)\\n\\nEmail: [email\\xa0protected]\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    AIMES\\n  \\n\\n  \\n  \\n\\n          \\n\\n  \\n  \\n        \\n\\n  \\n\\nLeidos delivers a Motion Imagery (MI) system that receives, processes, and ', 'confidence': 'medium'}, {'criterion': 'Validation of exposure remediation effectiveness', 'status': 'unmet', 'evidence': 'It has evolved and matured through extensive validation efforts with the Air Force Research Laboratory (AFRL).', 'confidence': 'medium'}, {'criterion': 'Continuous cycle operation (not point-in-time)', 'status': 'partial', 'evidence': 'Hours of Operation: Monday-Friday, 8 a.m.', 'confidence': 'medium'}]",
+    "EXM-03": "EXM-03 – Vulnerability Prioritization & Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Exploitability context from threat intelligence; Asset criticality and business impact weighting. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Risk-based vulnerability scoring beyond CVSS', 'status': 'unmet', 'evidence': 'DDAM goes beyond non-attribution and misattribution to obscure both the source (proxy server routing) and intent (technical personas and smart fog) of a query.', 'confidence': 'medium'}, {'criterion': 'Exploitability context from threat intelligence', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Asset criticality and business impact weighting', 'status': 'partial', 'evidence': 'Explore internal job openings across Leidos and find your next opportunity to advance, learn, and make an even greater impact.', 'confidence': 'medium'}, {'criterion': 'Automated remediation prioritization and tracking', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Integration with patch management and ticketing systems', 'status': 'partial', 'evidence': 'Capabilities include content management, sensor management, automated fusion, and data integration.', 'confidence': 'medium'}]",
+    "EXM-04": "EXM-04 – Third-Party & Supply Chain Exposure: Score 2.50/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Software supply chain monitoring (SBOM analysis); Supply chain attack detection and alerting. Partially met (3): Third-party vendor risk assessment capabilities; Open-source component vulnerability tracking. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.\n\n[Score Adjustment] 0.00 → 2.50: Fresh score 2.50: no prior validated score (2/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Third-party vendor risk assessment capabilities', 'status': 'partial', 'evidence': 'Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,', 'confidence': 'medium'}, {'criterion': 'Software supply chain monitoring (SBOM analysis)', 'status': 'met', 'evidence': 'Contact Information\\n\\nEmail:\\xa0[email\\xa0protected]\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Catena\\n  \\n\\n  \\n  \\n\\n          \\nCatena is a real-time supply chain management solution that provides a holistic approach to ma', 'confidence': 'medium'}, {'criterion': 'Open-source component vulnerability tracking', 'status': 'partial', 'evidence': 'AFT\\xa0(Adaptive Fusion Tracker)\\n  \\n\\n  \\n  \\n\\n          \\nOur Adaptive Fusion Tracker (AFT) system is a real-time multi-sensor correlation system, designed to perform data fusion and composite tracking acro', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring of vendor security posture', 'status': 'partial', 'evidence': 'Inability to identify changing populace sentiment – Our 24/7 automated sentiment monitoring, with predictive analysis provides early threat warning, or continuous evaluation/reporting of MISO results.', 'confidence': 'medium'}, {'criterion': 'Supply chain attack detection and alerting', 'status': 'met', 'evidence': 'Contact Information\\n\\nEmail:\\xa0[email\\xa0protected]\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Catena\\n  \\n\\n  \\n  \\n\\n          \\nCatena is a real-time supply chain management solution that provides a holistic approach to ma', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while o...\n  • Contact Information\n\nEmail: [email protected]\n      \n\n  \n  \n\n        \n  \n    Catena\n  \n\n  \n  \n\n          \nCatena is a real-time supply chain...\n  • Internal shipping departments and 3rd-party logistics providers use TransVM to effectively measure and control end-to-end logistics, and syn...",
+    "AMT-01": "AMT-01 – Polymorphic & Morphing Defense: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Evidence of increased attacker cost through dynamic changes. Partially met (3): Runtime address space or memory layout randomization; Network configuration morphing. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Runtime address space or memory layout randomization', 'status': 'partial', 'evidence': 'Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,', 'confidence': 'medium'}, {'criterion': 'API endpoint mutation or obfuscation', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Network configuration morphing', 'status': 'partial', 'evidence': 'AIMES 2 is the latest generation MI processing, exploitation, and dissemination (PED) software suite that’s optimized for low bandwidth and high latency networks.', 'confidence': 'medium'}, {'criterion': 'System identifier rotation', 'status': 'partial', 'evidence': 'Your username and password are required to access any systems.', 'confidence': 'medium'}, {'criterion': 'Evidence of increased attacker cost through dynamic changes', 'status': 'met', 'evidence': 'Through dynamic, centralized dashboards, Catena seamlessly integrates and organizes vital data, including supplier information, order updates, and report generation.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while o...",
+    "AMT-02": "AMT-02 – Runtime Application Protection: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): RASP or in-app runtime protection capabilities; Code instrumentation for exploit prevention. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'RASP or in-app runtime protection capabilities', 'status': 'partial', 'evidence': 'Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while optimizing runtime constraints such as compute, time, memory,', 'confidence': 'medium'}, {'criterion': 'Code instrumentation for exploit prevention', 'status': 'partial', 'evidence': 'This includes addressing critical challenges like substance use disorder, anxiety, depression, suicide prevention, and reducing the stigma surrounding mental health.', 'confidence': 'medium'}, {'criterion': 'Application hardening and anti-tampering', 'status': 'unmet', 'evidence': 'Learn more about aimes\\n\\nApplications\\n\\n\\t\\nAIMES Server™ software is a data archive element that catalogs, indexes, and stores MISP compliant video slice files from AIMES PICTE.', 'confidence': 'medium'}, {'criterion': 'Memory corruption defense (ROP, buffer overflow prevention)', 'status': 'partial', 'evidence': 'ACAL performs nearly all vectorizable operations thus, minimizing memory bandwidth requirements.', 'confidence': 'medium'}, {'criterion': 'Signature-less exploit detection at runtime', 'status': 'partial', 'evidence': 'AIMES 2 is the latest generation MI processing, exploitation, and dissemination (PED) software suite that’s optimized for low bandwidth and high latency networks.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Its open architecture supports seamless integration and replacement of third-party capabilities, enabling mission-specific solutions while o...",
+    "AMT-03": "AMT-03 – Dynamic Network & Infrastructure Defense: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated micro-segmentation with dynamic policy; Network topology reconfiguration capabilities. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated micro-segmentation with dynamic policy', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Network topology reconfiguration capabilities', 'status': 'partial', 'evidence': 'To get back on the right track, why not learn more about our company, markets, or core capabilities?', 'confidence': 'medium'}, {'criterion': 'Software-defined perimeter or zero trust network access', 'status': 'partial', 'evidence': 'Your username and password are required to access any systems.', 'confidence': 'medium'}, {'criterion': 'Infrastructure-as-code security automation', 'status': 'partial', 'evidence': 'Explore ProSight\\n            \\n      \\n      \\n\\n                                      \\n  \\n\\n            \\n              \\n    \\n  \\n  \\n  \\n\\n      \\n\\n      \\n\\n        \\n                    Security Services\\n      ', 'confidence': 'medium'}, {'criterion': 'Adaptive access controls based on risk signals', 'status': 'partial', 'evidence': 'Your username and password are required to access any systems.', 'confidence': 'medium'}]",
+    "AMT-04": "AMT-04 – Identity & Credential Rotation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Service account and API key lifecycle management. Partially met (3): Automated credential and secret rotation; Certificate and token rotation automation. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated credential and secret rotation', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Ephemeral or just-in-time credential provisioning', 'status': 'unmet', 'evidence': 'VIEW FACT SHEET\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Unified-Flash Station\\n  \\n\\n  \\n  \\n\\n          \\nA just-in-time module flashing station for vehicle production environments.', 'confidence': 'medium'}, {'criterion': 'Service account and API key lifecycle management', 'status': 'met', 'evidence': 'FuelsManager\\n  \\n\\n  \\n  \\n\\n          \\nFuelsManager assists oil companies, defense organizations, airlines and airline service providers with liquid petroleum stock management, asset visibility, accountab', 'confidence': 'medium'}, {'criterion': 'Certificate and token rotation automation', 'status': 'partial', 'evidence': 'Catena fact sheet\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    CATS (Complex Axisymmetric Target Signatures)\\n  \\n\\n  \\n  \\n\\n          \\nA computer code for the radar cross section analysis of objects that exhibit axisym', 'confidence': 'medium'}, {'criterion': 'Privileged access session isolation', 'status': 'partial', 'evidence': 'Your username and password are required to access any systems.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Learn more about ClearScan \n      \n\n  \n  \n\n        \n  \n    DDAM (Deep Dynamic Attribution Management)\n  \n\n  \n  \n\n          \nManaged attribut...\n  • FuelsManager\n  \n\n  \n  \n\n          \nFuelsManager assists oil companies, defense organizations, airlines and airline service providers with li...\n  • Leidos Performance Management (LPM)\n  \n\n  \n  \n\n          \nLPM is a portal solution with a focus on SLA management: it can work with Remedy o...",
+    "ADR-01": "ADR-01 – Deception Technology: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Honeypot and honeytoken deployment capabilities; Decoy systems mimicking production assets. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Honeypot and honeytoken deployment capabilities', 'status': 'partial', 'evidence': 'To get back on the right track, why not learn more about our company, markets, or core capabilities?', 'confidence': 'medium'}, {'criterion': 'Decoy systems mimicking production assets', 'status': 'partial', 'evidence': 'Your username and password are required to access any systems.', 'confidence': 'medium'}, {'criterion': 'Breadcrumb placement for lateral movement detection', 'status': 'partial', 'evidence': 'We deliver fast, frictionless and fully integrated solutions to help secure the movement of people, baggage and parcels at airports worldwide.', 'confidence': 'medium'}, {'criterion': 'High-fidelity alerting with low false-positive rates', 'status': 'partial', 'evidence': 'The pod incorporates key features such as inlets and exhausts to maintain sensor thermal management, a linear actuated bay door, machined aluminum strongback, custom mounting lugs, and composite body.', 'confidence': 'medium'}, {'criterion': 'Integration with SIEM/SOAR for automated response', 'status': 'partial', 'evidence': 'Capabilities include content management, sensor management, automated fusion, and data integration.', 'confidence': 'medium'}]",
+    "ADR-02": "ADR-02 – Threat Intelligence Operationalization: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Threat intelligence platform or feed integration; Automated IOC ingestion and correlation. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Threat intelligence platform or feed integration', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Automated IOC ingestion and correlation', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'TTP mapping to MITRE ATT&CK framework', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Automated blocking based on threat intelligence', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Intelligence-driven hunting query generation', 'status': 'partial', 'evidence': 'For symmetric matrices, this allows a twofold reduction in generation time.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • \"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nP...\n  • Today's threats are evolving faster than our existing platforms, architectures and processes can adapt....\n  • We have designed, modified, integrated, tested, and certified the aircraft and all associated support equipment specifically for conducting ...",
+    "ADR-03": "ADR-03 – Proactive Threat Hunting: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Managed or automated threat hunting services; Hunt query libraries and playbooks. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Managed or automated threat hunting services', 'status': 'partial', 'evidence': 'Inability to identify changing populace sentiment – Our 24/7 automated sentiment monitoring, with predictive analysis provides early threat warning, or continuous evaluation/reporting of MISO results.', 'confidence': 'medium'}, {'criterion': 'Hypothesis-driven hunting methodologies', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Hunt query libraries and playbooks', 'status': 'partial', 'evidence': 'DDAM goes beyond non-attribution and misattribution to obscure both the source (proxy server routing) and intent (technical personas and smart fog) of a query.', 'confidence': 'medium'}, {'criterion': 'Integration with telemetry sources (EDR, NDR, SIEM)', 'status': 'partial', 'evidence': 'Capabilities include content management, sensor management, automated fusion, and data integration.', 'confidence': 'low'}, {'criterion': 'Hunt findings feeding back to detection engineering', 'status': 'partial', 'evidence': 'We may be a leader in science, engineering, and technology but sometimes even the best misplace a link.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Inability to identify changing populace sentiment – Our 24/7 automated sentiment monitoring, with predictive analysis provides early threat ...\n  • Engaging the services of a FedRAMP authorized Cloud Service Provider (CSP) gives federal agencies confidence to securely use CSP platforms f...",
+    "ADR-04": "ADR-04 – Counter-Adversary Operations: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Dark web monitoring and intelligence gathering; Brand protection and impersonation detection. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Dark web monitoring and intelligence gathering', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Brand protection and impersonation detection', 'status': 'partial', 'evidence': 'Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.', 'confidence': 'medium'}, {'criterion': 'Takedown service capabilities (domains, phishing, infrastructure)', 'status': 'partial', 'evidence': 'To get back on the right track, why not learn more about our company, markets, or core capabilities?', 'confidence': 'low'}, {'criterion': 'Adversary attribution and campaign tracking', 'status': 'partial', 'evidence': 'AFT\\xa0(Adaptive Fusion Tracker)\\n  \\n\\n  \\n  \\n\\n          \\nOur Adaptive Fusion Tracker (AFT) system is a real-time multi-sensor correlation system, designed to perform data fusion and composite tracking acro', 'confidence': 'medium'}, {'criterion': 'Digital risk protection services', 'status': 'partial', 'evidence': 'Aeronautical Source Packaging Service (ASPS)\\n  \\n\\n  \\n  \\n\\n          \\nASPS is a digital warehouse of aeronautical source, as well as a collection of services geared toward continual maintenance of that i', 'confidence': 'medium'}]",
+    "PPM-01": "PPM-01 – Breach & Attack Simulation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Automated attack chain simulation capabilities; Continuous validation against production controls. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated attack chain simulation capabilities', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Continuous validation against production controls', 'status': 'partial', 'evidence': 'ADEPT (Assured Data Engine for Positioning and Timing)\\n  \\n\\n  \\n  \\n\\n          \\nIn a contested environment, mission success depends on PNT data that is both accurate and continuously available.', 'confidence': 'medium'}, {'criterion': 'MITRE ATT&CK technique coverage', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}, {'criterion': 'Control gap identification and remediation guidance', 'status': 'partial', 'evidence': 'AIMES Restream works with existing files formatted as Moving Pictures Experts Group (MPEG) second compression standards for motion imagery (MPEG-2) Transport Streams (TS) (MPEG-2 TS)\\n\\t\\nAIMES Reflector', 'confidence': 'medium'}, {'criterion': 'Reporting on detection and prevention effectiveness', 'status': 'partial', 'evidence': 'Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • \"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nP...\n  • Capabilities include content management, sensor management, automated fusion, and data integration....",
+    "PPM-02": "PPM-02 – Security Control Validation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): SIEM detection rule validation and testing; EDR policy effectiveness verification. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'SIEM detection rule validation and testing', 'status': 'partial', 'evidence': 'Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.', 'confidence': 'medium'}, {'criterion': 'EDR policy effectiveness verification', 'status': 'partial', 'evidence': 'ID Haystack Identity Service\\n  \\n\\n  \\n  \\n\\n          \\nThe Leidos Identification as a Service platform, commercially available as IDHaystack℠, provides a biometric matching service that can serve as the c', 'confidence': 'medium'}, {'criterion': 'Firewall and network control validation', 'status': 'partial', 'evidence': 'AIMES 2 is the latest generation MI processing, exploitation, and dissemination (PED) software suite that’s optimized for low bandwidth and high latency networks.', 'confidence': 'medium'}, {'criterion': 'DLP and data protection control testing', 'status': 'partial', 'evidence': 'AIMES Restream works with existing files formatted as Moving Pictures Experts Group (MPEG) second compression standards for motion imagery (MPEG-2) Transport Streams (TS) (MPEG-2 TS)\\n\\t\\nAIMES Reflector', 'confidence': 'medium'}, {'criterion': 'Configuration drift detection and alerting', 'status': 'partial', 'evidence': 'Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.', 'confidence': 'medium'}]",
+    "PPM-03": "PPM-03 – Penetration Testing & Red Teaming: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated penetration testing platform; Continuous or on-demand pen testing capabilities. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated penetration testing platform', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Continuous or on-demand pen testing capabilities', 'status': 'partial', 'evidence': 'To get back on the right track, why not learn more about our company, markets, or core capabilities?', 'confidence': 'medium'}, {'criterion': 'Attack path analysis and visualization', 'status': 'partial', 'evidence': 'Our new VMTI tool parses and visualizes MISB 903 object detection data enabling Activity Based Intelligence (ABI) and Structured Observation Management (SOM) analysis and reporting paradigms.', 'confidence': 'medium'}, {'criterion': 'Exploit validation and proof-of-concept generation', 'status': 'partial', 'evidence': 'AIMES 2 is the latest generation MI processing, exploitation, and dissemination (PED) software suite that’s optimized for low bandwidth and high latency networks.', 'confidence': 'medium'}, {'criterion': 'Red team exercise automation (PTaaS)', 'status': 'partial', 'evidence': 'Eastern Standard Time (Excluding national public holidays)\\xa0\\nNote: Calls outside operating hours are answered by the US Service Desk and escalated to the Australian team if necessary.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • \"Any platform, any sensor, anytime.\"\n\nLearn more about ADEPT\n      \n\n  \n  \n\n        \n  \n    Advanced Analytics Suite\n  \n\n  \n  \n\n          \nP...",
+    "PPM-04": "PPM-04 – Cloud Security Posture Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nLeidos Cybersecurity scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Cloud misconfiguration detection (AWS, Azure, GCP); Cloud entitlement and permissions analysis (CIEM). Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Cloud misconfiguration detection (AWS, Azure, GCP)', 'status': 'partial', 'evidence': 'Aeronautical Source Packaging Service (ASPS)\\n  \\n\\n  \\n  \\n\\n          \\nASPS is a digital warehouse of aeronautical source, as well as a collection of services geared toward continual maintenance of that i', 'confidence': 'low'}, {'criterion': 'Cloud entitlement and permissions analysis (CIEM)', 'status': 'partial', 'evidence': 'Aeronautical Source Packaging Service (ASPS)\\n  \\n\\n  \\n  \\n\\n          \\nASPS is a digital warehouse of aeronautical source, as well as a collection of services geared toward continual maintenance of that i', 'confidence': 'medium'}, {'criterion': 'Compliance framework mapping and reporting', 'status': 'partial', 'evidence': '\"Any platform, any sensor, anytime.\"\\n\\nLearn more about ADEPT\\n      \\n\\n  \\n  \\n\\n        \\n  \\n    Advanced Analytics Suite\\n  \\n\\n  \\n  \\n\\n          \\nProvides automated capabilities, an open architecture, and a ', 'confidence': 'medium'}, {'criterion': 'Cloud workload protection capabilities', 'status': 'partial', 'evidence': 'To get back on the right track, why not learn more about our company, markets, or core capabilities?', 'confidence': 'medium'}, {'criterion': 'Infrastructure-as-code security scanning', 'status': 'partial', 'evidence': 'Explore ProSight\\n            \\n      \\n      \\n\\n                                      \\n  \\n\\n            \\n              \\n    \\n  \\n  \\n  \\n\\n      \\n\\n      \\n\\n        \\n                    Security Services\\n      ', 'confidence': 'medium'}]",
+    "EXM-05": "EXM-05 - Exposure Management Services Maturity. Score: 1.00/5. Minimal services evidence; primarily technology-focused. Evidence: \"Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and ren…\". Also: \"Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our missi…\".",
+    "AMT-05": "AMT-05 - AMTD Services Maturity. Score: 1.00/5. Minimal services evidence; primarily technology-focused. Evidence: \"Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and ren…\". Also: \"Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our missi…\".",
+    "ADR-05": "ADR-05 - Adversary Disruption Services Maturity. Score: 1.00/5. Minimal services evidence; primarily technology-focused. Evidence: \"Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and ren…\". Also: \"Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our missi…\".",
+    "PPM-05": "PPM-05 - Posture Management Services Maturity. Score: 1.00/5. Minimal services evidence; primarily technology-focused. Evidence: \"Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and ren…\". Also: \"Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our missi…\".",
+    "SVC-01": "SVC-01 - Implementation & Onboarding. Score: 1.00/5. Minimal services evidence; primarily technology-focused. Evidence: \"Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and ren…\". Also: \"Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our missi…\".",
+    "SVC-02": "SVC-02 - Consultative & Advisory Services. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and ren…\". Also: \"Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our missi…\".",
+    "SVC-03": "SVC-03 - Managed Operations & Continuous Delivery. Score: 1.00/5. Minimal services evidence; primarily technology-focused. Evidence: \"Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and ren…\". Also: \"Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our missi…\".",
+    "SVC-04": "SVC-04 - AI-Driven & Autonomous Delivery. Score: 1.00/5. Minimal services evidence; primarily technology-focused. Evidence: \"Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and ren…\". Also: \"Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our missi…\"."
+  },
+  "coverage_grade": "A",
+  "capability_coverage": [
+    "EXM-01",
+    "EXM-02",
+    "EXM-03",
+    "EXM-04",
+    "AMT-01",
+    "AMT-02",
+    "AMT-03",
+    "AMT-04",
+    "ADR-01",
+    "ADR-02",
+    "ADR-03",
+    "ADR-04",
+    "PPM-01",
+    "PPM-02",
+    "PPM-03",
+    "PPM-04",
+    "EXM-05",
+    "AMT-05",
+    "ADR-05",
+    "PPM-05",
+    "SVC-01",
+    "SVC-02",
+    "SVC-03",
+    "SVC-04"
+  ],
+  "vendor_summary_v2_1": {
+    "coverage_count": 16,
+    "coverage_grade": "B",
+    "pillar_averages": {
+      "EXM": 2.31,
+      "AMT": 2.25,
+      "ADR": 2.25,
+      "PPM": 2.25
+    }
+  },
+  "svc_evidence": {
+    "EXM-05": {
+      "source_urls": [
+        "https://www.leidos.com/resources/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and renewing our commitment to fostering an environment where every employee feels valu…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our mission.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "score": 1.0,
+      "notes": "SVC evidence: 2 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "AMT-05": {
+      "source_urls": [
+        "https://www.leidos.com/resources/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and renewing our commitment to fostering an environment where every employee feels valu…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our mission.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "score": 1.0,
+      "notes": "SVC evidence: 2 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "ADR-05": {
+      "source_urls": [
+        "https://www.leidos.com/resources/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and renewing our commitment to fostering an environment where every employee feels valu…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our mission.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "score": 1.0,
+      "notes": "SVC evidence: 2 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "PPM-05": {
+      "source_urls": [
+        "https://www.leidos.com/resources/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and renewing our commitment to fostering an environment where every employee feels valu…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our mission.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "score": 1.0,
+      "notes": "SVC evidence: 2 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "SVC-01": {
+      "source_urls": [
+        "https://www.leidos.com/resources/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and renewing our commitment to fostering an environment where every employee feels valu…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our mission.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "score": 1.0,
+      "notes": "SVC evidence: 2 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "SVC-02": {
+      "source_urls": [
+        "https://www.leidos.com/resources/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and renewing our commitment to fostering an environment where every employee feels valu…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our mission.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 2,
+      "score": 2.0,
+      "notes": "SVC evidence: 2 excerpts, 0 term hits, 2 criteria hits."
+    },
+    "SVC-03": {
+      "source_urls": [
+        "https://www.leidos.com/resources/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and renewing our commitment to fostering an environment where every employee feels valu…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our mission.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "score": 1.0,
+      "notes": "SVC evidence: 2 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "SVC-04": {
+      "source_urls": [
+        "https://www.leidos.com/resources/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life At Leidos, we have a strong focus on our employees’ career, flexibility, and well-being. We call this Leidos Life. It’s about embracing what makes Leidos great and renewing our commitment to fostering an environment where every employee feels valu…",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/resources/",
+          "excerpt": "Leidos Life supports a culture that helps you achieve personal and professional success while contributing to our mission.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "score": 1.0,
+      "notes": "SVC evidence: 2 excerpts, 0 term hits, 0 criteria hits."
+    }
+  },
+  "pricing_evidence": {
+    "PRC-SUB": {
+      "source_urls": [
+        "https://www.leidos.com/markets/defense/cybersecurity"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Annual Reports & Proxy Statements",
+          "matched_terms": [
+            "annual"
+          ],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "SEC Filings Annual Reports & Proxy Statements",
+          "matched_terms": [
+            "annual"
+          ],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Annual Reports & Proxy Statements Company",
+          "matched_terms": [
+            "annual"
+          ],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Investors Annual Reports & Proxy Statements",
+          "matched_terms": [
+            "annual"
+          ],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 0,
+      "criteria_results": [
+        {
+          "criterion": "Published subscription pricing tiers or structure",
+          "status": "partial"
+        },
+        {
+          "criterion": "Component breakdown visible to buyers (platform vs. managed service vs. AI features)",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Predictability of recurring costs for client budgeting",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Flexibility in subscription scope adjustment (scale up/down)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Transparency about what is included vs. excluded at each tier",
+          "status": "partial"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.0,
+      "notes": "Pricing evidence: 5 excerpts, 1 term hits, 0 criteria hits."
+    },
+    "PRC-USG": {
+      "source_urls": [
+        "https://www.leidos.com/markets/defense/cybersecurity",
+        "https://www.leidos.com/capabilities/cybersecurity"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern. Get started",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "criteria_results": [
+        {
+          "criterion": "Usage-based pricing components clearly defined (per-asset, per-scan, per-simulation)",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Measurement systems for quantifying consumption",
+          "status": "partial"
+        },
+        {
+          "criterion": "Real-time usage dashboards or monitoring available to clients",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Clear overage policies and escalation thresholds",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Alignment of usage fees with computational effort and value delivered",
+          "status": "unmet"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 1.5,
+      "notes": "Pricing evidence: 5 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "PRC-FIX": {
+      "source_urls": [
+        "https://www.leidos.com/markets/defense/cybersecurity",
+        "https://www.leidos.com/capabilities/cybersecurity"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern. Get started",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Clear one-time fees defined for setup and implementation",
+          "status": "met"
+        },
+        {
+          "criterion": "Scope definition for fixed-fee deliverables",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Separation of project costs from ongoing service costs",
+          "status": "met"
+        },
+        {
+          "criterion": "Change request and scope adjustment processes",
+          "status": "partial"
+        },
+        {
+          "criterion": "Implementation timeline and milestone-based payment structure",
+          "status": "unmet"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.5,
+      "notes": "Pricing evidence: 5 excerpts, 1 term hits, 1 criteria hits."
+    },
+    "PRC-SUC": {
+      "source_urls": [
+        "https://www.leidos.com/markets/defense/cybersecurity",
+        "https://www.leidos.com/capabilities/cybersecurity"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern. Get started",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "criteria_results": [
+        {
+          "criterion": "Defined success metrics tied to pricing (exposure reduction, control effectiveness, vulnerability SLAs)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Fees-at-risk component in service agreements",
+          "status": "partial"
+        },
+        {
+          "criterion": "Per-finding or per-validation pricing for pen test and BAS outcomes",
+          "status": "partial"
+        },
+        {
+          "criterion": "Clear measurement methodology and dispute resolution",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Balance of risk between provider and client",
+          "status": "unmet"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 1.5,
+      "notes": "Pricing evidence: 5 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "PRC-COM": {
+      "source_urls": [
+        "https://www.leidos.com/markets/defense/cybersecurity",
+        "https://www.leidos.com/capabilities/cybersecurity"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern. Get started",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "criteria_results": [
+        {
+          "criterion": "Multiple pricing components available and combinable",
+          "status": "partial"
+        },
+        {
+          "criterion": "Client budgeting predictability with spending expectations set upfront",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Demonstrated risk-sharing with clear rewards and penalties",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Avoidance of excessive variability and dispute potential",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Demystification of what the client pays for, when, and why",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 1.5,
+      "notes": "Pricing evidence: 5 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "PRC-OUT": {
+      "source_urls": [
+        "https://www.leidos.com/markets/defense/cybersecurity",
+        "https://www.leidos.com/capabilities/cybersecurity"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/markets/defense/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern. Get started",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.leidos.com/capabilities/cybersecurity",
+          "excerpt": "Want to know more? Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "criteria_results": [
+        {
+          "criterion": "Pricing components explicitly tied to measurable security outcomes (exposure reduction, control gap closure, mean-time-to-remediation)",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Outcome-based SLA commitments with financial consequences (credits, rebates, penalties)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Value realization metrics shared with clients showing pricing-to-outcome correlation",
+          "status": "partial"
+        },
+        {
+          "criterion": "Pricing adjustments based on demonstrated AI efficiency gains passed to clients",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Avoidance of outcome-washing — pricing labeled as outcome-based but measured on inputs",
+          "status": "unmet"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 1.5,
+      "notes": "Pricing evidence: 5 excerpts, 0 term hits, 0 criteria hits."
+    }
+  },
+  "pricing_rationales": {
+    "PRC-SUB": "PRC-SUB - Subscription Transparency. Score: 2.00/5. Basic pricing information available but limited detail. Evidence: \"Annual Reports & Proxy Statements\".",
+    "PRC-USG": "PRC-USG - Usage-Based Alignment. Score: 1.50/5. Minimal pricing transparency; mostly marketing claims. Evidence: \"Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.\".",
+    "PRC-FIX": "PRC-FIX - Fixed Delivery Pricing. Score: 2.50/5. Basic pricing information available but limited detail. Evidence: \"Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.\".",
+    "PRC-SUC": "PRC-SUC - Success & Outcome Fees. Score: 1.50/5. Minimal pricing transparency; mostly marketing claims. Evidence: \"Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.\".",
+    "PRC-COM": "PRC-COM - Composability & Overall Model Maturity. Score: 1.50/5. Minimal pricing transparency; mostly marketing claims. Evidence: \"Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.\".",
+    "PRC-OUT": "PRC-OUT - Pricing-to-Outcomes Alignment. Score: 1.50/5. Minimal pricing transparency; mostly marketing claims. Evidence: \"Contact us about product information and pricing, customer feedback, stockholder services, or just to voice a concern.\"."
+  },
+  "svc_pricing_research": {
+    "researched_at": "2026-05-15T02:42:59.325109+00:00",
+    "pipeline_version": "v3_new_vendors",
+    "pages_fetched": 4,
+    "svc_subpillars_scored": 8,
+    "pricing_dimensions_scored": 6
+  }
+}

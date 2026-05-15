@@ -50,13 +50,15 @@
                     <span class="icon">📋</span>
                     <span class="label">Reports</span>
                 </button>
+
+                <!-- Docs rail group -->
                 <div class="nav-item-group" id="docs-rail-group">
-                    <button class="nav-item" id="docs-rail-toggle" title="Documentation" aria-expanded="false">
-                        <span class="icon">📐</span>
+                    <button class="nav-item" id="docs-rail-toggle" aria-expanded="false" aria-haspopup="true" title="Research Documentation">
+                        <span class="icon">📚</span>
                         <span class="label">Docs</span>
                     </button>
                     <div class="nav-submenu" id="docs-rail-submenu" hidden>
-                        <button class="nav-subitem" data-doc-id="architecture" data-doc-title="📐 Architecture">Architecture</button>
+                        <button class="nav-subitem" data-doc-id="precyber_methodology" data-doc-title="Research Methodology">Research Methodology</button>
                     </div>
                 </div>
             </div>
@@ -237,21 +239,6 @@
             <!-- ASMF View -->
             <section id="asmf-view" class="view-container">
                 <div id="asmf-content" style="padding:24px 32px;"></div>
-            </section>
-
-            <!-- Documentation View (loaded dynamically when a Docs sub-item is clicked) -->
-            <section id="docs-view" class="view-container">
-                <div class="docs-view-layout">
-                    <aside class="docs-view-nav" id="docs-view-nav" aria-label="Documentation sections">
-                        <div class="docs-view-nav-header">
-                            <span class="docs-view-nav-title" id="docs-view-nav-title">Documentation</span>
-                        </div>
-                        <div class="docs-view-nav-list" id="docs-view-nav-list"></div>
-                    </aside>
-                    <div class="docs-view-body" id="docs-view-body">
-                        <div class="docs-view-loading">Select a topic from the Docs menu.</div>
-                    </div>
-                </div>
             </section>
 
             <!-- Roadmap View (90-Day Adoption Plan Gantt Chart) -->
@@ -809,12 +796,12 @@
                             </button>
                             <button class="reports-tab" data-report-tab="asmf-matrix" data-schema="agentic_soc_framework_v1.json" type="button">
                                 <span class="reports-tab-icon">🤖</span>
-                                <span class="reports-tab-label">ASMF Maturity Matrix</span>
+                                <span class="reports-tab-label">ASAF Adoption Matrix</span>
                                 <span class="reports-tab-close" title="Close tab">&times;</span>
                             </button>
                             <button class="reports-tab" data-report-tab="asmf-graph" data-schema="agentic_soc_framework_v1.json" type="button">
                                 <span class="reports-tab-icon">🌐</span>
-                                <span class="reports-tab-label">ASMF Knowledge Graph</span>
+                                <span class="reports-tab-label">ASAF Knowledge Graph</span>
                                 <span class="reports-tab-close" title="Close tab">&times;</span>
                             </button>
                         </div>
@@ -1512,7 +1499,7 @@
                                 <div class="report-document" style="max-width:none;padding:20px 28px 60px;">
                                     <div class="report-doc-header">
                                         <div class="report-doc-header-row">
-                                            <h1>Agentic SOC Maturity Framework &mdash; Visual Matrix</h1>
+                                            <h1>Agentic Security Operations Adoption Framework &mdash; Visual Matrix</h1>
                                             <div style="display:flex;align-items:center;gap:10px;">
                                                 <button class="report-export-btn" onclick="exportASMFPosterAsHTML()" title="Export standalone poster HTML">
                                                     <span class="icon">🌐</span> Export Poster
@@ -1668,6 +1655,21 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Docs view: research methodology panel -->
+            <section id="docs-view" class="view-container">
+                <div class="docs-view-layout">
+                    <aside class="docs-view-nav">
+                        <div class="docs-view-nav-header">
+                            <span id="docs-view-nav-title">Documentation</span>
+                        </div>
+                        <ul class="docs-view-nav-list" id="docs-view-nav-list"></ul>
+                    </aside>
+                    <div class="docs-view-body" id="docs-view-body">
+                        <div class="docs-view-loading">Select a document from the Docs menu.</div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -1817,6 +1819,7 @@
                     <div class="column-section">
                         <h3>Sub-Pillars</h3>
                         <div id="sub-pillars-visibility-list">
+
                             <!-- Dynamic sub-pillars will be inserted here -->
                         </div>
                     </div>
@@ -1828,9 +1831,98 @@
         </div>
     </div>
 
+    <style>
+    /* ── Docs view layout ──────────────────────────────────── */
+    .docs-view-layout {
+        display: flex;
+        height: 100%;
+        overflow: hidden;
+    }
+    .docs-view-nav {
+        width: 220px;
+        min-width: 180px;
+        flex-shrink: 0;
+        background: var(--bg-secondary);
+        border-right: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .docs-view-nav-header {
+        padding: 14px 14px 10px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--border-color);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .docs-view-nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 6px 0;
+        overflow-y: auto;
+        flex: 1;
+    }
+    .docs-nav-btn {
+        display: block;
+        width: 100%;
+        background: transparent;
+        border: none;
+        text-align: left;
+        padding: 8px 14px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        cursor: pointer;
+        border-radius: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .docs-nav-btn:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+    .docs-nav-btn.active { color: var(--color-primary, #0078d4); background: rgba(0,120,212,0.1); font-weight: 600; }
+    .docs-view-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 28px 36px;
+    }
+    .docs-view-loading {
+        color: var(--text-secondary);
+        font-size: 14px;
+        padding: 40px 0;
+    }
+    .docs-tab-content { display: none; }
+    .docs-tab-content.active { display: block; }
+    .docs-section-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0 0 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .docs-heading { font-size: 15px; font-weight: 600; margin: 18px 0 8px; color: var(--text-primary); }
+    .docs-text { font-size: 13px; line-height: 1.7; margin: 0 0 10px; color: var(--text-secondary); }
+    .docs-list { font-size: 13px; line-height: 1.7; margin: 0 0 12px 18px; color: var(--text-secondary); }
+    .docs-list li { margin-bottom: 4px; }
+    .docs-table-wrap { overflow-x: auto; margin: 12px 0 18px; }
+    .docs-table { border-collapse: collapse; font-size: 12px; min-width: 100%; }
+    .docs-table th { background: var(--bg-secondary); padding: 7px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+    .docs-table td { padding: 6px 12px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    .docs-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .docs-code { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 5px; padding: 12px 16px; font-size: 11px; line-height: 1.6; overflow-x: auto; margin: 10px 0 16px; white-space: pre; }
+    .docs-mermaid-wrap { margin: 16px 0 24px; min-height: 60px; background: rgba(0,0,0,0.15); border-radius: 6px; padding: 16px; overflow-x: auto; }
+    .docs-mermaid-wrap svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    .docs-mermaid-error { color: var(--text-secondary); font-size: 11px; }
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({ startOnLoad: false, theme: 'dark' });</script>
     <script src="{{ url_for('static', filename='rough.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
 
     <style>
     /* ── Documentation View ──────────────────────────────────── */
@@ -1858,68 +1950,6 @@
     }
     .nav-subitem:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
     .nav-subitem.active { color: var(--color-primary, #0078d4); background: rgba(0,120,212,0.13); }
-
-    /* Docs view layout: nav sidebar + body, fills the view-container */
-    #docs-view { padding: 0; }
-    .docs-view-layout { display: flex; flex-direction: row; height: 100%; min-height: 0; }
-    .docs-view-nav {
-        width: 240px; flex-shrink: 0;
-        border-right: 1px solid var(--border-color);
-        background: var(--bg-tertiary, var(--bg-secondary));
-        display: flex; flex-direction: column;
-        overflow: hidden;
-    }
-    .docs-view-nav-header {
-        padding: 14px 16px;
-        border-bottom: 1px solid var(--border-color);
-        flex-shrink: 0;
-    }
-    .docs-view-nav-title {
-        font-size: 13px; font-weight: 700;
-        color: var(--text-primary);
-        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        display: block;
-    }
-    .docs-view-nav-list {
-        flex: 1; overflow-y: auto; padding: 6px 0;
-        scrollbar-width: thin; scrollbar-color: var(--border-color) transparent;
-    }
-    .docs-view-nav-list::-webkit-scrollbar { width: 4px; }
-    .docs-view-nav-list::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
-    .docs-nav-btn {
-        display: block; width: 100%; text-align: left;
-        padding: 8px 16px; border: none; background: transparent;
-        color: var(--text-secondary); cursor: pointer;
-        font-size: 12px; line-height: 1.4;
-        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        border-left: 2px solid transparent;
-        transition: background 0.12s, color 0.12s, border-color 0.12s;
-    }
-    .docs-nav-btn:hover { background: rgba(0,120,212,0.08); color: var(--text-primary); }
-    .docs-nav-btn.active {
-        background: rgba(0,120,212,0.15);
-        color: var(--color-primary, #0078d4);
-        border-left-color: var(--color-primary, #0078d4);
-        font-weight: 600;
-    }
-    .docs-view-body { flex: 1; min-width: 0; overflow-y: auto; padding: 28px 36px; }
-    .docs-view-loading { padding: 40px; color: var(--text-secondary); text-align: center; }
-    .docs-tab-content { display: none; }
-    .docs-tab-content.active { display: block; }
-    .docs-section-title { font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0 0 22px 0; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
-    .docs-heading { font-size: 14px; font-weight: 700; color: var(--color-primary, #0078d4); margin: 20px 0 10px 0; }
-    .docs-text { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
-    .docs-list { margin: 0 0 14px 0; padding-left: 20px; }
-    .docs-list li { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 4px; }
-    .docs-table-wrap { overflow-x: auto; margin-bottom: 18px; }
-    .docs-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-    .docs-table th { background: var(--bg-tertiary, rgba(0,0,0,0.15)); color: var(--text-primary); padding: 7px 10px; text-align: left; font-weight: 600; border: 1px solid var(--border-color); white-space: nowrap; }
-    .docs-table td { padding: 6px 10px; border: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: top; }
-    .docs-table tr:nth-child(even) td { background: rgba(0,0,0,0.06); }
-    .docs-code { background: var(--bg-primary, #1e1e1e); border: 1px solid var(--border-color); border-radius: 6px; padding: 14px 16px; font-size: 11.5px; font-family: 'Consolas','Cascadia Code',monospace; color: var(--text-primary); white-space: pre; overflow-x: auto; margin-bottom: 14px; line-height: 1.55; }
-    .docs-mermaid-wrap { background: var(--bg-primary, #1a1a2e); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 18px; overflow: auto; text-align: center; }
-    .docs-mermaid-wrap svg { max-width: 100%; height: auto; }
-    .docs-mermaid-error { color: #e74c3c; font-size: 12px; font-family: monospace; padding: 12px; }
     </style>
 
     <script src="{{ url_for('static', filename='app.js', v=(static_versions.app_js if static_versions else 1)) }}"></script>

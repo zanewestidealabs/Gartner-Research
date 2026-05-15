@@ -1,0 +1,1584 @@
+{
+  "vendor": "Cyderes",
+  "headquarters": "Toronto, Canada",
+  "region": "North America",
+  "specialization": "MDR & Managed Security Services",
+  "primary_capability": "SVC",
+  "expected_coverage": [
+    "SVC-01",
+    "SVC-02",
+    "SVC-03",
+    "ADR-03",
+    "EXM-01"
+  ],
+  "delivery_model": "Managed Services",
+  "services_maturity_level": "consultative",
+  "outcome_maturity_rating": 2.08,
+  "outcome_maturity_label": "Process-Mature",
+  "is_startup": false,
+  "is_ai_first": false,
+  "research_flag": "mssp_regional",
+  "sub_pillar_rationale_v2": {
+    "EXM-01": {
+      "sub_pillar_id": "EXM-01",
+      "sub_pillar_name": "Attack Surface Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated discovery of internet-facing assets and shadow IT; Real-time asset inventory with risk scoring. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated discovery of internet-facing assets and shadow IT",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Real-time asset inventory with risk scoring",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud resource discovery across multi-cloud environments",
+          "status": "partial",
+          "evidence": "No direct evidence (2/5 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with CMDB and asset management systems",
+          "status": "partial",
+          "evidence": "Identity & Access Management\n                  \n                \n                \n                \n\n                  \nSecure identity systems and access pathways that attackers use to move through yo",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring for new or changed assets",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-02": {
+      "sub_pillar_id": "EXM-02",
+      "sub_pillar_name": "Continuous Threat Exposure Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Exposure scoping and discovery automation; Prioritization based on exploitability and business context. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "CTEM program capabilities or alignment",
+          "status": "unmet",
+          "evidence": "Security Operations Across Identity, Threat, and Exposure\n\nCyderes builds security programs around how your organization operates.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exposure scoping and discovery automation",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Prioritization based on exploitability and business context",
+          "status": "partial",
+          "evidence": "Full Environmental Context.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Validation of exposure remediation effectiveness",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous cycle operation (not point-in-time)",
+          "status": "partial",
+          "evidence": "Close the gaps\n\nGet a comprehensive approach that integrates everything from security operations to access management.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-03": {
+      "sub_pillar_id": "EXM-03",
+      "sub_pillar_name": "Vulnerability Prioritization & Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Exploitability context from threat intelligence; Asset criticality and business impact weighting. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Risk-based vulnerability scoring beyond CVSS",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/5 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploitability context from threat intelligence",
+          "status": "partial",
+          "evidence": "Never let up\n\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Asset criticality and business impact weighting",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated remediation prioritization and tracking",
+          "status": "partial",
+          "evidence": "No direct evidence (2/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with patch management and ticketing systems",
+          "status": "partial",
+          "evidence": "Identity & Access Management\n                  \n                \n                \n                \n\n                  \nSecure identity systems and access pathways that attackers use to move through yo",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-04": {
+      "sub_pillar_id": "EXM-04",
+      "sub_pillar_name": "Third-Party & Supply Chain Exposure",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Third-party vendor risk assessment capabilities; Continuous monitoring of vendor security posture. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Third-party vendor risk assessment capabilities",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software supply chain monitoring (SBOM analysis)",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/6 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Open-source component vulnerability tracking",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring of vendor security posture",
+          "status": "partial",
+          "evidence": "With Cyderes you can: \r\n        \r\n      \r\n       \r\n      \r\n    \r\n  \r\n  \r\n\n      \n\n  \n\n    \n\n      \n      \n\n        \n\n        \n\n        \n        \n\n        \n        \n        \n        \n\n  \n\n  \nGain an ed",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Supply chain attack detection and alerting",
+          "status": "partial",
+          "evidence": "Identity & Access Management\n                  \n                \n                \n                \n\n                  \nSecure identity systems and access pathways that attackers use to move through yo",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-01": {
+      "sub_pillar_id": "AMT-01",
+      "sub_pillar_name": "Polymorphic & Morphing Defense",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (1): Evidence of increased attacker cost through dynamic changes. Unmet criteria (4): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Runtime address space or memory layout randomization",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/6 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "API endpoint mutation or obfuscation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Network configuration morphing",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "System identifier rotation",
+          "status": "unmet",
+          "evidence": "Identity & Access Management\n                  \n                \n                \n                \n\n                  \nSecure identity systems and access pathways that attackers use to move through yo",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Evidence of increased attacker cost through dynamic changes",
+          "status": "partial",
+          "evidence": "Identity & Access Management\n                  \n                \n                \n                \n\n                  \nSecure identity systems and access pathways that attackers use to move through yo",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-02": {
+      "sub_pillar_id": "AMT-02",
+      "sub_pillar_name": "Runtime Application Protection",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (1): Signature-less exploit detection at runtime. Unmet criteria (4): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "RASP or in-app runtime protection capabilities",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/5 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Code instrumentation for exploit prevention",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Application hardening and anti-tampering",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Memory corruption defense (ROP, buffer overflow prevention)",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/7 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Signature-less exploit detection at runtime",
+          "status": "partial",
+          "evidence": "No direct evidence (2/4 terms)",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-03": {
+      "sub_pillar_id": "AMT-03",
+      "sub_pillar_name": "Dynamic Network & Infrastructure Defense",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): Software-defined perimeter or zero trust network access; Adaptive access controls based on risk signals. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated micro-segmentation with dynamic policy",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Network topology reconfiguration capabilities",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Software-defined perimeter or zero trust network access",
+          "status": "partial",
+          "evidence": "Close the gaps\n\nGet a comprehensive approach that integrates everything from security operations to access management.",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Infrastructure-as-code security automation",
+          "status": "unmet",
+          "evidence": "With Cyderes you can: \r\n        \r\n      \r\n       \r\n      \r\n    \r\n  \r\n  \r\n\n      \n\n  \n\n    \n\n      \n      \n\n        \n\n        \n\n        \n        \n\n        \n        \n        \n        \n\n  \n\n  \nGain an ed",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Adaptive access controls based on risk signals",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-04": {
+      "sub_pillar_id": "AMT-04",
+      "sub_pillar_name": "Identity & Credential Rotation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Privileged access session isolation. Partially met (1): Service account and API key lifecycle management. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated credential and secret rotation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Ephemeral or just-in-time credential provisioning",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Service account and API key lifecycle management",
+          "status": "partial",
+          "evidence": "Close the gaps\n\nGet a comprehensive approach that integrates everything from security operations to access management.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Certificate and token rotation automation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Privileged access session isolation",
+          "status": "met",
+          "evidence": "Close the gaps\n\nGet a comprehensive approach that integrates everything from security operations to access management.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-01": {
+      "sub_pillar_id": "ADR-01",
+      "sub_pillar_name": "Deception Technology",
+      "original_score": 0,
+      "adjusted_score": 0.0,
+      "scoring_level": 0,
+      "score_rationale": "Cyderes scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Decoy systems mimicking production assets; Breadcrumb placement for lateral movement detection. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Honeypot and honeytoken deployment capabilities",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Decoy systems mimicking production assets",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Breadcrumb placement for lateral movement detection",
+          "status": "partial",
+          "evidence": "No direct evidence (2/5 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "High-fidelity alerting with low false-positive rates",
+          "status": "unmet",
+          "evidence": "Close the gaps\n\nGet a comprehensive approach that integrates everything from security operations to access management.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with SIEM/SOAR for automated response",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.0,
+        "reason": "Fresh score 0.00: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-02": {
+      "sub_pillar_id": "ADR-02",
+      "sub_pillar_name": "Threat Intelligence Operationalization",
+      "original_score": 0,
+      "adjusted_score": 0.0,
+      "scoring_level": 0,
+      "score_rationale": "Cyderes scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Unmet criteria (5): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Threat intelligence platform or feed integration",
+          "status": "unmet",
+          "evidence": "Never let up\n\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated IOC ingestion and correlation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "TTP mapping to MITRE ATT&CK framework",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Automated blocking based on threat intelligence",
+          "status": "unmet",
+          "evidence": "Never let up\n\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Intelligence-driven hunting query generation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.0,
+        "reason": "Fresh score 0.00: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-03": {
+      "sub_pillar_id": "ADR-03",
+      "sub_pillar_name": "Proactive Threat Hunting",
+      "original_score": 0,
+      "adjusted_score": 0.0,
+      "scoring_level": 0,
+      "score_rationale": "Cyderes scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (1): Managed or automated threat hunting services. Unmet criteria (4): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Managed or automated threat hunting services",
+          "status": "partial",
+          "evidence": "Never let up\n\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Hypothesis-driven hunting methodologies",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Hunt query libraries and playbooks",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Integration with telemetry sources (EDR, NDR, SIEM)",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/6 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Hunt findings feeding back to detection engineering",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/6 terms)",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.0,
+        "reason": "Fresh score 0.00: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-04": {
+      "sub_pillar_id": "ADR-04",
+      "sub_pillar_name": "Counter-Adversary Operations",
+      "original_score": 0,
+      "adjusted_score": 0.0,
+      "scoring_level": 0,
+      "score_rationale": "Cyderes scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Dark web monitoring and intelligence gathering; Digital risk protection services. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Dark web monitoring and intelligence gathering",
+          "status": "partial",
+          "evidence": "No direct evidence (2/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Brand protection and impersonation detection",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Takedown service capabilities (domains, phishing, infrastructure)",
+          "status": "unmet",
+          "evidence": "Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Adversary attribution and campaign tracking",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Digital risk protection services",
+          "status": "partial",
+          "evidence": "Powered by Meridian & Agentic AI\n\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.0,
+        "reason": "Fresh score 0.00: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-01": {
+      "sub_pillar_id": "PPM-01",
+      "sub_pillar_name": "Breach & Attack Simulation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Control gap identification and remediation guidance. Partially met (1): Continuous validation against production controls. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated attack chain simulation capabilities",
+          "status": "unmet",
+          "evidence": "Identity & Access Management\n                  \n                \n                \n                \n\n                  \nSecure identity systems and access pathways that attackers use to move through yo",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous validation against production controls",
+          "status": "partial",
+          "evidence": "Finally get the support you need to face a world of continuously evolving threats.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "MITRE ATT&CK technique coverage",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Control gap identification and remediation guidance",
+          "status": "met",
+          "evidence": "Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Reporting on detection and prevention effectiveness",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-02": {
+      "sub_pillar_id": "PPM-02",
+      "sub_pillar_name": "Security Control Validation",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (1): SIEM detection rule validation and testing. Unmet criteria (4): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "SIEM detection rule validation and testing",
+          "status": "partial",
+          "evidence": "No direct evidence (2/5 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "EDR policy effectiveness verification",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/3 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Firewall and network control validation",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "DLP and data protection control testing",
+          "status": "unmet",
+          "evidence": "That context is actively fused into our security operations so every decision reflects real risk across identities, assets, access, and exposures, not partial data.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Configuration drift detection and alerting",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-03": {
+      "sub_pillar_id": "PPM-03",
+      "sub_pillar_name": "Penetration Testing & Red Teaming",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Attack path analysis and visualization. Partially met (1): Exploit validation and proof-of-concept generation. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated penetration testing platform",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Continuous or on-demand pen testing capabilities",
+          "status": "unmet",
+          "evidence": "Finally get the support you need to face a world of continuously evolving threats.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Attack path analysis and visualization",
+          "status": "met",
+          "evidence": "Identity & Access Management\n                  \n                \n                \n                \n\n                  \nSecure identity systems and access pathways that attackers use to move through yo",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploit validation and proof-of-concept generation",
+          "status": "partial",
+          "evidence": "No direct evidence (2/4 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Red team exercise automation (PTaaS)",
+          "status": "unmet",
+          "evidence": "Never let up\n\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-04": {
+      "sub_pillar_id": "PPM-04",
+      "sub_pillar_name": "Cloud Security Posture Management",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Cyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Unmet criteria (5): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Cloud misconfiguration detection (AWS, Azure, GCP)",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/6 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud entitlement and permissions analysis (CIEM)",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/5 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Compliance framework mapping and reporting",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Cloud workload protection capabilities",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Infrastructure-as-code security scanning",
+          "status": "unmet",
+          "evidence": "With Cyderes you can: \r\n        \r\n      \r\n       \r\n      \r\n    \r\n  \r\n  \r\n\n      \n\n  \n\n    \n\n      \n      \n\n        \n\n        \n\n        \n        \n\n        \n        \n        \n        \n\n  \n\n  \nGain an ed",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    }
+  },
+  "sub_pillar_scores_v2_researched": {
+    "EXM-01": 2.25,
+    "EXM-02": 2.25,
+    "EXM-03": 2.25,
+    "EXM-04": 2.25,
+    "AMT-01": 2.0,
+    "AMT-02": 2.0,
+    "AMT-03": 2.0,
+    "AMT-04": 2.25,
+    "ADR-01": 0.0,
+    "ADR-02": 0.0,
+    "ADR-03": 0.0,
+    "ADR-04": 0.0,
+    "PPM-01": 2.25,
+    "PPM-02": 2.0,
+    "PPM-03": 2.25,
+    "PPM-04": 2.0
+  },
+  "pillar_scores_v2_researched": {
+    "EXM": 2.25,
+    "AMT": 2.06,
+    "ADR": 0.0,
+    "PPM": 2.12
+  },
+  "evidence_quality_analysis": {
+    "EXM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    }
+  },
+  "sub_pillar_rationale_v2_consolidated": {
+    "EXM-01": "EXM-01 – Attack Surface Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated discovery of internet-facing assets and shadow IT; Real-time asset inventory with risk scoring. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated discovery of internet-facing assets and shadow IT', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}, {'criterion': 'Real-time asset inventory with risk scoring', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}, {'criterion': 'Cloud resource discovery across multi-cloud environments', 'status': 'partial', 'evidence': 'No direct evidence (2/5 terms)', 'confidence': 'medium'}, {'criterion': 'Integration with CMDB and asset management systems', 'status': 'partial', 'evidence': 'Identity & Access Management\\n                  \\n                \\n                \\n                \\n\\n                  \\nSecure identity systems and access pathways that attackers use to move through yo', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring for new or changed assets', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}]",
+    "EXM-02": "EXM-02 – Continuous Threat Exposure Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Exposure scoping and discovery automation; Prioritization based on exploitability and business context. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'CTEM program capabilities or alignment', 'status': 'unmet', 'evidence': 'Security Operations Across Identity, Threat, and Exposure\\n\\nCyderes builds security programs around how your organization operates.', 'confidence': 'medium'}, {'criterion': 'Exposure scoping and discovery automation', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}, {'criterion': 'Prioritization based on exploitability and business context', 'status': 'partial', 'evidence': 'Full Environmental\\xa0Context.', 'confidence': 'medium'}, {'criterion': 'Validation of exposure remediation effectiveness', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}, {'criterion': 'Continuous cycle operation (not point-in-time)', 'status': 'partial', 'evidence': 'Close the gaps\\n\\nGet a comprehensive approach that integrates everything from security operations to access management.', 'confidence': 'medium'}]",
+    "EXM-03": "EXM-03 – Vulnerability Prioritization & Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Exploitability context from threat intelligence; Asset criticality and business impact weighting. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Risk-based vulnerability scoring beyond CVSS', 'status': 'unmet', 'evidence': 'No direct evidence (1/5 terms)', 'confidence': 'medium'}, {'criterion': 'Exploitability context from threat intelligence', 'status': 'partial', 'evidence': 'Never let up\\n\\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.', 'confidence': 'medium'}, {'criterion': 'Asset criticality and business impact weighting', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}, {'criterion': 'Automated remediation prioritization and tracking', 'status': 'partial', 'evidence': 'No direct evidence (2/4 terms)', 'confidence': 'medium'}, {'criterion': 'Integration with patch management and ticketing systems', 'status': 'partial', 'evidence': 'Identity & Access Management\\n                  \\n                \\n                \\n                \\n\\n                  \\nSecure identity systems and access pathways that attackers use to move through yo', 'confidence': 'medium'}]",
+    "EXM-04": "EXM-04 – Third-Party & Supply Chain Exposure: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Third-party vendor risk assessment capabilities; Continuous monitoring of vendor security posture. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Third-party vendor risk assessment capabilities', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}, {'criterion': 'Software supply chain monitoring (SBOM analysis)', 'status': 'unmet', 'evidence': 'No direct evidence (1/6 terms)', 'confidence': 'medium'}, {'criterion': 'Open-source component vulnerability tracking', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring of vendor security posture', 'status': 'partial', 'evidence': 'With Cyderes you can:\\xa0\\r\\n        \\r\\n      \\r\\n       \\r\\n      \\r\\n    \\r\\n  \\r\\n  \\r\\n\\n      \\n\\n  \\n\\n    \\n\\n      \\n      \\n\\n        \\n\\n        \\n\\n        \\n        \\n\\n        \\n        \\n        \\n        \\n\\n  \\n\\n  \\nGain an ed', 'confidence': 'medium'}, {'criterion': 'Supply chain attack detection and alerting', 'status': 'partial', 'evidence': 'Identity & Access Management\\n                  \\n                \\n                \\n                \\n\\n                  \\nSecure identity systems and access pathways that attackers use to move through yo', 'confidence': 'medium'}]",
+    "AMT-01": "AMT-01 – Polymorphic & Morphing Defense: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (1): Evidence of increased attacker cost through dynamic changes. Unmet criteria (4): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Runtime address space or memory layout randomization', 'status': 'unmet', 'evidence': 'No direct evidence (0/6 terms)', 'confidence': 'high'}, {'criterion': 'API endpoint mutation or obfuscation', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Network configuration morphing', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'System identifier rotation', 'status': 'unmet', 'evidence': 'Identity & Access Management\\n                  \\n                \\n                \\n                \\n\\n                  \\nSecure identity systems and access pathways that attackers use to move through yo', 'confidence': 'medium'}, {'criterion': 'Evidence of increased attacker cost through dynamic changes', 'status': 'partial', 'evidence': 'Identity & Access Management\\n                  \\n                \\n                \\n                \\n\\n                  \\nSecure identity systems and access pathways that attackers use to move through yo', 'confidence': 'medium'}]",
+    "AMT-02": "AMT-02 – Runtime Application Protection: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (1): Signature-less exploit detection at runtime. Unmet criteria (4): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'RASP or in-app runtime protection capabilities', 'status': 'unmet', 'evidence': 'No direct evidence (0/5 terms)', 'confidence': 'high'}, {'criterion': 'Code instrumentation for exploit prevention', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}, {'criterion': 'Application hardening and anti-tampering', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Memory corruption defense (ROP, buffer overflow prevention)', 'status': 'unmet', 'evidence': 'No direct evidence (1/7 terms)', 'confidence': 'medium'}, {'criterion': 'Signature-less exploit detection at runtime', 'status': 'partial', 'evidence': 'No direct evidence (2/4 terms)', 'confidence': 'medium'}]",
+    "AMT-03": "AMT-03 – Dynamic Network & Infrastructure Defense: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): Software-defined perimeter or zero trust network access; Adaptive access controls based on risk signals. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated micro-segmentation with dynamic policy', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}, {'criterion': 'Network topology reconfiguration capabilities', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Software-defined perimeter or zero trust network access', 'status': 'partial', 'evidence': 'Close the gaps\\n\\nGet a comprehensive approach that integrates everything from security operations to access management.', 'confidence': 'low'}, {'criterion': 'Infrastructure-as-code security automation', 'status': 'unmet', 'evidence': 'With Cyderes you can:\\xa0\\r\\n        \\r\\n      \\r\\n       \\r\\n      \\r\\n    \\r\\n  \\r\\n  \\r\\n\\n      \\n\\n  \\n\\n    \\n\\n      \\n      \\n\\n        \\n\\n        \\n\\n        \\n        \\n\\n        \\n        \\n        \\n        \\n\\n  \\n\\n  \\nGain an ed', 'confidence': 'medium'}, {'criterion': 'Adaptive access controls based on risk signals', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}]",
+    "AMT-04": "AMT-04 – Identity & Credential Rotation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Privileged access session isolation. Partially met (1): Service account and API key lifecycle management. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated credential and secret rotation', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Ephemeral or just-in-time credential provisioning', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Service account and API key lifecycle management', 'status': 'partial', 'evidence': 'Close the gaps\\n\\nGet a comprehensive approach that integrates everything from security operations to access management.', 'confidence': 'medium'}, {'criterion': 'Certificate and token rotation automation', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Privileged access session isolation', 'status': 'met', 'evidence': 'Close the gaps\\n\\nGet a comprehensive approach that integrates everything from security operations to access management.', 'confidence': 'medium'}]",
+    "ADR-01": "ADR-01 – Deception Technology: Score 0.00/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nCyderes scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Decoy systems mimicking production assets; Breadcrumb placement for lateral movement detection. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.00: Fresh score 0.00: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Honeypot and honeytoken deployment capabilities', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Decoy systems mimicking production assets', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}, {'criterion': 'Breadcrumb placement for lateral movement detection', 'status': 'partial', 'evidence': 'No direct evidence (2/5 terms)', 'confidence': 'medium'}, {'criterion': 'High-fidelity alerting with low false-positive rates', 'status': 'unmet', 'evidence': 'Close the gaps\\n\\nGet a comprehensive approach that integrates everything from security operations to access management.', 'confidence': 'medium'}, {'criterion': 'Integration with SIEM/SOAR for automated response', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}]",
+    "ADR-02": "ADR-02 – Threat Intelligence Operationalization: Score 0.00/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nCyderes scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Unmet criteria (5): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.00: Fresh score 0.00: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Threat intelligence platform or feed integration', 'status': 'unmet', 'evidence': 'Never let up\\n\\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.', 'confidence': 'medium'}, {'criterion': 'Automated IOC ingestion and correlation', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'TTP mapping to MITRE ATT&CK framework', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Automated blocking based on threat intelligence', 'status': 'unmet', 'evidence': 'Never let up\\n\\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.', 'confidence': 'medium'}, {'criterion': 'Intelligence-driven hunting query generation', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}]",
+    "ADR-03": "ADR-03 – Proactive Threat Hunting: Score 0.00/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nCyderes scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (1): Managed or automated threat hunting services. Unmet criteria (4): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.00: Fresh score 0.00: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Managed or automated threat hunting services', 'status': 'partial', 'evidence': 'Never let up\\n\\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.', 'confidence': 'medium'}, {'criterion': 'Hypothesis-driven hunting methodologies', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Hunt query libraries and playbooks', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Integration with telemetry sources (EDR, NDR, SIEM)', 'status': 'unmet', 'evidence': 'No direct evidence (1/6 terms)', 'confidence': 'medium'}, {'criterion': 'Hunt findings feeding back to detection engineering', 'status': 'unmet', 'evidence': 'No direct evidence (1/6 terms)', 'confidence': 'medium'}]",
+    "ADR-04": "ADR-04 – Counter-Adversary Operations: Score 0.00/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nCyderes scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Dark web monitoring and intelligence gathering; Digital risk protection services. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.00: Fresh score 0.00: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Dark web monitoring and intelligence gathering', 'status': 'partial', 'evidence': 'No direct evidence (2/4 terms)', 'confidence': 'medium'}, {'criterion': 'Brand protection and impersonation detection', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}, {'criterion': 'Takedown service capabilities (domains, phishing, infrastructure)', 'status': 'unmet', 'evidence': 'Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.', 'confidence': 'medium'}, {'criterion': 'Adversary attribution and campaign tracking', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Digital risk protection services', 'status': 'partial', 'evidence': 'Powered by Meridian & Agentic AI\\n\\nMeridian connects identities, assets, access relationships, and exposures across your environment, creating a shared understanding of how risk actually exists.', 'confidence': 'medium'}]",
+    "PPM-01": "PPM-01 – Breach & Attack Simulation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Control gap identification and remediation guidance. Partially met (1): Continuous validation against production controls. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated attack chain simulation capabilities', 'status': 'unmet', 'evidence': 'Identity & Access Management\\n                  \\n                \\n                \\n                \\n\\n                  \\nSecure identity systems and access pathways that attackers use to move through yo', 'confidence': 'medium'}, {'criterion': 'Continuous validation against production controls', 'status': 'partial', 'evidence': 'Finally get the support you need to face a world of continuously evolving threats.', 'confidence': 'medium'}, {'criterion': 'MITRE ATT&CK technique coverage', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Control gap identification and remediation guidance', 'status': 'met', 'evidence': 'Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.', 'confidence': 'medium'}, {'criterion': 'Reporting on detection and prevention effectiveness', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}]",
+    "PPM-02": "PPM-02 – Security Control Validation: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (1): SIEM detection rule validation and testing. Unmet criteria (4): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'SIEM detection rule validation and testing', 'status': 'partial', 'evidence': 'No direct evidence (2/5 terms)', 'confidence': 'medium'}, {'criterion': 'EDR policy effectiveness verification', 'status': 'unmet', 'evidence': 'No direct evidence (1/3 terms)', 'confidence': 'medium'}, {'criterion': 'Firewall and network control validation', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}, {'criterion': 'DLP and data protection control testing', 'status': 'unmet', 'evidence': 'That context is actively fused into our security operations so every decision reflects real risk across identities, assets, access, and exposures, not partial data.', 'confidence': 'medium'}, {'criterion': 'Configuration drift detection and alerting', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}]",
+    "PPM-03": "PPM-03 – Penetration Testing & Red Teaming: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Attack path analysis and visualization. Partially met (1): Exploit validation and proof-of-concept generation. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated penetration testing platform', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Continuous or on-demand pen testing capabilities', 'status': 'unmet', 'evidence': 'Finally get the support you need to face a world of continuously evolving threats.', 'confidence': 'medium'}, {'criterion': 'Attack path analysis and visualization', 'status': 'met', 'evidence': 'Identity & Access Management\\n                  \\n                \\n                \\n                \\n\\n                  \\nSecure identity systems and access pathways that attackers use to move through yo', 'confidence': 'medium'}, {'criterion': 'Exploit validation and proof-of-concept generation', 'status': 'partial', 'evidence': 'No direct evidence (2/4 terms)', 'confidence': 'medium'}, {'criterion': 'Red team exercise automation (PTaaS)', 'status': 'unmet', 'evidence': 'Never let up\\n\\nPartner with a team that’s constantly innovating and adapting to stay ahead of the threat landscape.', 'confidence': 'medium'}]",
+    "PPM-04": "PPM-04 – Cloud Security Posture Management: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nCyderes scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=2.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Unmet criteria (5): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=2.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Cloud misconfiguration detection (AWS, Azure, GCP)', 'status': 'unmet', 'evidence': 'No direct evidence (1/6 terms)', 'confidence': 'medium'}, {'criterion': 'Cloud entitlement and permissions analysis (CIEM)', 'status': 'unmet', 'evidence': 'No direct evidence (0/5 terms)', 'confidence': 'high'}, {'criterion': 'Compliance framework mapping and reporting', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Cloud workload protection capabilities', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Infrastructure-as-code security scanning', 'status': 'unmet', 'evidence': 'With Cyderes you can:\\xa0\\r\\n        \\r\\n      \\r\\n       \\r\\n      \\r\\n    \\r\\n  \\r\\n  \\r\\n\\n      \\n\\n  \\n\\n    \\n\\n      \\n      \\n\\n        \\n\\n        \\n\\n        \\n        \\n\\n        \\n        \\n        \\n        \\n\\n  \\n\\n  \\nGain an ed', 'confidence': 'medium'}]",
+    "EXM-05": "EXM-05 - Exposure Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully manag…\". Also: \"Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully man…\".",
+    "AMT-05": "AMT-05 - AMTD Services Maturity. Score: 1.50/5. Minimal services evidence; primarily technology-focused. Evidence: \"Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully manag…\". Also: \"“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service wou…\".",
+    "ADR-05": "ADR-05 - Adversary Disruption Services Maturity. Score: 1.50/5. Minimal services evidence; primarily technology-focused. Evidence: \"Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully manag…\". Also: \"Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully man…\".",
+    "PPM-05": "PPM-05 - Posture Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully manag…\". Also: \"Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully man…\".",
+    "SVC-01": "SVC-01 - Implementation & Onboarding. Score: 1.50/5. Minimal services evidence; primarily technology-focused. Evidence: \"“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our da…\". Also: \"Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization…\".",
+    "SVC-02": "SVC-02 - Consultative & Advisory Services. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our da…\". Also: \"Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization…\".",
+    "SVC-03": "SVC-03 - Managed Operations & Continuous Delivery. Score: 3.00/5. Demonstrated services capability with documented offerings. Evidence: \"Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully manag…\". Also: \"Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully man…\".",
+    "SVC-04": "SVC-04 - AI-Driven & Autonomous Delivery. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our da…\". Also: \"Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization…\"."
+  },
+  "coverage_grade": "B",
+  "capability_coverage": [
+    "EXM-01",
+    "EXM-02",
+    "EXM-03",
+    "EXM-04",
+    "AMT-01",
+    "AMT-02",
+    "AMT-03",
+    "AMT-04",
+    "PPM-01",
+    "PPM-02",
+    "PPM-03",
+    "PPM-04",
+    "EXM-05",
+    "AMT-05",
+    "ADR-05",
+    "PPM-05",
+    "SVC-01",
+    "SVC-02",
+    "SVC-03",
+    "SVC-04"
+  ],
+  "vendor_summary_v2_1": {
+    "coverage_count": 12,
+    "coverage_grade": "C",
+    "pillar_averages": {
+      "EXM": 2.25,
+      "AMT": 2.06,
+      "ADR": 0.0,
+      "PPM": 2.12
+    }
+  },
+  "svc_evidence": {
+    "EXM-05": {
+      "source_urls": [
+        "https://www.cyderes.com/about/",
+        "https://www.cyderes.com/services/managed-detection-response/",
+        "https://www.cyderes.com/services/",
+        "https://www.cyderes.com/services/security-operations/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environ…",
+          "matched_terms": [
+            "criteria:CTEM-as-a-service or managed exposure management p",
+            "criteria:Managed vulnerability operations with analyst-driv"
+          ],
+          "relevance_score": 9
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [
+            "criteria:CTEM-as-a-service or managed exposure management p"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.cyderes.com/services/",
+          "excerpt": "Managed Detection & Response Exposure Management",
+          "matched_terms": [
+            "criteria:CTEM-as-a-service or managed exposure management p"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.cyderes.com/services/managed-detection-response/",
+          "excerpt": "Managed Detection & Response Exposure Management",
+          "matched_terms": [
+            "criteria:CTEM-as-a-service or managed exposure management p"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.cyderes.com/services/security-operations/",
+          "excerpt": "Managed Detection & Response Exposure Management",
+          "matched_terms": [
+            "criteria:CTEM-as-a-service or managed exposure management p"
+          ],
+          "relevance_score": 4
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 5,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 5 criteria hits."
+    },
+    "AMT-05": {
+      "source_urls": [
+        "https://www.cyderes.com/about/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environ…",
+          "matched_terms": [
+            "criteria:Runtime protection-as-a-service or managed RASP op"
+          ],
+          "relevance_score": 6
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Senior Manager, Information Systems “Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.” Steven Ramirez",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "score": 1.5,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "ADR-05": {
+      "source_urls": [
+        "https://www.cyderes.com/about/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environ…",
+          "matched_terms": [
+            "criteria:Managed deception-as-a-service with analyst-operat",
+            "criteria:Managed threat hunting services with dedicated hun",
+            "criteria:Managed threat intelligence operations with analys"
+          ],
+          "relevance_score": 12
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [
+            "criteria:Managed deception-as-a-service with analyst-operat"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [
+            "criteria:Managed deception-as-a-service with analyst-operat"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Senior Manager, Information Systems “Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "score": 1.5,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "PPM-05": {
+      "source_urls": [
+        "https://www.cyderes.com/about/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environ…",
+          "matched_terms": [
+            "criteria:Managed BAS operations with continuous simulation ",
+            "criteria:Managed security control validation with analyst-d",
+            "criteria:Managed CSPM or cloud security posture operations"
+          ],
+          "relevance_score": 12
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [
+            "criteria:Managed security control validation with analyst-d"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Senior Manager, Information Systems “Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.” Steven Ramirez",
+          "matched_terms": [],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 2,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 2 criteria hits."
+    },
+    "SVC-01": {
+      "source_urls": [
+        "https://www.cyderes.com/about/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environ…",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Senior Manager, Information Systems “Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.” Steven Ramirez",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "score": 1.5,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "SVC-02": {
+      "source_urls": [
+        "https://www.cyderes.com/about/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environ…",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Senior Manager, Information Systems “Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.” Steven Ramirez",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 3,
+      "score": 2.5,
+      "notes": "SVC evidence: 5 excerpts, 1 term hits, 3 criteria hits."
+    },
+    "SVC-03": {
+      "source_urls": [
+        "https://www.cyderes.com/about/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environ…",
+          "matched_terms": [
+            "security operations",
+            "criteria:24/7 managed service operations with defined SOC c"
+          ],
+          "relevance_score": 8
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [
+            "criteria:24/7 managed service operations with defined SOC c"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [
+            "criteria:24/7 managed service operations with defined SOC c"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Global 24/7 security operations centers",
+          "matched_terms": [
+            "security operations"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "5 Global 24/7 security operations centers",
+          "matched_terms": [
+            "security operations"
+          ],
+          "relevance_score": 4
+        }
+      ],
+      "search_term_hits": 2,
+      "criteria_text_hits": 1,
+      "score": 3.0,
+      "notes": "SVC evidence: 5 excerpts, 2 term hits, 1 criteria hits."
+    },
+    "SVC-04": {
+      "source_urls": [
+        "https://www.cyderes.com/about/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Security Operations Across Identity, Threat, and Exposure Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environ…",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Senior Manager, Information Systems “Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.”",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "“Having a support structure to minimize the movement of a lot of pieces that a typical in-house SOC managed service would have to do enabled us to focus on how we optimized our day-to-day risks.” Steven Ramirez",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.cyderes.com/about/",
+          "excerpt": "Cyderes builds security programs around how your organization operates. Whether you need advisory guidance, a fully managed service, or a co-managed partnership with your team, we adapt to your environment and priorities.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 3,
+      "score": 2.5,
+      "notes": "SVC evidence: 5 excerpts, 1 term hits, 3 criteria hits."
+    }
+  },
+  "pricing_evidence": {
+    "PRC-SUB": {
+      "source_urls": [],
+      "excerpts": [],
+      "search_term_hits": 1,
+      "criteria_text_hits": 0,
+      "criteria_results": [
+        {
+          "criterion": "Published subscription pricing tiers or structure",
+          "status": "partial"
+        },
+        {
+          "criterion": "Component breakdown visible to buyers (platform vs. managed service vs. AI features)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Predictability of recurring costs for client budgeting",
+          "status": "partial"
+        },
+        {
+          "criterion": "Flexibility in subscription scope adjustment (scale up/down)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Transparency about what is included vs. excluded at each tier",
+          "status": "partial"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.0,
+      "notes": "Pricing evidence: 0 excerpts, 1 term hits, 0 criteria hits."
+    },
+    "PRC-USG": {
+      "source_urls": [],
+      "excerpts": [],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Usage-based pricing components clearly defined (per-asset, per-scan, per-simulation)",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Measurement systems for quantifying consumption",
+          "status": "partial"
+        },
+        {
+          "criterion": "Real-time usage dashboards or monitoring available to clients",
+          "status": "met"
+        },
+        {
+          "criterion": "Clear overage policies and escalation thresholds",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Alignment of usage fees with computational effort and value delivered",
+          "status": "unmet"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.5,
+      "notes": "Pricing evidence: 0 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "PRC-FIX": {
+      "source_urls": [],
+      "excerpts": [],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Clear one-time fees defined for setup and implementation",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Scope definition for fixed-fee deliverables",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Separation of project costs from ongoing service costs",
+          "status": "met"
+        },
+        {
+          "criterion": "Change request and scope adjustment processes",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Implementation timeline and milestone-based payment structure",
+          "status": "partial"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.5,
+      "notes": "Pricing evidence: 0 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "PRC-SUC": {
+      "source_urls": [],
+      "excerpts": [],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Defined success metrics tied to pricing (exposure reduction, control effectiveness, vulnerability SLAs)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Fees-at-risk component in service agreements",
+          "status": "met"
+        },
+        {
+          "criterion": "Per-finding or per-validation pricing for pen test and BAS outcomes",
+          "status": "partial"
+        },
+        {
+          "criterion": "Clear measurement methodology and dispute resolution",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Balance of risk between provider and client",
+          "status": "partial"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 2.5,
+      "notes": "Pricing evidence: 0 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "PRC-COM": {
+      "source_urls": [],
+      "excerpts": [],
+      "search_term_hits": 0,
+      "criteria_text_hits": 0,
+      "criteria_results": [
+        {
+          "criterion": "Multiple pricing components available and combinable",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Client budgeting predictability with spending expectations set upfront",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Demonstrated risk-sharing with clear rewards and penalties",
+          "status": "partial"
+        },
+        {
+          "criterion": "Avoidance of excessive variability and dispute potential",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Demystification of what the client pays for, when, and why",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 0.0,
+      "notes": "Pricing evidence: 0 excerpts, 0 term hits, 0 criteria hits."
+    },
+    "PRC-OUT": {
+      "source_urls": [],
+      "excerpts": [],
+      "search_term_hits": 0,
+      "criteria_text_hits": 2,
+      "criteria_results": [
+        {
+          "criterion": "Pricing components explicitly tied to measurable security outcomes (exposure reduction, control gap closure, mean-time-to-remediation)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Outcome-based SLA commitments with financial consequences (credits, rebates, penalties)",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Value realization metrics shared with clients showing pricing-to-outcome correlation",
+          "status": "met"
+        },
+        {
+          "criterion": "Pricing adjustments based on demonstrated AI efficiency gains passed to clients",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Avoidance of outcome-washing — pricing labeled as outcome-based but measured on inputs",
+          "status": "unmet"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 0 excerpts, 0 term hits, 2 criteria hits."
+    }
+  },
+  "pricing_rationales": {
+    "PRC-SUB": "PRC-SUB - Subscription Transparency. Score: 2.00/5. Basic pricing information available but limited detail.",
+    "PRC-USG": "PRC-USG - Usage-Based Alignment. Score: 2.50/5. Basic pricing information available but limited detail.",
+    "PRC-FIX": "PRC-FIX - Fixed Delivery Pricing. Score: 2.50/5. Basic pricing information available but limited detail.",
+    "PRC-SUC": "PRC-SUC - Success & Outcome Fees. Score: 2.50/5. Basic pricing information available but limited detail.",
+    "PRC-COM": "PRC-COM - Composability & Overall Model Maturity. Score: 0.00/5. No pricing information found publicly.",
+    "PRC-OUT": "PRC-OUT - Pricing-to-Outcomes Alignment. Score: 3.00/5. Demonstrated pricing structure with some detail."
+  },
+  "svc_pricing_research": {
+    "researched_at": "2026-05-15T02:40:03.604334+00:00",
+    "pipeline_version": "v3_new_vendors",
+    "pages_fetched": 5,
+    "svc_subpillars_scored": 8,
+    "pricing_dimensions_scored": 6
+  }
+}

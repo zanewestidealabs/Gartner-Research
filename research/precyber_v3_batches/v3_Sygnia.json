@@ -1,0 +1,1835 @@
+{
+  "vendor": "Sygnia",
+  "headquarters": "Tel Aviv, Israel",
+  "region": "Global",
+  "specialization": "Incident Response & Cyber Resilience",
+  "primary_capability": "ADR",
+  "expected_coverage": [
+    "ADR-03",
+    "ADR-02",
+    "SVC-02"
+  ],
+  "delivery_model": "Advisory + Incident Response",
+  "services_maturity_level": "managed",
+  "outcome_maturity_rating": 3.58,
+  "outcome_maturity_label": "Outcome-Aligned",
+  "is_startup": false,
+  "is_ai_first": false,
+  "research_flag": "ir_boutique",
+  "sub_pillar_rationale_v2": {
+    "EXM-01": {
+      "sub_pillar_id": "EXM-01",
+      "sub_pillar_name": "Attack Surface Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated discovery of internet-facing assets and shadow IT; Real-time asset inventory with risk scoring. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated discovery of internet-facing assets and shadow IT",
+          "status": "partial",
+          "evidence": "Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Real-time asset inventory with risk scoring",
+          "status": "partial",
+          "evidence": "It affects risk velocity, incident response timing, executive accountability, and regulatory exposure.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud resource discovery across multi-cloud environments",
+          "status": "partial",
+          "evidence": "AI-Powered Reconnaissance and Zero-Day Discovery\n\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with CMDB and asset management systems",
+          "status": "partial",
+          "evidence": "Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring for new or changed assets",
+          "status": "partial",
+          "evidence": "Reconnaissance that once required manual effort can now be automated and continuously refined.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "AI-Powered Reconnaissance and Zero-Day Discovery\n\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-02": {
+      "sub_pillar_id": "EXM-02",
+      "sub_pillar_name": "Continuous Threat Exposure Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): CTEM program capabilities or alignment; Exposure scoping and discovery automation. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "CTEM program capabilities or alignment",
+          "status": "partial",
+          "evidence": "Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exposure scoping and discovery automation",
+          "status": "partial",
+          "evidence": "They do need enough understanding to interrogate:\n\nWhether risk assessments reflect automation-driven scaling\n\nHow AI amplifies fraud exposure and executive impersonation risk\n\nWhether scenario planni",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Prioritization based on exploitability and business context",
+          "status": "partial",
+          "evidence": "Generative AI has industrialized social engineering:\n\nHighly personalized phishing at scale\n\nSynthetic executive voice calls\n\nDeepfake video impersonation\n\nConvincing multilingual fraud campaigns\n\nAI-",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Validation of exposure remediation effectiveness",
+          "status": "partial",
+          "evidence": "It affects risk velocity, incident response timing, executive accountability, and regulatory exposure.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous cycle operation (not point-in-time)",
+          "status": "partial",
+          "evidence": "It is operational, measurable, and already embedded in adversary tradecraft.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "They do need enough understanding to interrogate:\n\nWhether risk assessments reflect automation-driven scaling\n\nHow AI amplifies fraud exposure and executive impersonation risk\n\nWhether scenario planni",
+        "Generative AI has industrialized social engineering:\n\nHighly personalized phishing at scale\n\nSynthetic executive voice calls\n\nDeepfake video impersonation\n\nConvincing multilingual fraud campaigns\n\nAI-"
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-03": {
+      "sub_pillar_id": "EXM-03",
+      "sub_pillar_name": "Vulnerability Prioritization & Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Exploitability context from threat intelligence. Partially met (4): Risk-based vulnerability scoring beyond CVSS; Asset criticality and business impact weighting. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Risk-based vulnerability scoring beyond CVSS",
+          "status": "partial",
+          "evidence": "Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploitability context from threat intelligence",
+          "status": "met",
+          "evidence": "From a board perspective, the relevant question is not whether the organization has “advanced tools.” It is whether detection architecture is calibrated to identify behavioral anomalies at scale and i",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Asset criticality and business impact weighting",
+          "status": "partial",
+          "evidence": "We are by their side to contain attacks at top speed and recover with as little business impact as possible.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated remediation prioritization and tracking",
+          "status": "partial",
+          "evidence": "Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with patch management and ticketing systems",
+          "status": "partial",
+          "evidence": "Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "From a board perspective, the relevant question is not whether the organization has “advanced tools.” It is whether detection architecture is calibrated to identify behavioral anomalies at scale and i",
+        "Boards should reassess whether their IR retainer provides immediate surge capacity, AI-specific threat intelligence integration, and executive decision support during high-ambiguity incidents.",
+        "We are by their side to contain attacks at top speed and recover with as little business impact as possible."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-04": {
+      "sub_pillar_id": "EXM-04",
+      "sub_pillar_name": "Third-Party & Supply Chain Exposure",
+      "original_score": 0,
+      "adjusted_score": 2.5,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (3/5): Third-party vendor risk assessment capabilities; Software supply chain monitoring (SBOM analysis); Supply chain attack detection and alerting. Partially met (1): Continuous monitoring of vendor security posture. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 3/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Third-party vendor risk assessment capabilities",
+          "status": "met",
+          "evidence": "Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software supply chain monitoring (SBOM analysis)",
+          "status": "met",
+          "evidence": "Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Open-source component vulnerability tracking",
+          "status": "unmet",
+          "evidence": "Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring of vendor security posture",
+          "status": "partial",
+          "evidence": "That has direct implications for board cybersecurity oversight and executive cyber risk assessment.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Supply chain attack detection and alerting",
+          "status": "met",
+          "evidence": "Third-Party Risk in the AI Supply Chain\n\nAI adoption has extended the enterprise attack surface beyond internal systems.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.",
+        "Traditional third-party risk assessments often emphasize data protection and infrastructure controls.",
+        "Third-Party Risk in the AI Supply Chain\n\nAI adoption has extended the enterprise attack surface beyond internal systems.",
+        "They may not fully evaluate:\n\nHow vendors secure their AI models\n\nHow training data and inference pipelines are protected\n\nHow resilient AI-enabled vendors are against AI-driven cyber attacks\n\nBoards "
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.5,
+        "reason": "Fresh score 2.50: no prior validated score (3/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-01": {
+      "sub_pillar_id": "AMT-01",
+      "sub_pillar_name": "Polymorphic & Morphing Defense",
+      "original_score": 0,
+      "adjusted_score": 0.0,
+      "scoring_level": 0,
+      "score_rationale": "Sygnia scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Network configuration morphing; Evidence of increased attacker cost through dynamic changes. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Runtime address space or memory layout randomization",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/6 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "API endpoint mutation or obfuscation",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Network configuration morphing",
+          "status": "partial",
+          "evidence": "AI-Powered Reconnaissance and Zero-Day Discovery\n\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "System identifier rotation",
+          "status": "unmet",
+          "evidence": "Third-Party Risk in the AI Supply Chain\n\nAI adoption has extended the enterprise attack surface beyond internal systems.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Evidence of increased attacker cost through dynamic changes",
+          "status": "partial",
+          "evidence": "Board Composition and AI Threat Literacy Requirements\n\nCyber oversight now requires fluency in how AI changes attacker economics and operational asymmetry.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.0,
+        "reason": "Fresh score 0.00: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-02": {
+      "sub_pillar_id": "AMT-02",
+      "sub_pillar_name": "Runtime Application Protection",
+      "original_score": 0,
+      "adjusted_score": 0.25,
+      "scoring_level": 0,
+      "score_rationale": "Sygnia scores 0.25/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (3): RASP or in-app runtime protection capabilities; Code instrumentation for exploit prevention. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "RASP or in-app runtime protection capabilities",
+          "status": "partial",
+          "evidence": "Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Code instrumentation for exploit prevention",
+          "status": "partial",
+          "evidence": "For boards, this introduces two governance risks:\n\nExecutive trust exploitation – CFOs, CEOs, and board members themselves become attack vectors.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Application hardening and anti-tampering",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/3 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Memory corruption defense (ROP, buffer overflow prevention)",
+          "status": "unmet",
+          "evidence": "Detection metrics that once appeared strong may now represent a shrinking buffer rather than a competitive advantage.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Signature-less exploit detection at runtime",
+          "status": "partial",
+          "evidence": "For boards, this introduces two governance risks:\n\nExecutive trust exploitation – CFOs, CEOs, and board members themselves become attack vectors.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.25,
+        "reason": "Fresh score 0.25: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-03": {
+      "sub_pillar_id": "AMT-03",
+      "sub_pillar_name": "Dynamic Network & Infrastructure Defense",
+      "original_score": 0,
+      "adjusted_score": 0.25,
+      "scoring_level": 0,
+      "score_rationale": "Sygnia scores 0.25/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (5): Automated micro-segmentation with dynamic policy; Network topology reconfiguration capabilities. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated micro-segmentation with dynamic policy",
+          "status": "partial",
+          "evidence": "Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Network topology reconfiguration capabilities",
+          "status": "partial",
+          "evidence": "Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software-defined perimeter or zero trust network access",
+          "status": "partial",
+          "evidence": "AI-driven cyber attacks reduce the time between initial access and impact.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Infrastructure-as-code security automation",
+          "status": "partial",
+          "evidence": "That has direct implications for board cybersecurity oversight and executive cyber risk assessment.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Adaptive access controls based on risk signals",
+          "status": "partial",
+          "evidence": "Control bypass risk – Financial approvals and crisis communications can be manipulated through synthetic authority signals.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.25,
+        "reason": "Fresh score 0.25: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-04": {
+      "sub_pillar_id": "AMT-04",
+      "sub_pillar_name": "Identity & Credential Rotation",
+      "original_score": 0,
+      "adjusted_score": 0.0,
+      "scoring_level": 0,
+      "score_rationale": "Sygnia scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Automated credential and secret rotation; Service account and API key lifecycle management. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated credential and secret rotation",
+          "status": "partial",
+          "evidence": "Automated reconnaissance, credential harvesting, and lateral movement reduce the time between foothold and impact.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Ephemeral or just-in-time credential provisioning",
+          "status": "unmet",
+          "evidence": "Automated reconnaissance, credential harvesting, and lateral movement reduce the time between foothold and impact.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Service account and API key lifecycle management",
+          "status": "partial",
+          "evidence": "It affects risk velocity, incident response timing, executive accountability, and regulatory exposure.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Certificate and token rotation automation",
+          "status": "unmet",
+          "evidence": "AI-Driven Attack Automation and Velocity\n\nAI-driven cyber attacks compress timelines.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Privileged access session isolation",
+          "status": "unmet",
+          "evidence": "AI-driven cyber attacks reduce the time between initial access and impact.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "No evidence excerpts and no term matches found.",
+      "key_evidence": [
+        "Automated reconnaissance, credential harvesting, and lateral movement reduce the time between foothold and impact."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 0.0,
+        "reason": "Fresh score 0.00: no prior validated score (0/5 criteria met, level=0)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-01": {
+      "sub_pillar_id": "ADR-01",
+      "sub_pillar_name": "Deception Technology",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Breadcrumb placement for lateral movement detection. Partially met (1): Integration with SIEM/SOAR for automated response. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Honeypot and honeytoken deployment capabilities",
+          "status": "unmet",
+          "evidence": "Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Decoy systems mimicking production assets",
+          "status": "unmet",
+          "evidence": "Third-Party Risk in the AI Supply Chain\n\nAI adoption has extended the enterprise attack surface beyond internal systems.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Breadcrumb placement for lateral movement detection",
+          "status": "met",
+          "evidence": "This affects three dimensions boards must understand:\n\nAttack velocity – Progress from Initial access to lateral movement can occur in hours, not days.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "High-fidelity alerting with low false-positive rates",
+          "status": "unmet",
+          "evidence": "They do need enough understanding to interrogate:\n\nWhether risk assessments reflect automation-driven scaling\n\nHow AI amplifies fraud exposure and executive impersonation risk\n\nWhether scenario planni",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with SIEM/SOAR for automated response",
+          "status": "partial",
+          "evidence": "It affects risk velocity, incident response timing, executive accountability, and regulatory exposure.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "This affects three dimensions boards must understand:\n\nAttack velocity – Progress from Initial access to lateral movement can occur in hours, not days.",
+        "Automated reconnaissance, credential harvesting, and lateral movement reduce the time between foothold and impact.",
+        "Containment Challenges with AI-Driven Lateral Movement\n\nAI-assisted lateral movement increases operational complexity during containment.",
+        "Simulation exercises should therefore include AI-generated phishing using internal language patterns, automated lateral movement, and rapid escalation scenarios that compress investigative timelines."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-02": {
+      "sub_pillar_id": "ADR-02",
+      "sub_pillar_name": "Threat Intelligence Operationalization",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Threat intelligence platform or feed integration; Automated blocking based on threat intelligence. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Threat intelligence platform or feed integration",
+          "status": "met",
+          "evidence": "Boards should reassess whether their IR retainer provides immediate surge capacity, AI-specific threat intelligence integration, and executive decision support during high-ambiguity incidents.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated IOC ingestion and correlation",
+          "status": "unmet",
+          "evidence": "Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "TTP mapping to MITRE ATT&CK framework",
+          "status": "unmet",
+          "evidence": "The question facing boards in 2026 is not whether AI cyber threats are significant, but whether existing governance frameworks, reporting structures, and incident response assumptions are calibrated t",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated blocking based on threat intelligence",
+          "status": "met",
+          "evidence": "From a board perspective, the relevant question is not whether the organization has “advanced tools.” It is whether detection architecture is calibrated to identify behavioral anomalies at scale and i",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Intelligence-driven hunting query generation",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/4 terms)",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "From a board perspective, the relevant question is not whether the organization has “advanced tools.” It is whether detection architecture is calibrated to identify behavioral anomalies at scale and i",
+        "Boards should reassess whether their IR retainer provides immediate surge capacity, AI-specific threat intelligence integration, and executive decision support during high-ambiguity incidents."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (2/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-03": {
+      "sub_pillar_id": "ADR-03",
+      "sub_pillar_name": "Proactive Threat Hunting",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Managed or automated threat hunting services. Partially met (3): Hunt query libraries and playbooks; Integration with telemetry sources (EDR, NDR, SIEM). Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Managed or automated threat hunting services",
+          "status": "met",
+          "evidence": "And they expose gaps in oversight models that were built around slower, more predictable threat patterns.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Hypothesis-driven hunting methodologies",
+          "status": "unmet",
+          "evidence": "No direct evidence (1/3 terms)",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Hunt query libraries and playbooks",
+          "status": "partial",
+          "evidence": "Static playbooks and annual testing are insufficient against adversaries capable of near real-time adjustment.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with telemetry sources (EDR, NDR, SIEM)",
+          "status": "partial",
+          "evidence": "Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Hunt findings feeding back to detection engineering",
+          "status": "partial",
+          "evidence": "Click here to go back to our homepage.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-04": {
+      "sub_pillar_id": "ADR-04",
+      "sub_pillar_name": "Counter-Adversary Operations",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Dark web monitoring and intelligence gathering; Brand protection and impersonation detection. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Dark web monitoring and intelligence gathering",
+          "status": "partial",
+          "evidence": "Exploitation may begin before traditional monitoring thresholds trigger investigation.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Brand protection and impersonation detection",
+          "status": "partial",
+          "evidence": "Generative AI has industrialized social engineering:\n\nHighly personalized phishing at scale\n\nSynthetic executive voice calls\n\nDeepfake video impersonation\n\nConvincing multilingual fraud campaigns\n\nAI-",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Takedown service capabilities (domains, phishing, infrastructure)",
+          "status": "partial",
+          "evidence": "In practice, this often requires augmenting internal capabilities with specialized AI security services that understand both defensive AI implementation and adversarial AI tradecraft.",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Adversary attribution and campaign tracking",
+          "status": "partial",
+          "evidence": "It is operational, measurable, and already embedded in adversary tradecraft.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Digital risk protection services",
+          "status": "partial",
+          "evidence": "Traditional third-party risk assessments often emphasize data protection and infrastructure controls.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "In practice, this often requires augmenting internal capabilities with specialized AI security services that understand both defensive AI implementation and adversarial AI tradecraft."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-01": {
+      "sub_pillar_id": "PPM-01",
+      "sub_pillar_name": "Breach & Attack Simulation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Automated attack chain simulation capabilities. Partially met (3): Continuous validation against production controls; Control gap identification and remediation guidance. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated attack chain simulation capabilities",
+          "status": "met",
+          "evidence": "Attack chains are automated.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous validation against production controls",
+          "status": "partial",
+          "evidence": "Reconnaissance that once required manual effort can now be automated and continuously refined.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "MITRE ATT&CK technique coverage",
+          "status": "unmet",
+          "evidence": "Board cybersecurity oversight must now include executive authentication protocols, communications verification standards, and fraud scenario testing that explicitly accounts for AI-powered attack tech",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Control gap identification and remediation guidance",
+          "status": "partial",
+          "evidence": "Control bypass risk – Financial approvals and crisis communications can be manipulated through synthetic authority signals.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Reporting on detection and prevention effectiveness",
+          "status": "partial",
+          "evidence": "Boards should require reporting that clearly distinguishes AI-driven cyber attacks from traditional intrusions and evaluates detection speed relative to attacker velocity.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Attack chains are automated.",
+        "Few have explicit mandates around AI threat literacy or AI-specific attack simulation.",
+        "Third-Party Risk in the AI Supply Chain\n\nAI adoption has extended the enterprise attack surface beyond internal systems.",
+        "They may not fully evaluate:\n\nHow vendors secure their AI models\n\nHow training data and inference pipelines are protected\n\nHow resilient AI-enabled vendors are against AI-driven cyber attacks\n\nBoards ",
+        "Red Teaming and Simulation for AI Attack Scenarios\n\nConventional red teaming often replicates known attacker techniques."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-02": {
+      "sub_pillar_id": "PPM-02",
+      "sub_pillar_name": "Security Control Validation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): DLP and data protection control testing. Partially met (4): SIEM detection rule validation and testing; EDR policy effectiveness verification. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "SIEM detection rule validation and testing",
+          "status": "partial",
+          "evidence": "Board cybersecurity oversight must now include executive authentication protocols, communications verification standards, and fraud scenario testing that explicitly accounts for AI-powered attack tech",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "EDR policy effectiveness verification",
+          "status": "partial",
+          "evidence": "Board cybersecurity oversight must now include executive authentication protocols, communications verification standards, and fraud scenario testing that explicitly accounts for AI-powered attack tech",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Firewall and network control validation",
+          "status": "partial",
+          "evidence": "Control bypass risk – Financial approvals and crisis communications can be manipulated through synthetic authority signals.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "DLP and data protection control testing",
+          "status": "met",
+          "evidence": "Traditional third-party risk assessments often emphasize data protection and infrastructure controls.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Configuration drift detection and alerting",
+          "status": "partial",
+          "evidence": "AI-Powered Reconnaissance and Zero-Day Discovery\n\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-03": {
+      "sub_pillar_id": "PPM-03",
+      "sub_pillar_name": "Penetration Testing & Red Teaming",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Automated penetration testing platform; Continuous or on-demand pen testing capabilities. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated penetration testing platform",
+          "status": "partial",
+          "evidence": "Automated testing probes environments in ways that resemble benign traffic.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous or on-demand pen testing capabilities",
+          "status": "partial",
+          "evidence": "Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Attack path analysis and visualization",
+          "status": "partial",
+          "evidence": "A 2025 report found that 82.6% of phishing emails are now created using AI, increasing both the volume and credibility of targeted attacks.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploit validation and proof-of-concept generation",
+          "status": "unmet",
+          "evidence": "For boards, this introduces two governance risks:\n\nExecutive trust exploitation – CFOs, CEOs, and board members themselves become attack vectors.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Red team exercise automation (PTaaS)",
+          "status": "partial",
+          "evidence": "AI-Driven Attack Automation and Velocity\n\nAI-driven cyber attacks compress timelines.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Automated testing probes environments in ways that resemble benign traffic."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-04": {
+      "sub_pillar_id": "PPM-04",
+      "sub_pillar_name": "Cloud Security Posture Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Sygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Cloud misconfiguration detection (AWS, Azure, GCP); Cloud entitlement and permissions analysis (CIEM). Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Cloud misconfiguration detection (AWS, Azure, GCP)",
+          "status": "partial",
+          "evidence": "AI-Powered Reconnaissance and Zero-Day Discovery\n\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud entitlement and permissions analysis (CIEM)",
+          "status": "partial",
+          "evidence": "In 2026, resilience is less about having the right playbook, and more about whether leadership is prepared to act decisively in an environment that moves faster than analysis.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Compliance framework mapping and reporting",
+          "status": "partial",
+          "evidence": "The question facing boards in 2026 is not whether AI cyber threats are significant, but whether existing governance frameworks, reporting structures, and incident response assumptions are calibrated t",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud workload protection capabilities",
+          "status": "partial",
+          "evidence": "With more infrastructure and workloads migrating to the cloud, it is essential that cyber resilience is enhanced rather than compromised.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Infrastructure-as-code security scanning",
+          "status": "partial",
+          "evidence": "That has direct implications for board cybersecurity oversight and executive cyber risk assessment.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "The question facing boards in 2026 is not whether AI cyber threats are significant, but whether existing governance frameworks, reporting structures, and incident response assumptions are calibrated t",
+        "Updating Cyber Risk Reporting Frameworks for AI Threats\n\nMost board dashboards were designed around historical indicators: incident counts, patching cadence, phishing click rates, and mean time to det"
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    }
+  },
+  "sub_pillar_scores_v2_researched": {
+    "EXM-01": 2.25,
+    "EXM-02": 2.25,
+    "EXM-03": 2.25,
+    "EXM-04": 2.5,
+    "AMT-01": 0.0,
+    "AMT-02": 0.25,
+    "AMT-03": 0.25,
+    "AMT-04": 0.0,
+    "ADR-01": 2.25,
+    "ADR-02": 2.25,
+    "ADR-03": 2.25,
+    "ADR-04": 2.25,
+    "PPM-01": 2.25,
+    "PPM-02": 2.25,
+    "PPM-03": 2.25,
+    "PPM-04": 2.25
+  },
+  "pillar_scores_v2_researched": {
+    "EXM": 2.31,
+    "AMT": 0.12,
+    "ADR": 2.25,
+    "PPM": 2.25
+  },
+  "evidence_quality_analysis": {
+    "EXM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    }
+  },
+  "sub_pillar_rationale_v2_consolidated": {
+    "EXM-01": "EXM-01 – Attack Surface Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Automated discovery of internet-facing assets and shadow IT; Real-time asset inventory with risk scoring. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated discovery of internet-facing assets and shadow IT', 'status': 'partial', 'evidence': 'Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy', 'confidence': 'medium'}, {'criterion': 'Real-time asset inventory with risk scoring', 'status': 'partial', 'evidence': 'It affects risk velocity, incident response timing, executive accountability, and regulatory exposure.', 'confidence': 'medium'}, {'criterion': 'Cloud resource discovery across multi-cloud environments', 'status': 'partial', 'evidence': 'AI-Powered Reconnaissance and Zero-Day Discovery\\n\\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths.', 'confidence': 'medium'}, {'criterion': 'Integration with CMDB and asset management systems', 'status': 'partial', 'evidence': 'Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring for new or changed assets', 'status': 'partial', 'evidence': 'Reconnaissance that once required manual effort can now be automated and continuously refined.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • AI-Powered Reconnaissance and Zero-Day Discovery\n\nAI-enabled threat actors increasingly use machine learning models to map environments, ide...",
+    "EXM-02": "EXM-02 – Continuous Threat Exposure Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): CTEM program capabilities or alignment; Exposure scoping and discovery automation. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'CTEM program capabilities or alignment', 'status': 'partial', 'evidence': 'Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.', 'confidence': 'medium'}, {'criterion': 'Exposure scoping and discovery automation', 'status': 'partial', 'evidence': 'They do need enough understanding to interrogate:\\n\\nWhether risk assessments reflect automation-driven scaling\\n\\nHow AI amplifies fraud exposure and executive impersonation risk\\n\\nWhether scenario planni', 'confidence': 'medium'}, {'criterion': 'Prioritization based on exploitability and business context', 'status': 'partial', 'evidence': 'Generative AI has industrialized social engineering:\\n\\nHighly personalized phishing at scale\\n\\nSynthetic executive voice calls\\n\\nDeepfake video impersonation\\n\\nConvincing multilingual fraud campaigns\\n\\nAI-', 'confidence': 'medium'}, {'criterion': 'Validation of exposure remediation effectiveness', 'status': 'partial', 'evidence': 'It affects risk velocity, incident response timing, executive accountability, and regulatory exposure.', 'confidence': 'medium'}, {'criterion': 'Continuous cycle operation (not point-in-time)', 'status': 'partial', 'evidence': 'It is operational, measurable, and already embedded in adversary tradecraft.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • They do need enough understanding to interrogate:\n\nWhether risk assessments reflect automation-driven scaling\n\nHow AI amplifies fraud exposu...\n  • Generative AI has industrialized social engineering:\n\nHighly personalized phishing at scale\n\nSynthetic executive voice calls\n\nDeepfake video...",
+    "EXM-03": "EXM-03 – Vulnerability Prioritization & Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Exploitability context from threat intelligence. Partially met (4): Risk-based vulnerability scoring beyond CVSS; Asset criticality and business impact weighting. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Risk-based vulnerability scoring beyond CVSS', 'status': 'partial', 'evidence': 'Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy', 'confidence': 'medium'}, {'criterion': 'Exploitability context from threat intelligence', 'status': 'met', 'evidence': 'From a board perspective, the relevant question is not whether the organization has “advanced tools.” It is whether detection architecture is calibrated to identify behavioral anomalies at scale and i', 'confidence': 'medium'}, {'criterion': 'Asset criticality and business impact weighting', 'status': 'partial', 'evidence': 'We are by their side to contain attacks at top speed and recover with as little business impact as possible.', 'confidence': 'medium'}, {'criterion': 'Automated remediation prioritization and tracking', 'status': 'partial', 'evidence': 'Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy', 'confidence': 'medium'}, {'criterion': 'Integration with patch management and ticketing systems', 'status': 'partial', 'evidence': 'Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • From a board perspective, the relevant question is not whether the organization has “advanced tools.” It is whether detection architecture i...\n  • Boards should reassess whether their IR retainer provides immediate surge capacity, AI-specific threat intelligence integration, and executi...\n  • We are by their side to contain attacks at top speed and recover with as little business impact as possible....",
+    "EXM-04": "EXM-04 – Third-Party & Supply Chain Exposure: Score 2.50/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nSygnia scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (3/5): Third-party vendor risk assessment capabilities; Software supply chain monitoring (SBOM analysis); Supply chain attack detection and alerting. Partially met (1): Continuous monitoring of vendor security posture. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 3/5 met.\n\n[Score Adjustment] 0.00 → 2.50: Fresh score 2.50: no prior validated score (3/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Third-party vendor risk assessment capabilities', 'status': 'met', 'evidence': 'Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.', 'confidence': 'medium'}, {'criterion': 'Software supply chain monitoring (SBOM analysis)', 'status': 'met', 'evidence': 'Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.', 'confidence': 'medium'}, {'criterion': 'Open-source component vulnerability tracking', 'status': 'unmet', 'evidence': 'Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring of vendor security posture', 'status': 'partial', 'evidence': 'That has direct implications for board cybersecurity oversight and executive cyber risk assessment.', 'confidence': 'medium'}, {'criterion': 'Supply chain attack detection and alerting', 'status': 'met', 'evidence': 'Third-Party Risk in the AI Supply Chain\\n\\nAI adoption has extended the enterprise attack surface beyond internal systems.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain....\n  • Traditional third-party risk assessments often emphasize data protection and infrastructure controls....\n  • Third-Party Risk in the AI Supply Chain\n\nAI adoption has extended the enterprise attack surface beyond internal systems....",
+    "AMT-01": "AMT-01 – Polymorphic & Morphing Defense: Score 0.00/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nSygnia scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Network configuration morphing; Evidence of increased attacker cost through dynamic changes. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.00: Fresh score 0.00: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Runtime address space or memory layout randomization', 'status': 'unmet', 'evidence': 'No direct evidence (0/6 terms)', 'confidence': 'high'}, {'criterion': 'API endpoint mutation or obfuscation', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Network configuration morphing', 'status': 'partial', 'evidence': 'AI-Powered Reconnaissance and Zero-Day Discovery\\n\\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths.', 'confidence': 'medium'}, {'criterion': 'System identifier rotation', 'status': 'unmet', 'evidence': 'Third-Party Risk in the AI Supply Chain\\n\\nAI adoption has extended the enterprise attack surface beyond internal systems.', 'confidence': 'medium'}, {'criterion': 'Evidence of increased attacker cost through dynamic changes', 'status': 'partial', 'evidence': 'Board Composition and AI Threat Literacy Requirements\\n\\nCyber oversight now requires fluency in how AI changes attacker economics and operational asymmetry.', 'confidence': 'medium'}]",
+    "AMT-02": "AMT-02 – Runtime Application Protection: Score 0.25/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nSygnia scores 0.25/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (3): RASP or in-app runtime protection capabilities; Code instrumentation for exploit prevention. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.25: Fresh score 0.25: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'RASP or in-app runtime protection capabilities', 'status': 'partial', 'evidence': 'Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.', 'confidence': 'medium'}, {'criterion': 'Code instrumentation for exploit prevention', 'status': 'partial', 'evidence': 'For boards, this introduces two governance risks:\\n\\nExecutive trust exploitation – CFOs, CEOs, and board members themselves become attack vectors.', 'confidence': 'medium'}, {'criterion': 'Application hardening and anti-tampering', 'status': 'unmet', 'evidence': 'No direct evidence (1/3 terms)', 'confidence': 'medium'}, {'criterion': 'Memory corruption defense (ROP, buffer overflow prevention)', 'status': 'unmet', 'evidence': 'Detection metrics that once appeared strong may now represent a shrinking buffer rather than a competitive advantage.', 'confidence': 'medium'}, {'criterion': 'Signature-less exploit detection at runtime', 'status': 'partial', 'evidence': 'For boards, this introduces two governance risks:\\n\\nExecutive trust exploitation – CFOs, CEOs, and board members themselves become attack vectors.', 'confidence': 'medium'}]",
+    "AMT-03": "AMT-03 – Dynamic Network & Infrastructure Defense: Score 0.25/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nSygnia scores 0.25/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (5): Automated micro-segmentation with dynamic policy; Network topology reconfiguration capabilities. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.25: Fresh score 0.25: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Automated micro-segmentation with dynamic policy', 'status': 'partial', 'evidence': 'Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy', 'confidence': 'medium'}, {'criterion': 'Network topology reconfiguration capabilities', 'status': 'partial', 'evidence': 'Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.', 'confidence': 'medium'}, {'criterion': 'Software-defined perimeter or zero trust network access', 'status': 'partial', 'evidence': 'AI-driven cyber attacks reduce the time between initial access and impact.', 'confidence': 'medium'}, {'criterion': 'Infrastructure-as-code security automation', 'status': 'partial', 'evidence': 'That has direct implications for board cybersecurity oversight and executive cyber risk assessment.', 'confidence': 'medium'}, {'criterion': 'Adaptive access controls based on risk signals', 'status': 'partial', 'evidence': 'Control bypass risk – Financial approvals and crisis communications can be manipulated through synthetic authority signals.', 'confidence': 'medium'}]",
+    "AMT-04": "AMT-04 – Identity & Credential Rotation: Score 0.00/5.0 (Level 0). Confidence: low.\n\n[Score Rationale]\nSygnia scores 0.00/5.0 (Level 0: No Evidence — No publicly verifiable evidence of capability in this sub-pillar.). No evidence excerpts and no term matches found. Partially met (2): Automated credential and secret rotation; Service account and API key lifecycle management. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 0 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 0.00: Fresh score 0.00: no prior validated score (0/5 criteria met, level=0).\n\n[Criteria Assessment] [{'criterion': 'Automated credential and secret rotation', 'status': 'partial', 'evidence': 'Automated reconnaissance, credential harvesting, and lateral movement reduce the time between foothold and impact.', 'confidence': 'medium'}, {'criterion': 'Ephemeral or just-in-time credential provisioning', 'status': 'unmet', 'evidence': 'Automated reconnaissance, credential harvesting, and lateral movement reduce the time between foothold and impact.', 'confidence': 'medium'}, {'criterion': 'Service account and API key lifecycle management', 'status': 'partial', 'evidence': 'It affects risk velocity, incident response timing, executive accountability, and regulatory exposure.', 'confidence': 'medium'}, {'criterion': 'Certificate and token rotation automation', 'status': 'unmet', 'evidence': 'AI-Driven Attack Automation and Velocity\\n\\nAI-driven cyber attacks compress timelines.', 'confidence': 'medium'}, {'criterion': 'Privileged access session isolation', 'status': 'unmet', 'evidence': 'AI-driven cyber attacks reduce the time between initial access and impact.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Automated reconnaissance, credential harvesting, and lateral movement reduce the time between foothold and impact....",
+    "ADR-01": "ADR-01 – Deception Technology: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Breadcrumb placement for lateral movement detection. Partially met (1): Integration with SIEM/SOAR for automated response. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Honeypot and honeytoken deployment capabilities', 'status': 'unmet', 'evidence': 'Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.', 'confidence': 'medium'}, {'criterion': 'Decoy systems mimicking production assets', 'status': 'unmet', 'evidence': 'Third-Party Risk in the AI Supply Chain\\n\\nAI adoption has extended the enterprise attack surface beyond internal systems.', 'confidence': 'medium'}, {'criterion': 'Breadcrumb placement for lateral movement detection', 'status': 'met', 'evidence': 'This affects three dimensions boards must understand:\\n\\nAttack velocity – Progress from Initial access to lateral movement can occur in hours, not days.', 'confidence': 'medium'}, {'criterion': 'High-fidelity alerting with low false-positive rates', 'status': 'unmet', 'evidence': 'They do need enough understanding to interrogate:\\n\\nWhether risk assessments reflect automation-driven scaling\\n\\nHow AI amplifies fraud exposure and executive impersonation risk\\n\\nWhether scenario planni', 'confidence': 'medium'}, {'criterion': 'Integration with SIEM/SOAR for automated response', 'status': 'partial', 'evidence': 'It affects risk velocity, incident response timing, executive accountability, and regulatory exposure.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • This affects three dimensions boards must understand:\n\nAttack velocity – Progress from Initial access to lateral movement can occur in hours...\n  • Automated reconnaissance, credential harvesting, and lateral movement reduce the time between foothold and impact....\n  • Containment Challenges with AI-Driven Lateral Movement\n\nAI-assisted lateral movement increases operational complexity during containment....",
+    "ADR-02": "ADR-02 – Threat Intelligence Operationalization: Score 2.25/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Threat intelligence platform or feed integration; Automated blocking based on threat intelligence. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (2/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Threat intelligence platform or feed integration', 'status': 'met', 'evidence': 'Boards should reassess whether their IR retainer provides immediate surge capacity, AI-specific threat intelligence integration, and executive decision support during high-ambiguity incidents.', 'confidence': 'medium'}, {'criterion': 'Automated IOC ingestion and correlation', 'status': 'unmet', 'evidence': 'Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deploy', 'confidence': 'medium'}, {'criterion': 'TTP mapping to MITRE ATT&CK framework', 'status': 'unmet', 'evidence': 'The question facing boards in 2026 is not whether AI cyber threats are significant, but whether existing governance frameworks, reporting structures, and incident response assumptions are calibrated t', 'confidence': 'medium'}, {'criterion': 'Automated blocking based on threat intelligence', 'status': 'met', 'evidence': 'From a board perspective, the relevant question is not whether the organization has “advanced tools.” It is whether detection architecture is calibrated to identify behavioral anomalies at scale and i', 'confidence': 'medium'}, {'criterion': 'Intelligence-driven hunting query generation', 'status': 'unmet', 'evidence': 'No direct evidence (1/4 terms)', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • From a board perspective, the relevant question is not whether the organization has “advanced tools.” It is whether detection architecture i...\n  • Boards should reassess whether their IR retainer provides immediate surge capacity, AI-specific threat intelligence integration, and executi...",
+    "ADR-03": "ADR-03 – Proactive Threat Hunting: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Managed or automated threat hunting services. Partially met (3): Hunt query libraries and playbooks; Integration with telemetry sources (EDR, NDR, SIEM). Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Managed or automated threat hunting services', 'status': 'met', 'evidence': 'And they expose gaps in oversight models that were built around slower, more predictable threat patterns.', 'confidence': 'medium'}, {'criterion': 'Hypothesis-driven hunting methodologies', 'status': 'unmet', 'evidence': 'No direct evidence (1/3 terms)', 'confidence': 'medium'}, {'criterion': 'Hunt query libraries and playbooks', 'status': 'partial', 'evidence': 'Static playbooks and annual testing are insufficient against adversaries capable of near real-time adjustment.', 'confidence': 'medium'}, {'criterion': 'Integration with telemetry sources (EDR, NDR, SIEM)', 'status': 'partial', 'evidence': 'Third-party AI risk – Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.', 'confidence': 'low'}, {'criterion': 'Hunt findings feeding back to detection engineering', 'status': 'partial', 'evidence': 'Click here to go back to our homepage.', 'confidence': 'medium'}]",
+    "ADR-04": "ADR-04 – Counter-Adversary Operations: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Dark web monitoring and intelligence gathering; Brand protection and impersonation detection. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Dark web monitoring and intelligence gathering', 'status': 'partial', 'evidence': 'Exploitation may begin before traditional monitoring thresholds trigger investigation.', 'confidence': 'medium'}, {'criterion': 'Brand protection and impersonation detection', 'status': 'partial', 'evidence': 'Generative AI has industrialized social engineering:\\n\\nHighly personalized phishing at scale\\n\\nSynthetic executive voice calls\\n\\nDeepfake video impersonation\\n\\nConvincing multilingual fraud campaigns\\n\\nAI-', 'confidence': 'medium'}, {'criterion': 'Takedown service capabilities (domains, phishing, infrastructure)', 'status': 'partial', 'evidence': 'In practice, this often requires augmenting internal capabilities with specialized AI security services that understand both defensive AI implementation and adversarial AI tradecraft.', 'confidence': 'low'}, {'criterion': 'Adversary attribution and campaign tracking', 'status': 'partial', 'evidence': 'It is operational, measurable, and already embedded in adversary tradecraft.', 'confidence': 'medium'}, {'criterion': 'Digital risk protection services', 'status': 'partial', 'evidence': 'Traditional third-party risk assessments often emphasize data protection and infrastructure controls.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • In practice, this often requires augmenting internal capabilities with specialized AI security services that understand both defensive AI im...",
+    "PPM-01": "PPM-01 – Breach & Attack Simulation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Automated attack chain simulation capabilities. Partially met (3): Continuous validation against production controls; Control gap identification and remediation guidance. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated attack chain simulation capabilities', 'status': 'met', 'evidence': 'Attack chains are automated.', 'confidence': 'medium'}, {'criterion': 'Continuous validation against production controls', 'status': 'partial', 'evidence': 'Reconnaissance that once required manual effort can now be automated and continuously refined.', 'confidence': 'medium'}, {'criterion': 'MITRE ATT&CK technique coverage', 'status': 'unmet', 'evidence': 'Board cybersecurity oversight must now include executive authentication protocols, communications verification standards, and fraud scenario testing that explicitly accounts for AI-powered attack tech', 'confidence': 'medium'}, {'criterion': 'Control gap identification and remediation guidance', 'status': 'partial', 'evidence': 'Control bypass risk – Financial approvals and crisis communications can be manipulated through synthetic authority signals.', 'confidence': 'medium'}, {'criterion': 'Reporting on detection and prevention effectiveness', 'status': 'partial', 'evidence': 'Boards should require reporting that clearly distinguishes AI-driven cyber attacks from traditional intrusions and evaluates detection speed relative to attacker velocity.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Attack chains are automated....\n  • Few have explicit mandates around AI threat literacy or AI-specific attack simulation....\n  • Third-Party Risk in the AI Supply Chain\n\nAI adoption has extended the enterprise attack surface beyond internal systems....",
+    "PPM-02": "PPM-02 – Security Control Validation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): DLP and data protection control testing. Partially met (4): SIEM detection rule validation and testing; EDR policy effectiveness verification. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'SIEM detection rule validation and testing', 'status': 'partial', 'evidence': 'Board cybersecurity oversight must now include executive authentication protocols, communications verification standards, and fraud scenario testing that explicitly accounts for AI-powered attack tech', 'confidence': 'medium'}, {'criterion': 'EDR policy effectiveness verification', 'status': 'partial', 'evidence': 'Board cybersecurity oversight must now include executive authentication protocols, communications verification standards, and fraud scenario testing that explicitly accounts for AI-powered attack tech', 'confidence': 'medium'}, {'criterion': 'Firewall and network control validation', 'status': 'partial', 'evidence': 'Control bypass risk – Financial approvals and crisis communications can be manipulated through synthetic authority signals.', 'confidence': 'medium'}, {'criterion': 'DLP and data protection control testing', 'status': 'met', 'evidence': 'Traditional third-party risk assessments often emphasize data protection and infrastructure controls.', 'confidence': 'medium'}, {'criterion': 'Configuration drift detection and alerting', 'status': 'partial', 'evidence': 'AI-Powered Reconnaissance and Zero-Day Discovery\\n\\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths.', 'confidence': 'medium'}]",
+    "PPM-03": "PPM-03 – Penetration Testing & Red Teaming: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Automated penetration testing platform; Continuous or on-demand pen testing capabilities. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated penetration testing platform', 'status': 'partial', 'evidence': 'Automated testing probes environments in ways that resemble benign traffic.', 'confidence': 'medium'}, {'criterion': 'Continuous or on-demand pen testing capabilities', 'status': 'partial', 'evidence': 'Lower barrier to entry – Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups.', 'confidence': 'medium'}, {'criterion': 'Attack path analysis and visualization', 'status': 'partial', 'evidence': 'A 2025 report found that 82.6% of phishing emails are now created using AI, increasing both the volume and credibility of targeted attacks.', 'confidence': 'medium'}, {'criterion': 'Exploit validation and proof-of-concept generation', 'status': 'unmet', 'evidence': 'For boards, this introduces two governance risks:\\n\\nExecutive trust exploitation – CFOs, CEOs, and board members themselves become attack vectors.', 'confidence': 'medium'}, {'criterion': 'Red team exercise automation (PTaaS)', 'status': 'partial', 'evidence': 'AI-Driven Attack Automation and Velocity\\n\\nAI-driven cyber attacks compress timelines.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Automated testing probes environments in ways that resemble benign traffic....",
+    "PPM-04": "PPM-04 – Cloud Security Posture Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nSygnia scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (5): Cloud misconfiguration detection (AWS, Azure, GCP); Cloud entitlement and permissions analysis (CIEM). Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Cloud misconfiguration detection (AWS, Azure, GCP)', 'status': 'partial', 'evidence': 'AI-Powered Reconnaissance and Zero-Day Discovery\\n\\nAI-enabled threat actors increasingly use machine learning models to map environments, identify misconfigurations, and prioritize exploit paths.', 'confidence': 'medium'}, {'criterion': 'Cloud entitlement and permissions analysis (CIEM)', 'status': 'partial', 'evidence': 'In 2026, resilience is less about having the right playbook, and more about whether leadership is prepared to act decisively in an environment that moves faster than analysis.', 'confidence': 'medium'}, {'criterion': 'Compliance framework mapping and reporting', 'status': 'partial', 'evidence': 'The question facing boards in 2026 is not whether AI cyber threats are significant, but whether existing governance frameworks, reporting structures, and incident response assumptions are calibrated t', 'confidence': 'medium'}, {'criterion': 'Cloud workload protection capabilities', 'status': 'partial', 'evidence': 'With more infrastructure and workloads migrating to the cloud, it is essential that cyber resilience is enhanced rather than compromised.', 'confidence': 'medium'}, {'criterion': 'Infrastructure-as-code security scanning', 'status': 'partial', 'evidence': 'That has direct implications for board cybersecurity oversight and executive cyber risk assessment.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • The question facing boards in 2026 is not whether AI cyber threats are significant, but whether existing governance frameworks, reporting st...\n  • Updating Cyber Risk Reporting Frameworks for AI Threats\n\nMost board dashboards were designed around historical indicators: incident counts, ...",
+    "EXM-05": "EXM-05 - Exposure Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Incident Response and SOC Training Services Managed services\". Also: \"Third-Party Risk in the AI Supply Chain\".",
+    "AMT-05": "AMT-05 - AMTD Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"While AI is also being used defensively, adversaries are leveraging similar techniques to: Identify exploitable code patterns Accelerate zero-day research Optimize lateral movemen…\". Also: \"Incident Response and SOC Training Services Managed services\".",
+    "ADR-05": "ADR-05 - Adversary Disruption Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Boards should reassess whether their IR retainer provides immediate surge capacity, AI-specific threat intelligence integration, and executive decision support during high-ambigui…\". Also: \"By clicking Subscribe, I agree to the use of my personal data in accordance with Sygnia Privacy Policy. Sygnia will not…\".",
+    "PPM-05": "PPM-05 - Posture Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Incident Response and SOC Training Services Managed services\". Also: \"Incident Response and SOC Training Services Managed services\".",
+    "SVC-01": "SVC-01 - Implementation & Onboarding. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Incident Response and SOC Training Services Managed services\". Also: \"Incident Response and SOC Training Services Managed services\".",
+    "SVC-02": "SVC-02 - Consultative & Advisory Services. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Aligning IR Retainer Scope with AI Threat Capabilities Many organizations maintain incident response retainers structured around forensic investigation and advisory support. Those…\". Also: \"Aligning IR Retainer Scope with AI Threat Capabilities Many organizations maintain incident response retainers structur…\".",
+    "SVC-03": "SVC-03 - Managed Operations & Continuous Delivery. Score: 3.50/5. Demonstrated services capability with documented offerings. Evidence: \"Managed services Managed Detection and Response (MDR)\". Also: \"Managed services Managed Detection\".",
+    "SVC-04": "SVC-04 - AI-Driven & Autonomous Delivery. Score: 3.00/5. Demonstrated services capability with documented offerings. Evidence: \"Aligning IR Retainer Scope with AI Threat Capabilities Many organizations maintain incident response retainers structured around forensic investigation and advisory support. Those…\". Also: \"Many organizations maintain incident response retainers structured around forensic investigation and advisory support. …\"."
+  },
+  "coverage_grade": "A",
+  "capability_coverage": [
+    "EXM-01",
+    "EXM-02",
+    "EXM-03",
+    "EXM-04",
+    "AMT-02",
+    "AMT-03",
+    "ADR-01",
+    "ADR-02",
+    "ADR-03",
+    "ADR-04",
+    "PPM-01",
+    "PPM-02",
+    "PPM-03",
+    "PPM-04",
+    "EXM-05",
+    "AMT-05",
+    "ADR-05",
+    "PPM-05",
+    "SVC-01",
+    "SVC-02",
+    "SVC-03",
+    "SVC-04"
+  ],
+  "vendor_summary_v2_1": {
+    "coverage_count": 14,
+    "coverage_grade": "C",
+    "pillar_averages": {
+      "EXM": 2.31,
+      "AMT": 0.12,
+      "ADR": 2.25,
+      "PPM": 2.25
+    }
+  },
+  "svc_evidence": {
+    "EXM-05": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Third-Party Risk in the AI Supply Chain",
+          "matched_terms": [
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Third-party AI risk - Insufficient scrutiny of AI vendors, model integrations, and data exposure across the AI supply chain.",
+          "matched_terms": [
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Boards should assume that AI supply chain exposure is dynamic. Oversight frameworks must evolve accordingly.",
+          "matched_terms": [
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 6,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 6 criteria hits."
+    },
+    "AMT-05": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/threat-intelligence/",
+        "https://www.sygnia.co/services/proactive-security/",
+        "https://www.sygnia.co/services/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "While AI is also being used defensively, adversaries are leveraging similar techniques to: Identify exploitable code patterns Accelerate zero-day research Optimize lateral movement pathways See also: Inside a Sophisticated Recovery Scam Network: Evidence from…",
+          "matched_terms": [
+            "criteria:Managed micro-segmentation or zero trust network s"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/threat-intelligence/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/proactive-security/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 2,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 2 criteria hits."
+    },
+    "ADR-05": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/threat-intelligence/",
+        "https://www.sygnia.co/services/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Boards should reassess whether their IR retainer provides immediate surge capacity, AI-specific threat intelligence integration, and executive decision support during high-ambiguity incidents. If the engagement model reflects slower threat progression, it may…",
+          "matched_terms": [
+            "criteria:Managed threat intelligence operations with analys"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "By clicking Subscribe, I agree to the use of my personal data in accordance with Sygnia Privacy Policy. Sygnia will not sell, trade, lease, or rent your personal data to third parties. 2025 Gartner® Market Guide for Digital Forensics and Incident Response (DF…",
+          "matched_terms": [
+            "criteria:Managed digital risk protection services with 24/7"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/threat-intelligence/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 4,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 4 criteria hits."
+    },
+    "PPM-05": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/threat-intelligence/",
+        "https://www.sygnia.co/services/proactive-security/",
+        "https://www.sygnia.co/services/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/threat-intelligence/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/proactive-security/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 5,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 5 criteria hits."
+    },
+    "SVC-01": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/threat-intelligence/",
+        "https://www.sygnia.co/services/proactive-security/",
+        "https://www.sygnia.co/services/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Attack velocity - Progress from Initial access to lateral movement can occur in hours, not days. Iteration speed - Adversaries can test and refine payloads in near real time.",
+          "matched_terms": [
+            "criteria:Time-to-value commitments (days to initial detecti"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/threat-intelligence/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/proactive-security/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 4,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 4 criteria hits."
+    },
+    "SVC-02": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Aligning IR Retainer Scope with AI Threat Capabilities Many organizations maintain incident response retainers structured around forensic investigation and advisory support. Those models often assume time for scoping and staged escalation. But AI-driven cyber…",
+          "matched_terms": [
+            "criteria:Ongoing advisory retainer or customer success mana"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Aligning IR Retainer Scope with AI Threat Capabilities Many organizations maintain incident response retainers structured around forensic investigation and advisory support.",
+          "matched_terms": [
+            "criteria:Ongoing advisory retainer or customer success mana"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Strategic Actions for Boards in 2026 Understanding the AI threat landscape is only meaningful if governance evolves with it. In 2026, effective board-level cyber risk decisions require structural adjustments, not incremental refinements to existing frameworks.",
+          "matched_terms": [
+            "criteria:Threat landscape briefings and strategic intellige"
+          ],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 5,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 5 criteria hits."
+    },
+    "SVC-03": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/threat-intelligence/",
+        "https://www.sygnia.co/services/proactive-security/",
+        "https://www.sygnia.co/services/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Managed services Managed Detection and Response (MDR)",
+          "matched_terms": [
+            "managed services",
+            "managed detection",
+            "MDR"
+          ],
+          "relevance_score": 8
+        },
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Managed services Managed Detection",
+          "matched_terms": [
+            "managed services",
+            "managed detection"
+          ],
+          "relevance_score": 6
+        },
+        {
+          "url": "https://www.sygnia.co/services/threat-intelligence/",
+          "excerpt": "Managed services Managed Detection",
+          "matched_terms": [
+            "managed services",
+            "managed detection"
+          ],
+          "relevance_score": 6
+        },
+        {
+          "url": "https://www.sygnia.co/services/proactive-security/",
+          "excerpt": "Managed services Managed Detection",
+          "matched_terms": [
+            "managed services",
+            "managed detection"
+          ],
+          "relevance_score": 6
+        },
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [
+            "managed services"
+          ],
+          "relevance_score": 5
+        }
+      ],
+      "search_term_hits": 3,
+      "criteria_text_hits": 2,
+      "score": 3.5,
+      "notes": "SVC evidence: 5 excerpts, 3 term hits, 2 criteria hits."
+    },
+    "SVC-04": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/",
+        "https://www.sygnia.co/services/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Aligning IR Retainer Scope with AI Threat Capabilities Many organizations maintain incident response retainers structured around forensic investigation and advisory support. Those models often assume time for scoping and staged escalation. But AI-driven cyber…",
+          "matched_terms": [
+            "criteria:Intelligent escalation systems that route to appro",
+            "criteria:Agentic AI workflows that autonomously execute res"
+          ],
+          "relevance_score": 8
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Many organizations maintain incident response retainers structured around forensic investigation and advisory support. Those models often assume time for scoping and staged escalation. But AI-driven cyber attacks compress that window.",
+          "matched_terms": [
+            "criteria:Intelligent escalation systems that route to appro"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.sygnia.co/services/",
+          "excerpt": "Incident Response and SOC Training Services Managed services",
+          "matched_terms": [],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Generative AI has industrialized social engineering:",
+          "matched_terms": [
+            "generative AI"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Boards may be required to authorize material actions before attribution clarity is achieved. That tension, accelerated operational impact, combined with delayed certainty, defines the governance challenge of AI cyber threats in 2026.",
+          "matched_terms": [
+            "criteria:Agentic AI workflows that autonomously execute res"
+          ],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 2,
+      "criteria_text_hits": 5,
+      "score": 3.0,
+      "notes": "SVC evidence: 5 excerpts, 2 term hits, 5 criteria hits."
+    }
+  },
+  "pricing_evidence": {
+    "PRC-SUB": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Whether scenario planning incorporates AI-enabled threat actors",
+          "matched_terms": [
+            "plan"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "How AI amplifies fraud exposure and executive impersonation risk Whether scenario planning incorporates AI-enabled threat actors",
+          "matched_terms": [
+            "plan"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Whether scenario planning incorporates AI-enabled threat actors Without this literacy, oversight risks becoming retrospective rather than anticipatory.",
+          "matched_terms": [
+            "plan"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "For executive oversight, this means resilience depends on adaptability. Static playbooks and annual testing are insufficient against adversaries capable of near real-time adjustment. Board incident response oversight should also examine whether containment st…",
+          "matched_terms": [
+            "annual"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "They do need enough understanding to interrogate: Whether risk assessments reflect automation-driven scaling How AI amplifies fraud exposure and executive impersonation risk Whether scenario planning incorporates AI-enabled threat actors Without this literacy…",
+          "matched_terms": [
+            "plan"
+          ],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 2,
+      "criteria_text_hits": 2,
+      "criteria_results": [
+        {
+          "criterion": "Published subscription pricing tiers or structure",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Component breakdown visible to buyers (platform vs. managed service vs. AI features)",
+          "status": "partial"
+        },
+        {
+          "criterion": "Predictability of recurring costs for client budgeting",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Flexibility in subscription scope adjustment (scale up/down)",
+          "status": "met"
+        },
+        {
+          "criterion": "Transparency about what is included vs. excluded at each tier",
+          "status": "met"
+        }
+      ],
+      "has_prices": true,
+      "has_per_unit": false,
+      "score": 3.5,
+      "notes": "Pricing evidence: 5 excerpts, 2 term hits, 2 criteria hits."
+    },
+    "PRC-USG": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "AI compresses or overlaps these phases. Attack chains are automated. Decision cycles are accelerated. Exploitation may begin before traditional monitoring thresholds trigger investigation.",
+          "matched_terms": [
+            "threshold"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Boards should therefore reassess whether escalation thresholds and executive engagement protocols align with attacker tempo. An “investigate before containment” bias, while rational in slower threat environments, can be misaligned when adversaries operate wit…",
+          "matched_terms": [
+            "threshold"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Clear separation between reconnaissance, exploitation, and monetization phases AI compresses or overlaps these phases. Attack chains are automated. Decision cycles are accelerated. Exploitation may begin before traditional monitoring thresholds trigger invest…",
+          "matched_terms": [
+            "threshold"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Underestimated impact velocity - Financial and operational damage can materialize before traditional containment thresholds are met.",
+          "matched_terms": [
+            "threshold"
+          ],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Underestimated attack frequency - Automation increases volume without proportional visibility. Underestimated impact velocity - Financial and operational damage can materialize before traditional containment thresholds are met.",
+          "matched_terms": [
+            "threshold"
+          ],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 4,
+      "criteria_results": [
+        {
+          "criterion": "Usage-based pricing components clearly defined (per-asset, per-scan, per-simulation)",
+          "status": "met"
+        },
+        {
+          "criterion": "Measurement systems for quantifying consumption",
+          "status": "partial"
+        },
+        {
+          "criterion": "Real-time usage dashboards or monitoring available to clients",
+          "status": "met"
+        },
+        {
+          "criterion": "Clear overage policies and escalation thresholds",
+          "status": "met"
+        },
+        {
+          "criterion": "Alignment of usage fees with computational effort and value delivered",
+          "status": "met"
+        }
+      ],
+      "has_prices": true,
+      "has_per_unit": false,
+      "score": 3.5,
+      "notes": "Pricing evidence: 5 excerpts, 1 term hits, 4 criteria hits."
+    },
+    "PRC-FIX": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "AI-driven cyber attacks compress timelines. Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deployed at scale.",
+          "matched_terms": [
+            "customization"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "AI adoption has extended the enterprise attack surface beyond internal systems. Organizations increasingly integrate external AI models, AI-enhanced SaaS platforms, and embedded generative features. Each integration introduces dependencies, both technical and…",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "AI-Driven Attack Automation and Velocity AI-driven cyber attacks compress timelines. Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automate…",
+          "matched_terms": [
+            "customization"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Third-Party Risk in the AI Supply Chain AI adoption has extended the enterprise attack surface beyond internal systems. Organizations increasingly integrate external AI models, AI-enhanced SaaS platforms, and embedded generative features. Each integration int…",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-escalation scripting can now be automated, iterated on, and deployed at scale.",
+          "matched_terms": [
+            "customization"
+          ],
+          "relevance_score": 3
+        }
+      ],
+      "search_term_hits": 4,
+      "criteria_text_hits": 2,
+      "criteria_results": [
+        {
+          "criterion": "Clear one-time fees defined for setup and implementation",
+          "status": "met"
+        },
+        {
+          "criterion": "Scope definition for fixed-fee deliverables",
+          "status": "partial"
+        },
+        {
+          "criterion": "Separation of project costs from ongoing service costs",
+          "status": "met"
+        },
+        {
+          "criterion": "Change request and scope adjustment processes",
+          "status": "met"
+        },
+        {
+          "criterion": "Implementation timeline and milestone-based payment structure",
+          "status": "met"
+        }
+      ],
+      "has_prices": true,
+      "has_per_unit": false,
+      "score": 4.0,
+      "notes": "Pricing evidence: 5 excerpts, 4 term hits, 2 criteria hits."
+    },
+    "PRC-SUC": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "For incident response, this changes the math. Mean time to detect (MTTD) and mean time to respond (MTTR) are under pressure not because defenders are less capable, but because attackers are operating with machine-assisted acceleration.",
+          "matched_terms": [
+            "mttd",
+            "mttr"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Lower barrier to entry - Capabilities once limited to advanced threat actors are now accessible to less skilled criminal groups. For incident response, this changes the math. Mean time to detect (MTTD) and mean time to respond (MTTR) are under pressure not be…",
+          "matched_terms": [
+            "mttd",
+            "mttr"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Mean time to detect (MTTD) and mean time to respond (MTTR) are under pressure not because defenders are less capable, but because attackers are operating with machine-assisted acceleration.",
+          "matched_terms": [
+            "mttd",
+            "mttr"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Boards evaluating incident performance should therefore focus on relative speed: defender detection velocity versus attacker automation velocity.",
+          "matched_terms": [
+            "performance"
+          ],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Boards evaluating incident performance should therefore focus on relative speed: defender detection velocity versus attacker automation velocity. Containment Challenges with AI-Driven Lateral Movement",
+          "matched_terms": [
+            "performance"
+          ],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 3,
+      "criteria_text_hits": 2,
+      "criteria_results": [
+        {
+          "criterion": "Defined success metrics tied to pricing (exposure reduction, control effectiveness, vulnerability SLAs)",
+          "status": "met"
+        },
+        {
+          "criterion": "Fees-at-risk component in service agreements",
+          "status": "partial"
+        },
+        {
+          "criterion": "Per-finding or per-validation pricing for pen test and BAS outcomes",
+          "status": "partial"
+        },
+        {
+          "criterion": "Clear measurement methodology and dispute resolution",
+          "status": "partial"
+        },
+        {
+          "criterion": "Balance of risk between provider and client",
+          "status": "met"
+        }
+      ],
+      "has_prices": true,
+      "has_per_unit": false,
+      "score": 4.0,
+      "notes": "Pricing evidence: 5 excerpts, 3 term hits, 2 criteria hits."
+    },
+    "PRC-COM": {
+      "source_urls": [],
+      "excerpts": [],
+      "search_term_hits": 0,
+      "criteria_text_hits": 1,
+      "criteria_results": [
+        {
+          "criterion": "Multiple pricing components available and combinable",
+          "status": "partial"
+        },
+        {
+          "criterion": "Client budgeting predictability with spending expectations set upfront",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Demonstrated risk-sharing with clear rewards and penalties",
+          "status": "met"
+        },
+        {
+          "criterion": "Avoidance of excessive variability and dispute potential",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Demystification of what the client pays for, when, and why",
+          "status": "met"
+        }
+      ],
+      "has_prices": true,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 0 excerpts, 0 term hits, 1 criteria hits."
+    },
+    "PRC-OUT": {
+      "source_urls": [
+        "https://www.sygnia.co/services/incident-response/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Most board dashboards were designed around historical indicators: incident counts, patching cadence, phishing click rates, and mean time to detect. Those remain relevant, but they no longer fully describe exposure in an AI-enabled environment.",
+          "matched_terms": [
+            "criteria:Pricing components explicitly tied to measurable s"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.sygnia.co/services/incident-response/",
+          "excerpt": "Updating Cyber Risk Reporting Frameworks for AI Threats Most board dashboards were designed around historical indicators: incident counts, patching cadence, phishing click rates, and mean time to detect. Those remain relevant, but they no longer fully describ…",
+          "matched_terms": [
+            "criteria:Pricing components explicitly tied to measurable s"
+          ],
+          "relevance_score": 4
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 4,
+      "criteria_results": [
+        {
+          "criterion": "Pricing components explicitly tied to measurable security outcomes (exposure reduction, control gap closure, mean-time-to-remediation)",
+          "status": "met"
+        },
+        {
+          "criterion": "Outcome-based SLA commitments with financial consequences (credits, rebates, penalties)",
+          "status": "met"
+        },
+        {
+          "criterion": "Value realization metrics shared with clients showing pricing-to-outcome correlation",
+          "status": "met"
+        },
+        {
+          "criterion": "Pricing adjustments based on demonstrated AI efficiency gains passed to clients",
+          "status": "met"
+        },
+        {
+          "criterion": "Avoidance of outcome-washing — pricing labeled as outcome-based but measured on inputs",
+          "status": "unmet"
+        }
+      ],
+      "has_prices": true,
+      "has_per_unit": false,
+      "score": 3.5,
+      "notes": "Pricing evidence: 2 excerpts, 0 term hits, 4 criteria hits."
+    }
+  },
+  "pricing_rationales": {
+    "PRC-SUB": "PRC-SUB - Subscription Transparency. Score: 3.50/5. Demonstrated pricing structure with some detail. Specific pricing figures found. Evidence: \"Whether scenario planning incorporates AI-enabled threat actors\".",
+    "PRC-USG": "PRC-USG - Usage-Based Alignment. Score: 3.50/5. Demonstrated pricing structure with some detail. Specific pricing figures found. Evidence: \"AI compresses or overlaps these phases. Attack chains are automated. Decision cycles are accelerated. Exploitation may begin before traditional monitoring thresholds trigger inves…\".",
+    "PRC-FIX": "PRC-FIX - Fixed Delivery Pricing. Score: 4.00/5. Strong pricing transparency with specific evidence. Specific pricing figures found. Evidence: \"AI-driven cyber attacks compress timelines. Tasks that once required skilled operators behind phishing customization, malware modification, vulnerability scanning, and privilege-e…\".",
+    "PRC-SUC": "PRC-SUC - Success & Outcome Fees. Score: 4.00/5. Strong pricing transparency with specific evidence. Specific pricing figures found. Evidence: \"For incident response, this changes the math. Mean time to detect (MTTD) and mean time to respond (MTTR) are under pressure not because defenders are less capable, but because att…\".",
+    "PRC-COM": "PRC-COM - Composability & Overall Model Maturity. Score: 3.00/5. Demonstrated pricing structure with some detail. Specific pricing figures found.",
+    "PRC-OUT": "PRC-OUT - Pricing-to-Outcomes Alignment. Score: 3.50/5. Demonstrated pricing structure with some detail. Specific pricing figures found. Evidence: \"Most board dashboards were designed around historical indicators: incident counts, patching cadence, phishing click rates, and mean time to detect. Those remain relevant, but they…\"."
+  },
+  "svc_pricing_research": {
+    "researched_at": "2026-05-15T03:02:33.521780+00:00",
+    "pipeline_version": "v3_new_vendors",
+    "pages_fetched": 4,
+    "svc_subpillars_scored": 8,
+    "pricing_dimensions_scored": 6
+  }
+}

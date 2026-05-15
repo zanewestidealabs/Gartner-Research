@@ -1,8 +1,8 @@
 {
   "url": "https://www.trellix.com/products/xdr/",
-  "fetched_at": "2026-02-24T15:43:11.859607+00:00",
-  "ok": true,
-  "content_type": "text/html",
+  "fetched_at": "2026-05-14T15:59:02.410543+00:00",
+  "ok": false,
+  "content_type": null,
   "text": "",
-  "error": null
+  "error": "fetch_failed"
 }

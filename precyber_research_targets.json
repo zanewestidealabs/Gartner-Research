@@ -1,0 +1,4494 @@
+{
+  "generated_at": "2026-05-14T19:24:48.664644+00:00",
+  "count": 180,
+  "targets": [
+    {
+      "vendor": "Tenable",
+      "sid": "EXM-04",
+      "sub_pillar": "Third-Party & Supply Chain Exposure",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Third-party vendor risk assessment capabilities",
+        "Software supply chain monitoring (SBOM analysis)",
+        "Open-source component vulnerability tracking",
+        "Continuous monitoring of vendor security posture",
+        "Supply chain attack detection and alerting"
+      ],
+      "search_terms": [
+        "third-party risk",
+        "supply chain security",
+        "vendor risk management",
+        "SBOM",
+        "software supply chain",
+        "third-party exposure",
+        "open source risk"
+      ]
+    },
+    {
+      "vendor": "Tenable",
+      "sid": "EXM-05",
+      "sub_pillar": "Exposure Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.25 → 3.50 (Δ+1.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed attack surface management (managed ASM) service offering",
+        "CTEM-as-a-service or managed exposure management programs",
+        "Managed vulnerability operations with analyst-driven prioritization",
+        "Dedicated exposure management analyst teams or SOC coverage",
+        "SLA-backed exposure discovery, assessment, and remediation workflows",
+        "Continuous managed monitoring of third-party and supply chain exposure"
+      ],
+      "search_terms": [
+        "managed ASM",
+        "managed attack surface",
+        "CTEM as a service",
+        "managed exposure management",
+        "managed vulnerability",
+        "vulnerability management service",
+        "exposure management service",
+        "managed EASM",
+        "outsourced vulnerability management"
+      ]
+    },
+    {
+      "vendor": "Tenable",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.50 → 3.50 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Qualys",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    },
+    {
+      "vendor": "Rapid7",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Rapid7",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    },
+    {
+      "vendor": "CrowdStrike",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "CrowdStrike",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "sid": "EXM-02",
+      "sub_pillar": "Continuous Threat Exposure Management",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "CTEM program capabilities or alignment",
+        "Exposure scoping and discovery automation",
+        "Prioritization based on exploitability and business context",
+        "Validation of exposure remediation effectiveness",
+        "Continuous cycle operation (not point-in-time)"
+      ],
+      "search_terms": [
+        "CTEM",
+        "continuous threat exposure management",
+        "exposure management program",
+        "threat exposure",
+        "exposure prioritization",
+        "continuous exposure"
+      ]
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.50 → 3.50 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Censys",
+      "sid": "EXM-02",
+      "sub_pillar": "Continuous Threat Exposure Management",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "CTEM program capabilities or alignment",
+        "Exposure scoping and discovery automation",
+        "Prioritization based on exploitability and business context",
+        "Validation of exposure remediation effectiveness",
+        "Continuous cycle operation (not point-in-time)"
+      ],
+      "search_terms": [
+        "CTEM",
+        "continuous threat exposure management",
+        "exposure management program",
+        "threat exposure",
+        "exposure prioritization",
+        "continuous exposure"
+      ]
+    },
+    {
+      "vendor": "CyCognito",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "Armis",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Armis",
+      "sid": "SVC-02",
+      "sub_pillar": "Consultative & Advisory Services",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.50 → 3.50 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Security maturity assessment and gap analysis services",
+        "CTEM program design and roadmap consulting",
+        "Architecture review and security stack optimization advisory",
+        "Threat landscape briefings and strategic intelligence services",
+        "Executive reporting and board-level security communication support",
+        "Ongoing advisory retainer or customer success management with strategic focus"
+      ],
+      "search_terms": [
+        "security consulting",
+        "advisory services",
+        "maturity assessment",
+        "security architecture review",
+        "CTEM consulting",
+        "strategic consulting",
+        "customer success",
+        "security advisory"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": true,
+      "current_score": 4.5,
+      "reason": "Score moved upward 0.00 → 4.50 (Δ+4.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "EXM-02",
+      "sub_pillar": "Continuous Threat Exposure Management",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "CTEM program capabilities or alignment",
+        "Exposure scoping and discovery automation",
+        "Prioritization based on exploitability and business context",
+        "Validation of exposure remediation effectiveness",
+        "Continuous cycle operation (not point-in-time)"
+      ],
+      "search_terms": [
+        "CTEM",
+        "continuous threat exposure management",
+        "exposure management program",
+        "threat exposure",
+        "exposure prioritization",
+        "continuous exposure"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": true,
+      "current_score": 4.5,
+      "reason": "Score moved upward 0.00 → 4.50 (Δ+4.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "EXM-04",
+      "sub_pillar": "Third-Party & Supply Chain Exposure",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Third-party vendor risk assessment capabilities",
+        "Software supply chain monitoring (SBOM analysis)",
+        "Open-source component vulnerability tracking",
+        "Continuous monitoring of vendor security posture",
+        "Supply chain attack detection and alerting"
+      ],
+      "search_terms": [
+        "third-party risk",
+        "supply chain security",
+        "vendor risk management",
+        "SBOM",
+        "software supply chain",
+        "third-party exposure",
+        "open source risk"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "AMT-01",
+      "sub_pillar": "Polymorphic & Morphing Defense",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Runtime address space or memory layout randomization",
+        "API endpoint mutation or obfuscation",
+        "Network configuration morphing",
+        "System identifier rotation",
+        "Evidence of increased attacker cost through dynamic changes"
+      ],
+      "search_terms": [
+        "polymorphic defense",
+        "moving target defense",
+        "AMTD",
+        "runtime randomization",
+        "address space randomization",
+        "memory randomization",
+        "dynamic defense"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "AMT-03",
+      "sub_pillar": "Dynamic Network & Infrastructure Defense",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated micro-segmentation with dynamic policy",
+        "Network topology reconfiguration capabilities",
+        "Software-defined perimeter or zero trust network access",
+        "Infrastructure-as-code security automation",
+        "Adaptive access controls based on risk signals"
+      ],
+      "search_terms": [
+        "dynamic network defense",
+        "micro-segmentation",
+        "software-defined perimeter",
+        "network randomization",
+        "adaptive network",
+        "zero trust network",
+        "dynamic segmentation"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "AMT-04",
+      "sub_pillar": "Identity & Credential Rotation",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated credential and secret rotation",
+        "Ephemeral or just-in-time credential provisioning",
+        "Service account and API key lifecycle management",
+        "Certificate and token rotation automation",
+        "Privileged access session isolation"
+      ],
+      "search_terms": [
+        "credential rotation",
+        "ephemeral credentials",
+        "key rotation",
+        "token rotation",
+        "just-in-time access",
+        "secret rotation",
+        "privileged access management"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "ADR-01",
+      "sub_pillar": "Deception Technology",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Honeypot and honeytoken deployment capabilities",
+        "Decoy systems mimicking production assets",
+        "Breadcrumb placement for lateral movement detection",
+        "High-fidelity alerting with low false-positive rates",
+        "Integration with SIEM/SOAR for automated response"
+      ],
+      "search_terms": [
+        "deception technology",
+        "honeypot",
+        "honeytoken",
+        "decoy",
+        "breadcrumb",
+        "deception platform",
+        "cyber deception",
+        "distributed deception"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "ADR-03",
+      "sub_pillar": "Proactive Threat Hunting",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed or automated threat hunting services",
+        "Hypothesis-driven hunting methodologies",
+        "Hunt query libraries and playbooks",
+        "Integration with telemetry sources (EDR, NDR, SIEM)",
+        "Hunt findings feeding back to detection engineering"
+      ],
+      "search_terms": [
+        "threat hunting",
+        "proactive hunting",
+        "hypothesis-driven hunting",
+        "hunt operations",
+        "adversary hunting",
+        "managed threat hunting",
+        "detection engineering"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "ADR-04",
+      "sub_pillar": "Counter-Adversary Operations",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Dark web monitoring and intelligence gathering",
+        "Brand protection and impersonation detection",
+        "Takedown service capabilities (domains, phishing, infrastructure)",
+        "Adversary attribution and campaign tracking",
+        "Digital risk protection services"
+      ],
+      "search_terms": [
+        "counter-adversary",
+        "adversary disruption",
+        "takedown service",
+        "dark web monitoring",
+        "adversary attribution",
+        "digital risk protection",
+        "brand protection"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "PPM-01",
+      "sub_pillar": "Breach & Attack Simulation",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated attack chain simulation capabilities",
+        "Continuous validation against production controls",
+        "MITRE ATT&CK technique coverage",
+        "Control gap identification and remediation guidance",
+        "Reporting on detection and prevention effectiveness"
+      ],
+      "search_terms": [
+        "breach and attack simulation",
+        "BAS",
+        "attack simulation",
+        "purple team automation",
+        "control validation",
+        "security validation",
+        "adversary simulation"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "PPM-02",
+      "sub_pillar": "Security Control Validation",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "SIEM detection rule validation and testing",
+        "EDR policy effectiveness verification",
+        "Firewall and network control validation",
+        "DLP and data protection control testing",
+        "Configuration drift detection and alerting"
+      ],
+      "search_terms": [
+        "security control validation",
+        "control effectiveness",
+        "detection validation",
+        "SIEM validation",
+        "EDR validation",
+        "control gap analysis",
+        "security posture validation"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "PPM-03",
+      "sub_pillar": "Penetration Testing & Red Teaming",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated penetration testing platform",
+        "Continuous or on-demand pen testing capabilities",
+        "Attack path analysis and visualization",
+        "Exploit validation and proof-of-concept generation",
+        "Red team exercise automation (PTaaS)"
+      ],
+      "search_terms": [
+        "penetration testing",
+        "automated pentest",
+        "red team",
+        "continuous pentest",
+        "attack path analysis",
+        "PTaaS",
+        "offensive security",
+        "exploitation testing"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "EXM-05",
+      "sub_pillar": "Exposure Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed attack surface management (managed ASM) service offering",
+        "CTEM-as-a-service or managed exposure management programs",
+        "Managed vulnerability operations with analyst-driven prioritization",
+        "Dedicated exposure management analyst teams or SOC coverage",
+        "SLA-backed exposure discovery, assessment, and remediation workflows",
+        "Continuous managed monitoring of third-party and supply chain exposure"
+      ],
+      "search_terms": [
+        "managed ASM",
+        "managed attack surface",
+        "CTEM as a service",
+        "managed exposure management",
+        "managed vulnerability",
+        "vulnerability management service",
+        "exposure management service",
+        "managed EASM",
+        "outsourced vulnerability management"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "AMT-05",
+      "sub_pillar": "AMTD Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed AMTD deployment and configuration services",
+        "Runtime protection-as-a-service or managed RASP operations",
+        "Managed micro-segmentation or zero trust network services",
+        "Managed credential rotation and privileged access operations",
+        "Continuous tuning and optimization of moving target defense policies",
+        "SLA-backed managed services for application hardening or network defense"
+      ],
+      "search_terms": [
+        "managed AMTD",
+        "managed moving target defense",
+        "managed RASP",
+        "managed micro-segmentation",
+        "managed zero trust",
+        "managed PAM",
+        "runtime protection service",
+        "managed credential rotation",
+        "segmentation as a service"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "ADR-05",
+      "sub_pillar": "Adversary Disruption Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed deception-as-a-service with analyst-operated decoy environments",
+        "Managed threat hunting services with dedicated hunt teams",
+        "Managed threat intelligence operations with analyst-curated intelligence",
+        "Managed counter-adversary operations including takedowns and dark web monitoring",
+        "Managed digital risk protection services with 24/7 analyst coverage",
+        "SLA-backed adversary disruption operations with defined response times"
+      ],
+      "search_terms": [
+        "managed deception",
+        "deception as a service",
+        "managed threat hunting",
+        "managed threat intelligence",
+        "managed counter-adversary",
+        "managed digital risk protection",
+        "managed DRP",
+        "outsourced threat hunting",
+        "managed takedown service"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "PPM-05",
+      "sub_pillar": "Posture Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed BAS operations with continuous simulation and analyst-driven gap analysis",
+        "Penetration testing as a service (PTaaS) with on-demand or continuous testing",
+        "Managed security control validation with analyst-driven effectiveness reporting",
+        "Managed CSPM or cloud security posture operations",
+        "Dedicated posture management analyst teams with continuous validation cycles",
+        "SLA-backed posture management services with defined remediation workflows"
+      ],
+      "search_terms": [
+        "managed BAS",
+        "BAS as a service",
+        "PTaaS",
+        "pen testing as a service",
+        "managed penetration testing",
+        "managed security validation",
+        "managed CSPM",
+        "managed posture management",
+        "continuous security validation service",
+        "managed red team"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "SVC-01",
+      "sub_pillar": "Implementation & Onboarding",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Defined implementation methodology with milestones and timelines",
+        "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+        "Onboarding documentation, runbooks, and knowledge transfer programs",
+        "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+        "Post-deployment validation and tuning services",
+        "API-first integration architecture supporting custom workflows"
+      ],
+      "search_terms": [
+        "professional services",
+        "implementation services",
+        "onboarding",
+        "deployment support",
+        "time-to-value",
+        "integration services",
+        "customer onboarding",
+        "proof of value"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "SVC-02",
+      "sub_pillar": "Consultative & Advisory Services",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Security maturity assessment and gap analysis services",
+        "CTEM program design and roadmap consulting",
+        "Architecture review and security stack optimization advisory",
+        "Threat landscape briefings and strategic intelligence services",
+        "Executive reporting and board-level security communication support",
+        "Ongoing advisory retainer or customer success management with strategic focus"
+      ],
+      "search_terms": [
+        "security consulting",
+        "advisory services",
+        "maturity assessment",
+        "security architecture review",
+        "CTEM consulting",
+        "strategic consulting",
+        "customer success",
+        "security advisory"
+      ]
+    },
+    {
+      "vendor": "Axonius",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.00 → 3.50 (Δ+2.50); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "JupiterOne",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    },
+    {
+      "vendor": "JupiterOne",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.00 → 3.50 (Δ+2.50); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "XM Cyber",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "XM Cyber",
+      "sid": "PPM-01",
+      "sub_pillar": "Breach & Attack Simulation",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated attack chain simulation capabilities",
+        "Continuous validation against production controls",
+        "MITRE ATT&CK technique coverage",
+        "Control gap identification and remediation guidance",
+        "Reporting on detection and prevention effectiveness"
+      ],
+      "search_terms": [
+        "breach and attack simulation",
+        "BAS",
+        "attack simulation",
+        "purple team automation",
+        "control validation",
+        "security validation",
+        "adversary simulation"
+      ]
+    },
+    {
+      "vendor": "XM Cyber",
+      "sid": "PPM-03",
+      "sub_pillar": "Penetration Testing & Red Teaming",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated penetration testing platform",
+        "Continuous or on-demand pen testing capabilities",
+        "Attack path analysis and visualization",
+        "Exploit validation and proof-of-concept generation",
+        "Red team exercise automation (PTaaS)"
+      ],
+      "search_terms": [
+        "penetration testing",
+        "automated pentest",
+        "red team",
+        "continuous pentest",
+        "attack path analysis",
+        "PTaaS",
+        "offensive security",
+        "exploitation testing"
+      ]
+    },
+    {
+      "vendor": "Bitsight",
+      "sid": "SVC-02",
+      "sub_pillar": "Consultative & Advisory Services",
+      "in_expected_coverage": false,
+      "current_score": 3.0,
+      "reason": "Score moved upward 2.00 → 3.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Security maturity assessment and gap analysis services",
+        "CTEM program design and roadmap consulting",
+        "Architecture review and security stack optimization advisory",
+        "Threat landscape briefings and strategic intelligence services",
+        "Executive reporting and board-level security communication support",
+        "Ongoing advisory retainer or customer success management with strategic focus"
+      ],
+      "search_terms": [
+        "security consulting",
+        "advisory services",
+        "maturity assessment",
+        "security architecture review",
+        "CTEM consulting",
+        "strategic consulting",
+        "customer success",
+        "security advisory"
+      ]
+    },
+    {
+      "vendor": "Bitsight",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.50 → 3.50 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "SecurityScorecard",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Morphisec",
+      "sid": "AMT-01",
+      "sub_pillar": "Polymorphic & Morphing Defense",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Runtime address space or memory layout randomization",
+        "API endpoint mutation or obfuscation",
+        "Network configuration morphing",
+        "System identifier rotation",
+        "Evidence of increased attacker cost through dynamic changes"
+      ],
+      "search_terms": [
+        "polymorphic defense",
+        "moving target defense",
+        "AMTD",
+        "runtime randomization",
+        "address space randomization",
+        "memory randomization",
+        "dynamic defense"
+      ]
+    },
+    {
+      "vendor": "Morphisec",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "Morphisec",
+      "sid": "AMT-05",
+      "sub_pillar": "AMTD Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.25 → 3.50 (Δ+1.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed AMTD deployment and configuration services",
+        "Runtime protection-as-a-service or managed RASP operations",
+        "Managed micro-segmentation or zero trust network services",
+        "Managed credential rotation and privileged access operations",
+        "Continuous tuning and optimization of moving target defense policies",
+        "SLA-backed managed services for application hardening or network defense"
+      ],
+      "search_terms": [
+        "managed AMTD",
+        "managed moving target defense",
+        "managed RASP",
+        "managed micro-segmentation",
+        "managed zero trust",
+        "managed PAM",
+        "runtime protection service",
+        "managed credential rotation",
+        "segmentation as a service"
+      ]
+    },
+    {
+      "vendor": "RunSafe Security",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "RunSafe Security",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.25,
+      "reason": "Score moved upward 1.00 → 3.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Contrast Security",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": true,
+      "current_score": 4.5,
+      "reason": "Score moved upward 3.50 → 4.50 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "Illumio",
+      "sid": "AMT-03",
+      "sub_pillar": "Dynamic Network & Infrastructure Defense",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated micro-segmentation with dynamic policy",
+        "Network topology reconfiguration capabilities",
+        "Software-defined perimeter or zero trust network access",
+        "Infrastructure-as-code security automation",
+        "Adaptive access controls based on risk signals"
+      ],
+      "search_terms": [
+        "dynamic network defense",
+        "micro-segmentation",
+        "software-defined perimeter",
+        "network randomization",
+        "adaptive network",
+        "zero trust network",
+        "dynamic segmentation"
+      ]
+    },
+    {
+      "vendor": "Akamai (Guardicore)",
+      "sid": "ADR-01",
+      "sub_pillar": "Deception Technology",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Honeypot and honeytoken deployment capabilities",
+        "Decoy systems mimicking production assets",
+        "Breadcrumb placement for lateral movement detection",
+        "High-fidelity alerting with low false-positive rates",
+        "Integration with SIEM/SOAR for automated response"
+      ],
+      "search_terms": [
+        "deception technology",
+        "honeypot",
+        "honeytoken",
+        "decoy",
+        "breadcrumb",
+        "deception platform",
+        "cyber deception",
+        "distributed deception"
+      ]
+    },
+    {
+      "vendor": "Akamai (Guardicore)",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.25,
+      "reason": "Score moved upward 1.50 → 3.25 (Δ+1.75); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "BeyondTrust",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.00 → 3.50 (Δ+1.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "EXM-02",
+      "sub_pillar": "Continuous Threat Exposure Management",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "CTEM program capabilities or alignment",
+        "Exposure scoping and discovery automation",
+        "Prioritization based on exploitability and business context",
+        "Validation of exposure remediation effectiveness",
+        "Continuous cycle operation (not point-in-time)"
+      ],
+      "search_terms": [
+        "CTEM",
+        "continuous threat exposure management",
+        "exposure management program",
+        "threat exposure",
+        "exposure prioritization",
+        "continuous exposure"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "EXM-04",
+      "sub_pillar": "Third-Party & Supply Chain Exposure",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Third-party vendor risk assessment capabilities",
+        "Software supply chain monitoring (SBOM analysis)",
+        "Open-source component vulnerability tracking",
+        "Continuous monitoring of vendor security posture",
+        "Supply chain attack detection and alerting"
+      ],
+      "search_terms": [
+        "third-party risk",
+        "supply chain security",
+        "vendor risk management",
+        "SBOM",
+        "software supply chain",
+        "third-party exposure",
+        "open source risk"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "AMT-01",
+      "sub_pillar": "Polymorphic & Morphing Defense",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Runtime address space or memory layout randomization",
+        "API endpoint mutation or obfuscation",
+        "Network configuration morphing",
+        "System identifier rotation",
+        "Evidence of increased attacker cost through dynamic changes"
+      ],
+      "search_terms": [
+        "polymorphic defense",
+        "moving target defense",
+        "AMTD",
+        "runtime randomization",
+        "address space randomization",
+        "memory randomization",
+        "dynamic defense"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "AMT-03",
+      "sub_pillar": "Dynamic Network & Infrastructure Defense",
+      "in_expected_coverage": false,
+      "current_score": 3.25,
+      "reason": "Score moved upward 0.00 → 3.25 (Δ+3.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated micro-segmentation with dynamic policy",
+        "Network topology reconfiguration capabilities",
+        "Software-defined perimeter or zero trust network access",
+        "Infrastructure-as-code security automation",
+        "Adaptive access controls based on risk signals"
+      ],
+      "search_terms": [
+        "dynamic network defense",
+        "micro-segmentation",
+        "software-defined perimeter",
+        "network randomization",
+        "adaptive network",
+        "zero trust network",
+        "dynamic segmentation"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "AMT-04",
+      "sub_pillar": "Identity & Credential Rotation",
+      "in_expected_coverage": true,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated credential and secret rotation",
+        "Ephemeral or just-in-time credential provisioning",
+        "Service account and API key lifecycle management",
+        "Certificate and token rotation automation",
+        "Privileged access session isolation"
+      ],
+      "search_terms": [
+        "credential rotation",
+        "ephemeral credentials",
+        "key rotation",
+        "token rotation",
+        "just-in-time access",
+        "secret rotation",
+        "privileged access management"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "ADR-01",
+      "sub_pillar": "Deception Technology",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Honeypot and honeytoken deployment capabilities",
+        "Decoy systems mimicking production assets",
+        "Breadcrumb placement for lateral movement detection",
+        "High-fidelity alerting with low false-positive rates",
+        "Integration with SIEM/SOAR for automated response"
+      ],
+      "search_terms": [
+        "deception technology",
+        "honeypot",
+        "honeytoken",
+        "decoy",
+        "breadcrumb",
+        "deception platform",
+        "cyber deception",
+        "distributed deception"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "ADR-03",
+      "sub_pillar": "Proactive Threat Hunting",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed or automated threat hunting services",
+        "Hypothesis-driven hunting methodologies",
+        "Hunt query libraries and playbooks",
+        "Integration with telemetry sources (EDR, NDR, SIEM)",
+        "Hunt findings feeding back to detection engineering"
+      ],
+      "search_terms": [
+        "threat hunting",
+        "proactive hunting",
+        "hypothesis-driven hunting",
+        "hunt operations",
+        "adversary hunting",
+        "managed threat hunting",
+        "detection engineering"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "ADR-04",
+      "sub_pillar": "Counter-Adversary Operations",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Dark web monitoring and intelligence gathering",
+        "Brand protection and impersonation detection",
+        "Takedown service capabilities (domains, phishing, infrastructure)",
+        "Adversary attribution and campaign tracking",
+        "Digital risk protection services"
+      ],
+      "search_terms": [
+        "counter-adversary",
+        "adversary disruption",
+        "takedown service",
+        "dark web monitoring",
+        "adversary attribution",
+        "digital risk protection",
+        "brand protection"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "PPM-01",
+      "sub_pillar": "Breach & Attack Simulation",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated attack chain simulation capabilities",
+        "Continuous validation against production controls",
+        "MITRE ATT&CK technique coverage",
+        "Control gap identification and remediation guidance",
+        "Reporting on detection and prevention effectiveness"
+      ],
+      "search_terms": [
+        "breach and attack simulation",
+        "BAS",
+        "attack simulation",
+        "purple team automation",
+        "control validation",
+        "security validation",
+        "adversary simulation"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "PPM-02",
+      "sub_pillar": "Security Control Validation",
+      "in_expected_coverage": false,
+      "current_score": 3.25,
+      "reason": "Score moved upward 0.00 → 3.25 (Δ+3.25); verify against vendor docs.",
+      "what_to_verify": [
+        "SIEM detection rule validation and testing",
+        "EDR policy effectiveness verification",
+        "Firewall and network control validation",
+        "DLP and data protection control testing",
+        "Configuration drift detection and alerting"
+      ],
+      "search_terms": [
+        "security control validation",
+        "control effectiveness",
+        "detection validation",
+        "SIEM validation",
+        "EDR validation",
+        "control gap analysis",
+        "security posture validation"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "PPM-03",
+      "sub_pillar": "Penetration Testing & Red Teaming",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated penetration testing platform",
+        "Continuous or on-demand pen testing capabilities",
+        "Attack path analysis and visualization",
+        "Exploit validation and proof-of-concept generation",
+        "Red team exercise automation (PTaaS)"
+      ],
+      "search_terms": [
+        "penetration testing",
+        "automated pentest",
+        "red team",
+        "continuous pentest",
+        "attack path analysis",
+        "PTaaS",
+        "offensive security",
+        "exploitation testing"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "EXM-05",
+      "sub_pillar": "Exposure Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed attack surface management (managed ASM) service offering",
+        "CTEM-as-a-service or managed exposure management programs",
+        "Managed vulnerability operations with analyst-driven prioritization",
+        "Dedicated exposure management analyst teams or SOC coverage",
+        "SLA-backed exposure discovery, assessment, and remediation workflows",
+        "Continuous managed monitoring of third-party and supply chain exposure"
+      ],
+      "search_terms": [
+        "managed ASM",
+        "managed attack surface",
+        "CTEM as a service",
+        "managed exposure management",
+        "managed vulnerability",
+        "vulnerability management service",
+        "exposure management service",
+        "managed EASM",
+        "outsourced vulnerability management"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "AMT-05",
+      "sub_pillar": "AMTD Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed AMTD deployment and configuration services",
+        "Runtime protection-as-a-service or managed RASP operations",
+        "Managed micro-segmentation or zero trust network services",
+        "Managed credential rotation and privileged access operations",
+        "Continuous tuning and optimization of moving target defense policies",
+        "SLA-backed managed services for application hardening or network defense"
+      ],
+      "search_terms": [
+        "managed AMTD",
+        "managed moving target defense",
+        "managed RASP",
+        "managed micro-segmentation",
+        "managed zero trust",
+        "managed PAM",
+        "runtime protection service",
+        "managed credential rotation",
+        "segmentation as a service"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "ADR-05",
+      "sub_pillar": "Adversary Disruption Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed deception-as-a-service with analyst-operated decoy environments",
+        "Managed threat hunting services with dedicated hunt teams",
+        "Managed threat intelligence operations with analyst-curated intelligence",
+        "Managed counter-adversary operations including takedowns and dark web monitoring",
+        "Managed digital risk protection services with 24/7 analyst coverage",
+        "SLA-backed adversary disruption operations with defined response times"
+      ],
+      "search_terms": [
+        "managed deception",
+        "deception as a service",
+        "managed threat hunting",
+        "managed threat intelligence",
+        "managed counter-adversary",
+        "managed digital risk protection",
+        "managed DRP",
+        "outsourced threat hunting",
+        "managed takedown service"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "PPM-05",
+      "sub_pillar": "Posture Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed BAS operations with continuous simulation and analyst-driven gap analysis",
+        "Penetration testing as a service (PTaaS) with on-demand or continuous testing",
+        "Managed security control validation with analyst-driven effectiveness reporting",
+        "Managed CSPM or cloud security posture operations",
+        "Dedicated posture management analyst teams with continuous validation cycles",
+        "SLA-backed posture management services with defined remediation workflows"
+      ],
+      "search_terms": [
+        "managed BAS",
+        "BAS as a service",
+        "PTaaS",
+        "pen testing as a service",
+        "managed penetration testing",
+        "managed security validation",
+        "managed CSPM",
+        "managed posture management",
+        "continuous security validation service",
+        "managed red team"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "SVC-01",
+      "sub_pillar": "Implementation & Onboarding",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Defined implementation methodology with milestones and timelines",
+        "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+        "Onboarding documentation, runbooks, and knowledge transfer programs",
+        "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+        "Post-deployment validation and tuning services",
+        "API-first integration architecture supporting custom workflows"
+      ],
+      "search_terms": [
+        "professional services",
+        "implementation services",
+        "onboarding",
+        "deployment support",
+        "time-to-value",
+        "integration services",
+        "customer onboarding",
+        "proof of value"
+      ]
+    },
+    {
+      "vendor": "HashiCorp",
+      "sid": "SVC-02",
+      "sub_pillar": "Consultative & Advisory Services",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Security maturity assessment and gap analysis services",
+        "CTEM program design and roadmap consulting",
+        "Architecture review and security stack optimization advisory",
+        "Threat landscape briefings and strategic intelligence services",
+        "Executive reporting and board-level security communication support",
+        "Ongoing advisory retainer or customer success management with strategic focus"
+      ],
+      "search_terms": [
+        "security consulting",
+        "advisory services",
+        "maturity assessment",
+        "security architecture review",
+        "CTEM consulting",
+        "strategic consulting",
+        "customer success",
+        "security advisory"
+      ]
+    },
+    {
+      "vendor": "Acalvio Technologies",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.00 → 3.50 (Δ+2.50); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Fidelis Cybersecurity",
+      "sid": "SVC-01",
+      "sub_pillar": "Implementation & Onboarding",
+      "in_expected_coverage": false,
+      "current_score": 3.0,
+      "reason": "Score moved upward 2.00 → 3.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Defined implementation methodology with milestones and timelines",
+        "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+        "Onboarding documentation, runbooks, and knowledge transfer programs",
+        "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+        "Post-deployment validation and tuning services",
+        "API-first integration architecture supporting custom workflows"
+      ],
+      "search_terms": [
+        "professional services",
+        "implementation services",
+        "onboarding",
+        "deployment support",
+        "time-to-value",
+        "integration services",
+        "customer onboarding",
+        "proof of value"
+      ]
+    },
+    {
+      "vendor": "Fidelis Cybersecurity",
+      "sid": "SVC-02",
+      "sub_pillar": "Consultative & Advisory Services",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.50 → 3.50 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Security maturity assessment and gap analysis services",
+        "CTEM program design and roadmap consulting",
+        "Architecture review and security stack optimization advisory",
+        "Threat landscape briefings and strategic intelligence services",
+        "Executive reporting and board-level security communication support",
+        "Ongoing advisory retainer or customer success management with strategic focus"
+      ],
+      "search_terms": [
+        "security consulting",
+        "advisory services",
+        "maturity assessment",
+        "security architecture review",
+        "CTEM consulting",
+        "strategic consulting",
+        "customer success",
+        "security advisory"
+      ]
+    },
+    {
+      "vendor": "SentinelOne",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "SentinelOne",
+      "sid": "ADR-01",
+      "sub_pillar": "Deception Technology",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Honeypot and honeytoken deployment capabilities",
+        "Decoy systems mimicking production assets",
+        "Breadcrumb placement for lateral movement detection",
+        "High-fidelity alerting with low false-positive rates",
+        "Integration with SIEM/SOAR for automated response"
+      ],
+      "search_terms": [
+        "deception technology",
+        "honeypot",
+        "honeytoken",
+        "decoy",
+        "breadcrumb",
+        "deception platform",
+        "cyber deception",
+        "distributed deception"
+      ]
+    },
+    {
+      "vendor": "SentinelOne",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "SentinelOne",
+      "sid": "ADR-03",
+      "sub_pillar": "Proactive Threat Hunting",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Managed or automated threat hunting services",
+        "Hypothesis-driven hunting methodologies",
+        "Hunt query libraries and playbooks",
+        "Integration with telemetry sources (EDR, NDR, SIEM)",
+        "Hunt findings feeding back to detection engineering"
+      ],
+      "search_terms": [
+        "threat hunting",
+        "proactive hunting",
+        "hypothesis-driven hunting",
+        "hunt operations",
+        "adversary hunting",
+        "managed threat hunting",
+        "detection engineering"
+      ]
+    },
+    {
+      "vendor": "Recorded Future",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Recorded Future",
+      "sid": "ADR-04",
+      "sub_pillar": "Counter-Adversary Operations",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Dark web monitoring and intelligence gathering",
+        "Brand protection and impersonation detection",
+        "Takedown service capabilities (domains, phishing, infrastructure)",
+        "Adversary attribution and campaign tracking",
+        "Digital risk protection services"
+      ],
+      "search_terms": [
+        "counter-adversary",
+        "adversary disruption",
+        "takedown service",
+        "dark web monitoring",
+        "adversary attribution",
+        "digital risk protection",
+        "brand protection"
+      ]
+    },
+    {
+      "vendor": "Recorded Future",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.00 → 3.50 (Δ+2.50); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Mandiant (Google Cloud)",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "ThreatConnect",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.00 → 3.50 (Δ+2.50); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Anomali",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 1.00 → 3.50 (Δ+2.50); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "ZeroFox",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Nisos",
+      "sid": "ADR-04",
+      "sub_pillar": "Counter-Adversary Operations",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Dark web monitoring and intelligence gathering",
+        "Brand protection and impersonation detection",
+        "Takedown service capabilities (domains, phishing, infrastructure)",
+        "Adversary attribution and campaign tracking",
+        "Digital risk protection services"
+      ],
+      "search_terms": [
+        "counter-adversary",
+        "adversary disruption",
+        "takedown service",
+        "dark web monitoring",
+        "adversary attribution",
+        "digital risk protection",
+        "brand protection"
+      ]
+    },
+    {
+      "vendor": "Arctic Wolf",
+      "sid": "ADR-03",
+      "sub_pillar": "Proactive Threat Hunting",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Managed or automated threat hunting services",
+        "Hypothesis-driven hunting methodologies",
+        "Hunt query libraries and playbooks",
+        "Integration with telemetry sources (EDR, NDR, SIEM)",
+        "Hunt findings feeding back to detection engineering"
+      ],
+      "search_terms": [
+        "threat hunting",
+        "proactive hunting",
+        "hypothesis-driven hunting",
+        "hunt operations",
+        "adversary hunting",
+        "managed threat hunting",
+        "detection engineering"
+      ]
+    },
+    {
+      "vendor": "Arctic Wolf",
+      "sid": "EXM-05",
+      "sub_pillar": "Exposure Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.25 → 3.50 (Δ+1.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed attack surface management (managed ASM) service offering",
+        "CTEM-as-a-service or managed exposure management programs",
+        "Managed vulnerability operations with analyst-driven prioritization",
+        "Dedicated exposure management analyst teams or SOC coverage",
+        "SLA-backed exposure discovery, assessment, and remediation workflows",
+        "Continuous managed monitoring of third-party and supply chain exposure"
+      ],
+      "search_terms": [
+        "managed ASM",
+        "managed attack surface",
+        "CTEM as a service",
+        "managed exposure management",
+        "managed vulnerability",
+        "vulnerability management service",
+        "exposure management service",
+        "managed EASM",
+        "outsourced vulnerability management"
+      ]
+    },
+    {
+      "vendor": "Arctic Wolf",
+      "sid": "SVC-01",
+      "sub_pillar": "Implementation & Onboarding",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.50 → 3.50 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Defined implementation methodology with milestones and timelines",
+        "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+        "Onboarding documentation, runbooks, and knowledge transfer programs",
+        "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+        "Post-deployment validation and tuning services",
+        "API-first integration architecture supporting custom workflows"
+      ],
+      "search_terms": [
+        "professional services",
+        "implementation services",
+        "onboarding",
+        "deployment support",
+        "time-to-value",
+        "integration services",
+        "customer onboarding",
+        "proof of value"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "EXM-02",
+      "sub_pillar": "Continuous Threat Exposure Management",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "CTEM program capabilities or alignment",
+        "Exposure scoping and discovery automation",
+        "Prioritization based on exploitability and business context",
+        "Validation of exposure remediation effectiveness",
+        "Continuous cycle operation (not point-in-time)"
+      ],
+      "search_terms": [
+        "CTEM",
+        "continuous threat exposure management",
+        "exposure management program",
+        "threat exposure",
+        "exposure prioritization",
+        "continuous exposure"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": false,
+      "current_score": 3.25,
+      "reason": "Score moved upward 0.00 → 3.25 (Δ+3.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "EXM-04",
+      "sub_pillar": "Third-Party & Supply Chain Exposure",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Third-party vendor risk assessment capabilities",
+        "Software supply chain monitoring (SBOM analysis)",
+        "Open-source component vulnerability tracking",
+        "Continuous monitoring of vendor security posture",
+        "Supply chain attack detection and alerting"
+      ],
+      "search_terms": [
+        "third-party risk",
+        "supply chain security",
+        "vendor risk management",
+        "SBOM",
+        "software supply chain",
+        "third-party exposure",
+        "open source risk"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "AMT-01",
+      "sub_pillar": "Polymorphic & Morphing Defense",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Runtime address space or memory layout randomization",
+        "API endpoint mutation or obfuscation",
+        "Network configuration morphing",
+        "System identifier rotation",
+        "Evidence of increased attacker cost through dynamic changes"
+      ],
+      "search_terms": [
+        "polymorphic defense",
+        "moving target defense",
+        "AMTD",
+        "runtime randomization",
+        "address space randomization",
+        "memory randomization",
+        "dynamic defense"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "AMT-03",
+      "sub_pillar": "Dynamic Network & Infrastructure Defense",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated micro-segmentation with dynamic policy",
+        "Network topology reconfiguration capabilities",
+        "Software-defined perimeter or zero trust network access",
+        "Infrastructure-as-code security automation",
+        "Adaptive access controls based on risk signals"
+      ],
+      "search_terms": [
+        "dynamic network defense",
+        "micro-segmentation",
+        "software-defined perimeter",
+        "network randomization",
+        "adaptive network",
+        "zero trust network",
+        "dynamic segmentation"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "AMT-04",
+      "sub_pillar": "Identity & Credential Rotation",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated credential and secret rotation",
+        "Ephemeral or just-in-time credential provisioning",
+        "Service account and API key lifecycle management",
+        "Certificate and token rotation automation",
+        "Privileged access session isolation"
+      ],
+      "search_terms": [
+        "credential rotation",
+        "ephemeral credentials",
+        "key rotation",
+        "token rotation",
+        "just-in-time access",
+        "secret rotation",
+        "privileged access management"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "ADR-01",
+      "sub_pillar": "Deception Technology",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Honeypot and honeytoken deployment capabilities",
+        "Decoy systems mimicking production assets",
+        "Breadcrumb placement for lateral movement detection",
+        "High-fidelity alerting with low false-positive rates",
+        "Integration with SIEM/SOAR for automated response"
+      ],
+      "search_terms": [
+        "deception technology",
+        "honeypot",
+        "honeytoken",
+        "decoy",
+        "breadcrumb",
+        "deception platform",
+        "cyber deception",
+        "distributed deception"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "ADR-03",
+      "sub_pillar": "Proactive Threat Hunting",
+      "in_expected_coverage": false,
+      "current_score": 4.5,
+      "reason": "Score moved upward 0.00 → 4.50 (Δ+4.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed or automated threat hunting services",
+        "Hypothesis-driven hunting methodologies",
+        "Hunt query libraries and playbooks",
+        "Integration with telemetry sources (EDR, NDR, SIEM)",
+        "Hunt findings feeding back to detection engineering"
+      ],
+      "search_terms": [
+        "threat hunting",
+        "proactive hunting",
+        "hypothesis-driven hunting",
+        "hunt operations",
+        "adversary hunting",
+        "managed threat hunting",
+        "detection engineering"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "ADR-04",
+      "sub_pillar": "Counter-Adversary Operations",
+      "in_expected_coverage": true,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Dark web monitoring and intelligence gathering",
+        "Brand protection and impersonation detection",
+        "Takedown service capabilities (domains, phishing, infrastructure)",
+        "Adversary attribution and campaign tracking",
+        "Digital risk protection services"
+      ],
+      "search_terms": [
+        "counter-adversary",
+        "adversary disruption",
+        "takedown service",
+        "dark web monitoring",
+        "adversary attribution",
+        "digital risk protection",
+        "brand protection"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "PPM-01",
+      "sub_pillar": "Breach & Attack Simulation",
+      "in_expected_coverage": false,
+      "current_score": 4.5,
+      "reason": "Score moved upward 0.00 → 4.50 (Δ+4.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated attack chain simulation capabilities",
+        "Continuous validation against production controls",
+        "MITRE ATT&CK technique coverage",
+        "Control gap identification and remediation guidance",
+        "Reporting on detection and prevention effectiveness"
+      ],
+      "search_terms": [
+        "breach and attack simulation",
+        "BAS",
+        "attack simulation",
+        "purple team automation",
+        "control validation",
+        "security validation",
+        "adversary simulation"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "PPM-02",
+      "sub_pillar": "Security Control Validation",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "SIEM detection rule validation and testing",
+        "EDR policy effectiveness verification",
+        "Firewall and network control validation",
+        "DLP and data protection control testing",
+        "Configuration drift detection and alerting"
+      ],
+      "search_terms": [
+        "security control validation",
+        "control effectiveness",
+        "detection validation",
+        "SIEM validation",
+        "EDR validation",
+        "control gap analysis",
+        "security posture validation"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "PPM-03",
+      "sub_pillar": "Penetration Testing & Red Teaming",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated penetration testing platform",
+        "Continuous or on-demand pen testing capabilities",
+        "Attack path analysis and visualization",
+        "Exploit validation and proof-of-concept generation",
+        "Red team exercise automation (PTaaS)"
+      ],
+      "search_terms": [
+        "penetration testing",
+        "automated pentest",
+        "red team",
+        "continuous pentest",
+        "attack path analysis",
+        "PTaaS",
+        "offensive security",
+        "exploitation testing"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "EXM-05",
+      "sub_pillar": "Exposure Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed attack surface management (managed ASM) service offering",
+        "CTEM-as-a-service or managed exposure management programs",
+        "Managed vulnerability operations with analyst-driven prioritization",
+        "Dedicated exposure management analyst teams or SOC coverage",
+        "SLA-backed exposure discovery, assessment, and remediation workflows",
+        "Continuous managed monitoring of third-party and supply chain exposure"
+      ],
+      "search_terms": [
+        "managed ASM",
+        "managed attack surface",
+        "CTEM as a service",
+        "managed exposure management",
+        "managed vulnerability",
+        "vulnerability management service",
+        "exposure management service",
+        "managed EASM",
+        "outsourced vulnerability management"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "AMT-05",
+      "sub_pillar": "AMTD Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed AMTD deployment and configuration services",
+        "Runtime protection-as-a-service or managed RASP operations",
+        "Managed micro-segmentation or zero trust network services",
+        "Managed credential rotation and privileged access operations",
+        "Continuous tuning and optimization of moving target defense policies",
+        "SLA-backed managed services for application hardening or network defense"
+      ],
+      "search_terms": [
+        "managed AMTD",
+        "managed moving target defense",
+        "managed RASP",
+        "managed micro-segmentation",
+        "managed zero trust",
+        "managed PAM",
+        "runtime protection service",
+        "managed credential rotation",
+        "segmentation as a service"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "ADR-05",
+      "sub_pillar": "Adversary Disruption Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed deception-as-a-service with analyst-operated decoy environments",
+        "Managed threat hunting services with dedicated hunt teams",
+        "Managed threat intelligence operations with analyst-curated intelligence",
+        "Managed counter-adversary operations including takedowns and dark web monitoring",
+        "Managed digital risk protection services with 24/7 analyst coverage",
+        "SLA-backed adversary disruption operations with defined response times"
+      ],
+      "search_terms": [
+        "managed deception",
+        "deception as a service",
+        "managed threat hunting",
+        "managed threat intelligence",
+        "managed counter-adversary",
+        "managed digital risk protection",
+        "managed DRP",
+        "outsourced threat hunting",
+        "managed takedown service"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "PPM-05",
+      "sub_pillar": "Posture Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed BAS operations with continuous simulation and analyst-driven gap analysis",
+        "Penetration testing as a service (PTaaS) with on-demand or continuous testing",
+        "Managed security control validation with analyst-driven effectiveness reporting",
+        "Managed CSPM or cloud security posture operations",
+        "Dedicated posture management analyst teams with continuous validation cycles",
+        "SLA-backed posture management services with defined remediation workflows"
+      ],
+      "search_terms": [
+        "managed BAS",
+        "BAS as a service",
+        "PTaaS",
+        "pen testing as a service",
+        "managed penetration testing",
+        "managed security validation",
+        "managed CSPM",
+        "managed posture management",
+        "continuous security validation service",
+        "managed red team"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "SVC-01",
+      "sub_pillar": "Implementation & Onboarding",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Defined implementation methodology with milestones and timelines",
+        "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+        "Onboarding documentation, runbooks, and knowledge transfer programs",
+        "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+        "Post-deployment validation and tuning services",
+        "API-first integration architecture supporting custom workflows"
+      ],
+      "search_terms": [
+        "professional services",
+        "implementation services",
+        "onboarding",
+        "deployment support",
+        "time-to-value",
+        "integration services",
+        "customer onboarding",
+        "proof of value"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "SVC-02",
+      "sub_pillar": "Consultative & Advisory Services",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Security maturity assessment and gap analysis services",
+        "CTEM program design and roadmap consulting",
+        "Architecture review and security stack optimization advisory",
+        "Threat landscape briefings and strategic intelligence services",
+        "Executive reporting and board-level security communication support",
+        "Ongoing advisory retainer or customer success management with strategic focus"
+      ],
+      "search_terms": [
+        "security consulting",
+        "advisory services",
+        "maturity assessment",
+        "security architecture review",
+        "CTEM consulting",
+        "strategic consulting",
+        "customer success",
+        "security advisory"
+      ]
+    },
+    {
+      "vendor": "Group-IB",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 1.00 → 2.25 (Δ+1.25); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "SafeBreach",
+      "sid": "PPM-02",
+      "sub_pillar": "Security Control Validation",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "SIEM detection rule validation and testing",
+        "EDR policy effectiveness verification",
+        "Firewall and network control validation",
+        "DLP and data protection control testing",
+        "Configuration drift detection and alerting"
+      ],
+      "search_terms": [
+        "security control validation",
+        "control effectiveness",
+        "detection validation",
+        "SIEM validation",
+        "EDR validation",
+        "control gap analysis",
+        "security posture validation"
+      ]
+    },
+    {
+      "vendor": "AttackIQ",
+      "sid": "AMT-03",
+      "sub_pillar": "Dynamic Network & Infrastructure Defense",
+      "in_expected_coverage": false,
+      "current_score": 3.25,
+      "reason": "Score moved upward 2.25 → 3.25 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated micro-segmentation with dynamic policy",
+        "Network topology reconfiguration capabilities",
+        "Software-defined perimeter or zero trust network access",
+        "Infrastructure-as-code security automation",
+        "Adaptive access controls based on risk signals"
+      ],
+      "search_terms": [
+        "dynamic network defense",
+        "micro-segmentation",
+        "software-defined perimeter",
+        "network randomization",
+        "adaptive network",
+        "zero trust network",
+        "dynamic segmentation"
+      ]
+    },
+    {
+      "vendor": "AttackIQ",
+      "sid": "SVC-01",
+      "sub_pillar": "Implementation & Onboarding",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.50 → 3.50 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Defined implementation methodology with milestones and timelines",
+        "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+        "Onboarding documentation, runbooks, and knowledge transfer programs",
+        "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+        "Post-deployment validation and tuning services",
+        "API-first integration architecture supporting custom workflows"
+      ],
+      "search_terms": [
+        "professional services",
+        "implementation services",
+        "onboarding",
+        "deployment support",
+        "time-to-value",
+        "integration services",
+        "customer onboarding",
+        "proof of value"
+      ]
+    },
+    {
+      "vendor": "Cymulate",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 1.00 → 2.25 (Δ+1.25); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Wiz",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Wiz",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "Orca Security",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "Aqua Security",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "Aqua Security",
+      "sid": "SVC-01",
+      "sub_pillar": "Implementation & Onboarding",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.50 → 3.50 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Defined implementation methodology with milestones and timelines",
+        "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+        "Onboarding documentation, runbooks, and knowledge transfer programs",
+        "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+        "Post-deployment validation and tuning services",
+        "API-first integration architecture supporting custom workflows"
+      ],
+      "search_terms": [
+        "professional services",
+        "implementation services",
+        "onboarding",
+        "deployment support",
+        "time-to-value",
+        "integration services",
+        "customer onboarding",
+        "proof of value"
+      ]
+    },
+    {
+      "vendor": "Darktrace",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Darktrace",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Darktrace",
+      "sid": "ADR-03",
+      "sub_pillar": "Proactive Threat Hunting",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Managed or automated threat hunting services",
+        "Hypothesis-driven hunting methodologies",
+        "Hunt query libraries and playbooks",
+        "Integration with telemetry sources (EDR, NDR, SIEM)",
+        "Hunt findings feeding back to detection engineering"
+      ],
+      "search_terms": [
+        "threat hunting",
+        "proactive hunting",
+        "hypothesis-driven hunting",
+        "hunt operations",
+        "adversary hunting",
+        "managed threat hunting",
+        "detection engineering"
+      ]
+    },
+    {
+      "vendor": "Fortinet",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Fortinet",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    },
+    {
+      "vendor": "IBM Security",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "IBM Security",
+      "sid": "PPM-03",
+      "sub_pillar": "Penetration Testing & Red Teaming",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated penetration testing platform",
+        "Continuous or on-demand pen testing capabilities",
+        "Attack path analysis and visualization",
+        "Exploit validation and proof-of-concept generation",
+        "Red team exercise automation (PTaaS)"
+      ],
+      "search_terms": [
+        "penetration testing",
+        "automated pentest",
+        "red team",
+        "continuous pentest",
+        "attack path analysis",
+        "PTaaS",
+        "offensive security",
+        "exploitation testing"
+      ]
+    },
+    {
+      "vendor": "IBM Security",
+      "sid": "AMT-05",
+      "sub_pillar": "AMTD Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 1.00 → 2.25 (Δ+1.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed AMTD deployment and configuration services",
+        "Runtime protection-as-a-service or managed RASP operations",
+        "Managed micro-segmentation or zero trust network services",
+        "Managed credential rotation and privileged access operations",
+        "Continuous tuning and optimization of moving target defense policies",
+        "SLA-backed managed services for application hardening or network defense"
+      ],
+      "search_terms": [
+        "managed AMTD",
+        "managed moving target defense",
+        "managed RASP",
+        "managed micro-segmentation",
+        "managed zero trust",
+        "managed PAM",
+        "runtime protection service",
+        "managed credential rotation",
+        "segmentation as a service"
+      ]
+    },
+    {
+      "vendor": "IBM Security",
+      "sid": "SVC-02",
+      "sub_pillar": "Consultative & Advisory Services",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.50 → 3.50 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Security maturity assessment and gap analysis services",
+        "CTEM program design and roadmap consulting",
+        "Architecture review and security stack optimization advisory",
+        "Threat landscape briefings and strategic intelligence services",
+        "Executive reporting and board-level security communication support",
+        "Ongoing advisory retainer or customer success management with strategic focus"
+      ],
+      "search_terms": [
+        "security consulting",
+        "advisory services",
+        "maturity assessment",
+        "security architecture review",
+        "CTEM consulting",
+        "strategic consulting",
+        "customer success",
+        "security advisory"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "EXM-02",
+      "sub_pillar": "Continuous Threat Exposure Management",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "CTEM program capabilities or alignment",
+        "Exposure scoping and discovery automation",
+        "Prioritization based on exploitability and business context",
+        "Validation of exposure remediation effectiveness",
+        "Continuous cycle operation (not point-in-time)"
+      ],
+      "search_terms": [
+        "CTEM",
+        "continuous threat exposure management",
+        "exposure management program",
+        "threat exposure",
+        "exposure prioritization",
+        "continuous exposure"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "EXM-04",
+      "sub_pillar": "Third-Party & Supply Chain Exposure",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Third-party vendor risk assessment capabilities",
+        "Software supply chain monitoring (SBOM analysis)",
+        "Open-source component vulnerability tracking",
+        "Continuous monitoring of vendor security posture",
+        "Supply chain attack detection and alerting"
+      ],
+      "search_terms": [
+        "third-party risk",
+        "supply chain security",
+        "vendor risk management",
+        "SBOM",
+        "software supply chain",
+        "third-party exposure",
+        "open source risk"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "AMT-01",
+      "sub_pillar": "Polymorphic & Morphing Defense",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Runtime address space or memory layout randomization",
+        "API endpoint mutation or obfuscation",
+        "Network configuration morphing",
+        "System identifier rotation",
+        "Evidence of increased attacker cost through dynamic changes"
+      ],
+      "search_terms": [
+        "polymorphic defense",
+        "moving target defense",
+        "AMTD",
+        "runtime randomization",
+        "address space randomization",
+        "memory randomization",
+        "dynamic defense"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "AMT-03",
+      "sub_pillar": "Dynamic Network & Infrastructure Defense",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated micro-segmentation with dynamic policy",
+        "Network topology reconfiguration capabilities",
+        "Software-defined perimeter or zero trust network access",
+        "Infrastructure-as-code security automation",
+        "Adaptive access controls based on risk signals"
+      ],
+      "search_terms": [
+        "dynamic network defense",
+        "micro-segmentation",
+        "software-defined perimeter",
+        "network randomization",
+        "adaptive network",
+        "zero trust network",
+        "dynamic segmentation"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "AMT-04",
+      "sub_pillar": "Identity & Credential Rotation",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated credential and secret rotation",
+        "Ephemeral or just-in-time credential provisioning",
+        "Service account and API key lifecycle management",
+        "Certificate and token rotation automation",
+        "Privileged access session isolation"
+      ],
+      "search_terms": [
+        "credential rotation",
+        "ephemeral credentials",
+        "key rotation",
+        "token rotation",
+        "just-in-time access",
+        "secret rotation",
+        "privileged access management"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "ADR-01",
+      "sub_pillar": "Deception Technology",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Honeypot and honeytoken deployment capabilities",
+        "Decoy systems mimicking production assets",
+        "Breadcrumb placement for lateral movement detection",
+        "High-fidelity alerting with low false-positive rates",
+        "Integration with SIEM/SOAR for automated response"
+      ],
+      "search_terms": [
+        "deception technology",
+        "honeypot",
+        "honeytoken",
+        "decoy",
+        "breadcrumb",
+        "deception platform",
+        "cyber deception",
+        "distributed deception"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "ADR-03",
+      "sub_pillar": "Proactive Threat Hunting",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Managed or automated threat hunting services",
+        "Hypothesis-driven hunting methodologies",
+        "Hunt query libraries and playbooks",
+        "Integration with telemetry sources (EDR, NDR, SIEM)",
+        "Hunt findings feeding back to detection engineering"
+      ],
+      "search_terms": [
+        "threat hunting",
+        "proactive hunting",
+        "hypothesis-driven hunting",
+        "hunt operations",
+        "adversary hunting",
+        "managed threat hunting",
+        "detection engineering"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "ADR-04",
+      "sub_pillar": "Counter-Adversary Operations",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Dark web monitoring and intelligence gathering",
+        "Brand protection and impersonation detection",
+        "Takedown service capabilities (domains, phishing, infrastructure)",
+        "Adversary attribution and campaign tracking",
+        "Digital risk protection services"
+      ],
+      "search_terms": [
+        "counter-adversary",
+        "adversary disruption",
+        "takedown service",
+        "dark web monitoring",
+        "adversary attribution",
+        "digital risk protection",
+        "brand protection"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "PPM-01",
+      "sub_pillar": "Breach & Attack Simulation",
+      "in_expected_coverage": false,
+      "current_score": 2.0,
+      "reason": "Score moved upward 0.00 → 2.00 (Δ+2.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated attack chain simulation capabilities",
+        "Continuous validation against production controls",
+        "MITRE ATT&CK technique coverage",
+        "Control gap identification and remediation guidance",
+        "Reporting on detection and prevention effectiveness"
+      ],
+      "search_terms": [
+        "breach and attack simulation",
+        "BAS",
+        "attack simulation",
+        "purple team automation",
+        "control validation",
+        "security validation",
+        "adversary simulation"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "PPM-02",
+      "sub_pillar": "Security Control Validation",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "SIEM detection rule validation and testing",
+        "EDR policy effectiveness verification",
+        "Firewall and network control validation",
+        "DLP and data protection control testing",
+        "Configuration drift detection and alerting"
+      ],
+      "search_terms": [
+        "security control validation",
+        "control effectiveness",
+        "detection validation",
+        "SIEM validation",
+        "EDR validation",
+        "control gap analysis",
+        "security posture validation"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "PPM-03",
+      "sub_pillar": "Penetration Testing & Red Teaming",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated penetration testing platform",
+        "Continuous or on-demand pen testing capabilities",
+        "Attack path analysis and visualization",
+        "Exploit validation and proof-of-concept generation",
+        "Red team exercise automation (PTaaS)"
+      ],
+      "search_terms": [
+        "penetration testing",
+        "automated pentest",
+        "red team",
+        "continuous pentest",
+        "attack path analysis",
+        "PTaaS",
+        "offensive security",
+        "exploitation testing"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "EXM-05",
+      "sub_pillar": "Exposure Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 0.00 → 3.50 (Δ+3.50); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed attack surface management (managed ASM) service offering",
+        "CTEM-as-a-service or managed exposure management programs",
+        "Managed vulnerability operations with analyst-driven prioritization",
+        "Dedicated exposure management analyst teams or SOC coverage",
+        "SLA-backed exposure discovery, assessment, and remediation workflows",
+        "Continuous managed monitoring of third-party and supply chain exposure"
+      ],
+      "search_terms": [
+        "managed ASM",
+        "managed attack surface",
+        "CTEM as a service",
+        "managed exposure management",
+        "managed vulnerability",
+        "vulnerability management service",
+        "exposure management service",
+        "managed EASM",
+        "outsourced vulnerability management"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "AMT-05",
+      "sub_pillar": "AMTD Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed AMTD deployment and configuration services",
+        "Runtime protection-as-a-service or managed RASP operations",
+        "Managed micro-segmentation or zero trust network services",
+        "Managed credential rotation and privileged access operations",
+        "Continuous tuning and optimization of moving target defense policies",
+        "SLA-backed managed services for application hardening or network defense"
+      ],
+      "search_terms": [
+        "managed AMTD",
+        "managed moving target defense",
+        "managed RASP",
+        "managed micro-segmentation",
+        "managed zero trust",
+        "managed PAM",
+        "runtime protection service",
+        "managed credential rotation",
+        "segmentation as a service"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "ADR-05",
+      "sub_pillar": "Adversary Disruption Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed deception-as-a-service with analyst-operated decoy environments",
+        "Managed threat hunting services with dedicated hunt teams",
+        "Managed threat intelligence operations with analyst-curated intelligence",
+        "Managed counter-adversary operations including takedowns and dark web monitoring",
+        "Managed digital risk protection services with 24/7 analyst coverage",
+        "SLA-backed adversary disruption operations with defined response times"
+      ],
+      "search_terms": [
+        "managed deception",
+        "deception as a service",
+        "managed threat hunting",
+        "managed threat intelligence",
+        "managed counter-adversary",
+        "managed digital risk protection",
+        "managed DRP",
+        "outsourced threat hunting",
+        "managed takedown service"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "PPM-05",
+      "sub_pillar": "Posture Management Services Maturity",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Managed BAS operations with continuous simulation and analyst-driven gap analysis",
+        "Penetration testing as a service (PTaaS) with on-demand or continuous testing",
+        "Managed security control validation with analyst-driven effectiveness reporting",
+        "Managed CSPM or cloud security posture operations",
+        "Dedicated posture management analyst teams with continuous validation cycles",
+        "SLA-backed posture management services with defined remediation workflows"
+      ],
+      "search_terms": [
+        "managed BAS",
+        "BAS as a service",
+        "PTaaS",
+        "pen testing as a service",
+        "managed penetration testing",
+        "managed security validation",
+        "managed CSPM",
+        "managed posture management",
+        "continuous security validation service",
+        "managed red team"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "SVC-01",
+      "sub_pillar": "Implementation & Onboarding",
+      "in_expected_coverage": false,
+      "current_score": 1.0,
+      "reason": "Score moved upward 0.00 → 1.00 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "Defined implementation methodology with milestones and timelines",
+        "Professional services for integration with existing SIEM, SOAR, EDR, and ticketing systems",
+        "Onboarding documentation, runbooks, and knowledge transfer programs",
+        "Time-to-value commitments (days to initial detection, weeks to full deployment)",
+        "Post-deployment validation and tuning services",
+        "API-first integration architecture supporting custom workflows"
+      ],
+      "search_terms": [
+        "professional services",
+        "implementation services",
+        "onboarding",
+        "deployment support",
+        "time-to-value",
+        "integration services",
+        "customer onboarding",
+        "proof of value"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "SVC-02",
+      "sub_pillar": "Consultative & Advisory Services",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 0.00 → 2.25 (Δ+2.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Security maturity assessment and gap analysis services",
+        "CTEM program design and roadmap consulting",
+        "Architecture review and security stack optimization advisory",
+        "Threat landscape briefings and strategic intelligence services",
+        "Executive reporting and board-level security communication support",
+        "Ongoing advisory retainer or customer success management with strategic focus"
+      ],
+      "search_terms": [
+        "security consulting",
+        "advisory services",
+        "maturity assessment",
+        "security architecture review",
+        "CTEM consulting",
+        "strategic consulting",
+        "customer success",
+        "security advisory"
+      ]
+    },
+    {
+      "vendor": "Trellix",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 2.25,
+      "reason": "Score moved upward 1.00 → 2.25 (Δ+1.25); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Cisco (Splunk)",
+      "sid": "AMT-03",
+      "sub_pillar": "Dynamic Network & Infrastructure Defense",
+      "in_expected_coverage": true,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.25 → 3.50 (Δ+1.25); verify against vendor docs.",
+      "what_to_verify": [
+        "Automated micro-segmentation with dynamic policy",
+        "Network topology reconfiguration capabilities",
+        "Software-defined perimeter or zero trust network access",
+        "Infrastructure-as-code security automation",
+        "Adaptive access controls based on risk signals"
+      ],
+      "search_terms": [
+        "dynamic network defense",
+        "micro-segmentation",
+        "software-defined perimeter",
+        "network randomization",
+        "adaptive network",
+        "zero trust network",
+        "dynamic segmentation"
+      ]
+    },
+    {
+      "vendor": "Cisco (Splunk)",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Cisco (Splunk)",
+      "sid": "PPM-02",
+      "sub_pillar": "Security Control Validation",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "SIEM detection rule validation and testing",
+        "EDR policy effectiveness verification",
+        "Firewall and network control validation",
+        "DLP and data protection control testing",
+        "Configuration drift detection and alerting"
+      ],
+      "search_terms": [
+        "security control validation",
+        "control effectiveness",
+        "detection validation",
+        "SIEM validation",
+        "EDR validation",
+        "control gap analysis",
+        "security posture validation"
+      ]
+    },
+    {
+      "vendor": "Cisco (Splunk)",
+      "sid": "SVC-03",
+      "sub_pillar": "Managed Operations & Continuous Delivery",
+      "in_expected_coverage": false,
+      "current_score": 3.5,
+      "reason": "Score moved upward 2.50 → 3.50 (Δ+1.00); verify against vendor docs.",
+      "what_to_verify": [
+        "24/7 managed service operations with defined SOC coverage model",
+        "Dedicated or named analyst teams assigned to client accounts",
+        "SLA-backed detection, response, and reporting commitments",
+        "Continuous tuning and optimization of detection rules and policies",
+        "Operational dashboards and reporting for client visibility",
+        "Escalation procedures, incident management, and governance frameworks"
+      ],
+      "search_terms": [
+        "managed services",
+        "managed security",
+        "MSSP",
+        "managed detection",
+        "24/7 SOC",
+        "managed operations",
+        "security operations",
+        "managed preemptive",
+        "MDR"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "EXM-01",
+      "sub_pillar": "Attack Surface Management",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated discovery of internet-facing assets and shadow IT",
+        "Real-time asset inventory with risk scoring",
+        "Cloud resource discovery across multi-cloud environments",
+        "Integration with CMDB and asset management systems",
+        "Continuous monitoring for new or changed assets"
+      ],
+      "search_terms": [
+        "attack surface management",
+        "ASM",
+        "external attack surface",
+        "EASM",
+        "asset discovery",
+        "shadow IT discovery",
+        "digital footprint",
+        "cyber asset management"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "EXM-02",
+      "sub_pillar": "Continuous Threat Exposure Management",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "CTEM program capabilities or alignment",
+        "Exposure scoping and discovery automation",
+        "Prioritization based on exploitability and business context",
+        "Validation of exposure remediation effectiveness",
+        "Continuous cycle operation (not point-in-time)"
+      ],
+      "search_terms": [
+        "CTEM",
+        "continuous threat exposure management",
+        "exposure management program",
+        "threat exposure",
+        "exposure prioritization",
+        "continuous exposure"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "EXM-03",
+      "sub_pillar": "Vulnerability Prioritization & Management",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Risk-based vulnerability scoring beyond CVSS",
+        "Exploitability context from threat intelligence",
+        "Asset criticality and business impact weighting",
+        "Automated remediation prioritization and tracking",
+        "Integration with patch management and ticketing systems"
+      ],
+      "search_terms": [
+        "vulnerability prioritization",
+        "risk-based vulnerability",
+        "VPT",
+        "vulnerability management",
+        "exploit prediction",
+        "patch prioritization",
+        "remediation prioritization"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "EXM-04",
+      "sub_pillar": "Third-Party & Supply Chain Exposure",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Third-party vendor risk assessment capabilities",
+        "Software supply chain monitoring (SBOM analysis)",
+        "Open-source component vulnerability tracking",
+        "Continuous monitoring of vendor security posture",
+        "Supply chain attack detection and alerting"
+      ],
+      "search_terms": [
+        "third-party risk",
+        "supply chain security",
+        "vendor risk management",
+        "SBOM",
+        "software supply chain",
+        "third-party exposure",
+        "open source risk"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "AMT-01",
+      "sub_pillar": "Polymorphic & Morphing Defense",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Runtime address space or memory layout randomization",
+        "API endpoint mutation or obfuscation",
+        "Network configuration morphing",
+        "System identifier rotation",
+        "Evidence of increased attacker cost through dynamic changes"
+      ],
+      "search_terms": [
+        "polymorphic defense",
+        "moving target defense",
+        "AMTD",
+        "runtime randomization",
+        "address space randomization",
+        "memory randomization",
+        "dynamic defense"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "AMT-02",
+      "sub_pillar": "Runtime Application Protection",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "RASP or in-app runtime protection capabilities",
+        "Code instrumentation for exploit prevention",
+        "Application hardening and anti-tampering",
+        "Memory corruption defense (ROP, buffer overflow prevention)",
+        "Signature-less exploit detection at runtime"
+      ],
+      "search_terms": [
+        "RASP",
+        "runtime protection",
+        "application shielding",
+        "runtime application self-protection",
+        "code instrumentation",
+        "exploit prevention",
+        "application hardening"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "AMT-03",
+      "sub_pillar": "Dynamic Network & Infrastructure Defense",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated micro-segmentation with dynamic policy",
+        "Network topology reconfiguration capabilities",
+        "Software-defined perimeter or zero trust network access",
+        "Infrastructure-as-code security automation",
+        "Adaptive access controls based on risk signals"
+      ],
+      "search_terms": [
+        "dynamic network defense",
+        "micro-segmentation",
+        "software-defined perimeter",
+        "network randomization",
+        "adaptive network",
+        "zero trust network",
+        "dynamic segmentation"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "AMT-04",
+      "sub_pillar": "Identity & Credential Rotation",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated credential and secret rotation",
+        "Ephemeral or just-in-time credential provisioning",
+        "Service account and API key lifecycle management",
+        "Certificate and token rotation automation",
+        "Privileged access session isolation"
+      ],
+      "search_terms": [
+        "credential rotation",
+        "ephemeral credentials",
+        "key rotation",
+        "token rotation",
+        "just-in-time access",
+        "secret rotation",
+        "privileged access management"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "ADR-01",
+      "sub_pillar": "Deception Technology",
+      "in_expected_coverage": true,
+      "current_score": 2.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Honeypot and honeytoken deployment capabilities",
+        "Decoy systems mimicking production assets",
+        "Breadcrumb placement for lateral movement detection",
+        "High-fidelity alerting with low false-positive rates",
+        "Integration with SIEM/SOAR for automated response"
+      ],
+      "search_terms": [
+        "deception technology",
+        "honeypot",
+        "honeytoken",
+        "decoy",
+        "breadcrumb",
+        "deception platform",
+        "cyber deception",
+        "distributed deception"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "ADR-02",
+      "sub_pillar": "Threat Intelligence Operationalization",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Threat intelligence platform or feed integration",
+        "Automated IOC ingestion and correlation",
+        "TTP mapping to MITRE ATT&CK framework",
+        "Automated blocking based on threat intelligence",
+        "Intelligence-driven hunting query generation"
+      ],
+      "search_terms": [
+        "threat intelligence platform",
+        "TIP",
+        "threat intelligence operationalization",
+        "IOC enrichment",
+        "adversary tracking",
+        "threat feed",
+        "MITRE ATT&CK mapping"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "ADR-03",
+      "sub_pillar": "Proactive Threat Hunting",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Managed or automated threat hunting services",
+        "Hypothesis-driven hunting methodologies",
+        "Hunt query libraries and playbooks",
+        "Integration with telemetry sources (EDR, NDR, SIEM)",
+        "Hunt findings feeding back to detection engineering"
+      ],
+      "search_terms": [
+        "threat hunting",
+        "proactive hunting",
+        "hypothesis-driven hunting",
+        "hunt operations",
+        "adversary hunting",
+        "managed threat hunting",
+        "detection engineering"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "ADR-04",
+      "sub_pillar": "Counter-Adversary Operations",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Dark web monitoring and intelligence gathering",
+        "Brand protection and impersonation detection",
+        "Takedown service capabilities (domains, phishing, infrastructure)",
+        "Adversary attribution and campaign tracking",
+        "Digital risk protection services"
+      ],
+      "search_terms": [
+        "counter-adversary",
+        "adversary disruption",
+        "takedown service",
+        "dark web monitoring",
+        "adversary attribution",
+        "digital risk protection",
+        "brand protection"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "PPM-01",
+      "sub_pillar": "Breach & Attack Simulation",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated attack chain simulation capabilities",
+        "Continuous validation against production controls",
+        "MITRE ATT&CK technique coverage",
+        "Control gap identification and remediation guidance",
+        "Reporting on detection and prevention effectiveness"
+      ],
+      "search_terms": [
+        "breach and attack simulation",
+        "BAS",
+        "attack simulation",
+        "purple team automation",
+        "control validation",
+        "security validation",
+        "adversary simulation"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "PPM-02",
+      "sub_pillar": "Security Control Validation",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "SIEM detection rule validation and testing",
+        "EDR policy effectiveness verification",
+        "Firewall and network control validation",
+        "DLP and data protection control testing",
+        "Configuration drift detection and alerting"
+      ],
+      "search_terms": [
+        "security control validation",
+        "control effectiveness",
+        "detection validation",
+        "SIEM validation",
+        "EDR validation",
+        "control gap analysis",
+        "security posture validation"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "PPM-03",
+      "sub_pillar": "Penetration Testing & Red Teaming",
+      "in_expected_coverage": true,
+      "current_score": 1.0,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Automated penetration testing platform",
+        "Continuous or on-demand pen testing capabilities",
+        "Attack path analysis and visualization",
+        "Exploit validation and proof-of-concept generation",
+        "Red team exercise automation (PTaaS)"
+      ],
+      "search_terms": [
+        "penetration testing",
+        "automated pentest",
+        "red team",
+        "continuous pentest",
+        "attack path analysis",
+        "PTaaS",
+        "offensive security",
+        "exploitation testing"
+      ]
+    },
+    {
+      "vendor": "Blumira",
+      "sid": "PPM-04",
+      "sub_pillar": "Cloud Security Posture Management",
+      "in_expected_coverage": true,
+      "current_score": 2.25,
+      "reason": "Vendor claims coverage but evidence weak; needs targeted scraping.",
+      "what_to_verify": [
+        "Cloud misconfiguration detection (AWS, Azure, GCP)",
+        "Cloud entitlement and permissions analysis (CIEM)",
+        "Compliance framework mapping and reporting",
+        "Cloud workload protection capabilities",
+        "Infrastructure-as-code security scanning"
+      ],
+      "search_terms": [
+        "CSPM",
+        "cloud security posture",
+        "cloud misconfiguration",
+        "CIEM",
+        "cloud entitlement",
+        "CNAPP",
+        "cloud workload protection",
+        "cloud compliance"
+      ]
+    }
+  ]
+}

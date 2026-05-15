@@ -56,8 +56,8 @@ sub('The preemptive cybersecurity market is fundamentally fragmented',
     'The preemptive cybersecurity market is heavily fragmented',
     'fundamentally')
 
-sub('five preemptive cybersecurity pillars — Exposure Management (EXM), Adversary Management & Threat Intelligence (AMT), Autonomous Detection & Response (ADR), Posture & Policy Management (PPM), and Services & Capabilities (SVC) — only',
-    'five preemptive cybersecurity pillars (Exposure Management [EXM], Adversary Management & Threat Intelligence [AMT], Autonomous Detection & Response [ADR], Posture & Policy Management [PPM], and Services & Capabilities [SVC]), only',
+sub('five preemptive cybersecurity pillars — Exposure Management (EXM), Adversary Management & Threat Intelligence (AMT), Adversary Disruption (ADR), Posture & Policy Management (PPM), and Services & Capabilities (SVC) — only',
+    'five preemptive cybersecurity pillars (Exposure Management [EXM], Adversary Management & Threat Intelligence [AMT], Adversary Disruption [ADR], Posture & Policy Management [PPM], and Services & Capabilities [SVC]), only',
     'finding1 em-dash pair')
 
 # ═══════════════════════════════════════════════════════

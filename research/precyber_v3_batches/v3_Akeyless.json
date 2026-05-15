@@ -1,0 +1,1726 @@
+{
+  "vendor": "Akeyless",
+  "headquarters": "Tel Aviv, Israel",
+  "region": "Global",
+  "specialization": "Unified Secrets Management & Machine Identity",
+  "primary_capability": "AMT",
+  "expected_coverage": [
+    "AMT-04",
+    "AMT-03"
+  ],
+  "delivery_model": "SaaS",
+  "services_maturity_level": "consultative",
+  "outcome_maturity_rating": 3.17,
+  "outcome_maturity_label": "Process-Mature",
+  "is_startup": false,
+  "is_ai_first": false,
+  "research_flag": "secrets_mgmt",
+  "sub_pillar_rationale_v2": {
+    "EXM-01": {
+      "sub_pillar_id": "EXM-01",
+      "sub_pillar_name": "Attack Surface Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Automated discovery of internet-facing assets and shadow IT; Cloud resource discovery across multi-cloud environments. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated discovery of internet-facing assets and shadow IT",
+          "status": "partial",
+          "evidence": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Real-time asset inventory with risk scoring",
+          "status": "unmet",
+          "evidence": "This uncontrolled spread increases exposure risk and makes it nearly impossible to maintain visibility.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud resource discovery across multi-cloud environments",
+          "status": "partial",
+          "evidence": "Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with CMDB and asset management systems",
+          "status": "partial",
+          "evidence": "Machine identity management (MIM) includes company processes and technologies for assigning and managing digital credentials and certificates for devices and systems.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring for new or changed assets",
+          "status": "unmet",
+          "evidence": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+        "Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.",
+        "Finally, many organizations lack governance and control, with no unified visibility across environments or consistent enforcement of rotation and access policies.",
+        "Secure secret sharing makes collaboration across teams and environments safe, auditable, and policy driven.",
+        "Finally, Akeyless prevents secrets sprawl by centralizing management, dynamically injecting credentials, and tracking them across all environments."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-02": {
+      "sub_pillar_id": "EXM-02",
+      "sub_pillar_name": "Continuous Threat Exposure Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): CTEM program capabilities or alignment; Exposure scoping and discovery automation. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "CTEM program capabilities or alignment",
+          "status": "partial",
+          "evidence": "In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exposure scoping and discovery automation",
+          "status": "partial",
+          "evidence": "Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Prioritization based on exploitability and business context",
+          "status": "unmet",
+          "evidence": "Ultimately, Akeyless delivers up to seventy percent lower TCO and faster value, transforming security from a burden into a business enabler.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Validation of exposure remediation effectiveness",
+          "status": "partial",
+          "evidence": "This uncontrolled spread increases exposure risk and makes it nearly impossible to maintain visibility.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous cycle operation (not point-in-time)",
+          "status": "partial",
+          "evidence": "The high cost and complexity of vault clusters create operational overhead and scalability issues, forcing teams to maintain infrastructure instead of securing it.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-03": {
+      "sub_pillar_id": "EXM-03",
+      "sub_pillar_name": "Vulnerability Prioritization & Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Risk-based vulnerability scoring beyond CVSS; Exploitability context from threat intelligence. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Risk-based vulnerability scoring beyond CVSS",
+          "status": "partial",
+          "evidence": "Report a Vulnerability\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\n\t\t\t\t\n\n\t\t\t\t\t\t\t\t\t\nAkeyless  maintains a bug bounty program and investigates all reported vulnerabilities and bugs.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploitability context from threat intelligence",
+          "status": "partial",
+          "evidence": "With so many systems, machine identities, compliance requirements, and threats — it’s exceedingly important for every device and third-party system to have securely managed identities to protect your ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Asset criticality and business impact weighting",
+          "status": "unmet",
+          "evidence": "Ultimately, Akeyless delivers up to seventy percent lower TCO and faster value, transforming security from a burden into a business enabler.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated remediation prioritization and tracking",
+          "status": "partial",
+          "evidence": "Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with patch management and ticketing systems",
+          "status": "partial",
+          "evidence": "Machine identity management (MIM) includes company processes and technologies for assigning and managing digital credentials and certificates for devices and systems.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "EXM-04": {
+      "sub_pillar_id": "EXM-04",
+      "sub_pillar_name": "Third-Party & Supply Chain Exposure",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Continuous monitoring of vendor security posture. Partially met (4): Third-party vendor risk assessment capabilities; Software supply chain monitoring (SBOM analysis). Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Third-party vendor risk assessment capabilities",
+          "status": "partial",
+          "evidence": "In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software supply chain monitoring (SBOM analysis)",
+          "status": "partial",
+          "evidence": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Open-source component vulnerability tracking",
+          "status": "partial",
+          "evidence": "Finally, Akeyless prevents secrets sprawl by centralizing management, dynamically injecting credentials, and tracking them across all environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous monitoring of vendor security posture",
+          "status": "met",
+          "evidence": "Having robust security measures in place for key storage is a cornerstone of a strong security posture.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Supply chain attack detection and alerting",
+          "status": "partial",
+          "evidence": "Failing to manage machine identities properly creates a new attack vector.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-01": {
+      "sub_pillar_id": "AMT-01",
+      "sub_pillar_name": "Polymorphic & Morphing Defense",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Runtime address space or memory layout randomization; Network configuration morphing. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Runtime address space or memory layout randomization",
+          "status": "partial",
+          "evidence": "Akeyless addresses every key enterprise challenge through a powerful, unified platform.",
+          "confidence": "low"
+        },
+        {
+          "criterion": "API endpoint mutation or obfuscation",
+          "status": "unmet",
+          "evidence": "Manually enrolling devices, renewing certificates, and revoking privileges is time consuming when managing a never-ending list of machine identities, endpoints, and internal processes.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Network configuration morphing",
+          "status": "partial",
+          "evidence": "Rotated secret, which is the administrative access that can, once in a while, based on the configuration, rotate the administrative credential.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "System identifier rotation",
+          "status": "partial",
+          "evidence": "Finally, many organizations lack governance and control, with no unified visibility across environments or consistent enforcement of rotation and access policies.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Evidence of increased attacker cost through dynamic changes",
+          "status": "partial",
+          "evidence": "Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-02": {
+      "sub_pillar_id": "AMT-02",
+      "sub_pillar_name": "Runtime Application Protection",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): RASP or in-app runtime protection capabilities; Code instrumentation for exploit prevention. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "RASP or in-app runtime protection capabilities",
+          "status": "partial",
+          "evidence": "In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Code instrumentation for exploit prevention",
+          "status": "partial",
+          "evidence": "Improper management can create a series of new vulnerabilities for an internal or external malicious actor to exploit.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Application hardening and anti-tampering",
+          "status": "unmet",
+          "evidence": "Machine Identity Management refers to the discipline of managing and securing the identities of non-human entities such as applications, containers, services, and devices.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Memory corruption defense (ROP, buffer overflow prevention)",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/7 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Signature-less exploit detection at runtime",
+          "status": "partial",
+          "evidence": "Improper management can create a series of new vulnerabilities for an internal or external malicious actor to exploit.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-03": {
+      "sub_pillar_id": "AMT-03",
+      "sub_pillar_name": "Dynamic Network & Infrastructure Defense",
+      "original_score": 0,
+      "adjusted_score": 2.5,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Software-defined perimeter or zero trust network access; Adaptive access controls based on risk signals. Partially met (3): Automated micro-segmentation with dynamic policy; Network topology reconfiguration capabilities. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated micro-segmentation with dynamic policy",
+          "status": "partial",
+          "evidence": "Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Network topology reconfiguration capabilities",
+          "status": "partial",
+          "evidence": "In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Software-defined perimeter or zero trust network access",
+          "status": "met",
+          "evidence": "We start with centralized, encrypted secret storage secured by zero knowledge architecture and granular RBAC and ABAC access control, ensuring that only authorized users, workloads, or systems can acc",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Infrastructure-as-code security automation",
+          "status": "partial",
+          "evidence": "For DevOps pipeline security, the platform injects and automatically rotates secrets across CICD and automation tools like Jenkins, GitHub Actions, and Terra form, securing every stage of the developm",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Adaptive access controls based on risk signals",
+          "status": "met",
+          "evidence": "For cross team collaboration, secrets can be shared safely through role based access controls, with full visibility and auditability.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.5,
+        "reason": "Fresh score 2.50: no prior validated score (2/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "AMT-04": {
+      "sub_pillar_id": "AMT-04",
+      "sub_pillar_name": "Identity & Credential Rotation",
+      "original_score": 0,
+      "adjusted_score": 2.5,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (3/5): Automated credential and secret rotation; Service account and API key lifecycle management; Certificate and token rotation automation. Partially met (2): Ephemeral or just-in-time credential provisioning; Privileged access session isolation. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 3/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated credential and secret rotation",
+          "status": "met",
+          "evidence": "Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Ephemeral or just-in-time credential provisioning",
+          "status": "partial",
+          "evidence": "In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Service account and API key lifecycle management",
+          "status": "met",
+          "evidence": "Akeyless was designed to solve all these challenges with a true SaaS model, zero knowledge encryption, and centralized secrets lifecycle management that’s simple to adopt and effortless to scale.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Certificate and token rotation automation",
+          "status": "met",
+          "evidence": "Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Privileged access session isolation",
+          "status": "partial",
+          "evidence": "The last thing that I want to show as part of that demonstration is the ability to revoke access for existing sessions.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.",
+        "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+        "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+        "Akeyless replaces standing credentials with short lived, just in time secrets, dramatically minimizing the risk of insider misuse or accidental exposure.",
+        "In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS"
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.5,
+        "reason": "Fresh score 2.50: no prior validated score (3/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "medium",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-01": {
+      "sub_pillar_id": "ADR-01",
+      "sub_pillar_name": "Deception Technology",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Honeypot and honeytoken deployment capabilities; Decoy systems mimicking production assets. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Honeypot and honeytoken deployment capabilities",
+          "status": "partial",
+          "evidence": "In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Decoy systems mimicking production assets",
+          "status": "partial",
+          "evidence": "We start with centralized, encrypted secret storage secured by zero knowledge architecture and granular RBAC and ABAC access control, ensuring that only authorized users, workloads, or systems can acc",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Breadcrumb placement for lateral movement detection",
+          "status": "unmet",
+          "evidence": "And using SSL certificate to basically achieving a good and secure replacement to that there, there is no dynamic configuration on the server side.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "High-fidelity alerting with low false-positive rates",
+          "status": "unmet",
+          "evidence": "Aculus integrates natively with over one hundred tools via plugins, SDKs, and APIs, embedding security directly into existing DevOps and CICD workflows.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Integration with SIEM/SOAR for automated response",
+          "status": "partial",
+          "evidence": "Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-02": {
+      "sub_pillar_id": "ADR-02",
+      "sub_pillar_name": "Threat Intelligence Operationalization",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): Threat intelligence platform or feed integration; Automated blocking based on threat intelligence. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Threat intelligence platform or feed integration",
+          "status": "partial",
+          "evidence": "Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, and on prem environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Automated IOC ingestion and correlation",
+          "status": "unmet",
+          "evidence": "Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "TTP mapping to MITRE ATT&CK framework",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Automated blocking based on threat intelligence",
+          "status": "partial",
+          "evidence": "Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Intelligence-driven hunting query generation",
+          "status": "unmet",
+          "evidence": "So, variety of databases, all of them are natively supported by Akeyless, RDP access, generation of cloud identities for all the major cloud providers, Kubernetes access, and so on and so forth.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, and on prem environments."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-03": {
+      "sub_pillar_id": "ADR-03",
+      "sub_pillar_name": "Proactive Threat Hunting",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Managed or automated threat hunting services; Integration with telemetry sources (EDR, NDR, SIEM). Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Managed or automated threat hunting services",
+          "status": "partial",
+          "evidence": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Hypothesis-driven hunting methodologies",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/3 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Hunt query libraries and playbooks",
+          "status": "unmet",
+          "evidence": "No direct evidence (0/4 terms)",
+          "confidence": "high"
+        },
+        {
+          "criterion": "Integration with telemetry sources (EDR, NDR, SIEM)",
+          "status": "partial",
+          "evidence": "Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, and on prem environments.",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Hunt findings feeding back to detection engineering",
+          "status": "partial",
+          "evidence": "If I go back to the console and visit this folder, I will see that they have 2 secrets now.",
+          "confidence": "low"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+        "With so many systems, machine identities, compliance requirements, and threats — it’s exceedingly important for every device and third-party system to have securely managed identities to protect your "
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "ADR-04": {
+      "sub_pillar_id": "ADR-04",
+      "sub_pillar_name": "Counter-Adversary Operations",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Dark web monitoring and intelligence gathering; Takedown service capabilities (domains, phishing, infrastruc. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Dark web monitoring and intelligence gathering",
+          "status": "partial",
+          "evidence": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Brand protection and impersonation detection",
+          "status": "unmet",
+          "evidence": "In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Takedown service capabilities (domains, phishing, infrastructure)",
+          "status": "partial",
+          "evidence": "In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Adversary attribution and campaign tracking",
+          "status": "unmet",
+          "evidence": "Finally, Akeyless prevents secrets sprawl by centralizing management, dynamically injecting credentials, and tracking them across all environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Digital risk protection services",
+          "status": "partial",
+          "evidence": "In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-01": {
+      "sub_pillar_id": "PPM-01",
+      "sub_pillar_name": "Breach & Attack Simulation",
+      "original_score": 0,
+      "adjusted_score": 2.0,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): Automated attack chain simulation capabilities; Continuous validation against production controls. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated attack chain simulation capabilities",
+          "status": "partial",
+          "evidence": "In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous validation against production controls",
+          "status": "partial",
+          "evidence": "For cross team collaboration, secrets can be shared safely through role based access controls, with full visibility and auditability.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "MITRE ATT&CK technique coverage",
+          "status": "unmet",
+          "evidence": "In terms of authentication methods, which I think is one of the key benefits of using the Akeyless platform, there are a variety of workloads and techniques to authenticate to the platform, starting b",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Control gap identification and remediation guidance",
+          "status": "unmet",
+          "evidence": "This uncontrolled spread increases exposure risk and makes it nearly impossible to maintain visibility.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Reporting on detection and prevention effectiveness",
+          "status": "unmet",
+          "evidence": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.0,
+        "reason": "Fresh score 2.00: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-02": {
+      "sub_pillar_id": "PPM-02",
+      "sub_pillar_name": "Security Control Validation",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): DLP and data protection control testing. Partially met (2): SIEM detection rule validation and testing; Firewall and network control validation. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "SIEM detection rule validation and testing",
+          "status": "partial",
+          "evidence": "How Does Machine Identity Management Work\n\nA machine identity requires validation before it can receive authorization and access.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "EDR policy effectiveness verification",
+          "status": "unmet",
+          "evidence": "Secure secret sharing makes collaboration across teams and environments safe, auditable, and policy driven.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Firewall and network control validation",
+          "status": "partial",
+          "evidence": "This uncontrolled spread increases exposure risk and makes it nearly impossible to maintain visibility.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "DLP and data protection control testing",
+          "status": "met",
+          "evidence": "For more information, see our Data Protection Measures.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Configuration drift detection and alerting",
+          "status": "unmet",
+          "evidence": "Rotated secret, which is the administrative access that can, once in a while, based on the configuration, rotate the administrative credential.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-03": {
+      "sub_pillar_id": "PPM-03",
+      "sub_pillar_name": "Penetration Testing & Red Teaming",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Automated penetration testing platform; Exploit validation and proof-of-concept generation. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Automated penetration testing platform",
+          "status": "partial",
+          "evidence": "We’ll wrap up with a quick look at our platform differentiators and a real customer success story.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Continuous or on-demand pen testing capabilities",
+          "status": "unmet",
+          "evidence": "In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Attack path analysis and visualization",
+          "status": "unmet",
+          "evidence": "Failing to manage machine identities properly creates a new attack vector.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Exploit validation and proof-of-concept generation",
+          "status": "partial",
+          "evidence": "How Does Machine Identity Management Work\n\nA machine identity requires validation before it can receive authorization and access.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Red team exercise automation (PTaaS)",
+          "status": "partial",
+          "evidence": "Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (0/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    },
+    "PPM-04": {
+      "sub_pillar_id": "PPM-04",
+      "sub_pillar_name": "Cloud Security Posture Management",
+      "original_score": 0,
+      "adjusted_score": 2.25,
+      "scoring_level": 2,
+      "score_rationale": "Akeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Cloud workload protection capabilities. Partially met (3): Cloud misconfiguration detection (AWS, Azure, GCP); Cloud entitlement and permissions analysis (CIEM). Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.",
+      "evidence_quality_rationale": "Evidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.",
+      "criteria_assessment": [
+        {
+          "criterion": "Cloud misconfiguration detection (AWS, Azure, GCP)",
+          "status": "partial",
+          "evidence": "Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, and on prem environments.",
+          "confidence": "low"
+        },
+        {
+          "criterion": "Cloud entitlement and permissions analysis (CIEM)",
+          "status": "partial",
+          "evidence": "Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Compliance framework mapping and reporting",
+          "status": "partial",
+          "evidence": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Cloud workload protection capabilities",
+          "status": "met",
+          "evidence": "In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS",
+          "confidence": "medium"
+        },
+        {
+          "criterion": "Infrastructure-as-code security scanning",
+          "status": "unmet",
+          "evidence": "Aculus integrates natively with over one hundred tools via plugins, SDKs, and APIs, embedding security directly into existing DevOps and CICD workflows.",
+          "confidence": "medium"
+        }
+      ],
+      "scoring_level_justification": "Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found.",
+      "key_evidence": [
+        "Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, and on prem environments.",
+        "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards."
+      ],
+      "score_adjustment": {
+        "original": 0,
+        "adjusted": 2.25,
+        "reason": "Fresh score 2.25: no prior validated score (1/5 criteria met, level=2)."
+      },
+      "additional_sources_found": 5,
+      "confidence": "low",
+      "evidence_quality_factor": 0.5
+    }
+  },
+  "sub_pillar_scores_v2_researched": {
+    "EXM-01": 2.25,
+    "EXM-02": 2.25,
+    "EXM-03": 2.25,
+    "EXM-04": 2.25,
+    "AMT-01": 2.25,
+    "AMT-02": 2.25,
+    "AMT-03": 2.5,
+    "AMT-04": 2.5,
+    "ADR-01": 2.25,
+    "ADR-02": 2.0,
+    "ADR-03": 2.25,
+    "ADR-04": 2.25,
+    "PPM-01": 2.0,
+    "PPM-02": 2.25,
+    "PPM-03": 2.25,
+    "PPM-04": 2.25
+  },
+  "pillar_scores_v2_researched": {
+    "EXM": 2.25,
+    "AMT": 2.38,
+    "ADR": 2.19,
+    "PPM": 2.19
+  },
+  "evidence_quality_analysis": {
+    "EXM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "EXM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "AMT-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "ADR-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-01": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-02": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-03": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    },
+    "PPM-04": {
+      "quality_factor": 0.5,
+      "components": {},
+      "notes": "No evidence data — neutral quality assumed."
+    }
+  },
+  "sub_pillar_rationale_v2_consolidated": {
+    "EXM-01": "EXM-01 – Attack Surface Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Automated discovery of internet-facing assets and shadow IT; Cloud resource discovery across multi-cloud environments. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated discovery of internet-facing assets and shadow IT', 'status': 'partial', 'evidence': 'We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.', 'confidence': 'medium'}, {'criterion': 'Real-time asset inventory with risk scoring', 'status': 'unmet', 'evidence': 'This uncontrolled spread increases exposure risk and makes it nearly impossible to maintain visibility.', 'confidence': 'medium'}, {'criterion': 'Cloud resource discovery across multi-cloud environments', 'status': 'partial', 'evidence': 'Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.', 'confidence': 'medium'}, {'criterion': 'Integration with CMDB and asset management systems', 'status': 'partial', 'evidence': 'Machine identity management (MIM) includes company processes and technologies for assigning and managing digital credentials and certificates for devices and systems.', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring for new or changed assets', 'status': 'unmet', 'evidence': 'We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unma...\n  • Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and autom...\n  • Finally, many organizations lack governance and control, with no unified visibility across environments or consistent enforcement of rotatio...",
+    "EXM-02": "EXM-02 – Continuous Threat Exposure Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): CTEM program capabilities or alignment; Exposure scoping and discovery automation. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'CTEM program capabilities or alignment', 'status': 'partial', 'evidence': 'In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ', 'confidence': 'medium'}, {'criterion': 'Exposure scoping and discovery automation', 'status': 'partial', 'evidence': 'Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.', 'confidence': 'medium'}, {'criterion': 'Prioritization based on exploitability and business context', 'status': 'unmet', 'evidence': 'Ultimately, Akeyless delivers up to seventy percent lower TCO and faster value, transforming security from a burden into a business enabler.', 'confidence': 'medium'}, {'criterion': 'Validation of exposure remediation effectiveness', 'status': 'partial', 'evidence': 'This uncontrolled spread increases exposure risk and makes it nearly impossible to maintain visibility.', 'confidence': 'medium'}, {'criterion': 'Continuous cycle operation (not point-in-time)', 'status': 'partial', 'evidence': 'The high cost and complexity of vault clusters create operational overhead and scalability issues, forcing teams to maintain infrastructure instead of securing it.', 'confidence': 'medium'}]",
+    "EXM-03": "EXM-03 – Vulnerability Prioritization & Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Risk-based vulnerability scoring beyond CVSS; Exploitability context from threat intelligence. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Risk-based vulnerability scoring beyond CVSS', 'status': 'partial', 'evidence': 'Report a Vulnerability\\t\\t\\t\\t\\n\\t\\t\\t\\t\\n\\t\\t\\t\\t\\n\\n\\t\\t\\t\\t\\n\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\nAkeyless\\xa0\\xa0maintains a bug bounty program and investigates all reported vulnerabilities and bugs.', 'confidence': 'medium'}, {'criterion': 'Exploitability context from threat intelligence', 'status': 'partial', 'evidence': 'With so many systems, machine identities, compliance requirements, and threats — it’s exceedingly important for every device and third-party system to have securely managed identities to protect your ', 'confidence': 'medium'}, {'criterion': 'Asset criticality and business impact weighting', 'status': 'unmet', 'evidence': 'Ultimately, Akeyless delivers up to seventy percent lower TCO and faster value, transforming security from a burden into a business enabler.', 'confidence': 'medium'}, {'criterion': 'Automated remediation prioritization and tracking', 'status': 'partial', 'evidence': 'Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.', 'confidence': 'medium'}, {'criterion': 'Integration with patch management and ticketing systems', 'status': 'partial', 'evidence': 'Machine identity management (MIM) includes company processes and technologies for assigning and managing digital credentials and certificates for devices and systems.', 'confidence': 'medium'}]",
+    "EXM-04": "EXM-04 – Third-Party & Supply Chain Exposure: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Continuous monitoring of vendor security posture. Partially met (4): Third-party vendor risk assessment capabilities; Software supply chain monitoring (SBOM analysis). Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Third-party vendor risk assessment capabilities', 'status': 'partial', 'evidence': 'In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ', 'confidence': 'medium'}, {'criterion': 'Software supply chain monitoring (SBOM analysis)', 'status': 'partial', 'evidence': 'We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.', 'confidence': 'medium'}, {'criterion': 'Open-source component vulnerability tracking', 'status': 'partial', 'evidence': 'Finally, Akeyless prevents secrets sprawl by centralizing management, dynamically injecting credentials, and tracking them across all environments.', 'confidence': 'medium'}, {'criterion': 'Continuous monitoring of vendor security posture', 'status': 'met', 'evidence': 'Having robust security measures in place for key storage is a cornerstone of a strong security posture.', 'confidence': 'medium'}, {'criterion': 'Supply chain attack detection and alerting', 'status': 'partial', 'evidence': 'Failing to manage machine identities properly creates a new attack vector.', 'confidence': 'medium'}]",
+    "AMT-01": "AMT-01 – Polymorphic & Morphing Defense: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (4): Runtime address space or memory layout randomization; Network configuration morphing. Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Runtime address space or memory layout randomization', 'status': 'partial', 'evidence': 'Akeyless addresses every key enterprise challenge through a powerful, unified platform.', 'confidence': 'low'}, {'criterion': 'API endpoint mutation or obfuscation', 'status': 'unmet', 'evidence': 'Manually enrolling devices, renewing certificates, and revoking privileges is time consuming when managing a never-ending list of machine identities, endpoints, and internal processes.', 'confidence': 'medium'}, {'criterion': 'Network configuration morphing', 'status': 'partial', 'evidence': 'Rotated secret, which is the administrative access that can, once in a while, based on the configuration, rotate the administrative credential.', 'confidence': 'medium'}, {'criterion': 'System identifier rotation', 'status': 'partial', 'evidence': 'Finally, many organizations lack governance and control, with no unified visibility across environments or consistent enforcement of rotation and access policies.', 'confidence': 'medium'}, {'criterion': 'Evidence of increased attacker cost through dynamic changes', 'status': 'partial', 'evidence': 'Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.', 'confidence': 'medium'}]",
+    "AMT-02": "AMT-02 – Runtime Application Protection: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): RASP or in-app runtime protection capabilities; Code instrumentation for exploit prevention. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'RASP or in-app runtime protection capabilities', 'status': 'partial', 'evidence': 'In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ', 'confidence': 'medium'}, {'criterion': 'Code instrumentation for exploit prevention', 'status': 'partial', 'evidence': 'Improper management can create a series of new vulnerabilities for an internal or external malicious actor to exploit.', 'confidence': 'medium'}, {'criterion': 'Application hardening and anti-tampering', 'status': 'unmet', 'evidence': 'Machine Identity Management refers to the discipline of managing and securing the identities of non-human entities such as applications, containers, services, and devices.', 'confidence': 'medium'}, {'criterion': 'Memory corruption defense (ROP, buffer overflow prevention)', 'status': 'unmet', 'evidence': 'No direct evidence (0/7 terms)', 'confidence': 'high'}, {'criterion': 'Signature-less exploit detection at runtime', 'status': 'partial', 'evidence': 'Improper management can create a series of new vulnerabilities for an internal or external malicious actor to exploit.', 'confidence': 'medium'}]",
+    "AMT-03": "AMT-03 – Dynamic Network & Infrastructure Defense: Score 2.50/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nAkeyless scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (2/5): Software-defined perimeter or zero trust network access; Adaptive access controls based on risk signals. Partially met (3): Automated micro-segmentation with dynamic policy; Network topology reconfiguration capabilities. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 2/5 met.\n\n[Score Adjustment] 0.00 → 2.50: Fresh score 2.50: no prior validated score (2/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated micro-segmentation with dynamic policy', 'status': 'partial', 'evidence': 'Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.', 'confidence': 'medium'}, {'criterion': 'Network topology reconfiguration capabilities', 'status': 'partial', 'evidence': 'In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ', 'confidence': 'medium'}, {'criterion': 'Software-defined perimeter or zero trust network access', 'status': 'met', 'evidence': 'We start with centralized, encrypted secret storage secured by zero knowledge architecture and granular RBAC and ABAC access control, ensuring that only authorized users, workloads, or systems can acc', 'confidence': 'medium'}, {'criterion': 'Infrastructure-as-code security automation', 'status': 'partial', 'evidence': 'For DevOps pipeline security, the platform injects and automatically rotates secrets across CICD and automation tools like Jenkins, GitHub Actions, and Terra form, securing every stage of the developm', 'confidence': 'medium'}, {'criterion': 'Adaptive access controls based on risk signals', 'status': 'met', 'evidence': 'For cross team collaboration, secrets can be shared safely through role based access controls, with full visibility and auditability.', 'confidence': 'medium'}]",
+    "AMT-04": "AMT-04 – Identity & Credential Rotation: Score 2.50/5.0 (Level 2). Confidence: medium.\n\n[Score Rationale]\nAkeyless scores 2.50/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 4 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (3/5): Automated credential and secret rotation; Service account and API key lifecycle management; Certificate and token rotation automation. Partially met (2): Ephemeral or just-in-time credential provisioning; Privileged access session isolation. Evidence basis: 0 excerpts from 0 source(s), 4 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 3/5 met.\n\n[Score Adjustment] 0.00 → 2.50: Fresh score 2.50: no prior validated score (3/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated credential and secret rotation', 'status': 'met', 'evidence': 'Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.', 'confidence': 'medium'}, {'criterion': 'Ephemeral or just-in-time credential provisioning', 'status': 'partial', 'evidence': 'In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS', 'confidence': 'medium'}, {'criterion': 'Service account and API key lifecycle management', 'status': 'met', 'evidence': 'Akeyless was designed to solve all these challenges with a true SaaS model, zero knowledge encryption, and centralized secrets lifecycle management that’s simple to adopt and effortless to scale.', 'confidence': 'medium'}, {'criterion': 'Certificate and token rotation automation', 'status': 'met', 'evidence': 'Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.', 'confidence': 'medium'}, {'criterion': 'Privileged access session isolation', 'status': 'partial', 'evidence': 'The last thing that I want to show as part of that demonstration is the ability to revoke access for existing sessions.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of cred...\n  • With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporti...\n  • We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unma...",
+    "ADR-01": "ADR-01 – Deception Technology: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Honeypot and honeytoken deployment capabilities; Decoy systems mimicking production assets. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Honeypot and honeytoken deployment capabilities', 'status': 'partial', 'evidence': 'In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ', 'confidence': 'medium'}, {'criterion': 'Decoy systems mimicking production assets', 'status': 'partial', 'evidence': 'We start with centralized, encrypted secret storage secured by zero knowledge architecture and granular RBAC and ABAC access control, ensuring that only authorized users, workloads, or systems can acc', 'confidence': 'medium'}, {'criterion': 'Breadcrumb placement for lateral movement detection', 'status': 'unmet', 'evidence': 'And using SSL certificate to basically achieving a good and secure replacement to that there, there is no dynamic configuration on the server side.', 'confidence': 'medium'}, {'criterion': 'High-fidelity alerting with low false-positive rates', 'status': 'unmet', 'evidence': 'Aculus integrates natively with over one hundred tools via plugins, SDKs, and APIs, embedding security directly into existing DevOps and CICD workflows.', 'confidence': 'medium'}, {'criterion': 'Integration with SIEM/SOAR for automated response', 'status': 'partial', 'evidence': 'Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.', 'confidence': 'medium'}]",
+    "ADR-02": "ADR-02 – Threat Intelligence Operationalization: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): Threat intelligence platform or feed integration; Automated blocking based on threat intelligence. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Threat intelligence platform or feed integration', 'status': 'partial', 'evidence': 'Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, and on prem environments.', 'confidence': 'medium'}, {'criterion': 'Automated IOC ingestion and correlation', 'status': 'unmet', 'evidence': 'Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.', 'confidence': 'medium'}, {'criterion': 'TTP mapping to MITRE ATT&CK framework', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Automated blocking based on threat intelligence', 'status': 'partial', 'evidence': 'Automated rotation and life cycle management remove the manual burden of renewing or retiring secrets, drastically reducing the risk of credential exposure.', 'confidence': 'medium'}, {'criterion': 'Intelligence-driven hunting query generation', 'status': 'unmet', 'evidence': 'So, variety of databases, all of them are natively supported by Akeyless, RDP access, generation of cloud identities for all the major cloud providers, Kubernetes access, and so on and so forth.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, a...",
+    "ADR-03": "ADR-03 – Proactive Threat Hunting: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Managed or automated threat hunting services; Integration with telemetry sources (EDR, NDR, SIEM). Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Managed or automated threat hunting services', 'status': 'partial', 'evidence': 'We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.', 'confidence': 'medium'}, {'criterion': 'Hypothesis-driven hunting methodologies', 'status': 'unmet', 'evidence': 'No direct evidence (0/3 terms)', 'confidence': 'high'}, {'criterion': 'Hunt query libraries and playbooks', 'status': 'unmet', 'evidence': 'No direct evidence (0/4 terms)', 'confidence': 'high'}, {'criterion': 'Integration with telemetry sources (EDR, NDR, SIEM)', 'status': 'partial', 'evidence': 'Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, and on prem environments.', 'confidence': 'low'}, {'criterion': 'Hunt findings feeding back to detection engineering', 'status': 'partial', 'evidence': 'If I go back to the console and visit this folder, I will see that they have 2 secrets now.', 'confidence': 'low'}]\n\n[Key Evidence]\n  • We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unma...\n  • With so many systems, machine identities, compliance requirements, and threats — it’s exceedingly important for every device and third-party...",
+    "ADR-04": "ADR-04 – Counter-Adversary Operations: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 1 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Dark web monitoring and intelligence gathering; Takedown service capabilities (domains, phishing, infrastruc. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 1 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Dark web monitoring and intelligence gathering', 'status': 'partial', 'evidence': 'We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.', 'confidence': 'medium'}, {'criterion': 'Brand protection and impersonation detection', 'status': 'unmet', 'evidence': 'In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS', 'confidence': 'medium'}, {'criterion': 'Takedown service capabilities (domains, phishing, infrastructure)', 'status': 'partial', 'evidence': 'In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ', 'confidence': 'low'}, {'criterion': 'Adversary attribution and campaign tracking', 'status': 'unmet', 'evidence': 'Finally, Akeyless prevents secrets sprawl by centralizing management, dynamically injecting credentials, and tracking them across all environments.', 'confidence': 'medium'}, {'criterion': 'Digital risk protection services', 'status': 'partial', 'evidence': 'In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS', 'confidence': 'medium'}]",
+    "PPM-01": "PPM-01 – Breach & Attack Simulation: Score 2.00/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.00/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (2): Automated attack chain simulation capabilities; Continuous validation against production controls. Unmet criteria (3): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.00: Fresh score 2.00: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated attack chain simulation capabilities', 'status': 'partial', 'evidence': 'In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ', 'confidence': 'medium'}, {'criterion': 'Continuous validation against production controls', 'status': 'partial', 'evidence': 'For cross team collaboration, secrets can be shared safely through role based access controls, with full visibility and auditability.', 'confidence': 'medium'}, {'criterion': 'MITRE ATT&CK technique coverage', 'status': 'unmet', 'evidence': 'In terms of authentication methods, which I think is one of the key benefits of using the Akeyless platform, there are a variety of workloads and techniques to authenticate to the platform, starting b', 'confidence': 'medium'}, {'criterion': 'Control gap identification and remediation guidance', 'status': 'unmet', 'evidence': 'This uncontrolled spread increases exposure risk and makes it nearly impossible to maintain visibility.', 'confidence': 'medium'}, {'criterion': 'Reporting on detection and prevention effectiveness', 'status': 'unmet', 'evidence': 'Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.', 'confidence': 'medium'}]",
+    "PPM-02": "PPM-02 – Security Control Validation: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): DLP and data protection control testing. Partially met (2): SIEM detection rule validation and testing; Firewall and network control validation. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'SIEM detection rule validation and testing', 'status': 'partial', 'evidence': 'How Does Machine Identity Management Work\\n\\nA machine identity requires validation before it can receive authorization and access.', 'confidence': 'medium'}, {'criterion': 'EDR policy effectiveness verification', 'status': 'unmet', 'evidence': 'Secure secret sharing makes collaboration across teams and environments safe, auditable, and policy driven.', 'confidence': 'medium'}, {'criterion': 'Firewall and network control validation', 'status': 'partial', 'evidence': 'This uncontrolled spread increases exposure risk and makes it nearly impossible to maintain visibility.', 'confidence': 'medium'}, {'criterion': 'DLP and data protection control testing', 'status': 'met', 'evidence': 'For more information, see our Data Protection Measures.', 'confidence': 'medium'}, {'criterion': 'Configuration drift detection and alerting', 'status': 'unmet', 'evidence': 'Rotated secret, which is the administrative access that can, once in a while, based on the configuration, rotate the administrative credential.', 'confidence': 'medium'}]",
+    "PPM-03": "PPM-03 – Penetration Testing & Red Teaming: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Partially met (3): Automated penetration testing platform; Exploit validation and proof-of-concept generation. Unmet criteria (2): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 0/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (0/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Automated penetration testing platform', 'status': 'partial', 'evidence': 'We’ll wrap up with a quick look at our platform differentiators and a real customer success story.', 'confidence': 'medium'}, {'criterion': 'Continuous or on-demand pen testing capabilities', 'status': 'unmet', 'evidence': 'In this short module, you’ll learn about the challenges enterprises face that drive the need for secrets management, the Akeyless capabilities that solve those challenges, key customer use cases, and ', 'confidence': 'medium'}, {'criterion': 'Attack path analysis and visualization', 'status': 'unmet', 'evidence': 'Failing to manage machine identities properly creates a new attack vector.', 'confidence': 'medium'}, {'criterion': 'Exploit validation and proof-of-concept generation', 'status': 'partial', 'evidence': 'How Does Machine Identity Management Work\\n\\nA machine identity requires validation before it can receive authorization and access.', 'confidence': 'medium'}, {'criterion': 'Red team exercise automation (PTaaS)', 'status': 'partial', 'evidence': 'Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.', 'confidence': 'medium'}]",
+    "PPM-04": "PPM-04 – Cloud Security Posture Management: Score 2.25/5.0 (Level 2). Confidence: low.\n\n[Score Rationale]\nAkeyless scores 2.25/5.0 (Level 2: Generic Claims — Marketing mentions the capability but lacks named products, technical docs, or specifics.). Limited evidence: 2 pillar terms, specificity=3.5. Marketing-level claims without substantive depth. 0 excerpt(s) found. Criteria fully met (1/5): Cloud workload protection capabilities. Partially met (3): Cloud misconfiguration detection (AWS, Azure, GCP); Cloud entitlement and permissions analysis (CIEM). Unmet criteria (1): evidence gaps exist. Evidence basis: 0 excerpts from 0 source(s), 2 pillar-term matches, 0 schema-criteria matches, specificity=3.5.\n\n[Evidence Quality]\nEvidence quality: 50.0% — Grade C (Moderate). Source diversity is weak (0 source(s)). Volume is low (0 excerpts). Term specificity is low (0.00). Limited cross-source confirmation. Schema criteria coverage: 1/5 met.\n\n[Score Adjustment] 0.00 → 2.25: Fresh score 2.25: no prior validated score (1/5 criteria met, level=2).\n\n[Criteria Assessment] [{'criterion': 'Cloud misconfiguration detection (AWS, Azure, GCP)', 'status': 'partial', 'evidence': 'Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, and on prem environments.', 'confidence': 'low'}, {'criterion': 'Cloud entitlement and permissions analysis (CIEM)', 'status': 'partial', 'evidence': 'Enterprises today face a growing sprawl of unprotected secrets, API keys, tokens, and certificates scattered across cloud, DevOps, and automation environments.', 'confidence': 'medium'}, {'criterion': 'Compliance framework mapping and reporting', 'status': 'partial', 'evidence': 'Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.', 'confidence': 'medium'}, {'criterion': 'Cloud workload protection capabilities', 'status': 'met', 'evidence': 'In cloud native workload protection, Aculus securely delivers secrets to containers, functions, and microservices, ensuring workloads authenticate safely without ever storing credentials and Secure SS', 'confidence': 'medium'}, {'criterion': 'Infrastructure-as-code security scanning', 'status': 'unmet', 'evidence': 'Aculus integrates natively with over one hundred tools via plugins, SDKs, and APIs, embedding security directly into existing DevOps and CICD workflows.', 'confidence': 'medium'}]\n\n[Key Evidence]\n  • Our platform is hybrid, multi cloud, and on prem integration ready, seamlessly extending protection and automation across AWS, Azure, GCP, a...\n  • Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standard...",
+    "EXM-05": "EXM-05 - Exposure Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Modern enterprises face a new, complex technology ecosystem compared to previous decades. With so many systems, machine identities, compliance requirements, and threats - it’s exc…\". Also: \"Secure Machine Identity Management with Akeyless Modern enterprises face a new, complex technology ecosystem compared t…\".",
+    "AMT-05": "AMT-05 - AMTD Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.\". Also: \"We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in al…\".",
+    "ADR-05": "ADR-05 - Adversary Disruption Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.\". Also: \"We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in al…\".",
+    "PPM-05": "PPM-05 - Posture Management Services Maturity. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Secrets sprawl and static credentials increase risk across modern enterprises. In this video, discover how Akeyless Secrets Management eliminates standing secrets with dynamic, ju…\". Also: \"In this video, discover how Akeyless Secrets Management eliminates standing secrets with dynamic, just-in-time access a…\".",
+    "SVC-01": "SVC-01 - Implementation & Onboarding. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"Simpris chose Akeyless for its easy onboarding, high level of support, and true SaaS simplicity, delivering secure secrets management with zero maintenance.\". Also: \"With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing pr…\".",
+    "SVC-02": "SVC-02 - Consultative & Advisory Services. Score: 2.50/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"We’ll wrap up with a quick look at our platform differentiators and a real customer success story.\". Also: \"Akeyless delivers a modern approach to secrets and key management through our zero knowledge SaaS architecture, with pa…\".",
+    "SVC-03": "SVC-03 - Managed Operations & Continuous Delivery. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.\". Also: \"We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in al…\".",
+    "SVC-04": "SVC-04 - AI-Driven & Autonomous Delivery. Score: 2.00/5. Basic services mentioned but limited evidence of operational maturity. Evidence: \"With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.\". Also: \"We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in al…\"."
+  },
+  "coverage_grade": "A",
+  "capability_coverage": [
+    "EXM-01",
+    "EXM-02",
+    "EXM-03",
+    "EXM-04",
+    "AMT-01",
+    "AMT-02",
+    "AMT-03",
+    "AMT-04",
+    "ADR-01",
+    "ADR-02",
+    "ADR-03",
+    "ADR-04",
+    "PPM-01",
+    "PPM-02",
+    "PPM-03",
+    "PPM-04",
+    "EXM-05",
+    "AMT-05",
+    "ADR-05",
+    "PPM-05",
+    "SVC-01",
+    "SVC-02",
+    "SVC-03",
+    "SVC-04"
+  ],
+  "vendor_summary_v2_1": {
+    "coverage_count": 16,
+    "coverage_grade": "B",
+    "pillar_averages": {
+      "EXM": 2.25,
+      "AMT": 2.38,
+      "ADR": 2.19,
+      "PPM": 2.19
+    }
+  },
+  "svc_evidence": {
+    "EXM-05": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/machine-identity/",
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/machine-identity/",
+          "excerpt": "Modern enterprises face a new, complex technology ecosystem compared to previous decades. With so many systems, machine identities, compliance requirements, and threats - it’s exceedingly important for every device and third-party system to have securely mana…",
+          "matched_terms": [
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/machine-identity/",
+          "excerpt": "Secure Machine Identity Management with Akeyless Modern enterprises face a new, complex technology ecosystem compared to previous decades. With so many systems, machine identities, compliance requirements, and threats - it’s exceedingly important for every de…",
+          "matched_terms": [
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/machine-identity/",
+          "excerpt": "With so many systems, machine identities, compliance requirements, and threats - it’s exceedingly important for every device and third-party system to have securely managed identities to protect your company.",
+          "matched_terms": [
+            "criteria:Continuous managed monitoring of third-party and s"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 5,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 5 criteria hits."
+    },
+    "AMT-05": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Managing infrastructure, monitoring uptime, and providing twenty four seven support added unnecessary complexity and cost.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Simpris chose Akeyless for its easy onboarding, high level of support, and true SaaS simplicity, delivering secure secrets management with zero maintenance.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 5,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 5 criteria hits."
+    },
+    "ADR-05": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Managing infrastructure, monitoring uptime, and providing twenty four seven support added unnecessary complexity and cost.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Simpris chose Akeyless for its easy onboarding, high level of support, and true SaaS simplicity, delivering secure secrets management with zero maintenance.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 2,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 2 criteria hits."
+    },
+    "PPM-05": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Secrets sprawl and static credentials increase risk across modern enterprises. In this video, discover how Akeyless Secrets Management eliminates standing secrets with dynamic, just-in-time access and Zero-Knowledge security, centralizing control, automating …",
+          "matched_terms": [
+            "criteria:Managed security control validation with analyst-d"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "In this video, discover how Akeyless Secrets Management eliminates standing secrets with dynamic, just-in-time access and Zero-Knowledge security, centralizing control, automating rotation, and securing cloud-native and DevOps environments without operational…",
+          "matched_terms": [
+            "criteria:Managed security control validation with analyst-d"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 4,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 4 criteria hits."
+    },
+    "SVC-01": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Simpris chose Akeyless for its easy onboarding, high level of support, and true SaaS simplicity, delivering secure secrets management with zero maintenance.",
+          "matched_terms": [
+            "onboarding"
+          ],
+          "relevance_score": 4
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Managing infrastructure, monitoring uptime, and providing twenty four seven support added unnecessary complexity and cost.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 3,
+      "score": 2.5,
+      "notes": "SVC evidence: 5 excerpts, 1 term hits, 3 criteria hits."
+    },
+    "SVC-02": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We’ll wrap up with a quick look at our platform differentiators and a real customer success story.",
+          "matched_terms": [
+            "customer success",
+            "criteria:Ongoing advisory retainer or customer success mana"
+          ],
+          "relevance_score": 5
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Akeyless delivers a modern approach to secrets and key management through our zero knowledge SaaS architecture, with patented DFC, ensuring that sensitive data is always encrypted end to end, and never visible to anyone but the customer.",
+          "matched_terms": [
+            "criteria:Ongoing advisory retainer or customer success mana"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 2,
+      "score": 2.5,
+      "notes": "SVC evidence: 5 excerpts, 1 term hits, 2 criteria hits."
+    },
+    "SVC-03": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Managing infrastructure, monitoring uptime, and providing twenty four seven support added unnecessary complexity and cost.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Simpris chose Akeyless for its easy onboarding, high level of support, and true SaaS simplicity, delivering secure secrets management with zero maintenance.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 3,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 3 criteria hits."
+    },
+    "SVC-04": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "With dynamic, just in time credential issuance, Iqalus provides short lived, on demand secrets, eliminating standing privileges and supporting true zero trust operations.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "We also offer automated secrets migration, comprehensive audit logging and monitoring, and secrets discovery, now in alpha, to identify unmanaged or exposed credentials across your environments.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Akeyless also supports regulatory compliance by automating rotation, audit trails, and reporting to meet PCI DSS, HIPAA and SOC two standards.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Managing infrastructure, monitoring uptime, and providing twenty four seven support added unnecessary complexity and cost.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Simpris chose Akeyless for its easy onboarding, high level of support, and true SaaS simplicity, delivering secure secrets management with zero maintenance.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 4,
+      "score": 2.0,
+      "notes": "SVC evidence: 5 excerpts, 0 term hits, 4 criteria hits."
+    }
+  },
+  "pricing_evidence": {
+    "PRC-SUB": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/",
+        "https://www.akeyless.io/solutions/zero-trust/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/zero-trust/",
+          "excerpt": "It can run on your cloud subscription.",
+          "matched_terms": [
+            "subscription"
+          ],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 4,
+      "criteria_results": [
+        {
+          "criterion": "Published subscription pricing tiers or structure",
+          "status": "met"
+        },
+        {
+          "criterion": "Component breakdown visible to buyers (platform vs. managed service vs. AI features)",
+          "status": "met"
+        },
+        {
+          "criterion": "Predictability of recurring costs for client budgeting",
+          "status": "partial"
+        },
+        {
+          "criterion": "Flexibility in subscription scope adjustment (scale up/down)",
+          "status": "met"
+        },
+        {
+          "criterion": "Transparency about what is included vs. excluded at each tier",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 2 excerpts, 1 term hits, 4 criteria hits."
+    },
+    "PRC-USG": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 3,
+      "criteria_results": [
+        {
+          "criterion": "Usage-based pricing components clearly defined (per-asset, per-scan, per-simulation)",
+          "status": "met"
+        },
+        {
+          "criterion": "Measurement systems for quantifying consumption",
+          "status": "partial"
+        },
+        {
+          "criterion": "Real-time usage dashboards or monitoring available to clients",
+          "status": "met"
+        },
+        {
+          "criterion": "Clear overage policies and escalation thresholds",
+          "status": "partial"
+        },
+        {
+          "criterion": "Alignment of usage fees with computational effort and value delivered",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 1 excerpts, 0 term hits, 3 criteria hits."
+    },
+    "PRC-FIX": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/zero-trust/",
+        "https://www.akeyless.io/platform/",
+        "https://www.akeyless.io/solutions/secrets-management/",
+        "https://www.akeyless.io/solutions/machine-identity/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/platform/",
+          "excerpt": "Pricing Integrations",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Pricing Integrations",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/machine-identity/",
+          "excerpt": "Pricing Integrations",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/zero-trust/",
+          "excerpt": "Pricing Integrations",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/platform/",
+          "excerpt": "Integrations",
+          "matched_terms": [
+            "integration"
+          ],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 5,
+      "criteria_text_hits": 3,
+      "criteria_results": [
+        {
+          "criterion": "Clear one-time fees defined for setup and implementation",
+          "status": "met"
+        },
+        {
+          "criterion": "Scope definition for fixed-fee deliverables",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Separation of project costs from ongoing service costs",
+          "status": "met"
+        },
+        {
+          "criterion": "Change request and scope adjustment processes",
+          "status": "met"
+        },
+        {
+          "criterion": "Implementation timeline and milestone-based payment structure",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 4.0,
+      "notes": "Pricing evidence: 5 excerpts, 5 term hits, 3 criteria hits."
+    },
+    "PRC-SUC": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.",
+          "matched_terms": [],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 0,
+      "criteria_text_hits": 3,
+      "criteria_results": [
+        {
+          "criterion": "Defined success metrics tied to pricing (exposure reduction, control effectiveness, vulnerability SLAs)",
+          "status": "met"
+        },
+        {
+          "criterion": "Fees-at-risk component in service agreements",
+          "status": "met"
+        },
+        {
+          "criterion": "Per-finding or per-validation pricing for pen test and BAS outcomes",
+          "status": "met"
+        },
+        {
+          "criterion": "Clear measurement methodology and dispute resolution",
+          "status": "unmet"
+        },
+        {
+          "criterion": "Balance of risk between provider and client",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 1 excerpts, 0 term hits, 3 criteria hits."
+    },
+    "PRC-COM": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/",
+        "https://www.akeyless.io/solutions/zero-trust/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.",
+          "matched_terms": [],
+          "relevance_score": 2
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/zero-trust/",
+          "excerpt": "And this is also bounded by time with a TTL that is configurable.",
+          "matched_terms": [
+            "configurable"
+          ],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 2,
+      "criteria_results": [
+        {
+          "criterion": "Multiple pricing components available and combinable",
+          "status": "met"
+        },
+        {
+          "criterion": "Client budgeting predictability with spending expectations set upfront",
+          "status": "partial"
+        },
+        {
+          "criterion": "Demonstrated risk-sharing with clear rewards and penalties",
+          "status": "met"
+        },
+        {
+          "criterion": "Avoidance of excessive variability and dispute potential",
+          "status": "partial"
+        },
+        {
+          "criterion": "Demystification of what the client pays for, when, and why",
+          "status": "met"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 2 excerpts, 1 term hits, 2 criteria hits."
+    },
+    "PRC-OUT": {
+      "source_urls": [
+        "https://www.akeyless.io/solutions/secrets-management/",
+        "https://www.akeyless.io/solutions/zero-trust/"
+      ],
+      "excerpts": [
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Secrets sprawl and static credentials increase risk across modern enterprises. In this video, discover how Akeyless Secrets Management eliminates standing secrets with dynamic, just-in-time access and Zero-Knowledge security, centralizing control, automating …",
+          "matched_terms": [
+            "criteria:Pricing components explicitly tied to measurable s"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "In this video, discover how Akeyless Secrets Management eliminates standing secrets with dynamic, just-in-time access and Zero-Knowledge security, centralizing control, automating rotation, and securing cloud-native and DevOps environments without operational…",
+          "matched_terms": [
+            "criteria:Pricing components explicitly tied to measurable s"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/zero-trust/",
+          "excerpt": "The last thing that I want to show as part of that demonstration is the ability to revoke access for existing sessions. It doesn’t mean that I just prevent you from future logins, I can also terminate and control security incidents by revoking access immediat…",
+          "matched_terms": [
+            "criteria:Pricing components explicitly tied to measurable s"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/zero-trust/",
+          "excerpt": "It doesn’t mean that I just prevent you from future logins, I can also terminate and control security incidents by revoking access immediately.",
+          "matched_terms": [
+            "criteria:Pricing components explicitly tied to measurable s"
+          ],
+          "relevance_score": 3
+        },
+        {
+          "url": "https://www.akeyless.io/solutions/secrets-management/",
+          "excerpt": "Starting with insider risk reduction.",
+          "matched_terms": [
+            "risk reduction"
+          ],
+          "relevance_score": 2
+        }
+      ],
+      "search_term_hits": 1,
+      "criteria_text_hits": 4,
+      "criteria_results": [
+        {
+          "criterion": "Pricing components explicitly tied to measurable security outcomes (exposure reduction, control gap closure, mean-time-to-remediation)",
+          "status": "met"
+        },
+        {
+          "criterion": "Outcome-based SLA commitments with financial consequences (credits, rebates, penalties)",
+          "status": "met"
+        },
+        {
+          "criterion": "Value realization metrics shared with clients showing pricing-to-outcome correlation",
+          "status": "met"
+        },
+        {
+          "criterion": "Pricing adjustments based on demonstrated AI efficiency gains passed to clients",
+          "status": "met"
+        },
+        {
+          "criterion": "Avoidance of outcome-washing — pricing labeled as outcome-based but measured on inputs",
+          "status": "partial"
+        }
+      ],
+      "has_prices": false,
+      "has_per_unit": false,
+      "score": 3.0,
+      "notes": "Pricing evidence: 5 excerpts, 1 term hits, 4 criteria hits."
+    }
+  },
+  "pricing_rationales": {
+    "PRC-SUB": "PRC-SUB - Subscription Transparency. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.\".",
+    "PRC-USG": "PRC-USG - Usage-Based Alignment. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.\".",
+    "PRC-FIX": "PRC-FIX - Fixed Delivery Pricing. Score: 4.00/5. Strong pricing transparency with specific evidence. Evidence: \"Pricing Integrations\".",
+    "PRC-SUC": "PRC-SUC - Success & Outcome Fees. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.\".",
+    "PRC-COM": "PRC-COM - Composability & Overall Model Maturity. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Within months, adoption rates increased by two hundred and seventy percent, while total cost of ownership dropped by seventy percent.\".",
+    "PRC-OUT": "PRC-OUT - Pricing-to-Outcomes Alignment. Score: 3.00/5. Demonstrated pricing structure with some detail. Evidence: \"Secrets sprawl and static credentials increase risk across modern enterprises. In this video, discover how Akeyless Secrets Management eliminates standing secrets with dynamic, ju…\"."
+  },
+  "svc_pricing_research": {
+    "researched_at": "2026-05-15T03:13:25.262942+00:00",
+    "pipeline_version": "v3_new_vendors",
+    "pages_fetched": 4,
+    "svc_subpillars_scored": 8,
+    "pricing_dimensions_scored": 6
+  }
+}

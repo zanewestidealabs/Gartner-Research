@@ -7,7 +7,7 @@ PILLARS = ['EXM', 'AMT', 'ADR', 'PPM', 'SVC']
 PILLAR_NAMES = {
     'EXM': 'Exposure Management',
     'AMT': 'Adversary Management & Threat Intel',
-    'ADR': 'Autonomous Detection & Response',
+    'ADR': 'Adversary Disruption',
     'PPM': 'Posture & Policy Management',
     'SVC': 'Services & Capabilities'
 }

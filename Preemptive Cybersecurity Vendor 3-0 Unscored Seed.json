@@ -1,0 +1,646 @@
+[
+  {
+    "vendor": "Secureworks",
+    "headquarters": "Atlanta, GA, USA",
+    "region": "Global",
+    "specialization": "MDR & Managed Security Services",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "SVC-04",
+      "ADR-03",
+      "EXM-01",
+      "ADR-02"
+    ],
+    "delivery_model": "Managed Services + Platform (Taegis XDR)",
+    "services_maturity_level": 4,
+    "outcome_maturity_rating": 4,
+    "outcome_maturity_label": "Outcome-Aligned",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "mssp_tier1"
+  },
+  {
+    "vendor": "Trustwave",
+    "headquarters": "Chicago, IL, USA",
+    "region": "Global",
+    "specialization": "MDR & Threat Intelligence",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "ADR-03",
+      "ADR-02",
+      "EXM-01"
+    ],
+    "delivery_model": "Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "mssp_tier1"
+  },
+  {
+    "vendor": "Cyderes",
+    "headquarters": "Toronto, Canada",
+    "region": "North America",
+    "specialization": "MDR & Managed Security Services",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "ADR-03",
+      "EXM-01"
+    ],
+    "delivery_model": "Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "mssp_regional"
+  },
+  {
+    "vendor": "Optiv",
+    "headquarters": "Denver, CO, USA",
+    "region": "North America",
+    "specialization": "Security Integration & MSSP",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "EXM-01",
+      "EXM-02",
+      "ADR-03",
+      "PPM-03"
+    ],
+    "delivery_model": "Systems Integrator + Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "si_mssp"
+  },
+  {
+    "vendor": "Leidos Cybersecurity",
+    "headquarters": "Reston, VA, USA",
+    "region": "North America",
+    "specialization": "Government & Enterprise Managed Security",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "ADR-03",
+      "EXM-01",
+      "AMT-03"
+    ],
+    "delivery_model": "Systems Integrator + Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "si_govt"
+  },
+  {
+    "vendor": "BT Security",
+    "headquarters": "London, UK",
+    "region": "EMEA",
+    "specialization": "Telco-Native MSSP",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "EXM-01",
+      "ADR-03"
+    ],
+    "delivery_model": "Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "mssp_telco"
+  },
+  {
+    "vendor": "Orange Cyberdefense",
+    "headquarters": "Paris, France",
+    "region": "EMEA",
+    "specialization": "Telco-Native MSSP & SOC Services",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "ADR-02",
+      "ADR-03",
+      "EXM-01"
+    ],
+    "delivery_model": "Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "mssp_telco"
+  },
+  {
+    "vendor": "Wipro CyberTransformation",
+    "headquarters": "Bengaluru, India",
+    "region": "Global",
+    "specialization": "SI-Led Cybersecurity & MSSP",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "EXM-01",
+      "ADR-03",
+      "PPM-03"
+    ],
+    "delivery_model": "Systems Integrator + Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "si_global"
+  },
+  {
+    "vendor": "Infosys Cybersecurity",
+    "headquarters": "Bengaluru, India",
+    "region": "Global",
+    "specialization": "SI-Led Cybersecurity Services",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "EXM-01",
+      "ADR-03"
+    ],
+    "delivery_model": "Systems Integrator + Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "si_global"
+  },
+  {
+    "vendor": "NTT Security Holdings",
+    "headquarters": "Tokyo, Japan",
+    "region": "Global",
+    "specialization": "Global MSSP & SOC",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "SVC-04",
+      "ADR-03",
+      "EXM-01"
+    ],
+    "delivery_model": "Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "mssp_tier1"
+  },
+  {
+    "vendor": "Tata Consultancy Services (TCS) Security",
+    "headquarters": "Mumbai, India",
+    "region": "Global",
+    "specialization": "SI-Led Cybersecurity & MSSP",
+    "primary_capability": "SVC",
+    "expected_coverage": [
+      "SVC-01",
+      "SVC-02",
+      "SVC-03",
+      "EXM-01",
+      "ADR-03",
+      "PPM-03"
+    ],
+    "delivery_model": "Systems Integrator + Managed Services",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "si_global"
+  },
+  {
+    "vendor": "Noetic Cyber",
+    "headquarters": "Boston, MA, USA",
+    "region": "North America / EMEA",
+    "specialization": "Cyber Asset Attack Surface Management (CAASM)",
+    "primary_capability": "EXM",
+    "expected_coverage": [
+      "EXM-01",
+      "EXM-02",
+      "EXM-03"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": true,
+    "is_ai_first": false,
+    "research_flag": "caasm_startup"
+  },
+  {
+    "vendor": "Ionix (formerly Cyberpion)",
+    "headquarters": "Tel Aviv, Israel",
+    "region": "Global",
+    "specialization": "External Attack Surface Management",
+    "primary_capability": "EXM",
+    "expected_coverage": [
+      "EXM-01",
+      "EXM-02",
+      "EXM-04"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": true,
+    "is_ai_first": false,
+    "research_flag": "easm_startup"
+  },
+  {
+    "vendor": "Silentpush",
+    "headquarters": "Wilmington, DE, USA",
+    "region": "Global",
+    "specialization": "Predictive Threat Intelligence & EASM",
+    "primary_capability": "EXM",
+    "expected_coverage": [
+      "EXM-01",
+      "EXM-04",
+      "ADR-02"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": true,
+    "is_ai_first": true,
+    "research_flag": "easm_ti_startup"
+  },
+  {
+    "vendor": "Fletch (formerly Cronus Cyber)",
+    "headquarters": "Tel Aviv, Israel",
+    "region": "Global",
+    "specialization": "Continuous Threat Exposure Management (CTEM)",
+    "primary_capability": "EXM",
+    "expected_coverage": [
+      "EXM-01",
+      "EXM-02",
+      "EXM-03",
+      "PPM-01"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": true,
+    "is_ai_first": true,
+    "research_flag": "ctem_startup"
+  },
+  {
+    "vendor": "Flashpoint",
+    "headquarters": "New York, NY, USA",
+    "region": "Global",
+    "specialization": "Threat Intelligence & Digital Risk",
+    "primary_capability": "ADR",
+    "expected_coverage": [
+      "ADR-02",
+      "ADR-01",
+      "EXM-04"
+    ],
+    "delivery_model": "SaaS + Advisory",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "threat_intel"
+  },
+  {
+    "vendor": "Cyberint (Check Point)",
+    "headquarters": "Tel Aviv, Israel",
+    "region": "Global",
+    "specialization": "Threat Intelligence & Digital Risk Protection",
+    "primary_capability": "ADR",
+    "expected_coverage": [
+      "ADR-02",
+      "EXM-04",
+      "ADR-01"
+    ],
+    "delivery_model": "SaaS + Managed",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "threat_intel"
+  },
+  {
+    "vendor": "Cybersixgill",
+    "headquarters": "Tel Aviv, Israel",
+    "region": "Global",
+    "specialization": "Dark Web Intelligence & Threat Intel",
+    "primary_capability": "ADR",
+    "expected_coverage": [
+      "ADR-02",
+      "EXM-04",
+      "ADR-01"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "threat_intel"
+  },
+  {
+    "vendor": "Illusive Networks",
+    "headquarters": "New York, NY, USA",
+    "region": "Global",
+    "specialization": "Identity-Centric Deception & Lateral Movement Prevention",
+    "primary_capability": "ADR",
+    "expected_coverage": [
+      "ADR-04",
+      "ADR-01",
+      "AMT-02"
+    ],
+    "delivery_model": "On-Prem / Hybrid SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "deception"
+  },
+  {
+    "vendor": "Sygnia",
+    "headquarters": "Tel Aviv, Israel",
+    "region": "Global",
+    "specialization": "Incident Response & Cyber Resilience",
+    "primary_capability": "ADR",
+    "expected_coverage": [
+      "ADR-03",
+      "ADR-02",
+      "SVC-02"
+    ],
+    "delivery_model": "Advisory + Incident Response",
+    "services_maturity_level": 4,
+    "outcome_maturity_rating": 4,
+    "outcome_maturity_label": "Outcome-Aligned",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "ir_boutique"
+  },
+  {
+    "vendor": "Stroz Friedberg (Aon)",
+    "headquarters": "New York, NY, USA",
+    "region": "Global",
+    "specialization": "Incident Response & Digital Forensics",
+    "primary_capability": "ADR",
+    "expected_coverage": [
+      "ADR-03",
+      "ADR-02",
+      "SVC-02"
+    ],
+    "delivery_model": "Advisory + Incident Response",
+    "services_maturity_level": 4,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "ir_boutique"
+  },
+  {
+    "vendor": "Zafran Security",
+    "headquarters": "New York, NY, USA",
+    "region": "Global",
+    "specialization": "Risk-Based Vulnerability Management & Mitigation Orchestration",
+    "primary_capability": "PPM",
+    "expected_coverage": [
+      "PPM-02",
+      "PPM-03",
+      "EXM-02",
+      "EXM-03"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 4,
+    "outcome_maturity_label": "Outcome-Aligned",
+    "is_startup": true,
+    "is_ai_first": true,
+    "research_flag": "rbvm_startup"
+  },
+  {
+    "vendor": "Opus Security",
+    "headquarters": "Tel Aviv, Israel",
+    "region": "Global",
+    "specialization": "Unified Cloud Security Posture & Remediation Orchestration",
+    "primary_capability": "PPM",
+    "expected_coverage": [
+      "PPM-02",
+      "PPM-03",
+      "EXM-02",
+      "EXM-03"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": true,
+    "is_ai_first": true,
+    "research_flag": "cnapp_posture_startup"
+  },
+  {
+    "vendor": "Brinqa",
+    "headquarters": "Austin, TX, USA",
+    "region": "Global",
+    "specialization": "Attack Surface Intelligence & Risk-Based Prioritization",
+    "primary_capability": "PPM",
+    "expected_coverage": [
+      "PPM-02",
+      "EXM-01",
+      "EXM-02",
+      "EXM-03"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "rbvm"
+  },
+  {
+    "vendor": "PlexTrac",
+    "headquarters": "Boise, ID, USA",
+    "region": "North America",
+    "specialization": "Penetration Testing & Vulnerability Management Platform",
+    "primary_capability": "PPM",
+    "expected_coverage": [
+      "PPM-01",
+      "PPM-03",
+      "SVC-02"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "pentest_platform"
+  },
+  {
+    "vendor": "Hadrian",
+    "headquarters": "Amsterdam, Netherlands",
+    "region": "EMEA / Global",
+    "specialization": "Autonomous Offensive Security Testing",
+    "primary_capability": "PPM",
+    "expected_coverage": [
+      "PPM-01",
+      "PPM-02",
+      "EXM-01",
+      "EXM-02"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 4,
+    "outcome_maturity_label": "Outcome-Aligned",
+    "is_startup": true,
+    "is_ai_first": true,
+    "research_flag": "autonomous_pentest_startup"
+  },
+  {
+    "vendor": "ColorTokens",
+    "headquarters": "Santa Clara, CA, USA",
+    "region": "Global",
+    "specialization": "Zero Trust Microsegmentation",
+    "primary_capability": "AMT",
+    "expected_coverage": [
+      "AMT-03",
+      "AMT-02",
+      "EXM-01"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "microseg"
+  },
+  {
+    "vendor": "Titaniam",
+    "headquarters": "San Jose, CA, USA",
+    "region": "North America",
+    "specialization": "Data-in-Use Encryption & Runtime Data Protection",
+    "primary_capability": "AMT",
+    "expected_coverage": [
+      "AMT-01",
+      "AMT-02"
+    ],
+    "delivery_model": "SaaS / On-Prem",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": true,
+    "is_ai_first": false,
+    "research_flag": "data_protection_startup"
+  },
+  {
+    "vendor": "Akeyless",
+    "headquarters": "Tel Aviv, Israel",
+    "region": "Global",
+    "specialization": "Unified Secrets Management & Machine Identity",
+    "primary_capability": "AMT",
+    "expected_coverage": [
+      "AMT-04",
+      "AMT-03"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "secrets_mgmt"
+  },
+  {
+    "vendor": "Aembit",
+    "headquarters": "Silver Spring, MD, USA",
+    "region": "North America",
+    "specialization": "Workload Identity & Non-Human Identity Security",
+    "primary_capability": "AMT",
+    "expected_coverage": [
+      "AMT-04",
+      "AMT-03"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 1,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": true,
+    "is_ai_first": false,
+    "research_flag": "nhi_startup"
+  },
+  {
+    "vendor": "Veracode",
+    "headquarters": "Burlington, MA, USA",
+    "region": "Global",
+    "specialization": "Application Security Testing & Developer Security",
+    "primary_capability": "PPM",
+    "expected_coverage": [
+      "PPM-01",
+      "PPM-02",
+      "PPM-03",
+      "AMT-01"
+    ],
+    "delivery_model": "SaaS + Managed",
+    "services_maturity_level": 3,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "appsec"
+  },
+  {
+    "vendor": "Vulcan Cyber",
+    "headquarters": "Tel Aviv, Israel",
+    "region": "Global",
+    "specialization": "Risk-Based Vulnerability Prioritization & Remediation",
+    "primary_capability": "PPM",
+    "expected_coverage": [
+      "PPM-02",
+      "PPM-03",
+      "EXM-02",
+      "EXM-03"
+    ],
+    "delivery_model": "SaaS",
+    "services_maturity_level": 2,
+    "outcome_maturity_rating": 3,
+    "outcome_maturity_label": "Process-Mature",
+    "is_startup": false,
+    "is_ai_first": false,
+    "research_flag": "rbvm"
+  }
+]
