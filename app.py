@@ -65,6 +65,7 @@ SCHEMA_REGISTRY = {
     'AI TriSM Schema 1_1.json': {'top_key': 'ai_trism_taxonomy_v1.1',              'structure': 'flat'},
     'Preemptive_Cybersecurity_Schema.json': {'top_key': 'preemptive_cybersecurity_taxonomy_v1.0', 'structure': 'flat'},
     'Preemptive_Cybersecurity_Schema_v2.json': {'top_key': 'preemptive_cybersecurity_taxonomy_v2.0', 'structure': 'flat'},
+    'Preemptive_Cybersecurity_Schema_v3.json': {'top_key': 'preemptive_cybersecurity_taxonomy_v3.0', 'structure': 'flat'},
     'Secure_by_Design_AI_Controls_Schema.json': {'top_key': 'secure_by_design_ai_controls_v1.0', 'structure': 'flat'},
     'Secure_by_Design_AI_Controls_Schema_v2.json': {'top_key': 'secure_by_design_ai_controls_v2.0', 'structure': 'flat'},
     'MDR_Services_Schema.json': {'top_key': 'mdr_services_taxonomy_v1.0', 'structure': 'flat'},
@@ -749,6 +750,7 @@ def switch_vendor_file():
 
 # Preferred schema per project (latest/best version)
 _PROJECT_SCHEMA_MAP = {
+    'precyber_v3': 'Preemptive_Cybersecurity_Schema_v3.json',
     'precyber': 'Preemptive_Cybersecurity_Schema_v2.json',
     'trism': 'AI TriSM Schema 1_1.json',
     'dfir': 'schema3-3.json',
@@ -767,6 +769,7 @@ def _detect_project_from_name(name):
     if 'schema_template' in lower: return 'template'
     if 'agentic_soc' in lower or 'asmf' in lower: return 'asmf'
     if 'trism' in lower: return 'trism'
+    if ('preemptive' in lower or 'precyber' in lower) and ('6-0' in lower or 'v3' in lower): return 'precyber_v3'
     if 'preemptive' in lower or 'precyber' in lower: return 'precyber'
     if 'secure_by_design' in lower or 'sbd_ai' in lower or 'sbdai' in lower: return 'sbdai'
     if 'cnapp_mq' in lower or 'cnapp mq' in lower: return 'cnapp_mq'
@@ -1636,164 +1639,195 @@ def save_mdr_market_insight():
         return jsonify({'error': str(e)}), 500
 
 
+# ─── PreCyber statistics helpers ───────────────────────────────────────────────
+
+def _get_precyber_vendor_file():
+    """Return path to the most current PreCyber vendor JSON file, or None."""
+    for fname in [
+        'Preemptive Cybersecurity Vendor 6-0 v3.json',
+        'Preemptive Cybersecurity Vendor 5-0 Combined.json',
+        'Preemptive Cybersecurity Vendor 3-0 SVC Pricing.json',
+    ]:
+        path = os.path.join(os.path.dirname(__file__), fname)
+        if os.path.exists(path):
+            return path
+    return None
+
+
+def _compute_precyber_stats(vendor_file):
+    """Compute all PreCyber statistics from a vendor JSON file and return a dict."""
+    with open(vendor_file, 'r', encoding='utf-8-sig') as f:
+        vendors = json.load(f)
+
+    pillars = ['EXM', 'AMT', 'ADR', 'PPM', 'SVC']
+    pillar_labels = {
+        'EXM': 'Exposure Management',
+        'AMT': 'Adversary Management & Threat Intelligence',
+        'ADR': 'Adversary Disruption',
+        'PPM': 'Posture & Policy Management',
+        'SVC': 'Services Maturity & Delivery',
+    }
+    threshold = 2.0
+    n = len(vendors)
+
+    def get_pillar_avg(vendor, pillar_code):
+        sub = vendor.get('sub_pillar_scores_current', {})
+        keys = [k for k in sub if k.startswith(pillar_code + '-') and sub[k] >= 1]
+        if keys:
+            return sum(sub[k] for k in keys) / len(keys)
+        return vendor.get('pillar_scores', {}).get(pillar_code, 0)
+
+    # Pillar penetration
+    pillar_penetration = {}
+    pillar_avgs = {}
+    for p in pillars:
+        scores = [get_pillar_avg(v, p) for v in vendors]
+        above = sum(1 for s in scores if s >= threshold)
+        pillar_penetration[p] = {
+            'label': pillar_labels[p],
+            'pct': round(above / n * 100) if n else 0,
+            'count': above,
+            'avg': round(sum(scores) / n, 2) if n else 0,
+        }
+        pillar_avgs[p] = pillar_penetration[p]['avg']
+
+    # Coverage distribution (0–5 pillars meeting threshold)
+    coverage_dist = {i: 0 for i in range(6)}
+    for v in vendors:
+        cnt = sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
+        coverage_dist[cnt] += 1
+
+    full_spectrum = coverage_dist.get(5, 0)
+    majority_spectrum = coverage_dist.get(4, 0)
+    narrow = sum(coverage_dist.get(i, 0) for i in range(4))
+    avg_coverage = round(sum(
+        sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
+        for v in vendors
+    ) / n, 1) if n else 0
+
+    # Blind spot (>=1 pillar below threshold) and no-AMT vendors
+    blind_spot = sum(1 for v in vendors if any(get_pillar_avg(v, p) < threshold for p in pillars))
+    no_amt = sum(1 for v in vendors if get_pillar_avg(v, 'AMT') < threshold)
+
+    # Delivery model stats — group vendors by delivery_model key
+    dm_vendors = {}
+    for v in vendors:
+        dm_key = v.get('delivery_model', 'unknown')
+        dm_vendors.setdefault(dm_key, []).append(v)
+
+    dm_labels = {
+        'direct_service': 'Direct Service Providers',
+        'platform_plus_partner': 'Platform + Partner',
+        'platform_only': 'Platform Only',
+    }
+
+    delivery_models = {}
+    for dm_key, dv in dm_vendors.items():
+        c = len(dv)
+        pillar_totals = {p: 0.0 for p in pillars}
+        coverage_sum = 0
+        for v in dv:
+            for p in pillars:
+                pillar_totals[p] += get_pillar_avg(v, p)
+            coverage_sum += sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
+        pillar_avgs_dm = {p: round(pillar_totals[p] / c, 2) if c else 0 for p in pillars}
+        pillar_below_pct = {
+            p: round(sum(1 for v in dv if get_pillar_avg(v, p) < threshold) * 100 / c) if c else 0
+            for p in pillars
+        }
+        delivery_models[dm_key] = {
+            'label': dm_labels.get(dm_key, dm_key),
+            'count': c,
+            'avg_coverage': round(coverage_sum / c, 1) if c else 0,
+            'pillar_avgs': pillar_avgs_dm,
+            'pillar_below_pct': pillar_below_pct,
+            'svc_avg': pillar_avgs_dm['SVC'],
+            'overall_avg': round(sum(pillar_avgs_dm.values()) / len(pillars), 2) if pillars else 0,
+        }
+
+    # Top balanced vendors
+    vendor_balance = []
+    for v in vendors:
+        scores = {p: get_pillar_avg(v, p) for p in pillars}
+        vendor_balance.append({
+            'vendor': v['vendor'],
+            'min_score': round(min(scores.values()), 2),
+            'delivery_model': v.get('delivery_model', ''),
+            'pillar_scores': {p: round(scores[p], 2) for p in pillars},
+            'coverage': sum(1 for s in scores.values() if s >= threshold),
+        })
+    vendor_balance.sort(key=lambda x: x['min_score'], reverse=True)
+    top_balanced = vendor_balance[:6]
+
+    _sub_pillar_labels = {
+        'AMT-01': 'Polymorphic & Morphing Defense',
+        'AMT-02': 'Runtime Application Protection',
+        'AMT-03': 'Dynamic Network & Infrastructure Defense',
+        'AMT-04': 'Identity & Credential Rotation',
+        'AMT-05': 'AMTD Services Maturity',
+        'SVC-01': 'Implementation & Onboarding',
+        'SVC-02': 'Consultative & Advisory Services',
+        'SVC-03': 'Managed Operations & Continuous Delivery',
+        'SVC-04': 'AI-Driven & Autonomous Delivery',
+        'SVC-05': 'SVC-05',
+    }
+
+    amt_sub_pillars = {}
+    for key in ['AMT-01', 'AMT-02', 'AMT-03', 'AMT-04', 'AMT-05']:
+        scores = [v.get('sub_pillar_scores_current', {}).get(key, 0) for v in vendors]
+        above = sum(1 for s in scores if s >= threshold)
+        label = vendors[0].get('sub_pillar_schema_labels', {}).get(key) or _sub_pillar_labels.get(key, key)
+        amt_sub_pillars[key] = {
+            'label': label,
+            'avg': round(sum(scores) / n, 2) if n else 0,
+            'pct_above': round(above / n * 100) if n else 0,
+        }
+
+    svc_sub_pillars = {}
+    for key in ['SVC-01', 'SVC-02', 'SVC-03', 'SVC-04']:
+        scores = [v.get('sub_pillar_scores_current', {}).get(key, 0) for v in vendors]
+        above = sum(1 for s in scores if s >= threshold)
+        label = vendors[0].get('sub_pillar_schema_labels', {}).get(key) or _sub_pillar_labels.get(key, key)
+        svc_sub_pillars[key] = {
+            'label': label,
+            'avg': round(sum(scores) / n, 2) if n else 0,
+            'pct_above': round(above / n * 100) if n else 0,
+        }
+
+    return {
+        'vendor_count': n,
+        'pillars': pillars,
+        'pillar_labels': pillar_labels,
+        'pillar_penetration': pillar_penetration,
+        'pillar_avgs': pillar_avgs,
+        'coverage_distribution': coverage_dist,
+        'full_spectrum_count': full_spectrum,
+        'full_spectrum_pct': round(full_spectrum / n * 100) if n else 0,
+        'majority_spectrum_count': majority_spectrum,
+        'majority_spectrum_pct': round(majority_spectrum / n * 100) if n else 0,
+        'narrow_count': narrow,
+        'narrow_pct': round(narrow / n * 100) if n else 0,
+        'avg_coverage': avg_coverage,
+        'delivery_models': delivery_models,
+        'top_balanced': top_balanced,
+        'amt_sub_pillars': amt_sub_pillars,
+        'svc_sub_pillars': svc_sub_pillars,
+        'blind_spot_count': blind_spot,
+        'blind_spot_pct': round(blind_spot / n * 100) if n else 0,
+        'no_amt_count': no_amt,
+        'no_amt_pct': round(no_amt / n * 100) if n else 0,
+    }
+
+
 @app.route('/api/precyber-stats', methods=['GET'])
 def get_precyber_stats():
     """Return computed statistics from PreCyber vendor data for live visualizations."""
-    vendor_file = os.path.join(os.path.dirname(__file__),
-                               'Preemptive Cybersecurity Vendor 5-0 Combined.json')
-    if not os.path.exists(vendor_file):
-        # Fall back to older file
-        vendor_file = os.path.join(os.path.dirname(__file__),
-                                   'Preemptive Cybersecurity Vendor 3-0 SVC Pricing.json')
-    if not os.path.exists(vendor_file):
+    vendor_file = _get_precyber_vendor_file()
+    if not vendor_file:
         return jsonify({'error': 'PreCyber vendor data not found'}), 404
     try:
-        with open(vendor_file, 'r', encoding='utf-8-sig') as f:
-            vendors = json.load(f)
-
-        pillars = ['EXM', 'AMT', 'ADR', 'PPM', 'SVC']
-        pillar_labels = {
-            'EXM': 'Exposure Management',
-            'AMT': 'Adversary Management & Threat Intelligence',
-            'ADR': 'Adversary Disruption',
-            'PPM': 'Posture & Policy Management',
-            'SVC': 'Services Maturity & Delivery',
-        }
-        threshold = 2.0
-        n = len(vendors)
-
-        def get_pillar_avg(vendor, pillar_code):
-            """Compute pillar score from sub_pillar_scores_current (mean of sub-pillars);
-            falls back to pillar_scores if sub-pillars not available."""
-            sub = vendor.get('sub_pillar_scores_current', {})
-            keys = [k for k in sub if k.startswith(pillar_code + '-') and sub[k] > 0]
-            if keys:
-                return sum(sub[k] for k in keys) / len(keys)
-            return vendor.get('pillar_scores', {}).get(pillar_code, 0)
-
-        # Pillar penetration (% vendors >= threshold)
-        pillar_penetration = {}
-        pillar_avgs = {}
-        for p in pillars:
-            scores = [get_pillar_avg(v, p) for v in vendors]
-            above = sum(1 for s in scores if s >= threshold)
-            pillar_penetration[p] = {
-                'label': pillar_labels[p],
-                'pct': round(above / n * 100) if n else 0,
-                'count': above,
-                'avg': round(sum(scores) / n, 2) if n else 0,
-            }
-            pillar_avgs[p] = pillar_penetration[p]['avg']
-
-        # Coverage distribution (how many pillars each vendor covers)
-        coverage_dist = {i: 0 for i in range(6)}
-        for v in vendors:
-            cnt = sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
-            coverage_dist[cnt] += 1
-
-        full_spectrum = coverage_dist.get(5, 0)
-        narrow = sum(coverage_dist.get(i, 0) for i in range(4))
-        avg_coverage = round(sum(
-            sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
-            for v in vendors
-        ) / n, 1) if n else 0
-
-        # Delivery model breakdown
-        dm_stats = {}
-        for v in vendors:
-            dm = v.get('delivery_model', 'unknown')
-            if dm not in dm_stats:
-                dm_stats[dm] = {'count': 0, 'pillar_totals': {p: 0 for p in pillars}, 'coverage_sum': 0}
-            dm_stats[dm]['count'] += 1
-            for p in pillars:
-                dm_stats[dm]['pillar_totals'][p] += get_pillar_avg(v, p)
-            dm_stats[dm]['coverage_sum'] += sum(1 for p in pillars if get_pillar_avg(v, p) >= threshold)
-
-        delivery_models = {}
-        dm_labels = {
-            'direct_service': 'Direct Service Providers',
-            'platform_plus_partner': 'Platform + Partner',
-            'platform_only': 'Platform Only',
-        }
-        for dm, stats in dm_stats.items():
-            c = stats['count']
-            delivery_models[dm] = {
-                'label': dm_labels.get(dm, dm),
-                'count': c,
-                'avg_coverage': round(stats['coverage_sum'] / c, 1) if c else 0,
-                'pillar_avgs': {p: round(stats['pillar_totals'][p] / c, 2) if c else 0 for p in pillars},
-                'svc_avg': round(stats['pillar_totals']['SVC'] / c, 2) if c else 0,
-            }
-
-        # Top balanced vendors (highest min pillar score)
-        vendor_balance = []
-        for v in vendors:
-            scores = {p: get_pillar_avg(v, p) for p in pillars}
-            vendor_balance.append({
-                'vendor': v['vendor'],
-                'min_score': round(min(scores.values()), 2),
-                'delivery_model': v.get('delivery_model', ''),
-                'pillar_scores': {p: round(scores[p], 2) for p in pillars},
-                'coverage': sum(1 for s in scores.values() if s >= threshold),
-            })
-        vendor_balance.sort(key=lambda x: x['min_score'], reverse=True)
-        top_balanced = vendor_balance[:6]
-
-        # Sub-pillar label lookup with fallback
-        _sub_pillar_labels = {
-            'AMT-01': 'Polymorphic & Morphing Defense',
-            'AMT-02': 'Runtime Application Protection',
-            'AMT-03': 'Dynamic Network & Infrastructure Defense',
-            'AMT-04': 'Identity & Credential Rotation',
-            'AMT-05': 'AMTD Services Maturity',
-            'SVC-01': 'Implementation & Onboarding',
-            'SVC-02': 'Consultative & Advisory Services',
-            'SVC-03': 'Managed Operations & Continuous Delivery',
-            'SVC-04': 'AI-Driven & Autonomous Delivery',
-            'SVC-05': 'SVC-05',
-        }
-
-        # Sub-pillar stats for AMT (the gap pillar)
-        amt_sub_pillars = {}
-        for key in ['AMT-01', 'AMT-02', 'AMT-03', 'AMT-04', 'AMT-05']:
-            scores = [v.get('sub_pillar_scores_current', {}).get(key, 0) for v in vendors]
-            above = sum(1 for s in scores if s >= threshold)
-            label = vendors[0].get('sub_pillar_schema_labels', {}).get(key) or _sub_pillar_labels.get(key, key)
-            amt_sub_pillars[key] = {
-                'label': label,
-                'avg': round(sum(scores) / n, 2) if n else 0,
-                'pct_above': round(above / n * 100) if n else 0,
-            }
-
-        # SVC sub-pillar stats
-        svc_sub_pillars = {}
-        for key in ['SVC-01', 'SVC-02', 'SVC-03', 'SVC-04']:
-            scores = [v.get('sub_pillar_scores_current', {}).get(key, 0) for v in vendors]
-            above = sum(1 for s in scores if s >= threshold)
-            label = vendors[0].get('sub_pillar_schema_labels', {}).get(key) or _sub_pillar_labels.get(key, key)
-            svc_sub_pillars[key] = {
-                'label': label,
-                'avg': round(sum(scores) / n, 2) if n else 0,
-                'pct_above': round(above / n * 100) if n else 0,
-            }
-
-        return jsonify({
-            'vendor_count': n,
-            'pillars': pillars,
-            'pillar_labels': pillar_labels,
-            'pillar_penetration': pillar_penetration,
-            'pillar_avgs': pillar_avgs,
-            'coverage_distribution': coverage_dist,
-            'full_spectrum_count': full_spectrum,
-            'full_spectrum_pct': round(full_spectrum / n * 100) if n else 0,
-            'narrow_count': narrow,
-            'narrow_pct': round(narrow / n * 100) if n else 0,
-            'avg_coverage': avg_coverage,
-            'delivery_models': delivery_models,
-            'top_balanced': top_balanced,
-            'amt_sub_pillars': amt_sub_pillars,
-            'svc_sub_pillars': svc_sub_pillars,
-        })
+        stats = _compute_precyber_stats(vendor_file)
+        return jsonify(stats)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -3768,7 +3802,7 @@ def precyber_infographic_pptx():
                     'The Preemptive Cybersecurity Market Is Dangerously Fragmented',
                     22, True, 'ffffff', 'center')
         add_textbox(sx(100), sy(38), sw(1000), sh(28),
-                    'Only 27% of 51 vendors achieve full-spectrum coverage across all five pillars',
+                    f'Only {fs_pct}% of {n} vendors achieve full-spectrum coverage across all five pillars',
                     11, False, 'ccd8e8', 'center')
 
         # Pillar header
@@ -3778,11 +3812,11 @@ def precyber_infographic_pptx():
 
         # Five pillar boxes
         pillars = [
-            ('EXM', 'Exposure Mgmt', '92%', '107c10', 'f0fff4'),
-            ('PPM', 'Posture & Policy', '86%', '0078d4', 'f0faff'),
-            ('ADR', 'Detection & Response', '78%', '8764b8', 'f5f0ff'),
-            ('SVC', 'Services & Capability', '57%', 'ca5010', 'fff8f0'),
-            ('AMT', 'Adversary Mgmt', '55%', 'a80000', 'fff5f5'),
+            ('EXM', 'Exposure Mgmt', f"{pp['EXM']['pct']}%", '107c10', 'f0fff4'),
+            ('PPM', 'Posture & Policy', f"{pp['PPM']['pct']}%", '0078d4', 'f0faff'),
+            ('ADR', 'Detection & Response', f"{pp['ADR']['pct']}%", '8764b8', 'f5f0ff'),
+            ('SVC', 'Services & Capability', f"{pp['SVC']['pct']}%", 'ca5010', 'fff8f0'),
+            ('AMT', 'Adversary Mgmt', f"{pp['AMT']['pct']}%", 'a80000', 'fff5f5'),
         ]
         for i, (label, name, pct, color, bg) in enumerate(pillars):
             x = 30 + i * 232
@@ -3803,8 +3837,8 @@ def precyber_infographic_pptx():
         add_box(sx(30), sy(290), sw(360), sh(160), 'f0fff4', '107c10')
         add_ml(sx(35), sy(295), sw(350), sh(150), [
             ('Direct Service Providers', 14, True, '107c10'),
-            ('11 vendors (22%)', 12, True, '1a3a5c'),
-            ('SVC: 2.74 (highest) \u2022 ADR: 3.38', 10, False, '555555'),
+            (f'{ds_count} vendors ({ds_pct}%)', 12, True, '1a3a5c'),
+            (f"SVC: {ds_pa.get('SVC', 0):.2f} (highest) \u2022 ADR: {ds_pa.get('ADR', 0):.2f}", 10, False, '555555'),
             ('Own SOC + analyst teams', 10, False, '555555'),
             ('Single accountability point', 10, False, '555555'),
             ('\u26a0 Limited platform depth', 10, False, '555555'),
@@ -3814,19 +3848,19 @@ def precyber_infographic_pptx():
         add_box(sx(420), sy(290), sw(360), sh(160), 'f0faff', '0078d4')
         add_ml(sx(425), sy(295), sw(350), sh(150), [
             ('Platform + Partner', 14, True, '0078d4'),
-            ('15 vendors (29%)', 12, True, '1a3a5c'),
-            ('AMT: 2.74 (highest) \u2022 PPM: 3.21', 10, False, '555555'),
+            (f'{ppp_count} vendors ({ppp_pct}%)', 12, True, '1a3a5c'),
+            (f"AMT: {ppp_pa.get('AMT', 0):.2f} (highest) \u2022 PPM: {ppp_pa.get('PPM', 0):.2f}", 10, False, '555555'),
             ('Tech platform + MSSP delivery', 10, False, '555555'),
             ('Broadest pillar coverage', 10, False, '555555'),
-            ('\u26a0 Accountability gaps (SVC: 2.32)', 10, False, '555555'),
+            (f"\u26a0 Accountability gaps (SVC: {ppp_pa.get('SVC', 0):.2f})", 10, False, '555555'),
         ], align='center')
 
         # Platform-Only
         add_box(sx(810), sy(290), sw(360), sh(160), 'fff8f0', 'ca5010')
         add_ml(sx(815), sy(295), sw(350), sh(150), [
             ('Platform-Only', 14, True, 'ca5010'),
-            ('25 vendors (49%)', 12, True, '1a3a5c'),
-            ('SVC: 1.49 \u2022 AMT: 1.87 (lowest)', 10, False, '555555'),
+            (f'{po_count} vendors ({po_pct}%)', 12, True, '1a3a5c'),
+            (f"SVC: {po_pa.get('SVC', 0):.2f} \u2022 AMT: {po_pa.get('AMT', 0):.2f} (lowest)", 10, False, '555555'),
             ('No service delivery mechanism', 10, False, '555555'),
             ('88% score < 2.0 on services', 10, False, '555555'),
             ('\u26a0 Structural service deficit', 10, False, '555555'),
@@ -3836,7 +3870,7 @@ def precyber_infographic_pptx():
         add_box(sx(370), sy(470), sw(460), sh(90), 'e8f4ff', '0078d4')
         add_ml(sx(375), sy(475), sw(450), sh(82), [
             ('Full-Spectrum Vendors', 16, True, '1a3a5c'),
-            ('14 of 51 (27%) score 2.0+ across all 5 pillars', 12, True, '0078d4'),
+            (f'{fs_count} of {n} ({fs_pct}%) score 2.0+ across all 5 pillars', 12, True, '0078d4'),
             ('Top 3: Mandiant \u2022 SentinelOne \u2022 Fortinet', 10, False, '555555'),
             ('No platform-only vendor achieves full coverage', 10, False, '555555'),
         ], align='center')
@@ -3844,25 +3878,25 @@ def precyber_infographic_pptx():
         # Stat callouts
         add_box(sx(30), sy(490), sw(160), sh(70), 'fff5f0', 'ca5010')
         add_ml(sx(35), sy(495), sw(150), sh(62), [
-            ('73%', 22, True, 'ca5010'),
+            (f'{blind_pct}%', 22, True, 'ca5010'),
             ('Have \u22651 Blind Spot', 10, False, '5a503c'),
         ], align='center')
 
         add_box(sx(210), sy(510), sw(140), sh(55), 'f8f0ff', '8764b8')
         add_ml(sx(215), sy(515), sw(130), sh(48), [
-            ('45%', 20, True, '8764b8'),
+            (f'{no_amt_pct}%', 20, True, '8764b8'),
             ('No AMT Capability', 9, False, '5a3c7c'),
         ], align='center')
 
         add_box(sx(850), sy(490), sw(155), sh(70), 'f0fff4', '107c10')
         add_ml(sx(855), sy(495), sw(145), sh(62), [
-            ('51', 24, True, '107c10'),
+            (str(n), 24, True, '107c10'),
             ('Vendors Assessed', 10, False, '1a3a5c'),
         ], align='center')
 
         add_box(sx(1030), sy(510), sw(140), sh(55), 'f0faff', '0078d4')
         add_ml(sx(1035), sy(515), sw(130), sh(48), [
-            ('35%', 20, True, '0078d4'),
+            (f'{narrow_pct}%', 20, True, '0078d4'),
             ('Narrow (\u22643 pillars)', 9, False, '1a3a5c'),
         ], align='center')
 
@@ -3873,19 +3907,19 @@ def precyber_infographic_pptx():
 
         add_box(sx(50), sy(630), sw(308), sh(50), '107c10', '107c10')
         add_ml(sx(55), sy(633), sw(298), sh(44), [
-            ('14 \u2013 Full Spectrum (27%)', 12, True, 'ffffff'),
+            (f'{fs_count} \u2013 Full Spectrum ({fs_pct}%)', 12, True, 'ffffff'),
             ('All 5 pillars \u2265 2.0 \u2022 Best positioned', 10, False, 'c0efc0'),
         ], align='center')
 
         add_box(sx(50), sy(690), sw(422), sh(50), '0078d4', '0078d4')
         add_ml(sx(55), sy(693), sw(412), sh(44), [
-            ('19 \u2013 Majority Spectrum (37%)', 12, True, 'ffffff'),
+            (f'{maj_count} \u2013 Majority Spectrum ({maj_pct}%)', 12, True, 'ffffff'),
             ('4 pillars \u2022 One investment from full coverage', 10, False, 'b0d8ff'),
         ], align='center')
 
         add_box(sx(50), sy(750), sw(400), sh(50), 'ca5010', 'ca5010')
         add_ml(sx(55), sy(753), sw(390), sh(44), [
-            ('18 \u2013 Narrow Spectrum (35%)', 12, True, 'ffffff'),
+            (f'{narrow_count} \u2013 Narrow Spectrum ({narrow_pct}%)', 12, True, 'ffffff'),
             ('\u22643 pillars \u2022 Niche specialists or incomplete', 10, False, 'fce0c8'),
         ], align='center')
 
@@ -4580,6 +4614,38 @@ def precyber_all_graphics_pptx():
         from flask import send_file
         import io
 
+        vendor_file = _get_precyber_vendor_file()
+        if not vendor_file:
+            return jsonify({'error': 'PreCyber vendor data not found'}), 404
+        st = _compute_precyber_stats(vendor_file)
+        n = st['vendor_count']
+        pp = st['pillar_penetration']
+        dm = st['delivery_models']
+        fs_count = st['full_spectrum_count']
+        fs_pct = st['full_spectrum_pct']
+        maj_count = st['majority_spectrum_count']
+        maj_pct = st['majority_spectrum_pct']
+        narrow_count = st['narrow_count']
+        narrow_pct = st['narrow_pct']
+        blind_pct = st['blind_spot_pct']
+        no_amt_pct = st['no_amt_pct']
+        dm_ds = dm.get('direct_service', {})
+        dm_pp = dm.get('platform_plus_partner', {})
+        dm_po = dm.get('platform_only', {})
+        ds_count = dm_ds.get('count', 0)
+        ppp_count = dm_pp.get('count', 0)
+        po_count = dm_po.get('count', 0)
+        ds_pct = round(ds_count * 100 / n) if n else 0
+        ppp_pct = round(ppp_count * 100 / n) if n else 0
+        po_pct = round(po_count * 100 / n) if n else 0
+        ds_pa = dm_ds.get('pillar_avgs', {})
+        ppp_pa = dm_pp.get('pillar_avgs', {})
+        po_pa = dm_po.get('pillar_avgs', {})
+        ds_overall = dm_ds.get('overall_avg', 0)
+        ppp_overall = dm_pp.get('overall_avg', 0)
+        po_overall = dm_po.get('overall_avg', 0)
+        po_svc_below_pct = dm_po.get('pillar_below_pct', {}).get('SVC', 0)
+
         prs = Presentation()
         prs.slide_width = Inches(13.333)
         prs.slide_height = Inches(7.5)
@@ -4634,16 +4700,16 @@ def precyber_all_graphics_pptx():
         s1 = prs.slides.add_slide(BLANK)
         box(s1, sx(0), sy(0), sw(1200), sh(60), '1a3a5c', '1a3a5c')
         tb(s1, sx(50), sy(8), sw(1100), sh(28), '1. Five-Pillar Coverage Heatmap by Delivery Model', 22, True, 'ffffff', 'center')
-        tb(s1, sx(100), sy(36), sw(1000), sh(22), '51 preemptive cybersecurity vendors scored across 5 pillars by delivery model', 11, False, 'ccd8e8', 'center')
+        tb(s1, sx(100), sy(36), sw(1000), sh(22), f'{n} preemptive cybersecurity vendors scored across 5 pillars by delivery model', 11, False, 'ccd8e8', 'center')
 
         pillars = [
-            ('Exposure Management', 'EXM', '92%', 3.60, 3.69, 3.07),
-            ('Posture & Policy Mgmt', 'PPM', '86%', 2.97, 3.21, 2.84),
-            ('Detection & Response', 'ADR', '78%', 3.38, 2.83, 2.52),
-            ('Services & Capability', 'SVC', '57%', 2.74, 2.32, 1.49),
-            ('Adversary Management', 'AMT', '55%', 2.45, 2.74, 1.87),
+            ('Exposure Management', 'EXM', f"{pp['EXM']['pct']}%", ds_pa.get('EXM', 0), ppp_pa.get('EXM', 0), po_pa.get('EXM', 0)),
+            ('Posture & Policy Mgmt', 'PPM', f"{pp['PPM']['pct']}%", ds_pa.get('PPM', 0), ppp_pa.get('PPM', 0), po_pa.get('PPM', 0)),
+            ('Detection & Response', 'ADR', f"{pp['ADR']['pct']}%", ds_pa.get('ADR', 0), ppp_pa.get('ADR', 0), po_pa.get('ADR', 0)),
+            ('Services & Capability', 'SVC', f"{pp['SVC']['pct']}%", ds_pa.get('SVC', 0), ppp_pa.get('SVC', 0), po_pa.get('SVC', 0)),
+            ('Adversary Management', 'AMT', f"{pp['AMT']['pct']}%", ds_pa.get('AMT', 0), ppp_pa.get('AMT', 0), po_pa.get('AMT', 0)),
         ]
-        headers = [('Penetration', '1a3a5c'), ('Direct Service\n11 vendors (22%)', '107c10'), ('Platform+Partner\n15 vendors (29%)', '0078d4'), ('Platform-Only\n25 vendors (49%)', 'ca5010')]
+        headers = [('Penetration', '1a3a5c'), (f'Direct Service\n{ds_count} vendors ({ds_pct}%)', '107c10'), (f'Platform+Partner\n{ppp_count} vendors ({ppp_pct}%)', '0078d4'), (f'Platform-Only\n{po_count} vendors ({po_pct}%)', 'ca5010')]
         colW = 195; startX = 340; rowH = 60
         for ci, (ht, hc) in enumerate(headers):
             box(s1, sx(startX + ci * colW), sy(75), sw(colW - 10), sh(50), hc, hc)
@@ -4685,12 +4751,12 @@ def precyber_all_graphics_pptx():
         tb(s2, sx(100), sy(36), sw(1000), sh(22), 'Current average score per delivery model relative to 2.0 baseline competency threshold', 11, False, 'ccd8e8', 'center')
 
         models = [
-            ('Direct Service Providers', '11 vendors (22%)', 3.03, '107c10',
-             [('\u2713 Highest SVC: 2.74', False), ('\u2713 Highest ADR: 3.38', False), ('\u2713 Own SOCs + analysts', False), ('\u26a0 Limited platform depth', True)]),
-            ('Platform + Partner', '15 vendors (29%)', 2.96, '0078d4',
-             [('\u2713 Highest AMT: 2.74', False), ('\u2713 Highest PPM: 3.21', False), ('\u2713 Broadest coverage', False), ('\u26a0 Partner accountability gaps', True), ('\u26a0 SVC via partners: 2.32', True)]),
-            ('Platform-Only', '25 vendors (49%)', 2.36, 'ca5010',
-             [('\u26a0 SVC: 1.49 (structural gap)', True), ('\u26a0 AMT: 1.87 (weak intel)', True), ('\u26a0 88% below 2.0 on SVC', True), ('\u26a0 No service delivery', True)]),
+            ('Direct Service Providers', f'{ds_count} vendors ({ds_pct}%)', ds_overall, '107c10',
+             [(f'\u2713 Highest SVC: {ds_pa.get("SVC", 0):.2f}', False), (f'\u2713 Highest ADR: {ds_pa.get("ADR", 0):.2f}', False), ('\u2713 Own SOCs + analysts', False), ('\u26a0 Limited platform depth', True)]),
+            ('Platform + Partner', f'{ppp_count} vendors ({ppp_pct}%)', ppp_overall, '0078d4',
+             [(f'\u2713 Highest AMT: {ppp_pa.get("AMT", 0):.2f}', False), (f'\u2713 Highest PPM: {ppp_pa.get("PPM", 0):.2f}', False), ('\u2713 Broadest coverage', False), ('\u26a0 Partner accountability gaps', True), (f'\u26a0 SVC via partners: {ppp_pa.get("SVC", 0):.2f}', True)]),
+            ('Platform-Only', f'{po_count} vendors ({po_pct}%)', po_overall, 'ca5010',
+             [(f'\u26a0 SVC: {po_pa.get("SVC", 0):.2f} (structural gap)', True), (f'\u26a0 AMT: {po_pa.get("AMT", 0):.2f} (weak intel)', True), (f'\u26a0 {po_svc_below_pct}% below 2.0 on SVC', True), ('\u26a0 No service delivery', True)]),
         ]
         for mi_, (name, sub, score, color, gaps) in enumerate(models):
             baseY = 80 + mi_ * 200
@@ -4723,18 +4789,18 @@ def precyber_all_graphics_pptx():
         s3 = prs.slides.add_slide(BLANK)
         box(s3, sx(0), sy(0), sw(1200), sh(60), '1a3a5c', '1a3a5c')
         tb(s3, sx(50), sy(8), sw(1100), sh(28), '3. Pillar Penetration Gap: Where the Market Falls Short', 22, True, 'ffffff', 'center')
-        tb(s3, sx(100), sy(36), sw(1000), sh(22), 'Score by delivery model across all five pillars; 37-point gap between EXM (92%) and AMT (55%)', 11, False, 'ccd8e8', 'center')
+        tb(s3, sx(100), sy(36), sw(1000), sh(22), f'Score by delivery model across all five pillars; {pp["EXM"]["pct"] - pp["AMT"]["pct"]}-point gap between EXM ({pp["EXM"]["pct"]}%) and AMT ({pp["AMT"]["pct"]}%)', 11, False, 'ccd8e8', 'center')
 
         tb(s3, sx(60), sy(72), sw(160), sh(18), '\u25a0 Direct Service', 11, True, '107c10')
         tb(s3, sx(240), sy(72), sw(160), sh(18), '\u25a0 Platform+Partner', 11, True, '0078d4')
         tb(s3, sx(420), sy(72), sw(160), sh(18), '\u25a0 Platform-Only', 11, True, 'ca5010')
 
         gap_data = [
-            ('Exposure Mgmt (EXM)', '92%', 3.60, 3.69, 3.07),
-            ('Posture & Policy (PPM)', '86%', 2.97, 3.21, 2.84),
-            ('Adversary Disruption (ADR)', '78%', 3.38, 2.83, 2.52),
-            ('Services & Capability (SVC)', '57%', 2.74, 2.32, 1.49),
-            ('Adversary Mgmt (AMT)', '55%', 2.45, 2.74, 1.87),
+            ('Exposure Mgmt (EXM)', f"{pp['EXM']['pct']}%", ds_pa.get('EXM', 0), ppp_pa.get('EXM', 0), po_pa.get('EXM', 0)),
+            ('Posture & Policy (PPM)', f"{pp['PPM']['pct']}%", ds_pa.get('PPM', 0), ppp_pa.get('PPM', 0), po_pa.get('PPM', 0)),
+            ('Adversary Disruption (ADR)', f"{pp['ADR']['pct']}%", ds_pa.get('ADR', 0), ppp_pa.get('ADR', 0), po_pa.get('ADR', 0)),
+            ('Services & Capability (SVC)', f"{pp['SVC']['pct']}%", ds_pa.get('SVC', 0), ppp_pa.get('SVC', 0), po_pa.get('SVC', 0)),
+            ('Adversary Mgmt (AMT)', f"{pp['AMT']['pct']}%", ds_pa.get('AMT', 0), ppp_pa.get('AMT', 0), po_pa.get('AMT', 0)),
         ]
         for gi, (name, pct, direct, partner, plat) in enumerate(gap_data):
             baseY = 100 + gi * 115
@@ -4763,8 +4829,8 @@ def precyber_all_graphics_pptx():
         tb(s4, sx(50), sy(5), sw(1100), sh(28), '4. The Preemptive Cybersecurity Market Is Dangerously Fragmented', 20, True, 'ffffff', 'center')
         tb(s4, sx(100), sy(32), sw(1000), sh(20), 'Market Insight \u2014 51 vendors across 5 capability pillars \u00d7 3 delivery models', 11, False, 'ffcccc', 'center')
 
-        stats = [('51', 'Vendors Assessed', '0078d4'), ('73%', '\u2265 1 Blind Spot', 'a80000'), ('45%', 'No AMT Capability', 'ca5010'), ('27%', 'Full-Spectrum', '107c10'), ('49%', 'Platform-Only', '8764b8')]
-        for si, (sv, sl, sc) in enumerate(stats):
+        stats_s4 = [(str(n), 'Vendors Assessed', '0078d4'), (f'{blind_pct}%', '\u2265 1 Blind Spot', 'a80000'), (f'{no_amt_pct}%', 'No AMT Capability', 'ca5010'), (f'{fs_pct}%', 'Full-Spectrum', '107c10'), (f'{po_pct}%', 'Platform-Only', '8764b8')]
+        for si, (sv, sl, sc) in enumerate(stats_s4):
             bx = 40 + si * 232
             box(s4, sx(bx), sy(65), sw(215), sh(60), 'f8f8f5', 'e0ddd5')
             tb(s4, sx(bx + 5), sy(68), sw(205), sh(28), sv, 22, True, sc, 'center')
@@ -4772,8 +4838,8 @@ def precyber_all_graphics_pptx():
 
         tb(s4, sx(40), sy(140), sw(300), sh(22), 'KEY FINDINGS', 13, True, 'a80000')
         findings = [
-            ('\U0001f534 Service Delivery Crisis', '25 of 51 vendors (49%) are platform-only. Avg SVC: 1.49. 88% of platform-only vendors score below 2.0 on services.'),
-            ('\u26a0 Adversary Intelligence Deficit', '45% of vendors lack AMT capability. Among platform-only: 64% score below 2.0 on adversary management.'),
+            ('\U0001f534 Service Delivery Crisis', f'{po_count} of {n} vendors ({po_pct}%) are platform-only. Avg SVC: {po_pa.get("SVC", 0):.2f}. {po_svc_below_pct}% of platform-only vendors score below 2.0 on services.'),
+            ('\u26a0 Adversary Intelligence Deficit', f'{no_amt_pct}% of vendors lack AMT capability. Among platform-only: {dm_po.get("pillar_below_pct", {}).get("AMT", 0)}% score below 2.0 on adversary management.'),
             ('\u2713 Rare Full-Spectrum Excellence', 'Only 3 vendors maintain min score \u2265 2.5 across all 5 pillars: Mandiant, SentinelOne, Fortinet.'),
         ]
         for fi, (ft, fb) in enumerate(findings):
@@ -4807,12 +4873,12 @@ def precyber_all_graphics_pptx():
         tb(s5, sx(100), sy(32), sw(1000), sh(20), 'Three models, three trade-offs \u2014 accountability vs breadth vs technical depth', 11, False, 'ccd8e8', 'center')
 
         model_cards = [
-            ('\U0001f7e2 Direct Service', '11 vendors (22%)', '107c10', 'f0fff4',
-             ['\u2713 Own SOC + analyst teams', '\u2713 Single accountability point', '\u2713 Highest SVC: 2.74', '\u2713 Highest ADR: 3.38', '\u26a0 Limited platform depth'], 'Operational Accountability'),
-            ('\U0001f535 Platform + Partner', '15 vendors (29%)', '0078d4', 'f0faff',
-             ['\u2713 Tech platform + MSSP delivery', '\u2713 Broadest pillar coverage', '\u2713 Highest AMT: 2.74', '\u2713 Highest PPM: 3.21', '\u26a0 Partner accountability gaps'], 'Breadth of Coverage'),
-            ('\U0001f7e0 Platform-Only', '25 vendors (49%)', 'ca5010', 'fff8f0',
-             ['\u2713 Technology licensing model', '\U0001f534 SVC: 1.49 (structural gap)', '\U0001f534 AMT: 1.87 (weak intel)', '\U0001f534 88% below 2.0 on SVC', '\U0001f534 No service delivery'], 'Structural Service Deficit'),
+            ('\U0001f7e2 Direct Service', f'{ds_count} vendors ({ds_pct}%)', '107c10', 'f0fff4',
+             ['\u2713 Own SOC + analyst teams', '\u2713 Single accountability point', f'\u2713 Highest SVC: {ds_pa.get("SVC", 0):.2f}', f'\u2713 Highest ADR: {ds_pa.get("ADR", 0):.2f}', '\u26a0 Limited platform depth'], 'Operational Accountability'),
+            ('\U0001f535 Platform + Partner', f'{ppp_count} vendors ({ppp_pct}%)', '0078d4', 'f0faff',
+             ['\u2713 Tech platform + MSSP delivery', '\u2713 Broadest pillar coverage', f'\u2713 Highest AMT: {ppp_pa.get("AMT", 0):.2f}', f'\u2713 Highest PPM: {ppp_pa.get("PPM", 0):.2f}', '\u26a0 Partner accountability gaps'], 'Breadth of Coverage'),
+            ('\U0001f7e0 Platform-Only', f'{po_count} vendors ({po_pct}%)', 'ca5010', 'fff8f0',
+             ['\u2713 Technology licensing model', f'\U0001f534 SVC: {po_pa.get("SVC", 0):.2f} (structural gap)', f'\U0001f534 AMT: {po_pa.get("AMT", 0):.2f} (weak intel)', f'\U0001f534 {po_svc_below_pct}% below 2.0 on SVC', '\U0001f534 No service delivery'], 'Structural Service Deficit'),
         ]
         for ci, (mt, ms, mc, mbg, items, strength) in enumerate(model_cards):
             cx = 30 + ci * 390
@@ -4826,9 +4892,9 @@ def precyber_all_graphics_pptx():
 
         tb(s5, sx(40), sy(400), sw(500), sh(22), 'MARKET SPECTRUM SEGMENTATION', 13, True, '1a3a5c')
         segs = [
-            ('14', 'Full-Spectrum (27%)', 'All 5 pillars \u2265 2.0', '107c10', 'e6f4e6'),
-            ('19', 'Majority-Spectrum (37%)', '4 pillars \u2014 one from full', 'ca5010', 'fff0e0'),
-            ('18', 'Narrow-Spectrum (35%)', '\u2264 3 pillars \u2014 niche specialists', 'a80000', 'ffe0e0'),
+            (str(fs_count), f'Full-Spectrum ({fs_pct}%)', 'All 5 pillars \u2265 2.0', '107c10', 'e6f4e6'),
+            (str(maj_count), f'Majority-Spectrum ({maj_pct}%)', '4 pillars \u2014 one from full', 'ca5010', 'fff0e0'),
+            (str(narrow_count), f'Narrow-Spectrum ({narrow_pct}%)', '\u2264 3 pillars \u2014 niche specialists', 'a80000', 'ffe0e0'),
         ]
         for si, (sv, sl, sd, sc, sbg) in enumerate(segs):
             bx = 40 + si * 385
@@ -4838,7 +4904,7 @@ def precyber_all_graphics_pptx():
             tb(s5, sx(bx + 5), sy(490), sw(350), sh(18), sd, 10, False, '555555', 'center')
 
         box(s5, sx(40), sy(530), sw(1120), sh(35), 'fff0f0', 'a80000')
-        tb(s5, sx(50), sy(533), sw(1100), sh(28), '73% of vendors have at least one structural blind spot. Buyers cannot assume any single vendor covers the full attack surface.', 11, True, 'a80000', 'center')
+        tb(s5, sx(50), sy(533), sw(1100), sh(28), f'{blind_pct}% of vendors have at least one structural blind spot. Buyers cannot assume any single vendor covers the full attack surface.', 11, True, 'a80000', 'center')
         tb(s5, sx(800), sy(720), sw(380), sh(20), footer, 9, False, 'aaaaaa', 'right')
 
         # ── SLIDE 6: 2030 Market Evolution ──
@@ -4899,15 +4965,15 @@ def precyber_all_graphics_pptx():
 
         box(s7, sx7(0), sy7(0), sw7(1200), sh7(70), '1a3a5c', '1a3a5c')
         tb(s7, sx7(50), sy7(5), sw7(1100), sh7(32), 'The Preemptive Cybersecurity Market Is Dangerously Fragmented', 22, True, 'ffffff', 'center')
-        tb(s7, sx7(100), sy7(38), sw7(1000), sh7(28), 'Only 27% of 51 vendors achieve full-spectrum coverage across all five pillars', 11, False, 'ccd8e8', 'center')
+        tb(s7, sx7(100), sy7(38), sw7(1000), sh7(28), f'Only {fs_pct}% of {n} vendors achieve full-spectrum coverage across all five pillars', 11, False, 'ccd8e8', 'center')
 
         # Five pillars
         p_data = [
-            ('EXM', 'Exposure Mgmt', '92%', '107c10', 'f0fff4'),
-            ('PPM', 'Posture & Policy', '86%', '0078d4', 'f0faff'),
-            ('ADR', 'Detection & Response', '78%', '8764b8', 'f5f0ff'),
-            ('SVC', 'Services & Capability', '57%', 'ca5010', 'fff8f0'),
-            ('AMT', 'Adversary Mgmt', '55%', 'a80000', 'fff5f5'),
+            ('EXM', 'Exposure Mgmt', f"{pp['EXM']['pct']}%", '107c10', 'f0fff4'),
+            ('PPM', 'Posture & Policy', f"{pp['PPM']['pct']}%", '0078d4', 'f0faff'),
+            ('ADR', 'Detection & Response', f"{pp['ADR']['pct']}%", '8764b8', 'f5f0ff'),
+            ('SVC', 'Services & Capability', f"{pp['SVC']['pct']}%", 'ca5010', 'fff8f0'),
+            ('AMT', 'Adversary Mgmt', f"{pp['AMT']['pct']}%", 'a80000', 'fff5f5'),
         ]
         for pi, (code, name, pct, color, bg_) in enumerate(p_data):
             px = 40 + pi * 224
@@ -4920,9 +4986,9 @@ def precyber_all_graphics_pptx():
 
         # Delivery models
         dm_data = [
-            ('\U0001f7e2 Direct Service', '11 vendors (22%)', 'SVC avg: 2.74 (highest)\nADR avg: 3.38', '107c10', 'f0fff4'),
-            ('\U0001f535 Platform + Partner', '15 vendors (29%)', 'AMT avg: 2.74 (highest)\nPPM avg: 3.21', '0078d4', 'f0faff'),
-            ('\U0001f7e0 Platform-Only', '25 vendors (49%)', 'SVC avg: 1.49 (lowest)\nAMT avg: 1.87', 'ca5010', 'fff8f0'),
+            ('\U0001f7e2 Direct Service', f'{ds_count} vendors ({ds_pct}%)', f'SVC avg: {ds_pa.get("SVC", 0):.2f} (highest)\nADR avg: {ds_pa.get("ADR", 0):.2f}', '107c10', 'f0fff4'),
+            ('\U0001f535 Platform + Partner', f'{ppp_count} vendors ({ppp_pct}%)', f'AMT avg: {ppp_pa.get("AMT", 0):.2f} (highest)\nPPM avg: {ppp_pa.get("PPM", 0):.2f}', '0078d4', 'f0faff'),
+            ('\U0001f7e0 Platform-Only', f'{po_count} vendors ({po_pct}%)', f'SVC avg: {po_pa.get("SVC", 0):.2f} (lowest)\nAMT avg: {po_pa.get("AMT", 0):.2f}', 'ca5010', 'fff8f0'),
         ]
         for di, (dt, ds, dd, dc, dbg) in enumerate(dm_data):
             dx = 40 + di * 390
@@ -4933,9 +4999,9 @@ def precyber_all_graphics_pptx():
 
         # Market segmentation
         seg_data = [
-            ('Full Spectrum', '14 vendors (27%)', 'All 5 pillars \u2265 2.0', '107c10', 'e6f4e6'),
-            ('Majority Spectrum', '19 vendors (37%)', '4 pillars covered', 'ca5010', 'fff0e0'),
-            ('Narrow Spectrum', '18 vendors (35%)', '\u2264 3 pillars', 'a80000', 'ffe0e0'),
+            ('Full Spectrum', f'{fs_count} vendors ({fs_pct}%)', 'All 5 pillars \u2265 2.0', '107c10', 'e6f4e6'),
+            ('Majority Spectrum', f'{maj_count} vendors ({maj_pct}%)', '4 pillars covered', 'ca5010', 'fff0e0'),
+            ('Narrow Spectrum', f'{narrow_count} vendors ({narrow_pct}%)', '\u2264 3 pillars', 'a80000', 'ffe0e0'),
         ]
         for si, (st, ss, sd, sc, sbg) in enumerate(seg_data):
             bx = 40 + si * 390
@@ -4948,10 +5014,10 @@ def precyber_all_graphics_pptx():
 
         # Stat callouts
         stat_boxes = [
-            (65, 490, 200, 70, '73%', 'Have \u2265 1 Blind Spot', 'a80000', 'fff5f5'),
-            (305, 490, 200, 70, '45%', 'No AMT Capability', 'ca5010', 'fff8f0'),
-            (545, 490, 200, 70, '51', 'Vendors Assessed', '0078d4', 'f0faff'),
-            (785, 490, 200, 70, '35%', 'Narrow (\u2264 3 pillars)', '8764b8', 'f5f0ff'),
+            (65, 490, 200, 70, f'{blind_pct}%', 'Have \u2265 1 Blind Spot', 'a80000', 'fff5f5'),
+            (305, 490, 200, 70, f'{no_amt_pct}%', 'No AMT Capability', 'ca5010', 'fff8f0'),
+            (545, 490, 200, 70, str(n), 'Vendors Assessed', '0078d4', 'f0faff'),
+            (785, 490, 200, 70, f'{narrow_pct}%', 'Narrow (\u2264 3 pillars)', '8764b8', 'f5f0ff'),
         ]
         for bx, by, bw, bh, bv, bl, bc, bbg in stat_boxes:
             box(s7, sx7(bx), sy7(by), sw7(bw), sh7(bh), bbg, bc)

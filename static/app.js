@@ -901,6 +901,10 @@ function getEffectiveGranularMapping(vendor) {
         return buildGranularMappingFromSubScores(vendor.sub_pillar_scores_researched);
     }
 
+    if (mode === 'v3_current' && vendor.sub_pillar_scores_v3 && typeof vendor.sub_pillar_scores_v3 === 'object') {
+        return buildGranularMappingFromSubScores(vendor.sub_pillar_scores_v3);
+    }
+
     if (mode === 'current') {
         if (vendor.granular_mapping || vendor.granular_mapping_validated) {
             return vendor.granular_mapping || vendor.granular_mapping_validated;
@@ -1109,7 +1113,7 @@ function getEffectivePillarScores(vendor) {
         if (vendor.pillar_scores && typeof vendor.pillar_scores === 'object') {
             return vendor.pillar_scores;
         }
-    } else if (mode === 'current') {
+    } else if (mode === 'current' || mode === 'v3_current') {
         if (vendor.pillar_scores && typeof vendor.pillar_scores === 'object') {
             return vendor.pillar_scores;
         }
@@ -1133,7 +1137,7 @@ function getEffectivePillarScores(vendor) {
 }
 
 function setScoreMode(mode, { persist = true } = {}) {
-    const allowed = new Set(['validated', 'researched', 'ai_researched', 'evidence_refined', 'v2_researched', 'v2_1_consolidated', 'pricing_v2', 'current']);
+    const allowed = new Set(['validated', 'researched', 'ai_researched', 'evidence_refined', 'v2_researched', 'v2_1_consolidated', 'pricing_v2', 'current', 'v3_current']);
     const next = allowed.has(mode) ? mode : 'validated';
     const prev = appState.scoreMode;
     appState.scoreMode = next;
@@ -1190,6 +1194,7 @@ function populateScoreModeDropdown() {
         { value: 'v2_1_consolidated', label: 'V2.1 Consolidated', keys: ['pillar_scores_v2_1', 'sub_pillar_scores_v2_1'] },
         { value: 'evidence_refined', label: 'Evidence Refined', keys: ['pillar_scores_evidence_refined', 'sub_pillar_scores_evidence_refined'] },
         { value: 'pricing_v2',      label: 'Pricing v2',       keys: ['pricing_dimension_scores_v2', 'pricing_dimension_scores'] },
+        { value: 'v3_current',       label: 'V3 Current (1–5)', keys: ['sub_pillar_scores_v3'] },
         { value: 'current',          label: 'Current (Raw)',    keys: ['sub_pillar_scores_current'] },
     ];
 
@@ -1233,7 +1238,7 @@ function populateScoreModeDropdown() {
         sel.value = currentMode;
     } else {
         // Pick the most advanced available mode
-        const preferred = ['pricing_v2', 'evidence_refined', 'v2_researched', 'ai_researched', 'researched', 'validated'];
+        const preferred = ['pricing_v2', 'v3_current', 'evidence_refined', 'v2_researched', 'ai_researched', 'researched', 'validated'];
         const best = preferred.find(m => availableValues.includes(m)) || 'validated';
         sel.value = best;
         appState.scoreMode = best;
@@ -10221,11 +10226,11 @@ function refineScoreWithEvidence(baseScore, evidenceQuality) {
 function getScoreColor(score) {
     if (score == null || isNaN(score)) return 'var(--text-secondary)';
     const s = Number(score);
-    if (s >= 4)   return '#005a9e';   // blue   — level 5/4+
-    if (s >= 3)   return '#107c10';   // green  — level 4/3+
-    if (s >= 2)   return '#c19c00';   // gold   — level 3/2+
-    if (s >= 1)   return '#ff8c00';   // orange — level 2/1+
-    return '#d13438';                 // red    — level 1/0
+    if (s >= 4)   return '#005a9e';   // blue   — strong / advanced
+    if (s >= 3)   return '#107c10';   // green  — demonstrated / competitive
+    if (s >= 2.5) return '#c19c00';   // gold   — below target
+    if (s >= 2)   return '#ff8c00';   // orange — marketing/basic (v3 score 2)
+    return '#d13438';                 // red    — no/minimal capability (v3 score 1)
 }
 
 function computeVendorRefinedScoring(vendor) {
@@ -12603,6 +12608,7 @@ function renderAnalyticsPillarRadarChart(vendors) {
         { key: 'v2_researched',    label: 'V2 Researched',    color: '#0078d4', fillColor: 'rgba(0, 120, 212, 0.15)', pKey: 'pillar_scores_v2_researched',    spKey: 'sub_pillar_scores_v2_researched' },
         { key: 'ai_researched',    label: 'AI Researched',    color: '#8b5cf6', fillColor: 'rgba(139, 92, 246, 0.15)', pKey: 'pillar_scores_ai_researched',    spKey: 'sub_pillar_scores_ai_researched' },
         { key: 'evidence_refined', label: 'Evidence Refined', color: '#e3008c', fillColor: 'rgba(227, 0, 140, 0.15)', pKey: 'pillar_scores_evidence_refined', spKey: 'sub_pillar_scores_evidence_refined' },
+        { key: 'v3_current',       label: 'V3 Current',       color: '#0078d4', fillColor: 'rgba(0, 120, 212, 0.15)', pKey: null,                            spKey: 'sub_pillar_scores_v3' },
         { key: 'current',          label: 'Current',          color: '#ff8c00', fillColor: 'rgba(255, 140, 0, 0.15)',  pKey: null,                            spKey: 'sub_pillar_scores_current' },
     ];
     
