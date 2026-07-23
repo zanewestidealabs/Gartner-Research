@@ -29,6 +29,95 @@ const appState = {
     }
 };
 
+function getCurrentSchemaMeta() {
+    const allSchemas = appState.allSchemas || [];
+    return allSchemas.find(s => s.filename === appState.currentSchemaFile) || {};
+}
+
+function getCurrentSchemaStructure() {
+    return getCurrentSchemaMeta().structure || '';
+}
+
+function isCurrentASMFSchema() {
+    return getCurrentSchemaStructure() === 'asmf';
+}
+
+function isCurrentASMFAdoptionSchema() {
+    return isCurrentASMFSchema() && appState.currentSchemaFile !== 'ai_platform_ecosystem_framework_v1.json';
+}
+
+function getCurrentSchemaDisplay() {
+    const displayMap = appState.schemaDisplayMap || {};
+    return displayMap[appState.currentSchemaFile] || {
+        title: 'DFIR Vendor Marketplace Analysis 2026',
+        abbr: 'DFIR',
+        subtitle: 'Filter and analyze incident response vendors by capabilities and specializations'
+    };
+}
+
+function getCurrentFrameworkAbbr() {
+    return getCurrentSchemaDisplay().abbr || 'ASMF';
+}
+
+function getCurrentFrameworkTitle() {
+    return getCurrentSchemaDisplay().title || 'Agentic Adoption Framework';
+}
+
+function getCurrentFrameworkReferenceTitle() {
+    return getCurrentFrameworkTitle().replace(/\s+20\d{2}.*$/, '').trim() || getCurrentFrameworkTitle();
+}
+
+function getASMFRootLabel() {
+    return isCurrentASMFAdoptionSchema() ? getCurrentFrameworkAbbr() : 'ASMF';
+}
+
+function updateSchemaControlVisibility() {
+    const hasVendors = appState.hasVendorData !== false;
+    const vendorWrap = document.getElementById('vendor-data-selector-wrap');
+    const scoreWrap = document.getElementById('score-mode-selector-wrap');
+
+    if (vendorWrap) vendorWrap.style.display = hasVendors ? '' : 'none';
+    if (scoreWrap) scoreWrap.style.display = hasVendors ? '' : 'none';
+}
+
+function updateASMFChrome() {
+    const abbr = getCurrentFrameworkAbbr();
+    const title = getCurrentFrameworkReferenceTitle();
+
+    const matrixTabLabel = document.getElementById('asmf-matrix-tab-label');
+    if (matrixTabLabel) matrixTabLabel.textContent = `${abbr} Adoption Matrix`;
+
+    const graphTabLabel = document.getElementById('asmf-graph-tab-label');
+    if (graphTabLabel) graphTabLabel.textContent = `${abbr} Knowledge Graph`;
+
+    const graphDetailTitle = document.getElementById('asmf-graph-detail-title');
+    if (graphDetailTitle) graphDetailTitle.textContent = `${abbr} Knowledge Graph`;
+
+    const matrixTitle = document.getElementById('asmf-matrix-title');
+    if (matrixTitle) matrixTitle.textContent = `${title} — Visual Matrix`;
+
+    const matrixSubtitle = document.getElementById('asmf-matrix-subtitle');
+    if (matrixSubtitle) matrixSubtitle.textContent = '11 dimensions × 6 maturity stages — framework-first, vendor-neutral';
+
+    const radarTitle = document.getElementById('asmf-radar-title');
+    if (radarTitle) radarTitle.textContent = 'Target State — Fully Agentic Radar';
+
+    const radarSubtitle = document.getElementById('asmf-radar-subtitle');
+    if (radarSubtitle) radarSubtitle.textContent = 'What Stage 5 looks like across all dimensions vs. where most organizations start';
+
+    const sankeyTitle = document.getElementById('asmf-sankey-title');
+    if (sankeyTitle) sankeyTitle.textContent = 'Agentic Operations — Effort Flow';
+
+    const sankeySubtitle = document.getElementById('asmf-sankey-subtitle');
+    if (sankeySubtitle) sankeySubtitle.textContent = 'How work transitions from human-heavy operations to agentic outcomes';
+
+    const pyramidTitle = document.getElementById('asmf-pyramid-title');
+    if (pyramidTitle) pyramidTitle.textContent = 'Capability Stack';
+
+    const pyramidSubtitle = document.getElementById('asmf-pyramid-subtitle');
+    if (pyramidSubtitle) pyramidSubtitle.textContent = 'From raw signal ingestion to autonomous execution — the agentic operating model capability pyramid';
+}
+
 /**
  * Return the active schema's pillar codes from appState.pillarsGrouped.
  * Falls back to DFIR codes if metadata hasn't loaded yet.
@@ -1304,6 +1393,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Populate legend view
     populateLegendView();
 
+    // Show APEF vendor filter on initial load when APEF schema is active
+    try {
+        await populateAPEFVendorDropdown(appState.currentSchemaFileName || '');
+    } catch (e) { /* non-fatal */ }
+
     // Score mode selector (persisted)
     const savedMode = localStorage.getItem('scoreMode');
     if (savedMode) {
@@ -2334,6 +2428,8 @@ function handleNavigation(e) {
             populateRoadmapView();
         } else if (view === 'asmf') {
             populateASMFView();
+        } else if (view === 'apef-report') {
+            populateAPEFReportView();
         }
     }
 }
@@ -2464,9 +2560,13 @@ async function loadSchemaFileSelector() {
 
         // Store display metadata for all schemas
         appState.schemaDisplayMap = {};
+        appState.schemaStructureMap = {};
         appState.allSchemas.forEach(s => {
             if (s.display) {
                 appState.schemaDisplayMap[s.filename] = s.display;
+            }
+            if (s.structure) {
+                appState.schemaStructureMap[s.filename] = s.structure;
             }
         });
 
@@ -2536,6 +2636,9 @@ async function loadSchemaFileSelector() {
                 window.location.href = '/api/export-schema-html?schema=' + encodeURIComponent(schemaFile);
             });
         }
+
+        updateSchemaControlVisibility();
+        updateASMFChrome();
     } catch (error) {
         console.error('Error loading schema files:', error);
     }
@@ -2621,6 +2724,7 @@ function renderSchemaVisibilityList() {
 async function switchSchema(schemaFilename) {
     try {
         appState.currentSchemaFile = schemaFilename || '';
+        resetASMFVisualizations();
 
         // Tell backend which schema is active
         if (schemaFilename) {
@@ -2661,7 +2765,9 @@ async function switchSchema(schemaFilename) {
 
         // Update nav visibility and page title for the selected schema
         filterNavBySchema();
+        updateSchemaControlVisibility();
         updatePageTitleForSchema();
+        updateASMFChrome();
 
         // Update sub-pillar labels in the sidebar if schema detail available
         updateSidebarSubPillarLabels();
@@ -2726,6 +2832,14 @@ async function switchSchema(schemaFilename) {
 
         // Refresh the legend report content for the new schema
         populateLegendReport();
+
+        // Clear ASMF framework cache so it re-fetches for the new schema
+        _asmfFramework = null;
+
+        // APEF report cache + global vendor dropdown
+        _apefData = null;
+        _apefGraph = null;
+        await populateAPEFVendorDropdown(schemaFilename);
 
         // Reset Analyst Take so it re-fetches perspectives for the new schema
         const atPanel = document.getElementById('at-panel-body');
@@ -4235,6 +4349,14 @@ function renderPricingEvidenceAndRationale(vendor) {
 }
 
 function populateLegendView() {
+    const isASMF = isCurrentASMFSchema();
+    const scoreTitle = document.getElementById('legend-score-title');
+    const structureTitle = document.getElementById('legend-structure-title');
+    const fieldsTitle = document.getElementById('legend-fields-title');
+    if (scoreTitle) scoreTitle.textContent = isASMF ? 'Maturity Stages' : 'Scoring Legend';
+    if (structureTitle) structureTitle.textContent = isASMF ? 'Dimensions & Sub-Dimensions' : 'Pillars & Sub-Pillars';
+    if (fieldsTitle) fieldsTitle.textContent = isASMF ? 'Dimension Descriptions' : 'Field Descriptions';
+
     // ── Schema intent banner ──
     const legendContainer = document.querySelector('.legend-container');
     let existingBanner = document.getElementById('schema-intent-banner');
@@ -4298,7 +4420,18 @@ function populateLegendView() {
         methodNote = document.createElement('div');
         methodNote.id = 'scoring-methodology-note';
         methodNote.style.cssText = 'margin: 16px 0; padding: 12px 16px; background: var(--bg-secondary); border-left: 4px solid #0078d4; border-radius: 4px; font-size: 13px; color: var(--text-primary); line-height: 1.6;';
-        methodNote.innerHTML = `
+        const pillarsGrid = document.querySelector('.pillars-grid');
+        if (pillarsGrid) pillarsGrid.parentNode.insertBefore(methodNote, pillarsGrid);
+    }
+    methodNote.innerHTML = isASMF
+        ? `
+            <strong style="color:#0078d4;">Framework Maturity Guidance</strong>
+            <ul style="margin:8px 0 0 0; padding-left:20px;">
+                <li><strong>Maturity stages (0–5)</strong> describe how operating models evolve from traditional execution to fully agentic coordination.</li>
+                <li><strong>Dimension weights</strong> indicate each dimension's relative contribution to overall framework adoption and should be interpreted holistically, not as isolated tool checks.</li>
+                <li><strong>Sub-dimension prompts and stage descriptors</strong> are intended to anchor assessment conversations around current-state evidence, target-state ambition, and transformation sequencing.</li>
+            </ul>`
+        : `
             <strong style="color:#0078d4;">Scoring Methodology</strong>
             <ul style="margin:8px 0 0 0; padding-left:20px;">
                 <li><strong>Sub-pillar scores (0–5) are anchored to criteria assessment.</strong>
@@ -4321,9 +4454,6 @@ function populateLegendView() {
                     directly drove the score — the two should always align. The per-criterion detail table
                     in Evidence &amp; Rationale shows which specific criteria were met and the supporting evidence.</li>
             </ul>`;
-        const pillarsGrid = document.querySelector('.pillars-grid');
-        if (pillarsGrid) pillarsGrid.parentNode.insertBefore(methodNote, pillarsGrid);
-    }
 
     // ── Pillars and sub-pillars with enriched schema data ──
     // ── Pillars and sub-pillars with enriched schema data ──
@@ -4410,24 +4540,26 @@ function populateLegendView() {
 
     let html = '';
 
-    html += '<div class="field-desc-section"><h3>Base Fields</h3>';
-    baseFields.forEach(field => {
-        if (appState.fieldMetadata[field]) {
-            const meta = appState.fieldMetadata[field];
-            html += `
-                <div class="field-desc-item">
-                    <div class="field-desc-header">
-                        <div class="field-desc-title">${meta.name}</div>
-                        <button class="edit-btn edit-field" data-field-id="${field}" data-field-name="${meta.name}" data-field-desc="${meta.description}" title="Edit">✏️</button>
+    if (!isASMF) {
+        html += '<div class="field-desc-section"><h3>Base Fields</h3>';
+        baseFields.forEach(field => {
+            if (appState.fieldMetadata[field]) {
+                const meta = appState.fieldMetadata[field];
+                html += `
+                    <div class="field-desc-item">
+                        <div class="field-desc-header">
+                            <div class="field-desc-title">${meta.name}</div>
+                            <button class="edit-btn edit-field" data-field-id="${field}" data-field-name="${meta.name}" data-field-desc="${meta.description}" title="Edit">✏️</button>
+                        </div>
+                        <div class="field-desc-text">${meta.description}</div>
                     </div>
-                    <div class="field-desc-text">${meta.description}</div>
-                </div>
-            `;
-        }
-    });
-    html += '</div>';
+                `;
+            }
+        });
+        html += '</div>';
+    }
 
-    html += '<div class="field-desc-section"><h3>Pillars</h3>';
+    html += `<div class="field-desc-section"><h3>${isASMF ? 'Dimensions' : 'Pillars'}</h3>`;
     pillarFields.forEach(field => {
         if (appState.fieldMetadata[field]) {
             const meta = appState.fieldMetadata[field];
@@ -4523,6 +4655,7 @@ function populateLegendView() {
 
 function populateReportsView() {
     setupReportsTabListeners();
+    updateASMFChrome();
     filterReportsTabsBySchema();
     // Populate whichever tab is active (default: first visible)
     const activeTab = document.querySelector('.reports-tab.active');
@@ -4539,12 +4672,25 @@ function populateReportsView() {
  */
 function filterReportsTabsBySchema() {
     const currentSchema = (appState.currentSchemaFile || '').trim();
+    const isASMFAdoption = isCurrentASMFAdoptionSchema();
     const allTabs = document.querySelectorAll('.reports-tab');
     let activeVisible = false;
+    const asmfAllowedTabs = new Set(['legend-report', 'asmf-matrix', 'asmf-graph']);
+    if (currentSchema === 'agentic_soc_framework_v1.json') {
+        asmfAllowedTabs.add('asaf-positioning');
+    }
 
     allTabs.forEach(tab => {
         const requiredSchema = (tab.dataset.schema || '').trim();
-        if (requiredSchema && requiredSchema !== currentSchema) {
+        const allowedSchemas = requiredSchema ? requiredSchema.split(',').map(s => s.trim()) : [];
+        let shouldHide = false;
+        if (isASMFAdoption && !asmfAllowedTabs.has(tab.dataset.reportTab)) {
+            shouldHide = true;
+        }
+        if (!shouldHide && requiredSchema && !allowedSchemas.includes(currentSchema)) {
+            shouldHide = true;
+        }
+        if (shouldHide) {
             tab.style.display = 'none';
             // Also hide the corresponding panel
             const panelId = tab.dataset.reportTab;
@@ -4587,8 +4733,19 @@ function filterNavBySchema() {
         }
 
         // Hide schema-specific items when not on that schema
-        if (item.dataset.requiresSchema && item.dataset.requiresSchema !== currentSchema) {
-            shouldHide = true;
+        if (item.dataset.requiresSchema) {
+            const allowedSchemas = item.dataset.requiresSchema.split(',').map(s => s.trim()).filter(Boolean);
+            if (!allowedSchemas.includes(currentSchema)) {
+                shouldHide = true;
+            }
+        }
+
+        // Hide items explicitly disabled for the current schema (data-hidden-for-schema)
+        if (item.dataset.hiddenForSchema) {
+            const hiddenSchemas = item.dataset.hiddenForSchema.split(',').map(s => s.trim()).filter(Boolean);
+            if (hiddenSchemas.includes(currentSchema)) {
+                shouldHide = true;
+            }
         }
 
         if (shouldHide) {
@@ -4625,9 +4782,7 @@ function filterNavBySchema() {
  * Update the page title, subtitle, and logo abbreviation based on the selected schema.
  */
 function updatePageTitleForSchema() {
-    const displayMap = appState.schemaDisplayMap || {};
-    const schema = appState.currentSchemaFile || '';
-    const display = displayMap[schema] || { title: 'DFIR Vendor Marketplace Analysis 2026', abbr: 'DFIR', subtitle: 'Filter and analyze incident response vendors by capabilities and specializations' };
+    const display = getCurrentSchemaDisplay();
 
     const titleEl = document.getElementById('page-title');
     const subtitleEl = document.getElementById('page-subtitle');
@@ -4639,6 +4794,8 @@ function updatePageTitleForSchema() {
 
     // Also update the browser tab title
     document.title = display.title;
+
+    updateASMFChrome();
 }
 
 function setupReportsTabListeners() {
@@ -4742,6 +4899,8 @@ function activateReportTab(tabId) {
             firstPane.dataset.rendered = '1';
             populateASMFGraph();
         }
+    } else if (tabId === 'asaf-positioning') {
+        populateASAFPositioning();
     } else if (tabId.startsWith('report-')) {
         const reportId = tabId.replace('report-', '');
         populateMarketInsightReport(reportId);
@@ -4758,11 +4917,14 @@ function populateLegendReport() {
 
     const schemaName = appState.currentSchemaFileName || appState.currentSchemaFile || 'Default';
     schemaLabel.textContent = `Schema: ${schemaName}`;
+    const isASMF = isCurrentASMFSchema();
 
     // Dynamic title based on selected schema display info
     const display = (appState.schemaDisplayMap || {})[appState.currentSchemaFile] || {};
     const schemaAbbr = display.abbr || 'DFIR';
-    if (titleEl) titleEl.textContent = `${schemaAbbr} Capability Taxonomy - Pillar & Sub-Pillar Reference`;
+    if (titleEl) titleEl.textContent = isASMF
+        ? `${schemaAbbr} Adoption Framework - Dimension & Sub-Dimension Reference`
+        : `${schemaAbbr} Capability Taxonomy - Pillar & Sub-Pillar Reference`;
 
     // Intent
     if (appState.schemaIntent) {
@@ -4774,7 +4936,7 @@ function populateLegendReport() {
 
     const groups = appState.pillarsGrouped || [];
     if (groups.length === 0) {
-        body.innerHTML = '<p class="report-empty">No pillar data loaded. Select a schema and vendor file first.</p>';
+        body.innerHTML = `<p class="report-empty">No ${isASMF ? 'framework' : 'pillar'} data loaded. Select a ${isASMF ? 'schema' : 'schema and vendor file'} first.</p>`;
         return;
     }
 
@@ -4794,9 +4956,23 @@ function populateLegendReport() {
 
     let html = '';
 
+    if (isASMF) {
+        const stageItems = Object.entries(appState.scoreLegend || {}).map(([stage, description]) => `
+            <div class="report-detail-block" style="margin-bottom:12px;">
+                <h4 class="report-detail-label">Stage ${stage}</h4>
+                <p class="report-detail-text">${description}</p>
+            </div>`).join('');
+
+        html += `<h2 class="report-section-title">Maturity Stage Reference</h2>
+                 <p class="report-section-subtitle">Stage definitions used to assess current-state maturity and target-state adoption across every framework dimension.</p>
+                 <div style="margin-bottom:28px;">${stageItems}</div>`;
+    }
+
     // ── Pillars & Sub-Pillars ──
-    html += `<h2 class="report-section-title">Pillar & Sub-Pillar Reference</h2>
-             <p class="report-section-subtitle">Complete breakdown of every pillar and its constituent sub-pillars, including definitions, evaluation criteria, and evidence requirements.</p>`;
+    html += `<h2 class="report-section-title">${isASMF ? 'Dimension & Sub-Dimension Reference' : 'Pillar & Sub-Pillar Reference'}</h2>
+             <p class="report-section-subtitle">${isASMF
+                ? 'Complete breakdown of every framework dimension and its constituent sub-dimensions, including definitions, assessment prompts, and maturity context.'
+                : 'Complete breakdown of every pillar and its constituent sub-pillars, including definitions, evaluation criteria, and evidence requirements.'}</p>`;
 
     groups.forEach((pillar, pIdx) => {
         const enrichedPillar = enrichedPillarMap[pillar.code] || {};
@@ -4835,7 +5011,7 @@ function populateLegendReport() {
 
         // Sub-Pillar overview sentence
         const spCount = (pillar.sub_pillars || []).length;
-        html += `<p class="report-sp-overview">This pillar contains <strong>${spCount}</strong> sub-pillar${spCount !== 1 ? 's' : ''}, detailed below.</p>`;
+        html += `<p class="report-sp-overview">This ${isASMF ? 'dimension' : 'pillar'} contains <strong>${spCount}</strong> ${isASMF ? 'sub-dimension' : 'sub-pillar'}${spCount !== 1 ? 's' : ''}, detailed below.</p>`;
 
         // Sub-pillar cards (longform)
         html += `<div class="report-sub-pillars-longform">`;
@@ -4857,7 +5033,7 @@ function populateLegendReport() {
                 </div>
 
                 <div class="report-sp-longform-section">
-                    <h4>Definition</h4>
+                    <h4>${isASMF ? 'Assessment Focus' : 'Definition'}</h4>
                     <p>${sp.definition || 'No definition provided.'}</p>
                 </div>`;
 
@@ -4929,13 +5105,21 @@ function exportLegendReportAsMarkdown() {
     // Title — dynamic based on selected schema
     const display = (appState.schemaDisplayMap || {})[appState.currentSchemaFile] || {};
     const schemaAbbr = display.abbr || 'DFIR';
-    md += `# ${schemaAbbr} Capability Taxonomy — Pillar & Sub-Pillar Reference\n\n`;
+    const isASMF = isCurrentASMFSchema();
+    md += `# ${schemaAbbr} ${isASMF ? 'Adoption Framework' : 'Capability Taxonomy'} — ${isASMF ? 'Dimension & Sub-Dimension' : 'Pillar & Sub-Pillar'} Reference\n\n`;
     md += `**Schema:** ${schemaName}\n\n`;
     if (appState.schemaIntent) {
         md += `> ${appState.schemaIntent}\n\n`;
     }
 
-    md += `---\n\n## Pillar & Sub-Pillar Reference\n\n`;
+    if (isASMF) {
+        md += `---\n\n## Maturity Stage Reference\n\n`;
+        Object.entries(appState.scoreLegend || {}).forEach(([stage, description]) => {
+            md += `### Stage ${stage}\n\n${description}\n\n`;
+        });
+    }
+
+    md += `---\n\n## ${isASMF ? 'Dimension & Sub-Dimension Reference' : 'Pillar & Sub-Pillar Reference'}\n\n`;
 
     groups.forEach((pillar) => {
         const enrichedPillar = enrichedPillarMap[pillar.code] || {};
@@ -4956,7 +5140,7 @@ function exportLegendReportAsMarkdown() {
         }
 
         const subs = pillar.sub_pillars || [];
-        md += `*${subs.length} sub-pillar${subs.length !== 1 ? 's' : ''}*\n\n`;
+        md += `*${subs.length} ${isASMF ? 'sub-dimension' : 'sub-pillar'}${subs.length !== 1 ? 's' : ''}*\n\n`;
 
         subs.forEach((sp, idx) => {
             const enriched = enrichedSPMap[sp.id] || {};
@@ -4968,7 +5152,7 @@ function exportLegendReportAsMarkdown() {
             md += `#### ${idx + 1}. ${sp.id} — ${sp.name}\n\n`;
 
             if (sp.definition) {
-                md += `**Definition:** ${sp.definition}\n\n`;
+                md += `**${isASMF ? 'Assessment Focus' : 'Definition'}:** ${sp.definition}\n\n`;
             }
 
             if (activities.length > 0) {
@@ -5008,7 +5192,7 @@ function exportLegendReportAsMarkdown() {
     const a = document.createElement('a');
     a.href = url;
     const safeName = schemaName.replace(/\.json$/i, '').replace(/[^a-zA-Z0-9_-]/g, '_');
-    a.download = `DFIR_Capability_Legend_${safeName}.md`;
+    a.download = `${schemaAbbr}_${isASMF ? 'Framework_Reference' : 'Capability_Legend'}_${safeName}.md`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -5041,8 +5225,8 @@ const _miTemplateSections = [
         limits: '300 words maximum', icon: '📋',
         guidelines: ['Contains two required subsections: Key Findings and Recommendations.','Total word count for both subsections must not exceed 300 words.'],
         subsections: [
-            { name: 'Key Findings', required: true, detail: '2–4 bulleted insight statements. Each bullet should convey a standalone finding that the analysis supports.' },
-            { name: 'Recommendations', required: true, detail: '4 bullets maximum. Must be action-oriented and specific. Each recommendation should be something the reader can act on.' }
+            { name: 'Key Findings', required: true, detail: '2–4 bulleted insight statements. <strong>Each finding must be exactly two sentences.</strong><br><br><em>First sentence</em> &mdash; the declarative claim or insight (what is true). Lead with the specific datum or judgment, not setup language.<br><em>Second sentence</em> &mdash; the supporting evidence, market implication, or &ldquo;so what&rdquo; (why it matters). Keep it tight; no third sentence, no parenthetical chains.<br><br>Findings are <strong>headlines, not articles</strong>. Any statistics, lists, sub-capability detail, framework mappings, or multi-clause reasoning belong in the Analysis section, not here. If a finding requires more than two sentences to defend, the defence goes into Analysis and the finding becomes the conclusion drawn from it.' },
+            { name: 'Recommendations', required: true, detail: '<strong>One Recommendation per Key Finding (1:1 mapping).</strong> If the Executive Summary contains 4 Findings, it contains 4 Recommendations; 6 Findings means 6 Recommendations. Each Recommendation is the direct, actionable response to its paired Finding and should sit in the same order so the pairing is obvious.<br><br>Must be action-oriented and specific. Each Recommendation should be something the reader can act on.<br><br><strong>A good recommendation does one or more of the following:</strong><ol style="margin:6px 0 10px 18px;padding:0;"><li>Help clients diagnose and solve problems in their organizations</li><li>Help clients avoid common mistakes</li><li>Help clients save time and money</li><li>Present alternative approaches to a situation</li><li>Present practical advice about a short-term activity</li><li>Provide unconventional, but useful, approaches to a common problem</li><li>Provide a practical foundation and tips about a concept or idea</li></ol><strong>A good recommendation:</strong><ol style="margin:6px 0 0 18px;padding:0;"><li>Is practical and personal (like a &ldquo;to-do list&rdquo; for the client).</li><li>Starts with a muscular action verb (no platitudes, e.g., &ldquo;optimize&rdquo; and &ldquo;maximize&rdquo;).</li><li>Is actionable and has two sentences:<ul style="margin:4px 0 0 18px;padding:0;"><li><em>First sentence</em> &mdash; what is being recommended.</li><li><em>Second sentence</em> &mdash; how to implement the recommendation.</li></ul></li></ol>' }
         ],
         examples: []
     },
@@ -5055,7 +5239,17 @@ const _miTemplateSections = [
     {
         id: 'mi-analysis', name: 'Analysis', required: true, headerPublish: true,
         limits: 'No explicit word limit (body of the document)', icon: '🔬',
-        guidelines: ['This is the substance of the document — the single argument the research makes.','Structure with 2–4 clear subheads.','Include figures and charts as appropriate.','Each subhead should advance a distinct facet of the argument.','Avoid repeating content from Key Findings or Conclusion.'],
+        guidelines: [
+            '<strong>Analysis is the bridge.</strong> This is where each Key Finding meets the Recommendation it earns. Every subhead should walk from “what we found in the market” to “what a CPO should therefore do about it.”',
+            '<strong>Structure with 2&ndash;4 clear, descriptive subheads.</strong> Each subhead is a full clause or sharp noun phrase that telegraphs the argument inside (e.g., <em>“Adversary Management is unclaimed territory — and the highest-leverage place to invest”</em>), not a one-word label.',
+            '<strong>Carry the detail that Findings deliberately omit:</strong> market dynamics, framework mappings, sub-capability breakdowns, vendor-archetype reasoning, and multi-clause justification.',
+            '<strong>No raw scores. No score thresholds. No numeric pillar values.</strong> Never reference “2.0,” “2.5,” “3.5,” “scoring above the competency threshold,” “X scored Y,” or any raw 0&ndash;5 number. Translate every scoring observation into <strong>percentage-based market analysis</strong> &mdash; share of vendors at competency, share achieving full-spectrum coverage, adoption rates by archetype.',
+            '<strong>Use percentages, share-of-market figures, and adoption rates</strong> to characterise the market. These are intelligible to a CPO; raw analyst scores are not.',
+            '<strong>Every Finding and every Recommendation must be defensible from this section.</strong> If either cannot be traced to a paragraph here, expand Analysis or remove the unsupported claim.',
+            '<strong>Figures and charts follow the same rule.</strong> Axis labels, legends, and chart titles use percentages, ranks, or qualitative bands; never raw scores.',
+            'Do not repeat Findings verbatim. Restate the claim once when introducing the supporting argument, then move directly to evidence.',
+            'Do not preview the Conclusion. Analysis builds the case and earns the Recommendation; Conclusion translates it into a sequenced plan.'
+        ],
         examples: []
     },
     {
@@ -5091,8 +5285,15 @@ const _miTemplateSections = [
     {
         id: 'mi-acronyms', name: 'Acronym Key and Glossary Terms', required: false, headerPublish: true,
         limits: 'As needed', icon: '🔤',
-        guidelines: ['Define market- or technology-specific terms.','Include acronyms used in the document with their expansions.'],
-        examples: ['DFIR — Digital Forensics and Incident Response','SHAP — Shapley Additive Explanations']
+        guidelines: [
+            '<strong>Completeness is mandatory.</strong> Every abbreviation, acronym, or specialised term that appears anywhere in the document &mdash; Title, Summary, Findings, Recommendations, Analysis, Background, Impact, Conclusion, or Notes &mdash; must have a definition here.',
+            '<strong>Define on first use? Still list here.</strong> An inline expansion does not exempt the term from the Glossary; the Glossary is the single canonical reference.',
+            'Alphabetise the list to make scanning fast for readers who jump straight to a definition.',
+            'Definitions are <strong>one to two sentences</strong>. They define the term &mdash; they do not editorialise about the market.',
+            '<strong>No raw scores in glossary definitions.</strong> Follow the same rule as Analysis: characterise market position with percentages or qualitative bands (e.g., &ldquo;most underserved defensive pillar in the cohort&rdquo;), never with raw 0&ndash;5 numbers.',
+            'Audit before publication: read every section and flag every capitalised abbreviation, framework name, role acronym (CPO, CISO, MSSP), or domain-specific phrase &mdash; if it is not in the list, add it.'
+        ],
+        examples: ['DFIR &mdash; Digital Forensics and Incident Response','SHAP &mdash; Shapley Additive Explanations','CPO &mdash; Chief Product Officer','MSSP &mdash; Managed Security Service Provider']
     },
     {
         id: 'mi-evidence', name: 'Evidence', required: false, headerPublish: true,
@@ -5428,15 +5629,15 @@ function exportMarketInsightTemplateAsMarkdown() {
     const templateSections = [
         { name: 'Title', req: 'Required', limits: '20–65 characters', notes: 'Suggested formats: "Technology Insight: [name], [period]". No period at end.' },
         { name: 'Summary', req: 'Required', limits: '300 characters HARD LIMIT', notes: '2–3 sentences contextualizing the research.' },
-        { name: 'Executive Summary', req: 'Required', limits: '300 words maximum', notes: 'Two subsections: Key Findings (2–4 bullets) and Recommendations (4 bullets max, action-oriented).' },
+        { name: 'Executive Summary', req: 'Required', limits: '300 words maximum', notes: 'Two subsections: Key Findings (2–4 bullets, each exactly two sentences) and Recommendations (**one per Finding, 1:1 mapping, same order**, each exactly two sentences).' },
         { name: 'Strategic Planning Assumption(s)', req: 'Optional', limits: 'No explicit limit', notes: 'Relevant SPAs if team uses them.' },
-        { name: 'Analysis', req: 'Required', limits: 'Body of document', notes: 'Single argument, 2–4 subheads, figures as appropriate.' },
+        { name: 'Analysis', req: 'Required', limits: 'Body of document', notes: 'The bridge between Findings and Recommendations. 2–4 descriptive subheads. **No raw scores or score thresholds** — translate all scoring data into percentage-based market analysis (share of vendors at competency, full-spectrum coverage rates, adoption by archetype).' },
         { name: 'Background and Context', req: 'Optional', limits: 'Up to 500 words', notes: 'Profile/describe market or technology.' },
         { name: 'The Impact', req: 'Optional', limits: 'Up to 2,000 words', notes: 'Implications for audience; who, when, how affected.' },
         { name: 'Conclusion', req: 'Optional', limits: 'Up to 500 words', notes: 'What audience should do. Strategy reassessment, actions.' },
         { name: 'Contributors', req: 'Optional', limits: 'Names only', notes: 'Alphabetical by last name, comma-separated. HARD RULE.' },
         { name: 'Recommended Reading', req: 'Required', limits: 'External', notes: 'Managed via Add-On or Item Detail page.' },
-        { name: 'Acronym Key and Glossary Terms', req: 'Optional', limits: 'As needed', notes: 'Market/technology definitions and acronym expansions.' },
+        { name: 'Acronym Key and Glossary Terms', req: 'Optional', limits: 'As needed', notes: 'Define EVERY abbreviation, acronym, and specialised term used anywhere in the document. Alphabetised. One to two sentences per entry. No raw scores in definitions.' },
         { name: 'Evidence', req: 'Optional', limits: 'As needed', notes: 'Secondary research sources and qualifications.' },
         { name: 'Notes', req: 'Optional', limits: 'As needed', notes: 'Non-essential detail. Format: "Note X: [Title]."' }
     ];
@@ -5448,6 +5649,37 @@ function exportMarketInsightTemplateAsMarkdown() {
         md += `| ${i + 1} | ${s.name} | ${s.req} | ${s.limits} | ${s.notes} |\n`;
     });
 
+    md += `\n---\n\n## Key Findings Guidance (Executive Summary)\n\n`;
+    md += `Each Key Finding is **exactly two sentences**:\n\n`;
+    md += `1. *First sentence* — the declarative claim or insight (what is true). Lead with the specific datum or judgment, not setup language.\n`;
+    md += `2. *Second sentence* — the supporting evidence, market implication, or "so what" (why it matters).\n\n`;
+    md += `Findings are **headlines, not articles**. Statistics, sub-capability detail, framework mappings, and multi-clause reasoning belong in the Analysis section. If a finding needs more than two sentences to defend, the defense goes into Analysis and the finding becomes the conclusion drawn from it.\n\n`;
+    md += `## Analysis Guidance\n\n`;
+    md += `- **Analysis is the bridge.** Each subhead walks from "what we found" (Finding) to "what to do about it" (Recommendation).\n`;
+    md += `- Structure with 2–4 clear, descriptive subheads — full clauses or sharp noun phrases, not one-word labels.\n`;
+    md += `- Carry the detail that Findings deliberately omit — market dynamics, framework mappings, sub-capability breakdowns, vendor-archetype reasoning, multi-clause justification.\n`;
+    md += `- **No raw scores. No score thresholds. No numeric pillar values.** Never reference "2.0," "2.5," "scoring above competency," or any raw 0–5 number. Translate every scoring observation into **percentage-based market analysis** — share of vendors at competency, share achieving full-spectrum coverage, adoption rates by archetype.\n`;
+    md += `- Use percentages, share-of-market figures, and adoption rates to characterise the market. These are intelligible to a CPO; raw analyst scores are not.\n`;
+    md += `- Every Finding and every Recommendation must be defensible from this section. If either cannot be traced here, expand Analysis or remove the unsupported claim.\n`;
+    md += `- Figures and charts follow the same rule: axis labels, legends, and chart titles use percentages, ranks, or qualitative bands — never raw scores.\n`;
+    md += `- Do not repeat Findings verbatim; restate the claim once when introducing the supporting argument, then move directly to evidence.\n`;
+    md += `- Do not preview the Conclusion. Analysis builds the case and earns the Recommendation; Conclusion translates it into a sequenced plan.\n\n`;
+    md += `---\n\n## Recommendations Guidance (Executive Summary)\n\n`;
+    md += `**One Recommendation per Key Finding (1:1 mapping).** If the Executive Summary contains 4 Findings, it contains 4 Recommendations; 6 Findings means 6 Recommendations. Each Recommendation is the direct, actionable response to its paired Finding and sits in the same order.\n\n`;
+    md += `**A good recommendation does one or more of the following:**\n\n`;
+    md += `1. Help clients diagnose and solve problems in their organizations\n`;
+    md += `2. Help clients avoid common mistakes\n`;
+    md += `3. Help clients save time and money\n`;
+    md += `4. Present alternative approaches to a situation\n`;
+    md += `5. Present practical advice about a short-term activity\n`;
+    md += `6. Provide unconventional, but useful, approaches to a common problem\n`;
+    md += `7. Provide a practical foundation and tips about a concept or idea\n\n`;
+    md += `**A good recommendation:**\n\n`;
+    md += `1. Is practical and personal (like a "to-do list" for the client).\n`;
+    md += `2. Starts with a muscular action verb (no platitudes, e.g., "optimize" and "maximize").\n`;
+    md += `3. Is actionable and has two sentences:\n`;
+    md += `   - *First sentence* — what is being recommended.\n`;
+    md += `   - *Second sentence* — how to implement the recommendation.\n`;
     md += `\n---\n\n*Generated on ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}*\n`;
 
     const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
@@ -11032,21 +11264,16 @@ function renderComparisonRadar(vendorsForAverages = null) {
         };
     }).filter(s => s.count > 0 || comparisonRadarState.type === 'vendor');
 
-    const width = Math.max(320, container.clientWidth || 600);
-    const height = Math.max(260, container.clientHeight || 420);
-    const padding = 40;
-    const cx = width / 2;
-    const cy = height / 2;
-    const radius = Math.min(width, height) / 2 - padding;
+    const { width: measuredWidth, height: measuredHeight } = _getSafeContainerDimensions(container, {
+        minWidth: 320,
+        minHeight: 260,
+        fallbackWidth: 600,
+        fallbackHeight: 420
+    });
+    const { width, height, cx, cy, radius } = _getSafeRadarGeometry({ width: measuredWidth, height: measuredHeight, padding: 40 });
 
-    const axisCount = axes.length;
-    const angleStep = (Math.PI * 2) / axisCount;
-    const startAngle = -Math.PI / 2;
     const scaleMax = 5;
-
-    function pt(angle, r) {
-        return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
-    }
+    const radar = _getRadarAxisLayout({ axes, cx, cy, denseFont: 8, mediumFont: 9, sparseFont: 12 });
 
     // Background + grid
     let svg = `
@@ -11061,36 +11288,32 @@ function renderComparisonRadar(vendorsForAverages = null) {
     }
 
     // Axes + labels
-    const labelEvery = axisCount > 22 ? 3 : axisCount > 12 ? 2 : 1;
-    const labelFont = axisCount > 22 ? 8 : axisCount > 12 ? 9 : 12;
-
-    axes.forEach((p, i) => {
-        const a = startAngle + i * angleStep;
-        const end = pt(a, radius);
+    radar.entries.forEach(({ axis: p, i, angle: a }) => {
+        const end = radar.pt(a, radius);
         svg += `<line x1="${cx}" y1="${cy}" x2="${end.x}" y2="${end.y}" stroke="var(--border-color)" stroke-width="1" opacity="0.8" />`;
 
-        if (i % labelEvery === 0) {
-            const labelPos = pt(a, radius + 16);
+        if (i % radar.labelEvery === 0) {
+            const labelPos = radar.pt(a, radius + 16);
             const anchor = (Math.cos(a) > 0.2) ? 'start' : (Math.cos(a) < -0.2) ? 'end' : 'middle';
-            svg += `<text x="${labelPos.x}" y="${labelPos.y}" font-size="${labelFont}" fill="var(--text-secondary)" text-anchor="${anchor}" dominant-baseline="middle"><title>${p}</title>${p}</text>`;
+            svg += `<text x="${labelPos.x}" y="${labelPos.y}" font-size="${radar.labelFont}" fill="var(--text-secondary)" text-anchor="${anchor}" dominant-baseline="middle"><title>${p}</title>${p}</text>`;
         }
     });
 
     // Series polygons
     computedSeries.forEach((s) => {
         const points = s.scores.map((val, i) => {
-            const a = startAngle + i * angleStep;
+            const a = radar.angleForIndex(i);
             const r = radius * (Math.max(0, Math.min(scaleMax, Number(val))) / scaleMax);
-            const p = pt(a, r);
+            const p = radar.pt(a, r);
             return `${p.x},${p.y}`;
         }).join(' ');
 
         svg += `<polygon points="${points}" fill="${s.color.fill}" stroke="${s.color.stroke}" stroke-width="2" />`;
         // Dots
         s.scores.forEach((val, i) => {
-            const a = startAngle + i * angleStep;
+            const a = radar.angleForIndex(i);
             const r = radius * (Math.max(0, Math.min(scaleMax, Number(val))) / scaleMax);
-            const p = pt(a, r);
+            const p = radar.pt(a, r);
             svg += `<circle cx="${p.x}" cy="${p.y}" r="3" fill="${s.color.stroke}" />`;
         });
     });
@@ -11442,6 +11665,67 @@ function buildPillarScoresFromSubPillars(subPillarScores) {
     return result;
 }
 
+function _getSafeContainerDimensions(container, options = {}) {
+    const {
+        minWidth = 320,
+        minHeight = 260,
+        fallbackWidth = 600,
+        fallbackHeight = 420
+    } = options;
+
+    const parentWidth = container?.parentElement?.clientWidth || container?.parentElement?.offsetWidth || 0;
+    const parentHeight = container?.parentElement?.clientHeight || container?.parentElement?.offsetHeight || 0;
+    const width = Math.max(minWidth, container?.clientWidth || container?.offsetWidth || parentWidth || fallbackWidth);
+    const height = Math.max(minHeight, container?.clientHeight || container?.offsetHeight || parentHeight || fallbackHeight);
+
+    return { width, height };
+}
+
+function _getSafeRadarGeometry({ width, height, padding }) {
+    const safeWidth = Math.max(160, Number(width) || 0);
+    const safeHeight = Math.max(160, Number(height) || 0);
+    const safePadding = Math.max(0, Number(padding) || 0);
+    const radius = Math.max(24, (Math.min(safeWidth, safeHeight) / 2) - safePadding);
+
+    return {
+        width: safeWidth,
+        height: safeHeight,
+        padding: safePadding,
+        cx: safeWidth / 2,
+        cy: safeHeight / 2,
+        radius
+    };
+}
+
+function _getRadarAxisLayout({ axes = [], cx, cy, denseFont = 8, mediumFont = 9, sparseFont = 10 }) {
+    const axisCount = Math.max(axes.length, 1);
+    const angleStep = (Math.PI * 2) / axisCount;
+    const startAngle = -Math.PI / 2;
+    const labelEvery = axes.length > 22 ? 3 : axes.length > 12 ? 2 : 1;
+    const labelFont = axes.length > 22 ? denseFont : axes.length > 12 ? mediumFont : sparseFont;
+
+    function pt(angle, r) {
+        return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
+    }
+
+    function angleForIndex(i) {
+        return startAngle + i * angleStep;
+    }
+
+    const entries = axes.map((axis, i) => ({ axis, i, angle: angleForIndex(i) }));
+
+    return {
+        axisCount,
+        angleStep,
+        startAngle,
+        labelEvery,
+        labelFont,
+        pt,
+        angleForIndex,
+        entries
+    };
+}
+
 function renderValidationRadar(container, data, title) {
     const pillarAxes = getActivePillarCodes();
     const subPillarAxes = (appState.subPillars || []).map(s => s.id);
@@ -11453,21 +11737,10 @@ function renderValidationRadar(container, data, title) {
             : pillarAxes;
     
     // Use fixed dimensions - SVG will scale responsively via viewBox
-    const width = 350;
-    const height = 320;
-    const padding = 35;
-    const cx = width / 2;
-    const cy = height / 2;
-    const radius = Math.min(width, height) / 2 - padding;
+    const { width, height, cx, cy, radius } = _getSafeRadarGeometry({ width: 350, height: 320, padding: 35 });
     
-    const axisCount = axes.length;
-    const angleStep = (Math.PI * 2) / axisCount;
-    const startAngle = -Math.PI / 2;
     const scaleMax = 5;
-    
-    function pt(angle, r) {
-        return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
-    }
+    const radar = _getRadarAxisLayout({ axes, cx, cy, denseFont: 8, mediumFont: 9, sparseFont: 10 });
     
     // Build SVG
     let svg = `
@@ -11482,27 +11755,23 @@ function renderValidationRadar(container, data, title) {
     }
     
     // Axes
-    const labelEvery = axisCount > 22 ? 3 : axisCount > 12 ? 2 : 1;
-    const labelFont = axisCount > 22 ? 8 : axisCount > 12 ? 9 : 10;
-    
-    axes.forEach((p, i) => {
-        const a = startAngle + i * angleStep;
-        const end = pt(a, radius);
+    radar.entries.forEach(({ axis: p, i, angle: a }) => {
+        const end = radar.pt(a, radius);
         svg += `<line x1="${cx}" y1="${cy}" x2="${end.x}" y2="${end.y}" stroke="var(--border-color)" stroke-width="1" opacity="0.8" />`;
         
-        if (i % labelEvery === 0) {
-            const labelPos = pt(a, radius + 14);
+        if (i % radar.labelEvery === 0) {
+            const labelPos = radar.pt(a, radius + 14);
             const anchor = (Math.cos(a) > 0.2) ? 'start' : (Math.cos(a) < -0.2) ? 'end' : 'middle';
-            svg += `<text x="${labelPos.x}" y="${labelPos.y}" font-size="${labelFont}" fill="var(--text-secondary)" text-anchor="${anchor}" dominant-baseline="middle"><title>${p}</title>${p}</text>`;
+            svg += `<text x="${labelPos.x}" y="${labelPos.y}" font-size="${radar.labelFont}" fill="var(--text-secondary)" text-anchor="${anchor}" dominant-baseline="middle"><title>${p}</title>${p}</text>`;
         }
     });
     
     // Data polygon
     const points = axes.map((axis, i) => {
         const val = pillarAxes.includes(axis) ? data.pillars[axis] : data.subPillars[axis];
-        const a = startAngle + i * angleStep;
+        const a = radar.angleForIndex(i);
         const r = radius * (Math.max(0, Math.min(scaleMax, Number(val || 0))) / scaleMax);
-        const p = pt(a, r);
+        const p = radar.pt(a, r);
         return `${p.x},${p.y}`;
     }).join(' ');
     
@@ -11515,9 +11784,9 @@ function renderValidationRadar(container, data, title) {
     // Dots
     axes.forEach((axis, i) => {
         const val = pillarAxes.includes(axis) ? data.pillars[axis] : data.subPillars[axis];
-        const a = startAngle + i * angleStep;
+        const a = radar.angleForIndex(i);
         const r = radius * (Math.max(0, Math.min(scaleMax, Number(val || 0))) / scaleMax);
-        const p = pt(a, r);
+        const p = radar.pt(a, r);
         svg += `<circle cx="${p.x}" cy="${p.y}" r="3" fill="${color.stroke}" />`;
     });
     
@@ -11537,21 +11806,10 @@ function renderValidationRadarOverlay(container, researchedData, validatedData, 
             : pillarAxes;
     
     // Use fixed dimensions - SVG will scale responsively via viewBox
-    const width = 450;
-    const height = 400;
-    const padding = 40;
-    const cx = width / 2;
-    const cy = height / 2;
-    const radius = Math.min(width, height) / 2 - padding;
+    const { width, height, cx, cy, radius } = _getSafeRadarGeometry({ width: 450, height: 400, padding: 40 });
     
-    const axisCount = axes.length;
-    const angleStep = (Math.PI * 2) / axisCount;
-    const startAngle = -Math.PI / 2;
     const scaleMax = 5;
-    
-    function pt(angle, r) {
-        return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
-    }
+    const radar = _getRadarAxisLayout({ axes, cx, cy, denseFont: 8, mediumFont: 9, sparseFont: 10 });
     
     // Build SVG
     let svg = `
@@ -11576,18 +11834,14 @@ function renderValidationRadarOverlay(container, researchedData, validatedData, 
     svg += `<text x="${cx + 10}" y="${cy - radius * 0.6 - 8}" font-size="10" fill="var(--text-secondary)" opacity="0.7">3</text>`;
     
     // Axes
-    const labelEvery = axisCount > 22 ? 3 : axisCount > 12 ? 2 : 1;
-    const labelFont = axisCount > 22 ? 8 : axisCount > 12 ? 9 : 10;
-    
-    axes.forEach((p, i) => {
-        const a = startAngle + i * angleStep;
-        const end = pt(a, radius);
+    radar.entries.forEach(({ axis: p, i, angle: a }) => {
+        const end = radar.pt(a, radius);
         svg += `<line x1="${cx}" y1="${cy}" x2="${end.x}" y2="${end.y}" stroke="var(--border-color)" stroke-width="1" opacity="0.8" />`;
         
-        if (i % labelEvery === 0) {
-            const labelPos = pt(a, radius + 18);
+        if (i % radar.labelEvery === 0) {
+            const labelPos = radar.pt(a, radius + 18);
             const anchor = (Math.cos(a) > 0.2) ? 'start' : (Math.cos(a) < -0.2) ? 'end' : 'middle';
-            svg += `<text x="${labelPos.x}" y="${labelPos.y}" font-size="${labelFont}" fill="var(--text-secondary)" text-anchor="${anchor}" dominant-baseline="middle"><title>${p}</title>${p}</text>`;
+            svg += `<text x="${labelPos.x}" y="${labelPos.y}" font-size="${radar.labelFont}" fill="var(--text-secondary)" text-anchor="${anchor}" dominant-baseline="middle"><title>${p}</title>${p}</text>`;
         }
     });
     
@@ -11604,9 +11858,9 @@ function renderValidationRadarOverlay(container, researchedData, validatedData, 
     datasets.forEach(dataset => {
         const points = axes.map((axis, i) => {
             const val = pillarAxes.includes(axis) ? dataset.data.pillars[axis] : dataset.data.subPillars[axis];
-            const a = startAngle + i * angleStep;
+            const a = radar.angleForIndex(i);
             const r = radius * (Math.max(0, Math.min(scaleMax, Number(val || 0))) / scaleMax);
-            const p = pt(a, r);
+            const p = radar.pt(a, r);
             return `${p.x},${p.y}`;
         }).join(' ');
         
@@ -11615,9 +11869,9 @@ function renderValidationRadarOverlay(container, researchedData, validatedData, 
         // Dots
         axes.forEach((axis, i) => {
             const val = pillarAxes.includes(axis) ? dataset.data.pillars[axis] : dataset.data.subPillars[axis];
-            const a = startAngle + i * angleStep;
+            const a = radar.angleForIndex(i);
             const r = radius * (Math.max(0, Math.min(scaleMax, Number(val || 0))) / scaleMax);
-            const p = pt(a, r);
+            const p = radar.pt(a, r);
             svg += `<circle cx="${p.x}" cy="${p.y}" r="3.5" fill="${dataset.color.stroke}" stroke="white" stroke-width="1.5" />`;
         });
     });
@@ -12734,11 +12988,20 @@ function renderAnalyticsPillarRadarChart(vendors) {
     }
     
     // Create SVG radar chart with sub-pillars
-    const size = Math.min(chart.offsetWidth - 40, chart.offsetHeight - 40);
+    // Guard against initial renders before layout settles: empty/hidden containers can report 0 height,
+    // which previously produced negative circle radii like -3/-6/-9/-12/-15.
+    const { width: measuredWidth, height: measuredHeight } = _getSafeContainerDimensions(chart, {
+        minWidth: 320,
+        minHeight: 320,
+        fallbackWidth: 480,
+        fallbackHeight: 420
+    });
+    const size = Math.max(260, Math.min(measuredWidth - 40, measuredHeight - 40));
     const center = size / 2;
-    const radius = (size / 2) * 0.75;
+    const radius = _getSafeRadarGeometry({ width: size, height: size, padding: size * 0.125 }).radius;
     const levels = 5;
     const maxValue = 5;
+    const chartCenter = center + 20;
     
     // All sub-pillars in order
     const subPillars = (appState.subPillars || []).map(s => s.id);
@@ -12753,7 +13016,8 @@ function renderAnalyticsPillarRadarChart(vendors) {
     // Compute how many sub-pillars per pillar (may vary by schema)
     const pillarSubcount = pillarList.length > 0 ? Math.ceil(subPillars.length / pillarList.length) : 4;
     
-    const angles = subPillars.map((_, i) => (i * 2 * Math.PI) / subPillars.length - Math.PI / 2);
+    const radar = _getRadarAxisLayout({ axes: subPillars, cx: chartCenter, cy: chartCenter, denseFont: 9, mediumFont: 9, sparseFont: 9 });
+    const angles = radar.entries.map(entry => entry.angle);
     
     // Create container for controls and chart
     let html = `
@@ -12788,25 +13052,25 @@ function renderAnalyticsPillarRadarChart(vendors) {
     </style></defs>`;
     
     // Draw center point (0)
-    svg += `<circle cx="${center + 20}" cy="${center + 20}" r="2" fill="var(--text-secondary)" opacity="0.5"/>`;
-    svg += `<text x="${center + 20 - 8}" y="${center + 20 - 5}" class="level-label" font-size="8">0</text>`;
+    svg += `<circle cx="${chartCenter}" cy="${chartCenter}" r="2" fill="var(--text-secondary)" opacity="0.5"/>`;
+    svg += `<text x="${chartCenter - 8}" y="${chartCenter - 5}" class="level-label" font-size="8">0</text>`;
     
     // Draw level circles and labels
     for (let i = 1; i <= levels; i++) {
         const r = (radius * i) / levels;
-        svg += `<circle cx="${center + 20}" cy="${center + 20}" r="${r}" stroke="var(--border-color)" stroke-width="1" fill="none" opacity="0.3"/>`;
+        svg += `<circle cx="${chartCenter}" cy="${chartCenter}" r="${r}" stroke="var(--border-color)" stroke-width="1" fill="none" opacity="0.3"/>`;
         
         // Add level labels (1 at innermost, 5 at outermost)
         const levelValue = i;
-        svg += `<text x="${center + 20 + r + 3}" y="${center + 20 - 3}" class="level-label">${levelValue}</text>`;
+        svg += `<text x="${chartCenter + r + 3}" y="${chartCenter - 3}" class="level-label">${levelValue}</text>`;
     }
     
     // Draw grid lines
     angles.forEach((angle) => {
-        const x1 = center + 20;
-        const y1 = center + 20;
-        const x2 = center + 20 + radius * Math.cos(angle);
-        const y2 = center + 20 + radius * Math.sin(angle);
+        const x1 = chartCenter;
+        const y1 = chartCenter;
+        const x2 = chartCenter + radius * Math.cos(angle);
+        const y2 = chartCenter + radius * Math.sin(angle);
         
         svg += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--border-color)" stroke-width="0.5" opacity="0.3"/>`;
     });
@@ -12826,8 +13090,8 @@ function renderAnalyticsPillarRadarChart(vendors) {
             angles.forEach((angle, i) => {
                 const value = parseFloat(data.subPillars[subPillars[i]] || 0);
                 const scaledRadius = (value / maxValue) * radius;
-                const x = center + 20 + scaledRadius * Math.cos(angle);
-                const y = center + 20 + scaledRadius * Math.sin(angle);
+                const x = chartCenter + scaledRadius * Math.cos(angle);
+                const y = chartCenter + scaledRadius * Math.sin(angle);
                 subPillarPathData += (i === 0 ? 'M' : 'L') + x + ',' + y;
             });
             subPillarPathData += 'Z';
@@ -12843,8 +13107,8 @@ function renderAnalyticsPillarRadarChart(vendors) {
                 const pillar = pillarList[pillarIndex];
                 const value = parseFloat(data.pillars[pillar] || 0);
                 const scaledRadius = (value / maxValue) * radius;
-                const x = center + 20 + scaledRadius * Math.cos(angle);
-                const y = center + 20 + scaledRadius * Math.sin(angle);
+                const x = chartCenter + scaledRadius * Math.cos(angle);
+                const y = chartCenter + scaledRadius * Math.sin(angle);
                 pillarPathData += (i === 0 ? 'M' : 'L') + x + ',' + y;
             });
             pillarPathData += 'Z';
@@ -12859,8 +13123,8 @@ function renderAnalyticsPillarRadarChart(vendors) {
         const midIdx = startIdx + Math.floor(pillarSubcount / 2);
         const midAngle = angles[midIdx];
         const labelRadius = radius + 50;
-        const labelX = center + 20 + labelRadius * Math.cos(midAngle);
-        const labelY = center + 20 + labelRadius * Math.sin(midAngle);
+        const labelX = chartCenter + labelRadius * Math.cos(midAngle);
+        const labelY = chartCenter + labelRadius * Math.sin(midAngle);
         
         svg += `<text x="${labelX}" y="${labelY}" text-anchor="middle" dominant-baseline="middle" class="pillar-label" fill="var(--color-primary)" cursor="help" title="${pillar}">${pillar}</text>`;
     });
@@ -12868,8 +13132,8 @@ function renderAnalyticsPillarRadarChart(vendors) {
     // Add sub-pillar labels around the radar
     angles.forEach((angle, i) => {
         const labelRadius = radius + 30;
-        const labelX = center + 20 + labelRadius * Math.cos(angle);
-        const labelY = center + 20 + labelRadius * Math.sin(angle);
+        const labelX = chartCenter + labelRadius * Math.cos(angle);
+        const labelY = chartCenter + labelRadius * Math.sin(angle);
         const subPillarCode = subPillars[i];
         
         svg += `<text x="${labelX}" y="${labelY}" text-anchor="middle" dominant-baseline="middle" class="sub-pillar-label" fill="var(--text-secondary)" cursor="help" title="${subPillarLabels[subPillarCode]}">${subPillarCode}</text>`;
@@ -12884,8 +13148,8 @@ function renderAnalyticsPillarRadarChart(vendors) {
             angles.forEach((angle, i) => {
                 const value = parseFloat(data.subPillars[subPillars[i]] || 0);
                 const scaledRadius = (value / maxValue) * radius;
-                const x = center + 20 + scaledRadius * Math.cos(angle);
-                const y = center + 20 + scaledRadius * Math.sin(angle);
+                const x = chartCenter + scaledRadius * Math.cos(angle);
+                const y = chartCenter + scaledRadius * Math.sin(angle);
                 
                 svg += `<circle cx="${x}" cy="${y}" r="3" fill="${layer.color}" stroke="white" stroke-width="1.5"/>`;
             });
@@ -12899,8 +13163,8 @@ function renderAnalyticsPillarRadarChart(vendors) {
                 const midAngle = angles[midIdx];
                 const value = parseFloat(data.pillars[pillar] || 0);
                 const scaledRadius = (value / maxValue) * radius;
-                const x = center + 20 + scaledRadius * Math.cos(midAngle);
-                const y = center + 20 + scaledRadius * Math.sin(midAngle);
+                const x = chartCenter + scaledRadius * Math.cos(midAngle);
+                const y = chartCenter + scaledRadius * Math.sin(midAngle);
                 
                 svg += `<circle cx="${x}" cy="${y}" r="3.5" fill="${layer.color}" stroke="white" stroke-width="1.5"/>`;
             });
@@ -13077,14 +13341,18 @@ async function populateASMFRadar() {
     const stage3  = dims.map(([,d]) => 62);
     const stage1  = dims.map(([,d]) => 22);
 
+    const hostW = Math.max(320, Math.floor(el.clientWidth || 760));
+    const canvasMaxW = hostW < 920 ? Math.max(320, Math.min(620, hostW - 36)) : 560;
+    const canvasMaxH = Math.round(canvasMaxW * 1.07);
+
     el.innerHTML = `
-    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:700px;">
+    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:100%;">
       Each axis represents one of the 11 ASMF dimensions. The outer ring (Stage 5 — Fully Agentic) shows the target state.
       The middle band is Stage 3 (Directed Autonomy) — a realistic 3-year goal for most enterprises.
       The inner band is Stage 1 (Assisted) — typical today.
     </div>
-    <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
-      <canvas id="asmf-radar-chart" width="560" height="600" style="max-width:560px;"></canvas>
+        <div class="asmf-radar-layout" style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;width:100%;">
+                        <canvas id="asmf-radar-chart" width="${canvasMaxW}" height="${canvasMaxH}" style="width:min(100%,${canvasMaxW}px);max-width:100%;height:${canvasMaxH}px;flex:1 1 360px;"></canvas>
       <div style="flex:1;min-width:220px;">
         <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">Dimension Weights</div>
         ${dims.map(([id, d]) => {
@@ -13111,7 +13379,21 @@ async function populateASMFRadar() {
     const canvas = document.getElementById('asmf-radar-chart');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const cx = 280, cy = 310, R = 205; // extra top/bottom room for axis labels
+    const drawW = Math.max(320, Math.floor(canvas.clientWidth || canvasMaxW));
+    const drawH = Math.max(340, Math.floor(canvas.clientHeight || canvasMaxH));
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(drawW * dpr);
+    canvas.height = Math.floor(drawH * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const margin = Math.max(42, Math.min(70, drawW * 0.12));
+    const cx = drawW / 2;
+    const cy = (drawH / 2) + 8;
+    const R = Math.max(110, (Math.min(drawW, drawH) / 2) - margin);
+    const gridFont = Math.max(9, Math.min(11, Math.round(drawW / 56)));
+    const axisCodeFont = Math.max(9, Math.min(12, Math.round(drawW / 50)));
+    const axisLinePct = drawW < 420 ? 103 : 105;
+    const axisLabelPct = drawW < 420 ? 114 : 120;
     const n = dims.length;
     const angle0 = -Math.PI/2;
 
@@ -13121,7 +13403,7 @@ async function populateASMFRadar() {
         return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
     }
 
-ctx.clearRect(0,0,560,600);
+    ctx.clearRect(0,0,drawW,drawH);
 
     // Grid rings
     [20,40,60,80,100].forEach(pct => {
@@ -13135,7 +13417,7 @@ ctx.clearRect(0,0,560,600);
         ctx.lineWidth = pct===100?1.5:0.8;
         ctx.stroke();
         ctx.fillStyle='#475569';
-        ctx.font='10px system-ui';
+        ctx.font=`${gridFont}px system-ui`;
         ctx.textAlign='center';
         const [lx,ly]=radarPoint(0,pct);
         ctx.fillText(pct+'%', lx+4, ly-4);
@@ -13144,15 +13426,15 @@ ctx.clearRect(0,0,560,600);
     // Axis spokes + labels
     dims.forEach(([id,d],i) => {
         const a = angle0 + (2*Math.PI*i/n);
-        const [x2,y2]=radarPoint(i,105);
+        const [x2,y2]=radarPoint(i,axisLinePct);
         ctx.beginPath();
         ctx.moveTo(cx,cy);
         ctx.lineTo(x2,y2);
         ctx.strokeStyle='#1e293b';ctx.lineWidth=0.8;ctx.stroke();
         // Label
-        const [lx,ly]=radarPoint(i,120);
+        const [lx,ly]=radarPoint(i,axisLabelPct);
         ctx.fillStyle=_asmfDimColor(d.plane||'');
-        ctx.font='bold 11px system-ui';
+        ctx.font=`bold ${axisCodeFont}px system-ui`;
         ctx.textAlign=lx>cx+5?'left':lx<cx-5?'right':'center';
         ctx.fillText(id,lx,ly);
     });
@@ -13177,6 +13459,19 @@ ctx.clearRect(0,0,560,600);
 
     // Centre dot
     ctx.beginPath();ctx.arc(cx,cy,5,0,2*Math.PI);ctx.fillStyle='#f1f5f9';ctx.fill();
+
+    if (!_asmfRadarResizeBound) {
+        _asmfRadarResizeBound = true;
+        window.addEventListener('resize', () => {
+            if (_asmfRadarResizeTimer) clearTimeout(_asmfRadarResizeTimer);
+            _asmfRadarResizeTimer = setTimeout(() => {
+                const pane = document.getElementById('asmf-matrix-pane-radar');
+                if (pane && pane.classList.contains('active')) {
+                    populateASMFRadar();
+                }
+            }, 120);
+        });
+    }
 }
 
 // ── ASMF Effort Flow (Sankey-style SVG) ──────────────────────────────────────
@@ -13185,7 +13480,8 @@ async function populateASMFSankey() {
     const el = document.getElementById('asmf-sankey-content');
     if (!el) return;
 
-    const W = 900, H = 520;
+    const availableW = Math.max(0, Math.floor((el.clientWidth || el.parentElement?.clientWidth || 0) - 4));
+    const W = Math.max(760, Math.min(1400, availableW || 900));
     const stageLabels = ASMF_STAGE_LABELS;
     const stageColors = ASMF_STAGE_COLORS;
 
@@ -13211,16 +13507,23 @@ async function populateASMFSankey() {
     ];
 
     // Shift everything right to give labels room on the left
-    const labelW = 110; // px reserved for stage labels
+    const labelW = Math.max(96, Math.min(128, Math.round(W * 0.14))); // px reserved for stage labels
     const barX   = labelW + 10;
     const barW2  = W - barX - 20;
-    const nodeW = 100, nodeH = 40, rowH = 72, topY = 60;
+    const rowH = W >= 1200 ? 78 : W >= 920 ? 72 : 64;
+    const topY = 60;
+    const H = topY + (stages.length * rowH) + 50;
+    const nodeW = Math.max(92, Math.min(112, Math.round(W * 0.11)));
+    const nodeH = 40;
+    const colInnerPad = (nodeW / 2) + 4;
+    const colXMin = barX + colInnerPad;
+    const colXSpan = Math.max(40, barW2 - (colInnerPad * 2));
 
-    let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${W}px;overflow:visible;" font-family="system-ui,sans-serif">`;
+    let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="width:100%;max-width:100%;height:auto;overflow:visible;" font-family="system-ui,sans-serif">`;
 
     // Column headers (shifted right)
     cols.forEach(c => {
-        const cx2 = barX + (c.x / 860) * barW2;
+        const cx2 = colXMin + (c.x / 860) * colXSpan;
         const lines = c.label.split('\n');
         svg += `<rect x="${cx2-nodeW/2}" y="${topY-32}" width="${nodeW}" height="26" rx="4" fill="${c.color}22" stroke="${c.color}" stroke-width="1.5"/>`;
         lines.forEach((l,i) => svg += `<text x="${cx2}" y="${topY-32+10+(i*12)}" text-anchor="middle" font-size="10" font-weight="700" fill="${c.color}">${escapeHtml(l)}</text>`);
@@ -13247,7 +13550,7 @@ async function populateASMFSankey() {
 
     // Column lines (shifted)
     cols.forEach(c => {
-        const cx2 = barX + (c.x / 860) * barW2;
+        const cx2 = colXMin + (c.x / 860) * colXSpan;
         svg += `<line x1="${cx2}" y1="${topY}" x2="${cx2}" y2="${topY+stages.length*rowH}" stroke="${c.color}40" stroke-width="1" stroke-dasharray="3,3"/>`;
     });
 
@@ -13257,17 +13560,30 @@ async function populateASMFSankey() {
     svg += `</svg>`;
 
     el.innerHTML = `
-    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:760px;">
+    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:100%;">
       Each horizontal band represents an adoption stage. As you move from Stage 0 (Traditional) to Stage 5 (Fully Agentic),
       agentic systems absorb an increasing proportion of the work across every operational layer — from signal ingestion through to business outcomes.
     </div>
-    <div style="overflow-x:auto;">${svg}</div>
+    <div class="asmf-responsive-svg-wrap">${svg}</div>
     <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;">
       ${stages.map((s,i)=>`<div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);">
         <span style="width:14px;height:14px;border-radius:3px;background:${stageColors[i]};display:inline-block;"></span>
         ${escapeHtml(s.label.replace('\n',' — '))}
       </div>`).join('')}
     </div>`;
+
+    if (!_asmfSankeyResizeBound) {
+        _asmfSankeyResizeBound = true;
+        window.addEventListener('resize', () => {
+            if (_asmfSankeyResizeTimer) clearTimeout(_asmfSankeyResizeTimer);
+            _asmfSankeyResizeTimer = setTimeout(() => {
+                const pane = document.getElementById('asmf-matrix-pane-sankey');
+                if (pane && pane.classList.contains('active')) {
+                    populateASMFSankey();
+                }
+            }, 120);
+        });
+    }
 }
 
 // ── ASMF Capability Pyramid ───────────────────────────────────────────────────
@@ -13328,11 +13644,11 @@ async function populateASMFPyramid() {
     }).join('');
 
     el.innerHTML = `
-    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:700px;">
+    <div style="margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:100%;">
       Each layer represents an adoption stage. The pyramid grows narrower at the top — fewer organizations reach higher stages,
       but those that do achieve exponentially better outcomes. Hover any layer to see the expected outcome.
     </div>
-    <div style="padding:0 20px;">
+    <div style="padding:0 clamp(0px,2vw,20px);width:100%;">
       <div style="text-align:center;margin-bottom:6px;font-size:11px;color:var(--text-muted);">▲ Increasing autonomy, decreasing mean time to detect &amp; respond</div>
       ${layerHTML}
       <div style="text-align:center;margin-top:6px;font-size:11px;color:var(--text-muted);">▼ Foundation: data sources, sensors, security tooling</div>
@@ -13387,8 +13703,8 @@ async function populateASMFTimeline() {
     }).join('');
 
     // Arc connector SVG
-    const arcW = phases.length * 210;
-    let arcSvg = `<svg width="${arcW}" height="30" viewBox="0 0 ${arcW} 30" style="width:100%;overflow:visible;">`;
+    const arcW = Math.max(1, phases.length) * 210;
+    let arcSvg = `<svg width="${arcW}" height="30" viewBox="0 0 ${arcW} 30" style="width:100%;max-width:100%;height:auto;overflow:visible;">`;
     for (let i = 0; i < phases.length - 1; i++) {
         const x1 = 105 + i * 210, x2 = x1 + 210;
         const color = ASMF_STAGE_COLORS[i + 2] || '#64748b';
@@ -13398,15 +13714,13 @@ async function populateASMFTimeline() {
     arcSvg += `</svg>`;
 
     el.innerHTML = `
-    <div style="margin-bottom:28px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:800px;">
+    <div style="margin-bottom:28px;font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:100%;">
       The transformation is not linear — each phase has specific inflection points that must be reached before the next phase becomes accessible.
       Organizations that skip phases typically encounter compounding failure modes.
     </div>
-    <div style="padding:24px 0 0;overflow-x:auto;">
-      <div style="min-width:${phases.length*200}px;">
-        <div style="margin-bottom:4px;">${arcSvg}</div>
-        <div style="display:flex;gap:12px;">${phaseCards}</div>
-      </div>
+        <div style="padding:24px 0 0;width:100%;">
+            <div class="asmf-responsive-svg-wrap" style="margin-bottom:4px;">${arcSvg}</div>
+            <div class="asmf-timeline-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;width:100%;">${phaseCards}</div>
     </div>`;
 }
 
@@ -13428,11 +13742,13 @@ async function populateASMFOrbital() {
     }
 
     const fw       = _asmfFramework;
-    const orbMap   = _asmfOrbitalMap;
+    const orbMap   = _asmfNormalizeOrbitalMap(_asmfFramework, _asmfOrbitalMap);
     const dims     = Object.entries(fw.dimensions || {});
-    const rels     = orbMap.relationships     || [];
+    const rels     = orbMap.relationships      || [];
     const relTypes = orbMap.relationship_types || {};
     const dimCfg   = orbMap.dim_config         || {};
+    const fwAbbr   = fw.framework_abbrev || getASMFRootLabel() || 'ASMF';
+    const orbitalTitle = `${fwAbbr} Integration Map`;
 
     // ── Layout constants ──────────────────────────────────────────────────
     const OV_RING_R  = 215;   // overview dim ring
@@ -13444,7 +13760,7 @@ async function populateASMFOrbital() {
     function mkNode(o) { return Object.assign({ tx:0, ty:0, alpha:1, talpha:1, tr:20, r:4 }, o); }
 
     // Root node
-    allNodes.push(mkNode({ id:'__root__', type:'root', label:'SOC CORE', x:0, y:0, tx:0, ty:0, r:34, tr:34, color:'#3b82f6' }));
+    allNodes.push(mkNode({ id:'__root__', type:'root', label:getASMFRootLabel(), x:0, y:0, tx:0, ty:0, r:34, tr:34, color:'#3b82f6' }));
 
     // Dimension nodes
     const dimCount = dims.length;
@@ -13484,13 +13800,13 @@ async function populateASMFOrbital() {
     let raf;
 
     // ── HTML scaffold ─────────────────────────────────────────────────────
-    el.style.cssText = 'background:#0a0f1a;position:relative;display:flex;overflow:hidden;';
+        el.style.cssText = 'background:#0a0f1a;position:relative;display:flex;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;';
     el.innerHTML = `
-      <canvas id="asmf-orbital-canvas" style="flex:1;min-width:0;cursor:grab;display:block;"></canvas>
-      <div id="asmf-orbital-detail" style="width:320px;flex-shrink:0;background:#0f172a;border-left:1px solid #1e293b;display:flex;flex-direction:column;overflow:hidden;">
+            <canvas id="asmf-orbital-canvas" style="flex:1 1 auto;min-width:0;width:100%;height:100%;cursor:grab;display:block;"></canvas>
+                        <div id="asmf-orbital-detail" style="width:clamp(280px,28vw,420px);flex:0 1 clamp(280px,28vw,420px);min-width:min(280px,38vw);max-width:min(420px,42vw);background:#0f172a;border-left:1px solid #334155;display:flex;flex-direction:column;overflow:hidden;position:relative;z-index:2;box-shadow:-18px 0 32px rgba(2,6,23,0.35);">
         <div id="asmf-orbital-hdr" style="padding:14px 18px 12px;border-bottom:1px solid #1e293b;flex-shrink:0;">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#475569;">ASMF Integration Map</div>
+                        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#475569;">${escapeHtml(orbitalTitle)}</div>
             <div style="display:flex;gap:6px;align-items:center;">
               <button id="asmf-orbital-back" style="display:none;background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;white-space:nowrap;">← All</button>
               <button id="asmf-orbital-export" style="background:#1e3a5f;border:1px solid #1d4ed8;color:#93c5fd;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;white-space:nowrap;" title="Export as interactive standalone HTML">⬇ Export</button>
@@ -13507,7 +13823,7 @@ async function populateASMFOrbital() {
     const backBtn   = document.getElementById('asmf-orbital-back');
     const exportBtn = document.getElementById('asmf-orbital-export');
     backBtn.addEventListener('click', () => enterOverview());
-    exportBtn.addEventListener('click', () => exportASMFOrbitalAsHTML(_asmfFramework, _asmfOrbitalMap));
+    exportBtn.addEventListener('click', () => exportASMFOrbitalAsHTML(_asmfFramework, orbMap));
 
     function resizeCanvas() { canvas.width = canvas.offsetWidth||700; canvas.height = canvas.offsetHeight||600; }
     resizeCanvas();
@@ -13552,7 +13868,7 @@ async function populateASMFOrbital() {
 
     // ── Side panel renderers ──────────────────────────────────────────────
     function renderOverviewPanel() {
-        crumb.textContent = 'All 11 Dimensions';
+        crumb.textContent = `All ${dims.length} Dimensions`;
         backBtn.style.display = 'none';
         const typeHtml = Object.entries(relTypes).map(([k,v]) => `
           <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;">
@@ -13560,7 +13876,7 @@ async function populateASMFOrbital() {
             <span style="color:#94a3b8;">${escapeHtml(v.label)}</span>
           </div>`).join('');
         detBody.innerHTML = `
-          <p style="line-height:1.75;margin-bottom:16px;">This map shows how all 11 ASMF dimensions integrate to form a fully autonomous SOC. <strong style="color:#f1f5f9;">Click any dimension</strong> to bring it to the center and reveal every integration link, sub-dimension and capability flow.</p>
+          <p style="line-height:1.75;margin-bottom:16px;">This map shows how all ${dims.length} ${escapeHtml(fwAbbr)} dimensions integrate to form a fully agentic operating model. <strong style="color:#f1f5f9;">Click any dimension</strong> to bring it to the center and reveal every integration link, sub-dimension and capability flow.</p>
           <div style="border-top:1px solid #1e293b;padding-top:14px;margin-bottom:14px;">
             <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship Types</div>
             ${typeHtml}
@@ -13868,7 +14184,7 @@ async function populateASMFOrbital() {
             ctx.fillStyle='#f1f5f9'; ctx.textAlign='center'; ctx.textBaseline='middle';
 
             if (n.type==='root') {
-                ctx.fillText('SOC',sx,sy-5*Math.min(1.5,camZ));
+                ctx.fillText(getASMFRootLabel(),sx,sy-5*Math.min(1.5,camZ));
                 ctx.font=`${Math.round(9*fscale)}px system-ui`;
                 ctx.fillStyle='#94a3b8'; ctx.fillText('CORE',sx,sy+7*Math.min(1.5,camZ));
             } else if (isCen) {
@@ -14047,7 +14363,7 @@ function _asmfBuildMatrix(fw) {
         const s = stages[sk] || {};
         const color = ASMF_STAGE_COLORS[parseInt(sk)];
         return `
-        <th style="padding:10px 8px;min-width:148px;text-align:center;border-bottom:3px solid ${color};
+        <th style="padding:10px 8px;min-width:clamp(96px,12vw,148px);text-align:center;border-bottom:3px solid ${color};
                    background:${_asmfCellBg(parseInt(sk), 0.18)};">
           <div style="font-size:20px;font-weight:800;color:${color};">${sk}</div>
           <div style="font-size:11px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:0.4px;line-height:1.3;">${escapeHtml(s.label || '')}</div>
@@ -14090,7 +14406,7 @@ function _asmfBuildMatrix(fw) {
             const rowspan = Object.keys(subDims).length;
             const dimCell = isFirst ? `
                 <td rowspan="${rowspan}" style="padding:10px 8px;vertical-align:top;border-right:3px solid ${planeColor};
-                            background:var(--bg-secondary);width:100px;min-width:100px;max-width:100px;">
+                            background:var(--bg-secondary);width:clamp(76px,8vw,100px);min-width:76px;max-width:110px;">
                   <div style="font-size:13px;font-weight:800;color:${planeColor};">${escapeHtml(dimId)}</div>
                   <div style="font-size:11px;color:var(--text-primary);font-weight:600;line-height:1.3;margin-top:2px;white-space:normal;word-break:break-word;">${escapeHtml(dim.name||'')}</div>
                   <div style="font-size:10px;color:var(--text-muted);margin-top:4px;display:inline-block;
@@ -14101,7 +14417,7 @@ function _asmfBuildMatrix(fw) {
             return `
             <tr style="border-bottom:1px solid var(--border-color);">
               ${dimCell}
-              <td style="padding:5px 8px;font-size:11px;color:${sdColor};font-weight:600;width:140px;min-width:140px;max-width:140px;
+              <td style="padding:5px 8px;font-size:11px;color:${sdColor};font-weight:600;width:clamp(110px,12vw,150px);min-width:100px;max-width:160px;
                          background:var(--bg-secondary);border-right:1px solid var(--border-color);">
                 <span>
                   ${escapeHtml(sdId)}<br>
@@ -14156,17 +14472,17 @@ function _asmfBuildMatrix(fw) {
     </div>
 
     <!-- THE MATRIX -->
-    <div style="overflow-x:auto;margin-bottom:32px;">
+    <div style="overflow-x:auto;margin-bottom:32px;width:100%;">
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">
         Hover any cell to read the full stage descriptor. Each row = one sub-dimension across 6 adoption stages.
       </div>
-      <table style="border-collapse:collapse;width:100%;min-width:1100px;">
+    <table style="border-collapse:collapse;width:100%;min-width:100%;table-layout:auto;">
         <thead>
           <tr>
-            <th style="padding:10px 8px;text-align:left;background:var(--bg-secondary);border-right:3px solid var(--border-color);min-width:90px;">
+            <th style="padding:10px 8px;text-align:left;background:var(--bg-secondary);border-right:3px solid var(--border-color);min-width:76px;">
               <span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;">Dimension</span>
             </th>
-            <th style="padding:10px 8px;text-align:left;background:var(--bg-secondary);border-right:1px solid var(--border-color);min-width:140px;">
+            <th style="padding:10px 8px;text-align:left;background:var(--bg-secondary);border-right:1px solid var(--border-color);min-width:100px;">
               <span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;">Sub-Dimension</span>
             </th>
             ${stageHeaders}
@@ -14225,43 +14541,49 @@ function exportASMFOrbitalAsHTML(fw, orbMap) {
     const stageColors = JSON.stringify(ASMF_STAGE_COLORS);
     const stageLabels = JSON.stringify(ASMF_STAGE_LABELS);
     const ts = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    const fwAbbr = fw.framework_abbrev || 'ASMF';
+    const fwName = fw.framework_name || 'Agentic Adoption Framework';
+    const orbitalTitle = `${fwAbbr} Integration Map`;
 
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ASMF Integration Map — Agentic SOC Framework</title>
+<title>${fwAbbr} Integration Map — ${fwName}</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:#0a0f1a;font-family:'Segoe UI',system-ui,sans-serif;color:#94a3b8}
-#app{display:flex;flex-direction:column;height:100%}
+html,body{height:100vh;width:100vw;overflow:hidden;background:#0a0f1a;font-family:'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:#94a3b8}
+@supports(height:100dvh){html,body{height:100dvh}}
+#app{display:flex;flex-direction:column;height:100%;width:100%}
 #topbar{display:flex;align-items:center;gap:16px;padding:10px 20px;background:#0f172a;border-bottom:1px solid #1e293b;flex-shrink:0;}
 #topbar h1{font-size:14px;font-weight:700;color:#f1f5f9;letter-spacing:0.3px}
 #topbar .sub{font-size:11px;color:#475569;margin-left:auto}
-#main{display:flex;flex:1;min-height:0}
-canvas{flex:1;min-width:0;cursor:grab;display:block}
-#panel{width:320px;flex-shrink:0;background:#0f172a;border-left:1px solid #1e293b;display:flex;flex-direction:column;overflow:hidden}
+#main{display:flex;flex:1 1 auto;min-height:0;min-width:0;width:100%}
+#canvas-wrap{flex:1 1 auto;min-width:0;min-height:0;position:relative;overflow:hidden}
+canvas{position:absolute;top:0;left:0;width:100%;height:100%;cursor:grab;display:block}
+#panel{width:clamp(280px,28vw,420px);flex:0 1 clamp(280px,28vw,420px);min-width:min(280px,38vw);max-width:min(420px,42vw);background:#0f172a;border-left:1px solid #1e293b;display:flex;flex-direction:column;overflow:hidden}
 #panel-hdr{padding:14px 18px 12px;border-bottom:1px solid #1e293b;flex-shrink:0}
 #panel-hdr .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
 #panel-hdr .title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#475569}
 #back-btn{display:none;background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer}
 #crumb{font-size:12px;color:#64748b;margin-top:5px}
 #body{flex:1;overflow-y:auto;padding:16px 18px;font-size:12px}
+@media(max-width:900px){#main{flex-direction:column}#panel{width:100%;max-width:none;min-width:0;flex:0 0 min(42%,360px);border-left:0;border-top:1px solid #1e293b}}
 </style>
 </head>
 <body>
 <div id="app">
   <div id="topbar">
-    <h1>ASMF — Agentic SOC Integration Map</h1>
+    <h1>${fwAbbr} — ${fwName} Integration Map</h1>
     <span class="sub">Exported ${ts}</span>
   </div>
   <div id="main">
-    <canvas id="canvas"></canvas>
+    <div id="canvas-wrap"><canvas id="canvas"></canvas></div>
     <div id="panel">
       <div id="panel-hdr">
         <div class="row">
-          <div class="title">ASMF Integration Map</div>
+          <div class="title">${orbitalTitle}</div>
           <button id="back-btn">← All</button>
         </div>
         <div id="crumb">All 11 Dimensions</div>
@@ -14291,7 +14613,7 @@ const FO_OUTER_R = 285;
 const allNodes = [];
 function mkNode(o){return Object.assign({tx:0,ty:0,alpha:1,talpha:1,tr:20,r:4},o);}
 
-allNodes.push(mkNode({id:'__root__',type:'root',label:'SOC CORE',x:0,y:0,tx:0,ty:0,r:34,tr:34,color:'#3b82f6'}));
+allNodes.push(mkNode({id:'__root__',type:'root',label:${JSON.stringify(fwAbbr)},x:0,y:0,tx:0,ty:0,r:34,tr:34,color:'#3b82f6'}));
 const dimCount=dims.length;
 dims.forEach(([id,dim],i)=>{
     const cfg=dimCfg[id]||{};
@@ -14318,9 +14640,23 @@ const crumb=document.getElementById('crumb');
 const backBtn=document.getElementById('back-btn');
 backBtn.addEventListener('click',()=>enterOverview());
 
-function resizeCanvas(){canvas.width=canvas.offsetWidth||800;canvas.height=canvas.offsetHeight||600;}
+function resizeCanvas(){
+    const wrap=canvas.parentElement;
+    const r=wrap?wrap.getBoundingClientRect():{width:0,height:0};
+    const w=Math.max(1,Math.floor(r.width||window.innerWidth||800));
+    const h=Math.max(1,Math.floor(r.height||window.innerHeight||600));
+    canvas.width=w;
+    canvas.height=h;
+    canvas.style.width=w+'px';
+    canvas.style.height=h+'px';
+}
 resizeCanvas();
+// Re-measure once layout settles (Safari/iOS file:// race where flex children compute to 0)
+requestAnimationFrame(function(){requestAnimationFrame(resizeCanvas);});
+window.addEventListener('load',resizeCanvas);
 window.addEventListener('resize',resizeCanvas);
+window.addEventListener('orientationchange',resizeCanvas);
+if(typeof ResizeObserver!=='undefined'){try{new ResizeObserver(resizeCanvas).observe(canvas.parentElement);}catch(e){}}
 
 function setLayout(newMode,selId){
     mode=newMode;
@@ -14345,10 +14681,10 @@ function setLayout(newMode,selId){
 }
 
 function renderOverviewPanel(){
-    crumb.textContent='All 11 Dimensions';
+    crumb.textContent='All '+dims.length+' Dimensions';
     backBtn.style.display='none';
     const typeHtml=Object.entries(relTypes).map(([k,v])=>'<div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="width:24px;height:3px;background:'+v.color+';border-radius:2px;flex-shrink:0;display:inline-block;"></span><span>'+esc(v.label)+'</span></div>').join('');
-    detBody.innerHTML='<p style="line-height:1.75;margin-bottom:16px;color:#94a3b8;"><strong style="color:#f1f5f9;">Click any dimension</strong> to bring it to center and reveal every integration link, sub-dimension and capability flow.</p><div style="border-top:1px solid #1e293b;padding-top:14px;margin-bottom:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship Types</div>'+typeHtml+'</div><div style="border-top:1px solid #1e293b;padding-top:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Controls</div><div style="line-height:2.1;color:#64748b;">🖱 Click dim — focus &amp; see all links<br>🖱 Hover outer dim — see relationship<br>🖱 Click outer dim — shift focus<br>🖱 Click sub-dim — stage descriptors<br>🖱 Scroll — zoom · Drag — pan<br>🖱 Click background or ← All — reset</div></div>';
+    detBody.innerHTML='<p style="line-height:1.75;margin-bottom:16px;color:#94a3b8;">This map shows how all '+dims.length+' '+esc(FW.framework_abbrev||'ASMF')+' dimensions integrate to form a fully agentic operating model. <strong style="color:#f1f5f9;">Click any dimension</strong> to bring it to center and reveal every integration link, sub-dimension and capability flow.</p><div style="border-top:1px solid #1e293b;padding-top:14px;margin-bottom:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:10px;">Relationship Types</div>'+typeHtml+'</div><div style="border-top:1px solid #1e293b;padding-top:14px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#475569;margin-bottom:8px;">Controls</div><div style="line-height:2.1;color:#64748b;">🖱 Click dim — focus &amp; see all links<br>🖱 Hover outer dim — see relationship<br>🖱 Click outer dim — shift focus<br>🖱 Click sub-dim — stage descriptors<br>🖱 Scroll — zoom · Drag — pan<br>🖱 Click background or ← All — reset</div></div>';
 }
 
 function renderDimPanel(dimId,hoverOtherId){
@@ -14470,7 +14806,7 @@ function draw(){
         const fscale=Math.max(0.55,Math.min(1.8,camZ));
         const fs=Math.round((n.type==='root'?12:isCen?13:n.type==='dim'?11:9)*fscale);
         ctx.font='bold '+fs+'px system-ui';ctx.fillStyle='#f1f5f9';ctx.textAlign='center';ctx.textBaseline='middle';
-        if(n.type==='root'){ctx.fillText('SOC',sx,sy-5*Math.min(1.5,camZ));ctx.font=Math.round(9*fscale)+'px system-ui';ctx.fillStyle='#94a3b8';ctx.fillText('CORE',sx,sy+7*Math.min(1.5,camZ));}
+        if(n.type==='root'){ctx.fillText(${JSON.stringify(fwAbbr)},sx,sy-5*Math.min(1.5,camZ));ctx.font=Math.round(9*fscale)+'px system-ui';ctx.fillStyle='#94a3b8';ctx.fillText('CORE',sx,sy+7*Math.min(1.5,camZ));}
         else if(isCen){
             const _mw=nr*1.55,_ws=n.name.split(' ');
             let _cl=[n.name];
@@ -14528,7 +14864,7 @@ requestAnimationFrame(draw);
     const blob = new Blob([html], {type:'text/html'});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'ASMF_Integration_Map.html';
+    a.download = `${fwAbbr}_Integration_Map.html`;
     a.click();
     URL.revokeObjectURL(a.href);
 }
@@ -14549,7 +14885,7 @@ async function exportASMFPosterAsHTML() {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ASAF — Agentic Security Operations Adoption Framework</title>
+<title>${escapeHtml(fw.framework_abbrev||'ASMF')} — ${escapeHtml(fw.framework_name||'Agentic Adoption Framework')}</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:32px 28px}
@@ -14564,7 +14900,7 @@ table{border-collapse:collapse}
   <div style="font-size:11px;color:#3b82f6;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:4px;">
     ${escapeHtml(fw.framework_abbrev||'ASAF')} ${escapeHtml(fw.schema_version||'v1.0')}
   </div>
-  <h1>${escapeHtml(fw.framework_name||'Agentic Security Operations Adoption Framework')}</h1>
+    <h1>${escapeHtml(fw.framework_name||'Agentic Adoption Framework')}</h1>
   <p style="font-size:13px;color:#64748b;margin-top:6px;">${escapeHtml(fw.scope||'')}</p>
 </div>
 ${matrixInner.replace(/var\(--bg-primary\)/g,'#0a0f1a').replace(/var\(--bg-secondary\)/g,'#0f172a').replace(/var\(--border-color\)/g,'#1e293b').replace(/var\(--text-primary\)/g,'#f1f5f9').replace(/var\(--text-secondary\)/g,'#94a3b8').replace(/var\(--text-muted\)/g,'#475569')}
@@ -14588,7 +14924,7 @@ document.querySelectorAll('td[data-full]').forEach(cell=>{
     const blob = new Blob([html], {type:'text/html'});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'ASAF_Adoption_Matrix_Poster.html';
+    a.download = `${fw.framework_abbrev || 'ASMF'}_Adoption_Matrix_Poster.html`;
     a.click();
     URL.revokeObjectURL(a.href);
 }
@@ -14600,6 +14936,46 @@ const ASMF_STAGE_LABELS = ['Traditional','Assisted','Supervised Autonomy','Direc
 
 let _asmfFramework = null;
 let _asmfOrbitalMap = null;
+let _asmfSankeyResizeBound = false;
+let _asmfSankeyResizeTimer = null;
+let _asmfRadarResizeBound = false;
+let _asmfRadarResizeTimer = null;
+
+function resetASMFVisualizations() {
+    _asmfFramework = null;
+    _asmfGraph = null;
+
+    [
+        'asmf-content',
+        'asmf-matrix-content',
+        'asmf-radar-content',
+        'asmf-sankey-content',
+        'asmf-pyramid-content',
+        'asmf-timeline-content',
+        'asmf-graph-3d',
+        'asmf-graph-detail',
+        'asmf-orbital-content'
+    ].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.innerHTML = '';
+            delete el.dataset.rendered;
+        }
+    });
+
+    [
+        'asmf-matrix-pane-matrix',
+        'asmf-matrix-pane-radar',
+        'asmf-matrix-pane-sankey',
+        'asmf-matrix-pane-pyramid',
+        'asmf-matrix-pane-timeline',
+        'asmf-graph-pane-force',
+        'asmf-graph-pane-orbital'
+    ].forEach(id => {
+        const pane = document.getElementById(id);
+        if (pane) delete pane.dataset.rendered;
+    });
+}
 
 // ── ASMF inner-tab switching (event delegation — always works) ──────────────
 
@@ -14639,6 +15015,280 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// ── ASAF Positioning Statement ───────────────────────────────────────────────
+
+function populateASAFPositioning() {
+    const body = document.getElementById('report-asaf-positioning-body');
+    if (!body) return;
+
+    // Scroll container to top so dropdown is always visible on activation
+    const panel = document.getElementById('report-panel-asaf-positioning');
+    if (panel) panel.scrollTop = 0;
+
+    // First call: inject selector shell; subsequent calls: noop (dropdown handles re-render)
+    if (!body.dataset.init) {
+        body.dataset.init = '1';
+        body.innerHTML = `
+        <div style="padding:0 0 20px;">
+            <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px;background:var(--bg-tertiary);border-radius:8px;border:1px solid var(--border-color);margin-bottom:4px;">
+                <label style="font-size:13px;font-weight:600;color:var(--text-primary);white-space:nowrap;">Select Positioning Statement:</label>
+                <select id="asaf-pos-select" style="flex:1;min-width:220px;max-width:540px;padding:8px 12px;border-radius:6px;border:1px solid var(--border-color);background:var(--bg-primary);color:var(--text-primary);font-size:13px;cursor:pointer;">
+                    <option value="product-alignment">1 — Product Architecture: The Alert-Triage Sunset</option>
+                    <option value="functional-integration">2 — Functional Integration: The Cybernetic Loop Requirement</option>
+                    <option value="ethics-governance">3 — Ethics &amp; Governance: The Runtime Control Signal Imperative</option>
+                </select>
+            </div>
+        </div>
+        <div id="asaf-pos-content"></div>`;
+
+        document.getElementById('asaf-pos-select').addEventListener('change', e => {
+            _renderASAFPositioningStatement(e.target.value);
+        });
+    }
+    _renderASAFPositioningStatement(document.getElementById('asaf-pos-select')?.value || 'product-alignment');
+}
+
+// ── Statement data ────────────────────────────────────────────────────────────
+const _asafPositioningStatements = {
+
+'product-alignment': {
+    title: 'Product Architecture: The Alert-Triage Sunset',
+    subtitle: 'Audience: Security Product Leaders &amp; CPOs',
+    position: `Security vendors that architect products for tiered SOC analysts will be structurally obsolete with enterprise buyers by 2028, as agentic operations models systematically eliminate the alert-triage, escalation, and playbook-execution workflows those products were built to serve.`,
+    posComponents: [
+        { label: 'Important Issue', text: 'The $40B+ security operations market is transitioning from human-throughput models to agent-orchestrated control systems. The buying criteria, evaluation surface, and integration requirements of enterprise security programs are changing at the architectural level — not the feature level.' },
+        { label: 'Judgment', text: 'Products designed around L1/L2/L3 analyst workflow lose their primary use case as buyers advance through the ASAF maturity curve — not incrementally, but by architectural substitution. Alert triage, escalation routing, and playbook execution cease to be unsolved problems at Stage 2.' },
+        { label: 'State', text: 'Enterprise buyers at ASAF Stage 2–3 (2025–2027) no longer need triage assistance; they need governance architecture, bounded autonomy controls, and Security Knowledge Graph (SKG) integration. Stage 2 deployments eliminating L1/L2 workloads are shipping now.' },
+        { label: 'Why It Commands Attention', text: '"Structurally obsolete" is a specific, datable, falsifiable claim. A product leader cannot defer this: if ASAF Stage 2 eliminates the market they serve, their roadmap is building toward irrelevance. "Architectural substitution" defines the threat as systemic — not competitive.' }
+    ],
+    justContext: 'The tiered SOC model — L1 triage, L2 investigation, L3 escalation — was designed around a single constraint: human throughput. Remove that constraint through agent-based operations and the entire organizational model collapses. ASAF maps this transition across 6 maturity stages. Stage 0 (Traditional, 2020–2024) is where the majority of enterprise security products were designed. Stage 2 (Supervised Autonomy, 2025–2026) is where leading enterprise buyers are operating today. At Stage 2, agents fully own L1 and L2 workloads. The products built to assist those analysts — alert prioritization dashboards, playbook execution engines, SOAR workflow builders — become redundant by architectural substitution, not competitive displacement.',
+    justEvidence: `ASAF's 11 dimensions and 44 sub-dimensions define the new capability surface of next-generation security operations: Sensing Fabric (SEN), Reasoning Architecture (RSN), Agent Execution (AGT), Security Knowledge Graph (SKG), Governance &amp; Ethics (GOV), Continuous Threat Exposure Management (EXP), Human Interface &amp; Oversight (HUM), and Transformation Program Management (TRN). None of these dimensions map to alert-queue management or tiered escalation. By Stage 3 (Directed Autonomy, 2026–2027), ASAF explicitly states the tier model is <em>fully eliminated</em> and escalation is replaced by bounded exception handling.`,
+    justBridge: 'Product leaders who map their capabilities to ASAF dimensions today will find two things: which maturity stages their product genuinely enables versus what marketing claims, and where their roadmap concentrates in stages the market is moving away from. Vendors without an ASAF alignment story face the same structural displacement SIEM vendors faced when SOAR arrived: not a slow decline, but a sudden requirement shift they were not positioned for.',
+    actions: [
+        { title: 'Map every product capability to an ASAF dimension and stage, and publish the results internally before the next planning cycle.', why: 'Most products will cluster heavily at Stage 0–1 after an honest mapping. That concentration is the finding. It is not visible through standard competitive analysis because competitors have the same blind spot.', outcome: 'Product leaders gain an objective view of roadmap concentration risk and can redirect investment toward Stage 2–3 enablement before competitors complete the same exercise.' },
+        { title: 'Retire all product messaging anchored in "reducing alert fatigue," "analyst augmentation," or "faster triage" within the next product cycle.', why: 'These messages signal Stage 1 products to Stage 3+ buyers. Enterprise security architects evaluating agentic SOC programs interpret alert-fatigue messaging as evidence that a vendor does not understand the operating model they are building.', outcome: 'Repositioning ahead of the Stage 2–3 buyer transition protects pipeline against architectural displacement messaging from competitors who move first. Replace with messaging anchored in ASAF\'s three operating planes: Sensing, Reasoning, and Control.' },
+        { title: 'Build ASAF Stage certification evidence into vendor evaluation materials before enterprise RFPs require it.', why: 'Enterprise architects who have adopted ASAF as a transformation roadmap will use it as a vendor selection framework. Vendors who arrive at an RFP without a credible ASAF alignment narrative will lose to vendors who do — regardless of feature parity.', outcome: 'Vendors with documented ASAF alignment win evaluation shortlisting against feature-equivalent competitors who cannot speak the buyer\'s architectural language.' },
+        { title: 'Prioritize three ASAF dimensions in the next 18-month roadmap: Governance & Ethics (GOV, 15% weight), Agent Execution (AGT), and Security Knowledge Graph (SKG).', why: 'These three dimensions carry the highest weight in ASAF\'s maturity model and have the lowest current market coverage. GOV, AGT, and SKG capabilities are almost entirely absent from the current vendor landscape at Stage 2+ depth.', outcome: 'First-mover positioning in the three dimensions where enterprise buyers have the largest gap and the weakest current vendor coverage.' },
+        { title: 'Engage ASAF Stage 3–4 design partners now, before Stage 3 is the market center.', why: 'The buyers currently planning Stage 3 deployments are the same buyers who will define Stage 4 procurement requirements. Waiting until Stage 3 is mainstream means building for a design that is already locked.', outcome: 'Product roadmap shaped by Stage 3 architectural requirements 18–24 months before they become RFP standard, compressing time to market leadership in the agentic SOC segment.' }
+    ],
+    alignment: [
+        ['Position → Key Finding', 'Stage 2 eliminates L1/L2 workloads; Stage 3 eliminates the tier model entirely (ASAF maturity_stages.2–3)'],
+        ['Action 1 → Dimensions', 'All 11 ASAF dimensions × 44 sub-dimensions × 6 stage descriptors'],
+        ['Action 2 → Principles', 'P5: Humans govern intent, not alert queues; P7: Non-linear operations'],
+        ['Action 3 → Stages', 'Stage 2–3 evaluation criteria (2025–2027)'],
+        ['Action 4 → Dimensions', 'GOV (weight:15%), AGT, SKG — highest weight, lowest market coverage'],
+        ['Action 5 → Stage', 'Stage 3 Directed Autonomy (2026–2027) design lock-in window']
+    ]
+},
+
+'functional-integration': {
+    title: 'Functional Integration: The Cybernetic Loop Requirement',
+    subtitle: 'Audience: Security Product Leaders, Platform Architects &amp; Integration Leads',
+    position: `Security vendors delivering isolated point solutions will be architecturally excluded from agentic SOC programs before their feature set is reviewed — the ASAF cybernetic model requires continuous bidirectional signal exchange across Sensing, Reasoning, Execution, and Governance, and products that cannot participate in this loop are not compared against competitors; they are removed from the architecture entirely.`,
+    posComponents: [
+        { label: 'Important Issue', text: 'Agentic security operations depend on continuous real-time signal exchange across all 11 ASAF dimensions. Sensing must feed Reasoning; Reasoning must direct Agent Execution; Execution outcomes must update the Knowledge Graph; the Knowledge Graph must recalibrate Governance thresholds; Governance must continuously shape all other dimensions. No dimension works in isolation — and no point solution that refuses to participate in this loop has a place in the architecture.' },
+        { label: 'Judgment', text: 'Point solutions that operate in isolation — capturing detection events without feeding a shared reasoning model, or executing playbooks without updating an adversary knowledge graph — are not suboptimal; they are architecturally incompatible with the operating model enterprise buyers are building. They generate noise the agentic system has to work around, not signal it can act on.' },
+        { label: 'State', text: 'At ASAF Stage 3, cross-dimensional integration is not a design preference — it is the operating model. The ASAF integration map defines 60+ explicit cross-dimensional relationship types between its 11 dimensions. Products that cannot participate bidirectionally in at least the core sensing-reasoning-execution-governance loop are excluded at the architecture design phase, not the vendor evaluation phase.' },
+        { label: 'Why It Commands Attention', text: '"Removed from the architecture entirely" is a different kind of threat than competitive loss. A product leader who hears "we didn\'t choose competitor X" can adjust. One who hears "your product is not in the reference architecture at all" has a categorically harder problem. The ASAF integration map makes the exclusion criteria visible and testable — this is what makes the position urgent.' }
+    ],
+    justContext: 'ASAF defines security operations as a cybernetic system — a continuous feedback loop of sensing, reasoning, action, and learning. This is not metaphorical. Each of the 11 ASAF dimensions has defined integration outputs to other dimensions, and the framework\'s integration map documents 60+ bidirectional relationship types. Sensing provides adversary-validated signal to Reasoning; Reasoning generates investigation hypotheses and directs Agent Execution; Agent Execution outcomes write back to the Knowledge Graph; the Knowledge Graph continuously updates the Governance policy model; Governance issues real-time authority constraints back to Agent Execution. Products that operate as one-way signal sources — generating alerts or reports without accepting feedback, updating shared models, or exposing integration APIs — are structurally incompatible with this architecture.',
+    justEvidence: 'The ASAF orbital integration model explicitly maps how each of the 11 dimensions connects to every other. GOV connects to AGT (governance defines agent authority bounds), HUM (governance defines human oversight triggers), MET (governance sets compliance thresholds), RSN (governance constrains reasoning scope), and TRN (governance gates transformation investment). SKG connects to every dimension — it is the operational spine. Products that cannot write to a shared knowledge graph, cannot consume machine-interpretable policy objects, and cannot expose event streams in ASAF-aligned schemas will fail integration validation before functional evaluation begins. The enterprise architecture review that precedes vendor selection at Stage 3+ programs now includes an integration topology assessment. Point solutions without bidirectional integration points do not pass it.',
+    justBridge: 'Product leaders who audit their product\'s integration surface against the ASAF integration map will discover the precise gap between where they participate in the loop and where they stop. Every gap is a place where their product\'s signal value is capped — because downstream dimensions cannot consume what they produce. Closing these gaps is not an integration project; it is a product strategy decision about whether to compete in the agentic SOC architecture or to serve a progressively shrinking tier-model segment.',
+    actions: [
+        { title: 'Audit your product\'s integration surface against the ASAF integration map and publish the findings as an internal architecture gap report.', why: 'Most products have deep inbound integration (they consume signals) but shallow outbound integration (they do not contribute to shared knowledge models or policy systems). That asymmetry is invisible until mapped against ASAF\'s bidirectional relationship model.', outcome: 'Clear prioritization of which integration gaps represent the highest buyer exclusion risk, with specific API development targets tied to ASAF cross-dimensional relationships.' },
+        { title: 'Implement Security Knowledge Graph (SKG) write-back APIs as the highest-priority integration investment — your product must contribute evidence to the shared intelligence model, not just consume it.', why: 'Products that only consume from the SKG are replaceable by any other signal source. Products that enrich the SKG with structured evidence — adversary model updates, confidence-scored findings, attribution artifacts — become progressively harder to remove as they accumulate unique contributions.', outcome: 'Products with SKG write-back capabilities become structural contributors to the shared intelligence model, creating switching costs that pure consumers cannot generate.' },
+        { title: 'Implement an ASAF-aligned event taxonomy in your product\'s data schema so outputs are directly consumable by reasoning engines and governance systems without transformation layers.', why: 'Transformation layers are where agentic pipelines break. Every time a reasoning engine must translate your product\'s proprietary schema into its internal model, latency increases, accuracy decreases, and the integration becomes a maintenance liability. Products with native ASAF-aligned schemas eliminate this friction entirely.', outcome: 'Direct consumption by reasoning engines without ETL overhead — your product\'s signal reaches the reasoning layer faster and with higher fidelity than competitors using proprietary schemas.' },
+        { title: 'Build and publish reference integration architectures showing how your product participates in at least 4 ASAF dimension cross-connections, covering both inbound and outbound signal flows.', why: 'Enterprise architects at Stage 2–3 programs evaluate vendors against reference architectures, not feature lists. A vendor who provides a credible ASAF integration reference architecture shapes how their product is positioned in the program design — and how competitors are evaluated against it.', outcome: 'Vendor is positioned as an integration anchor point in the enterprise reference architecture, making competitive displacement progressively more disruptive and expensive.' },
+        { title: 'Redefine product success metrics around cross-dimensional signal contribution — measure what your product adds to the shared intelligence picture, not standalone detection or response throughput counts.', why: 'Detection counts and MTTR metrics measure tiered SOC performance, not agentic program value. At Stage 2+, buyers evaluate what the product adds to the shared adversary model, the knowledge graph, and the governance policy system — contributions that detection count metrics do not capture.', outcome: 'New metrics create a defensible, differentiated value narrative that point-solution competitors without integration depth cannot replicate.' }
+    ],
+    alignment: [
+        ['Position → Principle', 'P1: Security Operations is a cybernetic system; P4: Continuous bidirectional operation; P6: Knowledge Graph as the operational spine'],
+        ['Action 1 → Dimensions', 'ASAF integration map: all 11 dimensions × cross-dimensional relationship types'],
+        ['Action 2 → Dimension', 'SKG: Security Knowledge Graph — connects policy, evidence, adversary intelligence as first-class entities'],
+        ['Action 3 → Principle', 'P4: Continuous bidirectional operation; P8: Traceability through the system'],
+        ['Action 4 → Stages', 'Stage 2–3 enterprise architecture review criteria (2025–2027)'],
+        ['Action 5 → Dimensions', 'SEN→RSN→AGT→SKG→GOV integration loop; MET (measurement) for contribution tracking']
+    ]
+},
+
+'ethics-governance': {
+    title: 'Ethics & Governance: The Runtime Control Signal Imperative',
+    subtitle: 'Audience: Security Product Leaders, GRC Leaders &amp; CISOs evaluating agentic platforms',
+    position: `Security vendors that treat ethics and governance as policy documentation rather than operational runtime signals will be architecturally incompatible with Stage 3+ agentic SOC programs — enterprises building directed autonomy operations require machine-interpretable ethics guardrails, real-time authority enforcement, and unbreakable audit chains as first-class product capabilities, not compliance addendums.`,
+    posComponents: [
+        { label: 'Important Issue', text: 'Every autonomous agent action in a Stage 3+ security operation must be governed in real time: scoped by bounded authority, validated against ethical constraints, and logged with a complete audit chain. This is not an aspiration — it is the operational requirement that makes agentic security legally defensible. A single ungoverned agent action during a high-stakes incident can invalidate the entire legal and regulatory standing of the security response.' },
+        { label: 'Judgment', text: 'Security products that cannot enforce machine-interpretable policy at execution time, dynamically scope agent authority, or generate cryptographically-traceable audit artifacts are not missing a feature — they are architecturally incompatible with enterprise legal and compliance requirements for autonomous security operations. These requirements are not aspirational; they are present in active procurement conversations at Stage 2+ programs today.' },
+        { label: 'State', text: 'At ASAF Stage 3, governance is the operational control signal that shapes every agent action in real time. Ethics guardrails are not reviewed annually in a policy document — they run as the execution constraint of every agent decision. ASAF Principle 2 states this explicitly: "Ethics, governance, and authority are operational control signals that shape every action in real time. They are not oversight layers applied after the fact." Products designed before this principle was articulated will require architectural surgery to comply with it.' },
+        { label: 'Why It Commands Attention', text: '"Architecturally incompatible" means the product fails at the evaluation gate that precedes functional assessment. A CISO running a Stage 3 program cannot defend an ungoverned agent action to a board, regulator, or courtroom regardless of how effective the underlying detection was. Products that cannot provide the governance artifacts required for that defense are not evaluated on detection quality — they are disqualified before detection quality is tested.' }
+    ],
+    justContext: 'ASAF identifies GOV (Ethics, Governance &amp; Authority) as one of its highest-weighted dimensions at 15% of the framework\'s maturity score. This is not an accident. The transition from human-executed security operations to agent-executed operations transfers legal and ethical accountability from individuals who make decisions to systems that make decisions — and the governance architecture that wraps those systems determines whether that transfer is legally defensible. At ASAF Stage 0–1, governance is policy documentation: a CISO reviews an acceptable use policy; an IR team follows a documented runbook. At Stage 3, governance is a runtime constraint: every agent decision is validated against a live policy model before execution, authority scope is defined per agent class, and every action generates a cryptographic audit artifact that can be examined post-incident. Products that cannot participate in this governance architecture shift the legal and regulatory risk of every autonomous action back onto the enterprise — and every enterprise legal team reviewing a Stage 3 program deployment will require evidence that they do.',
+    justEvidence: 'ASAF GOV sub-dimensions define the specific governance capabilities required at each maturity stage. GOV-01 (Authority &amp; Scope Modeling) requires that agent authority be declared, bounded, and enforceable — products that execute autonomous actions without declared authority scope fail this sub-dimension at Stage 2. GOV-02 (Ethics Guardrail Architecture) requires that ethical constraints be machine-interpretable and run as execution-time filters — not post-hoc review steps. GOV-03 (Real-time Policy Enforcement) requires that policy compliance be validated before every action, not audited after a batch of actions. GOV-04 (Governance Transparency &amp; Human Oversight) requires that every action be explainable, attributable, and reversible. At Stage 3, these are not aspirational standards — they are explicit evaluation criteria in the ASAF sub-dimension assessment framework. Products that score below Stage 2 on any GOV sub-dimension will fail the governance validation that precedes full deployment authorization in regulated industries.',
+    justBridge: 'Product leaders who assess their product against ASAF GOV sub-dimensions will find a specific, testable gap between what their product declares as a governance capability and what ASAF Stage 2–3 programs require. Closing these gaps requires architectural decisions — not feature additions. Policy enforcement must move from the reporting layer to the execution layer. Authority modeling must move from configuration files to runtime graph objects. Audit chain generation must move from log aggregation to cryptographic artifact creation. These are non-trivial changes that take 12–24 months to ship. Product leaders who start that work in 2026 will be Stage 3 governance-ready by 2027. Those who defer will not be ready when the market demands it.',
+    actions: [
+        { title: 'Implement machine-interpretable policy enforcement in the product execution layer — every automated action must validate against a live policy object before execution, not a static configuration setting.', why: 'Static configuration-based governance cannot respond to context changes in real time. A policy that permitted an agent action at 09:00 may not permit the same action at 14:00 after a change in threat context, user status, or regulatory environment. Live policy objects that the execution layer consults at action time are the minimum governance standard for Stage 2+ operations.', outcome: 'Products with runtime policy enforcement become the governance anchor for the agentic SOC program — other products in the stack validate their actions against your policy model, creating deep architectural integration and making competitive replacement extremely costly.' },
+        { title: 'Build authority scope modeling into every agent function — each automated capability must declare its minimum required authority, maximum permitted authority, and the conditions under which authority can expand.', why: 'ASAF Principle 3 states that unbounded autonomy is an architectural failure. Products that execute automated actions without declared authority scope expose enterprises to legal liability for every action that exceeds the authority that would have been granted had a human been consulted. Authority scope modeling is not just a compliance requirement — it is the product feature that makes autonomous operation legally defensible.', outcome: 'Formally bounded authority scope creates a defensible audit trail for every automated action and enables enterprises to deploy autonomous capabilities in regulated environments where unbounded automation would otherwise be prohibited.' },
+        { title: 'Develop cryptographic audit chain artifacts for all autonomous actions — every decision, action, and outcome must be traceable to the authorizing scope, evidence basis, confidence level, and governance approval event.', why: 'ASAF Principle 8 states that every decision must be traceable through the system to its authorizing scope, evidence chain, confidence level, and governance approval. Log files are not audit chains — they can be altered, selectively preserved, or fail to capture the reasoning that preceded the action. Cryptographic artifacts that link each action to its authorization event are the standard that regulated-industry security programs will require by 2027.', outcome: 'Products with cryptographic audit chains are the only products that can be deployed in financial services, healthcare, and critical infrastructure agentic SOC programs subject to regulatory examination. This creates a defensible market segment that compliance-inadequate competitors cannot enter.' },
+        { title: 'Publish a formal ASAF GOV sub-dimension assessment for your product, covering GOV-01 through GOV-04 at the current and roadmap stage level.', why: 'Enterprise security architects running Stage 2–3 programs are actively looking for vendors who can demonstrate governance depth — and almost none can produce this documentation today. The first vendor to publish a credible ASAF GOV assessment sets the standard against which all competitors are measured, and controls the definition of what "governance-ready" means in the market.', outcome: 'First-mover advantage in the governance documentation category: positions the vendor as the governance reference point in enterprise evaluation processes and forces competitors to respond to a framework the vendor defined.' },
+        { title: 'Establish a governance-first product design principle: no new autonomous capability ships without a documented authority model, a rollback mechanism, and a defined human escalation path for ethical boundary conditions.', why: 'Retrofitting governance architecture onto capabilities designed without it is 3–5x more expensive than building governance in from the start. Products that adopt governance-first design in 2026 will have architecturally sound governance at Stage 3 maturity. Products that defer governance architecture to a later sprint will face a full architectural rebuild when Stage 3 programs demand it.', outcome: 'Governance architecture compounds in value: each capability shipped with a proper authority model makes the next capability easier to govern, creating a compounding advantage over competitors who defer governance architecture.' }
+    ],
+    alignment: [
+        ['Position → Principle', 'P2: Governance as Control Signal; P3: Bounded Autonomy; P8: Traceability'],
+        ['Position → Dimension', 'GOV: Ethics, Governance & Authority (15% framework weight)'],
+        ['Action 1 → Sub-Dimension', 'GOV-03: Real-time Policy Enforcement'],
+        ['Action 2 → Sub-Dimension', 'GOV-01: Authority & Scope Modeling; P3: Bounded Autonomy'],
+        ['Action 3 → Sub-Dimension', 'GOV-04: Governance Transparency & Human Oversight; P8: Traceability'],
+        ['Action 4 → Dimensions', 'GOV-01 through GOV-04 full sub-dimension assessment'],
+        ['Action 5 → Stages', 'Stage 2–3 governance requirements (2025–2027); Stage 4 regulatory audit readiness']
+    ]
+}
+
+}; // end _asafPositioningStatements
+
+function _renderASAFPositioningStatement(id) {
+    const content = document.getElementById('asaf-pos-content');
+    if (!content) return;
+
+    const stmt = _asafPositioningStatements[id];
+    if (!stmt) return;
+
+    const pjaColor  = 'var(--color-primary)';
+    const justColor = '#0078d4';
+    const actColor  = '#107c10';
+    const alignColor = '#475569';
+    const checkColor = '#047857';
+
+    function card(icon, color, title, badge, limitsHtml, bodyHtml) {
+        return `<div class="report-pillar-section">
+            <div class="report-pillar-header">
+                <span class="report-pillar-code" style="background:${color};color:#fff;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${icon}</span>
+                <div class="report-pillar-header-text">
+                    <h2 class="report-pillar-name">${title}${badge ? ` <span style="background:${color};color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;margin-left:8px;">${badge}</span>` : ''}</h2>
+                    ${limitsHtml ? `<p class="report-pillar-desc">${limitsHtml}</p>` : ''}
+                </div>
+            </div>
+            <div class="report-sp-longform-card">${bodyHtml}</div>
+        </div>`;
+    }
+
+    function sec(title, html) {
+        return `<div class="report-sp-section"><h4>${title}</h4>${html}</div>`;
+    }
+
+    function sub(label, color, text) {
+        return `<div style="margin-bottom:12px;padding:10px 14px;background:var(--bg-tertiary);border-left:3px solid ${color};border-radius:0 6px 6px 0;">
+            <strong>${label}</strong>
+            <p style="margin:6px 0 0;font-size:13px;color:var(--text-secondary);">${text}</p>
+        </div>`;
+    }
+
+    // PJA flow header
+    let html = `<div class="report-pillar-section" style="margin-bottom:24px;">
+        <div class="report-sp-longform-card">
+            <div class="report-sp-section" style="text-align:center;padding:20px 0;">
+                <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+                    <div style="background:${pjaColor};color:#fff;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;min-width:140px;">🎯 POSITION<br><span style="font-weight:400;font-size:11px;opacity:.85;">Declarative stance<br>on an important issue</span></div>
+                    <span style="font-size:24px;color:var(--text-secondary);">→</span>
+                    <div style="background:${justColor};color:#fff;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;min-width:140px;">📐 JUSTIFICATION<br><span style="font-weight:400;font-size:11px;opacity:.85;">Evidence & logic that<br>validates the position</span></div>
+                    <span style="font-size:24px;color:var(--text-secondary);">→</span>
+                    <div style="background:${actColor};color:#fff;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;min-width:140px;">🚀 ACTIONS<br><span style="font-weight:400;font-size:11px;opacity:.85;">Specific client response<br>to achieve success</span></div>
+                </div>
+            </div>
+            <div class="report-sp-section">
+                <p style="font-size:13px;color:var(--text-secondary);margin:0;">${stmt.subtitle} &nbsp;|&nbsp; Schema: <strong>ASAF 1.0</strong> &nbsp;|&nbsp; Framework: <strong>PJA</strong></p>
+            </div>
+        </div>
+    </div>`;
+
+    // Position
+    html += card('🎯', pjaColor, 'Position Statement', 'Required',
+        '<strong>Limits:</strong> 1–2 sentences; maximum 40 words',
+        sec('Statement', `<div style="background:var(--bg-tertiary);border-left:4px solid ${pjaColor};padding:16px 20px;border-radius:0 8px 8px 0;margin-bottom:16px;">
+            <p style="font-size:16px;font-weight:600;color:var(--text-primary);line-height:1.6;margin:0;">${stmt.position}</p>
+        </div>`) +
+        sec('Components', stmt.posComponents.map(c => sub(c.label, pjaColor, c.text)).join(''))
+    );
+
+    // Justification
+    html += card('📐', justColor, 'Justification', 'Required',
+        '<strong>Limits:</strong> 2–4 paragraphs; concise supporting arguments',
+        sec('Context', `<p>${stmt.justContext}</p>`) +
+        sec('Evidence & Logic', `<p>${stmt.justEvidence}</p>`) +
+        sec('Action Bridge', `<p>${stmt.justBridge}</p>`)
+    );
+
+    // Actions
+    const actionsHtml = stmt.actions.map((a, i) => `
+        <div style="margin-bottom:20px;padding:16px 20px;background:var(--bg-tertiary);border-radius:8px;border-left:4px solid ${actColor};">
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+                <div style="background:${actColor};color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">${i + 1}</div>
+                <div style="flex:1;min-width:0;">
+                    <p style="font-weight:600;color:var(--text-primary);margin:0 0 10px;font-size:14px;">${a.title}</p>
+                    <div style="margin-bottom:8px;">
+                        <span style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Why Non-Obvious</span>
+                        <p style="font-size:13px;color:var(--text-secondary);margin:4px 0 0;">${a.why}</p>
+                    </div>
+                    <div>
+                        <span style="font-size:11px;font-weight:700;text-transform:uppercase;color:${actColor};">Expected Outcome</span>
+                        <p style="font-size:13px;color:var(--text-secondary);margin:4px 0 0;">${a.outcome}</p>
+                    </div>
+                </div>
+            </div>
+        </div>`).join('');
+
+    html += card('🚀', actColor, 'Recommended Actions', 'Required',
+        '<strong>Limits:</strong> 5 actions; each with rationale and expected outcome',
+        actionsHtml);
+
+    // Alignment table
+    const tableRows = stmt.alignment.map(([el, ref]) =>
+        `<tr><td style="font-weight:600;">${el}</td><td style="color:var(--text-secondary);">${ref}</td></tr>`
+    ).join('');
+
+    html += card('🔗', alignColor, 'Report Alignment', 'Required',
+        'Cross-reference map: PJA elements → ASAF framework',
+        sec('Cross-Reference Map', `<table class="report-table" style="font-size:13px;">
+            <thead><tr><th style="width:35%;">PJA Element</th><th>ASAF Framework Reference</th></tr></thead>
+            <tbody>${tableRows}</tbody>
+        </table>`)
+    );
+
+    content.innerHTML = html;
+}
+
+function exportASAFPositioningAsMarkdown() {
+    const sel = document.getElementById('asaf-pos-select');
+    const id = sel ? sel.value : 'product-alignment';
+    const stmt = _asafPositioningStatements[id];
+    if (!stmt) return;
+
+    let md = `# ASAF Positioning Statement — ${stmt.title}\n`;
+    md += `*PJA Framework: Position · Justification · Actions*\n\n`;
+    md += `---\n\n`;
+    md += `## 🎯 POSITION\n\n`;
+    md += `**${stmt.position}**\n\n`;
+    stmt.posComponents.forEach(c => { md += `*${c.label}:* ${c.text.replace(/<[^>]+>/g, '')}\n`; });
+    md += `\n---\n\n## 📐 JUSTIFICATION\n\n`;
+    md += `**Context.** ${stmt.justContext.replace(/<[^>]+>/g, '')}\n\n`;
+    md += `**Evidence.** ${stmt.justEvidence.replace(/<[^>]+>/g, '')}\n\n`;
+    md += `**Action Bridge.** ${stmt.justBridge.replace(/<[^>]+>/g, '')}\n\n`;
+    md += `---\n\n## 🚀 RECOMMENDED ACTIONS\n\n`;
+    stmt.actions.forEach((a, i) => {
+        md += `${i + 1}. **${a.title}** *Why:* ${a.why} *Outcome:* ${a.outcome}\n\n`;
+    });
+    md += `---\n\n## 🔗 REPORT ALIGNMENT\n\n| PJA Element | ASAF Reference |\n|---|---|\n`;
+    stmt.alignment.forEach(([el, ref]) => { md += `| ${el} | ${ref} |\n`; });
+    md += `\n---\n\n*Framework: PJA | Schema: ASAF 1.0 | ${stmt.subtitle.replace(/<[^>]+>/g, '')}*\n`;
+
+    const slug = { 'product-alignment': 'Product_Architecture', 'functional-integration': 'Functional_Integration', 'ethics-governance': 'Ethics_Governance' }[id] || id;
+    const blob = new Blob([md], { type: 'text/markdown' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `ASAF_Positioning_${slug}.md`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+// ── ASMF 3D Knowledge Graph ───────────────────────────────────────────────
 // ── ASMF 3D Knowledge Graph ───────────────────────────────────────────────
 
 let _asmfGraph = null; // ForceGraph3D instance
@@ -14664,12 +15314,120 @@ function _asmfDimColor(plane) {
     return '#3b82f6';
 }
 
-function _asmfBuildGraphData(fw) {
+const ASMF_ORBITAL_CANONICAL_CODES = {
+    SEN: 'sensing',
+    RSN: 'reasoning',
+    ACT: 'action',
+    GOV: 'governance',
+    LRN: 'learning',
+    OPS: 'operations',
+    HUM: 'human',
+    AGT: 'agents',
+    SKG: 'knowledge',
+    MET: 'assurance',
+    TRN: 'transformation'
+};
+
+function _asmfCanonicalPlaneKey(value) {
+    const lower = String(value || '').toLowerCase();
+    if (!lower) return '';
+    if (lower.includes('sensing') || lower.includes('signal')) return 'sensing';
+    if (lower.includes('reason')) return 'reasoning';
+    if (lower.includes('action') || lower.includes('response') || lower.includes('execution')) return 'action';
+    if (lower.includes('govern') || lower.includes('policy') || lower.includes('trust')) return 'governance';
+    if (lower.includes('learn') || lower.includes('adapt')) return 'learning';
+    if (lower.includes('operat')) return 'operations';
+    if (lower.includes('human') || lower.includes('org')) return 'human';
+    if (lower.includes('agent')) return 'agents';
+    if (lower.includes('knowledge') || lower.includes('skill')) return 'knowledge';
+    if (lower.includes('assurance') || lower.includes('measure') || lower.includes('metric') || lower.includes('audit')) return 'assurance';
+    if (lower.includes('transform')) return 'transformation';
+    return '';
+}
+
+function _asmfNormalizeOrbitalMap(fw, orbMap) {
+    const dims = fw?.dimensions || {};
+    const rawCfg = orbMap?.dim_config || {};
+    const rawRels = orbMap?.relationships || [];
+    const relTypes = orbMap?.relationship_types || {};
+
+    const cfgByCanonical = {};
+    Object.entries(rawCfg).forEach(([code, cfg]) => {
+        const canonical = ASMF_ORBITAL_CANONICAL_CODES[code] || _asmfCanonicalPlaneKey(code) || _asmfCanonicalPlaneKey(cfg?.plane) || _asmfCanonicalPlaneKey(cfg?.short);
+        if (canonical && !cfgByCanonical[canonical]) {
+            cfgByCanonical[canonical] = cfg;
+        }
+    });
+
+    const actualDimByCanonical = {};
+    Object.entries(dims).forEach(([dimId, dim]) => {
+        const canonical = _asmfCanonicalPlaneKey(dim?.plane) || _asmfCanonicalPlaneKey(dimId) || _asmfCanonicalPlaneKey(dim?.name);
+        if (canonical) {
+            actualDimByCanonical[canonical] = dimId;
+        }
+    });
+
+    const normalizedDimCfg = {};
+    Object.entries(dims).forEach(([dimId, dim]) => {
+        const canonical = _asmfCanonicalPlaneKey(dim?.plane) || _asmfCanonicalPlaneKey(dimId) || _asmfCanonicalPlaneKey(dim?.name);
+        const cfg = cfgByCanonical[canonical] || {};
+        normalizedDimCfg[dimId] = {
+            color: cfg.color || _asmfDimColor(dim?.plane || ''),
+            plane: dim?.plane || cfg.plane || '',
+            short: cfg.short || dim?.name || dimId,
+            canonical
+        };
+    });
+
+    const normalizedRels = rawRels.map(rel => {
+        const fromCanonical = ASMF_ORBITAL_CANONICAL_CODES[rel.from] || _asmfCanonicalPlaneKey(rel.from);
+        const toCanonical = ASMF_ORBITAL_CANONICAL_CODES[rel.to] || _asmfCanonicalPlaneKey(rel.to);
+        const from = actualDimByCanonical[fromCanonical] || rel.from;
+        const to = actualDimByCanonical[toCanonical] || rel.to;
+        if (!dims[from] || !dims[to]) return null;
+        return {
+            ...rel,
+            from,
+            to,
+            fromCanonical,
+            toCanonical
+        };
+    }).filter(Boolean);
+
+    return {
+        ...orbMap,
+        dim_config: normalizedDimCfg,
+        relationships: normalizedRels,
+        relationship_types: relTypes
+    };
+}
+
+function _asmfBuildGraphData(fw, orbMap) {
     const nodes = [], links = [];
     const dims   = fw.dimensions || {};
     const stages = fw.maturity_stages || {};
     const principles = fw.principles || [];
     const phases = (fw.transformation_journey?.phases) || [];
+    const normalizedOrbMap = _asmfNormalizeOrbitalMap(fw, orbMap || _asmfOrbitalMap || {});
+    const rels = normalizedOrbMap.relationships || [];
+    const relTypes = normalizedOrbMap.relationship_types || {};
+    const dimCfg = normalizedOrbMap.dim_config || {};
+
+    const relSummaryHtml = (dimId) => {
+        const related = rels.filter(r => r.from === dimId || r.to === dimId);
+        if (!related.length) return '<div style="color:#64748b;">No mapped cross-dimension relationships.</div>';
+        return related.map(r => {
+            const rt = relTypes[r.type] || { color: '#94a3b8', label: r.type };
+            const otherId = r.from === dimId ? r.to : r.from;
+            const other = dims[otherId] || {};
+            const dir = r.from === dimId ? 'Outgoing' : 'Incoming';
+            return `<div style="margin-bottom:10px;padding:10px 12px;background:#111827;border-left:3px solid ${rt.color};border-radius:6px;">
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:${rt.color};margin-bottom:4px;">${escapeHtml(dir)} · ${escapeHtml(rt.label)}</div>
+                <div style="font-size:11px;color:#e2e8f0;font-weight:600;margin-bottom:4px;">${escapeHtml(otherId)} — ${escapeHtml(other.name || otherId)}</div>
+                <div style="font-size:11px;color:#94a3b8;line-height:1.5;">${escapeHtml(r.label || '')}</div>
+            </div>`;
+        }).join('');
+    };
 
     // ── Root ──
     nodes.push({ id: 'root', name: fw.framework_abbrev || 'ASAF', type: 'root',
@@ -14685,11 +15443,12 @@ function _asmfBuildGraphData(fw) {
 
     // ── Dimensions + Sub-dims ──
     Object.entries(dims).forEach(([dimId, dim]) => {
-        const col = _asmfDimColor(dim.plane || '');
+        const cfg = dimCfg[dimId] || {};
+        const col = cfg.color || _asmfDimColor(dim.plane || '');
         const weight = Math.round((dim.weight || 0) * 100);
         nodes.push({ id: `dim-${dimId}`, name: `${dimId}: ${dim.name}`, type: 'dimension',
             color: col, size: 7,
-            detail: `<b style="color:${col}">${escapeHtml(dimId)}</b> — ${escapeHtml(dim.name)}<br><span style="color:#64748b">${escapeHtml(dim.plane||'')}</span><br>Weight: ${weight}%<br><br>${escapeHtml(dim.description||'')}` });
+            detail: `<b style="color:${col}">${escapeHtml(dimId)}</b> — ${escapeHtml(dim.name)}<br><span style="color:#64748b">${escapeHtml(dim.plane||'')}</span><br>Weight: ${weight}%<br><br>${escapeHtml(dim.description||'')}<br><br><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:${col};margin-bottom:8px;">Cross-Dimension Relationships</div>${relSummaryHtml(dimId)}` });
         links.push({ source: 'root', target: `dim-${dimId}`, color: col + '66', value: 2 });
 
         Object.entries(dim.sub_dimensions || {}).forEach(([sdId, sd]) => {
@@ -14700,6 +15459,20 @@ function _asmfBuildGraphData(fw) {
                 color: col + 'cc', size: 4,
                 detail: `<b style="color:${col}">${escapeHtml(sdId)}</b> — ${escapeHtml(sd.name)}<br><br><i style="color:#64748b;font-size:11px;">${escapeHtml(sd.assessment_question||'')}</i><br><br>${stageDescs}` });
             links.push({ source: `dim-${dimId}`, target: `sd-${sdId}`, color: col + '33', value: 1 });
+        });
+    });
+
+    rels.forEach(rel => {
+        const rt = relTypes[rel.type] || { color: '#94a3b8', label: rel.type };
+        links.push({
+            source: `dim-${rel.from}`,
+            target: `dim-${rel.to}`,
+            color: rt.color,
+            value: 1.8 + ((rel.strength || 1) * 0.35),
+            type: 'relationship',
+            label: rel.label || '',
+            relationType: rt.label,
+            detail: `<b style="color:${rt.color}">${escapeHtml(rt.label)}</b><br>${escapeHtml(rel.from)} → ${escapeHtml(rel.to)}<br><br>${escapeHtml(rel.label || '')}`
         });
     });
 
@@ -14728,8 +15501,8 @@ function _asmfBuildGraphData(fw) {
 function _asmfShowNodeDetail(node) {
     const panel = document.getElementById('asmf-graph-detail');
     if (!panel) return;
-    const typeColors = { root:'#ffffff', stage:'', dimension:'', subdim:'', principle:'#3b82f6', phase:'' };
-    const typeLabels = { root:'Framework', stage:'Adoption Stage', dimension:'Dimension', subdim:'Sub-Dimension', principle:'Principle', phase:'Journey Phase' };
+    const typeColors = { root:'#ffffff', stage:'', dimension:'', subdim:'', principle:'#3b82f6', phase:'', relationship:'#94a3b8' };
+    const typeLabels = { root:'Framework', stage:'Adoption Stage', dimension:'Dimension', subdim:'Sub-Dimension', principle:'Principle', phase:'Journey Phase', relationship:'Relationship' };
     const typeBadgeColor = node.color || '#3b82f6';
     panel.innerHTML = `
         <div style="margin-bottom:16px;">
@@ -14765,17 +15538,20 @@ async function populateASMFGraph() {
 
     try {
         await _loadForceGraph3D();
-        if (!_asmfFramework) {
-            const resp = await fetch('/api/asmf-framework');
-            _asmfFramework = await resp.json();
-        }
+        const toFetch = [];
+        if (!_asmfFramework) toFetch.push(fetch('/api/asmf-framework').then(r => r.json()).then(d => { _asmfFramework = d; }));
+        if (!_asmfOrbitalMap) toFetch.push(fetch('/api/asmf-orbital-map').then(r => r.json()).then(d => { _asmfOrbitalMap = d; }));
+        if (toFetch.length) await Promise.all(toFetch);
     } catch (e) {
         container.innerHTML = `<div style="color:#ef4444;padding:24px;">Error: ${escapeHtml(String(e))}</div>`;
         return;
     }
 
     container.innerHTML = '';
-    const gData = _asmfBuildGraphData(_asmfFramework);
+    const gData = _asmfBuildGraphData(_asmfFramework, _asmfOrbitalMap);
+
+    // Defer one frame so the flex layout has settled before we read container dimensions
+    await new Promise(res => requestAnimationFrame(() => setTimeout(res, 0)));
 
     const W = container.offsetWidth  || 800;
     const H = container.offsetHeight || 700;
@@ -14791,9 +15567,9 @@ async function populateASMFGraph() {
         .nodeOpacity(0.92)
         .nodeResolution(16)
         .linkColor(l => l.color || '#334155')
-        .linkWidth(l => (l.value || 1) * 0.4)
-        .linkOpacity(0.55)
-        .linkDirectionalParticles(l => l.value > 1 ? 2 : 0)
+        .linkWidth(l => l.type === 'relationship' ? (l.value || 1) * 0.7 : (l.value || 1) * 0.4)
+        .linkOpacity(l => l.type === 'relationship' ? 0.8 : 0.55)
+        .linkDirectionalParticles(l => l.type === 'relationship' ? Math.max(2, Math.round(l.value || 2)) : (l.value > 1 ? 2 : 0))
         .linkDirectionalParticleSpeed(0.004)
         .linkDirectionalParticleWidth(1.5)
         .onNodeClick(node => {
@@ -14809,6 +15585,14 @@ async function populateASMFGraph() {
         })
         .onNodeHover(node => {
             container.style.cursor = node ? 'pointer' : 'default';
+        })
+        .onLinkClick(link => {
+            _asmfShowNodeDetail({
+                type: 'relationship',
+                name: `${link.source?.id?.replace('dim-','') || ''} → ${link.target?.id?.replace('dim-','') || ''}`,
+                color: link.color || '#94a3b8',
+                detail: link.detail || ''
+            });
         });
 
     // Initial camera position
@@ -14839,7 +15623,7 @@ async function populateASMFView() {
         }
         el.innerHTML = _asmfRender(_asmfFramework);
     } catch (e) {
-        el.innerHTML = `<div style="color:#ef4444;padding:32px;">Error loading ASAF: ${escapeHtml(String(e))}</div>`;
+        el.innerHTML = `<div style="color:#ef4444;padding:32px;">Error loading framework: ${escapeHtml(String(e))}</div>`;
     }
 }
 
@@ -14875,7 +15659,7 @@ async function exportASMFFrameworkAsHTML() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ASAF — Agentic Security Operations Adoption Framework Reference</title>
+<title>${escapeHtml(fw.framework_abbrev || 'ASMF')} — ${escapeHtml(fw.framework_name || 'Agentic Adoption Framework')} Reference</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:32px 28px;max-width:1400px;margin:0 auto;}
@@ -14888,14 +15672,14 @@ a{color:#3b82f6}
 </head>
 <body>
 ${inner}
-<p style="margin-top:32px;font-size:11px;color:#334155;border-top:1px solid #1e293b;padding-top:12px;font-style:italic;">Exported ${exportDate} — ASAF v1.0 — Zach West, Gartner. Research-in-progress; not official Gartner published research.</p>
+<p style="margin-top:32px;font-size:11px;color:#334155;border-top:1px solid #1e293b;padding-top:12px;font-style:italic;">Exported ${exportDate} — ${escapeHtml(fw.framework_abbrev || 'ASMF')} ${escapeHtml(fw.schema_version || 'v1.0')} — Zach West, Gartner. Research-in-progress; not official Gartner published research.</p>
 </body>
 </html>`;
 
     const blob = new Blob([html], {type:'text/html'});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'ASAF_Framework_Reference.html';
+    a.download = `${fw.framework_abbrev || 'ASMF'}_Framework_Reference.html`;
     a.click();
     URL.revokeObjectURL(a.href);
 }
@@ -14917,7 +15701,7 @@ function _asmfRender(fw) {
     <div style="margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;">
       <div>
         <div style="font-size:11px;color:#3b82f6;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:4px;">
-          ${escapeHtml(fw.framework_name || 'Agentic Security Operations Adoption Framework')} ${escapeHtml(fw.schema_version || 'v1.0')}
+          ${escapeHtml(fw.framework_name || 'Agentic Adoption Framework')} ${escapeHtml(fw.schema_version || 'v1.0')}
         </div>
         <h1 style="font-size:26px;font-weight:800;color:#f8fafc;margin-bottom:6px;">${escapeHtml(fw.framework_abbrev || 'ASAF')}</h1>
         <p style="font-size:14px;color:#64748b;max-width:740px;line-height:1.6;">${escapeHtml(fw.description || '')}</p>
@@ -14961,7 +15745,8 @@ function _asmfRender(fw) {
     html += `</div>`;
 
     // Dimensions
-    html += `<h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">11 Dimensions</h2>`;
+    const _dimCount = Object.keys(dims).length;
+    html += `<h2 style="font-size:18px;font-weight:700;color:#f1f5f9;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid #1e293b;">${_dimCount} Dimensions</h2>`;
     Object.entries(dims).forEach(([dimId, dim]) => {
         const subDims = dim.sub_dimensions || {};
         const weight = Math.round((dim.weight || 0) * 100);
@@ -15045,8 +15830,11 @@ function _asmfRender(fw) {
         html += `</div>`;
     }
 
-    // Download button
-    html += `
+    const _isASAF = (fw.framework_abbrev || '').toUpperCase() === 'ASAF';
+
+    // Download button (ASAF-specific: hardcoded report generator script)
+    if (_isASAF) {
+        html += `
     <div style="margin-top:8px;padding:20px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
       <div>
         <div style="font-size:14px;font-weight:700;color:#f1f5f9;">Generate Self-Assessment Report</div>
@@ -15054,8 +15842,12 @@ function _asmfRender(fw) {
       </div>
       <code style="font-size:12px;background:#1e293b;color:#34d399;padding:8px 14px;border-radius:6px;white-space:nowrap;">python _create_agentic_soc_report.py --demo</code>
     </div>`;
+    }
 
-    // ── Theoretical Foundations ──
+    // ── Theoretical Foundations (ASAF-specific hardcoded content) ──
+    if (!_isASAF) {
+      return html;
+    }
     const foundations = [
       {
         label: 'CMMI / Capability Maturity Model Integration',
@@ -15142,6 +15934,2799 @@ function _asmfRender(fw) {
     </p>`;
 
     return html;
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// APEF — AI Platform Ecosystem Framework Report
+// ──────────────────────────────────────────────────────────────────────────────
+let _apefData = null;
+let _apefGraph = null;
+let _apefSelectedVendor = '';    // active APEF report-tab vendor filter ('' = All)
+let _apefTabVendorFilters = {};  // per APEF tab vendor filters so one report page does not filter another
+let _apefActiveTab = 'overview';
+let _apefGraphMode = 'component'; // 'component' or 'layer'
+let _apefGraph3D = null;
+let _apefGraph3DResizeObserver = null;
+
+const APEF_VENDOR_COLORS = {
+    anthropic: '#d97757',
+    microsoft: '#0078d4',
+    amazon:    '#ff9900',
+    alibaba:   '#ff4f00',
+    google:    '#4285f4',
+    nvidia:    '#76b900',
+    openai:    '#10a37f',
+};
+const APEF_LAYER_COLORS = {
+    L1: '#7c3aed', L2: '#06b6d4', L3: '#10b981',
+    L4: '#f59e0b', L5: '#ec4899', L6: '#ef4444',
+};
+const APEF_TYPE_ICON = {
+    'foundation-model': '🧠',
+    'infra': '🖥',
+    'agent-platform': '⚙',
+    'distribution': '📦',
+    'safety': '🛡',
+    'tooling': '🔧',
+    'vendor': '🏢',
+};
+
+async function _apefFetchData() {
+    if (!_apefData) {
+        const r = await fetch('/api/apef-report');
+        _apefData = await r.json();
+    }
+    return _apefData;
+}
+async function _apefFetchGraph() {
+    if (!_apefGraph) {
+        const r = await fetch('/api/apef-graph');
+        _apefGraph = await r.json();
+    }
+    return _apefGraph;
+}
+
+async function populateAPEFVendorDropdown(schemaFile) {
+    const wrap = document.getElementById('apef-vendor-selector-wrap');
+    const sel  = document.getElementById('apef-vendor-select');
+    if (!wrap || !sel) return;
+    const isAPEF = schemaFile === 'ai_platform_ecosystem_framework_v1.json';
+    // APEF report filtering is handled by the in-report tab-scoped selector.
+    // Keep the header-level selector hidden so it does not filter every report page.
+    wrap.style.display = 'none';
+    if (!isAPEF) _apefSelectedVendor = '';
+}
+
+function _apefPopulateReportVendorFilter(data) {
+    const wrap = document.getElementById('apef-report-vendor-filter');
+    const sel = document.getElementById('apef-report-vendor-select');
+    if (!wrap || !sel || !data) return;
+    sel.innerHTML = '<option value="">All Vendors</option>' +
+        (data.vendors || []).map(v =>
+            `<option value="${escapeHtml(v.key)}">${escapeHtml(v.vendor || v.key)}</option>`
+        ).join('');
+    if (!sel.dataset.apefReportBound) {
+        sel.addEventListener('change', () => {
+            _apefTabVendorFilters[_apefActiveTab] = sel.value || '';
+            _apefSelectedVendor = sel.value || '';
+            _apefRenderActivePane();
+        });
+        sel.dataset.apefReportBound = '1';
+    }
+    _apefSyncReportVendorFilter();
+}
+
+function _apefSyncReportVendorFilter() {
+    const sel = document.getElementById('apef-report-vendor-select');
+    if (!sel) return;
+    sel.value = _apefTabVendorFilters[_apefActiveTab] || '';
+}
+
+async function populateAPEFReportView() {
+    // Wire tab bar (idempotent)
+    document.querySelectorAll('#apef-report-view .apef-inner-tab').forEach(btn => {
+        if (btn.dataset.apefBound) return;
+        btn.dataset.apefBound = '1';
+        btn.addEventListener('click', () => {
+            _apefActiveTab = btn.dataset.apefTab || 'overview';
+            document.querySelectorAll('#apef-report-view .apef-inner-tab').forEach(b => b.classList.toggle('active', b === btn));
+            document.querySelectorAll('#apef-report-view .apef-inner-pane').forEach(p => {
+                const isActive = p.id === `apef-pane-${_apefActiveTab}`;
+                p.classList.toggle('active', isActive);
+                p.style.display = isActive ? '' : 'none';
+            });
+            _apefRenderActivePane();
+        });
+    });
+
+    try {
+        const data = await _apefFetchData();
+        _apefPopulateReportVendorFilter(data);
+    } catch (e) {
+        const el = document.getElementById('apef-pane-overview');
+        if (el) el.innerHTML = `<div style="color:#ef4444;padding:24px;">Failed to load APEF data: ${escapeHtml(String(e))}</div>`;
+        return;
+    }
+    _apefRenderActivePane();
+}
+
+function _apefRenderActivePane() {
+    _apefSelectedVendor = _apefTabVendorFilters[_apefActiveTab] || '';
+    _apefSyncReportVendorFilter();
+    if (!_apefData) return;
+    const d = _apefData;
+    switch (_apefActiveTab) {
+        case 'overview':  _apefRenderOverview(d); break;
+        case 'vendor':    _apefRenderVendorProfile(d); break;
+        case 'dimension': _apefRenderDimensions(d); break;
+        case 'plt':       _apefRenderPLTDeepDive(d); break;
+        case 'matrix':    _apefRenderMatrix(d); break;
+        case 'graph':     _apefRenderGraph(d); break;
+        case 'graph3d':   _apefRenderGraph3DTab(d); break;
+        case 'layers':    _apefRenderLayers(d); break;
+        case 'pairings':  _apefRenderPairings(d); break;
+        case 'legend':    _apefRenderLegend(d); break;
+    }
+}
+
+function _apefVendorChip(v, opts = {}) {
+    const color = APEF_VENDOR_COLORS[v.key] || '#94a3b8';
+    const dim = (opts.dimVendor && _apefSelectedVendor && _apefSelectedVendor !== v.key) ? 0.35 : 1;
+    return `<span class="apef-chip" style="background:${color}20; color:${color}; border:1px solid ${color}55; opacity:${dim};">${escapeHtml(v.vendor || v.key)}</span>`;
+}
+
+const APEF_DIMENSION_LAYER_MAP = {
+    CMP: ['L1', 'L2'],
+    FMD: ['L3'],
+    PLT: ['L4'],
+    ENT: ['L5'],
+    SAF: ['L6'],
+    ECO: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6']
+};
+
+const APEF_DIMENSION_STACK_FALLBACK = {
+    CMP: ['INFRA'],
+    FMD: ['MODEL', 'API_PLATFORM'],
+    PLT: ['AGENT', 'API_PLATFORM', 'DATA_ENTERPRISE'],
+    ENT: ['APP', 'DATA_ENTERPRISE'],
+    SAF: ['AGENT', 'DATA_ENTERPRISE', 'INFRA'],
+    ECO: ['APP', 'AGENT', 'API_PLATFORM', 'MODEL', 'DATA_ENTERPRISE', 'INFRA']
+};
+
+const APEF_COMPONENT_ALIASES = {
+    'google-vertex': 'gcp-vertex',
+    'microsoft-copilot-studio': 'copilot-studio'
+};
+
+const APEF_LOCAL_COMPONENT_IDS = new Set([
+    'nvidia-h100-local',
+    'nvidia-vllm',
+    'nvidia-triton-local',
+    'nvidia-mlflow-local',
+    'nvidia-docker-compose-local'
+]);
+
+const APEF_INTEGRATION_TYPE_FALLBACK = {
+    ownership: { label: 'Ownership / native component', color: '#64748b', description: 'Vendor-owned component or first-party capability relationship.' },
+    nvidia_compute: { label: 'NVIDIA compute / acceleration', color: '#22c55e', description: 'GPU, acceleration software, or NVIDIA-backed compute dependency.' },
+    local_runtime: { label: 'Local / on-prem runtime', color: '#f97316', description: 'Customer-managed or on-prem runtime path, usually NVIDIA-anchored.' },
+    model_distribution: { label: 'Model distribution / hosting', color: '#8b5cf6', description: 'Model made available through a model gateway, marketplace, app, or partner platform.' },
+    agent_orchestration: { label: 'Agent / orchestration', color: '#06b6d4', description: 'Agent builder, workflow, tool-use, runtime, or orchestration relationship.' },
+    data_grounding: { label: 'Data / grounding / RAG', color: '#eab308', description: 'Enterprise data, search, grounding, vector, retrieval, or RAG relationship.' },
+    governance_safety: { label: 'Governance / safety', color: '#ef4444', description: 'Policy, safety, guardrail, identity, audit, or governance relationship.' },
+    platform_api: { label: 'Platform / API control plane', color: '#3b82f6', description: 'API gateway, platform control plane, model lifecycle, evaluation, or MLOps relationship.' },
+    ecosystem_partner: { label: 'Ecosystem / partner integration', color: '#ec4899', description: 'Cross-vendor partner, marketplace, standard, or ecosystem relationship.' }
+};
+
+function _apefResolveComponentId(id) {
+    return APEF_COMPONENT_ALIASES[id] || id;
+}
+
+function _apefIntegrationTypeMeta(type, source = null) {
+        const list = Array.isArray(source) ? source : ((source || {}).integration_type_taxonomy || (source || {}).integration_types || []);
+        const fromSource = Array.isArray(list) ? list.find(t => t.id === type) : null;
+        return fromSource || APEF_INTEGRATION_TYPE_FALLBACK[type] || APEF_INTEGRATION_TYPE_FALLBACK.ecosystem_partner;
+}
+
+function _apefClassifyIntegrationPoint(source, target) {
+        if (!source || !target) return 'ecosystem_partner';
+        const srcId = source.id || '';
+        const tgtId = target.id || '';
+        const srcVendor = source.vendorKey || source.vendor;
+        const tgtVendor = target.vendorKey || target.vendor;
+        const names = `${source.name || ''} ${target.name || ''} ${srcId} ${tgtId}`.toLowerCase();
+        const types = `${source.type || ''} ${target.type || ''}`.toLowerCase();
+
+        if (APEF_LOCAL_COMPONENT_IDS.has(srcId) || APEF_LOCAL_COMPONENT_IDS.has(tgtId) || names.includes('local')) return 'local_runtime';
+        if (srcVendor === 'nvidia' || tgtVendor === 'nvidia' || /nvidia|cuda|triton|tensorrt/.test(names)) return 'nvidia_compute';
+        if (source.layer === 'L6' || target.layer === 'L6' || /guardrail|safety|governance|policy|iam|identity|model armor|saif|purview|entra/.test(names)) return 'governance_safety';
+        if (/bigquery|search|vector|rag|retrieval|grounding|knowledge|fabric|graph|s3|redshift|opensearch|memory bank/.test(names)) return 'data_grounding';
+        if (/agent|copilot studio|assistant|mcp|tool use|runtime|orchestration|strands|semantic kernel|autogen/.test(names)) return 'agent_orchestration';
+        if (source.layer === 'L3' || target.layer === 'L3' || types.includes('foundation-model') || /model garden|bedrock|azure openai|vertex|foundry|chatgpt|claude|gemini|gpt/.test(names)) return 'model_distribution';
+        if (source.layer === 'L4' || target.layer === 'L4' || /api|platform|pipeline|mlflow|sagemaker/.test(names)) return 'platform_api';
+        if (srcVendor !== tgtVendor) return 'ecosystem_partner';
+        return 'platform_api';
+}
+
+function _apefRenderIntegrationBadge(type, source = null) {
+        const meta = _apefIntegrationTypeMeta(type, source);
+        return `<span class="apef-chip" title="${escapeHtml(meta.description || '')}" style="background:${meta.color}22;color:${meta.color};border:1px solid ${meta.color}66;">${escapeHtml(meta.label || type)}</span>`;
+}
+
+function _apefRenderIntegrationLegend(source = null, opts = {}) {
+        const list = (Array.isArray(source) ? source : ((source || {}).integration_type_taxonomy || (source || {}).integration_types || []));
+        const entries = list.length ? list : Object.entries(APEF_INTEGRATION_TYPE_FALLBACK).map(([id, meta]) => ({ id, ...meta }));
+        return `
+            <div style="margin-top:${opts.marginTop ?? 10}px;padding:${opts.compact ? '8px' : '10px'};background:${opts.background || '#020617'};border:1px solid #1e293b;border-radius:8px;">
+                <div style="font-size:11px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:6px;">Integration link types</div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                    ${entries.filter(e => e.id !== 'ownership' || opts.includeOwnership).map(e => _apefRenderIntegrationBadge(e.id, entries)).join('')}
+                </div>
+            </div>`;
+}
+
+function _apefBuildComponentLookup(vendors) {
+    const lookup = new Map();
+    (vendors || []).forEach(v => {
+        (v.components || []).forEach(c => {
+            lookup.set(c.id, {
+                ...c,
+                vendorKey: v.key,
+                vendorName: v.vendor || v.key
+            });
+        });
+    });
+    return lookup;
+}
+
+function _apefGetDimensionLayers(code) {
+    return APEF_DIMENSION_LAYER_MAP[code] || [];
+}
+
+function _apefGetEnterpriseStackLayers(d) {
+        return (((d || {}).enterprise_stack_lens || {}).layers || []);
+}
+
+function _apefGetStackLayerById(d, id) {
+        return _apefGetEnterpriseStackLayers(d).find(layer => layer.id === id) || null;
+}
+
+function _apefGetStackLayersForDimension(d, code) {
+        const layers = _apefGetEnterpriseStackLayers(d);
+        const mapped = layers.filter(layer => (layer.maps_to_apef_dimensions || []).includes(code));
+        if (mapped.length) return mapped;
+        return (APEF_DIMENSION_STACK_FALLBACK[code] || []).map(id => _apefGetStackLayerById(d, id)).filter(Boolean);
+}
+
+function _apefGetVendorStackItems(d, v, stackIds = null, limit = 6) {
+        if (!d || !v) return [];
+        const wanted = stackIds ? new Set(stackIds) : null;
+        const items = [];
+        _apefGetEnterpriseStackLayers(d).forEach(layer => {
+                if (wanted && !wanted.has(layer.id)) return;
+                const positions = ((layer.vendor_positions || {})[v.key] || []);
+                positions.slice(0, 3).forEach(pos => {
+                        items.push(`${layer.label}: ${pos}`);
+                });
+        });
+        return items.slice(0, limit);
+}
+
+function _apefRenderStackBadges(layers) {
+        if (!layers || !layers.length) return '';
+        return `<div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;">${layers.map(layer => `<span class="apef-chip" title="${escapeHtml(layer.description || '')}">${escapeHtml(layer.label || layer.id)}</span>`).join('')}</div>`;
+}
+
+function _apefGetDeploymentSignals(v, code) {
+    if (!v) return { relevantComponents: [], localComponents: [], localIntegrations: [] };
+    const layers = new Set(_apefGetDimensionLayers(code));
+    const relevantComponents = (v.components || []).filter(c => !layers.size || layers.has(c.layer));
+    const localComponents = relevantComponents.filter(c => {
+        const hay = `${c.id || ''} ${c.name || ''} ${(c.integrates_with || []).join(' ')}`.toLowerCase();
+        return /local|on-device|on prem|on-prem|edge|nvidia|gpu|triton|vllm|mlflow|docker|gemma|phi|gpt-oss|nemotron/.test(hay) || APEF_LOCAL_COMPONENT_IDS.has(c.id);
+    });
+    const localIntegrations = relevantComponents.flatMap(c => (c.integrates_with || [])
+        .filter(id => APEF_LOCAL_COMPONENT_IDS.has(_apefResolveComponentId(id)) || /nvidia|local|triton|vllm|mlflow|docker/.test(String(id).toLowerCase()))
+        .map(id => ({ component: c.name || c.id, target: _apefResolveComponentId(id) })));
+    return { relevantComponents, localComponents, localIntegrations };
+}
+
+function _apefSummarizeNames(items, limit = 3) {
+    const names = [];
+    (items || []).forEach(item => {
+        const name = typeof item === 'string' ? item : (item.name || item.component || item.target || '');
+        if (name && !names.includes(name)) names.push(name);
+    });
+    if (!names.length) return '';
+    const shown = names.slice(0, limit).join(', ');
+    return names.length > limit ? `${shown}, and ${names.length - limit} more` : shown;
+}
+
+function _apefGetVendorDeploymentMode(v) {
+    const modes = {
+        anthropic: 'indirect and partner-mediated: Claude stays hosted while MCP and hyperscaler distribution connect Anthropic workflows to external runtimes',
+        microsoft: 'hybrid-control-plane oriented: Azure, Arc/AKS, Phi models, and Copilot governance can extend into customer-managed NVIDIA estates',
+        amazon: 'managed-cloud first with hybrid extension: Bedrock and SageMaker anchor AWS operations while EKS/ECS patterns can reach local GPU clusters',
+        google: 'cloud-platform led with selective local paths: Vertex remains the main control plane while Gemma/on-device Gemini create local or edge options',
+        nvidia: 'native local/on-prem substrate: GPUs, CUDA, Triton, NIM, vLLM, MLflow, and reference runtimes are the deployment anchor for other vendors',
+        openai: 'cloud/API first with an open-weight side path: flagship GPT stays hosted while gpt-oss-style deployment can land on NVIDIA-backed local infrastructure'
+    };
+    return modes[(v && v.key) || ''] || 'best read through its mix of hosted services, partner distribution, and any available local runtime integrations';
+}
+
+function _apefGetDimensionDeploymentPosture(v, code, dim = {}) {
+    if (!v || !v.local_deployment_note) return '';
+    const vendor = v.vendor || v.key || 'This vendor';
+    const mode = _apefGetVendorDeploymentMode(v);
+    const { localComponents, localIntegrations } = _apefGetDeploymentSignals(v, code);
+    const signalNames = _apefSummarizeNames(localComponents, 3);
+    const integrationNames = _apefSummarizeNames(localIntegrations, 2);
+    const signalPhrase = signalNames ? ` Relevant signals here include ${signalNames}.` : '';
+    const integrationPhrase = integrationNames ? ` The explicit local/NVIDIA touchpoints in this dimension include ${integrationNames}.` : '';
+
+    switch (code) {
+        case 'CMP':
+            return `${vendor}'s CMP posture is ${mode}. In compute, the local/on-prem angle is infrastructure placement: customer-managed NVIDIA GPU clusters, cloud GPU capacity, or partner silicon paths determine the practical boundary.${signalPhrase}${integrationPhrase}`;
+        case 'FMD':
+            return `${vendor}'s FMD posture is ${mode}. At the model layer, the key question is which model families can run outside the vendor-hosted service; local relevance depends on open/small-model paths or NVIDIA-packaged inference runtimes for regulated, offline, or data-gravity workloads.${signalPhrase}${integrationPhrase}`;
+        case 'PLT':
+            return `${vendor}'s PLT posture is ${mode}. For platform teams, the test is whether builders can keep one orchestration, evaluation, and lifecycle workflow while shifting execution between cloud endpoints and local NVIDIA-backed runtimes.${signalPhrase}${integrationPhrase}`;
+        case 'ENT':
+            return `${vendor}'s ENT posture is ${mode}. Enterprise deployment is about standardization: identity, productivity integration, admin policy, support, and repeatable rollout patterns must still work when some workloads move to local or hybrid infrastructure.${signalPhrase}${integrationPhrase}`;
+        case 'SAF':
+            return `${vendor}'s SAF posture is ${mode}. Governance changes when workloads leave the fully managed service boundary; local or hybrid execution increases the need for customer-controlled logging, policy enforcement, model access controls, audit evidence, and runtime guardrails.${signalPhrase}${integrationPhrase}`;
+        case 'ECO':
+            return `${vendor}'s ECO posture is ${mode}. Ecosystem value comes from portability, standards, partner runtimes, and NVIDIA-compatible deployment paths that let enterprises compose this vendor with other platform layers rather than lock every workload into one hosted path.${signalPhrase}${integrationPhrase}`;
+        default:
+            return v.local_deployment_note;
+    }
+}
+
+function _apefRenderDeploymentPosture(v, opts = {}) {
+        if (!v || !v.local_deployment_note) return '';
+	const text = opts.dimensionCode ? _apefGetDimensionDeploymentPosture(v, opts.dimensionCode, opts.dimension || {}) : v.local_deployment_note;
+	const label = opts.dimensionCode ? `Deployment posture (${opts.dimensionCode})` : 'Deployment posture';
+        return `
+            <div style="margin-top:${opts.marginTop ?? 8}px;padding:8px 10px;background:#0b1220;border:1px solid #1e293b;border-radius:8px;font-size:${opts.fontSize || '11px'};line-height:1.55;color:#94a3b8;">
+			<strong style="color:#93c5fd;">${escapeHtml(label)}:</strong> ${escapeHtml(text)}
+            </div>`;
+}
+
+function _apefRenderVendorStackProfile(d, v, opts = {}) {
+        const layers = _apefGetEnterpriseStackLayers(d);
+        if (!layers.length || !v) return '';
+        const color = APEF_VENDOR_COLORS[v.key] || '#94a3b8';
+        return `
+            <div class="apef-card" style="margin-top:${opts.marginTop ?? 14}px;border-left:3px solid ${color};background:#0b1220;">
+                <h3 style="margin:0 0 8px;color:#93c5fd;">Enterprise Stack Position & Deployment Posture</h3>
+                <p style="font-size:12px;color:#cbd5e1;line-height:1.6;margin:0 0 10px;">This frames ${escapeHtml(v.vendor || v.key)} across the buyer-facing stack, then ties local/hybrid/on-prem posture into the same architecture instead of treating it as a separate note.</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px;">
+                    ${layers.map(layer => {
+                            const positions = ((layer.vendor_positions || {})[v.key] || []);
+                            return `<div style="padding:9px 10px;border:1px solid #1e293b;border-radius:8px;background:#020617;">
+                                <div style="font-size:11px;color:#93c5fd;font-weight:800;text-transform:uppercase;letter-spacing:0.3px;">${escapeHtml(layer.label || layer.id)}</div>
+                                ${positions.length ? `<ul style="margin:5px 0 0;padding-left:16px;font-size:11px;color:#cbd5e1;line-height:1.5;">${positions.slice(0, 4).map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ul>` : '<div style="margin-top:5px;font-size:11px;color:#64748b;font-style:italic;">Not a primary position.</div>'}
+                            </div>`;
+                    }).join('')}
+                </div>
+                ${_apefRenderDeploymentPosture(v, { marginTop: 10 })}
+            </div>`;
+}
+
+function _apefGetVendorIntegrationPoints(v, vendors, dimensionCode = null, opts = {}) {
+    if (!v) return [];
+    const limit = opts.limit ?? 4;
+    const includeStrategicPairings = opts.includeStrategicPairings !== false;
+    const lookup = _apefBuildComponentLookup(vendors || []);
+    const relevantLayers = dimensionCode ? new Set(_apefGetDimensionLayers(dimensionCode)) : null;
+    const seen = new Set();
+    const items = [];
+
+    const pushItem = (text, type = 'ecosystem_partner') => {
+        if (!text || seen.has(text)) return;
+        seen.add(text);
+        items.push({ text, type });
+    };
+
+    (v.components || [])
+        .filter(c => !relevantLayers || relevantLayers.has(c.layer))
+        .forEach(c => {
+            (c.integrates_with || []).forEach(rawId => {
+                const target = lookup.get(_apefResolveComponentId(rawId));
+                if (!target) return;
+                const crossVendor = target.vendorKey !== v.key;
+                const localNvidia = APEF_LOCAL_COMPONENT_IDS.has(target.id);
+                if (!crossVendor && !localNvidia) return;
+
+                let text = `${c.name} integrates with ${target.name}`;
+                if (crossVendor) text += ` (${target.vendorName})`;
+                pushItem(text, _apefClassifyIntegrationPoint({ ...c, vendorKey: v.key }, target));
+            });
+        });
+
+    if (items.length < limit && includeStrategicPairings) {
+        (v.strategic_pairings || []).forEach(p => {
+            if (!p || typeof p !== 'object') return;
+            const partnerType = /nvidia/i.test(p.partner || '') ? 'nvidia_compute' : 'ecosystem_partner';
+            pushItem(`${p.partner}: ${p.rationale}`, partnerType);
+        });
+    }
+
+    return items.slice(0, limit);
+}
+
+function _apefRenderMiniList(title, items, opts = {}) {
+    if (!items || !items.length) return '';
+    const tone = opts.tone || '#94a3b8';
+    const body = opts.body || '#cbd5e1';
+    const fontSize = opts.fontSize || '12px';
+    return `
+      <div style="margin-top:${opts.marginTop ?? 8}px;">
+        <div style="font-size:11px;color:${tone};font-weight:700;text-transform:uppercase;letter-spacing:0.3px;">${escapeHtml(title)}</div>
+        <ul style="margin:4px 0 0;padding-left:18px;font-size:${fontSize};color:${body};line-height:1.55;">
+                    ${items.map(item => {
+                            if (item && typeof item === 'object') {
+                                    const meta = _apefIntegrationTypeMeta(item.type || 'ecosystem_partner');
+                                    return `<li style="margin-bottom:3px;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${meta.color};margin-right:5px;"></span>${escapeHtml(item.text || '')} <span style="font-size:10px;color:${meta.color};">${escapeHtml(meta.label || item.type || '')}</span></li>`;
+                            }
+                            return `<li>${escapeHtml(item)}</li>`;
+                    }).join('')}
+        </ul>
+      </div>`;
+}
+
+function _apefGetSingleVendorForTab(d, tabKey = _apefActiveTab) {
+    const vendors = (d || {}).vendors || [];
+    if (!vendors.length) return null;
+    let key = _apefTabVendorFilters[tabKey] || _apefSelectedVendor || '';
+    let vendor = vendors.find(v => v.key === key);
+    if (!vendor) {
+        vendor = vendors[0];
+        _apefTabVendorFilters[tabKey] = vendor.key;
+        if (tabKey === _apefActiveTab) {
+            _apefSelectedVendor = vendor.key;
+            _apefSyncReportVendorFilter();
+        }
+    }
+    return vendor;
+}
+
+function _apefGetPLTComponents(v) {
+    if (!v) return [];
+    return (v.components || []).filter(c => c.layer === 'L4');
+}
+
+function _apefPLTBucketMeta(bucket) {
+    const meta = {
+        agent: { label: 'Agent authoring & orchestration', color: '#06b6d4', why: 'Where teams define agents, tools, workflows, runtime behavior, and handoffs.' },
+        api: { label: 'API / model platform control plane', color: '#3b82f6', why: 'Where developers call models, manage catalogs, wrap endpoints, and package AI services.' },
+        eval: { label: 'Evaluation, observability & lifecycle', color: '#a78bfa', why: 'Where quality, regression, telemetry, cost, and model/application lifecycle controls live.' },
+        data: { label: 'Data grounding & tool connection', color: '#eab308', why: 'Where retrieval, search, grounding, RAG, enterprise data, and tool integrations enter the platform.' },
+        governance: { label: 'Governance hooks in developer workflow', color: '#ef4444', why: 'Where policy, approvals, guardrails, identity, and audit controls shape build/run workflows.' },
+        local: { label: 'Local / hybrid execution hooks', color: '#f97316', why: 'Where platform workflows can target customer-managed, edge, or NVIDIA-backed execution.' },
+        developer: { label: 'Developer workflow & IDE adoption', color: '#10b981', why: 'Where SDKs, IDEs, workbenches, templates, and coding assistants improve adoption velocity.' }
+    };
+    return meta[bucket] || { label: 'General PLT capability', color: '#94a3b8', why: 'Platform capability relevant to build, ship, observe, or maintain AI systems.' };
+}
+
+function _apefClassifyPLTComponent(c) {
+    const hay = `${c.id || ''} ${c.name || ''} ${c.type || ''} ${(c.integrates_with || []).join(' ')}`.toLowerCase();
+    if (/local|nvidia|triton|vllm|mlflow|docker|gpu|edge|aks|eks|gke/.test(hay)) return 'local';
+    if (/eval|observ|monitor|telemetry|mlflow|pipeline|lifecycle|prompt caching|batch/.test(hay)) return 'eval';
+    if (/search|retriev|rag|knowledge|ground|vector|fabric|graph|bigquery|s3|redshift|opensearch|memory/.test(hay)) return 'data';
+    if (/guardrail|safety|governance|policy|content safety|control|identity|purview|entra|iam|kms|private/.test(hay)) return 'governance';
+    if (/agent|copilot studio|assistant|responses|mcp|tool|runtime|orchestration|semantic kernel|autogen|strands|operator|computer use/.test(hay)) return 'agent';
+    if (/code|developer|ide|sdk|console|workbench|studio|prompt|files|citations/.test(hay)) return 'developer';
+    if (/api|platform|foundry|bedrock|vertex|sagemaker|openai|anthropic|nvidia ai enterprise|nim/.test(hay)) return 'api';
+    return 'api';
+}
+
+function _apefGetPLTMechanicBuckets(v, vendors) {
+    const lookup = _apefBuildComponentLookup(vendors || []);
+    const buckets = new Map();
+    _apefGetPLTComponents(v).forEach(c => {
+        const bucket = _apefClassifyPLTComponent(c);
+        const targets = (c.integrates_with || []).map(id => lookup.get(_apefResolveComponentId(id))).filter(Boolean);
+        const targetTypes = targets.map(t => _apefClassifyIntegrationPoint({ ...c, vendorKey: v.key }, t));
+        if (!buckets.has(bucket)) buckets.set(bucket, []);
+        buckets.get(bucket).push({ component: c, targets, targetTypes });
+    });
+    return Array.from(buckets.entries()).map(([bucket, items]) => ({ bucket, meta: _apefPLTBucketMeta(bucket), items }));
+}
+
+function _apefGetPLTDifferentiators(v, d, vendors) {
+    if (!v) return [];
+    const components = _apefGetPLTComponents(v);
+    const buckets = _apefGetPLTMechanicBuckets(v, vendors);
+    const bucketNames = buckets.map(b => b.meta.label);
+    const n = ((v.dimension_narratives || {}).PLT || {});
+    const vendorSpecific = {
+        anthropic: [
+            'Differentiates through model-led developer experience: Claude Code, tool use, and MCP make Anthropic unusually strong for agent/tool integration despite a narrower full-stack platform.',
+            'MCP is the strategic PLT lever: it turns Anthropic from a model endpoint into an integration standard that can sit across IDEs, tools, and other vendors.'
+        ],
+        microsoft: [
+            'Differentiates through breadth: Azure AI Foundry, Copilot Studio, Semantic Kernel, AutoGen, GitHub, Entra, and M365 create one of the most complete enterprise developer/control-plane stories.',
+            'Its PLT advantage is the path from pro-code to low-code to productivity embedding under a familiar enterprise governance boundary.'
+        ],
+        amazon: [
+            'Differentiates through operational depth: Bedrock, SageMaker, AgentCore, Knowledge Bases, Guardrails, and AWS IAM make PLT feel like an extension of cloud operations.',
+            'AWS is strongest when platform teams want model choice plus infrastructure-grade controls, but its surface area can create decision complexity.'
+        ],
+        alibaba: [
+            'Differentiates through a dual-path platform model: Alibaba Cloud Model Studio gives a managed, OpenAI-compatible control plane for Qwen and third-party models, while Qwen-Agent provides a code-first agent framework that can target both DashScope and self-hosted OpenAI-compatible runtimes.',
+            'Alibaba is stronger than many buyers assume on operational telemetry: Model Studio documents model monitoring, alerts, logs, security/cost/performance metrics, and Prometheus/Grafana export, which makes its PLT story more operationally mature than a simple “model vendor” label suggests.'
+        ],
+        google: [
+            'Differentiates through Vertex as a unified model/data/platform plane, with strong grounding, search, BigQuery, and Gemini-oriented application patterns.',
+            'Google’s PLT story is strongest when AI application delivery is tied tightly to data platform, search, and multimodal model workflows.'
+        ],
+        nvidia: [
+            'Differentiates as the runtime substrate rather than the enterprise app builder: NIM, Triton, TensorRT-LLM, NeMo, MLflow, and local runtime patterns power other vendors’ PLT layers.',
+            'NVIDIA is most differentiated where platform teams need performance, packaging, and local/hybrid execution control beneath the agent or API layer.'
+        ],
+        openai: [
+            'Differentiates through a fast-moving direct developer platform: API, Responses, Agents SDK, Realtime, Assistants, and ChatGPT Enterprise compress experimentation-to-production cycles.',
+            'OpenAI’s PLT strength is developer velocity and model-native tooling; deeper enterprise data/control-plane fit often depends on partners.'
+        ]
+    };
+    const generated = [
+        `${v.vendor || v.key} has ${components.length} L4 platform component${components.length === 1 ? '' : 's'} represented in the graph across ${bucketNames.length ? bucketNames.join(', ') : 'general platform capabilities'}.`,
+        n.summary ? `Current PLT narrative: ${n.summary}` : '',
+        `Primary PLT stack layers: ${_apefGetStackLayersForDimension(d, 'PLT').map(layer => layer.label || layer.id).join(', ')}.`
+    ].filter(Boolean);
+    return [...(vendorSpecific[v.key] || []), ...generated];
+}
+
+function _apefGetPLTResearchRecommendations(v) {
+    const common = [
+        'Validate agent runtime mechanics: memory/state model, scheduling, retries, error recovery, human approval, tool permissions, and production runtime guarantees.',
+        'Compare evaluation and observability depth: native evals, telemetry, drift detection, cost tracking, red-team workflow, quality gates, and CI/CD integration.',
+        'Assess developer workflow maturity: SDKs, IDE support, templates, local testing, prompt/version management, deployment pipelines, and onboarding path.',
+        'Map data grounding and tool integration: connector catalogs, RAG ownership, vector/search services, MCP/function-calling support, identity propagation, and permissions trimming.',
+        'Test governance embedded in PLT: policy-as-code, agent identity, approval workflows, audit trails, routing controls, content safety hooks, and compliance evidence export.',
+        'Confirm hybrid control-plane continuity: whether the same orchestration/evaluation/lifecycle path works for hosted APIs and customer-managed NVIDIA-backed runtimes.'
+    ];
+    const byVendor = {
+        anthropic: ['Research how MCP adoption translates into governed enterprise runtime patterns beyond developer enthusiasm.', 'Clarify how Claude Code, Console evals, and partner platforms combine into a repeatable production PLT operating model.'],
+        microsoft: ['Separate overlapping Foundry, Copilot Studio, Azure ML, Semantic Kernel, AutoGen, and M365 control-plane responsibilities.', 'Validate how Entra agent identity and Purview controls appear in developer workflows, not just admin documentation.'],
+        amazon: ['Clarify the division of labor between Bedrock, SageMaker, AgentCore, Strands, and Q Developer for end-to-end AI app delivery.', 'Benchmark Bedrock evaluation/guardrail workflows against cloud-native CI/CD and observability practices.'],
+        alibaba: ['Clarify where Model Studio ends and where PAI / ACK-style runtime services take over for full production lifecycle, deployment automation, and enterprise operations.', 'Validate whether Qwen-Agent plus Model Studio can deliver the same governed workflow in both hosted DashScope mode and customer-managed OpenAI-compatible runtimes without losing observability or control evidence.'],
+        google: ['Validate how Vertex AI, Agent Development Kit, Gemini Enterprise, BigQuery, Search, and Workspace data compose in real production architectures.', 'Research practical migration paths between Google-hosted Gemini workflows and Gemma/local deployment routes.'],
+        nvidia: ['Document NIM/Triton/vLLM/MLflow reference architectures for enterprise AI platform teams, including governance and observability handoffs.', 'Clarify where NVIDIA AI Enterprise ends and hyperscaler or application-platform control planes begin.'],
+        openai: ['Validate production-readiness of Responses/Agents SDK/Realtimes APIs for governed enterprise workflows.', 'Research partner patterns for enterprise data grounding, identity, observability, and local/open-weight deployment alongside direct OpenAI APIs.']
+    };
+    return [...(byVendor[(v || {}).key] || []), ...common];
+}
+
+// Findings completed against the "Next research pass" agenda. Each finding:
+//   q  = question / area validated
+//   s  = 'confirmed' | 'partial' | 'gap'
+//   v  = short verdict from primary docs
+//   t  = source title (matches an entry in _apefGetPLTDocSignals().sources)
+//   u  = source URL
+function _apefGetPLTResearchFindings(v) {
+    const data = {
+        anthropic: {
+            priority: [
+                { q: 'MCP as governed enterprise runtime pattern', s: 'partial', v: 'First-party MCP connector lets Claude API messages attach external MCP servers without hand-rolling clients, but enterprise governance, identity, and audit still come from the host (Bedrock, Vertex, or partner SOC tooling).', t: 'MCP connector', u: 'https://platform.claude.com/docs/en/agents-and-tools/mcp-connector' },
+                { q: 'Claude Code + Console + partners as a repeatable PLT operating model', s: 'confirmed', v: 'Claude Code spans terminal, IDE, desktop, web, with hooks, agent teams, and CI/CD; combined with the Claude API tool model and partner runtimes it forms a workable operating model — production scale-out still depends on Bedrock/Vertex.', t: 'Claude Code overview', u: 'https://code.claude.com/docs/en/overview' },
+                { q: 'Agent runtime mechanics (state, retries, HITL, tool perms)', s: 'partial', v: 'Steerable tool_choice, strict-schema tools, and explicit client/server tool split give clean tool permissions; durable state, scheduling, and HITL are caller-owned or delegated to host runtimes.', t: 'Tool use with Claude', u: 'https://platform.claude.com/docs/en/docs/build-with-claude/tool-use/overview' },
+                { q: 'Developer workflow maturity (SDKs, IDE, templates, deploy)', s: 'confirmed', v: 'Claude Code provides terminal/IDE/desktop/web surfaces, MCP, hooks, agent teams, automation, and CI/CD — among the strongest pure-developer experiences in the set.', t: 'Claude Code overview', u: 'https://code.claude.com/docs/en/overview' }
+            ],
+            architecture: [
+                { q: 'Data grounding & tool integration', s: 'confirmed', v: 'Anthropic-hosted server tools (web_search, code_execution, web_fetch, tool_search) plus MCP connector for external data; identity propagation and permissions trimming sit with the caller or host platform.', t: 'Tool use with Claude', u: 'https://platform.claude.com/docs/en/docs/build-with-claude/tool-use/overview' },
+                { q: 'Governance embedded in PLT (policy, identity, audit, evidence)', s: 'gap', v: 'Tool schemas and tool_choice are the only first-party governance primitives; policy-as-code, agent identity, approval workflows, and compliance evidence export are not native — they come from Bedrock/Vertex or SOC partners.', t: 'MCP connector', u: 'https://platform.claude.com/docs/en/agents-and-tools/mcp-connector' },
+                { q: 'Hybrid control-plane continuity (hosted vs NVIDIA-backed)', s: 'gap', v: 'No first-party hybrid runtime; Claude is hosted by Anthropic. Hybrid/NVIDIA-backed paths require Bedrock or Vertex AI as the substrate, which changes the orchestration and governance plane.', t: 'Claude Code overview', u: 'https://code.claude.com/docs/en/overview' }
+            ],
+            differentiation: [
+                { q: 'Evaluation & observability depth vs peers', s: 'partial', v: 'Anthropic Console provides evals and prompt tooling, but native telemetry, drift, cost tracking, and red-team workflows are thinner than Foundry/Bedrock/Vertex — most enterprises lean on the host platform for production observability.', t: 'Tool use with Claude', u: 'https://platform.claude.com/docs/en/docs/build-with-claude/tool-use/overview' },
+                { q: 'Where Anthropic leads peers', s: 'confirmed', v: 'Model-led developer experience: Claude Code, tool use, and MCP make Anthropic the de-facto integration standard across IDEs, agents, and competing clients (ChatGPT, Cursor, Foundry).', t: 'Model Context Protocol', u: 'https://modelcontextprotocol.io/' },
+                { q: 'Where Anthropic lags peers', s: 'gap', v: 'No first-party full-stack platform: identity, audit, compliance export, multi-region runtime, and fleet governance live with cloud partners rather than Anthropic itself.', t: 'MCP connector', u: 'https://platform.claude.com/docs/en/agents-and-tools/mcp-connector' }
+            ]
+        },
+        microsoft: {
+            priority: [
+                { q: 'Foundry / Copilot Studio / Semantic Kernel / AutoGen / M365 boundaries', s: 'confirmed', v: 'Foundry Agent Service is the canonical build-test-deploy-monitor surface; Copilot Studio is the low-code path; Control Plane adds fleet governance; Semantic Kernel/AutoGen now position as orchestration libraries that publish into Foundry.', t: 'Microsoft Foundry Agent Service', u: 'https://learn.microsoft.com/en-us/azure/foundry/agents/overview' },
+                { q: 'Entra agent identity & Purview controls in developer flow', s: 'confirmed', v: 'Control Plane documents Entra Agent ID, Purview labels, Defender integration, and policy enforcement as part of the agent lifecycle, not as separate admin tooling.', t: 'Microsoft Foundry Control Plane', u: 'https://learn.microsoft.com/en-us/azure/foundry/control-plane/overview' },
+                { q: 'Agent runtime mechanics (state, retries, HITL, tool perms)', s: 'confirmed', v: 'Prompt / workflow / hosted agent types with managed runtime, isolated MicroVMs for hosted agents, tool permissions via managed auth, and tracing/eval baked into the runtime.', t: 'Microsoft Foundry Agent Service', u: 'https://learn.microsoft.com/en-us/azure/foundry/agents/overview' },
+                { q: 'Developer workflow maturity (SDKs, IDE, templates, deploy)', s: 'confirmed', v: 'Foundry SDK + portal, VS Code/GitHub integration, Copilot Studio templates, CI/CD quality gates via the evaluator service, and channel publishing to Teams/M365.', t: 'Evaluate your AI agents', u: 'https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/evaluate-agent' }
+            ],
+            architecture: [
+                { q: 'Data grounding & tool integration', s: 'confirmed', v: 'Built-in tools, managed authentication, Azure Functions MCP endpoints, knowledge connectors, and identity propagation through Entra — RAG ownership defaults to Foundry with optional partner stores.', t: 'Microsoft Foundry Agent Service', u: 'https://learn.microsoft.com/en-us/azure/foundry/agents/overview' },
+                { q: 'Governance embedded in PLT (policy, identity, audit, evidence)', s: 'confirmed', v: 'Control Plane provides cross-project evaluation, monitoring, compliance, security, Purview/Defender integration, and centralized governance — among the most complete in the set.', t: 'Microsoft Foundry Control Plane', u: 'https://learn.microsoft.com/en-us/azure/foundry/control-plane/overview' },
+                { q: 'Hybrid control-plane continuity (hosted vs NVIDIA-backed)', s: 'partial', v: 'Foundry Local provides a local SDK and on-device runtime for the same model surface, but Control Plane governance and Foundry evaluation telemetry are weaker on the local path.', t: 'Foundry Local', u: 'https://learn.microsoft.com/en-us/azure/foundry-local/get-started' }
+            ],
+            differentiation: [
+                { q: 'Evaluation & observability depth vs peers', s: 'confirmed', v: 'Native evaluators, datasets, trace-aware evaluation, result aggregation, CI/CD quality gates, and version comparison — at parity with Bedrock and ahead of OpenAI/Anthropic first-party.', t: 'Evaluate your AI agents', u: 'https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/evaluate-agent' },
+                { q: 'Where Microsoft leads peers', s: 'confirmed', v: 'Pro-code → low-code → productivity-embedded path under one enterprise governance boundary (Entra + Purview + Defender) is unique; only Google approaches the breadth.', t: 'Copilot Studio architecture', u: 'https://learn.microsoft.com/en-us/power-platform/architecture/products/copilot-studio' },
+                { q: 'Where Microsoft lags peers', s: 'partial', v: 'Multi-cloud/local-runtime posture is weaker than NVIDIA NIM Operator or Google Agent Runtime portability; Foundry-native value drops off the Azure substrate.', t: 'Foundry Local', u: 'https://learn.microsoft.com/en-us/azure/foundry-local/get-started' }
+            ]
+        },
+        amazon: {
+            priority: [
+                { q: 'Bedrock / SageMaker / AgentCore / Strands / Q Developer division of labor', s: 'confirmed', v: 'Bedrock = managed model+agent workflows; AgentCore = modular runtime/governance fabric for heterogeneous agents; SageMaker = custom training/fine-tune; Strands = open-source agent framework; Q Developer = embedded IDE/dev assistant.', t: 'AgentCore overview', u: 'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html' },
+                { q: 'Bedrock evals & guardrails vs cloud-native CI/CD', s: 'confirmed', v: 'Bedrock provides trace events (pre-processing, orchestration, routing, guardrail, failure) for debugging; AgentCore adds evaluations, policy, registry — integrates with CloudWatch and CodePipeline but is not as opinionated as Foundry evaluators.', t: 'Bedrock trace events', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/trace-events.html' },
+                { q: 'Agent runtime mechanics (state, retries, HITL, tool perms)', s: 'confirmed', v: 'AgentCore Harness handles agent loop execution; Runtime gives secure serverless sessions on isolated microVMs with browser/code-interpreter; identity, memory, gateway, and policy are first-class services.', t: 'AgentCore overview', u: 'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html' },
+                { q: 'Developer workflow maturity (SDKs, IDE, templates, deploy)', s: 'confirmed', v: 'Bedrock console/APIs, Bedrock Agent test/trace/deploy/version/alias, AgentCore SDK + open framework support, Q Developer for IDE — strong but the surface is wide enough to slow onboarding.', t: 'Bedrock Agents', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html' }
+            ],
+            architecture: [
+                { q: 'Data grounding & tool integration', s: 'confirmed', v: 'Bedrock Knowledge Bases for RAG, citations, multimodal retrieval, structured data; AgentCore Gateway turns APIs and MCP servers into governed tools with identity propagation via IAM.', t: 'Bedrock Knowledge Bases', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html' },
+                { q: 'Governance embedded in PLT (policy, identity, audit, evidence)', s: 'confirmed', v: 'Trace events, observability, evaluations, policy, identity, CloudWatch-compatible monitoring, and IAM-scoped cost allocation — governance is infrastructure-grade, an AWS strength.', t: 'Amazon Bedrock overview', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html' },
+                { q: 'Hybrid control-plane continuity (hosted vs NVIDIA-backed)', s: 'partial', v: 'Bedrock + AgentCore work across hosted AWS regions and Outposts/Local Zones; customer-managed NVIDIA runtimes need EKS+NIM with separate governance — same code, different control plane.', t: 'AgentCore overview', u: 'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html' }
+            ],
+            differentiation: [
+                { q: 'Evaluation & observability depth vs peers', s: 'confirmed', v: 'Trace events expose reasoning paths end-to-end; AgentCore evaluations add quality gates — comparable to Foundry, ahead of OpenAI/Anthropic first-party.', t: 'Bedrock trace events', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/trace-events.html' },
+                { q: 'Where Amazon leads peers', s: 'confirmed', v: 'Operational depth: IAM-grade identity, cost allocation, microVM isolation, and infrastructure controls make PLT feel like an extension of cloud operations — uniquely strong for platform teams.', t: 'Amazon Bedrock overview', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html' },
+                { q: 'Where Amazon lags peers', s: 'partial', v: 'Surface-area complexity is the gap: Bedrock + AgentCore + SageMaker + Strands + Q creates real decision friction vs Foundry/Vertex single-surface stories.', t: 'AgentCore overview', u: 'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html' }
+            ]
+        },
+        alibaba: {
+            priority: [
+                { q: 'Model Studio as the unified API / platform control plane', s: 'confirmed', v: 'Alibaba Cloud positions Model Studio as a one-stop model service platform for the full Qwen series and third-party models, exposed through official Qwen APIs and OpenAI-compatible APIs with no infrastructure to manage.', t: 'What is Alibaba Cloud Model Studio', u: 'https://www.alibabacloud.com/help/en/model-studio/what-is-model-studio' },
+                { q: 'Developer workflow maturity (first API, SDK, region/workspace handling)', s: 'confirmed', v: 'The first-call guidance is concrete and production-oriented: OpenAI Python SDK support, environment-variable API keys, workspace-aware base URLs, and region-specific endpoints make the path from evaluation to application integration unusually straightforward.', t: 'Make your first API call to Qwen', u: 'https://www.alibabacloud.com/help/en/model-studio/first-api-call-to-qwen' },
+                { q: 'Agent runtime mechanics across hosted and self-hosted Qwen', s: 'partial', v: 'Qwen-Agent documents Assistant agents, MCP, function/tool calling, code interpreter, and support for both DashScope and self-hosted OpenAI-compatible model services; what remains to validate is how consistently those mechanics map into enterprise runtime governance at scale.', t: 'QwenLM/Qwen-Agent', u: 'https://github.com/QwenLM/Qwen-Agent' },
+                { q: 'Model catalog breadth inside one platform', s: 'confirmed', v: 'Model Studio now spans Qwen and third-party text models plus image, video, speech, omni-modal, embedding, and reranking services, which materially strengthens Alibaba’s PLT story as a platform rather than just a model family.', t: 'Recommended models', u: 'https://www.alibabacloud.com/help/en/model-studio/models' }
+            ],
+            architecture: [
+                { q: 'Data grounding & tool integration', s: 'partial', v: 'Qwen-Agent clearly supports MCP, code interpreter, RAG-related packages, and OpenAI-compatible endpoints, but the native enterprise connector and retrieval ownership model across Model Studio applications versus external agent frameworks still needs more field validation.', t: 'QwenLM/Qwen-Agent', u: 'https://github.com/QwenLM/Qwen-Agent' },
+                { q: 'Governance embedded in PLT (policy, identity, audit, evidence)', s: 'partial', v: 'Model Studio monitoring is stronger than expected: security, cost, performance, and error metrics; alerts; inference logs; and Prometheus / Grafana export are all documented. The remaining gap is end-to-end policy-as-code, approval workflow, and agent-lifecycle governance relative to Azure/AWS.', t: 'Model monitoring', u: 'https://www.alibabacloud.com/help/en/model-studio/model-telemetry' },
+                { q: 'Hybrid control-plane continuity (hosted vs NVIDIA-backed)', s: 'partial', v: 'Alibaba has a real hybrid path: Qwen3 recommends vLLM, SGLang, Ollama, LMStudio, MLX, llama.cpp, and KTransformers for deployment/local use, while Qwen-Agent can target DashScope or self-hosted OpenAI-compatible runtimes. What is not yet proven is whether telemetry and governance remain equally coherent across both modes.', t: 'Qwen3: Think Deeper, Act Faster', u: 'https://qwenlm.github.io/blog/qwen3/' }
+            ],
+            differentiation: [
+                { q: 'Evaluation & observability depth vs peers', s: 'partial', v: 'Alibaba is better than a simple “open-model vendor” reading suggests: Model Studio documents hourly and minute-level monitoring, token tracking, content moderation error counts, alerts, logs, and Prometheus export. It is still less opinionated than Foundry/Bedrock on integrated evaluation workflows and governance evidence.', t: 'Model monitoring', u: 'https://www.alibabacloud.com/help/en/model-studio/model-telemetry' },
+                { q: 'Where Alibaba leads peers', s: 'confirmed', v: 'Its differentiated PLT motion is the combination of managed control plane plus open deployment elasticity: Model Studio for hosted APIs and third-party catalog access, paired with Qwen open-weight portability and Qwen-Agent for MCP/tool-driven orchestration.', t: 'What is Alibaba Cloud Model Studio', u: 'https://www.alibabacloud.com/help/en/model-studio/what-is-model-studio' },
+                { q: 'Where Alibaba lags peers', s: 'partial', v: 'Compared with Microsoft, AWS, and Google, Alibaba’s enterprise control-plane narrative is less unified in public documentation: developers must stitch together Model Studio, Qwen-Agent, and adjacent cloud/runtime services to understand the full production operating model.', t: 'QwenLM/Qwen-Agent', u: 'https://github.com/QwenLM/Qwen-Agent' }
+            ]
+        },
+        google: {
+            priority: [
+                { q: 'Vertex / ADK / Gemini Enterprise / BigQuery / Search composition in production', s: 'confirmed', v: 'Gemini Enterprise Agent Platform absorbs Vertex AI surface; ADK is code-first build, Agent Studio is low-code design, Model Garden gives 200+ models, BigQuery + Vertex Vector Search anchor data — composition is now explicit.', t: 'Gemini Enterprise Agent Platform', u: 'https://cloud.google.com/products/agent-builder' },
+                { q: 'Migration between hosted Gemini and Gemma/local routes', s: 'partial', v: 'ADK supports local run during dev and deploy to Agent Runtime, Cloud Run, or GKE; Gemma can run on GKE with NIM or vLLM, but observability/eval continuity from hosted Gemini is not automatic.', t: 'Agent Development Kit', u: 'https://docs.cloud.google.com/vertex-ai/generative-ai/docs/agent-development-kit/overview' },
+                { q: 'Agent runtime mechanics (state, retries, HITL, tool perms)', s: 'confirmed', v: 'ADK workflow agents, dynamic routing, handoffs, evaluation tools, and framework-portable runtime; Agent Runtime + Memory Bank cover state, with Antigravity steering multi-agent execution.', t: 'Agent Development Kit', u: 'https://docs.cloud.google.com/vertex-ai/generative-ai/docs/agent-development-kit/overview' },
+                { q: 'Developer workflow maturity (SDKs, IDE, templates, deploy)', s: 'confirmed', v: 'ADK in Python/TypeScript/Go/Java, Colab Enterprise notebooks, Agent Studio templates, Antigravity desktop/CLI orchestrator — strongest polyglot SDK story in the set.', t: 'Antigravity (multi-agent orchestrator)', u: 'https://antigravity.google/docs/overview' }
+            ],
+            architecture: [
+                { q: 'Data grounding & tool integration', s: 'confirmed', v: 'BigQuery-native data path, Vertex Vector Search, Feature Store, Model Registry, Agent Search, Memory Bank — most natively integrated data plane of any vendor in the set.', t: 'MLOps on Agent Platform', u: 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/start/introduction-mlops' },
+                { q: 'Governance embedded in PLT (policy, identity, audit, evidence)', s: 'partial', v: 'Model Evaluation service, Pipelines, feature/model monitoring, and Gemini Enterprise app for registering and governing custom agents — strong on MLOps; policy-as-code and approval workflows lean on IAM and Cloud Workflows.', t: 'MLOps on Agent Platform', u: 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/start/introduction-mlops' },
+                { q: 'Hybrid control-plane continuity (hosted vs NVIDIA-backed)', s: 'confirmed', v: 'Same ADK agent code deploys to Agent Runtime, Cloud Run, or GKE — explicit runtime-portability message; GKE path supports NVIDIA NIM with consistent orchestration.', t: 'Agent Development Kit', u: 'https://docs.cloud.google.com/vertex-ai/generative-ai/docs/agent-development-kit/overview' }
+            ],
+            differentiation: [
+                { q: 'Evaluation & observability depth vs peers', s: 'confirmed', v: 'Model Evaluation + Pipelines + feature/model monitoring + drift/skew detection on the predictive side — comparable to Foundry/Bedrock, with stronger MLOps lineage.', t: 'MLOps on Agent Platform', u: 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/start/introduction-mlops' },
+                { q: 'Where Google leads peers', s: 'confirmed', v: 'Unified model + data + platform plane: BigQuery, search, multimodal Gemini, and ADK in one substrate is uniquely tight for data-platform-driven AI delivery.', t: 'Gemini Enterprise Agent Platform', u: 'https://cloud.google.com/products/agent-builder' },
+                { q: 'Where Google lags peers', s: 'partial', v: 'Enterprise distribution into productivity apps (Workspace) is narrower than Microsoft (Teams/M365); pro-code agent path is strong but low-code productivity-embed is weaker.', t: 'Antigravity (multi-agent orchestrator)', u: 'https://antigravity.google/docs/overview' }
+            ]
+        },
+        nvidia: {
+            priority: [
+                { q: 'NIM/Triton/vLLM/MLflow reference architectures for AI platform teams', s: 'confirmed', v: 'NeMo Platform architecture explicitly documents client interfaces, API gateway, microservices, entity storage, NIM inference endpoints, and Kubernetes/Docker targets; Agent Toolkit covers profiling, observability, eval, MCP, A2A.', t: 'NeMo Platform architecture', u: 'https://docs.nvidia.com/nemo/microservices/latest/_images/nemo-platform-architecture.svg' },
+                { q: 'Where NVIDIA AI Enterprise ends vs hyperscaler/app-platform control planes', s: 'confirmed', v: 'NVIDIA is the runtime substrate (NIM/Triton/TensorRT-LLM/NeMo) beneath the agent or API layer; control planes belong to the app platform (Foundry/Bedrock/Vertex) — explicitly framework-agnostic.', t: 'NeMo Agent Toolkit', u: 'https://docs.nvidia.com/nemo/agent-toolkit/latest/index.html' },
+                { q: 'Agent runtime mechanics (state, retries, HITL, tool perms)', s: 'partial', v: 'NeMo Agent Toolkit supports MCP, A2A, reusable workflows, profiling, eval, and UI — runtime mechanics depend on the host framework (LangGraph/CrewAI/AutoGen) NVIDIA composes with.', t: 'NeMo Agent Toolkit', u: 'https://docs.nvidia.com/nemo/agent-toolkit/latest/index.html' },
+                { q: 'Developer workflow maturity (SDKs, IDE, templates, deploy)', s: 'confirmed', v: 'NeMo Platform CLI/SDK/UI for builders and operators; NIM Operator handles lifecycle, model caching, autoscaling, and regulated/on-prem K8s — polished for the platform-engineer persona, lighter for app devs.', t: 'NIM Operator', u: 'https://docs.nvidia.com/nim-operator/latest/' }
+            ],
+            architecture: [
+                { q: 'Data grounding & tool integration', s: 'confirmed', v: 'Data designer, customizer, evaluator, guardrails, and RAG-oriented components inside NeMo Platform; entity/data stores organize models, jobs, datasets, configs.', t: 'NeMo Platform', u: 'https://docs.nvidia.com/nemo/microservices/latest/' },
+                { q: 'Governance embedded in PLT (policy, identity, audit, evidence)', s: 'confirmed', v: 'RBAC, observability, profiler, evaluator, auditing, and security testing native to NeMo; NIM Operator adds monitoring, autoscaling, regulated-env support — strongest governance on the runtime substrate.', t: 'NeMo Platform', u: 'https://docs.nvidia.com/nemo/microservices/latest/' },
+                { q: 'Hybrid control-plane continuity (hosted vs NVIDIA-backed)', s: 'confirmed', v: 'NIM Operator gives one lifecycle/monitoring/autoscaling plane across local Docker, data center, K8s, and cloud — NVIDIA owns the most portable runtime story in the set.', t: 'NIM Operator', u: 'https://docs.nvidia.com/nim-operator/latest/' }
+            ],
+            differentiation: [
+                { q: 'Evaluation & observability depth vs peers', s: 'confirmed', v: 'Agent Toolkit profiler/evaluator and NeMo evaluator/security testing — strong on runtime/inference observability; lighter on business-workflow evals vs Foundry/Vertex.', t: 'NeMo Agent Toolkit', u: 'https://docs.nvidia.com/nemo/agent-toolkit/latest/index.html' },
+                { q: 'Where NVIDIA leads peers', s: 'confirmed', v: 'Performance + packaging + local/hybrid execution control beneath the agent layer is unmatched; NIM Operator + NeMo Platform are the de-facto reference for regulated on-prem AI.', t: 'NIM Operator', u: 'https://docs.nvidia.com/nim-operator/latest/' },
+                { q: 'Where NVIDIA lags peers', s: 'gap', v: 'Not the enterprise app builder: identity propagation, business workflows, low-code surfaces, and productivity-app distribution are explicitly outside scope.', t: 'NeMo Agent Toolkit', u: 'https://docs.nvidia.com/nemo/agent-toolkit/latest/index.html' }
+            ]
+        },
+        openai: {
+            priority: [
+                { q: 'Production-readiness of Responses / Agents SDK / Realtime for governed enterprise workflows', s: 'partial', v: 'Agents SDK is production-grade (Apache-2.0, ~26k stars) with agent loop, handoffs, guardrails, MCP, tracing, sessions; enterprise governance (identity, audit, evidence export) still relies on partners or self-built.', t: 'OpenAI Agents SDK', u: 'https://openai.github.io/openai-agents-python/' },
+                { q: 'Partner patterns for enterprise data, identity, observability, and local/open-weight deployment', s: 'partial', v: 'Any-LLM / LiteLLM providers enable multi-provider runtime; sessions support SQLite/Redis/Mongo/Dapr/SQLAlchemy/encrypted; identity and audit are caller-owned — no native enterprise control plane.', t: 'OpenAI Agents SDK', u: 'https://openai.github.io/openai-agents-python/' },
+                { q: 'Agent runtime mechanics (state, retries, HITL, tool perms)', s: 'confirmed', v: 'Built-in agent loop, handoffs, guardrails (parallel input/output validation, fail-fast), function/hosted/MCP tools, sessions for memory, sandbox agents in real isolated workspaces, HITL primitives.', t: 'Agents SDK Sandbox agents', u: 'https://openai.github.io/openai-agents-python/sandbox_agents/' },
+                { q: 'Developer workflow maturity (SDKs, IDE, templates, deploy)', s: 'confirmed', v: 'Open-source Python SDK with very few primitives, realtime/voice on the same surface, built-in tracing → eval/fine-tune/distillation pipeline — among the fastest experimentation-to-production paths.', t: 'Agents SDK Tracing', u: 'https://openai.github.io/openai-agents-python/tracing/' }
+            ],
+            architecture: [
+                { q: 'Data grounding & tool integration', s: 'confirmed', v: 'MCP servers as first-class tools, function tools, hosted tools; sandbox workspace with filesystem/shell/memory/skills; sessions abstract memory across SQLite, Redis, Mongo, Dapr, SQLAlchemy, encrypted.', t: 'Agents SDK MCP', u: 'https://openai.github.io/openai-agents-python/mcp/' },
+                { q: 'Governance embedded in PLT (policy, identity, audit, evidence)', s: 'gap', v: 'Guardrails + strict tool schemas + tracing/spans are the primitives; policy-as-code, agent identity registry, approval workflows, audit retention, and compliance evidence export are not native — partner-built.', t: 'Agents SDK Tracing', u: 'https://openai.github.io/openai-agents-python/tracing/' },
+                { q: 'Hybrid control-plane continuity (hosted vs NVIDIA-backed)', s: 'partial', v: 'Any-LLM/LiteLLM extensions route Agents SDK calls to NVIDIA-backed or open-weight runtimes; sandbox supports Docker — but OpenAI eval/fine-tune/distillation telemetry only flows for OpenAI-hosted calls.', t: 'OpenAI Agents Python repo', u: 'https://github.com/openai/openai-agents-python' }
+            ],
+            differentiation: [
+                { q: 'Evaluation & observability depth vs peers', s: 'partial', v: 'Built-in tracing → OpenAI evaluation/fine-tuning/distillation is elegant for OpenAI-hosted workloads; lacks the cross-project fleet evaluation of Foundry Control Plane or AgentCore evaluations.', t: 'Agents SDK Tracing', u: 'https://openai.github.io/openai-agents-python/tracing/' },
+                { q: 'Where OpenAI leads peers', s: 'confirmed', v: 'Developer velocity and model-native tooling: Responses → Agents SDK → Realtime/Voice on one primitive set compresses experimentation-to-production faster than any other stack.', t: 'OpenAI Agents SDK', u: 'https://openai.github.io/openai-agents-python/' },
+                { q: 'Where OpenAI lags peers', s: 'gap', v: 'No first-party enterprise control plane: identity, data residency, compliance evidence, fleet governance, and productivity-app distribution depend on partners.', t: 'OpenAI Agents Python repo', u: 'https://github.com/openai/openai-agents-python' }
+            ]
+        }
+    };
+    return data[(v || {}).key] || { priority: [], architecture: [], differentiation: [] };
+}
+
+function _apefGetPLTBucketItems(buckets, bucketIds = []) {
+    const wanted = new Set(bucketIds);
+    return (buckets || []).filter(b => wanted.has(b.bucket)).flatMap(b => b.items || []);
+}
+
+function _apefGetPLTBucketNames(buckets, bucketIds = [], limit = 3) {
+    return _apefSummarizeNames(_apefGetPLTBucketItems(buckets, bucketIds).map(item => item.component && item.component.name).filter(Boolean), limit);
+}
+
+function _apefGetPLTSubdimensionBriefs(v, d, vendors) {
+    if (!v) return [];
+    const subDims = Object.values((((d || {}).dimensions || {}).PLT || {}).sub_dimensions || {});
+    const buckets = _apefGetPLTMechanicBuckets(v, vendors || []);
+    const names = ids => _apefGetPLTBucketNames(buckets, ids, 3);
+    const focus = {
+        'PLT-01': {
+            relatedBuckets: ['api', 'developer', 'data'],
+            angle: `${v.vendor || v.key}'s application platform story is anchored in how teams package AI services, connect enterprise data, and move from prototype to governed application delivery.`,
+            inspect: [
+                `Inspect how ${names(['api', 'developer', 'data']) || 'the control-plane and developer tooling'} support packaging, promotion, templates, and operational handoff.`,
+                'Validate where application lifecycle management actually lives: vendor-native platform, partner tooling, or custom enterprise engineering.',
+                'Test how much of the AI application platform is reusable versus workload-specific.'
+            ]
+        },
+        'PLT-02': {
+            relatedBuckets: ['agent', 'governance', 'local'],
+            angle: `${v.vendor || v.key}'s orchestration posture is about whether agents, tools, approvals, and runtime controls form a governed workflow system rather than a collection of demos.`,
+            inspect: [
+                `Validate how ${names(['agent', 'governance']) || 'agent and governance components'} handle state, tool permissions, human approval, and runtime supervision.`,
+                'Map the boundary between simple prompt chaining and durable agent runtime orchestration.',
+                'Confirm whether orchestration patterns extend consistently into local or hybrid runtimes.'
+            ]
+        },
+        'PLT-03': {
+            relatedBuckets: ['eval', 'data', 'governance'],
+            angle: `${v.vendor || v.key}'s observability story should be judged by how well quality, telemetry, retrieval context, and policy evidence are captured in one operating model.`,
+            inspect: [
+                `Examine how ${names(['eval', 'data', 'governance']) || 'evaluation, data, and governance surfaces'} support regression testing, telemetry, and evidence capture.`,
+                'Check whether evaluation is built into delivery workflows or left to ad hoc external tooling.',
+                'Assess whether prompt, retrieval, and model behavior can be traced together for enterprise audit needs.'
+            ]
+        },
+        'PLT-04': {
+            relatedBuckets: ['developer', 'api', 'agent'],
+            angle: `${v.vendor || v.key}'s adoption velocity depends on whether developers can learn one control plane, move quickly in familiar tools, and still preserve enterprise guardrails.`,
+            inspect: [
+                `Look at how ${names(['developer', 'api', 'agent']) || 'developer, API, and agent tooling'} reduce setup time, SDK friction, and deployment complexity.`,
+                'Compare pro-code, low-code, and embedded workflow paths to see which teams can actually adopt the platform quickly.',
+                'Test onboarding from first prototype to production deployment with realistic enterprise constraints.'
+            ]
+        }
+    };
+    return subDims.map(sd => ({
+        ...sd,
+        relatedBuckets: (focus[sd.id] || {}).relatedBuckets || [],
+        vendorAngle: (focus[sd.id] || {}).angle || `${v.vendor || v.key}'s posture in ${sd.name || sd.id} should be tested in live platform workflows rather than feature checklists.`,
+        inspect: (focus[sd.id] || {}).inspect || []
+    }));
+}
+
+function _apefGetPLTResearchAgenda(v) {
+    const all = _apefGetPLTResearchRecommendations(v);
+    const vendorSpecificCount = Math.min(2, all.length);
+    const vendorSpecific = all.slice(0, vendorSpecificCount);
+    const common = all.slice(vendorSpecificCount);
+    return {
+        priority: [
+            ...vendorSpecific,
+            common[0],
+            common[2]
+        ].filter(Boolean),
+        architecture: [
+            common[3],
+            common[5],
+            common[4]
+        ].filter(Boolean),
+        differentiation: [
+            common[1],
+            common[0],
+            common[2]
+        ].filter(Boolean)
+    };
+}
+
+function _apefGetPLTDocSignals(v) {
+    const docs = {
+        anthropic: {
+            summary: 'Anthropic\'s PLT motion is model-led but increasingly platform-shaped: Claude Code is the developer surface, the Claude API exposes a client/server tool model with strict-schema tools and an Anthropic-hosted tool execution path, and MCP is the portability layer connecting external systems, partners, and Claude clients.',
+            sources: [
+                { title: 'Claude Code overview', url: 'https://code.claude.com/docs/en/overview', note: 'Claude Code runs in terminal, IDE, desktop, and web; supports MCP, custom instructions, hooks, agent teams, CI/CD, and automation.' },
+                { title: 'Tool use with Claude', url: 'https://platform.claude.com/docs/en/docs/build-with-claude/tool-use/overview', note: 'Two-tier tool model: client tools (run in caller app) and Anthropic server tools (web_search, code_execution, web_fetch, tool_search) executed on Anthropic infrastructure. Includes strict-schema tools, steerable tool_choice, and pricing impacts.' },
+                { title: 'MCP connector', url: 'https://platform.claude.com/docs/en/agents-and-tools/mcp-connector', note: 'First-party connector lets Claude API messages attach MCP servers as governed tool surfaces without the caller hand-rolling an MCP client.' },
+                { title: 'Model Context Protocol', url: 'https://modelcontextprotocol.io/', note: 'MCP standardizes how AI applications connect to external data sources, tools, and workflows across clients like Claude, ChatGPT, and developer tools.' }
+            ],
+            architecture: {
+                build: ['Claude Code across terminal, IDE, desktop, and web', 'Anthropic Console for prompt and tool definition', 'Claude API as the programmatic platform surface for tool-using agents'],
+                orchestration: ['Client/server tool model with steerable tool_choice and strict-schema tool calls', 'MCP connector and MCP servers as the portable orchestration layer', 'Custom agent loops in Claude Code (hooks, agent teams, CI/CD)'],
+                data: ['Server tools (web_search, code_execution, web_fetch, tool_search) for built-in grounding and retrieval', 'External enterprise data connected via MCP servers and partner connectors', 'Code execution tool gives Claude a managed sandbox for data work'],
+                govern: ['Strict tool schemas, tool_choice forcing, and per-tool trigger boundaries are the lightweight governance primitives', 'Enterprise governance, audit, and full observability typically come from the host platform (Bedrock, Vertex AI, or partner SOC tooling) rather than first-party Anthropic operations'],
+                runtime: ['Claude itself is hosted by Anthropic', 'Server-tool execution (search, code, fetch, tool discovery) runs on Anthropic infrastructure', 'Hybrid/local runtime depth comes from Bedrock and Vertex AI partner runtimes and from MCP-connected external execution environments']
+            }
+        },
+        microsoft: {
+            summary: 'Microsoft now presents a much more complete PLT stack than the original page showed: Foundry Agent Service handles build-test-deploy-monitor, while Control Plane adds fleet governance and Copilot Studio provides low-code architecture patterns.',
+            sources: [
+                { title: 'Microsoft Foundry Agent Service', url: 'https://learn.microsoft.com/en-us/azure/foundry/agents/overview', note: 'Defines prompt agents, workflow agents, and hosted agents, with tools, tracing, evaluation, publishing, identity, networking, and distribution to Teams/M365.' },
+                { title: 'Microsoft Foundry Control Plane', url: 'https://learn.microsoft.com/en-us/azure/foundry/control-plane/overview', note: 'Adds cross-project fleet visibility, evaluation, monitoring, compliance, security, Purview/Defender integration, and centralized governance.' },
+                { title: 'Evaluate your AI agents', url: 'https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/evaluate-agent', note: 'Documents evaluators, datasets, trace-aware evaluation, result aggregation, CI/CD quality gates, and version comparison workflows.' },
+                { title: 'Copilot Studio architecture', url: 'https://learn.microsoft.com/en-us/power-platform/architecture/products/copilot-studio', note: 'Frames agent delivery around architect, plan, implement, adopt, manage, improve, and extend disciplines.' },
+                { title: 'Foundry Local', url: 'https://learn.microsoft.com/en-us/azure/foundry-local/get-started', note: 'Shows a local SDK path where models can be downloaded, loaded, run, streamed, and unloaded on-device.' }
+            ],
+            architecture: {
+                build: ['Azure AI Foundry portal and SDKs for code-first development', 'Copilot Studio for low-code agents, flows, prompts, and channel publishing'],
+                orchestration: ['Prompt agents, workflow agents, and hosted agents', 'Toolbox / MCP-compatible endpoints and multi-agent workflow support'],
+                data: ['Built-in tools, managed authentication, Azure Functions MCP endpoints', 'Knowledge and enterprise data connected through Foundry/Copilot surfaces'],
+                govern: ['Tracing, evaluation, monitoring dashboards, red teaming, Defender, Purview, Entra, and policy enforcement through Control Plane'],
+                runtime: ['Managed Agent Service runtime plus container-based hosted agents on isolated MicroVMs', 'Distribution to Teams, Microsoft 365 Copilot, and Entra Agent Registry']
+            }
+        },
+        amazon: {
+            summary: 'AWS research sharpens the PLT story into two layers: Bedrock for managed model/agent workflows and AgentCore as the modular runtime and governance fabric for more advanced or heterogeneous agent systems.',
+            sources: [
+                { title: 'Amazon Bedrock overview', url: 'https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html', note: 'Bedrock is the managed model platform with 100+ models, APIs, enterprise-grade access, and cost allocation by IAM principal.' },
+                { title: 'Bedrock Agents', url: 'https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html', note: 'Agents orchestrate models, knowledge bases, and action groups; include test, trace, deploy, version, and alias workflows.' },
+                { title: 'AgentCore overview', url: 'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html', note: 'AgentCore provides runtime, harness, memory, gateway, identity, browser, code interpreter, observability, evaluations, policy, and registry services.' },
+                { title: 'Bedrock Knowledge Bases', url: 'https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html', note: 'Documents RAG, citations, multimodal retrieval, structured data query generation, reranking, and agent workflow integration.' },
+                { title: 'Bedrock trace events', url: 'https://docs.aws.amazon.com/bedrock/latest/userguide/trace-events.html', note: 'Shows pre-processing, orchestration, routing, guardrail, and failure traces for debugging and reasoning-path visibility.' }
+            ],
+            architecture: {
+                build: ['Bedrock console/APIs for managed agent workflows', 'AgentCore works with open-source frameworks and multiple model providers'],
+                orchestration: ['Bedrock Agents with action groups, knowledge bases, prompt templates, aliases, and deployment steps', 'AgentCore Harness for agent loop execution and tool orchestration'],
+                data: ['Knowledge Bases for RAG, citations, multimodal retrieval, and structured data', 'Gateway turns APIs and MCP servers into governed tools'],
+                govern: ['Trace events, observability, evaluations, policy, identity, and CloudWatch-compatible monitoring'],
+                runtime: ['Managed Bedrock runtime for agents and models', 'AgentCore Runtime for secure serverless sessions, isolated microVMs, browser/code-interpreter support, and registry-backed platform enablement']
+            }
+        },
+        alibaba: {
+            summary: 'Alibaba\'s PLT motion is more substantial than a simple “Qwen API” read suggests: Model Studio is a managed control plane for Qwen and third-party models with OpenAI-compatible APIs, monitoring, alerts, and logs; Qwen-Agent is the code-first orchestration layer for tools, MCP, RAG, and code interpreter; and Qwen\'s open deployment guidance preserves a credible hosted-to-self-managed path.',
+            sources: [
+                { title: 'What is Alibaba Cloud Model Studio', url: 'https://www.alibabacloud.com/help/en/model-studio/what-is-model-studio', note: 'Defines Model Studio as a one-stop model service platform for Qwen and third-party models, exposed through official Qwen APIs and OpenAI-compatible APIs, with model monitoring and usage telemetry in the console.' },
+                { title: 'Make your first API call to Qwen', url: 'https://www.alibabacloud.com/help/en/model-studio/first-api-call-to-qwen', note: 'Shows OpenAI Python SDK usage, environment-variable API keys, workspace-aware base URLs, and region-specific endpoint patterns for production integration.' },
+                { title: 'Recommended models', url: 'https://www.alibabacloud.com/help/en/model-studio/models', note: 'Documents the breadth of the managed catalog across Qwen and third-party text models plus image, video, audio, omni-modal, embeddings, and reranking services.' },
+                { title: 'Model monitoring', url: 'https://www.alibabacloud.com/help/en/model-studio/model-telemetry', note: 'Documents security, cost, performance, and error metrics; alerts; logs; token tracking; Prometheus / Grafana export; and minute-level advanced monitoring.' },
+                { title: 'Qwen3: Think Deeper, Act Faster', url: 'https://qwenlm.github.io/blog/qwen3/', note: 'Documents Qwen3\'s reasoning modes, MCP support, agentic/tool-use optimizations, and deployment guidance via vLLM, SGLang, Ollama, LMStudio, MLX, llama.cpp, and KTransformers.' },
+                { title: 'QwenLM/Qwen-Agent', url: 'https://github.com/QwenLM/Qwen-Agent', note: 'Open-source agent framework behind Qwen Chat with Assistant agents, MCP support, code interpreter, RAG, and support for both DashScope and self-hosted OpenAI-compatible model services.' }
+            ],
+            architecture: {
+                build: ['Model Studio console plus OpenAI-compatible / DashScope APIs as the main build surface', 'Straightforward first-call path using the OpenAI SDK, API keys, workspace IDs, and region-specific base URLs', 'Qwen-Agent as the code-first developer framework for agent applications, tools, and MCP-connected workflows'],
+                orchestration: ['Qwen-Agent Assistant framework with function calling, MCP, tool use, and code interpreter', 'Model Studio monitoring glossary explicitly tracks published applications, agents, workflows, and agent orchestration applications', 'Qwen3 is tuned for tool calling and agentic use, with MCP-based tool definitions and built-in code-interpreter patterns'],
+                data: ['Qwen-Agent supports MCP servers, RAG extras, and tool-connected workflows', 'Model Studio offers embeddings and reranking models alongside text, image, audio, and omni-modal services', 'The OpenAI-compatible interface makes it easier to attach external retrieval and enterprise data services without a bespoke SDK rewrite'],
+                govern: ['Model monitoring covers security, cost, performance, and error metrics, plus alerts and logs', 'Advanced monitoring can export metrics to Prometheus / Grafana and custom applications', 'RAM permissions and workspace-scoped monitoring controls are documented, but policy-as-code and approval workflow depth are still thinner than hyperscaler enterprise control planes'],
+                runtime: ['Managed Model Studio / DashScope endpoints are the default runtime path', 'Qwen3 documentation recommends vLLM and SGLang for OpenAI-compatible deployment plus Ollama, LMStudio, MLX, llama.cpp, and KTransformers for local usage', 'Qwen-Agent can target either DashScope-hosted services or self-hosted OpenAI-compatible runtimes, which is Alibaba\'s key hosted-to-hybrid portability story']
+            }
+        },
+        google: {
+            summary: 'Google has explicitly rebranded the Vertex AI surface as the Gemini Enterprise Agent Platform. The story is now an end-to-end agent platform: Agent Studio for design, ADK for code-first build, Model Garden for 200+ models, Model Registry / Pipelines / Feature Store / Evaluation for MLOps, and Antigravity as the multi-agent orchestration front-end — all delivered as one cloud-platform substrate.',
+            sources: [
+                { title: 'Gemini Enterprise Agent Platform', url: 'https://cloud.google.com/products/agent-builder', note: 'Single platform to build, scale, govern, and optimize enterprise agents grounded in enterprise data; explicitly absorbs the prior Vertex AI surface.' },
+                { title: 'Agent Development Kit', url: 'https://docs.cloud.google.com/vertex-ai/generative-ai/docs/agent-development-kit/overview', note: 'ADK is open-source, supports multi-agent systems, workflow and dynamic routing, evaluation tools, local running, and deployment to Agent Runtime, Cloud Run, and GKE.' },
+                { title: 'Agent Studio', url: 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/agent-studio', note: 'Design, test, tune, and deploy agents and prompts against Gemini and Model Garden models; pairs with ADK for production builds.' },
+                { title: 'MLOps on Agent Platform', url: 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/start/introduction-mlops', note: 'Model Evaluation, Pipelines, Model Registry, Feature Store, and feature/model monitoring as the operational backbone.' },
+                { title: 'Antigravity (multi-agent orchestrator)', url: 'https://antigravity.google/docs/overview', note: 'Desktop and CLI app to steer, customize, and orchestrate multiple agents that execute coordinated workflows; logs in with Google Cloud credentials and ships through Agent Platform.' }
+            ],
+            architecture: {
+                build: ['Agent Studio for low-code design, test, and tuning of prompts and agents', 'ADK in Python, TypeScript, Go, and Java for code-first multi-agent builds', 'Model Garden for 200+ Google, partner (incl. Claude), and open models', 'Colab Enterprise / Workbench notebooks natively wired to BigQuery'],
+                orchestration: ['ADK workflow agents, dynamic routing, and handoffs', 'Antigravity desktop and CLI for multi-agent workflow steering and parallel execution', 'Framework-portable runtime: deploy the same agent to Agent Runtime, Cloud Run, or GKE'],
+                data: ['BigQuery-native data path plus Vertex Vector Search for retrieval', 'Feature Store, Model Registry, and grounding tools for enterprise data wiring', 'Agent Search and Memory Bank surfaces inside the Gemini Enterprise Agent Platform docs'],
+                govern: ['Model Evaluation service, Pipelines for repeatable workflows, and security controls documented at platform level', 'Gemini Enterprise app registers, manages, and governs custom-built agents across the org', 'Feature/model monitoring for drift and skew on the predictive side'],
+                runtime: ['Run agents locally during dev, then scale on Agent Runtime, Cloud Run, or GKE', 'Batch and online prediction services for both predictive and generative workloads', 'Strong runtime portability message: same agent code, different deployment substrate']
+            }
+        },
+        nvidia: {
+            summary: 'NVIDIA’s PLT differentiation is now much clearer in the research: it is not trying to be the end-user app layer, but a composable platform substrate for building, evaluating, securing, and operating AI workflows across local, Kubernetes, and cloud environments.',
+            sources: [
+                { title: 'NeMo Platform', url: 'https://docs.nvidia.com/nemo/microservices/latest/', note: 'NeMo Platform covers data generation, customization, evaluation, security testing, guardrails, inference, RBAC, observability, local Docker, and Kubernetes deployment.' },
+                { title: 'NeMo Platform architecture', url: 'https://docs.nvidia.com/nemo/microservices/latest/_images/nemo-platform-architecture.svg', note: 'Architecture shows client interfaces, API gateway, microservices, entity storage, NIM inference endpoints, and Kubernetes/Docker deployment targets.' },
+                { title: 'NeMo Agent Toolkit', url: 'https://docs.nvidia.com/nemo/agent-toolkit/latest/index.html', note: 'Framework-agnostic toolkit with profiling, observability, evaluation, MCP, A2A, reusable workflows, and UI support.' },
+                { title: 'NIM Operator', url: 'https://docs.nvidia.com/nim-operator/latest/', note: 'Operator manages lifecycle, model caching, monitoring, autoscaling, and regulated or on-prem Kubernetes deployment patterns for NIM and NeMo services.' }
+            ],
+            architecture: {
+                build: ['NeMo Platform CLI, SDK, and UI for builders and operators', 'Agent Toolkit for reusable workflow construction across existing frameworks'],
+                orchestration: ['Framework-agnostic workflows, MCP, A2A, reusable functions, and agent/tool composition', 'NIM and NeMo services used together to support production agent pipelines'],
+                data: ['Data designer, customizer, evaluator, guardrails, and RAG-oriented components', 'Entity and data stores provide platform organization for models, jobs, datasets, and configurations'],
+                govern: ['RBAC, observability, profiler, evaluator, auditing, and security testing', 'Monitoring, autoscaling, model caching, and regulated-environment support through NIM Operator'],
+                runtime: ['Portable runtime across local Docker, data center, Kubernetes, and cloud', 'NIM Operator and NIM microservices emphasize predictable deployment and cluster-level lifecycle management']
+            }
+        },
+        openai: {
+            summary: 'OpenAI now exposes a two-layer PLT: the low-level Responses API for direct loop control, and the OpenAI Agents SDK on top of it for managed agent runtime, handoffs, sandboxed workspaces, sessions, guardrails, MCP tools, and built-in tracing — with realtime and voice variants on the same primitives.',
+            sources: [
+                { title: 'OpenAI Agents SDK', url: 'https://openai.github.io/openai-agents-python/', note: 'Production-ready agent framework on top of the Responses API: agent loop, handoffs, guardrails, function tools, MCP server tool calling, sessions/memory, human-in-the-loop, sandbox agents in real isolated workspaces, realtime + voice agents, and built-in tracing.' },
+                { title: 'Agents SDK Sandbox agents', url: 'https://openai.github.io/openai-agents-python/sandbox_agents/', note: 'Run agents inside isolated workspaces with manifest-defined files, sandbox client choice (Unix local or Docker), resumable sessions, and capability-scoped filesystem/shell/memory/skills.' },
+                { title: 'Agents SDK Tracing', url: 'https://openai.github.io/openai-agents-python/tracing/', note: 'Built-in traces and spans with processor interface; integrates with OpenAI evaluation, fine-tuning, and distillation tooling.' },
+                { title: 'Agents SDK MCP', url: 'https://openai.github.io/openai-agents-python/mcp/', note: 'First-class MCP server tool calling alongside function tools and hosted tools.' },
+                { title: 'OpenAI Agents Python repo', url: 'https://github.com/openai/openai-agents-python', note: 'Open-source SDK (Apache-2.0) used as the production upgrade path from Swarm; ~26k stars indicate it is now the public reference agent runtime.' }
+            ],
+            architecture: {
+                build: ['Responses API as the low-level model + tool surface', 'Agents SDK (Python) as the managed agent runtime layer with very few primitives (agents, handoffs, guardrails)', 'Realtime and Voice pipelines built on the same primitives'],
+                orchestration: ['Built-in agent loop with handoffs and agents-as-tools', 'Function tools, hosted tools, MCP server tools, and any-LLM / LiteLLM providers via extensions', 'Manager-style orchestration and handoff patterns documented as first-class choices'],
+                data: ['Sessions provide a persistent memory layer (SQLite, async SQLite, Redis, MongoDB, Dapr, SQLAlchemy, encrypted)', 'Sandbox agents expose a real workspace with filesystem, shell, memory, and skill capabilities for data work', 'MCP servers connect external data, retrieval, and tool ecosystems'],
+                govern: ['Guardrails run input/output validation in parallel and fail fast', 'Built-in tracing/spans flow into OpenAI evaluation, fine-tuning, and distillation', 'Strict tool schemas and tool guardrails as first-class primitives'],
+                runtime: ['OpenAI-hosted model APIs (Responses) as the primary runtime', 'Sandbox sessions for in-process isolated execution (Unix local and Docker sandboxes)', 'Realtime / voice transports for low-latency interactive runtimes', 'Multi-provider runtime via any-LLM and LiteLLM providers']
+            }
+        }
+    };
+    return docs[(v || {}).key] || { summary: '', sources: [], architecture: { build: [], orchestration: [], data: [], govern: [], runtime: [] } };
+}
+
+function _apefRenderPLTArchitectureDiagram(v, docSignals = {}, bandData = {}, integrationFabric = {}, vendorColor = '#94a3b8') {
+    const architecture = docSignals.architecture || {};
+    const bands = [
+        { id: 'build',       label: 'Build surface',          color: '#10b981', subtitle: 'How teams enter the platform',                doc: architecture.build || [] },
+        { id: 'orchestrate', label: 'Agent control plane',    color: '#06b6d4', subtitle: 'Agents, workflows, handoffs, sessions',       doc: architecture.orchestration || [] },
+        { id: 'data',        label: 'Tools & data fabric',    color: '#eab308', subtitle: 'Tools, retrieval, grounding, knowledge',      doc: architecture.data || [] },
+        { id: 'govern',      label: 'Evaluate & govern',      color: '#ef4444', subtitle: 'Evals, tracing, policy, identity, safety',    doc: architecture.govern || [] },
+        { id: 'runtime',     label: 'Runtime & distribution', color: '#8b5cf6', subtitle: 'Where workloads execute and ship',            doc: architecture.runtime || [] }
+    ];
+
+    const renderPills = (comps, color) => {
+        if (!comps || !comps.length) {
+            return `<span style="font-size:11px;color:#64748b;font-style:italic;">No components captured at this layer</span>`;
+        }
+        return comps.map(c => {
+            const label = (c.name || c.id || '').length > 32 ? (c.name || c.id || '').slice(0, 30) + '…' : (c.name || c.id || '');
+            return `<span title="${escapeHtml(c.id || '')}" style="display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:6px;background:#0f172a;color:#e2e8f0;border:1px solid ${color}66;font-size:11px;font-weight:700;box-shadow:inset 0 0 0 1px ${color}22;">${escapeHtml(label)}</span>`;
+        }).join('');
+    };
+
+    const renderBand = (band, idx) => {
+        const comps = bandData[band.id] || [];
+        const docLine = (band.doc[0] || '').length > 160 ? (band.doc[0] || '').slice(0, 158) + '…' : (band.doc[0] || '');
+        return `
+          <div style="position:relative;">
+            <div style="display:grid;grid-template-columns:150px 1fr;gap:0;border:1px solid ${band.color}55;border-radius:10px;background:linear-gradient(180deg,${band.color}1a 0%, ${band.color}0d 100%);overflow:hidden;">
+              <div style="padding:12px 14px;background:${band.color}26;border-right:1px solid ${band.color}44;display:flex;flex-direction:column;justify-content:center;">
+                <div style="font-size:10px;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:0.4px;opacity:0.95;">Layer ${idx + 1}</div>
+                <div style="font-size:14px;color:#fff;font-weight:900;line-height:1.2;margin-top:3px;">${escapeHtml(band.label)}</div>
+                <div style="font-size:10px;color:#e2e8f0;opacity:0.85;margin-top:4px;line-height:1.35;">${escapeHtml(band.subtitle)}</div>
+              </div>
+              <div style="padding:11px 14px;">
+                <div style="display:flex;flex-wrap:wrap;gap:6px;">${renderPills(comps, band.color)}</div>
+                ${docLine ? `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed ${band.color}33;font-size:11px;color:#cbd5e1;line-height:1.5;"><span style="color:${band.color};font-weight:800;">▸</span> ${escapeHtml(docLine)}</div>` : ''}
+              </div>
+            </div>
+            ${idx < bands.length - 1 ? `
+              <div style="display:flex;justify-content:center;height:18px;align-items:center;position:relative;">
+                <svg width="14" height="18" viewBox="0 0 14 18" style="display:block;">
+                  <line x1="7" y1="0" x2="7" y2="11" stroke="#475569" stroke-width="2"/>
+                  <polygon points="7,18 2,11 12,11" fill="#475569"/>
+                </svg>
+              </div>` : ''}
+          </div>`;
+    };
+
+    // Left rail: integration fabric counts
+    const fabricRows = Object.entries(integrationFabric)
+        .filter(([, cnt]) => cnt > 0)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 7);
+    const leftRail = `
+        <div style="padding:14px 12px;border:1px solid #1e293b;border-radius:10px;background:#0a1220;display:flex;flex-direction:column;">
+          <div style="font-size:10px;color:#67e8f9;font-weight:900;text-transform:uppercase;letter-spacing:0.4px;">Integration fabric</div>
+          <div style="font-size:10px;color:#64748b;margin:3px 0 10px;line-height:1.4;">What ties the layers together for ${escapeHtml(v.vendor || v.key)}</div>
+          ${fabricRows.length ? fabricRows.map(([type, cnt]) => {
+              const meta = _apefIntegrationTypeMeta(type);
+              return `<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;margin-bottom:5px;border-radius:6px;background:#0b1220;border:1px solid ${meta.color}44;">
+                <span style="width:6px;height:18px;border-radius:2px;background:${meta.color};flex-shrink:0;"></span>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:11px;color:${meta.color};font-weight:800;">${escapeHtml(meta.label || type)}</div>
+                  <div style="font-size:10px;color:#94a3b8;line-height:1.3;">${cnt} link${cnt === 1 ? '' : 's'}</div>
+                </div>
+              </div>`;
+          }).join('') : '<div style="font-size:11px;color:#64748b;font-style:italic;">No integration links captured.</div>'}
+        </div>`;
+
+    // Right rail: governance pillars (from docSignals.architecture.govern + always-present pillars)
+    const govPillarsRaw = (architecture.govern || []).slice(0, 4);
+    const govPillars = govPillarsRaw.length ? govPillarsRaw : ['Tracing, evaluation, and observability typically referenced in vendor docs', 'Identity, RBAC, and access controls tied to host platform', 'Policy, guardrails, and safety controls', 'Audit, monitoring, and compliance integrations'];
+    const rightRail = `
+        <div style="padding:14px 12px;border:1px solid #1e293b;border-radius:10px;background:#0a1220;display:flex;flex-direction:column;">
+          <div style="font-size:10px;color:#fca5a5;font-weight:900;text-transform:uppercase;letter-spacing:0.4px;">Governance &amp; identity</div>
+          <div style="font-size:10px;color:#64748b;margin:3px 0 10px;line-height:1.4;">Cross-cutting controls that run across all 5 layers</div>
+          ${govPillars.map(p => `<div style="padding:7px 9px;margin-bottom:5px;border-radius:6px;background:#0b1220;border-left:3px solid #ef4444;font-size:11px;color:#fecaca;line-height:1.45;">${escapeHtml(p.length > 110 ? p.slice(0, 108) + '…' : p)}</div>`).join('')}
+        </div>`;
+
+    // Bottom distribution strip: surface from architecture.runtime line 2 or fallback to bullets
+    const distributionItems = (architecture.runtime || []).slice(1).concat(architecture.build || []).slice(0, 4);
+    const distribution = distributionItems.length ? `
+        <div style="margin-top:14px;padding:11px 14px;border:1px solid #334155;border-radius:10px;background:#0b1220;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${vendorColor};box-shadow:0 0 0 3px ${vendorColor}33;"></span>
+            <span style="font-size:10px;color:#cbd5e1;font-weight:900;text-transform:uppercase;letter-spacing:0.4px;">Distribution &amp; reach surfaces</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;">${distributionItems.map(s => `<span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:11px;background:${vendorColor}1a;color:${vendorColor};border:1px solid ${vendorColor}55;font-size:10px;font-weight:700;">${escapeHtml((s || '').length > 70 ? (s || '').slice(0, 68) + '…' : s)}</span>`).join('')}</div>
+        </div>` : '';
+
+    return `
+        <div style="border:1px solid #1e293b;border-radius:12px;padding:16px;background:#020617;">
+          <div style="display:grid;grid-template-columns:200px 1fr 220px;gap:14px;align-items:stretch;">
+            ${leftRail}
+            <div style="display:flex;flex-direction:column;">
+              ${bands.map(renderBand).join('')}
+            </div>
+            ${rightRail}
+          </div>
+          ${distribution}
+        </div>`;
+}
+
+function _apefRenderPLTCardEnrichment(v, opts = {}) {
+    if (!v) return '';
+    const docSignals = _apefGetPLTDocSignals(v);
+    const findings = _apefGetPLTResearchFindings(v);
+    const all = [].concat(findings.priority || [], findings.architecture || [], findings.differentiation || []);
+    if (!all.length && !(docSignals.sources || []).length) return '';
+    const counts = all.reduce((acc, f) => { acc[f.s] = (acc[f.s] || 0) + 1; return acc; }, {});
+    const chip = (label, n, color) => n ? `<span style="display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:10px;background:${color}1a;color:${color};border:1px solid ${color}55;font-size:10px;font-weight:800;letter-spacing:0.2px;"><span style="width:5px;height:5px;border-radius:50%;background:${color};display:inline-block;"></span>${n} ${label}</span>` : '';
+    const strip = `${chip('confirmed', counts.confirmed || 0, '#22c55e')}${chip('partial', counts.partial || 0, '#fbbf24')}${chip('gap', counts.gap || 0, '#ef4444')}`;
+    const summary = docSignals.summary ? (docSignals.summary.length > (opts.summaryLen || 220) ? docSignals.summary.slice(0, (opts.summaryLen || 220) - 2) + '…' : docSignals.summary) : '';
+    const topSources = (docSignals.sources || []).slice(0, opts.sourceLimit ?? 2);
+    const sourceLine = topSources.length ? `<div style="margin-top:6px;font-size:10px;color:#64748b;line-height:1.45;">Primary docs: ${topSources.map(s => `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener" style="color:#93c5fd;text-decoration:none;font-weight:700;">${escapeHtml(s.title)}</a>`).join(' · ')}</div>` : '';
+    return `
+        <div style="margin-top:${opts.marginTop ?? 8}px;padding:8px 10px;border:1px solid #1e293b;border-radius:8px;background:#0a1220;">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:${summary ? 6 : 0}px;">
+            <span style="font-size:10px;color:#a78bfa;font-weight:800;text-transform:uppercase;letter-spacing:0.3px;">Research findings</span>
+            ${strip}
+          </div>
+          ${summary ? `<div style="font-size:11px;color:#cbd5e1;line-height:1.55;">${escapeHtml(summary)}</div>` : ''}
+          ${sourceLine}
+        </div>`;
+}
+
+function _apefRenderDimensionCard(v, vendors, code, dim, narrative, opts = {}) {
+    const ownCaps = (narrative.key_capabilities || []).slice(0, opts.capabilityLimit ?? 3);
+    const integrationPoints = _apefGetVendorIntegrationPoints(v, vendors, code, {
+        limit: opts.integrationLimit ?? 3,
+        includeStrategicPairings: true
+    });
+        const stackLayers = opts.apefData ? _apefGetStackLayersForDimension(opts.apefData, code) : [];
+        const stackItems = opts.apefData ? _apefGetVendorStackItems(opts.apefData, v, stackLayers.map(layer => layer.id), opts.stackLimit ?? 3) : [];
+        const showDeploymentPosture = opts.showDeploymentPosture && !!(v && v.local_deployment_note);
+
+    return `
+      <div class="apef-card" style="${opts.cardStyle || ''}">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;">
+          <h3 style="margin:0;${opts.titleStyle || ''}">${escapeHtml(opts.title || (dim.name || code))}</h3>
+          ${opts.badge ? `<span class="apef-chip">${escapeHtml(opts.badge)}</span>` : ''}
+        </div>
+                ${_apefRenderStackBadges(stackLayers)}
+        <p style="font-size:12px;color:#cbd5e1;line-height:1.6;margin:8px 0 0;">${escapeHtml(narrative.summary || '—')}</p>
+                ${code === 'PLT' ? _apefRenderPLTCardEnrichment(v, { marginTop: 8, summaryLen: 200, sourceLimit: 2 }) : ''}
+                ${showDeploymentPosture ? _apefRenderDeploymentPosture(v, { marginTop: 8, dimensionCode: code, dimension: dim }) : ''}
+                ${_apefRenderMiniList('Stack position in this dimension', stackItems, { marginTop: 8, body: '#cbd5e1' })}
+        ${_apefRenderMiniList('Own capabilities', ownCaps, { marginTop: 8 })}
+        ${_apefRenderMiniList('Integration points', integrationPoints, { marginTop: 8, body: '#94a3b8' })}
+                ${_apefRenderMiniList('Evidence', opts.evidenceItems || [], { marginTop: 8, fontSize: '11px', body: '#94a3b8' })}
+      </div>`;
+}
+
+function _apefRenderOverview(d) {
+    const el = document.getElementById('apef-pane-overview');
+    if (!el) return;
+    const dims = d.dimensions || {};
+    const dimEntries = Object.entries(dims);
+    const principles = d.principles || [];
+
+    let html = `
+      <div style="max-width:1100px;">
+        <div style="font-size:11px;letter-spacing:1.2px;color:#64748b;font-weight:700;text-transform:uppercase;">AI Platform Ecosystem Framework · v${escapeHtml(d.schema_version || '1.0')}</div>
+        <h1 style="font-size:26px;font-weight:800;color:#f8fafc;margin:6px 0 4px;">${escapeHtml(d.framework_name || 'APEF')}</h1>
+        <p style="font-size:13px;color:#94a3b8;margin:0 0 8px;">${escapeHtml(d.description || '')}</p>
+        <p style="font-size:11px;color:#64748b;margin:0 0 24px;font-style:italic;">${escapeHtml(d.scope || '')}</p>
+
+        <div class="apef-card" style="background:#0b1220;border:1px solid #1e3a5f;">
+          <h3 style="margin:0 0 8px;color:#93c5fd;">Executive Overview</h3>
+          <p style="font-size:13px;line-height:1.65;color:#cbd5e1;margin:0;">${escapeHtml(d.executive_overview || '')}</p>
+        </div>
+
+        <h2 style="font-size:17px;margin:26px 0 10px;color:#f1f5f9;">Vendors in scope</h2>
+        <div>${(d.vendors || []).map(v => _apefVendorChip(v)).join('')}</div>
+
+                <h2 style="font-size:17px;margin:26px 0 10px;color:#f1f5f9;">Integrated stack × dimension model</h2>
+                <div class="apef-card" style="background:#0b1220;border:1px solid #1e3a5f;">
+                    <p style="font-size:12px;color:#cbd5e1;line-height:1.6;margin:0 0 10px;">APEF now treats the enterprise stack as the architecture substrate and the six dimensions as evaluation lenses over that stack. Local, hybrid, and on-prem patterns are captured as deployment posture inside the affected stack layers rather than as separate add-ons.</p>
+                    ${_apefRenderIntegrationLegend(d, { marginTop: 0, compact: true })}
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;">
+                        ${(d.dimensions ? Object.entries(d.dimensions) : []).map(([code, dim]) => {
+                                const stackLayers = _apefGetStackLayersForDimension(d, code);
+                                return `<div style="padding:9px 10px;border:1px solid #1e293b;border-radius:8px;background:#020617;">
+                                    <div style="font-size:12px;color:#f1f5f9;font-weight:800;">${escapeHtml(code)} · ${escapeHtml(dim.name || '')}</div>
+                                    ${_apefRenderStackBadges(stackLayers)}
+                                </div>`;
+                        }).join('')}
+                    </div>
+                </div>
+
+                <h2 style="font-size:17px;margin:26px 0 10px;color:#f1f5f9;">The Six Dimensions</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;">`;
+    dimEntries.forEach(([code, dim]) => {
+        const w = (dim.weight != null) ? `${Math.round(dim.weight * 100)}%` : '';
+        html += `
+          <div class="apef-card">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;">
+              <h3 style="margin:0;">${escapeHtml(dim.name || code)}</h3>
+              <span class="apef-chip">${escapeHtml(code)}${w ? ' · ' + w : ''}</span>
+            </div>
+            <p style="font-size:12px;color:#94a3b8;line-height:1.55;margin:8px 0 0;">${escapeHtml(dim.description || '')}</p>
+          </div>`;
+    });
+    html += `</div>`;
+
+    if (principles.length) {
+        html += `
+        <h2 style="font-size:17px;margin:26px 0 10px;color:#f1f5f9;">Principles</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;">`;
+        principles.forEach(p => {
+            html += `
+              <div class="apef-card">
+                <div style="font-size:11px;color:#94a3b8;font-weight:700;">${escapeHtml(p.id || '')} · ${escapeHtml(p.label || '')}</div>
+                <p style="font-size:12px;color:#cbd5e1;line-height:1.5;margin:6px 0 0;">${escapeHtml(p.statement || '')}</p>
+              </div>`;
+        });
+        html += `</div>`;
+    }
+    html += `</div>`;
+    el.innerHTML = html;
+}
+
+function _apefRenderVendorProfile(d) {
+    const el = document.getElementById('apef-pane-vendor');
+    if (!el) return;
+    const vendors = d.vendors || [];
+    const dims = d.dimensions || {};
+    const dimCodes = Object.keys(dims);
+
+    const selKey = _apefSelectedVendor || (vendors[0] && vendors[0].key) || '';
+    const v = vendors.find(x => x.key === selKey) || vendors[0];
+    if (!v) { el.innerHTML = '<p style="color:#94a3b8;">No vendor data.</p>'; return; }
+
+    const color = APEF_VENDOR_COLORS[v.key] || '#94a3b8';
+
+    let html = `
+      <div style="max-width:1100px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:11px;letter-spacing:1.2px;color:#64748b;font-weight:700;text-transform:uppercase;">Vendor Profile</div>
+            <h1 style="font-size:28px;font-weight:800;color:${color};margin:6px 0 4px;">${escapeHtml(v.vendor || v.key)}</h1>
+            <div style="font-size:12px;color:#94a3b8;">${(v.primary_roles || []).map(r => `<span class="apef-chip">${escapeHtml(r)}</span>`).join('')}</div>
+          </div>
+          <div style="text-align:right;font-size:12px;color:#94a3b8;">
+            <div><strong style="color:#cbd5e1;">Strongest layers:</strong> ${(v.strongest_layers || []).map(l => `<span class="apef-chip layer">${escapeHtml(l)}</span>`).join('')}</div>
+            <div style="margin-top:6px;"><strong style="color:#cbd5e1;">Buying reason:</strong> ${escapeHtml(v.typical_buying_reason || '')}</div>
+          </div>
+        </div>
+
+        <div class="apef-card" style="margin-top:18px;background:#0b1220;border-color:${color}33;">
+          <h3 style="margin:0 0 8px;color:${color};">Executive Summary</h3>
+          <p style="font-size:13px;line-height:1.65;color:#cbd5e1;margin:0;">${escapeHtml(v.executive_summary || '—')}</p>
+        </div>
+
+        ${_apefRenderVendorStackProfile(d, v, { marginTop: 14 })}
+
+        ${(v.watchouts && v.watchouts.length) ? `
+        <div class="apef-card" style="background:#1f1300;border-color:#7c2d12;">
+          <h3 style="margin:0 0 8px;color:#fb923c;">Watchouts</h3>
+          <ul style="margin:0;padding-left:20px;color:#fed7aa;font-size:12px;line-height:1.6;">
+            ${v.watchouts.map(w => `<li>${escapeHtml(w)}</li>`).join('')}
+          </ul>
+        </div>` : ''}
+
+        <h2 style="font-size:17px;margin:24px 0 10px;color:#f1f5f9;">Dimension Narratives</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px;">`;
+    dimCodes.forEach(code => {
+        const dim = dims[code] || {};
+        const n = (v.dimension_narratives || {})[code] || {};
+        html += _apefRenderDimensionCard(v, vendors, code, dim, n, {
+            badge: code,
+            apefData: d,
+            showDeploymentPosture: true,
+            capabilityLimit: 3,
+            integrationLimit: 3,
+            stackLimit: 3,
+            evidenceItems: (n.evidence || []).slice(0, 3)
+        });
+    });
+    html += `</div></div>`;
+    el.innerHTML = html;
+}
+
+function _apefRenderPLTReference(d, el) {
+    const dim = ((d.dimensions || {}).PLT || {});
+    const subDims = Object.values((dim.sub_dimensions || {}));
+    const stackLayers = _apefGetStackLayersForDimension(d, 'PLT');
+    const vendors = d.vendors || [];
+
+    const bandDefs = [
+        { id: 'build',       label: 'Build surface',          color: '#10b981', why: 'Where developers enter the platform — IDEs, SDKs, consoles, low-code studios, and the API/control-plane that they actually call.' },
+        { id: 'orchestrate', label: 'Agent control plane',    color: '#06b6d4', why: 'Where agents, tools, workflows, runtime behavior, and multi-agent handoffs are defined and executed.' },
+        { id: 'data',        label: 'Tools & data fabric',    color: '#eab308', why: 'How tools, retrieval, grounding, knowledge, and enterprise data are connected into agent workflows.' },
+        { id: 'govern',      label: 'Evaluate & govern',      color: '#ef4444', why: 'Evaluations, tracing, observability, policy, identity, and safety controls that keep the platform shippable.' },
+        { id: 'runtime',     label: 'Runtime & distribution', color: '#8b5cf6', why: 'Where workloads actually execute and how the platform reaches users — managed runtime, hybrid, local, and distribution surfaces.' },
+    ];
+    const bucketOrder = ['developer', 'api', 'agent', 'data', 'eval', 'governance', 'local'];
+    const evalCriteria = [
+        { area: 'Build surface & developer onboarding',        color: '#10b981', questions: ['How does a developer go from first API call to a governed production deployment?', 'What SDKs, consoles, templates, and IDE integrations lower time-to-first-agent?', 'Is low-code (studio/visual) and pro-code (SDK/CLI) covered by the same control plane?'] },
+        { area: 'Agent orchestration & runtime',               color: '#06b6d4', questions: ['How does the platform manage state, retries, error recovery, and durable execution?', 'Where do tool permissions, human-approval steps, and handoff patterns live?', 'Is multi-agent orchestration native or assembled from external libraries?'] },
+        { area: 'Tools, data & retrieval grounding',           color: '#eab308', questions: ['What retrieval, vector, search, and knowledge-base surfaces are native vs. partner-mediated?', 'How is identity propagated from the orchestration layer into tool calls and data access?', 'Does MCP, function-calling, or a connector catalog reduce integration friction?'] },
+        { area: 'Evaluation, observability & quality gates',   color: '#a78bfa', questions: ['Can evaluations be attached to CI/CD pipelines with version-aware regression baselines?', 'What telemetry is captured natively (traces, spans, costs, drift) vs. exported to partner tools?', 'How much of the eval framework works the same way on hosted vs. local/hybrid execution paths?'] },
+        { area: 'Governance, policy & identity',               color: '#ef4444', questions: ['Is agent identity managed through the same enterprise IAM / directory that governs everything else?', 'Can policies, guardrails, and approval workflows be expressed as code in version-controlled repos?', 'What compliance artifacts and audit evidence does the platform generate natively?'] },
+        { area: 'Runtime portability & hybrid continuity',     color: '#8b5cf6', questions: ['Does the same orchestration and evaluation path work when the execution substrate changes (hosted → GKE/EKS → NVIDIA NIM)?', 'What observability and governance fidelity is lost when moving off the primary managed runtime?', 'Is there a supported path for air-gapped, on-prem, or regulated-environment deployment?'] },
+        { area: 'Ecosystem reach & distribution',              color: '#ec4899', questions: ['Can agents be published to productivity apps (Teams, M365, Workspace) without leaving the platform boundary?', 'How does the vendor\'s marketplace or partner network extend PLT coverage for gaps?', 'What standards (MCP, A2A, OpenAI compat.) does the platform emit, and who already consumes them?'] },
+    ];
+
+    let html = `<div style="max-width:1200px;">
+      <div style="font-size:11px;letter-spacing:1.2px;color:#64748b;font-weight:700;text-transform:uppercase;">APEF · ${escapeHtml(dim.name || 'Platform & Developer Experience')}${dim.weight != null ? ` · weight ${Math.round(dim.weight * 100)}%` : ''}</div>
+      <h1 style="font-size:26px;font-weight:900;color:#f8fafc;margin:6px 0 4px;">PLT Deep-Dive — Reference &amp; Standards</h1>
+      <p style="font-size:13px;color:#94a3b8;margin:0 0 6px;line-height:1.65;">${escapeHtml(dim.description || 'Platform & Developer Experience covers the full lifecycle through which enterprises build, evaluate, govern, and operate AI applications and agent workloads.')}</p>
+      <p style="font-size:12px;color:#64748b;margin:0 0 24px;">Select a vendor from the filter above to see a vendor-specific deep-dive. This view shows the framework definitions, evaluation standards, and due-diligence questions used across all vendors.</p>
+
+      <!-- ── 1. Sub-dimensions ─────────────────────────────────── -->
+      <h2 style="font-size:18px;margin:0 0 10px;color:#f1f5f9;">PLT Sub-Dimensions</h2>
+      <div style="border:1px solid #1e293b;border-radius:10px;overflow:hidden;margin-bottom:28px;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:#0a1220;">
+              <th style="text-align:left;padding:10px 12px;font-size:10px;color:#64748b;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;width:70px;">ID</th>
+              <th style="text-align:left;padding:10px 12px;font-size:10px;color:#64748b;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;width:200px;">Sub-dimension</th>
+              <th style="text-align:left;padding:10px 12px;font-size:10px;color:#64748b;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;">Focus &amp; assessment question</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${subDims.map((sd, i) => `<tr style="border-top:1px solid #1e293b;background:${i % 2 ? '#0b1220' : 'transparent'};vertical-align:top;">
+              <td style="padding:11px 12px;color:#93c5fd;font-weight:800;">${escapeHtml(sd.id || '')}</td>
+              <td style="padding:11px 12px;"><div style="font-weight:800;color:#f1f5f9;">${escapeHtml(sd.name || '')}</div></td>
+              <td style="padding:11px 12px;color:#cbd5e1;line-height:1.6;">
+                ${escapeHtml(sd.description || '')}
+                ${sd.assessment_question ? `<div style="margin-top:6px;padding:6px 10px;background:#020617;border-left:3px solid #93c5fd;border-radius:0 6px 6px 0;font-size:11px;color:#93c5fd;font-style:italic;">${escapeHtml(sd.assessment_question)}</div>` : ''}
+              </td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── 2. Platform Architecture Bands ───────────────────── -->
+      <h2 style="font-size:18px;margin:0 0 6px;color:#f1f5f9;">Platform Architecture Bands</h2>
+      <p style="font-size:12px;color:#94a3b8;margin:0 0 12px;line-height:1.6;">Every platform vendor is evaluated through 5 horizontal bands. Each band represents a role in the platform architecture — the goal is to understand how a vendor populates each one and what cross-cutting controls span all bands.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:28px;">
+        ${bandDefs.map((band, i) => `<div style="display:grid;grid-template-columns:180px 1fr;border:1px solid ${band.color}44;border-left:4px solid ${band.color};border-radius:8px;overflow:hidden;background:${band.color}0a;">
+          <div style="padding:14px 16px;background:${band.color}18;display:flex;flex-direction:column;justify-content:center;border-right:1px solid ${band.color}33;">
+            <div style="font-size:10px;color:${band.color};font-weight:900;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;">Band ${i + 1}</div>
+            <div style="font-size:14px;color:#fff;font-weight:900;line-height:1.2;">${escapeHtml(band.label)}</div>
+          </div>
+          <div style="padding:13px 16px;font-size:12px;color:#cbd5e1;line-height:1.6;">${escapeHtml(band.why)}</div>
+        </div>`).join('')}
+      </div>
+
+      <!-- ── 3. Component Buckets ──────────────────────────────── -->
+      <h2 style="font-size:18px;margin:0 0 6px;color:#f1f5f9;">Component Classification Buckets</h2>
+      <p style="font-size:12px;color:#94a3b8;margin:0 0 12px;line-height:1.6;">L4 platform components from any vendor are classified into one of these buckets based on their role. Buckets map directly to the architecture bands above.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:28px;">
+        ${bucketOrder.map(bucket => {
+            const meta = _apefPLTBucketMeta(bucket);
+            return `<div style="padding:12px 14px;border:1px solid ${meta.color}44;border-left:3px solid ${meta.color};border-radius:8px;background:#0a1220;">
+              <div style="font-size:12px;font-weight:800;color:${meta.color};margin-bottom:4px;">${escapeHtml(meta.label)}</div>
+              <div style="font-size:12px;color:#94a3b8;line-height:1.5;">${escapeHtml(meta.why)}</div>
+            </div>`;
+        }).join('')}
+      </div>
+
+      <!-- ── 4. Evaluation Criteria by Area ───────────────────── -->
+      <h2 style="font-size:18px;margin:0 0 6px;color:#f1f5f9;">Evaluation Criteria &amp; Due-Diligence Questions</h2>
+      <p style="font-size:12px;color:#94a3b8;margin:0 0 12px;line-height:1.6;">These questions frame what to test when assessing any vendor's PLT posture. Apply them regardless of which vendor is under review — the goal is to make the comparison surface consistent and evidence-backed.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+        ${evalCriteria.map(area => `<details style="border:1px solid ${area.color}44;border-left:3px solid ${area.color};border-radius:8px;background:#0a1220;overflow:hidden;">
+          <summary style="padding:11px 14px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:${area.color};">
+            <span>${escapeHtml(area.area)}</span>
+            <span style="font-size:10px;font-weight:600;color:#64748b;margin-left:auto;">${area.questions.length} questions</span>
+          </summary>
+          <div style="padding:4px 14px 12px;border-top:1px solid ${area.color}22;">
+            <ul style="margin:8px 0 0;padding-left:18px;font-size:12px;color:#cbd5e1;line-height:1.65;">
+              ${area.questions.map(q => `<li style="margin-bottom:6px;">${escapeHtml(q)}</li>`).join('')}
+            </ul>
+          </div>
+        </details>`).join('')}
+      </div>
+
+      <!-- ── 5. Stack Layers & Integration Types ──────────────── -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
+        <div>
+          <h2 style="font-size:18px;margin:0 0 10px;color:#f1f5f9;">Primary Stack Layers</h2>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            ${stackLayers.map(l => {
+                const col = APEF_LAYER_COLORS[l.id] || '#64748b';
+                return `<div style="padding:9px 12px;border:1px solid ${col}44;border-left:3px solid ${col};border-radius:7px;background:#020617;">
+                  <div style="font-size:9px;font-weight:900;color:${col};letter-spacing:0.6px;text-transform:uppercase;margin-bottom:3px;">${escapeHtml(l.id || '')}</div>
+                  <div style="font-size:12px;font-weight:700;color:#f1f5f9;">${escapeHtml(l.label || l.id)}</div>
+                  ${l.description ? `<div style="font-size:11px;color:#94a3b8;margin-top:3px;line-height:1.5;">${escapeHtml(l.description)}</div>` : ''}
+                </div>`;
+            }).join('')}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-size:18px;margin:0 0 10px;color:#f1f5f9;">Integration Link Types</h2>
+          ${_apefRenderIntegrationLegend(d, { marginTop: 0, compact: true, background: '#020617' })}
+        </div>
+      </div>
+
+    </div>`;
+    el.innerHTML = html;
+}
+
+function _apefRenderPLTDeepDive(d) {
+    const el = document.getElementById('apef-pane-plt');
+    if (!el) return;
+    const vendors = d.vendors || [];
+
+    // If no specific vendor is selected, show the generic PLT reference sheet
+    const explicitKey = _apefTabVendorFilters['plt'] || _apefSelectedVendor || '';
+    const v = explicitKey ? (vendors.find(x => x.key === explicitKey) || null) : null;
+    if (!v) { _apefRenderPLTReference(d, el); return; }
+
+    const dim = ((d.dimensions || {}).PLT || {});
+    const narrative = ((v.dimension_narratives || {}).PLT || {});
+    const color = APEF_VENDOR_COLORS[v.key] || '#94a3b8';
+    const stackLayers = _apefGetStackLayersForDimension(d, 'PLT');
+    const components = _apefGetPLTComponents(v);
+    const buckets = _apefGetPLTMechanicBuckets(v, vendors);
+    const integrationPoints = _apefGetVendorIntegrationPoints(v, vendors, 'PLT', { limit: 10, includeStrategicPairings: true });
+    const differentiators = _apefGetPLTDifferentiators(v, d, vendors);
+    const researchAgenda = _apefGetPLTResearchAgenda(v);
+    const researchFindings = _apefGetPLTResearchFindings(v);
+    const docSignals = _apefGetPLTDocSignals(v);
+    const subdimensionBriefs = _apefGetPLTSubdimensionBriefs(v, d, vendors);
+    const lookup = _apefBuildComponentLookup(vendors);
+
+    // ── Architecture spine: 5 horizontal bands, each layer is a row showing
+    //    doc-backed motion + the vendor's actual L4 components classified into that layer.
+    const BUCKET_TO_BAND = {
+        developer: 'build', api: 'build',
+        agent: 'orchestrate',
+        data: 'data',
+        governance: 'govern', eval: 'govern',
+        local: 'runtime'
+    };
+    const bandDefs = [
+        { id: 'build',       label: 'Build surface',         color: '#10b981', why: 'Where developers enter the platform — IDEs, SDKs, consoles, low-code studios, and the API/control-plane that they actually call.' },
+        { id: 'orchestrate', label: 'Agent control plane',   color: '#06b6d4', why: 'Where agents, tools, workflows, runtime behavior, and multi-agent handoffs are defined and executed.' },
+        { id: 'data',        label: 'Tools & data fabric',   color: '#eab308', why: 'How tools, retrieval, grounding, knowledge, and enterprise data are connected into agent workflows.' },
+        { id: 'govern',      label: 'Evaluate & govern',     color: '#ef4444', why: 'Evaluations, tracing, observability, policy, identity, and safety controls that keep the platform shippable.' },
+        { id: 'runtime',     label: 'Runtime & distribution',color: '#8b5cf6', why: 'Where workloads actually execute and how the platform reaches users — managed runtime, hybrid, local, and distribution surfaces.' }
+    ];
+    const bandComponents = Object.fromEntries(bandDefs.map(b => [b.id, []]));
+    components.forEach(c => {
+        const bucket = _apefClassifyPLTComponent(c);
+        const band = BUCKET_TO_BAND[bucket] || 'build';
+        bandComponents[band].push(c);
+    });
+    const bandDocBullets = {
+        build:       (docSignals.architecture || {}).build || [],
+        orchestrate: (docSignals.architecture || {}).orchestration || [],
+        data:        (docSignals.architecture || {}).data || [],
+        govern:      (docSignals.architecture || {}).govern || [],
+        runtime:     (docSignals.architecture || {}).runtime || []
+    };
+    const integrationByBand = Object.fromEntries(bandDefs.map(b => [b.id, []]));
+    const integrationFabric = {};
+    components.forEach(c => {
+        const band = BUCKET_TO_BAND[_apefClassifyPLTComponent(c)] || 'build';
+        (c.integrates_with || []).forEach(rawId => {
+            const target = lookup.get(_apefResolveComponentId(rawId));
+            if (!target) return;
+            const type = _apefClassifyIntegrationPoint({ ...c, vendorKey: v.key }, target);
+            integrationByBand[band].push({ from: c.name || c.id, to: target.name || target.id, vendor: target.vendorName, type, crossVendor: target.vendorKey !== v.key });
+            integrationFabric[type] = (integrationFabric[type] || 0) + 1;
+        });
+    });
+
+    const componentCount = components.length;
+    const integrationCount = integrationPoints.length;
+    const stackBadges = stackLayers.map(l => `<span class="apef-chip" title="${escapeHtml(l.description || '')}">${escapeHtml(l.label || l.id)}</span>`).join('');
+    const postureText = _apefGetDimensionDeploymentPosture(v, 'PLT', dim) || v.local_deployment_note || '';
+    const sources = (docSignals.sources || []).filter(s => s.url);
+    const pendingSource = (docSignals.sources || []).find(s => !s.url);
+
+    const renderBand = band => {
+        const comps = bandComponents[band.id] || [];
+        const docs = bandDocBullets[band.id] || [];
+        const ints = integrationByBand[band.id] || [];
+        const intDedup = [];
+        const seen = new Set();
+        ints.forEach(it => { const k = `${it.to}|${it.type}`; if (seen.has(k)) return; seen.add(k); intDedup.push(it); });
+        return `
+        <div style="display:grid;grid-template-columns:170px 1fr 1fr;gap:0;border-top:1px solid #1e293b;">
+          <div style="padding:14px 14px;border-right:1px solid #1e293b;background:${band.color}0d;display:flex;flex-direction:column;justify-content:flex-start;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="width:8px;height:32px;border-radius:3px;background:${band.color};"></span>
+              <div>
+                <div style="font-size:10px;color:${band.color};font-weight:900;text-transform:uppercase;letter-spacing:0.4px;">${escapeHtml(band.label.split(' ')[0])}</div>
+                <div style="font-size:13px;color:#f1f5f9;font-weight:800;line-height:1.25;">${escapeHtml(band.label)}</div>
+              </div>
+            </div>
+            <p style="font-size:11px;color:#94a3b8;line-height:1.5;margin:8px 0 0;">${escapeHtml(band.why)}</p>
+          </div>
+          <div style="padding:14px;border-right:1px solid #1e293b;">
+            <div style="font-size:10px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;margin-bottom:6px;">How ${escapeHtml(v.vendor || v.key)} operates this layer</div>
+            ${docs.length
+                ? `<ul style="margin:0;padding-left:16px;font-size:12px;color:#dbe4f0;line-height:1.55;">${docs.map(b => `<li style="margin-bottom:3px;">${escapeHtml(b)}</li>`).join('')}</ul>`
+                : `<p style="font-size:12px;color:#64748b;font-style:italic;margin:0;">Research this layer further.</p>`}
+          </div>
+          <div style="padding:14px;">
+            <div style="font-size:10px;color:#94a3b8;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;margin-bottom:6px;">Components &amp; links in the record</div>
+            ${comps.length
+                ? `<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">${comps.map(c => `<span class="apef-chip" style="background:${band.color}1a;color:${band.color};border:1px solid ${band.color}55;">${escapeHtml(c.name || c.id)}</span>`).join('')}</div>`
+                : '<div style="font-size:11px;color:#64748b;font-style:italic;margin-bottom:8px;">No components classified at this layer.</div>'}
+            ${intDedup.length
+                ? `<div style="display:flex;flex-wrap:wrap;gap:4px;">${intDedup.slice(0, 6).map(it => {
+                        const meta = _apefIntegrationTypeMeta(it.type);
+                        const label = it.crossVendor ? `${it.to} (${it.vendor})` : it.to;
+                        return `<span title="${escapeHtml(it.from + ' → ' + it.to)}" style="display:inline-block;padding:2px 7px;border-radius:999px;font-size:10px;background:${meta.color}1f;color:${meta.color};border:1px solid ${meta.color}55;">${escapeHtml(label)} · ${escapeHtml(meta.label || it.type)}</span>`;
+                  }).join('')}</div>`
+                : ''}
+          </div>
+        </div>`;
+    };
+
+    const renderComponent = c => {
+        const targets = (c.integrates_with || []).map(id => lookup.get(_apefResolveComponentId(id)) || { id: _apefResolveComponentId(id), name: _apefResolveComponentId(id) });
+        return `<div style="padding:9px 11px;border:1px solid #1e293b;border-radius:8px;background:#020617;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                <div style="font-size:12px;color:#f8fafc;font-weight:800;">${escapeHtml(c.name || c.id)}</div>
+                <span style="font-size:10px;color:#64748b;">${escapeHtml(c.type || 'platform')}</span>
+            </div>
+            ${targets.length ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;">${targets.map(t => {
+                const type = _apefClassifyIntegrationPoint({ ...c, vendorKey: v.key }, t);
+                const meta = _apefIntegrationTypeMeta(type);
+                return `<span title="${escapeHtml(meta.description || '')}" style="display:inline-block;padding:2px 7px;border-radius:999px;font-size:10px;background:${meta.color}1f;color:${meta.color};border:1px solid ${meta.color}55;">${escapeHtml(t.name || t.id)}</span>`;
+            }).join('')}</div>` : ''}
+        </div>`;
+    };
+
+    let html = `
+      <div style="max-width:1380px;">
+
+        <!-- ── 1. Hero band ───────────────────────────────────────── -->
+        <div style="border:1px solid #1e293b;border-left:5px solid ${color};border-radius:12px;background:linear-gradient(180deg,#0b1220 0%, #09101d 100%);padding:18px 22px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;">
+            <div style="max-width:780px;">
+              <div style="font-size:11px;letter-spacing:1.2px;color:#64748b;font-weight:700;text-transform:uppercase;">APEF · ${escapeHtml(dim.name || 'Platform & Developer Experience')} ${(dim.weight != null) ? `· weight ${Math.round(dim.weight * 100)}%` : ''}</div>
+              <h1 style="font-size:26px;font-weight:900;color:${color};margin:6px 0 8px;">${escapeHtml(v.vendor || v.key)} — PLT deep-dive</h1>
+              <p style="font-size:13px;color:#dbe4f0;line-height:1.7;margin:0;">${escapeHtml(narrative.summary || 'No PLT narrative captured for this vendor.')}</p>
+              ${docSignals.summary ? `<p style="font-size:12px;color:#94a3b8;line-height:1.65;margin:8px 0 0;font-style:italic;">${escapeHtml(docSignals.summary)}</p>` : ''}
+            </div>
+            <div style="min-width:240px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+              <div style="display:flex;gap:14px;font-size:11px;color:#94a3b8;">
+                <div><strong style="color:#f1f5f9;font-size:18px;display:block;">${componentCount}</strong>L4 components</div>
+                <div><strong style="color:#f1f5f9;font-size:18px;display:block;">${integrationCount}</strong>integrations</div>
+                <div><strong style="color:#f1f5f9;font-size:18px;display:block;">${stackLayers.length}</strong>stack layers</div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;">${stackBadges}</div>
+            </div>
+          </div>
+          ${postureText ? `<div style="margin-top:14px;padding-top:12px;border-top:1px solid #1e293b;font-size:12px;color:#cbd5e1;line-height:1.6;"><strong style="color:#93c5fd;">Deployment posture:</strong> ${escapeHtml(postureText)}</div>` : ''}
+        </div>
+
+        <!-- ── 2. Architecture spine: real diagram + layered detail ─ -->
+        <div style="margin-top:22px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+            <h2 style="font-size:18px;margin:0;color:#f1f5f9;">Platform architecture, as ${escapeHtml(v.vendor || v.key)} expresses it</h2>
+            <div style="font-size:11px;color:#64748b;">Vendor-specific PLT rack · components in their actual layer · integration fabric · cross-cutting governance</div>
+          </div>
+          ${_apefRenderPLTArchitectureDiagram(v, docSignals, bandComponents, integrationFabric, color)}
+          <div style="margin-top:14px;border:1px solid #1e293b;border-radius:12px;background:#0b1220;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:170px 1fr 1fr;background:#0a1220;">
+              <div style="padding:10px 14px;font-size:10px;color:#64748b;font-weight:800;text-transform:uppercase;letter-spacing:0.4px;">Layer</div>
+              <div style="padding:10px 14px;font-size:10px;color:#64748b;font-weight:800;text-transform:uppercase;letter-spacing:0.4px;border-left:1px solid #1e293b;">Vendor motion (research-backed)</div>
+              <div style="padding:10px 14px;font-size:10px;color:#64748b;font-weight:800;text-transform:uppercase;letter-spacing:0.4px;border-left:1px solid #1e293b;">Components &amp; links</div>
+            </div>
+            ${bandDefs.map(renderBand).join('')}
+          </div>
+          ${_apefRenderIntegrationLegend(d, { marginTop: 10, compact: true })}
+        </div>
+
+        <!-- ── 3. Sub-dimension table (PLT-01..04) ───────────────── -->
+        <div style="margin-top:24px;">
+          <h2 style="font-size:18px;margin:0 0 8px;color:#f1f5f9;">APEF sub-dimensions for PLT</h2>
+          <p style="font-size:12px;color:#94a3b8;line-height:1.6;margin:0 0 10px;">The official evaluation lens, tied to ${escapeHtml(v.vendor || v.key)}'s actual mechanics. Each row is the question to answer for this vendor in this sub-dimension.</p>
+          <div style="border:1px solid #1e293b;border-radius:10px;overflow:hidden;">
+            <table style="width:100%;border-collapse:collapse;font-size:12px;">
+              <thead>
+                <tr style="background:#0a1220;color:#64748b;">
+                  <th style="text-align:left;padding:10px 12px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;width:70px;">ID</th>
+                  <th style="text-align:left;padding:10px 12px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;width:200px;">Sub-dimension</th>
+                  <th style="text-align:left;padding:10px 12px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;">Vendor angle &amp; what to test</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${subdimensionBriefs.map((sd, i) => `
+                  <tr style="border-top:1px solid #1e293b;background:${i % 2 ? '#0b1220' : 'transparent'};vertical-align:top;">
+                    <td style="padding:11px 12px;color:#93c5fd;font-weight:800;">${escapeHtml(sd.id || '')}</td>
+                    <td style="padding:11px 12px;color:#e2e8f0;">
+                      <div style="font-weight:800;color:#f1f5f9;">${escapeHtml(sd.name || '')}</div>
+                      <div style="font-size:10px;color:#64748b;font-style:italic;line-height:1.5;margin-top:3px;">${escapeHtml(sd.assessment_question || '')}</div>
+                    </td>
+                    <td style="padding:11px 12px;color:#cbd5e1;line-height:1.6;">
+                      ${escapeHtml(sd.vendorAngle || '')}
+                      ${(sd.inspect && sd.inspect.length) ? `<div style="margin-top:6px;font-size:11px;color:#94a3b8;"><strong style="color:#cbd5e1;">Test:</strong> ${escapeHtml(sd.inspect[0])}</div>` : ''}
+                    </td>
+                  </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── 4. Component mechanics (expandables, slim) ────────── -->
+        <div style="margin-top:24px;">
+          <h2 style="font-size:18px;margin:0 0 8px;color:#f1f5f9;">Component mechanics</h2>
+          <p style="font-size:12px;color:#94a3b8;line-height:1.6;margin:0 0 10px;">The L4 components captured for ${escapeHtml(v.vendor || v.key)}, grouped by the role they actually play in the platform.</p>
+          ${buckets.length ? buckets.map((bucket, i) => `<details ${i === 0 ? 'open' : ''} style="margin-bottom:6px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;">
+            <summary style="padding:10px 14px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;">
+              <span style="width:6px;height:18px;border-radius:2px;background:${bucket.meta.color};"></span>
+              <span style="font-weight:800;color:${bucket.meta.color};">${escapeHtml(bucket.meta.label)}</span>
+              <span style="font-size:11px;color:#64748b;">· ${bucket.items.length} component${bucket.items.length === 1 ? '' : 's'} · ${escapeHtml(bucket.meta.why)}</span>
+            </summary>
+            <div style="padding:0 14px 12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;">
+              ${bucket.items.map(item => renderComponent(item.component)).join('')}
+            </div>
+          </details>`).join('') : `<div style="padding:12px;border:1px solid #1e293b;border-radius:8px;color:#94a3b8;background:#0b1220;">No L4 PLT components are currently captured for ${escapeHtml(v.vendor || v.key)}.</div>`}
+        </div>
+
+        <!-- ── 5. Analyst readout + research agenda (merged) ─────── -->
+        <div style="margin-top:24px;border:1px solid #1e293b;border-radius:12px;background:#0b1220;padding:18px 20px;">
+          <h2 style="font-size:18px;margin:0 0 8px;color:#f1f5f9;">Analyst readout &amp; research agenda</h2>
+          <p style="font-size:12px;color:#94a3b8;line-height:1.65;margin:0 0 14px;">Where ${escapeHtml(v.vendor || v.key)} appears structurally differentiated, what is still ecosystem-mediated, and what the next research pass should validate.</p>
+
+          <div style="display:grid;grid-template-columns:minmax(280px,1.1fr) minmax(260px,0.9fr);gap:18px;">
+            <div>
+              <div style="font-size:11px;color:#c4b5fd;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;margin-bottom:6px;">What appears differentiated</div>
+              <ul style="margin:0 0 14px;padding-left:18px;font-size:12px;color:#dbe4f0;line-height:1.65;">
+                ${differentiators.slice(0, 4).map(t => `<li style="margin-bottom:4px;">${escapeHtml(t)}</li>`).join('')}
+              </ul>
+
+              <div style="font-size:11px;color:#fbbf24;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;margin-bottom:6px;">Research findings <span style="color:#64748b;font-weight:600;text-transform:none;letter-spacing:0;">· validated against ${escapeHtml(v.vendor || v.key)} primary docs</span></div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;">
+                ${[
+                  { id: 'priority', label: 'Priority diligence', color: '#fbbf24' },
+                  { id: 'architecture', label: 'Architecture work', color: '#60a5fa' },
+                  { id: 'differentiation', label: 'Differentiation tests', color: '#34d399' }
+                ].map(col => {
+                  const items = (researchFindings[col.id] || []);
+                  if (!items.length) return '';
+                  const renderItem = f => {
+                    const statusMeta = f.s === 'confirmed' ? { dot: '#22c55e', label: 'Confirmed' }
+                      : f.s === 'partial' ? { dot: '#fbbf24', label: 'Partial' }
+                      : { dot: '#ef4444', label: 'Gap' };
+                    const src = (f.u && f.t) ? `<a href="${escapeHtml(f.u)}" target="_blank" rel="noopener" style="color:#93c5fd;text-decoration:none;font-size:10px;font-weight:700;">${escapeHtml(f.t)} \u2197</a>` : '';
+                    return `<li style="margin-bottom:10px;list-style:none;padding-left:0;">
+                      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+                        <span style="width:7px;height:7px;border-radius:50%;background:${statusMeta.dot};display:inline-block;flex-shrink:0;"></span>
+                        <span style="font-size:10px;color:${statusMeta.dot};font-weight:800;text-transform:uppercase;letter-spacing:0.3px;">${statusMeta.label}</span>
+                        <span style="font-size:11px;color:#e2e8f0;font-weight:700;">${escapeHtml(f.q)}</span>
+                      </div>
+                      <div style="font-size:11px;color:#cbd5e1;line-height:1.55;margin-bottom:3px;">${escapeHtml(f.v)}</div>
+                      ${src}
+                    </li>`;
+                  };
+                  return `<div style="border:1px solid ${col.color}33;border-radius:8px;padding:10px 12px;background:#0a1220;">
+                    <div style="font-size:10px;color:${col.color};font-weight:800;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;border-bottom:1px solid ${col.color}22;padding-bottom:6px;">${col.label}</div>
+                    <ul style="margin:0;padding:0;">${items.map(renderItem).join('')}</ul>
+                  </div>`;
+                }).join('')}
+              </div>
+
+                            <div style="font-size:11px;color:#38bdf8;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;margin:16px 0 6px;">Next research pass</div>
+                            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+                                ${[
+                                    { id: 'priority', label: 'Priority diligence', color: '#38bdf8' },
+                                    { id: 'architecture', label: 'Architecture questions', color: '#a78bfa' },
+                                    { id: 'differentiation', label: 'Differentiation tests', color: '#34d399' }
+                                ].map(col => {
+                                    const items = (researchAgenda[col.id] || []);
+                                    if (!items.length) return '';
+                                    return `<div style="border:1px solid ${col.color}33;border-radius:8px;padding:10px 12px;background:#0a1220;">
+                                        <div style="font-size:10px;color:${col.color};font-weight:800;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;border-bottom:1px solid ${col.color}22;padding-bottom:6px;">${col.label}</div>
+                                        <ul style="margin:0;padding-left:18px;font-size:11px;color:#cbd5e1;line-height:1.6;">${items.map(item => `<li style="margin-bottom:5px;">${escapeHtml(item)}</li>`).join('')}</ul>
+                                    </div>`;
+                                }).join('')}
+                            </div>
+            </div>
+
+            <div style="border-left:1px solid #1e293b;padding-left:18px;">
+              <div style="font-size:11px;color:#93c5fd;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;margin-bottom:6px;">Sources used in this pass</div>
+              ${sources.length ? `<ul style="margin:0 0 10px;padding-left:18px;font-size:12px;color:#cbd5e1;line-height:1.6;">
+                ${sources.map(s => `<li style="margin-bottom:6px;"><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener" style="color:#93c5fd;text-decoration:none;font-weight:700;">${escapeHtml(s.title || s.url)}</a><div style="color:#94a3b8;font-size:11px;margin-top:2px;">${escapeHtml(s.note || '')}</div></li>`).join('')}
+              </ul>` : '<p style="font-size:12px;color:#64748b;font-style:italic;margin:0 0 10px;">No external sources captured in this pass.</p>'}
+              ${pendingSource ? `<div style="padding:8px 10px;border:1px dashed #475569;border-radius:8px;background:#0a1220;font-size:11px;color:#94a3b8;line-height:1.55;"><strong style="color:#fbbf24;">Pending:</strong> ${escapeHtml(pendingSource.note || '')}</div>` : ''}
+
+              ${(narrative.evidence && narrative.evidence.length) ? `<div style="margin-top:14px;font-size:11px;color:#93c5fd;font-weight:800;text-transform:uppercase;letter-spacing:0.35px;margin-bottom:6px;">Evidence already on record</div>
+                <ul style="margin:0;padding-left:18px;font-size:11px;color:#94a3b8;line-height:1.55;">${narrative.evidence.map(t => `<li>${escapeHtml(t)}</li>`).join('')}</ul>` : ''}
+            </div>
+          </div>
+        </div>
+
+      </div>`;
+
+    el.innerHTML = html;
+}
+
+function _apefRenderDimensions(d) {
+    const el = document.getElementById('apef-pane-dimension');
+    if (!el) return;
+    const dims = d.dimensions || {};
+    const vendors = d.vendors || [];
+
+    let html = `
+      <div style="max-width:1300px;">
+        <h1 style="font-size:24px;font-weight:800;color:#f8fafc;margin:0 0 6px;">Dimension Deep-Dives</h1>
+                <p style="font-size:12px;color:#94a3b8;margin:0 0 18px;">For each APEF dimension, compare vendor contribution through the relevant enterprise stack layers, deployment posture, native capabilities, and integration points. ${(_apefSelectedVendor ? `Highlighting: <strong style="color:${APEF_VENDOR_COLORS[_apefSelectedVendor] || '#cbd5e1'};">${escapeHtml(_apefSelectedVendor)}</strong>.` : '')}</p>`;
+
+    Object.entries(dims).forEach(([code, dim]) => {
+        html += `
+          <details open style="margin-bottom:14px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;">
+            <summary style="padding:14px 18px;cursor:pointer;font-weight:700;color:#f1f5f9;font-size:15px;list-style:none;">
+              <span class="apef-chip" style="margin-right:8px;">${escapeHtml(code)}</span>${escapeHtml(dim.name || code)}
+              ${(dim.weight != null) ? `<span style="float:right;font-size:11px;color:#94a3b8;font-weight:600;">weight ${Math.round(dim.weight*100)}%</span>` : ''}
+            </summary>
+            <div style="padding:0 18px 14px;">
+              <p style="font-size:12px;color:#94a3b8;line-height:1.55;margin:0 0 14px;">${escapeHtml(dim.description || '')}</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;">`;
+        vendors.forEach(v => {
+            const n = (v.dimension_narratives || {})[code] || {};
+            const color = APEF_VENDOR_COLORS[v.key] || '#94a3b8';
+            const dim2 = (_apefSelectedVendor && _apefSelectedVendor !== v.key) ? 0.35 : 1;
+                        html += _apefRenderDimensionCard(v, vendors, code, dim, n, {
+                                title: v.vendor || v.key,
+                                titleStyle: `color:${color};font-size:14px;`,
+                                cardStyle: `opacity:${dim2};border-left:3px solid ${color};`,
+                            apefData: d,
+                            showDeploymentPosture: true,
+                                capabilityLimit: 3,
+                            integrationLimit: 3,
+                            stackLimit: 3
+                        });
+        });
+        html += `</div></div></details>`;
+    });
+    html += `</div>`;
+    el.innerHTML = html;
+}
+
+function _apefRenderMatrix(d) {
+    const el = document.getElementById('apef-pane-matrix');
+    if (!el) return;
+    const dims = d.dimensions || {};
+    const dimCodes = Object.keys(dims);
+    const vendors = d.vendors || [];
+
+    let html = `
+      <h1 style="font-size:22px;font-weight:800;color:#f8fafc;margin:0 0 6px;">Comparison Matrix</h1>
+                        <p style="font-size:12px;color:#94a3b8;margin:0 0 14px;">Vendors × dimensions. Each cell now combines stack position, deployment posture, native capabilities, and integration points so the enterprise lens is part of the comparison rather than a separate view.</p>
+      <div style="overflow:auto;border:1px solid #1e293b;border-radius:8px;max-height:calc(100vh - 230px);">
+        <table class="apef-matrix-table">
+          <thead>
+            <tr>
+              <th>Vendor</th>
+              ${dimCodes.map(c => `<th>${escapeHtml(c)} · ${escapeHtml((dims[c] || {}).name || '')}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>`;
+    vendors.forEach(v => {
+        const color = APEF_VENDOR_COLORS[v.key] || '#94a3b8';
+        const opacity = (_apefSelectedVendor && _apefSelectedVendor !== v.key) ? 0.35 : 1;
+        html += `<tr style="opacity:${opacity};">
+                    <td class="apef-vendor-col" style="border-left:3px solid ${color};">
+                        <div style="font-weight:700;color:#e2e8f0;">${escapeHtml(v.vendor || v.key)}</div>
+                        <div style="margin-top:6px;font-size:11px;color:#94a3b8;line-height:1.45;">${escapeHtml(v.typical_buying_reason || '')}</div>
+                    </td>`;
+        dimCodes.forEach(code => {
+            const n = (v.dimension_narratives || {})[code] || {};
+                        const ownCaps = (n.key_capabilities || []).slice(0, 2);
+                        const integrationPoints = _apefGetVendorIntegrationPoints(v, vendors, code, { limit: 2, includeStrategicPairings: true });
+                        const stackLayers = _apefGetStackLayersForDimension(d, code);
+                        const stackItems = _apefGetVendorStackItems(d, v, stackLayers.map(layer => layer.id), 2);
+                        const showDeploymentPosture = !!v.local_deployment_note;
+                        html += `
+                            <td>
+                                <div style="min-width:220px;">
+                                    ${_apefRenderStackBadges(stackLayers)}
+                                    <div style="font-size:11px;color:#cbd5e1;line-height:1.5;">${escapeHtml(n.summary || '—')}</div>
+                                    ${code === 'PLT' ? _apefRenderPLTCardEnrichment(v, { marginTop: 8, summaryLen: 160, sourceLimit: 2 }) : ''}
+                                    ${showDeploymentPosture ? _apefRenderDeploymentPosture(v, { marginTop: 8, fontSize: '11px', dimensionCode: code, dimension: dims[code] || {} }) : ''}
+                                    ${_apefRenderMiniList('Stack position', stackItems, { marginTop: 8, fontSize: '11px', body: '#cbd5e1' })}
+                                    ${_apefRenderMiniList('Own capabilities', ownCaps, { marginTop: 8, fontSize: '11px', body: '#cbd5e1' })}
+                                    ${_apefRenderMiniList('Integration points', integrationPoints, { marginTop: 8, fontSize: '11px', body: '#94a3b8' })}
+                                </div>
+                            </td>`;
+        });
+        html += `</tr>`;
+    });
+    html += `</tbody></table></div>`;
+    el.innerHTML = html;
+}
+
+function _apefRenderLayers(d) {
+    const el = document.getElementById('apef-pane-layers');
+    if (!el) return;
+    const layers = d.platform_layer_taxonomy || [];
+    const vendors = d.vendors || [];
+
+    let html = `
+            <h1 style="font-size:22px;font-weight:800;color:#f8fafc;margin:0 0 6px;">Platform Stack & Component Taxonomy</h1>
+            <p style="font-size:12px;color:#94a3b8;margin:0 0 14px;">Enterprise stack layers and APEF L1-L6 are now crosswalked: stack layers show where capabilities sit in buyer architecture; L1-L6 classifies the underlying components. ${_apefSelectedVendor ? `Filtered to <strong style="color:${APEF_VENDOR_COLORS[_apefSelectedVendor] || '#cbd5e1'};">${escapeHtml(_apefSelectedVendor)}</strong>.` : ''}</p>
+            ${_apefRenderIntegrationLegend(d, { marginTop: 0, compact: true })}
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;max-width:1400px;margin-bottom:20px;">
+                ${_apefGetEnterpriseStackLayers(d).map(layer => `
+                    <div class="apef-card" style="border-left:4px solid #38bdf8;">
+                        <h3 style="margin:0;color:#93c5fd;">${escapeHtml(layer.label || layer.id)}</h3>
+                        <p style="font-size:11px;color:#94a3b8;line-height:1.5;margin:6px 0 8px;">${escapeHtml(layer.description || '')}</p>
+                        <div>${(layer.maps_to_apef_layers || []).map(l => `<span class="apef-chip layer">${escapeHtml(l)}</span>`).join('')} ${(layer.maps_to_apef_dimensions || []).map(c => `<span class="apef-chip">${escapeHtml(c)}</span>`).join('')}</div>
+                    </div>`).join('')}
+            </div>
+                        <h2 style="font-size:17px;margin:26px 0 10px;color:#f1f5f9;">APEF L1-L6 component taxonomy</h2>
+            <div style="display:flex;flex-direction:column;gap:12px;max-width:1100px;">`;
+    layers.forEach(L => {
+        const color = APEF_LAYER_COLORS[L.id] || '#64748b';
+        // Collect components from all vendors at this layer
+        let comps = [];
+        vendors.forEach(v => {
+            if (_apefSelectedVendor && v.key !== _apefSelectedVendor) return;
+            (v.components || []).forEach(c => {
+                if (c.layer === L.id) comps.push(Object.assign({}, c, { vendorKey: v.key, vendorName: v.vendor || v.key }));
+            });
+        });
+        html += `
+          <div class="apef-card" style="border-left:4px solid ${color};">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;">
+              <h3 style="margin:0;color:${color};">${escapeHtml(L.id)} · ${escapeHtml(L.label)}</h3>
+              <span class="apef-chip">${comps.length} component${comps.length === 1 ? '' : 's'}</span>
+            </div>
+            <p style="font-size:12px;color:#94a3b8;line-height:1.55;margin:6px 0 10px;">${escapeHtml(L.description || '')}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              ${comps.map(c => {
+                  const vcol = APEF_VENDOR_COLORS[c.vendorKey] || '#94a3b8';
+                  return `<span class="apef-chip" style="background:${vcol}1f;color:${vcol};border:1px solid ${vcol}55;">${APEF_TYPE_ICON[c.type] || '•'} ${escapeHtml(c.name)} <span style="opacity:0.7;">· ${escapeHtml(c.vendorName)}</span></span>`;
+              }).join('') || '<span style="font-size:11px;color:#64748b;font-style:italic;">No components at this layer for current filter.</span>'}
+            </div>
+          </div>`;
+    });
+    html += `</div>`;
+    el.innerHTML = html;
+}
+
+function _apefRenderPairings(d) {
+    const el = document.getElementById('apef-pane-pairings');
+    if (!el) return;
+    const vendors = d.vendors || [];
+
+    let html = `
+      <h1 style="font-size:22px;font-weight:800;color:#f8fafc;margin:0 0 6px;">Strategic Pairings</h1>
+      <p style="font-size:12px;color:#94a3b8;margin:0 0 18px;">Which vendors complement each other, and why. Fit reflects depth of current partnership.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px;max-width:1300px;">`;
+    vendors.forEach(v => {
+        if (_apefSelectedVendor && v.key !== _apefSelectedVendor) return;
+        const color = APEF_VENDOR_COLORS[v.key] || '#94a3b8';
+        const pairings = v.strategic_pairings || [];
+        html += `
+          <div class="apef-card" style="border-left:4px solid ${color};">
+            <h3 style="margin:0 0 10px;color:${color};">${escapeHtml(v.vendor || v.key)}</h3>`;
+        if (!pairings.length) {
+            html += `<p style="font-size:12px;color:#94a3b8;">No pairings defined.</p>`;
+        } else {
+            pairings.forEach(p => {
+                const fit = (p.fit_score || '').toLowerCase();
+                const fitClass = fit.includes('strong') ? 'apef-fit-strong' : (fit.includes('moderate') ? 'apef-fit-moderate' : (fit.includes('weak') ? 'apef-fit-weak' : ''));
+                // Plain string fallback (legacy data)
+                if (typeof p === 'string') {
+                    html += `<div style="font-size:12px;color:#cbd5e1;margin-bottom:6px;">• ${escapeHtml(p)}</div>`;
+                } else {
+                    html += `
+                      <div style="border-top:1px solid #1e293b;padding:10px 0;">
+                        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
+                          <strong style="color:#f1f5f9;font-size:13px;">${escapeHtml(p.partner || '')}</strong>
+                          <span class="${fitClass}" style="font-size:11px;">${escapeHtml(p.fit_score || '')}</span>
+                        </div>
+                        <p style="font-size:12px;color:#cbd5e1;line-height:1.55;margin:6px 0 0;">${escapeHtml(p.rationale || '')}</p>
+                      </div>`;
+                }
+            });
+        }
+        html += `</div>`;
+    });
+    html += `</div>`;
+    el.innerHTML = html;
+}
+
+// ── HTML Export ─────────────────────────────────────────────────────────
+function _apefShowExportModal() {
+    const d = _apefData;
+    if (!d) { alert('APEF data not loaded yet.'); return; }
+    document.getElementById('apef-export-modal')?.remove();
+
+    const vendors = d.vendors || [];
+    const tabs = [
+        { key: 'overview',  label: '🌐 Executive Overview' },
+        { key: 'vendor',    label: '🏢 Vendor Profiles' },
+        { key: 'dimension', label: '📐 Dimension Deep-Dives' },
+        { key: 'plt',       label: '🧰 PLT Deep-Dive' },
+        { key: 'matrix',    label: '🧮 Comparison Matrix' },
+        { key: 'graph',     label: '🕸 Knowledge Graph' },
+        { key: 'graph3d',   label: '🌌 3D Component Graph' },
+        { key: 'layers',    label: '🪜 Platform Layers (L1–L6)' },
+        { key: 'pairings',  label: '🤝 Strategic Pairings' },
+        { key: 'legend',    label: '📖 Legend' },
+    ];
+
+    const modal = document.createElement('div');
+    modal.id = 'apef-export-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:9999;display:flex;align-items:center;justify-content:center;';
+    modal.innerHTML = `
+      <div style="background:#0f172a;border:1px solid #334155;border-radius:14px;padding:28px 32px;min-width:480px;max-width:600px;width:90%;box-shadow:0 24px 80px rgba(0,0,0,0.7);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+          <h2 style="margin:0;font-size:20px;color:#f1f5f9;font-weight:900;">Export APEF Report</h2>
+          <button onclick="document.getElementById('apef-export-modal').remove()" style="background:none;border:none;color:#64748b;font-size:22px;cursor:pointer;line-height:1;">✕</button>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-size:10px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px;">Document Title</label>
+          <input id="apef-export-title" type="text" value="APEF Report — AI Platform Ecosystem Framework 2026"
+            style="width:100%;box-sizing:border-box;background:#020617;color:#e2e8f0;border:1px solid #334155;border-radius:7px;padding:9px 12px;font-size:13px;" />
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-size:10px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px;">Vendor Context</label>
+          <select id="apef-export-vendor" style="background:#020617;color:#e2e8f0;border:1px solid #334155;border-radius:7px;padding:9px 12px;font-size:13px;width:100%;box-sizing:border-box;">
+            <option value="">All Vendors</option>
+            ${vendors.map(v => `<option value="${escapeHtml(v.key)}">${escapeHtml(v.name || v.key)}</option>`).join('')}
+          </select>
+          <p style="margin:5px 0 0;font-size:11px;color:#64748b;">Sets vendor context for tabs that support vendor-specific rendering.</p>
+        </div>
+        <div style="margin-bottom:22px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <label style="font-size:10px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">Include Tabs</label>
+            <div style="display:flex;gap:10px;">
+              <button onclick="_apefExportSelectAllTabs(true)"  style="font-size:11px;color:#93c5fd;background:none;border:none;cursor:pointer;padding:0;font-weight:700;">Select all</button>
+              <button onclick="_apefExportSelectAllTabs(false)" style="font-size:11px;color:#64748b;background:none;border:none;cursor:pointer;padding:0;font-weight:700;">Clear</button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            ${tabs.map(t => `
+              <label style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #1e293b;border-radius:7px;cursor:pointer;background:#020617;font-size:13px;color:#cbd5e1;user-select:none;">
+                <input type="checkbox" class="apef-export-tab-cb" value="${t.key}" checked style="accent-color:#3b82f6;width:14px;height:14px;flex-shrink:0;" />
+                ${t.label}
+              </label>`).join('')}
+          </div>
+        </div>
+        <div style="margin-bottom:18px;">
+          <label style="font-size:10px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:8px;">Export Format</label>
+          <div style="display:flex;gap:8px;">
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid #3b82f6;border-radius:7px;cursor:pointer;background:#020617;font-size:13px;color:#cbd5e1;flex:1;" id="apef-fmt-label-html">
+              <input type="radio" name="apef-export-fmt" value="html" checked style="accent-color:#3b82f6;flex-shrink:0;" onchange="document.getElementById('apef-export-run-btn').textContent='⬇ Export HTML';document.getElementById('apef-fmt-label-html').style.borderColor='#3b82f6';document.getElementById('apef-fmt-label-pdf').style.borderColor='#334155';" />
+              <div><div style="font-weight:700;">HTML File</div><div style="font-size:11px;color:#64748b;margin-top:1px;">Interactive tabbed report</div></div>
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid #334155;border-radius:7px;cursor:pointer;background:#020617;font-size:13px;color:#cbd5e1;flex:1;" id="apef-fmt-label-pdf">
+              <input type="radio" name="apef-export-fmt" value="pdf" style="accent-color:#3b82f6;flex-shrink:0;" onchange="document.getElementById('apef-export-run-btn').textContent='🖨 Print / PDF';document.getElementById('apef-fmt-label-pdf').style.borderColor='#3b82f6';document.getElementById('apef-fmt-label-html').style.borderColor='#334155';" />
+              <div><div style="font-weight:700;">Print / PDF</div><div style="font-size:11px;color:#64748b;margin-top:1px;">Opens browser print dialog</div></div>
+            </label>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;">
+          <button onclick="document.getElementById('apef-export-modal').remove()" style="padding:9px 18px;background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:8px;font-size:13px;cursor:pointer;font-weight:700;">Cancel</button>
+          <button id="apef-export-run-btn" onclick="_apefExportHTML()" style="padding:9px 22px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-weight:800;">⬇ Export HTML</button>
+        </div>
+      </div>`;
+    modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+    document.body.appendChild(modal);
+}
+
+function _apefExportSelectAllTabs(checked) {
+    document.querySelectorAll('.apef-export-tab-cb').forEach(cb => { cb.checked = checked; });
+}
+
+async function _apefExportHTML() {
+    const d = _apefData;
+    if (!d) return;
+    const title      = document.getElementById('apef-export-title')?.value.trim() || 'APEF Report';
+    const vendorKey  = document.getElementById('apef-export-vendor')?.value || '';
+    const ALL_TABS   = ['overview','vendor','dimension','plt','matrix','graph','graph3d','layers','pairings','legend'];
+    const selectedTabs = [...document.querySelectorAll('.apef-export-tab-cb:checked')].map(cb => cb.value);
+    if (!selectedTabs.length) { alert('Select at least one tab to export.'); return; }
+    const format = document.querySelector('input[name="apef-export-fmt"]:checked')?.value || 'html';
+
+    const runBtn = document.getElementById('apef-export-run-btn');
+    if (runBtn) { runBtn.textContent = '⏳ Building…'; runBtn.disabled = true; }
+
+    const tabMeta = {
+        overview:  { label: '🌐 Executive Overview', graph: false },
+        vendor:    { label: '🏢 Vendor Profiles',      graph: false },
+        dimension: { label: '📐 Dimension Deep-Dives', graph: false },
+        plt:       { label: '🧰 PLT Deep-Dive',        graph: false },
+        matrix:    { label: '🧮 Comparison Matrix',    graph: false },
+        graph:     { label: '🕸 Knowledge Graph',      graph: true  },
+        graph3d:   { label: '🌌 3D Component Graph',   graph: true  },
+        layers:    { label: '🪜 Platform Layers (L1–L6)', graph: false },
+        pairings:  { label: '🤝 Strategic Pairings',   graph: false },
+        legend:    { label: '📖 Legend',               graph: false },
+    };
+
+    // ── Fetch everything in parallel ─────────────────────────────────────
+    const [css, jsBundle, graphData] = await Promise.all([
+        fetch('/static/style.css').then(r => r.text()).catch(() => ''),
+        fetch('/export/apef-js-bundle').then(r => r.text()).catch(() => ''),
+        fetch('/api/apef-graph').then(r => r.json()).catch(() => ({})),
+    ]);
+
+    if (runBtn) runBtn.textContent = '⏳ Building…';
+
+    const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const vendorLabel = vendorKey ? ((d.vendors || []).find(v => v.key === vendorKey)?.name || vendorKey) : 'All Vendors';
+
+    // ── Build tab bar and pane scaffold (only selected tabs) ─────────────
+    const tabBarHtml = selectedTabs.map((t, i) =>
+        `<button class="apef-inner-tab${i === 0 ? ' active' : ''}" data-apef-tab="${t}" type="button">${escapeHtml(tabMeta[t]?.label || t)}</button>`
+    ).join('\n') + `
+<div id="apef-report-vendor-filter" style="margin-left:auto;display:flex;align-items:center;gap:7px;padding:0 0 8px 10px;">
+  <label for="apef-report-vendor-select" style="font-size:11px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:0.25px;">Vendor:</label>
+  <select id="apef-report-vendor-select" style="background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:7px;padding:6px 26px 6px 9px;font-size:12px;min-width:170px;">
+    <option value="">All Vendors</option>
+  </select>
+</div>`;
+
+    const PDF_GRAPH_PLACEHOLDER = (label) => '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:280px;background:#070b14;border:1px dashed #334155;border-radius:12px;gap:10px;"><span style="font-size:36px;">🕸</span><div style="font-size:15px;font-weight:700;color:#94a3b8;margin-top:4px;">' + label + '</div><div style="font-size:12px;color:#64748b;text-align:center;padding:0 24px;">Interactive visualization — open the HTML export to view this graph.</div></div>';
+    const paneContainerStyles = {
+        graph:   'position:absolute;inset:0;overflow:hidden;',
+        graph3d: 'position:absolute;inset:0;overflow:hidden;',
+    };
+    const panesHtml = selectedTabs.map((t, i) => {
+        let extraStyle, display;
+        if (format === 'pdf') {
+            extraStyle = 'position:relative;overflow:visible;padding:24px 32px;';
+            display = '';
+        } else {
+            extraStyle = paneContainerStyles[t] || 'position:absolute;inset:0;overflow:auto;padding:24px 32px;';
+            display = i === 0 ? '' : 'display:none;';
+        }
+        let inner = '';
+        if (t === 'graph') {
+            inner = format === 'pdf'
+                ? '<h2 style="font-size:18px;color:#f8fafc;margin:0 0 14px;font-weight:800;">Knowledge Graph</h2>' + PDF_GRAPH_PLACEHOLDER('Knowledge Graph')
+                : `<div style="display:flex;flex-direction:column;height:100%;">
+  <div style="padding:14px 22px 8px;flex-shrink:0;">
+    <h1 style="font-size:20px;margin:0;color:#f8fafc;">Knowledge Graph</h1>
+    <p style="font-size:11px;color:#94a3b8;margin:4px 0 0;">Vendor components + integration edges.</p>
+    <div id="apef-graph-link-legend"></div>
+  </div>
+  <div style="flex:1;min-height:0;display:flex;gap:0;">
+    <div id="apef-graph-canvas" style="flex:1;min-width:0;background:#070b14;border-top:1px solid #1e293b;position:relative;"></div>
+    <aside id="apef-graph-detail" style="width:300px;background:#0f172a;border-top:1px solid #1e293b;border-left:1px solid #1e293b;padding:14px 16px;overflow:auto;font-size:12px;color:#94a3b8;">
+      <p style="margin:0;color:#64748b;font-style:italic;">Click a node for details.</p>
+    </aside>
+  </div>
+</div>`;
+        } else if (t === 'graph3d') {
+            inner = format === 'pdf'
+                ? '<h2 style="font-size:18px;color:#f8fafc;margin:0 0 14px;font-weight:800;">3D Component Graph</h2>' + PDF_GRAPH_PLACEHOLDER('3D Component Graph')
+                : `<div style="display:flex;flex-direction:column;height:100%;">
+  <div style="padding:14px 22px 8px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;">
+    <div><h1 style="font-size:20px;margin:0;color:#f8fafc;">3D Component Graph</h1></div>
+    <button id="apef-graph3d-reset" class="apef-inner-tab" type="button">🎯 Reset camera</button>
+  </div>
+  <div style="flex:1;min-height:0;display:flex;gap:0;">
+    <div id="apef-graph3d-canvas" style="flex:1;min-width:0;background:#050816;"></div>
+    <aside id="apef-graph3d-detail" style="width:300px;background:#0f172a;border-top:1px solid #1e293b;border-left:1px solid #1e293b;padding:14px 16px;overflow:auto;font-size:12px;color:#94a3b8;">
+      <p style="margin:0;color:#64748b;font-style:italic;">Click a node for details.</p>
+    </aside>
+  </div>
+</div>`;
+        }
+        return `<div id="apef-pane-${t}" class="apef-inner-pane" style="${display}${extraStyle}">${inner}</div>`;
+    }).join('\n');
+
+    // ── Init script that wires everything up using embedded data ─────────
+    const firstTab = selectedTabs[0];
+    const initVendor = vendorKey ? JSON.stringify(vendorKey) : '""';
+    const pdfRenderScript = format === 'pdf'
+        ? selectedTabs.filter(t => t !== 'graph' && t !== 'graph3d').map(t => `_apefActiveTab = '${t}'; _apefRenderActivePane();`).join('\n') + '\nsetTimeout(() => window.print(), 1400);'
+        : '_apefRenderActivePane();';
+    const containerHeight = format === 'pdf' ? 'auto' : 'calc(100vh - 62px)';
+    const panesStyle = format === 'pdf' ? 'flex:none;overflow:visible;position:relative;' : 'flex:1;min-height:0;overflow:hidden;position:relative;';
+    const printCss = format === 'pdf' ? '\n@media print {\n  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }\n  .apef-tabbar { display: none !important; }\n  .apef-panes { overflow: visible !important; height: auto !important; }\n  .apef-inner-pane { position: relative !important; overflow: visible !important; inset: auto !important; height: auto !important; }\n  .apef-inner-pane + .apef-inner-pane { break-before: page; padding-top: 20px; }\n  .exp-header { break-inside: avoid; }\n}' : '';
+    const initScript = `
+// ── Assign directly to the let-bindings in the bundle (NOT window.*) ────
+_apefData  = ${JSON.stringify(d)};
+_apefGraph = ${JSON.stringify(graphData)};
+
+// ── Override server fetch functions ──────────────────────────────────────
+_apefFetchData  = async () => _apefData;
+_apefFetchGraph = async () => _apefGraph;
+
+// ── Override dynamic library loader (ForceGraph3D) ───────────────────────
+_loadForceGraph3D = () => new Promise((resolve, reject) => {
+    if (window.ForceGraph3D) { resolve(); return; }
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/3d-force-graph@1/dist/3d-force-graph.min.js';
+    s.onload = resolve; s.onerror = reject;
+    document.head.appendChild(s);
+});
+
+// ── Set initial state ────────────────────────────────────────────────────
+_apefSelectedVendor = ${initVendor};
+_apefActiveTab = ${JSON.stringify(firstTab)};
+Object.assign(_apefTabVendorFilters, {${selectedTabs.map(t => `${JSON.stringify(t)}:${initVendor}`).join(',')}});
+
+// ── Wire tab buttons ──────────────────────────────────────────────────────
+document.querySelectorAll('.apef-inner-tab[data-apef-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        _apefActiveTab = btn.dataset.apefTab;
+        document.querySelectorAll('.apef-inner-tab[data-apef-tab]').forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('.apef-inner-pane').forEach(p => p.style.display = 'none');
+        const pane = document.getElementById('apef-pane-' + _apefActiveTab);
+        if (pane) pane.style.display = '';
+        _apefRenderActivePane();
+    });
+});
+
+// ── Wire vendor select ────────────────────────────────────────────────────
+const _expSel = document.getElementById('apef-report-vendor-select');
+if (_expSel) {
+    _expSel.addEventListener('change', e => {
+        _apefSelectedVendor = e.target.value;
+        _apefTabVendorFilters[_apefActiveTab] = e.target.value;
+        _apefRenderActivePane();
+    });
+}
+
+// ── Populate vendor dropdown and render ────────────────────────────────────
+_apefPopulateReportVendorFilter(_apefData);
+if (${initVendor} && _expSel) _expSel.value = ${initVendor};
+${pdfRenderScript}
+`;
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${escapeHtml(title)}</title>
+<style>
+${css}
+html,body{margin:0;padding:0;min-height:100vh;background:#0a0f1e;color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+.exp-header{background:#020617;border-bottom:1px solid #1e293b;padding:14px 28px;}
+.exp-header-title{font-size:18px;font-weight:900;color:#f1f5f9;}
+.exp-header-meta{font-size:11px;color:#64748b;margin-top:2px;}
+details summary::-webkit-details-marker{display:none;}
+${printCss}
+</style>
+</head>
+<body class="dark-mode">
+<div class="exp-header">
+  <div class="exp-header-title">${escapeHtml(title)}</div>
+  <div class="exp-header-meta">Exported ${escapeHtml(dateStr)} &nbsp;·&nbsp; ${escapeHtml(vendorLabel)} &nbsp;·&nbsp; ${selectedTabs.length} tab${selectedTabs.length !== 1 ? 's' : ''}</div>
+</div>
+<div class="apef-report-container" style="display:flex;flex-direction:column;height:${containerHeight};">
+  <div class="apef-tabbar" role="tablist" style="display:flex;gap:4px;padding:14px 24px 0;border-bottom:1px solid #1e293b;flex-wrap:wrap;flex-shrink:0;">
+    ${tabBarHtml}
+  </div>
+  <div class="apef-panes" style="${panesStyle}">
+    ${panesHtml}
+  </div>
+</div>
+<!-- External libraries -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"><\/script>
+<script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"><\/script>
+<!-- APEF render engine -->
+<script>
+${jsBundle}
+<\/script>
+<!-- Init -->
+<script>
+${initScript}
+<\/script>
+</body></html>`;
+
+    // Restore live-app state
+    _apefSelectedVendor = vendorKey;
+    _apefRenderActivePane();
+
+    const slug = title.replace(/[^\w\s-]/g, '').replace(/\s+/g, '_').toLowerCase().slice(0, 60) || 'apef_report';
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    if (format === 'pdf') {
+        const win = window.open(url, '_blank');
+        if (!win) { alert('Pop-ups are blocked — please allow pop-ups for this page to use Print / PDF export.'); URL.revokeObjectURL(url); }
+    } else {
+        const a = document.createElement('a');
+        a.href = url; a.download = slug + '.html'; a.click();
+        URL.revokeObjectURL(url);
+    }
+    document.getElementById('apef-export-modal')?.remove();
+}
+
+// ── Legend ───────────────────────────────────────────────────────────────
+function _apefRenderLegend(d) {
+    const el = document.getElementById('apef-pane-legend');
+    if (!el) return;
+
+    const dims = d.dimensions || {};
+    const stackLayers = _apefGetEnterpriseStackLayers(d);
+    const integTypes = Object.entries(APEF_INTEGRATION_TYPE_FALLBACK);
+    const vendorList = d.vendors || [];
+
+    // Scoring bands
+    const SCORE_BANDS = [
+        { range: '4.5 – 5.0', label: 'Market-leading',   color: '#10b981', desc: 'Comprehensive, differentiated capability — sets the bar for the dimension.' },
+        { range: '3.5 – 4.4', label: 'Strong',            color: '#3b82f6', desc: 'Broad, mature capability with only minor gaps. Competitive differentiator.' },
+        { range: '2.5 – 3.4', label: 'Developing',        color: '#f59e0b', desc: 'Solid base with meaningful gaps or partial maturity. Actively improving.' },
+        { range: '1.5 – 2.4', label: 'Early / limited',   color: '#f97316', desc: 'Limited footprint or early-stage investment. May meet narrow use cases.' },
+        { range: '0.0 – 1.4', label: 'Minimal / absent',  color: '#ef4444', desc: 'Capability is nascent, clearly out of scope, or not publicly verifiable.' },
+    ];
+
+    // Layer descriptions pulled from schema if available, else fallback
+    const LAYER_FALLBACK = {
+        L1: { label: 'Infrastructure & Compute',          desc: 'Hardware, GPU resources, on-prem/cloud compute fabric.' },
+        L2: { label: 'Runtime & Acceleration Software',   desc: 'NVIDIA software, CUDA, Triton, vLLM, drivers — sits above bare metal.' },
+        L3: { label: 'Foundation Models',                 desc: 'Model families, fine-tuning paths, and model-serving endpoints.' },
+        L4: { label: 'Platform & Developer Experience',   desc: 'Orchestration, evaluation, MLOps, API control plane, agent builders.' },
+        L5: { label: 'Enterprise Application Layer',      desc: 'Productivity apps, copilots, vertical solutions, and business integration.' },
+        L6: { label: 'Governance, Safety & Identity',     desc: 'Policy, guardrails, audit, access control, and compliance tooling.' },
+    };
+
+    let html = `<div style="max-width:1100px;">
+      <div style="font-size:11px;letter-spacing:1.2px;color:#64748b;font-weight:700;text-transform:uppercase;">AI Platform Ecosystem Framework · v${escapeHtml(d.schema_version || '1.0')}</div>
+      <h1 style="font-size:26px;font-weight:800;color:#f8fafc;margin:6px 0 4px;">Framework Legend &amp; Reference</h1>
+      <p style="font-size:13px;color:#94a3b8;margin:0 0 24px;line-height:1.6;">${escapeHtml(d.scope || d.description || '')}</p>`;
+
+    // ── 1. Dimensions ──────────────────────────────────────────────────────
+    html += `<h2 style="font-size:17px;margin:0 0 10px;color:#f1f5f9;">The Six APEF Dimensions</h2>
+      <div style="overflow-x:auto;margin-bottom:28px;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="border-bottom:2px solid #1e293b;">
+              <th style="text-align:left;padding:8px 12px;color:#94a3b8;font-size:10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;">Code</th>
+              <th style="text-align:left;padding:8px 12px;color:#94a3b8;font-size:10px;text-transform:uppercase;letter-spacing:.5px;">Dimension</th>
+              <th style="text-align:left;padding:8px 12px;color:#94a3b8;font-size:10px;text-transform:uppercase;letter-spacing:.5px;">Evaluation focus</th>
+              <th style="text-align:center;padding:8px 12px;color:#94a3b8;font-size:10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;">Weight</th>
+              <th style="text-align:left;padding:8px 12px;color:#94a3b8;font-size:10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;">Primary layers</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+    Object.entries(dims).forEach(([code, dim]) => {
+        const w = (dim.weight != null) ? `${Math.round(dim.weight * 100)}%` : '—';
+        const layers = _apefGetDimensionLayers(code);
+        const layerBadges = layers.map(l => {
+            const col = APEF_LAYER_COLORS[l] || '#64748b';
+            return `<span style="background:${col}22;color:${col};border:1px solid ${col}55;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700;margin-right:3px;">${escapeHtml(l)}</span>`;
+        }).join('');
+        html += `<tr style="border-bottom:1px solid #1e293b;">
+            <td style="padding:10px 12px;"><span style="font-size:13px;font-weight:800;color:#93c5fd;letter-spacing:.5px;">${escapeHtml(code)}</span></td>
+            <td style="padding:10px 12px;"><span style="color:#f1f5f9;font-weight:700;">${escapeHtml(dim.name || code)}</span>${dim.plane ? `<br><span style="font-size:10px;color:#64748b;">${escapeHtml(dim.plane)}</span>` : ''}</td>
+            <td style="padding:10px 12px;color:#cbd5e1;line-height:1.5;max-width:340px;">${escapeHtml(dim.description || '')}</td>
+            <td style="padding:10px 12px;text-align:center;color:#f1f5f9;font-weight:700;">${escapeHtml(w)}</td>
+            <td style="padding:10px 12px;">${layerBadges || '<span style="color:#475569;">—</span>'}</td>
+          </tr>`;
+    });
+    html += `</tbody></table></div>`;
+
+    // ── 2. Platform Layers (L1-L6) ─────────────────────────────────────────
+    html += `<h2 style="font-size:17px;margin:0 0 10px;color:#f1f5f9;">Platform Layers (L1–L6)</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:28px;">`;
+    Object.entries(APEF_LAYER_COLORS).forEach(([l, col]) => {
+        const schemaLayer = stackLayers.find(s => s.id === l);
+        const fallback = LAYER_FALLBACK[l] || {};
+        const label = (schemaLayer && schemaLayer.label) || fallback.label || l;
+        const desc = (schemaLayer && schemaLayer.description) || fallback.desc || '';
+        html += `<div style="padding:11px 13px;border:1px solid ${col}44;border-left:3px solid ${col};border-radius:8px;background:#020617;">
+            <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
+              <span style="font-size:14px;font-weight:900;color:${col};letter-spacing:.5px;">${escapeHtml(l)}</span>
+              <span style="font-size:12px;font-weight:700;color:#f1f5f9;">${escapeHtml(label)}</span>
+            </div>
+            <p style="font-size:12px;color:#94a3b8;margin:0;line-height:1.5;">${escapeHtml(desc)}</p>
+          </div>`;
+    });
+    html += `</div>`;
+
+    // ── 3. Scoring Scale ───────────────────────────────────────────────────
+    html += `<h2 style="font-size:17px;margin:0 0 10px;color:#f1f5f9;">Scoring Scale (0 – 5)</h2>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:28px;">`;
+    SCORE_BANDS.forEach(b => {
+        html += `<div style="display:flex;align-items:center;gap:12px;padding:9px 14px;background:#0b1220;border:1px solid #1e293b;border-left:3px solid ${b.color};border-radius:7px;">
+            <span style="font-size:13px;font-weight:800;color:${b.color};min-width:80px;flex-shrink:0;">${escapeHtml(b.range)}</span>
+            <span style="font-size:12px;font-weight:700;color:#f1f5f9;min-width:110px;flex-shrink:0;">${escapeHtml(b.label)}</span>
+            <span style="font-size:12px;color:#94a3b8;line-height:1.4;">${escapeHtml(b.desc)}</span>
+          </div>`;
+    });
+    html += `</div>`;
+
+    // ── 4. Integration Link Types ──────────────────────────────────────────
+    html += `<h2 style="font-size:17px;margin:0 0 10px;color:#f1f5f9;">Integration Link Types</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px;margin-bottom:28px;">`;
+    integTypes.forEach(([id, meta]) => {
+        html += `<div style="padding:10px 13px;background:#0b1220;border:1px solid #1e293b;border-left:3px solid ${meta.color};border-radius:7px;">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;">
+              <span style="width:10px;height:10px;border-radius:50%;background:${meta.color};flex-shrink:0;"></span>
+              <span style="font-size:12px;font-weight:700;color:${meta.color};">${escapeHtml(meta.label || id)}</span>
+            </div>
+            <p style="font-size:12px;color:#94a3b8;margin:0;line-height:1.45;">${escapeHtml(meta.description || '')}</p>
+          </div>`;
+    });
+    html += `</div>`;
+
+    // ── 5. Vendor Color Coding ─────────────────────────────────────────────
+    html += `<h2 style="font-size:17px;margin:0 0 10px;color:#f1f5f9;">Vendor Color Coding</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">`;
+    const vendorKeys = Object.keys(APEF_VENDOR_COLORS);
+    vendorKeys.forEach(key => {
+        const col = APEF_VENDOR_COLORS[key];
+        const vObj = vendorList.find(v => v.key === key);
+        const name = (vObj && vObj.vendor) || key.charAt(0).toUpperCase() + key.slice(1);
+        html += `<div style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:${col}18;border:1px solid ${col}55;border-radius:8px;">
+            <span style="width:12px;height:12px;border-radius:3px;background:${col};flex-shrink:0;"></span>
+            <span style="font-size:13px;font-weight:700;color:${col};">${escapeHtml(name)}</span>
+          </div>`;
+    });
+    html += `</div>`;
+
+    // ── 6. Component Type Icons ────────────────────────────────────────────
+    html += `<h2 style="font-size:17px;margin:0 0 10px;color:#f1f5f9;">Component Type Icons</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">`;
+    Object.entries(APEF_TYPE_ICON).forEach(([type, icon]) => {
+        html += `<div style="display:flex;align-items:center;gap:7px;padding:7px 13px;background:#0b1220;border:1px solid #1e293b;border-radius:7px;">
+            <span style="font-size:16px;">${icon}</span>
+            <span style="font-size:12px;color:#cbd5e1;">${escapeHtml(type)}</span>
+          </div>`;
+    });
+    html += `</div></div>`;
+
+    el.innerHTML = html;
+}
+
+// ── Knowledge Graph ───────────────────────────────────────────────────────
+async function _apefRenderGraph(d) {
+    const pane = document.getElementById('apef-pane-graph');
+    if (!pane) return;
+    // Build skeleton once
+    if (!pane.dataset.builtGraph) {
+        pane.dataset.builtGraph = '1';
+        pane.innerHTML = `
+          <div style="display:flex;flex-direction:column;height:100%;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px 8px;flex-wrap:wrap;flex-shrink:0;">
+              <div>
+                <h1 style="font-size:20px;margin:0;color:#f8fafc;">Knowledge Graph</h1>
+                <p style="font-size:11px;color:#94a3b8;margin:4px 0 0;">Vendor components + integration edges. Use the global AI Platform dropdown to highlight a subset.</p>
+                                <div id="apef-graph-link-legend" style="max-width:960px;"></div>
+              </div>
+              <div style="display:flex;gap:6px;">
+                <button id="apef-graph-mode-component" class="apef-inner-tab active" type="button">🕸 Component Graph</button>
+                <button id="apef-graph-mode-layer"     class="apef-inner-tab" type="button">🪜 Layer Stack</button>
+              </div>
+            </div>
+            <div style="flex:1;min-height:0;display:flex;gap:0;">
+              <div id="apef-graph-canvas" style="flex:1;min-width:0;background:#070b14;border-top:1px solid #1e293b;position:relative;"></div>
+              <aside id="apef-graph-detail" style="width:clamp(260px,26vw,360px);background:#0f172a;border-top:1px solid #1e293b;border-left:1px solid #1e293b;padding:14px 16px;overflow:auto;font-size:12px;color:#94a3b8;">
+                <p style="margin:0;color:#64748b;font-style:italic;">Click a node for details.</p>
+              </aside>
+            </div>
+          </div>`;
+        pane.querySelector('#apef-graph-mode-component').addEventListener('click', () => { _apefGraphMode = 'component'; _apefRenderGraph(d); });
+        pane.querySelector('#apef-graph-mode-layer').addEventListener('click',     () => { _apefGraphMode = 'layer';     _apefRenderGraph(d); });
+    }
+
+    // Toggle button styles
+    pane.querySelector('#apef-graph-mode-component').classList.toggle('active', _apefGraphMode === 'component');
+    pane.querySelector('#apef-graph-mode-layer').classList.toggle('active',     _apefGraphMode === 'layer');
+
+    let graph;
+    try {
+        graph = await _apefFetchGraph();
+    } catch (e) {
+        pane.querySelector('#apef-graph-canvas').innerHTML = `<p style="color:#ef4444;padding:24px;">Failed to load graph: ${escapeHtml(String(e))}</p>`;
+        return;
+    }
+    const legend = pane.querySelector('#apef-graph-link-legend');
+    if (legend) legend.innerHTML = _apefRenderIntegrationLegend(graph, { marginTop: 8, compact: true });
+    _apefDrawGraph(graph);
+}
+
+function _apefDrawGraph(graph) {
+    const canvas = document.getElementById('apef-graph-canvas');
+    const detail = document.getElementById('apef-graph-detail');
+    if (!canvas || typeof d3 === 'undefined') return;
+    _apefCleanupGraph3D();
+
+    // Filter to selected vendor (vendor node + its owned components + integrates edges among them)
+    let nodes, edges;
+    if (_apefSelectedVendor) {
+        const keep = new Set();
+        (graph.nodes || []).forEach(n => {
+            if (n.kind === 'vendor' && n.vendor === _apefSelectedVendor) keep.add(n.id);
+            if (n.kind === 'component' && n.vendor === _apefSelectedVendor) keep.add(n.id);
+        });
+        nodes = (graph.nodes || []).filter(n => keep.has(n.id)).map(n => Object.assign({}, n));
+        edges = (graph.edges || [])
+            .filter(e => keep.has(e.source) && keep.has(e.target))
+            .map(e => Object.assign({}, e));
+    } else {
+        nodes = graph.nodes.map(n => Object.assign({}, n));
+        edges = graph.edges
+            .filter(e => e.kind === 'integrates' || _apefGraphMode === 'component')
+            .map(e => Object.assign({}, e));
+    }
+
+    const layerOrder = ['L1','L2','L3','L4','L5','L6'];
+    const labelData = (graph.layers || []).slice().sort((a, b) => layerOrder.indexOf(a.id) - layerOrder.indexOf(b.id));
+
+    // Reset canvas
+    canvas.innerHTML = '';
+    canvas.style.overflow = (_apefGraphMode === 'layer') ? 'auto' : 'hidden';
+
+    const containerW = canvas.clientWidth || 800;
+    const containerH = canvas.clientHeight || 600;
+
+    if (_apefGraphMode === 'layer') {
+        // ============ DETERMINISTIC SWIMLANE LAYOUT ============
+        const gutterW = 150;
+        const headerH = 56;
+        const rowH = 130;     // tall band per layer
+        const cellGap = 22;   // vertical gap between stacked items inside one cell
+
+        // Vendors in scope (columns)
+        const vendorList = (_apefSelectedVendor)
+            ? [_apefSelectedVendor]
+            : (graph.vendors || []).map(v => v.key || v.id || v.vendor || v).filter(Boolean);
+        const colW = Math.max(220, Math.floor((containerW - gutterW - 30) / Math.max(vendorList.length, 1)));
+
+        // Bucket components by (layer, vendor)
+        const bucket = {}; // bucket[layer][vendor] = [nodes]
+        layerOrder.forEach(L => { bucket[L] = {}; vendorList.forEach(v => bucket[L][v] = []); });
+        const componentNodes = nodes.filter(n => n.kind === 'component');
+        const vendorNodeMap = {};
+        nodes.filter(n => n.kind === 'vendor').forEach(n => { vendorNodeMap[n.vendor] = n; });
+
+        componentNodes.forEach(n => {
+            if (bucket[n.layer] && bucket[n.layer][n.vendor]) bucket[n.layer][n.vendor].push(n);
+        });
+        // Sort each cell alphabetically
+        Object.values(bucket).forEach(cols => Object.values(cols).forEach(arr => arr.sort((a,b)=>a.name.localeCompare(b.name))));
+
+        // Compute heights per layer based on max cell size
+        const layerHeights = layerOrder.map(L => {
+            const maxN = Math.max(0, ...vendorList.map(v => bucket[L][v].length));
+            return Math.max(rowH, headerH + maxN * cellGap + 20);
+        });
+        const layerYStart = []; // top y of each layer band
+        let runningY = headerH + 20;
+        layerHeights.forEach(h => { layerYStart.push(runningY); runningY += h; });
+        const totalH = Math.max(containerH, runningY + 20);
+        const totalW = Math.max(containerW, gutterW + vendorList.length * colW + 20);
+
+        // Build SVG sized to content (scrollable)
+        const svg = d3.select(canvas).append('svg')
+            .attr('width', totalW).attr('height', totalH)
+            .style('display', 'block');
+
+        // --- Background bands (alternating row tint) ---
+        layerOrder.forEach((L, i) => {
+            svg.append('rect')
+                .attr('x', gutterW).attr('y', layerYStart[i])
+                .attr('width', totalW - gutterW).attr('height', layerHeights[i])
+                .attr('fill', i % 2 === 0 ? '#0b1422' : '#0a1220');
+        });
+
+        // --- Layer gutter ---
+        svg.append('rect').attr('x', 0).attr('y', 0).attr('width', gutterW).attr('height', totalH)
+            .attr('fill', '#0a1220').attr('stroke', '#1e293b');
+        labelData.forEach((L, i) => {
+            const bandTop = layerYStart[i];
+            const bandH = layerHeights[i];
+            const g = svg.append('g').attr('transform', `translate(0,${bandTop + bandH / 2})`);
+            g.append('rect')
+                .attr('x', gutterW - 4).attr('y', -22).attr('width', 4).attr('height', 44)
+                .attr('fill', APEF_LAYER_COLORS[L.id] || '#64748b').attr('rx', 1);
+            g.append('text').attr('x', 14).attr('y', -4)
+                .attr('font-size', 22).attr('font-weight', 800)
+                .attr('fill', APEF_LAYER_COLORS[L.id] || '#cbd5e1').text(L.id);
+            g.append('text').attr('x', 14).attr('y', 16)
+                .attr('font-size', 11).attr('font-weight', 600)
+                .attr('fill', '#cbd5e1').text(L.label);
+        });
+
+        // --- Vendor column headers + dividers ---
+        vendorList.forEach((v, ci) => {
+            const cx = gutterW + colW * ci + colW / 2;
+            const vn = vendorNodeMap[v];
+            const vColor = APEF_VENDOR_COLORS[v] || '#94a3b8';
+            // header chip
+            const hg = svg.append('g').attr('transform', `translate(${cx},${headerH / 2})`);
+            hg.append('rect')
+                .attr('x', -colW / 2 + 6).attr('y', -headerH / 2 + 8)
+                .attr('width', colW - 12).attr('height', headerH - 16)
+                .attr('fill', '#0f172a').attr('stroke', vColor).attr('stroke-width', 1.5).attr('rx', 6);
+            hg.append('circle').attr('cx', -colW / 2 + 24).attr('cy', 0).attr('r', 8).attr('fill', vColor);
+            hg.append('text').attr('x', -colW / 2 + 40).attr('y', 4)
+                .attr('font-size', 14).attr('font-weight', 700).attr('fill', '#f8fafc')
+                .text(vn ? vn.name : v);
+            // make header clickable to show vendor detail
+            hg.style('cursor', 'pointer').on('click', () => { if (vn) _apefShowNodeDetail(vn, graph); });
+            // column divider
+            if (ci > 0) {
+                svg.append('line').attr('x1', gutterW + colW * ci).attr('x2', gutterW + colW * ci)
+                    .attr('y1', headerH).attr('y2', totalH)
+                    .attr('stroke', '#1e293b').attr('stroke-dasharray', '2,3');
+            }
+        });
+
+        // --- Place nodes deterministically inside cells ---
+        const placedById = {};
+        layerOrder.forEach((L, li) => {
+            const bandTop = layerYStart[li];
+            const bandH = layerHeights[li];
+            vendorList.forEach((v, ci) => {
+                const cell = bucket[L][v];
+                const cellCx = gutterW + colW * ci + 18; // left-anchored within column
+                cell.forEach((n, ni) => {
+                    n.x = cellCx;
+                    n.y = bandTop + 16 + ni * cellGap;
+                    placedById[n.id] = n;
+                });
+            });
+        });
+
+        // --- Edges (only those connecting placed nodes) ---
+        const linkSel = svg.append('g').attr('stroke-linecap', 'round')
+            .selectAll('line').data(edges.filter(e => placedById[e.source] && placedById[e.target] && e.kind === 'integrates'))
+            .enter().append('line')
+            .attr('stroke', e => _apefIntegrationTypeMeta(e.integration_type || 'ecosystem_partner', graph).color)
+            .attr('stroke-opacity', 0.68).attr('stroke-width', 1.4)
+            .attr('x1', e => placedById[e.source].x).attr('y1', e => placedById[e.source].y)
+            .attr('x2', e => placedById[e.target].x).attr('y2', e => placedById[e.target].y);
+        linkSel.append('title').text(e => `${e.integration_label || _apefIntegrationTypeMeta(e.integration_type, graph).label}`);
+
+        // --- Nodes (component) ---
+        const nodeSel = svg.append('g').selectAll('g.apef-node')
+            .data(componentNodes).enter().append('g')
+            .attr('class', 'apef-node')
+            .attr('transform', n => `translate(${n.x},${n.y})`)
+            .style('cursor', 'pointer')
+            .on('click', (event, n) => _apefShowNodeDetail(n, graph));
+        nodeSel.append('circle')
+            .attr('r', 6)
+            .attr('fill', n => APEF_LAYER_COLORS[n.layer] || '#64748b')
+            .attr('stroke', n => APEF_VENDOR_COLORS[n.vendor] || '#94a3b8')
+            .attr('stroke-width', 1.5);
+        nodeSel.append('title').text(n => {
+            const layerLbl = (labelData.find(L => L.id === n.layer) || {}).label || n.layer || '';
+            return [n.name,
+                    n.type ? `type: ${n.type}` : null,
+                    n.layer ? `layer: ${n.layer}${layerLbl ? ' — ' + layerLbl : ''}` : null,
+                    n.vendor ? `vendor: ${n.vendor}` : null].filter(Boolean).join('\n');
+        });
+        nodeSel.append('text')
+            .text(n => n.name)
+            .attr('x', 12).attr('y', 4)
+            .attr('text-anchor', 'start').attr('font-size', 11).attr('font-weight', 500)
+            .attr('fill', '#e2e8f0').attr('pointer-events', 'none');
+
+        // Reset detail panel
+        if (detail) {
+            const scopeMsg = _apefSelectedVendor
+                ? `Filtered to <strong style="color:${APEF_VENDOR_COLORS[_apefSelectedVendor] || '#cbd5e1'};">${escapeHtml(_apefSelectedVendor)}</strong>.`
+                : 'Showing all vendors as columns.';
+            detail.innerHTML = `<p style="margin:0;color:#64748b;font-style:italic;">${scopeMsg} Hover for tooltips, click for full details.</p>`;
+            detail.innerHTML += _apefRenderIntegrationLegend(graph, { includeOwnership: false, compact: true });
+        }
+        return;
+    }
+
+    // ============ FORCE-DIRECTED COMPONENT GRAPH ============
+    const w = containerW;
+    const h = containerH;
+    const svg = d3.select(canvas).append('svg')
+        .attr('width', '100%').attr('height', '100%')
+        .attr('viewBox', `0 0 ${w} ${h}`)
+        .style('display', 'block')
+        .style('cursor', 'grab');
+
+    const zoomLayer = svg.append('g').attr('class', 'apef-graph-zoom-layer');
+    let currentZoomTransform = d3.zoomIdentity;
+    const zoomBehavior = d3.zoom()
+        .scaleExtent([0.2, 5])
+        .filter(event => !event.target.closest || !event.target.closest('g.apef-node'))
+        .on('start', () => svg.style('cursor', 'grabbing'))
+        .on('zoom', event => {
+            currentZoomTransform = event.transform;
+            zoomLayer.attr('transform', event.transform);
+        })
+        .on('end', () => svg.style('cursor', 'grab'));
+    svg.call(zoomBehavior);
+
+    const linkSel = zoomLayer.append('g').attr('stroke-linecap', 'round')
+        .selectAll('line').data(edges).enter().append('line')
+        .attr('stroke', e => e.kind === 'owns' ? '#334155' : _apefIntegrationTypeMeta(e.integration_type || 'ecosystem_partner', graph).color)
+        .attr('stroke-dasharray', e => e.kind === 'owns' ? '3,3' : null)
+        .attr('stroke-opacity', e => e.kind === 'owns' ? 0.45 : 0.72)
+        .attr('stroke-width', e => e.kind === 'owns' ? 1 : 1.7);
+    linkSel.append('title').text(e => `${e.integration_label || _apefIntegrationTypeMeta(e.integration_type, graph).label}`);
+
+    const nodeRadius = (n) => n.kind === 'vendor' ? 16 : 8;
+
+    const nodeSel = zoomLayer.append('g').selectAll('g.apef-node')
+        .data(nodes).enter().append('g')
+        .attr('class', 'apef-node')
+        .style('cursor', 'grab')
+        .on('click', (event, n) => _apefShowNodeDetail(n, graph));
+
+    nodeSel.append('circle')
+        .attr('r', nodeRadius)
+        .attr('fill', n => n.kind === 'vendor' ? (APEF_VENDOR_COLORS[n.vendor] || '#94a3b8') : (APEF_LAYER_COLORS[n.layer] || '#64748b'))
+        .attr('stroke', n => APEF_VENDOR_COLORS[n.vendor] || '#94a3b8')
+        .attr('stroke-width', n => n.kind === 'vendor' ? 2 : 1.5);
+
+    nodeSel.append('title').text(n => {
+        if (n.kind === 'vendor') return `${n.name}\n(vendor)`;
+        const layerLbl = (labelData.find(L => L.id === n.layer) || {}).label || n.layer || '';
+        return [n.name,
+                n.type ? `type: ${n.type}` : null,
+                n.layer ? `layer: ${n.layer}${layerLbl ? ' — ' + layerLbl : ''}` : null,
+                n.vendor ? `vendor: ${n.vendor}` : null].filter(Boolean).join('\n');
+    });
+
+    nodeSel.append('text')
+        .text(n => n.name)
+        .attr('x', 0).attr('y', n => -nodeRadius(n) - 5)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', n => n.kind === 'vendor' ? 12 : 10)
+        .attr('font-weight', n => n.kind === 'vendor' ? 700 : 500)
+        .attr('fill', '#e2e8f0')
+        .attr('pointer-events', 'none')
+        .style('paint-order', 'stroke')
+        .style('stroke', '#0a0f1a')
+        .style('stroke-width', '3px');
+
+    const simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(edges).id(d => d.id).distance(e => e.kind === 'owns' ? 50 : 90).strength(0.4))
+        .force('charge', d3.forceManyBody().strength(-260))
+        .force('center', d3.forceCenter(w / 2, h / 2))
+        .force('collision', d3.forceCollide(n => nodeRadius(n) + 6));
+
+    nodeSel.call(d3.drag()
+        .container(() => svg.node())
+        .on('start', (event, n) => {
+            event.sourceEvent.stopPropagation();
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            n.fx = n.x;
+            n.fy = n.y;
+            d3.select(event.sourceEvent.currentTarget).style('cursor', 'grabbing');
+        })
+        .on('drag', (event, n) => {
+            const [x, y] = currentZoomTransform.invert([event.x, event.y]);
+            n.fx = x;
+            n.fy = y;
+        })
+        .on('end', (event) => {
+            if (!event.active) simulation.alphaTarget(0);
+            d3.select(event.sourceEvent.currentTarget).style('cursor', 'grab');
+        }));
+
+    const reset2DLayout = () => {
+        nodes.forEach(n => { n.fx = null; n.fy = null; });
+        currentZoomTransform = d3.zoomIdentity;
+        svg.transition().duration(350).call(zoomBehavior.transform, d3.zoomIdentity);
+        simulation.alpha(0.85).restart();
+    };
+
+    simulation.on('tick', () => {
+        linkSel
+            .attr('x1', e => e.source.x).attr('y1', e => e.source.y)
+            .attr('x2', e => e.target.x).attr('y2', e => e.target.y);
+        nodeSel.attr('transform', n => `translate(${n.x},${n.y})`);
+    });
+
+    if (detail) {
+        const scopeMsg = _apefSelectedVendor
+            ? `Filtered to <strong style="color:${APEF_VENDOR_COLORS[_apefSelectedVendor] || '#cbd5e1'};">${escapeHtml(_apefSelectedVendor)}</strong>.`
+                        : 'Hover any node for a quick tooltip, click for full details.';
+                detail.innerHTML = `
+                    <p style="margin:0;color:#64748b;font-style:italic;">${scopeMsg}</p>
+                    <div style="margin-top:10px;padding:10px;border:1px solid #1e293b;border-radius:8px;background:#020617;color:#94a3b8;line-height:1.55;">
+                        <div style="font-size:11px;color:#cbd5e1;font-weight:800;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:4px;">2D controls</div>
+                        Wheel/trackpad zooms. Drag the background to pan. Drag nodes to reposition and pin them.
+                        <button id="apef-reset-2d-layout" type="button" style="display:block;margin-top:8px;background:#1d4ed8;color:#fff;border:0;border-radius:6px;padding:6px 9px;font-size:11px;font-weight:700;cursor:pointer;">Reset 2D layout</button>
+                    </div>`;
+        detail.innerHTML += _apefRenderIntegrationLegend(graph, { includeOwnership: false, compact: true });
+                const resetBtn = detail.querySelector('#apef-reset-2d-layout');
+                if (resetBtn) resetBtn.addEventListener('click', reset2DLayout);
+    }
+}
+
+function _apefFilteredGraphParts(graph, opts = {}) {
+    const includeOwnership = opts.includeOwnership !== false;
+    let nodes, edges;
+    if (_apefSelectedVendor) {
+        const keep = new Set();
+        (graph.nodes || []).forEach(n => {
+            if (n.kind === 'vendor' && n.vendor === _apefSelectedVendor) keep.add(n.id);
+            if (n.kind === 'component' && n.vendor === _apefSelectedVendor) keep.add(n.id);
+        });
+        nodes = (graph.nodes || []).filter(n => keep.has(n.id)).map(n => Object.assign({}, n));
+        edges = (graph.edges || [])
+            .filter(e => keep.has(_apefEdgeEndpointId(e.source)) && keep.has(_apefEdgeEndpointId(e.target)))
+            .filter(e => includeOwnership || e.kind !== 'owns')
+            .map(e => Object.assign({}, e));
+    } else {
+        nodes = (graph.nodes || []).map(n => Object.assign({}, n));
+        edges = (graph.edges || [])
+            .filter(e => includeOwnership || e.kind !== 'owns')
+            .map(e => Object.assign({}, e));
+    }
+    return { nodes, edges };
+}
+
+function _apefCleanupGraph3D() {
+    if (_apefGraph3DResizeObserver) {
+        _apefGraph3DResizeObserver.disconnect();
+        _apefGraph3DResizeObserver = null;
+    }
+    _apefGraph3D = null;
+}
+
+async function _apefRenderGraph3DTab(d) {
+    const pane = document.getElementById('apef-pane-graph3d');
+    if (!pane) return;
+    if (!pane.dataset.builtGraph3d) {
+        pane.dataset.builtGraph3d = '1';
+        pane.innerHTML = `
+          <div style="display:flex;flex-direction:column;height:100%;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 22px 8px;flex-wrap:wrap;flex-shrink:0;">
+              <div style="max-width:1180px;">
+                <h1 style="font-size:20px;margin:0;color:#f8fafc;">3D Component Graph</h1>
+                <p style="font-size:11px;color:#94a3b8;margin:4px 0 0;">Standalone 3D view of vendor components and typed integration links. Orbit drag to rotate, wheel to zoom, secondary drag to pan, click a node to focus.</p>
+                <div id="apef-graph3d-link-legend" style="max-width:960px;"></div>
+              </div>
+              <button id="apef-graph3d-reset" class="apef-inner-tab" type="button">🎯 Reset camera</button>
+            </div>
+            <div style="flex:1;min-height:0;display:flex;gap:0;">
+              <div id="apef-graph3d-canvas" style="flex:1;min-width:0;background:#050816;border-top:1px solid #1e293b;position:relative;"></div>
+              <aside id="apef-graph3d-detail" style="width:clamp(280px,27vw,380px);background:#0f172a;border-top:1px solid #1e293b;border-left:1px solid #1e293b;padding:14px 16px;overflow:auto;font-size:12px;color:#94a3b8;">
+                <p style="margin:0;color:#64748b;font-style:italic;">Loading 3D graph…</p>
+              </aside>
+            </div>
+          </div>`;
+    }
+
+    const canvas = pane.querySelector('#apef-graph3d-canvas');
+    const detail = pane.querySelector('#apef-graph3d-detail');
+    const legend = pane.querySelector('#apef-graph3d-link-legend');
+    if (!canvas || !detail) return;
+
+    let graph;
+    try {
+        graph = await _apefFetchGraph();
+    } catch (e) {
+        canvas.innerHTML = `<p style="color:#ef4444;padding:24px;">Failed to load graph: ${escapeHtml(String(e))}</p>`;
+        return;
+    }
+    if (legend) legend.innerHTML = _apefRenderIntegrationLegend(graph, { marginTop: 8, compact: true });
+    await _apefDrawGraph3D(graph);
+}
+
+function _apefBuild3DGraphData(graph, nodes, edges) {
+    return {
+        nodes: nodes.map(n => ({
+            ...n,
+            color: n.kind === 'vendor' ? (APEF_VENDOR_COLORS[n.vendor] || '#94a3b8') : (APEF_LAYER_COLORS[n.layer] || '#64748b'),
+            size: n.kind === 'vendor' ? 12 : 5
+        })),
+        links: edges.map(e => ({
+            ...e,
+            source: _apefEdgeEndpointId(e.source),
+            target: _apefEdgeEndpointId(e.target),
+            color: e.kind === 'owns' ? '#334155' : _apefIntegrationTypeMeta(e.integration_type || 'ecosystem_partner', graph).color,
+            value: e.kind === 'owns' ? 1 : 2
+        }))
+    };
+}
+
+async function _apefDrawGraph3D(graph) {
+    const container = document.getElementById('apef-graph3d-canvas');
+    const detail = document.getElementById('apef-graph3d-detail');
+    if (!container) return;
+    _apefCleanupGraph3D();
+    container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#64748b;font-size:13px;">Loading 3D engine…</div>';
+
+    try {
+        await _loadForceGraph3D();
+    } catch (e) {
+        container.innerHTML = `<div style="color:#ef4444;padding:24px;">Unable to load 3D engine: ${escapeHtml(String(e))}</div>`;
+        return;
+    }
+
+    const { nodes, edges } = _apefFilteredGraphParts(graph, { includeOwnership: true });
+    const gData = _apefBuild3DGraphData(graph, nodes, edges);
+    container.innerHTML = '';
+    await new Promise(res => setTimeout(res, 0));
+    const W = container.offsetWidth || 900;
+    const H = container.offsetHeight || 700;
+
+    _apefGraph3D = ForceGraph3D({ controlType: 'orbit' })(container)
+        .width(W)
+        .height(H)
+        .backgroundColor('#050816')
+        .graphData(gData)
+        .nodeLabel(n => `${n.name}${n.layer ? `\n${n.layer}` : ''}${n.vendor ? `\n${n.vendor}` : ''}`)
+        .nodeColor(n => n.color)
+        .nodeVal(n => n.size)
+        .nodeOpacity(0.94)
+        .nodeResolution(16)
+        .linkColor(l => l.color || '#334155')
+        .linkWidth(l => l.kind === 'owns' ? 0.45 : 1.15)
+        .linkOpacity(0.56)
+        .linkDirectionalParticles(l => l.kind === 'owns' ? 0 : 2)
+        .linkDirectionalParticleSpeed(0.004)
+        .linkDirectionalParticleWidth(1.4)
+        .onNodeClick(node => {
+            _apefShowNodeDetail(node, graph, 'apef-graph3d-detail');
+            const dist = 95;
+            const len = Math.hypot(node.x || 0, node.y || 0, node.z || 0) || 1;
+            const ratio = 1 + dist / len;
+            _apefGraph3D.cameraPosition(
+                { x: (node.x || 0) * ratio, y: (node.y || 0) * ratio, z: (node.z || 0) * ratio },
+                node,
+                1200
+            );
+        })
+        .onNodeHover(node => { container.style.cursor = node ? 'pointer' : 'default'; });
+
+    _apefGraph3D.cameraPosition({ z: 420 });
+    const reset = document.getElementById('apef-graph3d-reset');
+    if (reset) reset.onclick = () => _apefGraph3D && _apefGraph3D.cameraPosition({ x: 0, y: 0, z: 420 }, { x: 0, y: 0, z: 0 }, 900);
+
+    if (detail) {
+        const scopeMsg = _apefSelectedVendor
+            ? `Filtered to <strong style="color:${APEF_VENDOR_COLORS[_apefSelectedVendor] || '#cbd5e1'};">${escapeHtml(_apefSelectedVendor)}</strong>.`
+            : 'Showing all vendors.';
+        detail.innerHTML = `
+          <p style="margin:0;color:#64748b;font-style:italic;">${scopeMsg} Orbit drag rotates. Wheel zooms. Secondary drag pans. Click a node to focus.</p>
+          ${_apefRenderIntegrationLegend(graph, { includeOwnership: false, compact: true })}`;
+    }
+
+    _apefGraph3DResizeObserver = new ResizeObserver(() => {
+        if (!_apefGraph3D) return;
+        const w = container.offsetWidth;
+        const h = container.offsetHeight;
+        if (w > 0 && h > 0) _apefGraph3D.width(w).height(h);
+    });
+    _apefGraph3DResizeObserver.observe(container);
+}
+
+function _apefEdgeEndpointId(endpoint) {
+    return endpoint && typeof endpoint === 'object' ? endpoint.id : endpoint;
+}
+
+function _apefShowNodeDetail(node, graph, detailId = 'apef-graph-detail') {
+    const detail = document.getElementById(detailId);
+    if (!detail) return;
+    const color = APEF_VENDOR_COLORS[node.vendor] || '#94a3b8';
+    const layerColor = APEF_LAYER_COLORS[node.layer] || '#64748b';
+
+    // Find connections
+    const connected = (graph.edges || [])
+        .filter(e => (_apefEdgeEndpointId(e.source) === node.id || _apefEdgeEndpointId(e.target) === node.id))
+        .map(e => {
+            const sourceId = _apefEdgeEndpointId(e.source);
+            const targetId = _apefEdgeEndpointId(e.target);
+            const otherId = sourceId === node.id ? targetId : sourceId;
+            const other = (graph.nodes || []).find(n => n.id === otherId);
+            return other ? { name: other.name, kind: e.kind, vendor: other.vendor, layer: other.layer, integration_type: e.integration_type, integration_label: e.integration_label } : null;
+        }).filter(Boolean);
+
+    detail.innerHTML = `
+      <div style="border-left:3px solid ${color};padding-left:10px;margin-bottom:10px;">
+        <div style="font-size:11px;text-transform:uppercase;color:#94a3b8;font-weight:700;">${escapeHtml(node.kind || 'node')}${node.type && node.type !== node.kind ? ' · ' + escapeHtml(node.type) : ''}</div>
+        <div style="font-size:15px;color:#f1f5f9;font-weight:700;margin-top:2px;">${escapeHtml(node.name)}</div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:4px;">
+          ${node.vendor ? `<span class="apef-chip" style="background:${color}1f;color:${color};">${escapeHtml(node.vendor)}</span>` : ''}
+          ${node.layer ? `<span class="apef-chip" style="background:${layerColor}1f;color:${layerColor};">${escapeHtml(node.layer)}</span>` : ''}
+        </div>
+      </div>
+      <div style="font-size:11px;color:#94a3b8;font-weight:700;text-transform:uppercase;margin-top:14px;">Connections (${connected.length})</div>
+      <ul style="margin:6px 0 0;padding-left:18px;font-size:12px;color:#cbd5e1;line-height:1.6;">
+                ${connected.map(c => {
+                        const meta = _apefIntegrationTypeMeta(c.integration_type || (c.kind === 'owns' ? 'ownership' : 'ecosystem_partner'), graph);
+                        return `<li><span style="color:${meta.color};">●</span> ${escapeHtml(c.name)} <span style="font-size:10px;color:${meta.color};">(${escapeHtml(c.integration_label || meta.label || c.kind)})</span></li>`;
+                }).join('') || '<li style="color:#64748b;font-style:italic;">No connections.</li>'}
+      </ul>`;
 }
 
 async function populateRoadmapView() {
@@ -19971,7 +23556,7 @@ function _pciRenderAnalysis(data, st) {
             } else if (st) {
                 // Section 0: Five Pillars — Pillar penetration bar chart
                 if (idx === 0) {
-                    vizHtml = '<div class="mi-viz-box"><h4>Pillar Penetration Across 86 Vendors (2.0+ Threshold)</h4><div class="mi-dim-compare">';
+                    vizHtml = '<div class="mi-viz-box"><h4>Pillar Penetration Across Assessed Vendors (Competency Threshold)</h4><div class="mi-dim-compare">';
                     (st.pillars || []).forEach(p => {
                         const pp = st.pillar_penetration?.[p];
                         if (!pp) return;
@@ -19990,20 +23575,22 @@ function _pciRenderAnalysis(data, st) {
 
                 // Section 1: Fragmentation by Numbers — Coverage distribution chart
                 if (idx === 1) {
-                    vizHtml = '<div class="mi-viz-box"><h4>Vendor Coverage Distribution: How Many Pillars Does Each Vendor Cover?</h4><div class="mi-dim-compare">';
+                    vizHtml = '<div class="mi-viz-box"><h4>Coverage Distribution: Share of Vendors by Pillar Count</h4><div class="mi-dim-compare">';
                     const cd = st.coverage_distribution || {};
+                    const totalN = st.vendor_count || Object.values(cd).reduce((a, b) => a + b, 0) || 1;
                     const maxCount = Math.max(...Object.values(cd), 1);
                     for (let i = 5; i >= 0; i--) {
                         const count = cd[i] || 0;
-                        const pct = Math.round(count / maxCount * 100);
+                        const barPct = Math.round(count / maxCount * 100);
+                        const sharePct = Math.round(count / totalN * 100);
                         const color = i >= 5 ? '#107c10' : i >= 4 ? '#005a9e' : i >= 3 ? '#ff8c00' : '#a80000';
                         const label = i === 5 ? 'Full Spectrum (5/5)' : i === 0 ? 'No Coverage' : `${i} Pillar${i > 1 ? 's' : ''}`;
                         vizHtml += `<div class="mi-dim-row ${i <= 2 ? 'mi-dim-highlight' : i === 5 ? 'mi-dim-highlight-good' : ''}">
                             <div class="mi-dim-label">${label}</div>
                             <div class="mi-dim-track">
-                                <div class="mi-dim-fill" style="width:${pct}%;background:${color}"></div>
+                                <div class="mi-dim-fill" style="width:${barPct}%;background:${color}"></div>
                             </div>
-                            <div class="mi-dim-val" style="color:${color}">${count} vendors</div>
+                            <div class="mi-dim-val" style="color:${color}">${sharePct}%</div>
                         </div>`;
                     }
                     vizHtml += '</div></div>';
@@ -20011,17 +23598,19 @@ function _pciRenderAnalysis(data, st) {
 
                 // Section 2: Service Delivery Gap — SVC sub-pillar breakdown
                 if (idx === 2) {
-                    vizHtml = '<div class="mi-viz-box"><h4>Services Sub-Pillar Average Scores (SVC-01 through SVC-05)</h4><div class="mi-dim-compare">';
+                    vizHtml = '<div class="mi-viz-box"><h4>Services Sub-Pillar Capability Strength</h4><div class="mi-dim-compare">';
                     const svcSubs = st.svc_sub_pillars || {};
                     Object.entries(svcSubs).forEach(([key, s]) => {
-                        const pct = (s.avg / 5) * 100;
+                        const pct = Math.min(100, Math.round((s.avg / 3.5) * 100));
                         const isLow = s.avg < 2.0;
+                        const tier = s.avg >= 2.5 ? 'Strong' : s.avg >= 2.0 ? 'Developing' : s.avg >= 1.5 ? 'Needs attention' : 'Critical gap';
+                        const color = s.avg >= 2.5 ? '#107c10' : s.avg >= 2.0 ? '#0078d4' : s.avg >= 1.5 ? '#ca5010' : '#a80000';
                         vizHtml += `<div class="mi-dim-row ${isLow ? 'mi-dim-highlight' : ''}">
                             <div class="mi-dim-label">${escapeHtml(s.label)}</div>
                             <div class="mi-dim-track">
-                                <div class="mi-dim-fill" style="width:${pct}%;background:${isLow ? '#a80000' : _paScoreColor(s.avg)}"></div>
+                                <div class="mi-dim-fill" style="width:${pct}%;background:${color}"></div>
                             </div>
-                            <div class="mi-dim-val" style="color:${isLow ? '#a80000' : _paScoreColor(s.avg)}">${s.avg.toFixed(2)}</div>
+                            <div class="mi-dim-val" style="color:${color}">${tier}</div>
                         </div>`;
                     });
                     vizHtml += '</div></div>';
@@ -20050,46 +23639,55 @@ function _pciRenderAnalysis(data, st) {
                     const direct = dm.direct_service || {};
                     const partner = dm.platform_plus_partner || {};
                     const plat = dm.platform_only || {};
-                    vizHtml = `<div class="mi-viz-box"><h4>Delivery Model Comparison: Vendor Count, Coverage & Service Scores</h4>
+                    const totalN4 = st.vendor_count || 1;
+                    const dPct = Math.round((direct.count || 0) / totalN4 * 100);
+                    const pPct = Math.round((partner.count || 0) / totalN4 * 100);
+                    const plPct = Math.round((plat.count || 0) / totalN4 * 100);
+                    function svcTier(v) { return v >= 2.5 ? 'Strong' : v >= 2.0 ? 'Developing' : v >= 1.5 ? 'Needs attention' : 'Critical gap'; }
+                    function svcColor(v) { return v >= 2.5 ? '#107c10' : v >= 2.0 ? '#0078d4' : v >= 1.5 ? '#ca5010' : '#a80000'; }
+                    const svcGapDir = (direct.svc_avg || 0) > (plat.svc_avg || 0) ? 'Direct Service leads Platform-Only on services delivery' : 'No meaningful services gap between archetypes';
+                    vizHtml = `<div class="mi-viz-box"><h4>Delivery Model Capability Profile by Archetype</h4>
                         <div class="mi-tier-grid">
                             <div class="mi-tier-card mi-tier-sig">
                                 <div class="mi-tier-title">🎯 Direct Service</div>
-                                <div class="mi-tier-stat">${direct.count || 0} vendors</div>
-                                <div class="mi-tier-metric">Avg Pillars: <strong style="color:#0078d4">${direct.avg_coverage || 0}</strong></div>
-                                <div class="mi-tier-metric">Avg Services & Capabilities: <strong style="color:#0078d4">${(direct.svc_avg || 0).toFixed(2)}</strong></div>
-                                <div class="mi-tier-metric">Avg Exposure Management: <strong>${(direct.pillar_avgs?.EXM || 0).toFixed(2)}</strong></div>
+                                <div class="mi-tier-stat">~${dPct}% of cohort</div>
+                                <div class="mi-tier-metric">Pillar breadth: <strong style="color:#0078d4">${direct.avg_coverage || 0} pillars avg</strong></div>
+                                <div class="mi-tier-metric">Services delivery: <strong style="color:${svcColor(direct.svc_avg || 0)}">${svcTier(direct.svc_avg || 0)}</strong></div>
+                                <div class="mi-tier-metric">Exposure Management: <strong style="color:${svcColor(direct.pillar_avgs?.EXM || 0)}">${svcTier(direct.pillar_avgs?.EXM || 0)}</strong></div>
                             </div>
                             <div class="mi-tier-card mi-tier-emg">
                                 <div class="mi-tier-title">🤝 Platform + Partner</div>
-                                <div class="mi-tier-stat">${partner.count || 0} vendors</div>
-                                <div class="mi-tier-metric">Avg Pillars: <strong style="color:#ca5010">${partner.avg_coverage || 0}</strong></div>
-                                <div class="mi-tier-metric">Avg Services & Capabilities: <strong style="color:#ca5010">${(partner.svc_avg || 0).toFixed(2)}</strong></div>
-                                <div class="mi-tier-metric">Avg Exposure Management: <strong>${(partner.pillar_avgs?.EXM || 0).toFixed(2)}</strong></div>
+                                <div class="mi-tier-stat">~${pPct}% of cohort</div>
+                                <div class="mi-tier-metric">Pillar breadth: <strong style="color:#ca5010">${partner.avg_coverage || 0} pillars avg</strong></div>
+                                <div class="mi-tier-metric">Services delivery: <strong style="color:${svcColor(partner.svc_avg || 0)}">${svcTier(partner.svc_avg || 0)}</strong></div>
+                                <div class="mi-tier-metric">Exposure Management: <strong style="color:${svcColor(partner.pillar_avgs?.EXM || 0)}">${svcTier(partner.pillar_avgs?.EXM || 0)}</strong></div>
                             </div>
                             <div class="mi-tier-card mi-tier-min">
                                 <div class="mi-tier-title">💻 Platform Only</div>
-                                <div class="mi-tier-stat">${plat.count || 0} vendors</div>
-                                <div class="mi-tier-metric">Avg Pillars: <strong style="color:#a80000">${plat.avg_coverage || 0}</strong></div>
-                                <div class="mi-tier-metric">Avg Services & Capabilities: <strong style="color:#a80000">${(plat.svc_avg || 0).toFixed(2)}</strong></div>
-                                <div class="mi-tier-metric">Avg Exposure Management: <strong>${(plat.pillar_avgs?.EXM || 0).toFixed(2)}</strong></div>
+                                <div class="mi-tier-stat">~${plPct}% of cohort</div>
+                                <div class="mi-tier-metric">Pillar breadth: <strong style="color:#a80000">${plat.avg_coverage || 0} pillars avg</strong></div>
+                                <div class="mi-tier-metric">Services delivery: <strong style="color:${svcColor(plat.svc_avg || 0)}">${svcTier(plat.svc_avg || 0)}</strong></div>
+                                <div class="mi-tier-metric">Exposure Management: <strong style="color:${svcColor(plat.pillar_avgs?.EXM || 0)}">${svcTier(plat.pillar_avgs?.EXM || 0)}</strong></div>
                             </div>
                         </div>
-                        <div class="mi-tier-gap">Services & Capabilities Gap (Direct Service vs Platform Only): <strong style="color:#0078d4">${((direct.svc_avg || 0) - (plat.svc_avg || 0)).toFixed(2)} points</strong></div>
+                        <div class="mi-tier-gap">${svcGapDir}</div>
                     </div>`;
                 }
 
                 // Section 5: Full-Spectrum Opportunity (2030) — Top balanced vendors
                 if (idx === 5 && st.top_balanced) {
-                    vizHtml = '<div class="mi-viz-box"><h4>Most Balanced Vendors: Highest Minimum Pillar Score</h4><div class="mi-dim-compare">';
+                    vizHtml = '<div class="mi-viz-box"><h4>Most Balanced Vendors: Full-Spectrum Coverage Leaders</h4><div class="mi-dim-compare">';
                     st.top_balanced.forEach(v => {
-                        const pct = (v.min_score / 5) * 100;
+                        const pct = Math.min(100, Math.round((v.min_score / 3.5) * 100));
                         const dmLabel = v.delivery_model === 'direct_service' ? '🎯' : v.delivery_model === 'platform_plus_partner' ? '🤝' : '💻';
+                        const tier = v.min_score >= 2.5 ? 'Strong' : v.min_score >= 2.0 ? 'Developing' : v.min_score >= 1.5 ? 'Needs attention' : 'Critical gap';
+                        const color = v.min_score >= 2.5 ? '#107c10' : v.min_score >= 2.0 ? '#0078d4' : v.min_score >= 1.5 ? '#ca5010' : '#a80000';
                         vizHtml += `<div class="mi-dim-row ${v.coverage >= 5 ? 'mi-dim-highlight-good' : ''}">
                             <div class="mi-dim-label">${dmLabel} ${escapeHtml(v.vendor)}</div>
                             <div class="mi-dim-track">
-                                <div class="mi-dim-fill" style="width:${pct}%;background:${_paScoreColor(v.min_score)}"></div>
+                                <div class="mi-dim-fill" style="width:${pct}%;background:${color}"></div>
                             </div>
-                            <div class="mi-dim-val" style="color:${_paScoreColor(v.min_score)}">${v.min_score.toFixed(2)}</div>
+                            <div class="mi-dim-val" style="color:${color}">${tier}</div>
                         </div>`;
                     });
                     vizHtml += '</div></div>';
@@ -20251,19 +23849,20 @@ function _pciRenderGraphics(data, stats) {
         return;
     }
 
-    // ── Reimagining Operations v3: D3.js-enhanced delivery model / maturity graphics ──
-    if (data.id === 'cpo-reimagining-operations-v3') {
+    // ── Reimagining Operations v3/v4: D3.js-enhanced delivery model / maturity graphics ──
+    if (data.id === 'cpo-reimagining-operations-v3' || data.id === 'cpo-reimagining-operations-v4' || data.id === 'cpo-reimagining-operations-v5') {
         _pciRenderReimaginGraphics(panel, stats);
+        _pciRenderKillChainGraphics(panel, stats, true); // also include shift-left kill chain graphics
         return;
     }
 
     // ── Graphic 1: Five-Pillar Coverage Heatmap ──
     const pillarData = [
-        { pillar: 'Exposure Management', code: 'EXM', direct: 1.74, partner: 1.89, platform: 1.86, pct: '49%' },
-        { pillar: 'Posture & Policy Mgmt', code: 'PPM', direct: 1.72, partner: 1.37, platform: 1.90, pct: '37%' },
-        { pillar: 'Adversary Disruption', code: 'ADR', direct: 1.91, partner: 1.47, platform: 1.46, pct: '33%' },
-        { pillar: 'Services & Capability', code: 'SVC', direct: 1.82, partner: 1.90, platform: 1.42, pct: '41%' },
-        { pillar: 'Adversary Management', code: 'AMT', direct: 1.17, partner: 1.29, platform: 1.15, pct: '16%' },
+        { pillar: 'Services & Capability', code: 'SVC', direct: 2.69, partner: 2.71, platform: 2.36, pct: '86%' },
+        { pillar: 'Exposure Management', code: 'EXM', direct: 1.97, partner: 2.18, platform: 2.04, pct: '47%' },
+        { pillar: 'Posture & Policy Mgmt', code: 'PPM', direct: 1.67, partner: 1.54, platform: 1.99, pct: '31%' },
+        { pillar: 'Adversary Disruption', code: 'ADR', direct: 1.79, partner: 1.57, platform: 1.57, pct: '21%' },
+        { pillar: 'Adversary Management', code: 'AMT', direct: 1.42, partner: 1.51, platform: 1.35, pct: '12%' },
     ];
     function pciHmClass(v) {
         if (v >= 1.75) return 'background:#e6f4e6;color:#107c10;font-weight:700';
@@ -20273,23 +23872,26 @@ function _pciRenderGraphics(data, stats) {
     }
     html += `<div class="dfi-graphic-section">
         <h2>1. Five-Pillar Coverage Heatmap by Delivery Model</h2>
-        <p class="dfi-graphic-subtitle">86 preemptive cybersecurity vendors scored across 5 capability pillars by delivery model. Adversary Management (AMT) is the critical gap.</p>
+        <p class="dfi-graphic-subtitle">Assessed cohort scored across 5 capability pillars by delivery model. Adversary Management is the critical gap across all archetypes.</p>
         <div style="overflow-x:auto">
         <table class="dfi-heatmap-table" style="width:100%;max-width:1000px;border-collapse:collapse;font-size:14px;">
         <thead><tr>
             <th style="text-align:left;padding:10px 12px;background:#1a3a5c;color:#fff;border-radius:8px 0 0 0;">Pillar</th>
             <th style="text-align:center;padding:10px 8px;background:#1a3a5c;color:#fff;">Penetration</th>
-            <th style="text-align:center;padding:10px 8px;background:#107c10;color:#fff;">Direct Service<br><small>11 vendors (13%)</small></th>
-            <th style="text-align:center;padding:10px 8px;background:#0078d4;color:#fff;">Platform+Partner<br><small>15 vendors (17%)</small></th>
-            <th style="text-align:center;padding:10px 8px;background:#ca5010;color:#fff;border-radius:0 8px 0 0;">Platform-Only<br><small>25 vendors (29%)</small></th>
+            <th style="text-align:center;padding:10px 8px;background:#107c10;color:#fff;">Direct Service<br><small>~24% of cohort</small></th>
+            <th style="text-align:center;padding:10px 8px;background:#0078d4;color:#fff;">Platform+Partner<br><small>~27% of cohort</small></th>
+            <th style="text-align:center;padding:10px 8px;background:#ca5010;color:#fff;border-radius:0 8px 0 0;">Platform-Only<br><small>~49% of cohort</small></th>
         </tr></thead><tbody>`;
+    function hmTier(v) {
+        return v >= 2.5 ? 'Strong' : v >= 2.0 ? 'Developing' : v >= 1.5 ? 'Needs attention' : 'Critical gap';
+    }
     pillarData.forEach(d => {
         html += `<tr>
             <td style="padding:10px 12px;border-bottom:1px solid #e0ddd5;font-weight:600">${d.pillar}<br><small style="color:#888">${d.code}</small></td>
             <td style="text-align:center;padding:8px;border-bottom:1px solid #e0ddd5;font-weight:700;color:#1a3a5c">${d.pct}</td>
-            <td style="text-align:center;padding:8px;border-bottom:1px solid #e0ddd5;${pciHmClass(d.direct)}">${d.direct.toFixed(2)}</td>
-            <td style="text-align:center;padding:8px;border-bottom:1px solid #e0ddd5;${pciHmClass(d.partner)}">${d.partner.toFixed(2)}</td>
-            <td style="text-align:center;padding:8px;border-bottom:1px solid #e0ddd5;${pciHmClass(d.platform)}">${d.platform.toFixed(2)}</td>
+            <td style="text-align:center;padding:8px;border-bottom:1px solid #e0ddd5;${pciHmClass(d.direct)}">${hmTier(d.direct)}</td>
+            <td style="text-align:center;padding:8px;border-bottom:1px solid #e0ddd5;${pciHmClass(d.partner)}">${hmTier(d.partner)}</td>
+            <td style="text-align:center;padding:8px;border-bottom:1px solid #e0ddd5;${pciHmClass(d.platform)}">${hmTier(d.platform)}</td>
         </tr>`;
     });
     html += `</tbody></table></div>
@@ -20309,35 +23911,35 @@ function _pciRenderGraphics(data, stats) {
     </div>`;
     requestAnimationFrame(() => {
         _pciDrawD3Radar('pci-d3-radar-g1', [
-            { label: 'Direct Service (11)', color: '#107c10', values: { EXM: 1.74, AMT: 1.17, ADR: 1.91, PPM: 1.72, SVC: 1.82 } },
-            { label: 'Platform+Partner (15)', color: '#0078d4', values: { EXM: 1.89, AMT: 1.29, ADR: 1.47, PPM: 1.37, SVC: 1.90 } },
-            { label: 'Platform-Only (25)', color: '#ca5010', values: { EXM: 1.86, AMT: 1.15, ADR: 1.46, PPM: 1.90, SVC: 1.42 } },
+            { label: 'Direct Service (~24%)', color: '#107c10', values: { EXM: 1.97, AMT: 1.42, ADR: 1.79, PPM: 1.67, SVC: 2.69 } },
+            { label: 'Platform+Partner (~27%)', color: '#0078d4', values: { EXM: 2.18, AMT: 1.51, ADR: 1.57, PPM: 1.54, SVC: 2.71 } },
+            { label: 'Platform-Only (~49%)', color: '#ca5010', values: { EXM: 2.04, AMT: 1.35, ADR: 1.57, PPM: 1.99, SVC: 2.36 } },
         ], 3);
         _pciDrawD3HBar('pci-d3-hbar-g1', [
+            { label: 'SVC', bars: [
+                { label: 'Direct', value: 2.69, color: '#107c10' },
+                { label: 'Partner', value: 2.71, color: '#0078d4' },
+                { label: 'Platform', value: 2.36, color: '#ca5010' },
+            ]},
             { label: 'EXM', bars: [
-                { label: 'Direct', value: 1.74, color: '#107c10' },
-                { label: 'Partner', value: 1.89, color: '#0078d4' },
-                { label: 'Platform', value: 1.86, color: '#ca5010' },
-            ]},
-            { label: 'AMT', bars: [
-                { label: 'Direct', value: 1.17, color: '#107c10' },
-                { label: 'Partner', value: 1.29, color: '#0078d4' },
-                { label: 'Platform', value: 1.15, color: '#ca5010' },
-            ]},
-            { label: 'ADR', bars: [
-                { label: 'Direct', value: 1.91, color: '#107c10' },
-                { label: 'Partner', value: 1.47, color: '#0078d4' },
-                { label: 'Platform', value: 1.46, color: '#ca5010' },
+                { label: 'Direct', value: 1.97, color: '#107c10' },
+                { label: 'Partner', value: 2.18, color: '#0078d4' },
+                { label: 'Platform', value: 2.04, color: '#ca5010' },
             ]},
             { label: 'PPM', bars: [
-                { label: 'Direct', value: 1.72, color: '#107c10' },
-                { label: 'Partner', value: 1.37, color: '#0078d4' },
-                { label: 'Platform', value: 1.90, color: '#ca5010' },
+                { label: 'Direct', value: 1.67, color: '#107c10' },
+                { label: 'Partner', value: 1.54, color: '#0078d4' },
+                { label: 'Platform', value: 1.99, color: '#ca5010' },
             ]},
-            { label: 'SVC', bars: [
-                { label: 'Direct', value: 1.82, color: '#107c10' },
-                { label: 'Partner', value: 1.90, color: '#0078d4' },
-                { label: 'Platform', value: 1.42, color: '#ca5010' },
+            { label: 'ADR', bars: [
+                { label: 'Direct', value: 1.79, color: '#107c10' },
+                { label: 'Partner', value: 1.57, color: '#0078d4' },
+                { label: 'Platform', value: 1.57, color: '#ca5010' },
+            ]},
+            { label: 'AMT', bars: [
+                { label: 'Direct', value: 1.42, color: '#107c10' },
+                { label: 'Partner', value: 1.51, color: '#0078d4' },
+                { label: 'Platform', value: 1.35, color: '#ca5010' },
             ]},
         ], { maxVal: 3 });
     });
@@ -20345,26 +23947,27 @@ function _pciRenderGraphics(data, stats) {
     // ── Graphic 2: Full-Spectrum Coverage Roadmap ──
     html += `<div class="dfi-graphic-section">
         <h2>2. Path to Full-Spectrum: Delivery Model Maturity</h2>
-        <p class="dfi-graphic-subtitle">Current average score per delivery model relative to 2.0 baseline competency threshold across all 5 pillars.</p>`;
+        <p class="dfi-graphic-subtitle">Relative capability maturity per delivery model across all 5 pillars, shown against the competency baseline.</p>`;
     const modelRoadmap = [
-        { name: 'Direct Service Providers', count: '11 vendors (13%)', avg: 1.67, pct: 33.4, color: '#107c10',
-          gaps: ['⚠ Limited platform depth', '✓ Highest ADR: 1.91', '✓ Highest SVC: 1.82', '✓ Own SOCs + analysts'] },
-        { name: 'Platform + Partner', count: '15 vendors (17%)', avg: 1.58, pct: 31.6, color: '#0078d4',
-          gaps: ['⚠ Partner accountability gaps', '⚠ PPM gap: 1.37', '✓ Highest SVC: 1.90', '✓ Broadest EXM: 1.89'] },
-        { name: 'Platform-Only', count: '25 vendors (29%)', avg: 1.56, pct: 31.2, color: '#ca5010',
-          gaps: ['⚠ AMT: 1.15 (critical gap)', '⚠ ADR: 1.46 (below threshold)', '✓ Highest PPM: 1.90', '⚠ No managed services delivery'] },
+        { name: 'Direct Service Providers', count: '~24% of cohort', avg: 1.91, color: '#107c10',
+          gaps: ['✓ Leading Adversary Disruption performance', '✓ Strongest managed services delivery', '✓ Own SOCs + analysts', '⚠ Exposure Management behind Platform+Partner'] },
+        { name: 'Platform + Partner', count: '~27% of cohort', avg: 1.90, color: '#0078d4',
+          gaps: ['✓ Highest Exposure Management reach', '✓ Strongest Services delivery', '✓ Best Adversary Management performance', '⚠ Posture Management gap — structural'] },
+        { name: 'Platform-Only', count: '~49% of cohort', avg: 1.86, color: '#ca5010',
+          gaps: ['✓ Strongest Posture & Policy Management', '⚠ Adversary Management: critical gap', '⚠ Adversary Disruption: below threshold', '⚠ No managed services delivery'] },
     ];
     modelRoadmap.forEach(d => {
-        const barPct = Math.min(d.avg / 5.0 * 100, 100);
-        const targetPct = 2.0 / 5.0 * 100;
+        const barPct = Math.min(d.avg / 3.5 * 100, 100);
+        const targetPct = 2.0 / 3.5 * 100;
+        const tier = d.avg >= 2.5 ? 'Strong' : d.avg >= 2.0 ? 'Developing' : d.avg >= 1.5 ? 'Needs attention' : 'Critical gap';
         html += `<div style="margin-bottom:22px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
                 <strong style="color:${d.color}">${d.name}</strong>
-                <span style="font-size:12px;color:#888">${d.count} • ${d.avg.toFixed(2)} avg</span>
+                <span style="font-size:12px;color:#888">${d.count}</span>
             </div>
             <div style="position:relative;height:32px;background:#e8e8e5;border-radius:6px;overflow:visible;border:1px solid #ccc">
-                <div style="height:100%;width:${barPct}%;background:${d.color};border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px">${d.avg.toFixed(2)} / 5.00</div>
-                <div style="position:absolute;left:${targetPct}%;top:-4px;width:3px;height:40px;background:#a80000;border-radius:2px" title="2.0 baseline"></div>
+                <div style="height:100%;width:${barPct}%;background:${d.color};border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px">${tier}</div>
+                <div style="position:absolute;left:${targetPct}%;top:-4px;width:3px;height:40px;background:#a80000;border-radius:2px" title="competency baseline"></div>
             </div>
             <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
                 ${d.gaps.map(g => {
@@ -20376,114 +23979,113 @@ function _pciRenderGraphics(data, stats) {
     });
     html += `<div style="background:#fff5f5;border:2px solid #a80000;border-radius:10px;padding:12px 16px;margin-top:12px">
         <strong style="color:#a80000">Key Insight</strong><br>
-        <span style="color:#555;font-size:13px">No platform-only vendor achieves full-spectrum coverage. Adversary Management (AMT) is the critical differentiator — only 16% of vendors meet the 2.0 threshold on adversary intelligence and counter-operations.</span>
+        <span style="color:#555;font-size:13px">No platform-only vendor achieves full-spectrum coverage. Adversary Management is the critical differentiator — the clear majority of vendors fall below the competency threshold on adversary intelligence and counter-operations.</span>
     </div></div>`;
 
     // ── Graphic 3: Pillar Penetration Gap Analysis ──
     html += `<div class="dfi-graphic-section">
         <h2>3. Pillar Penetration Gap: Where the Market Falls Short</h2>
-        <p class="dfi-graphic-subtitle">Percentage of 86 vendors scoring ≥ 2.0 on each pillar. Exposure Management leads at 49%; Adversary Management (AMT) is critically under-served at 16%.</p>`;
+        <p class="dfi-graphic-subtitle">Share of assessed vendors meeting the competency threshold for each pillar. Services &amp; Capability leads; Adversary Management is critically under-served.</p>`;
     html += `<div style="display:flex;gap:16px;margin-bottom:12px;font-size:12px;flex-wrap:wrap">
         <span style="color:#107c10;font-weight:700">■ Direct Service</span>
         <span style="color:#0078d4;font-weight:700">■ Platform+Partner</span>
         <span style="color:#ca5010;font-weight:700">■ Platform-Only</span>
     </div>`;
     const gapData = [
-        { pillar: 'Exposure Mgmt (EXM)', pct: 49, direct: 1.74, partner: 1.89, platform: 1.86 },
-        { pillar: 'Services & Capability (SVC)', pct: 41, direct: 1.82, partner: 1.90, platform: 1.42 },
-        { pillar: 'Posture & Policy (PPM)', pct: 37, direct: 1.72, partner: 1.37, platform: 1.90 },
-        { pillar: 'Adversary Disruption (ADR)', pct: 33, direct: 1.91, partner: 1.47, platform: 1.46 },
-        { pillar: 'Adversary Mgmt (AMT)', pct: 16, direct: 1.17, partner: 1.29, platform: 1.15 },
+        { pillar: 'Services & Capability (SVC)', pct: 86, direct: 2.69, partner: 2.71, platform: 2.36 },
+        { pillar: 'Exposure Mgmt (EXM)', pct: 47, direct: 1.97, partner: 2.18, platform: 2.04 },
+        { pillar: 'Posture & Policy (PPM)', pct: 31, direct: 1.67, partner: 1.54, platform: 1.99 },
+        { pillar: 'Adversary Disruption (ADR)', pct: 21, direct: 1.79, partner: 1.57, platform: 1.57 },
+        { pillar: 'Adversary Mgmt (AMT)', pct: 12, direct: 1.42, partner: 1.51, platform: 1.35 },
     ];
     gapData.forEach(d => {
         const w = 550;
+        function qualTier(v) { return v >= 2.5 ? 'Strong' : v >= 2.0 ? 'Developing' : v >= 1.5 ? 'Needs attention' : 'Critical gap'; }
+        function qualColor(v) { return v >= 2.5 ? '#107c10' : v >= 2.0 ? '#0078d4' : v >= 1.5 ? '#ca5010' : '#a80000'; }
         html += `<div style="margin-bottom:16px">
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
                 <strong style="font-size:13px">${d.pillar}</strong>
-                <span style="font-size:12px;font-weight:700;color:${d.pct >= 80 ? '#107c10' : d.pct >= 60 ? '#ca5010' : '#a80000'}">${d.pct}% penetration</span>
+                <span style="font-size:12px;font-weight:700;color:${d.pct >= 80 ? '#107c10' : d.pct >= 60 ? '#ca5010' : '#a80000'}">${d.pct}% of cohort</span>
             </div>
             <div style="margin:2px 0"><span style="display:inline-block;width:110px;font-size:11px;color:#777">Direct Service</span>
                 <div style="display:inline-block;vertical-align:middle;width:${w}px;height:20px;background:#e8e8e5;border-radius:4px">
-                    <div style="height:100%;width:${d.direct/5*100}%;background:#107c10;border-radius:4px"></div></div>
-                <strong style="color:#107c10;margin-left:6px">${d.direct.toFixed(2)}</strong>
+                    <div style="height:100%;width:${Math.min(d.direct/3.5*100,100)}%;background:#107c10;border-radius:4px"></div></div>
+                <strong style="color:${qualColor(d.direct)};margin-left:6px;font-size:11px">${qualTier(d.direct)}</strong>
             </div>
             <div style="margin:2px 0"><span style="display:inline-block;width:110px;font-size:11px;color:#777">Platform+Partner</span>
                 <div style="display:inline-block;vertical-align:middle;width:${w}px;height:20px;background:#e8e8e5;border-radius:4px">
-                    <div style="height:100%;width:${d.partner/5*100}%;background:#0078d4;border-radius:4px"></div></div>
-                <strong style="color:#0078d4;margin-left:6px">${d.partner.toFixed(2)}</strong>
+                    <div style="height:100%;width:${Math.min(d.partner/3.5*100,100)}%;background:#0078d4;border-radius:4px"></div></div>
+                <strong style="color:${qualColor(d.partner)};margin-left:6px;font-size:11px">${qualTier(d.partner)}</strong>
             </div>
             <div style="margin:2px 0"><span style="display:inline-block;width:110px;font-size:11px;color:#777">Platform-Only</span>
                 <div style="display:inline-block;vertical-align:middle;width:${w}px;height:20px;background:#e8e8e5;border-radius:4px">
-                    <div style="height:100%;width:${d.platform/5*100}%;background:#ca5010;border-radius:4px"></div></div>
-                <strong style="color:#ca5010;margin-left:6px">${d.platform.toFixed(2)}</strong>
+                    <div style="height:100%;width:${Math.min(d.platform/3.5*100,100)}%;background:#ca5010;border-radius:4px"></div></div>
+                <strong style="color:${qualColor(d.platform)};margin-left:6px;font-size:11px">${qualTier(d.platform)}</strong>
             </div>
         </div>`;
     });
     html += `<div style="background:#f0faff;border:2px solid #0078d4;border-radius:10px;padding:12px 16px;margin-top:8px">
         <strong style="color:#0078d4">Key Insight</strong><br>
-        <span style="color:#555;font-size:13px">The 33-point penetration gap between EXM (49%) and AMT (16%) reveals where the market clusters. Vendors flock to exposure scanning but ignore adversary intelligence and counter-operations.</span>
+        <span style="color:#555;font-size:13px">The wide penetration gap between Exposure Management and Adversary Management reveals where the market clusters. Vendors prioritize exposure scanning but largely ignore adversary intelligence and counter-operations.</span>
     </div>
     <div id="pci-d3-hbar-g3" style="margin-top:18px;max-width:750px"></div>
     </div>`;
     requestAnimationFrame(() => {
         _pciDrawD3HBar('pci-d3-hbar-g3', [
-            { label: 'EXM 49%', bars: [
-                { label: 'Direct', value: 1.74, color: '#107c10' },
-                { label: 'Partner', value: 1.89, color: '#0078d4' },
-                { label: 'Platform', value: 1.86, color: '#ca5010' },
+            { label: 'SVC 86%', bars: [
+                { label: 'Direct', value: 2.69, color: '#107c10' },
+                { label: 'Partner', value: 2.71, color: '#0078d4' },
+                { label: 'Platform', value: 2.36, color: '#ca5010' },
             ]},
-            { label: 'SVC 41%', bars: [
-                { label: 'Direct', value: 1.82, color: '#107c10' },
-                { label: 'Partner', value: 1.90, color: '#0078d4' },
-                { label: 'Platform', value: 1.42, color: '#ca5010' },
+            { label: 'EXM 47%', bars: [
+                { label: 'Direct', value: 1.97, color: '#107c10' },
+                { label: 'Partner', value: 2.18, color: '#0078d4' },
+                { label: 'Platform', value: 2.04, color: '#ca5010' },
             ]},
-            { label: 'PPM 37%', bars: [
-                { label: 'Direct', value: 1.72, color: '#107c10' },
-                { label: 'Partner', value: 1.37, color: '#0078d4' },
-                { label: 'Platform', value: 1.90, color: '#ca5010' },
+            { label: 'PPM 31%', bars: [
+                { label: 'Direct', value: 1.67, color: '#107c10' },
+                { label: 'Partner', value: 1.54, color: '#0078d4' },
+                { label: 'Platform', value: 1.99, color: '#ca5010' },
             ]},
-            { label: 'ADR 33%', bars: [
-                { label: 'Direct', value: 1.91, color: '#107c10' },
-                { label: 'Partner', value: 1.47, color: '#0078d4' },
-                { label: 'Platform', value: 1.46, color: '#ca5010' },
+            { label: 'ADR 21%', bars: [
+                { label: 'Direct', value: 1.79, color: '#107c10' },
+                { label: 'Partner', value: 1.57, color: '#0078d4' },
+                { label: 'Platform', value: 1.57, color: '#ca5010' },
             ]},
-            { label: 'AMT 16%', bars: [
-                { label: 'Direct', value: 1.17, color: '#107c10' },
-                { label: 'Partner', value: 1.29, color: '#0078d4' },
-                { label: 'Platform', value: 1.15, color: '#ca5010' },
+            { label: 'AMT 12%', bars: [
+                { label: 'Direct', value: 1.42, color: '#107c10' },
+                { label: 'Partner', value: 1.51, color: '#0078d4' },
+                { label: 'Platform', value: 1.35, color: '#ca5010' },
             ]},
         ], { maxVal: 2.5, title: 'Pillar Scores by Delivery Model (sorted by market penetration %)' });
     });
 
-    // ── Graphic 4: Executive Summary Poster ──
     html += `<div class="dfi-graphic-section">
         <h2>4. Market Fragmentation — Executive Summary</h2>
-        <p class="dfi-graphic-subtitle">Only 6% of 86 vendors achieve full-spectrum coverage. The rest leave critical gaps — especially in adversary intelligence and counter-operations.</p>
+        <p class="dfi-graphic-subtitle">No vendors achieve full-spectrum coverage. The rest leave critical gaps — especially in adversary intelligence and counter-operations.</p>
         <div class="dfi-nbm-infographic" style="background:linear-gradient(135deg,#fff5f5,#f8f8f5);border:2px solid #a80000;border-radius:16px;padding:28px 32px;max-width:1080px">
             <div style="text-align:center;margin-bottom:20px">
                 <div style="font-size:28px;font-weight:800;color:#a80000">The Preemptive Cybersecurity Market Is Dangerously Fragmented</div>
-                <div style="font-size:14px;color:#666;margin-top:6px">Market Insight — 86 vendors across 5 capability pillars × 3 delivery models</div>
+                <div style="font-size:14px;color:#666;margin-top:6px">Market Insight — assessed cohort across 5 capability pillars × 3 delivery models</div>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px">
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#0078d4">86</div><div style="font-size:11px;color:#666">Vendors Assessed</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#a80000">100%</div><div style="font-size:11px;color:#666">Have ≥ 1 Blind Spot</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#a80000">94%</div><div style="font-size:11px;color:#666">Have ≥ 1 Blind Spot</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#ca5010">~88%</div><div style="font-size:11px;color:#666">No Adversary Mgmt Capability</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#ca5010">84%</div><div style="font-size:11px;color:#666">No AMT Capability</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#107c10">0%</div><div style="font-size:11px;color:#666">Full-Spectrum Coverage</div></div>
                 <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#107c10">6%</div><div style="font-size:11px;color:#666">Full-Spectrum Coverage</div></div>
-                <div style="text-align:center;background:#fff;border-radius:10px;padding:14px;border:1px solid #e0ddd5">
-                    <div style="font-size:28px;font-weight:800;color:#8764b8">29%</div><div style="font-size:11px;color:#666">Platform-Only (No SVC)</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#8764b8">~49%</div><div style="font-size:11px;color:#666">Platform-Only (No Managed SVC)</div></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#a80000;margin-bottom:8px">KEY FINDINGS</div>
             <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #a80000">
-                    <strong>🔴 Adversary Intelligence Crisis</strong><br><span style="color:#555;font-size:13px">84% of 86 vendors fail to meet the 2.0 competency threshold on AMT. This is the single largest capability gap in the market.</span></div>
+                    <strong>🔴 Adversary Intelligence Crisis</strong><br><span style="color:#555;font-size:13px">The large majority of vendors fail to meet the competency threshold on Adversary Management. This is the single largest capability gap in the market.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #ca5010">
-                    <strong>⚠ Platform-Only Proliferation</strong><br><span style="color:#555;font-size:13px">25 of 86 vendors (29%) are platform-only with no managed service delivery. AMT avg 1.15 — the lowest of any delivery model on any pillar.</span></div>
+                    <strong>⚠ Platform-Only Proliferation</strong><br><span style="color:#555;font-size:13px">Nearly half the market is platform-only with no managed service delivery. Adversary Management is the lowest-scoring pillar across this delivery archetype.</span></div>
                 <div style="background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid #107c10">
-                    <strong>✓ Rare Full-Spectrum Excellence</strong><br><span style="color:#555;font-size:13px">Only 5 of 86 vendors (6%) achieve full-spectrum coverage scoring ≥ 2.0 across all 5 pillars.</span></div>
+                    <strong>✓ Rare Full-Spectrum Excellence</strong><br><span style="color:#555;font-size:13px">No vendors achieve full-spectrum coverage across all 5 pillars. Only a single-digit percentage of the cohort achieves 4-pillar majority coverage.</span></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#0078d4;margin-bottom:8px">RECOMMENDATIONS</div>
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
@@ -20520,55 +24122,55 @@ function _pciRenderGraphics(data, stats) {
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px">
                 <div style="background:#f0fff4;border:2px solid #107c10;border-radius:14px;padding:20px">
                     <div style="text-align:center;font-size:18px;font-weight:700;color:#107c10;margin-bottom:8px">🟢 Direct Service</div>
-                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">11 vendors (13%)</div>
+                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">~24% of cohort</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
                         ✓ Own SOC + analyst teams<br>
                         ✓ Single accountability point<br>
-                        ✓ <strong>Highest ADR: 1.91</strong><br>
-                        ✓ <strong>Highest SVC: 1.82</strong><br>
+                        ✓ <strong>Leads on Adversary Disruption</strong><br>
+                        ✓ <strong>Leads on Services delivery</strong><br>
                         ⚠ Limited platform depth<br>
-                        ⚠ Narrower tech coverage</div>
+                        ⚠ Narrower technology coverage</div>
                     <div style="margin-top:12px;background:#e6f4e6;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#107c10;font-weight:700">Strength: Operational Accountability</div></div>
                 <div style="background:#f0faff;border:2px solid #0078d4;border-radius:14px;padding:20px">
                     <div style="text-align:center;font-size:18px;font-weight:700;color:#0078d4;margin-bottom:8px">🔵 Platform + Partner</div>
-                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">15 vendors (17%)</div>
+                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">~27% of cohort</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
                         ✓ Tech platform + MSSP delivery<br>
-                        ✓ Broadest EXM coverage: 1.89<br>
-                        ✓ <strong>Highest SVC: 1.90</strong><br>
-                        ✓ <strong>Best AMT: 1.29</strong><br>
+                        ✓ Broadest Exposure Management reach<br>
+                        ✓ <strong>Leads on Services delivery</strong><br>
+                        ✓ <strong>Best Adversary Management</strong><br>
                         ⚠ Partner accountability gaps<br>
-                        ⚠ PPM gap: 1.37 (structural)</div>
+                        ⚠ Posture Management gap (structural)</div>
                     <div style="margin-top:12px;background:#e0f0ff;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#0078d4;font-weight:700">Strength: Breadth of Coverage</div></div>
                 <div style="background:#fff8f0;border:2px solid #ca5010;border-radius:14px;padding:20px">
                     <div style="text-align:center;font-size:18px;font-weight:700;color:#ca5010;margin-bottom:8px">🟠 Platform-Only</div>
-                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">25 vendors (29%)</div>
+                    <div style="text-align:center;font-size:12px;color:#666;margin-bottom:12px">~49% of cohort</div>
                     <div style="font-size:13px;color:#333;line-height:1.8">
                         ✓ Technology licensing model<br>
-                        ✓ Highest PPM: 1.90<br>
-                        🔴 <strong>AMT: 1.15 (critical gap)</strong><br>
-                        🔴 <strong>ADR: 1.46 (below threshold)</strong><br>
-                        🔴 84% below 2.0 on AMT<br>
+                        ✓ Leads on Posture & Policy Management<br>
+                        🔴 <strong>Adversary Management: critical gap</strong><br>
+                        🔴 <strong>Adversary Disruption: below threshold</strong><br>
+                        🔴 Overwhelming majority below threshold on AMT<br>
                         🔴 No managed service delivery</div>
-                    <div style="margin-top:12px;background:#fff0e0;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#ca5010;font-weight:700">Weakness: Critical AMT Gap (16% penetration)</div></div>
+                    <div style="margin-top:12px;background:#fff0e0;border-radius:8px;padding:8px;text-align:center;font-size:11px;color:#ca5010;font-weight:700">Weakness: Critical Adversary Management Gap</div></div>
             </div>
             <div style="font-size:13px;font-weight:700;color:#1a3a5c;margin-bottom:8px">MARKET SPECTRUM SEGMENTATION</div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
                 <div style="background:#e6f4e6;border:2px solid #107c10;border-radius:10px;padding:14px;text-align:center">
-                    <div style="font-size:28px;font-weight:800;color:#107c10">14</div>
-                    <div style="font-size:13px;font-weight:700;color:#107c10">Full-Spectrum (27%)</div>
-                    <div style="font-size:10px;color:#555">All 5 pillars ≥ 2.0 — best positioned</div></div>
+                    <div style="font-size:28px;font-weight:800;color:#107c10">0%</div>
+                    <div style="font-size:13px;font-weight:700;color:#107c10">Full-Spectrum</div>
+                    <div style="font-size:10px;color:#555">All 5 pillars at competency — none at this level</div></div>
                 <div style="background:#fff0e0;border:2px solid #ca5010;border-radius:10px;padding:14px;text-align:center">
-                    <div style="font-size:28px;font-weight:800;color:#ca5010">19</div>
-                    <div style="font-size:13px;font-weight:700;color:#ca5010">Majority-Spectrum (37%)</div>
+                    <div style="font-size:28px;font-weight:800;color:#ca5010">~9%</div>
+                    <div style="font-size:13px;font-weight:700;color:#ca5010">Majority-Spectrum</div>
                     <div style="font-size:10px;color:#555">4 pillars — one investment from full</div></div>
                 <div style="background:#ffe0e0;border:2px solid #a80000;border-radius:10px;padding:14px;text-align:center">
-                    <div style="font-size:28px;font-weight:800;color:#a80000">18</div>
-                    <div style="font-size:13px;font-weight:700;color:#a80000">Narrow-Spectrum (35%)</div>
+                    <div style="font-size:28px;font-weight:800;color:#a80000">~91%</div>
+                    <div style="font-size:13px;font-weight:700;color:#a80000">Narrow-Spectrum</div>
                     <div style="font-size:10px;color:#555">≤ 3 pillars — niche specialists</div></div>
             </div>
             <div style="background:#fff0f0;border:2px solid #a80000;border-radius:10px;padding:12px 16px;text-align:center">
-                <strong style="color:#a80000">94% of vendors have at least one structural blind spot. Buyers cannot assume any single vendor covers the full attack surface.</strong></div>
+                <strong style="color:#a80000">100% of vendors have at least one structural blind spot. Buyers cannot assume any single vendor covers the full attack surface.</strong></div>
         </div></div>`;
 
     // ── Graphic 6: 2030 Market Evolution Poster ──
@@ -20601,7 +24203,7 @@ function _pciRenderGraphics(data, stats) {
                 <div style="background:#fff;border-radius:10px;padding:16px;border:2px solid #107c10;text-align:center">
                     <div style="font-size:32px;font-weight:800;color:#107c10">50%+</div>
                     <div style="font-size:12px;color:#333;font-weight:700">Full-Spectrum Vendors</div>
-                    <div style="font-size:10px;color:#666">Up from 27% today</div></div>
+                    <div style="font-size:10px;color:#666">Up from 0% today</div></div>
                 <div style="background:#fff;border-radius:10px;padding:16px;border:2px solid #0078d4;text-align:center">
                     <div style="font-size:32px;font-weight:800;color:#0078d4">$8B+</div>
                     <div style="font-size:12px;color:#333;font-weight:700">Addressable Market</div>
@@ -20680,18 +24282,18 @@ function _pciDrawSketchInfographic() {
     // ── Title banner ──
     svg.appendChild(rc.rectangle(0, 0, W, 70, { ...opt, fill: '#1a3a5c', fillStyle: 'solid', stroke: '#1a3a5c' }));
     addText(W / 2, 30, 'The Preemptive Cybersecurity Market Is Dangerously Fragmented', 22, '800', '#fff', 'middle');
-    addText(W / 2, 55, 'Only 6% of 86 vendors achieve full-spectrum coverage across all five pillars', 12, '400', '#ccd8e8', 'middle');
+    addText(W / 2, 55, '0% of vendors achieve full-spectrum coverage across all five pillars', 12, '400', '#ccd8e8', 'middle');
 
     // ── Five Pillars Row ──
     svg.appendChild(rc.rectangle(20, 85, 1160, 32, { ...opt, fill: '#e0ddd5', fillStyle: 'solid', stroke: '#b0a898' }));
     addText(600, 107, 'THE FIVE PILLARS OF PREEMPTIVE CYBERSECURITY', 11, '700', '#5a503c', 'middle');
 
     const pillars = [
-        { label: 'EXM', name: 'Exposure Mgmt', pct: '49%', color: '#107c10', bg: '#f0fff4' },
-        { label: 'PPM', name: 'Posture & Policy', pct: '37%', color: '#0078d4', bg: '#f0faff' },
-        { label: 'ADR', name: 'Adversary Disruption', pct: '33%', color: '#8764b8', bg: '#f5f0ff' },
-        { label: 'SVC', name: 'Services & Capability', pct: '41%', color: '#ca5010', bg: '#fff8f0' },
-        { label: 'AMT', name: 'Adversary Mgmt', pct: '16%', color: '#a80000', bg: '#fff5f5' },
+        { label: 'EXM', name: 'Exposure Mgmt', pct: '47%', color: '#107c10', bg: '#f0fff4' },
+        { label: 'PPM', name: 'Posture & Policy', pct: '31%', color: '#0078d4', bg: '#f0faff' },
+        { label: 'ADR', name: 'Adversary Disruption', pct: '21%', color: '#8764b8', bg: '#f5f0ff' },
+        { label: 'SVC', name: 'Services & Capability', pct: '86%', color: '#ca5010', bg: '#fff8f0' },
+        { label: 'AMT', name: 'Adversary Mgmt', pct: '12%', color: '#a80000', bg: '#fff5f5' },
     ];
     pillars.forEach((p, i) => {
         const x = 30 + i * 232;
@@ -20713,45 +24315,45 @@ function _pciDrawSketchInfographic() {
     // Direct Service Providers
     svg.appendChild(rc.rectangle(30, 310, 360, 170, optFill('#f0fff4')));
     addText(210, 335, '🟢 Direct Service Providers', 14, '700', '#107c10', 'middle');
-    addText(210, 358, '11 vendors (13%)', 12, '700', '#1a3a5c', 'middle');
+    addText(210, 358, '~24% of cohort', 12, '700', '#1a3a5c', 'middle');
     addMultiText(210, 380, [
-        'ADR: 1.91 (highest) • SVC: 1.82',
+        'Leads on managed services (SVC)',
+        'Leads on adversary disruption (ADR)',
         'Own SOC + analyst teams',
-        'Single accountability point',
-        '⚠ Limited platform depth',
-        '(EXM: 1.74, PPM: 1.72)'
+        '⚠ Limited platform breadth',
+        '(Exposure Mgmt behind Platform+Partner)'
     ], 10, '#555', 14, 'middle');
 
     // Platform-Plus-Partner
     svg.appendChild(rc.rectangle(420, 310, 360, 170, optFill('#f0faff')));
     addText(600, 335, '🔵 Platform + Partner', 14, '700', '#0078d4', 'middle');
-    addText(600, 358, '15 vendors (17%)', 12, '700', '#1a3a5c', 'middle');
+    addText(600, 358, '~27% of cohort', 12, '700', '#1a3a5c', 'middle');
     addMultiText(600, 380, [
-        'AMT: 1.29 (best) • EXM: 1.89',
-        'Tech platform + MSSP delivery',
-        'Highest SVC: 1.90 (via partners)',
-        '⚠ Accountability gaps',
-        '(PPM: 1.37 — structural weakness)'
+        'Best Exposure Management reach',
+        'Leads on Services delivery (via partners)',
+        'Best Adversary Management performance',
+        '⚠ Partner accountability gaps',
+        '(Posture Management — structural weakness)'
     ], 10, '#555', 14, 'middle');
 
     // Platform-Only
     svg.appendChild(rc.rectangle(810, 310, 360, 170, optFill('#fff8f0')));
     addText(990, 335, '🟠 Platform-Only', 14, '700', '#ca5010', 'middle');
-    addText(990, 358, '25 vendors (29%)', 12, '700', '#1a3a5c', 'middle');
+    addText(990, 358, '~49% of cohort', 12, '700', '#1a3a5c', 'middle');
     addMultiText(990, 380, [
-        'AMT: 1.15 (lowest) • PPM: 1.90',
+        'Leads on Posture & Policy Management',
         'No managed service delivery',
-        'Highest PPM: 1.90 (tech strength)',
-        '⚠ Critical AMT gap',
-        '(84% score < 2.0 on AMT)'
+        '⚠ Adversary Management: critical gap',
+        '⚠ Overwhelming majority below threshold',
+        '(No managed services — structural ceiling)'
     ], 10, '#555', 14, 'middle');
 
     // ── Center: Full-Spectrum Achievement ──
     svg.appendChild(rc.rectangle(370, 500, 460, 110, { ...opt, fill: '#e8f4ff', fillStyle: 'solid', stroke: '#0078d4' }));
     addText(600, 530, '🎯 Full-Spectrum Vendors', 16, '800', '#1a3a5c', 'middle');
-    addText(600, 555, '5 of 86 (6%) score 2.0+ across all 5 pillars', 13, '700', '#0078d4', 'middle');
+    addText(600, 555, '0% of assessed cohort scores at competency across all 5 pillars', 12, '700', '#0078d4', 'middle');
     addMultiText(600, 578, [
-        'Only 6% of vendors achieve full-spectrum coverage',
+        'No vendor achieves full-spectrum coverage today',
         'No platform-only vendor achieves full-spectrum coverage'
     ], 10, '#555', 14, 'middle');
 
@@ -20762,19 +24364,19 @@ function _pciDrawSketchInfographic() {
 
     // ── Stat callout ellipses ──
     svg.appendChild(rc.rectangle(30, 520, 160, 75, optFill('#fff5f0')));
-    addText(110, 550, '94%', 22, '800', '#ca5010', 'middle');
+    addText(110, 550, '100%', 22, '800', '#ca5010', 'middle');
     addText(110, 572, 'Have ≥1 Blind Spot', 10, '400', '#5a503c', 'middle');
 
     svg.appendChild(rc.rectangle(210, 545, 140, 65, optFill('#f8f0ff')));
-    addText(280, 572, '84%', 20, '800', '#8764b8', 'middle');
+    addText(280, 572, '88%', 20, '800', '#8764b8', 'middle');
     addText(280, 590, 'No AMT Capability', 9, '400', '#5a3c7c', 'middle');
 
     svg.appendChild(rc.rectangle(850, 520, 160, 75, optFill('#f0fff4')));
-    addText(930, 550, '86', 26, '800', '#107c10', 'middle');
-    addText(930, 572, 'Vendors Assessed', 10, '400', '#1a3a5c', 'middle');
+    addText(930, 550, '100%', 22, '800', '#107c10', 'middle');
+    addText(930, 572, 'Have ≥1 Blind Spot', 10, '400', '#1a3a5c', 'middle');
 
     svg.appendChild(rc.rectangle(1030, 545, 145, 65, optFill('#f0faff')));
-    addText(1103, 572, '6%', 20, '800', '#0078d4', 'middle');
+    addText(1103, 572, '0%', 20, '800', '#0078d4', 'middle');
     addText(1103, 590, 'Full-Spectrum Only', 9, '400', '#1a3a5c', 'middle');
 
     // ── Bottom: Market Segments Bars ──
@@ -20783,21 +24385,21 @@ function _pciDrawSketchInfographic() {
 
     // Full-spectrum
     svg.appendChild(rc.rectangle(50, 680, 90, 55, { ...opt, fill: '#107c10', fillStyle: 'solid', stroke: '#107c10' }));
-    addText(95, 703, '5 vendors – Full Spectrum (6%)', 12, '700', '#fff', 'middle');
-    addText(95, 720, 'All 5 pillars ≥ 2.0  •  Best positioned', 10, '400', '#c0efc0', 'middle');
+    addText(95, 703, '0 vendors – Full Spectrum (0%)', 12, '700', '#fff', 'middle');
+    addText(95, 720, 'All 5 pillars ≥ 2.0  •  None at this level', 10, '400', '#c0efc0', 'middle');
 
     // Near-full-spectrum
     svg.appendChild(rc.rectangle(50, 745, 130, 55, { ...opt, fill: '#0078d4', fillStyle: 'solid', stroke: '#0078d4' }));
-    addText(115, 768, '9 vendors – Near Full-Spectrum (10%)', 12, '700', '#fff', 'middle');
+    addText(115, 768, '8 vendors – Majority-Spectrum (9%)', 12, '700', '#fff', 'middle');
     addText(115, 785, '4 pillars covered  •  One investment from full coverage', 10, '400', '#b0d8ff', 'middle');
 
     // Partial-spectrum
     svg.appendChild(rc.rectangle(50, 810, 1130, 55, { ...opt, fill: '#ca5010', fillStyle: 'solid', stroke: '#ca5010' }));
-    addText(615, 833, '72 vendors – Partial Coverage (84%)', 12, '700', '#fff', 'middle');
+    addText(615, 833, '78 vendors – Narrow Coverage (91%)', 12, '700', '#fff', 'middle');
     addText(615, 850, '≤3 pillars  •  Significant coverage gaps across multiple capability areas', 10, '400', '#fce0c8', 'middle');
 
     // Key insight
-    addText(600, 890, '→ AMT (Adversary Intelligence) is the critical differentiator: only 16% of 86 vendors meet the 2.0 threshold ←', 11, '700', '#1a3a5c', 'middle');
+    addText(600, 890, '→ AMT (Adversary Intelligence) is the critical differentiator: only 12% of 86 vendors meet the 2.0 threshold ←', 11, '700', '#1a3a5c', 'middle');
 
     addText(1150, 915, '© Gartner Research • PreCyber Market Insight 2026', 9, '400', '#aaa', 'end');
 }
@@ -20822,22 +24424,77 @@ function _pciRenderReimaginGraphics(panel, stats) {
     // Live stats from API where available, fallback to 86-vendor hardcoded
     const liveEXM = pp.EXM?.pct || 49;
     const liveAMT = pp.AMT?.pct || 16;
-    const liveADR = pp.ADR?.pct || 33;
-    const livePPM = pp.PPM?.pct || 37;
-    const liveSVC = pp.SVC?.pct || 41;
-    const totalN = stats?.total_vendors || 86;
-    const fullSpectrum = stats?.full_spectrum || 5;
+    const liveADR = pp.ADR?.pct || 21;
+    const livePPM = pp.PPM?.pct || 31;
+    const liveSVC = pp.SVC?.pct || 86;
+    const totalN = stats?.vendor_count || stats?.total_vendors || 86;
+    const fullSpectrum = stats?.full_spectrum_count ?? stats?.full_spectrum ?? 0;
+    const poCount = plat.count || 0;
+    const poPct = totalN ? Math.round(poCount / totalN * 100) : 0;
+    const noAmtPct = stats?.no_amt_pct ?? Math.max(0, 100 - liveAMT);
+    const dsPct = totalN ? Math.round((direct.count || 0) / totalN * 100) : 0;
+    const pppPct = totalN ? Math.round((partner.count || 0) / totalN * 100) : 0;
+    const fsPct = totalN ? Math.round(fullSpectrum / totalN * 100) : 0;
+    const conceptData = {
+        totalN,
+        fullSpectrum,
+        fullSpectrumPct: fsPct,
+        pillarPct: { EXM: liveEXM, AMT: liveAMT, ADR: liveADR, PPM: livePPM, SVC: liveSVC },
+        direct: {
+            count: direct.count || 0,
+            pct: dsPct,
+            exm: direct.pillar_avgs?.EXM || pp.EXM?.direct_avg || 0,
+            amt: direct.pillar_avgs?.AMT || pp.AMT?.direct_avg || 0,
+            adr: direct.pillar_avgs?.ADR || pp.ADR?.direct_avg || 0,
+            ppm: direct.pillar_avgs?.PPM || pp.PPM?.direct_avg || 0,
+            svc: direct.svc_avg || direct.pillar_avgs?.SVC || pp.SVC?.direct_avg || 0,
+        },
+        partner: {
+            count: partner.count || 0,
+            pct: pppPct,
+            exm: partner.pillar_avgs?.EXM || pp.EXM?.partner_avg || 0,
+            amt: partner.pillar_avgs?.AMT || pp.AMT?.partner_avg || 0,
+            adr: partner.pillar_avgs?.ADR || pp.ADR?.partner_avg || 0,
+            ppm: partner.pillar_avgs?.PPM || pp.PPM?.partner_avg || 0,
+            svc: partner.svc_avg || partner.pillar_avgs?.SVC || pp.SVC?.partner_avg || 0,
+        },
+        platform: {
+            count: plat.count || 0,
+            pct: poPct,
+            exm: plat.pillar_avgs?.EXM || pp.EXM?.platform_avg || 0,
+            amt: plat.pillar_avgs?.AMT || pp.AMT?.platform_avg || 0,
+            adr: plat.pillar_avgs?.ADR || pp.ADR?.platform_avg || 0,
+            ppm: plat.pillar_avgs?.PPM || pp.PPM?.platform_avg || 0,
+            svc: plat.svc_avg || plat.pillar_avgs?.SVC || pp.SVC?.platform_avg || 0,
+        },
+    };
 
-    let html = `<div style="text-align:right;margin-bottom:14px">
-        <button class="report-export-btn" onclick="exportPreCyberAllGraphicsPPTX()" title="Export all graphics as PowerPoint">
-            &#128196; Export All Graphics as PPTX
+    let html = `<div style="display:flex;justify-content:flex-end;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+        <label for="pci-reimagin-export-format" style="font-size:12px;color:${dk ? '#d0d0d0' : '#555'};font-weight:700">Export:</label>
+        <select id="pci-reimagin-export-format" style="padding:8px 10px;border-radius:8px;border:1px solid ${dk ? '#555' : '#c7c2b8'};background:${dk ? '#252525' : '#fff'};color:${dk ? '#f0f0f0' : '#333'};font-size:12px">
+            <option value="published-pptx">Published graphics deck — PPTX</option>
+            <option value="concepts-pptx">Concept Lab alternatives — PPTX, 6 slides</option>
+            <option value="concepts-png">Concept Lab alternatives — PNG, 6 files</option>
+            <option value="concepts-jpg">Concept Lab alternatives — JPG, 6 files</option>
+            <option value="concepts-svg">Concept Lab alternatives — SVG, 6 files</option>
+        </select>
+        <button class="report-export-btn" onclick="exportPreCyberReimaginSelected()" title="Export the selected Reimagining graphics format">
+            &#128196; Export Selected
         </button>
     </div>`;
+
+    html += `<div id="pci-reimagin-subtabs" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 18px 0;padding:10px 12px;background:${dk ? '#222' : '#f8f8f5'};border:1px solid ${dk ? '#3f3f3f' : '#e0ddd5'};border-radius:12px">
+        <button id="pci-reimagin-tab-current" type="button" onclick="_pciSetReimaginGraphicsSubtab('current')" aria-selected="true" style="padding:8px 14px;border-radius:999px;border:1px solid #1a3a5c;background:#1a3a5c;color:#fff;font-size:12px;font-weight:700;cursor:pointer">Published Graphics</button>
+        <button id="pci-reimagin-tab-concepts" type="button" onclick="_pciSetReimaginGraphicsSubtab('concepts')" aria-selected="false" style="padding:8px 14px;border-radius:999px;border:1px solid ${dk ? '#555' : '#c7c2b8'};background:${dk ? '#2d2d2d' : '#fff'};color:${dk ? '#e8e8e8' : '#1a3a5c'};font-size:12px;font-weight:700;cursor:pointer">Concept Lab: 6 Alternatives</button>
+        <div style="font-size:11px;color:${dk ? '#b0b0b0' : '#666'};margin-left:auto">Second tab = prototype directions for the current → future state story</div>
+    </div>`;
+
+    html += `<div id="pci-reimagin-panel-current" data-reimagin-subtab="current">`;
 
     // ── Graphic R1: Market at a Glance ──
     html += `<div class="dfi-graphic-section">
         <h2>1. Reimagining Operations — Market at a Glance</h2>
-        <p class="dfi-graphic-subtitle">86-vendor cohort: preemptive capability maturity across 5 pillars × 3 delivery models. All scores from sub-pillar scoring (0–5 scale).</p>
+        <p class="dfi-graphic-subtitle">Assessed cohort: preemptive capability maturity across 5 pillars × 3 delivery models.</p>
         <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px">
             ${[
                 { code: 'EXM', pct: liveEXM, avg: pp.EXM?.avg || 1.84, color: '#107c10' },
@@ -20848,27 +24505,22 @@ function _pciRenderReimaginGraphics(panel, stats) {
             ].map(p => `
             <div style="background:#fff;border-radius:12px;padding:14px;border-top:4px solid ${p.color};box-shadow:0 2px 8px rgba(0,0,0,0.07);text-align:center">
                 <div style="font-size:24px;font-weight:800;color:${p.color}">${p.pct}%</div>
-                <div style="font-size:11px;color:#888;margin:2px 0">${p.code} penetration</div>
-                <div style="font-size:13px;font-weight:700;color:#555">${p.avg.toFixed(2)} avg</div>
-                <div style="font-size:10px;color:#999">${pillarLabels[p.code]}</div>
+                <div style="font-size:11px;color:#888;margin:2px 0">market penetration</div>
+                <div style="font-size:13px;font-weight:700;color:#555">${pillarLabels[p.code]}</div>
             </div>`).join('')}
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
             <div style="background:#fff5f5;border-radius:10px;padding:12px;text-align:center;border:1px solid #f0c0c0">
-                <div style="font-size:22px;font-weight:800;color:#a80000">${totalN}</div>
-                <div style="font-size:11px;color:#666">Vendors Assessed</div>
+                <div style="font-size:22px;font-weight:800;color:#a80000">&lt;6%</div>
+                <div style="font-size:11px;color:#666">Full-Spectrum Coverage</div>
             </div>
             <div style="background:#fff5f5;border-radius:10px;padding:12px;text-align:center;border:1px solid #f0c0c0">
-                <div style="font-size:22px;font-weight:800;color:#a80000">${fullSpectrum}</div>
-                <div style="font-size:11px;color:#666">Full-Spectrum (${Math.round(fullSpectrum/totalN*100)}%)</div>
-            </div>
-            <div style="background:#fff5f5;border-radius:10px;padding:12px;text-align:center;border:1px solid #f0c0c0">
-                <div style="font-size:22px;font-weight:800;color:#ca5010">29%</div>
+                <div style="font-size:22px;font-weight:800;color:#ca5010">${poPct}%</div>
                 <div style="font-size:11px;color:#666">Platform-Only</div>
             </div>
             <div style="background:#fff5f5;border-radius:10px;padding:12px;text-align:center;border:1px solid #f0c0c0">
-                <div style="font-size:22px;font-weight:800;color:#8764b8">84%</div>
-                <div style="font-size:11px;color:#666">No AMT Capability</div>
+                <div style="font-size:22px;font-weight:800;color:#8764b8">${noAmtPct}%</div>
+                <div style="font-size:11px;color:#666">Lack Adversary Mgmt</div>
             </div>
         </div>
         <div id="pci-reimagin-radar-1" style="max-width:560px;margin:0 auto"></div>
@@ -20877,40 +24529,65 @@ function _pciRenderReimaginGraphics(panel, stats) {
     // ── Graphic R2: Delivery Model Radar Comparison ──
     html += `<div class="dfi-graphic-section">
         <h2>2. Delivery Model Capability Profiles</h2>
-        <p class="dfi-graphic-subtitle">D3.js radar comparison: three delivery models across all 5 preemptive pillars. Scale 0–3 (max observed score). Dashed ring = 2.0 competency threshold.</p>
+        <p class="dfi-graphic-subtitle">Radar comparison: three delivery models across all 5 preemptive pillars showing relative capability strength.</p>
         <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
             <div id="pci-reimagin-radar-2" style="flex:0 0 520px;min-width:280px"></div>
             <div style="flex:1;min-width:220px">
                 <div style="font-weight:700;color:#1a3a5c;margin-bottom:10px;font-size:13px">Key Observations</div>
                 <div style="display:flex;flex-direction:column;gap:8px">
                     <div style="background:#f0fff4;border-left:3px solid #107c10;padding:10px;border-radius:6px;font-size:12px">
-                        <strong style="color:#107c10">Direct Service (11 vendors)</strong><br>
-                        Strongest ADR (1.91) and SVC (1.82). Best managed-outcome delivery. Own SOC infrastructure drives operational depth.
+                        <strong style="color:#107c10">Direct Service (~¼ of cohort)</strong><br>
+                        Strongest on Adversary Disruption and Services maturity. Best managed-outcome delivery. Own SOC infrastructure drives operational depth.
                     </div>
                     <div style="background:#f0faff;border-left:3px solid #0078d4;padding:10px;border-radius:6px;font-size:12px">
-                        <strong style="color:#0078d4">Platform+Partner (15 vendors)</strong><br>
-                        Highest SVC (1.90 via partners) and EXM (1.89). Critical PPM gap (1.37) suggests policy enforcement weakness.
+                        <strong style="color:#0078d4">Platform+Partner (~¼ of cohort)</strong><br>
+                        Highest Exposure Management and Services (via partners). Critical Posture & Policy gap suggests policy enforcement weakness.
                     </div>
                     <div style="background:#fff8f0;border-left:3px solid #ca5010;padding:10px;border-radius:6px;font-size:12px">
-                        <strong style="color:#ca5010">Platform-Only (25 vendors)</strong><br>
-                        Strongest PPM (1.90) but critical AMT floor (1.15). No managed delivery mechanism. Cannot provide adversary intelligence operations.
+                        <strong style="color:#ca5010">Platform-Only (~½ of cohort)</strong><br>
+                        Strongest Posture & Policy Management but weak Adversary Management. No managed delivery mechanism. Cannot provide adversary intelligence operations.
                     </div>
                 </div>
             </div>
         </div>
     </div>`;
 
-    // ── Graphic R3: Pillar Maturity Bar Chart ──
+    // ── Graphic R3: Operating Model Overlap Map ──
     html += `<div class="dfi-graphic-section">
-        <h2>3. Pillar Maturity by Delivery Model</h2>
-        <p class="dfi-graphic-subtitle">D3.js grouped bar chart: average sub-pillar score per delivery model. Red dashed line = 2.0 competency threshold. No delivery model crosses the threshold on AMT.</p>
+        <h2>3. Operating Model Overlap Map: Platform, Partner, and Services</h2>
+        <p class="dfi-graphic-subtitle">This is intentionally <em>not</em> a literal vendor-count Venn diagram. The three delivery models are mutually exclusive market segments. Instead, this Venn-style map shows how each model sits across three operating levers: platform control, partner scale, and managed-service accountability.</p>
+        <div id="pci-reimagin-overlap-3" style="max-width:1120px;margin:0 auto 16px"></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1120px;margin:0 auto">
+            <div style="background:#fff8f0;border:1px solid #f0d2b8;border-radius:10px;padding:12px">
+                <div style="font-size:12px;font-weight:700;color:#ca5010;margin-bottom:4px">Platform-Only</div>
+                <div style="font-size:11px;color:#555">Owns product IP and technical control, but leaves service accountability outside the operating model. Strongest where repeatable software wins; weakest where buyers expect outcomes.</div>
+            </div>
+            <div style="background:#f0faff;border:1px solid #c8dff7;border-radius:10px;padding:12px">
+                <div style="font-size:12px;font-weight:700;color:#0078d4;margin-bottom:4px">Platform + Partner</div>
+                <div style="font-size:11px;color:#555">Best fit for broad reach and fast scale. The trade-off is handoff friction: delivery breadth improves, but accountability can splinter at the moment of truth.</div>
+            </div>
+            <div style="background:#f0fff4;border:1px solid #c8e8ce;border-radius:10px;padding:12px">
+                <div style="font-size:12px;font-weight:700;color:#107c10;margin-bottom:4px">Direct Service</div>
+                <div style="font-size:11px;color:#555">Owns the operational outcome and late-phase response. Strongest where customer trust depends on managed execution, but still needs platform depth to dominate earlier kill-chain phases.</div>
+            </div>
+            <div style="background:#f8f0ff;border:1px solid #ddc9f4;border-radius:10px;padding:12px">
+                <div style="font-size:12px;font-weight:700;color:#8764b8;margin-bottom:4px">Full-Spectrum Center</div>
+                <div style="font-size:11px;color:#555">The strategic prize is the middle: platform IP + ecosystem leverage + accountable managed delivery. That overlap is where a true preemptive operating model becomes hardest to replace.</div>
+            </div>
+        </div>
+    </div>`;
+
+    // ── Graphic R4: Pillar Maturity Bar Chart ──
+    html += `<div class="dfi-graphic-section">
+        <h2>4. Pillar Maturity by Delivery Model</h2>
+        <p class="dfi-graphic-subtitle">Grouped bar chart showing relative capability strength per delivery model. No delivery model reaches competency threshold on Adversary Management.</p>
         <div id="pci-reimagin-hbar-3" style="max-width:780px"></div>
     </div>`;
 
-    // ── Graphic R4: Coverage Gap Bubble Matrix ──
+    // ── Graphic R5: Coverage Gap Bubble Matrix ──
     html += `<div class="dfi-graphic-section">
-        <h2>4. Coverage Gap: The AMT Blind Spot</h2>
-        <p class="dfi-graphic-subtitle">With only 16% of vendors meeting the 2.0 threshold on Adversary Management, the market has a structural blind spot in counter-intelligence and pre-exploitation operations.</p>
+        <h2>5. Coverage Gap: The Adversary Management Blind Spot</h2>
+        <p class="dfi-graphic-subtitle">With only one vendor in eight meeting competency on Adversary Management, the market has a structural blind spot in counter-intelligence and pre-exploitation operations.</p>
         <div style="background:linear-gradient(135deg,#fff5f5,#fafaf8);border:2px solid #a80000;border-radius:14px;padding:22px 28px;max-width:900px">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
                 <div>
@@ -20946,16 +24623,16 @@ function _pciRenderReimaginGraphics(panel, stats) {
                         </ul>
                     </div>
                     <div style="background:#fff0f0;border-radius:8px;padding:10px;margin-top:12px;font-size:12px;border:1px solid #f0c0c0">
-                        <strong style="color:#a80000">Bottom Line:</strong> 84% of the preemptive cybersecurity market operates without adversary intelligence — reactive by design, regardless of marketing claims.
+                        <strong style="color:#a80000">Bottom Line:</strong> The vast majority of the preemptive cybersecurity market operates without adversary intelligence, reactive by design regardless of marketing claims.
                     </div>
                 </div>
             </div>
         </div>
     </div>`;
 
-    // ── Graphic R5: Reimagining Operations Roadmap ──
+    // ── Graphic R6: Reimagining Operations Roadmap ──
     html += `<div class="dfi-graphic-section">
-        <h2>5. The Reimagined Operations Model</h2>
+        <h2>6. The Reimagined Operations Model</h2>
         <p class="dfi-graphic-subtitle">From reactive SOC to preemptive operations: the capability journey required to achieve full-spectrum adversary disruption.</p>
         <div style="overflow-x:auto">
         <div style="min-width:700px;padding:8px 0">
@@ -20979,7 +24656,7 @@ function _pciRenderReimaginGraphics(panel, stats) {
             <div style="flex:1;background:#fff;border:1px solid ${s.color};border-left:none;padding:12px 16px">
                 <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
                     <strong style="color:${s.color}">${s.pillar}: ${pillarLabels[s.pillar]}</strong>
-                    <span style="font-size:12px;color:#888">${s.pct} penetration • ${s.score} avg</span>
+                    <span style="font-size:12px;color:#888">${s.pct} market penetration</span>
                 </div>
                 <div style="font-size:12px;color:#555">${s.desc}</div>
                 <div style="height:6px;background:#f0e8e0;border-radius:3px;margin-top:8px">
@@ -20994,7 +24671,78 @@ function _pciRenderReimaginGraphics(panel, stats) {
         </div></div>
         <div style="background:#f0faff;border:2px solid #0078d4;border-radius:10px;padding:12px 16px;margin-top:8px">
             <strong style="color:#0078d4">Reimagined Operations Thesis</strong><br>
-            <span style="color:#555;font-size:13px">The most defensible security posture combines Phase 2 (AMT: Adversary Profiling) with Phase 4 (ADR: Adversary Disruption). Currently, only 16% and 33% of vendors deliver these capabilities at threshold — the biggest opportunity in preemptive cybersecurity.</span>
+            <span style="color:#555;font-size:13px">The most defensible security posture combines Phase 2 (Adversary Management: profiling) with Phase 4 (Adversary Disruption). Currently, only a small minority of vendors deliver these capabilities at competency threshold, representing the biggest opportunity in preemptive cybersecurity.</span>
+        </div>
+    </div>`;
+
+    html += `</div><div id="pci-reimagin-panel-concepts" data-reimagin-subtab="concepts" style="display:none">
+        <div class="dfi-graphic-section">
+            <h2>Concept Lab — Six Alternate Diagram Options</h2>
+            <p class="dfi-graphic-subtitle">These prototypes are designed to tell the same strategy story more clearly: where the market sits today, what each model is missing, and what the future-state operating model needs to combine.</p>
+            <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:12px;max-width:1120px">
+                <div style="background:${dk ? '#1f2c3a' : '#f0faff'};border:1px solid ${dk ? '#37516a' : '#c8dff7'};border-radius:12px;padding:14px">
+                    <div style="font-size:13px;font-weight:800;color:${dk ? '#8ec8ff' : '#0078d4'};margin-bottom:6px">Why these six?</div>
+                    <div style="font-size:12px;color:${dk ? '#d9e6f2' : '#555'};line-height:1.6">The current Venn-style version explains the idea, but it still asks the reader to decode overlap that is not literal. These alternatives make the transition from <strong>current models</strong> to <strong>future-state convergence</strong> more explicit, each from a different executive-story angle.</div>
+                </div>
+                <div style="background:${dk ? '#2f2618' : '#fff8f0'};border:1px solid ${dk ? '#5c4c30' : '#f0d2b8'};border-radius:12px;padding:14px">
+                    <div style="font-size:13px;font-weight:800;color:${dk ? '#ffca8a' : '#ca5010'};margin-bottom:6px">Note</div>
+                    <div style="font-size:12px;color:${dk ? '#f0e4d4' : '#555'};line-height:1.6">These concepts are browser prototypes only for now. The export deck still uses the published six-slide set, so we can pick the strongest concept first and only then mirror it into PPTX.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dfi-graphic-section">
+            <h2>Option 1. Capability Convergence Arrow Map</h2>
+            <p class="dfi-graphic-subtitle">Best when the goal is to show that three incomplete current models must converge into one harder-to-replace future-state operating model.</p>
+            <div id="pci-reimagin-alt-convergence" style="max-width:1120px;margin:0 auto 12px"></div>
+            <div style="background:#f8f8f5;border:1px solid #e0ddd5;border-radius:10px;padding:10px 12px;font-size:12px;color:#555;max-width:1120px;margin:0 auto">
+                <strong style="color:#1a3a5c">Best use:</strong> Most explicit current → future storyline; easiest to understand in an executive readout.
+            </div>
+        </div>
+
+        <div class="dfi-graphic-section">
+            <h2>Option 2. Triangle Operating Model Map</h2>
+            <p class="dfi-graphic-subtitle">Best when the goal is to preserve the three-lever logic while making the balanced future-state center feel analytically earned.</p>
+            <div id="pci-reimagin-alt-triangle" style="max-width:1120px;margin:0 auto 12px"></div>
+            <div style="background:#f8f8f5;border:1px solid #e0ddd5;border-radius:10px;padding:10px 12px;font-size:12px;color:#555;max-width:1120px;margin:0 auto">
+                <strong style="color:#1a3a5c">Best use:</strong> Keeps the three structural levers visible without implying literal vendor overlap.
+            </div>
+        </div>
+
+        <div class="dfi-graphic-section">
+            <h2>Option 3. Current-State vs. Future-State Twin Panel</h2>
+            <p class="dfi-graphic-subtitle">Best when the audience wants a clean before/after slide: what the market looks like today versus what the winning model looks like tomorrow.</p>
+            <div id="pci-reimagin-alt-twopanel" style="max-width:1120px;margin:0 auto 12px"></div>
+            <div style="background:#f8f8f5;border:1px solid #e0ddd5;border-radius:10px;padding:10px 12px;font-size:12px;color:#555;max-width:1120px;margin:0 auto">
+                <strong style="color:#1a3a5c">Best use:</strong> Strongest “today vs. tomorrow” structure for fast executive comprehension.
+            </div>
+        </div>
+
+        <div class="dfi-graphic-section">
+            <h2>Option 4. Maturity Bridge / Stepping Stones</h2>
+            <p class="dfi-graphic-subtitle">Best when the story is market evolution: the industry must step from platform scale to ecosystem leverage to accountable outcomes before it reaches full-spectrum delivery.</p>
+            <div id="pci-reimagin-alt-bridge" style="max-width:1120px;margin:0 auto 12px"></div>
+            <div style="background:#f8f8f5;border:1px solid #e0ddd5;border-radius:10px;padding:10px 12px;font-size:12px;color:#555;max-width:1120px;margin:0 auto">
+                <strong style="color:#1a3a5c">Best use:</strong> Most natural when positioning the shift as a staged market journey over time.
+            </div>
+        </div>
+
+        <div class="dfi-graphic-section">
+            <h2>Option 5. Capability Radar with Future-State Target Zone</h2>
+            <p class="dfi-graphic-subtitle">Best when the audience wants an analytical, evidence-driven chart showing market-wide pillar penetration against a future-state target profile.</p>
+            <div id="pci-reimagin-alt-radar" style="max-width:1120px;margin:0 auto 12px"></div>
+            <div style="background:#f8f8f5;border:1px solid #e0ddd5;border-radius:10px;padding:10px 12px;font-size:12px;color:#555;max-width:1120px;margin:0 auto">
+                <strong style="color:#1a3a5c">Best use:</strong> Highest analytical credibility; strongest bridge between market thesis and market-wide capability penetration.
+            </div>
+        </div>
+
+        <div class="dfi-graphic-section">
+            <h2>Option 6. Strategic 2×2 Posture Map</h2>
+            <p class="dfi-graphic-subtitle">Best when the slide needs to position the market clearly: which models control platform IP, which own outcomes, and where the future-state target sits on both dimensions.</p>
+            <div id="pci-reimagin-alt-posture" style="max-width:1120px;margin:0 auto 12px"></div>
+            <div style="background:#f8f8f5;border:1px solid #e0ddd5;border-radius:10px;padding:10px 12px;font-size:12px;color:#555;max-width:1120px;margin:0 auto">
+                <strong style="color:#1a3a5c">Best use:</strong> Most executive-friendly positioning chart; especially good if you want one “strategic destination” in the upper-right.
+            </div>
         </div>
     </div>`;
 
@@ -21003,44 +24751,75 @@ function _pciRenderReimaginGraphics(panel, stats) {
     // Initialize D3 charts
     requestAnimationFrame(() => {
         _pciDrawD3Radar('pci-reimagin-radar-1', [
-            { label: 'Direct Service (11)', color: '#107c10', values: { EXM: pp.EXM?.direct_avg || 1.74, AMT: pp.AMT?.direct_avg || 1.17, ADR: pp.ADR?.direct_avg || 1.91, PPM: pp.PPM?.direct_avg || 1.72, SVC: pp.SVC?.direct_avg || 1.82 } },
-            { label: 'Platform+Partner (15)', color: '#0078d4', values: { EXM: pp.EXM?.partner_avg || 1.89, AMT: pp.AMT?.partner_avg || 1.29, ADR: pp.ADR?.partner_avg || 1.47, PPM: pp.PPM?.partner_avg || 1.37, SVC: pp.SVC?.partner_avg || 1.90 } },
-            { label: 'Platform-Only (25)', color: '#ca5010', values: { EXM: pp.EXM?.platform_avg || 1.86, AMT: pp.AMT?.platform_avg || 1.15, ADR: pp.ADR?.platform_avg || 1.46, PPM: pp.PPM?.platform_avg || 1.90, SVC: pp.SVC?.platform_avg || 1.42 } },
+            { label: 'Direct Service (21)', color: '#107c10', values: { EXM: pp.EXM?.direct_avg || 1.97, AMT: pp.AMT?.direct_avg || 1.42, ADR: pp.ADR?.direct_avg || 1.79, PPM: pp.PPM?.direct_avg || 1.67, SVC: pp.SVC?.direct_avg || 2.69 } },
+            { label: 'Platform+Partner (23)', color: '#0078d4', values: { EXM: pp.EXM?.partner_avg || 2.18, AMT: pp.AMT?.partner_avg || 1.51, ADR: pp.ADR?.partner_avg || 1.57, PPM: pp.PPM?.partner_avg || 1.54, SVC: pp.SVC?.partner_avg || 2.71 } },
+            { label: 'Platform-Only (42)', color: '#ca5010', values: { EXM: pp.EXM?.platform_avg || 2.04, AMT: pp.AMT?.platform_avg || 1.35, ADR: pp.ADR?.platform_avg || 1.57, PPM: pp.PPM?.platform_avg || 1.99, SVC: pp.SVC?.platform_avg || 2.36 } },
         ], 3);
 
         _pciDrawD3Radar('pci-reimagin-radar-2', [
-            { label: 'Direct Service (11)', color: '#107c10', values: { EXM: 1.74, AMT: 1.17, ADR: 1.91, PPM: 1.72, SVC: 1.82 } },
-            { label: 'Platform+Partner (15)', color: '#0078d4', values: { EXM: 1.89, AMT: 1.29, ADR: 1.47, PPM: 1.37, SVC: 1.90 } },
-            { label: 'Platform-Only (25)', color: '#ca5010', values: { EXM: 1.86, AMT: 1.15, ADR: 1.46, PPM: 1.90, SVC: 1.42 } },
+            { label: 'Direct Service (21)', color: '#107c10', values: { EXM: 1.97, AMT: 1.42, ADR: 1.79, PPM: 1.67, SVC: 2.69 } },
+            { label: 'Platform+Partner (23)', color: '#0078d4', values: { EXM: 2.18, AMT: 1.51, ADR: 1.57, PPM: 1.54, SVC: 2.71 } },
+            { label: 'Platform-Only (42)', color: '#ca5010', values: { EXM: 2.04, AMT: 1.35, ADR: 1.57, PPM: 1.99, SVC: 2.36 } },
         ], 3);
 
+        _pciDrawReimaginOperatingModel('pci-reimagin-overlap-3', conceptData);
+
         _pciDrawD3HBar('pci-reimagin-hbar-3', [
+            { label: 'SVC', bars: [
+                { label: 'Direct', value: 2.69, color: '#107c10' },
+                { label: 'Partner', value: 2.71, color: '#0078d4' },
+                { label: 'Platform', value: 2.36, color: '#ca5010' },
+            ]},
             { label: 'EXM', bars: [
-                { label: 'Direct', value: 1.74, color: '#107c10' },
-                { label: 'Partner', value: 1.89, color: '#0078d4' },
-                { label: 'Platform', value: 1.86, color: '#ca5010' },
-            ]},
-            { label: 'AMT', bars: [
-                { label: 'Direct', value: 1.17, color: '#107c10' },
-                { label: 'Partner', value: 1.29, color: '#0078d4' },
-                { label: 'Platform', value: 1.15, color: '#ca5010' },
-            ]},
-            { label: 'ADR', bars: [
-                { label: 'Direct', value: 1.91, color: '#107c10' },
-                { label: 'Partner', value: 1.47, color: '#0078d4' },
-                { label: 'Platform', value: 1.46, color: '#ca5010' },
+                { label: 'Direct', value: 1.97, color: '#107c10' },
+                { label: 'Partner', value: 2.18, color: '#0078d4' },
+                { label: 'Platform', value: 2.04, color: '#ca5010' },
             ]},
             { label: 'PPM', bars: [
-                { label: 'Direct', value: 1.72, color: '#107c10' },
-                { label: 'Partner', value: 1.37, color: '#0078d4' },
-                { label: 'Platform', value: 1.90, color: '#ca5010' },
+                { label: 'Direct', value: 1.67, color: '#107c10' },
+                { label: 'Partner', value: 1.54, color: '#0078d4' },
+                { label: 'Platform', value: 1.99, color: '#ca5010' },
             ]},
-            { label: 'SVC', bars: [
-                { label: 'Direct', value: 1.82, color: '#107c10' },
-                { label: 'Partner', value: 1.90, color: '#0078d4' },
-                { label: 'Platform', value: 1.42, color: '#ca5010' },
+            { label: 'ADR', bars: [
+                { label: 'Direct', value: 1.79, color: '#107c10' },
+                { label: 'Partner', value: 1.57, color: '#0078d4' },
+                { label: 'Platform', value: 1.57, color: '#ca5010' },
+            ]},
+            { label: 'AMT', bars: [
+                { label: 'Direct', value: 1.42, color: '#107c10' },
+                { label: 'Partner', value: 1.51, color: '#0078d4' },
+                { label: 'Platform', value: 1.35, color: '#ca5010' },
             ]},
         ], { maxVal: 2.5 });
+
+        _pciDrawReimaginConvergenceMap('pci-reimagin-alt-convergence', conceptData);
+        _pciDrawReimaginTriangleMap('pci-reimagin-alt-triangle', conceptData);
+        _pciDrawReimaginTwoPanel('pci-reimagin-alt-twopanel', conceptData);
+        _pciDrawReimaginMaturityBridge('pci-reimagin-alt-bridge', conceptData);
+        _pciDrawReimaginTargetRadar('pci-reimagin-alt-radar', conceptData);
+        _pciDrawReimaginPostureMap('pci-reimagin-alt-posture', conceptData);
+    });
+}
+
+function _pciSetReimaginGraphicsSubtab(tabKey) {
+    const tabs = {
+        current: document.getElementById('pci-reimagin-tab-current'),
+        concepts: document.getElementById('pci-reimagin-tab-concepts'),
+    };
+    const panels = document.querySelectorAll('[data-reimagin-subtab]');
+    const active = tabKey === 'concepts' ? 'concepts' : 'current';
+
+    panels.forEach(panel => {
+        panel.style.display = panel.dataset.reimaginSubtab === active ? '' : 'none';
+    });
+
+    Object.entries(tabs).forEach(([key, btn]) => {
+        if (!btn) return;
+        const isActive = key === active;
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        btn.style.background = isActive ? '#1a3a5c' : '#fff';
+        btn.style.color = isActive ? '#fff' : '#1a3a5c';
+        btn.style.borderColor = isActive ? '#1a3a5c' : '#c7c2b8';
     });
 }
 
@@ -21221,6 +25000,7 @@ function _pciDrawD3HBar(containerId, data, opts) {
 
         group.bars.forEach(bar => {
             const bw = xScale(Math.min(bar.value, maxVal));
+            const tier = bar.value >= 2.5 ? 'Strong' : bar.value >= 2.0 ? 'Developing' : bar.value >= 1.5 ? 'Needs attention' : 'Critical gap';
             svg.append('rect')
                 .attr('x', margin.left).attr('y', y + 2)
                 .attr('width', bw).attr('height', rowH - 4)
@@ -21232,7 +25012,7 @@ function _pciDrawD3HBar(containerId, data, opts) {
             svg.append('text')
                 .attr('x', margin.left + bw + 4).attr('y', y + rowH / 2 + 4)
                 .attr('font-size', 10).attr('font-weight', '700').attr('fill', bar.color)
-                .text(bar.value.toFixed(2));
+                .text(tier);
             svg.append('text')
                 .attr('x', margin.left - 8).attr('y', y + rowH / 2 + 4)
                 .attr('text-anchor', 'end').attr('font-size', 10).attr('fill', '#666')
@@ -21242,12 +25022,628 @@ function _pciDrawD3HBar(containerId, data, opts) {
         y += groupGap;
     });
 
-    // X axis ticks
-    [0, 1, 2, 3, 4, 5].forEach(t => {
-        if (t > maxVal) return;
-        svg.append('text').attr('x', margin.left + xScale(t)).attr('y', H - margin.bottom + 14)
-            .attr('text-anchor', 'middle').attr('font-size', 9).attr('fill', '#999').text(t);
+    // X axis threshold label only
+    svg.append('text').attr('x', margin.left + xScale(2.0)).attr('y', H - margin.bottom + 14)
+        .attr('text-anchor', 'middle').attr('font-size', 9).attr('fill', '#a80000').text('threshold');
+}
+
+function _pciDrawReimaginOperatingModel(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const fmt = (v) => Number(v || 0).toFixed(2);
+    const svg = `
+        <svg viewBox="0 0 1120 560" width="100%" height="auto" style="font-family:'Segoe UI',system-ui,sans-serif;background:#fffefb;border:1px solid #e0ddd5;border-radius:16px">
+            <defs>
+                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.12"></feDropShadow>
+                </filter>
+            </defs>
+
+            <rect x="0" y="0" width="1120" height="74" fill="#1a3a5c"></rect>
+            <text x="560" y="30" text-anchor="middle" font-size="24" font-weight="800" fill="#ffffff">Where the Market Sits Today vs. Where the Model Needs to Go</text>
+            <text x="560" y="54" text-anchor="middle" font-size="12" fill="#cdd9e8">Three circles = operating levers, not vendor overlap. The strategic goal is the center: platform IP + ecosystem scale + accountable services.</text>
+
+            <circle cx="350" cy="285" r="168" fill="#ca5010" fill-opacity="0.22" stroke="#ca5010" stroke-width="3" filter="url(#shadow)"></circle>
+            <circle cx="560" cy="180" r="168" fill="#0078d4" fill-opacity="0.20" stroke="#0078d4" stroke-width="3" filter="url(#shadow)"></circle>
+            <circle cx="770" cy="285" r="168" fill="#107c10" fill-opacity="0.20" stroke="#107c10" stroke-width="3" filter="url(#shadow)"></circle>
+
+            <text x="350" y="120" text-anchor="middle" font-size="16" font-weight="800" fill="#ca5010">Platform IP &amp; Product Control</text>
+            <text x="560" y="30"></text>
+            <text x="560" y="20"></text>
+            <text x="560" y="62" text-anchor="middle" font-size="16" font-weight="800" fill="#0078d4">Partner Ecosystem Scale</text>
+            <text x="770" y="120" text-anchor="middle" font-size="16" font-weight="800" fill="#107c10">Managed-Service Accountability</text>
+
+            <g>
+                <rect x="150" y="250" width="170" height="106" rx="12" fill="#fff8f0" stroke="#ca5010" stroke-width="2"></rect>
+                <text x="235" y="275" text-anchor="middle" font-size="14" font-weight="800" fill="#ca5010">Platform-Only</text>
+                <text x="235" y="297" text-anchor="middle" font-size="12" fill="#333">${data.platform.count} vendors</text>
+                <text x="235" y="317" text-anchor="middle" font-size="11" fill="#555">PPM ${fmt(data.platform.ppm)} strongest</text>
+                <text x="235" y="336" text-anchor="middle" font-size="11" fill="#555">AMT ${fmt(data.platform.amt)} / SVC ${fmt(data.platform.svc)}</text>
+            </g>
+
+            <g>
+                <rect x="445" y="185" width="230" height="106" rx="12" fill="#f0faff" stroke="#0078d4" stroke-width="2"></rect>
+                <text x="560" y="210" text-anchor="middle" font-size="14" font-weight="800" fill="#0078d4">Platform + Partner</text>
+                <text x="560" y="232" text-anchor="middle" font-size="12" fill="#333">${data.partner.count} vendors</text>
+                <text x="560" y="252" text-anchor="middle" font-size="11" fill="#555">Best EXM ${fmt(data.partner.exm)} + AMT ${fmt(data.partner.amt)}</text>
+                <text x="560" y="271" text-anchor="middle" font-size="11" fill="#555">Breadth wins, handoff risk remains</text>
+            </g>
+
+            <g>
+                <rect x="800" y="250" width="170" height="106" rx="12" fill="#f0fff4" stroke="#107c10" stroke-width="2"></rect>
+                <text x="885" y="275" text-anchor="middle" font-size="14" font-weight="800" fill="#107c10">Direct Service</text>
+                <text x="885" y="297" text-anchor="middle" font-size="12" fill="#333">${data.direct.count} vendors</text>
+                <text x="885" y="317" text-anchor="middle" font-size="11" fill="#555">ADR ${fmt(data.direct.adr)} + SVC ${fmt(data.direct.svc)} lead</text>
+                <text x="885" y="336" text-anchor="middle" font-size="11" fill="#555">Outcome owner, needs more AMT depth</text>
+            </g>
+
+            <g>
+                <rect x="462" y="300" width="196" height="102" rx="14" fill="#f8f0ff" stroke="#8764b8" stroke-width="2.5"></rect>
+                <text x="560" y="327" text-anchor="middle" font-size="15" font-weight="800" fill="#8764b8">Future Full-Spectrum Center</text>
+                <text x="560" y="349" text-anchor="middle" font-size="12" fill="#333">Platform + partner leverage + owned outcomes</text>
+                <text x="560" y="370" text-anchor="middle" font-size="11" fill="#555">Only ${data.fullSpectrum} of ${data.totalN} vendors are even close today</text>
+                <text x="560" y="389" text-anchor="middle" font-size="11" fill="#555">This is the hardest position for buyers to replace</text>
+            </g>
+
+            <line x1="320" y1="430" x2="465" y2="390" stroke="#ca5010" stroke-width="2" stroke-dasharray="5 4"></line>
+            <line x1="560" y1="292" x2="560" y2="300" stroke="#0078d4" stroke-width="2" stroke-dasharray="5 4"></line>
+            <line x1="800" y1="430" x2="655" y2="390" stroke="#107c10" stroke-width="2" stroke-dasharray="5 4"></line>
+
+            <g>
+                <rect x="54" y="442" width="1012" height="84" rx="12" fill="#f8f8f5" stroke="#d9d4ca"></rect>
+                <text x="78" y="468" font-size="13" font-weight="800" fill="#1a3a5c">How to read this graphic</text>
+                <text x="78" y="490" font-size="12" fill="#555">• Platform-only vendors optimize for software scale but stop short of owned outcomes.</text>
+                <text x="78" y="510" font-size="12" fill="#555">• Hybrid vendors stretch farther left and right through partners, but shared accountability becomes the structural tension.</text>
+                <text x="78" y="530" font-size="12" fill="#555">• Services organizations win trust and response ownership, but still need stronger preemptive platform depth to dominate the full kill chain.</text>
+            </g>
+        </svg>`;
+
+    container.innerHTML = svg;
+}
+
+function _pciDrawReimaginConvergenceMap(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const pct = (v) => `${Number(v || 0)}%`;
+    container.innerHTML = `
+        <svg viewBox="0 0 1120 430" width="100%" height="auto" style="font-family:'Segoe UI',system-ui,sans-serif;background:#fffefb;border:1px solid #e0ddd5;border-radius:16px">
+            <defs>
+                <marker id="arrowhead-conv" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6" fill="#7b8794"></path>
+                </marker>
+            </defs>
+            <rect x="0" y="0" width="1120" height="66" fill="#1a3a5c"></rect>
+            <text x="560" y="29" text-anchor="middle" font-size="23" font-weight="800" fill="#fff">Current Models Converge Toward the Future-State Operating Model</text>
+            <text x="560" y="50" text-anchor="middle" font-size="12" fill="#cdd9e8">Each model is strong in one place today, but the strategic destination combines product control, ecosystem scale, and accountable delivery.</text>
+
+            <rect x="64" y="98" width="300" height="82" rx="12" fill="#fff8f0" stroke="#ca5010" stroke-width="2"></rect>
+            <text x="214" y="123" text-anchor="middle" font-size="17" font-weight="800" fill="#ca5010">Platform-Only</text>
+            <text x="214" y="145" text-anchor="middle" font-size="14" font-weight="800" fill="#333">${pct(data.platform.pct)} of market</text>
+            <text x="214" y="164" text-anchor="middle" font-size="11" fill="#555">Software scale; outcome gap</text>
+
+            <rect x="64" y="215" width="300" height="82" rx="12" fill="#f0faff" stroke="#0078d4" stroke-width="2"></rect>
+            <text x="214" y="240" text-anchor="middle" font-size="17" font-weight="800" fill="#0078d4">Platform + Partner</text>
+            <text x="214" y="262" text-anchor="middle" font-size="14" font-weight="800" fill="#333">${pct(data.partner.pct)} of market</text>
+            <text x="214" y="281" text-anchor="middle" font-size="11" fill="#555">Breadth; handoff friction</text>
+
+            <rect x="64" y="332" width="300" height="82" rx="12" fill="#f0fff4" stroke="#107c10" stroke-width="2"></rect>
+            <text x="214" y="357" text-anchor="middle" font-size="17" font-weight="800" fill="#107c10">Direct Service</text>
+            <text x="214" y="379" text-anchor="middle" font-size="14" font-weight="800" fill="#333">${pct(data.direct.pct)} of market</text>
+            <text x="214" y="398" text-anchor="middle" font-size="11" fill="#555">Execution; platform gap</text>
+
+            <line x1="364" y1="139" x2="745" y2="177" stroke="#7b8794" stroke-width="3" marker-end="url(#arrowhead-conv)"></line>
+            <line x1="364" y1="256" x2="745" y2="207" stroke="#7b8794" stroke-width="3" marker-end="url(#arrowhead-conv)"></line>
+            <line x1="364" y1="373" x2="745" y2="237" stroke="#7b8794" stroke-width="3" marker-end="url(#arrowhead-conv)"></line>
+
+            <rect x="760" y="122" width="320" height="188" rx="18" fill="#f8f0ff" stroke="#8764b8" stroke-width="3"></rect>
+            <text x="920" y="153" text-anchor="middle" font-size="19" font-weight="800" fill="#8764b8">Future Full-Spectrum Model</text>
+            <text x="920" y="180" text-anchor="middle" font-size="13" font-weight="700" fill="#333">Platform + ecosystem + services</text>
+            <text x="920" y="204" text-anchor="middle" font-size="12" fill="#555">Product depth</text>
+            <text x="920" y="224" text-anchor="middle" font-size="12" fill="#555">Partner leverage</text>
+            <text x="920" y="244" text-anchor="middle" font-size="12" fill="#555">Owned outcomes</text>
+            <rect x="825" y="263" width="190" height="28" rx="14" fill="#8764b8" fill-opacity="0.12" stroke="#8764b8"></rect>
+            <text x="920" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#8764b8">${pct(data.fullSpectrumPct)} near target today</text>
+
+            <rect x="440" y="91" width="156" height="32" rx="16" fill="#fff" stroke="#ca5010"></rect>
+            <text x="518" y="112" text-anchor="middle" font-size="11" fill="#ca5010">Add outcomes</text>
+
+            <rect x="442" y="187" width="160" height="36" rx="18" fill="#fff" stroke="#0078d4"></rect>
+            <text x="522" y="210" text-anchor="middle" font-size="11" fill="#0078d4">Reduce handoffs</text>
+
+            <rect x="438" y="320" width="168" height="36" rx="18" fill="#fff" stroke="#107c10"></rect>
+            <text x="522" y="343" text-anchor="middle" font-size="11" fill="#107c10">Deepen platform</text>
+        </svg>`;
+}
+
+function _pciDrawReimaginTriangleMap(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = `
+        <svg viewBox="0 0 1120 430" width="100%" height="auto" style="font-family:'Segoe UI',system-ui,sans-serif;background:#fffefb;border:1px solid #e0ddd5;border-radius:16px">
+            <rect x="0" y="0" width="1120" height="66" fill="#1a3a5c"></rect>
+            <text x="560" y="29" text-anchor="middle" font-size="23" font-weight="800" fill="#fff">Triangle Map: Balance the Three Operating Levers</text>
+            <text x="560" y="50" text-anchor="middle" font-size="12" fill="#cdd9e8">The center becomes meaningful because it is the only position that balances platform control, partner scale, and service accountability at once.</text>
+
+            <polygon points="560,100 250,340 870,340" fill="#f8fbff" stroke="#d0d7df" stroke-width="3"></polygon>
+            <text x="560" y="94" text-anchor="middle" font-size="16" font-weight="800" fill="#0078d4">Partner Ecosystem Scale</text>
+            <text x="250" y="364" text-anchor="middle" font-size="16" font-weight="800" fill="#ca5010">Platform IP &amp; Product Control</text>
+            <text x="870" y="364" text-anchor="middle" font-size="16" font-weight="800" fill="#107c10">Managed-Service Accountability</text>
+
+            <circle cx="335" cy="278" r="52" fill="#fff8f0" stroke="#ca5010" stroke-width="2.5"></circle>
+            <text x="335" y="270" text-anchor="middle" font-size="14" font-weight="800" fill="#ca5010">Platform-Only</text>
+            <text x="335" y="291" text-anchor="middle" font-size="11" fill="#333">${data.platform.count} vendors</text>
+            <text x="335" y="307" text-anchor="middle" font-size="10" fill="#555">High IP, low outcomes</text>
+
+            <circle cx="560" cy="170" r="56" fill="#f0faff" stroke="#0078d4" stroke-width="2.5"></circle>
+            <text x="560" y="161" text-anchor="middle" font-size="14" font-weight="800" fill="#0078d4">Platform + Partner</text>
+            <text x="560" y="183" text-anchor="middle" font-size="11" fill="#333">${data.partner.count} vendors</text>
+            <text x="560" y="199" text-anchor="middle" font-size="10" fill="#555">Best breadth, split ownership</text>
+
+            <circle cx="780" cy="278" r="52" fill="#f0fff4" stroke="#107c10" stroke-width="2.5"></circle>
+            <text x="780" y="270" text-anchor="middle" font-size="14" font-weight="800" fill="#107c10">Direct Service</text>
+            <text x="780" y="291" text-anchor="middle" font-size="11" fill="#333">${data.direct.count} vendors</text>
+            <text x="780" y="307" text-anchor="middle" font-size="10" fill="#555">High outcomes, less platform reach</text>
+
+            <circle cx="560" cy="250" r="64" fill="#f8f0ff" stroke="#8764b8" stroke-width="3"></circle>
+            <text x="560" y="238" text-anchor="middle" font-size="15" font-weight="800" fill="#8764b8">Future Full-Spectrum</text>
+            <text x="560" y="260" text-anchor="middle" font-size="11" fill="#333">Balanced position across all three levers</text>
+            <text x="560" y="278" text-anchor="middle" font-size="11" fill="#555">${data.fullSpectrum} of ${data.totalN} vendors near center today</text>
+
+            <line x1="377" y1="264" x2="505" y2="252" stroke="#ca5010" stroke-width="2" stroke-dasharray="5 4"></line>
+            <line x1="560" y1="226" x2="560" y2="188" stroke="#0078d4" stroke-width="2" stroke-dasharray="5 4"></line>
+            <line x1="728" y1="264" x2="615" y2="252" stroke="#107c10" stroke-width="2" stroke-dasharray="5 4"></line>
+
+            <rect x="88" y="385" width="944" height="26" rx="12" fill="#f8f8f5" stroke="#d9d4ca"></rect>
+            <text x="560" y="402" text-anchor="middle" font-size="11.5" fill="#555">This option works when you want the center to mean “balanced business model,” not literal overlap. It is cleaner than a Venn and still preserves the three-lever logic.</text>
+        </svg>`;
+}
+
+function _pciDrawReimaginTwoPanel(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = `
+        <svg viewBox="0 0 1120 430" width="100%" height="auto" style="font-family:'Segoe UI',system-ui,sans-serif;background:#fffefb;border:1px solid #e0ddd5;border-radius:16px">
+            <rect x="0" y="0" width="1120" height="66" fill="#1a3a5c"></rect>
+            <text x="560" y="29" text-anchor="middle" font-size="23" font-weight="800" fill="#fff">Twin Panel: How the Market Is Structured Today vs. What the Winning Model Looks Like</text>
+            <text x="560" y="50" text-anchor="middle" font-size="12" fill="#cdd9e8">This option separates segmentation from destination so the audience never has to infer the move from current state to future state.</text>
+
+            <rect x="42" y="92" width="450" height="300" rx="16" fill="#fafaf8" stroke="#d9d4ca" stroke-width="2"></rect>
+            <text x="267" y="122" text-anchor="middle" font-size="18" font-weight="800" fill="#1a3a5c">Current State: Fragmented Models</text>
+            <text x="267" y="143" text-anchor="middle" font-size="11" fill="#666">Three defensible positions, each with a structural ceiling</text>
+
+            <rect x="68" y="173" width="120" height="165" rx="12" fill="#fff8f0" stroke="#ca5010" stroke-width="2"></rect>
+            <text x="128" y="197" text-anchor="middle" font-size="14" font-weight="800" fill="#ca5010">Platform-Only</text>
+            <text x="128" y="218" text-anchor="middle" font-size="11" fill="#333">${data.platform.count} vendors</text>
+            <text x="128" y="245" text-anchor="middle" font-size="11" fill="#555">Strong:</text>
+            <text x="128" y="262" text-anchor="middle" font-size="10" fill="#555">IP control</text>
+            <text x="128" y="283" text-anchor="middle" font-size="11" fill="#a80000">Missing:</text>
+            <text x="128" y="300" text-anchor="middle" font-size="10" fill="#555">owned outcomes</text>
+
+            <rect x="207" y="173" width="120" height="165" rx="12" fill="#f0faff" stroke="#0078d4" stroke-width="2"></rect>
+            <text x="267" y="197" text-anchor="middle" font-size="14" font-weight="800" fill="#0078d4">Platform + Partner</text>
+            <text x="267" y="218" text-anchor="middle" font-size="11" fill="#333">${data.partner.count} vendors</text>
+            <text x="267" y="245" text-anchor="middle" font-size="11" fill="#555">Strong:</text>
+            <text x="267" y="262" text-anchor="middle" font-size="10" fill="#555">breadth + scale</text>
+            <text x="267" y="283" text-anchor="middle" font-size="11" fill="#a80000">Missing:</text>
+            <text x="267" y="300" text-anchor="middle" font-size="10" fill="#555">single accountability</text>
+
+            <rect x="346" y="173" width="120" height="165" rx="12" fill="#f0fff4" stroke="#107c10" stroke-width="2"></rect>
+            <text x="406" y="197" text-anchor="middle" font-size="14" font-weight="800" fill="#107c10">Direct Service</text>
+            <text x="406" y="218" text-anchor="middle" font-size="11" fill="#333">${data.direct.count} vendors</text>
+            <text x="406" y="245" text-anchor="middle" font-size="11" fill="#555">Strong:</text>
+            <text x="406" y="262" text-anchor="middle" font-size="10" fill="#555">execution + trust</text>
+            <text x="406" y="283" text-anchor="middle" font-size="11" fill="#a80000">Missing:</text>
+            <text x="406" y="300" text-anchor="middle" font-size="10" fill="#555">platform depth</text>
+
+            <text x="560" y="250" text-anchor="middle" font-size="52" font-weight="800" fill="#8764b8">→</text>
+            <text x="560" y="286" text-anchor="middle" font-size="11" fill="#666">convergence</text>
+
+            <rect x="628" y="92" width="450" height="300" rx="16" fill="#f8fbff" stroke="#d3dae2" stroke-width="2"></rect>
+            <text x="853" y="122" text-anchor="middle" font-size="18" font-weight="800" fill="#8764b8">Future State: Integrated Full-Spectrum Model</text>
+            <text x="853" y="143" text-anchor="middle" font-size="11" fill="#666">One operating model combines the strengths buyers currently source separately</text>
+
+            <rect x="735" y="170" width="236" height="44" rx="12" fill="#fff8f0" stroke="#ca5010" stroke-width="2"></rect>
+            <text x="853" y="197" text-anchor="middle" font-size="13" font-weight="800" fill="#ca5010">Platform IP + Product Control</text>
+
+            <rect x="710" y="223" width="286" height="44" rx="12" fill="#f0faff" stroke="#0078d4" stroke-width="2"></rect>
+            <text x="853" y="250" text-anchor="middle" font-size="13" font-weight="800" fill="#0078d4">Partner Ecosystem Leverage + Distribution Scale</text>
+
+            <rect x="745" y="276" width="216" height="44" rx="12" fill="#f0fff4" stroke="#107c10" stroke-width="2"></rect>
+            <text x="853" y="303" text-anchor="middle" font-size="13" font-weight="800" fill="#107c10">Managed-Service Accountability</text>
+
+            <rect x="720" y="336" width="266" height="34" rx="17" fill="#f8f0ff" stroke="#8764b8" stroke-width="2.5"></rect>
+            <text x="853" y="358" text-anchor="middle" font-size="12" font-weight="700" fill="#8764b8">Only ${data.fullSpectrum} of ${data.totalN} vendors look remotely like this today</text>
+        </svg>`;
+}
+
+function _pciDrawReimaginMaturityBridge(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = `
+        <svg viewBox="0 0 1120 430" width="100%" height="auto" style="font-family:'Segoe UI',system-ui,sans-serif;background:#fffefb;border:1px solid #e0ddd5;border-radius:16px">
+            <rect x="0" y="0" width="1120" height="66" fill="#1a3a5c"></rect>
+            <text x="560" y="29" text-anchor="middle" font-size="23" font-weight="800" fill="#fff">Maturity Bridge: The Market Must Cross Four Stones to Reach Full-Spectrum Delivery</text>
+            <text x="560" y="50" text-anchor="middle" font-size="12" fill="#cdd9e8">This option turns the story into a progression: platform scale, ecosystem leverage, outcome accountability, then integrated full-spectrum delivery.</text>
+
+            <path d="M50 330 C220 270 390 345 560 285 C730 225 900 310 1070 230" fill="none" stroke="#cfc8bc" stroke-width="12" stroke-linecap="round"></path>
+
+            <rect x="110" y="270" width="165" height="86" rx="18" fill="#fff8f0" stroke="#ca5010" stroke-width="2.5"></rect>
+            <text x="193" y="297" text-anchor="middle" font-size="15" font-weight="800" fill="#ca5010">Stone 1</text>
+            <text x="193" y="318" text-anchor="middle" font-size="12" fill="#333">Platform at Scale</text>
+            <text x="193" y="337" text-anchor="middle" font-size="11" fill="#555">Platform-Only sits here</text>
+            <text x="193" y="353" text-anchor="middle" font-size="10" fill="#555">${data.platform.count} vendors today</text>
+
+            <rect x="350" y="220" width="180" height="92" rx="18" fill="#f0faff" stroke="#0078d4" stroke-width="2.5"></rect>
+            <text x="440" y="247" text-anchor="middle" font-size="15" font-weight="800" fill="#0078d4">Stone 2</text>
+            <text x="440" y="269" text-anchor="middle" font-size="12" fill="#333">Ecosystem Leverage</text>
+            <text x="440" y="288" text-anchor="middle" font-size="11" fill="#555">Platform + Partner extends reach</text>
+            <text x="440" y="304" text-anchor="middle" font-size="10" fill="#555">${data.partner.count} vendors today</text>
+
+            <rect x="610" y="170" width="175" height="92" rx="18" fill="#f0fff4" stroke="#107c10" stroke-width="2.5"></rect>
+            <text x="698" y="197" text-anchor="middle" font-size="15" font-weight="800" fill="#107c10">Stone 3</text>
+            <text x="698" y="219" text-anchor="middle" font-size="12" fill="#333">Outcome Accountability</text>
+            <text x="698" y="238" text-anchor="middle" font-size="11" fill="#555">Direct Service wins trust</text>
+            <text x="698" y="254" text-anchor="middle" font-size="10" fill="#555">${data.direct.count} vendors today</text>
+
+            <rect x="855" y="120" width="190" height="104" rx="20" fill="#f8f0ff" stroke="#8764b8" stroke-width="3"></rect>
+            <text x="950" y="150" text-anchor="middle" font-size="17" font-weight="800" fill="#8764b8">Stone 4</text>
+            <text x="950" y="174" text-anchor="middle" font-size="13" fill="#333">Full-Spectrum Model</text>
+            <text x="950" y="195" text-anchor="middle" font-size="11" fill="#555">Platform + partners + owned outcomes</text>
+            <text x="950" y="213" text-anchor="middle" font-size="11" fill="#555">${data.fullSpectrum} of ${data.totalN} vendors near target</text>
+
+            <circle cx="193" cy="245" r="30" fill="#ca5010" fill-opacity="0.12" stroke="#ca5010"></circle>
+            <text x="193" y="250" text-anchor="middle" font-size="10" font-weight="700" fill="#ca5010">Add SVC</text>
+            <circle cx="440" cy="190" r="30" fill="#0078d4" fill-opacity="0.12" stroke="#0078d4"></circle>
+            <text x="440" y="195" text-anchor="middle" font-size="10" font-weight="700" fill="#0078d4">Own delivery</text>
+            <circle cx="698" cy="140" r="30" fill="#107c10" fill-opacity="0.12" stroke="#107c10"></circle>
+            <text x="698" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="#107c10">Deepen platform</text>
+
+            <rect x="88" y="378" width="944" height="24" rx="12" fill="#f8f8f5" stroke="#d9d4ca"></rect>
+            <text x="560" y="394" text-anchor="middle" font-size="11.5" fill="#555">Use this version if you want the market narrative to feel like an evolution path rather than a static segmentation chart.</text>
+        </svg>`;
+}
+
+function _pciDrawReimaginTargetRadar(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const labels = ['EXM', 'AMT', 'ADR', 'PPM', 'SVC'];
+    const names = { EXM: 'Exposure', AMT: 'Adversary Mgmt', ADR: 'Disruption', PPM: 'Posture', SVC: 'Services' };
+    const max = 3;
+    const cx = 290;
+    const cy = 245;
+    const r = 150;
+    const angleSlice = (Math.PI * 2) / labels.length;
+    const pt = (value, i) => {
+        const ang = angleSlice * i - Math.PI / 2;
+        const rr = r * Math.min(value, max) / max;
+        return [cx + rr * Math.cos(ang), cy + rr * Math.sin(ang)];
+    };
+    const poly = (values) => labels.map((k, i) => pt(values[k], i).join(',')).join(' ');
+    const targetValues = { EXM: 2.6, AMT: 2.6, ADR: 2.6, PPM: 2.6, SVC: 2.6 };
+    const directVals = { EXM: data.direct.exm, AMT: data.direct.amt, ADR: data.direct.adr, PPM: data.direct.ppm, SVC: data.direct.svc };
+    const partnerVals = { EXM: data.partner.exm, AMT: data.partner.amt, ADR: data.partner.adr, PPM: data.partner.ppm, SVC: data.partner.svc };
+    const platformVals = { EXM: data.platform.exm, AMT: data.platform.amt, ADR: data.platform.adr, PPM: data.platform.ppm, SVC: data.platform.svc };
+
+    let grid = '';
+    [1, 2, 3].forEach(level => {
+        const points = labels.map((_, i) => {
+            const ang = angleSlice * i - Math.PI / 2;
+            const rr = r * level / max;
+            return `${cx + rr * Math.cos(ang)},${cy + rr * Math.sin(ang)}`;
+        }).join(' ');
+        grid += `<polygon points="${points}" fill="none" stroke="#d0ccc5" stroke-width="1"></polygon>`;
     });
+    labels.forEach((label, i) => {
+        const ang = angleSlice * i - Math.PI / 2;
+        const x2 = cx + r * Math.cos(ang);
+        const y2 = cy + r * Math.sin(ang);
+        const lx = cx + (r + 30) * Math.cos(ang);
+        const ly = cy + (r + 30) * Math.sin(ang);
+        grid += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#c0bbb0" stroke-width="1"></line>`;
+        grid += `<text x="${lx}" y="${ly}" text-anchor="middle" font-size="11" font-weight="700" fill="#444">${names[label]}</text>`;
+    });
+
+    container.innerHTML = `
+        <svg viewBox="0 0 1120 490" width="100%" height="auto" style="font-family:'Segoe UI',system-ui,sans-serif;background:#fffefb;border:1px solid #e0ddd5;border-radius:16px">
+            <rect x="0" y="0" width="1120" height="66" fill="#1a3a5c"></rect>
+            <text x="560" y="29" text-anchor="middle" font-size="23" font-weight="800" fill="#fff">Radar Option: Compare Current Models Against the Future-State Target Zone</text>
+            <text x="560" y="50" text-anchor="middle" font-size="12" fill="#cdd9e8">This is the most analytical option. It shows exactly how far each model sits from a future-state capability profile that reaches threshold across all five pillars.</text>
+
+            ${grid}
+            <polygon points="${poly(targetValues)}" fill="#8764b8" fill-opacity="0.08" stroke="#8764b8" stroke-width="2.5" stroke-dasharray="6 4"></polygon>
+            <polygon points="${poly(directVals)}" fill="#107c10" fill-opacity="0.12" stroke="#107c10" stroke-width="2"></polygon>
+            <polygon points="${poly(partnerVals)}" fill="#0078d4" fill-opacity="0.12" stroke="#0078d4" stroke-width="2"></polygon>
+            <polygon points="${poly(platformVals)}" fill="#ca5010" fill-opacity="0.12" stroke="#ca5010" stroke-width="2"></polygon>
+
+            <text x="290" y="79" text-anchor="middle" font-size="10" fill="#666">3.0 max observed</text>
+            <text x="294" y="142" font-size="9" fill="#999">3.0</text>
+            <text x="294" y="192" font-size="9" fill="#999">2.0</text>
+            <text x="294" y="242" font-size="9" fill="#999">1.0</text>
+
+            <rect x="610" y="98" width="440" height="294" rx="16" fill="#fafaf8" stroke="#d9d4ca"></rect>
+            <text x="830" y="126" text-anchor="middle" font-size="18" font-weight="800" fill="#1a3a5c">What the radar says</text>
+
+            <rect x="645" y="152" width="370" height="46" rx="10" fill="#f8f0ff" stroke="#8764b8"></rect>
+            <text x="662" y="172" font-size="13" font-weight="800" fill="#8764b8">Target zone</text>
+            <text x="662" y="190" font-size="11" fill="#555">Balanced score above threshold across all five pillars — the future-state operating model buyers will increasingly prefer.</text>
+
+            <rect x="645" y="212" width="370" height="46" rx="10" fill="#fff8f0" stroke="#ca5010"></rect>
+            <text x="662" y="232" font-size="13" font-weight="800" fill="#ca5010">Platform-Only</text>
+            <text x="662" y="250" font-size="11" fill="#555">Strongest PPM shape, but AMT and service accountability keep it far from the target envelope.</text>
+
+            <rect x="645" y="272" width="370" height="46" rx="10" fill="#f0faff" stroke="#0078d4"></rect>
+            <text x="662" y="292" font-size="13" font-weight="800" fill="#0078d4">Platform + Partner</text>
+            <text x="662" y="310" font-size="11" fill="#555">Closest on breadth, but still does not close the accountability and policy-execution gap cleanly.</text>
+
+            <rect x="645" y="332" width="370" height="46" rx="10" fill="#f0fff4" stroke="#107c10"></rect>
+            <text x="662" y="352" font-size="13" font-weight="800" fill="#107c10">Direct Service</text>
+            <text x="662" y="370" font-size="11" fill="#555">Best outcome ownership, but it still needs stronger platform and preemptive intelligence depth to become truly full-spectrum.</text>
+        </svg>`;
+}
+
+function _pciDrawReimaginPostureMap(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const bubble = (x, y, r, fill, stroke, title, sub, count) => `
+        <circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" fill-opacity="0.22" stroke="${stroke}" stroke-width="3"></circle>
+        <text x="${x}" y="${y - 5}" text-anchor="middle" font-size="14" font-weight="800" fill="${stroke}">${title}</text>
+        <text x="${x}" y="${y + 14}" text-anchor="middle" font-size="11" fill="#333">${sub}</text>
+        <text x="${x}" y="${y + 31}" text-anchor="middle" font-size="10" fill="#555">${count}</text>`;
+
+    container.innerHTML = `
+        <svg viewBox="0 0 1120 470" width="100%" height="auto" style="font-family:'Segoe UI',system-ui,sans-serif;background:#fffefb;border:1px solid #e0ddd5;border-radius:16px">
+            <rect x="0" y="0" width="1120" height="66" fill="#1a3a5c"></rect>
+            <text x="560" y="29" text-anchor="middle" font-size="23" font-weight="800" fill="#fff">Strategic 2×2: Position the Market, Then Show the Destination</text>
+            <text x="560" y="50" text-anchor="middle" font-size="12" fill="#cdd9e8">X-axis = platform IP depth. Y-axis = managed outcome accountability. Bubble size = vendor count. The future-state model sits in the upper-right.</text>
+
+            <rect x="120" y="95" width="820" height="300" fill="#fff" stroke="#d0ccc5" stroke-width="2"></rect>
+            <line x1="530" y1="95" x2="530" y2="395" stroke="#d9d4ca" stroke-width="1.5" stroke-dasharray="5 4"></line>
+            <line x1="120" y1="245" x2="940" y2="245" stroke="#d9d4ca" stroke-width="1.5" stroke-dasharray="5 4"></line>
+
+            <text x="530" y="430" text-anchor="middle" font-size="14" font-weight="800" fill="#1a3a5c">Platform IP / Product Control →</text>
+            <text x="42" y="255" transform="rotate(-90 42 255)" text-anchor="middle" font-size="14" font-weight="800" fill="#1a3a5c">Managed-Service Accountability →</text>
+
+            <text x="180" y="118" font-size="11" font-weight="700" fill="#777">Low platform depth / high service ownership</text>
+            <text x="672" y="118" font-size="11" font-weight="700" fill="#777">High platform depth / high service ownership</text>
+            <text x="165" y="385" font-size="11" font-weight="700" fill="#777">Low platform depth / low service ownership</text>
+            <text x="676" y="385" font-size="11" font-weight="700" fill="#777">High platform depth / low service ownership</text>
+
+            ${bubble(735, 308, 58, '#ca5010', '#ca5010', 'Platform-Only', 'Product control, weaker outcomes', `${data.platform.count} vendors`)}
+            ${bubble(670, 208, 48, '#0078d4', '#0078d4', 'Platform + Partner', 'Breadth via ecosystem', `${data.partner.count} vendors`)}
+            ${bubble(345, 168, 44, '#107c10', '#107c10', 'Direct Service', 'Owns execution + trust', `${data.direct.count} vendors`)}
+            ${bubble(780, 145, 40, '#8764b8', '#8764b8', 'Target State', 'Platform + outcomes', `${data.fullSpectrum}/${data.totalN} close today`)}
+
+            <line x1="705" y1="258" x2="760" y2="176" stroke="#0078d4" stroke-width="2" stroke-dasharray="5 4"></line>
+            <line x1="392" y1="180" x2="740" y2="154" stroke="#107c10" stroke-width="2" stroke-dasharray="5 4"></line>
+            <line x1="781" y1="250" x2="796" y2="185" stroke="#ca5010" stroke-width="2" stroke-dasharray="5 4"></line>
+
+            <rect x="960" y="115" width="120" height="162" rx="12" fill="#fafaf8" stroke="#d9d4ca"></rect>
+            <text x="1020" y="140" text-anchor="middle" font-size="13" font-weight="800" fill="#1a3a5c">Legend</text>
+            <circle cx="989" cy="171" r="16" fill="#cfd8e3" stroke="#7b8794"></circle>
+            <circle cx="989" cy="212" r="25" fill="#cfd8e3" stroke="#7b8794"></circle>
+            <circle cx="989" cy="262" r="34" fill="#cfd8e3" stroke="#7b8794"></circle>
+            <text x="1032" y="176" font-size="10" fill="#555">smaller segment</text>
+            <text x="1032" y="217" font-size="10" fill="#555">mid segment</text>
+            <text x="1032" y="267" font-size="10" fill="#555">larger segment</text>
+
+            <rect x="145" y="410" width="775" height="28" rx="14" fill="#f8f8f5" stroke="#d9d4ca"></rect>
+            <text x="532" y="428" text-anchor="middle" font-size="11.5" fill="#555">Use this option if you want the cleanest strategic framing: today’s market positions versus the upper-right operating model the market is trying to reach.</text>
+        </svg>`;
+}
+
+// HTML/CSS concept renderers for the Reimagining concept lab.
+// These intentionally override the SVG prototypes above: HTML cards wrap text reliably,
+// making them better for iteration in-browser and eventually cleaner to port to PPTX.
+function _pciConceptPct(v) {
+    return `${Number(v || 0)}%`;
+}
+
+function _pciConceptShell(title, subtitle, body) {
+    return `<div style="max-width:1120px;margin:0 auto;background:#fffefb;border:1px solid #e0ddd5;border-radius:16px;overflow:hidden;font-family:'Segoe UI',system-ui,sans-serif">
+        <div style="background:#1a3a5c;color:#fff;text-align:center;padding:16px 24px">
+            <div style="font-size:22px;font-weight:800;line-height:1.15">${title}</div>
+            <div style="font-size:12px;color:#cdd9e8;margin-top:6px;line-height:1.45">${subtitle}</div>
+        </div>
+        <div style="padding:22px 26px">${body}</div>
+    </div>`;
+}
+
+function _pciConceptCard(label, pct, color, lines, extraStyle = '') {
+    return `<div style="background:#fff;border:2px solid ${color};border-radius:14px;padding:14px 16px;box-sizing:border-box;min-width:0;${extraStyle}">
+        <div style="font-size:16px;font-weight:800;color:${color};line-height:1.2">${label}</div>
+        <div style="font-size:22px;font-weight:800;color:#1a3a5c;margin:5px 0 4px">${_pciConceptPct(pct)}</div>
+        <div style="font-size:11px;color:#777;margin-bottom:8px">of assessed market</div>
+        <div style="font-size:12px;color:#555;line-height:1.45">${lines.map(l => `<div style="margin-top:4px">${l}</div>`).join('')}</div>
+    </div>`;
+}
+
+function _pciDrawReimaginConvergenceMap(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = _pciConceptShell(
+        'Current Models Converge Toward the Future-State Operating Model',
+        'Each model is strong in one place today; the strategic destination combines platform control, ecosystem scale, and accountable delivery.',
+        `<div style="display:grid;grid-template-columns:300px 1fr 300px;gap:22px;align-items:center">
+            <div style="display:flex;flex-direction:column;gap:12px">
+                ${_pciConceptCard('Platform-Only', data.platform.pct, '#ca5010', ['Software scale', 'Needs owned outcomes'])}
+                ${_pciConceptCard('Platform + Partner', data.partner.pct, '#0078d4', ['Broad ecosystem reach', 'Needs cleaner accountability'])}
+                ${_pciConceptCard('Direct Service', data.direct.pct, '#107c10', ['Trusted execution', 'Needs more platform leverage'])}
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;align-items:stretch;justify-content:center;color:#555;font-size:12px;font-weight:700">
+                <div style="display:flex;align-items:center;gap:10px"><span style="white-space:nowrap;color:#ca5010">Add outcomes</span><div style="height:3px;background:#7b8794;flex:1;border-radius:3px"></div><span style="font-size:24px;color:#7b8794">→</span></div>
+                <div style="display:flex;align-items:center;gap:10px"><span style="white-space:nowrap;color:#0078d4">Reduce handoffs</span><div style="height:3px;background:#7b8794;flex:1;border-radius:3px"></div><span style="font-size:24px;color:#7b8794">→</span></div>
+                <div style="display:flex;align-items:center;gap:10px"><span style="white-space:nowrap;color:#107c10">Deepen platform</span><div style="height:3px;background:#7b8794;flex:1;border-radius:3px"></div><span style="font-size:24px;color:#7b8794">→</span></div>
+            </div>
+            <div style="background:#f8f0ff;border:3px solid #8764b8;border-radius:18px;padding:20px;text-align:center;box-sizing:border-box">
+                <div style="font-size:19px;font-weight:800;color:#8764b8;line-height:1.2">Future Full-Spectrum Model</div>
+                <div style="font-size:28px;font-weight:800;color:#8764b8;margin:12px 0 2px">${_pciConceptPct(data.fullSpectrumPct)}</div>
+                <div style="font-size:11px;color:#777;margin-bottom:12px">near target today</div>
+                <div style="display:grid;gap:8px;font-size:12px;color:#333;line-height:1.35">
+                    <div style="background:#fff;border-radius:8px;padding:8px">Platform IP depth</div>
+                    <div style="background:#fff;border-radius:8px;padding:8px">Ecosystem leverage</div>
+                    <div style="background:#fff;border-radius:8px;padding:8px">Owned service outcomes</div>
+                </div>
+            </div>
+        </div>`
+    );
+}
+
+function _pciDrawReimaginTriangleMap(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = _pciConceptShell(
+        'Triangle Map: Balance the Three Operating Levers',
+        'A triangle keeps the three-lever logic but avoids implying literal vendor overlap. The center means balanced operating model.',
+        `<div style="position:relative;min-height:420px;max-width:980px;margin:0 auto">
+            <div style="position:absolute;left:50%;top:8px;transform:translateX(-50%);font-weight:800;color:#0078d4;text-align:center">Partner Ecosystem Scale</div>
+            <div style="position:absolute;left:0;bottom:12px;font-weight:800;color:#ca5010">Platform IP &amp; Product Control</div>
+            <div style="position:absolute;right:0;bottom:12px;font-weight:800;color:#107c10;text-align:right">Managed-Service Accountability</div>
+            <div style="position:absolute;left:17%;right:17%;top:54px;bottom:54px;background:linear-gradient(145deg,#f8fbff,#fff);clip-path:polygon(50% 0, 0 100%, 100% 100%);border:1px solid #d0d7df"></div>
+            <div style="position:absolute;left:50%;top:85px;transform:translateX(-50%);width:210px">${_pciConceptCard('Platform + Partner', data.partner.pct, '#0078d4', ['Breadth and scale', 'Split accountability'], 'text-align:center;background:#f0faff')}</div>
+            <div style="position:absolute;left:80px;bottom:70px;width:210px">${_pciConceptCard('Platform-Only', data.platform.pct, '#ca5010', ['Strong product control', 'Outcome ceiling'], 'text-align:center;background:#fff8f0')}</div>
+            <div style="position:absolute;right:80px;bottom:70px;width:210px">${_pciConceptCard('Direct Service', data.direct.pct, '#107c10', ['Strong execution', 'Platform-depth ceiling'], 'text-align:center;background:#f0fff4')}</div>
+            <div style="position:absolute;left:50%;top:215px;transform:translateX(-50%);width:240px;background:#f8f0ff;border:3px solid #8764b8;border-radius:18px;padding:16px;text-align:center;box-sizing:border-box">
+                <div style="font-size:16px;font-weight:800;color:#8764b8">Future Full-Spectrum</div>
+                <div style="font-size:24px;font-weight:800;color:#8764b8;margin-top:6px">${_pciConceptPct(data.fullSpectrumPct)}</div>
+                <div style="font-size:11px;color:#555">near balanced target today</div>
+            </div>
+        </div>`
+    );
+}
+
+function _pciDrawReimaginTwoPanel(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = _pciConceptShell(
+        'Twin Panel: Current Market Structure vs. Future Winning Model',
+        'This version separates segmentation from destination so the reader does not have to infer the current-to-future move.',
+        `<div style="display:grid;grid-template-columns:1fr 80px 1fr;gap:18px;align-items:center">
+            <div style="background:#fafaf8;border:2px solid #d9d4ca;border-radius:16px;padding:18px">
+                <div style="font-size:18px;font-weight:800;color:#1a3a5c;text-align:center;margin-bottom:6px">Current State</div>
+                <div style="font-size:12px;color:#666;text-align:center;margin-bottom:14px">Three separate positions, each with a structural ceiling</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                    ${_pciConceptCard('Platform-Only', data.platform.pct, '#ca5010', ['Strong: IP control', 'Missing: owned outcomes'], 'background:#fff8f0')}
+                    ${_pciConceptCard('Platform + Partner', data.partner.pct, '#0078d4', ['Strong: breadth', 'Missing: clean accountability'], 'background:#f0faff')}
+                    ${_pciConceptCard('Direct Service', data.direct.pct, '#107c10', ['Strong: execution', 'Missing: platform depth'], 'background:#f0fff4')}
+                </div>
+            </div>
+            <div style="text-align:center;color:#8764b8;font-size:46px;font-weight:800">→<div style="font-size:11px;color:#666;font-weight:600">converge</div></div>
+            <div style="background:#f8fbff;border:2px solid #d3dae2;border-radius:16px;padding:18px">
+                <div style="font-size:18px;font-weight:800;color:#8764b8;text-align:center;margin-bottom:6px">Future State</div>
+                <div style="font-size:12px;color:#666;text-align:center;margin-bottom:14px">One integrated model combines the strengths buyers source separately today</div>
+                <div style="display:grid;gap:10px">
+                    <div style="background:#fff8f0;border:2px solid #ca5010;border-radius:12px;padding:11px;text-align:center;font-weight:800;color:#ca5010">Platform IP + Product Control</div>
+                    <div style="background:#f0faff;border:2px solid #0078d4;border-radius:12px;padding:11px;text-align:center;font-weight:800;color:#0078d4">Partner Ecosystem Leverage</div>
+                    <div style="background:#f0fff4;border:2px solid #107c10;border-radius:12px;padding:11px;text-align:center;font-weight:800;color:#107c10">Managed-Service Accountability</div>
+                    <div style="background:#f8f0ff;border:2px solid #8764b8;border-radius:14px;padding:12px;text-align:center;color:#8764b8;font-weight:800">${_pciConceptPct(data.fullSpectrumPct)} near this target today</div>
+                </div>
+            </div>
+        </div>`
+    );
+}
+
+function _pciDrawReimaginMaturityBridge(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const step = (n, title, pct, color, line1, line2) => `<div style="position:relative;flex:1;min-width:150px;background:#fff;border:2px solid ${color};border-radius:16px;padding:16px;text-align:center;box-sizing:border-box">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:${color};color:#fff;font-weight:800;margin-bottom:8px">${n}</div>
+        <div style="font-size:15px;font-weight:800;color:${color};line-height:1.2">${title}</div>
+        <div style="font-size:22px;font-weight:800;color:#1a3a5c;margin:8px 0 2px">${_pciConceptPct(pct)}</div>
+        <div style="font-size:11px;color:#777;margin-bottom:8px">market signal</div>
+        <div style="font-size:12px;color:#555;line-height:1.4">${line1}<br>${line2}</div>
+    </div>`;
+    container.innerHTML = _pciConceptShell(
+        'Maturity Bridge: From Fragmented Models to Full-Spectrum Delivery',
+        'This option frames the market as an evolution path: platform scale, ecosystem leverage, outcome accountability, then integrated full-spectrum delivery.',
+        `<div style="display:flex;gap:12px;align-items:stretch;position:relative">
+            ${step('1', 'Platform Scale', data.platform.pct, '#ca5010', 'Platform-only starts here', 'Must add service ownership')}
+            <div style="display:flex;align-items:center;color:#999;font-size:28px;font-weight:800">→</div>
+            ${step('2', 'Ecosystem Leverage', data.partner.pct, '#0078d4', 'Partners extend reach', 'Must reduce handoffs')}
+            <div style="display:flex;align-items:center;color:#999;font-size:28px;font-weight:800">→</div>
+            ${step('3', 'Outcome Accountability', data.direct.pct, '#107c10', 'Services own execution', 'Must deepen platform')}
+            <div style="display:flex;align-items:center;color:#999;font-size:28px;font-weight:800">→</div>
+            ${step('4', 'Full-Spectrum Model', data.fullSpectrumPct, '#8764b8', 'Balanced operating model', 'Hardest to replace')}
+        </div>`
+    );
+}
+
+function _pciDrawReimaginTargetRadar(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const p = data.pillarPct || {};
+    const rows = [
+        ['SVC', 'Services & Capability', p.SVC || 0, '#ca5010'],
+        ['EXM', 'Exposure Management', p.EXM || 0, '#107c10'],
+        ['PPM', 'Posture & Policy', p.PPM || 0, '#0078d4'],
+        ['ADR', 'Adversary Disruption', p.ADR || 0, '#8764b8'],
+        ['AMT', 'Adversary Management', p.AMT || 0, '#a80000'],
+    ];
+    container.innerHTML = _pciConceptShell(
+        'Capability Penetration vs. Future-State Target Zone',
+        'This analytical option uses market-wide percentages rather than scores: how much of the market reaches threshold in each pillar today.',
+        `<div style="display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center">
+            <div style="display:grid;gap:12px">
+                ${rows.map(([code, label, val, color]) => `<div>
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+                        <div style="font-size:13px;font-weight:800;color:${color}">${code}: ${label}</div>
+                        <div style="font-size:15px;font-weight:800;color:${color}">${_pciConceptPct(val)}</div>
+                    </div>
+                    <div style="height:22px;background:#eee9df;border-radius:999px;overflow:hidden;position:relative">
+                        <div style="height:100%;width:${Math.max(0, Math.min(100, val))}%;background:${color};border-radius:999px"></div>
+                        <div style="position:absolute;left:80%;top:0;width:2px;height:100%;background:#1a3a5c;opacity:.45"></div>
+                    </div>
+                </div>`).join('')}
+                <div style="font-size:11px;color:#666;margin-top:2px">Vertical marker indicates an illustrative future-state target zone of broad market maturity.</div>
+            </div>
+            <div style="background:#f8f0ff;border:2px solid #8764b8;border-radius:18px;padding:22px;text-align:center">
+                <div style="font-size:19px;font-weight:800;color:#8764b8;margin-bottom:10px">Future-State Target</div>
+                <div style="font-size:12px;color:#555;line-height:1.5;margin-bottom:14px">The winning model needs high market maturity across all five pillars, not just strength in one delivery model.</div>
+                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:11px;font-weight:800;color:#fff">
+                    ${rows.map(([code,, , color]) => `<div style="background:${color};border-radius:8px;padding:8px 4px">${code}</div>`).join('')}
+                </div>
+                <div style="margin-top:16px;background:#fff;border-radius:12px;padding:12px;font-weight:800;color:#8764b8">${_pciConceptPct(data.fullSpectrumPct)} near full-spectrum today</div>
+            </div>
+        </div>`
+    );
+}
+
+function _pciDrawReimaginPostureMap(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const bubble = (label, pct, color, x, y, w, note) => `<div style="position:absolute;left:${x}%;top:${y}%;width:${w}px;transform:translate(-50%,-50%);background:#ffffff;border:3px solid ${color};border-radius:18px;padding:13px;text-align:center;box-sizing:border-box;box-shadow:0 2px 8px rgba(0,0,0,.10)">
+        <div style="font-size:14px;font-weight:800;color:${color};line-height:1.2">${label}</div>
+        <div style="font-size:23px;font-weight:800;color:#1a3a5c;margin-top:5px">${_pciConceptPct(pct)}</div>
+        <div style="font-size:11px;color:#333333;line-height:1.3;margin-top:3px;font-weight:700">${note}</div>
+    </div>`;
+    container.innerHTML = _pciConceptShell(
+        'Strategic 2×2: Position the Market, Then Show the Destination',
+        'X-axis = platform IP depth. Y-axis = managed outcome accountability. Bubble labels use market share percentages.',
+        `<div style="display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:stretch">
+            <div style="height:430px;display:flex;align-items:center;justify-content:center;background:#f0faff;border:2px solid #0078d4;border-radius:14px;color:#005a9e;font-weight:900;font-size:15px;letter-spacing:.2px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center">
+                Managed-Service Accountability ↑
+            </div>
+            <div style="position:relative;height:430px;border:2px solid #d0ccc5;background:#ffffff;border-radius:14px;overflow:hidden;color:#1a1a1a">
+                <div style="position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed #b8afa3"></div>
+                <div style="position:absolute;left:0;right:0;top:50%;border-top:2px dashed #b8afa3"></div>
+                <div style="position:absolute;left:50%;bottom:12px;transform:translateX(-50%);font-weight:900;color:#005a9e;background:#f0faff;border:1px solid #0078d4;border-radius:999px;padding:5px 14px;white-space:nowrap">Platform IP / Product Control →</div>
+                <div style="position:absolute;left:16px;top:14px;font-size:12px;font-weight:900;color:#1a3a5c;background:#ffffff;border:1px solid #d0ccc5;border-radius:999px;padding:5px 10px">High service ownership</div>
+                <div style="position:absolute;right:16px;top:14px;font-size:12px;font-weight:900;color:#8764b8;background:#ffffff;border:1px solid #8764b8;border-radius:999px;padding:5px 10px">Future target zone</div>
+                <div style="position:absolute;left:16px;bottom:48px;font-size:12px;font-weight:900;color:#1a3a5c;background:#ffffff;border:1px solid #d0ccc5;border-radius:999px;padding:5px 10px">Lower platform depth</div>
+                <div style="position:absolute;right:16px;bottom:48px;font-size:12px;font-weight:900;color:#1a3a5c;background:#ffffff;border:1px solid #d0ccc5;border-radius:999px;padding:5px 10px">High platform depth</div>
+                ${bubble('Direct Service', data.direct.pct, '#107c10', 30, 30, 170, 'owns execution')}
+                ${bubble('Platform + Partner', data.partner.pct, '#0078d4', 62, 40, 180, 'ecosystem breadth')}
+                ${bubble('Platform-Only', data.platform.pct, '#ca5010', 72, 68, 180, 'product control')}
+                ${bubble('Target State', data.fullSpectrumPct, '#8764b8', 82, 24, 175, 'platform + outcomes')}
+            </div>
+        </div>`
+    );
 }
 
 /** Render 7 Kill Chain + MITRE ATT&CK graphics for the v2 dual-framework perspective */
@@ -21699,7 +26095,7 @@ function _pciDrawKCMitreInfographic() {
 }
 
 /** Render 7 kill chain-specific graphics for the shift-left perspective */
-function _pciRenderKillChainGraphics(panel, stats) {
+function _pciRenderKillChainGraphics(panel, stats, appendMode = false) {
     const dm = stats?.delivery_models || {};
     const direct = dm.direct_service || {};
     const partner = dm.platform_plus_partner || {};
@@ -21778,27 +26174,27 @@ function _pciRenderKillChainGraphics(panel, stats) {
     const reactAvg = (phaseScores[4].score + phaseScores[5].score + phaseScores[6].score) / 3;
 
     html += `<div class="dfi-graphic-section">
-        <h2>2. Kill Chain Phase Coverage Scores (Market Average)</h2>
-        <p class="dfi-graphic-subtitle">Average vendor capability score at each kill chain phase, derived from pillar mapping. Target: 3.0+ for competitive coverage.</p>
+        <h2>2. Kill Chain Phase Coverage (Market Average)</h2>
+        <p class="dfi-graphic-subtitle">Relative vendor capability at each kill chain phase, derived from pillar mapping. Preemptive phases vs reactive phases reveal where market investment is concentrated.</p>
         <div style="display:flex;gap:20px;margin:10px 0 16px;font-size:14px">
-            <span>🛡️ <strong style="color:#107c10">Preemptive Avg: ${preemptAvg.toFixed(2)}</strong></span>
-            <span>⚔️ <strong style="color:#a80000">Reactive Avg: ${reactAvg.toFixed(2)}</strong></span>
-            <span>Gap: <strong style="color:${preemptAvg > reactAvg ? '#107c10' : '#a80000'}">${(preemptAvg - reactAvg) > 0 ? '+' : ''}${(preemptAvg - reactAvg).toFixed(2)}</strong></span>
+            <span>🛡️ <strong style="color:#107c10">Preemptive Zone (Phases 1-3): ${preemptAvg > reactAvg ? 'Stronger' : 'Weaker'}</strong></span>
+            <span>⚔️ <strong style="color:#a80000">Reactive Zone (Phases 5-7): ${reactAvg > preemptAvg ? 'Stronger' : 'Weaker'}</strong></span>
         </div>
         <div style="max-width:900px">`;
     phaseScores.forEach(p => {
-        const pct = Math.round((p.score / 5) * 100);
-        const isLow = p.score < 2.5;
+        const pct = Math.round((p.score / 3.5) * 100);
+        const isLow = p.score < 2.0;
+        const tier = p.score >= 2.5 ? 'Strong' : p.score >= 2.0 ? 'Developing' : p.score >= 1.5 ? 'Needs attention' : 'Critical gap';
         html += `<div style="display:flex;align-items:center;gap:10px;margin:6px 0;padding:6px 10px;background:${isLow ? '#fff5f5' : '#f8f8f5'};border-radius:6px;border-left:4px solid ${p.color}">
             <div style="min-width:200px;font-weight:600;color:${p.color};font-size:13px">${p.phase}</div>
             <div style="flex:1;height:22px;background:#e8e8e5;border-radius:4px;overflow:hidden">
-                <div style="width:${pct}%;height:100%;background:${p.color};border-radius:4px;transition:width .3s"></div>
+                <div style="width:${Math.min(100, pct)}%;height:100%;background:${p.color};border-radius:4px;transition:width .3s"></div>
             </div>
-            <div style="min-width:60px;text-align:right;font-weight:700;color:${p.color};font-size:14px">${p.score.toFixed(2)}</div>
+            <div style="min-width:100px;text-align:right;font-weight:700;color:${p.color};font-size:13px">${tier}</div>
         </div>`;
     });
     html += `<div style="margin-top:10px;padding:8px;background:#fff8f0;border:1px solid #ca5010;border-radius:6px;font-size:12px;color:#ca5010;font-weight:600;text-align:center">
-        ⚠️ Phase 7 (Actions on Objectives) reflects AMT gap (16% penetration) — adversary intelligence operations are the weakest link across all delivery models
+        ⚠️ Phase 7 (Actions on Objectives) reflects the adversary intelligence gap — the weakest link across all delivery models
     </div></div></div>`;
 
     // ── Graphic 3: Shift-Left Readiness by Delivery Model ──
@@ -21809,7 +26205,7 @@ function _pciRenderKillChainGraphics(panel, stats) {
     ];
     html += `<div class="dfi-graphic-section">
         <h2>3. Shift-Left Readiness by Delivery Model</h2>
-        <p class="dfi-graphic-subtitle">Kill chain protection profile for each delivery model. Shift-Left = Phases 1-3 (EXM+AMT+PPM avg). Reactive = Phases 5-7 (ADR+SVC avg).</p>
+        <p class="dfi-graphic-subtitle">Kill chain protection profile for each delivery model. Shift-Left = Phases 1-3 (Exposure + Adversary + Posture pillars). Reactive = Phases 5-7 (Disruption + Services pillars).</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;max-width:1100px">`;
     models.forEach(m => {
         const md = m.data;
@@ -21818,36 +26214,41 @@ function _pciRenderKillChainGraphics(panel, stats) {
         const reactive = ((mpa.ADR||0) + (md.svc_avg||0)) / 2;
         const pillars = ['EXM','AMT','PPM','ADR','SVC'];
         const scores = [mpa.EXM||0, mpa.AMT||0, mpa.PPM||0, mpa.ADR||0, md.svc_avg||0];
+        const slTier = shiftLeft >= 2.5 ? 'Strong' : shiftLeft >= 2.0 ? 'Developing' : shiftLeft >= 1.5 ? 'Needs attention' : 'Critical gap';
+        const slColor = shiftLeft >= 2.5 ? '#107c10' : shiftLeft >= 2.0 ? '#0078d4' : shiftLeft >= 1.5 ? '#ca5010' : '#a80000';
+        const rTier = reactive >= 2.5 ? 'Strong' : reactive >= 2.0 ? 'Developing' : reactive >= 1.5 ? 'Needs attention' : 'Critical gap';
+        const rColor = reactive >= 2.5 ? '#107c10' : reactive >= 2.0 ? '#0078d4' : reactive >= 1.5 ? '#ca5010' : '#a80000';
         html += `<div style="flex:1;min-width:300px;border:2px solid ${m.border};border-radius:10px;padding:16px;background:#fafafa">
             <div style="font-size:16px;font-weight:700;color:${m.color};text-align:center">${m.name}</div>
-            <div style="text-align:center;font-size:12px;color:#666;margin:4px 0">${md.count || 0} vendors</div>
             <div style="display:flex;gap:8px;justify-content:center;margin:10px 0">
                 <div style="text-align:center;padding:8px 16px;background:#f0fff4;border-radius:8px;border:1px solid #107c10">
-                    <div style="font-size:20px;font-weight:700;color:#107c10">${shiftLeft.toFixed(2)}</div>
+                    <div style="font-size:16px;font-weight:700;color:${slColor}">${slTier}</div>
                     <div style="font-size:10px;color:#555">Shift-Left (1-3)</div>
                 </div>
                 <div style="text-align:center;padding:8px 16px;background:#fff5f5;border-radius:8px;border:1px solid #a80000">
-                    <div style="font-size:20px;font-weight:700;color:#a80000">${reactive.toFixed(2)}</div>
+                    <div style="font-size:16px;font-weight:700;color:${rColor}">${rTier}</div>
                     <div style="font-size:10px;color:#555">Reactive (5-7)</div>
                 </div>
             </div>`;
         pillars.forEach((pl, i) => {
             const v = scores[i];
-            const pct = Math.round((v / 5) * 100);
+            const pct = Math.min(100, Math.round((v / 3.5) * 100));
             const isLeft = i < 3;
+            const pillarTier = v >= 2.5 ? 'Strong' : v >= 2.0 ? 'Developing' : v >= 1.5 ? 'Needs attention' : 'Critical gap';
+            const pillarColor = v >= 2.5 ? '#107c10' : v >= 2.0 ? '#0078d4' : v >= 1.5 ? '#ca5010' : '#a80000';
             html += `<div style="display:flex;align-items:center;gap:6px;margin:3px 0;font-size:11px">
                 <div style="min-width:35px;font-weight:700;color:${pillarColors[pl]}">${pl}</div>
                 <div style="flex:1;height:14px;background:#e8e8e5;border-radius:3px;overflow:hidden">
-                    <div style="width:${pct}%;height:100%;background:${isLeft ? '#107c10' : '#a80000'};border-radius:3px"></div>
+                    <div style="width:${pct}%;height:100%;background:${isLeft ? pillarColor : '#a80000'};border-radius:3px"></div>
                 </div>
-                <div style="min-width:35px;text-align:right;font-weight:600;${v < 2.0 ? 'color:#a80000' : ''}">${v.toFixed(2)}</div>
+                <div style="min-width:90px;text-align:right;font-weight:600;color:${pillarColor};font-size:10px">${pillarTier}</div>
             </div>`;
         });
         html += `</div>`;
     });
     html += `</div>
         <div style="margin-top:12px;padding:10px;background:#f0faff;border:1px solid #0078d4;border-radius:6px;font-size:12px;text-align:center;max-width:1100px">
-            <strong style="color:#0078d4">Key Insight:</strong> Platform-only vendors are structurally confined to Phases 3-5 (AMT: ${(plat.pillar_avgs?.AMT||0).toFixed(2)}, SVC: ${(plat.svc_avg||0).toFixed(2)}) — cannot defend the earliest or latest kill chain phases.
+            <strong style="color:#0078d4">Key Insight:</strong> Platform-only vendors are structurally confined to Phases 3-5 — adversary intelligence (Adversary Management) and managed response capabilities remain critical gaps that limit full kill chain coverage.
         </div></div>`;
 
     // ── Graphic 4: "The Shift-Left Imperative" Executive Summary Poster ──
@@ -21858,14 +26259,13 @@ function _pciRenderKillChainGraphics(panel, stats) {
         <p class="dfi-graphic-subtitle">Why preemptive cybersecurity must be understood through the kill chain lens, and what the data reveals about market readiness.</p>
         <div style="max-width:1100px;background:linear-gradient(135deg,#1a3a5c,#0a2540);border-radius:12px;padding:24px;color:#fff">
             <div style="text-align:center;font-size:24px;font-weight:800;margin-bottom:4px">Reimagining Threat Defense Through Preemptive Cybersecurity</div>
-            <div style="text-align:center;font-size:14px;color:#8cb8e0;margin-bottom:16px">Kill Chain Phase Coverage Analysis — 86 Vendors, 5 Pillars, 7 Phases</div>
+            <div style="text-align:center;font-size:14px;color:#8cb8e0;margin-bottom:16px">Kill Chain Phase Coverage Analysis — Assessed Cohort, 5 Pillars, 7 Phases</div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px">
                 ${[
-                    {v:'51', l:'Vendors Assessed', c:'#0078d4'},
                     {v:preemptPen+'%', l:'Preemptive Zone Avg Pen.', c:'#107c10'},
                     {v:reactPen+'%', l:'Reactive Zone Avg Pen.', c:'#a80000'},
-                    {v:'55%', l:'AMT Penetration (Bottleneck)', c:'#ff8c00'},
-                    {v:'27%', l:'Full Kill Chain Coverage', c:'#8764b8'},
+                    {v:'~55%', l:'AMT Penetration (Bottleneck)', c:'#ff8c00'},
+                    {v:'~27%', l:'Full Kill Chain Coverage', c:'#8764b8'},
                 ].map(s => `<div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
                     <div style="font-size:28px;font-weight:800;color:${s.c}">${s.v}</div>
                     <div style="font-size:10px;color:#aaa">${s.l}</div>
@@ -21874,16 +26274,16 @@ function _pciRenderKillChainGraphics(panel, stats) {
             <div style="font-size:13px;font-weight:600;color:#ffcc00;margin-bottom:8px">KEY FINDINGS</div>
             <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
                 <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:10px;border-left:3px solid #ff8c00">
-                    <strong style="color:#ff8c00">📊 Preemptive Zone Is Stronger — But AMT Undermines It</strong>
-                    <div style="font-size:12px;color:#ccc;margin-top:4px">EXM 49% + PPM 37% penetration; AMT at 16% creates the critical shift-left bottleneck at Phases 1-2.</div>
+                    <strong style="color:#ff8c00">📊 Preemptive Zone Is Stronger — But Adversary Management Undermines It</strong>
+                    <div style="font-size:12px;color:#ccc;margin-top:4px">Exposure Management and Posture Management lead penetration rates; Adversary Management remains the critical shift-left bottleneck at Phases 1-2.</div>
                 </div>
                 <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:10px;border-left:3px solid #a80000">
                     <strong style="color:#f88">📉 Platform-Only Vendors: Phases 3-5 Only</strong>
-                    <div style="font-size:12px;color:#ccc;margin-top:4px">49% of the market (25 vendors) score AMT 1.87 and SVC 1.49 — structurally unable to defend the full kill chain.</div>
+                    <div style="font-size:12px;color:#ccc;margin-top:4px">Nearly half the market is platform-only — structurally limited in adversary intelligence and unable to deliver full managed service depth across all kill chain phases.</div>
                 </div>
                 <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:10px;border-left:3px solid #107c10">
-                    <strong style="color:#8eff8e">✅ 27% Achieve Full Kill Chain Coverage</strong>
-                    <div style="font-size:12px;color:#ccc;margin-top:4px">14 full-spectrum vendors maintain ≥ 2.0 across all pillars — genuine defense-in-depth across all 7 phases.</div>
+                    <strong style="color:#8eff8e">✅ A Small Fraction Achieves Majority Kill Chain Coverage</strong>
+                    <div style="font-size:12px;color:#ccc;margin-top:4px">Only a single-digit percentage of vendors maintain competency across four or more pillars — genuine defense-in-depth across most kill chain phases.</div>
                 </div>
             </div>
             <div style="font-size:13px;font-weight:600;color:#ffcc00;margin-bottom:8px">RECOMMENDATIONS FOR CPOs</div>
@@ -22026,7 +26426,11 @@ function _pciRenderKillChainGraphics(panel, stats) {
         </div>
     </div>`;
 
-    panel.innerHTML = html;
+    if (appendMode) {
+        panel.innerHTML += html;
+    } else {
+        panel.innerHTML = html;
+    }
 
     // ── Draw rough.js infographic ──
     _pciDrawKillChainInfographic();
@@ -22093,11 +26497,11 @@ function _pciDrawKillChainInfographic() {
 
     // Five Pillar Cards
     const pillarCards = [
-        { code: 'EXM', name: 'Exposure Mgmt', phases: '1, 3', pen: '49%', score: '1.84', color: '#107c10', bg: '#f0fff4' },
-        { code: 'AMT', name: 'Adversary Mgmt', phases: '1, 2, 4, 6', pen: '16%', score: '1.13', color: '#a80000', bg: '#fff5f5' },
-        { code: 'PPM', name: 'Posture & Policy', phases: '2, 3, 4', pen: '37%', score: '1.67', color: '#0078d4', bg: '#f0faff' },
-        { code: 'ADR', name: 'Adversary Disruption', phases: '3, 4, 5, 6, 7', pen: '33%', score: '1.47', color: '#8764b8', bg: '#f5f0ff' },
-        { code: 'SVC', name: 'Services & Cap', phases: '7', pen: '41%', score: '1.80', color: '#ca5010', bg: '#fff8f0' },
+        { code: 'EXM', name: 'Exposure Mgmt', phases: '1, 3', pen: `${pp.EXM?.pct||0}%`, tier: (pa.EXM||0) >= 2.5 ? 'Strong' : (pa.EXM||0) >= 2.0 ? 'Developing' : 'Needs attention', color: '#107c10', bg: '#f0fff4' },
+        { code: 'AMT', name: 'Adversary Mgmt', phases: '1, 2, 4, 6', pen: `${pp.AMT?.pct||0}%`, tier: (pa.AMT||0) >= 2.5 ? 'Strong' : (pa.AMT||0) >= 2.0 ? 'Developing' : 'Needs attention', color: '#a80000', bg: '#fff5f5' },
+        { code: 'PPM', name: 'Posture & Policy', phases: '2, 3, 4', pen: `${pp.PPM?.pct||0}%`, tier: (pa.PPM||0) >= 2.5 ? 'Strong' : (pa.PPM||0) >= 2.0 ? 'Developing' : 'Needs attention', color: '#0078d4', bg: '#f0faff' },
+        { code: 'ADR', name: 'Adversary Disruption', phases: '3, 4, 5, 6, 7', pen: `${pp.ADR?.pct||0}%`, tier: (pa.ADR||0) >= 2.5 ? 'Strong' : (pa.ADR||0) >= 2.0 ? 'Developing' : 'Needs attention', color: '#8764b8', bg: '#f5f0ff' },
+        { code: 'SVC', name: 'Services & Cap', phases: '7', pen: `${pp.SVC?.pct||0}%`, tier: (pa.SVC||0) >= 2.5 ? 'Strong' : (pa.SVC||0) >= 2.0 ? 'Developing' : 'Needs attention', color: '#ca5010', bg: '#fff8f0' },
     ];
     pillarCards.forEach((p, i) => {
         const x = 20 + i * 234;
@@ -22105,43 +26509,48 @@ function _pciDrawKillChainInfographic() {
         addText(x + 110, 235, `${p.code}: ${p.name}`, 13, '700', p.color, 'middle');
         addText(x + 110, 258, `Phases: ${p.phases}`, 11, '400', '#555', 'middle');
         addText(x + 110, 280, `Penetration: ${p.pen}`, 14, '700', p.color, 'middle');
-        addText(x + 110, 300, `Market Avg: ${p.score}`, 12, '600', '#333', 'middle');
+        addText(x + 110, 300, `Capability: ${p.tier}`, 12, '600', '#333', 'middle');
     });
 
     // Delivery Model Section
     svg.appendChild(rc.rectangle(20, 345, 1160, 28, { ...opt, fill: '#00b4d8', fillStyle: 'solid', stroke: '#0095b3' }));
     addText(600, 365, 'KILL CHAIN COVERAGE BY DELIVERY MODEL', 12, '700', '#fff', 'middle');
 
+    const dmN = (stats?.vendor_count) || 1;
+    const dCount = stats?.delivery_models?.direct_service?.count || 0;
+    const pCount = stats?.delivery_models?.platform_plus_partner?.count || 0;
+    const plCount = stats?.delivery_models?.platform_only?.count || 0;
+    const dPctSVG = Math.round(dCount / dmN * 100);
+    const pPctSVG = Math.round(pCount / dmN * 100);
+    const plPctSVG = Math.round(plCount / dmN * 100);
     const dmCards = [
-        { name: '🎯 Direct Service', count: '11 (13%)', shift: '1.68', react: '1.65', color: '#107c10', bg: '#f0fff4',
-          lines: ['EXM: 1.74 | AMT: 1.17 | PPM: 1.72', 'ADR: 1.91 | SVC: 1.82', 'Highest ADR + SVC scores', '✓ Best managed-service depth'] },
-        { name: '🤝 Platform + Partner', count: '15 (17%)', shift: '1.52', react: '1.69', color: '#0078d4', bg: '#f0faff',
-          lines: ['EXM: 1.89 | AMT: 1.29 | PPM: 1.37', 'ADR: 1.47 | SVC: 1.90', 'Highest SVC via partners', '⚠ PPM gap (1.37 — structural)'] },
-        { name: '💻 Platform-Only', count: '25 (29%)', shift: '1.57', react: '1.44', color: '#ca5010', bg: '#fff8f0',
-          lines: ['EXM: 1.86 | AMT: 1.15 | PPM: 1.90', 'ADR: 1.46 | SVC: 1.42', '⚠ AMT: 1.15 (critical intel gap)', '⚠ No managed service delivery'] },
+        { name: '🎯 Direct Service', share: `~${dPctSVG}% of cohort`, color: '#107c10', bg: '#f0fff4',
+          lines: ['Highest adversary disruption depth', 'Strongest managed services tier', '✓ Best kill chain coverage (5-7)', '✓ Deep managed-service delivery'] },
+        { name: '🤝 Platform + Partner', share: `~${pPctSVG}% of cohort`, color: '#0078d4', bg: '#f0faff',
+          lines: ['Highest exposure management reach', 'Strong platform-native coverage', '⚠ Posture gap — structural', '⚠ Adversary management limited'] },
+        { name: '💻 Platform-Only', share: `~${plPctSVG}% of cohort`, color: '#ca5010', bg: '#fff8f0',
+          lines: ['Broad exposure management base', 'Strong policy automation', '⚠ Adversary intelligence: critical gap', '⚠ No managed service delivery'] },
     ];
     dmCards.forEach((d, i) => {
         const x = 20 + i * 390;
         svg.appendChild(rc.rectangle(x, 385, 375, 170, optFill(d.bg)));
         addText(x + 188, 410, d.name, 14, '700', d.color, 'middle');
-        addText(x + 188, 432, d.count, 11, '600', '#666', 'middle');
-        addText(x + 95, 455, `Shift-Left: ${d.shift}`, 12, '700', '#107c10', 'middle');
-        addText(x + 280, 455, `Reactive: ${d.react}`, 12, '700', '#a80000', 'middle');
-        addMultiText(x + 188, 478, d.lines, 10, '#555', 14, 'middle');
+        addText(x + 188, 432, d.share, 11, '600', '#666', 'middle');
+        addMultiText(x + 188, 458, d.lines, 10, '#555', 14, 'middle');
     });
 
     // Key Insight Box
     svg.appendChild(rc.rectangle(20, 575, 1160, 60, { ...opt, fill: '#fff0f0', fillStyle: 'solid', stroke: '#a80000' }));
-    addText(600, 600, '⚠ THE AMT BOTTLENECK: Only 16% of 86 vendors meet the 2.0 threshold on Adversary Management', 13, '700', '#a80000', 'middle');
-    addText(600, 622, '84% of vendors lack adversary intelligence capability — the critical missing link in preemptive defense', 11, '400', '#666', 'middle');
+    addText(600, 600, '⚠ THE ADVERSARY MANAGEMENT BOTTLENECK: Most vendors fall below competency threshold for adversary intelligence', 13, '700', '#a80000', 'middle');
+    addText(600, 622, 'The majority of the assessed cohort lacks adversary intelligence capability — the critical missing link in preemptive defense', 11, '400', '#666', 'middle');
 
-    // Stat boxes
+    // Stat boxes — use live pillar penetration data
     const statBoxes = [
-        { x: 30, y: 655, v: '49%', l: 'EXM Penetration', c: '#107c10', bg: '#f0fff4' },
-        { x: 250, y: 655, v: '16%', l: 'AMT Penetration', c: '#a80000', bg: '#fff5f5' },
-        { x: 470, y: 655, v: '37%', l: 'PPM Penetration', c: '#0078d4', bg: '#f0faff' },
-        { x: 690, y: 655, v: '33%', l: 'ADR Penetration', c: '#8764b8', bg: '#f5f0ff' },
-        { x: 910, y: 655, v: '41%', l: 'SVC Penetration', c: '#ca5010', bg: '#fff8f0' },
+        { x: 30, y: 655, v: `${pp.EXM?.pct||0}%`, l: 'Exposure Mgmt Penetration', c: '#107c10', bg: '#f0fff4' },
+        { x: 250, y: 655, v: `${pp.AMT?.pct||0}%`, l: 'Adversary Mgmt Penetration', c: '#a80000', bg: '#fff5f5' },
+        { x: 470, y: 655, v: `${pp.PPM?.pct||0}%`, l: 'Posture & Policy Penetration', c: '#0078d4', bg: '#f0faff' },
+        { x: 690, y: 655, v: `${pp.ADR?.pct||0}%`, l: 'Adversary Disruption Pen.', c: '#8764b8', bg: '#f5f0ff' },
+        { x: 910, y: 655, v: `${pp.SVC?.pct||0}%`, l: 'Services & Cap. Penetration', c: '#ca5010', bg: '#fff8f0' },
     ];
     statBoxes.forEach(s => {
         svg.appendChild(rc.rectangle(s.x, s.y, 200, 65, optFill(s.bg)));
@@ -22155,7 +26564,7 @@ function _pciDrawKillChainInfographic() {
 
     const actions = [
         { title: '01 – Map', desc: 'Kill chain scoring', color: '#0078d4' },
-        { title: '02 – Invest', desc: 'AMT to 3.0+', color: '#107c10' },
+        { title: '02 – Invest', desc: 'Adversary Mgmt priority', color: '#107c10' },
         { title: '03 – Reframe', desc: 'Kill chain GTM', color: '#8764b8' },
         { title: '04 – Close SVC', desc: 'Build/acquire/partner', color: '#ca5010' },
         { title: '05 – Index', desc: 'Shift-Left metric', color: '#a80000' },
@@ -22247,6 +26656,154 @@ async function exportPreCyberAllGraphicsPPTX() {
     }
 }
 
+/** Export Reimagining Operations v3 graphics (6 Reimagining slides + 7 Kill Chain slides) as PowerPoint */
+async function exportPreCyberReimaginPPTX() {
+    try {
+        const resp = await fetch('/api/precyber-reimagin-pptx');
+        if (!resp.ok) throw new Error('Server returned ' + resp.status);
+        const blob = await resp.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'PreCyber_Reimagining_Operations_Graphics.pptx';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    } catch (e) {
+        alert('PPTX export failed: ' + e.message);
+    }
+}
+
+async function exportPreCyberReimaginSelected() {
+    const fmt = document.getElementById('pci-reimagin-export-format')?.value || 'published-pptx';
+    if (fmt === 'published-pptx') return exportPreCyberReimaginPPTX();
+    if (fmt === 'concepts-pptx') return exportPreCyberReimaginConceptsPPTX();
+    if (fmt === 'concepts-svg' || fmt === 'concepts-png' || fmt === 'concepts-jpg') {
+        return exportPreCyberReimaginConceptImages(fmt.replace('concepts-', ''));
+    }
+}
+
+async function exportPreCyberReimaginConceptsPPTX() {
+    try {
+        const resp = await fetch('/api/precyber-reimagin-concepts-pptx');
+        if (!resp.ok) throw new Error('Server returned ' + resp.status);
+        const blob = await resp.blob();
+        _pciDownloadBlob(blob, 'PreCyber_Reimagining_Concept_Lab_Alternatives.pptx');
+    } catch (e) {
+        alert('Concept Lab PPTX export failed: ' + e.message);
+    }
+}
+
+function _pciDownloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+function _pciSafeFilename(s) {
+    return String(s || 'graphic').replace(/[^a-z0-9]+/gi, '_').replace(/^_+|_+$/g, '').toLowerCase();
+}
+
+function _pciGetConceptExportNodes() {
+    return [
+        ['01_capability_convergence_arrow_map', 'pci-reimagin-alt-convergence'],
+        ['02_triangle_operating_model_map', 'pci-reimagin-alt-triangle'],
+        ['03_current_vs_future_twin_panel', 'pci-reimagin-alt-twopanel'],
+        ['04_maturity_bridge_stepping_stones', 'pci-reimagin-alt-bridge'],
+        ['05_capability_penetration_target_zone', 'pci-reimagin-alt-radar'],
+        ['06_strategic_2x2_posture_map', 'pci-reimagin-alt-posture'],
+    ].map(([name, id]) => [name, document.getElementById(id)?.firstElementChild]).filter(([, el]) => !!el);
+}
+
+async function exportPreCyberReimaginConceptImages(kind) {
+    const conceptPanel = document.getElementById('pci-reimagin-panel-concepts');
+    const currentDisplay = conceptPanel?.style.display;
+    const currentVisibility = conceptPanel?.style.visibility;
+    const currentPosition = conceptPanel?.style.position;
+    const currentLeft = conceptPanel?.style.left;
+    const currentWidth = conceptPanel?.style.width;
+    if (conceptPanel && getComputedStyle(conceptPanel).display === 'none') {
+        conceptPanel.style.display = 'block';
+        conceptPanel.style.visibility = 'hidden';
+        conceptPanel.style.position = 'absolute';
+        conceptPanel.style.left = '-10000px';
+        conceptPanel.style.width = '1120px';
+    }
+    try {
+        const nodes = _pciGetConceptExportNodes();
+        if (!nodes.length) throw new Error('Concept Lab graphics are not rendered yet. Open the Concept Lab tab and try again.');
+        for (const [idx, [name, el]] of nodes.entries()) {
+            const svgBlob = await _pciElementToSvgBlob(el);
+            if (kind === 'svg') {
+                _pciDownloadBlob(svgBlob, `precyber_reimagin_${name}.svg`);
+            } else {
+                const imageBlob = await _pciSvgBlobToRasterBlob(svgBlob, kind === 'jpg' ? 'image/jpeg' : 'image/png');
+                _pciDownloadBlob(imageBlob, `precyber_reimagin_${name}.${kind === 'jpg' ? 'jpg' : 'png'}`);
+            }
+            // Give the browser a beat between multiple downloads so it does not drop files.
+            await new Promise(resolve => setTimeout(resolve, 220 + idx * 15));
+        }
+    } catch (e) {
+        alert(`${kind.toUpperCase()} export failed: ${e.message}`);
+    } finally {
+        if (conceptPanel) {
+            conceptPanel.style.display = currentDisplay;
+            conceptPanel.style.visibility = currentVisibility;
+            conceptPanel.style.position = currentPosition;
+            conceptPanel.style.left = currentLeft;
+            conceptPanel.style.width = currentWidth;
+        }
+    }
+}
+
+async function _pciElementToSvgBlob(el) {
+    const rect = el.getBoundingClientRect();
+    const width = Math.ceil(rect.width || el.scrollWidth || 1120);
+    const height = Math.ceil(rect.height || el.scrollHeight || 700);
+    const clone = el.cloneNode(true);
+    clone.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+    clone.style.width = `${width}px`;
+    clone.style.minHeight = `${height}px`;
+    clone.style.boxSizing = 'border-box';
+    const xhtml = new XMLSerializer().serializeToString(clone);
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+        <foreignObject width="100%" height="100%">${xhtml}</foreignObject>
+    </svg>`;
+    return new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+}
+
+async function _pciSvgBlobToRasterBlob(svgBlob, mimeType) {
+    const url = URL.createObjectURL(svgBlob);
+    try {
+        const img = new Image();
+        img.decoding = 'async';
+        const loaded = new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = () => reject(new Error('Could not rasterize the graphic in this browser. Try SVG or PPTX export.'));
+        });
+        img.src = url;
+        await loaded;
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        if (mimeType === 'image/jpeg') {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        ctx.drawImage(img, 0, 0);
+        return await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('Canvas export failed')), mimeType, 0.94));
+    } finally {
+        URL.revokeObjectURL(url);
+    }
+}
+
 /* ── PreCyber Positioning Statements (PJA Framework) ── */
 
 const _pciPositioningStatements = {
@@ -22254,12 +26811,12 @@ const _pciPositioningStatements = {
         position: 'The preemptive cybersecurity market is dangerously fragmented. Vendors that achieve full-spectrum capability across all five pillars by 2028 will capture disproportionate market share as buyers consolidate.',
         positionComponents: {
             importantIssue: 'Market fragmentation forces buyers into multi-vendor stacks with structural blind spots, increasing complexity and reducing defensive coherence.',
-            judgment: 'Only 6% of 86 vendors demonstrate competency across all five pillars. The remaining 94% compete in narrow lanes with at least one critical gap. This fragmentation is unsustainable as buyer expectations shift toward integrated outcomes.',
-            state: '49% of vendors operate as platform-only providers with no meaningful service delivery. Adversary Management reaches only 55% of the market. The structural gaps are widening, not closing.',
+            judgment: '0% of vendors demonstrate competency across all five pillars. 100% compete in narrow lanes with at least one critical gap. This fragmentation is unsustainable as buyer expectations shift toward integrated outcomes.',
+            state: '49% of vendors operate as platform-only providers with no meaningful service delivery. Adversary Management reaches only 12% of the market. The structural gaps are widening, not closing.',
             drama: 'Vendors that do not close their pillar gaps within the next three years will find themselves locked out of enterprise deals as procurement consolidates around full-spectrum providers.'
         },
         justification: {
-            context: 'Of 86 vendors assessed across five preemptive cybersecurity pillars, the market reveals extreme specialization. Exposure Management (49% penetration) leads, while Adversary Management (16%) is the critical blind spot. Platform-only vendors average 1.15/5.0 on AMT; 84% fall below the 2.0 competency threshold on adversary intelligence.',
+            context: 'Of 86 vendors assessed across five preemptive cybersecurity pillars, the market reveals extreme specialization. Exposure Management (47% penetration) leads, while Adversary Management (12%) is the critical blind spot. Platform-only vendors average 1.35/5.0 on AMT; 88% fall below the 2.0 competency threshold on adversary intelligence.',
             evidence: 'Direct service providers lead in operational delivery (Services: 2.74, Detection: 3.38) but lack platform depth. Platform-plus-partner vendors show the broadest coverage but dilute service accountability (Services: 2.32). Only three vendors (Mandiant, SentinelOne, Fortinet) maintain minimum pillar scores above 2.5 across all five domains, representing three distinct delivery models.',
             actionBridge: 'The market rewards breadth. Full-spectrum vendors score highest overall and face the least competitive pressure. With the SPA projecting 30% of programs on integrated platform-plus-service models by 2030 (up from <5% today), an M&A-driven consolidation wave will reshape vendor positioning. Vendors that wait will find acquisition targets already claimed.'
         },
@@ -22267,7 +26824,7 @@ const _pciPositioningStatements = {
             { action: 'Map your current portfolio against all five preemptive pillars and conduct an honest gap analysis.', whyNonObvious: 'Most vendors overestimate their coverage. A rigorous pillar-by-pillar assessment against the 51-vendor benchmark will reveal structural absences that marketing materials obscure.', outcome: 'Clear prioritization of organic investment vs. acquisition targets, with a gap-closure roadmap tied to the 2028 market consolidation window.' },
             { action: 'Platform vendors must develop a service delivery strategy: build an internal SOC, acquire a service provider, or formalize a partner accountability framework.', whyNonObvious: 'The 49% of platform-only vendors cannot compete in a market moving toward outcome-based delivery. Ignoring the services gap is not a neutral choice; it caps market ceiling.', outcome: 'Services pillar score above the 2.0 competency threshold within 18 months, enabling participation in outcome-based enterprise RFPs.' },
             { action: 'Service providers should invest upstream in adversary intelligence and exposure management to escape the MDR commodity trap.', whyNonObvious: 'Direct service providers with strong detection risk being perceived as reactive managed security unless they shift value upstream toward threat anticipation and attack surface reduction.', outcome: 'Repositioning from "we respond to what we find" to "we prevent what others miss," commanding premium pricing and strategic buyer relationships.' },
-            { action: 'Pursue strategic M&A to accelerate full-spectrum positioning rather than building every capability organically.', whyNonObvious: 'With only 14 vendors achieving five-pillar coverage, acquisition targets are finite. Platform vendors strong in Exposure and Posture Management should target adversary intelligence specialists and managed service operators before competitors claim them.', outcome: 'Full-spectrum positioning achievable in 12 to 18 months via acquisition vs. 3 to 5 years via organic build.' },
+            { action: 'Pursue strategic M&A to accelerate full-spectrum positioning rather than building every capability organically.', whyNonObvious: 'With 0 vendors achieving five-pillar coverage and only 8 vendors at four pillars, acquisition targets for full-spectrum completion are identifiable. Platform vendors strong in Exposure and Posture Management should target adversary intelligence specialists and managed service operators before competitors claim them.', outcome: 'Full-spectrum positioning achievable in 12 to 18 months via acquisition vs. 3 to 5 years via organic build.' },
             { action: 'Develop outcome-based commercial models that tie pricing to preemptive security results.', whyNonObvious: 'Full-spectrum capability is only valuable if commercially expressed as outcomes. Seat-based licensing does not capture the defensive value of integrated preemptive delivery.', outcome: 'Pricing models tied to measurable exposure reduction, attacker dwell-time commitments, and proactive neutralization rates.' },
             { action: 'MSSPs should position as the integration layer that solves the fragmentation problem for buyers.', whyNonObvious: 'The fragmented market creates a structural opportunity for MSSPs to become the orchestration layer, assembling multi-vendor preemptive stacks and delivering unified managed outcomes.', outcome: 'Conversion of market fragmentation from a buyer liability into a service-provider revenue opportunity, with higher margins than resale-only MSSP models.' }
         ],
@@ -22288,20 +26845,20 @@ const _pciPositioningStatements = {
         position: 'Preemptive cybersecurity is fragmented. Nearly three-quarters of vendors have at least one structural blind spot. Full-spectrum vendors that close their gaps first will win.',
         positionComponents: {
             importantIssue: 'Vendor specialization forces buyers to assemble multi-vendor stacks that create coverage gaps, accountability gaps, and integration overhead.',
-            judgment: 'Only about a quarter of vendors reach baseline competency across all five pillars. The rest compete in narrow lanes. This is not a mature market finding a steady state; it is a consolidation opportunity.',
-            state: 'Roughly half the market has no service delivery capability. Adversary intelligence penetration sits near 55%. The gaps are structural, not incremental.',
+            judgment: 'No vendors currently reach baseline competency across all five pillars. 100% compete with at least one critical gap. This is not a mature market finding a steady state; it is a consolidation opportunity.',
+            state: 'Roughly half the market has no service delivery capability. Adversary intelligence penetration sits near 12%. The gaps are structural, not incremental.',
             drama: 'Vendors that reach full-spectrum positioning by 2028 will capture disproportionate share as buyers consolidate. Vendors that do not will compete for shrinking slices of a fragmenting addressable market.'
         },
         justification: {
-            context: 'The market is lopsided. Over 90% of vendors address Exposure Management and ~85% cover Posture Management. But only ~55% have meaningful adversary intelligence, and barely over half have a real service delivery model. Nearly half the market lacks threat anticipation capability.',
-            evidence: 'Platform-only vendors (~50% of market) average minimal scores on services, with ~90% below the competency threshold. Direct service providers (~20%) score highest on services and detection but trail on adversary management and exposure management. Platform-plus-partner vendors (~30%) show broadest coverage but diluted accountability. Fewer than 6% of vendors have no major blind spot.',
+            context: 'The market is lopsided. Over 90% of vendors address Exposure Management and ~85% cover Posture Management. But only 12% have meaningful adversary intelligence, and barely over half have a real service delivery model. Nearly half the market lacks threat anticipation capability.',
+            evidence: 'Platform-only vendors (~49% of market) average AMT 1.35, with 88% below the competency threshold. Direct service providers (~24%) score highest on services and detection but trail on adversary management and exposure management. Platform-plus-partner vendors (~27%) show broadest coverage but diluted accountability. 0% of vendors have no major blind spot — 100% have at least one critical gap.',
             actionBridge: 'The SPA projects ~30% of enterprise programs on integrated platform-plus-service models by 2030, up from <5% today. Vendors reaching full-spectrum positioning by 2028 will capture disproportionate market share. The consolidation window is open now.'
         },
         actions: [
             { action: 'Map your portfolio against all five pillars. Be honest about the gaps.', whyNonObvious: 'Most vendors overrate their own coverage. Rigorous self-assessment against the market benchmark will reveal structural absences that sales messaging obscures.', outcome: 'Prioritized roadmap for investment and acquisition with clear gap-closure timelines.' },
             { action: 'Platform vendors need a service strategy: build, buy, or partner.', whyNonObvious: 'Roughly half the market has no service delivery. That is a strategic liability as buyers shift toward outcome-based models.', outcome: 'Service capability that unlocks participation in managed-outcome enterprise deals.' },
             { action: 'Service providers should invest upstream to escape the MDR commodity trap.', whyNonObvious: 'Strong detection and response without adversary intelligence and exposure management leaves providers positioned as reactive commodity services.', outcome: 'Value proposition shifts from "we respond" to "we prevent," commanding premium pricing.' },
-            { action: 'Use M&A to accelerate. Building every capability organically takes too long.', whyNonObvious: 'With only ~25% of vendors at full-spectrum coverage, acquisition targets are finite. The fastest path is acquisition before competitors claim the best targets.', outcome: 'Full-spectrum positioning in 12 to 18 months vs. 3 to 5 years organic.' },
+            { action: 'Use M&A to accelerate. Building every capability organically takes too long.', whyNonObvious: 'With 0% of vendors at full-spectrum coverage and only 9% at four-pillar coverage, acquisition targets for closing the AMT gap are identifiable. The fastest path is acquisition before competitors claim the best targets.', outcome: 'Full-spectrum positioning in 12 to 18 months vs. 3 to 5 years organic.' },
             { action: 'Build pricing models that reward full-spectrum delivery.', whyNonObvious: 'Outcome-linked models (exposure reduction commitments, dwell-time guarantees, proactive neutralization rates) capture the value of integrated delivery in ways seat-based pricing cannot.', outcome: 'Commercial models that differentiate full-spectrum vendors and increase contract value.' },
             { action: 'MSSPs should position as the integration layer that solves fragmentation for buyers.', whyNonObvious: 'Market fragmentation converts from a buyer liability into a service-provider margin opportunity for MSSPs willing to orchestrate multi-vendor stacks.', outcome: 'Higher-margin integration revenue exceeding resale-only MSSP models.' }
         ],
@@ -22323,17 +26880,17 @@ const _pciPositioningStatements = {
         positionComponents: {
             importantIssue: 'Despite the "preemptive" label, the market\'s actual capability distribution reveals a reactive bias. Buyers cannot distinguish genuine preemptive capability from repackaged detection and response.',
             judgment: 'The majority of vendor investment maps to Kill Chain Phases 4 through 7 (Exploitation through Actions on Objectives), the domain of EDR, XDR, and SIEM. Genuine shift-left capability covering Phases 1 through 3 remains the exception, not the norm.',
-            state: 'Adversary Management, the linchpin of preemptive defense covering Phases 1 through 2, reaches only 55% of vendors. Platform-only vendors average 1.87/5.0 on this pillar. The shift-left thesis is structurally bottlenecked.',
+            state: 'Adversary Management, the linchpin of preemptive defense covering Phases 1 through 2, reaches only 12% of vendors. Platform-only vendors average 1.35/5.0 on this pillar. The shift-left thesis is structurally bottlenecked.',
             drama: 'By 2028, 35% of enterprise evaluations will use kill chain phase coverage as a primary vendor selection criterion. Vendors that cannot demonstrate measurable Phase 1 through 3 coverage will lose deals to those that can.'
         },
         justification: {
             context: 'Preemptive cybersecurity maps directly to the first three phases of the Lockheed Martin Cyber Kill Chain: Exposure Management to Reconnaissance (Phase 1), Adversary Management to Weaponization (Phase 2), and Posture Management to Delivery (Phase 3). But most vendors fail to articulate this shift-left value proposition, marketing capabilities as feature lists instead of defensive coverage.',
-            evidence: 'Adversary Disruption maps to Phases 4 through 6, traditional EDR/XDR territory. Services & Capability spans Phases 5 through 7 (incident response, threat hunting). Platform-only vendors (49% of market) cluster around Phases 3 through 5 with strong Exposure Management (3.07) providing Phase 1 scanning but virtually no Phase 2 (Adversary Management: 1.87) offensive disruption. Only 14 full-spectrum vendors (27%) achieve meaningful coverage across both preemptive (1 through 3) and reactive (5 through 7) phases.',
-            actionBridge: 'Vendors that achieve dual-sided kill chain coverage command significantly higher overall scores and market positioning. The 14 full-spectrum vendors maintain minimum pillar scores of 2.5+, meaning no kill chain phase goes undefended. This validates the full-spectrum thesis through a defense-in-depth lens.'
+            evidence: 'Adversary Disruption maps to Phases 4 through 6, traditional EDR/XDR territory. Services & Capability spans Phases 5 through 7 (incident response, threat hunting). Platform-only vendors (49% of market) cluster around Phases 3 through 5 with strong Exposure Management (2.04) providing Phase 1 scanning but virtually no Phase 2 (Adversary Management: 1.35) offensive disruption. Only 8 majority-spectrum vendors (9%) achieve meaningful coverage across both preemptive (1 through 3) and reactive (5 through 7) phases.',
+            actionBridge: 'Vendors that achieve dual-sided kill chain coverage command significantly higher overall scores and market positioning. The 8 majority-spectrum vendors maintain coverage across 4 pillars, with AMT as the universal gap. This validates the AMT bottleneck thesis through a defense-in-depth lens.'
         },
         actions: [
             { action: 'Map your product portfolio against the seven kill chain phases and quantify where shift-left coverage drops below competitive threshold.', whyNonObvious: 'Most vendors have never formally mapped their capabilities to kill chain phases. This exercise reveals that strong Exposure Management scores do not compensate for absent Phase 2 (Weaponization/Adversary Management) capability.', outcome: 'Phase-by-phase coverage assessment identifying specific defensive gaps and investment priorities for shift-left positioning.' },
-            { action: 'Prioritize Adversary Management investment as the single highest-leverage shift-left initiative, targeting polymorphic defense and moving target defense capabilities.', whyNonObvious: 'Adversary Management is the critical bottleneck with only 55% vendor penetration and platform-only averages of 1.87/5.0. It is the only pillar that directly disrupts adversary activity before exploitation.', outcome: 'Competitive separation in Phase 1 through 2 kill chain coverage, the most defensible and least crowded positioning in the market.' },
+            { action: 'Prioritize Adversary Management investment as the single highest-leverage shift-left initiative, targeting polymorphic defense and moving target defense capabilities.', whyNonObvious: 'Adversary Management is the critical bottleneck with only 12% vendor penetration and platform-only averages of 1.35/5.0. It is the only pillar that directly disrupts adversary activity before exploitation.', outcome: 'Competitive separation in Phase 1 through 2 kill chain coverage, the most defensible and least crowded positioning in the market.' },
             { action: 'Reframe go-to-market messaging around kill chain phase coverage rather than feature checklists.', whyNonObvious: 'Enterprise security leaders already speak the language of kill chain and MITRE ATT&CK frameworks. Restructuring marketing to show which phases each product addresses makes the preemptive value proposition immediately legible to buyers.', outcome: 'Buyers can immediately compare shift-left coverage across vendors, advantaging those with genuine Phase 1 through 3 presence.' },
             { action: 'Build or acquire service delivery capability to close the right side of the kill chain, recognizing that preemptive products without managed response leave buyers exposed in Phases 5 through 7.', whyNonObvious: 'Even the best shift-left products cannot guarantee zero breaches. When adversaries reach Phase 4, buyers need managed detection, threat hunting, and incident response. Products without services leave a kill chain gap that competitors will exploit.', outcome: 'Full kill chain coverage from Phase 1 through Phase 7, eliminating the structural gap that limits platform-only vendors to mid-chain positioning.' },
             { action: 'Develop a Shift-Left Readiness Index as a customer-facing metric quantifying how much defensive posture moves from reactive (Phases 5 through 7) to preemptive (Phases 1 through 3) after deployment.', whyNonObvious: 'No vendor currently offers a measurable, customer-facing metric for shift-left impact. Creating this metric establishes a new evaluation criterion that favors vendors with genuine preemptive capability.', outcome: 'Measurable proof of shift-left impact: percentage of adversary techniques neutralized before Phase 4, reduction in detection time, attack paths eliminated through upstream defense.' }
@@ -22360,7 +26917,7 @@ const _pciPositioningStatements = {
         },
         justification: {
             context: 'Two complementary frameworks reveal the same structural story. The Lockheed Martin Kill Chain provides a linear seven-phase model: Exposure Management maps to Phase 1 (Reconnaissance), Adversary Management to Phases 1-2 (Reconnaissance/Weaponization), Posture Management to Phases 2-3 (Weaponization/Delivery), and Adversary Disruption to Phases 4-7. Services maturity does not map to specific phases; it multiplies the delivered value of every pillar at every phase.',
-            evidence: 'MITRE ATT&CK mapping confirms the kill chain findings through a more granular lens. Exposure Management addresses TA0043 (Reconnaissance) and TA0007 (Discovery). Adversary Management covers TA0042 (Resource Development), TA0005 (Defense Evasion), and TA0006 (Credential Access). ATT&CK reveals the same critical gap: Resource Development (TA0042) has the weakest coverage because ~45% of the market lacks Adversary Management. Only ~25% of vendors achieve full-spectrum coverage regardless of which framework is used.',
+            evidence: 'MITRE ATT&CK mapping confirms the kill chain findings through a more granular lens. Exposure Management addresses TA0043 (Reconnaissance) and TA0007 (Discovery). Adversary Management covers TA0042 (Resource Development), TA0005 (Defense Evasion), and TA0006 (Credential Access). ATT&CK reveals the same critical gap: Resource Development (TA0042) has the weakest coverage because ~88% of the market lacks Adversary Management. Only 9% of vendors achieve majority-spectrum coverage regardless of which framework is used.',
             actionBridge: 'Services maturity correlates more strongly with full-spectrum coverage than any individual technology pillar. The four services dimensions (implementation, advisory, managed operations, autonomous delivery) form a maturity spectrum that determines whether technology capability translates into operational defensive value. Vendors that invest in services alongside technology will demonstrate superior framework coverage.'
         },
         actions: [
@@ -22387,13 +26944,13 @@ const _pciPositioningStatements = {
         positionComponents: {
             importantIssue: 'Roughly 68% of vendor capability concentrates in Phases 4 through 7 (Exploitation through Actions on Objectives), perpetuating the detection-and-response paradigm the preemptive label is supposed to replace.',
             judgment: 'Adversary Management is the critical bottleneck: lowest penetration, widest delivery-model gap. Services maturity is the strongest predictor of full-spectrum coverage. Vendors that invest in both will own the shift-left narrative.',
-            state: 'Only ~25% of vendors achieve meaningful coverage across all four defensive pillars. The remaining ~75% have at least one lifecycle phase with no meaningful defense.',
+            state: 'Only 9% of vendors achieve meaningful coverage across four or more defensive pillars. The remaining 91% have at least one lifecycle phase with no meaningful defense.',
             drama: 'By 2028, ~35% of evaluations will use lifecycle phase coverage as a selection criterion. Technology without operational depth delivers inferior outcomes. Vendors that cannot prove dual-framework coverage will be structurally excluded.'
         },
         justification: {
             context: 'Four pillars map directly to adversary lifecycle phases: Exposure Management to Kill Chain Phase 1 / ATT&CK TA0043, TA0007; Adversary Management to Phases 1-2 / TA0042, TA0005, TA0006; Posture Management to Phases 2-3 / TA0001, TA0004; Adversary Disruption to Phases 4-7 / TA0002 through TA0040. Services maturity does not map to specific phases; it multiplies delivered value at every phase.',
-            evidence: 'Adversary Management covers the most technically demanding capabilities (polymorphic defense, moving target defense, runtime protection, credential rotation) yet only ~55% of vendors offer meaningful capability. Resource Development (TA0042) has the weakest ATT&CK coverage because ~45% of the market lacks Adversary Management. The dual-framework analysis validates the same structural gaps through two independent lenses.',
-            actionBridge: 'Roughly one quarter of assessed vendors demonstrate meaningful competency across all four defensive pillars with coverage spanning both preemptive phases (1-3) and reactive phases (4-7). Services maturity is the strongest predictor of which vendors achieve this status. The consolidation opportunity is clear.'
+            evidence: 'Adversary Management covers the most technically demanding capabilities (polymorphic defense, moving target defense, runtime protection, credential rotation) yet only 12% of vendors offer meaningful capability. Resource Development (TA0042) has the weakest ATT&CK coverage because ~88% of the market lacks Adversary Management. The dual-framework analysis validates the same structural gaps through two independent lenses.',
+            actionBridge: 'Only 9% of assessed vendors demonstrate meaningful competency across four or more defensive pillars with coverage spanning both preemptive phases (1-3) and reactive phases (4-7). Services maturity is the strongest predictor of which vendors achieve this status. The consolidation opportunity is clear.'
         },
         actions: [
             { action: 'Map your portfolio against both frameworks to find where shift-left coverage drops below threshold.', whyNonObvious: 'Dual-framework mapping (kill chain phases + ATT&CK enterprise tactics) reveals gaps that single-framework analysis misses. Any phase or tactic below baseline is a structural gap your competitors will exploit.', outcome: 'Comprehensive coverage picture with clear priority ranking for investment or acquisition targets.' },
@@ -27926,6 +32483,7 @@ function exportCNAPPMarketInsightHTML() {
     // ── Fetch docs JSON ────────────────────────────────────────────────────
     async function loadDocs(docId) {
         activeDocId = docId;
+        bodyEl.classList.toggle('ebook-mode', docId === 'asaf_ebook');
         if (docsCache[docId]) { renderPanel(docsCache[docId]); return; }
         bodyEl.innerHTML  = '<div class="docs-view-loading">Loading documentation…</div>';
         if (navListEl) navListEl.innerHTML = '';
@@ -27941,6 +32499,31 @@ function exportCNAPPMarketInsightHTML() {
     }
 
     // ── Render panel: left nav, single body pane per section ───────────────
+    // Builds the rich chapter/section header for ebook mode
+    function buildChapterHeader(title) {
+        const header = document.createElement('div');
+        header.className = 'docs-chapter-header';
+        // Match "Chapter N — Subtitle" / "Framework Foundations — Sub" / "Appendix — Sub"
+        const m = title.match(/^(Chapter \d+|Framework Foundations|Appendix)\s*[\u2014\-]+\s*(.+)$/);
+        const eyebrow = document.createElement('span');
+        eyebrow.className = 'docs-chapter-eyebrow';
+        const h2 = document.createElement('h2');
+        h2.className = 'docs-chapter-title';
+        if (m) {
+            eyebrow.textContent = m[1].toUpperCase();
+            h2.textContent = m[2];
+        } else {
+            eyebrow.textContent = 'AGENTIC SECURITY OPERATIONS ADOPTION FRAMEWORK';
+            h2.textContent = title;
+        }
+        const accent = document.createElement('span');
+        accent.className = 'docs-chapter-accent';
+        header.appendChild(eyebrow);
+        header.appendChild(h2);
+        header.appendChild(accent);
+        return header;
+    }
+
     function renderPanel(data) {
         const sections = (data.tabs || []).flatMap(t => t.sections || []);
         if (!sections.length) { bodyEl.innerHTML = '<div class="docs-view-loading">No content.</div>'; return; }
@@ -27957,6 +32540,18 @@ function exportCNAPPMarketInsightHTML() {
                 btn.addEventListener('click', () => switchSection(sec.id));
                 navListEl.appendChild(btn);
             });
+            // Export download link (ebook mode only)
+            if (bodyEl.classList.contains('ebook-mode')) {
+                const sep = document.createElement('div');
+                sep.className = 'docs-nav-export-sep';
+                const exportLink = document.createElement('a');
+                exportLink.href = '/export/asaf-ebook';
+                exportLink.className = 'docs-nav-export-btn';
+                exportLink.textContent = '⬇  Export Complete Ebook';
+                exportLink.title = 'Download a standalone HTML file with all chapters and the interactive worksheet';
+                navListEl.appendChild(sep);
+                navListEl.appendChild(exportLink);
+            }
         }
 
         // Content panes
@@ -27965,10 +32560,14 @@ function exportCNAPPMarketInsightHTML() {
             const pane = document.createElement('div');
             pane.className = 'docs-tab-content' + (i === 0 ? ' active' : '');
             pane.id = `docs-sec-${sec.id}`;
-            const h2 = document.createElement('h2');
-            h2.className = 'docs-section-title';
-            h2.textContent = sec.title;
-            pane.appendChild(h2);
+            if (bodyEl.classList.contains('ebook-mode')) {
+                pane.appendChild(buildChapterHeader(sec.title));
+            } else {
+                const h2 = document.createElement('h2');
+                h2.className = 'docs-section-title';
+                h2.textContent = sec.title;
+                pane.appendChild(h2);
+            }
             (sec.content || []).forEach(block => pane.appendChild(renderBlock(block)));
             bodyEl.appendChild(pane);
         });
@@ -27992,15 +32591,762 @@ function exportCNAPPMarketInsightHTML() {
         renderMermaidInPane(sectId);
     }
 
+    function docsInlineFormat(text) {
+        return escapeHtml(text || '')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.+?)\*/g, '<em>$1</em>');
+    }
+
+    function docsMarkdownToHtml(markdown) {
+        const lines = String(markdown || '').replace(/\r\n/g, '\n').split('\n');
+        let html = '';
+        let paragraph = [];
+        let listItems = [];
+        let orderedList = false;
+        let tableRows = [];
+
+        function flushParagraph() {
+            if (!paragraph.length) return;
+            html += `<p class="docs-text">${docsInlineFormat(paragraph.join(' '))}</p>`;
+            paragraph = [];
+        }
+
+        function flushList() {
+            if (!listItems.length) return;
+            const tag = orderedList ? 'ol' : 'ul';
+            const className = orderedList ? 'docs-list docs-list-ordered' : 'docs-list';
+            html += `<${tag} class="${className}">`;
+            listItems.forEach(item => { html += `<li>${docsInlineFormat(item)}</li>`; });
+            html += `</${tag}>`;
+            listItems = [];
+            orderedList = false;
+        }
+
+        function flushTable() {
+            if (!tableRows.length) return;
+            const isSep = r => /^\|[-:\s|]+\|$/.test(r.replace(/[ \t]/g, ''));
+            const parseCells = row => row.split('|')
+                .filter((_, i, a) => i > 0 && i < a.length - 1)
+                .map(c => c.trim());
+            const sepIdx = tableRows.findIndex(isSep);
+            html += '<div class="docs-table-wrap"><table class="docs-table">';
+            if (sepIdx === 1) {
+                html += '<thead><tr>';
+                parseCells(tableRows[0]).forEach(cell => { html += `<th>${docsInlineFormat(cell)}</th>`; });
+                html += '</tr></thead><tbody>';
+                tableRows.slice(2).forEach(row => {
+                    if (isSep(row)) return;
+                    html += '<tr>';
+                    parseCells(row).forEach(cell => { html += `<td>${docsInlineFormat(cell)}</td>`; });
+                    html += '</tr>';
+                });
+            } else {
+                html += '<tbody>';
+                tableRows.forEach(row => {
+                    if (isSep(row)) return;
+                    html += '<tr>';
+                    parseCells(row).forEach(cell => { html += `<td>${docsInlineFormat(cell)}</td>`; });
+                    html += '</tr>';
+                });
+            }
+            html += '</tbody></table></div>';
+            tableRows = [];
+        }
+
+        for (const rawLine of lines) {
+            const line = rawLine.trim();
+
+            // Close open table when we leave table rows
+            if (!line.startsWith('|') && tableRows.length) flushTable();
+
+            // Table row
+            if (line.startsWith('|')) {
+                flushParagraph();
+                flushList();
+                tableRows.push(line);
+                continue;
+            }
+
+            if (!line) {
+                flushParagraph();
+                flushList();
+                continue;
+            }
+
+            // Horizontal rule
+            if (/^---+$/.test(line)) {
+                flushParagraph();
+                flushList();
+                html += '<hr class="docs-rule">';
+                continue;
+            }
+
+            const headingMatch = line.match(/^(#{1,4})\s+(.*)$/);
+            if (headingMatch) {
+                flushParagraph();
+                flushList();
+                const level = Math.min(6, headingMatch[1].length + 2);
+                html += `<h${level} class="docs-heading">${docsInlineFormat(headingMatch[2])}</h${level}>`;
+                continue;
+            }
+
+            // Blockquote — renders as styled callout
+            const bqMatch = line.match(/^>\s?(.*)/);
+            if (bqMatch) {
+                flushParagraph();
+                flushList();
+                html += `<blockquote class="docs-blockquote">${docsInlineFormat(bqMatch[1])}</blockquote>`;
+                continue;
+            }
+
+            const bulletMatch = line.match(/^[-*]\s+(.*)$/);
+            if (bulletMatch) {
+                flushParagraph();
+                if (listItems.length && orderedList) flushList();
+                orderedList = false;
+                listItems.push(bulletMatch[1]);
+                continue;
+            }
+
+            const orderedMatch = line.match(/^\d+\.\s+(.*)$/);
+            if (orderedMatch) {
+                flushParagraph();
+                if (listItems.length && !orderedList) flushList();
+                orderedList = true;
+                listItems.push(orderedMatch[1]);
+                continue;
+            }
+
+            paragraph.push(line);
+        }
+
+        flushParagraph();
+        flushList();
+        flushTable();
+        return html;
+    }
+
+    // ── ASAF Dimension Visualization SVG builder ──────────────────
+    function _buildAsafVizSvg(container, data) {
+        const W = 700, H = 310, PH = H / 3, LW = 68;
+        const NS = 'http://www.w3.org/2000/svg';
+        function mk(tag, attrs, text) {
+            const el = document.createElementNS(NS, tag);
+            for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, String(v));
+            if (text !== undefined) el.textContent = text;
+            return el;
+        }
+        // All 11 ASAF dimensions — Sensing / Reasoning / Control planes
+        const DIMS = {
+            SEN: { x: 185, y: PH * 0.5, pi: 0 }, LRN: { x: 560, y: PH * 0.5, pi: 0 },
+            RSN: { x: 150, y: PH * 1.5, pi: 1 }, OPS: { x: 280, y: PH * 1.5, pi: 1 }, SKG: { x: 410, y: PH * 1.5, pi: 1 }, MET: { x: 545, y: PH * 1.5, pi: 1 },
+            ACT: { x: 120, y: PH * 2.5, pi: 2 }, AGT: { x: 230, y: PH * 2.5, pi: 2 }, GOV: { x: 345, y: PH * 2.5, pi: 2 }, HUM: { x: 460, y: PH * 2.5, pi: 2 }, TRN: { x: 575, y: PH * 2.5, pi: 2 },
+        };
+        const PLANES = [
+            { label: 'SENSING',   fill: 'rgba(14,165,233,0.08)',  stroke: 'rgba(14,165,233,0.22)',  tc: 'rgba(56,189,248,0.8)' },
+            { label: 'REASONING', fill: 'rgba(139,92,246,0.08)', stroke: 'rgba(139,92,246,0.22)', tc: 'rgba(167,139,250,0.8)' },
+            { label: 'CONTROL',   fill: 'rgba(239,68,68,0.08)',  stroke: 'rgba(239,68,68,0.22)',  tc: 'rgba(252,165,165,0.8)' },
+        ];
+        // 6 signal / communication types between dimensions
+        const SIGNAL_TYPES = {
+            signal:     { stroke: 'rgba(56,189,248,0.70)',  dash: '0'   },
+            hypothesis: { stroke: 'rgba(129,140,248,0.75)', dash: '0'   },
+            authority:  { stroke: 'rgba(251,113,133,0.80)', dash: '6,3' },
+            outcome:    { stroke: 'rgba(52,211,153,0.70)',  dash: '0'   },
+            context:    { stroke: 'rgba(251,191,36,0.70)',  dash: '3,2' },
+            learning:   { stroke: 'rgba(74,222,128,0.70)',  dash: '8,4' },
+        };
+        const svg = mk('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', style: 'display:block;max-height:310px' });
+
+        // Plane bands + labels
+        PLANES.forEach((p, i) => {
+            svg.appendChild(mk('rect', { x: LW + 4, y: i * PH + 2, width: W - LW - 12, height: PH - 4, rx: 6, fill: p.fill, stroke: p.stroke, 'stroke-width': 1 }));
+            svg.appendChild(mk('text', { x: LW - 2, y: i * PH + PH / 2, 'text-anchor': 'end', 'dominant-baseline': 'middle', 'font-size': 9, 'font-weight': 700, 'letter-spacing': '0.07em', fill: p.tc }, p.label));
+        });
+
+        const featured = data.mode === 'dimension' ? (data.dimension || null) : null;
+        const connMap = new Map();
+        if (featured && data.connections) data.connections.forEach(c => connMap.set(c.to, c));
+
+        // Draw a bezier curve between two dimension nodes
+        function drawCurve(fromId, toId, strokeColor, dash) {
+            const fp = DIMS[fromId], tp = DIMS[toId];
+            if (!fp || !tp) return;
+            const mx = (fp.x + tp.x) / 2;
+            const controlY = fp.pi !== tp.pi ? (fp.y + tp.y) / 2 - Math.abs(fp.x - tp.x) * 0.12 : (fp.y + tp.y) / 2;
+            svg.appendChild(mk('path', { d: `M${fp.x},${fp.y} Q${mx},${controlY} ${tp.x},${tp.y}`, stroke: strokeColor, 'stroke-width': 1.5, fill: 'none', 'stroke-dasharray': dash || '0' }));
+        }
+
+        if (data.mode === 'dimension' && featured && data.connections) {
+            data.connections.forEach(c => {
+                const from = c.direction === 'out' ? featured : c.to;
+                const to   = c.direction === 'out' ? c.to    : featured;
+                const sig = c.signal_type && SIGNAL_TYPES[c.signal_type]
+                    ? SIGNAL_TYPES[c.signal_type]
+                    : { stroke: c.direction === 'out' ? 'rgba(99,102,241,0.55)' : 'rgba(34,197,94,0.45)', dash: c.direction === 'in' ? '5,3' : '0' };
+                drawCurve(from, to, sig.stroke, sig.dash);
+            });
+        }
+        if (data.mode === 'loop') {
+            [['SEN','RSN','signal'],['SEN','LRN','signal'],['LRN','SKG','learning'],['LRN','SEN','learning'],
+             ['RSN','ACT','hypothesis'],['RSN','SKG','outcome'],['ACT','SKG','outcome'],['ACT','GOV','outcome'],
+             ['ACT','LRN','outcome'],['SKG','RSN','context'],['SKG','ACT','context'],['SKG','GOV','context'],
+             ['GOV','ACT','authority'],['GOV','AGT','authority'],['HUM','GOV','signal'],
+             ['MET','GOV','outcome'],['TRN','SEN','context'],['OPS','ACT','signal'],
+             ['SKG','OPS','context'],['RSN','OPS','hypothesis'],['AGT','ACT','signal'],
+            ].forEach(([f, t, type]) => {
+                const sig = SIGNAL_TYPES[type] || { stroke: 'rgba(99,102,241,0.32)', dash: '0' };
+                drawCurve(f, t, sig.stroke.replace(/,[\d.]+\)$/, ',0.32)'), sig.dash);
+            });
+        }
+
+        // Dimension nodes
+        Object.entries(DIMS).forEach(([dim, pos]) => {
+            const isFeat = dim === featured;
+            const isConn = connMap.has(dim);
+            const isLoop = data.mode === 'loop';
+            const isPlan = data.mode === 'planes';
+            const r = isFeat ? 22 : 14;
+            const pc = PLANES[pos.pi];
+            if (isFeat) svg.appendChild(mk('circle', { cx: pos.x, cy: pos.y, r: 30, fill: 'rgba(59,130,246,0.14)' }));
+            const fill = isFeat ? 'rgba(59,130,246,0.82)' : (isPlan || isLoop) ? pc.fill.replace('0.08','0.28') : isConn ? 'rgba(99,102,241,0.22)' : 'rgba(30,41,59,0.65)';
+            const stroke = isFeat ? '#60a5fa' : (isPlan || isLoop) ? pc.stroke : isConn ? 'rgba(99,102,241,0.5)' : 'rgba(71,85,105,0.45)';
+            svg.appendChild(mk('circle', { cx: pos.x, cy: pos.y, r, fill, stroke, 'stroke-width': isFeat ? 2 : 1 }));
+            const textFill = isFeat ? '#fff' : (isPlan || isLoop) ? pc.tc : isConn ? 'rgba(199,210,254,0.9)' : 'rgba(100,116,139,0.55)';
+            svg.appendChild(mk('text', { x: pos.x, y: pos.y, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': isFeat ? 11 : 9, 'font-weight': 700, fill: textFill }, dim));
+        });
+
+        container.appendChild(svg);
+    }
+
+    // Builds the abbreviation key panel showing all 11 ASAF dimensions
+    function _buildAsafVizKey() {
+        const DIM_INFO = [
+            { id: 'SEN', name: 'Sensing Fabric & Detection',    pi: 0 },
+            { id: 'LRN', name: 'Learning & Continuous DFIR',    pi: 0 },
+            { id: 'RSN', name: 'Reasoning & Planning',          pi: 1 },
+            { id: 'OPS', name: 'Operational Interaction Model', pi: 1 },
+            { id: 'SKG', name: 'Security Knowledge Graph',      pi: 1 },
+            { id: 'MET', name: 'Metrics, Audit & Assurance',    pi: 1 },
+            { id: 'ACT', name: 'Autonomous Action & Response',  pi: 2 },
+            { id: 'AGT', name: 'Agent Architecture & Coord.',   pi: 2 },
+            { id: 'GOV', name: 'Ethics, Governance & Authority',pi: 2 },
+            { id: 'HUM', name: 'Human Roles & Interface',       pi: 2 },
+            { id: 'TRN', name: 'Transformation Readiness',      pi: 2 },
+        ];
+        const PLANE_COLORS = ['rgba(56,189,248,0.85)', 'rgba(167,139,250,0.85)', 'rgba(252,165,165,0.85)'];
+        const key = document.createElement('div');
+        key.className = 'docs-asaf-viz-key';
+        DIM_INFO.forEach(d => {
+            const row = document.createElement('div');
+            row.className = 'docs-asaf-viz-key-row';
+            const badge = document.createElement('span');
+            badge.className = 'docs-asaf-viz-key-badge';
+            badge.style.cssText = `background:${PLANE_COLORS[d.pi]};`;
+            badge.textContent = d.id;
+            const name = document.createElement('span');
+            name.className = 'docs-asaf-viz-key-name';
+            name.textContent = d.name;
+            row.appendChild(badge);
+            row.appendChild(name);
+            key.appendChild(row);
+        });
+        return key;
+    }
+
+    // ── Interactive Worksheet Wizard ──────────────────────────────
+    function buildWorksheetWizard() {
+        const DIMS = [
+            { id:'SEN', name:'Sensing Fabric & Detection',      plane:0, desc:'Breadth, quality, and intelligence of signal ingestion across your security estate.', subs:[
+                {id:'SEN-01', name:'Signal Coverage & Sensor Breadth',          desc:'Scope of signal sources monitored — endpoint, network, cloud, identity, SaaS, OT, and supply chain.'},
+                {id:'SEN-02', name:'Detection Logic Architecture',               desc:'Design and governance of detection rules, behavioral models, and ML-based detectors — creation, tuning, and validation.'},
+                {id:'SEN-03', name:'Adversary Modeling Integration',             desc:'Degree to which adversary intelligence, actor profiles, and TTP libraries are operationalized into detection logic.'},
+                {id:'SEN-04', name:'Exposure Surface Awareness (CTEM)',          desc:'Real-time understanding of the exploitable attack surface and how it influences detection priority and coverage.'},
+            ]},
+            { id:'LRN', name:'Learning & Continuous DFIR',      plane:0, desc:'The system\'s ability to absorb incident outcomes and continuously improve detection and response logic.', subs:[
+                {id:'LRN-01', name:'Incident Learning Integration',              desc:'Systematic extraction of detection improvements and governance lessons from resolved incidents.'},
+                {id:'LRN-02', name:'Detection Improvement Loops',                desc:'Automated feedback from detection performance (FP rate, coverage gaps, missed detections) back into detection model updates.'},
+                {id:'LRN-03', name:'Adversary Intelligence Absorption',          desc:'Speed and depth of integrating external threat intelligence — new TTPs, campaigns, IOCs, vulnerability research.'},
+                {id:'LRN-04', name:'Knowledge Graph Evolution',                  desc:'Capacity of the Security Knowledge Graph to evolve by incorporating new entities, relationships, and confidence updates.'},
+            ]},
+            { id:'RSN', name:'Reasoning Architecture',          plane:1, desc:'How correlation, triage, and hypothesis generation occurs within your program.', subs:[
+                {id:'RSN-01', name:'Hypothesis Generation & Competition',        desc:'Ability to generate multiple competing explanations for observed signals and evaluate them in parallel.'},
+                {id:'RSN-02', name:'Contextual & Causal Reasoning',              desc:'Depth of contextual understanding — correlating identity, asset, behavior, and history to security events.'},
+                {id:'RSN-03', name:'Temporal & Campaign-level Analysis',         desc:'Ability to reason across time — connecting events separated by days or weeks as part of a single adversary campaign.'},
+                {id:'RSN-04', name:'Predictive & Pre-emptive Planning',          desc:'Capability to reason ahead of observed events — modeling likely adversary moves and pre-positioning defenses.'},
+            ]},
+            { id:'OPS', name:'Operational Interaction Model',   plane:1, desc:'How work flows through the SOC — the degree to which directed workflow has replaced tier-based escalation.', subs:[
+                {id:'OPS-01', name:'Non-linear Workflow Architecture',           desc:'Degree to which operational workflows are structured as dynamic, context-driven graphs rather than fixed linear sequences.'},
+                {id:'OPS-02', name:'Exposure-driven Operational Prioritization', desc:'Use of real-time exposure data to prioritize operational attention and resource allocation.'},
+                {id:'OPS-03', name:'Continuous DFIR as Operational Posture',     desc:'Transformation of DFIR from a reactive, project-based activity to a continuous operational posture.'},
+                {id:'OPS-04', name:'Decision Propagation Without Escalation',    desc:'Capability to propagate security decisions across the operational system without requiring human escalation.'},
+            ]},
+            { id:'SKG', name:'Security Knowledge Graph',        plane:1, desc:'Depth and accessibility of a shared, structured intelligence model that agents and analysts draw from.', subs:[
+                {id:'SKG-01', name:'Entity Model Completeness',                  desc:'Breadth and depth of entity types modeled — assets, identities, adversary profiles, vulnerabilities, behaviors.'},
+                {id:'SKG-02', name:'Governance & Policy as Graph Objects',       desc:'Representation of security policy, authority, and governance decisions as queryable graph objects.'},
+                {id:'SKG-03', name:'Evidence & Audit Artifact Generation',       desc:'Automatic generation of audit trails, forensic artifacts, and governance records from operational activity.'},
+                {id:'SKG-04', name:'Planning & Reasoning Integration',           desc:'Use of the knowledge graph as the primary substrate for planning, hypothesis generation, and agent reasoning.'},
+            ]},
+            { id:'MET', name:'Metrics, Audit & Assurance',      plane:1, desc:'Quality of measurement instrumentation and rigor of ongoing assurance processes.', subs:[
+                {id:'MET-01', name:'Autonomous Operations KPIs',                 desc:'Metrics measuring quality and reliability of autonomous operations — outcome-based rather than throughput-based.'},
+                {id:'MET-02', name:'Continuous Audit & Compliance',              desc:'Real-time compliance monitoring and audit capability that operates continuously, not as periodic assessments.'},
+                {id:'MET-03', name:'Trust, Explainability & Validation',         desc:'Mechanisms to validate agent behavior, explain autonomous decisions, and maintain trust in the system.'},
+                {id:'MET-04', name:'Board-level Security Posture Reporting',     desc:'Capacity to translate technical operational data into meaningful board-level risk and posture narratives.'},
+            ]},
+            { id:'ACT', name:'Autonomous Action & Response',    plane:2, desc:'The degree to which response actions are executed autonomously within governed scope.', subs:[
+                {id:'ACT-01', name:'Response Execution Autonomy',                desc:'Scope of response actions executable without human approval — containment, isolation, remediation.'},
+                {id:'ACT-02', name:'Bounded Authority & Scope Enforcement',      desc:'Technical implementation of authority boundaries ensuring agents act only within defined scope.'},
+                {id:'ACT-03', name:'Proportionality & Reversibility',            desc:'Response actions are proportional to confirmed threat level and wherever possible reversible.'},
+                {id:'ACT-04', name:'Cross-domain Action Coordination',           desc:'Ability to coordinate response actions across network, endpoint, identity, cloud, and application domains.'},
+            ]},
+            { id:'AGT', name:'Agent Architecture & Coord.',     plane:2, desc:'Maturity of agent infrastructure — how agents are deployed, governed, and coordinated.', subs:[
+                {id:'AGT-01', name:'Agent Class Definition & Specialization',    desc:'Formal definition of agent classes by function and their respective authority, scope, and capability boundaries.'},
+                {id:'AGT-02', name:'Agent Collaboration & Conflict Resolution',  desc:'Protocols by which agents collaborate on shared tasks, share evidence, and resolve conflicts.'},
+                {id:'AGT-03', name:'Uncertainty & Novelty Handling',             desc:'How the agent system handles low-confidence situations and genuinely novel scenarios.'},
+                {id:'AGT-04', name:'Orchestration Architecture',                 desc:'Technical design of agent coordination — workflow orchestration, state management, and failure handling.'},
+            ]},
+            { id:'GOV', name:'Ethics, Governance & Authority',  plane:2, desc:'Rigor of governance structures, policy enforcement, and human authority control frameworks.', subs:[
+                {id:'GOV-01', name:'Authority & Scope Modeling',                 desc:'Formal modeling of who is authorized to take what actions, under what conditions, and within what scope.'},
+                {id:'GOV-02', name:'Ethics Guardrail Architecture',              desc:'Technical implementation of ethical boundaries — proportionality, legality, privacy, and non-maleficence.'},
+                {id:'GOV-03', name:'Real-time Policy Enforcement',               desc:'Continuous application of security, regulatory, and organizational policy at the moment of decision-making.'},
+                {id:'GOV-04', name:'Governance Transparency & Human Oversight',  desc:'Degree to which governance decisions are visible, explainable, and accessible to human governance officers.'},
+            ]},
+            { id:'HUM', name:'Human Roles & Interface',         plane:2, desc:'How human roles have evolved — from queue handlers to strategic operators and exception managers.', subs:[
+                {id:'HUM-01', name:'Post-tier Role Architecture',                desc:'Definition of human roles based on authority and accountability — eliminating L1/L2/L3 tier identities.'},
+                {id:'HUM-02', name:'Human-Agent Interaction Design',             desc:'Quality of interfaces and protocols through which humans govern, direct, and oversee agents.'},
+                {id:'HUM-03', name:'Intent & Scope Governance',                  desc:'Human capacity to define, adjust, and revoke operational intent and scope at runtime.'},
+                {id:'HUM-04', name:'Skills Evolution & Career Architecture',     desc:'Organizational model for developing human talent appropriate for agentic operations.'},
+            ]},
+            { id:'TRN', name:'Transformation Readiness',        plane:2, desc:'The organization\'s readiness to manage cultural, structural, and skills transition to an agentic SOC.', subs:[
+                {id:'TRN-01', name:'Leadership Alignment & Vision',              desc:'Degree to which leadership understands and is aligned on the agentic transformation journey.'},
+                {id:'TRN-02', name:'Cultural & Organizational Readiness',        desc:'Cultural openness to autonomous operations and structural readiness to support new operating models.'},
+                {id:'TRN-03', name:'Technical Debt & Integration Readiness',     desc:'Degree to which legacy technical debt and integration complexity are understood and being addressed.'},
+                {id:'TRN-04', name:'Failure Mode Awareness & Resilience',        desc:'Understanding of how agentic systems can fail and the resilience measures in place to detect and recover.'},
+            ]},
+        ];
+        const STAGES = [
+            {label:'Traditional',   color:'#64748b', desc:'Purely reactive, human-driven. No agentic behavior present.'},
+            {label:'Assisted',      color:'#0ea5e9', desc:'Automation assists humans. Basic AI and correlation present.'},
+            {label:'Supervised',    color:'#8b5cf6', desc:'Agentic capabilities present under close human supervision.'},
+            {label:'Directed',      color:'#6366f1', desc:'Agents operate with directed autonomy within defined scope.'},
+            {label:'Agent-First',   color:'#f59e0b', desc:'Agent-driven workflow is the operational default.'},
+            {label:'Fully Agentic', color:'#10b981', desc:'Governed, durable autonomous operation across all dimensions.'},
+        ];
+        const PLANE = [
+            {label:'SENSING PLANE',   bg:'rgba(14,165,233,0.12)',  border:'rgba(14,165,233,0.4)',  text:'rgba(56,189,248,0.95)',  bar:'#0ea5e9'},
+            {label:'REASONING PLANE', bg:'rgba(139,92,246,0.12)', border:'rgba(139,92,246,0.4)', text:'rgba(167,139,250,0.95)', bar:'#8b5cf6'},
+            {label:'CONTROL PLANE',   bg:'rgba(239,68,68,0.12)',  border:'rgba(239,68,68,0.4)',  text:'rgba(252,165,165,0.95)', bar:'#ef4444'},
+        ];
+        const today = new Date().toISOString().slice(0,10);
+        const state = {
+            step:0, dimIdx:0, assessmentType:'internal',
+            profile:{company:'',business_unit:'',assessment_date:today,owner:'',participants:'',objective:''},
+            dims:Object.fromEntries(DIMS.map(d=>[d.id,{subs:Object.fromEntries(d.subs.map(s=>[s.id,0])),evidence:'',blocker:'',tgt:3}])),
+            context:{
+                governance_readiness:'',tech_investments:'',org_readiness:'',exec_sponsorship:'',timeline:'',
+                portfolio_coverage:Object.fromEntries(DIMS.map(d=>[d.id,{coverage:'',stage:'',notes:''}])),
+                portfolio_gaps:'',roadmap:'',differentiation:'',
+            },
+            priorities:{p1:'',p2:'',p3:'',blockers:'',success_looks_like:''},
+            savedFile:'',
+        };
+        const STEPS = ['Profile','Assessment','Summary','Context','Priorities','Save'];
+        const wrap = document.createElement('div');
+        wrap.className = 'ws-wizard';
+
+        function mk(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;}
+        function inp(cls,ph,val,cb){const el=document.createElement('input');el.type='text';el.className=cls||'ws-input';el.placeholder=ph||'';el.value=val||'';el.addEventListener('input',()=>cb(el.value));return el;}
+        function ta(cls,ph,val,cb,rows){const el=document.createElement('textarea');el.className=cls||'ws-textarea';el.placeholder=ph||'';el.value=val||'';el.rows=rows||3;el.addEventListener('input',()=>cb(el.value));return el;}
+        function btn(cls,lbl,cb){const el=document.createElement('button');el.className=cls;el.textContent=lbl;el.addEventListener('click',cb);return el;}
+        function avgDimScore(dimId){const v=Object.values(state.dims[dimId].subs);return v.reduce((a,b)=>a+b,0)/v.length;}
+
+        function makeSubSlider(subId, subName, subDesc, initial, onChange) {
+            const w=mk('div','ws-sub-slider-wrap');
+            const top=mk('div','ws-sub-slider-top');
+            const idLbl=mk('span','ws-sub-id',subId);
+            const nameLbl=mk('span','ws-sub-name',subName);
+            const scoreTag=mk('span','ws-sub-score',STAGES[initial].label);
+            scoreTag.style.color=STAGES[initial].color;
+            top.appendChild(idLbl);top.appendChild(nameLbl);top.appendChild(scoreTag);
+            w.appendChild(top);
+            w.appendChild(mk('div','ws-sub-desc',subDesc));
+            const range=document.createElement('input');
+            range.type='range';range.className='ws-slider ws-slider-sub';range.min=0;range.max=5;range.step=1;range.value=initial;
+            w.appendChild(range);
+            range.addEventListener('input',()=>{const v=parseInt(range.value);scoreTag.textContent=STAGES[v].label;scoreTag.style.color=STAGES[v].color;onChange(v);});
+            return w;
+        }
+
+        function makeTargetSlider(initial, onChange) {
+            const w=mk('div','ws-slider-wrap');w.appendChild(mk('div','ws-slider-label','TARGET SCORE — 24 months'));
+            const stageRow=mk('div','ws-stage-row');
+            STAGES.forEach((s,i)=>{const cell=mk('div','ws-stage-cell'+(i===initial?' ws-stage-cell-active':''));cell.style.cssText=i===initial?`color:${s.color};border-color:${s.color};background:${s.color}22;`:'';cell.appendChild(mk('span','ws-stage-num',String(i)));cell.appendChild(mk('span','ws-stage-lbl',s.label));stageRow.appendChild(cell);});
+            w.appendChild(stageRow);
+            const range=document.createElement('input');range.type='range';range.className='ws-slider';range.min=0;range.max=5;range.step=1;range.value=initial;
+            const desc=mk('div','ws-stage-desc',STAGES[initial].desc);desc.style.color=STAGES[initial].color;
+            w.appendChild(range);w.appendChild(desc);
+            range.addEventListener('input',()=>{const v=parseInt(range.value);desc.textContent=STAGES[v].desc;desc.style.color=STAGES[v].color;stageRow.querySelectorAll('.ws-stage-cell').forEach((c,i)=>{const s=STAGES[i];c.className='ws-stage-cell'+(i===v?' ws-stage-cell-active':'');c.style.cssText=i===v?`color:${s.color};border-color:${s.color};background:${s.color}22;`:'';});onChange(v);});
+            return w;
+        }
+
+        function renderProgress() {
+            const bar=mk('div','ws-progress');
+            STEPS.forEach((label,i)=>{
+                const step=mk('div',`ws-progress-step${i===state.step?' ws-progress-step-active':''}${i<state.step?' ws-progress-step-done':''}`);
+                step.appendChild(mk('span','ws-progress-dot',i<state.step?'✓':String(i+1)));
+                step.appendChild(mk('span','ws-progress-label',label));
+                if(i<state.step)step.addEventListener('click',()=>goTo(i));
+                bar.appendChild(step);
+                if(i<STEPS.length-1)bar.appendChild(mk('span',`ws-progress-line${i<state.step?' ws-progress-line-done':''}`));
+            });
+            return bar;
+        }
+
+        function renderProfile() {
+            const f=mk('div','ws-step-body');
+            f.appendChild(mk('h3','ws-step-title','Organization Profile'));
+            f.appendChild(mk('p','ws-step-desc','Capture context about your program before beginning. Select the assessment context — this determines how the Context and Priorities steps are framed.'));
+            const typeRow=mk('div','ws-field ws-field-wide');typeRow.appendChild(mk('label','ws-label','Assessment Context'));
+            const typeWrap=mk('div','ws-type-toggle');
+            [['internal','🏢  Internal Program Assessment','For security operations teams evaluating their own SOC maturity and roadmap'],
+             ['vendor',  '📦  Vendor Portfolio Assessment','For vendors and service providers evaluating how their products align with ASAF'],
+            ].forEach(([val,label,desc])=>{
+                const card=mk('div','ws-type-card'+(state.assessmentType===val?' ws-type-card-active':''));
+                card.appendChild(mk('div','ws-type-card-label',label));
+                card.appendChild(mk('div','ws-type-card-desc',desc));
+                card.addEventListener('click',()=>{state.assessmentType=val;typeWrap.querySelectorAll('.ws-type-card').forEach(c=>c.classList.remove('ws-type-card-active'));card.classList.add('ws-type-card-active');});
+                typeWrap.appendChild(card);
+            });
+            typeRow.appendChild(typeWrap);f.appendChild(typeRow);
+            const grid=mk('div','ws-form-grid');
+            [{key:'company',label:'Company / Organization',ph:'Acme Corp',req:true},
+             {key:'business_unit',label:'Business Unit or Security Program',ph:'SOC / CISO Office'},
+             {key:'assessment_date',label:'Assessment Date',ph:today,type:'date'},
+             {key:'owner',label:'Assessment Owner',ph:'Name and role'},
+             {key:'participants',label:'Review Participants',ph:'Names, comma-separated'},
+             {key:'objective',label:'Current Strategic Objective',ph:'e.g. Advance to Stage 3 by Q4 2027',wide:true},
+            ].forEach(field=>{
+                const row=mk('div','ws-field'+(field.wide?' ws-field-wide':''));
+                const lbl=mk('label','ws-label',field.label);if(field.req)lbl.appendChild(mk('span','ws-req',' *'));
+                row.appendChild(lbl);
+                if(field.wide)row.appendChild(ta('ws-input ws-textarea-sm',field.ph,state.profile[field.key],v=>{state.profile[field.key]=v;},2));
+                else{const i=inp('ws-input',field.ph,state.profile[field.key],v=>{state.profile[field.key]=v;});if(field.type==='date')i.type='date';row.appendChild(i);}
+                grid.appendChild(row);
+            });
+            f.appendChild(grid);
+            const nav=mk('div','ws-nav-row');
+            const nextBtn=btn('ws-btn ws-btn-primary','Start Dimension Assessment →',()=>{
+                if(!state.profile.company.trim()){nextBtn.textContent='⚠ Company name required';nextBtn.classList.add('ws-btn-error');setTimeout(()=>{nextBtn.textContent='Start Dimension Assessment →';nextBtn.classList.remove('ws-btn-error');},2500);return;}
+                goTo(1);
+            });
+            nav.appendChild(nextBtn);f.appendChild(nav);return f;
+        }
+
+        function updateNavDots(navBar){
+            DIMS.forEach((d,i)=>{const dot=navBar.children[i];const ds=state.dims[d.id];const done=ds.evidence||avgDimScore(d.id)>0;dot.className=`ws-dim-dot${i===state.dimIdx?' ws-dim-dot-active':''}${done?' ws-dim-dot-done':''}`;});
+        }
+
+        function renderDimCard(card, navBar) {
+            card.innerHTML='';
+            const dim=DIMS[state.dimIdx];const ds=state.dims[dim.id];const pl=PLANE[dim.plane];
+            const avg=avgDimScore(dim.id);const avgR=Math.min(5,Math.round(avg));
+            const hdr=mk('div','ws-dim-header');hdr.style.cssText=`background:${pl.bg};border-color:${pl.border};`;
+            const top=mk('div','ws-dim-header-top');
+            const planeBadge=mk('span','ws-plane-badge',pl.label);planeBadge.style.color=pl.text;
+            top.appendChild(planeBadge);top.appendChild(mk('span','ws-dim-progress',`${state.dimIdx+1} / ${DIMS.length}`));
+            hdr.appendChild(top);
+            hdr.appendChild(mk('h4','ws-dim-title',`${dim.id} — ${dim.name}`));
+            hdr.appendChild(mk('p','ws-dim-desc',dim.desc));
+            const chip=mk('div','ws-dim-score-chip');
+            chip.appendChild(mk('span','ws-dim-score-eyebrow','DIMENSION SCORE (avg of sub-dimensions)'));
+            const scoreVal=mk('span','ws-dim-score-val',avg.toFixed(1));scoreVal.style.color=STAGES[avgR].color;
+            const scoreLbl=mk('span','ws-dim-score-lbl',STAGES[avgR].label);scoreLbl.style.color=STAGES[avgR].color;
+            chip.appendChild(scoreVal);chip.appendChild(scoreLbl);
+            hdr.appendChild(chip);
+            card.appendChild(hdr);
+            const body=mk('div','ws-dim-body');
+            const subSection=mk('div','ws-sub-section');
+            subSection.appendChild(mk('div','ws-sub-section-title','SUB-DIMENSION SCORES — score each independently'));
+            dim.subs.forEach(sub=>{
+                const sw=makeSubSlider(sub.id,sub.name,sub.desc,ds.subs[sub.id],v=>{
+                    state.dims[dim.id].subs[sub.id]=v;
+                    const na=avgDimScore(dim.id);const nr=Math.min(5,Math.round(na));
+                    scoreVal.textContent=na.toFixed(1);scoreVal.style.color=STAGES[nr].color;
+                    scoreLbl.textContent=STAGES[nr].label;scoreLbl.style.color=STAGES[nr].color;
+                    if(navBar)updateNavDots(navBar);
+                });
+                subSection.appendChild(sw);
+            });
+            body.appendChild(subSection);
+            const evRow=mk('div','ws-field ws-field-wide');evRow.appendChild(mk('label','ws-label','Evidence observed (dimension level)'));
+            evRow.appendChild(ta('ws-textarea','What specific capabilities, behaviors, or outputs do you observe across this dimension?',ds.evidence,v=>{state.dims[dim.id].evidence=v;},3));
+            body.appendChild(evRow);
+            const blkRow=mk('div','ws-field ws-field-wide');blkRow.appendChild(mk('label','ws-label','Main blocker'));
+            blkRow.appendChild(ta('ws-textarea','What is preventing progress to the next stage?',ds.blocker,v=>{state.dims[dim.id].blocker=v;},2));
+            body.appendChild(blkRow);
+            body.appendChild(makeTargetSlider(ds.tgt,v=>{state.dims[dim.id].tgt=v;}));
+            card.appendChild(body);
+            const nav=mk('div','ws-nav-row');
+            if(state.dimIdx>0)nav.appendChild(btn('ws-btn ws-btn-secondary','← Previous',()=>{state.dimIdx--;renderDimCard(card,navBar);if(navBar)updateNavDots(navBar);}));
+            nav.appendChild(mk('span','ws-nav-spacer'));
+            if(state.dimIdx<DIMS.length-1)nav.appendChild(btn('ws-btn ws-btn-primary','Next Dimension →',()=>{state.dimIdx++;renderDimCard(card,navBar);if(navBar)updateNavDots(navBar);}));
+            else nav.appendChild(btn('ws-btn ws-btn-primary','View Summary →',()=>goTo(2)));
+            card.appendChild(nav);
+        }
+
+        function renderDimAssessment() {
+            const f=mk('div','ws-step-body');
+            f.appendChild(mk('h3','ws-step-title','Dimension Assessment'));
+            f.appendChild(mk('p','ws-step-desc','Score each of the 4 sub-dimensions independently (0–5). The dimension score is automatically calculated as the average. Add evidence and set a 24-month target for each dimension.'));
+            const navBar=mk('div','ws-dim-nav');
+            DIMS.forEach((d,i)=>{
+                const done=state.dims[d.id].evidence||avgDimScore(d.id)>0;
+                const dot=mk('button',`ws-dim-dot${i===state.dimIdx?' ws-dim-dot-active':''}${done?' ws-dim-dot-done':''}`,d.id);
+                dot.title=d.name;dot.style.cssText=`--plane-color:${PLANE[d.plane].bar};`;
+                dot.addEventListener('click',()=>{state.dimIdx=i;renderDimCard(card,navBar);updateNavDots(navBar);});
+                navBar.appendChild(dot);
+            });
+            f.appendChild(navBar);
+            const card=mk('div','ws-dim-card');renderDimCard(card,navBar);f.appendChild(card);return f;
+        }
+
+        function renderSummary() {
+            const f=mk('div','ws-step-body');f.appendChild(mk('h3','ws-step-title','Assessment Summary'));
+            const scores=DIMS.map(d=>({...d,cur:avgDimScore(d.id),tgt:state.dims[d.id].tgt}));
+            const avgCur=(scores.reduce((a,s)=>a+s.cur,0)/scores.length).toFixed(1);
+            const avgTgt=(scores.reduce((a,s)=>a+s.tgt,0)/scores.length).toFixed(1);
+            const strongest=scores.reduce((a,b)=>b.cur>a.cur?b:a);const weakest=scores.reduce((a,b)=>b.cur<a.cur?b:a);
+            const chips=mk('div','ws-stat-chips');
+            [{label:'Overall Stage Today',val:avgCur,sub:STAGES[Math.min(5,Math.round(parseFloat(avgCur)))].label},
+             {label:'Target Stage (24 mo)',val:avgTgt,sub:STAGES[Math.min(5,Math.round(parseFloat(avgTgt)))].label},
+             {label:'Strongest Dimension',val:strongest.id,sub:strongest.name},
+             {label:'Weakest Dimension',val:weakest.id,sub:weakest.name},
+            ].forEach(({label,val,sub})=>{const c=mk('div','ws-stat-chip');c.appendChild(mk('div','ws-stat-label',label));c.appendChild(mk('div','ws-stat-value',val));c.appendChild(mk('div','ws-stat-sub',sub));chips.appendChild(c);});
+            f.appendChild(chips);
+            const NS='http://www.w3.org/2000/svg';const W=560,ROW=28,PAD_L=52,PAD_R=20,BAR=W-PAD_L-PAD_R,H=DIMS.length*ROW+30;
+            const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width','100%');svg.setAttribute('style','display:block;');
+            function s(tag,attrs,txt){const el=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(attrs))el.setAttribute(k,String(v));if(txt!==undefined)el.textContent=txt;return el;}
+            for(let i=0;i<=5;i++){const x=PAD_L+(i/5)*BAR;svg.appendChild(s('line',{x1:x,y1:0,x2:x,y2:H-20,stroke:'rgba(255,255,255,0.06)','stroke-width':1}));svg.appendChild(s('text',{x,y:H-6,'text-anchor':'middle',fill:'rgba(255,255,255,0.3)','font-size':9},String(i)));}
+            scores.forEach((sc,i)=>{
+                const y=i*ROW+4;const bh=ROW-8;const pl=PLANE[sc.plane];
+                svg.appendChild(s('text',{x:PAD_L-5,y:y+bh/2+1,'text-anchor':'end','dominant-baseline':'middle',fill:pl.text,'font-size':9,'font-weight':700},sc.id));
+                svg.appendChild(s('rect',{x:PAD_L,y,width:(sc.tgt/5)*BAR,height:bh,rx:3,fill:'none',stroke:pl.bar,'stroke-width':1,'stroke-dasharray':'4,2',opacity:0.45}));
+                const cw=sc.cur>0?Math.max((sc.cur/5)*BAR,6):0;
+                if(cw>0)svg.appendChild(s('rect',{x:PAD_L,y:y+3,width:cw,height:bh-6,rx:2,fill:pl.bar,opacity:0.75}));
+                if(sc.cur>0)svg.appendChild(s('text',{x:PAD_L+cw+5,y:y+bh/2+1,'dominant-baseline':'middle',fill:'rgba(255,255,255,0.55)','font-size':9},`${sc.cur.toFixed(1)}→${sc.tgt}`));
+            });
+            svg.appendChild(s('rect',{x:PAD_L,y:H-10,width:16,height:4,rx:1,fill:'rgba(100,116,139,0.65)'}));svg.appendChild(s('text',{x:PAD_L+20,y:H-6,fill:'rgba(255,255,255,0.35)','font-size':8},'Current (avg of subs)'));
+            svg.appendChild(s('rect',{x:PAD_L+112,y:H-10,width:16,height:4,rx:1,fill:'none',stroke:'rgba(100,116,139,0.65)','stroke-dasharray':'3,2','stroke-width':1}));svg.appendChild(s('text',{x:PAD_L+132,y:H-6,fill:'rgba(255,255,255,0.35)','font-size':8},'Target (24 mo)'));
+            const chartWrap=mk('div','ws-chart-wrap');chartWrap.appendChild(svg);f.appendChild(chartWrap);
+            const interp=mk('div','ws-interp');interp.appendChild(mk('h4','ws-interp-title','Interpretation'));
+            const msgs=[];const gov=avgDimScore('GOV');const act=avgDimScore('ACT');
+            if(gov<act-1)msgs.push('⚠ Governance is lagging behind automation ambition — resolve before advancing further.');
+            if(avgDimScore('SEN')<2&&parseFloat(avgCur)>=2)msgs.push('⚠ Sensing capability is below program average — signal quality may be limiting reasoning and action quality.');
+            if(avgDimScore('SKG')<2&&parseFloat(avgCur)>=2)msgs.push('⚠ Knowledge graph maturity is low — agents will lack shared context to reason effectively.');
+            if(parseFloat(avgTgt)-parseFloat(avgCur)>2)msgs.push('ℹ Large gap between current and target — consider phasing the roadmap into two 12-month horizons.');
+            if(!msgs.length)msgs.push('✓ Program dimensions appear reasonably balanced. Review target scores against strategic priorities and resource constraints.');
+            msgs.forEach(t=>{interp.appendChild(mk('p','ws-interp-item',t));});f.appendChild(interp);
+            const nav=mk('div','ws-nav-row');
+            nav.appendChild(btn('ws-btn ws-btn-secondary','← Back to Assessment',()=>goTo(1)));nav.appendChild(mk('span','ws-nav-spacer'));
+            nav.appendChild(btn('ws-btn ws-btn-primary',state.assessmentType==='vendor'?'Portfolio Alignment →':'Program Context →',()=>goTo(3)));
+            f.appendChild(nav);return f;
+        }
+
+        function renderContextAssessment() {
+            const f=mk('div','ws-step-body');
+            if(state.assessmentType==='vendor') {
+                f.appendChild(mk('h3','ws-step-title','Portfolio Alignment Analysis'));
+                f.appendChild(mk('p','ws-step-desc','Evaluate how your product and service portfolio aligns with the ASAF model. For each dimension indicate your coverage level, then answer the strategic questions.'));
+                const covSection=mk('div','ws-cov-section');covSection.appendChild(mk('h4','ws-buyer-cat','Portfolio Coverage by Dimension'));
+                DIMS.forEach(d=>{
+                    const pl=PLANE[d.plane];
+                    const row=mk('div','ws-cov-row');
+                    const dimLabel=mk('div','ws-cov-dim');
+                    const idBadge=mk('span','ws-cov-id',d.id);idBadge.style.color=pl.text;idBadge.style.borderColor=pl.border;
+                    dimLabel.appendChild(idBadge);dimLabel.appendChild(mk('span','ws-cov-name',d.name));
+                    row.appendChild(dimLabel);
+                    const right=mk('div','ws-cov-right');
+                    const rr=mk('div','ws-radio-row');
+                    ['Full','Partial','None'].forEach(opt=>{
+                        const lbl=mk('label','ws-radio-label');const r=document.createElement('input');r.type='radio';r.name=`cov-${d.id}`;r.value=opt;r.className='ws-radio';
+                        r.checked=state.context.portfolio_coverage[d.id].coverage===opt;
+                        r.addEventListener('change',()=>{if(r.checked)state.context.portfolio_coverage[d.id].coverage=opt;});
+                        const t=mk('span',`ws-radio-opt ws-radio-${opt.toLowerCase()}`,opt);lbl.appendChild(r);lbl.appendChild(t);rr.appendChild(lbl);
+                    });
+                    right.appendChild(rr);
+                    const stageSel=document.createElement('select');stageSel.className='ws-select ws-select-sm';
+                    ['','Stage 0–1 (Traditional → Assisted)','Stage 1–2 (Assisted → Supervised)','Stage 2–3 (Supervised → Directed)','Stage 3–4 (Directed → Agent-First)','Stage 4–5 (Agent-First → Fully Agentic)','Broad — multiple stages'].forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o||'— Stage served —';op.selected=state.context.portfolio_coverage[d.id].stage===o;stageSel.appendChild(op);});
+                    stageSel.addEventListener('change',()=>{state.context.portfolio_coverage[d.id].stage=stageSel.value;});
+                    right.appendChild(stageSel);
+                    right.appendChild(inp('ws-input ws-input-sm','Relevant products or gap notes…',state.context.portfolio_coverage[d.id].notes,v=>{state.context.portfolio_coverage[d.id].notes=v;}));
+                    row.appendChild(right);covSection.appendChild(row);
+                });
+                f.appendChild(covSection);
+                [{key:'portfolio_gaps',label:'Portfolio Gaps vs ASAF Requirements',ph:'Where are the biggest gaps in your portfolio relative to ASAF?'},
+                 {key:'roadmap',label:'Product Roadmap for ASAF Alignment',ph:'What is on the roadmap to address higher-maturity ASAF requirements?'},
+                 {key:'differentiation',label:'Portfolio Differentiation Story',ph:'What makes your portfolio differentiated within the ASAF model?'},
+                ].forEach(({key,label,ph})=>{const row=mk('div','ws-field ws-field-wide');row.appendChild(mk('label','ws-label',label));row.appendChild(ta('ws-textarea',ph,state.context[key],v=>{state.context[key]=v;},3));f.appendChild(row);});
+            } else {
+                f.appendChild(mk('h3','ws-step-title','Program Context & Investment Priorities'));
+                f.appendChild(mk('p','ws-step-desc','Describe the program context that frames the assessment. This section identifies the readiness conditions and investment priorities needed to advance to your target stage.'));
+                [{key:'governance_readiness',label:'Governance Readiness',ph:'Current state of governance frameworks, policy, and authority models.'},
+                 {key:'tech_investments',label:'Technology Investments Needed',ph:'What technology capabilities are most critical for advancing to target stage?'},
+                 {key:'org_readiness',label:'Organizational & Cultural Readiness',ph:'How ready is the organization culturally and structurally for agentic operations?'},
+                 {key:'exec_sponsorship',label:'Executive Sponsorship & Alignment',ph:'What level of executive understanding and support exists?'},
+                 {key:'timeline',label:'Timeline & Key Milestones',ph:'What are the key milestones for reaching your target stage?'},
+                ].forEach(({key,label,ph})=>{const row=mk('div','ws-field ws-field-wide');row.appendChild(mk('label','ws-label',label));row.appendChild(ta('ws-textarea',ph,state.context[key],v=>{state.context[key]=v;},3));f.appendChild(row);});
+            }
+            const nav=mk('div','ws-nav-row');
+            nav.appendChild(btn('ws-btn ws-btn-secondary','← Summary',()=>goTo(2)));nav.appendChild(mk('span','ws-nav-spacer'));
+            nav.appendChild(btn('ws-btn ws-btn-primary','Strategic Priorities →',()=>goTo(4)));
+            f.appendChild(nav);return f;
+        }
+
+        function renderPriorities() {
+            const f=mk('div','ws-step-body');
+            f.appendChild(mk('h3','ws-step-title','Strategic Priorities'));
+            f.appendChild(mk('p','ws-step-desc','Summarize the top priorities that will drive progress toward your target stage. These become part of the saved assessment record.'));
+            [{key:'p1',label:'Priority 1 — Most important action',ph:'Describe the single most important step to take…'},
+             {key:'p2',label:'Priority 2',ph:'Second most important initiative or investment…'},
+             {key:'p3',label:'Priority 3',ph:'Third priority — a dependency, enabler, or blocker to resolve…'},
+             {key:'blockers',label:'Key Blockers to Address',ph:'What organizational, technical, or political blockers must be resolved first?'},
+             {key:'success_looks_like',label:'What Success Looks Like at Target Stage',ph:'Describe what the program or portfolio looks like when the target stage is achieved…'},
+            ].forEach(({key,label,ph})=>{const row=mk('div','ws-field ws-field-wide');row.appendChild(mk('label','ws-label',label));row.appendChild(ta('ws-textarea',ph,state.priorities[key],v=>{state.priorities[key]=v;},3));f.appendChild(row);});
+            const nav=mk('div','ws-nav-row');
+            nav.appendChild(btn('ws-btn ws-btn-secondary','← Context',()=>goTo(3)));nav.appendChild(mk('span','ws-nav-spacer'));
+            nav.appendChild(btn('ws-btn ws-btn-primary','Save Assessment →',()=>goTo(5)));
+            f.appendChild(nav);return f;
+        }
+
+        function renderSave() {
+            const f=mk('div','ws-step-body');
+            f.appendChild(mk('h3','ws-step-title','Save Assessment'));
+            f.appendChild(mk('p','ws-step-desc',`Assessment for "${state.profile.company||'(company not set)'}" ready to save.`));
+            const scores=DIMS.map(d=>({id:d.id,cur:avgDimScore(d.id),tgt:state.dims[d.id].tgt}));
+            const avgCur=(scores.reduce((a,s)=>a+s.cur,0)/scores.length).toFixed(1);
+            const prev=mk('div','ws-save-preview');
+            [{l:'Company',v:state.profile.company||'—'},{l:'Context',v:state.assessmentType==='vendor'?'Vendor Portfolio Assessment':'Internal Program Assessment'},{l:'Date',v:state.profile.assessment_date},{l:'Overall stage',v:avgCur+' / 5.0'},{l:'Dimensions scored',v:scores.filter(s=>s.cur>0).length+' / '+DIMS.length},{l:'Sub-dimensions scored',v:DIMS.reduce((acc,d)=>acc+Object.values(state.dims[d.id].subs).filter(v=>v>0).length,0)+' / '+(DIMS.length*4)}].forEach(({l,v})=>{const ln=mk('div','ws-save-line');ln.appendChild(mk('span','ws-save-lk',l+': '));ln.appendChild(mk('span','ws-save-lv',v));prev.appendChild(ln);});
+            f.appendChild(prev);
+            const saveRow=mk('div','ws-save-row');
+            const saveBtn=btn('ws-btn ws-btn-save','💾  Save Assessment to Server',async()=>{
+                saveBtn.textContent='Saving…';saveBtn.disabled=true;
+                try{
+                    const payload={assessment_type:state.assessmentType,company:state.profile.company,business_unit:state.profile.business_unit,assessment_date:state.profile.assessment_date,assessment_owner:state.profile.owner,participants:state.profile.participants,strategic_objective:state.profile.objective,saved_at:new Date().toISOString(),
+                        dimensions:Object.fromEntries(DIMS.map(d=>[d.id,{name:d.name,current_score:parseFloat(avgDimScore(d.id).toFixed(2)),sub_dimensions:Object.fromEntries(d.subs.map(s=>[s.id,{name:s.name,score:state.dims[d.id].subs[s.id]}])),evidence:state.dims[d.id].evidence,blocker:state.dims[d.id].blocker,target_score:state.dims[d.id].tgt}])),
+                        summary:{overall_current_stage:parseFloat(avgCur),strongest_dimension:scores.reduce((a,b)=>b.cur>a.cur?b:a).id,weakest_dimension:scores.reduce((a,b)=>b.cur<a.cur?b:a).id},
+                        context:state.context,priorities:state.priorities};
+                    const resp=await fetch('/api/save-assessment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+                    const result=await resp.json();
+                    if(result.ok){state.savedFile=result.file;saveBtn.textContent='✓  Saved: '+result.file;saveBtn.classList.add('ws-btn-success');const dl=document.createElement('a');dl.href='/api/load-assessment/'+result.file;dl.download=result.file;dl.className='ws-btn ws-btn-secondary ws-export-link';dl.textContent='⬇  Download JSON';saveRow.appendChild(dl);}
+                    else{saveBtn.textContent='✗ Save failed';saveBtn.classList.add('ws-btn-error');saveBtn.disabled=false;}
+                }catch(e){saveBtn.textContent='✗ Error: '+e.message;saveBtn.classList.add('ws-btn-error');saveBtn.disabled=false;}
+            });
+            saveRow.appendChild(saveBtn);f.appendChild(saveRow);
+            const nav=mk('div','ws-nav-row');
+            nav.appendChild(btn('ws-btn ws-btn-secondary','← Priorities',()=>goTo(4)));nav.appendChild(mk('span','ws-nav-spacer'));
+            nav.appendChild(btn('ws-btn ws-btn-secondary','↺  Start New Assessment',()=>{
+                state.step=0;state.dimIdx=0;state.assessmentType='internal';
+                Object.assign(state.profile,{company:'',business_unit:'',assessment_date:today,owner:'',participants:'',objective:''});
+                DIMS.forEach(d=>{state.dims[d.id]={subs:Object.fromEntries(d.subs.map(s=>[s.id,0])),evidence:'',blocker:'',tgt:3};});
+                state.context={governance_readiness:'',tech_investments:'',org_readiness:'',exec_sponsorship:'',timeline:'',portfolio_coverage:Object.fromEntries(DIMS.map(d=>[d.id,{coverage:'',stage:'',notes:''}])),portfolio_gaps:'',roadmap:'',differentiation:''};
+                state.priorities={p1:'',p2:'',p3:'',blockers:'',success_looks_like:''};
+                render();
+            }));
+            f.appendChild(nav);return f;
+        }
+
+        function goTo(step){state.step=step;if(step===1)state.dimIdx=0;render();wrap.scrollIntoView({behavior:'smooth',block:'start'});}
+        function render(){
+            wrap.innerHTML='';wrap.appendChild(renderProgress());
+            const panel=mk('div','ws-panel');
+            switch(state.step){case 0:panel.appendChild(renderProfile());break;case 1:panel.appendChild(renderDimAssessment());break;case 2:panel.appendChild(renderSummary());break;case 3:panel.appendChild(renderContextAssessment());break;case 4:panel.appendChild(renderPriorities());break;case 5:panel.appendChild(renderSave());break;}
+            wrap.appendChild(panel);
+        }
+        render(); return wrap;
+    }
+
     // ── Render a content block ────────────────────────────────────
     function renderBlock(block) {
         switch (block.type) {
+            case 'interactive_worksheet': return buildWorksheetWizard();
             case 'heading': { const el = document.createElement('h3'); el.className = 'docs-heading'; el.textContent = block.value; return el; }
             case 'text':    { const el = document.createElement('p');  el.className = 'docs-text';    el.textContent = block.value; return el; }
+            case 'markdown': {
+                const wrap = document.createElement('div');
+                wrap.className = 'docs-markdown';
+                wrap.innerHTML = docsMarkdownToHtml(block.value || '');
+                return wrap;
+            }
+            case 'asaf_viz': {
+                const wrap = document.createElement('div');
+                wrap.className = 'docs-asaf-viz';
+                if (block.label) {
+                    const lbl = document.createElement('div');
+                    lbl.className = 'docs-asaf-viz-label';
+                    lbl.textContent = block.label;
+                    wrap.appendChild(lbl);
+                }
+                if (block.subtitle) {
+                    const sub = document.createElement('div');
+                    sub.className = 'docs-asaf-viz-subtitle';
+                    sub.textContent = block.subtitle;
+                    wrap.appendChild(sub);
+                }
+                // SVG diagram + abbreviation key side by side
+                const body = document.createElement('div');
+                body.className = 'docs-asaf-viz-body';
+                const svgWrap = document.createElement('div');
+                svgWrap.className = 'docs-asaf-viz-svg-wrap';
+                _buildAsafVizSvg(svgWrap, block);
+                body.appendChild(svgWrap);
+                body.appendChild(_buildAsafVizKey());
+                wrap.appendChild(body);
+                if (block.vendor_types && block.vendor_types.length) {
+                    const row = document.createElement('div');
+                    row.className = 'docs-asaf-viz-tags';
+                    (block.vendor_types || []).forEach(vt => {
+                        const chip = document.createElement('span');
+                        chip.className = 'docs-asaf-viz-tag';
+                        chip.textContent = vt;
+                        row.appendChild(chip);
+                    });
+                    wrap.appendChild(row);
+                }
+                // 6-type signal / communication type legend
+                const leg = document.createElement('div');
+                leg.className = 'docs-asaf-viz-legend';
+                [
+                    ['rgba(56,189,248,0.80)',  '0',   'Telemetry / Signal'],
+                    ['rgba(129,140,248,0.85)', '0',   'Hypothesis / Directive'],
+                    ['rgba(251,113,133,0.85)', '6,3', 'Authority / Constraint'],
+                    ['rgba(52,211,153,0.80)',  '0',   'Outcome / Evidence'],
+                    ['rgba(251,191,36,0.80)',  '3,2', 'Context / Knowledge'],
+                    ['rgba(74,222,128,0.80)',  '8,4', 'Learning / Feedback'],
+                ].forEach(([color, dash, text]) => {
+                    const item = document.createElement('div');
+                    item.className = 'docs-asaf-viz-legend-item';
+                    const line = document.createElement('span');
+                    line.className = 'docs-asaf-viz-legend-line';
+                    line.style.cssText = dash !== '0'
+                        ? `background:linear-gradient(90deg,${color} 60%,transparent 60%);background-size:8px 2px;`
+                        : `background:${color};`;
+                    item.appendChild(line);
+                    item.appendChild(document.createTextNode(text));
+                    leg.appendChild(item);
+                });
+                wrap.appendChild(leg);
+                return wrap;
+            }
             case 'list': {
                 const ul = document.createElement('ul'); ul.className = 'docs-list';
                 (block.items || []).forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
                 return ul;
+            }
+            case 'ordered_list': {
+                const ol = document.createElement('ol'); ol.className = 'docs-list docs-list-ordered';
+                (block.items || []).forEach(item => { const li = document.createElement('li'); li.textContent = item; ol.appendChild(li); });
+                return ol;
             }
             case 'table': {
                 const wrap = document.createElement('div'); wrap.className = 'docs-table-wrap';
