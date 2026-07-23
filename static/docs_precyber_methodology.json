@@ -11,24 +11,24 @@
           "title": "Table of Contents",
           "content": [
             {
-              "type": "list",
+              "type": "ordered_list",
               "items": [
-                "[End-to-End Pipeline](#1-end-to-end-pipeline)",
-                "[Schema Definition](#2-schema-definition)",
-                "[Vendor Seed Structure](#3-vendor-seed-structure)",
-                "[URL Discovery & Curation](#4-url-discovery--curation)",
-                "[Playwright Rendering](#5-playwright-rendering)",
-                "[Evidence Harvesting](#6-evidence-harvesting)",
-                "[Holistic Per-Criterion Scoring](#7-holistic-per-criterion-scoring)",
-                "[Worked Example: Vendor A EXP-04](#8-worked-example-vendor-a-exp-04)",
-                "[Structured Rationale Overlay](#9-structured-rationale-overlay)",
-                "[Output Files & Versioning](#10-output-files--versioning)",
-                "[Operational Runbook](#11-operational-runbook)",
-                "[Validation Targets (Polarity Test)](#12-validation-targets-polarity-test)",
-                "[Anti-Patterns & Common Failures](#13-anti-patterns--common-failures)",
-                "[Known Limitations](#14-known-limitations)",
-                "[File Map](#15-file-map)",
-                "[Change Log](#16-change-log)"
+                "End-to-End Pipeline",
+                "Schema Definition",
+                "Vendor Seed Structure",
+                "URL Discovery & Curation",
+                "Playwright Rendering",
+                "Evidence Harvesting",
+                "Holistic Per-Criterion Scoring",
+                "Worked Example: Vendor A EXP-04",
+                "Structured Rationale Overlay",
+                "Output Files & Versioning",
+                "Operational Runbook",
+                "Validation Targets (Polarity Test)",
+                "Anti-Patterns & Common Failures",
+                "Known Limitations",
+                "File Map",
+                "Change Log"
               ]
             },
             {
@@ -39,7 +39,7 @@
         },
         {
           "id": "s2",
-          "title": "End-to-End Pipeline",
+          "title": "1. End-to-End Pipeline",
           "content": [
             {
               "type": "text",
@@ -159,7 +159,7 @@
         },
         {
           "id": "s3",
-          "title": "Schema Definition",
+          "title": "2. Schema Definition",
           "content": [
             {
               "type": "text",
@@ -236,7 +236,7 @@
         },
         {
           "id": "s4",
-          "title": "Vendor Seed Structure",
+          "title": "3. Vendor Seed Structure",
           "content": [
             {
               "type": "text",
@@ -274,7 +274,7 @@
         },
         {
           "id": "s5",
-          "title": "URL Discovery & Curation",
+          "title": "4. URL Discovery & Curation",
           "content": [
             {
               "type": "text",
@@ -370,7 +370,7 @@
         },
         {
           "id": "s6",
-          "title": "Playwright Rendering",
+          "title": "5. Playwright Rendering",
           "content": [
             {
               "type": "text",
@@ -453,7 +453,7 @@
         },
         {
           "id": "s7",
-          "title": "Evidence Harvesting",
+          "title": "6. Evidence Harvesting",
           "content": [
             {
               "type": "text",
@@ -496,7 +496,7 @@
         },
         {
           "id": "s8",
-          "title": "Holistic Per-Criterion Scoring",
+          "title": "7. Holistic Per-Criterion Scoring",
           "content": [
             {
               "type": "text",
@@ -692,7 +692,7 @@
         },
         {
           "id": "s9",
-          "title": "Worked Example: Score Correction (Vendor A, EXP-04)",
+          "title": "8. Worked Example: Score Correction (Vendor A, EXP-04)",
           "content": [
             {
               "type": "text",
@@ -809,7 +809,7 @@
         },
         {
           "id": "s10",
-          "title": "Structured Rationale Overlay",
+          "title": "9. Structured Rationale Overlay",
           "content": [
             {
               "type": "text",
@@ -843,7 +843,7 @@
         },
         {
           "id": "s11",
-          "title": "Output Files & Versioning",
+          "title": "10. Output Files & Versioning",
           "content": [
             {
               "type": "table",
@@ -920,7 +920,7 @@
         },
         {
           "id": "s12",
-          "title": "Operational Runbook",
+          "title": "11. Operational Runbook",
           "content": [
             {
               "type": "heading",
@@ -974,7 +974,7 @@
         },
         {
           "id": "s13",
-          "title": "Validation Targets (Polarity Test)",
+          "title": "12. Validation Targets (Polarity Test)",
           "content": [
             {
               "type": "text",
@@ -1063,7 +1063,7 @@
         },
         {
           "id": "s14",
-          "title": "Anti-Patterns & Common Failures",
+          "title": "13. Anti-Patterns & Common Failures",
           "content": [
             {
               "type": "table",
@@ -1123,7 +1123,7 @@
         },
         {
           "id": "s15",
-          "title": "Known Limitations",
+          "title": "14. Known Limitations",
           "content": [
             {
               "type": "list",
@@ -1143,7 +1143,7 @@
         },
         {
           "id": "s16",
-          "title": "File Map",
+          "title": "15. File Map",
           "content": [
             {
               "type": "table",
@@ -1222,7 +1222,7 @@
         },
         {
           "id": "s17",
-          "title": "Change Log",
+          "title": "16. Change Log",
           "content": [
             {
               "type": "table",

@@ -1,0 +1,463 @@
+{
+  "version": "1.0",
+  "updated": "June 2026",
+  "tabs": [
+    {
+      "id": "master_subschema_architecture",
+      "label": "Master + Subschema Architecture",
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "content": [
+            {
+              "type": "text",
+              "value": "This document defines the target architecture for unifying ASAF and the existing market schemas into a composable master-plus-subschema model. The goal is to let analysts select a master operating model, choose one or more market bundles, dynamically assemble a working schema, and project vendor capabilities into that view without rescoring the same concept repeatedly across multiple frameworks."
+            },
+            {
+              "type": "text",
+              "value": "Recommended principle: do not replace every schema with one giant taxonomy. Instead, separate canonical capabilities, schema bundles, vendor mappings, and delivery models so the platform can support reuse, traceability, future market-specific composition, and faster page loading even if JSON remains the primary storage architecture."
+            },
+            {
+              "type": "text",
+              "value": "A JSON-first architecture remains viable if the platform stops treating a single large JSON file as both source-of-truth and page payload. The future state should separate source JSON from display JSON, use summary/detail/analytics payload tiers, and lazy-load page-specific content instead of loading full vendor datasets eagerly into the browser."
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    M[\"Master Ontology\\nCanonical capability graph\"] --> B[\"Schema Bundles\\nPreCyber / OffSec / MDR / TRiSM / PMR\"]\n    M --> V[\"Vendor Capability Mappings\\nEvidence + score + confidence\"]\n    B --> C[\"Composition Engine\\nSelected bundles + display rules + weights\"]\n    V --> C\n    C --> U1[\"Bundle View\\nPillars + sub-pillars\"]\n    C --> U2[\"Capability Graph View\\nRelationships + overlap\"]\n    C --> U3[\"Vendor Projection View\\nOne vendor across master + bundles\"]"
+            },
+            {
+              "type": "table",
+              "headers": ["Layer", "Purpose", "Primary Output"],
+              "rows": [
+                ["Master ontology", "Defines reusable canonical capability concepts and their relationships", "Stable capability IDs and graph relationships"],
+                ["Schema bundles", "Curates market-specific views built from canonical capabilities", "Bundle pillars, weights, labels, scoring semantics"],
+                ["Vendor mappings", "Attaches evidence, rationale, and scores to canonical capabilities", "Vendor-to-capability traceability and derived bundle scores"],
+                ["Composition engine", "Assembles selected bundles and vendor data into a working schema view", "UI-ready master + subschema projection"],
+                ["Delivery model", "Controls what JSON is loaded, when, and at what payload weight", "Fast summary-first pages with lazy-loaded detail and analytics"]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "current_state",
+          "title": "Current State in the Codebase",
+          "content": [
+            {
+              "type": "text",
+              "value": "The current platform already contains the building blocks for this future state, but they are spread across schema-specific loaders, special-case framework handling, and hard-coded cross-schema translations."
+            },
+            {
+              "type": "table",
+              "headers": ["File", "Current role", "Why it matters to the future state"],
+              "rows": [
+                ["app.py", "Schema registry, metadata generation, schema switching, vendor file switching", "Provides the natural backend insertion point for a composition layer"],
+                ["agentic_soc_framework_v1.json", "ASAF framework with dimensions, sub-dimensions, weights, and stages", "Best available master operating-model template"],
+                ["Preemptive_Cybersecurity_Schema_v3.json", "PreCyber capability schema", "Strong candidate bundle for initial canonicalization pilot"],
+                ["Offensive_Security_Schema.json", "OffSec capability schema", "Second pilot bundle with overlap and divergence useful for testing the model"],
+                ["_score_pmr_vendors.py", "Manual cross-schema mapping into PMR pillars", "Existing proof that schema translation matters but should move from code to config"],
+                ["static/app.js", "Current front-end schema rendering and view switching", "Would later host master selection, subschema selection, and composed views"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Current architectural constraints"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Schemas are treated as separate source files rather than as bundles built from reusable canonical capabilities.",
+                "ASAF and APEF are handled through a special `asmf` branch rather than a generalized framework composition pattern.",
+                "Cross-schema reasoning exists today, but it is manual and hard-coded in Python instead of declarative and reusable.",
+                "Vendor evidence and score logic still live primarily inside schema-specific contexts instead of a normalized capability layer.",
+                "The UI can switch schemas, but it cannot yet compose multiple selected bundles into a single working view.",
+                "The browser currently loads full vendor datasets eagerly for core views, which increases page-weight and pushes filtering work to the client.",
+                "The backend rereads and reparses the same JSON files across multiple routes instead of caching parsed JSON by file and modified time.",
+                "Several views request metadata, field values, and full datasets separately even when those can be returned from a lighter summary bootstrap payload."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "target_operating_model",
+          "title": "Target Operating Model",
+          "content": [
+            {
+              "type": "text",
+              "value": "The target state is a master-plus-subschema platform. The master model defines the canonical capability graph and operating relationships. Subschemas are curated bundle views built from that graph. Vendors are mapped once against the canonical capabilities and then projected into whichever schema lens the analyst selects."
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    A[\"Analyst selects master lens\"] --> B[\"Selects one or more subschemas\"]\n    B --> C[\"Composition engine builds working schema\"]\n    C --> D[\"Deduplicates overlapping capabilities\"]\n    D --> E[\"Applies bundle labels, weights, and scoring rules\"]\n    E --> F[\"Projects vendor mappings into the result\"]\n    F --> G[\"Renders pillars, overlap, graph, and vendor traceability\"]"
+            },
+            {
+              "type": "ordered_list",
+              "items": [
+                "Choose a master lens — recommended default: ASAF-inspired operating architecture.",
+                "Choose one or more market bundles — for example PreCyber, OffSec, MDR, TRiSM, or PMR.",
+                "Compose a merged schema view from canonical capabilities, not from pairwise pillar translations.",
+                "Project vendors into the composed schema using canonical evidence and scores already attached to those capabilities.",
+                "Render the result in multiple modes: bundle view, overlap view, capability graph view, and vendor projection view."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "master_ontology",
+          "title": "Master Ontology Layer",
+          "content": [
+            {
+              "type": "text",
+              "value": "The master ontology is the durable capability graph underneath every schema bundle. It should be vendor-neutral, stable over time, and defined at the atomic capability level rather than at the current pillar level."
+            },
+            {
+              "type": "table",
+              "headers": ["Entity", "Definition", "Example"],
+              "rows": [
+                ["Domain", "High-level area of the security operating model", "Security Operations, Exposure Management, Governance, AppSec"],
+                ["Dimension", "Master organizing lens above reusable capabilities", "ASAF-aligned dimensions such as SEN, RSN, AGT, GOV"],
+                ["Capability", "Atomic reusable capability concept", "Attack Surface Discovery, Hypothesis-Driven Investigation, SBOM Monitoring"],
+                ["Relationship", "Explicit graph edge between canonical objects", "supports, depends_on, governed_by, writes_to_graph"],
+                ["Evidence type", "Public or internal evidence artifact tied to a capability", "Product page, datasheet, demo note, customer evidence, analyst note"],
+                ["Score type", "The measurement attached to capability or maturity", "capability_score, evidence_confidence, stage_alignment, bundle_fit"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Design rules"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Canonical capability IDs must be durable and non-market-branded.",
+                "Capabilities should be smaller than current pillars so multiple bundles can reuse them cleanly.",
+                "The ontology must support many-to-many relationships: one capability may map to multiple bundles and multiple ASAF dimensions.",
+                "Master-level relationships must be explicit, not inferred only from bundle grouping."
+              ]
+            },
+            {
+              "type": "code",
+              "value": "{\n  \"capability_id\": \"CAP-EXPOSURE-ASM-DISCOVERY\",\n  \"name\": \"Attack Surface Discovery\",\n  \"domain\": \"Exposure Management\",\n  \"primary_dimensions\": [\"SEN\", \"EXP\"],\n  \"secondary_dimensions\": [\"SKG\"],\n  \"relationships\": [\n    { \"type\": \"supports\", \"target\": \"CAP-EXPOSURE-PRIORITIZATION\" },\n    { \"type\": \"writes_to_graph\", \"target\": \"CAP-GRAPH-ASSET-INTELLIGENCE\" }\n  ],\n  \"evidence_types\": [\"product_page\", \"datasheet\", \"demo\"],\n  \"score_types\": [\"capability_score\", \"evidence_confidence\"]\n}"
+            }
+          ]
+        },
+        {
+          "id": "asaf_master_lens",
+          "title": "ASAF as the Master Organizing Lens",
+          "content": [
+            {
+              "type": "text",
+              "value": "ASAF should be treated as the primary master organizing lens because it already models how security operations function as an integrated system. It is the right frame for the operating architecture, but it should not force every market schema to adopt the exact same scoring semantics."
+            },
+            {
+              "type": "table",
+              "headers": ["Why ASAF fits", "What to preserve", "What not to force"],
+              "rows": [
+                ["It already models dimensions, sub-dimensions, weights, and stages", "Use its dimensions as top-level operating-model anchors", "Do not force every bundle to collapse into ASAF stage scoring"],
+                ["It describes how the system works together, not just what features exist", "Map canonical capabilities to one or more ASAF dimensions", "Do not require every bundle pillar to be identical to an ASAF dimension"],
+                ["It supports maturity progression and transformation paths", "Preserve stage alignment as one score dimension", "Do not replace market-specific capability scoring with stage-only scoring"]
+              ]
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TB\n    ASAF[\"ASAF master lens\"] --> SEN[\"SEN\"]\n    ASAF --> RSN[\"RSN\"]\n    ASAF --> AGT[\"AGT\"]\n    ASAF --> GOV[\"GOV\"]\n    ASAF --> SKG[\"SKG\"]\n    ASAF --> EXP[\"EXP\"]\n    SEN --> C1[\"Canonical capability set\"]\n    RSN --> C1\n    AGT --> C1\n    GOV --> C1\n    SKG --> C1\n    EXP --> C1\n    C1 --> B1[\"PreCyber bundle\"]\n    C1 --> B2[\"OffSec bundle\"]\n    C1 --> B3[\"MDR bundle\"]"
+            },
+            {
+              "type": "text",
+              "value": "Recommended long-term position: use a generalized master ontology with ASAF as the first and default master lens. That keeps the model flexible enough for non-SecOps-heavy domains while still making ASAF the practical control architecture for the platform."
+            }
+          ]
+        },
+        {
+          "id": "bundle_model",
+          "title": "Schema Bundles and Dynamic Composition",
+          "content": [
+            {
+              "type": "text",
+              "value": "Existing schemas should become declarative bundle definitions rather than standalone ontologies. Each bundle selects canonical capabilities, groups them into display pillars, assigns weights, and defines the scoring semantics and analyst framing for that market view."
+            },
+            {
+              "type": "table",
+              "headers": ["Bundle responsibility", "What it should contain"],
+              "rows": [
+                ["Identity", "Bundle ID, title, purpose, audience, version"],
+                ["Grouping", "How canonical capabilities roll up into bundle pillars and sub-pillars"],
+                ["Presentation", "Bundle-specific names, descriptions, labels, display order"],
+                ["Scoring", "Aggregation rules, weights, thresholds, scoring mode labels"],
+                ["Constraints", "Optional bundle-only inclusion rules or display requirements"]
+              ]
+            },
+            {
+              "type": "code",
+              "value": "{\n  \"bundle_id\": \"precyber_v3\",\n  \"title\": \"Preemptive Cybersecurity v3\",\n  \"scoring_mode\": \"capability_1_to_5\",\n  \"pillars\": [\n    {\n      \"code\": \"EXM\",\n      \"name\": \"Exposure Management\",\n      \"capabilities\": [\n        \"CAP-EXPOSURE-ASM-DISCOVERY\",\n        \"CAP-EXPOSURE-EXTERNAL-ENUMERATION\",\n        \"CAP-EXPOSURE-PRIORITIZATION\"\n      ],\n      \"weight\": 0.22\n    }\n  ]\n}"
+            },
+            {
+              "type": "heading",
+              "value": "Dynamic bundle behavior"
+            },
+            {
+              "type": "list",
+              "items": [
+                "A capability can belong to many bundles without duplication in the master model.",
+                "A bundle can reuse the same canonical capability but label it differently based on market framing.",
+                "The composition engine should deduplicate canonical capability overlap when multiple bundles are selected together.",
+                "Custom analyst-defined bundles should be saved as first-class schema views rather than ad hoc filter states."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "vendor_mapping",
+          "title": "Vendor Mapping Layer",
+          "content": [
+            {
+              "type": "text",
+              "value": "The vendor layer should become canonical-capability-centric. Vendors are evaluated once against canonical capabilities using evidence, rationale, and score metadata. Bundle-level results are then derived from those mappings."
+            },
+            {
+              "type": "table",
+              "headers": ["Object", "Contents", "Why it exists"],
+              "rows": [
+                ["Vendor master profile", "Vendor identity, market descriptors, metadata, source links", "Single record for all bundle projections"],
+                ["Vendor capability mapping", "Canonical capability ID, score, rationale, confidence, reviewer, timestamp", "Core analytical fact table"],
+                ["Evidence ledger", "URLs, excerpts, artifact type, evidence quality, provenance", "Supports auditability and revalidation"],
+                ["Derived bundle projection", "Computed pillar scores and coverage in a specific bundle", "Presentation layer for the active schema selection"]
+              ]
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    VP[\"Vendor profile\"] --> VM[\"Vendor capability mappings\"]\n    EV[\"Evidence ledger\"] --> VM\n    VM --> PB[\"PreCyber projection\"]\n    VM --> OB[\"OffSec projection\"]\n    VM --> MB[\"Master lens projection\"]\n    PB --> UI[\"Rendered analyst view\"]\n    OB --> UI\n    MB --> UI"
+            },
+            {
+              "type": "code",
+              "value": "{\n  \"vendor\": \"Example Vendor\",\n  \"capability_id\": \"CAP-EXPOSURE-ASM-DISCOVERY\",\n  \"capability_score\": 4.0,\n  \"evidence_confidence\": \"high\",\n  \"rationale\": \"Public evidence demonstrates continuous external asset discovery with prioritization and workflow integration.\",\n  \"evidence_refs\": [\"ev-001\", \"ev-002\"],\n  \"reviewer\": \"analyst\",\n  \"reviewed_at\": \"2026-06-03\"\n}"
+            }
+          ]
+        },
+        {
+          "id": "json_delivery_model",
+          "title": "JSON-First Performance and Dynamic Loading Model",
+          "content": [
+            {
+              "type": "text",
+              "value": "If the platform remains JSON-first, performance improvements should come from reshaping data delivery rather than replacing JSON outright. The most important design change is to stop using the same heavy JSON object as the source-of-truth record, the list-view payload, the analytics payload, and the detail-view payload."
+            },
+            {
+              "type": "table",
+              "headers": ["Payload tier", "What it contains", "Where it is used"],
+              "rows": [
+                ["Summary", "Vendor identity, top-level display fields, lightweight scores, sort keys, badges", "Vendor table, initial dashboard, selectors, quick search"],
+                ["Detail", "Full vendor evidence, rationale, granular scores, traceability objects", "Vendor modal, deep-dive views, report tabs, exports"],
+                ["Analytics", "Precomputed aggregates, filter values, region counts, rankings, overlap summaries", "Dashboard, cross-section defaults, market insight graphics, filter panels"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Recommended JSON delivery rules"
+            },
+            {
+              "type": "ordered_list",
+              "items": [
+                "Load summary JSON first and render the page shell immediately.",
+                "Load detail JSON only when a user opens a vendor, report, or deep-dive page that needs it.",
+                "Materialize analytics JSON separately so charts and counts do not require scanning the entire vendor dataset in the browser.",
+                "Return filter-value JSON as part of a summary bootstrap or from a dedicated cached analytics endpoint rather than recomputing it from the full vendor file on every load.",
+                "Use stable IDs and refs so the UI can follow lightweight references to heavier JSON only when needed."
+              ]
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    SRC[\"Source-of-truth JSON\"] --> IDX[\"Summary / index JSON\"]\n    SRC --> DET[\"Per-vendor detail JSON\"]\n    SRC --> AN[\"Materialized analytics JSON\"]\n    IDX --> UI1[\"Initial page render\"]\n    DET --> UI2[\"Vendor detail + report tabs\"]\n    AN --> UI3[\"Dashboards + filters + charts\"]"
+            },
+            {
+              "type": "heading",
+              "value": "Recommended file families"
+            },
+            {
+              "type": "table",
+              "headers": ["Family", "Purpose", "Example"],
+              "rows": [
+                ["Index files", "Fast list-view and selector payloads", "vendor_index_precyber_v3.json"],
+                ["Detail files", "Full per-vendor payloads keyed by stable vendor ID", "vendors/details/vendor-blumira.json"],
+                ["Analytics files", "Precomputed aggregates for dashboards and filters", "dashboard_precyber_v3.json, filter_values_precyber_v3.json"],
+                ["Manifest files", "Tell each page what JSON sources it needs and whether they are lazy", "app_manifest.json, docs_manifest.json"],
+                ["Bundle files", "Canonical-to-bundle grouping configuration", "bundles/precyber_v3.json" ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "platform_future_state",
+          "title": "Platform Future State",
+          "content": [
+            {
+              "type": "text",
+              "value": "The platform future state is a composition-driven application rather than a schema-switching application. Backend services compose the active view from a master ontology, selected bundles, and vendor mappings. The frontend presents that result through multiple interchangeable lenses, while the delivery layer ensures that only the JSON needed by the active page is loaded."
+            },
+            {
+              "type": "heading",
+              "value": "Backend target services"
+            },
+            {
+              "type": "table",
+              "headers": ["Service", "Function"],
+              "rows": [
+                ["load_master_ontology()", "Load the canonical capability graph and relationship model"],
+                ["load_schema_bundle(bundle_id)", "Load a declarative bundle definition"],
+                ["compose_schema_view(bundle_ids, options)", "Build a merged working schema with deduplicated canonical capabilities"],
+                ["project_vendor_to_bundle(vendor_id, bundle_id)", "Derive a vendor's bundle scores from canonical mappings"],
+                ["project_vendor_to_master(vendor_id, master_id)", "Show a vendor against the master operating model"],
+                ["trace_bundle_score(vendor_id, bundle_id, pillar_code)", "Show exactly which canonical capabilities and evidence produced a displayed score"],
+                ["load_json_cached(path)", "Return parsed JSON from memory when the file has not changed", "Avoid repeated reparsing of vendor, bundle, docs, and analytics files"],
+                ["load_view_manifest(view_id)", "Return the JSON sources required by a page or report", "Supports summary-first and lazy detail loading"],
+                ["get_materialized_analytics(bundle_id)", "Return precomputed charts, counts, filter values, and rankings", "Avoids expensive client-side scans of full vendor payloads"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "JSON delivery behaviors"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cache parsed JSON in memory using file path plus last-modified time as the cache key.",
+                "Support summary/detail/analytics response modes on vendor and schema endpoints.",
+                "Return ETag or Last-Modified metadata so unchanged JSON can reuse browser cache.",
+                "Treat reports and docs as lazy page assets rather than eager startup payloads.",
+                "Precompute and store display-oriented JSON so the UI does less reshaping at render time."
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Frontend target experiences"
+            },
+            {
+              "type": "ordered_list",
+              "items": [
+                "Master selector — choose ASAF or another future master lens.",
+                "Subschema multi-select — choose one or more bundles to include.",
+                "Dynamic bundle builder — toggle capability groups on or off and save a custom view.",
+                "Bundle view — classic pillars and sub-pillars for the active composed result.",
+                "Capability graph view — relationships, dependencies, and overlap across bundles.",
+                "Vendor projection view — one vendor shown simultaneously against master and selected bundles.",
+                "Coverage overlap view — where bundles are reusing the same canonical capability sets.",
+                "Summary-first loading — list pages render from index JSON, then fetch richer detail only when the user drills in.",
+                "Page manifests — each major view declares the JSON sources it needs so the loader can fetch dynamically instead of eagerly."
+              ]
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TD\n    UI1[\"Master selector\"] --> CMP[\"Compose working schema\"]\n    UI2[\"Subschema multi-select\"] --> CMP\n    UI3[\"Custom bundle builder\"] --> CMP\n    CMP --> VIEW1[\"Bundle view\"]\n    CMP --> VIEW2[\"Capability graph\"]\n    CMP --> VIEW3[\"Vendor projection\"]\n    CMP --> VIEW4[\"Overlap analysis\"]"
+            },
+            {
+              "type": "mermaid",
+              "value": "sequenceDiagram\n    participant PAGE as Page\n    participant API as API\n    participant IDX as Summary JSON\n    participant DET as Detail JSON\n    participant AN as Analytics JSON\n    PAGE->>API: request summary bootstrap\n    API->>IDX: load vendor index\n    API->>AN: load filter values + dashboard summary\n    API-->>PAGE: render initial page\n    PAGE->>API: open vendor detail\n    API->>DET: load vendor detail file\n    API-->>PAGE: render detail on demand"
+            }
+          ]
+        },
+        {
+          "id": "scoring_model",
+          "title": "Scoring and Traceability Model",
+          "content": [
+            {
+              "type": "text",
+              "value": "The future state should preserve multiple score types instead of forcing everything into a single 1-to-5 number. Capability strength, evidence confidence, bundle fit, and ASAF stage alignment are different analytical concepts and should remain distinct."
+            },
+            {
+              "type": "table",
+              "headers": ["Score type", "Question answered", "Where it lives"],
+              "rows": [
+                ["Capability score", "How strong is the vendor on this canonical capability?", "Vendor capability mapping"],
+                ["Evidence confidence", "How well-supported is the score by public or analyst evidence?", "Evidence ledger + mapping record"],
+                ["Bundle projection score", "How does the vendor perform when the active bundle groups and weights are applied?", "Derived composition output"],
+                ["Stage alignment score", "How closely does the vendor support an ASAF stage transition or operating state?", "Master-lens projection"],
+                ["Coverage score", "How much of the selected bundle or master view does the vendor cover?", "Derived composition output"]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Every displayed score in the future UI should be traceable. Analysts should be able to click from a bundle pillar score to the underlying canonical capabilities, then to the vendor mappings, and finally to the evidence excerpts or rationale that support the score."
+            }
+          ]
+        },
+        {
+          "id": "migration_path",
+          "title": "Phased Migration Path",
+          "content": [
+            {
+              "type": "text",
+              "value": "The migration should be incremental. Legacy schema mode and composed mode should coexist until the new architecture reaches parity. If major architectural work is happening at the same time, JSON delivery changes should be implemented in the same program so the future-state model is performant from the beginning rather than retrofitted later."
+            },
+            {
+              "type": "table",
+              "headers": ["Phase", "Goal", "Primary deliverable"],
+              "rows": [
+                ["Phase 1", "Define canonical ontology and JSON delivery model pilot", "Master capability graph plus summary/detail/analytics payload design for PreCyber and OffSec"],
+                ["Phase 2", "Convert two schemas into bundles", "Declarative PreCyber and OffSec bundle files"],
+                ["Phase 3", "Normalize vendor mapping pilot", "Canonical vendor-to-capability records plus lightweight vendor index JSON"],
+                ["Phase 4", "Build backend composition and cache services", "Composed-schema APIs, parsed-JSON cache, and materialized analytics endpoints"],
+                ["Phase 5", "Introduce composed UI mode", "Master selector + subschema selector + summary-first bundle rendering"],
+                ["Phase 6", "Expand to more bundles", "MDR, TRiSM, PMR, CNAPP, and future frameworks"],
+                ["Phase 7", "Retire duplicated hard-coded mappings", "Bundle configuration replaces pairwise translation logic in Python" ]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Pilot recommendation"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Start with PreCyber and OffSec because their overlap has already been analyzed and they provide a useful pilot for deduplication.",
+                "Use ASAF as the master organizing lens during the pilot, but keep capability scoring separate from ASAF stage scoring.",
+                "Do not break current `SCHEMA_REGISTRY` behavior until the composed pilot can produce equivalent metadata and bundle views.",
+                "At the same time, split page delivery into summary, detail, and analytics JSON so the pilot proves both architecture and performance together."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "verification",
+          "title": "Verification and Success Criteria",
+          "content": [
+            {
+              "type": "ordered_list",
+              "items": [
+                "A pilot master ontology can represent overlapping PreCyber and OffSec concepts without duplicate canonical capabilities.",
+                "One vendor can be projected into both PreCyber and OffSec bundle views from the same canonical mapping set.",
+                "The platform can display both master-lens alignment and bundle-specific scores without conflating them.",
+                "At least one hard-coded cross-schema translation workflow is replaced by declarative bundle mapping configuration.",
+                "The composed UI can show master selection, selected bundles, deduplicated capabilities, and vendor traceability.",
+                "Initial pages render from summary payloads without requiring full vendor-detail JSON up front.",
+                "Analytics views can load from materialized JSON rather than recomputing over the entire vendor dataset in the browser.",
+                "Parsed JSON caching eliminates repeated file reparsing for unchanged vendor, bundle, doc, and analytics files."
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Architecture decisions"
+            },
+            {
+              "type": "table",
+              "headers": ["Decision", "Recommendation"],
+              "rows": [
+                ["Master model", "Use a generalized master ontology with ASAF as the primary default master lens"],
+                ["Composition unit", "Canonicalize atomic capabilities, not current pillars"],
+                ["Vendor scoring", "Score once at the canonical capability level and derive bundle projections"],
+                ["Migration style", "Parallel-run legacy mode and composed mode until parity is proven"],
+                ["Score semantics", "Keep capability score, evidence confidence, stage alignment, and bundle-fit as separate values"],
+                ["JSON strategy", "Keep JSON as the primary persistence layer, but split source, summary, detail, and analytics payloads instead of shipping one heavy file everywhere"],
+                ["Page loading", "Adopt summary-first rendering with lazy detail fetches and cached analytics JSON"],
+                ["Caching", "Cache parsed JSON by file path and modified time; add browser cache metadata for stable responses"]
+              ]
+            },
+            {
+              "type": "text",
+              "value": "Success is reached when an analyst can select a master, select multiple subschemas, see a deduplicated working schema, inspect a vendor across those views, and trace any displayed score back to canonical capability evidence — while the platform still loads quickly because only the JSON needed for the active view is fetched."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

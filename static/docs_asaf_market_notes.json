@@ -1,0 +1,927 @@
+{
+  "version": "1.0",
+  "updated": "May 2026",
+  "tabs": [
+    {
+      "id": "asaf_notes",
+      "label": "ASAF Market Insight Series",
+      "sections": [
+
+        {
+          "id": "architecture",
+          "title": "Series Architecture",
+          "content": [
+            {
+              "type": "text",
+              "value": "A 12-note market insight series built on the Agentic Security Operations Adoption Framework (ASAF 1.0). Note 0 is the anchor document — readable standalone and the binding frame for all others. Note 11 is the capstone. Notes 1–10 form three logical clusters that follow the signal path of an agentic security operation."
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart TB\n    N0[\"Note 0\\nFramework Overview\\nAnchor + Standalone\"]\n\n    subgraph A[\"Cluster A — Operating Architecture\"]\n        direction LR\n        N1[\"Note 1\\nThree Planes\"] --> N2[\"Note 2\\nSEN\"] --> N3[\"Note 3\\nRSN\"] --> N4[\"Note 4\\nAGT\"]\n    end\n\n    subgraph B[\"Cluster B — Intelligence & Control\"]\n        direction LR\n        N5[\"Note 5\\nSKG\"] --> N6[\"Note 6\\nGOV\"]\n    end\n\n    subgraph C[\"Cluster C — Operational Dimensions\"]\n        direction LR\n        N7[\"Note 7\\nEXP\"] \n        N8[\"Note 8\\nHUM\"]\n        N9[\"Note 9\\nMET\"]\n        N10[\"Note 10\\nTRN\"]\n    end\n\n    N11[\"Note 11\\nIntegration Model\\nCapstone\"]\n\n    N0 --> N1\n    N0 -.->|\"entry shortcut\"| N5\n    N0 -.->|\"entry shortcut\"| N6\n    N0 -.->|\"entry shortcut\"| N8\n    A --> N5\n    B --> N7\n    B --> N8\n    B --> N9\n    B --> N10\n    C --> N11\n    B --> N11\n    N11 -.->|\"closes back\"| N0"
+            },
+            {
+              "type": "table",
+              "headers": ["#", "Title", "Cluster", "Core Claim", "Audience"],
+              "rows": [
+                ["0", "Framework Overview", "Anchor", "The tier model is ending — 6 stages, 3 planes, 11 dimensions replace it", "All — CISO, Product Leader, Architect"],
+                ["1", "The Three Operating Planes", "A", "Sensing / Reasoning / Control replaces L1 / L2 / L3", "All"],
+                ["2", "Sensing Fabric (SEN)", "A", "Signature detection is a Stage 0 artifact — adversary-validated continuous sensing is the new floor", "Product leaders, detection vendors"],
+                ["3", "Reasoning Architecture (RSN)", "A", "Alert-based investigation is architecturally obsolete — hypothesis-driven inference is the replacement", "SOC platform vendors, SIEM/SOAR"],
+                ["4", "Agent Execution (AGT)", "A", "Bounded autonomy is not a feature — it is the operating model enterprises are building", "Platform vendors, CPOs"],
+                ["5", "Security Knowledge Graph (SKG)", "B", "A shared intelligence spine changes vendor selection from feature comparison to integration depth", "Platform architects, integration leads"],
+                ["6", "Governance & Ethics (GOV)", "B", "Ethics and governance are runtime control signals, not policy documentation", "GRC leaders, CISOs, CPOs"],
+                ["7", "Continuous Threat Exposure (EXP)", "C", "Periodic assessment is replaced by continuous exposure posture as a live operational signal", "Exposure management vendors, CISOs"],
+                ["8", "Human Interface & Oversight (HUM)", "C", "The new human role is intent, governance, and exception handling — not alert triage", "CISOs, SOC directors"],
+                ["9", "Measurement & Metrics (MET)", "C", "MTTR and detection rate are Stage 0 metrics — agentic operations require a new measurement model", "CISOs, product leaders"],
+                ["10", "Transformation Management (TRN)", "C", "Vendors who help buyers advance ASAF stages become structurally embedded; those who do not are displaced", "Sales leaders, CSMs, strategists"],
+                ["11", "The Integration Model", "Capstone", "The cybernetic loop — all 11 dimensions in continuous bidirectional signal exchange", "All — closes the series"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Reading Guide by Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Role", "Start Here", "Then Read", "Capstone"],
+              "rows": [
+                ["CISO / Security Leader", "Note 0", "Notes 6, 8, 7", "Note 11"],
+                ["Security Product Leader / CPO", "Note 0", "Notes 4, 5, 6", "Note 11"],
+                ["Platform Architect / Integration Lead", "Note 0", "Notes 1, 4, 5", "Note 11"],
+                ["Detection / SIEM / SOAR Vendor", "Note 0", "Notes 2, 3, 5", "Note 11"],
+                ["GRC / Compliance Leader", "Note 6", "Notes 4, 8", "Note 11"],
+                ["Sales Leader / CSM", "Note 0", "Notes 10, 6", "Note 11"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Binding Logic: Why This Sequence"
+            },
+            {
+              "type": "ordered_list",
+              "items": [
+                "Note 0 → Note 11: The series opens with 'the tier model is ending' and closes with 'here is the complete system that replaces it.' A reader who only reads those two has the full arc.",
+                "Cluster A → Cluster B: You cannot understand the Knowledge Graph (SKG) until you understand what agents produce. Notes 1–4 make Note 5 inevitable.",
+                "Cluster B → Cluster C: Governance (GOV) and SKG are the control signals for everything in Cluster C. Notes 7–10 only make sense once you know what governs them.",
+                "Note 11 → Note 0: The capstone's final section sends readers back to Note 0's vendor category framework with full context. First read = orientation. Second read after Note 11 = conviction."
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Standard Note Structure"
+            },
+            {
+              "type": "text",
+              "value": "Every note in the series follows the same four-part structure to allow modular reading while building the series narrative:"
+            },
+            {
+              "type": "ordered_list",
+              "items": [
+                "Position — A declarative, falsifiable claim about vendor or market implication (PJA format: max 40 words)",
+                "Framework Evidence — The specific ASAF dimensions, sub-dimensions, principles, and maturity stage references that substantiate the position",
+                "Vendor Implications — Three buyer/vendor impact observations tied directly to the position",
+                "Actions — Three to five specific, non-obvious actions for the note's primary audience"
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note0",
+          "title": "Note 0 — Framework Overview",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER: Anchor — reads as a standalone position paper and as the binding frame for all 11 subsequent notes. Published first; referenced last."
+            },
+            {
+              "type": "heading",
+              "value": "The Five Jobs of Note 0"
+            },
+            {
+              "type": "ordered_list",
+              "items": [
+                "The Burning Platform: One crisp argument for why the tier model is ending — not 'AI is changing everything' but a specific falsifiable claim: enterprises at Stage 2 are eliminating L1/L2 workloads in production today. Name the buyer behavior, not the technology.",
+                "The Framework Map: The 6 stages, 3 operating planes, and 11 dimensions shown as a single conceptual diagram. Not explained in depth — oriented. The reader needs to understand the shape of the framework so every subsequent note has a home.",
+                "The Market Implication: The transition creates three vendor categories — those who enable stage advancement, those neutral to it, and those displaced by it. This note identifies which category is which and names the specific ASAF dimensions that drive each outcome.",
+                "The Series Navigation: A reader guide that tells people where to enter. 'If you build detection products, start with Notes 2–3. If you're a platform vendor, start with Note 5. If you're a CISO, start with Note 6.' Makes the series modular.",
+                "The Stakes Definition: The specific, datable claim that makes the position actionable — products built for Stage 0–1 operations are not being gradually deprecated; they are being architecturally substituted. The difference between gradual decline and substitution is the urgency."
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "The enterprise security operations market is undergoing an architectural substitution, not a feature evolution — the tiered analyst model that defined security operations for 20 years is being replaced by an agent-orchestrated control system, and the transition is measurable, stageable, and already underway at leading enterprise programs."
+            },
+            {
+              "type": "heading",
+              "value": "The Framework Map (Note 0 Must Contain)"
+            },
+            {
+              "type": "table",
+              "headers": ["Concept", "Description", "Why It Matters in Note 0"],
+              "rows": [
+                ["6 Maturity Stages", "Stage 0 (Traditional) through Stage 5 (Fully Agentic)", "Establishes that the transition is measurable and stageable, not vague"],
+                ["3 Operating Planes", "Sensing / Reasoning / Control — replaces L1/L2/L3", "Names the architectural replacement model in three words"],
+                ["11 Dimensions", "The full capability surface of agentic security operations", "Tells readers where their product lives in the new architecture"],
+                ["8 Principles", "The non-negotiable operating principles of agentic security", "Establishes that bounded autonomy and governance are structural, not optional"],
+                ["Three Vendor Categories", "Enable / Neutral / Displaced — based on dimension alignment", "The market implication that gives the note its urgency"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "The Three Vendor Categories (Must Be Named Explicitly)"
+            },
+            {
+              "type": "table",
+              "headers": ["Category", "Definition", "Primary Dimensions", "Stage Exposure"],
+              "rows": [
+                ["Enablers", "Products that accelerate buyer stage advancement — they contribute to AGT, SKG, GOV, or RSN at Stage 2+ depth", "AGT, SKG, GOV, RSN", "Stage 2–4 aligned"],
+                ["Neutral", "Products that remain relevant but do not drive stage advancement — they are used but not architected into the agentic program", "SEN (partial), EXP, MET", "Stage 1–2, declining relevance at Stage 3"],
+                ["Displaced", "Products whose primary value proposition depends on the tier model having unsolved problems — their use case is eliminated by architectural substitution", "Alert prioritization, L1 triage tools, manual playbook execution", "Stage 0–1 only; market exits at Stage 2"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference in Note 0"],
+              "rows": [
+                ["maturity_stages[0–2]", "The transition from Traditional to Supervised Autonomy — where leading buyers are operating today"],
+                ["principles[P1]", "Security operations as a cybernetic system — establishes the architectural replacement model"],
+                ["principles[P3]", "Bounded autonomy as a structural requirement — not a design preference"],
+                ["dimensions[GOV].weight = 15%", "Governance as the highest-weight dimension — signals where the market is going"],
+                ["dimensions[AGT, SKG]", "The two dimensions with lowest current market coverage and highest buyer urgency"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["None — this is the series anchor", "All 11 subsequent notes", "Yes — publishable independently as a position paper"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note1",
+          "title": "Note 1 — The Three Operating Planes",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER A — Note 1 of 4. The conceptual bridge between the framework overview (Note 0) and the dimension-specific notes (Notes 2–4). It is the only note that explains why the three-plane model is the right architecture, not just what it is."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "The three-plane model — Sensing, Reasoning, Control — is not an organizational chart; it is a signal processing architecture, and vendors who cannot identify which plane their product operates in cannot explain their role in an agentic security program."
+            },
+            {
+              "type": "heading",
+              "value": "Why This Note Exists Before Notes 2–4"
+            },
+            {
+              "type": "text",
+              "value": "Notes 2, 3, and 4 each cover one plane in depth (SEN, RSN, AGT). Without Note 1, a reader jumping into Note 2 understands what the Sensing dimension does but not why the plane architecture replaces the tier model. Note 1 makes the architectural argument once so Notes 2–4 can focus on vendor implications without re-explaining the theory."
+            },
+            {
+              "type": "heading",
+              "value": "The Three Planes"
+            },
+            {
+              "type": "table",
+              "headers": ["Plane", "Dimensions", "Replaces", "Signal Flow"],
+              "rows": [
+                ["Sensing", "SEN (Sensing Fabric)", "L1 alert triage and initial classification", "Continuous adversary-validated signals → feeds Reasoning plane"],
+                ["Reasoning", "RSN (Reasoning Architecture)", "L2 investigation and hypothesis generation", "Confidence-scored hypotheses → directs Control plane"],
+                ["Control", "AGT (Agent Execution) + GOV (Governance)", "L3 escalation, playbook execution, and human decisions", "Bounded agent actions + governance constraints → writes back to Sensing and SKG"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Vendor Implications"
+            },
+            {
+              "type": "ordered_list",
+              "items": [
+                "Products that operate in only one plane without bidirectional integration to adjacent planes are point solutions — and point solutions are excluded at the architecture design phase, not the vendor evaluation phase.",
+                "Products that claim multi-plane presence must be able to demonstrate signal contribution to adjacent planes — not just consume from them. Inbound-only integration is not multi-plane.",
+                "The most defensible vendor position is ownership of the Reasoning plane — RSN connects directly to all other planes and is the least covered dimension in the current market."
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["principles[P1]", "Security operations as a cybernetic system — the three planes are the cybernetic architecture"],
+                ["principles[P4]", "Continuous bidirectional operation — planes exchange signals in real time, not in batches"],
+                ["dimensions[SEN, RSN, AGT, GOV]", "The four dimensions that map directly to the three-plane model"],
+                ["maturity_stages[2]", "Stage 2 is where planes begin operating semi-autonomously — the transition point"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Note 0 (framework map)", "Notes 2, 3, 4 (dimension depth)", "Yes — but most valuable after Note 0"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note2",
+          "title": "Note 2 — Sensing Fabric (SEN)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER A — Note 2 of 4. The Sensing plane in depth. Primary audience: detection product vendors, EDR/NDR/XDR vendors, threat intelligence platforms."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "Signature-based detection and alert generation are Stage 0 capabilities — enterprises building agentic security programs at Stage 2+ require a Sensing Fabric that produces adversary-validated, confidence-scored, continuously updated signals, and detection products that cannot produce this output format are not competitive; they are architecturally incompatible."
+            },
+            {
+              "type": "heading",
+              "value": "The SEN Dimension: What Changes at Each Stage"
+            },
+            {
+              "type": "table",
+              "headers": ["Stage", "Sensing Capability", "Vendor Implication"],
+              "rows": [
+                ["Stage 0", "Signature-based detection, alert generation, static rules", "Current state for most products — defines Stage 0 market"],
+                ["Stage 1", "Behavioral analytics, ML-assisted anomaly detection, UEBA", "Most advanced current products — but still alert-centric"],
+                ["Stage 2", "Adversary model-informed detection, confidence-scored signal output, continuous sensing loops", "New capability floor for enterprise buyers — few products here"],
+                ["Stage 3", "Bidirectional sensing: detects AND updates adversary model in real time", "Almost no current products achieve this — first-mover opportunity"],
+                ["Stage 4–5", "Autonomous sensing calibration, self-updating coverage maps, proactive adversary model enrichment", "Emerging capability — defines next-generation platform"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "The SEN Sub-Dimensions"
+            },
+            {
+              "type": "table",
+              "headers": ["Sub-Dimension", "What It Requires", "Current Market Gap"],
+              "rows": [
+                ["SEN-01: Coverage Architecture", "Multi-surface continuous coverage across endpoint, network, identity, cloud, OT", "Most products cover 2–3 surfaces at Stage 2 depth; cross-surface correlation is rare"],
+                ["SEN-02: Signal Fidelity", "Adversary-validated, confidence-scored signals — not raw alerts", "Alert fidelity improvement is common; confidence scoring tied to adversary models is rare"],
+                ["SEN-03: Adversary Model Integration", "Sensing is informed by and writes back to the shared adversary model", "Inbound integration (threat intel feeds) is common; write-back to shared model is absent"],
+                ["SEN-04: Continuous Calibration", "Sensing coverage continuously recalibrated against evolving adversary behavior", "Periodic updates are common; autonomous continuous recalibration is Stage 3+"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[SEN]", "Sensing Fabric — the input layer of the agentic security operation"],
+                ["principles[P1, P4]", "Cybernetic system + continuous bidirectional operation — sensing must close the loop"],
+                ["dimensions[SKG]", "Sensing writes to SKG — SEN-03 and SKG integration are the same capability from different angles"],
+                ["maturity_stages[0–3]", "SEN capabilities progress from signatures (Stage 0) to autonomous calibration (Stage 3+)"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 1 (framework + planes)", "Note 5 (SKG — the destination of SEN write-back)", "Yes — useful standalone for detection product vendors"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note3",
+          "title": "Note 3 — Reasoning Architecture (RSN)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER A — Note 3 of 4. The Reasoning plane in depth. Primary audience: SIEM vendors, SOAR vendors, XDR platforms, investigation workflow products."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "Alert-based investigation — the practice of examining individual alerts in sequence — is architecturally obsolete at Stage 2; the Reasoning plane requires hypothesis-driven inference across a unified adversary model, and SIEM/SOAR products built around the alert-centric investigation paradigm do not have a migration path to this model; they require architectural replacement."
+            },
+            {
+              "type": "heading",
+              "value": "Alert-Centric vs. Hypothesis-Driven: The Core Distinction"
+            },
+            {
+              "type": "table",
+              "headers": ["Dimension", "Alert-Centric (Stage 0–1)", "Hypothesis-Driven (Stage 2–3)"],
+              "rows": [
+                ["Starting point", "An alert fires; analyst investigates", "A hypothesis is formed; evidence is gathered to confirm or reject it"],
+                ["Scope", "Single alert, single rule, single event", "Adversary hypothesis spanning multiple surfaces, time windows, and signals"],
+                ["Confidence model", "Alert fired = event happened", "Confidence score with evidence basis, alternative hypotheses, and uncertainty bounds"],
+                ["Output", "Incident ticket; escalation decision", "Confirmed/rejected hypothesis written to adversary model; agent execution instruction"],
+                ["Human role", "Analyst decides each alert", "Human reviews hypothesis outcomes and exception conditions"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "The RSN Sub-Dimensions"
+            },
+            {
+              "type": "table",
+              "headers": ["Sub-Dimension", "What It Requires", "Current Market Gap"],
+              "rows": [
+                ["RSN-01: Hypothesis Generation", "Automated adversary hypothesis formation from multi-signal evidence", "Most products correlate alerts; few generate structured adversary hypotheses"],
+                ["RSN-02: Confidence Scoring", "Evidence-based confidence model with uncertainty bounds and alternative hypotheses", "Detection confidence scores exist; adversary-model-linked confidence is rare"],
+                ["RSN-03: Adversary Model Reasoning", "Reasoning operates against the shared SKG adversary model, not raw logs", "Log-based reasoning is universal; SKG-backed reasoning is Stage 3+"],
+                ["RSN-04: Directed Investigation", "Reasoning engine generates targeted evidence collection instructions for agents", "Human-directed investigation is current state; machine-directed is Stage 2–3"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[RSN]", "Reasoning Architecture — the inference engine of the agentic security operation"],
+                ["principles[P1, P6]", "Cybernetic system + Knowledge Graph as operational spine — RSN is the bridge"],
+                ["dimensions[SKG]", "RSN reads from and writes to SKG — they are architecturally coupled"],
+                ["maturity_stages[2–3]", "Stage 2 introduces hypothesis-driven reasoning; Stage 3 makes it the default operating mode"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 1, 2 (framework + planes + sensing)", "Notes 4, 5 (agent execution acts on RSN hypotheses; SKG stores RSN outputs)", "Yes — highest value for SIEM/SOAR vendor audience"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note4",
+          "title": "Note 4 — Agent Execution (AGT)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER A — Note 4 of 4. The Control plane (execution layer) in depth. Primary audience: security platform vendors, SOAR vendors, CPOs, product architects."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "Bounded autonomy is not a feature category — it is the operating model enterprises are building, and products that execute automated security actions without declared authority scope, confidence thresholds, and audit chain generation are not just missing a capability; they expose enterprises to legal and governance risk that no CISO can accept in a Stage 3+ program."
+            },
+            {
+              "type": "heading",
+              "value": "The Three Requirements of Bounded Autonomy"
+            },
+            {
+              "type": "table",
+              "headers": ["Requirement", "Definition", "Product Implication"],
+              "rows": [
+                ["Declared Authority Scope", "Every agent action class must have a defined minimum required authority, maximum permitted authority, and expansion conditions", "Products must model authority as a first-class object — not a configuration setting"],
+                ["Confidence Thresholds", "Every autonomous action must be gated on a minimum confidence level tied to the reasoning engine's evidence basis", "Products must expose and enforce confidence thresholds at action execution time"],
+                ["Audit Chain Generation", "Every action must produce a cryptographic artifact tracing it to its authorizing scope, evidence basis, and governance approval", "Log aggregation is not an audit chain — cryptographic traceability is a different architecture"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "The AGT Sub-Dimensions"
+            },
+            {
+              "type": "table",
+              "headers": ["Sub-Dimension", "What It Requires", "Current Market Gap"],
+              "rows": [
+                ["AGT-01: Agent Authority Modeling", "Formal declaration of authority scope per agent class with runtime enforcement", "Most products have admin-configured permissions; authority modeling as a runtime object is rare"],
+                ["AGT-02: Execution Confidence Gating", "Actions blocked or escalated when confidence falls below declared threshold", "Threshold-based automation exists; tied to adversary-model confidence is Stage 2+"],
+                ["AGT-03: Bounded Action Space", "Each agent operates within a defined action space that cannot be exceeded without governance escalation", "Action libraries exist; formal bounded action spaces with governance gates are rare"],
+                ["AGT-04: Audit Chain Generation", "Cryptographic audit artifacts for every autonomous action", "Logging is universal; cryptographic traceability is absent in most products"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[AGT]", "Agent Execution — the action layer of the agentic security operation"],
+                ["principles[P2, P3, P8]", "Governance as control signal + Bounded autonomy + Traceability — the three principles AGT must satisfy"],
+                ["dimensions[GOV]", "AGT and GOV are architecturally coupled — GOV defines the authority bounds that AGT enforces"],
+                ["maturity_stages[2–4]", "Stage 2: supervised agent execution; Stage 3: directed autonomy; Stage 4: agent-first operations"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 1, 3 (framework + planes + reasoning)", "Notes 5, 6 (AGT writes to SKG; GOV constrains AGT)", "Yes — high standalone value for platform/SOAR vendors"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note5",
+          "title": "Note 5 — Security Knowledge Graph (SKG)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER B — Note 5 of 2. The operational intelligence spine. Primary audience: platform architects, integration leads, enterprise architects designing agentic SOC programs."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "A shared Security Knowledge Graph is not an integration pattern — it is the operational spine that makes agentic security coherent, and products that cannot write structured evidence back to a shared adversary model are not participants in the architecture; they are noise sources that the system must work around."
+            },
+            {
+              "type": "heading",
+              "value": "What the SKG Contains (and Why It Changes Vendor Selection)"
+            },
+            {
+              "type": "table",
+              "headers": ["SKG Entity", "What It Stores", "Vendor Implication"],
+              "rows": [
+                ["Adversary Models", "Structured representations of attacker TTPs, confidence scores, and evidence chains", "Products that enrich adversary models become harder to remove — they have accumulated unique evidence"],
+                ["Policy Objects", "Machine-interpretable governance policies that the execution layer consults at action time", "Products that consume policy objects are replaceable; products that author policy objects are structural"],
+                ["Evidence Chains", "Cryptographically traceable chains linking actions to their evidence basis and authorization events", "Products that generate evidence chains create audit artifacts that regulated enterprises require"],
+                ["Asset Intelligence", "Continuously updated asset profiles including exposure, criticality, and control coverage", "Products that write asset intelligence become the authority for exposure posture — hard to displace"],
+                ["Hypothesis History", "Completed, rejected, and in-progress adversary hypotheses with confidence and evidence basis", "Products that contribute to hypothesis history become the institutional memory of the security program"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "The Integration Asymmetry"
+            },
+            {
+              "type": "text",
+              "value": "There is a structural difference between consuming from the SKG and writing to it. Products that only consume (read threat intelligence, query asset data) are replaceable by any other source of the same data. Products that write to the SKG — contributing unique adversary model updates, evidence artifacts, or confidence scores — accumulate a position that compounds over time. Every stage transition makes their contribution more valuable, not less."
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[SKG]", "Security Knowledge Graph — connects policy, evidence, adversary intelligence as first-class operational entities"],
+                ["principles[P6]", "Knowledge Graph as the operational spine — SKG is the architectural center of the agentic security operation"],
+                ["dimensions[SEN, RSN, AGT, GOV]", "All four primary dimensions read from and write to SKG — it is the integration hub"],
+                ["maturity_stages[2–4]", "Stage 2: SKG begins accumulating structured evidence; Stage 3: SKG drives all reasoning; Stage 4: SKG is the operational authority"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 1, 2, 3, 4 (full signal path before SKG)", "Note 6 (GOV reads and writes to SKG); Notes 7–10 (all operational dimensions use SKG)", "Yes — high value for integration architects and platform vendors"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note6",
+          "title": "Note 6 — Governance & Ethics (GOV)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER B — Note 6 of 2. The highest-weight ASAF dimension (15%). Primary audience: GRC leaders, CISOs, CPOs, security product leaders building autonomous capabilities."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "Security vendors that treat ethics and governance as policy documentation rather than operational runtime signals will be architecturally incompatible with Stage 3+ agentic SOC programs — enterprises building directed autonomy operations require machine-interpretable ethics guardrails, real-time authority enforcement, and unbreakable audit chains as first-class product capabilities, not compliance addendums."
+            },
+            {
+              "type": "heading",
+              "value": "Why GOV Carries 15% Framework Weight"
+            },
+            {
+              "type": "text",
+              "value": "GOV is weighted highest in the ASAF maturity model because it is the dimension with the most severe failure mode. A detection product that scores Stage 1 instead of Stage 2 produces less accurate alerts — a bounded, recoverable failure. A governance system that fails at Stage 3 exposes enterprises to legal liability for every ungoverned autonomous action — an unbounded, potentially irrecoverable failure. The weight reflects the asymmetry of consequences."
+            },
+            {
+              "type": "heading",
+              "value": "The GOV Sub-Dimensions"
+            },
+            {
+              "type": "table",
+              "headers": ["Sub-Dimension", "What It Requires", "Failure Mode"],
+              "rows": [
+                ["GOV-01: Authority & Scope Modeling", "Agent authority declared, bounded, and enforceable as a runtime graph object", "Ungoverned agent actions; legal liability for autonomous decisions without authority provenance"],
+                ["GOV-02: Ethics Guardrail Architecture", "Ethical constraints machine-interpretable and running as execution-time filters, not post-hoc reviews", "Ethical violations executed before they can be reviewed; no mechanism to prevent recurrence"],
+                ["GOV-03: Real-time Policy Enforcement", "Policy compliance validated before every action against a live policy model, not a static configuration", "Policy drift: actions permitted today were not permitted yesterday; no audit trail for what policy was active"],
+                ["GOV-04: Governance Transparency & Human Oversight", "Every action explainable, attributable, and reversible; human escalation path defined for all boundary conditions", "Black-box autonomous decisions; inability to explain actions to regulators, legal, or board"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[GOV].weight = 15%", "Highest-weighted ASAF dimension — reflects asymmetric failure consequences"],
+                ["principles[P2]", "Governance as operational control signal, not policy layer — the foundational principle"],
+                ["principles[P3]", "Bounded autonomy — every agent action constrained by declared authority scope"],
+                ["principles[P8]", "Traceability — every decision traceable to its authorizing scope, evidence, and governance approval"],
+                ["dimensions[AGT]", "GOV defines the authority bounds that AGT enforces — they are architecturally coupled"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 4 (framework context + AGT — GOV governs what AGT executes)", "Notes 7, 8, 9, 10 (all Cluster C dimensions are governed by GOV)", "Yes — high standalone value for GRC leaders; also one of the Note 0 role-based entry points"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note7",
+          "title": "Note 7 — Continuous Threat Exposure (EXP)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER C — Note 7 of 4. Continuous Threat Exposure Management (CTEM) in the agentic context. Primary audience: exposure management vendors, EASM vendors, vulnerability management platforms, CISOs."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "Periodic threat exposure assessment — the practice of running scans, producing reports, and scheduling remediation cycles — is a Stage 0 artifact; agentic security programs at Stage 2+ require continuous exposure posture as a live operational signal that feeds the Sensing plane, informs the Reasoning engine, and shapes governance policy in real time."
+            },
+            {
+              "type": "heading",
+              "value": "The Shift: Assessment Cycle to Continuous Signal"
+            },
+            {
+              "type": "table",
+              "headers": ["Dimension", "Periodic Assessment (Stage 0–1)", "Continuous Exposure Signal (Stage 2–3)"],
+              "rows": [
+                ["Cadence", "Scheduled scans: weekly, monthly, quarterly", "Continuous monitoring: exposure posture updated in real time"],
+                ["Output", "Vulnerability report + remediation list", "Live exposure signal feeding Sensing plane and adversary model"],
+                ["Integration", "Standalone tool; tickets to remediation team", "Bidirectional integration with SKG, RSN, and GOV — exposure shapes hypotheses"],
+                ["Decision input", "CISO reviews report; prioritizes by CVSS", "Governance system auto-adjusts agent authority based on current exposure posture"],
+                ["Remediation", "Human-scheduled remediation sprint", "Agent-directed remediation with governance bounds and confidence scoring"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[EXP]", "Continuous Threat Exposure Management — the exposure posture dimension"],
+                ["principles[P4]", "Continuous bidirectional operation — EXP must be a continuous input, not a periodic report"],
+                ["dimensions[SKG]", "EXP writes asset exposure data to SKG — it enriches the shared adversary model"],
+                ["dimensions[GOV]", "GOV uses EXP data to adjust agent authority bounds in real time"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 5, 6 (framework + SKG + GOV — EXP feeds both)", "Note 11 (EXP integration is part of the cybernetic loop)", "Yes — standalone value for CTEM/exposure management vendors"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note8",
+          "title": "Note 8 — Human Interface & Oversight (HUM)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER C — Note 8 of 4. The evolving human role in agentic security operations. Primary audience: CISOs, SOC directors, security platform vendors designing the human-agent interface."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "The security analyst role is not being eliminated — it is being redefined: humans govern intent, set authority bounds, review exception conditions, and make governance decisions, while agents handle execution, investigation, and routine response; vendors who position their products as 'analyst tools' are building for a role that Stage 3 programs will not have."
+            },
+            {
+              "type": "heading",
+              "value": "The Human Role Across Stages"
+            },
+            {
+              "type": "table",
+              "headers": ["Stage", "Human Role", "What Agents Do", "Vendor Implication"],
+              "rows": [
+                ["Stage 0–1", "Reviews alerts, executes playbooks, makes all decisions", "Assist: enrich alerts, suggest actions", "Tools built for analyst throughput — alert dashboards, triage helpers"],
+                ["Stage 2", "Reviews agent decisions, approves boundary-condition actions, sets authority scope", "Execute: L1/L2 workloads fully autonomous", "Tools built for governance — approval workflows, authority scope configuration"],
+                ["Stage 3", "Governs intent and policy, reviews exception escalations, conducts post-incident governance review", "Execute: L3 investigation and most response; humans handle exceptions only", "Tools built for oversight — governance dashboards, exception escalation interfaces"],
+                ["Stage 4–5", "Strategic policy governance, threat model authority, ethics boundary setting", "Execute: nearly all security operations autonomously within defined bounds", "Tools built for intent — threat model authorship, ethics policy management, governance reporting"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[HUM]", "Human Interface & Oversight — the human-agent interaction dimension"],
+                ["principles[P5]", "Humans govern intent, not alert queues — the foundational principle for HUM"],
+                ["principles[P7]", "Non-linear operations — humans no longer operate in the alert-investigation-response sequence"],
+                ["dimensions[GOV]", "HUM and GOV are coupled — the human role at Stage 3 is primarily governance and exception handling"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 4, 6 (framework + AGT + GOV — the human role is defined relative to agent execution and governance)", "Note 11 (HUM integration is part of the cybernetic loop)", "Yes — one of the Note 0 role-based entry points for CISOs and SOC directors"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note9",
+          "title": "Note 9 — Measurement & Metrics (MET)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER C — Note 9 of 4. What gets measured when analysts are replaced by agents. Primary audience: CISOs, security program managers, product leaders building measurement features."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "MTTR, detection rate, and alert volume are Stage 0 metrics — they measure human throughput, not security outcomes, and enterprises at Stage 2+ are abandoning them; the new measurement model assesses continuous exposure reduction, adversary model accuracy, agent authority utilization, and governance compliance rate as the operational KPIs of agentic security programs."
+            },
+            {
+              "type": "heading",
+              "value": "Stage 0 Metrics vs. Stage 2+ Metrics"
+            },
+            {
+              "type": "table",
+              "headers": ["Stage 0 Metric", "What It Actually Measures", "Stage 2+ Replacement", "What It Measures"],
+              "rows": [
+                ["MTTR (Mean Time to Respond)", "How fast analysts process tickets", "Exposure dwell time reduction rate", "How rapidly exposure posture improves in real time"],
+                ["Detection rate / MTTD", "How many alerts were generated", "Adversary model accuracy score", "How accurately the shared model represents current threats"],
+                ["Alert volume", "How busy the SOC is", "Agent authority utilization rate", "What fraction of permitted authority agents are using (underconstrained vs. overconstrained)"],
+                ["Analyst throughput", "How many tickets humans closed", "Governance compliance rate", "What fraction of autonomous actions were within declared authority scope"],
+                ["False positive rate", "Alert quality (Stage 1 signal)", "Hypothesis confirmation rate", "How often RSN hypotheses are confirmed by investigation — measures reasoning quality"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[MET]", "Measurement & Metrics — the operational performance dimension"],
+                ["principles[P8]", "Traceability — all metrics must be traceable to the framework dimensions they measure"],
+                ["dimensions[EXP, GOV, RSN]", "MET measures outputs from EXP (exposure reduction), GOV (compliance rate), RSN (hypothesis accuracy)"],
+                ["maturity_stages[2–3]", "Stage 2 introduces agentic metrics alongside legacy metrics; Stage 3 retires legacy metrics"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 3, 6, 7 (framework + RSN hypothesis model + GOV compliance + EXP exposure posture)", "Note 11 (MET provides the measurement model for the cybernetic loop)", "Yes — high standalone value for CISOs and program managers"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note10",
+          "title": "Note 10 — Transformation Management (TRN)",
+          "content": [
+            {
+              "type": "text",
+              "value": "CLUSTER C — Note 10 of 4. How enterprises advance through ASAF stages — and the vendor opportunity embedded in that journey. Primary audience: security vendor sales leaders, customer success leaders, strategic account managers."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "Vendors who actively help enterprise buyers advance ASAF maturity stages — by providing stage assessment tools, stage-gated roadmaps, and integration evidence for each transition — become structurally embedded in the buyer's transformation program; vendors who do not become commoditized inputs that procurement replaces at the next contract cycle."
+            },
+            {
+              "type": "heading",
+              "value": "The Stage Transition Investment Model"
+            },
+            {
+              "type": "table",
+              "headers": ["Stage Transition", "Primary Buyer Investment", "Vendor Opportunity", "Lock-in Mechanism"],
+              "rows": [
+                ["Stage 0 → Stage 1", "Detection tooling upgrade, behavioral analytics deployment", "Replace/augment signature-based detection with behavioral analytics", "Integration depth with existing SIEM/SOAR"],
+                ["Stage 1 → Stage 2", "Agent deployment, L1/L2 automation, SKG implementation", "Provide SKG write-back APIs; bounded automation frameworks; governance tooling", "SKG contribution accumulation — hard to extract from the evidence store"],
+                ["Stage 2 → Stage 3", "GOV architecture, directed autonomy controls, audit chain implementation", "Provide governance architecture products; authority modeling; cryptographic audit chains", "Governance architecture is deeply embedded — replacing it requires re-architecting the entire control plane"],
+                ["Stage 3 → Stage 4", "Agent-first operations, proactive exposure management, continuous SKG enrichment", "Provide proactive adversary model enrichment; continuous exposure posture signals", "Adversary model ownership — the vendor who owns the most accurate adversary model is irreplaceable"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Framework References"
+            },
+            {
+              "type": "table",
+              "headers": ["ASAF Element", "Reference"],
+              "rows": [
+                ["dimensions[TRN]", "Transformation Program Management — the stage advancement dimension"],
+                ["maturity_stages[0–4]", "The full stage transition model — each transition has defined capability requirements"],
+                ["dimensions[GOV, SKG]", "TRN notes that GOV and SKG accumulation are the primary switching costs at Stage 2–3 transitions"],
+                ["principles[P7]", "Non-linear operations — transformation is not a linear upgrade path; it is an architectural transition"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["Notes 0, 5, 6 (framework + SKG switching costs + GOV architecture depth)", "Note 11 (TRN provides the journey context for the capstone's integration model)", "Yes — high standalone value for sales and customer success leaders"]
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "note11",
+          "title": "Note 11 — The Integration Model",
+          "content": [
+            {
+              "type": "text",
+              "value": "CAPSTONE — The final note in the series. Synthesizes all 11 dimensions into the operating cybernetic loop. Designed to be read after the full series AND independently by readers who want the complete system view before reading the individual notes."
+            },
+            {
+              "type": "heading",
+              "value": "Core Position"
+            },
+            {
+              "type": "text",
+              "value": "The 11 ASAF dimensions are not independent capabilities — they form a continuous bidirectional signal loop where Sensing informs Reasoning, Reasoning directs Execution, Execution writes to the Knowledge Graph, the Knowledge Graph shapes Governance, and Governance constrains and recalibrates every other dimension; products that cannot participate in this loop are not evaluated as weaker competitors, they are excluded from the architecture before competitive evaluation begins."
+            },
+            {
+              "type": "heading",
+              "value": "The Cybernetic Loop"
+            },
+            {
+              "type": "mermaid",
+              "value": "flowchart LR\n    SEN[\"SEN\\nSensing Fabric\"] -->|\"adversary signals\"| RSN\n    RSN[\"RSN\\nReasoning\"] -->|\"hypotheses + instructions\"| AGT\n    AGT[\"AGT\\nAgent Execution\"] -->|\"action outcomes\"| SKG\n    SKG[\"SKG\\nKnowledge Graph\"] -->|\"policy + adversary model\"| GOV\n    GOV[\"GOV\\nGovernance\"] -->|\"authority constraints\"| AGT\n    GOV -->|\"sensing policy\"| SEN\n    SKG -->|\"adversary context\"| RSN\n    EXP[\"EXP\\nExposure\"] -->|\"exposure posture\"| SKG\n    EXP -->|\"attack surface\"| SEN\n    HUM[\"HUM\\nHuman Interface\"] -->|\"intent + governance\"| GOV\n    HUM -->|\"exception decisions\"| AGT\n    MET[\"MET\\nMetrics\"] -->|\"performance signals\"| SKG\n    TRN[\"TRN\\nTransformation\"] -->|\"stage gates\"| GOV"
+            },
+            {
+              "type": "heading",
+              "value": "The Cross-Dimensional Integration Map"
+            },
+            {
+              "type": "table",
+              "headers": ["From", "To", "Signal Type", "Stage Required"],
+              "rows": [
+                ["SEN", "RSN", "Adversary-validated, confidence-scored detection signals", "Stage 1+"],
+                ["RSN", "AGT", "Hypothesis-based investigation instructions with confidence scores", "Stage 2+"],
+                ["AGT", "SKG", "Action outcomes, evidence artifacts, adversary model updates", "Stage 2+"],
+                ["SKG", "RSN", "Adversary model context for hypothesis validation", "Stage 2+"],
+                ["SKG", "GOV", "Policy objects, evidence chains, authority scope definitions", "Stage 2+"],
+                ["GOV", "AGT", "Real-time authority bounds and ethics guardrail constraints", "Stage 2+"],
+                ["GOV", "SEN", "Sensing scope policy — what to monitor and at what fidelity", "Stage 3+"],
+                ["EXP", "SKG", "Continuous exposure posture and asset intelligence", "Stage 2+"],
+                ["EXP", "SEN", "Attack surface map informing sensing coverage priorities", "Stage 2+"],
+                ["HUM", "GOV", "Intent governance — humans define the policy objects that GOV enforces", "Stage 2+"],
+                ["HUM", "AGT", "Exception decisions — humans resolve edge cases agents cannot resolve autonomously", "Stage 2+"],
+                ["MET", "SKG", "Operational performance signals for continuous model calibration", "Stage 3+"],
+                ["TRN", "GOV", "Stage gate requirements — governance thresholds that must be met before stage advancement", "Stage 2+"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Vendor Category Verdict"
+            },
+            {
+              "type": "text",
+              "value": "Having read the full series, the three-category vendor model from Note 0 can now be stated with full precision:"
+            },
+            {
+              "type": "table",
+              "headers": ["Category", "Integration Depth", "Switching Cost", "Market Trajectory"],
+              "rows": [
+                ["Enablers", "Bidirectional integration with 3+ dimensions; SKG write-back; GOV architecture contribution", "Very high — contribution accumulation and governance architecture make replacement expensive", "Growing: displacement of Displaced category vendors and expansion into Stage 3–4 programs"],
+                ["Neutral", "Inbound integration only (consumption); limited write-back; no GOV architecture contribution", "Medium — replaceable by equivalent signal sources but not immediately displaced", "Flat to declining: compressed at Stage 3 by Enablers who provide deeper integration"],
+                ["Displaced", "Operates in single plane; no SKG integration; no governance architecture; alert-centric", "Low — no accumulated contribution, easy to replace", "Declining: use case eliminated at Stage 2; market exits by Stage 3"]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Return to Note 0"
+            },
+            {
+              "type": "text",
+              "value": "Note 0 stated that the transition creates three vendor categories. Note 11 completes the argument: the categories are not based on product quality or feature breadth — they are based on integration depth in the cybernetic loop. A product with deep loop integration but narrow feature coverage is an Enabler. A product with broad feature coverage but shallow loop integration is Neutral at best. The loop is the architecture. Integration depth in the loop is the competitive moat."
+            },
+            {
+              "type": "heading",
+              "value": "Dependencies & Series Role"
+            },
+            {
+              "type": "table",
+              "headers": ["Depends On", "Enables", "Standalone?"],
+              "rows": [
+                ["All prior notes (0–10)", "Sends readers back to Note 0 with full context", "Yes — readable as a standalone systems overview; most powerful as the series conclusion"]
+              ]
+            }
+          ]
+        }
+
+      ]
+    }
+  ]
+}

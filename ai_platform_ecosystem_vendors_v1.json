@@ -1,0 +1,125 @@
+{
+  "schema_ref": "ai_platform_ecosystem_framework_v1.json",
+  "schema_version": "1.0",
+  "vendor_count": 7,
+  "vendors": [
+    {
+      "vendor": "Anthropic",
+      "region": "North America",
+      "is_ai_first": true,
+      "specialization": "Frontier model provider",
+      "primary_roles": ["Frontier model provider", "Safety-forward model partner"],
+      "strongest_layers": ["L3", "L6"],
+      "typical_buying_reason": "High-quality model behavior and safety-oriented enterprise posture.",
+      "watchouts": [
+        "Narrower infrastructure/control-plane footprint",
+        "Enterprise distribution often mediated via hyperscalers"
+      ],
+      "strategic_pairings": [
+        "Amazon for cloud distribution",
+        "Microsoft/AWS/GCP for enterprise runtime integration"
+      ]
+    },
+    {
+      "vendor": "Microsoft",
+      "region": "North America",
+      "is_ai_first": false,
+      "specialization": "Enterprise AI control plane",
+      "primary_roles": ["Enterprise AI control plane", "Cloud + productivity distribution leader"],
+      "strongest_layers": ["L2", "L4", "L5", "L6"],
+      "typical_buying_reason": "Fast enterprise adoption via Azure, M365, identity, and governance integration.",
+      "watchouts": [
+        "Portfolio complexity",
+        "Potential concentration risk in single-vendor standardization"
+      ],
+      "strategic_pairings": [
+        "OpenAI for frontier models",
+        "NVIDIA for infrastructure acceleration"
+      ]
+    },
+    {
+      "vendor": "Amazon",
+      "region": "North America",
+      "is_ai_first": false,
+      "specialization": "Cloud AI portfolio aggregator",
+      "primary_roles": ["Cloud AI portfolio aggregator", "Enterprise runtime and model access platform"],
+      "strongest_layers": ["L2", "L4", "L5"],
+      "typical_buying_reason": "Multi-model access and large-scale cloud operational maturity.",
+      "watchouts": [
+        "Model differentiation varies by workload",
+        "Cross-product decision complexity for some teams"
+      ],
+      "strategic_pairings": [
+        "Anthropic for model quality/safety",
+        "NVIDIA and custom silicon mix for workload economics"
+      ]
+    },
+    {
+      "vendor": "Alibaba",
+      "region": "APAC / Global",
+      "is_ai_first": false,
+      "specialization": "Integrated cloud + model platform",
+      "primary_roles": ["Integrated cloud + model platform provider", "Open-model ecosystem and regional enterprise distribution leader"],
+      "strongest_layers": ["L2", "L3", "L4", "L5"],
+      "typical_buying_reason": "Alibaba Cloud scale, Qwen model breadth, and strong platform fit for enterprises needing APAC reach or an open-model path with managed services.",
+      "watchouts": [
+        "Enterprise procurement, compliance, and geopolitical fit vary significantly by region",
+        "Global ecosystem and productivity embedding are less universal than Microsoft, Google, or AWS outside core markets"
+      ],
+      "strategic_pairings": [
+        "NVIDIA for portable acceleration and local Qwen deployment paths",
+        "Regional SI/channel ecosystems for APAC enterprise rollout"
+      ]
+    },
+    {
+      "vendor": "Google",
+      "region": "North America",
+      "is_ai_first": false,
+      "specialization": "Model + cloud integrated platform",
+      "primary_roles": ["Model + cloud integrated platform", "Data/AI platform convergence provider"],
+      "strongest_layers": ["L2", "L3", "L4", "L5"],
+      "typical_buying_reason": "Strong model capability plus data platform integration and developer tooling.",
+      "watchouts": [
+        "Enterprise standardization patterns may require stronger central architecture governance"
+      ],
+      "strategic_pairings": [
+        "NVIDIA ecosystem for high-end infra paths",
+        "Open model ecosystems for portability"
+      ]
+    },
+    {
+      "vendor": "NVIDIA",
+      "region": "North America",
+      "is_ai_first": true,
+      "specialization": "AI compute substrate leader",
+      "primary_roles": ["AI compute substrate leader", "Ecosystem-defining acceleration platform"],
+      "strongest_layers": ["L1", "L2", "L4"],
+      "typical_buying_reason": "Performance and ecosystem gravity for demanding training/inference workloads.",
+      "watchouts": [
+        "Not a full enterprise business-application or control-plane provider",
+        "Requires pairing for broad enterprise distribution layer"
+      ],
+      "strategic_pairings": [
+        "Hyperscalers for managed enterprise runtime",
+        "Model providers for application value realization"
+      ]
+    },
+    {
+      "vendor": "OpenAI",
+      "region": "North America",
+      "is_ai_first": true,
+      "specialization": "Frontier model + API platform",
+      "primary_roles": ["Frontier model provider", "AI application API platform"],
+      "strongest_layers": ["L3", "L4"],
+      "typical_buying_reason": "Strong frontier model performance and rapid capability rollout.",
+      "watchouts": [
+        "Enterprise operating model may depend on partner ecosystems for broader stack layers",
+        "Portability and governance architecture should be planned early"
+      ],
+      "strategic_pairings": [
+        "Microsoft for enterprise distribution/control plane",
+        "Multi-vendor orchestration for optionality"
+      ]
+    }
+  ]
+}
