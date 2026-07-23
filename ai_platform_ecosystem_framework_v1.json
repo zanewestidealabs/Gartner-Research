@@ -1,0 +1,4184 @@
+{
+  "schema_version": "1.0.0",
+  "framework_name": "AI Platform Ecosystem Framework",
+  "framework_abbrev": "APEF",
+  "created": "2026-05-27",
+  "description": "A vendor-neutral framework for understanding how major AI platform providers contribute across the AI value chain, where they overlap, where they are differentiated, and how they combine into enterprise AI platform strategies.",
+  "scope": "Focused on platform providers and platform capabilities, not point AI applications. Current vendor set: Anthropic, Microsoft, Amazon, Alibaba, Google, NVIDIA, and OpenAI.",
+  "executive_overview": "Enterprise AI in 2026 is not a one-vendor decision. The seven providers profiled here — Anthropic, Microsoft, Amazon, Alibaba, Google, NVIDIA, and OpenAI — each occupy distinct, overlapping positions across the AI value chain. NVIDIA dominates the compute substrate. Anthropic and OpenAI lead frontier model capability and safety posture. Google fields a uniquely integrated model + data + cloud platform. Microsoft and Amazon are the two dominant enterprise distribution control planes, each combining their own models with multi-vendor model marketplaces. Alibaba adds a full-stack cloud + model + platform option with strong open-model gravity through Qwen and meaningful regional enterprise reach. The strategic question for most organizations is no longer 'which vendor', but 'which combination, for which workload, governed by what control plane'. Local and on-prem deployment are not modeled as a separate vendor lane in this framework; they are represented as NVIDIA-anchored infrastructure that other vendors can target, integrate with, or depend on in hybrid architectures. This report compares the seven platforms along six dimensions — Compute & Infrastructure (CMP), Foundation Model Capability (FMD), Platform & Developer Experience (PLT), Enterprise Integration & Distribution (ENT), Safety & Governance (SAF), and Ecosystem & Openness (ECO) — and visualizes how their components interlock.",
+  "principles": [
+    {
+      "id": "P1",
+      "label": "Stack, Not Single Product",
+      "statement": "Enterprise AI value is created across a stack (compute, models, platform, integration, governance), not by a single model endpoint."
+    },
+    {
+      "id": "P2",
+      "label": "Role Clarity Over Leaderboards",
+      "statement": "Vendors should be compared by role fit in the architecture, not by generic best-model claims."
+    },
+    {
+      "id": "P3",
+      "label": "Interoperability Is Strategic",
+      "statement": "Long-term resilience comes from portable architectures, multi-model patterns, and decoupled control planes."
+    },
+    {
+      "id": "P4",
+      "label": "Governance Is a Platform Function",
+      "statement": "Safety, policy, identity, and auditability must be designed into platform selection and orchestration, not bolted on later."
+    },
+    {
+      "id": "P5",
+      "label": "Commercial Fit Drives Adoption",
+      "statement": "Procurement model, enterprise channel, and operational support quality are as decisive as technical capability."
+    },
+    {
+      "id": "P6",
+      "label": "Co-opetition Is Normal",
+      "statement": "These vendors compete in some layers while complementing each other in others; combined architectures are expected."
+    }
+  ],
+  "maturity_stages": {
+    "0": {
+      "id": 0,
+      "label": "Tool Sampling",
+      "tag": "Ad hoc",
+      "description": "Vendor evaluation is mostly model demos and experimentation without clear platform roles.",
+      "autonomy_level": "None — humans manually evaluate point tools and demos",
+      "human_model": "Ad hoc evaluators; no defined platform owners",
+      "governance_model": "No formal AI platform governance",
+      "platform_posture": "No platform layering or role clarity",
+      "knowledge_model": "Vendor claims captured informally",
+      "typical_year": "2023-2024"
+    },
+    "1": {
+      "id": 1,
+      "label": "Single-vendor Preference",
+      "tag": "Early standardization",
+      "description": "One provider is favored, but architecture and governance assumptions remain implicit.",
+      "autonomy_level": "Low — limited automation on top of one provider",
+      "human_model": "Early platform owner emerging; informal architecture",
+      "governance_model": "Basic usage policy; limited enforcement",
+      "platform_posture": "Single-vendor pattern; limited portability awareness",
+      "knowledge_model": "Lightweight model/use-case inventory",
+      "typical_year": "2024-2025"
+    },
+    "2": {
+      "id": 2,
+      "label": "Role-aware Selection",
+      "tag": "Layer clarity",
+      "description": "Vendors are assessed by stack layer contribution and enterprise integration fit.",
+      "autonomy_level": "Moderate — layered selection with documented patterns",
+      "human_model": "Platform team with defined architecture roles",
+      "governance_model": "Documented policies; integrated into platform reviews",
+      "platform_posture": "Layered architecture explicit (compute/model/platform)",
+      "knowledge_model": "Structured vendor and pattern registry",
+      "typical_year": "2025-2026"
+    },
+    "3": {
+      "id": 3,
+      "label": "Multi-platform Composition",
+      "tag": "Composable",
+      "description": "Architecture intentionally combines vendors across layers with policy and observability controls.",
+      "autonomy_level": "High — composable patterns with shared control plane",
+      "human_model": "Platform engineering plus governance officer roles",
+      "governance_model": "Enforced policy across multiple vendors",
+      "platform_posture": "Multi-vendor pattern with abstraction layer",
+      "knowledge_model": "Live platform inventory with telemetry",
+      "typical_year": "2026-2027"
+    },
+    "4": {
+      "id": 4,
+      "label": "Governed Platform Portfolio",
+      "tag": "Managed co-opetition",
+      "description": "Portfolio decisions are continuously optimized for risk, cost, performance, and portability.",
+      "autonomy_level": "Very high — portfolio operations with continuous optimization",
+      "human_model": "Portfolio governance board with quarterly rebalancing",
+      "governance_model": "Continuous compliance and risk-weighted controls",
+      "platform_posture": "Active multi-vendor portfolio management",
+      "knowledge_model": "Continuous metrics on cost/perf/risk across vendors",
+      "typical_year": "2027-2028"
+    },
+    "5": {
+      "id": 5,
+      "label": "Adaptive AI Platform Strategy",
+      "tag": "Strategic control",
+      "description": "Vendor roles are continuously rebalanced using formal metrics, with low lock-in and high optionality.",
+      "autonomy_level": "Full — adaptive vendor placement governed by policy and metrics",
+      "human_model": "Strategic platform leadership defines intent; teams operate within bounds",
+      "governance_model": "Constitutional governance over platform portfolio strategy",
+      "platform_posture": "Fully adaptive, portable, low-lock-in architecture",
+      "knowledge_model": "Self-updating portfolio decision substrate",
+      "typical_year": "2028-2030"
+    }
+  },
+  "dimensions": {
+    "CMP": {
+      "id": "CMP",
+      "name": "Compute & Infrastructure Substrate",
+      "plane": "Infrastructure",
+      "description": "How strongly a vendor contributes to AI infrastructure economics and execution foundations.",
+      "weight": 0.18,
+      "sub_dimensions": {
+        "CMP-01": {
+          "id": "CMP-01",
+          "name": "Accelerator Position",
+          "description": "Strength in GPU/accelerator ecosystem leverage or ownership.",
+          "assessment_question": "How central is the vendor to AI accelerator supply, optimization, and roadmap control?",
+          "stage_descriptors": {
+            "0": "No meaningful accelerator strategy influence.",
+            "1": "Consumes standard accelerator offerings.",
+            "2": "Optimizes platform for accelerator performance.",
+            "3": "Has differentiated accelerator strategy or ecosystem position.",
+            "4": "Influences enterprise accelerator adoption patterns at scale.",
+            "5": "Shapes industry accelerator direction and software coupling."
+          }
+        },
+        "CMP-02": {
+          "id": "CMP-02",
+          "name": "Cloud AI Runtime Depth",
+          "description": "Breadth and maturity of managed AI runtime services.",
+          "assessment_question": "How complete is the vendor's managed runtime stack for training, inference, and operations?",
+          "stage_descriptors": {
+            "0": "Minimal runtime capability.",
+            "1": "Basic managed inference offerings.",
+            "2": "Managed training and inference with basic tooling.",
+            "3": "End-to-end runtime services with enterprise controls.",
+            "4": "Highly optimized runtime and cost-performance management.",
+            "5": "Industry-defining runtime platform with global enterprise reliability."
+          }
+        },
+        "CMP-03": {
+          "id": "CMP-03",
+          "name": "Performance Engineering",
+          "description": "Ability to deliver predictable throughput and latency across workloads.",
+          "assessment_question": "How effectively does the vendor support predictable AI workload performance at scale?",
+          "stage_descriptors": {
+            "0": "Unpredictable performance profile.",
+            "1": "Limited SLA predictability.",
+            "2": "Stable performance for common workloads.",
+            "3": "Advanced optimization guidance for enterprise workloads.",
+            "4": "Strong workload-specific optimization and benchmarking support.",
+            "5": "Consistent top-tier performance leadership across workload classes."
+          }
+        },
+        "CMP-04": {
+          "id": "CMP-04",
+          "name": "Global Capacity & Availability",
+          "description": "Capacity resilience and regional availability for enterprise AI.",
+          "assessment_question": "How reliably can the vendor provide capacity and regional coverage for enterprise AI demand?",
+          "stage_descriptors": {
+            "0": "Frequent capacity constraints.",
+            "1": "Limited regional capacity support.",
+            "2": "Moderate global availability.",
+            "3": "Strong enterprise-grade regional availability.",
+            "4": "Highly resilient capacity operations.",
+            "5": "Best-in-class global capacity depth and continuity."
+          }
+        }
+      }
+    },
+    "FMD": {
+      "id": "FMD",
+      "name": "Foundation Model Capability",
+      "plane": "Model",
+      "description": "Role in creating, operating, and evolving frontier and production-grade model families.",
+      "weight": 0.17,
+      "sub_dimensions": {
+        "FMD-01": {
+          "id": "FMD-01",
+          "name": "Frontier Model Leadership",
+          "description": "Contribution to frontier model quality and innovation pace.",
+          "assessment_question": "How differentiated is the vendor in frontier model innovation and quality?",
+          "stage_descriptors": {
+            "0": "No frontier relevance.",
+            "1": "Consumes frontier models from others.",
+            "2": "Competitive production model offerings.",
+            "3": "Strong frontier model portfolio.",
+            "4": "Sustained frontier leadership in multiple capability areas.",
+            "5": "Category-defining frontier influence with durable differentiation."
+          }
+        },
+        "FMD-02": {
+          "id": "FMD-02",
+          "name": "Model Portfolio Breadth",
+          "description": "Coverage across text, multimodal, coding, and specialized models.",
+          "assessment_question": "How broad and practical is the vendor's model family for enterprise use cases?",
+          "stage_descriptors": {
+            "0": "Narrow single-model profile.",
+            "1": "Limited multi-model options.",
+            "2": "Useful breadth for common enterprise use cases.",
+            "3": "Broad and regularly updated portfolio.",
+            "4": "High-coverage portfolio across key domains and modalities.",
+            "5": "Exceptional breadth with strong quality consistency."
+          }
+        },
+        "FMD-03": {
+          "id": "FMD-03",
+          "name": "Enterprise Readiness of Models",
+          "description": "Stability, controls, lifecycle transparency, and operational support.",
+          "assessment_question": "How ready are the vendor's model offerings for enterprise reliability and governance needs?",
+          "stage_descriptors": {
+            "0": "Experimental-only profile.",
+            "1": "Limited enterprise controls.",
+            "2": "Basic enterprise support and lifecycle controls.",
+            "3": "Strong enterprise-grade release and support discipline.",
+            "4": "Mature enterprise model lifecycle and operational assurance.",
+            "5": "Best-in-class enterprise model governance and stability."
+          }
+        },
+        "FMD-04": {
+          "id": "FMD-04",
+          "name": "Model Access Strategy",
+          "description": "How flexibly models are made available via APIs, hosted, private deployment, or ecosystem routes.",
+          "assessment_question": "How flexible is the vendor's model access strategy for different enterprise operating models?",
+          "stage_descriptors": {
+            "0": "Single rigid access mode.",
+            "1": "Limited hosted API access only.",
+            "2": "Multiple access pathways with constraints.",
+            "3": "Flexible access options for diverse enterprise patterns.",
+            "4": "Strong access optionality with governance controls.",
+            "5": "Highly adaptable access strategy with low-friction enterprise fit."
+          }
+        }
+      }
+    },
+    "PLT": {
+      "id": "PLT",
+      "name": "Platform & Developer Experience",
+      "plane": "Platform",
+      "description": "Ability to help teams build, ship, observe, and maintain AI systems reliably.",
+      "weight": 0.17,
+      "sub_dimensions": {
+        "PLT-01": {
+          "id": "PLT-01",
+          "name": "AI Application Platform",
+          "description": "Maturity of tooling for building and operating AI-native applications.",
+          "assessment_question": "How complete is the build-to-operate platform for enterprise AI application teams?",
+          "stage_descriptors": {
+            "0": "No coherent app platform layer.",
+            "1": "Basic API integration support.",
+            "2": "Usable platform with core dev tooling.",
+            "3": "Robust platform for enterprise delivery teams.",
+            "4": "Highly productive platform with strong operational controls.",
+            "5": "Category-leading application platform maturity."
+          }
+        },
+        "PLT-02": {
+          "id": "PLT-02",
+          "name": "Agent / Workflow Orchestration",
+          "description": "Support for agent workflows, tool use, and cross-system orchestration patterns.",
+          "assessment_question": "How strong is the vendor in practical orchestration for agentic and workflow-based AI systems?",
+          "stage_descriptors": {
+            "0": "No orchestration capability.",
+            "1": "Manual orchestration via custom code.",
+            "2": "Basic orchestration building blocks available.",
+            "3": "Mature orchestration support for enterprise patterns.",
+            "4": "Advanced orchestration with governance and observability.",
+            "5": "Best-in-class orchestration ecosystem and enterprise usability."
+          }
+        },
+        "PLT-03": {
+          "id": "PLT-03",
+          "name": "Observability & Evaluation",
+          "description": "Tooling for quality monitoring, model evaluations, drift, and cost/performance telemetry.",
+          "assessment_question": "How well does the platform support rigorous AI observability and evaluation in production?",
+          "stage_descriptors": {
+            "0": "Little to no AI-specific observability.",
+            "1": "Basic logs and metrics only.",
+            "2": "Core evaluation and telemetry available.",
+            "3": "Good production-grade observability and eval workflows.",
+            "4": "Strong continuous evaluation and operational governance.",
+            "5": "Comprehensive enterprise AI assurance and telemetry maturity."
+          }
+        },
+        "PLT-04": {
+          "id": "PLT-04",
+          "name": "Developer Adoption Velocity",
+          "description": "How quickly enterprise dev teams can become productive on the platform.",
+          "assessment_question": "How quickly can enterprise engineering teams onboard and deliver value on this platform?",
+          "stage_descriptors": {
+            "0": "High friction and slow onboarding.",
+            "1": "Pilot-only productivity.",
+            "2": "Moderate onboarding speed.",
+            "3": "Strong developer onboarding and throughput.",
+            "4": "Very high productivity with clear patterns and support.",
+            "5": "Exceptional adoption speed and enterprise developer experience."
+          }
+        }
+      }
+    },
+    "ENT": {
+      "id": "ENT",
+      "name": "Enterprise Integration & Distribution",
+      "plane": "Enterprise",
+      "description": "Strength in enterprise channel, identity, productivity integration, and deployment standardization.",
+      "weight": 0.14,
+      "sub_dimensions": {
+        "ENT-01": {
+          "id": "ENT-01",
+          "name": "Enterprise Identity & Admin Fit",
+          "description": "Compatibility with enterprise IAM, policy, and administration workflows.",
+          "assessment_question": "How naturally does the platform fit enterprise IAM and admin standards?",
+          "stage_descriptors": {
+            "0": "Poor enterprise admin fit.",
+            "1": "Limited IAM integration.",
+            "2": "Basic enterprise IAM/policy compatibility.",
+            "3": "Strong enterprise admin and policy integration.",
+            "4": "Deep identity/governance integration in core workflows.",
+            "5": "Best-in-class enterprise admin and security alignment."
+          }
+        },
+        "ENT-02": {
+          "id": "ENT-02",
+          "name": "Productivity / Workflow Embedding",
+          "description": "Ability to embed AI into mainstream enterprise work systems.",
+          "assessment_question": "How effectively can this vendor bring AI into daily enterprise workflows and productivity tools?",
+          "stage_descriptors": {
+            "0": "No meaningful embedding path.",
+            "1": "Standalone usage only.",
+            "2": "Basic integrations available.",
+            "3": "Strong embedding into enterprise workflows.",
+            "4": "Broad workflow coverage and practical deployment patterns.",
+            "5": "Pervasive enterprise workflow integration leadership."
+          }
+        },
+        "ENT-03": {
+          "id": "ENT-03",
+          "name": "Commercial Enterprise Channel",
+          "description": "Enterprise sales/support channel maturity and partner reach.",
+          "assessment_question": "How mature and reliable is the vendor's enterprise channel and support model?",
+          "stage_descriptors": {
+            "0": "Minimal enterprise channel.",
+            "1": "Early enterprise route-to-market.",
+            "2": "Growing enterprise channel with uneven support.",
+            "3": "Mature enterprise channel and support.",
+            "4": "Highly scalable enterprise adoption machinery.",
+            "5": "Global enterprise channel leadership with strong execution consistency."
+          }
+        },
+        "ENT-04": {
+          "id": "ENT-04",
+          "name": "Deployment Standardization",
+          "description": "Ability to standardize AI deployment in large enterprises.",
+          "assessment_question": "How well does the platform support standardized, repeatable AI deployment at enterprise scale?",
+          "stage_descriptors": {
+            "0": "Project-by-project bespoke deployments.",
+            "1": "Limited repeatable deployment patterns.",
+            "2": "Foundational templates and controls.",
+            "3": "Repeatable enterprise deployment blueprints.",
+            "4": "High-confidence standardized deployment operating model.",
+            "5": "Industry benchmark for standardized enterprise AI deployment."
+          }
+        }
+      }
+    },
+    "SAF": {
+      "id": "SAF",
+      "name": "Safety, Governance & Responsible AI",
+      "plane": "Governance",
+      "description": "Practical maturity in policy, controls, auditability, and safety practices.",
+      "weight": 0.14,
+      "sub_dimensions": {
+        "SAF-01": {
+          "id": "SAF-01",
+          "name": "Policy & Governance Controls",
+          "description": "Depth of policy enforcement, usage controls, and governance integration.",
+          "assessment_question": "How mature are the platform's policy and governance controls for enterprise AI risk management?",
+          "stage_descriptors": {
+            "0": "No meaningful governance tooling.",
+            "1": "Advisory-level governance only.",
+            "2": "Basic control frameworks available.",
+            "3": "Strong policy enforcement and governance workflows.",
+            "4": "Mature governance controls integrated with enterprise ops.",
+            "5": "Comprehensive governance architecture with enterprise-grade assurance."
+          }
+        },
+        "SAF-02": {
+          "id": "SAF-02",
+          "name": "Safety-by-Design Practice",
+          "description": "Evidence of safety strategy integrated into platform and model operations.",
+          "assessment_question": "How deeply is safety-by-design embedded into the vendor's platform and model lifecycle?",
+          "stage_descriptors": {
+            "0": "Safety posture mostly declarative.",
+            "1": "Basic safety practices.",
+            "2": "Structured safety controls for key workflows.",
+            "3": "Robust safety practices with practical enterprise controls.",
+            "4": "Advanced safety operations and continuous improvement.",
+            "5": "Industry-leading safety practice influencing market standards."
+          }
+        },
+        "SAF-03": {
+          "id": "SAF-03",
+          "name": "Auditability & Traceability",
+          "description": "Ability to produce evidence trails for decisions and system behavior.",
+          "assessment_question": "How well does the platform support auditability and traceability for regulated enterprise contexts?",
+          "stage_descriptors": {
+            "0": "Limited traceability.",
+            "1": "Partial logs without governance context.",
+            "2": "Basic traceability for common workflows.",
+            "3": "Good auditability with enterprise-friendly evidence flows.",
+            "4": "Strong traceability and compliance support.",
+            "5": "High-assurance traceability integrated across platform layers."
+          }
+        },
+        "SAF-04": {
+          "id": "SAF-04",
+          "name": "Regulatory Readiness",
+          "description": "Preparedness for varied sector and geographic policy requirements.",
+          "assessment_question": "How prepared is the vendor to support evolving AI regulatory and compliance requirements globally?",
+          "stage_descriptors": {
+            "0": "Limited regulatory posture.",
+            "1": "Early compliance mappings.",
+            "2": "Core compliance support for common requirements.",
+            "3": "Strong multi-jurisdiction readiness.",
+            "4": "Mature regulatory adaptation capability.",
+            "5": "Leading enterprise confidence in regulated AI deployments."
+          }
+        }
+      }
+    },
+    "ECO": {
+      "id": "ECO",
+      "name": "Ecosystem, Openness & Co-build Potential",
+      "plane": "Ecosystem",
+      "description": "Partner, developer, and interoperability ecosystem strength.",
+      "weight": 0.1,
+      "sub_dimensions": {
+        "ECO-01": {
+          "id": "ECO-01",
+          "name": "Partner Ecosystem Depth",
+          "description": "Breadth and quality of ISV/SI/channel ecosystem support.",
+          "assessment_question": "How deep is the vendor's ecosystem for implementation, integration, and extension?",
+          "stage_descriptors": {
+            "0": "Sparse ecosystem.",
+            "1": "Early partner motion.",
+            "2": "Growing practical ecosystem.",
+            "3": "Mature partner network with proven enterprise delivery.",
+            "4": "Very strong ecosystem leverage for enterprise outcomes.",
+            "5": "Ecosystem leadership with broad, repeatable enterprise impact."
+          }
+        },
+        "ECO-02": {
+          "id": "ECO-02",
+          "name": "Interoperability Posture",
+          "description": "Support for multi-vendor patterns, standards, and portability.",
+          "assessment_question": "How compatible is this platform with multi-vendor architecture and portability goals?",
+          "stage_descriptors": {
+            "0": "Strong lock-in posture.",
+            "1": "Limited interoperability.",
+            "2": "Basic multi-vendor support.",
+            "3": "Good interoperability with common enterprise stacks.",
+            "4": "Strong portability and open integration options.",
+            "5": "Interoperability exemplar for enterprise multi-platform strategy."
+          }
+        },
+        "ECO-03": {
+          "id": "ECO-03",
+          "name": "Open Source & Community Gravity",
+          "description": "Developer ecosystem pull and practical community relevance.",
+          "assessment_question": "How much community and open ecosystem gravity does the vendor generate for enterprise builders?",
+          "stage_descriptors": {
+            "0": "Minimal community pull.",
+            "1": "Limited ecosystem activity.",
+            "2": "Moderate developer engagement.",
+            "3": "Strong developer and community gravity.",
+            "4": "High-impact ecosystem momentum.",
+            "5": "Sustained ecosystem influence shaping enterprise patterns."
+          }
+        },
+        "ECO-04": {
+          "id": "ECO-04",
+          "name": "Co-innovation Capacity",
+          "description": "Ability to co-build with enterprises on strategic AI capabilities.",
+          "assessment_question": "How capable is the vendor of co-innovation with enterprise teams on strategic AI programs?",
+          "stage_descriptors": {
+            "0": "Transactional-only relationship model.",
+            "1": "Limited co-build engagements.",
+            "2": "Targeted co-innovation opportunities.",
+            "3": "Reliable co-build support for strategic programs.",
+            "4": "Strong co-innovation engine with measurable outcomes.",
+            "5": "Preferred co-innovation partner for frontier enterprise AI initiatives."
+          }
+        }
+      }
+    }
+  },
+  "transformation_journey": {
+    "phases": [
+      {
+        "phase": 1,
+        "label": "Tool Sampling → Single-vendor Preference",
+        "stage_range": "0 → 1",
+        "approximate_duration": "6-12 months",
+        "description": "Move from ad hoc vendor sampling to a primary platform choice with documented usage patterns.",
+        "key_activities": [
+          "Inventory current AI vendor usage and shadow AI",
+          "Define an interim primary platform for production use cases",
+          "Publish baseline usage and acceptable-use policy",
+          "Stand up basic identity, logging, and cost visibility",
+          "Capture initial model and use-case registry"
+        ],
+        "inflection_points": [
+          "First enterprise use case in production on the chosen platform",
+          "Baseline policy and identity controls in place",
+          "Spend and usage are visible to a single owner"
+        ],
+        "failure_modes": [
+          "Implicit single-vendor lock-in without architectural awareness",
+          "Shadow AI continues outside governance",
+          "Policy exists on paper but is not enforced"
+        ]
+      },
+      {
+        "phase": 2,
+        "label": "Single-vendor Preference → Role-aware Selection",
+        "stage_range": "1 → 2",
+        "approximate_duration": "9-18 months",
+        "description": "Introduce explicit layer thinking and select vendors per architectural role (compute, model, platform, distribution, governance).",
+        "key_activities": [
+          "Adopt a layered reference architecture",
+          "Map current vendors to platform layers",
+          "Define evaluation criteria per layer",
+          "Establish a platform team with role-based responsibilities",
+          "Introduce governance review at platform decision points"
+        ],
+        "inflection_points": [
+          "First architecture decision made on role fit, not brand preference",
+          "Platform team accepted as the decision authority",
+          "Governance review integrated into platform onboarding"
+        ],
+        "failure_modes": [
+          "Layer model documented but ignored in practice",
+          "Vendor relationships drive architecture rather than vice versa",
+          "Governance review becomes a rubber stamp"
+        ]
+      },
+      {
+        "phase": 3,
+        "label": "Role-aware Selection → Multi-platform Composition",
+        "stage_range": "2 → 3",
+        "approximate_duration": "12-18 months",
+        "description": "Compose multiple vendors across layers with shared control plane, policy, and observability.",
+        "key_activities": [
+          "Introduce an abstraction or gateway layer for model access",
+          "Centralize policy enforcement across vendors",
+          "Deploy cross-vendor observability and evaluation tooling",
+          "Standardize identity, secrets, and audit across platforms",
+          "Pilot multi-model patterns for at least one production use case"
+        ],
+        "inflection_points": [
+          "Multi-vendor composition delivers measurable business value",
+          "Policy enforced uniformly across providers",
+          "Switching cost between providers is materially reduced"
+        ],
+        "failure_modes": [
+          "Abstraction layer becomes its own maintenance burden",
+          "Policy gaps appear at vendor boundaries",
+          "Observability fragments across vendor-native tools"
+        ]
+      },
+      {
+        "phase": 4,
+        "label": "Multi-platform Composition → Governed Platform Portfolio",
+        "stage_range": "3 → 4",
+        "approximate_duration": "12-18 months",
+        "description": "Treat AI platforms as a managed portfolio with continuous optimization across risk, cost, performance, and portability.",
+        "key_activities": [
+          "Establish a platform portfolio governance forum",
+          "Define KPIs across cost, quality, latency, risk, and portability",
+          "Run periodic vendor rebalancing reviews",
+          "Embed continuous compliance monitoring",
+          "Automate routing/placement decisions where defensible"
+        ],
+        "inflection_points": [
+          "Portfolio decisions are made on shared metrics, not anecdotes",
+          "Continuous compliance replaces episodic audit prep",
+          "Active rebalancing demonstrably reduces risk or cost"
+        ],
+        "failure_modes": [
+          "Portfolio process becomes bureaucratic without changing outcomes",
+          "Metrics distort behavior (gaming KPIs)",
+          "Governance and engineering diverge"
+        ]
+      },
+      {
+        "phase": 5,
+        "label": "Governed Platform Portfolio → Adaptive AI Platform Strategy",
+        "stage_range": "4 → 5",
+        "approximate_duration": "12-24 months",
+        "description": "Operate an adaptive strategy where vendor roles are continuously rebalanced under formal governance with low lock-in and high optionality.",
+        "key_activities": [
+          "Codify constitutional governance over platform strategy",
+          "Operate a self-updating portfolio decision substrate",
+          "Maintain proven exit/portability paths for every layer",
+          "Publish platform posture and outcomes to executive stakeholders",
+          "Continuously red-team the governance and selection model"
+        ],
+        "inflection_points": [
+          "Platform strategy is recognized as a strategic differentiator",
+          "Vendor changes can be executed without operational disruption",
+          "Executive and board level confidence in platform posture is sustained"
+        ],
+        "failure_modes": [
+          "Over-engineering portability at the expense of velocity",
+          "Strategic drift if governance is not continuously refreshed",
+          "Loss of vendor leverage by treating all providers as interchangeable"
+        ]
+      }
+    ]
+  },
+  "assessment_guidance": {
+    "scoring_method": "Rate each sub-dimension on a 0-5 integer scale matching the stage descriptors. Decimal scores (e.g., 2.5) are permitted to indicate partial progression between stages.",
+    "aggregation": "Dimension scores are the arithmetic mean of sub-dimension scores. Overall adoption is the weighted mean of dimension scores. See dimension weights.",
+    "target_setting": "Target stage should reflect desired adoption in 12-24 months, not aspirational end-state. Targets should be achievable with planned investment.",
+    "recommended_reviewers": [
+      "CIO and direct platform leadership",
+      "Head of AI Platform / Enterprise Architecture",
+      "Security and Responsible AI lead",
+      "Procurement and Vendor Management lead",
+      "Business stakeholder for primary AI use cases"
+    ],
+    "review_frequency": "Quarterly for organizations actively transforming; semi-annually for stable organizations",
+    "evidence_requirement": "Each rating should be accompanied by a brief evidence note (1-3 sentences describing what is in place) to prevent score inflation.",
+    "stage_label_thresholds": {
+      "0.0-0.9": "Tool Sampling",
+      "1.0-1.9": "Single-vendor Preference",
+      "2.0-2.9": "Role-aware Selection",
+      "3.0-3.9": "Multi-platform Composition",
+      "4.0-4.9": "Governed Platform Portfolio",
+      "5.0": "Adaptive AI Platform Strategy"
+    }
+  },
+  "platform_layer_taxonomy": [
+    {
+      "id": "L1",
+      "label": "Compute & Silicon",
+      "description": "Accelerators, systems software, and infrastructure economics."
+    },
+    {
+      "id": "L2",
+      "label": "Cloud AI Runtime",
+      "description": "Managed training/inference runtimes, scaling, and operations."
+    },
+    {
+      "id": "L3",
+      "label": "Foundation Models",
+      "description": "Model families and model access patterns."
+    },
+    {
+      "id": "L4",
+      "label": "Platform & Orchestration",
+      "description": "Developer tools, agent workflows, evals, and observability."
+    },
+    {
+      "id": "L5",
+      "label": "Enterprise Distribution",
+      "description": "Identity, productivity embedding, channel, and deployment scale."
+    },
+    {
+      "id": "L6",
+      "label": "Governance & Trust",
+      "description": "Policy, safety, auditability, and responsible AI operations."
+    }
+  ],
+  "enterprise_stack_lens": {
+    "title": "Enterprise AI Platform Stack Lens",
+    "description": "A top-down readout of how the major providers appear in enterprise architecture: applications, agents/orchestration, API/model platform, models, data/enterprise integration, and infrastructure.",
+    "relationship_to_apef": "This lens does not replace APEF L1-L6. It reorders the same vendor capabilities from buyer-facing applications downward to infrastructure, making it easier to see where each provider owns the user experience, the agent control plane, the model gateway, the data plane, and the compute substrate.",
+    "vendors": [
+      { "key": "microsoft", "label": "Microsoft" },
+      { "key": "openai", "label": "OpenAI" },
+      { "key": "google", "label": "Google" },
+      { "key": "anthropic", "label": "Anthropic" },
+      { "key": "amazon", "label": "Amazon" },
+      { "key": "alibaba", "label": "Alibaba" },
+      { "key": "nvidia", "label": "NVIDIA" }
+    ],
+    "layers": [
+      {
+        "id": "APP",
+        "label": "Application Layer",
+        "maps_to_apef_layers": ["L5"],
+        "maps_to_apef_dimensions": ["ENT", "ECO"],
+        "description": "Where end users experience AI through packaged applications, productivity suites, IDEs, SaaS tools, and enterprise apps.",
+        "vendor_positions": {
+          "microsoft": ["Microsoft 365 Copilot", "GitHub Copilot", "Dynamics and Security Copilot"],
+          "openai": ["ChatGPT", "ChatGPT Enterprise", "Custom GPTs / GPT Store"],
+          "google": ["Gemini Enterprise", "Gemini Apps", "Workspace Gemini", "Gemini Code Assist"],
+          "anthropic": ["Claude.ai", "Claude for Enterprise", "Claude Code"],
+          "amazon": ["Amazon Q Business", "Amazon Q Developer", "Bedrock console/UI"],
+          "alibaba": ["Quark AI", "DingTalk AI assistants", "industry copilots and agent applications on Alibaba Cloud"],
+          "nvidia": ["No primary end-user application layer; appears through partner apps, NIM catalogs, and AI Enterprise tooling"]
+        }
+      },
+      {
+        "id": "AGENT",
+        "label": "Agent / Orchestration Layer",
+        "maps_to_apef_layers": ["L4", "L6"],
+        "maps_to_apef_dimensions": ["PLT", "SAF", "ECO"],
+        "description": "Agent builders, agent runtimes, plugins/tools, memory, workflow orchestration, and governance around agent behavior.",
+        "vendor_positions": {
+          "microsoft": ["Copilot Studio", "Azure AI Foundry Agent Service", "Semantic Kernel / AutoGen", "tight UX integration"],
+          "openai": ["Assistants / Responses API", "Agents SDK", "Realtime / Operator patterns", "growing orchestration surface"],
+          "google": ["Agent Studio", "Agent Development Kit", "Agent Runtime", "Memory Bank", "structured Gemini Enterprise agent platform"],
+          "anthropic": ["Claude tool use", "Model Context Protocol", "Claude Code", "model-led orchestration via partners"],
+          "amazon": ["Bedrock Agents", "Bedrock AgentCore", "Strands Agents SDK", "infra-led agent runtime"],
+          "alibaba": ["Bailian Agent Studio", "Qwen tool use and agent workflows", "agent platform integrated with Model Studio and Alibaba Cloud services"],
+          "nvidia": ["NIM", "NeMo Guardrails", "Triton / TensorRT-LLM as runtime substrate for agent workloads"]
+        }
+      },
+      {
+        "id": "API_PLATFORM",
+        "label": "API / Model Platform Layer",
+        "maps_to_apef_layers": ["L4"],
+        "maps_to_apef_dimensions": ["PLT", "FMD", "ECO"],
+        "description": "The gateway/control-plane layer used by developers and platform teams to call models, manage catalogs, evaluate behavior, and package AI services.",
+        "vendor_positions": {
+          "microsoft": ["Azure OpenAI Service", "Azure AI Foundry", "gateway and governance wrapper around GPT and partner models"],
+          "openai": ["OpenAI API", "Responses API", "direct model/platform access"],
+          "google": ["Vertex AI", "Model Garden", "Gemini API", "full-stack model/data/platform control plane"],
+          "anthropic": ["Claude API", "Anthropic Console", "focused frontier-model API surface"],
+          "amazon": ["Amazon Bedrock", "SageMaker AI", "multi-model platform and marketplace"],
+          "alibaba": ["Alibaba Cloud Model Studio", "PAI platform services", "Qwen APIs and model catalog"],
+          "nvidia": ["NVIDIA AI Enterprise", "NIM APIs", "NeMo platform services"]
+        }
+      },
+      {
+        "id": "MODEL",
+        "label": "Model Layer",
+        "maps_to_apef_layers": ["L3"],
+        "maps_to_apef_dimensions": ["FMD", "ECO"],
+        "description": "Frontier, small, open, multimodal, and third-party model families used by applications and agents.",
+        "vendor_positions": {
+          "microsoft": ["Hosts GPT through Azure OpenAI", "Phi small-model family", "partner models through Foundry"],
+          "openai": ["GPT models", "o-series reasoning models", "GPT-4o / multimodal", "gpt-oss local/open-weight path"],
+          "google": ["Gemini", "Gemma open models", "Imagen / Veo / Chirp / Lyria", "third-party models in Model Garden"],
+          "anthropic": ["Claude Opus", "Claude Sonnet", "Claude Haiku"],
+          "amazon": ["Nova family", "Titan", "third-party models such as Claude, Llama, Mistral, Cohere"],
+          "alibaba": ["Qwen foundation models", "Qwen Coder", "Qwen-VL and multimodal/open variants"],
+          "nvidia": ["Nemotron", "partner model optimization", "NIM-packaged models rather than a primary frontier-model business"]
+        }
+      },
+      {
+        "id": "DATA_ENTERPRISE",
+        "label": "Data / Enterprise Layer",
+        "maps_to_apef_layers": ["L4", "L5", "L6"],
+        "maps_to_apef_dimensions": ["ENT", "SAF", "PLT"],
+        "description": "Enterprise knowledge, productivity data, search, RAG, data warehouses, identity, policy, and connectors that determine practical enterprise usefulness.",
+        "vendor_positions": {
+          "microsoft": ["Microsoft Graph", "M365 data", "Fabric", "Purview", "Entra"],
+          "openai": ["Limited native enterprise data layer", "connectors and retrieval APIs", "relies on partners for deep enterprise data integration"],
+          "google": ["BigQuery", "Vertex AI Search / Vector Search", "Google Search grounding", "Workspace data", "IAM and agent governance"],
+          "anthropic": ["MCP for external tool/data connection", "partner-mediated enterprise data via AWS, Google, and Microsoft"],
+          "amazon": ["S3", "Redshift", "OpenSearch", "Knowledge Bases for Bedrock", "IAM / KMS / PrivateLink"],
+          "alibaba": ["AnalyticDB / MaxCompute", "Alibaba Cloud OpenSearch", "DingTalk workflow and enterprise data services"],
+          "nvidia": ["Connects via partner data planes", "NeMo Retriever / Guardrails", "MLflow and local RAG/runtime patterns"]
+        }
+      },
+      {
+        "id": "INFRA",
+        "label": "Infrastructure Layer",
+        "maps_to_apef_layers": ["L1", "L2"],
+        "maps_to_apef_dimensions": ["CMP", "ECO", "SAF"],
+        "description": "Cloud, GPU/accelerator capacity, training/inference runtimes, containers, pipelines, local/on-prem deployment, and infrastructure economics.",
+        "vendor_positions": {
+          "microsoft": ["Azure", "Azure Kubernetes Service", "Azure ND/H-series NVIDIA GPU capacity", "Maia/Cobalt for select workloads"],
+          "openai": ["Azure partner infrastructure", "NVIDIA GPU capacity through Microsoft", "local gpt-oss path via NVIDIA runtimes"],
+          "google": ["GCP", "TPUs", "NVIDIA GPU offerings", "GKE / Cloud Run GPU", "Vertex AI Training and Pipelines"],
+          "anthropic": ["Partner infrastructure via AWS and Google Cloud", "Trainium/Inferentia relationship through Amazon"],
+          "amazon": ["AWS", "EC2 P5/P5e/P5en NVIDIA capacity", "Trainium / Inferentia", "EKS / ECS / SageMaker infrastructure"],
+          "alibaba": ["Alibaba Cloud GPU infrastructure", "PAI-EAS / ACK AI runtime", "Hanguang and NVIDIA-backed cloud capacity"],
+          "nvidia": ["Supplies GPUs and AI compute stack across all players", "H100/H200/B200/GB200", "CUDA", "Triton", "TensorRT-LLM", "vLLM / local runtime reference patterns"]
+        },
+        "cross_cutting_note": "NVIDIA is the horizontal compute substrate: it supplies GPUs, acceleration software, inference runtimes, and local/on-prem reference patterns to Microsoft, OpenAI, Google, Amazon, Anthropic partner deployments, and enterprise-owned infrastructure."
+      }
+    ]
+  },
+  "vendor_role_profiles": {
+    "anthropic": {
+      "vendor": "Anthropic",
+      "primary_roles": [
+        "Frontier model provider",
+        "Safety-forward model partner"
+      ],
+      "strongest_layers": [
+        "L3",
+        "L6"
+      ],
+      "typical_buying_reason": "High-quality model behavior and safety-oriented enterprise posture.",
+      "watchouts": [
+        "Narrower infrastructure/control-plane footprint",
+        "Enterprise distribution often mediated via hyperscalers"
+      ],
+      "local_deployment_note": "Claude remains cloud-delivered; local/on-prem fit is indirect via MCP- and partner-mediated workflows that call NVIDIA-backed local runtimes rather than Anthropic-shipped model weights.",
+      "executive_summary": "Anthropic is the safety-forward frontier model challenger. Its Claude model family is consistently competitive on reasoning, coding, and long-context tasks, and it has become a preferred enterprise model where deterministic behavior, constitutional safety design, and clear usage policies matter. Anthropic does not run its own hyperscale cloud — instead it distributes through AWS Bedrock and Google Cloud Vertex, with a strategic capital relationship with Amazon. Its strongest enterprise pitch is 'best behavior per token' with auditable safety properties; its weakest is breadth of enterprise control-plane and identity integration, which customers must source elsewhere.",
+      "dimension_narratives": {
+        "CMP": {
+          "summary": "Anthropic does not operate its own compute substrate. It consumes capacity from Amazon (primary, including Trainium/Inferentia) and Google Cloud, leaving infrastructure economics largely outside customer control.",
+          "key_capabilities": [
+            "Strategic Trainium/Inferentia adoption via AWS",
+            "Compute-efficient model design for inference"
+          ],
+          "evidence": [
+            "Multi-year AWS capacity and silicon commitment",
+            "Claude availability on AWS Bedrock and GCP Vertex"
+          ]
+        },
+        "FMD": {
+          "summary": "Claude Opus, Sonnet, and Haiku cover the frontier-to-efficient model spectrum. Strengths in long-context reasoning, tool use, and coding (Claude Code) make it a default pick for agentic and developer workloads.",
+          "key_capabilities": [
+            "Long-context reasoning (200K+ token windows)",
+            "Agentic tool use and computer-use APIs",
+            "Strong coding model lineage (Claude Code)"
+          ],
+          "evidence": [
+            "Claude family benchmark leadership on coding/reasoning",
+            "Computer-use API public release"
+          ]
+        },
+        "PLT": {
+          "summary": "Anthropic offers a focused first-party API and Console with workbench, evaluations, and prompt tooling. It is not a full MLOps platform; deeper platform features come via partners' runtimes.",
+          "key_capabilities": [
+            "Console workbench and evals",
+            "MCP (Model Context Protocol) as integration standard"
+          ],
+          "evidence": [
+            "Anthropic Console product surface",
+            "MCP open specification"
+          ]
+        },
+        "ENT": {
+          "summary": "Enterprise distribution is partner-mediated. Most large customers consume Claude through AWS Bedrock, Google Vertex, or direct API; Anthropic itself provides minimal identity/productivity surface.",
+          "key_capabilities": [
+            "Distribution via Bedrock and Vertex",
+            "Enterprise plan with usage governance"
+          ],
+          "evidence": [
+            "Anthropic for Enterprise SKU",
+            "Bedrock and Vertex model catalog presence"
+          ]
+        },
+        "SAF": {
+          "summary": "Safety is the defining brand attribute. Constitutional AI, Responsible Scaling Policy, and published model cards/usage policies set an industry reference for safety transparency.",
+          "key_capabilities": [
+            "Constitutional AI training methodology",
+            "Responsible Scaling Policy with capability thresholds",
+            "Published red-team and evaluation results"
+          ],
+          "evidence": [
+            "Public Responsible Scaling Policy",
+            "Constitutional AI research publications"
+          ]
+        },
+        "ECO": {
+          "summary": "Anthropic's ecosystem play is the open Model Context Protocol (MCP), now adopted across multiple vendors as the dominant agent-tool integration standard.",
+          "key_capabilities": [
+            "MCP standard authorship",
+            "Active developer relations around agent tooling"
+          ],
+          "evidence": [
+            "MCP adoption by OpenAI, Microsoft, Google, and IDE vendors"
+          ]
+        }
+      },
+      "components": [
+        {
+          "id": "anthropic-claude-opus",
+          "name": "Claude Opus",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "anthropic-claude-sonnet",
+          "name": "Claude Sonnet",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock",
+            "gcp-vertex",
+            "anthropic-console"
+          ]
+        },
+        {
+          "id": "anthropic-claude-haiku",
+          "name": "Claude Haiku",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock",
+            "anthropic-console"
+          ]
+        },
+        {
+          "id": "anthropic-console",
+          "name": "Anthropic Console",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "anthropic-claude-sonnet"
+          ]
+        },
+        {
+          "id": "anthropic-mcp",
+          "name": "Model Context Protocol",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "openai-api",
+            "copilot-studio",
+            "gcp-vertex",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "anthropic-rsp",
+          "name": "Responsible Scaling Policy",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "anthropic-claude-opus-4",
+          "name": "Claude Opus 4",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "anthropic-api",
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "anthropic-claude-sonnet-45",
+          "name": "Claude Sonnet 4.5",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "anthropic-api",
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "anthropic-claude-haiku-4",
+          "name": "Claude Haiku 4",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "anthropic-api",
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "anthropic-api",
+          "name": "Anthropic Messages API",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": []
+        },
+        {
+          "id": "anthropic-claude-code",
+          "name": "Claude Code",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "anthropic-api"
+          ]
+        },
+        {
+          "id": "anthropic-computer-use",
+          "name": "Computer Use (Tool)",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "anthropic-claude-sonnet-45"
+          ]
+        },
+        {
+          "id": "anthropic-tool-use",
+          "name": "Tool Use / Function Calling",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "anthropic-api"
+          ]
+        },
+        {
+          "id": "anthropic-prompt-caching",
+          "name": "Prompt Caching",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "anthropic-api"
+          ]
+        },
+        {
+          "id": "anthropic-batch-api",
+          "name": "Message Batches API",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "anthropic-api"
+          ]
+        },
+        {
+          "id": "anthropic-files-api",
+          "name": "Files / Citations API",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "anthropic-api"
+          ]
+        },
+        {
+          "id": "anthropic-agent-skills",
+          "name": "Agent Skills",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "anthropic-claude-code",
+            "anthropic-mcp"
+          ]
+        },
+        {
+          "id": "anthropic-claude-ai",
+          "name": "Claude.ai (Consumer)",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "anthropic-claude-sonnet-45"
+          ]
+        },
+        {
+          "id": "anthropic-claude-enterprise",
+          "name": "Claude for Enterprise",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "anthropic-claude-ai"
+          ]
+        },
+        {
+          "id": "anthropic-projects",
+          "name": "Projects + Artifacts",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "anthropic-claude-ai"
+          ]
+        },
+        {
+          "id": "anthropic-aup",
+          "name": "Acceptable Use Policy",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "anthropic-constitutional-ai",
+          "name": "Constitutional AI",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "anthropic-claude-opus-45",
+          "name": "Claude Opus 4.5",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "anthropic-api",
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "anthropic-claude-haiku-45",
+          "name": "Claude Haiku 4.5",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "anthropic-api",
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "anthropic-voyage-embed",
+          "name": "Voyage Embeddings",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "anthropic-api"
+          ]
+        },
+        {
+          "id": "anthropic-aws-trainium-runtime",
+          "name": "AWS Trainium Training Runtime",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "anthropic-claude-opus-45"
+          ]
+        },
+        {
+          "id": "anthropic-gcp-tpu-runtime",
+          "name": "GCP TPU Inference Runtime",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "anthropic-claude-sonnet-45"
+          ]
+        },
+        {
+          "id": "anthropic-claude-desktop",
+          "name": "Claude Desktop App",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "anthropic-claude-ai"
+          ]
+        },
+        {
+          "id": "anthropic-claude-mobile",
+          "name": "Claude Mobile App",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "anthropic-claude-ai"
+          ]
+        },
+        {
+          "id": "anthropic-skills-marketplace",
+          "name": "Agent Skills Marketplace",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "anthropic-agent-skills"
+          ]
+        },
+        {
+          "id": "anthropic-rsp-v2",
+          "name": "Responsible Scaling Policy v2",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "anthropic-claude-opus-46",
+          "name": "Claude Opus 4.6",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "anthropic-api",
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "anthropic-claude-opus-47",
+          "name": "Claude Opus 4.7",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "anthropic-api",
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        }
+      ],
+      "strategic_pairings": [
+        {
+          "partner": "Amazon",
+          "rationale": "Primary distribution + compute partner via Bedrock and Trainium investment.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "Google",
+          "rationale": "Secondary distribution via Vertex; provides multi-cloud optionality.",
+          "fit_score": "Moderate"
+        },
+        {
+          "partner": "NVIDIA",
+          "rationale": "Claude stays cloud-delivered, but Anthropic-centered agent workflows often connect to NVIDIA-backed local runtimes in hybrid enterprise patterns.",
+          "fit_score": "Moderate"
+        },
+        {
+          "partner": "Microsoft",
+          "rationale": "Limited direct partnership; competitive on enterprise model layer.",
+          "fit_score": "Weak"
+        }
+      ]
+    },
+    "microsoft": {
+      "vendor": "Microsoft",
+      "primary_roles": [
+        "Enterprise AI control plane",
+        "Cloud + productivity distribution leader"
+      ],
+      "strongest_layers": [
+        "L2",
+        "L4",
+        "L5",
+        "L6"
+      ],
+      "typical_buying_reason": "Fast enterprise adoption via Azure, M365, identity, and governance integration.",
+      "watchouts": [
+        "Portfolio complexity",
+        "Potential concentration risk in single-vendor standardization"
+      ],
+      "local_deployment_note": "Microsoft has a strong hybrid path: Azure control-plane services and Phi-family models can extend to customer-managed NVIDIA GPU clusters via AKS, Azure Arc, or Azure Local, even though GPT-class services stay Azure-hosted.",
+      "executive_summary": "Microsoft is the broadest enterprise AI control plane in the market. Azure OpenAI, Azure AI Foundry, Copilot Studio, the Copilot product family across M365 and GitHub, and Entra ID governance combine into the most complete top-to-bottom enterprise AI stack. Its 'first-party + partner models' strategy lets customers consume OpenAI, Anthropic (via Foundry catalog), Meta, Mistral, and open models under a single Azure control plane with consistent identity, billing, and governance. The risk is platform concentration and stack complexity: Microsoft's offering is wide and overlapping, and customers can pay for capabilities they never use.",
+      "dimension_narratives": {
+        "CMP": {
+          "summary": "Azure operates one of the largest GPU footprints in the world, anchored on NVIDIA H100/H200/Blackwell with Microsoft's own Maia and Cobalt silicon for select workloads. Multi-region capacity is a durable advantage.",
+          "key_capabilities": [
+            "Largest NVIDIA enterprise footprint",
+            "Maia AI accelerator and Cobalt CPU silicon",
+            "Custom Azure ND H200 v5 SKUs"
+          ],
+          "evidence": [
+            "Public Azure-OpenAI capacity announcements",
+            "Maia 100 launch"
+          ]
+        },
+        "FMD": {
+          "summary": "Microsoft hedges across first-party and partner models. GPT-class models via Azure OpenAI dominate the catalog, while Phi small models, Mistral, Meta Llama, and (recently) Claude on Foundry give workload-fit optionality.",
+          "key_capabilities": [
+            "Azure OpenAI exclusive enterprise distribution for GPT models",
+            "Phi-3/Phi-4 small-model family",
+            "Foundry model catalog with 1800+ models"
+          ],
+          "evidence": [
+            "Azure OpenAI Service GA scale",
+            "Phi model open releases"
+          ]
+        },
+        "PLT": {
+          "summary": "Azure AI Foundry plus Copilot Studio constitute the platform layer. Foundry handles model lifecycle and evaluations; Copilot Studio handles agent authoring; Semantic Kernel and AutoGen anchor developer SDKs.",
+          "key_capabilities": [
+            "AI Foundry hub/projects model",
+            "Copilot Studio for low-code agents",
+            "Semantic Kernel and AutoGen orchestration SDKs"
+          ],
+          "evidence": [
+            "AI Foundry GA",
+            "Copilot Studio agent builder"
+          ]
+        },
+        "ENT": {
+          "summary": "Microsoft owns the deepest enterprise distribution: M365 Copilot in productivity, GitHub Copilot in developer, Dynamics Copilot in CRM/ERP, and Entra for identity. This is the dominant 'where AI shows up at work' surface.",
+          "key_capabilities": [
+            "M365 Copilot (Word/Excel/Outlook/Teams)",
+            "GitHub Copilot ecosystem",
+            "Entra-based identity for agents"
+          ],
+          "evidence": [
+            "M365 Copilot enterprise rollout scale",
+            "GitHub Copilot seat counts"
+          ]
+        },
+        "SAF": {
+          "summary": "Responsible AI Standard, Azure AI Content Safety, Purview data governance, and Entra agent identity provide a defense-in-depth governance stack. Strong on enterprise controls; less academic on alignment research than Anthropic.",
+          "key_capabilities": [
+            "Azure AI Content Safety and Prompt Shield",
+            "Purview DLP for Copilot",
+            "Responsible AI Standard v2"
+          ],
+          "evidence": [
+            "Azure AI Content Safety GA",
+            "Responsible AI Standard publication"
+          ]
+        },
+        "ECO": {
+          "summary": "Microsoft is openness-pragmatic: it backs OpenAI exclusively in some surfaces, hosts every major competitor in Foundry, contributes to MCP and ONNX, and ships SDKs across languages.",
+          "key_capabilities": [
+            "Foundry multi-vendor model catalog",
+            "MCP and ONNX contributions",
+            "Open-source SDKs (Semantic Kernel, AutoGen)"
+          ],
+          "evidence": [
+            "Foundry model catalog breadth",
+            "GitHub OSS contributions"
+          ]
+        }
+      },
+      "components": [
+        {
+          "id": "azure-openai",
+          "name": "Azure OpenAI Service",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "openai-gpt4",
+            "openai-gpt5",
+            "azure-foundry"
+          ]
+        },
+        {
+          "id": "azure-foundry",
+          "name": "Azure AI Foundry",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "azure-openai",
+            "anthropic-claude-sonnet",
+            "meta-llama"
+          ]
+        },
+        {
+          "id": "copilot-studio",
+          "name": "Microsoft Copilot Studio",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "azure-foundry",
+            "m365-copilot",
+            "anthropic-mcp"
+          ]
+        },
+        {
+          "id": "m365-copilot",
+          "name": "Microsoft 365 Copilot",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "azure-openai",
+            "azure-foundry"
+          ]
+        },
+        {
+          "id": "github-copilot",
+          "name": "GitHub Copilot",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-gpt5",
+            "anthropic-claude-sonnet"
+          ]
+        },
+        {
+          "id": "azure-maia",
+          "name": "Maia 100 Accelerator",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "azure-openai"
+          ]
+        },
+        {
+          "id": "azure-ndh200",
+          "name": "Azure ND H200 v5 (NVIDIA)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "nvidia-h200"
+          ]
+        },
+        {
+          "id": "entra-agent-id",
+          "name": "Entra Agent ID",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "copilot-studio",
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "azure-content-safety",
+          "name": "Azure AI Content Safety",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "azure-foundry"
+          ]
+        },
+        {
+          "id": "ms-phi-4",
+          "name": "Phi-4",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "azure-foundry",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "ms-phi-35-mini",
+          "name": "Phi-3.5 Mini",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "azure-foundry",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "ms-mai-1",
+          "name": "MAI-1 (Microsoft AI)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "azure-cobalt-100",
+          "name": "Azure Cobalt 100 (Arm)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "azure-boost",
+          "name": "Azure Boost",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "azure-ai-search",
+          "name": "Azure AI Search",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "azure-foundry",
+            "azure-openai"
+          ]
+        },
+        {
+          "id": "ms-semantic-kernel",
+          "name": "Semantic Kernel",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "ms-autogen",
+          "name": "AutoGen",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "ms-fabric-ai",
+          "name": "Microsoft Fabric (AI)",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "azure-foundry"
+          ]
+        },
+        {
+          "id": "azure-machine-learning",
+          "name": "Azure Machine Learning",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "nvidia-mlflow-local"
+          ]
+        },
+        {
+          "id": "azure-ai-evaluations",
+          "name": "Azure AI Evaluations",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "azure-foundry"
+          ]
+        },
+        {
+          "id": "ms-copilot-pages",
+          "name": "Copilot Pages",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "ms-windows-copilot-rt",
+          "name": "Windows Copilot Runtime",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "ms-copilot-plus-pc",
+          "name": "Copilot+ PCs",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "ms-windows-copilot-rt"
+          ]
+        },
+        {
+          "id": "ms-dynamics-copilot",
+          "name": "Copilot for Dynamics 365",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "ms-security-copilot",
+          "name": "Microsoft Security Copilot",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "azure-openai"
+          ]
+        },
+        {
+          "id": "ms-purview-ai-hub",
+          "name": "Purview AI Hub",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "azure-pyrit",
+          "name": "PyRIT (Red Team Toolkit)",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "ms-responsible-ai-std",
+          "name": "Responsible AI Standard",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "ms-phi-4-multimodal",
+          "name": "Phi-4 Multimodal",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "azure-foundry",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "ms-phi-4-mini",
+          "name": "Phi-4 Mini",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "azure-foundry",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "ms-phi-4-reasoning",
+          "name": "Phi-4 Reasoning",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "azure-foundry",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "ms-mai-voice-1",
+          "name": "MAI-Voice-1",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "ms-mai-image-1",
+          "name": "MAI-Image-1",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "ms-aks-ai",
+          "name": "Azure Kubernetes Service (AI)",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "azure-machine-learning",
+            "nvidia-h100-local",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "ms-container-apps-ai",
+          "name": "Azure Container Apps (Serverless GPU)",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "azure-foundry"
+          ]
+        },
+        {
+          "id": "ms-azure-batch-ai",
+          "name": "Azure Batch (AI Training)",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "azure-machine-learning",
+            "nvidia-h100-local"
+          ]
+        },
+        {
+          "id": "ms-foundry-agent-svc",
+          "name": "Azure AI Foundry Agent Service",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "azure-foundry"
+          ]
+        },
+        {
+          "id": "ms-copilot-tuning",
+          "name": "Copilot Tuning",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "ms-copilot-control",
+          "name": "Copilot Control System",
+          "layer": "L4",
+          "type": "governance",
+          "integrates_with": [
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "ms-copilot-vision",
+          "name": "Copilot Vision",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "ms-copilot-recall",
+          "name": "Recall (Copilot+ PC)",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "ms-copilot-plus-pc"
+          ]
+        },
+        {
+          "id": "ms-copilot-actions",
+          "name": "Copilot Actions",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "m365-copilot"
+          ]
+        },
+        {
+          "id": "ms-maia-200",
+          "name": "Maia 200 Accelerator",
+          "layer": "L1",
+          "type": "silicon",
+          "integrates_with": []
+        }
+      ],
+      "strategic_pairings": [
+        {
+          "partner": "OpenAI",
+          "rationale": "Exclusive enterprise distribution of GPT models via Azure OpenAI; deep capital and product alignment.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "NVIDIA",
+          "rationale": "Largest enterprise NVIDIA footprint; co-design on ND-series SKUs and a natural landing zone for customer-managed NVIDIA clusters.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "Anthropic",
+          "rationale": "Recently added Claude to Foundry; coexists but competitive at the model layer.",
+          "fit_score": "Moderate"
+        }
+      ]
+    },
+    "amazon": {
+      "vendor": "Amazon",
+      "primary_roles": [
+        "Cloud AI portfolio aggregator",
+        "Enterprise runtime and model access platform"
+      ],
+      "strongest_layers": [
+        "L2",
+        "L4",
+        "L5"
+      ],
+      "typical_buying_reason": "Multi-model access and large-scale cloud operational maturity.",
+      "watchouts": [
+        "Model differentiation varies by workload",
+        "Cross-product decision complexity for some teams"
+      ],
+      "local_deployment_note": "Amazon is primarily managed-cloud here, but AWS orchestration patterns can extend to NVIDIA GPU-backed EKS or hybrid clusters for local inference and platform control alongside Bedrock.",
+      "executive_summary": "Amazon's AI strategy is 'model neutrality at hyperscale'. Bedrock provides serverless access to Claude (its strategic preferred model), Llama, Mistral, Cohere, and Amazon's own Nova family — under a single AWS account, IAM, and billing perimeter. SageMaker covers custom model lifecycle; Bedrock Agents and AgentCore (preview) tackle the agent runtime. Trainium and Inferentia give Amazon a credible non-NVIDIA silicon story. The pitch is operational depth and choice; the watchout is that no single Bedrock model is unambiguously best — choice introduces decision overhead.",
+      "dimension_narratives": {
+        "CMP": {
+          "summary": "AWS runs the broadest accelerator portfolio: NVIDIA at scale plus Trainium2 (training) and Inferentia2 (inference) for cost-optimized workloads. Capacity is regionally deep.",
+          "key_capabilities": [
+            "Trainium2 training silicon (UltraServers)",
+            "Inferentia2 inference silicon",
+            "EC2 P5/P5en with NVIDIA H100/H200"
+          ],
+          "evidence": [
+            "Trainium2 GA and Anthropic adoption",
+            "Project Rainier with Anthropic"
+          ]
+        },
+        "FMD": {
+          "summary": "Bedrock is a model marketplace, not a single model. Claude (Anthropic) leads usage; Amazon Nova covers cost-tiered first-party options; Llama, Mistral, Cohere, and AI21 fill specific niches.",
+          "key_capabilities": [
+            "Anthropic Claude as preferred partner model",
+            "Amazon Nova Pro/Lite/Micro/Canvas/Reel first-party family",
+            "Curated multi-vendor catalog"
+          ],
+          "evidence": [
+            "Bedrock GA model list",
+            "Nova family launch at re:Invent"
+          ]
+        },
+        "PLT": {
+          "summary": "SageMaker for custom model lifecycle; Bedrock for serverless model APIs, Knowledge Bases, Guardrails, and Agents; AgentCore for agent runtime. Mature MLOps tooling, fragmented surface area.",
+          "key_capabilities": [
+            "SageMaker AI unified studio",
+            "Bedrock Knowledge Bases + Guardrails",
+            "Bedrock AgentCore runtime"
+          ],
+          "evidence": [
+            "SageMaker AI rebrand",
+            "AgentCore preview at re:Invent 2024"
+          ]
+        },
+        "ENT": {
+          "summary": "AWS is the default cloud for many enterprises, giving Bedrock a natural distribution path. Amazon Q (Business and Developer) puts AI directly into the AWS console and developer workflows.",
+          "key_capabilities": [
+            "Amazon Q Business across enterprise data",
+            "Amazon Q Developer in IDE/console",
+            "IAM and Organizations as governance perimeter"
+          ],
+          "evidence": [
+            "Q Business GA",
+            "Q Developer adoption metrics"
+          ]
+        },
+        "SAF": {
+          "summary": "Bedrock Guardrails, IAM, KMS, PrivateLink, and the AWS Responsible AI policy provide enterprise-grade controls. Less differentiated on safety research vs Anthropic but strong on operational guardrails.",
+          "key_capabilities": [
+            "Bedrock Guardrails (content + topic + word filters)",
+            "Automated reasoning checks for hallucination detection",
+            "PrivateLink for model isolation"
+          ],
+          "evidence": [
+            "Guardrails GA",
+            "Automated reasoning checks preview"
+          ]
+        },
+        "ECO": {
+          "summary": "Multi-vendor model catalog is AWS's openness story. Partner integrations are deep through the AWS Marketplace and ISV ecosystem; first-party SDKs span all major languages.",
+          "key_capabilities": [
+            "Bedrock multi-vendor catalog",
+            "AWS Marketplace AI listings",
+            "SageMaker JumpStart open models"
+          ],
+          "evidence": [
+            "Bedrock vendor list",
+            "Marketplace AI category growth"
+          ]
+        }
+      },
+      "components": [
+        {
+          "id": "aws-bedrock",
+          "name": "Amazon Bedrock",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "anthropic-claude-sonnet",
+            "anthropic-claude-opus",
+            "amazon-nova-pro",
+            "meta-llama",
+            "mistral-large"
+          ]
+        },
+        {
+          "id": "aws-sagemaker",
+          "name": "Amazon SageMaker AI",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "aws-trainium",
+            "aws-inferentia",
+            "nvidia-h200"
+          ]
+        },
+        {
+          "id": "aws-agentcore",
+          "name": "Bedrock AgentCore",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "aws-bedrock",
+            "anthropic-mcp"
+          ]
+        },
+        {
+          "id": "amazon-nova-pro",
+          "name": "Amazon Nova Pro",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "amazon-q-business",
+          "name": "Amazon Q Business",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "amazon-q-developer",
+          "name": "Amazon Q Developer",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-trainium",
+          "name": "AWS Trainium2",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "aws-sagemaker"
+          ]
+        },
+        {
+          "id": "aws-inferentia",
+          "name": "AWS Inferentia2",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "bedrock-guardrails",
+          "name": "Bedrock Guardrails",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "amazon-nova-lite",
+          "name": "Amazon Nova Lite",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "amazon-nova-micro",
+          "name": "Amazon Nova Micro",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "amazon-nova-canvas",
+          "name": "Amazon Nova Canvas",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "amazon-nova-reel",
+          "name": "Amazon Nova Reel",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "amazon-titan-embed",
+          "name": "Amazon Titan Embeddings",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-trainium3",
+          "name": "AWS Trainium3",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "aws-ultraserver",
+          "name": "Trn2 UltraServer",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "aws-trainium"
+          ]
+        },
+        {
+          "id": "aws-ec2-p5",
+          "name": "EC2 P5 (NVIDIA H100)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "aws-ec2-p5e",
+          "name": "EC2 P5e (NVIDIA H200)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "aws-sagemaker-hyperpod",
+          "name": "SageMaker HyperPod",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "aws-trainium",
+            "aws-ec2-p5"
+          ]
+        },
+        {
+          "id": "aws-sagemaker-unified",
+          "name": "SageMaker Unified Studio",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "aws-sagemaker"
+          ]
+        },
+        {
+          "id": "aws-bedrock-kb",
+          "name": "Bedrock Knowledge Bases",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-bedrock-agents",
+          "name": "Bedrock Agents",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-bedrock-marketplace",
+          "name": "Bedrock Marketplace",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-strands-agents",
+          "name": "Strands Agents SDK",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "aws-bedrock-flows",
+          "name": "Bedrock Prompt Flows",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "amazon-q-quicksight",
+          "name": "Q in QuickSight",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "amazon-q-connect",
+          "name": "Q in Connect",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "aws-app-studio",
+          "name": "AWS App Studio",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "amazon-q-developer"
+          ]
+        },
+        {
+          "id": "aws-responsible-ai",
+          "name": "AWS Responsible AI",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "aws-nova-premier",
+          "name": "Amazon Nova Premier",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-nova-sonic",
+          "name": "Amazon Nova Sonic (Speech)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-nova-act",
+          "name": "Amazon Nova Act (Agent)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-titan-text-v2",
+          "name": "Amazon Titan Text v2",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-eks-ai",
+          "name": "Amazon EKS (AI Workloads)",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "aws-sagemaker",
+            "nvidia-h100-local",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "aws-ecs-ai",
+          "name": "Amazon ECS / Fargate (AI)",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-batch-ai",
+          "name": "AWS Batch (Training)",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "aws-sagemaker"
+          ]
+        },
+        {
+          "id": "aws-q-apps",
+          "name": "Amazon Q Apps",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "aws-q-business"
+          ]
+        },
+        {
+          "id": "aws-bedrock-data-auto",
+          "name": "Bedrock Data Automation",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-bedrock-studio",
+          "name": "Bedrock Studio",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        },
+        {
+          "id": "aws-bedrock-eval",
+          "name": "Bedrock Model Evaluation",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "aws-bedrock"
+          ]
+        }
+      ],
+      "strategic_pairings": [
+        {
+          "partner": "Anthropic",
+          "rationale": "Strategic capital + preferred model partner; deep Trainium co-design.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "NVIDIA",
+          "rationale": "Largest NVIDIA capacity buyer outside Microsoft; full P5/P5en lineup plus hybrid EKS patterns on NVIDIA GPU clusters.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "Microsoft",
+          "rationale": "Competitive at the control-plane layer; minimal direct integration.",
+          "fit_score": "Weak"
+        }
+      ]
+    },
+    "alibaba": {
+      "vendor": "Alibaba",
+      "primary_roles": [
+        "Integrated cloud + model platform provider",
+        "Open-model ecosystem and regional enterprise distribution leader"
+      ],
+      "strongest_layers": [
+        "L2",
+        "L3",
+        "L4",
+        "L5"
+      ],
+      "typical_buying_reason": "Alibaba Cloud scale, Qwen model breadth, and strong platform fit for enterprises needing APAC reach or an open-model path with managed services.",
+      "watchouts": [
+        "Enterprise procurement, compliance, and geopolitical fit vary significantly by region",
+        "Global ecosystem and productivity embedding are less universal than Microsoft, Google, or AWS outside core markets"
+      ],
+      "local_deployment_note": "Alibaba has both managed-cloud and deploy-anywhere posture: Model Studio and PAI services anchor the hosted control plane, while open-weight Qwen models and container/Kubernetes tooling can extend to customer-managed NVIDIA GPU environments for sovereign, offline, or regional data-residency needs.",
+      "executive_summary": "Alibaba is the strongest China-origin full-stack AI platform vendor and a credible global peer where cloud platform, open-model flexibility, and regional ecosystem reach matter. Alibaba Cloud provides the infrastructure and data services; the Qwen family gives it one of the broadest open and commercial model portfolios; Model Studio, PAI, and agent tooling provide the platform layer. The pitch is vertical integration with unusually strong open-model gravity and APAC enterprise relevance; the watchout is that enterprise fit, regulatory posture, and channel strength vary materially outside its strongest markets.",
+      "dimension_narratives": {
+        "CMP": {
+          "summary": "Alibaba Cloud offers a real AI infrastructure stack: GPU-backed cloud capacity, AI-optimized platform services, and selective first-party silicon such as Hanguang for inference acceleration. It is strongest where enterprises want hyperscale AI infrastructure combined with regional deployment flexibility.",
+          "key_capabilities": [
+            "Alibaba Cloud GPU instance portfolio for AI training and inference",
+            "PAI-EAS and cloud-native AI serving infrastructure",
+            "Selective first-party acceleration such as Hanguang for targeted workloads"
+          ],
+          "evidence": [
+            "Alibaba Cloud AI infrastructure and PAI platform portfolio",
+            "Qwen-hosting and model-serving services on Alibaba Cloud"
+          ]
+        },
+        "FMD": {
+          "summary": "The Qwen family gives Alibaba one of the broadest model portfolios in the market across general-purpose, coding, multimodal, and open-weight variants. Its greatest strategic differentiator is that it combines frontier-model ambition with practical open-model portability.",
+          "key_capabilities": [
+            "Qwen flagship model family across quality/cost tiers",
+            "Strong coding and multimodal variants",
+            "Open-weight distribution path for enterprise portability and local deployment"
+          ],
+          "evidence": [
+            "Qwen releases across API-hosted and open-weight channels",
+            "Broad developer adoption of Qwen in open-model ecosystems"
+          ]
+        },
+        "PLT": {
+          "summary": "Alibaba's platform layer centers on Model Studio, PAI, and Bailian-style agent tooling. The strongest story is not just model access but the combination of model catalog, orchestration, enterprise APIs, and cloud data/runtime services under one provider.",
+          "key_capabilities": [
+            "Alibaba Cloud Model Studio as model and API control plane",
+            "PAI services for training, serving, and lifecycle operations",
+            "Agent tooling and orchestration patterns on top of Qwen and cloud services"
+          ],
+          "evidence": [
+            "Alibaba Cloud Model Studio product surface",
+            "PAI platform positioning for model build/serve workflows"
+          ]
+        },
+        "ENT": {
+          "summary": "Alibaba is strongest in enterprise distribution where Alibaba Cloud, DingTalk, regional channel reach, and sector-specific solutions matter. For multinationals, fit depends more heavily on geography, procurement comfort, and operating-model alignment than with Microsoft or AWS.",
+          "key_capabilities": [
+            "DingTalk and enterprise workflow embedding",
+            "Alibaba Cloud enterprise channel and regional partner strength",
+            "Industry solutions for digital commerce, operations, and service workflows"
+          ],
+          "evidence": [
+            "Alibaba Cloud enterprise and public-sector market presence in APAC",
+            "DingTalk enterprise platform adoption"
+          ]
+        },
+        "SAF": {
+          "summary": "Alibaba's safety and governance posture is most practical at the cloud platform level: model governance, content and risk controls, tenancy, auditability, and operational compliance features tied to Alibaba Cloud services. The enterprise question is less whether controls exist and more how well they align with each buyer's jurisdictional and regulatory environment.",
+          "key_capabilities": [
+            "Model Studio governance and guardrail controls",
+            "Cloud-native IAM, logging, and security services",
+            "Content safety and risk controls for generative AI workloads"
+          ],
+          "evidence": [
+            "Alibaba Cloud security and compliance portfolio",
+            "Model governance and generative AI control features in platform documentation"
+          ]
+        },
+        "ECO": {
+          "summary": "Alibaba's ecosystem strength comes from Qwen's open-model adoption, developer momentum, and strong platform relevance in APAC and adjacent markets. It is not the broadest global SI/channel ecosystem in the set, but it has unusually strong co-build potential where enterprises want open-model leverage without abandoning managed cloud services.",
+          "key_capabilities": [
+            "Qwen open-model ecosystem momentum",
+            "Regional partner and developer ecosystem anchored on Alibaba Cloud",
+            "Co-build potential around open models plus managed platform services"
+          ],
+          "evidence": [
+            "Qwen open-source and community adoption",
+            "Alibaba Cloud ecosystem programs and marketplace activity"
+          ]
+        }
+      },
+      "components": [
+        {
+          "id": "alibaba-cloud-gpu",
+          "name": "Alibaba Cloud GPU Instances",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "nvidia-h100",
+            "alibaba-model-studio",
+            "alibaba-pai-eas"
+          ]
+        },
+        {
+          "id": "alibaba-hanguang",
+          "name": "Hanguang 800 AI Accelerator",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "alibaba-pai-eas"
+          ]
+        },
+        {
+          "id": "alibaba-pai-eas",
+          "name": "PAI-EAS Inference Service",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "alibaba-model-studio",
+            "alibaba-qwen-max",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "alibaba-ack-ai",
+          "name": "Alibaba Cloud ACK AI",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "alibaba-bailian-agent-studio",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "alibaba-qwen-max",
+          "name": "Qwen Max",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "alibaba-model-studio",
+            "alibaba-quark-ai"
+          ]
+        },
+        {
+          "id": "alibaba-qwen-plus",
+          "name": "Qwen Plus",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "alibaba-model-studio"
+          ]
+        },
+        {
+          "id": "alibaba-qwen-coder",
+          "name": "Qwen Coder",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "alibaba-model-studio",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "alibaba-qwen-vl",
+          "name": "Qwen-VL",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "alibaba-model-studio",
+            "nvidia-vllm"
+          ]
+        },
+        {
+          "id": "alibaba-model-studio",
+          "name": "Alibaba Cloud Model Studio",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "alibaba-qwen-max",
+            "alibaba-qwen-plus",
+            "alibaba-opensearch-rag"
+          ]
+        },
+        {
+          "id": "alibaba-bailian-agent-studio",
+          "name": "Bailian Agent Studio",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "alibaba-model-studio",
+            "alibaba-qwen-max",
+            "alibaba-dingtalk-ai"
+          ]
+        },
+        {
+          "id": "alibaba-opensearch-rag",
+          "name": "Alibaba Cloud OpenSearch (RAG)",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "alibaba-model-studio",
+            "alibaba-analyticdb"
+          ]
+        },
+        {
+          "id": "alibaba-analyticdb",
+          "name": "AnalyticDB / MaxCompute",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "alibaba-opensearch-rag",
+            "alibaba-model-studio"
+          ]
+        },
+        {
+          "id": "alibaba-quark-ai",
+          "name": "Quark AI",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "alibaba-qwen-max"
+          ]
+        },
+        {
+          "id": "alibaba-dingtalk-ai",
+          "name": "DingTalk AI Assistant",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "alibaba-bailian-agent-studio",
+            "alibaba-qwen-plus"
+          ]
+        },
+        {
+          "id": "alibaba-content-safety",
+          "name": "Alibaba Cloud Content Safety",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "alibaba-model-studio"
+          ]
+        },
+        {
+          "id": "alibaba-model-governance",
+          "name": "Model Studio Guardrails & Governance",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "alibaba-model-studio",
+            "alibaba-bailian-agent-studio"
+          ]
+        }
+      ],
+      "strategic_pairings": [
+        {
+          "partner": "NVIDIA",
+          "rationale": "Natural fit for global GPU acceleration, local/hybrid Qwen deployment, and portable inference patterns outside Alibaba-hosted environments.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "Amazon",
+          "rationale": "Similar cloud-plus-model-marketplace posture makes Amazon a natural comparison point and occasional multi-cloud complement for regional resilience.",
+          "fit_score": "Moderate"
+        },
+        {
+          "partner": "Google",
+          "rationale": "Competitive at the cloud and model layer, but both appeal where data platform plus model platform integration matters.",
+          "fit_score": "Moderate"
+        },
+        {
+          "partner": "Microsoft",
+          "rationale": "Competitive in enterprise control plane and productivity embedding; strongest direct overlap is in platform standardization decisions.",
+          "fit_score": "Weak"
+        }
+      ]
+    },
+    "google": {
+      "vendor": "Google",
+      "primary_roles": [
+        "Model + cloud integrated platform",
+        "Data/AI platform convergence provider"
+      ],
+      "strongest_layers": [
+        "L2",
+        "L3",
+        "L4",
+        "L5"
+      ],
+      "typical_buying_reason": "Strong model capability plus data platform integration and developer tooling.",
+      "watchouts": [
+        "Enterprise standardization patterns may require stronger central architecture governance"
+      ],
+      "local_deployment_note": "Google's clearest local path is Gemma and on-device Gemini paired with NVIDIA GPU-backed local runtimes, while Vertex remains the primary control plane for cloud-managed Gemini services.",
+      "executive_summary": "Google is the most vertically integrated AI platform vendor: its own frontier models (Gemini), its own AI silicon (TPU v5p/v6e/Trillium), its own cloud (GCP), its own data platform (BigQuery), and a productivity surface (Workspace + Gemini). Vertex AI is the platform glue, while Gemini Enterprise / Agentspace forms the employee-facing agent front door over Agent Studio, ADK, agent runtime, memory, governance, model garden, grounding/RAG, and Google Cloud infrastructure. The pitch is 'one platform from data to model to app'; the watchout is that customers outside GCP often see Google's enterprise channel as less mature than Microsoft's or Amazon's. Gemini model quality and the data-platform-to-AI pipeline are decisive differentiators when they land.",
+      "dimension_narratives": {
+        "CMP": {
+          "summary": "Google operates the only credible non-NVIDIA training silicon at scale (TPU). TPU v5p and Trillium handle Google's own model training and are increasingly available to external customers via Vertex.",
+          "key_capabilities": [
+            "TPU v5p and Trillium (v6e) training/inference silicon",
+            "NVIDIA H100/H200/Blackwell co-offering",
+            "Hypercomputer architecture"
+          ],
+          "evidence": [
+            "Trillium GA on GCP",
+            "Gemini trained end-to-end on TPU"
+          ]
+        },
+        "FMD": {
+          "summary": "Gemini 2.x family (Ultra/Pro/Flash/Nano) covers frontier-to-edge. Strong on multimodal (native vision/audio/video), long context (1M+ tokens), and agentic capabilities. Imagen and Veo cover generative media.",
+          "key_capabilities": [
+            "Gemini 2.5 Pro with 1M-token context",
+            "Native multimodal (text/image/audio/video)",
+            "Imagen 3 and Veo 2 generative media"
+          ],
+          "evidence": [
+            "Gemini 2.5 release notes",
+            "Vertex multimodal benchmarks"
+          ]
+        },
+        "PLT": {
+          "summary": "Vertex AI and Gemini Enterprise form a layered agent platform: Gemini Enterprise / Agentspace is the employee front door; Agent Studio and ADK support low-code and code-first build paths; Agent Runtime handles execution and scaling; memory, governance, evaluations, and grounding connect agents to enterprise data.",
+          "key_capabilities": [
+            "Vertex Model Garden multi-vendor catalog",
+            "Gemini Enterprise / Agentspace front door",
+            "Agent Studio, ADK, Agent Runtime, and Memory Bank",
+            "Grounding with BigQuery, Vertex AI Search / Vector Search, and Google Search"
+          ],
+          "evidence": [
+            "Vertex AI Agent Builder GA",
+            "Agentspace / Gemini Enterprise agent platform launch",
+            "ADK and agent runtime announcements"
+          ]
+        },
+        "ENT": {
+          "summary": "Gemini Enterprise and Workspace put AI into employee workflows across apps, Workspace, and IDEs. BigQuery, Vertex AI Search / Vector Search, and Google Search grounding make Google's enterprise story unusually data-native, with Gemini Enterprise acting as the front door for agents and knowledge work.",
+          "key_capabilities": [
+            "Gemini Enterprise as employee-facing agent entry point",
+            "Gemini in Workspace (Gmail/Docs/Sheets/Meet)",
+            "BigQuery + Gemini grounding",
+            "Gemini Code Assist in IDEs"
+          ],
+          "evidence": [
+            "Gemini for Workspace SKU",
+            "Gemini Enterprise / Agentspace launch",
+            "BigQuery ML, Vertex AI Search, and Gemini grounding integration"
+          ]
+        },
+        "SAF": {
+          "summary": "Vertex AI Safety, Model Armor, Secure AI Framework (SAIF), IAM/security controls, and agent governance policies form the safety stack. Strong technical safety research lineage (DeepMind); enterprise controls are increasingly tied to Gemini Enterprise identity, policy, and runtime governance.",
+          "key_capabilities": [
+            "Vertex AI Model Armor (LLM firewall)",
+            "IAM/security and agent governance controls",
+            "SAIF (Secure AI Framework)",
+            "Responsible AI Toolkit"
+          ],
+          "evidence": [
+            "Model Armor GA",
+            "SAIF publication"
+          ]
+        },
+        "ECO": {
+          "summary": "Vertex Model Garden hosts Anthropic, Meta, Mistral, and open models alongside Gemini. ADK and A2A protocol are open contributions; TensorFlow and JAX remain influential open-source.",
+          "key_capabilities": [
+            "Multi-vendor Model Garden",
+            "Agent Development Kit (ADK) open-source",
+            "A2A agent-to-agent protocol"
+          ],
+          "evidence": [
+            "ADK GitHub release",
+            "A2A protocol announcement"
+          ]
+        }
+      },
+      "components": [
+        {
+          "id": "gcp-vertex",
+          "name": "Google Vertex AI",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "google-gemini-25",
+            "anthropic-claude-sonnet",
+            "meta-llama",
+            "mistral-large"
+          ]
+        },
+        {
+          "id": "gcp-agent-builder",
+          "name": "Vertex Agent Builder",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-adk"
+          ]
+        },
+        {
+          "id": "google-gemini-25",
+          "name": "Gemini 2.5 Pro",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-workspace-gemini"
+          ]
+        },
+        {
+          "id": "google-gemini-flash",
+          "name": "Gemini 2.5 Flash",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-tpu-v5p",
+          "name": "TPU v5p",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-tpu-trillium",
+          "name": "TPU Trillium (v6e)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-bigquery",
+          "name": "BigQuery",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-gemini-25"
+          ]
+        },
+        {
+          "id": "google-workspace-gemini",
+          "name": "Gemini for Workspace",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "google-gemini-25"
+          ]
+        },
+        {
+          "id": "google-gemini-enterprise",
+          "name": "Gemini Enterprise",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "google-agentspace",
+            "google-workspace-gemini",
+            "google-gemini-code-assist",
+            "google-agent-studio",
+            "google-iam-agent-governance"
+          ]
+        },
+        {
+          "id": "google-adk",
+          "name": "Agent Development Kit",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "gcp-agent-builder"
+          ]
+        },
+        {
+          "id": "google-agent-studio",
+          "name": "Agent Studio",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "google-gemini-enterprise",
+            "google-adk",
+            "google-agent-runtime",
+            "google-memory-bank",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-agent-runtime",
+          "name": "Agent Runtime",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "google-agent-studio",
+            "gcp-vertex",
+            "google-gke-ai",
+            "google-cloud-run-gpu",
+            "google-iam-agent-governance"
+          ]
+        },
+        {
+          "id": "google-memory-bank",
+          "name": "Memory Bank",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "google-agent-studio",
+            "google-agent-runtime",
+            "google-vector-search-rag",
+            "google-bigquery"
+          ]
+        },
+        {
+          "id": "google-vector-search-rag",
+          "name": "Vertex AI Search / Vector Search (RAG)",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-bigquery",
+            "google-vertex-grounding",
+            "google-memory-bank"
+          ]
+        },
+        {
+          "id": "google-model-armor",
+          "name": "Vertex Model Armor",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-iam-agent-governance",
+          "name": "IAM Security + Agent Governance",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "google-gemini-enterprise",
+            "google-agent-runtime",
+            "gcp-vertex",
+            "google-model-armor"
+          ]
+        },
+        {
+          "id": "google-gemini-3-pro",
+          "name": "Gemini 3.0 Pro",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-ai-studio"
+          ]
+        },
+        {
+          "id": "google-gemini-3-flash",
+          "name": "Gemini 3.0 Flash",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-ai-studio"
+          ]
+        },
+        {
+          "id": "google-gemini-3-ultra",
+          "name": "Gemini 3.0 Ultra",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-gemini-flash-lite",
+          "name": "Gemini Flash Lite",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-ai-studio"
+          ]
+        },
+        {
+          "id": "google-gemini-nano",
+          "name": "Gemini Nano (on-device)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "google-android-ai",
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "google-gemma-3",
+          "name": "Gemma 3 (open)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "google-imagen-4",
+          "name": "Imagen 4",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-veo-3",
+          "name": "Veo 3 (video)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-lyria-2",
+          "name": "Lyria 2 (music)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-chirp-3",
+          "name": "Chirp 3 (speech)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-tpu-ironwood",
+          "name": "TPU v7 Ironwood",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "google-axion",
+          "name": "Google Axion (Arm)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "google-a3-ultra",
+          "name": "A3 Ultra (NVIDIA H200)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "google-ai-studio",
+          "name": "Google AI Studio",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": []
+        },
+        {
+          "id": "google-gemini-api",
+          "name": "Gemini API",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "google-ai-studio"
+          ]
+        },
+        {
+          "id": "google-agentspace",
+          "name": "Google Agentspace",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-vertex-grounding",
+          "name": "Vertex Grounding (Search/Maps)",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-vertex-eval",
+          "name": "Vertex Gen AI Evaluation",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-notebooklm",
+          "name": "NotebookLM",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "google-gemini-app",
+          "name": "Gemini App",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "google-gemini-3-pro"
+          ]
+        },
+        {
+          "id": "google-gemini-code-assist",
+          "name": "Gemini Code Assist",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "google-android-ai",
+          "name": "Android AICore",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "google-project-mariner",
+          "name": "Project Mariner",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "google-gemini-3-pro"
+          ]
+        },
+        {
+          "id": "google-secure-ai-framework",
+          "name": "Secure AI Framework (SAIF)",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "google-shieldgemma",
+          "name": "ShieldGemma",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "google-gemini-25-computer-use",
+          "name": "Gemini 2.5 Computer Use",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-gemini-api"
+          ]
+        },
+        {
+          "id": "google-gemini-robotics-er",
+          "name": "Gemini Robotics-ER",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-gemma-3n",
+          "name": "Gemma 3n (on-device)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "google-imagen-4-ultra",
+          "name": "Imagen 4 Ultra",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-imagen-4-fast",
+          "name": "Imagen 4 Fast",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-veo-31",
+          "name": "Veo 3.1 (video)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-text-embed-005",
+          "name": "Text Embedding 005",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-gke-ai",
+          "name": "GKE (AI Workloads)",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "gcp-vertex",
+            "nvidia-h100-local",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "google-vertex-training",
+          "name": "Vertex AI Training",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "google-vertex-pipelines",
+          "name": "Vertex AI Pipelines",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-agent-runtime"
+          ]
+        },
+        {
+          "id": "google-cloud-run-gpu",
+          "name": "Cloud Run (GPU)",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "google-jules",
+          "name": "Jules (Coding Agent)",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "google-gemini-api"
+          ]
+        },
+        {
+          "id": "google-project-astra",
+          "name": "Project Astra",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "google-gemini-app"
+          ]
+        },
+        {
+          "id": "google-ai-mode-search",
+          "name": "AI Mode in Search",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "google-gemini-app"
+          ]
+        },
+        {
+          "id": "google-deep-research",
+          "name": "Gemini Deep Research",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "google-gemini-app"
+          ]
+        },
+        {
+          "id": "google-gemini-35-pro",
+          "name": "Gemini 3.5 Pro",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-gemini-api"
+          ]
+        },
+        {
+          "id": "google-gemini-35-flash",
+          "name": "Gemini 3.5 Flash",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "gcp-vertex",
+            "google-gemini-api"
+          ]
+        }
+      ],
+      "strategic_pairings": [
+        {
+          "partner": "NVIDIA",
+          "rationale": "GCP H100/H200/Blackwell is co-offered with TPU, and Gemma/GKE patterns extend naturally into NVIDIA-backed local runtimes.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "Anthropic",
+          "rationale": "Claude available on Vertex; competitive at the model layer but partner at distribution.",
+          "fit_score": "Moderate"
+        },
+        {
+          "partner": "Microsoft",
+          "rationale": "Competitive across cloud, model, and productivity layers.",
+          "fit_score": "Weak"
+        }
+      ]
+    },
+    "nvidia": {
+      "vendor": "NVIDIA",
+      "primary_roles": [
+        "AI compute substrate leader",
+        "Ecosystem-defining acceleration platform"
+      ],
+      "strongest_layers": [
+        "L1",
+        "L2",
+        "L4"
+      ],
+      "typical_buying_reason": "Performance and ecosystem gravity for demanding training/inference workloads.",
+      "watchouts": [
+        "Not a full enterprise business-application or control-plane provider",
+        "Requires pairing for broad enterprise distribution layer"
+      ],
+      "local_deployment_note": "NVIDIA is the explicit local/on-prem reference architecture in this framework: H100-class local hardware plus vLLM, Triton, MLflow, and Docker Compose represent the cross-vendor local stack.",
+      "executive_summary": "NVIDIA is the gravitational center of AI compute. H100, H200, B100/B200 Blackwell, and the GB200 NVL72 rack-scale system define what 'AI infrastructure' means for the rest of the industry. CUDA, cuDNN, TensorRT-LLM, NeMo, and the NIM microservice runtime form the most mature acceleration software stack. AI Enterprise and DGX Cloud extend NVIDIA upward into platform layers, but NVIDIA is not an enterprise business-application vendor — every customer pairs NVIDIA with at least one hyperscaler and at least one model provider.",
+      "dimension_narratives": {
+        "CMP": {
+          "summary": "Definitional. H100/H200/B200/GB200, NVLink, and InfiniBand are the de facto stack for frontier training and high-throughput inference. The competition (TPU, Trainium, Maia) is real but partial.",
+          "key_capabilities": [
+            "Hopper (H100/H200) and Blackwell (B100/B200/GB200) GPUs",
+            "NVLink and NVSwitch interconnect",
+            "Grace CPU + Grace-Hopper superchips"
+          ],
+          "evidence": [
+            "GB200 NVL72 deployments at hyperscalers",
+            "Blackwell GA"
+          ]
+        },
+        "FMD": {
+          "summary": "NVIDIA does not field a competing frontier model. NeMo and Nemotron are research/customization platforms; the focus is enabling other vendors' models to run optimally on NVIDIA silicon.",
+          "key_capabilities": [
+            "Nemotron model family (open)",
+            "NeMo for custom model development",
+            "TensorRT-LLM inference optimization"
+          ],
+          "evidence": [
+            "Nemotron-4 open release",
+            "TensorRT-LLM repo"
+          ]
+        },
+        "PLT": {
+          "summary": "AI Enterprise software suite plus NIM (NVIDIA Inference Microservices) packages models as deployable containers. Triton serves models at scale. NeMo handles fine-tuning and RAG.",
+          "key_capabilities": [
+            "NVIDIA NIM microservices catalog",
+            "NeMo Curator/Retriever/Guardrails",
+            "Triton Inference Server"
+          ],
+          "evidence": [
+            "NIM API catalog",
+            "AI Enterprise GA"
+          ]
+        },
+        "ENT": {
+          "summary": "Enterprise distribution is partner-mediated. NVIDIA AI Enterprise runs on every major cloud, on-prem on certified OEM systems, and is the foundation for partner platforms (Azure, AWS, GCP, OCI).",
+          "key_capabilities": [
+            "AI Enterprise on Azure/AWS/GCP/OCI",
+            "DGX Cloud (managed)",
+            "OEM-certified on-prem systems (Dell, HPE, Lenovo)"
+          ],
+          "evidence": [
+            "DGX Cloud launch partners",
+            "AI Enterprise marketplace listings"
+          ]
+        },
+        "SAF": {
+          "summary": "NeMo Guardrails provides programmable safety rails for any model; AI Foundry approach emphasizes customer-controlled safety. Less brand around alignment research than Anthropic.",
+          "key_capabilities": [
+            "NeMo Guardrails (open-source)",
+            "NIM trust and safety policies",
+            "AI Workbench evaluation tooling"
+          ],
+          "evidence": [
+            "NeMo Guardrails GitHub",
+            "NIM safety reference architectures"
+          ]
+        },
+        "ECO": {
+          "summary": "Largest AI developer ecosystem in the world. CUDA, cuDNN, RAPIDS, Omniverse, and the partner network (model vendors, cloud vendors, OEMs, ISVs) form an unmatched gravitational field.",
+          "key_capabilities": [
+            "CUDA developer ecosystem",
+            "NIM catalog of partner models",
+            "Inception program for AI startups"
+          ],
+          "evidence": [
+            "CUDA install base",
+            "NGC catalog scale"
+          ]
+        }
+      },
+      "components": [
+        {
+          "id": "nvidia-h100",
+          "name": "NVIDIA H100",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "azure-ndh200",
+            "aws-sagemaker",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "nvidia-h200",
+          "name": "NVIDIA H200",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "azure-ndh200",
+            "aws-sagemaker",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "nvidia-b200",
+          "name": "NVIDIA Blackwell B200",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "nvidia-gb200"
+          ]
+        },
+        {
+          "id": "nvidia-gb200",
+          "name": "GB200 NVL72",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": [
+            "azure-openai",
+            "aws-bedrock",
+            "gcp-vertex"
+          ]
+        },
+        {
+          "id": "nvidia-ai-enterprise",
+          "name": "NVIDIA AI Enterprise",
+          "layer": "L2",
+          "type": "agent-platform",
+          "integrates_with": [
+            "nvidia-nim",
+            "nvidia-nemo"
+          ]
+        },
+        {
+          "id": "nvidia-nim",
+          "name": "NVIDIA NIM Microservices",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "nvidia-ai-enterprise"
+          ]
+        },
+        {
+          "id": "nvidia-nemo",
+          "name": "NVIDIA NeMo Framework",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "nvidia-ai-enterprise"
+          ]
+        },
+        {
+          "id": "nvidia-dgx-cloud",
+          "name": "NVIDIA DGX Cloud",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": [
+            "nvidia-h200",
+            "nvidia-gb200"
+          ]
+        },
+        {
+          "id": "nvidia-guardrails",
+          "name": "NeMo Guardrails",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": [
+            "nvidia-nemo"
+          ]
+        },
+        {
+          "id": "nvidia-rubin",
+          "name": "NVIDIA Rubin (R100)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-blackwell-ultra",
+          "name": "Blackwell Ultra (B300)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-gh200",
+          "name": "Grace Hopper GH200",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-gb300-nvl72",
+          "name": "GB300 NVL72",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-spectrum-x",
+          "name": "Spectrum-X Ethernet",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-quantum-x",
+          "name": "Quantum-X InfiniBand",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-bluefield-3",
+          "name": "BlueField-3 DPU",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-cuda",
+          "name": "CUDA Platform",
+          "layer": "L2",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-tensorrt-llm",
+          "name": "TensorRT-LLM",
+          "layer": "L2",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-triton",
+          "name": "Triton Inference Server",
+          "layer": "L2",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-nemotron",
+          "name": "Nemotron Model Family",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-cosmos",
+          "name": "NVIDIA Cosmos (World Models)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-edify",
+          "name": "Picasso / Edify",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-riva",
+          "name": "Riva (Speech)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-ai-workbench",
+          "name": "AI Workbench",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-nemo-retriever",
+          "name": "NeMo Retriever",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-nemo-curator",
+          "name": "NeMo Curator",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-blueprints",
+          "name": "NVIDIA AI Blueprints",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-omniverse",
+          "name": "Omniverse",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-rapids",
+          "name": "RAPIDS",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-dgx-spark",
+          "name": "DGX Spark",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-dgx-station",
+          "name": "DGX Station",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-llama-nemotron-ultra",
+          "name": "Llama Nemotron Ultra",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-llama-nemotron-super",
+          "name": "Llama Nemotron Super",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-llama-nemotron-nano",
+          "name": "Llama Nemotron Nano",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-cosmos-reason",
+          "name": "Cosmos Reason",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-cosmos-predict",
+          "name": "Cosmos Predict",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-cosmos-transfer",
+          "name": "Cosmos Transfer",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-nemo-megatron",
+          "name": "NeMo Megatron",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-nemo"
+          ]
+        },
+        {
+          "id": "nvidia-vera-rubin",
+          "name": "Vera Rubin Superchip",
+          "layer": "L1",
+          "type": "silicon",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-rubin-ultra",
+          "name": "Rubin Ultra",
+          "layer": "L1",
+          "type": "silicon",
+          "integrates_with": []
+        },
+        {
+          "id": "nvidia-nemo-agent-toolkit",
+          "name": "NeMo Agent Toolkit",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "nvidia-nemo"
+          ]
+        },
+        {
+          "id": "nvidia-nim-agent-bp",
+          "name": "NIM Agent Blueprints",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "nvidia-nim"
+          ]
+        },
+        {
+          "id": "nvidia-h100-local",
+          "name": "NVIDIA H100 (Local)",
+          "layer": "L1",
+          "type": "silicon",
+          "integrates_with": [
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "nvidia-vllm",
+          "name": "vLLM Server (Local)",
+          "layer": "L2",
+          "type": "runtime",
+          "integrates_with": [
+            "nvidia-h100-local",
+            "nvidia-docker-compose-local",
+            "nvidia-mlflow-local"
+          ]
+        },
+        {
+          "id": "nvidia-triton-local",
+          "name": "NVIDIA Triton Inference Server (Local)",
+          "layer": "L2",
+          "type": "runtime",
+          "integrates_with": [
+            "nvidia-h100-local",
+            "nvidia-docker-compose-local",
+            "nvidia-mlflow-local"
+          ]
+        },
+        {
+          "id": "nvidia-mlflow-local",
+          "name": "MLflow (Local)",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "nvidia-docker-compose-local",
+          "name": "Docker Compose (Local)",
+          "layer": "L4",
+          "type": "orchestration",
+          "integrates_with": [
+            "nvidia-vllm",
+            "nvidia-triton-local",
+            "nvidia-mlflow-local"
+          ]
+        }
+      ],
+      "strategic_pairings": [
+        {
+          "partner": "Microsoft",
+          "rationale": "Largest enterprise NVIDIA buyer; co-design on Azure ND-series.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "Amazon",
+          "rationale": "Full NVIDIA EC2 P5 lineup; coexists with Trainium for cost optionality.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "Google",
+          "rationale": "GCP H100/H200/Blackwell co-offered with TPU.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "OpenAI",
+          "rationale": "Dominant training and inference substrate for GPT models.",
+          "fit_score": "Strong"
+        }
+      ]
+    },
+    "openai": {
+      "vendor": "OpenAI",
+      "primary_roles": [
+        "Frontier model provider",
+        "AI application API platform"
+      ],
+      "strongest_layers": [
+        "L3",
+        "L4"
+      ],
+      "typical_buying_reason": "Strong frontier model performance and rapid capability rollout.",
+      "watchouts": [
+        "Enterprise operating model may depend on partner ecosystems for broader stack layers",
+        "Portability and governance architecture should be planned early"
+      ],
+      "local_deployment_note": "OpenAI remains mostly cloud/API delivered, but the open-weight gpt-oss path gives enterprises a local NVIDIA GPU option for regulated, offline, or data-gravity workloads beside flagship GPT services.",
+      "executive_summary": "OpenAI is the frontier model brand and the consumer AI category leader. GPT-4o, GPT-5, o-series reasoning models, Sora (video), and the Assistants/Responses APIs anchor the platform; ChatGPT Enterprise gives a direct distribution surface. The strategic relationship with Microsoft remains decisive for enterprise reach, while direct API consumption continues to grow. The watchouts are governance maturity, control-plane breadth (compared to AWS/Azure/GCP), and the dependency posture that comes from committing to a single frontier vendor.",
+      "dimension_narratives": {
+        "CMP": {
+          "summary": "OpenAI does not operate compute. Training and inference run primarily on Microsoft Azure (NVIDIA H100/H200/Blackwell), with reported additional capacity arrangements as scale expands.",
+          "key_capabilities": [
+            "Strategic Azure compute partnership",
+            "Reported custom silicon co-design exploration"
+          ],
+          "evidence": [
+            "Azure-OpenAI capacity announcements",
+            "Reported Broadcom/TSMC silicon collaboration"
+          ]
+        },
+        "FMD": {
+          "summary": "GPT-5 and the o-series reasoning models lead general-purpose frontier benchmarks. GPT-4o handles multimodal; Sora handles generative video. Pace of release remains the strongest moat.",
+          "key_capabilities": [
+            "GPT-5 and o3/o4 reasoning models",
+            "GPT-4o native multimodal",
+            "Sora video generation"
+          ],
+          "evidence": [
+            "GPT-5 release",
+            "o-series reasoning benchmark leadership"
+          ]
+        },
+        "PLT": {
+          "summary": "Responses API, Assistants, Realtime, Custom GPTs, and the Agent SDK provide a focused developer platform. Less full-lifecycle MLOps than Vertex/Bedrock/Foundry; deeper agent primitives.",
+          "key_capabilities": [
+            "Responses API and Assistants",
+            "Realtime API for voice agents",
+            "Agent SDK and Operator (computer use)"
+          ],
+          "evidence": [
+            "Responses API GA",
+            "Operator launch"
+          ]
+        },
+        "ENT": {
+          "summary": "ChatGPT Enterprise and ChatGPT Business deliver a direct enterprise surface, supplemented by Azure OpenAI for customers wanting Microsoft's governance perimeter. Strong end-user product gravity.",
+          "key_capabilities": [
+            "ChatGPT Enterprise and Business SKUs",
+            "Custom GPTs and GPT Store",
+            "Azure OpenAI partner distribution"
+          ],
+          "evidence": [
+            "ChatGPT Enterprise seat counts",
+            "Custom GPTs for Enterprise"
+          ]
+        },
+        "SAF": {
+          "summary": "Preparedness Framework, model spec, and external red teaming form OpenAI's published safety posture. Enterprise controls (DLP, retention, audit) are present but less mature than Microsoft's wrapper.",
+          "key_capabilities": [
+            "Preparedness Framework with capability tiers",
+            "Model Spec",
+            "Enterprise data controls (no training, audit logs)"
+          ],
+          "evidence": [
+            "Preparedness Framework publication",
+            "Model Spec v2"
+          ]
+        },
+        "ECO": {
+          "summary": "OpenAI is partially open: many models are closed, but the platform supports MCP, has open SDKs, and the GPT Store creates a marketplace. Less open-source than Meta/Mistral but more than fully proprietary players.",
+          "key_capabilities": [
+            "MCP support in Responses API",
+            "Open SDKs (Python/Node/.NET)",
+            "GPT Store marketplace"
+          ],
+          "evidence": [
+            "MCP integration in Responses API",
+            "Open SDK repos"
+          ]
+        }
+      },
+      "components": [
+        {
+          "id": "openai-gpt5",
+          "name": "GPT-5",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api",
+            "azure-openai",
+            "github-copilot"
+          ]
+        },
+        {
+          "id": "openai-gpt4",
+          "name": "GPT-4o",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api",
+            "azure-openai"
+          ]
+        },
+        {
+          "id": "openai-o3",
+          "name": "o3 Reasoning Model",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api",
+            "azure-openai"
+          ]
+        },
+        {
+          "id": "openai-sora",
+          "name": "Sora",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-api",
+          "name": "OpenAI Platform API",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "openai-gpt5",
+            "openai-gpt4",
+            "anthropic-mcp"
+          ]
+        },
+        {
+          "id": "openai-assistants",
+          "name": "Assistants + Responses API",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-operator",
+          "name": "Operator (Computer Use)",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-chatgpt-ent",
+          "name": "ChatGPT Enterprise",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-gpt5",
+            "openai-gpt4"
+          ]
+        },
+        {
+          "id": "openai-preparedness",
+          "name": "Preparedness Framework",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "openai-gpt5-mini",
+          "name": "GPT-5 mini",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-gpt5-nano",
+          "name": "GPT-5 nano",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-gpt41",
+          "name": "GPT-4.1",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-o4-mini",
+          "name": "o4-mini",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-o1",
+          "name": "o1",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-dalle-3",
+          "name": "DALL·E 3",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-gpt-image-1",
+          "name": "GPT-Image-1",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-whisper",
+          "name": "Whisper",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-embeddings-3",
+          "name": "text-embedding-3",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-realtime-api",
+          "name": "Realtime API",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-agents-sdk",
+          "name": "OpenAI Agents SDK",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-fine-tune",
+          "name": "Fine-tuning API",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-evals",
+          "name": "Evals",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-codex",
+          "name": "Codex (SWE Agent)",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-chatgpt",
+          "name": "ChatGPT",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-gpt5"
+          ]
+        },
+        {
+          "id": "openai-chatgpt-edu",
+          "name": "ChatGPT Edu",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-chatgpt"
+          ]
+        },
+        {
+          "id": "openai-chatgpt-team",
+          "name": "ChatGPT Team",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-chatgpt"
+          ]
+        },
+        {
+          "id": "openai-gpt-store",
+          "name": "GPT Store",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-chatgpt"
+          ]
+        },
+        {
+          "id": "openai-stargate",
+          "name": "Stargate (Compute Program)",
+          "layer": "L1",
+          "type": "infra",
+          "integrates_with": []
+        },
+        {
+          "id": "openai-usage-policies",
+          "name": "Usage Policies",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "openai-safety-evals",
+          "name": "Safety Evaluations Hub",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "openai-gpt5-pro",
+          "name": "GPT-5 Pro",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-gpt5-codex",
+          "name": "GPT-5 Codex",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-sora-2",
+          "name": "Sora 2",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-o3-pro",
+          "name": "o3 Pro",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-gpt-oss",
+          "name": "gpt-oss (open weight)",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "nvidia-vllm",
+            "nvidia-triton-local"
+          ]
+        },
+        {
+          "id": "openai-gpt-realtime",
+          "name": "gpt-realtime",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-realtime-api"
+          ]
+        },
+        {
+          "id": "openai-apps-sdk",
+          "name": "Apps SDK",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-agentkit",
+          "name": "AgentKit",
+          "layer": "L4",
+          "type": "agent-platform",
+          "integrates_with": [
+            "openai-agents-sdk"
+          ]
+        },
+        {
+          "id": "openai-chatkit",
+          "name": "ChatKit",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-mcp-connectors",
+          "name": "MCP Connectors",
+          "layer": "L4",
+          "type": "tooling",
+          "integrates_with": [
+            "openai-api"
+          ]
+        },
+        {
+          "id": "openai-chatgpt-atlas",
+          "name": "ChatGPT Atlas (Browser)",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-chatgpt"
+          ]
+        },
+        {
+          "id": "openai-chatgpt-pulse",
+          "name": "ChatGPT Pulse",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-chatgpt"
+          ]
+        },
+        {
+          "id": "openai-chatgpt-go",
+          "name": "ChatGPT Go",
+          "layer": "L5",
+          "type": "distribution",
+          "integrates_with": [
+            "openai-chatgpt"
+          ]
+        },
+        {
+          "id": "openai-model-spec",
+          "name": "Model Spec",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "openai-deliberative-align",
+          "name": "Deliberative Alignment",
+          "layer": "L6",
+          "type": "safety",
+          "integrates_with": []
+        },
+        {
+          "id": "openai-gpt-55",
+          "name": "GPT-5.5",
+          "layer": "L3",
+          "type": "foundation-model",
+          "integrates_with": [
+            "openai-api"
+          ]
+        }
+      ],
+      "strategic_pairings": [
+        {
+          "partner": "Microsoft",
+          "rationale": "Exclusive enterprise distribution via Azure OpenAI; deep capital partnership.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "NVIDIA",
+          "rationale": "Primary training and inference silicon via Azure NVIDIA capacity; local gpt-oss deployments also map naturally to NVIDIA GPU infrastructure.",
+          "fit_score": "Strong"
+        },
+        {
+          "partner": "Anthropic",
+          "rationale": "Direct frontier model competitor; no commercial partnership.",
+          "fit_score": "Weak"
+        },
+        {
+          "partner": "Amazon",
+          "rationale": "Limited direct partnership; Bedrock favors Anthropic.",
+          "fit_score": "Weak"
+        }
+      ]
+    }
+  },
+  "comparison_guidance": {
+    "how_to_use": [
+      "Score each vendor by dimension based on your enterprise context.",
+      "Separate role fit from absolute model quality.",
+      "Use strongest_layers and watchouts to design complementary multi-vendor patterns.",
+      "Reassess quarterly as platform capabilities and commercial models change."
+    ],
+    "recommended_outputs": [
+      "Role map by vendor (who owns which stack layers)",
+      "Overlap map (where direct competition exists)",
+      "Gap map (which layers need additional providers)",
+      "Target-state portfolio (single-vendor vs multi-vendor rationale)"
+    ]
+  }
+}

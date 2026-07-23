@@ -1,0 +1,998 @@
+{
+  "schema_version": "1.0.0",
+  "framework_name": "Agentic Enterprise Operations Adoption Framework",
+  "framework_abbrev": "AEOF",
+  "created": "2026-06-04",
+  "description": "A systems-level framework for designing, assessing, and evolving internal IT operations and managed service operating models from traditional queue- and escalation-centered structures to fully agentic, governed, continuously learning enterprise operations by 2030.",
+  "scope": "This framework applies to enterprise IT operations, platform operations, service management, and MSP-style delivery organizations considering or undergoing agentic transformation. It is vendor-neutral, technology-agnostic, and focused on operating model, governance architecture, workflow orchestration, and capability adoption.",
+  "principles": [
+    {
+      "id": "P1",
+      "label": "Operations as a Control System",
+      "statement": "Enterprise operations is a cybernetic control system of sensing, reasoning, action, governance, and learning, not a linear chain of tickets, hand-offs, and escalations."
+    },
+    {
+      "id": "P2",
+      "label": "Governance as an Operational Signal",
+      "statement": "Policy, authority, service commitments, and compliance requirements must shape action at execution time, not as retrospective review layers."
+    },
+    {
+      "id": "P3",
+      "label": "Bounded Autonomy",
+      "statement": "Autonomy must be scoped, explainable, auditable, reversible where possible, and continuously governable. Unbounded autonomy is an operating-model defect, not a maturity goal."
+    },
+    {
+      "id": "P4",
+      "label": "Continuous Bidirectional Operation",
+      "statement": "Observation, planning, execution, and learning operate continuously and bidirectionally. Every action updates the operational model; every new signal may change the plan."
+    },
+    {
+      "id": "P5",
+      "label": "Humans Govern Intent",
+      "statement": "Human value shifts from queue processing to intent setting, exception handling, legitimacy, customer accountability, and governance of the operating model itself."
+    },
+    {
+      "id": "P6",
+      "label": "Knowledge Graph as Operational Spine",
+      "statement": "The Operational Knowledge Graph is the system spine, connecting services, assets, dependencies, workflows, evidence, policy, authority, confidence, and outcomes as first-class entities."
+    },
+    {
+      "id": "P7",
+      "label": "Non-linear Workflow",
+      "statement": "Agentic operations does not depend on rigid tier structures. It operates through parallel hypotheses, dynamic workflow branches, dependency-aware coordination, and governed exception handling."
+    },
+    {
+      "id": "P8",
+      "label": "Traceability by Design",
+      "statement": "Every operational decision, execution step, and outcome should be traceable to its triggering signal, governing policy, authorizing scope, supporting evidence, and resulting service impact."
+    }
+  ],
+  "maturity_stages": {
+    "0": {
+      "id": 0,
+      "label": "Traditional",
+      "tag": "Queue-Centric Operations",
+      "description": "Operations centers on tickets, queues, hand-offs, and specialist silos. Monitoring, service management, and remediation are largely human-driven and reactive.",
+      "autonomy_level": "None — humans execute investigation, triage, fulfillment, and remediation steps",
+      "human_model": "Tiered service desk, infrastructure, application, and specialist teams acting as escalation endpoints",
+      "governance_model": "Policies documented separately from day-to-day execution; approvals are manual and inconsistent",
+      "operational_posture": "Reactive, alert- and ticket-driven, with limited coordination across domains",
+      "knowledge_model": "Runbooks, CMDB fragments, tribal knowledge, and siloed tool data",
+      "typical_year": "2020-2024"
+    },
+    "1": {
+      "id": 1,
+      "label": "Assisted",
+      "tag": "AI-Augmented Operations",
+      "description": "Automation and AI assist operators with triage, enrichment, routing, summarization, and playbook execution, but humans still own all meaningful decisions.",
+      "autonomy_level": "Low — automation handles known tasks under predefined playbooks; humans approve material changes",
+      "human_model": "Tiered operators supported by copilots and workflow automation",
+      "governance_model": "Basic policy codified in automation rules and approval steps",
+      "operational_posture": "More efficient but still queue-oriented; improvements focus on known scenarios",
+      "knowledge_model": "Structured runbooks, enriched tickets, partial service context, and emerging data normalization",
+      "typical_year": "2024-2025"
+    },
+    "2": {
+      "id": 2,
+      "label": "Supervised Autonomy",
+      "tag": "Agents with Approval Gates",
+      "description": "Agents execute bounded investigation, fulfillment, and remediation tasks autonomously within pre-authorized scope. Humans supervise exceptions, novel conditions, and scope changes.",
+      "autonomy_level": "Moderate — agents investigate and act within bounded authority; humans approve scope-expanding or high-impact actions",
+      "human_model": "Operators become agent supervisors, workflow owners, and exception managers",
+      "governance_model": "Authority, policy, and action boundaries begin to be machine-enforced",
+      "operational_posture": "Known operational volume is absorbed by agents; human effort shifts to oversight and service design",
+      "knowledge_model": "Operational graph prototype links services, assets, workflows, evidence, and policy",
+      "typical_year": "2025-2026"
+    },
+    "3": {
+      "id": 3,
+      "label": "Directed Autonomy",
+      "tag": "Intent-Driven Operations",
+      "description": "Humans set intent, scope, service objectives, and policy bounds. Agents reason, coordinate, and execute workflows autonomously within those constraints. Escalation becomes the exception, not the operating model.",
+      "autonomy_level": "High — agents plan and execute multi-step operational workflows within governed authority",
+      "human_model": "Post-tier roles centered on service governance, platform intent, architecture, assurance, and exception ratification",
+      "governance_model": "Machine-interpretable policy and authority govern actions in real time",
+      "operational_posture": "Cross-domain, dependency-aware, and continuously reprioritized by service state and business impact",
+      "knowledge_model": "Operational Knowledge Graph actively drives planning, prioritization, and evidence generation",
+      "typical_year": "2026-2027"
+    },
+    "4": {
+      "id": 4,
+      "label": "Collaborative Agentic",
+      "tag": "Agent-First with Human Governance",
+      "description": "Agent-first operations span observability, fulfillment, remediation, change coordination, service assurance, and continuous improvement. Humans govern legitimacy, policy, customer commitments, and edge conditions.",
+      "autonomy_level": "Very high — agents handle most execution; humans govern policy, ethics, and rare high-stakes exceptions",
+      "human_model": "Governance officers, service strategists, assurance leaders, and platform operators define the operating envelope",
+      "governance_model": "Policy, authority, and compliance operate as continuous control signals",
+      "operational_posture": "Operational threads are continuously active across incidents, changes, service requests, and reliability improvement",
+      "knowledge_model": "The operational graph is the shared substrate for coordination, learning, audit, and executive reporting",
+      "typical_year": "2027-2028"
+    },
+    "5": {
+      "id": 5,
+      "label": "Fully Agentic",
+      "tag": "Autonomous Operating System",
+      "description": "Enterprise operations functions as a self-regulating, governed operating system in which agents continuously sense, reason, act, and learn across service domains. Humans govern the governing model, strategic priorities, and constitutional boundaries.",
+      "autonomy_level": "Full — agents operate the enterprise service control system within a constitutional authority model",
+      "human_model": "Human roles focus on governance of values, service strategy, audit, trust, and operating-model evolution",
+      "governance_model": "Governance is embedded in the operating kernel; every action is policy-checked, explainable, auditable, and revocable where appropriate",
+      "operational_posture": "Predictive, pre-emptive, and continuously optimizing across service health, workflow load, and business outcomes",
+      "knowledge_model": "The Operational Knowledge Graph continuously evolves from live operations, policy changes, incidents, and improvement loops",
+      "typical_year": "2028-2030"
+    }
+  },
+  "dimensions": {
+    "OBS": {
+      "id": "OBS",
+      "name": "Observability & Operational Sensing",
+      "plane": "Sensing",
+      "description": "The capability to continuously ingest, normalize, correlate, and interpret operational signals across services, infrastructure, applications, user workflows, and managed environments.",
+      "weight": 0.1,
+      "sub_dimensions": {
+        "OBS-01": {
+          "id": "OBS-01",
+          "name": "Telemetry Coverage & Service Visibility",
+          "description": "The breadth and depth of telemetry across endpoints, servers, cloud, SaaS, networks, applications, collaboration tools, and customer environments.",
+          "assessment_question": "How comprehensively does your operating model observe the full service estate, including internal platforms, cloud services, SaaS workflows, and customer-managed environments where applicable?",
+          "stage_descriptors": {
+            "0": "Visibility is fragmented across monitoring tools, ticket systems, and spreadsheets; major blind spots exist in cloud, SaaS, and business workflows.",
+            "1": "Core infrastructure and application telemetry are captured centrally, but coverage remains incomplete and relies on manual onboarding.",
+            "2": "Multi-domain telemetry is broadly integrated, with health checks and coverage gaps tracked automatically for key environments.",
+            "3": "Telemetry coverage is aligned to service criticality and dependency models; gaps are prioritized by operational risk and customer impact.",
+            "4": "The sensing fabric self-adapts as environments change, bringing new services and dependencies under observation with minimal human effort.",
+            "5": "Coverage is continuous, autonomous, and self-validating across the full operating estate; observation posture updates dynamically with the live service model."
+          }
+        },
+        "OBS-02": {
+          "id": "OBS-02",
+          "name": "Operational Signal Design",
+          "description": "The design and governance of alerts, events, anomaly models, thresholds, and workflow triggers used to initiate operational action.",
+          "assessment_question": "How are operational signals created, tuned, validated, and retired, and how quickly can they adapt to new service conditions or workflow patterns?",
+          "stage_descriptors": {
+            "0": "Signals rely on static thresholds, vendor defaults, and manually tuned alerts with high noise levels.",
+            "1": "Anomaly detection and enriched routing supplement static alerts, but signal maintenance remains largely manual.",
+            "2": "Agents propose, tune, and suppress signals for known patterns within governed bounds; false positives are tracked systematically.",
+            "3": "Signal design becomes evidence-based and service-aware, with agents generating competing triggers and confidence-rated workflow starts.",
+            "4": "Signal architecture continuously adapts to service behavior, dependency shifts, and workflow outcomes without waiting for periodic tuning cycles.",
+            "5": "Operational signal design evolves in real time as a closed-loop system tied to observed state, business impact, and prior learning."
+          }
+        },
+        "OBS-03": {
+          "id": "OBS-03",
+          "name": "Dependency & Context Integration",
+          "description": "The extent to which topology, service maps, ownership, change history, customer commitments, and workflow context are integrated into sensing.",
+          "assessment_question": "How directly do service dependencies, ownership, change state, and business context influence what your operations function notices and prioritizes?",
+          "stage_descriptors": {
+            "0": "Alerts are evaluated mostly in isolation, with limited dependency or ownership context available during triage.",
+            "1": "Basic CMDB, service maps, and assignment context are available, but not consistently reliable or operationally embedded.",
+            "2": "Dependency and ownership context is available to agents and operators for prioritization and workflow routing.",
+            "3": "Context is part of the live operational graph, allowing sensing to reflect service topology, maintenance windows, and downstream business impact.",
+            "4": "Changes in dependencies or service ownership automatically reshape monitoring, routing, and alert interpretation logic.",
+            "5": "Context integration is continuous and autonomous; sensing decisions always reflect the current service model, operating commitments, and change state."
+          }
+        },
+        "OBS-04": {
+          "id": "OBS-04",
+          "name": "Service Risk & Priority Awareness",
+          "description": "The ability to weight signals using service criticality, failure likelihood, dependency concentration, SLA/SLO commitments, and customer impact.",
+          "assessment_question": "How dynamically does your operations model use service criticality, dependency risk, and customer commitments to prioritize what matters most?",
+          "stage_descriptors": {
+            "0": "Priority is driven mainly by static severity levels and queue order, not by actual service importance or customer impact.",
+            "1": "Some criticality tags and service tiers influence triage, but prioritization remains inconsistent across tools and teams.",
+            "2": "Agents correlate incidents and events with service criticality and delivery commitments to shape initial workflow priority.",
+            "3": "Priority is driven by a unified service-risk model that combines operational state, dependency exposure, and business impact.",
+            "4": "Risk changes automatically trigger sensing and routing changes, reprioritizing active workflows in real time.",
+            "5": "Service risk and business priority function as continuous control signals across the full sensing and operating stack."
+          }
+        }
+      }
+    },
+    "RPL": {
+      "id": "RPL",
+      "name": "Reasoning, Planning & Prioritization",
+      "plane": "Reasoning",
+      "description": "The capacity of the system to form hypotheses, reason about causality and timing, build multi-step operating plans, and prioritize work without depending on linear human escalation for analysis.",
+      "weight": 0.12,
+      "sub_dimensions": {
+        "RPL-01": {
+          "id": "RPL-01",
+          "name": "Hypothesis Generation & Scenario Competition",
+          "description": "The ability to generate multiple plausible explanations for a service issue or workflow anomaly and evaluate them in parallel.",
+          "assessment_question": "Does your operating model maintain competing explanations for operational anomalies, or does it commit to a single diagnosis too early?",
+          "stage_descriptors": {
+            "0": "Operators usually select one likely cause early and investigate linearly, with anchoring bias common.",
+            "1": "Some branching exists in runbooks, but alternative explanations remain informal and human-dependent.",
+            "2": "Agents generate multiple possible explanations and track them as structured investigation branches.",
+            "3": "Competing scenarios are evaluated automatically using evidence, dependency context, and confidence scores.",
+            "4": "Hypothesis competition is continuous and autonomous; low-confidence paths are pruned while high-confidence branches are advanced.",
+            "5": "The system maintains dynamic belief states across operational scenarios and avoids premature convergence without strong evidence."
+          }
+        },
+        "RPL-02": {
+          "id": "RPL-02",
+          "name": "Contextual & Causal Reasoning",
+          "description": "The depth of reasoning applied across service topology, configuration state, change history, user impact, and workflow dependencies.",
+          "assessment_question": "How deeply does your operations system reason across service context, change history, ownership, and business impact to determine likely root causes?",
+          "stage_descriptors": {
+            "0": "Reasoning is mostly signal-local, with little connection to business context or upstream/downstream dependencies.",
+            "1": "Basic enrichment adds asset, service, and change context, but causal reasoning is still largely manual.",
+            "2": "Agents access broad context and use it to rank likely causes and workflow options.",
+            "3": "Causal analysis is graph-based and considers dependency chains, recent changes, user impact, and historical patterns.",
+            "4": "Agents continuously refine causal models from operational outcomes and use them to improve future planning.",
+            "5": "Causal reasoning is self-improving, continuously validated, and foundational to prioritization and execution decisions."
+          }
+        },
+        "RPL-03": {
+          "id": "RPL-03",
+          "name": "Temporal & Cross-Workflow Analysis",
+          "description": "The ability to reason across time and across linked workflows, connecting recurring signals, long-running degradations, incidents, changes, and problem records.",
+          "assessment_question": "Can your operating model connect operational patterns that unfold over time across incidents, changes, requests, and problem management threads?",
+          "stage_descriptors": {
+            "0": "Most analysis is event-local and short-lived; long-running patterns are often missed or reconstructed manually.",
+            "1": "Teams can manually correlate related tickets and incidents, but sustained pattern recognition is weak.",
+            "2": "Agents maintain temporal links between related operational events and recurring service conditions.",
+            "3": "Temporal and cross-workflow reasoning is built into the operational graph and shapes prioritization automatically.",
+            "4": "Agents identify emerging patterns and long-running degradation arcs without waiting for formal problem review cycles.",
+            "5": "The system reasons across time as a native capability, predicting continuity, recurrence, and likely downstream effects."
+          }
+        },
+        "RPL-04": {
+          "id": "RPL-04",
+          "name": "Predictive & Pre-emptive Planning",
+          "description": "The capability to model likely service failures, workload stressors, dependency risks, and workflow bottlenecks before customer-visible impact occurs.",
+          "assessment_question": "Does your operating model proactively plan actions based on predicted service degradation, dependency stress, or workflow backlog formation?",
+          "stage_descriptors": {
+            "0": "Operations is almost entirely reactive; prevention and planning are ad hoc and human-led.",
+            "1": "Periodic reliability reviews and forecasting exist, but pre-emptive action is not continuous.",
+            "2": "Agents generate preventive recommendations for known operational risk patterns and capacity conditions.",
+            "3": "Predictive reasoning triggers governed pre-emptive actions, such as workload rebalancing, change delay, or capacity adjustment.",
+            "4": "Agents continuously forecast likely failure paths and pre-position workflows or controls to reduce impact.",
+            "5": "Pre-emptive planning is a primary operating mode; the system prevents more issues than it reacts to."
+          }
+        }
+      }
+    },
+    "EXE": {
+      "id": "EXE",
+      "name": "Autonomous Execution & Remediation",
+      "plane": "Action",
+      "description": "The ability to execute fulfillment, remediation, recovery, change, and service-restoration actions autonomously with bounded authority, safety controls, and full auditability.",
+      "weight": 0.12,
+      "sub_dimensions": {
+        "EXE-01": {
+          "id": "EXE-01",
+          "name": "Execution Autonomy",
+          "description": "The scope of operational actions that can be executed without human intervention, from standard service requests through incident remediation and recovery.",
+          "assessment_question": "What range of operational actions can your system execute autonomously, and what requires human approval beyond that scope?",
+          "stage_descriptors": {
+            "0": "All meaningful actions are human-executed; automation is limited to notifications, ticket updates, or simple scripts.",
+            "1": "Pre-approved workflows execute for common requests and well-understood remediations, but humans still handle most material actions.",
+            "2": "Agents can investigate and execute bounded remediation and fulfillment actions in defined scenarios.",
+            "3": "Agents can carry out multi-step operational workflows within authority boundaries and only pause for scope-expanding decisions.",
+            "4": "Most operational execution is autonomous within governed scope, with humans intervening mainly for novel, high-risk, or externally sensitive cases.",
+            "5": "The operations system executes across the service estate autonomously, while humans govern the rules of action rather than the actions themselves."
+          }
+        },
+        "EXE-02": {
+          "id": "EXE-02",
+          "name": "Bounded Authority & Scope Enforcement",
+          "description": "The technical implementation of action boundaries so agents can only operate within allowed services, customers, workflows, timing windows, and risk thresholds.",
+          "assessment_question": "Are agent execution boundaries technically enforced at runtime, or do they still depend mainly on human discipline and process?",
+          "stage_descriptors": {
+            "0": "Authority boundaries are documented in process or policy but not enforced at execution time.",
+            "1": "Some workflow permissions and approval gates exist, but scope control is incomplete and inconsistent.",
+            "2": "Authority classes and allowed actions are technically enforced for key workflows.",
+            "3": "Agents validate scope, service ownership, timing, and policy constraints before every significant action.",
+            "4": "Dynamic scope expansion can be requested and approved through governed workflows with full traceability.",
+            "5": "A constitutional authority model governs all execution; out-of-scope actions are technically impossible without formal reauthorization."
+          }
+        },
+        "EXE-03": {
+          "id": "EXE-03",
+          "name": "Reversibility & Change Safety",
+          "description": "The degree to which autonomous actions favor reversible, least-disruptive execution and explicitly manage rollback, blast radius, and service assurance.",
+          "assessment_question": "Does your system enforce reversibility, blast-radius control, and change safety as technical constraints on autonomous action?",
+          "stage_descriptors": {
+            "0": "Safety depends on operator judgment; rollback plans are inconsistent and often manual.",
+            "1": "Some playbooks include staged execution and rollback guidance, but this is not uniformly enforced.",
+            "2": "Agents classify actions by reversibility and risk, and route irreversible changes through stricter approval paths.",
+            "3": "The system defaults to least-disruptive action, validates rollback options, and enforces blast-radius limits before execution.",
+            "4": "Change safety is continuously optimized using service state, dependency models, and prior outcome data.",
+            "5": "Reversibility and service safety are core control signals in every execution decision, with every exception fully justified and logged."
+          }
+        },
+        "EXE-04": {
+          "id": "EXE-04",
+          "name": "Cross-Domain Workflow Coordination",
+          "description": "The ability to coordinate actions across infrastructure, cloud, identity, endpoints, applications, data, collaboration systems, and customer environments.",
+          "assessment_question": "How effectively can your operating model coordinate multi-domain actions without creating contradictory changes, gaps, or hand-off delays?",
+          "stage_descriptors": {
+            "0": "Operational work is siloed by team and tool; cross-domain action depends on manual hand-offs.",
+            "1": "Some orchestrated workflows span multiple systems, but coordination is brittle and scenario-specific.",
+            "2": "Agents coordinate across defined systems and workflows with shared case state and conflict checks.",
+            "3": "Cross-domain coordination is graph-driven, dependency-aware, and managed without routine human hand-offs.",
+            "4": "Dynamic agent coalitions coordinate complex operational scenarios across domains autonomously.",
+            "5": "A unified control plane sequences, validates, and, when needed, rolls back coordinated cross-domain actions seamlessly."
+          }
+        }
+      }
+    },
+    "POL": {
+      "id": "POL",
+      "name": "Policy, Governance & Authority Control",
+      "plane": "Governance",
+      "description": "The architecture and operational integration of policy, authority, governance, and control constraints as real-time execution inputs rather than documentary oversight layers.",
+      "weight": 0.15,
+      "sub_dimensions": {
+        "POL-01": {
+          "id": "POL-01",
+          "name": "Authority & Responsibility Modeling",
+          "description": "The formal modeling of who or what can take which operational actions, under what conditions, for which services, customers, and environments.",
+          "assessment_question": "Is your authority model machine-interpretable and enforced during execution, or is it still mostly documented in policy and ticket workflows?",
+          "stage_descriptors": {
+            "0": "Authority is defined in role descriptions, RACIs, and process documents, not in executable control models.",
+            "1": "Some approval matrices and role-based controls exist in tools, but the model is fragmented and partial.",
+            "2": "Agent and human authority classes are formally defined and enforced for key workflow families.",
+            "3": "Authority is modeled as live operational data with scoped permissions, conditions, exceptions, and revocation paths.",
+            "4": "Authority changes trigger automated impact analysis across workflows, services, and agent classes.",
+            "5": "Authority modeling is constitutional and foundational; every action is authorized through the live authority model."
+          }
+        },
+        "POL-02": {
+          "id": "POL-02",
+          "name": "Policy Guardrail Architecture",
+          "description": "The technical implementation of operational guardrails such as customer commitments, segregation of duties, privacy, maintenance windows, change rules, and compliance constraints.",
+          "assessment_question": "Are policy guardrails formally encoded and technically enforced, or are they mostly principles humans are expected to remember?",
+          "stage_descriptors": {
+            "0": "Guardrails live in policy documents and service guidelines with little runtime enforcement.",
+            "1": "Specific workflows include hard-coded guardrails, but coverage is narrow and inconsistent.",
+            "2": "Guardrail classes are defined and checked automatically before higher-impact actions proceed.",
+            "3": "Policy guardrails are machine-interpretable constraints enforced by the governance engine.",
+            "4": "Guardrails evolve continuously as operating requirements, customer commitments, and regulations change.",
+            "5": "Policy guardrails form part of the operating kernel; violations are prevented by design rather than detected later."
+          }
+        },
+        "POL-03": {
+          "id": "POL-03",
+          "name": "Real-time Policy Enforcement",
+          "description": "The continuous application of policy at decision time so actions are checked against current state, not merely audited after the fact.",
+          "assessment_question": "Is operational policy enforced in real time at every meaningful decision point, or mainly through reviews, CABs, audits, and periodic compliance checks?",
+          "stage_descriptors": {
+            "0": "Policy enforcement is retrospective and manual, with inconsistencies discovered after execution.",
+            "1": "Some automated checks exist in workflows or ITSM tools, but broad real-time policy enforcement is absent.",
+            "2": "Execution paths validate actions against current policy for important workflow types.",
+            "3": "Every significant agent action is checked against the live policy model before execution.",
+            "4": "Policy conflicts, gaps, and exceptions are surfaced proactively and resolved through governed workflows.",
+            "5": "Policy, authority, and execution are fully integrated; all meaningful actions are governed, explained, and logged in real time."
+          }
+        },
+        "POL-04": {
+          "id": "POL-04",
+          "name": "Governance Transparency & Oversight",
+          "description": "The degree to which governance decisions are visible, explainable, and reviewable by human owners without requiring them to micromanage operations.",
+          "assessment_question": "Can governance leaders see what decisions were made, why they were made, and by what authority for any action across the operating model?",
+          "stage_descriptors": {
+            "0": "Governance visibility is limited to raw logs, approvals, and fragmented reporting.",
+            "1": "Workflow logs provide partial decision trails, but explanation quality is inconsistent and hard to interpret.",
+            "2": "Agents generate rationale for significant decisions and governance checkpoints.",
+            "3": "Every governance-relevant action includes evidence, policy basis, confidence, and authority context in human-readable form.",
+            "4": "Governance transparency is continuous, with proactive surfacing of high-stakes decisions and policy tension.",
+            "5": "The system can explain any operational decision end-to-end in plain language, with full authority and evidence traceability."
+          }
+        }
+      }
+    },
+    "CIL": {
+      "id": "CIL",
+      "name": "Continuous Improvement & Learning",
+      "plane": "Learning",
+      "description": "The capacity of the system to learn from incidents, service requests, failed changes, near-misses, customer feedback, and operational outcomes, treating improvement as a continuous operational function.",
+      "weight": 0.1,
+      "sub_dimensions": {
+        "CIL-01": {
+          "id": "CIL-01",
+          "name": "Incident & Event Learning Integration",
+          "description": "The systematic extraction of workflow, remediation, routing, and governance improvements from incidents, outages, degradations, and near-misses.",
+          "assessment_question": "How systematically does your organization convert operational incidents and near-misses into production improvements to workflows, policies, and automation?",
+          "stage_descriptors": {
+            "0": "Lessons learned are irregular, weakly documented, and rarely operationalized.",
+            "1": "Post-incident reviews exist and sometimes lead to updates, but improvement cycles are slow and manual.",
+            "2": "Agents extract improvements and propose workflow or signal changes from resolved events.",
+            "3": "Learning is automated for many workflow families, with confidence-rated improvements generated from every major event.",
+            "4": "Continuous learning pipelines feed operational updates from incidents, degradations, customer-impact events, and near-misses.",
+            "5": "Learning from operations is a standing capability; the system improves from normal activity and exception cases continuously."
+          }
+        },
+        "CIL-02": {
+          "id": "CIL-02",
+          "name": "Workflow Improvement Loops",
+          "description": "The feedback loop from workflow performance, backlog behavior, automation success rates, and operator interventions back into execution design.",
+          "assessment_question": "How automatically do workflow outcomes, operator interventions, and backlog patterns drive measurable improvements to process design and execution logic?",
+          "stage_descriptors": {
+            "0": "Workflow tuning is ad hoc and largely dependent on operator complaints or periodic review.",
+            "1": "Basic metrics exist for some workflows, but changes are still driven manually and inconsistently.",
+            "2": "Agents track workflow performance and propose tuning for routing, triggers, and execution steps.",
+            "3": "Low-performing workflows are automatically refined, retired, or decomposed within governed boundaries.",
+            "4": "Improvement loops continuously optimize flow efficiency, operator load, and service impact reduction.",
+            "5": "Workflow architecture self-improves measurably over time without relying on manual redesign cycles."
+          }
+        },
+        "CIL-03": {
+          "id": "CIL-03",
+          "name": "External Knowledge Absorption",
+          "description": "The speed and depth with which external updates such as vendor advisories, platform changes, service announcements, new operating practices, and reliability patterns are absorbed into operations.",
+          "assessment_question": "How quickly and completely do new vendor, platform, and operating-practice insights translate into updated operational posture and workflow behavior?",
+          "stage_descriptors": {
+            "0": "External knowledge is consumed manually and operationalized slowly, if at all.",
+            "1": "Some external feeds and advisories are tracked, but translation into action depends on humans.",
+            "2": "Agents parse external updates and create structured change, risk, or workflow recommendations.",
+            "3": "External knowledge updates the operational graph and planning logic with limited human review.",
+            "4": "Absorption is continuous; relevant vendor and platform changes rapidly reshape monitoring, workflows, and safeguards.",
+            "5": "The operating model remains continuously current with external change, adapting faster than traditional review cycles allow."
+          }
+        },
+        "CIL-04": {
+          "id": "CIL-04",
+          "name": "Knowledge Model Evolution",
+          "description": "The ability of the Operational Knowledge Graph to evolve as new services, workflows, entities, patterns, policies, and confidence updates emerge.",
+          "assessment_question": "How autonomously does your operational knowledge model evolve based on live operations without depending on heavy manual curation?",
+          "stage_descriptors": {
+            "0": "Knowledge lives in documents and stale configuration sources that require manual maintenance.",
+            "1": "Some structured data is captured from workflows and incidents, but model updates still require significant human effort.",
+            "2": "The knowledge graph ingests structured outputs from operations and partially automates entity lifecycle updates.",
+            "3": "The graph evolves continuously from live workflow outputs, incidents, changes, and external inputs.",
+            "4": "Agents maintain and validate knowledge entities with confidence-based lifecycle controls and targeted human review.",
+            "5": "The knowledge model is a living operational system that measurably improves its own completeness and quality over time."
+          }
+        }
+      }
+    },
+    "OPM": {
+      "id": "OPM",
+      "name": "Operational Interaction Model",
+      "plane": "Operations",
+      "description": "The design of how operational threads interact, moving from linear escalation chains to a non-linear operating graph where events, incidents, changes, requests, reliability work, and customer commitments coexist as coordinated flows.",
+      "weight": 0.1,
+      "sub_dimensions": {
+        "OPM-01": {
+          "id": "OPM-01",
+          "name": "Non-linear Workflow Architecture",
+          "description": "The degree to which operations workflows are designed as dynamic context-driven graphs rather than fixed linear sequences and queue transfers.",
+          "assessment_question": "Are your operational workflows fundamentally linear and queue-based, or can they branch, merge, and adapt dynamically based on context and evidence?",
+          "stage_descriptors": {
+            "0": "Operations is dominated by queues, hand-offs, and static process paths.",
+            "1": "Some conditional branching exists, but the overall model remains linear and escalation-heavy.",
+            "2": "Workflows are modeled as directed graphs with parallel paths for defined scenario types.",
+            "3": "Agents choose and adapt paths dynamically using context, confidence, and dependency state.",
+            "4": "Operational threads spawn, merge, and terminate autonomously as situations evolve.",
+            "5": "The operating model is fully non-linear and self-organizing, maintaining coherent posture across many simultaneous threads."
+          }
+        },
+        "OPM-02": {
+          "id": "OPM-02",
+          "name": "Service-Risk-driven Prioritization",
+          "description": "The use of live service importance, dependency stress, backlog pressure, and customer commitments to drive workflow priority across operational domains.",
+          "assessment_question": "Does your operating model dynamically prioritize work using live service risk and customer impact, or mainly by queue age and static severity?",
+          "stage_descriptors": {
+            "0": "Priority is mostly based on ticket timestamps, static severities, or local team judgments.",
+            "1": "Some criticality and SLA tags influence routing, but prioritization is inconsistent across workflows.",
+            "2": "Agents weight work by service criticality, dependency impact, and delivery commitments.",
+            "3": "A unified risk model drives prioritization across incidents, requests, changes, and problem workflows.",
+            "4": "Real-time changes in service state automatically reprioritize active threads and work queues.",
+            "5": "Operational priority is continuously recomputed as a live function of service risk, customer impact, and operating objectives."
+          }
+        },
+        "OPM-03": {
+          "id": "OPM-03",
+          "name": "Continuous Incident & Problem Management",
+          "description": "The transformation of incident and problem management from episodic, manually coordinated activities into continuously active operational disciplines.",
+          "assessment_question": "Are incident and problem management still mostly reactive, or do they operate continuously alongside observability, change, and service assurance?",
+          "stage_descriptors": {
+            "0": "Incident and problem management are reactive, manual, and activated only after user-visible issues arise.",
+            "1": "Basic major incident and problem practices exist, but they are still largely project-like and human-coordinated.",
+            "2": "Agents maintain incident state, correlate repeat issues, and feed problem records with structured evidence.",
+            "3": "Incident, problem, and service-assurance workflows operate as a unified continuous discipline.",
+            "4": "Every major operational thread contributes evidence and learning to continuously active problem-management logic.",
+            "5": "Incident and problem management are indistinguishable from normal operations; the system is always maintaining causal and corrective context."
+          }
+        },
+        "OPM-04": {
+          "id": "OPM-04",
+          "name": "Decision Propagation Without Escalation",
+          "description": "The ability to route and apply operational decisions through confidence and authority models rather than defaulting to human escalation chains.",
+          "assessment_question": "Can your system resolve most operational decisions within defined authority scope without using escalation as the default coordination mechanism?",
+          "stage_descriptors": {
+            "0": "Escalation is the normal means of moving work and decisions through the organization.",
+            "1": "Some routine decisions are automated, but most meaningful actions still climb an escalation chain.",
+            "2": "Agents can execute or route decisions directly when within scope; escalation is used mainly for exceptions.",
+            "3": "Confidence and authority signals propagate decisions through the workflow graph without routine human analysis steps.",
+            "4": "Most in-scope operational decisions no longer require escalation, only occasional ratification for novel or high-impact conditions.",
+            "5": "Escalation is structurally secondary; the authority model handles decision routing while humans focus on governing intent and boundaries."
+          }
+        }
+      }
+    },
+    "HGI": {
+      "id": "HGI",
+      "name": "Human Governance & Interface",
+      "plane": "Human",
+      "description": "The redefinition of human roles from queue processors and escalation endpoints to governors of intent, legitimacy, service commitments, and exception handling, together with the interfaces that support that shift.",
+      "weight": 0.12,
+      "sub_dimensions": {
+        "HGI-01": {
+          "id": "HGI-01",
+          "name": "Post-tier Role Architecture",
+          "description": "The definition of human roles based on authority, accountability, and operating responsibility rather than ticket tier or queue ownership.",
+          "assessment_question": "Have you redefined operations roles around governance, service ownership, and authority instead of traditional tiered queue-processing structures?",
+          "stage_descriptors": {
+            "0": "Roles are primarily tiered by task complexity and escalation authority.",
+            "1": "Some role evolution exists, but the organization still identifies mainly through service desk and specialist tiers.",
+            "2": "New governance and agent-supervision roles are emerging, though legacy tiering still shapes work.",
+            "3": "Tier-based role identity is largely replaced by authority-based operating roles.",
+            "4": "Human roles focus on service intent, assurance, governance, and exception strategy rather than routine execution.",
+            "5": "Human role architecture is constitutionally defined and tightly aligned to governance of the agentic operating model."
+          }
+        },
+        "HGI-02": {
+          "id": "HGI-02",
+          "name": "Human-Agent Interaction Design",
+          "description": "The quality of interfaces through which humans govern, direct, review, and intervene in agent activity without being flooded by operational noise.",
+          "assessment_question": "Are your human interfaces designed for governance and intent-setting, or are they still mostly alerts, tickets, and approval pop-ups?",
+          "stage_descriptors": {
+            "0": "Humans interact mainly through queues, alerts, and ticket lists.",
+            "1": "Dashboards and copilots improve visibility, but interaction remains largely task- and alert-driven.",
+            "2": "Humans see summarized activity, decisions, exceptions, and requested approvals rather than raw operational volume.",
+            "3": "Interaction is centered on intent setting, scope adjustment, and exception handling.",
+            "4": "Governance interfaces surface only meaningful signals, preserving human attention for judgment-heavy decisions.",
+            "5": "Human-agent interaction operates at the governance layer, with agents translating operational complexity into bounded strategic choices."
+          }
+        },
+        "HGI-03": {
+          "id": "HGI-03",
+          "name": "Intent & Scope Governance",
+          "description": "The human ability to define and revoke operational intent, priorities, customer constraints, and risk boundaries, and have those changes propagate across the agent fleet.",
+          "assessment_question": "Can human owners define intent and scope constraints and have them reflected immediately across operational agents and workflows?",
+          "stage_descriptors": {
+            "0": "Intent is expressed through meetings, documents, and manual tool changes rather than a live control model.",
+            "1": "Some intent can be captured in workflow configuration, but propagation is slow and partial.",
+            "2": "Governance owners can update structured scope and intent for important workflow domains.",
+            "3": "Intent and scope changes propagate in real time through the governance engine.",
+            "4": "Human owners operate through a live governance console with immediate effect and revocation capabilities.",
+            "5": "Intent governance is the primary human activity; the operating posture of the system flows directly from governed intent."
+          }
+        },
+        "HGI-04": {
+          "id": "HGI-04",
+          "name": "Skills Evolution & Career Architecture",
+          "description": "The organizational model for developing talent suited to agentic operations, emphasizing systems thinking, workflow design, governance, reliability judgment, and service leadership.",
+          "assessment_question": "Is your talent model explicitly evolving toward the skills needed for agentic operations, rather than optimizing mostly for queue throughput and tool administration?",
+          "stage_descriptors": {
+            "0": "Career progression is defined largely by queue handling, specialist escalation, and platform-specific tool expertise.",
+            "1": "Awareness of skill change exists, but training still favors traditional operator competencies.",
+            "2": "New role profiles and training paths exist for agent supervision, workflow design, and service governance.",
+            "3": "Formal career architecture supports post-tier roles in governance, orchestration, assurance, and operational design.",
+            "4": "Talent development is explicitly aligned to the needs of an agentic operating model and MSP-style service governance.",
+            "5": "Human capability strategy becomes a competitive differentiator built around judgment, governance, and operating-model design."
+          }
+        }
+      }
+    },
+    "AGC": {
+      "id": "AGC",
+      "name": "Agent Architecture & Coordination",
+      "plane": "Agents",
+      "description": "The design, specialization, and coordination of the agent fleet, including how agents collaborate, arbitrate, manage uncertainty, and escalate genuinely novel scenarios.",
+      "weight": 0.1,
+      "sub_dimensions": {
+        "AGC-01": {
+          "id": "AGC-01",
+          "name": "Agent Class Definition & Specialization",
+          "description": "The formal definition of agent classes by role, such as observability, triage, planning, execution, governance, learning, and service communication.",
+          "assessment_question": "Are your agents formally classified by role, capability, and authority, or are they still a loose collection of scripts, bots, and copilots?",
+          "stage_descriptors": {
+            "0": "Automation is fragmented across scripts, workflows, and tool-specific bots without a coherent agent model.",
+            "1": "Some role groupings exist, but specialization and authority remain loosely defined.",
+            "2": "Agent classes are formally defined with role boundaries, scope, and interface expectations.",
+            "3": "Agent taxonomy is maintained deliberately and used to govern collaboration and execution patterns.",
+            "4": "Specialized sub-classes exist for service domains, customer contexts, and workflow families.",
+            "5": "Agent specialization evolves systematically from operational need under the authority model."
+          }
+        },
+        "AGC-02": {
+          "id": "AGC-02",
+          "name": "Agent Collaboration & Conflict Resolution",
+          "description": "The protocols through which agents share state, coordinate actions, and resolve conflicting diagnoses or execution plans.",
+          "assessment_question": "When multiple agents disagree about a diagnosis, priority, or action, how is that conflict resolved and when is human intervention required?",
+          "stage_descriptors": {
+            "0": "Automation components work independently and can duplicate or conflict with each other.",
+            "1": "Some orchestration exists, but conflict handling depends on workflow order and human review.",
+            "2": "Agents share state through a common store and can detect known conflict conditions.",
+            "3": "Conflict resolution is built into coordination logic using evidence, confidence, and policy constraints.",
+            "4": "Agents can negotiate and resolve most operational conflicts autonomously, escalating only higher-stakes disagreements.",
+            "5": "Coordination is fully autonomous for normal operations, with human involvement reserved for constitutional or legitimacy-level conflicts."
+          }
+        },
+        "AGC-03": {
+          "id": "AGC-03",
+          "name": "Uncertainty & Novelty Handling",
+          "description": "How the system handles ambiguous conditions, low-confidence outcomes, incomplete context, and genuinely novel service situations.",
+          "assessment_question": "Does your agentic operating model know when to act under uncertainty, when to seek more evidence, and when to invoke human judgment for novelty?",
+          "stage_descriptors": {
+            "0": "Automation either runs or fails; uncertainty is poorly modeled and novelty breaks workflow execution.",
+            "1": "Some thresholds exist, but ambiguous cases often over-escalate or stall without clear rationale.",
+            "2": "Agents emit confidence scores and detect some out-of-pattern conditions.",
+            "3": "Uncertainty is explicit in agent reasoning and escalation paths are calibrated to novelty rather than raw severity.",
+            "4": "Agents can take bounded partial action under uncertainty while seeking ratification or more evidence.",
+            "5": "The system is precisely calibrated for uncertainty, neither over-escalating routine ambiguity nor under-escalating genuine novelty."
+          }
+        },
+        "AGC-04": {
+          "id": "AGC-04",
+          "name": "Orchestration Architecture",
+          "description": "The technical design for coordinating agents, managing shared state, composing workflow coalitions, and adapting execution paths dynamically.",
+          "assessment_question": "Can your system dynamically compose the right set of agents for a scenario, or is coordination limited to prebuilt workflows?",
+          "stage_descriptors": {
+            "0": "There is no meaningful orchestration layer; automation components act independently.",
+            "1": "Linear orchestration exists for predefined scenarios but shares little reusable state.",
+            "2": "The orchestration layer supports shared state, parallel execution, and basic coalition formation.",
+            "3": "Dynamic orchestration selects agent sets based on service context, capability, and availability.",
+            "4": "Orchestration is adaptive and continuously chooses optimal coalitions for the current operating state.",
+            "5": "Self-organizing orchestration is indistinguishable from emergent coordination, while remaining fully governed and observable."
+          }
+        }
+      }
+    },
+    "OKG": {
+      "id": "OKG",
+      "name": "Operational Knowledge Graph",
+      "plane": "Knowledge",
+      "description": "The operational knowledge infrastructure that connects services, assets, users, workflows, dependencies, policies, evidence, authority, confidence, and outcomes as a live queryable graph.",
+      "weight": 0.11,
+      "sub_dimensions": {
+        "OKG-01": {
+          "id": "OKG-01",
+          "name": "Entity Model Completeness",
+          "description": "The breadth and depth of entity types represented in the operational graph, including service, workflow, policy, authority, evidence, and customer-impact objects.",
+          "assessment_question": "How comprehensively does your knowledge model represent the full operational system, including governance and service context as first-class objects?",
+          "stage_descriptors": {
+            "0": "Knowledge is fragmented across CMDB, monitoring tools, ticketing, and documents with no unified entity model.",
+            "1": "Core operational entities are partially linked, but governance, evidence, and confidence remain external to the model.",
+            "2": "A defined entity model covers key services, assets, workflows, incidents, policies, and evidence objects.",
+            "3": "The graph includes confidence, authority, customer impact, governance decisions, and audit artifacts as first-class entities.",
+            "4": "Entity quality is continuously validated, with orphan detection and model-health tracking.",
+            "5": "The entity model is self-completing and continuously enriched by operational activity and learning."
+          }
+        },
+        "OKG-02": {
+          "id": "OKG-02",
+          "name": "Policy & Workflow as Graph Objects",
+          "description": "The representation of policy, workflow logic, authority, constraints, and exceptions as queryable graph objects that agents can reason over at execution time.",
+          "assessment_question": "Are your policies, workflow rules, and authority boundaries represented as queryable graph objects usable by agents at runtime?",
+          "stage_descriptors": {
+            "0": "Policy and workflow logic are scattered across documents, scripts, and tool configuration, not queryable as a coherent model.",
+            "1": "Some policy and workflow logic is encoded, but not as a shared operational knowledge layer.",
+            "2": "Policies and workflow objects exist in structured form and can be referenced during execution.",
+            "3": "Policy, authority, workflow, and exception objects are graph-native and support runtime reasoning.",
+            "4": "The system validates policy and workflow consistency before operational changes take effect.",
+            "5": "The graph is the authoritative source of truth for operational logic, policy, and execution governance."
+          }
+        },
+        "OKG-03": {
+          "id": "OKG-03",
+          "name": "Evidence & Operational Artifact Generation",
+          "description": "The automatic generation of incident records, change evidence, execution logs, decision artifacts, customer-impact summaries, and audit trails from live operations.",
+          "assessment_question": "Does your system automatically produce complete evidence and operational artifacts for significant actions without depending on manual documentation?",
+          "stage_descriptors": {
+            "0": "Evidence depends on manual notes, screenshots, and incomplete tool logs.",
+            "1": "Some structured operational evidence is captured, but traceability is fragmented and inconsistent.",
+            "2": "Agents generate structured evidence for important actions and link it to incidents or workflows.",
+            "3": "Every significant action generates evidence and chain-of-custody artifacts in the operational graph.",
+            "4": "Evidence generation is continuous, tamper-evident, and includes confidence, policy, and authority context.",
+            "5": "The knowledge graph is the durable system of record for all operational evidence and execution provenance."
+          }
+        },
+        "OKG-04": {
+          "id": "OKG-04",
+          "name": "Planning & Reasoning Integration",
+          "description": "The use of the operational graph as the primary substrate for planning, hypothesis generation, routing, and execution choice.",
+          "assessment_question": "Is the knowledge graph actively used to drive planning and reasoning, or is it mainly a reporting and documentation layer?",
+          "stage_descriptors": {
+            "0": "Operational knowledge is consulted manually and rarely shapes runtime decisions.",
+            "1": "Some graph or relationship queries support enrichment, but planning remains mostly external to the model.",
+            "2": "Agents query the graph during investigation and workflow routing for key scenarios.",
+            "3": "The graph becomes the primary reasoning substrate for planning, prioritization, and execution sequencing.",
+            "4": "Graph-based reasoning drives most operational planning and makes service-state quality a first-order operating concern.",
+            "5": "The operational graph functions as the system brain, with all major sensing, reasoning, governance, and action decisions flowing through it."
+          }
+        }
+      }
+    },
+    "AMS": {
+      "id": "AMS",
+      "name": "Assurance, Metrics & Auditability",
+      "plane": "Assurance",
+      "description": "The metrics framework, audit architecture, and trust model designed for autonomous operations, replacing throughput-centric reporting with system-level service, governance, and assurance measures.",
+      "weight": 0.09,
+      "sub_dimensions": {
+        "AMS-01": {
+          "id": "AMS-01",
+          "name": "Autonomous Operations KPIs",
+          "description": "Metrics designed for agentic operations, including autonomy rate, service-restoration velocity, policy-compliance rate, workflow quality, and human-attention reduction.",
+          "assessment_question": "Have you replaced or augmented traditional throughput metrics with metrics that actually describe the quality and safety of autonomous operations?",
+          "stage_descriptors": {
+            "0": "Metrics focus mostly on tickets closed, queue volume, and basic response times.",
+            "1": "Some operational quality metrics exist, but throughput measures still dominate decision-making.",
+            "2": "Autonomy rate, routing quality, and operator-intervention metrics are tracked alongside traditional measures.",
+            "3": "Primary KPIs emphasize service outcomes, policy adherence, confidence, autonomy, and mean time to understand.",
+            "4": "The organization uses a full agentic operations KPI suite that is meaningful at operational and executive levels.",
+            "5": "Metrics demonstrate continuous operating-model improvement as a measurable system outcome rather than a labor-efficiency story."
+          }
+        },
+        "AMS-02": {
+          "id": "AMS-02",
+          "name": "Continuous Audit & Compliance",
+          "description": "The shift from periodic manual compliance preparation to continuous evidence generation, control validation, and audit readiness as a byproduct of normal operations.",
+          "assessment_question": "Is audit and compliance evidence generated continuously by the operating model, or does preparation still require large periodic manual efforts?",
+          "stage_descriptors": {
+            "0": "Audit preparation is a manual project that reconstructs evidence after the fact.",
+            "1": "Some evidence is captured automatically, but major preparation effort remains necessary.",
+            "2": "Agents generate compliance and control evidence for important workflows, improving ongoing readiness.",
+            "3": "Audit readiness is close to continuous because evidence is captured and linked automatically across operations.",
+            "4": "Compliance requirements are modeled in the governance layer and reflected in monitoring and evidence generation quickly.",
+            "5": "Auditability is inseparable from operations; the system can respond to assurance requests in near real time."
+          }
+        },
+        "AMS-03": {
+          "id": "AMS-03",
+          "name": "Trust, Explainability & Validation",
+          "description": "The mechanisms by which the organization validates that the agentic operating model is functioning correctly and remains trustworthy to operators, leaders, customers, and auditors.",
+          "assessment_question": "Do you have formal mechanisms to validate system behavior and explain autonomous decisions to governance, audit, and service stakeholders?",
+          "stage_descriptors": {
+            "0": "Trust in automation depends mostly on anecdotal success and point testing.",
+            "1": "Some outputs are reviewed and sampled, but validation is partial and inconsistent.",
+            "2": "Agent rationale and evidence are logged, and validation sampling is performed regularly.",
+            "3": "A formal explainability and validation model exists for significant decisions and execution chains.",
+            "4": "System-level validation is continuous, with anomaly detection on agent behavior and control drift.",
+            "5": "Trust is continuously demonstrated through live evidence, explainability, and assurance signals."
+          }
+        },
+        "AMS-04": {
+          "id": "AMS-04",
+          "name": "Executive Service Posture Reporting",
+          "description": "The capability to generate executive and board-level reporting that reflects service resilience, autonomy, governance health, customer impact, and operating-model trust.",
+          "assessment_question": "Can your organization generate executive-level reports that explain the state, value, and trustworthiness of the agentic operating model in business terms?",
+          "stage_descriptors": {
+            "0": "Executive reporting focuses on outages, staffing, and basic SLA metrics without reflecting operating-model capability.",
+            "1": "Reports include trend charts and some automation statistics, but remain incident-centric.",
+            "2": "Reporting begins to include autonomy rates, service outcome trends, and control adherence.",
+            "3": "Executives receive business-language reporting on service posture, agentic operations rate, governance health, and improvement velocity.",
+            "4": "Reporting is continuous and on demand, with narrative generation supported by live operational evidence.",
+            "5": "Leadership can see sustained service and operating-model improvement as a governed system outcome."
+          }
+        }
+      }
+    },
+    "TRF": {
+      "id": "TRF",
+      "name": "Transformation Readiness",
+      "plane": "Transformation",
+      "description": "The organizational, cultural, and technical readiness to move from traditional operating models to governed agentic enterprise operations, including change management, service risk tolerance, and leadership alignment.",
+      "weight": 0.09,
+      "sub_dimensions": {
+        "TRF-01": {
+          "id": "TRF-01",
+          "name": "Leadership Alignment & Vision",
+          "description": "The degree to which CIO, COO, IT, platform, service, and delivery leadership share a specific vision for the target agentic operating model.",
+          "assessment_question": "Do your enterprise operations leaders share a specific, funded, and actionable vision for moving to a governed agentic operating model?",
+          "stage_descriptors": {
+            "0": "Leadership interest in AI and automation is general, but there is no specific operating-model vision.",
+            "1": "A direction exists, but alignment on scope, outcomes, and investment is incomplete.",
+            "2": "A shared target model is documented and key sponsors are engaged.",
+            "3": "Leadership is aligned on the post-tier operating model and has funded the transformation roadmap.",
+            "4": "Leadership actively governs transformation progress and shapes organizational adoption.",
+            "5": "Agentic enterprise operations is a strategic commitment with clear executive accountability and sustained sponsorship."
+          }
+        },
+        "TRF-02": {
+          "id": "TRF-02",
+          "name": "Cultural & Organizational Readiness",
+          "description": "The readiness of the organization to shift from task execution and queue ownership toward governance, service accountability, automation trust, and new role identities.",
+          "assessment_question": "Is your organization culturally prepared to shift from ticket-centric operations to governance-oriented agentic service operations?",
+          "stage_descriptors": {
+            "0": "The culture is strongly attached to queues, hand-offs, and role identity based on manual execution.",
+            "1": "The organization accepts automation assistance but remains wary of autonomy and role redesign.",
+            "2": "Change management is underway and some teams are moving toward agent-supervision and workflow-design roles.",
+            "3": "The culture increasingly values governance, systems thinking, and service outcomes over queue ownership.",
+            "4": "The organization is broadly comfortable with agent-first execution and human governance roles.",
+            "5": "The operating culture treats governed autonomy as a core capability and source of service differentiation."
+          }
+        },
+        "TRF-03": {
+          "id": "TRF-03",
+          "name": "Technical Debt & Integration Readiness",
+          "description": "The state of the technical environment, including data quality, tooling sprawl, API accessibility, workflow integration, and readiness for graph- and agent-based operations.",
+          "assessment_question": "How well does your current technical environment support the integration, data quality, and real-time coordination needed for an agentic operating model?",
+          "stage_descriptors": {
+            "0": "Technical debt, siloed tooling, and poor data quality significantly constrain automation and reasoning.",
+            "1": "Some core platforms are integrated, but the environment remains fragmented and brittle.",
+            "2": "Data pipelines, APIs, and core service-management platforms are sufficient for bounded agentic use cases.",
+            "3": "The environment is agent-ready, with adequate data quality, integration coverage, and workflow instrumentation.",
+            "4": "Technical architecture is increasingly purpose-built for agentic operations and minimizes legacy friction.",
+            "5": "Every major operational component is observable, orchestratable, policy-aware, and accessible to the governed agent layer."
+          }
+        },
+        "TRF-04": {
+          "id": "TRF-04",
+          "name": "Failure Mode Awareness & Resilience",
+          "description": "The organization’s understanding of agentic failure modes, including over-autonomy, policy drift, dependency blind spots, compounding workflow errors, and customer-impact amplification.",
+          "assessment_question": "Has your organization identified and mitigated the key failure modes of an agentic operating model, including control drift, runaway automation, and compounding cross-domain mistakes?",
+          "stage_descriptors": {
+            "0": "There is little formal analysis of agentic failure modes or resilience requirements.",
+            "1": "Some automation risks are recognized, but there is no coherent failure-mode taxonomy.",
+            "2": "Key failure modes are documented and mitigations are planned for important workflow areas.",
+            "3": "Failure-mode taxonomy is maintained, tested, and tied to governance and circuit-breaker design.",
+            "4": "The operating model continuously monitors for drift, compounding error, coordination failure, and policy breach.",
+            "5": "Resilience to agentic failure is treated as a constitutional design principle, with graceful degradation and human override always available."
+          }
+        }
+      }
+    }
+  },
+  "transformation_journey": {
+    "phases": [
+      {
+        "phase": 1,
+        "label": "Queue-Centric Operations → Assisted Operations",
+        "stage_range": "0 → 1",
+        "approximate_duration": "6-18 months",
+        "description": "Introduce AI-assisted triage, enrichment, summarization, and workflow acceleration while preserving existing operating structures.",
+        "key_activities": [
+          "Normalize telemetry and service-management data sources",
+          "Introduce AI-assisted triage, summarization, and workflow recommendations",
+          "Automate high-volume, low-risk request and remediation paths",
+          "Clarify service criticality and ownership models",
+          "Define baseline authority boundaries for operational automation",
+          "Begin tracking operational quality metrics beyond ticket throughput"
+        ],
+        "inflection_points": [
+          "Automation absorbs meaningful volume from repetitive queue work",
+          "Service teams trust AI-assisted recommendations for common scenarios",
+          "Leadership sees measurable cycle-time and workload improvements"
+        ],
+        "failure_modes": [
+          "Automation debt from uncontrolled workflow sprawl",
+          "Noise reduction mistaken for true operating-model improvement",
+          "Poor data quality undermining assistant recommendations",
+          "Staff perceiving augmentation as replacement rather than redesign"
+        ]
+      },
+      {
+        "phase": 2,
+        "label": "Assisted Operations → Supervised Autonomy",
+        "stage_range": "1 → 2",
+        "approximate_duration": "12-24 months",
+        "description": "Introduce bounded agent classes, reduce manual queue handling, and begin building the Operational Knowledge Graph.",
+        "key_activities": [
+          "Define agent classes and authority scopes by workflow family",
+          "Deploy supervised autonomous handling for common incidents, requests, and remediations",
+          "Build an operational graph linking services, assets, dependencies, workflows, and evidence",
+          "Implement runtime authority checks for higher-impact actions",
+          "Introduce confidence scoring for agent outputs and decisions",
+          "Transition selected human roles from executors to supervisors and workflow owners"
+        ],
+        "inflection_points": [
+          "First workflow families no longer require routine tier-1 human handling",
+          "The operational graph is referenced during live workflows",
+          "Authority boundaries are technically enforced rather than process-only"
+        ],
+        "failure_modes": [
+          "Governance theater with weak runtime enforcement",
+          "Graph initiatives that never become operationally relevant",
+          "Legacy queue structures surviving despite new agent tooling",
+          "Over-trust in agent recommendations without validation"
+        ]
+      },
+      {
+        "phase": 3,
+        "label": "Supervised Autonomy → Directed Autonomy",
+        "stage_range": "2 → 3",
+        "approximate_duration": "12-24 months",
+        "description": "Move from approval-heavy supervision to intent-driven execution, eliminate tier-centric structures, and make the operational graph central to reasoning.",
+        "key_activities": [
+          "Redesign human roles around authority, service governance, and assurance",
+          "Deploy policy and governance engine for runtime guardrails",
+          "Use the operational graph as the primary reasoning and planning substrate",
+          "Replace many per-action approvals with intent and scope governance",
+          "Unify incident, problem, request, and change intelligence into a continuous operating model",
+          "Update executive reporting to reflect autonomous operations quality"
+        ],
+        "inflection_points": [
+          "Escalation volume drops materially as decisions propagate through authority models",
+          "Governance controls prevent or reroute out-of-policy actions in production",
+          "Leadership receives the first meaningful operating-model assurance report"
+        ],
+        "failure_modes": [
+          "Incomplete policy modeling exposing edge-case execution risks",
+          "Human role confusion during the post-tier transition",
+          "Graph quality debt reducing reasoning reliability",
+          "Resistance from process owners attached to manual approvals"
+        ]
+      },
+      {
+        "phase": 4,
+        "label": "Directed Autonomy → Collaborative Agentic",
+        "stage_range": "3 → 4",
+        "approximate_duration": "12-24 months",
+        "description": "Move to an agent-first operating model in which service assurance, remediation, fulfillment, change coordination, and continuous improvement are unified and continuously active.",
+        "key_activities": [
+          "Integrate cross-domain agent collaboration and conflict resolution",
+          "Operate continuous incident, problem, and reliability workflows",
+          "Implement continuous audit and assurance evidence generation",
+          "Expand governance to customer commitments, privacy, and service-risk policy",
+          "Train governance owners and service leaders for agent-first operations",
+          "Establish formal executive oversight of the autonomous operating model"
+        ],
+        "inflection_points": [
+          "Routine operations runs with minimal human-initiated execution",
+          "Governance owners successfully intervene at policy and intent level rather than task level",
+          "Audit and assurance cycles become substantially lighter"
+        ],
+        "failure_modes": [
+          "Governance complacency as trust rises faster than oversight quality",
+          "Cross-domain coordination errors amplifying service impact",
+          "Platform concentration limiting true control over agent behavior",
+          "Talent gaps in governance and service-design roles"
+        ]
+      },
+      {
+        "phase": 5,
+        "label": "Collaborative Agentic → Autonomous Operating System",
+        "stage_range": "4 → 5",
+        "approximate_duration": "12-24 months",
+        "description": "Achieve a self-regulating autonomous operating system in which humans govern values, service strategy, trust, and the rules of autonomy itself.",
+        "key_activities": [
+          "Implement self-evolving operational graph and evidence lifecycle management",
+          "Codify constitutional governance model and system-wide override mechanisms",
+          "Demonstrate continuous service posture improvement as a system outcome",
+          "Institutionalize circuit breakers, graceful degradation, and resilience testing",
+          "Publish trust and assurance model for internal and external stakeholders",
+          "Continuously stress-test the governance and autonomy model"
+        ],
+        "inflection_points": [
+          "Service posture improves quarter over quarter as a governed system outcome",
+          "Assurance stakeholders accept continuously generated evidence as the default model",
+          "The operating model becomes a recognized strategic differentiator"
+        ],
+        "failure_modes": [
+          "Constitutional drift in the governance model",
+          "Loss of explainability as the system grows more complex",
+          "The operating model itself becoming a critical concentration risk",
+          "Human fallback capability atrophying through disuse"
+        ]
+      }
+    ]
+  },
+  "assessment_guidance": {
+    "scoring_method": "Rate each sub-dimension on a 0-5 integer scale matching the stage descriptors. Decimal scores (for example, 2.5) are permitted to indicate partial progression between stages.",
+    "aggregation": "Dimension scores are the arithmetic mean of sub-dimension scores. Overall adoption is the weighted mean of dimension scores. See dimension weights.",
+    "target_setting": "Target stage should reflect desired adoption in 18-24 months, not an aspirational end-state. Targets should be achievable with planned investment, governance maturity, and organizational readiness.",
+    "recommended_reviewers": [
+      "CIO, COO, or equivalent enterprise operations sponsor",
+      "Head of IT Operations, Platform Operations, or Service Delivery",
+      "Service Management or Reliability leadership",
+      "Enterprise or Platform Architect",
+      "Governance, Risk, Compliance, or Assurance lead",
+      "MSP delivery leadership or customer operations leadership where relevant"
+    ],
+    "review_frequency": "Quarterly for organizations actively transforming; semi-annually for stable organizations",
+    "evidence_requirement": "Each rating should be accompanied by a brief evidence note of 1-3 sentences describing what is in place to reduce score inflation and improve calibration.",
+    "stage_label_thresholds": {
+      "0.0-0.9": "Traditional",
+      "1.0-1.9": "Assisted",
+      "2.0-2.9": "Supervised Autonomy",
+      "3.0-3.9": "Directed Autonomy",
+      "4.0-4.9": "Collaborative Agentic",
+      "5.0": "Fully Agentic"
+    }
+  }
+}
