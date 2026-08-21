@@ -33380,6 +33380,7 @@ function exportCNAPPMarketInsightHTML() {
     const bodyEl       = document.getElementById('docs-view-body');
     const navListEl    = document.getElementById('docs-view-nav-list');
     const navTitleEl   = document.getElementById('docs-view-nav-title');
+    const docsLayoutEl = docsView.querySelector('.docs-view-layout');
 
     if (!railToggle || !docsView) return;
 
@@ -33450,6 +33451,8 @@ function exportCNAPPMarketInsightHTML() {
     async function loadDocs(docId) {
         activeDocId = docId;
         bodyEl.classList.toggle('ebook-mode', docId === 'asaf_market_notes');
+        docsView.classList.toggle('standalone-doc-mode', docId === 'asaf_ebook');
+        if (docsLayoutEl) docsLayoutEl.classList.toggle('standalone-doc-mode', docId === 'asaf_ebook');
         if (docsCache[docId]) { renderPanel(docsCache[docId]); return; }
         bodyEl.innerHTML  = '<div class="docs-view-loading">Loading documentation…</div>';
         if (navListEl) navListEl.innerHTML = '';
@@ -33492,20 +33495,23 @@ function exportCNAPPMarketInsightHTML() {
 
     function renderPanel(data) {
         const sections = (data.tabs || []).flatMap(t => t.sections || []);
+        const isStandaloneDoc = docsView.classList.contains('standalone-doc-mode');
         if (!sections.length) { bodyEl.innerHTML = '<div class="docs-view-loading">No content.</div>'; return; }
 
         // Left nav buttons
         if (navListEl) {
             navListEl.innerHTML = '';
-            sections.forEach((sec, i) => {
-                const btn = document.createElement('button');
-                btn.className = 'docs-nav-btn' + (i === 0 ? ' active' : '');
-                btn.dataset.sectId = sec.id;
-                btn.textContent = sec.title;
-                btn.title = sec.title;
-                btn.addEventListener('click', () => switchSection(sec.id));
-                navListEl.appendChild(btn);
-            });
+            if (!isStandaloneDoc) {
+                sections.forEach((sec, i) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'docs-nav-btn' + (i === 0 ? ' active' : '');
+                    btn.dataset.sectId = sec.id;
+                    btn.textContent = sec.title;
+                    btn.title = sec.title;
+                    btn.addEventListener('click', () => switchSection(sec.id));
+                    navListEl.appendChild(btn);
+                });
+            }
             // Export download link (ebook mode only)
             if (bodyEl.classList.contains('ebook-mode')) {
                 const sep = document.createElement('div');
@@ -33526,7 +33532,9 @@ function exportCNAPPMarketInsightHTML() {
             const pane = document.createElement('div');
             pane.className = 'docs-tab-content' + (i === 0 ? ' active' : '');
             pane.id = `docs-sec-${sec.id}`;
-            if (bodyEl.classList.contains('ebook-mode')) {
+            if (isStandaloneDoc) {
+                pane.classList.add('docs-tab-content-standalone');
+            } else if (bodyEl.classList.contains('ebook-mode')) {
                 pane.appendChild(buildChapterHeader(sec.title));
             } else {
                 const h2 = document.createElement('h2');
@@ -34241,12 +34249,7 @@ function exportCNAPPMarketInsightHTML() {
             case 'embedded_html': {
                 const wrap = document.createElement('div');
                 wrap.className = 'docs-embedded-html-wrap';
-                const frame = document.createElement('iframe');
-                frame.className = 'docs-embedded-html-frame';
-                frame.src = block.src || '';
-                frame.title = block.title || 'Embedded document';
-                frame.loading = 'lazy';
-                wrap.appendChild(frame);
+                hydrateEmbeddedHtml(wrap, block);
                 return wrap;
             }
             case 'markdown': {
@@ -34364,6 +34367,39 @@ function exportCNAPPMarketInsightHTML() {
             } catch (err) {
                 wrap.innerHTML = `<div class="docs-mermaid-error">Diagram error: ${escapeHtml(String(err))}</div>`;
             }
+        }
+    }
+
+    async function hydrateEmbeddedHtml(wrap, block) {
+        wrap.innerHTML = '<div class="docs-view-loading">Loading document…</div>';
+        try {
+            const res = await fetch(block.src, { cache: 'no-store' });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const html = await res.text();
+            const parsed = new DOMParser().parseFromString(html, 'text/html');
+            const root = document.createElement('div');
+            root.className = 'docs-embedded-html-root';
+
+            parsed.head.querySelectorAll('style, link[rel="stylesheet"]').forEach(node => {
+                root.appendChild(node.cloneNode(true));
+            });
+
+            Array.from(parsed.body.childNodes).forEach(node => {
+                if (node.nodeName.toLowerCase() === 'script') return;
+                root.appendChild(node.cloneNode(true));
+            });
+
+            wrap.innerHTML = '';
+            wrap.appendChild(root);
+
+            parsed.body.querySelectorAll('script').forEach(node => {
+                const script = document.createElement('script');
+                Array.from(node.attributes).forEach(attr => script.setAttribute(attr.name, attr.value));
+                script.textContent = node.textContent || '';
+                root.appendChild(script);
+            });
+        } catch (err) {
+            wrap.innerHTML = `<div class="docs-view-loading" style="color:#e74c3c">Failed to load embedded document: ${escapeHtml(err.message)}</div>`;
         }
     }
 
