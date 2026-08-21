@@ -1,0 +1,214 @@
+{
+  "schema_ref": "Buyer_Voice_Schema_1_0.json",
+  "schema_version": "1.0.0",
+  "seed_version": "1.1-evidence",
+  "seed_date": "2026-08-20T00:00:00-04:00",
+  "seed_notes": "Evidence-backed Buyer Voice scoring. Scores evaluate corpus/report readiness and are justified with GEAR reference examples, slide alignment, and validation gaps. They do not score product quality.",
+  "vendor_count": 2,
+  "pillar_codes": ["SRC", "INT", "RUN", "THM", "RAT", "EVD", "OUT", "VAL"],
+  "sub_pillar_count": 22,
+  "scoring_basis": {
+    "5": "Productionized evidence-ledger and validation automation exists.",
+    "4": "Report-ready with strong source evidence, explicit method, and sampled traceability.",
+    "3": "Structured and usable, but some evidence, validation, or automation remains manual.",
+    "2": "Partially structured; significant gaps in traceability or report production.",
+    "1": "Raw data exists but is not yet report-ready.",
+    "0": "No usable evidence."
+  },
+  "vendors": [
+    {
+      "vendor": "OpenAI",
+      "website": "https://openai.com",
+      "region": "Global",
+      "specialization": "Buyer Voice corpus: OpenAI interactions, full-corpus questions, and market cuts",
+      "is_startup": false,
+      "is_ai_first": true,
+      "vendor_type": "AI platform vendor",
+      "dataset_id": "openai_2026_ytd",
+      "dataset_name": "OpenAI - GGM Power POC July 2026",
+      "source_file": "buyervoice/Corpora - Raw GEAR/GEAR - OpenAI - 07252026.csv",
+      "record_count": 3555,
+      "date_start": "2026-01-02",
+      "date_end": "2026-07-23",
+      "slide_alignment": ["Slide 2", "Slide 3", "Slide 4"],
+      "description": "OpenAI Buyer Voice package built from a large 2026 YTD GEAR interaction corpus. The output model supports a full-corpus vendor view plus market-cut reports for Enterprise AI Assistants and Enterprise AI Coding Agents.",
+      "capability_analysis": "Evidence-backed readiness is strong because the corpus is large, source fields are complete, formatted NotebookLM projections exist, and slide themes can be tied to concrete GEAR references. Scores remain capped below productionized level where exact market-cut qualifying sets, complete evidence ledgers, buyer-versus-analyst attribution, and redaction checks are still manual.",
+      "key_differentiators": "Large corpus; multiple report anchors from one pull; clear slide outputs for full-corpus and vendor-in-market analysis; strong evidence examples for commercial, selection, governance, agent, and adoption themes.",
+      "pillar_scores": {
+        "SRC": 4.6,
+        "INT": 4.3,
+        "RUN": 4.1,
+        "THM": 4.2,
+        "RAT": 3.9,
+        "EVD": 4.0,
+        "OUT": 4.1,
+        "VAL": 3.5
+      },
+      "sub_pillar_scores_current": {
+        "SRC-01": 4.7,
+        "SRC-02": 4.7,
+        "SRC-03": 4.4,
+        "INT-01": 4.5,
+        "INT-02": 4.3,
+        "INT-03": 4.1,
+        "RUN-01": 4.3,
+        "RUN-02": 3.9,
+        "RUN-03": 4.1,
+        "THM-01": 4.4,
+        "THM-02": 3.9,
+        "RAT-01": 4.1,
+        "RAT-02": 3.7,
+        "RAT-03": 3.8,
+        "EVD-01": 4.2,
+        "EVD-02": 4.0,
+        "EVD-03": 3.7,
+        "OUT-01": 4.2,
+        "OUT-02": 4.0,
+        "VAL-01": 3.7,
+        "VAL-02": 3.5,
+        "VAL-03": 3.3
+      },
+      "evidence_based_rationale": {
+        "SRC": "Raw CSV, formatted quarter-split files, prompt pack, rubric, formatter script, and slide deck are all present and explicitly linked.",
+        "INT": "The raw GEAR export includes reference numbers, dates, buyer role/region/sector, purpose, question, analyst, discussion summary, and vendor context fields.",
+        "RUN": "Slides 2-4 demonstrate three report runs from one corpus; the method explains full-corpus and prompt-layer market-cut scopes. Exact qualifying-reference sets still need generated tables.",
+        "THM": "Slide themes can be traced to repeated buyer interactions across budget, evaluation, governance, agent integration, and adoption topics.",
+        "RAT": "Spread is applied qualitatively in the slide form; trajectory is less central for OpenAI and should be used only where period comparison supports it.",
+        "EVD": "Sample reference support exists for the major slide themes, but a complete evidence ledger and automated attribution labels remain to be generated.",
+        "OUT": "Slides 2-4 define stable report outputs with titles, theme/question rows, prevalence dots, roles asking, and source notes.",
+        "VAL": "Validation rules are known, but reference checking, supply-side exclusion, redaction, and buyer-versus-analyst attribution are still partly manual."
+      },
+      "evidence_examples": [
+        {
+          "theme": "Budget and commercial terms",
+          "references": ["20082892", "20125463", "19491723"],
+          "support": "OpenAI renewal, pricing/benchmarking, credit allocation, discount, and total-spend optimization questions recur in the raw corpus."
+        },
+        {
+          "theme": "Evaluating and selecting",
+          "references": ["19446349", "19132786", "19483074"],
+          "support": "Buyers compare Codex, ChatGPT Enterprise, Copilot, Anthropic/Claude, and other assistant/coding-agent options."
+        },
+        {
+          "theme": "Guardrails and governance",
+          "references": ["20047573", "19267455", "19510207"],
+          "support": "Buyer questions address security ramifications, data considerations, SharePoint permissions/training concerns, agent risks, and external-system access."
+        },
+        {
+          "theme": "Orchestrating and integrating agents",
+          "references": ["20204816", "19510207", "19446349"],
+          "support": "Records discuss tool enablement frameworks, Codex, Copilot Agent, Copilot Studio, custom agents, scale, and integration risk."
+        },
+        {
+          "theme": "Adoption and proving value",
+          "references": ["20055788", "19491723", "19446349"],
+          "support": "Records discuss scaled ChatGPT launch, operationalizing adoption, optimization, efficiency, client success, and ability to scale."
+        }
+      ],
+      "validation_gaps": [
+        "Generate exact qualifying-reference sets for the Enterprise AI Assistants and Enterprise AI Coding Agents market cuts.",
+        "Classify demand-side versus supply-side interactions before final theme scoring.",
+        "Classify Discussion Summary statements as buyer-raised, analyst voice, or attribution uncertain.",
+        "Generate full evidence ledgers with excerpts and redaction status.",
+        "Run dedicated validation before treating brand-visibility themes as broadly supported."
+      ]
+    },
+    {
+      "vendor": "ServiceNow",
+      "website": "https://www.servicenow.com",
+      "region": "Global",
+      "specialization": "Buyer Voice corpus: ServiceNow commercial friction categories and deep dives",
+      "is_startup": false,
+      "is_ai_first": false,
+      "vendor_type": "Enterprise workflow platform vendor",
+      "dataset_id": "servicenow_commercial_2026_ytd",
+      "dataset_name": "ServiceNow Commercial Friction - 3Q26 CEO Briefing",
+      "source_file": "buyervoice/Corpora - Raw GEAR/GEAR - ServiceNow Commercial Friction Set.csv",
+      "record_count": 4114,
+      "date_start": "2026-01-02",
+      "date_end": "2026-07-30",
+      "slide_alignment": ["Slide 5", "Slide 6", "Slide 7"],
+      "description": "ServiceNow Buyer Voice package built from a large 2026 YTD commercial-friction GEAR corpus. The output model supports a category matrix and deep dives into AI-native pricing and cost-offset tactics.",
+      "capability_analysis": "Evidence-backed readiness is strong because the corpus is large, the commercial-friction scope is clear, supplied categories are documented, and the slide examples map directly to repeated GEAR records. Scores remain capped because tactic-specific claims, figure provenance, single-account versus multiple-account marking, and sensitivity review require complete evidence-ledger automation before external use.",
+      "key_differentiators": "Large corpus; clear vendor relationship anchor; strong commercial-friction signal; explicit supplied-category mode; slide outputs include matrix, deep dive, trajectory, and handling-note patterns.",
+      "pillar_scores": {
+        "SRC": 4.7,
+        "INT": 4.3,
+        "RUN": 4.4,
+        "THM": 4.3,
+        "RAT": 4.0,
+        "EVD": 4.0,
+        "OUT": 4.3,
+        "VAL": 3.6
+      },
+      "sub_pillar_scores_current": {
+        "SRC-01": 4.8,
+        "SRC-02": 4.8,
+        "SRC-03": 4.5,
+        "INT-01": 4.5,
+        "INT-02": 4.3,
+        "INT-03": 4.2,
+        "RUN-01": 4.5,
+        "RUN-02": 4.3,
+        "RUN-03": 4.4,
+        "THM-01": 4.3,
+        "THM-02": 4.4,
+        "RAT-01": 4.1,
+        "RAT-02": 4.0,
+        "RAT-03": 3.8,
+        "EVD-01": 4.2,
+        "EVD-02": 4.0,
+        "EVD-03": 3.8,
+        "OUT-01": 4.4,
+        "OUT-02": 4.2,
+        "VAL-01": 3.8,
+        "VAL-02": 3.6,
+        "VAL-03": 3.5
+      },
+      "evidence_based_rationale": {
+        "SRC": "Raw CSV, formatted quarter-split files, prompt pack, rubric, formatter script, and slide deck are all present and explicitly linked.",
+        "INT": "The raw GEAR export includes reference numbers, dates, buyer role/region/sector, purpose, question, analyst, discussion summary, and ServiceNow vendor context fields.",
+        "RUN": "Slides 5-7 demonstrate a supplied-category commercial-friction workflow with matrix and deep-dive outputs.",
+        "THM": "Commercial-friction themes can be tied to repeated records about AI pricing, renewal leverage, cost transparency, ROI, and cost-offset behavior.",
+        "RAT": "Spread and trajectory are explicit in the slide forms; 3Q26 remains July-only and must be marked partial/directional.",
+        "EVD": "Sample reference support exists for the major categories, but figure provenance and sensitivity review need full evidence ledgers.",
+        "OUT": "Slides 5-7 define stable output forms: category matrix, deep-dive theme cards, buyer composition, spread/trajectory, and handling note.",
+        "VAL": "Validation rules are known, but automated figure provenance, redaction, attribution, and sensitivity checks are still pending."
+      },
+      "evidence_examples": [
+        {
+          "theme": "AI-native pricing and packaging",
+          "references": ["20127470", "20110800", "20182317"],
+          "support": "Records discuss transition from modular pricing to integrated AI platform models, Pro Plus/Enterprise Plus/Now Assist, and usage or consumption-based licensing."
+        },
+        {
+          "theme": "Renewal cost and contract leverage",
+          "references": ["20088577", "20110800", "20153161"],
+          "support": "Records discuss renewal timing, price hikes, early renewal leverage, price uplift, discounting, and commercial trends."
+        },
+        {
+          "theme": "Platform displacement and cost alternatives",
+          "references": ["20127470", "20182317"],
+          "support": "Records discuss flexibility, cost transparency, and alternative commercial models; a deeper pass is needed to separate displacement from general cost pressure."
+        },
+        {
+          "theme": "AI business case and ROI proof gap",
+          "references": ["20127470", "20110800", "20182317"],
+          "support": "Records discuss cost transparency, pitfalls, uplift, leverage, and return implications from changing AI and SaaS licensing models."
+        },
+        {
+          "theme": "Cost-offset tactics using ServiceNow tools",
+          "references": ["20088577", "20110800"],
+          "support": "Records support negotiation and spend-management concerns; tactic-specific claims require sensitivity review and more precise excerpt validation."
+        }
+      ],
+      "validation_gaps": [
+        "Generate exact evidence ledgers for each supplied category and outside-taxonomy theme.",
+        "Mark all figures as single-account or multiple-account before internal publication.",
+        "Separate tactic-specific claims from general negotiation strategy claims.",
+        "Run analyst sensitivity review on cost-offset and audit-risk themes.",
+        "Preserve July-only 3Q26 caveat in every trajectory claim."
+      ]
+    }
+  ]
+}

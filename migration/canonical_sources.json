@@ -21,6 +21,9 @@
     {"path": "Secure_by_Design_AI_Controls_Schema.json", "kind": "schema", "market": "sbdai", "cycle": "2026", "version": "1.0", "status": "active", "reason": "Legacy Secure-by-Design AI Controls schema retained in CouchDB for compatibility."},
     {"path": "Schema_Template_Capability.json", "kind": "schema", "market": "template_capability", "cycle": "2026", "version": "1.0", "status": "active", "reason": "Capability schema template retained in CouchDB."},
     {"path": "Schema_Template_MQ_Gap.json", "kind": "schema", "market": "template_mq_gap", "cycle": "2026", "version": "1.0", "status": "active", "reason": "MQ gap schema template retained in CouchDB."},
+    {"path": "Buyer_Voice_Schema_1_0.json", "kind": "schema", "market": "buyer_voice", "cycle": "2026", "version": "1.0", "status": "archived", "reason": "Exploratory Buyer Voice vendor-score schema superseded by organization-specific Buyer Data Analysis schemas."},
+    {"path": "OpenAI_Buyer_Data_Analysis_Schema.json", "kind": "schema", "market": "buyer_voice_openai", "cycle": "2026", "version": "1.0", "status": "active", "reason": "Buyer Voice schema for OpenAI GEAR inquiry corpus analysis, market cuts, themes, evidence, validation, and slide outputs."},
+    {"path": "ServiceNow_Buyer_Data_Analysis_Schema.json", "kind": "schema", "market": "buyer_voice_servicenow", "cycle": "2026", "version": "1.0", "status": "active", "reason": "Buyer Voice schema for ServiceNow commercial-friction inquiry corpus analysis, categories, trajectory, evidence, sensitivity, and slide outputs."},
 
     {"path": "Vendor 3-7.json", "kind": "vendor_score", "market": "dfir", "cycle": "2026", "version": "3.7", "status": "active", "reason": "Application explicitly marks vendor3-3 through vendor3-5 superseded by Vendor 3-7."},
     {"path": "AI TRiSM Vendor 2-1 Consolidated.json", "kind": "vendor_score", "market": "trism", "cycle": "2026", "version": "2.1", "status": "active", "reason": "Latest complete consolidated AI TRiSM dataset."},
@@ -34,6 +37,8 @@
     {"path": "CNAPP MQ Vendor 1-4 Consolidated.json", "kind": "vendor_score", "market": "cnapp_mq", "cycle": "2026", "version": "1.4", "status": "active", "reason": "Latest consolidated CNAPP MQ vendor research dataset."},
     {"path": "CNAPP Vendor MQ Scores.json", "kind": "mq_score", "market": "cnapp_mq", "cycle": "2026", "version": "v1", "status": "active", "variant": "v1", "reason": "Default scoring mode for /api/cnapp-mq-scores."},
     {"path": "CNAPP Vendor MQ Scores v2.json", "kind": "mq_score", "market": "cnapp_mq", "cycle": "2026", "version": "v2", "status": "active", "variant": "v2", "reason": "Evidence-enriched scoring mode exposed by /api/cnapp-mq-scores?mode=v2."},
+    {"path": "Buyer Voice Vendor 1-1 Evidence.json", "kind": "vendor_score", "market": "buyer_voice", "cycle": "2026", "version": "1.1", "status": "archived", "reason": "Exploratory Buyer Voice vendor-score adapter superseded by buyer-inquiry analysis schemas and report-scoped evidence model."},
+    {"path": "Buyer Voice Vendor 1-0 Seed.json", "kind": "vendor_score", "market": "buyer_voice", "cycle": "2026", "version": "1.0", "status": "archived", "reason": "Superseded by Buyer Voice Vendor 1-1 Evidence.json."},
 
     {"path": "dfir_market_insight_reports.json", "kind": "market_insight", "market": "dfir", "cycle": "2026", "version": "current", "status": "active", "reason": "Direct route data source."},
     {"path": "precyber_market_insight_reports.json", "kind": "market_insight", "market": "precyber", "cycle": "2026", "version": "current", "status": "active", "reason": "Direct route data source."},
@@ -49,6 +54,7 @@
       {"path": "ai_platform_ecosystem_vendors_v1.json", "kind": "vendor_score", "market": "ai_platform_ecosystem", "cycle": "2026", "version": "1.0", "status": "active", "reason": "Canonical seven-vendor APEF comparison dataset."},
     {"path": "static/asmf_orbital_map.json", "kind": "report_definition", "market": "agentic_soc", "cycle": "2026", "version": "orbital-current", "status": "active", "reason": "Direct source for /api/asmf-orbital-map."},
     {"path": "static/docs_precyber_methodology.json", "kind": "report_definition", "market": "precyber", "cycle": "2026", "version": "methodology-current", "status": "active", "reason": "Direct source for /api/docs/precyber_methodology."},
+    {"path": "static/docs_buyervoice_templates.json", "kind": "report_definition", "market": "buyer_voice", "cycle": "2026", "version": "templates-current", "status": "active", "reason": "Direct source for /api/docs/buyervoice_templates."},
     {"path": "Reports/846698_market_insight.json", "kind": "report_definition", "market": "agentic_ai", "cycle": "2026", "version": "846698", "status": "active", "reason": "Direct source for /api/report/846698 and /api/reports."},
 
     {"path": "CNAPP MQ Evidence Ledger.json", "kind": "evidence_excerpt", "market": "cnapp_mq", "cycle": "2026", "version": "current", "status": "active", "reason": "Resolved review item: 261-record evidence ledger."},

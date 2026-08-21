@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0",
+  "schema_type": "buyer_voice_inquiry_analysis",
+  "schema_family": "buyer_voice",
+  "organization": "ServiceNow",
+  "framework_name": "ServiceNow Buyer Data Analysis",
+  "framework_abbrev": "SN BV",
+  "intent": "Analyze Gartner GEAR buyer inquiry data focused on ServiceNow commercial and economic friction to understand buyer themes, supplied categories, evidence, sensitivity, and slide-ready outputs.",
+  "description": "A Buyer Voice schema for ServiceNow commercial-friction inquiry analysis. This is not a vendor-score schema; it models buyer discovery items, commercial themes, category assignment, trajectory, evidence, figure provenance, sensitivity review, and report outputs.",
+  "source_dataset": {
+    "dataset_id": "servicenow_commercial_2026_ytd",
+    "source_file": "buyervoice/Corpora - Raw GEAR/GEAR - ServiceNow Commercial Friction Set.csv",
+    "formatted_files_pattern": "buyervoice/Corpora - Formatted/ServiceNow Commercial Mentions - 2026 Q*.txt",
+    "record_count": 4114,
+    "date_window": "2026-01-02 to 2026-07-30",
+    "primary_anchor": "ServiceNow",
+    "product_category_context": [
+      "Enterprise workflow platform",
+      "IT service management",
+      "Workflow automation",
+      "Licensing",
+      "Renewal",
+      "Pricing",
+      "AI packaging",
+      "Commercial relationship"
+    ],
+    "primary_analytical_question": "What commercial and economic friction are enterprise buyers raising about ServiceNow?"
+  },
+  "data_model": {
+    "shared_objects": [
+      "dataset",
+      "gear_query_or_pull",
+      "interaction",
+      "buyer_profile",
+      "organization_anchor",
+      "analysis_scope",
+      "discovery_item",
+      "theme",
+      "theme_rating",
+      "evidence_reference",
+      "excerpt",
+      "voice_attribution",
+      "validation_finding",
+      "report_output",
+      "slide_output"
+    ],
+    "servicenow_specific_objects": [
+      "commercial_scope",
+      "supplied_category",
+      "outside_taxonomy_theme",
+      "trajectory_rating",
+      "figure_claim",
+      "figure_provenance",
+      "sensitivity_flag",
+      "roi_business_case_pass"
+    ]
+  },
+  "raw_gear_fields": [
+    "Reference Number",
+    "First Response Date",
+    "Account Region",
+    "Enterprise Sector",
+    "Role Name",
+    "Persona",
+    "Account Market",
+    "Enterprise Market",
+    "Purpose",
+    "Question Asked",
+    "Discussion Summary",
+    "Vendor Name",
+    "Vendor Enterprise",
+    "Core Topic",
+    "Buysmart",
+    "Interaction Subtype"
+  ],
+  "formatter_projection": [
+    {"raw_field": "First Response Date", "report_field": "Date"},
+    {"raw_field": "Reference Number", "report_field": "Reference Number"},
+    {"raw_field": "Account Region", "report_field": "Buyer Region"},
+    {"raw_field": "Enterprise Sector", "report_field": "Buyer Industry"},
+    {"raw_field": "Role Name", "report_field": "Buyer Role"},
+    {"raw_field": "Purpose", "report_field": "Purpose"},
+    {"raw_field": "Question Asked", "report_field": "Question Asked"},
+    {"raw_field": "Associate Name", "report_field": "Analyst Name"},
+    {"raw_field": "Discussion Summary", "report_field": "Discussion Summary"}
+  ],
+  "legend_sections": [
+    {
+      "id": "dataset",
+      "label": "Dataset & Pull",
+      "definition": "The canonical GEAR export and its formatted NotebookLM projection.",
+      "use_in_analysis": "Treat the raw CSV as the source of truth and the formatted files as ingestion-friendly views.",
+      "key_fields": ["source_file", "record_count", "date_window", "primary_anchor"]
+    },
+    {
+      "id": "interaction",
+      "label": "Interaction Record",
+      "definition": "One Gartner buyer interaction, proposal review, document review, or sample inquiry.",
+      "use_in_analysis": "Commercial-friction findings must trace to specific buyer interactions.",
+      "key_fields": ["Reference Number", "First Response Date", "Interaction Subtype"]
+    },
+    {
+      "id": "commercial_discovery",
+      "label": "Commercial Discovery Item",
+      "definition": "A buyer-raised cost, pricing, packaging, licensing, renewal, negotiation, business-case, or alternative signal.",
+      "use_in_analysis": "Discover these bottom-up before assigning to supplied categories.",
+      "key_fields": ["Purpose", "Question Asked", "Discussion Summary", "Buysmart"]
+    },
+    {
+      "id": "buyer_profile",
+      "label": "Buyer Profile",
+      "definition": "Region, sector, role, persona, and market context for the asking organization.",
+      "use_in_analysis": "Supports buyer composition and flags when a theme is concentrated in one role, sector, or region.",
+      "key_fields": ["Account Region", "Enterprise Sector", "Role Name", "Persona", "Account Market"]
+    },
+    {
+      "id": "supplied_category",
+      "label": "Supplied Category",
+      "definition": "One of the five analysis buckets used after bottom-up discovery.",
+      "use_in_analysis": "Use as an organizing taxonomy, not as the initial search space.",
+      "key_fields": ["category_name", "assigned_themes", "outside_taxonomy_theme"]
+    },
+    {
+      "id": "theme_trajectory",
+      "label": "Theme & Trajectory",
+      "definition": "A commercial-friction theme with qualitative spread and quarter-by-quarter trajectory.",
+      "use_in_analysis": "Rate spread and trajectory across 1Q26, 2Q26, and partial 3Q26 with the July caveat visible.",
+      "key_fields": ["theme_name", "spread_rating", "trajectory_rating", "supporting_references"]
+    },
+    {
+      "id": "figure_provenance",
+      "label": "Figure Provenance",
+      "definition": "Traceability for numerical figures, commercial claims, and account-specific cost examples.",
+      "use_in_analysis": "Mark single-account and multi-account figures before any slide-facing use.",
+      "key_fields": ["figure_claim", "source_reference", "single_account_flag", "multi_account_flag"]
+    },
+    {
+      "id": "sensitivity",
+      "label": "Sensitivity Review",
+      "definition": "Handling rules for negotiation leverage, audit-risk tactics, client-identifying detail, and cost-avoidance findings.",
+      "use_in_analysis": "Flag sensitive findings for internal handling before turning them into client-facing guidance.",
+      "key_fields": ["sensitivity_flag", "handling_note", "redaction_need"]
+    },
+    {
+      "id": "slide_output",
+      "label": "Slide Output",
+      "definition": "The report-ready matrix, deep-dive card, or narrative aligned to the Buyer Voice deck outcomes.",
+      "use_in_analysis": "Produce slide-facing outputs only after discovery, category assignment, evidence, provenance, and sensitivity steps are complete.",
+      "key_fields": ["slide_alignment", "output_sections", "slide_columns"]
+    }
+  ],
+  "report_tabs": [
+    "Dataset Overview",
+    "Query/Pull Interpretation",
+    "Commercial-Friction Discovery",
+    "Supplied Categories",
+    "Outside Taxonomy",
+    "ROI / Business Case",
+    "Figure Provenance",
+    "Sensitivity Review",
+    "Evidence Ledger",
+    "Validation Findings",
+    "Slide Output"
+  ],
+  "validation_principles": [
+    "The five categories are naming buckets, not the search space.",
+    "July-only 3Q26 data is partial and directional.",
+    "Every numerical figure needs provenance marking.",
+    "Negotiation leverage, audit-risk, and cost-offset tactics require sensitivity review.",
+    "Market statistics and analyst recommendations must not be mixed into buyer-voice findings unless explicitly labeled."
+  ]
+}

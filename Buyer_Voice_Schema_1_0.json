@@ -1,0 +1,1122 @@
+{
+  "schema_version": "1.0.0",
+  "framework_name": "Buyer Voice Analysis Schema",
+  "framework_abbrev": "BVA",
+  "created": "2026-08-20",
+  "description": "Schema for Gartner Buyer Voice analysis using GEAR end-user interaction exports, formatted corpus files, prompt-guided discovery, qualitative theme ratings, traceable evidence, and validation checks.",
+  "intent": "Model Gartner buyer interaction corpora as traceable evidence for Buyer Voice analysis. The schema preserves raw GEAR records, normalizes buyer and analyst context, supports unconstrained theme discovery and supplied-category organization, applies qualitative ratings, and validates every deliverable claim against source references, excerpts, attribution, and redaction rules.",
+  "scope": "This schema applies to buyer voice projects built from Gartner end-user interaction records. It supports discovered-theme analysis, market-cut analysis, and client-supplied category analysis while preserving raw interaction provenance and evidence attribution.",
+  "metadata": {
+    "schema_family": "buyer_voice",
+    "schema_type": "vendor_scoring",
+    "score_subject": "Buyer Voice vendor corpus/report package readiness",
+    "scoring_scale": {
+      "label": "Buyer Voice Readiness Score",
+      "range": "0-5",
+      "scoring_logic": {
+        "0": "No usable evidence or schema support is present.",
+        "1": "Raw source material exists but is not organized into a reproducible Buyer Voice workflow.",
+        "2": "Core source data is present and partially normalized, but traceability, ratings, or report packaging are incomplete.",
+        "3": "Dataset is structured enough for standard report production with clear corpus definition, themes, ratings, and evidence expectations.",
+        "4": "Dataset is report-ready with strong provenance, explicit analysis scope, evidence linkage, validation checks, and deliverable guardrails.",
+        "5": "Dataset is fully productionized with automated ingestion, evidence ledger validation, redaction checks, and closed-loop report QA."
+      }
+    }
+  },
+  "source_package": {
+    "folder": "buyervoice",
+    "canonical_inputs": [
+      "Corpora - Raw GEAR/GEAR - OpenAI - 07252026.csv",
+      "Corpora - Raw GEAR/GEAR - ServiceNow Commercial Friction Set.csv"
+    ],
+    "derived_inputs": [
+      "Corpora - Formatted/*.txt"
+    ],
+    "method_inputs": [
+      "README_Buyer_Voice_Sample_Package.docx",
+      "rubric.docx",
+      "Prompts/Prompts.docx",
+      "Deck/Buyer Voice - Slide Examples - Aug 2026.pptx",
+      "Script/gear_notebooklm_formatter_w_quarter.py"
+    ],
+    "data_sensitivity": {
+      "classification": "internal_gartner_client_interaction_data",
+      "contains_unredacted_client_narrative": true,
+      "requires_redaction_before_deliverable": true,
+      "restricted_content_examples": [
+        "named client organizations",
+        "seat counts",
+        "specific prices",
+        "headcounts",
+        "client-identifying deal details"
+      ]
+    }
+  },
+  "principles": [
+    {
+      "id": "P1",
+      "label": "Raw Export Preservation",
+      "statement": "The raw GEAR CSV export is the canonical data source. Derived formatted text files are useful for model ingestion but must not replace the raw record."
+    },
+    {
+      "id": "P2",
+      "label": "Unconstrained Discovery First",
+      "statement": "Themes are discovered from the corpus before any category list, market definition, or vendor taxonomy is used to organize them."
+    },
+    {
+      "id": "P3",
+      "label": "Evidence Is First Class",
+      "statement": "Every theme rating and substantive buyer-voice claim must resolve to source interaction records, reference numbers, and verbatim excerpts."
+    },
+    {
+      "id": "P4",
+      "label": "Buyer Voice Attribution",
+      "statement": "Question Asked is direct buyer framing. Discussion Summary must be used, but statements from it require buyer, analyst, or uncertain attribution."
+    },
+    {
+      "id": "P5",
+      "label": "Qualitative Ratings",
+      "statement": "Spread and trajectory are qualitative judgments. Counts may inform the judgment but are not emitted as slide-facing output unless explicitly authorized."
+    },
+    {
+      "id": "P6",
+      "label": "Validation Before Publication",
+      "statement": "Claims, ratings, references, buyer composition, and redaction must be checked before output reaches a deliverable."
+    }
+  ],
+  "pillars": {
+    "SRC": {
+      "name": "Source Corpus",
+      "focus": "Define, preserve, and reproduce the Buyer Voice source package: raw GEAR exports, formatted text corpora, prompts, rubric, scripts, and slide examples.",
+      "evidence_signals": [
+        "raw CSV artifact registered as canonical source",
+        "formatted corpus files linked as derived artifacts",
+        "prompt, rubric, and deck references preserved",
+        "row counts and date windows recorded"
+      ]
+    },
+    "INT": {
+      "name": "Interaction Record",
+      "focus": "Normalize each GEAR interaction into durable buyer, analyst, vendor, date, lifecycle, and text fields while retaining all raw columns.",
+      "evidence_signals": [
+        "Reference Number resolves to a raw row",
+        "Question Asked and Discussion Summary preserved",
+        "buyer region, industry, role, persona, and market retained",
+        "analyst and team metadata retained"
+      ]
+    },
+    "RUN": {
+      "name": "Analysis Run and Scope",
+      "focus": "Represent each analytical pass, its prompts, scoping mode, qualifying record set, market cuts, supplied categories, and comparison windows.",
+      "evidence_signals": [
+        "analysis run linked to corpus",
+        "prompt references captured",
+        "qualifying record set explicit",
+        "scoping mode distinguished from discovery"
+      ]
+    },
+    "THM": {
+      "name": "Theme Discovery",
+      "focus": "Capture buyer-language themes discovered from the corpus before organizing them into market cuts or supplied categories.",
+      "evidence_signals": [
+        "theme names use buyer language",
+        "themes rest on multiple interactions",
+        "single-record observations are labeled separately",
+        "out-of-category themes are retained"
+      ]
+    },
+    "RAT": {
+      "name": "Qualitative Rating",
+      "focus": "Apply fixed qualitative rating criteria after discovery: Spread, Trajectory, Persistent, optional sentiment, and competitive scenarios.",
+      "evidence_signals": [
+        "Spread assessed against qualifying records",
+        "trajectory volume gate checked",
+        "persistent flag separate from trajectory",
+        "counts kept out of slide-facing output"
+      ]
+    },
+    "EVD": {
+      "name": "Evidence and Voice",
+      "focus": "Keep every claim traceable to reference numbers, source fields, verbatim excerpts, and buyer-versus-analyst voice attribution.",
+      "evidence_signals": [
+        "reference numbers written in full",
+        "excerpt source field identified",
+        "Discussion Summary attribution classified",
+        "client-identifying details redacted before deliverable use"
+      ]
+    },
+    "OUT": {
+      "name": "Deliverable Claims",
+      "focus": "Model slide/report claims separately from source evidence, including manual titles, kicker lines, synthesis panels, handling notes, and buyer quotes.",
+      "evidence_signals": [
+        "claim type captured",
+        "manual authoring marked",
+        "supporting evidence linked where applicable",
+        "validation status tracked"
+      ]
+    },
+    "VAL": {
+      "name": "Validation and Governance",
+      "focus": "Check that references, claims, role/region/industry composition, figures, attribution, ratings, and redaction are supported before publication.",
+      "evidence_signals": [
+        "unresolved references surfaced as blockers",
+        "unsupported claims flagged",
+        "analyst voice leakage checked",
+        "redaction blockers tracked"
+      ]
+    }
+  },
+  "sub_pillars": {
+    "SRC-01": {
+      "pillar_code": "SRC",
+      "name": "Source Package Inventory",
+      "definition": "Register every file in the Buyer Voice package and classify it as canonical source, derived source, method reference, or deliverable reference.",
+      "required_fields": ["source_package_id", "artifact_id", "path", "artifact_type", "canonicality", "checksum"]
+    },
+    "SRC-02": {
+      "pillar_code": "SRC",
+      "name": "Corpus Definition",
+      "definition": "Define each analysis corpus, including anchor logic, raw files, formatted files, record count, date range, and known limitations.",
+      "required_fields": ["corpus_id", "anchor_definition", "raw_artifact_ids", "formatted_artifact_ids", "date_start", "date_end", "record_count"]
+    },
+    "SRC-03": {
+      "pillar_code": "SRC",
+      "name": "Formatted Corpus Reproducibility",
+      "definition": "Track the NotebookLM-oriented text outputs as reproducible projections of raw GEAR data, not as canonical data.",
+      "required_fields": ["formatted_file_id", "quarter", "part_number", "generated_date", "included_fields", "total_interactions"]
+    },
+    "INT-01": {
+      "pillar_code": "INT",
+      "name": "Canonical Interaction Spine",
+      "definition": "Preserve the Reference Number, dates, subtype, purpose, question, summary, lifecycle fields, and raw GEAR fields for each interaction.",
+      "required_fields": ["reference_number", "first_response_date", "quarter", "purpose", "question_asked", "discussion_summary", "raw_fields"]
+    },
+    "INT-02": {
+      "pillar_code": "INT",
+      "name": "Buyer Profile",
+      "definition": "Normalize buyer-side metadata used to support role, region, industry, sector, market, persona, and enterprise-size claims.",
+      "required_fields": ["account_region", "enterprise_sector", "role_name", "persona", "market", "enterprise_size"]
+    },
+    "INT-03": {
+      "pillar_code": "INT",
+      "name": "Analyst and Vendor Context",
+      "definition": "Retain Gartner associate metadata and vendor/product context without over-attributing ambiguous product mentions.",
+      "required_fields": ["associate_name", "associate_emp_code", "vendor_name", "vendor_enterprise", "mentioned_vendors", "ambiguity_flags"]
+    },
+    "RUN-01": {
+      "pillar_code": "RUN",
+      "name": "Run Provenance",
+      "definition": "Capture the analytical pass, source corpus, prompt references, rubric version, run status, and deliverable artifacts.",
+      "required_fields": ["analysis_run_id", "corpus_id", "project_name", "prompt_refs", "rubric_version", "status"]
+    },
+    "RUN-02": {
+      "pillar_code": "RUN",
+      "name": "Explicit Qualifying Set",
+      "definition": "Make the exact record set used for a scope or rating explicit so Spread and trajectory are assessed against the right base.",
+      "required_fields": ["analysis_scope_id", "scope_type", "definition", "qualifying_reference_numbers", "qualifying_record_count"]
+    },
+    "RUN-03": {
+      "pillar_code": "RUN",
+      "name": "Scoping Mode",
+      "definition": "Differentiate discovered, market-cut, and supplied-category workflows while preserving unconstrained discovery first.",
+      "required_fields": ["scoping_mode", "supplied_category", "market_definition", "out_of_scope_or_appendix"]
+    },
+    "THM-01": {
+      "pillar_code": "THM",
+      "name": "Buyer-Language Theme",
+      "definition": "Represent discovered themes in buyer language and preserve theme history across merges, renames, and period comparisons.",
+      "required_fields": ["theme_id", "name", "description", "buyer_language_terms", "discovery_status", "merged_from_theme_ids"]
+    },
+    "THM-02": {
+      "pillar_code": "THM",
+      "name": "Supplied Category Assignment",
+      "definition": "Attach themes to supplied categories only after discovery, retaining themes that do not fit as appendix or out-of-scope findings.",
+      "required_fields": ["category_id", "source", "scope_assignment", "sort_order"]
+    },
+    "RAT-01": {
+      "pillar_code": "RAT",
+      "name": "Spread Rating",
+      "definition": "Rate how consistently and broadly a theme recurs across the qualifying set using Pervasive, Significant, Moderate, or Niche.",
+      "validation_rules": ["No numeric thresholds in v1.0", "Assess against qualifying records", "Do not emit counts in slide output"]
+    },
+    "RAT-02": {
+      "pillar_code": "RAT",
+      "name": "Trajectory and Persistence",
+      "definition": "Compare two windows using New, Intensifying, Stable, or Fading, with Persistent captured as a separate boolean.",
+      "validation_rules": ["Require at least ten supporting records per comparison window", "Require Spread of at least Moderate", "Use insufficient-volume note when gate fails"]
+    },
+    "RAT-03": {
+      "pillar_code": "RAT",
+      "name": "Optional Sentiment and Scenario",
+      "definition": "Capture sentiment and competitive situations only when the analysis has a named target or data-derived commercial scenario.",
+      "validation_rules": ["Do not force sentiment onto broad market/problem themes", "Do not introduce a fixed competitive scenario taxonomy"]
+    },
+    "EVD-01": {
+      "pillar_code": "EVD",
+      "name": "Source Field Attribution",
+      "definition": "Identify whether evidence comes from Question Asked, Discussion Summary, Both, Purpose, or another field.",
+      "required_fields": ["reference_number", "source_field", "excerpt", "excerpt_type"]
+    },
+    "EVD-02": {
+      "pillar_code": "EVD",
+      "name": "Voice Attribution",
+      "definition": "Classify evidence as buyer voice, buyer-raised in summary, analyst voice, or attribution uncertain before using it in a finding.",
+      "required_fields": ["voice_attribution", "supports_rating", "supports_claim_ids"]
+    },
+    "EVD-03": {
+      "pillar_code": "EVD",
+      "name": "Redaction Status",
+      "definition": "Track whether excerpts contain client-identifying detail and whether they are safe for deliverable use.",
+      "required_fields": ["redaction_status", "redaction_notes"]
+    },
+    "OUT-01": {
+      "pillar_code": "OUT",
+      "name": "Deliverable Claim",
+      "definition": "Represent slide/report statements separately from evidence so manual authoring and support status remain visible.",
+      "required_fields": ["claim_id", "claim_text", "claim_type", "manual_authoring", "validation_status"]
+    },
+    "OUT-02": {
+      "pillar_code": "OUT",
+      "name": "Output Policy",
+      "definition": "Distinguish slide-facing output from audit output, especially around counts, reference numbers, excerpts, and internal-only notes.",
+      "validation_rules": ["No counts in slide output by default", "No reference numbers on slides by default", "Audit output may include counts and references"]
+    },
+    "VAL-01": {
+      "pillar_code": "VAL",
+      "name": "Reference and Evidence Checks",
+      "definition": "Ensure every cited reference resolves and every rating has supporting evidence.",
+      "validation_rules": ["Unresolved references are blockers", "Ratings without references are blockers", "Single-record claims cannot be presented as themes"]
+    },
+    "VAL-02": {
+      "pillar_code": "VAL",
+      "name": "Claim Support Checks",
+      "definition": "Verify that role, region, industry, figure, trajectory, and composition claims are supported by cited records.",
+      "validation_rules": ["Unsupported figures are errors", "Unsupported buyer composition claims are errors", "Middle-clustered ratings require review"]
+    },
+    "VAL-03": {
+      "pillar_code": "VAL",
+      "name": "Voice and Redaction Checks",
+      "definition": "Block analyst-voice leakage into buyer findings and client-identifying detail in deliverable output.",
+      "validation_rules": ["Analyst voice is never buyer voice", "Attribution-uncertain statements must be labeled", "Redaction-required findings are blockers"]
+    }
+  },
+  "entity_model": {
+    "source_package": {
+      "description": "A bundled project input package containing source exports, formatted corpora, prompts, rubric, and example deliverables.",
+      "primary_key": "source_package_id",
+      "fields": {
+        "source_package_id": "string",
+        "name": "string",
+        "prepared_for": "string",
+        "prepared_by": "array<string>",
+        "prepared_date": "date",
+        "folder_path": "string",
+        "contents": "array<source_artifact>",
+        "notes": "string"
+      }
+    },
+    "source_artifact": {
+      "description": "One file in the source package.",
+      "primary_key": "artifact_id",
+      "fields": {
+        "artifact_id": "string",
+        "source_package_id": "string",
+        "path": "string",
+        "artifact_type": {
+          "type": "enum",
+          "values": [
+            "raw_csv",
+            "formatted_text",
+            "prompt_document",
+            "rubric_document",
+            "readme_document",
+            "slide_deck",
+            "formatter_script",
+            "other"
+          ]
+        },
+        "canonicality": {
+          "type": "enum",
+          "values": [
+            "canonical_source",
+            "derived_source",
+            "method_reference",
+            "deliverable_reference"
+          ]
+        },
+        "row_count": "integer|null",
+        "generated_date": "date|null",
+        "checksum": "string|null"
+      }
+    },
+    "corpus": {
+      "description": "A coherent set of interaction records used as the input universe for one or more analyses.",
+      "primary_key": "corpus_id",
+      "fields": {
+        "corpus_id": "string",
+        "source_package_id": "string",
+        "name": "string",
+        "description": "string",
+        "anchor_definition": "string",
+        "raw_artifact_ids": "array<string>",
+        "formatted_artifact_ids": "array<string>",
+        "date_start": "date",
+        "date_end": "date",
+        "record_count": "integer",
+        "vendor_anchor": "string|null",
+        "market_anchor": "string|null",
+        "known_limitations": "array<string>"
+      }
+    },
+    "interaction": {
+      "description": "One Gartner end-user interaction record from a GEAR CSV export.",
+      "primary_key": "reference_number",
+      "fields": {
+        "reference_number": "string",
+        "corpus_id": "string",
+        "key_initiative": "string|null",
+        "interaction_subtype": "string",
+        "personal_tags": "array<string>",
+        "purpose": "string",
+        "question_asked": "string",
+        "next_action": "string|null",
+        "discussion_summary": "string",
+        "special_instructions": "string|null",
+        "template_name": "string|null",
+        "first_response_date": "date",
+        "quarter": "string",
+        "cycle_time": "number|null",
+        "agenda": "string|null",
+        "core_topic": "string|null",
+        "included_in_ict_reporting": "string|null",
+        "first_offer_ct": "number|null",
+        "last_open_to_scheduled_ct": "number|null",
+        "schedule_to_response_ct": "number|null",
+        "interaction_priority": "string|null",
+        "interaction_status": "string|null",
+        "response_type": "string|null",
+        "source": "string|null",
+        "decision_stage": "string|null",
+        "stretch_interaction": "string|null",
+        "cv_grouping": "string|null",
+        "open_date": "date|null",
+        "close_date": "date|null",
+        "scheduled_date": "date|null",
+        "last_scheduled_date": "date|null",
+        "due_date": "date|null",
+        "buyer_profile_id": "string",
+        "analyst_profile_id": "string",
+        "vendor_context_id": "string",
+        "raw_fields": "object"
+      },
+      "normalization_rules": [
+        "Treat '-' and blank strings as null for normalized fields.",
+        "Preserve original values in raw_fields.",
+        "Derive quarter from first_response_date as 'YYYY QN'.",
+        "Split Personal Tags into an array on commas, trimming whitespace.",
+        "Do not drop records solely because vendor_name is blank or '-'."
+      ]
+    },
+    "buyer_profile": {
+      "description": "Buyer-side metadata associated with an interaction.",
+      "primary_key": "buyer_profile_id",
+      "fields": {
+        "buyer_profile_id": "string",
+        "account_country": "string|null",
+        "account_region": "string|null",
+        "account_market": "string|null",
+        "account_sub_market": "string|null",
+        "account_sector": "string|null",
+        "account_sub_sector": "string|null",
+        "account_sic_desc": "string|null",
+        "contact_country": "string|null",
+        "contact_region": "string|null",
+        "role_name": "string|null",
+        "job_title": "string|null",
+        "industry_name": "string|null",
+        "enterprise_country": "string|null",
+        "enterprise_region": "string|null",
+        "enterprise_market": "string|null",
+        "enterprise_sector": "string|null",
+        "enterprise_sub_sector": "string|null",
+        "enterprise_sector_desc": "string|null",
+        "enterprise_size": "string|null",
+        "gartner_500_flag": "string|null",
+        "persona": "string|null",
+        "market": "string|null",
+        "bu": "string|null",
+        "buysmart": "string|null",
+        "sao_flag": "string|null",
+        "price_plan_sbu": "string|null",
+        "price_plan_lob": "string|null",
+        "price_plan_name": "string|null"
+      }
+    },
+    "analyst_profile": {
+      "description": "Gartner associate metadata associated with an interaction.",
+      "primary_key": "analyst_profile_id",
+      "fields": {
+        "analyst_profile_id": "string",
+        "associate_emp_code": "string",
+        "associate_name": "string",
+        "associate_region": "string|null",
+        "associate_country": "string|null",
+        "group": "string|null",
+        "team": "string|null",
+        "subteam": "string|null",
+        "special_program": "string|null"
+      }
+    },
+    "vendor_context": {
+      "description": "Vendor and product context present in the GEAR record.",
+      "primary_key": "vendor_context_id",
+      "fields": {
+        "vendor_context_id": "string",
+        "vendor_enterprise": "string|null",
+        "vendor_name": "string|null",
+        "vendor_anchor": "string|null",
+        "mentioned_vendors": "array<string>",
+        "mentioned_products": "array<string>",
+        "ambiguity_flags": "array<string>"
+      },
+      "notes": [
+        "Vendor Name may be '-' even when vendor or product terms appear in question_asked or discussion_summary.",
+        "For OpenAI corpora, bare 'GPT' should be flagged as ambiguous unless the surrounding context supports OpenAI attribution.",
+        "Azure OpenAI should preserve both OpenAI technology relevance and Microsoft commercial relationship."
+      ]
+    },
+    "formatted_corpus_file": {
+      "description": "A NotebookLM-oriented text file generated from a raw corpus.",
+      "primary_key": "formatted_file_id",
+      "fields": {
+        "formatted_file_id": "string",
+        "corpus_id": "string",
+        "artifact_id": "string",
+        "base_filename": "string",
+        "quarter": "string",
+        "part_number": "integer",
+        "generated_date": "date",
+        "total_interactions": "integer",
+        "word_limit": "integer|null",
+        "included_fields": "array<string>"
+      },
+      "included_fields_default": [
+        "Date",
+        "Reference Number",
+        "Buyer Region",
+        "Buyer Industry",
+        "Buyer Role",
+        "Purpose",
+        "Question Asked",
+        "Analyst Name",
+        "Discussion Summary"
+      ]
+    },
+    "analysis_run": {
+      "description": "One end-to-end analytical pass or project deliverable built from a corpus and prompts.",
+      "primary_key": "analysis_run_id",
+      "fields": {
+        "analysis_run_id": "string",
+        "corpus_id": "string",
+        "name": "string",
+        "project_name": "string",
+        "run_date": "date|null",
+        "prompt_refs": "array<string>",
+        "rubric_version": "string",
+        "scoping_mode": {
+          "type": "enum",
+          "values": [
+            "discovered",
+            "discovered_with_market_cut",
+            "supplied_categories"
+          ]
+        },
+        "qualifying_record_set_id": "string",
+        "comparison_window_ids": "array<string>",
+        "deliverable_artifact_ids": "array<string>",
+        "status": {
+          "type": "enum",
+          "values": [
+            "draft",
+            "validated",
+            "published",
+            "rejected"
+          ]
+        },
+        "notes": "string"
+      }
+    },
+    "analysis_scope": {
+      "description": "The record cut used for an analysis run or theme rating.",
+      "primary_key": "analysis_scope_id",
+      "fields": {
+        "analysis_scope_id": "string",
+        "analysis_run_id": "string",
+        "scope_type": {
+          "type": "enum",
+          "values": [
+            "full_corpus",
+            "market_definition",
+            "supplied_category",
+            "theme_qualifying_set",
+            "comparison_window"
+          ]
+        },
+        "name": "string",
+        "definition": "string",
+        "filter_logic": "object|string|null",
+        "qualifying_reference_numbers": "array<string>",
+        "qualifying_record_count": "integer",
+        "date_start": "date|null",
+        "date_end": "date|null"
+      },
+      "required_for_rating": true
+    },
+    "supplied_category": {
+      "description": "A top-level category supplied by a client team or requester. Themes may be organized under it after discovery.",
+      "primary_key": "category_id",
+      "fields": {
+        "category_id": "string",
+        "analysis_run_id": "string",
+        "name": "string",
+        "definition": "string|null",
+        "source": {
+          "type": "enum",
+          "values": [
+            "client_supplied",
+            "requester_supplied",
+            "analyst_supplied"
+          ]
+        },
+        "sort_order": "integer|null"
+      },
+      "rules": [
+        "Supplied categories must not constrain initial discovery.",
+        "Themes discovered outside supplied categories must be retained as out_of_scope_or_appendix themes rather than discarded."
+      ]
+    },
+    "theme": {
+      "description": "A buyer-language pattern discovered from multiple interactions.",
+      "primary_key": "theme_id",
+      "fields": {
+        "theme_id": "string",
+        "analysis_run_id": "string",
+        "category_id": "string|null",
+        "name": "string",
+        "description": "string",
+        "buyer_language_terms": "array<string>",
+        "discovery_status": {
+          "type": "enum",
+          "values": [
+            "discovered",
+            "merged",
+            "renamed",
+            "not_present",
+            "isolated_observation",
+            "dropped_for_insufficient_evidence"
+          ]
+        },
+        "scope_assignment": {
+          "type": "enum",
+          "values": [
+            "in_scope",
+            "market_cut",
+            "supplied_category",
+            "out_of_scope_or_appendix"
+          ]
+        },
+        "merged_from_theme_ids": "array<string>",
+        "stable_name_of_theme_id": "string|null",
+        "notes": "string"
+      },
+      "rules": [
+        "Theme names must use buyer language rather than vendor or Gartner terminology.",
+        "A theme must rest on multiple distinct interactions from more than one buyer.",
+        "A single-record pattern must be marked isolated_observation, not theme.",
+        "If a recurring theme is absent in a period, mark it Not Present rather than assigning a low rating."
+      ]
+    },
+    "theme_rating": {
+      "description": "Qualitative assessment of a theme after discovery.",
+      "primary_key": "theme_rating_id",
+      "fields": {
+        "theme_rating_id": "string",
+        "theme_id": "string",
+        "analysis_scope_id": "string",
+        "spread": {
+          "type": "enum|null",
+          "values": [
+            "Pervasive",
+            "Significant",
+            "Moderate",
+            "Niche"
+          ]
+        },
+        "spread_basis": "string",
+        "trajectory": {
+          "type": "enum|null",
+          "values": [
+            "New",
+            "Intensifying",
+            "Stable",
+            "Fading"
+          ]
+        },
+        "trajectory_basis": "string|null",
+        "persistent": "boolean",
+        "insufficient_volume_note": "string|null",
+        "sentiment": "theme_sentiment|null",
+        "competitive_scenarios": "array<competitive_scenario>",
+        "rating_reference_numbers": "array<string>",
+        "created_by": "string|null",
+        "created_at": "datetime|null"
+      },
+      "spread_definitions": {
+        "Pervasive": "Surfaces across nearly all conversations in the qualifying set; near-universal across buyer types and segments.",
+        "Significant": "Common and recurring across a large share of conversations; a clear pattern but not universal.",
+        "Moderate": "Present in a meaningful minority; real and repeated but concentrated in certain buyer types or use cases.",
+        "Niche": "Appears in a small number of conversations; specific to particular buyers, sub-segments, or use cases."
+      },
+      "trajectory_definitions": {
+        "New": "Absent or negligible in the earlier comparison window and materially present in the recent one.",
+        "Intensifying": "Rising window over window.",
+        "Stable": "Present at comparable levels in both comparison windows.",
+        "Fading": "Declining window over window."
+      },
+      "rules": [
+        "Spread is assessed against the qualifying records in the cut being analyzed, not the full corpus by default.",
+        "No numeric thresholds are defined for Spread in version 1.0.",
+        "Counts inform the rating but do not appear in slide-facing output.",
+        "Trajectory requires at least ten supporting records in each comparison window and Spread of at least Moderate.",
+        "Themes that fail the trajectory volume gate receive null trajectory and an insufficient-volume note.",
+        "Persistent is a separate boolean and must not be encoded as a trajectory value.",
+        "Every rating must include supporting references and excerpts."
+      ]
+    },
+    "theme_sentiment": {
+      "description": "Optional prose characterization of buyer sentiment when the analysis has a target for sentiment to attach to.",
+      "fields": {
+        "target": "string",
+        "positive_about": "string|null",
+        "worried_about": "string|null",
+        "firmness": "string|null",
+        "sentiment_summary": "string"
+      },
+      "rules": [
+        "Run only when sentiment attaches to a named vendor, product, or commercial arrangement.",
+        "Do not score sentiment on a fixed scale in version 1.0.",
+        "Do not run sentiment for broad market or problem analyses without a clear target."
+      ]
+    },
+    "competitive_scenario": {
+      "description": "Optional data-named commercial situation associated with a theme.",
+      "fields": {
+        "name": "string",
+        "description": "string",
+        "supporting_reference_numbers": "array<string>"
+      },
+      "rules": [
+        "Do not impose a fixed taxonomy for competitive scenarios.",
+        "Name scenarios from the data for each project."
+      ]
+    },
+    "theme_evidence": {
+      "description": "A source-backed evidence item supporting a theme, rating, or claim.",
+      "primary_key": "theme_evidence_id",
+      "fields": {
+        "theme_evidence_id": "string",
+        "theme_id": "string",
+        "theme_rating_id": "string|null",
+        "reference_number": "string",
+        "source_field": {
+          "type": "enum",
+          "values": [
+            "Question Asked",
+            "Discussion Summary",
+            "Both",
+            "Purpose",
+            "Other"
+          ]
+        },
+        "voice_attribution": {
+          "type": "enum",
+          "values": [
+            "buyer_voice",
+            "buyer_raised_in_summary",
+            "analyst_voice",
+            "attribution_uncertain"
+          ]
+        },
+        "excerpt": "string",
+        "excerpt_type": {
+          "type": "enum",
+          "values": [
+            "verbatim_buyer_question",
+            "verbatim_summary_passage",
+            "redacted_verbatim",
+            "analyst_observation"
+          ]
+        },
+        "supports_claim_ids": "array<string>",
+        "supports_rating": "boolean",
+        "buyer_region": "string|null",
+        "buyer_sector": "string|null",
+        "buyer_role": "string|null",
+        "interaction_date": "date|null",
+        "redaction_status": {
+          "type": "enum",
+          "values": [
+            "not_reviewed",
+            "redaction_required",
+            "redacted",
+            "safe_for_deliverable"
+          ]
+        },
+        "redaction_notes": "string|null"
+      },
+      "rules": [
+        "Reference numbers must be written out in full as plain text.",
+        "Every reference_number must resolve to an interaction in the source corpus.",
+        "Buyer questions must remain verbatim except for documented layout shortening.",
+        "Discussion Summary excerpts must not be presented as buyer voice unless voice_attribution is buyer_raised_in_summary or buyer_voice.",
+        "Analyst voice may support a labeled analyst observation but must not be mixed into buyer-voice findings."
+      ]
+    },
+    "analyst_observation": {
+      "description": "A labeled observation from analyst commentary rather than direct buyer voice.",
+      "primary_key": "analyst_observation_id",
+      "fields": {
+        "analyst_observation_id": "string",
+        "analysis_run_id": "string",
+        "theme_id": "string|null",
+        "observation": "string",
+        "supporting_reference_numbers": "array<string>",
+        "supporting_analyst_names": "array<string>",
+        "usage": {
+          "type": "enum",
+          "values": [
+            "supporting_color",
+            "internal_note",
+            "excluded_from_buyer_voice"
+          ]
+        }
+      },
+      "rules": [
+        "Analyst commentary is not Gartner institutional position.",
+        "Use analyst observations only as labeled supporting color, preferably when several distinct analysts observe the same pattern."
+      ]
+    },
+    "deliverable_claim": {
+      "description": "A claim, title, card statement, synthesis line, or output element intended for a slide or report.",
+      "primary_key": "claim_id",
+      "fields": {
+        "claim_id": "string",
+        "analysis_run_id": "string",
+        "deliverable_artifact_id": "string|null",
+        "claim_text": "string",
+        "claim_type": {
+          "type": "enum",
+          "values": [
+            "theme_statement",
+            "rating_statement",
+            "buyer_composition",
+            "trajectory_statement",
+            "quote",
+            "synthesis_panel",
+            "title",
+            "kicker",
+            "handling_note",
+            "other"
+          ]
+        },
+        "theme_id": "string|null",
+        "supporting_evidence_ids": "array<string>",
+        "manual_authoring": "boolean",
+        "validation_status": {
+          "type": "enum",
+          "values": [
+            "not_checked",
+            "supported",
+            "partially_supported",
+            "unsupported",
+            "requires_redaction",
+            "excluded"
+          ]
+        }
+      },
+      "rules": [
+        "Titles, kicker lines, and synthesis panels may be manually authored and have no direct supporting records, but must still be checked against the corpus as authored claims.",
+        "No unsupported figure or count should pass validation.",
+        "No client-identifying detail should pass to a deliverable."
+      ]
+    },
+    "validation_finding": {
+      "description": "A machine or human validation issue found during claim, evidence, rating, or redaction review.",
+      "primary_key": "validation_finding_id",
+      "fields": {
+        "validation_finding_id": "string",
+        "analysis_run_id": "string",
+        "target_type": {
+          "type": "enum",
+          "values": [
+            "analysis_run",
+            "theme",
+            "theme_rating",
+            "theme_evidence",
+            "deliverable_claim",
+            "reference_number",
+            "redaction"
+          ]
+        },
+        "target_id": "string",
+        "severity": {
+          "type": "enum",
+          "values": [
+            "info",
+            "warning",
+            "error",
+            "blocker"
+          ]
+        },
+        "finding_type": {
+          "type": "enum",
+          "values": [
+            "unresolved_reference",
+            "unsupported_claim",
+            "single_record_claim_presented_as_theme",
+            "buyer_voice_attribution_error",
+            "analyst_voice_mixed_into_buyer_voice",
+            "unsupported_role_claim",
+            "unsupported_region_claim",
+            "unsupported_industry_claim",
+            "unsupported_figure",
+            "redaction_required",
+            "rating_without_evidence",
+            "trajectory_volume_gate_failed",
+            "middle_clustering_review",
+            "category_constrained_discovery",
+            "other"
+          ]
+        },
+        "message": "string",
+        "evidence": "string|null",
+        "recommended_action": "string|null",
+        "status": {
+          "type": "enum",
+          "values": [
+            "open",
+            "resolved",
+            "accepted_risk",
+            "dismissed"
+          ]
+        }
+      }
+    }
+  },
+  "raw_gear_field_mapping": {
+    "Reference Number": "interaction.reference_number",
+    "Key Initiative": "interaction.key_initiative",
+    "Associate Emp Code": "analyst_profile.associate_emp_code",
+    "Associate Name": "analyst_profile.associate_name",
+    "Interaction Subtype": "interaction.interaction_subtype",
+    "Personal Tags": "interaction.personal_tags",
+    "Purpose": "interaction.purpose",
+    "Question Asked": "interaction.question_asked",
+    "Next Action": "interaction.next_action",
+    "Discussion Summary": "interaction.discussion_summary",
+    "Special Instructions": "interaction.special_instructions",
+    "Template Name": "interaction.template_name",
+    "First Response Date": "interaction.first_response_date",
+    "Cycle Time": "interaction.cycle_time",
+    "Agenda": "interaction.agenda",
+    "Core Topic": "interaction.core_topic",
+    "Vendor Enterprise": "vendor_context.vendor_enterprise",
+    "Vendor Name": "vendor_context.vendor_name",
+    "Included In Ict Reporting": "interaction.included_in_ict_reporting",
+    "First Offer Ct": "interaction.first_offer_ct",
+    "Last Open To Scheduled Ct": "interaction.last_open_to_scheduled_ct",
+    "Schedule To Response Ct": "interaction.schedule_to_response_ct",
+    "Interaction Priority": "interaction.interaction_priority",
+    "Interaction Status": "interaction.interaction_status",
+    "Response Type": "interaction.response_type",
+    "Source": "interaction.source",
+    "Decision Stage": "interaction.decision_stage",
+    "Stretch Interaction": "interaction.stretch_interaction",
+    "Cv Grouping": "interaction.cv_grouping",
+    "Account Country": "buyer_profile.account_country",
+    "Account Region": "buyer_profile.account_region",
+    "Account Market": "buyer_profile.account_market",
+    "Account Sub Market": "buyer_profile.account_sub_market",
+    "Account Sector": "buyer_profile.account_sector",
+    "Account Sub Sector": "buyer_profile.account_sub_sector",
+    "Sao Flag": "buyer_profile.sao_flag",
+    "Account Sic Desc": "buyer_profile.account_sic_desc",
+    "Price Plan Sbu": "buyer_profile.price_plan_sbu",
+    "Price Plan Lob": "buyer_profile.price_plan_lob",
+    "Price Plan Name": "buyer_profile.price_plan_name",
+    "Contact Country": "buyer_profile.contact_country",
+    "Contact Region": "buyer_profile.contact_region",
+    "Role Name": "buyer_profile.role_name",
+    "Job Title": "buyer_profile.job_title",
+    "Industry Name": "buyer_profile.industry_name",
+    "Enterprise Country": "buyer_profile.enterprise_country",
+    "Enterprise Region": "buyer_profile.enterprise_region",
+    "Enterprise Market": "buyer_profile.enterprise_market",
+    "Enterprise Sector": "buyer_profile.enterprise_sector",
+    "Enterprise Sub Sector": "buyer_profile.enterprise_sub_sector",
+    "Enterprise Sector Desc": "buyer_profile.enterprise_sector_desc",
+    "Enterprise Size": "buyer_profile.enterprise_size",
+    "Open Date": "interaction.open_date",
+    "Close Date": "interaction.close_date",
+    "Scheduled Date": "interaction.scheduled_date",
+    "Last Scheduled Date": "interaction.last_scheduled_date",
+    "Due Date": "interaction.due_date",
+    "Gartner 500 Flag": "buyer_profile.gartner_500_flag",
+    "Associate Region": "analyst_profile.associate_region",
+    "Associate Country": "analyst_profile.associate_country",
+    "Group": "analyst_profile.group",
+    "Team": "analyst_profile.team",
+    "Subteam": "analyst_profile.subteam",
+    "Special Program": "analyst_profile.special_program",
+    "Buysmart": "buyer_profile.buysmart",
+    "Bu": "buyer_profile.bu",
+    "Market": "buyer_profile.market",
+    "Persona": "buyer_profile.persona"
+  },
+  "sample_corpora": {
+    "openai_2026_ytd": {
+      "name": "OpenAI - GGM Power POC July 2026",
+      "source_file": "GEAR - OpenAI - 07252026.csv",
+      "record_count": 3555,
+      "date_start": "2026-01-02",
+      "date_end": "2026-07-23",
+      "quarters": {
+        "2026 Q1": 1478,
+        "2026 Q2": 1704,
+        "2026 Q3": 373
+      },
+      "scoping_examples": [
+        "Discovered themes across full OpenAI-anchored corpus",
+        "Discovered themes within Enterprise AI Assistants market cut",
+        "Discovered themes within Enterprise AI Coding Agents market cut"
+      ]
+    },
+    "servicenow_commercial_2026_ytd": {
+      "name": "ServiceNow Commercial Friction - 3Q26 CEO Briefing",
+      "source_file": "GEAR - ServiceNow Commercial Friction Set.csv",
+      "record_count": 4114,
+      "date_start": "2026-01-02",
+      "date_end": "2026-07-30",
+      "quarters": {
+        "2026 Q1": 1829,
+        "2026 Q2": 1799,
+        "2026 Q3": 486
+      },
+      "scoping_examples": [
+        "Client-supplied commercial friction categories",
+        "Themes found within supplied categories",
+        "Out-of-category themes retained for appendix"
+      ]
+    }
+  },
+  "required_validation_checks": [
+    {
+      "id": "V1",
+      "label": "Reference Resolution",
+      "description": "Every cited reference number must resolve to a raw interaction in the analysis corpus.",
+      "failure_type": "unresolved_reference",
+      "severity": "blocker"
+    },
+    {
+      "id": "V2",
+      "label": "Evidence Presence",
+      "description": "Every theme rating must have at least one supporting evidence item and every theme must rest on multiple distinct buyer interactions unless marked isolated_observation.",
+      "failure_type": "rating_without_evidence",
+      "severity": "blocker"
+    },
+    {
+      "id": "V3",
+      "label": "Buyer Voice Attribution",
+      "description": "Evidence from Discussion Summary must be attributed as buyer-raised, analyst voice, or attribution uncertain before being used.",
+      "failure_type": "buyer_voice_attribution_error",
+      "severity": "error"
+    },
+    {
+      "id": "V4",
+      "label": "Analyst Voice Separation",
+      "description": "Gartner recommendations, market statistics, and analyst reads must not be mixed into buyer-voice findings.",
+      "failure_type": "analyst_voice_mixed_into_buyer_voice",
+      "severity": "error"
+    },
+    {
+      "id": "V5",
+      "label": "Buyer Composition Support",
+      "description": "Claims about roles, industries, sectors, or regions must be supported by the cited records.",
+      "failure_type": "unsupported_role_region_industry_claim",
+      "severity": "error"
+    },
+    {
+      "id": "V6",
+      "label": "Figure Provenance",
+      "description": "Any count, percentage, price, or numerical claim must appear in the corpus or be explicitly marked as external/manual.",
+      "failure_type": "unsupported_figure",
+      "severity": "error"
+    },
+    {
+      "id": "V7",
+      "label": "Redaction",
+      "description": "Named organizations, prices, seat counts, headcounts, and other client-identifying details must be removed before deliverable use.",
+      "failure_type": "redaction_required",
+      "severity": "blocker"
+    },
+    {
+      "id": "V8",
+      "label": "Discovery Integrity",
+      "description": "Supplied categories or market labels must not constrain the initial discovery step.",
+      "failure_type": "category_constrained_discovery",
+      "severity": "warning"
+    },
+    {
+      "id": "V9",
+      "label": "Trajectory Volume Gate",
+      "description": "Trajectory may be assigned only when the theme has enough supporting records in both comparison windows and Spread is at least Moderate.",
+      "failure_type": "trajectory_volume_gate_failed",
+      "severity": "warning"
+    },
+    {
+      "id": "V10",
+      "label": "Rating Distribution Review",
+      "description": "If most themes cluster in the middle values, flag the run for review.",
+      "failure_type": "middle_clustering_review",
+      "severity": "warning"
+    }
+  ],
+  "output_policy": {
+    "slide_output": {
+      "show_counts": false,
+      "show_reference_numbers": false,
+      "quote_policy": "buyer_questions_verbatim_or_documented_shortening_only",
+      "redaction_required": true
+    },
+    "audit_output": {
+      "show_counts": true,
+      "show_reference_numbers": true,
+      "show_excerpts": true,
+      "show_validation_findings": true
+    },
+    "internal_only_markers": [
+      "handling_note",
+      "validation_finding",
+      "redaction_notes",
+      "unsupported_claim_detail"
+    ]
+  },
+  "implementation_notes": [
+    "Start ingestion from raw CSV files, not formatted text files.",
+    "Use formatted text files only as reproducibility artifacts for the NotebookLM workflow.",
+    "Preserve all raw GEAR columns in interaction.raw_fields even when normalized fields are extracted.",
+    "Use analysis_scope.qualifying_reference_numbers as the explicit rating base.",
+    "Avoid deriving numeric spread thresholds until enough completed projects exist to calibrate them empirically.",
+    "Keep validation artifacts separate from slide-facing output."
+  ]
+}

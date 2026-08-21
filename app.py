@@ -1,8 +1,11 @@
 from flask import Flask, g, render_template, jsonify, request, send_file
+import csv
 import json
 import os
+import re
 import time
 import datetime
+from collections import Counter
 from pathlib import Path
 from gartner_app.api.health import health_blueprint
 from gartner_app.api.research import research_blueprint
@@ -158,6 +161,7 @@ def canonical_paths(*kinds):
 # Maps schema filenames to their top-level JSON key and internal structure type.
 # "nested" = v3.2 style (pillars → sub_capabilities list)
 # "flat"   = v4.0 / v5.0 style (separate sub_pillars dict keyed by ID)
+# "buyer_voice" = buyer-inquiry analysis schema (dataset/theme/evidence/report model, no vendor rows)
 SCHEMA_REGISTRY = {
     'schema3-3.json':          {'top_key': 'dfir_capability_taxonomy_v3.2',        'structure': 'nested'},
     'schema4-0_enhanced.json': {'top_key': 'dfir_capability_taxonomy_v4.0_enhanced', 'structure': 'flat'},
@@ -180,6 +184,9 @@ SCHEMA_REGISTRY = {
     'agentic_soc_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
     'agentic_enterprise_operations_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
     'AI_platform_ecosystem_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
+    'Buyer_Voice_Schema_1_0.json': {'top_key': None, 'structure': 'flat'},
+    'OpenAI_Buyer_Data_Analysis_Schema.json': {'top_key': None, 'structure': 'buyer_voice'},
+    'ServiceNow_Buyer_Data_Analysis_Schema.json': {'top_key': None, 'structure': 'buyer_voice'},
 }
 
 # Schema display metadata: maps schema filename to title, abbreviation, subtitle
@@ -204,6 +211,9 @@ SCHEMA_DISPLAY = {
     'agentic_soc_framework_v1.json': {'title': 'Agentic Security Operations Adoption Framework 2026', 'abbr': 'ASAF', 'subtitle': 'Vendor-neutral adoption framework for autonomous security operations — 11 dimensions, 44 sub-dimensions, 6 stages'},
     'agentic_enterprise_operations_framework_v1.json': {'title': 'Agentic Enterprise Operations Framework 2026', 'abbr': 'AEOF', 'subtitle': 'Enterprise operations framework for agentic business governance, orchestration, and risk assurance.'},
         'AI_platform_ecosystem_framework_v1.json': {'title': 'AI Platform Ecosystem Framework 2026', 'abbr': 'APEF', 'subtitle': 'Compare seven major AI platform providers across the enterprise AI value chain.'},
+    'Buyer_Voice_Schema_1_0.json': {'title': 'Buyer Voice Analysis Schema 2026', 'abbr': 'BVA', 'subtitle': 'Model Gartner buyer interaction corpora, discovered themes, ratings, evidence, and validation checks.'},
+    'OpenAI_Buyer_Data_Analysis_Schema.json': {'title': 'OpenAI Buyer Data Analysis', 'abbr': 'OpenAI BV', 'subtitle': 'Analyze Gartner buyer inquiry questions about OpenAI, market cuts, themes, evidence, and slide-ready outcomes.'},
+    'ServiceNow_Buyer_Data_Analysis_Schema.json': {'title': 'ServiceNow Buyer Data Analysis', 'abbr': 'SN BV', 'subtitle': 'Analyze Gartner buyer inquiry data for ServiceNow commercial friction, pricing, packaging, evidence, and slide-ready outcomes.'},
 }
 
 def discover_schema_files():
@@ -280,7 +290,7 @@ def _strip_schema_notes(body):
     return body
 
 def _schema_structure(schema_file=None):
-    """Return 'nested', 'flat', or 'asmf' for the given schema."""
+    """Return 'nested', 'flat', 'asmf', 'method', or 'buyer_voice' for the given schema."""
     if schema_file is None:
         schema_file = app_state.current_schema_file
     reg = SCHEMA_REGISTRY.get(schema_file)
@@ -332,12 +342,49 @@ def extract_sub_pillars(schema_file=None):
                     'pillar_name': pillar_lookup.get(pillar_code, ''),
                     'name': sp_data.get('name', ''),
                     'definition': sp_data.get('expanded_definition', sp_data.get('definition', '')),
-                    'activities': sp_data.get('what_to_verify_publicly',
-                                              sp_data.get('gtm_evaluation_criteria',
-                                                          sp_data.get('ai_evaluation_criteria',
-                                                                      sp_data.get('maturity_criteria',
-                                                                                  sp_data.get('granular_activities', [])))))
+                    'activities': sp_data.get('required_fields',
+                                              sp_data.get('validation_rules',
+                                                          sp_data.get('workflow_requirements',
+                                                                      sp_data.get('what_to_verify_publicly',
+                                                                                  sp_data.get('gtm_evaluation_criteria',
+                                                                                              sp_data.get('ai_evaluation_criteria',
+                                                                                                          sp_data.get('maturity_criteria',
+                                                                                                                      sp_data.get('granular_activities', []))))))))
                 })
+    elif structure == 'method':
+        pillar_lookup = {}
+        if 'pillars' in schema:
+            for code, pdata in schema['pillars'].items():
+                pillar_lookup[code] = pdata.get('name', pdata.get('focus', code))
+
+        if 'sub_pillars' in schema:
+            for sp_id, sp_data in schema['sub_pillars'].items():
+                pillar_code = sp_data.get('pillar_code') or (sp_id.split('-', 1)[0] if '-' in sp_id else '')
+                sub_pillars.append({
+                    'id': sp_id,
+                    'pillar_code': pillar_code,
+                    'pillar_name': pillar_lookup.get(pillar_code, ''),
+                    'name': sp_data.get('name', ''),
+                    'definition': sp_data.get('expanded_definition', sp_data.get('definition', '')),
+                    'activities': sp_data.get('required_fields',
+                                              sp_data.get('validation_rules',
+                                                          sp_data.get('workflow_requirements',
+                                                                      sp_data.get('granular_activities', []))))
+                    })
+    elif structure == 'buyer_voice':
+        # Buyer Voice schemas do not expose vendor-scoring pillars. Use legend sections
+        # as lightweight reference entries for downstream UI compatibility.
+        for section in schema.get('legend_sections', []) or []:
+            if not isinstance(section, dict):
+                continue
+            sub_pillars.append({
+                'id': section.get('id', ''),
+                'pillar_code': 'BV',
+                'pillar_name': 'Buyer Voice Analysis Model',
+                'name': section.get('label', section.get('id', '')),
+                'definition': section.get('definition', ''),
+                'activities': section.get('key_fields', [])
+            })
     elif structure == 'asmf':
         if 'dimensions' in schema and isinstance(schema['dimensions'], dict):
             for dim_id, dim_data in schema['dimensions'].items():
@@ -568,7 +615,7 @@ def get_metadata():
             proof_v = proof_scale.get(k, '')
             # Combine both scales: "GTM: X | Proof: Y"
             score_legend[str(k)] = f'GTM: {v} | Proof: {proof_v}'
-    elif _schema_structure(schema_file) == 'asmf':
+    elif _schema_structure(schema_file) in {'asmf', 'method', 'buyer_voice'}:
         score_legend = {}
     else:
         score_legend = dict(SCORE_LEGEND)
@@ -588,7 +635,8 @@ def get_metadata():
                                'PPD', 'PCS', 'TDT', 'PCM', 'CTL'}
     field_metadata = {k: v for k, v in FIELD_METADATA.items() if k not in all_known_pillar_codes}
     pillars_in_schema = {}
-    if _schema_structure(schema_file) == 'asmf' and 'dimensions' in schema:
+    schema_structure = _schema_structure(schema_file)
+    if schema_structure == 'asmf' and 'dimensions' in schema:
         for code, dim in schema['dimensions'].items():
             pillars_in_schema[code] = {
                 'name': dim.get('name', code),
@@ -596,6 +644,13 @@ def get_metadata():
                 'ai_evidence_signals': dim.get('evidence_signals', []),
                 'validated_pillar_score_rule': dim.get('validated_pillar_score_rule', ''),
             }
+    elif schema_structure == 'buyer_voice':
+        pillars_in_schema['BV'] = {
+            'name': 'Buyer Voice Analysis Model',
+            'focus': schema.get('description', schema.get('intent', '')),
+            'ai_evidence_signals': [],
+            'validated_pillar_score_rule': '',
+        }
     else:
         pillars_in_schema = schema.get('pillars', {})
 
@@ -777,6 +832,8 @@ def get_vendor_files():
             'ai_platform_ecosystem' in lower or 'platform_ecosystem' in lower or
             'asmf' in lower):
             return 'asmf'
+        if 'buyer_voice' in lower or 'buyer voice' in lower or 'buyervoice' in lower:
+            return 'buyer_voice'
         if 'trism' in lower:
             return 'trism'
         if 'preemptive' in lower or 'precyber' in lower:
@@ -803,6 +860,12 @@ def get_vendor_files():
         show_all = request.args.get('all', '0') == '1'
         # Determine active project from schema param or current state
         active_schema = schema_filter or app_state.current_schema_file
+        if SCHEMA_REGISTRY.get(active_schema, {}).get('structure') == 'buyer_voice':
+            return jsonify({
+                'files': [],
+                'current': '',
+                'current_schema': active_schema
+            })
         active_project = _detect_project(active_schema)
         available_files = []
         app_dir = os.path.dirname(__file__)
@@ -935,6 +998,7 @@ _PROJECT_SCHEMA_MAP = {
     'offsec': 'Offensive_Security_Schema.json',
     'pmr': 'Product Market Readiness Schema 1_0.json',
     'mq_gap': 'MDR_MQ_Gap_Schema_App.json',
+    'buyer_voice': 'OpenAI_Buyer_Data_Analysis_Schema.json',
 }
 
 def _detect_project_from_name(name):
@@ -951,6 +1015,8 @@ def _detect_project_from_name(name):
         'ai platform ecosystem' in lower
     ):
         return 'asmf'
+    if 'buyer_voice' in lower or 'buyer voice' in lower or 'buyervoice' in lower:
+        return 'buyer_voice'
     if 'trism' in lower:
         return 'trism'
     if ('preemptive' in lower or 'precyber' in lower) and ('6-0' in lower or 'v3' in lower):
@@ -991,7 +1057,12 @@ def get_schema_files():
                 'intent': body.get('intent', ''),
                 'scoring_logic': meta.get('scoring_scale', meta.get('scoring_logic', {})),
                 'display': display,
-                'kind': 'framework' if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'asmf' else 'schema',
+                'kind': (
+                    'framework' if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'asmf'
+                    else 'buyer_voice' if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'buyer_voice'
+                    else 'schema'
+                ),
+                'structure': SCHEMA_REGISTRY.get(fn, {}).get('structure'),
                 'capabilities': _framework_capabilities(fn) if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'asmf' else None,
             })
         except Exception as e:
@@ -1014,11 +1085,14 @@ def switch_schema():
         return jsonify({'success': False, 'error': 'Schema file not found'}), 404
 
     app_state.current_schema_file = new_schema
-    if SCHEMA_REGISTRY.get(new_schema, {}).get('structure') == 'asmf':
+    schema_structure = SCHEMA_REGISTRY.get(new_schema, {}).get('structure')
+    if schema_structure == 'asmf':
         if new_schema == 'AI_platform_ecosystem_framework_v1.json':
             app_state.current_vendor_file = 'ai_platform_ecosystem_vendors_v1.json'
         else:
             app_state.current_vendor_file = ''
+    elif schema_structure in {'method', 'buyer_voice'}:
+        app_state.current_vendor_file = ''
     return jsonify({
         'success': True,
         'current_schema': app_state.current_schema_file
@@ -1031,6 +1105,27 @@ def get_schema_detail():
     body = load_schema_data(schema_file)
     sub_pillars = extract_sub_pillars(schema_file)
     structure = _schema_structure(schema_file)
+
+    if structure == 'buyer_voice':
+        return dataset_json_response({
+            'schema_file': schema_file,
+            'structure': structure,
+            'intent': body.get('intent', ''),
+            'description': body.get('description', ''),
+            'organization': body.get('organization', ''),
+            'schema_type': body.get('schema_type', ''),
+            'source_dataset': body.get('source_dataset', {}),
+            'data_model': body.get('data_model', {}),
+            'raw_gear_fields': body.get('raw_gear_fields', []),
+            'formatter_projection': body.get('formatter_projection', []),
+            'legend_sections': body.get('legend_sections', []),
+            'report_tabs': body.get('report_tabs', []),
+            'validation_principles': body.get('validation_principles', []),
+            'scoring_logic': {},
+            'pillars': [],
+            'sub_pillars': sub_pillars,
+            'sub_pillar_count': len(sub_pillars),
+        }, schema_file)
 
     # Build scoring_logic in a uniform way
     meta = body.get('metadata', {})
@@ -1344,6 +1439,643 @@ def list_reports():
         except Exception:
             pass
     return jsonify(reports)
+
+
+BUYER_VOICE_DATASETS = {
+    'openai_2026_ytd': {
+        'name': 'OpenAI Buyer Voice',
+        'source_file': 'buyervoice/Corpora - Raw GEAR/GEAR - OpenAI - 07252026.csv',
+        'scope': 'OpenAI-anchored Gartner end-user interactions, 2026 YTD, all industries.',
+        'slide_family': 'Slides 2-4',
+    },
+    'servicenow_commercial_2026_ytd': {
+        'name': 'ServiceNow Commercial Friction',
+        'source_file': 'buyervoice/Corpora - Raw GEAR/GEAR - ServiceNow Commercial Friction Set.csv',
+        'scope': 'ServiceNow commercial and economic friction interactions, 1Q26 through July 2026.',
+        'slide_family': 'Slides 5-7',
+    },
+}
+
+_BUYER_VOICE_SUMMARY_CACHE = {}
+
+
+BUYER_VOICE_THEME_CONFIG = {
+    'openai_2026_ytd': [
+        {
+            'id': 'commercial_terms',
+            'name': 'Commercial terms, credits, renewals, and pricing',
+            'lens': 'Buyers are trying to understand what OpenAI costs, how credits/usage work, and how to negotiate or renew enterprise agreements.',
+            'keywords': ['price', 'pricing', 'cost', 'budget', 'renewal', 'renew', 'credit', 'credits', 'contract', 'proposal', 'discount', 'overage', 'commitment', 'enterprise agreement'],
+        },
+        {
+            'id': 'vendor_selection',
+            'name': 'Vendor selection and competitive comparison',
+            'lens': 'Buyers compare OpenAI with Microsoft, Anthropic, Google, AWS, and other AI providers to decide where OpenAI fits.',
+            'keywords': ['compare', 'comparison', 'versus', ' vs ', 'alternative', 'alternatives', 'copilot', 'microsoft', 'anthropic', 'claude', 'google', 'gemini', 'aws', 'bedrock', 'meta', 'llama'],
+        },
+        {
+            'id': 'governance_risk',
+            'name': 'Governance, data protection, and risk controls',
+            'lens': 'Buyers want to govern sensitive data, employee AI use, custom GPTs, privacy, compliance, and enterprise guardrails.',
+            'keywords': ['govern', 'governance', 'risk', 'security', 'privacy', 'data protection', 'sensitive', 'compliance', 'guardrail', 'guardrails', 'policy', 'policies', 'unsanctioned', 'shadow ai'],
+        },
+        {
+            'id': 'agents_integration',
+            'name': 'Agents, integration, orchestration, and custom GPTs',
+            'lens': 'Buyers ask how OpenAI capabilities connect to enterprise systems, workflows, agents, orchestration, and app-building patterns.',
+            'keywords': ['agent', 'agents', 'agentic', 'orchestration', 'integrat', 'workflow', 'custom gpt', 'gpts', 'api', 'gateway', 'automation', 'assistant'],
+        },
+        {
+            'id': 'adoption_value',
+            'name': 'Adoption, enablement, productivity, and ROI',
+            'lens': 'Buyers are trying to move from experimentation to adoption, training, business value, productivity, and ROI proof.',
+            'keywords': ['adoption', 'enablement', 'training', 'productivity', 'roi', 'business case', 'business value', 'ai literacy', 'change management', 'use case', 'use cases'],
+        },
+        {
+            'id': 'coding_agents',
+            'name': 'Coding agents and developer workflow impact',
+            'lens': 'Buyers evaluate Codex, coding agents, GitHub Copilot, Claude Code, repository access, SDLC fit, and developer-tool spend.',
+            'keywords': ['codex', 'coding', 'developer', 'developers', 'sdlc', 'github copilot', 'copilot', 'claude code', 'code generation', 'repository', 'repo'],
+        },
+        {
+            'id': 'brand_visibility',
+            'name': 'Brand visibility and AI-answer exposure',
+            'lens': 'Some buyers ask how brands, products, or content appear in AI-generated answers and search-like experiences.',
+            'keywords': ['brand', 'visibility', 'search', 'seo', 'answer engine', 'answers', 'content', 'discoverability'],
+        },
+    ],
+    'servicenow_commercial_2026_ytd': [
+        {
+            'id': 'ai_pricing_packaging',
+            'name': 'AI-native pricing and packaging',
+            'lens': 'Buyers are trying to understand AI tiers, token/credit exposure, SKU changes, and how AI packaging affects ServiceNow spend.',
+            'keywords': ['genai', 'generative ai', 'now assist', 'ai agent', 'ai agents', 'token', 'tokens', 'credit', 'credits', 'sku', 'package', 'packaging', 'tier', 'pro plus', 'premium'],
+        },
+        {
+            'id': 'renewal_contract',
+            'name': 'Renewal cost and contract leverage',
+            'lens': 'Buyers raise renewal increases, negotiation strategy, discounting, contract leverage, and commercial terms.',
+            'keywords': ['renewal', 'renew', 'negot', 'contract', 'discount', 'price increase', 'uplift', 'increase', 'true-up', 'true down', 'proposal', 'term'],
+        },
+        {
+            'id': 'alternatives_displacement',
+            'name': 'Platform displacement and cost alternatives',
+            'lens': 'Buyers test whether ServiceNow scope can be reduced, displaced, or balanced against other platforms and tools.',
+            'keywords': ['alternative', 'alternatives', 'replace', 'replacement', 'displace', 'displacement', 'migrate', 'migration', 'consolidat', 'rationaliz', 'competitor'],
+        },
+        {
+            'id': 'roi_business_case',
+            'name': 'AI business case and ROI proof gap',
+            'lens': 'Buyers need economic justification, value proof, business-case support, and ROI evidence before expanding spend.',
+            'keywords': ['roi', 'business case', 'value', 'justify', 'justification', 'benefit', 'benefits', 'savings', 'payback', 'tco', 'financial'],
+        },
+        {
+            'id': 'cost_offset_tactics',
+            'name': "Cost-offset tactics using ServiceNow's own tools",
+            'lens': 'Buyers look for license optimization, configuration choices, fulfiller reductions, workflow redesign, and other ways to control spend.',
+            'keywords': ['license optimization', 'licenses', 'licensing', 'fulfiller', 'configuration', 'configure', 'optimize', 'optimization', 'reduce', 'reduction', 'cost savings', 'avoid'],
+        },
+        {
+            'id': 'implementation_services',
+            'name': 'Implementation, services, and operating-cost drag',
+            'lens': 'Buyers connect commercial friction to implementation effort, partner/services cost, support, and platform operating overhead.',
+            'keywords': ['implementation', 'implement', 'services', 'partner', 'support', 'managed service', 'professional services', 'admin', 'administrator', 'operating cost'],
+        },
+    ],
+}
+
+
+def _parse_buyer_voice_date(value):
+    if not value:
+        return None
+    for fmt in ('%d-%b-%y', '%d-%b-%Y', '%Y-%m-%d', '%m/%d/%Y'):
+        try:
+            return datetime.datetime.strptime(value.strip(), fmt).date()
+        except Exception:
+            pass
+    return None
+
+
+def _buyer_voice_quarter(value):
+    parsed = _parse_buyer_voice_date(value)
+    if not parsed:
+        return 'UnknownDate'
+    return f'{parsed.year} Q{((parsed.month - 1) // 3) + 1}'
+
+
+def _buyer_voice_month(value):
+    parsed = _parse_buyer_voice_date(value)
+    if not parsed:
+        return 'UnknownDate'
+    return parsed.strftime('%Y-%m')
+
+
+def _top_counts(rows, field, limit=8):
+    counter = Counter()
+    for row in rows:
+        value = (row.get(field) or '').strip()
+        if not value or value == '-':
+            continue
+        counter[value] += 1
+    return [{'name': name, 'count': count} for name, count in counter.most_common(limit)]
+
+
+def _clean_buyer_voice_excerpt(value, limit=260):
+    text = ' '.join((value or '').split())
+    if len(text) <= limit:
+        return text
+    return text[:limit].rsplit(' ', 1)[0] + '...'
+
+
+def _buyer_voice_keyword_match(text, keyword):
+    keyword = (keyword or '').strip().lower()
+    if not keyword:
+        return False
+    if keyword.startswith(' ') or keyword.endswith(' '):
+        return keyword in text
+    if re.search(r'\W', keyword):
+        return keyword in text
+    return re.search(rf'\b{re.escape(keyword)}\b', text) is not None
+
+
+def _theme_analysis(rows, theme_config, limit_examples=4):
+    analyzed = []
+    for theme in theme_config:
+        keywords = [kw.lower() for kw in theme.get('keywords', [])]
+        matches = []
+        region_counts = Counter()
+        role_counts = Counter()
+        sector_counts = Counter()
+        quarter_counts = Counter()
+        month_counts = Counter()
+        region_month_counts = Counter()
+        for row in rows:
+            text = ' '.join([
+                row.get('Purpose') or '',
+                row.get('Question Asked') or '',
+                row.get('Discussion Summary') or '',
+                row.get('Core Topic') or '',
+                row.get('Buysmart') or '',
+            ]).lower()
+            if not any(_buyer_voice_keyword_match(text, keyword) for keyword in keywords):
+                continue
+            ref = row.get('Reference Number') or ''
+            question = row.get('Question Asked') or row.get('Purpose') or row.get('Discussion Summary') or ''
+            matches.append({
+                'reference': ref,
+                'date': row.get('First Response Date') or '',
+                'region': row.get('Account Region') or '',
+                'sector': row.get('Enterprise Sector') or row.get('Account Sector') or '',
+                'role': row.get('Role Name') or '',
+                'interaction_subtype': row.get('Interaction Subtype') or '',
+                'question_excerpt': _clean_buyer_voice_excerpt(question),
+            })
+            if row.get('Account Region'):
+                region_counts[row.get('Account Region')] += 1
+            if row.get('Role Name'):
+                role_counts[row.get('Role Name')] += 1
+            sector = row.get('Enterprise Sector') or row.get('Account Sector')
+            if sector:
+                sector_counts[sector] += 1
+            quarter_counts[_buyer_voice_quarter(row.get('First Response Date', ''))] += 1
+            month = _buyer_voice_month(row.get('First Response Date', ''))
+            month_counts[month] += 1
+            region_month_counts[(row.get('Account Region') or 'Unknown', month)] += 1
+
+        analyzed.append({
+            'id': theme.get('id'),
+            'name': theme.get('name'),
+            'lens': theme.get('lens'),
+            'match_count': len(matches),
+            'share_pct': round((len(matches) / len(rows) * 100), 1) if rows else 0,
+            'qualitative_spread': (
+                'Very high' if len(matches) >= len(rows) * 0.22 else
+                'High' if len(matches) >= len(rows) * 0.14 else
+                'Moderate' if len(matches) >= len(rows) * 0.07 else
+                'Emerging'
+            ),
+            'top_regions': [{'name': name, 'count': count} for name, count in region_counts.most_common(4)],
+            'top_roles': [{'name': name, 'count': count} for name, count in role_counts.most_common(4)],
+            'top_sectors': [{'name': name, 'count': count} for name, count in sector_counts.most_common(4)],
+            'quarters': [{'name': name, 'count': quarter_counts[name]} for name in sorted(quarter_counts)],
+            'monthly_counts': [{'name': name, 'count': month_counts[name]} for name in sorted(month_counts)],
+            'region_month_counts': [
+                {'region': region, 'month': month, 'count': count}
+                for (region, month), count in sorted(region_month_counts.items(), key=lambda item: (item[0][0], item[0][1]))
+            ],
+            'examples': matches[:limit_examples],
+        })
+    analyzed.sort(key=lambda item: item['match_count'], reverse=True)
+    return analyzed
+
+
+def _summarize_buyer_voice_dataset(dataset_id, config):
+    path = Path(__file__).resolve().parent / config['source_file']
+    cache_key = (dataset_id, str(path), path.stat().st_mtime)
+    if cache_key in _BUYER_VOICE_SUMMARY_CACHE:
+        return _BUYER_VOICE_SUMMARY_CACHE[cache_key]
+    for key in list(_BUYER_VOICE_SUMMARY_CACHE.keys()):
+        if key[0] == dataset_id:
+            _BUYER_VOICE_SUMMARY_CACHE.pop(key, None)
+
+    with path.open('r', encoding='utf-8-sig', newline='') as source:
+        rows = list(csv.DictReader(source))
+
+    dates = [
+        parsed for parsed in (
+            _parse_buyer_voice_date(row.get('First Response Date', ''))
+            for row in rows
+        )
+        if parsed
+    ]
+    quarter_counts = Counter(_buyer_voice_quarter(row.get('First Response Date', '')) for row in rows)
+    month_counts = Counter(_buyer_voice_month(row.get('First Response Date', '')) for row in rows)
+
+    summary = {
+        'dataset_id': dataset_id,
+        'name': config['name'],
+        'source_file': config['source_file'],
+        'scope': config['scope'],
+        'slide_family': config['slide_family'],
+        'record_count': len(rows),
+        'date_start': min(dates).isoformat() if dates else None,
+        'date_end': max(dates).isoformat() if dates else None,
+        'quarters': [
+            {'name': name, 'count': quarter_counts[name]}
+            for name in sorted(quarter_counts)
+        ],
+        'months': [
+            {'name': name, 'count': month_counts[name]}
+            for name in sorted(month_counts)
+        ],
+        'top_regions': _top_counts(rows, 'Account Region'),
+        'top_countries': _top_counts(rows, 'Account Country', limit=12),
+        'country_counts': _top_counts(rows, 'Account Country', limit=250),
+        'top_account_markets': _top_counts(rows, 'Account Market'),
+        'top_industries': _top_counts(rows, 'Enterprise Sector'),
+        'top_roles': _top_counts(rows, 'Role Name'),
+        'top_personas': _top_counts(rows, 'Persona'),
+        'top_interaction_subtypes': _top_counts(rows, 'Interaction Subtype'),
+        'top_core_topics': _top_counts(rows, 'Core Topic'),
+        'top_buysmart_stages': _top_counts(rows, 'Buysmart'),
+        'theme_analysis': _theme_analysis(rows, BUYER_VOICE_THEME_CONFIG.get(dataset_id, [])),
+        'formatter_projection': [
+            {'raw_field': 'First Response Date', 'report_field': 'Date'},
+            {'raw_field': 'Reference Number', 'report_field': 'Reference Number'},
+            {'raw_field': 'Account Region', 'report_field': 'Buyer Region'},
+            {'raw_field': 'Enterprise Sector', 'report_field': 'Buyer Industry'},
+            {'raw_field': 'Role Name', 'report_field': 'Buyer Role'},
+            {'raw_field': 'Purpose', 'report_field': 'Purpose'},
+            {'raw_field': 'Question Asked', 'report_field': 'Question Asked'},
+            {'raw_field': 'Associate Name', 'report_field': 'Analyst Name'},
+            {'raw_field': 'Discussion Summary', 'report_field': 'Discussion Summary'},
+        ],
+    }
+    _BUYER_VOICE_SUMMARY_CACHE[cache_key] = summary
+    return summary
+
+
+@app.route('/api/buyervoice/reports', methods=['GET'])
+def get_buyer_voice_reports():
+    """Return Buyer Voice report templates and live CSV-derived dataset summaries."""
+    try:
+        schema_file = request.args.get('schema', app_state.current_schema_file)
+        if schema_file == 'OpenAI_Buyer_Data_Analysis_Schema.json':
+            allowed_outcomes = {'openai', 'method'}
+            allowed_dataset_ids = {'openai_2026_ytd'}
+        elif schema_file == 'ServiceNow_Buyer_Data_Analysis_Schema.json':
+            allowed_outcomes = {'servicenow', 'method'}
+            allowed_dataset_ids = {'servicenow_commercial_2026_ytd'}
+        else:
+            allowed_outcomes = {'openai', 'servicenow', 'method'}
+            allowed_dataset_ids = set(BUYER_VOICE_DATASETS.keys())
+
+        datasets = {
+            dataset_id: _summarize_buyer_voice_dataset(dataset_id, config)
+            for dataset_id, config in BUYER_VOICE_DATASETS.items()
+            if dataset_id in allowed_dataset_ids
+        }
+        reports = [
+            {
+                'id': 'openai_full_corpus',
+                'dataset_id': 'openai_2026_ytd',
+                'organization': 'OpenAI',
+                'outcome_group': 'openai',
+                'title': 'Top questions enterprise buyers are asking about OpenAI',
+                'slide_alignment': 'Slide 2',
+                'report_type': 'full_corpus_buyer_questions',
+                'purpose': 'Surface buyer-language questions and themes across the full OpenAI-anchored corpus.',
+                'output_sections': [
+                    'Dataset summary',
+                    'Discovered buyer questions',
+                    'Consolidated themes',
+                    'Spread ratings',
+                    'Roles asking',
+                    'Evidence ledger',
+                    'Validation findings',
+                ],
+                'slide_columns': ['Theme & Buyer Questions', 'Prevalence', 'Roles Asking'],
+                'template_themes': [
+                    'Budget and commercial terms',
+                    'Evaluating and selecting',
+                    'Guardrails and governance',
+                    'Orchestrating and integrating agents',
+                    'Adoption and proving value',
+                    'How our brand shows up in AI answers',
+                ],
+                'validation_focus': [
+                    'OpenAI anchoring',
+                    'bare GPT ambiguity',
+                    'supply-side exclusion',
+                    'buyer voice attribution',
+                ],
+            },
+            {
+                'id': 'openai_market_cuts',
+                'dataset_id': 'openai_2026_ytd',
+                'organization': 'OpenAI',
+                'outcome_group': 'openai',
+                'title': 'What enterprise buyers are asking about OpenAI: market cuts',
+                'slide_alignment': 'Slides 3-4',
+                'report_type': 'market_cut_buyer_questions',
+                'purpose': 'Use the same OpenAI corpus with prompt-layer market definitions for Enterprise AI Assistants and Enterprise AI Coding Agents.',
+                'output_sections': [
+                    'Market definition',
+                    'Filtering audit',
+                    'Qualifying record set',
+                    'Themes and buyer questions',
+                    'Spread ratings',
+                    'Roles asking',
+                    'Evidence ledger',
+                ],
+                'slide_columns': ['Theme & Buyer Questions', 'Prevalence', 'Roles Asking'],
+                'template_themes': [
+                    'Enterprise AI Assistants: choosing between assistants, licensing and cost control, protecting enterprise data, governing what business users build',
+                    'Enterprise AI Coding Agents: comparing coding agents, embedding agents into SDLC, governing access, budgeting developer token spend',
+                ],
+                'validation_focus': [
+                    'market test',
+                    'anchoring test',
+                    'qualifying set audit',
+                    'direction of lean in competitive comparisons',
+                ],
+            },
+            {
+                'id': 'servicenow_matrix',
+                'dataset_id': 'servicenow_commercial_2026_ytd',
+                'organization': 'ServiceNow',
+                'outcome_group': 'servicenow',
+                'title': 'Commercial friction across the five deep-dive areas',
+                'slide_alignment': 'Slide 5',
+                'report_type': 'commercial_friction_category_matrix',
+                'purpose': 'Summarize ServiceNow commercial-friction themes across five supplied categories after bottom-up discovery.',
+                'output_sections': [
+                    'Bottom-up discovery',
+                    'Category assignment',
+                    'Outside taxonomy',
+                    'Spread and trajectory',
+                    'Session implications',
+                    'Evidence ledger',
+                    'Validation findings',
+                ],
+                'slide_columns': ['Category/Theme', 'Spread', 'Trajectory'],
+                'template_themes': [
+                    'AI-native pricing and packaging',
+                    'Renewal cost and contract leverage',
+                    'Platform displacement and cost alternatives',
+                    'AI business case and ROI proof gap',
+                    'Cost-offset tactics using ServiceNow’s own tools',
+                ],
+                'validation_focus': [
+                    'taxonomy not used as search space',
+                    'partial 3Q26 caveat',
+                    'sensitivity review',
+                    'figure provenance',
+                ],
+            },
+            {
+                'id': 'servicenow_deep_dives',
+                'dataset_id': 'servicenow_commercial_2026_ytd',
+                'organization': 'ServiceNow',
+                'outcome_group': 'servicenow',
+                'title': 'ServiceNow category deep dives',
+                'slide_alignment': 'Slides 6-7',
+                'report_type': 'commercial_friction_deep_dive',
+                'purpose': 'Expand one supplied category into theme cards with narrative bullets, buyer composition, spread, trajectory and handling notes.',
+                'output_sections': [
+                    'Category summary',
+                    'Theme cards',
+                    'Buyer composition',
+                    'Figure provenance',
+                    'Sensitivity review',
+                    'Evidence ledger',
+                    'Validation findings',
+                ],
+                'slide_columns': ['Theme', 'Spread', 'Trajectory', 'Buyer narrative', 'Buyer composition'],
+                'template_themes': [
+                    'Forced migration to AI-native tiers at renewal',
+                    'Budgeting volatility in token-based consumption',
+                    'Duplicate spend with acquired platforms',
+                    'Configuration workarounds to avoid license inflation',
+                    'Fulfiller vs. business stakeholder license optimization',
+                ],
+                'validation_focus': [
+                    'single-account figure marking',
+                    'multiple-account figure marking',
+                    'audit-risk sensitivity',
+                    'buyer versus analyst voice',
+                ],
+            },
+            {
+                'id': 'method_operating_model',
+                'dataset_id': 'method_and_operating_model',
+                'organization': 'Shared Methodology',
+                'outcome_group': 'method',
+                'title': 'Buyer Voice method and operating model',
+                'slide_alignment': 'Slides 9-14',
+                'report_type': 'methodology',
+                'purpose': 'Explain source data, analysis decisions, trained-team judgment, automation status and future obstacles.',
+                'output_sections': [
+                    'Source and output',
+                    'End-to-end analysis',
+                    'Ways to look at the data',
+                    'Teachable versus practitioner judgment',
+                    'Automation status',
+                    'Future obstacles',
+                ],
+                'slide_columns': ['Method area', 'Current behavior', 'Automation implication'],
+                'template_themes': [
+                    'Market view',
+                    'Vendor view',
+                    'Vendor-in-market view',
+                    'Vendor relationship view',
+                    'Absence view',
+                ],
+                'validation_focus': [
+                    'source-system provenance',
+                    'client-identifying detail',
+                    'reusable pull definition',
+                    'claim support before external use',
+                ],
+            },
+        ]
+        outcome_alignment = {
+            'openai_full_corpus': {
+                'slide_outcome': 'A slide-ready table of the top enterprise buyer questions about OpenAI, grouped into buyer-language themes with prevalence dots and roles asking.',
+                'notebooklm_prompt_intent': 'Run unconstrained discovery across the OpenAI-anchored corpus; identify what buyers ask, worry about, compare, govern, buy, and try to prove without turning the corpus into a vendor advocacy or market-share read.',
+                'analysis_workflow': [
+                    'Read the full OpenAI corpus as one enterprise buyer population.',
+                    'Exclude supply-side records where the asker is gathering market or competitive intelligence for its own go-to-market work.',
+                    'Discover distinct buyer questions before consolidating them into themes.',
+                    'Rate prevalence qualitatively against the full corpus, not against cited-reference counts.',
+                    'Select 2-4 reference numbers per theme for audit traceability across roles, industries, and months.',
+                    'Suppress raw counts and references from slide-facing output while retaining them in audit output.',
+                ],
+                'score_alignment': ['SRC', 'INT', 'RUN', 'THM', 'RAT', 'EVD', 'OUT', 'VAL'],
+                'prompt_guardrails': [
+                    'Do not characterize another vendor’s overall standing from an OpenAI-anchored corpus.',
+                    'Treat bare GPT as ambiguous unless OpenAI attribution is supported.',
+                    'Separate Azure OpenAI as OpenAI technology inside Microsoft commercial context.',
+                    'Question Asked is buyer voice; Discussion Summary requires attribution.',
+                    'Themes require multiple distinct buyer interactions; single records become isolated observations.',
+                ],
+                'slide_outcomes': [
+                    'Budget and commercial terms',
+                    'Evaluating and selecting',
+                    'Guardrails and governance',
+                    'Orchestrating and integrating agents',
+                    'Adoption and proving value',
+                    'Brand visibility in AI answers',
+                ],
+                'vendor_analysis_adaptation': 'Executive summary becomes “what buyers are asking about this vendor”; scorecard becomes corpus/report readiness; gap analysis becomes validation and evidence gaps; roadmap becomes next analysis/automation steps.',
+            },
+            'openai_market_cuts': {
+                'slide_outcome': 'Two market-cut views from the same OpenAI corpus: Enterprise AI Assistants and Enterprise AI Coding Agents, each with its own qualifying set and buyer-question themes.',
+                'notebooklm_prompt_intent': 'Apply market definitions at the prompt/analysis layer rather than re-pulling data; preserve the vendor anchor and explain why records qualify or do not qualify.',
+                'analysis_workflow': [
+                    'Start from the same OpenAI raw and formatted corpus.',
+                    'Define the market cut explicitly before rating anything.',
+                    'Apply both tests: does the record belong to the market, and does the buyer mean OpenAI or only mention it?',
+                    'Run discovery inside the qualifying set after the market test.',
+                    'Rate spread against the qualifying set, not the full OpenAI corpus.',
+                    'For competitive comparisons, classify leaning toward OpenAI, leaning away, or active comparison with no direction stated.',
+                ],
+                'score_alignment': ['RUN-02', 'RUN-03', 'THM-01', 'RAT-01', 'EVD-01', 'VAL-01'],
+                'prompt_guardrails': [
+                    'Do not infer buyer preference from a competitor name alone.',
+                    'If a market cut is thin, say so instead of manufacturing themes.',
+                    'Name products exactly as they appear in the source record.',
+                    'Keep qualifying-reference lists in audit output.',
+                ],
+                'slide_outcomes': [
+                    'Enterprise AI Assistants: choosing between assistants',
+                    'Enterprise AI Assistants: licensing, cost control, and proving value',
+                    'Enterprise AI Assistants: protecting enterprise data',
+                    'Enterprise AI Assistants: governing what business users build',
+                    'Enterprise AI Coding Agents: comparing coding agents and selecting vendors',
+                    'Enterprise AI Coding Agents: embedding agents into SDLC',
+                    'Enterprise AI Coding Agents: governing reach and budgeting token spend',
+                ],
+                'vendor_analysis_adaptation': 'The vendor analysis lens becomes “vendor-in-market”: the selected vendor is analyzed only inside a defined market boundary with a visible filtering audit.',
+            },
+            'servicenow_matrix': {
+                'slide_outcome': 'A commercial-friction matrix across five supplied deep-dive categories, showing theme, spread, trajectory, and session implications.',
+                'notebooklm_prompt_intent': 'Read what buyers raise about ServiceNow commercial/economic friction; discover first, then organize into the supplied taxonomy without treating the taxonomy as search terms.',
+                'analysis_workflow': [
+                    'Run open discovery across cost, pricing, packaging, licensing, renewal, contracting, business case, and alternatives.',
+                    'Assign discovered themes to the five supplied categories only after discovery.',
+                    'Place awkward or non-fitting themes in Outside the Taxonomy.',
+                    'Rate spread qualitatively and trajectory across 1Q26, 2Q26, and partial 3Q26.',
+                    'Generate session implications after evidence-backed themes are established.',
+                    'Flag negotiation leverage and cost-avoidance findings for analyst sensitivity review.',
+                ],
+                'score_alignment': ['RUN-03', 'THM-02', 'RAT-01', 'RAT-02', 'EVD-03', 'VAL-02', 'VAL-03'],
+                'prompt_guardrails': [
+                    'The five categories are naming buckets, not the search space.',
+                    'July-only 3Q26 is partial and directional.',
+                    'Every numerical figure needs provenance marking.',
+                    'Do not mix market statistics or analyst recommendations into buyer-voice findings.',
+                ],
+                'slide_outcomes': [
+                    'AI-native pricing and packaging',
+                    'Renewal cost and contract leverage',
+                    'Platform displacement and cost alternatives',
+                    'AI business case and ROI proof gap',
+                    'Cost-offset tactics using ServiceNow’s own tools',
+                    'What this means for the session',
+                ],
+                'vendor_analysis_adaptation': 'The vendor analysis lens becomes “vendor relationship”: score and explain the commercial relationship signals buyers report, with sensitivity and figure provenance as primary gaps.',
+            },
+            'servicenow_deep_dives': {
+                'slide_outcome': 'Deep-dive cards for selected commercial-friction categories, each with spread, trajectory, narrative evidence, buyer composition, and handling notes.',
+                'notebooklm_prompt_intent': 'Expand one supplied category into evidence-backed buyer themes while preserving attribution, sensitivity marking, and figure provenance.',
+                'analysis_workflow': [
+                    'Select one supplied category after the matrix pass.',
+                    'Pull only themes supported by multiple buyer interactions.',
+                    'Write buyer narrative bullets from buyer-attributed evidence.',
+                    'Show buyer composition by role, sector, and region.',
+                    'Mark single-account versus multiple-account figures.',
+                    'Add handling notes where tactics or audit exposure create sensitivity.',
+                ],
+                'score_alignment': ['OUT-01', 'OUT-02', 'EVD-01', 'EVD-02', 'EVD-03', 'VAL-02', 'VAL-03'],
+                'prompt_guardrails': [
+                    'Do not normalize or sanitize product names beyond redaction.',
+                    'Do not present audit-risk tactics as client-facing guidance without review.',
+                    'Quotes must be complete relevant passages or omitted.',
+                    'Unsupported claims are blockers, not editorial polish items.',
+                ],
+                'slide_outcomes': [
+                    'AI-native pricing: forced migration to AI-native tiers',
+                    'AI-native pricing: token/assist consumption volatility',
+                    'AI-native pricing: duplicate spend with acquired platforms',
+                    'Cost-offset tactics: configuration workarounds',
+                    'Cost-offset tactics: fulfiller versus stakeholder license optimization',
+                    'Internal-only handling note for audit-risk content',
+                ],
+                'vendor_analysis_adaptation': 'The vendor analysis lens becomes “deep-dive gap analysis”: the report explains where commercial friction is strongest, which claims are sensitive, and what validation is required before use.',
+            },
+            'method_operating_model': {
+                'slide_outcome': 'A method/readiness report explaining how raw Gartner interaction data becomes traceable slide output and where automation stops.',
+                'notebooklm_prompt_intent': 'Document the working method, including corpus decisions, persistent prompts, market-boundary judgment, evidence checks, manual slide building, and future source-system risk.',
+                'analysis_workflow': [
+                    'Preserve raw GEAR as canonical source and formatter output as the model-ingestion projection.',
+                    'Define the analysis anchor before running prompts.',
+                    'Run discovery first, consolidation second, validation third.',
+                    'Keep trained-team judgment explicit: corpus membership, market boundary, evidence strength, redaction, and executive suitability.',
+                    'Separate already automated, to automate, and manual-on-purpose tasks.',
+                    'Track future data acquisition risk from GEAR retirement and replacement uncertainty.',
+                ],
+                'score_alignment': ['SRC', 'RUN', 'EVD', 'VAL'],
+                'prompt_guardrails': [
+                    'A reusable pull definition is an automation goal, not yet a solved artifact.',
+                    'Confident model output with weak evidence must be caught by practitioner review.',
+                    'Client-identifying detail must be stripped before any client-facing page.',
+                    'External use requires sign-off.',
+                ],
+                'slide_outcomes': [
+                    'Source and output',
+                    'OpenAI end-to-end example',
+                    'Market, vendor, vendor-in-market, relationship, and absence views',
+                    'Teachable mechanics versus practitioner judgment',
+                    'Already automated / to automate / manual on purpose',
+                    'Future obstacles from GEAR and data-source transition',
+                ],
+                'vendor_analysis_adaptation': 'This is the operating-model tab for the Buyer Voice vendor analysis rail: it tells users how to interpret scores, reports, validation gaps, and automation readiness.',
+            },
+        }
+        for report in reports:
+            report.update(outcome_alignment.get(report['id'], {}))
+        reports = [
+            report for report in reports
+            if report.get('outcome_group') in allowed_outcomes
+        ]
+        return jsonify({
+            'schema': schema_file,
+            'datasets': datasets,
+            'reports': reports,
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/api/adoption-plan', methods=['GET'])
@@ -7444,7 +8176,7 @@ def get_asmf_orbital_map():
 
 
 # Allowed doc IDs to prevent path traversal
-_ALLOWED_DOCS = {'precyber_methodology', 'architecture'}
+_ALLOWED_DOCS = {'precyber_methodology', 'architecture', 'buyervoice_templates'}
 
 @app.route('/api/docs/<doc_id>', methods=['GET'])
 def get_docs(doc_id):

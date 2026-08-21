@@ -1,0 +1,298 @@
+{
+  "version": "1.0",
+  "updated": "August 2026",
+  "tabs": [
+    {
+      "id": "buyer_voice_slide_templates",
+      "label": "Buyer Voice Slide Templates",
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Template Overview",
+          "content": [
+            {
+              "type": "text",
+              "value": "These templates align the Buyer Voice app output with the slide examples in `buyervoice/Deck/Buyer Voice - Slide Examples - Aug 2026.pptx`. The deck contains two separate organization-specific outcomes that share one schema and methodology: OpenAI buyer questions (slides 1-4) and ServiceNow commercial friction (slides 5-7)."
+            },
+            {
+              "type": "table",
+              "headers": ["Slide", "Dataset", "Template", "Purpose"],
+              "rows": [
+                ["2", "OpenAI", "Full-Corpus Buyer Questions", "Show top enterprise buyer questions across the full OpenAI-anchored corpus."],
+                ["3", "OpenAI", "Market-Cut Buyer Questions: Enterprise AI Assistants", "Show themes/questions inside a defined market subset."],
+                ["4", "OpenAI", "Market-Cut Buyer Questions: Enterprise AI Coding Agents", "Show themes/questions inside a smaller defined market subset."],
+                ["5", "ServiceNow", "Commercial Friction Category Matrix", "Summarize themes across the five supplied deep-dive areas."],
+                ["6", "ServiceNow", "Deep-Dive Category: AI-Native Pricing", "Expand one supplied category into theme cards with evidence-backed narrative."],
+                ["7", "ServiceNow", "Deep-Dive Category: Cost-Offset Tactics", "Expand one sensitive supplied category and flag internal-only handling."],
+                ["9-14", "Method", "Methodology and Operating Model", "Explain source, workflow, judgment calls, automation status, and obstacles."]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Separation rule"
+            },
+            {
+              "type": "list",
+              "items": [
+                "OpenAI and ServiceNow are separate deliverables, not sections of one blended organization report.",
+                "OpenAI answers: what enterprise buyers are asking about OpenAI, including market-specific cuts.",
+                "ServiceNow answers: what commercial and economic friction buyers are raising about ServiceNow.",
+                "The shared methodology explains how both outcomes are produced from GEAR data, prompts, evidence, ratings, and validation."
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Shared data contract"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Use the raw CSV as the canonical record source.",
+                "Use the formatter projection as the report-facing interaction layer: Date, Reference Number, Buyer Region, Buyer Industry, Buyer Role, Purpose, Question Asked, Analyst Name, Discussion Summary.",
+                "Keep each report tied to one dataset: `openai_2026_ytd` or `servicenow_commercial_2026_ytd`.",
+                "Every theme and rating must resolve to reference numbers and excerpts in the source CSV.",
+                "Question Asked is direct buyer voice; Discussion Summary is mixed and requires attribution.",
+                "Slide-facing output does not show counts or reference numbers by default; audit output does."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "openai_full_corpus",
+          "title": "Slide 2 Template - OpenAI Full Corpus",
+          "content": [
+            {
+              "type": "text",
+              "value": "Matches slide 2: `Top questions enterprise buyers are asking about OpenAI`. This is a full-corpus buyer-question slide. It is not a vendor scorecard and not a market share read."
+            },
+            {
+              "type": "table",
+              "headers": ["Slide Element", "Template Field", "Rule"],
+              "rows": [
+                ["Title", "`report_title`", "Literal buyer-facing title, e.g. top questions enterprise buyers are asking about OpenAI."],
+                ["Kicker", "`report_kicker`", "Manual synthesis. Check against corpus but do not treat it as a rated finding."],
+                ["Theme & Buyer Questions", "`themes[].name` plus `themes[].buyer_questions[]`", "Theme names and questions must use buyer language. Questions are phrased as buyer questions, not topic labels."],
+                ["Prevalence", "`theme_rating.spread`", "Use Pervasive, Significant, Moderate, or Niche. No counts in slide output."],
+                ["Dot scale", "`theme_rating.spread_visual`", "Visual rendering of Spread only; not a separate score."],
+                ["Roles Asking", "`buyer_composition.roles`", "Qualitative role/function composition from supporting records."],
+                ["Source line", "`source_note`", "Dataset and date framing, e.g. Gartner end-user interaction data, 2026 YTD."]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Required report object"
+            },
+            {
+              "type": "code",
+              "value": "report_type: openai_full_corpus_questions\ndataset_id: openai_2026_ytd\nscoping_mode: discovered\nrequired_sections:\n  - dataset_summary\n  - discovered_buyer_questions\n  - consolidated_themes\n  - spread_ratings\n  - buyer_composition\n  - evidence_ledger\n  - validation_findings"
+            },
+            {
+              "type": "heading",
+              "value": "Validation checks"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Do not characterize other vendors' overall position from this corpus.",
+                "Flag bare GPT mentions as ambiguous unless OpenAI anchoring is clear.",
+                "Exclude supply-side records where the asker is using the interaction for go-to-market or competitive-positioning work.",
+                "Every displayed theme must rest on multiple distinct buyer interactions.",
+                "Each theme needs 2-4 audit references even though references are not shown on the slide."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "openai_market_cut",
+          "title": "Slides 3-4 Template - OpenAI Market Cuts",
+          "content": [
+            {
+              "type": "text",
+              "value": "Matches slides 3 and 4: `Enterprise AI Assistants` and `Enterprise AI Coding Agents`. These use the same OpenAI corpus, but the market cut happens at the analysis layer, not by re-pulling the CSV."
+            },
+            {
+              "type": "table",
+              "headers": ["Slide Element", "Template Field", "Rule"],
+              "rows": [
+                ["Title", "`report_title`", "Use the market name after the OpenAI framing."],
+                ["Market definition", "`scope.definition`", "Define the qualifying subset explicitly."],
+                ["Evidence base line", "`scope.qualifying_record_count`", "Can appear in methodology/audit; avoid raw count on slide unless explicitly approved."],
+                ["Theme cards/rows", "`themes[]`", "Themes discovered within the qualifying set after the full-corpus discovery discipline."],
+                ["Buyer questions", "`themes[].buyer_questions[]`", "Question wording must remain close to buyer phrasing."],
+                ["Prevalence", "`theme_rating.spread`", "Assess against the qualifying subset, not the full OpenAI corpus."],
+                ["Roles Asking", "`buyer_composition`", "Drawn only from supporting records in the market cut."]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Required report objects"
+            },
+            {
+              "type": "code",
+              "value": "report_type: openai_market_cut_questions\ndataset_id: openai_2026_ytd\nscoping_mode: discovered_with_market_cut\nmarket_cut:\n  id: enterprise_ai_assistants | enterprise_ai_coding_agents\n  definition: string\n  qualifying_reference_numbers: []\nrequired_sections:\n  - market_definition\n  - filtering_audit\n  - qualifying_record_set\n  - discovered_themes\n  - spread_ratings\n  - evidence_ledger\n  - validation_findings"
+            },
+            {
+              "type": "heading",
+              "value": "Filtering audit"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Explain whether excluded records failed the market test or the OpenAI anchoring test.",
+                "For competitive comparisons, separate leaning toward OpenAI, leaning away, and actively comparing with no direction stated.",
+                "Do not infer a lean from the mere presence of a competitor name.",
+                "Label thin market-cut themes as thin rather than filling the slide."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "servicenow_matrix",
+          "title": "Slide 5 Template - ServiceNow Category Matrix",
+          "content": [
+            {
+              "type": "text",
+              "value": "Matches slide 5: `Commercial friction across the five deep-dive areas`. This is a category/theme matrix for the ServiceNow commercial-friction dataset."
+            },
+            {
+              "type": "table",
+              "headers": ["Slide Element", "Template Field", "Rule"],
+              "rows": [
+                ["Title", "`report_title`", "Commercial friction across supplied deep-dive areas."],
+                ["Subtitle", "`report_kicker`", "State date window and note that outside-taxonomy themes are appendix material."],
+                ["Category", "`supplied_categories[].name`", "Use five supplied categories after discovery; they are naming buckets, not search terms."],
+                ["Theme", "`themes[].name`", "Buyer-language theme name under the primary category."],
+                ["Spread", "`theme_rating.spread`", "Pervasive, Significant, Moderate, or Niche."],
+                ["Trajectory", "`theme_rating.trajectory`", "New, Intensifying, Stable, or Fading, with partial 3Q caveat."],
+                ["What this means", "`session_implications[]`", "Manual synthesis checked against the corpus."],
+                ["Sensitivity note", "`handling_notes[]`", "Flag negotiation leverage and cost-avoidance themes for review."]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Required report object"
+            },
+            {
+              "type": "code",
+              "value": "report_type: servicenow_commercial_friction_matrix\ndataset_id: servicenow_commercial_2026_ytd\nscoping_mode: supplied_categories\nsupplied_categories:\n  - AI-Native Pricing and Packaging\n  - Platform Displacement and Cost Alternatives\n  - Renewal Cost and Contract Leverage\n  - AI Business Case and ROI Proof Gap\n  - Cost-Offset Tactics Using ServiceNow's Own Tools\nrequired_sections:\n  - bottom_up_discovery\n  - category_assignment\n  - outside_taxonomy\n  - spread_and_trajectory\n  - session_implications\n  - evidence_ledger\n  - validation_findings"
+            },
+            {
+              "type": "heading",
+              "value": "Trajectory rule"
+            },
+            {
+              "type": "text",
+              "value": "Trajectory compares 1Q26, 2Q26, and partial 3Q26. Because 3Q26 is July-only in this dataset, mark it as partial and directional."
+            }
+          ]
+        },
+        {
+          "id": "servicenow_deep_dive",
+          "title": "Slides 6-7 Template - ServiceNow Deep Dives",
+          "content": [
+            {
+              "type": "text",
+              "value": "Matches slides 6 and 7: deep dives for `AI-native pricing and packaging` and `Cost-offset tactics using ServiceNow's own tools`. Each slide expands one supplied category into a small set of evidence-backed theme cards."
+            },
+            {
+              "type": "table",
+              "headers": ["Slide Element", "Template Field", "Rule"],
+              "rows": [
+                ["Title", "`category.name`", "One supplied category per slide."],
+                ["Kicker", "`category.kicker`", "Manual synthesis, checked against the evidence."],
+                ["Theme card title", "`themes[].name`", "Buyer-language theme within the category."],
+                ["Spread", "`theme_rating.spread`", "Qualitative only."],
+                ["Trajectory", "`theme_rating.trajectory`", "Use partial-3Q caveat."],
+                ["Narrative bullets", "`themes[].buyer_statements[]`", "What buyers are saying; maintain buyer/analyst attribution."],
+                ["Buyer composition", "`themes[].buyer_composition`", "Roles, sectors, regions from supporting records."],
+                ["Handling Note", "`handling_note`", "Required for sensitive cost-offset or negotiation-tactic material."]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "AI-native pricing deep-dive"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Forced migration to AI-native tiers at renewal.",
+                "Budgeting volatility in token-based consumption.",
+                "Duplicate spend with acquired platforms.",
+                "Figures, price claims, or ranges require provenance marking."
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Cost-offset tactics deep-dive"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Configuration workarounds to avoid license inflation.",
+                "Fulfiller versus business stakeholder license optimization.",
+                "Audit exposure must be explicit.",
+                "This section should carry an internal-only handling note until reviewed."
+              ]
+            },
+            {
+              "type": "code",
+              "value": "report_type: servicenow_category_deep_dive\ndataset_id: servicenow_commercial_2026_ytd\ncategory_id: ai_native_pricing_packaging | cost_offset_tactics\nrequired_sections:\n  - category_summary\n  - theme_cards\n  - buyer_composition\n  - figure_provenance\n  - sensitivity_review\n  - evidence_ledger\n  - validation_findings"
+            }
+          ]
+        },
+        {
+          "id": "methodology",
+          "title": "Slides 9-14 Template - Method and Operating Model",
+          "content": [
+            {
+              "type": "text",
+              "value": "Matches the methodology/process slides in the deck. These slides explain what Buyer Voice is, what decisions sit outside automation, and what the current pipeline can and cannot automate."
+            },
+            {
+              "type": "table",
+              "headers": ["Slide", "Template", "Core Message"],
+              "rows": [
+                ["9", "Buyer Voice Source and Output", "Gartner end-user interactions become traceable analyst/client-ready slides."],
+                ["10", "End-to-End Analysis", "One corpus can answer multiple asks through different prompt-layer scopes."],
+                ["11", "Ways to Look at the Data", "Market, vendor, vendor-in-market, relationship, and absence views are distinct report anchors."],
+                ["12", "Teachable vs Judgment", "Mechanics can be trained; corpus boundaries, market boundaries, and evidence strength require practitioner judgment."],
+                ["13", "Automation Status", "Formatter and search support exist; claim checking, slide building, and reusable pull definitions need automation."],
+                ["14", "Future Obstacles", "GEAR retirement and source-system uncertainty affect future data acquisition."]
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Reusable anchor types"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Market view: no vendor anchor; identify where demand is heading.",
+                "Vendor view: all topics for one vendor; identify where the vendor surfaces.",
+                "Vendor-in-market view: one vendor inside one defined market.",
+                "Vendor relationship view: pricing, contracting, support, renewal, and customer experience.",
+                "Absence view: where a vendor does not appear and which conversations they are missing."
+              ]
+            },
+            {
+              "type": "heading",
+              "value": "Automation roadmap implied by the deck"
+            },
+            {
+              "type": "ordered_list",
+              "items": [
+                "Ingest raw GEAR CSVs and preserve the formatter projection.",
+                "Create reusable dataset definitions for OpenAI and ServiceNow.",
+                "Generate report-specific qualifying sets.",
+                "Run discovery before taxonomy/category assignment.",
+                "Create evidence ledgers with reference numbers and excerpts.",
+                "Run validation checks before slide/report output.",
+                "Render slide-aligned templates from structured report JSON."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

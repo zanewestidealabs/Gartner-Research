@@ -42,6 +42,10 @@ function isCurrentASMFSchema() {
     return getCurrentSchemaStructure() === 'asmf';
 }
 
+function isCurrentBuyerVoiceSchema() {
+    return getCurrentSchemaStructure() === 'buyer_voice';
+}
+
 function isCurrentASMFAdoptionSchema() {
     return isCurrentASMFSchema() && appState.currentSchemaFile !== 'ai_platform_ecosystem_framework_v1.json';
 }
@@ -72,7 +76,7 @@ function getASMFRootLabel() {
 }
 
 function updateSchemaControlVisibility() {
-    const hasVendors = appState.hasVendorData !== false;
+    const hasVendors = appState.hasVendorData !== false && !isCurrentBuyerVoiceSchema();
     const vendorWrap = document.getElementById('vendor-data-selector-wrap');
     const scoreWrap = document.getElementById('score-mode-selector-wrap');
 
@@ -4673,9 +4677,11 @@ function populateReportsView() {
 function filterReportsTabsBySchema() {
     const currentSchema = (appState.currentSchemaFile || '').trim();
     const isASMFAdoption = isCurrentASMFAdoptionSchema();
+    const isBuyerVoice = isCurrentBuyerVoiceSchema();
     const allTabs = document.querySelectorAll('.reports-tab');
     let activeVisible = false;
     const asmfAllowedTabs = new Set(['legend-report', 'asmf-matrix', 'asmf-graph']);
+    const buyerVoiceAllowedTabs = new Set(['legend-report', 'buyer-voice-reports']);
     if (currentSchema === 'agentic_soc_framework_v1.json') {
         asmfAllowedTabs.add('asaf-positioning');
     }
@@ -4685,6 +4691,9 @@ function filterReportsTabsBySchema() {
         const allowedSchemas = requiredSchema ? requiredSchema.split(',').map(s => s.trim()) : [];
         let shouldHide = false;
         if (isASMFAdoption && !asmfAllowedTabs.has(tab.dataset.reportTab)) {
+            shouldHide = true;
+        }
+        if (!shouldHide && isBuyerVoice && !buyerVoiceAllowedTabs.has(tab.dataset.reportTab)) {
             shouldHide = true;
         }
         if (!shouldHide && requiredSchema && !allowedSchemas.includes(currentSchema)) {
@@ -4719,8 +4728,9 @@ function filterReportsTabsBySchema() {
  * If the currently active view gets hidden, auto-switch to the first visible view.
  */
 function filterNavBySchema() {
-    const hasVendors = appState.hasVendorData !== false; // default true if not set
+    const hasVendors = appState.hasVendorData !== false && !isCurrentBuyerVoiceSchema(); // default true if not set
     const currentSchema = appState.currentSchemaFile || '';
+    const isBuyerVoice = isCurrentBuyerVoiceSchema();
     const navItems = document.querySelectorAll('.nav-item[data-view]');
     let activeHidden = false;
 
@@ -4748,6 +4758,10 @@ function filterNavBySchema() {
             }
         }
 
+        if (isBuyerVoice && !['legend', 'reports'].includes(item.dataset.view)) {
+            shouldHide = true;
+        }
+
         if (shouldHide) {
             item.style.display = 'none';
             if (item.classList.contains('active')) {
@@ -4758,6 +4772,11 @@ function filterNavBySchema() {
             item.style.display = '';
         }
     });
+
+    const docsRailGroup = document.getElementById('docs-rail-group');
+    if (docsRailGroup) {
+        docsRailGroup.style.display = isBuyerVoice ? 'none' : '';
+    }
 
     // If the active nav item was hidden, switch to the first visible view
     if (activeHidden) {
@@ -4867,6 +4886,8 @@ function activateReportTab(tabId) {
         populatePreCyberMarketInsight();
     } else if (tabId === 'pmr-market-insight') {
         populatePMRMarketInsight();
+    } else if (tabId === 'buyer-voice-reports') {
+        populateBuyerVoiceReports();
     } else if (tabId === 'dfir-market-insight') {
         populateDFIRMarketInsight();
     } else if (tabId === 'analyst-take') {
@@ -4907,6 +4928,913 @@ function activateReportTab(tabId) {
     }
 }
 
+async function populateBuyerVoiceReports() {
+    const body = document.getElementById('buyer-voice-reports-body');
+    if (!body) return;
+
+    body.innerHTML = '<p class="report-empty">Loading Buyer Voice reports...</p>';
+
+    try {
+        const schemaParam = appState.currentSchemaFile ? `?schema=${encodeURIComponent(appState.currentSchemaFile)}` : '';
+        const response = await fetch(`/api/buyervoice/reports${schemaParam}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+
+        const reports = data.reports || [];
+        const datasets = data.datasets || {};
+
+        function countList(items, label) {
+            const rows = (items || []).map(item => `
+                <tr>
+                    <td>${escapeHtml(item.name)}</td>
+                    <td style="text-align:right;">${escapeHtml(String(item.count))}</td>
+                </tr>`).join('');
+            return `
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">${escapeHtml(label)}</h4>
+                    <div class="docs-table-wrap">
+                        <table class="docs-table">
+                            <thead><tr><th>Value</th><th>Records</th></tr></thead>
+                            <tbody>${rows || '<tr><td colspan="2">No values</td></tr>'}</tbody>
+                        </table>
+                    </div>
+                </div>`;
+        }
+
+        function bulletList(items) {
+            const list = items || [];
+            if (!list.length) return '<p class="report-empty">No items defined.</p>';
+            return `<ul class="report-detail-list">${list.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+        }
+
+        function sectionBlock(label, html) {
+            return `
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">${escapeHtml(label)}</h4>
+                    ${html}
+                </div>`;
+        }
+
+        function evidenceExampleList(items) {
+            const examples = items || [];
+            if (!examples.length) return '<p class="report-empty">No evidence examples attached.</p>';
+            return `
+                <ul class="report-detail-list">
+                    ${examples.map(item => `
+                        <li>
+                            <strong>${escapeHtml(item.theme || 'Evidence')}</strong>
+                            <br><span>${escapeHtml(item.support || '')}</span>
+                            <br><span class="report-doc-subtitle">References: ${escapeHtml((item.references || []).join(', ') || 'Not listed')}</span>
+                        </li>`).join('')}
+                </ul>`;
+        }
+
+        function scoreSummary(scores) {
+            const entries = Object.entries(scores || {});
+            if (!entries.length) return '<p class="report-empty">No score summary attached.</p>';
+            return `
+                <div class="va-summary-stats">
+                    ${entries.map(([key, value]) => `<div class="va-stat"><div class="va-stat-value">${escapeHtml(String(value))}</div><div class="va-stat-label">${escapeHtml(key)}</div></div>`).join('')}
+                </div>`;
+        }
+
+        function datasetCard(dataset) {
+            if (!dataset) return '';
+            return `
+                <div class="report-pillar-section">
+                    <div class="report-pillar-header">
+                        <div class="report-pillar-badge">${dataset.dataset_id === 'openai_2026_ytd' ? 'OA' : 'SN'}</div>
+                        <div class="report-pillar-title-block">
+                            <h2 class="report-pillar-name">${escapeHtml(dataset.name)}</h2>
+                            <p class="report-pillar-focus">${escapeHtml(dataset.scope)}</p>
+                        </div>
+                    </div>
+                    <div class="va-summary-stats">
+                        <div class="va-stat"><div class="va-stat-value">${escapeHtml(String(dataset.record_count))}</div><div class="va-stat-label">Records</div></div>
+                        <div class="va-stat"><div class="va-stat-value">${escapeHtml(dataset.quarters?.length || 0)}</div><div class="va-stat-label">Quarters</div></div>
+                        <div class="va-stat"><div class="va-stat-value">${escapeHtml(dataset.date_start || '')}</div><div class="va-stat-label">Start</div></div>
+                        <div class="va-stat"><div class="va-stat-value">${escapeHtml(dataset.date_end || '')}</div><div class="va-stat-label">End</div></div>
+                    </div>
+                    <p class="report-detail-text"><strong>Source:</strong> ${escapeHtml(dataset.source_file)}</p>
+                    <p class="report-detail-text"><strong>Aligned slides:</strong> ${escapeHtml(dataset.slide_family)}</p>
+                    ${themeTimelineScatter(dataset)}
+                    ${regionThemeHeatmap(dataset)}
+                    <div class="va-quick-callout">
+                        <div class="va-callout-box strengths">
+                            <h4>Buyer Footprint</h4>
+                            ${horizontalBarChart(dataset.top_regions, 'Top Regions')}
+                            ${horizontalBarChart(dataset.top_industries, 'Top Industries')}
+                        </div>
+                        <div class="va-callout-box weaknesses">
+                            <h4>Interaction Shape</h4>
+                            ${horizontalBarChart(dataset.top_roles, 'Top Roles')}
+                            ${horizontalBarChart(dataset.top_interaction_subtypes, 'Interaction Subtypes')}
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        function reportPanel(report) {
+            if (!report) return '<p class="report-empty">Report definition not available.</p>';
+            const dataset = datasets[report.dataset_id];
+            const datasetLine = dataset
+                ? `${dataset.name} · ${dataset.record_count} records · ${dataset.date_start} to ${dataset.date_end}`
+                : 'Method and operating model package';
+            return `
+                <div class="report-pillar-section">
+                    <div class="report-pillar-header">
+                        <div class="report-pillar-badge">${escapeHtml(report.slide_alignment.replace(/[^0-9-]/g, '') || 'M')}</div>
+                        <div class="report-pillar-title-block">
+                            <h2 class="report-pillar-name">${escapeHtml(report.title)}</h2>
+                            <p class="report-pillar-focus">${escapeHtml(report.purpose)}</p>
+                        </div>
+                    </div>
+                    <div class="report-detail-block">
+                        <h4 class="report-detail-label">Dataset Binding</h4>
+                        <p class="report-detail-text">${escapeHtml(datasetLine)}</p>
+                        <p class="report-detail-text"><strong>Report type:</strong> ${escapeHtml(report.report_type)} · <strong>Slide alignment:</strong> ${escapeHtml(report.slide_alignment)}</p>
+                    </div>
+                    ${sectionBlock('Slide Outcome', `<p class="report-detail-text">${escapeHtml(report.slide_outcome || 'Not defined.')}</p>`)}
+                    ${sectionBlock('NotebookLM Prompt Intent', `<p class="report-detail-text">${escapeHtml(report.notebooklm_prompt_intent || 'Not defined.')}</p>`)}
+                    ${sectionBlock('Vendor Analysis Adaptation', `<p class="report-detail-text">${escapeHtml(report.vendor_analysis_adaptation || 'Not defined.')}</p>`)}
+                    <div class="va-quick-callout">
+                        <div class="va-callout-box strengths">
+                            <h4>Slide Columns</h4>
+                            ${bulletList(report.slide_columns)}
+                        </div>
+                        <div class="va-callout-box weaknesses">
+                            <h4>Validation Focus</h4>
+                            ${bulletList(report.validation_focus)}
+                        </div>
+                    </div>
+                    <div class="va-quick-callout">
+                        <div class="va-callout-box strengths">
+                            <h4>Analysis Workflow</h4>
+                            ${bulletList(report.analysis_workflow)}
+                        </div>
+                        <div class="va-callout-box weaknesses">
+                            <h4>Prompt Guardrails</h4>
+                            ${bulletList(report.prompt_guardrails)}
+                        </div>
+                    </div>
+                    <div class="report-detail-block">
+                        <h4 class="report-detail-label">Slide Outcomes / Cards</h4>
+                        ${bulletList(report.slide_outcomes || report.template_themes)}
+                    </div>
+                    <div class="report-detail-block">
+                        <h4 class="report-detail-label">Output Sections</h4>
+                        ${bulletList(report.output_sections)}
+                    </div>
+                    <div class="report-detail-block">
+                        <h4 class="report-detail-label">Schema Score Alignment</h4>
+                        <p class="report-detail-text">${escapeHtml((report.score_alignment || []).join(' · ') || 'Not mapped.')}</p>
+                    </div>
+                    <div class="report-detail-block">
+                        <h4 class="report-detail-label">Evidence-Backed Score Summary</h4>
+                        ${scoreSummary(report.pillar_scores)}
+                    </div>
+                    <div class="report-detail-block">
+                        <h4 class="report-detail-label">Evidence Examples</h4>
+                        ${evidenceExampleList(report.evidence_examples)}
+                    </div>
+                    <div class="report-detail-block">
+                        <h4 class="report-detail-label">Remaining Validation Gaps</h4>
+                        ${bulletList(report.validation_gaps)}
+                    </div>
+                </div>`;
+        }
+
+        const reportById = Object.fromEntries(reports.map(report => [report.id, report]));
+        const dataset = Object.values(datasets)[0];
+        const isOpenAI = appState.currentSchemaFile === 'OpenAI_Buyer_Data_Analysis_Schema.json';
+        const isServiceNow = appState.currentSchemaFile === 'ServiceNow_Buyer_Data_Analysis_Schema.json';
+
+        function miniCountList(items) {
+            const list = items || [];
+            if (!list.length) return '<span class="report-doc-subtitle">No distribution data.</span>';
+            return list.map(item => `${escapeHtml(item.name)} <span class="report-doc-subtitle">(${escapeHtml(String(item.count))})</span>`).join('<br>');
+        }
+
+        function shortLabel(value, max = 24) {
+            const text = String(value || '');
+            return text.length > max ? `${text.slice(0, max - 1)}…` : text;
+        }
+
+        function horizontalBarChart(items, title, maxItems = 8) {
+            const list = (items || []).slice(0, maxItems);
+            const max = Math.max(...list.map(item => Number(item.count) || 0), 1);
+            return `
+                <div class="bv-chart-card">
+                    <h4>${escapeHtml(title)}</h4>
+                    <div class="bv-bar-list">
+                        ${list.map(item => {
+                            const count = Number(item.count) || 0;
+                            const width = Math.max(3, Math.round((count / max) * 100));
+                            return `
+                                <div class="bv-bar-row">
+                                    <div class="bv-bar-label" title="${escapeHtml(item.name)}">${escapeHtml(shortLabel(item.name, 30))}</div>
+                                    <div class="bv-bar-track"><div class="bv-bar-fill" style="width:${width}%"></div></div>
+                                    <div class="bv-bar-value">${escapeHtml(String(count))}</div>
+                                </div>`;
+                        }).join('') || '<p class="report-empty">No data.</p>'}
+                    </div>
+                </div>`;
+        }
+
+        function globalFootprintGraphic(dataset) {
+            const regions = dataset?.top_regions || [];
+            const max = Math.max(...regions.map(item => Number(item.count) || 0), 1);
+            return `
+                <div class="bv-chart-card">
+                    <h4>Global buyer footprint</h4>
+                    <div class="bv-world-map" data-bv-world-map></div>
+                    <div class="bv-region-map">
+                        ${regions.map(item => {
+                            const count = Number(item.count) || 0;
+                            const intensity = Math.max(0.18, count / max);
+                            return `
+                                <div class="bv-region-tile" style="--bv-intensity:${intensity}">
+                                    <span class="bv-region-name">${escapeHtml(item.name)}</span>
+                                    <span class="bv-region-count">${escapeHtml(String(count))}</span>
+                                </div>`;
+                        }).join('')}
+                    </div>
+                    <p class="report-doc-subtitle">Tile intensity is scaled to the highest-volume region in this dataset. This is a compact footprint view, not a geographic boundary map.</p>
+                </div>`;
+        }
+
+        function normalizeCountryName(name) {
+            const raw = String(name || '').trim().toUpperCase();
+            const aliases = {
+                'UNITED STATES': 'UNITED STATES OF AMERICA',
+                'USA': 'UNITED STATES OF AMERICA',
+                'US': 'UNITED STATES OF AMERICA',
+                'UNITED KINGDOM': 'UNITED KINGDOM',
+                'UK': 'UNITED KINGDOM',
+                'RUSSIA': 'RUSSIA',
+                'VIETNAM': 'VIETNAM',
+                'KOREA, REPUBLIC OF': 'SOUTH KOREA',
+                'SOUTH KOREA': 'SOUTH KOREA',
+                'UAE': 'UNITED ARAB EMIRATES',
+                'UNITED ARAB EMIRATES': 'UNITED ARAB EMIRATES',
+                'SAUDI ARABIA': 'SAUDI ARABIA',
+                'NETHERLANDS': 'NETHERLANDS'
+            };
+            return aliases[raw] || raw;
+        }
+
+        function renderBuyerVoiceWorldMaps(dataset) {
+            const hosts = body.querySelectorAll('[data-bv-world-map]');
+            if (!hosts.length || !window.d3 || !window.topojson) return;
+            const countryCounts = new Map((dataset?.country_counts || dataset?.top_countries || []).map(item => [
+                normalizeCountryName(item.name),
+                Number(item.count) || 0
+            ]));
+            const maxCount = Math.max(...Array.from(countryCounts.values()), 1);
+            d3.json('/static/vendor/world-110m.json').then(world => {
+                const countries = topojson.feature(world, world.objects.countries).features;
+                hosts.forEach(host => {
+                    const width = 920;
+                    const height = 430;
+                    const projection = d3.geoNaturalEarth1().fitSize([width, height], { type: 'Sphere' });
+                    const path = d3.geoPath(projection);
+                    const color = d3.scaleSqrt()
+                        .domain([0, maxCount * 0.08, maxCount])
+                        .range(['#93c5fd', '#2563eb', '#0f172a']);
+                    host.innerHTML = '';
+                    const svg = d3.select(host)
+                        .append('svg')
+                        .attr('class', 'bv-world-svg')
+                        .attr('viewBox', `0 0 ${width} ${height}`)
+                        .attr('role', 'img')
+                        .attr('aria-label', 'World map of buyer records by account country');
+                    svg.append('path')
+                        .datum({ type: 'Sphere' })
+                        .attr('class', 'bv-map-sphere')
+                        .attr('d', path);
+                    svg.selectAll('path.bv-country')
+                        .data(countries)
+                        .join('path')
+                        .attr('class', 'bv-country')
+                        .attr('d', path)
+                        .attr('fill', feature => {
+                            const count = countryCounts.get(normalizeCountryName(feature.properties?.name)) || 0;
+                            return count ? color(count) : '#d8dee8';
+                        })
+                        .classed('bv-country-active', feature => {
+                            const count = countryCounts.get(normalizeCountryName(feature.properties?.name)) || 0;
+                            return count > 0;
+                        })
+                        .attr('data-count', feature => countryCounts.get(normalizeCountryName(feature.properties?.name)) || 0)
+                        .append('title')
+                        .text(feature => {
+                            const name = feature.properties?.name || 'Country';
+                            const count = countryCounts.get(normalizeCountryName(name)) || 0;
+                            return `${name}: ${count} buyer records`;
+                        });
+                });
+            }).catch(error => {
+                hosts.forEach(host => {
+                    host.innerHTML = `<p class="report-empty">World map could not be loaded: ${escapeHtml(error.message)}</p>`;
+                });
+            });
+        }
+
+        function themeTimelineScatter(dataset) {
+            const themes = (dataset?.theme_analysis || []).slice(0, 8);
+            const months = (dataset?.months || []).map(item => item.name).filter(Boolean);
+            if (!themes.length || !months.length) return '<p class="report-empty">No monthly theme data available.</p>';
+            const width = Math.max(820, months.length * 105);
+            const height = 470;
+            const left = 62;
+            const top = 34;
+            const right = 34;
+            const bottom = 68;
+            const plotWidth = width - left - right;
+            const plotHeight = height - top - bottom;
+            const maxCount = Math.max(...themes.flatMap(theme => (theme.monthly_counts || []).map(item => Number(item.count) || 0)), 1);
+            const minCount = Math.min(...themes.flatMap(theme => (theme.monthly_counts || []).map(item => Number(item.count) || 0)).filter(Boolean), 0);
+            const monthIndex = Object.fromEntries(months.map((month, idx) => [month, idx]));
+            const colorPalette = ['#2563eb', '#dc2626', '#16a34a', '#9333ea', '#ea580c', '#0891b2', '#be123c', '#65a30d'];
+            const colorForTheme = idx => colorPalette[idx % colorPalette.length];
+            const monthX = month => left + ((monthIndex[month] || 0) / Math.max(months.length - 1, 1)) * plotWidth;
+            const countY = count => {
+                const normalized = (Number(count) - minCount) / Math.max(maxCount - minCount, 1);
+                return top + plotHeight - (normalized * plotHeight);
+            };
+            const themeSeries = themes.map((theme, themeIdx) => {
+                const countByMonth = Object.fromEntries((theme.monthly_counts || []).map(point => [point.name, Number(point.count) || 0]));
+                const points = months.map(month => {
+                    const count = countByMonth[month] || 0;
+                    return {
+                        theme,
+                        themeIdx,
+                        month,
+                        count,
+                        x: monthX(month),
+                        y: countY(count),
+                    };
+                });
+                return {
+                    theme,
+                    themeIdx,
+                    points,
+                    path: points.map(point => `${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(' ')
+                };
+            });
+            const yTicks = [0, 0.25, 0.5, 0.75, 1].map(t => Math.round(minCount + (maxCount - minCount) * t));
+            return `
+                <div class="bv-chart-card bv-chart-wide">
+                    <h4>Theme momentum lines</h4>
+                    <div class="bv-chart-legend">
+                        ${themes.map((theme, idx) => `
+                            <span class="bv-legend-item">
+                                <span class="bv-legend-swatch" style="background:${colorForTheme(idx)}"></span>
+                                ${escapeHtml(shortLabel(theme.name, 32))}
+                            </span>
+                        `).join('')}
+                    </div>
+                    <div class="bv-svg-scroll">
+                        <svg class="bv-scatter-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="Line chart showing monthly buyer theme signal volume by color-coded theme">
+                            ${yTicks.map(tick => {
+                                const y = countY(tick);
+                                return `<line x1="${left}" y1="${y}" x2="${width - right}" y2="${y}" class="bv-grid-line"></line>
+                                        <text x="${left - 12}" y="${y + 4}" text-anchor="end" class="bv-axis-label">${escapeHtml(String(tick))}</text>`;
+                            }).join('')}
+                            ${months.map(month => {
+                                const x = monthX(month);
+                                return `<line x1="${x}" y1="${top}" x2="${x}" y2="${height - bottom}" class="bv-grid-line bv-grid-line-light"></line>
+                                        <text x="${x}" y="${height - 18}" text-anchor="middle" class="bv-axis-label">${escapeHtml(month.slice(5))}</text>`;
+                            }).join('')}
+                            <line x1="${left}" y1="${height - bottom}" x2="${width - right}" y2="${height - bottom}" class="bv-axis-line"></line>
+                            <line x1="${left}" y1="${top}" x2="${left}" y2="${height - bottom}" class="bv-axis-line"></line>
+                            <text x="${left}" y="${top - 12}" class="bv-axis-title">Signal records</text>
+                            ${themeSeries.map(series => `
+                                <polyline points="${series.path}"
+                                          class="bv-theme-line"
+                                          style="--bv-theme-color:${colorForTheme(series.themeIdx)}">
+                                    <title>${escapeHtml(series.theme.name)}</title>
+                                </polyline>`).join('')}
+                            ${themeSeries.flatMap(series => series.points.map(point => `
+                                <circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="5.5"
+                                        class="bv-line-point"
+                                        style="--bv-theme-color:${colorForTheme(point.themeIdx)}">
+                                    <title>${escapeHtml(point.theme.name)} · ${escapeHtml(point.month)} · ${point.count} signal records</title>
+                                </circle>`)).join('')}
+                        </svg>
+                    </div>
+                    <p class="report-doc-subtitle">X-axis is month, Y-axis is monthly signal volume, and each color-coded line is a theme. Themes overlap; one interaction can contribute to multiple themes.</p>
+                </div>`;
+        }
+
+        function regionThemeHeatmap(dataset) {
+            const themes = (dataset?.theme_analysis || []).slice(0, 8);
+            const regions = (dataset?.top_regions || []).map(item => item.name).slice(0, 6);
+            if (!themes.length || !regions.length) return '<p class="report-empty">No regional theme data available.</p>';
+            const matrix = themes.map(theme => {
+                const totals = {};
+                (theme.region_month_counts || []).forEach(item => {
+                    totals[item.region] = (totals[item.region] || 0) + (Number(item.count) || 0);
+                });
+                return { theme, totals };
+            });
+            const max = Math.max(...matrix.flatMap(row => regions.map(region => row.totals[region] || 0)), 1);
+            return `
+                <div class="bv-chart-card bv-chart-wide">
+                    <h4>Region × theme heatmap</h4>
+                    <div class="docs-table-wrap">
+                        <table class="docs-table bv-heatmap-table">
+                            <thead>
+                                <tr><th>Theme</th>${regions.map(region => `<th>${escapeHtml(region)}</th>`).join('')}</tr>
+                            </thead>
+                            <tbody>
+                                ${matrix.map(row => `
+                                    <tr>
+                                        <td>${escapeHtml(row.theme.name)}</td>
+                                        ${regions.map(region => {
+                                            const count = row.totals[region] || 0;
+                                            const alpha = Math.max(0.08, count / max);
+                                            return `<td class="bv-heat-cell" style="--bv-alpha:${alpha}">${escapeHtml(String(count))}</td>`;
+                                        }).join('')}
+                                    </tr>`).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="report-doc-subtitle">Darker cells indicate stronger regional signal volume for that theme.</p>
+                </div>`;
+        }
+
+        function themeCard(theme, idx) {
+            const examples = theme.examples || [];
+            return `
+                <div class="report-sp-longform-card">
+                    <div class="report-sp-longform-header">
+                        <span class="report-sp-longform-number">${idx + 1}</span>
+                        <div>
+                            <span class="report-sp-longform-id">${escapeHtml(theme.qualitative_spread || 'Theme')}</span>
+                            <h3 class="report-sp-longform-name">${escapeHtml(theme.name || '')}</h3>
+                        </div>
+                    </div>
+                    <p class="report-detail-text">${escapeHtml(theme.lens || '')}</p>
+                    <div class="va-summary-stats">
+                        <div class="va-stat"><div class="va-stat-value">${escapeHtml(String(theme.match_count || 0))}</div><div class="va-stat-label">Signal records</div></div>
+                        <div class="va-stat"><div class="va-stat-value">${escapeHtml(String(theme.share_pct || 0))}%</div><div class="va-stat-label">Corpus share</div></div>
+                        <div class="va-stat"><div class="va-stat-value">${escapeHtml(theme.qualitative_spread || '')}</div><div class="va-stat-label">Spread</div></div>
+                    </div>
+                    ${horizontalBarChart(theme.quarters, 'Quarterly signal')}
+                    <div class="va-quick-callout">
+                        <div class="va-callout-box strengths">
+                            <h4>Who is asking</h4>
+                            <p class="report-detail-text"><strong>Roles</strong><br>${miniCountList(theme.top_roles)}</p>
+                            <p class="report-detail-text"><strong>Sectors</strong><br>${miniCountList(theme.top_sectors)}</p>
+                        </div>
+                        <div class="va-callout-box weaknesses">
+                            <h4>Where it appears</h4>
+                            <p class="report-detail-text"><strong>Regions</strong><br>${miniCountList(theme.top_regions)}</p>
+                            <p class="report-detail-text"><strong>Time</strong><br>${miniCountList(theme.quarters)}</p>
+                        </div>
+                    </div>
+                    <div class="report-detail-block">
+                        <h4 class="report-detail-label">Buyer question examples</h4>
+                        ${examples.length ? `
+                            <ul class="report-detail-list">
+                                ${examples.map(example => `
+                                    <li>
+                                        <span>${escapeHtml(example.question_excerpt || '')}</span>
+                                        <br><span class="report-doc-subtitle">Ref ${escapeHtml(example.reference || '')} · ${escapeHtml(example.date || '')} · ${escapeHtml(example.region || '')} · ${escapeHtml(example.role || '')}</span>
+                                    </li>`).join('')}
+                            </ul>` : '<p class="report-empty">No examples available for this theme.</p>'}
+                    </div>
+                </div>`;
+        }
+
+        function buyerCompositionPanel(dataset) {
+            if (!dataset) return '<p class="report-empty">No dataset selected.</p>';
+            return `
+                <h2 class="report-section-title">Buyer Composition</h2>
+                <p class="report-section-subtitle">This tab answers: whose voice is in the corpus, and where should we be careful about over-reading the signal?</p>
+                <div class="va-quick-callout">
+                    <div class="va-callout-box strengths"><h4>Regions</h4>${horizontalBarChart(dataset.top_regions, 'Account Region')}</div>
+                    <div class="va-callout-box weaknesses"><h4>Organization Type</h4>${horizontalBarChart(dataset.top_account_markets, 'Account Market')}</div>
+                </div>
+                <div class="va-quick-callout">
+                    <div class="va-callout-box strengths"><h4>Sectors</h4>${horizontalBarChart(dataset.top_industries, 'Enterprise Sector')}</div>
+                    <div class="va-callout-box weaknesses"><h4>Roles</h4>${horizontalBarChart(dataset.top_roles, 'Role Name')}</div>
+                </div>
+                <div class="va-quick-callout">
+                    <div class="va-callout-box strengths"><h4>Interaction Types</h4>${horizontalBarChart(dataset.top_interaction_subtypes, 'Interaction Subtype')}</div>
+                    <div class="va-callout-box weaknesses"><h4>Buying Stage</h4>${horizontalBarChart(dataset.top_buysmart_stages, 'Buysmart')}</div>
+                </div>`;
+        }
+
+        function geographicPanel(dataset) {
+            if (!dataset) return '<p class="report-empty">No dataset selected.</p>';
+            return `
+                <h2 class="report-section-title">Geographic Signal</h2>
+                <p class="report-section-subtitle">A more visual view of where buyer questions are coming from. This helps distinguish broad global signal from North America- or EMEA-heavy findings.</p>
+                ${globalFootprintGraphic(dataset)}
+                <div class="va-quick-callout">
+                    <div class="va-callout-box strengths"><h4>Regions</h4>${horizontalBarChart(dataset.top_regions, 'Region volume')}</div>
+                    <div class="va-callout-box weaknesses"><h4>Countries</h4>${horizontalBarChart(dataset.top_countries, 'Country volume')}</div>
+                </div>
+                ${regionThemeHeatmap(dataset)}`;
+        }
+
+        function momentumPanel(dataset) {
+            return `
+                <h2 class="report-section-title">Theme Momentum</h2>
+                <p class="report-section-subtitle">Buyer interest changes over time. This view plots monthly volume by theme so spikes, sustained patterns, and emerging topics are easier to see than they are in bullets.</p>
+                ${themeTimelineScatter(dataset)}
+                ${regionThemeHeatmap(dataset)}`;
+        }
+
+        function themesPanel(dataset) {
+            const themes = dataset?.theme_analysis || [];
+            return `
+                <h2 class="report-section-title">${isServiceNow ? 'Commercial Friction Themes' : 'Buyer Question Themes'}</h2>
+                <p class="report-section-subtitle">${isServiceNow
+                    ? 'Themes are overlapping signal groups derived from commercial language in Purpose, Question Asked, and Discussion Summary. The categories organize discovered friction; they are not vendor-score dimensions.'
+                    : 'Themes are overlapping signal groups derived from buyer questions and summaries. This is the voice-of-buyer view: what buyers are trying to decide, govern, fund, compare, or prove.'}</p>
+                ${themes.map(themeCard).join('') || '<p class="report-empty">No theme analysis available.</p>'}`;
+        }
+
+        function cutsPanel(dataset) {
+            const themes = dataset?.theme_analysis || [];
+            const focusThemes = isOpenAI
+                ? themes.filter(theme => ['Vendor selection and competitive comparison', 'Agents, integration, orchestration, and custom GPTs', 'Coding agents and developer workflow impact', 'Governance, data protection, and risk controls'].includes(theme.name))
+                : themes.filter(theme => ['AI-native pricing and packaging', 'Renewal cost and contract leverage', 'Platform displacement and cost alternatives', 'AI business case and ROI proof gap', "Cost-offset tactics using ServiceNow's own tools"].includes(theme.name));
+            return `
+                <h2 class="report-section-title">${isOpenAI ? 'Market Cuts' : 'Commercial Category Cuts'}</h2>
+                <p class="report-section-subtitle">${isOpenAI
+                    ? 'OpenAI should be read through multiple market lenses: full corpus, enterprise assistants, and coding agents. The same source corpus can support each cut when qualifying rules are explicit.'
+                    : 'ServiceNow should be read through commercial-friction categories after discovery. The point is not to score ServiceNow; it is to show where buyers experience economic pressure.'}</p>
+                ${focusThemes.map(themeCard).join('') || '<p class="report-empty">No cut analysis available.</p>'}`;
+        }
+
+        function evidencePanel(dataset) {
+            const themes = dataset?.theme_analysis || [];
+            const exampleCount = themes.reduce((sum, theme) => sum + ((theme.examples || []).length), 0);
+            const topThemes = themes.slice(0, 5);
+            const readiness = theme => {
+                const regions = (theme.top_regions || []).length;
+                const roles = (theme.top_roles || []).length;
+                if ((theme.match_count || 0) > 500 && regions >= 3 && roles >= 3) return 'Slide-ready with attribution';
+                if ((theme.match_count || 0) > 150 && regions >= 2) return 'Strong, needs excerpt review';
+                return 'Emerging, analyst review required';
+            };
+            const analystRead = theme => {
+                if (isServiceNow) {
+                    if ((theme.name || '').includes('Renewal')) return 'Commercial negotiation signal; useful for renewal-pressure narrative, but figures need provenance.';
+                    if ((theme.name || '').includes('AI-native')) return 'Packaging and AI monetization signal; good candidate for a category cut if examples support concrete buyer friction.';
+                    if ((theme.name || '').includes('ROI')) return 'Economic-justification signal; strongest when paired with role and buying-stage evidence.';
+                    if ((theme.name || '').includes('Cost-offset')) return 'Actionable but sensitive; should be reviewed before externalizing tactics.';
+                    return 'Commercial-friction signal; validate whether examples are buyer voice, analyst commentary, or proposal-review context.';
+                }
+                if ((theme.name || '').includes('Vendor selection')) return 'Decision and comparison signal; useful for market positioning, not for competitor standing claims.';
+                if ((theme.name || '').includes('Governance')) return 'Risk/control signal; strong cross-role theme for enterprise readiness and adoption barriers.';
+                if ((theme.name || '').includes('Coding')) return 'Market-cut signal; should be separated from general assistant adoption.';
+                if ((theme.name || '').includes('Commercial')) return 'Buying and renewal signal; needs proposal-review examples separated from general inquiries.';
+                return 'Buyer-question signal; validate whether references represent end-user demand versus market intelligence.';
+            };
+            const validationNotes = isOpenAI
+                ? [
+                    'Exclude supply-side or investor records when the output is meant to represent buyer demand.',
+                    'Treat bare GPT references as ambiguous unless OpenAI attribution is explicit.',
+                    'Do not use OpenAI-anchored records to make claims about competitors overall.',
+                    'Question Asked is the cleanest buyer voice; Discussion Summary needs attribution judgment.'
+                ]
+                : [
+                    'Use supplied categories only after bottom-up discovery.',
+                    'Mark all dollar, percentage, uplift, per-seat, token, or benchmark figures with provenance.',
+                    'Flag negotiation leverage, audit-risk, and cost-avoidance tactics for sensitivity review.',
+                    'Separate buyer voice from analyst recommendation language.'
+                ];
+            return `
+                <h2 class="report-section-title">Analyst Review</h2>
+                <p class="report-section-subtitle">This tab is the analyst workbench: what the evidence appears to support, where the signal is broad enough to summarize, and what still needs judgment before it becomes a slide or client-facing claim.</p>
+                <div class="va-summary-stats">
+                    <div class="va-stat"><div class="va-stat-value">${escapeHtml(String(themes.length))}</div><div class="va-stat-label">Signal groups</div></div>
+                    <div class="va-stat"><div class="va-stat-value">${escapeHtml(String(exampleCount))}</div><div class="va-stat-label">Review examples</div></div>
+                    <div class="va-stat"><div class="va-stat-value">${escapeHtml(String(dataset?.record_count || 0))}</div><div class="va-stat-label">Corpus records</div></div>
+                </div>
+
+                <div class="va-quick-callout">
+                    <div class="va-callout-box strengths">
+                        <h4>Analyst read</h4>
+                        <p class="report-detail-text">${escapeHtml(isServiceNow
+                            ? 'The corpus is strongest as a commercial-friction review: renewal pressure, AI packaging, ROI proof, alternatives, and cost-control behavior. The strongest outputs should separate buyer pain from analyst advice and mark sensitive tactics.'
+                            : 'The corpus is strongest as a buyer-question review: selection, governance, adoption, coding-agent fit, commercial terms, and OpenAI-in-market comparisons. The strongest outputs should preserve buyer framing and avoid turning comparison mentions into market-share claims.')}</p>
+                    </div>
+                    <div class="va-callout-box weaknesses">
+                        <h4>Review posture</h4>
+                        <p class="report-detail-text">${escapeHtml(isServiceNow
+                            ? 'High-volume themes can become slide summaries, but pricing figures, negotiation leverage, and audit-risk content need explicit provenance and sensitivity review.'
+                            : 'High-volume themes can become slide summaries, but supply-side records, ambiguous GPT mentions, and competitor references need filtering before conclusions are written.')}</p>
+                    </div>
+                </div>
+
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">Theme readiness review</h4>
+                    <div class="docs-table-wrap">
+                        <table class="docs-table">
+                            <thead>
+                                <tr><th>Theme</th><th>Signal</th><th>Breadth</th><th>Analyst readiness</th><th>Interpretation</th></tr>
+                            </thead>
+                            <tbody>
+                                ${themes.map(theme => `
+                                    <tr>
+                                        <td><strong>${escapeHtml(theme.name)}</strong></td>
+                                        <td>${escapeHtml(String(theme.match_count || 0))} records<br><span class="report-doc-subtitle">${escapeHtml(String(theme.share_pct || 0))}% of corpus</span></td>
+                                        <td>${escapeHtml((theme.top_regions || []).map(item => item.name).slice(0, 2).join(', ') || 'n/a')}<br><span class="report-doc-subtitle">${escapeHtml((theme.top_roles || []).map(item => item.name).slice(0, 2).join(', ') || 'n/a')}</span></td>
+                                        <td>${escapeHtml(readiness(theme))}</td>
+                                        <td>${escapeHtml(analystRead(theme))}</td>
+                                    </tr>`).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">Representative buyer signals for review</h4>
+                    <div class="bv-analyst-card-grid">
+                        ${topThemes.map(theme => `
+                            <div class="bv-analyst-card">
+                                <div class="bv-analyst-card-kicker">${escapeHtml(theme.qualitative_spread || 'Theme')} · ${escapeHtml(String(theme.match_count || 0))} signal records</div>
+                                <h4>${escapeHtml(theme.name)}</h4>
+                                <p>${escapeHtml(theme.lens || '')}</p>
+                                <div class="bv-reference-strip">
+                                    ${(theme.examples || []).map(example => `<span title="${escapeHtml(example.question_excerpt || '')}">Ref ${escapeHtml(example.reference || '')}</span>`).join('')}
+                                </div>
+                            </div>`).join('')}
+                    </div>
+                </div>
+
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">Analyst validation checklist</h4>
+                    <div class="bv-validation-grid">
+                        ${validationNotes.map(note => `<div class="bv-validation-item">${escapeHtml(note)}</div>`).join('')}
+                    </div>
+                </div>`;
+        }
+
+        function synthesisPanel(dataset) {
+            const themes = dataset?.theme_analysis || [];
+            const topThemes = themes.slice(0, 5);
+            const reportsInScope = reports.filter(report => report.outcome_group !== 'method');
+            const topThemeNames = topThemes.map(theme => theme.name);
+            const executiveRead = isServiceNow
+                ? `The ${dataset?.name || 'ServiceNow'} corpus reads as a commercial-friction file, not a general product-satisfaction file. The strongest story is that buyers are trying to manage the economics of ServiceNow: implementation/operating drag, cost-offset behavior, ROI proof, renewal leverage, alternatives, and AI packaging. The analyst task is to separate broad buyer concern from sensitive negotiation detail.`
+                : `The ${dataset?.name || 'OpenAI'} corpus reads as a buyer-question file around enterprise adoption and market choice. The strongest story is that buyers are not asking one simple OpenAI question; they are sorting through vendor comparison, adoption value, governance, agents, coding workflows, commercial terms, and brand visibility. The analyst task is to preserve that buyer framing without overclaiming competitive conclusions.`;
+            const implicationRows = isServiceNow
+                ? [
+                    ['Commercial strategy', 'Expect renewal, packaging, and cost-control questions to carry the most analyst value.', 'Separate buyer-reported friction from negotiation advice.'],
+                    ['AI monetization', 'AI-native packaging is a distinct cut, but should be supported with concrete buyer examples.', 'Mark figures and token/credit terms with provenance.'],
+                    ['Client-facing use', 'Themes can support a friction matrix and category deep dives.', 'Route sensitive cost-offset tactics through review.']
+                ]
+                : [
+                    ['Market positioning', 'OpenAI is being evaluated relationally across assistants, coding agents, platforms, and governance patterns.', 'Do not infer competitor standing from mentions alone.'],
+                    ['Enterprise readiness', 'Governance, adoption, and integration questions indicate where buyers need operational clarity.', 'Separate buyer voice from analyst extrapolation.'],
+                    ['Client-facing use', 'Themes can support full-corpus buyer questions plus market-cut views.', 'Filter supply-side and ambiguous GPT records.']
+                ];
+            const slideStory = isServiceNow
+                ? [
+                    'Start with corpus scope and buyer composition.',
+                    'Lead with the commercial-friction headline: where buyers feel economic pressure.',
+                    'Show the category matrix with spread and trajectory.',
+                    'Deep dive into the two or three categories with strongest buyer evidence.',
+                    'Close with validation caveats: figure provenance, sensitivity, and partial-period timing.'
+                ]
+                : [
+                    'Start with corpus scope and buyer composition.',
+                    'Lead with top enterprise buyer questions about OpenAI.',
+                    'Split full-corpus themes from market cuts such as enterprise assistants and coding agents.',
+                    'Show representative buyer questions by role/region to preserve voice.',
+                    'Close with validation caveats: supply-side filtering, ambiguous GPT mentions, and competitor-reference limits.'
+                ];
+            return `
+                <h2 class="report-section-title">Analyst Summary</h2>
+                <p class="report-section-subtitle">This is the human-readable readout: what the corpus appears to be saying, how an analyst should summarize it, and what storyline the evidence can support.</p>
+
+                <div class="bv-executive-read">
+                    <div class="bv-executive-label">Executive analyst read</div>
+                    <p>${escapeHtml(executiveRead)}</p>
+                </div>
+
+                <div class="va-quick-callout">
+                    <div class="va-callout-box strengths">
+                        <h4>Dominant signals</h4>
+                        ${horizontalBarChart(topThemes.map(theme => ({ name: theme.name, count: theme.match_count })), 'Top theme signal volume', 5)}
+                    </div>
+                    <div class="va-callout-box weaknesses">
+                        <h4>Interpretive frame</h4>
+                        <p class="report-detail-text">${escapeHtml(isServiceNow
+                            ? 'Read this as a commercial relationship and economics analysis. The output should help explain where buyers experience friction, not whether ServiceNow is a good or bad platform.'
+                            : 'Read this as an inquiry-question and adoption analysis. The output should explain what buyers are trying to decide, not rank OpenAI against every vendor mentioned in the corpus.')}</p>
+                    </div>
+                </div>
+
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">What the data is saying</h4>
+                    <div class="bv-synthesis-grid">
+                        ${topThemes.map((theme, idx) => `
+                            <div class="bv-synthesis-card">
+                                <div class="bv-synthesis-rank">${idx + 1}</div>
+                                <h4>${escapeHtml(theme.name)}</h4>
+                                <p>${escapeHtml(theme.lens || '')}</p>
+                                <div class="bv-synthesis-meta">${escapeHtml(theme.qualitative_spread || '')} · ${escapeHtml(String(theme.match_count || 0))} signal records · ${escapeHtml((theme.top_regions || []).map(item => item.name).slice(0, 2).join(' / ') || 'region n/a')}</div>
+                            </div>`).join('')}
+                    </div>
+                </div>
+
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">Analyst implications</h4>
+                    <div class="docs-table-wrap">
+                        <table class="docs-table">
+                            <thead><tr><th>Area</th><th>So what?</th><th>Analyst handling</th></tr></thead>
+                            <tbody>
+                                ${implicationRows.map(row => `<tr><td><strong>${escapeHtml(row[0])}</strong></td><td>${escapeHtml(row[1])}</td><td>${escapeHtml(row[2])}</td></tr>`).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">Recommended slide story</h4>
+                    <div class="bv-storyline">
+                        ${slideStory.map((step, idx) => `
+                            <div class="bv-story-step">
+                                <span>${idx + 1}</span>
+                                <p>${escapeHtml(step)}</p>
+                            </div>`).join('')}
+                    </div>
+                </div>
+
+                <div class="report-detail-block">
+                    <h4 class="report-detail-label">Best-supported output areas</h4>
+                    <div class="bv-reference-strip">
+                        ${reportsInScope.flatMap(report => report.slide_outcomes || report.template_themes || []).slice(0, 10).map(item => `<span>${escapeHtml(item)}</span>`).join('')}
+                    </div>
+                </div>`;
+        }
+
+        const tabs = [
+            { id: 'overview', label: 'Dataset', html: datasetCard(dataset) },
+            { id: 'composition', label: 'Buyer Composition', html: buyerCompositionPanel(dataset) },
+            { id: 'geography', label: 'Geography', html: geographicPanel(dataset) },
+            { id: 'momentum', label: 'Momentum', html: momentumPanel(dataset) },
+            { id: 'themes', label: isServiceNow ? 'Friction Themes' : 'Question Themes', html: themesPanel(dataset) },
+            { id: 'cuts', label: isServiceNow ? 'Category Cuts' : 'Market Cuts', html: cutsPanel(dataset) },
+            { id: 'evidence', label: 'Analyst Review', html: evidencePanel(dataset) },
+            { id: 'synthesis', label: 'Analyst Summary', html: synthesisPanel(dataset) },
+        ];
+
+        const heading = appState.currentSchemaFile === 'OpenAI_Buyer_Data_Analysis_Schema.json'
+            ? 'OpenAI Buyer Voice Outcome'
+            : appState.currentSchemaFile === 'ServiceNow_Buyer_Data_Analysis_Schema.json'
+                ? 'ServiceNow Buyer Voice Outcome'
+                : 'Buyer Voice Outcomes';
+        const subtitle = appState.currentSchemaFile === 'OpenAI_Buyer_Data_Analysis_Schema.json'
+            ? 'OpenAI-specific buyer inquiry analysis: full corpus, market cuts, evidence, validation, and slide output.'
+            : appState.currentSchemaFile === 'ServiceNow_Buyer_Data_Analysis_Schema.json'
+                ? 'ServiceNow-specific commercial-friction analysis: categories, trajectory, evidence, sensitivity, and slide output.'
+                : 'Two separate organization-specific deliverables share one Buyer Voice methodology: OpenAI slides 1-4 and ServiceNow slides 5-7.';
+
+        body.innerHTML = `
+            <h2 class="report-section-title">${escapeHtml(heading)}</h2>
+            <p class="report-section-subtitle">${escapeHtml(subtitle)}</p>
+            <div class="va-inner-tabs" id="bv-inner-tabs" style="display:flex;margin:18px 0;">
+                ${tabs.map((tab, idx) => `<button class="va-inner-tab ${idx === 0 ? 'active' : ''}" data-bv-tab="${tab.id}" type="button">${escapeHtml(tab.label)}</button>`).join('')}
+            </div>
+            <div id="bv-tab-content">
+                ${tabs.map((tab, idx) => `<div id="bv-panel-${tab.id}" class="va-inner-panel ${idx === 0 ? 'active' : ''}">${tab.html || '<p class="report-empty">No report data.</p>'}</div>`).join('')}
+            </div>
+        `;
+
+        const tabBar = document.getElementById('bv-inner-tabs');
+        if (tabBar && !tabBar.dataset.bound) {
+            tabBar.dataset.bound = 'true';
+            tabBar.addEventListener('click', event => {
+                const tab = event.target.closest('.va-inner-tab');
+                if (!tab) return;
+                tabBar.querySelectorAll('.va-inner-tab').forEach(item => item.classList.remove('active'));
+                body.querySelectorAll('#bv-tab-content .va-inner-panel').forEach(panel => panel.classList.remove('active'));
+                tab.classList.add('active');
+                const panel = document.getElementById(`bv-panel-${tab.dataset.bvTab}`);
+                if (panel) panel.classList.add('active');
+            });
+        }
+        renderBuyerVoiceWorldMaps(dataset);
+    } catch (error) {
+        body.innerHTML = `<p class="report-empty">Buyer Voice reports could not be loaded: ${escapeHtml(error.message)}</p>`;
+    }
+}
+
+function populateBuyerVoiceLegendReport(body, schemaLabel, intentEl, titleEl) {
+    const detail = appState.schemaDetail || {};
+    const display = (appState.schemaDisplayMap || {})[appState.currentSchemaFile] || {};
+    const source = detail.source_dataset || {};
+    const dataModel = detail.data_model || {};
+    const legendSections = detail.legend_sections || [];
+    const formatterProjection = detail.formatter_projection || [];
+    const reportTabs = detail.report_tabs || [];
+    const validationPrinciples = detail.validation_principles || [];
+
+    if (schemaLabel) schemaLabel.textContent = `Schema: ${appState.currentSchemaFileName || appState.currentSchemaFile || 'Buyer Voice'}`;
+    if (titleEl) titleEl.textContent = `${display.abbr || 'Buyer Voice'} Analysis Model - Legend`;
+    if (intentEl) {
+        intentEl.textContent = detail.intent || appState.schemaIntent || '';
+        intentEl.style.display = intentEl.textContent ? '' : 'none';
+    }
+
+    const listHtml = items => {
+        const list = items || [];
+        if (!list.length) return '<p class="report-empty">None defined.</p>';
+        return `<ul class="report-detail-list">${list.map(item => `<li>${escapeHtml(String(item))}</li>`).join('')}</ul>`;
+    };
+    const kvHtml = entries => {
+        const rows = entries.filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== '').map(([key, value]) => `
+            <tr><td>${escapeHtml(key)}</td><td>${escapeHtml(Array.isArray(value) ? value.join(', ') : String(value))}</td></tr>`).join('');
+        return `<div class="docs-table-wrap"><table class="docs-table"><tbody>${rows || '<tr><td colspan="2">No dataset metadata.</td></tr>'}</tbody></table></div>`;
+    };
+
+    body.innerHTML = `
+        <h2 class="report-section-title">Buyer Voice Schema Structure</h2>
+        <p class="report-section-subtitle">This schema uses a buyer-inquiry analysis model: dataset, pull interpretation, interactions, buyer profile, themes, evidence, validation, and slide output. It does not use vendor-score rails.</p>
+
+        <div class="report-pillar-section">
+            <div class="report-pillar-header">
+                <div class="report-pillar-badge">BV</div>
+                <div class="report-pillar-title-block">
+                    <h2 class="report-pillar-name">${escapeHtml(detail.organization || display.title || 'Buyer Voice')}</h2>
+                    <p class="report-pillar-focus">${escapeHtml(detail.description || '')}</p>
+                </div>
+            </div>
+            ${kvHtml([
+                ['Dataset ID', source.dataset_id],
+                ['Source File', source.source_file],
+                ['Formatted Files', source.formatted_files_pattern],
+                ['Records', source.record_count],
+                ['Date Window', source.date_window],
+                ['Primary Anchor', source.primary_anchor],
+                ['Analytical Question', source.primary_analytical_question]
+            ])}
+        </div>
+
+        <div class="va-quick-callout">
+            <div class="va-callout-box strengths">
+                <h4>Shared Objects</h4>
+                ${listHtml(dataModel.shared_objects)}
+            </div>
+            <div class="va-callout-box weaknesses">
+                <h4>Schema-Specific Objects</h4>
+                ${listHtml(dataModel.openai_specific_objects || dataModel.servicenow_specific_objects || [])}
+            </div>
+        </div>
+
+        <h2 class="report-section-title">Legend Sections</h2>
+        <p class="report-section-subtitle">The legend explains the analysis units used to turn raw GEAR interactions into evidence-backed report output.</p>
+        ${legendSections.map(section => `
+            <div class="report-sp-longform-card">
+                <div class="report-sp-longform-header">
+                    <span class="report-sp-longform-number">${escapeHtml(section.id || '')}</span>
+                    <div>
+                        <span class="report-sp-longform-id">Buyer Voice object</span>
+                        <h3 class="report-sp-longform-name">${escapeHtml(section.label || '')}</h3>
+                    </div>
+                </div>
+                <div class="report-sp-longform-section">
+                    <h4>Definition</h4>
+                    <p>${escapeHtml(section.definition || '')}</p>
+                </div>
+                <div class="report-sp-longform-section">
+                    <h4>Use in Analysis</h4>
+                    <p>${escapeHtml(section.use_in_analysis || '')}</p>
+                </div>
+                <div class="report-sp-longform-section">
+                    <h4>Key Fields</h4>
+                    ${listHtml(section.key_fields)}
+                </div>
+            </div>
+        `).join('')}
+
+        <div class="va-quick-callout">
+            <div class="va-callout-box strengths">
+                <h4>Formatter Projection</h4>
+                ${listHtml(formatterProjection.map(item => `${item.raw_field} -> ${item.report_field}`))}
+            </div>
+            <div class="va-callout-box weaknesses">
+                <h4>Report Tabs</h4>
+                ${listHtml(reportTabs)}
+            </div>
+        </div>
+
+        <div class="report-detail-block">
+            <h4 class="report-detail-label">Validation Principles</h4>
+            ${listHtml(validationPrinciples)}
+        </div>
+    `;
+}
+
 function populateLegendReport() {
     const body = document.getElementById('report-legend-body');
     const schemaLabel = document.getElementById('report-legend-schema-label');
@@ -4918,6 +5846,11 @@ function populateLegendReport() {
     const schemaName = appState.currentSchemaFileName || appState.currentSchemaFile || 'Default';
     schemaLabel.textContent = `Schema: ${schemaName}`;
     const isASMF = isCurrentASMFSchema();
+
+    if (isCurrentBuyerVoiceSchema()) {
+        populateBuyerVoiceLegendReport(body, schemaLabel, intentEl, titleEl);
+        return;
+    }
 
     // Dynamic title based on selected schema display info
     const display = (appState.schemaDisplayMap || {})[appState.currentSchemaFile] || {};

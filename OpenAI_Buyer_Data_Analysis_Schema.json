@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0",
+  "schema_type": "buyer_voice_inquiry_analysis",
+  "schema_family": "buyer_voice",
+  "organization": "OpenAI",
+  "framework_name": "OpenAI Buyer Data Analysis",
+  "framework_abbrev": "OpenAI BV",
+  "intent": "Analyze Gartner GEAR buyer inquiry data anchored on OpenAI to understand enterprise buyer questions, market-cut questions, buyer composition, evidence strength, and slide-ready outputs.",
+  "description": "A Buyer Voice schema for OpenAI inquiry analysis. This is not a vendor-score schema; it models buyer questions, themes, market cuts, evidence references, validation findings, and report outputs from the OpenAI GEAR corpus.",
+  "source_dataset": {
+    "dataset_id": "openai_2026_ytd",
+    "source_file": "buyervoice/Corpora - Raw GEAR/GEAR - OpenAI - 07252026.csv",
+    "formatted_files_pattern": "buyervoice/Corpora - Formatted/OpenAI Mentions - 2026 Q*.txt",
+    "record_count": 3555,
+    "date_window": "2026-01-02 to 2026-07-23",
+    "primary_anchor": "OpenAI",
+    "product_category_context": [
+      "Generative AI platforms",
+      "Enterprise AI assistants",
+      "AI coding agents",
+      "AI governance",
+      "AI adoption",
+      "AI commercial terms"
+    ],
+    "primary_analytical_question": "What are enterprise buyers asking Gartner about OpenAI, and how do those questions change when viewed through specific AI markets?"
+  },
+  "data_model": {
+    "shared_objects": [
+      "dataset",
+      "gear_query_or_pull",
+      "interaction",
+      "buyer_profile",
+      "organization_anchor",
+      "analysis_scope",
+      "buyer_question",
+      "theme",
+      "theme_rating",
+      "evidence_reference",
+      "excerpt",
+      "voice_attribution",
+      "validation_finding",
+      "report_output",
+      "slide_output"
+    ],
+    "openai_specific_objects": [
+      "market_cut",
+      "comparison_vendor_context",
+      "assistant_market_scope",
+      "coding_agent_market_scope",
+      "ambiguous_gpt_mention",
+      "supply_side_exclusion"
+    ]
+  },
+  "raw_gear_fields": [
+    "Reference Number",
+    "First Response Date",
+    "Account Region",
+    "Enterprise Sector",
+    "Role Name",
+    "Persona",
+    "Account Market",
+    "Enterprise Market",
+    "Purpose",
+    "Question Asked",
+    "Discussion Summary",
+    "Vendor Name",
+    "Vendor Enterprise",
+    "Core Topic",
+    "Buysmart",
+    "Interaction Subtype"
+  ],
+  "formatter_projection": [
+    {"raw_field": "First Response Date", "report_field": "Date"},
+    {"raw_field": "Reference Number", "report_field": "Reference Number"},
+    {"raw_field": "Account Region", "report_field": "Buyer Region"},
+    {"raw_field": "Enterprise Sector", "report_field": "Buyer Industry"},
+    {"raw_field": "Role Name", "report_field": "Buyer Role"},
+    {"raw_field": "Purpose", "report_field": "Purpose"},
+    {"raw_field": "Question Asked", "report_field": "Question Asked"},
+    {"raw_field": "Associate Name", "report_field": "Analyst Name"},
+    {"raw_field": "Discussion Summary", "report_field": "Discussion Summary"}
+  ],
+  "legend_sections": [
+    {
+      "id": "dataset",
+      "label": "Dataset & Pull",
+      "definition": "The canonical GEAR export and its formatted NotebookLM projection.",
+      "use_in_analysis": "Treat the raw CSV as the source of truth and the formatted files as ingestion-friendly views.",
+      "key_fields": ["source_file", "record_count", "date_window", "primary_anchor"]
+    },
+    {
+      "id": "interaction",
+      "label": "Interaction Record",
+      "definition": "One Gartner buyer interaction, review, or sample inquiry.",
+      "use_in_analysis": "Each theme must trace back to interaction-level reference numbers rather than summary-only interpretation.",
+      "key_fields": ["Reference Number", "First Response Date", "Interaction Subtype"]
+    },
+    {
+      "id": "buyer_question",
+      "label": "Buyer Question",
+      "definition": "The buyer's explicit inquiry framing, usually from Question Asked.",
+      "use_in_analysis": "Use as the cleanest buyer-voice signal before enriching with Discussion Summary.",
+      "key_fields": ["Question Asked", "Purpose", "Discussion Summary"]
+    },
+    {
+      "id": "buyer_profile",
+      "label": "Buyer Profile",
+      "definition": "Region, sector, role, persona, and market context for the asking organization.",
+      "use_in_analysis": "Supports composition cuts and prevents over-generalizing from one region, sector, or role.",
+      "key_fields": ["Account Region", "Enterprise Sector", "Role Name", "Persona", "Account Market"]
+    },
+    {
+      "id": "market_cut",
+      "label": "Market Cut",
+      "definition": "A prompt-layer market boundary applied to the same OpenAI corpus.",
+      "use_in_analysis": "Create separate views for Enterprise AI Assistants and Enterprise AI Coding Agents without repulling data.",
+      "key_fields": ["analysis_scope", "qualifying_references", "comparison_vendor_context"]
+    },
+    {
+      "id": "theme",
+      "label": "Theme",
+      "definition": "A consolidated buyer-language pattern supported by multiple distinct interactions.",
+      "use_in_analysis": "Discover bottom-up first, then consolidate into slide-ready themes.",
+      "key_fields": ["theme_name", "buyer_questions", "supporting_references", "roles_asking"]
+    },
+    {
+      "id": "evidence",
+      "label": "Evidence & Attribution",
+      "definition": "Traceable references, excerpts, and attribution rules supporting each theme.",
+      "use_in_analysis": "Separate buyer voice from analyst interpretation and keep audit references off slide-facing output where needed.",
+      "key_fields": ["Reference Number", "excerpt", "voice_attribution", "validation_finding"]
+    },
+    {
+      "id": "slide_output",
+      "label": "Slide Output",
+      "definition": "The report-ready table, card, or narrative aligned to the Buyer Voice deck outcomes.",
+      "use_in_analysis": "Produce slide-facing outputs only after discovery, rating, evidence, and validation steps are complete.",
+      "key_fields": ["slide_alignment", "output_sections", "slide_columns"]
+    }
+  ],
+  "report_tabs": [
+    "Dataset Overview",
+    "Query/Pull Interpretation",
+    "Full-Corpus Buyer Questions",
+    "Enterprise AI Assistants",
+    "Enterprise AI Coding Agents",
+    "Buyer Composition",
+    "Evidence Ledger",
+    "Validation Findings",
+    "Slide Output"
+  ],
+  "validation_principles": [
+    "OpenAI anchoring must be supported; bare GPT mentions are ambiguous unless attribution is clear.",
+    "Supply-side and competitive-intelligence inquiries must be excluded from demand-side buyer findings.",
+    "Themes require multiple distinct buyer interactions.",
+    "Prevalence is qualitative and should be rated against the correct corpus or market-cut denominator.",
+    "Slide-facing outputs should preserve buyer language while removing unnecessary reference clutter."
+  ]
+}
