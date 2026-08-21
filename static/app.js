@@ -34380,6 +34380,11 @@ function exportCNAPPMarketInsightHTML() {
             const root = document.createElement('div');
             root.className = 'docs-embedded-html-root';
 
+            const exportNavFooter = parsed.querySelector('.exp-nav-footer');
+            if (exportNavFooter) exportNavFooter.remove();
+            const exportResizeHandle = parsed.getElementById('exp-resize-handle');
+            if (exportResizeHandle) exportResizeHandle.remove();
+
             parsed.head.querySelectorAll('style, link[rel="stylesheet"]').forEach(node => {
                 root.appendChild(node.cloneNode(true));
             });
