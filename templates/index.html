@@ -42,7 +42,7 @@
                     <span class="icon">🗓️</span>
                     <span class="label">Roadmap</span>
                 </button>
-                <button class="nav-item" data-view="asmf" data-requires-schema="agentic_soc_framework_v1.json">
+                <button class="nav-item" data-view="asmf" data-requires-schema="framework">
                     <span class="icon">🤖</span>
                     <span class="label">Framework</span>
                 </button>
@@ -113,6 +113,7 @@
                                 <option value="validated">Validated</option>
                             </select>
                         </div>
+                        <button id="refresh-data" class="btn-icon" type="button" title="Refresh current data" aria-label="Refresh current data" style="margin-left: 12px;">&#10227;</button>
                     </div>
                 </div>
             </header>
@@ -794,14 +795,19 @@
                                 <span class="reports-tab-label">Innovation Profile</span>
                                 <span class="reports-tab-close" title="Close tab">&times;</span>
                             </button>
-                            <button class="reports-tab" data-report-tab="asmf-matrix" data-schema="agentic_soc_framework_v1.json" type="button">
+                            <button class="reports-tab" data-report-tab="asmf-matrix" data-schema="framework" type="button">
                                 <span class="reports-tab-icon">🤖</span>
-                                <span class="reports-tab-label">ASAF Adoption Matrix</span>
+                                <span class="reports-tab-label">Framework Adoption Matrix</span>
                                 <span class="reports-tab-close" title="Close tab">&times;</span>
                             </button>
-                            <button class="reports-tab" data-report-tab="asmf-graph" data-schema="agentic_soc_framework_v1.json" type="button">
+                            <button class="reports-tab" data-report-tab="asmf-graph" data-schema="framework" type="button">
                                 <span class="reports-tab-icon">🌐</span>
-                                <span class="reports-tab-label">ASAF Knowledge Graph</span>
+                                <span class="reports-tab-label">Framework Knowledge Graph</span>
+                                <span class="reports-tab-close" title="Close tab">&times;</span>
+                            </button>
+                            <button class="reports-tab" data-report-tab="apef-platform" data-schema="AI_platform_ecosystem_framework_v1.json" type="button">
+                                <span class="reports-tab-icon">▦</span>
+                                <span class="reports-tab-label">AI Platform</span>
                                 <span class="reports-tab-close" title="Close tab">&times;</span>
                             </button>
                         </div>
@@ -1499,14 +1505,14 @@
                                 <div class="report-document" style="max-width:none;padding:20px 28px 60px;">
                                     <div class="report-doc-header">
                                         <div class="report-doc-header-row">
-                                            <h1>Agentic Security Operations Adoption Framework &mdash; Visual Matrix</h1>
+                                            <h1 id="asmf-matrix-title">Framework Matrix</h1>
                                             <div style="display:flex;align-items:center;gap:10px;">
                                                 <button class="report-export-btn" onclick="exportASMFPosterAsHTML()" title="Export standalone poster HTML">
                                                     <span class="icon">🌐</span> Export Poster
                                                 </button>
                                             </div>
                                         </div>
-                                        <p class="report-doc-subtitle">11 dimensions &times; 6 maturity stages &mdash; vendor-neutral, technology-agnostic</p>
+                                        <p id="asmf-matrix-subtitle" class="report-doc-subtitle">Framework dimensions and capabilities</p>
                                     </div>
                                     <div id="asmf-matrix-content"></div>
                                 </div>
@@ -1514,8 +1520,8 @@
                             <div id="asmf-matrix-pane-radar" class="asmf-inner-pane">
                                 <div class="report-document" style="max-width:900px;">
                                     <div class="report-doc-header">
-                                        <h1>Target State — Fully Agentic Radar</h1>
-                                        <p class="report-doc-subtitle">What Stage 5 looks like across all 11 dimensions vs. where most SOCs start</p>
+                                        <h1 id="asmf-radar-title">Target State Radar</h1>
+                                        <p id="asmf-radar-subtitle" class="report-doc-subtitle">Framework maturity comparison</p>
                                     </div>
                                     <div id="asmf-radar-content"></div>
                                 </div>
@@ -1542,10 +1548,42 @@
                                 <div class="report-document" style="max-width:1100px;">
                                     <div class="report-doc-header">
                                         <h1>Transformation Journey</h1>
-                                        <p class="report-doc-subtitle">5 phases from Traditional SOC to Fully Agentic — milestones, gates, and failure modes</p>
+                                        <p id="asmf-timeline-subtitle" class="report-doc-subtitle">Framework phases, milestones, gates, and failure modes</p>
                                     </div>
                                     <div id="asmf-timeline-content"></div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="report-panel-apef-platform" class="report-panel">
+                        <div id="apef-report-view" style="height:calc(100vh - 165px);min-height:680px;display:flex;flex-direction:column;overflow:hidden;">
+                            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px 0;flex-wrap:wrap;flex-shrink:0;">
+                                <div style="display:flex;gap:4px;overflow-x:auto;max-width:100%;">
+                                    <button class="apef-inner-tab active" data-apef-tab="overview" type="button">Overview</button>
+                                    <button class="apef-inner-tab" data-apef-tab="vendor" type="button">Vendor Profile</button>
+                                    <button class="apef-inner-tab" data-apef-tab="dimension" type="button">Dimensions</button>
+                                    <button class="apef-inner-tab" data-apef-tab="plt" type="button">PLT Deep Dive</button>
+                                    <button class="apef-inner-tab" data-apef-tab="matrix" type="button">Matrix</button>
+                                    <button class="apef-inner-tab" data-apef-tab="graph" type="button">Knowledge Graph</button>
+                                    <button class="apef-inner-tab" data-apef-tab="graph3d" type="button">3D Component Graph</button>
+                                    <button class="apef-inner-tab" data-apef-tab="layers" type="button">Layers</button>
+                                    <button class="apef-inner-tab" data-apef-tab="pairings" type="button">Pairings</button>
+                                    <button class="apef-inner-tab" data-apef-tab="legend" type="button">Legend</button>
+                                </div>
+                                <label id="apef-report-vendor-filter" style="font-size:12px;color:#94a3b8;white-space:nowrap;">Vendor <select id="apef-report-vendor-select"></select></label>
+                            </div>
+                            <div style="flex:1;min-height:0;overflow:auto;padding:18px 22px 32px;">
+                                <div id="apef-pane-overview" class="apef-inner-pane active"></div>
+                                <div id="apef-pane-vendor" class="apef-inner-pane" style="display:none;"></div>
+                                <div id="apef-pane-dimension" class="apef-inner-pane" style="display:none;"></div>
+                                <div id="apef-pane-plt" class="apef-inner-pane" style="display:none;"></div>
+                                <div id="apef-pane-matrix" class="apef-inner-pane" style="display:none;"></div>
+                                <div id="apef-pane-graph" class="apef-inner-pane" style="display:none;height:100%;min-height:620px;margin:-18px -22px -32px;"></div>
+                                <div id="apef-pane-graph3d" class="apef-inner-pane" style="display:none;height:100%;min-height:620px;margin:-18px -22px -32px;"></div>
+                                <div id="apef-pane-layers" class="apef-inner-pane" style="display:none;"></div>
+                                <div id="apef-pane-pairings" class="apef-inner-pane" style="display:none;"></div>
+                                <div id="apef-pane-legend" class="apef-inner-pane" style="display:none;"></div>
                             </div>
                         </div>
                     </div>

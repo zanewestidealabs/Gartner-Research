@@ -7,6 +7,7 @@ __pycache__/
 venv/
 env/
 .pytest_cache/
+.pytest_tmp/
 .mypy_cache/
 .ruff_cache/
 
@@ -25,6 +26,7 @@ Thumbs.db
 # Local snapshots & backups (large, redundant)
 prod_snapshot_*/
 server_backup/
+backups/
 
 # Local secrets / env
 .env

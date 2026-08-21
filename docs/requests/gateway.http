@@ -1,0 +1,18 @@
+@gateway = http://127.0.0.1:5000
+@couchdb = http://127.0.0.1:5984
+
+### Existing application health smoke test
+GET {{gateway}}/
+
+### Current vendor API
+GET {{gateway}}/api/vendors
+Accept: application/json
+
+### Current schema API
+GET {{gateway}}/api/schema-files
+Accept: application/json
+
+### CouchDB server check
+# Authentication may be required after setup. Do not put credentials in this file.
+GET {{couchdb}}/
+Accept: application/json

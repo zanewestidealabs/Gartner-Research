@@ -583,6 +583,7 @@ def fetch_page(url: str, *, force: bool = False, _timeout: int = 6) -> Dict[str,
     }, method="GET")
 
     html = None
+    render_engine = "urllib"
     for attempt in range(2):
         try:
             with urllib.request.urlopen(req, timeout=6) as resp:
@@ -604,6 +605,7 @@ def fetch_page(url: str, *, force: bool = False, _timeout: int = 6) -> Dict[str,
             pw_text = _html_to_text(pw_html)
             if len(pw_text.strip()) > len(_extracted.strip()):
                 html, _extracted = pw_html, pw_text
+                render_engine = "playwright"
 
     if _extracted.strip():
         record = {
@@ -613,6 +615,7 @@ def fetch_page(url: str, *, force: bool = False, _timeout: int = 6) -> Dict[str,
             "content_type": None,
             "text": _extracted[:200_000],
             "error": None,
+            "render_engine": render_engine,
         }
         cp.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
         return record
@@ -621,6 +624,7 @@ def fetch_page(url: str, *, force: bool = False, _timeout: int = 6) -> Dict[str,
         "url": url,
         "fetched_at": datetime.now(timezone.utc).isoformat(),
         "ok": False, "content_type": None, "text": "", "error": "fetch_failed",
+        "render_engine": render_engine,
     }
     cp.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
     return record
@@ -760,8 +764,6 @@ def score_svc_subpillar(
     info = get_subpillar_info(schema, sid)
     search_terms = SVC_SEARCH_TERMS.get(sid, [])
     criteria = info.get("what_to_verify_publicly", [])
-    maturity_guidance = info.get("maturity_guidance", {})
-
     all_text = " ".join(t for _, t in pages_text).lower()
     hits = []
 
@@ -1105,6 +1107,7 @@ def process_vendor(
     schema: Dict[str, Any],
     *,
     force_fetch: bool = False,
+    lineage_sink=None,
 ) -> Dict[str, Any]:
     """Process a single vendor for SVC + pricing evidence."""
     name = vendor.get("vendor", "Unknown")
@@ -1127,6 +1130,16 @@ def process_vendor(
         if cp.exists():
             try:
                 cached = json.loads(cp.read_text(encoding="utf-8"))
+                if lineage_sink is not None:
+                    vendor_slug = re.sub(
+                        r"[^a-z0-9]+",
+                        "-",
+                        str(name).lower(),
+                    ).strip("-")
+                    lineage_sink.capture_cache_file(
+                        cp,
+                        vendor_id=f"vendor:{vendor_slug or 'unknown'}",
+                    )
                 if cached.get("ok") and cached.get("text"):
                     pages.append((url, cached["text"]))
                     cached_count += 1
@@ -1138,6 +1151,18 @@ def process_vendor(
     # Fetch new service/pricing URLs
     for url in new_urls:
         rec = fetch_page(url, force=force_fetch)
+        if lineage_sink is not None:
+            vendor_slug = re.sub(
+                r"[^a-z0-9]+",
+                "-",
+                str(name).lower(),
+            ).strip("-")
+            lineage_sink.capture(
+                vendor_id=f"vendor:{vendor_slug or 'unknown'}",
+                record=rec,
+                cache_path=_cache_path(url),
+                retrieval_method=rec.get("render_engine"),
+            )
         if rec.get("ok") and rec.get("text"):
             pages.append((url, rec["text"]))
             fetched_count += 1
@@ -1381,7 +1406,37 @@ def main():
                         help="Resume from last checkpoint")
     parser.add_argument("--merge-only", action="store_true",
                         help="Just merge batch outputs")
+    parser.add_argument(
+        "--couchdb-project-id",
+        help="Research project ID for append-only CouchDB source lineage",
+    )
+    parser.add_argument(
+        "--couchdb-run-id",
+        help="Research run ID for append-only CouchDB source lineage",
+    )
     args = parser.parse_args()
+
+    lineage_sink = None
+    checkpoint_store = None
+    if bool(args.couchdb_project_id) != bool(args.couchdb_run_id):
+        parser.error(
+            "--couchdb-project-id and --couchdb-run-id must be supplied together"
+        )
+    if args.couchdb_project_id:
+        from gartner_app.research.checkpoints import ResearchCheckpointStore
+        from gartner_app.research.lineage import LegacyCacheLineageSink
+
+        lineage_sink = LegacyCacheLineageSink.from_settings(
+            project_id=args.couchdb_project_id,
+            run_id=args.couchdb_run_id,
+            actor="worker:research_precyber_svc_pricing",
+        )
+        checkpoint_store = ResearchCheckpointStore.from_settings(
+            project_id=args.couchdb_project_id,
+            run_id=args.couchdb_run_id,
+            stage="svc_pricing",
+            actor="worker:research_precyber_svc_pricing",
+        )
 
     print("=" * 70)
     print("PreCyber Services + Pricing Research Pipeline")
@@ -1410,7 +1465,14 @@ def main():
         print(f"Limited to {len(vendors)} vendors")
 
     # Resume support
-    progress = _load_progress() if args.resume else {"completed_batches": [], "completed_vendors": []}
+    if args.resume:
+        progress = (
+            checkpoint_store.load()
+            if checkpoint_store is not None
+            else _load_progress()
+        )
+    else:
+        progress = {"completed_batches": [], "completed_vendors": []}
     completed_names = set(progress.get("completed_vendors", []))
     if completed_names:
         print(f"Resuming: {len(completed_names)} vendors already completed")
@@ -1437,7 +1499,12 @@ def main():
         batch_results = []
         for v in batch_vendors:
             try:
-                enriched = process_vendor(v, schema, force_fetch=args.force_fetch)
+                enriched = process_vendor(
+                    v,
+                    schema,
+                    force_fetch=args.force_fetch,
+                    lineage_sink=lineage_sink,
+                )
                 batch_results.append(enriched)
                 progress["completed_vendors"].append(v.get("vendor", ""))
             except Exception as e:
@@ -1446,7 +1513,10 @@ def main():
 
         _save_batch(batch_num, batch_results)
         progress["completed_batches"].append(batch_num)
-        _save_progress(progress)
+        if checkpoint_store is not None:
+            checkpoint_store.save(progress)
+        else:
+            _save_progress(progress)
 
         if batch_idx < total_batches - 1:
             print(f"\n  Pausing {args.batch_pause}s before next batch...")

@@ -31,6 +31,7 @@ Strict rubric tied to schema (criterion-satisfaction first, keyword hits seconda
 """
 from __future__ import annotations
 
+import argparse
 import json
 import re
 from collections import defaultdict
@@ -563,6 +564,30 @@ def rescore_subpillar(
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--max-vendors", type=int, default=0)
+    parser.add_argument("--proposal-only", action="store_true")
+    parser.add_argument("--couchdb-project-id")
+    parser.add_argument("--couchdb-run-id")
+    parser.add_argument("--schema-id", default="schema:precyber:2")
+    args = parser.parse_args()
+    if bool(args.couchdb_project_id) != bool(args.couchdb_run_id):
+        parser.error(
+            "--couchdb-project-id and --couchdb-run-id must be supplied together"
+        )
+    if args.proposal_only and not args.couchdb_project_id:
+        parser.error("--proposal-only requires CouchDB project and run IDs")
+
+    proposal_sink = None
+    if args.couchdb_project_id:
+        from gartner_app.research.scoring import LegacyScoreProposalSink
+
+        proposal_sink = LegacyScoreProposalSink.from_settings(
+            project_id=args.couchdb_project_id,
+            run_id=args.couchdb_run_id,
+            actor="worker:revalidate_precyber_scoring",
+        )
+
     raw = json.loads(SRC.read_text(encoding="utf-8"))
     # 2-1 file is {vendors: [...]}; 3-0 file is a flat list. Normalize.
     if isinstance(raw, list):
@@ -572,11 +597,6 @@ def main() -> int:
     schema = json.loads(SCHEMA_FILE.read_text(encoding="utf-8"))
     schema_root = schema["preemptive_cybersecurity_taxonomy_v2.0"]
     sub_pillars_def = schema_root["sub_pillars"]  # dict sid -> {name, what_to_verify_publicly, ...}
-    pillars_def = schema_root.get("pillars", {})
-    if isinstance(pillars_def, list):
-        pillar_ids = [p.get("id") if isinstance(p, dict) else p for p in pillars_def]
-    else:
-        pillar_ids = list(pillars_def.keys())
 
     # Map sid -> pillar id (e.g., "AMT-01" -> "AMT")
     def pillar_of(sid: str) -> str:
@@ -586,7 +606,13 @@ def main() -> int:
     research_targets = []
     vendors_out = []
 
-    for v in data.get("vendors", []):
+    vendors = data.get("vendors", [])
+    if args.max_vendors > 0:
+        vendors = vendors[: args.max_vendors]
+    proposals_created = 0
+    proposals_skipped_missing_snapshot = 0
+
+    for v in vendors:
         v_new = dict(v)  # shallow copy; we'll overlay corrected fields
         name = v.get("vendor")
         expected = set(v.get("expected_coverage") or [])
@@ -615,6 +641,19 @@ def main() -> int:
             new_rationales[sid] = rec["rationale"]
             new_structured[sid] = rec["structured_rationale"]
             sp_records[sid] = rec
+            if proposal_sink is not None:
+                proposal = proposal_sink.capture(
+                    vendor_name=str(name or "Unknown"),
+                    schema_id=args.schema_id,
+                    criterion_id=sid,
+                    score_record=rec,
+                    evidence_block=ev_map.get(sid),
+                    algorithm_version="strict-v2.3",
+                )
+                if proposal is None:
+                    proposals_skipped_missing_snapshot += 1
+                else:
+                    proposals_created += 1
 
             delta_records.append({
                 "vendor": name,
@@ -678,6 +717,16 @@ def main() -> int:
             v_new["sub_pillar_rationale_v2_pre_v22"] = v.get("sub_pillar_rationale_v2") or {}
         v_new["sub_pillar_rationale_v2"] = new_structured
         vendors_out.append(v_new)
+
+    if args.proposal_only:
+        print("[done] proposal-only CouchDB scoring run")
+        print(f"  Vendors          : {len(vendors_out)}")
+        print(f"  Proposals created: {proposals_created}")
+        print(
+            "  Missing snapshots: "
+            f"{proposals_skipped_missing_snapshot}"
+        )
+        return 0
 
     # Build output
     out = dict(data)

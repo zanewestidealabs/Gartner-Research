@@ -32,6 +32,7 @@ import asyncio
 import hashlib
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -305,7 +306,15 @@ def _cache_path(url: str) -> Path:
     return CACHE_DIR / f"{_sha1(url)}.json"
 
 
-def _write_cache(url: str, html: str | None, error: str | None = None) -> int:
+def _write_cache(
+    url: str,
+    html: str | None,
+    error: str | None = None,
+    *,
+    lineage_sink=None,
+    vendor: str | None = None,
+    headed: bool = False,
+) -> int:
     """Write an entry into the v1 precyber cache format."""
     # Reuse v1's _html_to_text for byte-identical text shape
     from research_precyber_v1_evidence import _html_to_text
@@ -331,6 +340,19 @@ def _write_cache(url: str, html: str | None, error: str | None = None) -> int:
                 }
                 cp.write_text(json.dumps(record, ensure_ascii=False, indent=2),
                               encoding="utf-8")
+                if lineage_sink is not None:
+                    vendor_slug = re.sub(
+                        r"[^a-z0-9]+",
+                        "-",
+                        (vendor or "unknown").lower(),
+                    ).strip("-")
+                    lineage_sink.capture(
+                        vendor_id=f"vendor:{vendor_slug or 'unknown'}",
+                        record=record,
+                        cache_path=cp,
+                        retrieval_method="playwright",
+                        headed=headed,
+                    )
                 return text_len
     record = {
         "url": url,
@@ -345,6 +367,19 @@ def _write_cache(url: str, html: str | None, error: str | None = None) -> int:
     }
     cp.write_text(json.dumps(record, ensure_ascii=False, indent=2),
                   encoding="utf-8")
+    if lineage_sink is not None:
+        vendor_slug = re.sub(
+            r"[^a-z0-9]+",
+            "-",
+            (vendor or "unknown").lower(),
+        ).strip("-")
+        lineage_sink.capture(
+            vendor_id=f"vendor:{vendor_slug or 'unknown'}",
+            record=record,
+            cache_path=cp,
+            retrieval_method="playwright",
+            headed=headed,
+        )
     return 0
 
 
@@ -392,7 +427,14 @@ async def _render_one(context, url: str) -> str | None:
         await page.close()
 
 
-async def _render_vendor(browser, vendor: str, urls: List[str]) -> None:
+async def _render_vendor(
+    browser,
+    vendor: str,
+    urls: List[str],
+    *,
+    lineage_sink=None,
+    headed: bool = False,
+) -> None:
     print(f"\n=== {vendor} ===")
     context = await browser.new_context(
         user_agent=UA,
@@ -407,7 +449,13 @@ async def _render_vendor(browser, vendor: str, urls: List[str]) -> None:
     async def _one(u: str):
         async with sem:
             html = await _render_one(context, u)
-            text_len = _write_cache(u, html)
+            text_len = _write_cache(
+                u,
+                html,
+                lineage_sink=lineage_sink,
+                vendor=vendor,
+                headed=headed,
+            )
             if text_len > 0:
                 tag = "OK"
             elif html and _looks_bot_blocked(html):
@@ -423,7 +471,7 @@ async def _render_vendor(browser, vendor: str, urls: List[str]) -> None:
 
 
 async def _render_all(only_vendors: list[str] | None, extra_vendors: list[str],
-                     headless: bool = True) -> None:
+                     headless: bool = True, lineage_sink=None) -> None:
     targets = dict(ZERO_VENDOR_URLS)
     if only_vendors:
         missing = [v for v in only_vendors if v not in targets]
@@ -457,7 +505,13 @@ async def _render_all(only_vendors: list[str] | None, extra_vendors: list[str],
         )
         try:
             for vendor, urls in targets.items():
-                await _render_vendor(browser, vendor, urls)
+                await _render_vendor(
+                    browser,
+                    vendor,
+                    urls,
+                    lineage_sink=lineage_sink,
+                    headed=not headless,
+                )
         finally:
             await browser.close()
 
@@ -516,7 +570,7 @@ def _rescore_vendors(vendor_names: List[str]) -> None:
         # 1) Use OUR curated list (or v1 catalog if we don't have an entry)
         urls = ZERO_VENDOR_URLS.get(name) or v1_discover_urls(v, max_urls=0)
         if not urls:
-            print(f"    no URLs known; skipping")
+            print("    no URLs known; skipping")
             continue
 
         # 2) v1 evidence for the 16 product cells (reads from cache; sleep
@@ -587,11 +641,34 @@ def main() -> int:
                     help="Skip rendering; assume cache is already warm")
     ap.add_argument("--headed", action="store_true",
                     help="Run Chromium with a visible window (helps clear Vercel/Cloudflare bot walls)")
+    ap.add_argument(
+        "--couchdb-project-id",
+        help="Research project ID for append-only CouchDB source lineage",
+    )
+    ap.add_argument(
+        "--couchdb-run-id",
+        help="Research run ID for append-only CouchDB source lineage",
+    )
     args = ap.parse_args()
+
+    lineage_sink = None
+    if bool(args.couchdb_project_id) != bool(args.couchdb_run_id):
+        ap.error(
+            "--couchdb-project-id and --couchdb-run-id must be supplied together"
+        )
+    if args.couchdb_project_id:
+        from gartner_app.research.lineage import LegacyCacheLineageSink
+
+        lineage_sink = LegacyCacheLineageSink.from_settings(
+            project_id=args.couchdb_project_id,
+            run_id=args.couchdb_run_id,
+            actor="worker:render_precyber_zero_vendors",
+        )
 
     if not args.rescore_only:
         asyncio.run(_render_all(args.vendor, args.extra_vendor,
-                                headless=not args.headed))
+                                headless=not args.headed,
+                                lineage_sink=lineage_sink))
 
     if not args.render_only:
         if args.vendor:

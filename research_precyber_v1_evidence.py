@@ -1088,6 +1088,7 @@ def get_or_fetch_page(url: str, *, force: bool) -> Dict[str, Any]:
         try:
             cached = json.loads(cache_path.read_text(encoding="utf-8"))
             if cached.get("ok") is True:
+                cached["_lineage_method"] = "cache_import"
                 return cached
         except Exception:
             pass
@@ -1106,6 +1107,7 @@ def get_or_fetch_page(url: str, *, force: bool) -> Dict[str, Any]:
             "ok": True, "content_type": ctype, "text": text[:200_000], "error": None,
         }
     cache_path.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+    record["_lineage_method"] = "urllib"
     return record
 
 
@@ -1516,6 +1518,7 @@ def evidence_for_vendor(
     force_fetch: bool,
     max_excerpts_per_subpillar: int,
     sleep_seconds: float,
+    lineage_sink: Any | None = None,
 ) -> Tuple[Dict[str, Any], Dict[str, float]]:
     """Extract preemptive-cyber evidence and compute per-sub-pillar scores.
 
@@ -1528,6 +1531,15 @@ def evidence_for_vendor(
     page_records: List[Dict[str, Any]] = []
     for u in urls:
         rec = get_or_fetch_page(u, force=force_fetch)
+        if lineage_sink is not None:
+            vendor_name = str(vendor.get("vendor", "unknown"))
+            vendor_slug = re.sub(r"[^a-z0-9]+", "-", vendor_name.lower()).strip("-")
+            lineage_sink.capture(
+                vendor_id=f"vendor:{vendor_slug or 'unknown'}",
+                record=rec,
+                cache_path=_cache_path_for_url(u),
+                retrieval_method=rec.get("_lineage_method"),
+            )
         page_records.append(rec)
         delay = sleep_seconds + random.uniform(0.5, 2.0)
         time.sleep(delay)
@@ -1849,7 +1861,37 @@ def main() -> int:
                         help="Just merge existing batch outputs into final file")
     parser.add_argument("--force-fetch", action="store_true",
                         help="Re-fetch cached pages")
+    parser.add_argument(
+        "--couchdb-project-id",
+        help="Research project ID for append-only CouchDB source lineage",
+    )
+    parser.add_argument(
+        "--couchdb-run-id",
+        help="Research run ID for append-only CouchDB source lineage",
+    )
     args = parser.parse_args()
+
+    lineage_sink = None
+    checkpoint_store = None
+    if bool(args.couchdb_project_id) != bool(args.couchdb_run_id):
+        parser.error(
+            "--couchdb-project-id and --couchdb-run-id must be supplied together"
+        )
+    if args.couchdb_project_id:
+        from gartner_app.research.checkpoints import ResearchCheckpointStore
+        from gartner_app.research.lineage import LegacyCacheLineageSink
+
+        lineage_sink = LegacyCacheLineageSink.from_settings(
+            project_id=args.couchdb_project_id,
+            run_id=args.couchdb_run_id,
+            actor="worker:research_precyber_v1_evidence",
+        )
+        checkpoint_store = ResearchCheckpointStore.from_settings(
+            project_id=args.couchdb_project_id,
+            run_id=args.couchdb_run_id,
+            stage="evidence_harvesting",
+            actor="worker:research_precyber_v1_evidence",
+        )
 
     # ── Merge-only mode ──
     if args.merge_only:
@@ -1882,7 +1924,14 @@ def main() -> int:
     print(f"  {len(target_vendors)} vendors to process")
 
     # ── Resume support ──
-    progress = _load_progress() if args.resume else {"completed_batches": [], "completed_vendors": []}
+    if args.resume:
+        progress = (
+            checkpoint_store.load()
+            if checkpoint_store is not None
+            else _load_progress()
+        )
+    else:
+        progress = {"completed_batches": [], "completed_vendors": []}
     completed_batches = set(progress.get("completed_batches", []))
 
     # ── Build batches ──
@@ -1927,6 +1976,7 @@ def main() -> int:
                 force_fetch=args.force_fetch,
                 max_excerpts_per_subpillar=args.max_excerpts_per_subpillar,
                 sleep_seconds=args.sleep_seconds,
+                lineage_sink=lineage_sink,
             )
 
             vendor_summary = sub_evidence.get("_vendor_summary", {})
@@ -1988,7 +2038,10 @@ def main() -> int:
         _save_batch(batch_idx, batch_results)
         progress["completed_batches"].append(batch_idx)
         progress["completed_vendors"].extend([v.get("vendor", "") for v in batch_results])
-        _save_progress(progress)
+        if checkpoint_store is not None:
+            checkpoint_store.save(progress)
+        else:
+            _save_progress(progress)
 
         print(f"\n{batch_label} SAVED: {len(batch_results)} vendors")
         print(f"  Batch file: {_batch_checkpoint_path(batch_idx).name}")

@@ -1,4 +1,4 @@
-local should be th"""Add the v2 Kill Chain + MITRE ATT&CK report to precyber_market_insight_reports.json."""
+"""Add the v2 Kill Chain + MITRE ATT&CK report to precyber_market_insight_reports.json."""
 import json, pathlib
 
 path = pathlib.Path('precyber_market_insight_reports.json')

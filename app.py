@@ -1,11 +1,98 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, g, render_template, jsonify, request, send_file
 import json
 import os
 import time
 import datetime
+from pathlib import Path
+from gartner_app.api.health import health_blueprint
+from gartner_app.api.research import research_blueprint
+from gartner_app.couchdb.client import CouchDBConflict
+from gartner_app.repositories.datasets import (
+    MigrationWriteBlocked,
+    RevisionPreconditionRequired,
+    build_dataset_repository,
+)
+from gartner_app.repositories.json_backend import LegacyJsonRepository
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['MAX_CONTENT_LENGTH'] = int(
+    os.getenv('MAX_REQUEST_BYTES', str(64 * 1024 * 1024))
+)
+app.register_blueprint(health_blueprint)
+app.register_blueprint(research_blueprint)
+legacy_json_repository = LegacyJsonRepository(Path(__file__).resolve().parent)
+dataset_repository = build_dataset_repository(
+    Path(__file__).resolve().parent,
+    legacy_json_repository,
+)
+
+
+@app.before_request
+def validate_api_json_content_type():
+    """Reject non-JSON bodies on state-changing API requests."""
+    if (
+        request.path.startswith('/api/')
+        and request.method in {'POST', 'PUT', 'PATCH'}
+        and (request.content_length or 0) > 0
+        and not request.is_json
+    ):
+        return jsonify({
+            'error': 'Request body must use application/json',
+            'code': 'unsupported_media_type',
+        }), 415
+
+
+def read_dataset(source_path):
+    """Read through the selected backend and expose its current revision."""
+    value = dataset_repository.read_document(source_path)
+    if request.method == 'GET':
+        g.dataset_revision = dataset_repository.revision(source_path)
+    return value
+
+
+def persist_dataset(source_path, value):
+    """Persist through the selected backend and map migration write states."""
+    try:
+        result = dataset_repository.write_document(
+            source_path,
+            value,
+            expected_revision=request.headers.get('If-Match'),
+        )
+        revision = result.get('revision')
+        if revision:
+            g.dataset_revision = revision
+    except MigrationWriteBlocked as exc:
+        return jsonify({
+            'error': str(exc),
+            'code': 'compare_mode_read_only',
+        }), 503
+    except CouchDBConflict:
+        return jsonify({
+            'error': 'The document changed while it was being edited. Reload and retry.',
+            'code': 'revision_conflict',
+        }), 409
+    except RevisionPreconditionRequired as exc:
+        return jsonify({
+            'error': str(exc),
+            'code': 'if_match_required',
+        }), 428
+    return None
+
+
+def dataset_json_response(value, source_path):
+    """Return JSON with the current source revision as a strong ETag."""
+    response = jsonify(value)
+    response.set_etag(dataset_repository.revision(source_path))
+    return response
+
+
+@app.after_request
+def add_write_revision_etag(response):
+    revision = getattr(g, 'dataset_revision', None)
+    if revision and not response.get_etag()[0]:
+        response.set_etag(revision)
+    return response
 
 # Remove injected debug code from responses
 @app.after_request
@@ -48,10 +135,24 @@ def remove_debug_code(response):
 
 # Global state for vendor file selection
 class AppState:
-    current_vendor_file = 'vendor3-3.json'
+    current_vendor_file = 'Vendor 3-7.json'
     current_schema_file = 'schema3-3.json'
 
 app_state = AppState()
+
+with (Path(__file__).resolve().parent / 'migration' / 'canonical_sources.json').open(
+    'r', encoding='utf-8'
+) as _catalog_file:
+    _CANONICAL_CATALOG = json.load(_catalog_file)['sources']
+
+
+def canonical_paths(*kinds):
+    """Return active paths from the source-controlled dataset catalog."""
+    return sorted(
+        entry['path']
+        for entry in _CANONICAL_CATALOG
+        if entry.get('status') == 'active' and entry.get('kind') in kinds
+    )
 
 # ── Schema registry ──────────────────────────────────────────────────
 # Maps schema filenames to their top-level JSON key and internal structure type.
@@ -77,6 +178,8 @@ SCHEMA_REGISTRY = {
     'Schema_Template_Capability.json': {'top_key': 'capability_schema_template_v1.0', 'structure': 'flat'},
     'Schema_Template_MQ_Gap.json': {'top_key': 'mq_gap_schema_template_v1.0', 'structure': 'flat'},
     'agentic_soc_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
+    'agentic_enterprise_operations_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
+    'AI_platform_ecosystem_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
 }
 
 # Schema display metadata: maps schema filename to title, abbreviation, subtitle
@@ -99,16 +202,37 @@ SCHEMA_DISPLAY = {
     'Schema_Template_Capability.json': {'title': 'Schema Template — Capability Assessment', 'abbr': 'TEMPLATE-CAP', 'subtitle': 'Blank capability schema template with annotated structure — use as the starting point for a new market capability assessment schema'},
     'Schema_Template_MQ_Gap.json': {'title': 'Schema Template — MQ Gap Criteria', 'abbr': 'TEMPLATE-MQ', 'subtitle': 'Blank MQ Gap schema template with annotated structure — use as the starting point for Magic Quadrant supplemental criteria scoring'},
     'agentic_soc_framework_v1.json': {'title': 'Agentic Security Operations Adoption Framework 2026', 'abbr': 'ASAF', 'subtitle': 'Vendor-neutral adoption framework for autonomous security operations — 11 dimensions, 44 sub-dimensions, 6 stages'},
+    'agentic_enterprise_operations_framework_v1.json': {'title': 'Agentic Enterprise Operations Framework 2026', 'abbr': 'AEOF', 'subtitle': 'Enterprise operations framework for agentic business governance, orchestration, and risk assurance.'},
+        'AI_platform_ecosystem_framework_v1.json': {'title': 'AI Platform Ecosystem Framework 2026', 'abbr': 'APEF', 'subtitle': 'Compare seven major AI platform providers across the enterprise AI value chain.'},
 }
 
 def discover_schema_files():
     """Return list of available schema JSON files."""
-    app_dir = os.path.dirname(__file__)
-    files = []
-    for fn in sorted(os.listdir(app_dir)):
-        if fn.endswith('.json') and fn in SCHEMA_REGISTRY:
-            files.append(fn)
-    return files
+    return [
+        path for path in canonical_paths('schema', 'framework')
+        if path in SCHEMA_REGISTRY
+    ]
+
+def _framework_capabilities(schema_file):
+    """Describe optional report features declared by a framework schema."""
+    body = load_schema_data(schema_file)
+    dimensions = body.get('dimensions', {}) if isinstance(body, dict) else {}
+    return {
+        'maturity_stages': bool(body.get('maturity_stages')),
+        'stage_descriptors': any(
+            isinstance(dim, dict) and any(
+                isinstance(sd, dict) and sd.get('stage_descriptors')
+                for sd in (dim.get('sub_dimensions', {}) or {}).values()
+            ) for dim in dimensions.values()
+        ) if isinstance(dimensions, dict) else False,
+        'transformation_journey': bool(body.get('transformation_journey')),
+        'weights': any(isinstance(dim, dict) and isinstance(dim.get('weight'), (int, float)) for dim in dimensions.values()) if isinstance(dimensions, dict) else False,
+        'relationships': bool(
+            body.get('relationships', {}).get('edges')
+            if isinstance(body.get('relationships'), dict)
+            else body.get('relationships')
+        ),
+    }
 
 # Load schema data for sub-pillar definitions
 def load_schema_data(schema_file=None):
@@ -116,15 +240,15 @@ def load_schema_data(schema_file=None):
     if schema_file is None:
         schema_file = app_state.current_schema_file
 
-    filepath = os.path.join(os.path.dirname(__file__), schema_file)
     try:
-        with open(filepath, 'r', encoding='utf-8-sig') as f:
-            data = json.load(f)
+        data = dataset_repository.read_schema(schema_file)
 
         # Find top-level key from registry or auto-detect
         reg = SCHEMA_REGISTRY.get(schema_file)
         if reg:
             top_key = reg['top_key']
+            if top_key is None:
+                return _strip_schema_notes(data)
         else:
             # Auto-detect: first key that looks like a taxonomy key
             top_key = None
@@ -156,7 +280,7 @@ def _strip_schema_notes(body):
     return body
 
 def _schema_structure(schema_file=None):
-    """Return 'nested' or 'flat' for the given schema."""
+    """Return 'nested', 'flat', or 'asmf' for the given schema."""
     if schema_file is None:
         schema_file = app_state.current_schema_file
     reg = SCHEMA_REGISTRY.get(schema_file)
@@ -164,6 +288,8 @@ def _schema_structure(schema_file=None):
         return reg['structure']
     # Guess from content
     schema = load_schema_data(schema_file)
+    if 'dimensions' in schema and isinstance(schema['dimensions'], dict):
+        return 'asmf'
     return 'flat' if 'sub_pillars' in schema else 'nested'
 
 # Extract sub-pillar definitions (works for all schema versions)
@@ -190,7 +316,7 @@ def extract_sub_pillars(schema_file=None):
                             'definition': sub_cap.get('definition', ''),
                             'activities': sub_cap.get('granular_activities', [])
                         })
-    else:
+    elif structure == 'flat':
         # v4.0 / v5.0 style: pillars dict keyed by code + separate sub_pillars dict
         pillar_lookup = {}
         if 'pillars' in schema:
@@ -212,6 +338,19 @@ def extract_sub_pillars(schema_file=None):
                                                                       sp_data.get('maturity_criteria',
                                                                                   sp_data.get('granular_activities', [])))))
                 })
+    elif structure == 'asmf':
+        if 'dimensions' in schema and isinstance(schema['dimensions'], dict):
+            for dim_id, dim_data in schema['dimensions'].items():
+                pillar_name = dim_data.get('name', '')
+                for sd_id, sd_data in (dim_data.get('sub_dimensions') or {}).items():
+                    sub_pillars.append({
+                        'id': sd_id,
+                        'pillar_code': dim_id,
+                        'pillar_name': pillar_name,
+                        'name': sd_data.get('name', ''),
+                        'definition': sd_data.get('description', ''),
+                        'activities': [sd_data.get('assessment_question')] if sd_data.get('assessment_question') else []
+                    })
 
     return sub_pillars
 
@@ -222,24 +361,15 @@ def load_vendor_data(vendor_file=None):
         vendor_file = app_state.current_vendor_file
     
     vendors = []
-    filepath = os.path.join(os.path.dirname(__file__), vendor_file)
-    
-    if os.path.exists(filepath):
-        try:
-            with open(filepath, 'r', encoding='utf-8-sig') as f:
-                data = json.load(f)
-                # Handle wrapped format: {"schema_ref": ..., "vendors": [...]}
-                if isinstance(data, dict) and 'vendors' in data and isinstance(data['vendors'], list):
-                    vendors.extend(data['vendors'])
-                elif isinstance(data, list):
-                    vendors.extend(data)
-                elif isinstance(data, dict):
-                    # Legacy: find any list values
-                    for key, value in data.items():
-                        if isinstance(value, list):
-                            vendors.extend(value)
-        except (json.JSONDecodeError, ValueError, UnicodeDecodeError) as e:
-            print(f"Error loading {vendor_file}: {e}")
+    try:
+        vendors.extend(dataset_repository.read_vendors(vendor_file))
+    except (
+        FileNotFoundError,
+        json.JSONDecodeError,
+        ValueError,
+        UnicodeDecodeError,
+    ) as e:
+        print(f"Error loading {vendor_file}: {e}")
     
     return vendors
 
@@ -388,6 +518,30 @@ def get_field_values(field):
     
     return jsonify(sorted(list(values)))
 
+@app.route('/api/filter-options')
+def get_filter_options():
+    """Return values for several vendor filter fields from one dataset read."""
+    requested_fields = [
+        field.strip()
+        for field in request.args.get('fields', '').split(',')
+        if field.strip()
+    ]
+    if not requested_fields:
+        return jsonify({})
+
+    vendors = load_vendor_data()
+    options = {field: set() for field in requested_fields}
+    for vendor in vendors:
+        for field in requested_fields:
+            if field not in vendor:
+                continue
+            value = vendor[field]
+            if isinstance(value, (dict, list)):
+                continue
+            options[field].add(str(value))
+
+    return jsonify({field: sorted(values) for field, values in options.items()})
+
 @app.route('/api/metadata')
 def get_metadata():
     """Get field metadata and scoring legend – schema-aware."""
@@ -414,6 +568,8 @@ def get_metadata():
             proof_v = proof_scale.get(k, '')
             # Combine both scales: "GTM: X | Proof: Y"
             score_legend[str(k)] = f'GTM: {v} | Proof: {proof_v}'
+    elif _schema_structure(schema_file) == 'asmf':
+        score_legend = {}
     else:
         score_legend = dict(SCORE_LEGEND)
 
@@ -431,7 +587,18 @@ def get_metadata():
     all_known_pillar_codes = {'PLA', 'INV', 'REM', 'PMG', 'LAW', 'GOV', 'RUN', 'INF',
                                'PPD', 'PCS', 'TDT', 'PCM', 'CTL'}
     field_metadata = {k: v for k, v in FIELD_METADATA.items() if k not in all_known_pillar_codes}
-    pillars_in_schema = schema.get('pillars', {})
+    pillars_in_schema = {}
+    if _schema_structure(schema_file) == 'asmf' and 'dimensions' in schema:
+        for code, dim in schema['dimensions'].items():
+            pillars_in_schema[code] = {
+                'name': dim.get('name', code),
+                'focus': dim.get('description', ''),
+                'ai_evidence_signals': dim.get('evidence_signals', []),
+                'validated_pillar_score_rule': dim.get('validated_pillar_score_rule', ''),
+            }
+    else:
+        pillars_in_schema = schema.get('pillars', {})
+
     for code, pdata in pillars_in_schema.items():
         field_metadata[code] = {
             'name': pdata.get('name', code),
@@ -556,9 +723,7 @@ def update_definition():
         elif edit_type == 'sub-pillar':
             # Update sub-pillar definition in the currently active schema
             schema_filename = app_state.current_schema_file
-            schema_file_path = os.path.join(os.path.dirname(__file__), schema_filename)
-            with open(schema_file_path, 'r', encoding='utf-8-sig') as f:
-                full_schema = json.load(f)
+            full_schema = read_dataset(schema_filename)
             
             # Find the top-level key
             reg = SCHEMA_REGISTRY.get(schema_filename)
@@ -583,8 +748,9 @@ def update_definition():
                     else:
                         schema['sub_pillars'][edit_id]['definition'] = description
             
-            with open(schema_file_path, 'w', encoding='utf-8') as f:
-                json.dump(full_schema, f, indent=2, ensure_ascii=False)
+            write_error = persist_dataset(schema_filename, full_schema)
+            if write_error is not None:
+                return write_error
         
         return jsonify({'success': True})
     except Exception as e:
@@ -607,7 +773,9 @@ def get_vendor_files():
         lower = name.lower()
         if 'schema_template' in lower:
             return 'template'
-        if 'agentic_soc' in lower or 'asmf' in lower:
+        if ('agentic_soc' in lower or 'agentic_enterprise' in lower or
+            'ai_platform_ecosystem' in lower or 'platform_ecosystem' in lower or
+            'asmf' in lower):
             return 'asmf'
         if 'trism' in lower:
             return 'trism'
@@ -649,7 +817,7 @@ def get_vendor_files():
         }
         
         # Find all vendor JSON files dynamically
-        for filename in os.listdir(app_dir):
+        for filename in canonical_paths('vendor_score'):
             # Match vendor files: vendor*.json, Vendor*.json, or *researched*.json
             filename_lower = filename.lower()
             if (filename.endswith('.json') and 
@@ -665,37 +833,35 @@ def get_vendor_files():
                     if active_project != file_project:
                         continue  # skip files from other projects
 
-                filepath = os.path.join(app_dir, filename)
                 try:
-                    with open(filepath, 'r', encoding='utf-8-sig') as f:
-                        data = json.load(f)
-                        # Extract schema_ref and count
-                        file_schema_ref = ''
-                        count = 0
-                        if isinstance(data, dict) and 'vendors' in data and isinstance(data['vendors'], list):
-                            # Wrapped format
-                            file_schema_ref = data.get('schema_ref', '')
-                            count = len(data['vendors'])
-                        elif isinstance(data, list):
-                            count = len(data)
-                            # Check first vendor for schema_ref
-                            if data and isinstance(data[0], dict):
-                                file_schema_ref = data[0].get('schema_ref', '')
-                        elif isinstance(data, dict):
-                            file_schema_ref = data.get('schema_ref', '')
-                            for key, value in data.items():
-                                if isinstance(value, list):
-                                    count = len(value)
-                                    break
-                        
-                        # Create display name from filename
-                        display_name = filename.replace('.json', '')
-                        available_files.append({
-                            'filename': filename,
-                            'name': display_name,
-                            'count': count,
-                            'schema_ref': file_schema_ref
-                        })
+                    data = read_dataset(filename)
+                    # Extract schema_ref and count
+                    file_schema_ref = ''
+                    count = 0
+                    if isinstance(data, dict) and 'vendors' in data and isinstance(data['vendors'], list):
+                        # Wrapped format
+                        file_schema_ref = data.get('schema_ref', '')
+                        count = len(data['vendors'])
+                    elif isinstance(data, list):
+                        count = len(data)
+                        # Check first vendor for schema_ref
+                        if data and isinstance(data[0], dict):
+                            file_schema_ref = data[0].get('schema_ref', '')
+                    elif isinstance(data, dict):
+                        file_schema_ref = data.get('schema_ref', '')
+                        for key, value in data.items():
+                            if isinstance(value, list):
+                                count = len(value)
+                                break
+
+                    # Create display name from filename
+                    display_name = filename.replace('.json', '')
+                    available_files.append({
+                        'filename': filename,
+                        'name': display_name,
+                        'count': count,
+                        'schema_ref': file_schema_ref
+                    })
                 except Exception as err:
                     print(f"Error reading {filename}: {err}")
                     pass
@@ -717,32 +883,40 @@ def switch_vendor_file():
     try:
         data = request.get_json(force=True, silent=True) or {}
         new_file = data.get('filename')
+        schema_hint = data.get('schema')
         
-        # Validate the file exists
-        filepath = os.path.join(os.path.dirname(__file__), new_file)
-        if not os.path.exists(filepath):
+        # Only source-controlled active datasets may be selected.
+        if new_file not in canonical_paths('vendor_score'):
             return jsonify({'success': False, 'error': 'File not found'}), 404
         
         # Verify it's a valid JSON file
         try:
-            with open(filepath, 'r', encoding='utf-8-sig') as f:
-                test_data = json.load(f)
-        except:
+            read_dataset(new_file)
+        except Exception:
             return jsonify({'success': False, 'error': 'Invalid JSON file'}), 400
         
         # Switch the file
         app_state.current_vendor_file = new_file
 
-        # Auto-switch schema to match the vendor file's project
-        best_schema = _detect_best_schema(new_file)
-        if best_schema:
-            app_state.current_schema_file = best_schema
+        # Keep explicitly-selected framework schema pinned for framework flows.
+        # Frontend sends the active schema while switching vendor files.
+        schema_switched = False
+        if schema_hint in SCHEMA_REGISTRY and SCHEMA_REGISTRY.get(schema_hint, {}).get('structure') == 'asmf':
+            if app_state.current_schema_file != schema_hint:
+                app_state.current_schema_file = schema_hint
+                schema_switched = True
+        else:
+            # Auto-switch schema to match the vendor file's project
+            best_schema = _detect_best_schema(new_file)
+            if best_schema and best_schema != app_state.current_schema_file:
+                app_state.current_schema_file = best_schema
+                schema_switched = True
         
         return jsonify({
             'success': True,
             'current': app_state.current_vendor_file,
             'current_schema': app_state.current_schema_file,
-            'schema_switched': bool(best_schema),
+            'schema_switched': schema_switched,
         })
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 400
@@ -766,11 +940,23 @@ _PROJECT_SCHEMA_MAP = {
 def _detect_project_from_name(name):
     """Return project tag from a filename."""
     lower = name.lower()
-    if 'schema_template' in lower: return 'template'
-    if 'agentic_soc' in lower or 'asmf' in lower: return 'asmf'
-    if 'trism' in lower: return 'trism'
-    if ('preemptive' in lower or 'precyber' in lower) and ('6-0' in lower or 'v3' in lower): return 'precyber_v3'
-    if 'preemptive' in lower or 'precyber' in lower: return 'precyber'
+    if 'schema_template' in lower:
+        return 'template'
+    if (
+        'agentic_soc' in lower or
+        'asmf' in lower or
+        'agentic_enterprise' in lower or
+        'ai_platform_ecosystem' in lower or
+        'platform_ecosystem' in lower or
+        'ai platform ecosystem' in lower
+    ):
+        return 'asmf'
+    if 'trism' in lower:
+        return 'trism'
+    if ('preemptive' in lower or 'precyber' in lower) and ('6-0' in lower or 'v3' in lower):
+        return 'precyber_v3'
+    if 'preemptive' in lower or 'precyber' in lower:
+        return 'precyber'
     if 'secure_by_design' in lower or 'sbd_ai' in lower or 'sbdai' in lower: return 'sbdai'
     if 'cnapp_mq' in lower or 'cnapp mq' in lower: return 'cnapp_mq'
     if 'mq_gap' in lower or 'mq gap' in lower: return 'mq_gap'
@@ -784,7 +970,7 @@ def _detect_best_schema(vendor_file):
     """Given a vendor filename, return the best matching schema filename."""
     project = _detect_project_from_name(vendor_file)
     schema = _PROJECT_SCHEMA_MAP.get(project)
-    if schema and os.path.exists(os.path.join(os.path.dirname(__file__), schema)):
+    if schema and schema in canonical_paths('schema'):
         return schema
     return None
 
@@ -793,13 +979,9 @@ def _detect_best_schema(vendor_file):
 @app.route('/api/schema-files', methods=['GET'])
 def get_schema_files():
     """List all available schema files with metadata."""
-    app_dir = os.path.dirname(__file__)
     schemas = []
     for fn in discover_schema_files():
-        filepath = os.path.join(app_dir, fn)
         try:
-            with open(filepath, 'r', encoding='utf-8-sig') as f:
-                data = json.load(f)
             body = load_schema_data(fn)
             meta = body.get('metadata', {})
             display = SCHEMA_DISPLAY.get(fn, {'title': fn.replace('.json', ''), 'abbr': '', 'subtitle': ''})
@@ -809,6 +991,8 @@ def get_schema_files():
                 'intent': body.get('intent', ''),
                 'scoring_logic': meta.get('scoring_scale', meta.get('scoring_logic', {})),
                 'display': display,
+                'kind': 'framework' if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'asmf' else 'schema',
+                'capabilities': _framework_capabilities(fn) if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'asmf' else None,
             })
         except Exception as e:
             print(f"Error reading schema {fn}: {e}")
@@ -822,11 +1006,19 @@ def switch_schema():
     """Switch the active schema and return matching vendor files."""
     data = request.get_json(force=True, silent=True) or {}
     new_schema = data.get('filename', '')
-    filepath = os.path.join(os.path.dirname(__file__), new_schema)
-    if not os.path.exists(filepath):
+    if new_schema not in canonical_paths('schema', 'framework'):
+        return jsonify({'success': False, 'error': 'Schema file not found'}), 404
+    try:
+        read_dataset(new_schema)
+    except Exception:
         return jsonify({'success': False, 'error': 'Schema file not found'}), 404
 
     app_state.current_schema_file = new_schema
+    if SCHEMA_REGISTRY.get(new_schema, {}).get('structure') == 'asmf':
+        if new_schema == 'AI_platform_ecosystem_framework_v1.json':
+            app_state.current_vendor_file = 'ai_platform_ecosystem_vendors_v1.json'
+        else:
+            app_state.current_vendor_file = ''
     return jsonify({
         'success': True,
         'current_schema': app_state.current_schema_file
@@ -838,6 +1030,7 @@ def get_schema_detail():
     schema_file = request.args.get('schema', app_state.current_schema_file)
     body = load_schema_data(schema_file)
     sub_pillars = extract_sub_pillars(schema_file)
+    structure = _schema_structure(schema_file)
 
     # Build scoring_logic in a uniform way
     meta = body.get('metadata', {})
@@ -849,7 +1042,21 @@ def get_schema_detail():
 
     # Pillars summary with full detail
     pillars_list = []
-    if 'pillars' in body:
+    if structure == 'asmf' and 'dimensions' in body:
+        for code, dim in body['dimensions'].items():
+            entry = {
+                'code': dim.get('id', code),
+                'name': dim.get('name', code),
+                'focus': dim.get('description', ''),
+                'ai_evidence_signals': dim.get('evidence_signals', []),
+                'validated_pillar_score_rule': dim.get('validated_pillar_score_rule', ''),
+            }
+            for passthrough_key in ('aiuc1_requirements', 'aiuc1_coverage', 'aiuc1_categories',
+                                    'ai_rmf_functions', 'nist_references', 'maturity_signals'):
+                if passthrough_key in dim:
+                    entry[passthrough_key] = dim[passthrough_key]
+            pillars_list.append(entry)
+    elif 'pillars' in body:
         for code, pdata in body['pillars'].items():
             entry = {
                 'code': pdata.get('code', code),
@@ -879,14 +1086,14 @@ def get_schema_detail():
                 if passthrough_key in raw:
                     sp[passthrough_key] = raw[passthrough_key]
 
-    return jsonify({
+    return dataset_json_response({
         'schema_file': schema_file,
         'intent': body.get('intent', ''),
         'scoring_logic': scoring,
         'pillars': pillars_list,
         'sub_pillars': sub_pillars,
         'sub_pillar_count': len(sub_pillars),
-    })
+    }, schema_file)
 
 
 @app.route('/api/export-schema-html', methods=['GET'])
@@ -1107,14 +1314,10 @@ def export_schema_html():
 @app.route('/api/report/<report_id>', methods=['GET'])
 def get_report(report_id):
     """Return a Market Insight report JSON by ID."""
-    reports_dir = os.path.join(os.path.dirname(__file__), 'reports')
-    # Search for matching JSON files
-    for fname in os.listdir(reports_dir):
-        if fname.endswith('.json') and report_id in fname:
-            fpath = os.path.join(reports_dir, fname)
+    for source_path in canonical_paths('report_definition'):
+        if source_path.startswith('Reports/') and report_id in source_path:
             try:
-                with open(fpath, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
+                data = read_dataset(source_path)
                 return jsonify(data)
             except Exception as e:
                 return jsonify({'error': str(e)}), 500
@@ -1124,23 +1327,22 @@ def get_report(report_id):
 @app.route('/api/reports', methods=['GET'])
 def list_reports():
     """List all available report JSON files."""
-    reports_dir = os.path.join(os.path.dirname(__file__), 'reports')
     reports = []
-    for fname in sorted(os.listdir(reports_dir)):
-        if fname.endswith('.json'):
-            fpath = os.path.join(reports_dir, fname)
-            try:
-                with open(fpath, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                reports.append({
-                    'file': fname,
-                    'id': data.get('id', fname),
-                    'title': data.get('title', fname),
-                    'content_type': data.get('content_type', 'Unknown'),
-                    'last_updated': data.get('last_updated', '')
-                })
-            except Exception:
-                pass
+    for source_path in sorted(canonical_paths('report_definition')):
+        if not source_path.startswith('Reports/'):
+            continue
+        fname = source_path.split('/', 1)[1]
+        try:
+            data = read_dataset(source_path)
+            reports.append({
+                'file': fname,
+                'id': data.get('id', fname),
+                'title': data.get('title', fname),
+                'content_type': data.get('content_type', 'Unknown'),
+                'last_updated': data.get('last_updated', '')
+            })
+        except Exception:
+            pass
     return jsonify(reports)
 
 
@@ -1193,13 +1395,13 @@ def get_adoption_plan():
             'week_end': _parse_week_end(phase_key),
         })
 
-    return jsonify({
+    return dataset_json_response({
         'description': plan.get('description', ''),
         'self_assessment_schedule': plan.get('self_assessment_schedule', ''),
         'milestones': plan.get('milestones', []),
         'phases': enriched_phases,
         'total_weeks': 12,
-    })
+    }, app_state.current_schema_file)
 
 
 def _parse_week_start(key):
@@ -1224,11 +1426,8 @@ def update_adoption_plan():
         return jsonify({'error': 'Missing phase key'}), 400
 
     schema_filename = app_state.current_schema_file
-    schema_file_path = os.path.join(os.path.dirname(__file__), schema_filename)
-
     try:
-        with open(schema_file_path, 'r', encoding='utf-8-sig') as f:
-            full_schema = json.load(f)
+        full_schema = read_dataset(schema_filename)
 
         reg = SCHEMA_REGISTRY.get(schema_filename)
         top_key = reg['top_key'] if reg else list(full_schema.keys())[0]
@@ -1257,8 +1456,9 @@ def update_adoption_plan():
                 phases[new_key] = phases.pop(phase_key)
                 phase_key = new_key
 
-        with open(schema_file_path, 'w', encoding='utf-8') as f:
-            json.dump(full_schema, f, indent=2, ensure_ascii=False)
+        write_error = persist_dataset(schema_filename, full_schema)
+        if write_error is not None:
+            return write_error
 
         return jsonify({'success': True, 'phase_key': phase_key})
     except Exception as e:
@@ -1269,17 +1469,14 @@ def update_adoption_plan():
 def get_mdr_pricing():
     """Return MDR pricing analysis data for the pricing report."""
     import statistics
-    # Prefer enriched 2-1 file with AI analysis; fallback to 2-0
-    enriched_file = os.path.join(os.path.dirname(__file__), 'MDR Services Vendor Pricing 2-1 AI Enriched.json')
-    base_file = os.path.join(os.path.dirname(__file__), 'MDR Services Vendor Pricing 2-0 Researched.json')
-    pricing_file = enriched_file if os.path.exists(enriched_file) else base_file
-    is_enriched = pricing_file == enriched_file
-    if not os.path.exists(pricing_file):
+    pricing_sources = canonical_paths('vendor_pricing')
+    if not pricing_sources:
         return jsonify({'error': 'MDR pricing data file not found'}), 404
+    pricing_file = pricing_sources[0]
+    is_enriched = 'Enriched' in pricing_file
 
     try:
-        with open(pricing_file, 'r', encoding='utf-8-sig') as f:
-            data = json.load(f)
+        data = read_dataset(pricing_file)
 
         vendors = data.get('vendors', [])
         dims = data.get('dimensions', [])
@@ -1432,8 +1629,7 @@ def get_mdr_market_insight_perspectives():
     if not os.path.exists(json_file):
         return jsonify({'error': 'Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('mdr_market_insight_reports.json')
         perspectives = [{'id': r['id'], 'label': r['label']} for r in data.get('reports', [])]
         return jsonify({'perspectives': perspectives})
     except Exception as e:
@@ -1447,8 +1643,7 @@ def get_mdr_mq_scores():
     if not os.path.exists(json_file):
         return jsonify({'error': 'MQ Scores file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('MDR Services Vendor MQ Scores.json')
         return jsonify(data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -1467,8 +1662,7 @@ def get_cnapp_mq_scores():
     if not os.path.exists(json_file):
         return jsonify({'error': f'CNAPP MQ Scores file not found ({fname})'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(fname)
         data.setdefault('score_mode', mode)
         return jsonify(data)
     except Exception as e:
@@ -1482,8 +1676,9 @@ def get_cnapp_mq_market_insight_perspectives():
     if not os.path.exists(json_file):
         return jsonify({'error': 'CNAPP MQ Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(
+            'cnapp_mq_market_insight_reports.json'
+        )
         perspectives = [{'id': r['id'], 'label': r['label']} for r in data.get('reports', [])]
         return jsonify({'perspectives': perspectives})
     except Exception as e:
@@ -1497,8 +1692,9 @@ def get_cnapp_mq_market_insight():
     if not os.path.exists(json_file):
         return jsonify({'error': 'CNAPP MQ Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(
+            'cnapp_mq_market_insight_reports.json'
+        )
         reports = data.get('reports', [])
         if not reports:
             return jsonify({'error': 'No report perspectives available'}), 404
@@ -1536,8 +1732,9 @@ def save_cnapp_mq_market_insight():
         perspective_id = payload.get('id')
         if not perspective_id:
             return jsonify({'error': 'Missing perspective id'}), 400
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(
+            'cnapp_mq_market_insight_reports.json'
+        )
         reports = data.get('reports', [])
         report = next((r for r in reports if r['id'] == perspective_id), None)
         if not report:
@@ -1552,8 +1749,12 @@ def save_cnapp_mq_market_insight():
             report['recommendations'] = payload['recommendations']
         if 'analysis_sections' in payload and isinstance(payload['analysis_sections'], list):
             report['analysis_sections'] = payload['analysis_sections']
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        write_error = persist_dataset(
+            'cnapp_mq_market_insight_reports.json',
+            data,
+        )
+        if write_error is not None:
+            return write_error
         return jsonify({'success': True, 'message': f'Report "{perspective_id}" saved.'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -1566,8 +1767,7 @@ def get_mdr_market_insight():
     if not os.path.exists(json_file):
         return jsonify({'error': 'Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('mdr_market_insight_reports.json')
 
         reports = data.get('reports', [])
         if not reports:
@@ -1609,8 +1809,7 @@ def save_mdr_market_insight():
         if not perspective_id:
             return jsonify({'error': 'Missing perspective id'}), 400
 
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('mdr_market_insight_reports.json')
 
         reports = data.get('reports', [])
         report = next((r for r in reports if r['id'] == perspective_id), None)
@@ -1631,8 +1830,9 @@ def save_mdr_market_insight():
         if 'analysis_sections' in payload and isinstance(payload['analysis_sections'], list):
             report['analysis_sections'] = payload['analysis_sections']
 
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        write_error = persist_dataset('mdr_market_insight_reports.json', data)
+        if write_error is not None:
+            return write_error
 
         return jsonify({'success': True, 'message': f'Report "{perspective_id}" saved.'})
     except Exception as e:
@@ -1642,22 +1842,20 @@ def save_mdr_market_insight():
 # ─── PreCyber statistics helpers ───────────────────────────────────────────────
 
 def _get_precyber_vendor_file():
-    """Return path to the most current PreCyber vendor JSON file, or None."""
-    for fname in [
-        'Preemptive Cybersecurity Vendor 6-0 v3.json',
-        'Preemptive Cybersecurity Vendor 5-0 Combined.json',
-        'Preemptive Cybersecurity Vendor 3-0 SVC Pricing.json',
-    ]:
-        path = os.path.join(os.path.dirname(__file__), fname)
-        if os.path.exists(path):
-            return path
+    """Return the active PreCyber vendor source selected by the manifest."""
+    for source in _CANONICAL_CATALOG:
+        if (
+            source.get('status') == 'active'
+            and source.get('kind') == 'vendor_score'
+            and source.get('market') == 'precyber'
+        ):
+            return source['path']
     return None
 
 
 def _compute_precyber_stats(vendor_file):
     """Compute all PreCyber statistics from a vendor JSON file and return a dict."""
-    with open(vendor_file, 'r', encoding='utf-8-sig') as f:
-        vendors = json.load(f)
+    vendors = dataset_repository.read_vendors(vendor_file)
 
     pillars = ['EXM', 'AMT', 'ADR', 'PPM', 'SVC']
     pillar_labels = {
@@ -1845,8 +2043,9 @@ def get_pmr_stats():
     if not os.path.exists(vendor_file):
         return jsonify({'error': 'PMR vendor data not found'}), 404
     try:
-        with open(vendor_file, 'r', encoding='utf-8-sig') as f:
-            data = json.load(f)
+        data = read_dataset(
+            'Product Market Readiness Vendor 1-0 Seed.json'
+        )
 
         vendors = data.get('vendors', [])
         n = len(vendors)
@@ -1969,8 +2168,7 @@ def get_pmr_market_insight_perspectives():
     if not os.path.exists(json_file):
         return jsonify({'error': 'PMR Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('pmr_market_insight_reports.json')
         perspectives = [{'id': r['id'], 'label': r['label']} for r in data.get('reports', [])]
         return jsonify({'perspectives': perspectives})
     except Exception as e:
@@ -1984,8 +2182,7 @@ def get_pmr_market_insight():
     if not os.path.exists(json_file):
         return jsonify({'error': 'PMR Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('pmr_market_insight_reports.json')
         reports = data.get('reports', [])
         if not reports:
             return jsonify({'error': 'No PMR report perspectives available'}), 404
@@ -2024,8 +2221,7 @@ def save_pmr_market_insight():
         if not perspective_id:
             return jsonify({'error': 'Missing perspective id'}), 400
 
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('pmr_market_insight_reports.json')
 
         reports = data.get('reports', [])
         report = next((r for r in reports if r['id'] == perspective_id), None)
@@ -2038,8 +2234,9 @@ def save_pmr_market_insight():
             if field in payload:
                 report[field] = payload[field]
 
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        write_error = persist_dataset('pmr_market_insight_reports.json', data)
+        if write_error is not None:
+            return write_error
 
         return jsonify({'success': True})
     except Exception as e:
@@ -2053,8 +2250,9 @@ def get_precyber_market_insight_perspectives():
     if not os.path.exists(json_file):
         return jsonify({'error': 'PreCyber Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(
+            'precyber_market_insight_reports.json'
+        )
         perspectives = [{'id': r['id'], 'label': r['label']} for r in data.get('reports', [])]
         return jsonify({'perspectives': perspectives})
     except Exception as e:
@@ -2068,8 +2266,9 @@ def get_precyber_market_insight():
     if not os.path.exists(json_file):
         return jsonify({'error': 'PreCyber Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(
+            'precyber_market_insight_reports.json'
+        )
 
         reports = data.get('reports', [])
         if not reports:
@@ -2111,8 +2310,9 @@ def save_precyber_market_insight():
         if not perspective_id:
             return jsonify({'error': 'Missing perspective id'}), 400
 
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(
+            'precyber_market_insight_reports.json'
+        )
 
         reports = data.get('reports', [])
         report = next((r for r in reports if r['id'] == perspective_id), None)
@@ -2133,8 +2333,12 @@ def save_precyber_market_insight():
         if 'analysis_sections' in payload and isinstance(payload['analysis_sections'], list):
             report['analysis_sections'] = payload['analysis_sections']
 
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        write_error = persist_dataset(
+            'precyber_market_insight_reports.json',
+            data,
+        )
+        if write_error is not None:
+            return write_error
 
         return jsonify({'success': True, 'message': f'Report "{perspective_id}" saved.'})
     except Exception as e:
@@ -2150,8 +2354,7 @@ def get_dfir_market_insight_perspectives():
     if not os.path.exists(json_file):
         return jsonify({'error': 'DFIR Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('dfir_market_insight_reports.json')
         perspectives = [{'id': r['id'], 'label': r['label']} for r in data.get('reports', [])]
         return jsonify({'perspectives': perspectives})
     except Exception as e:
@@ -2165,8 +2368,7 @@ def get_dfir_market_insight():
     if not os.path.exists(json_file):
         return jsonify({'error': 'DFIR Market Insight reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('dfir_market_insight_reports.json')
 
         reports = data.get('reports', [])
         if not reports:
@@ -2208,8 +2410,7 @@ def save_dfir_market_insight():
         if not perspective_id:
             return jsonify({'error': 'Missing perspective id'}), 400
 
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('dfir_market_insight_reports.json')
 
         reports = data.get('reports', [])
         report = next((r for r in reports if r['id'] == perspective_id), None)
@@ -2230,8 +2431,9 @@ def save_dfir_market_insight():
         if 'analysis_sections' in payload and isinstance(payload['analysis_sections'], list):
             report['analysis_sections'] = payload['analysis_sections']
 
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        write_error = persist_dataset('dfir_market_insight_reports.json', data)
+        if write_error is not None:
+            return write_error
 
         return jsonify({'success': True, 'message': f'Report "{perspective_id}" saved.'})
     except Exception as e:
@@ -2247,8 +2449,7 @@ def get_analyst_take_perspectives():
     if not os.path.exists(json_file):
         return jsonify({'error': 'Analyst Take reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('analyst_take_reports.json')
         schema = request.args.get('schema', '')
         reports = data.get('reports', [])
         # Filter: always include template (schema_ref is null) + reports matching the active schema
@@ -2270,8 +2471,7 @@ def get_analyst_take():
     if not os.path.exists(json_file):
         return jsonify({'error': 'Analyst Take reports file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('analyst_take_reports.json')
 
         reports = data.get('reports', [])
         if not reports:
@@ -2299,8 +2499,7 @@ def save_analyst_take():
         if not perspective_id:
             return jsonify({'error': 'Missing perspective id'}), 400
 
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('analyst_take_reports.json')
 
         reports = data.get('reports', [])
         report = next((r for r in reports if r['id'] == perspective_id), None)
@@ -2317,8 +2516,9 @@ def save_analyst_take():
         if 'recommended_reading' in payload and isinstance(payload['recommended_reading'], list):
             report['recommended_reading'] = payload['recommended_reading']
 
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        write_error = persist_dataset('analyst_take_reports.json', data)
+        if write_error is not None:
+            return write_error
 
         return jsonify({'success': True, 'message': f'Analyst Take "{perspective_id}" saved.'})
     except Exception as e:
@@ -3734,6 +3934,34 @@ def precyber_infographic_pptx():
         from pptx.dml.color import RGBColor
         from pptx.enum.text import PP_ALIGN
         import io
+
+        vendor_file = _get_precyber_vendor_file()
+        if not vendor_file:
+            return jsonify({'error': 'PreCyber vendor data not found'}), 404
+        st = _compute_precyber_stats(vendor_file)
+        n = st['vendor_count']
+        pp = st['pillar_penetration']
+        dm = st['delivery_models']
+        fs_count = st['full_spectrum_count']
+        fs_pct = st['full_spectrum_pct']
+        maj_count = st['majority_spectrum_count']
+        maj_pct = st['majority_spectrum_pct']
+        narrow_count = st['narrow_count']
+        narrow_pct = st['narrow_pct']
+        blind_pct = st['blind_spot_pct']
+        no_amt_pct = st['no_amt_pct']
+        dm_ds = dm.get('direct_service', {})
+        dm_pp = dm.get('platform_plus_partner', {})
+        dm_po = dm.get('platform_only', {})
+        ds_count = dm_ds.get('count', 0)
+        ppp_count = dm_pp.get('count', 0)
+        po_count = dm_po.get('count', 0)
+        ds_pct = round(ds_count * 100 / n) if n else 0
+        ppp_pct = round(ppp_count * 100 / n) if n else 0
+        po_pct = round(po_count * 100 / n) if n else 0
+        ds_pa = dm_ds.get('pillar_avgs', {})
+        ppp_pa = dm_pp.get('pillar_avgs', {})
+        po_pa = dm_po.get('pillar_avgs', {})
 
         prs = Presentation()
         prs.slide_width = Inches(13.333)
@@ -5961,8 +6189,9 @@ def pmr_all_graphics_pptx():
         # Load vendor data
         vendor_file = os.path.join(os.path.dirname(__file__),
                                    'Product Market Readiness Vendor 1-0 Seed.json')
-        with open(vendor_file, 'r', encoding='utf-8-sig') as f:
-            vdata = json.load(f)
+        vdata = read_dataset(
+            'Product Market Readiness Vendor 1-0 Seed.json'
+        )
         vendors = vdata.get('vendors', [])
         n = len(vendors)
         pillars = ['PPD', 'PCS', 'TDT', 'PCM', 'CTL']
@@ -6234,8 +6463,7 @@ def get_innovation_profiles():
     if not os.path.exists(json_file):
         return jsonify({'error': 'Innovation profiles file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('innovation_profiles.json')
         profiles = data.get('profiles', [])
         profile_id = request.args.get('id', '')
         if profile_id:
@@ -6255,8 +6483,7 @@ def save_innovation_profile():
     if not os.path.exists(json_file):
         return jsonify({'error': 'Innovation profiles file not found'}), 404
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('innovation_profiles.json')
         updated = request.get_json()
         if not updated or 'id' not in updated:
             return jsonify({'error': 'Missing profile id'}), 400
@@ -6265,8 +6492,9 @@ def save_innovation_profile():
         if idx is None:
             return jsonify({'error': f'Profile "{updated["id"]}" not found'}), 404
         profiles[idx] = updated
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
+        write_error = persist_dataset('innovation_profiles.json', data)
+        if write_error is not None:
+            return write_error
         return jsonify({'status': 'ok'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -6291,8 +6519,7 @@ def analyst_take_graphics_pptx():
         if not os.path.exists(json_file):
             return jsonify({'error': 'Analyst Take reports file not found'}), 404
 
-        with open(json_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset('analyst_take_reports.json')
 
         perspective_id = request.args.get('perspective', '')
         reports = data.get('reports', [])
@@ -6780,6 +7007,11 @@ def analyst_take_graphics_pptx():
 @app.route('/api/shutdown', methods=['POST'])
 def shutdown_server():
     """Gracefully shut down the Flask server."""
+    if (
+        request.remote_addr not in {'127.0.0.1', '::1'}
+        or os.getenv('ENABLE_LOCAL_SHUTDOWN', 'false').lower() != 'true'
+    ):
+        return jsonify({'error': 'Shutdown endpoint is disabled'}), 403
     func = request.environ.get('werkzeug.server.shutdown')
     if func is not None:
         func()
@@ -6801,8 +7033,7 @@ def blumira_deep_dive():
 
     # MDR
     try:
-        with open(os.path.join(os.path.dirname(__file__), 'MDR Services Vendor 2-1 Consolidated.json'), 'r', encoding='utf-8') as f:
-            mdr = json.load(f)
+        mdr = read_dataset('MDR Services Vendor 2-1 Consolidated.json')
         b = next((v for v in mdr['vendors'] if v['vendor'] == 'Blumira'), None)
         result['mdr'] = b
     except Exception:
@@ -6810,8 +7041,7 @@ def blumira_deep_dive():
 
     # MDR Pricing
     try:
-        with open(os.path.join(os.path.dirname(__file__), 'MDR Services Vendor Pricing 2-1 AI Enriched.json'), 'r', encoding='utf-8') as f:
-            prc = json.load(f)
+        prc = read_dataset('MDR Services Vendor Pricing 2-1 AI Enriched.json')
         b = next((v for v in prc['vendors'] if v['vendor'] == 'Blumira'), None)
         result['mdr_pricing'] = b
     except Exception:
@@ -6819,8 +7049,7 @@ def blumira_deep_dive():
 
     # Preemptive Cyber
     try:
-        with open(os.path.join(os.path.dirname(__file__), 'Preemptive Cybersecurity Vendor 2-1 Consolidated.json'), 'r', encoding='utf-8') as f:
-            pc = json.load(f)
+        pc = read_dataset('Preemptive Cybersecurity Vendor 6-0 v3.json')
         b = next((v for v in pc['vendors'] if v['vendor'] == 'Blumira'), None)
         result['precyber'] = b
     except Exception:
@@ -6828,8 +7057,7 @@ def blumira_deep_dive():
 
     # DFIR
     try:
-        with open(os.path.join(os.path.dirname(__file__), 'Vendor 3-7.json'), 'r', encoding='utf-8') as f:
-            dfir = json.load(f)
+        dfir = read_dataset('Vendor 3-7.json')
         b = next((v for v in dfir['vendors'] if v['vendor'] == 'Blumira'), None)
         result['dfir'] = b
     except Exception:
@@ -6837,8 +7065,7 @@ def blumira_deep_dive():
 
     # PMR
     try:
-        with open(os.path.join(os.path.dirname(__file__), 'Product Market Readiness Vendor 1-1 Enriched.json'), 'r', encoding='utf-8') as f:
-            pmr = json.load(f)
+        pmr = read_dataset('Product Market Readiness Vendor 1-0 Seed.json')
         b = next((v for v in pmr['vendors'] if v['vendor'] == 'Blumira'), None)
         result['pmr'] = b
     except Exception:
@@ -6956,23 +7183,261 @@ def blumira_deep_dive():
 
 @app.route('/api/asmf-framework', methods=['GET'])
 def get_asmf_framework():
-    """Return the Agentic Security Operations Adoption Framework schema."""
-    filepath = os.path.join(os.path.dirname(__file__), 'agentic_soc_framework_v1.json')
+    """Return the selected framework schema data for framework views."""
+    schema_file = request.args.get('schema', app_state.current_schema_file)
+
+    # If the active schema is not framework-shaped, fall back to the default
+    # ASMF schema so framework views can still render in a read-only mode.
+    if schema_file not in SCHEMA_REGISTRY or SCHEMA_REGISTRY.get(schema_file, {}).get('structure') != 'asmf':
+        schema_file = 'agentic_soc_framework_v1.json'
+
+    if schema_file not in SCHEMA_REGISTRY or SCHEMA_REGISTRY.get(schema_file, {}).get('structure') != 'asmf':
+        return jsonify({'error': 'No framework schema selected'}), 404
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(schema_file)
+        if isinstance(data, dict):
+            data = dict(data)
+            data['capabilities'] = _framework_capabilities(schema_file)
         return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/apef-report', methods=['GET'])
+def get_apef_report():
+    """Return the APEF framework and its source-native vendor profiles."""
+    schema_file = 'AI_platform_ecosystem_framework_v1.json'
+    vendor_file = 'ai_platform_ecosystem_vendors_v1.json'
+    try:
+        data = load_schema_data(schema_file)
+        if not isinstance(data, dict):
+            return jsonify({'error': 'APEF framework is unavailable'}), 404
+        data = dict(data)
+        profiles = data.get('vendor_role_profiles', {}) or {}
+        vendors = []
+        for record in load_vendor_data(vendor_file):
+            vendor_name = record.get('vendor', '')
+            vendor_key = record.get('key') or vendor_name.lower().replace(' ', '-')
+            profile = dict(profiles.get(vendor_key, {}))
+            profile.update(record)
+            profile['key'] = vendor_key
+            profile.setdefault('vendor', vendor_name or vendor_key)
+            vendors.append(profile)
+        data['vendors'] = vendors
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/apef-graph', methods=['GET'])
+def get_apef_graph():
+    """Build the APEF component graph from CouchDB-backed vendor profiles."""
+    schema_file = 'AI_platform_ecosystem_framework_v1.json'
+    vendor_file = 'ai_platform_ecosystem_vendors_v1.json'
+    try:
+        framework = load_schema_data(schema_file)
+        if not isinstance(framework, dict):
+            return jsonify({'error': 'APEF framework is unavailable'}), 404
+
+        profiles = framework.get('vendor_role_profiles', {}) or {}
+        vendors = []
+        for record in load_vendor_data(vendor_file):
+            vendor_name = record.get('vendor', '')
+            vendor_key = record.get('key') or vendor_name.lower().replace(' ', '-')
+            profile = dict(profiles.get(vendor_key, {}))
+            profile.update(record)
+            profile['key'] = vendor_key
+            profile.setdefault('vendor', vendor_name or vendor_key)
+            vendors.append(profile)
+
+        nodes = []
+        edges = []
+        component_ids = set()
+        component_meta = {}
+
+        for vendor in vendors:
+            vendor_key = vendor.get('key') or vendor.get('vendor', '').lower()
+            if not vendor_key:
+                continue
+            vendor_id = f'vendor:{vendor_key}'
+            nodes.append({
+                'id': vendor_id,
+                'kind': 'vendor',
+                'vendor': vendor_key,
+                'name': vendor.get('vendor') or vendor_key,
+            })
+            for component in vendor.get('components', []) or []:
+                component_id = component.get('id')
+                if not component_id:
+                    continue
+                component_ids.add(component_id)
+                component_meta[component_id] = (vendor_key, component)
+                nodes.append({
+                    'id': component_id,
+                    'kind': 'component',
+                    'vendor': vendor_key,
+                    'name': component.get('name') or component_id,
+                    'type': component.get('type', ''),
+                    'layer': component.get('layer', ''),
+                })
+                edges.append({
+                    'source': vendor_id,
+                    'target': component_id,
+                    'kind': 'owns',
+                    'integration_type': 'ownership',
+                    'integration_label': 'Ownership / native component',
+                })
+
+        aliases = {
+            'google-vertex': 'gcp-vertex',
+            'microsoft-copilot-studio': 'copilot-studio',
+        }
+        integration_labels = {
+            'nvidia_compute': 'NVIDIA compute / acceleration',
+            'local_runtime': 'Local / on-prem runtime',
+            'model_distribution': 'Model distribution / hosting',
+            'agent_orchestration': 'Agent / orchestration',
+            'data_grounding': 'Data / grounding / RAG',
+            'governance_safety': 'Governance / safety',
+            'platform_api': 'Platform / API control plane',
+            'ecosystem_partner': 'Ecosystem / partner integration',
+        }
+        local_component_ids = {
+            'nvidia-h100-local', 'nvidia-vllm', 'nvidia-triton-local',
+            'nvidia-mlflow-local', 'nvidia-docker-compose-local',
+        }
+
+        def classify_integration(source_vendor, source, target_vendor, target):
+            source_id = source.get('id', '')
+            target_id = target.get('id', '')
+            names = ' '.join([
+                source.get('name', ''), target.get('name', ''), source_id, target_id,
+            ]).lower()
+            types = f"{source.get('type', '')} {target.get('type', '')}".lower()
+            if source_id in local_component_ids or target_id in local_component_ids or 'local' in names:
+                return 'local_runtime'
+            if source_vendor == 'nvidia' or target_vendor == 'nvidia' or any(term in names for term in ('nvidia', 'cuda', 'triton', 'tensorrt')):
+                return 'nvidia_compute'
+            if source.get('layer') == 'L6' or target.get('layer') == 'L6' or any(term in names for term in ('guardrail', 'safety', 'governance', 'policy', 'iam', 'identity', 'model armor', 'saif', 'purview', 'entra')):
+                return 'governance_safety'
+            if any(term in names for term in ('bigquery', 'search', 'vector', 'rag', 'retrieval', 'grounding', 'knowledge', 'fabric', 'graph', 's3', 'redshift', 'opensearch', 'memory bank')):
+                return 'data_grounding'
+            if any(term in names for term in ('agent', 'copilot studio', 'assistant', 'mcp', 'tool use', 'runtime', 'orchestration', 'strands', 'semantic kernel', 'autogen')):
+                return 'agent_orchestration'
+            if source.get('layer') == 'L3' or target.get('layer') == 'L3' or 'foundation-model' in types or any(term in names for term in ('model garden', 'bedrock', 'azure openai', 'vertex', 'foundry', 'chatgpt', 'claude', 'gemini', 'gpt')):
+                return 'model_distribution'
+            if source.get('layer') == 'L4' or target.get('layer') == 'L4' or any(term in names for term in ('api', 'platform', 'pipeline', 'mlflow', 'sagemaker')):
+                return 'platform_api'
+            return 'ecosystem_partner' if source_vendor != target_vendor else 'platform_api'
+
+        integration_types = framework.get('integration_type_taxonomy', []) or []
+        for vendor_key, component in component_meta.values():
+            source_id = component.get('id')
+            for raw_target_id in component.get('integrates_with', []) or []:
+                target_id = aliases.get(raw_target_id, raw_target_id)
+                if source_id and target_id in component_ids:
+                    target_vendor, target_component = component_meta[target_id]
+                    integration_type = classify_integration(
+                        vendor_key, component, target_vendor, target_component,
+                    )
+                    edges.append({
+                        'source': source_id,
+                        'target': target_id,
+                        'kind': 'integrates',
+                        'integration_type': integration_type,
+                        'integration_label': integration_labels[integration_type],
+                    })
+
+        layers = ((framework.get('enterprise_stack_lens') or {}).get('layers') or [])
+        return jsonify({
+            'vendors': [
+                {'key': vendor.get('key'), 'vendor': vendor.get('vendor')}
+                for vendor in vendors
+            ],
+            'layers': layers,
+            'integration_type_taxonomy': integration_types,
+            'nodes': nodes,
+            'edges': edges,
+        })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 
 @app.route('/api/asmf-orbital-map', methods=['GET'])
 def get_asmf_orbital_map():
-    """Return the ASMF orbital integration map (relationship config + dim colors)."""
-    filepath = os.path.join(os.path.dirname(__file__), 'static', 'asmf_orbital_map.json')
+    """Return the orbital map compatible with the selected framework."""
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        schema_file = request.args.get('schema', app_state.current_schema_file)
+        if schema_file == 'agentic_enterprise_operations_framework_v1.json':
+            framework = load_schema_data(schema_file)
+            dimensions = framework.get('dimensions', {}) if isinstance(framework, dict) else {}
+            relationship_types = {
+                'data_flow': {'color': '#06b6d4', 'label': 'Data Flow', 'abbr': 'DF', 'dash': []},
+                'execution': {'color': '#8b5cf6', 'label': 'Execution', 'abbr': 'EX', 'dash': []},
+                'feedback': {'color': '#10b981', 'label': 'Feedback', 'abbr': 'FB', 'dash': [4, 4]},
+                'governance': {'color': '#ef4444', 'label': 'Governance', 'abbr': 'GV', 'dash': [6, 3]},
+                'augmentation': {'color': '#f59e0b', 'label': 'Augmentation', 'abbr': 'AU', 'dash': [3, 6]},
+            }
+            relationships = [
+                ('OBS', 'RPL', 'Operational telemetry and dependency context initiate reasoning and planning.', 'data_flow', 3),
+                ('OBS', 'OKG', 'Live signals enrich the operational graph with current service, asset, and dependency state.', 'data_flow', 3),
+                ('OBS', 'AMS', 'Signal coverage, alert quality, and service health feed operational assurance metrics.', 'feedback', 2),
+                ('RPL', 'EXE', 'Causal reasoning and prioritized plans direct governed remediation and fulfillment actions.', 'execution', 3),
+                ('RPL', 'OPM', 'Plans shape dynamic workflow branches, service-risk prioritization, and coordinated work.', 'execution', 3),
+                ('RPL', 'OKG', 'Reasoning uses graph-linked service context, evidence, policy, and workflow history.', 'data_flow', 3),
+                ('EXE', 'OBS', 'Execution outcomes change service state and generate new sensing signals.', 'feedback', 2),
+                ('EXE', 'AMS', 'Remediation success, reversals, and operational impact feed effectiveness assurance.', 'feedback', 3),
+                ('EXE', 'AGC', 'Specialized agents coordinate bounded execution across operational domains.', 'execution', 3),
+                ('POL', 'EXE', 'Machine-interpretable authority, policy, and guardrails bound every execution action.', 'governance', 3),
+                ('POL', 'AGC', 'Policy defines agent roles, authority scopes, escalation boundaries, and controls.', 'governance', 3),
+                ('POL', 'HGI', 'Governance establishes human intent, approval, accountability, and exception authority.', 'governance', 3),
+                ('POL', 'AMS', 'Policy defines audit evidence, compliance thresholds, and assurance requirements.', 'governance', 2),
+                ('CIL', 'OKG', 'Validated outcomes and external knowledge continuously evolve the operational graph.', 'augmentation', 3),
+                ('CIL', 'RPL', 'Learning from incidents and workflow outcomes improves planning and prioritization.', 'feedback', 3),
+                ('CIL', 'AGC', 'Continuous improvement updates agent skills, coordination patterns, and novelty handling.', 'augmentation', 2),
+                ('OPM', 'EXE', 'The interaction model orchestrates non-linear execution across incidents, changes, and requests.', 'execution', 3),
+                ('OPM', 'HGI', 'Workflow design defines where human intent, collaboration, and exceptions enter operations.', 'augmentation', 2),
+                ('HGI', 'POL', 'Human intent and operational accountability inform policy and authority design.', 'governance', 2),
+                ('HGI', 'AGC', 'Humans supervise agent behavior, resolve novel conditions, and govern operating intent.', 'governance', 3),
+                ('AGC', 'OBS', 'Agents adapt sensing coverage and operational signal priorities as conditions change.', 'data_flow', 2),
+                ('AGC', 'OKG', 'Agents use and produce graph-linked operational evidence, plans, and workflow artifacts.', 'data_flow', 3),
+                ('OKG', 'RPL', 'The operational graph provides the shared context required for causal reasoning and planning.', 'data_flow', 3),
+                ('OKG', 'EXE', 'Graph-linked dependencies, authority, and evidence guide safe execution.', 'execution', 2),
+                ('AMS', 'POL', 'Assurance and audit findings validate policy effectiveness and risk boundaries.', 'feedback', 2),
+                ('AMS', 'TRF', 'Operational performance and assurance gaps identify transformation priorities.', 'feedback', 3),
+                ('TRF', 'AGC', 'Transformation readiness enables expanded agent coordination and operating-model adoption.', 'augmentation', 2),
+                ('TRF', 'OPM', 'Transformation investments reshape the operational interaction model and workflow architecture.', 'augmentation', 2),
+            ]
+            return jsonify({
+                'relationship_types': relationship_types,
+                'dim_config': {
+                    code: {
+                        'plane': dimension.get('plane', ''),
+                        'short': code,
+                    }
+                    for code, dimension in dimensions.items()
+                },
+                'relationships': [
+                    {'from': source, 'to': target, 'label': label, 'type': relation_type, 'strength': strength}
+                    for source, target, label, relation_type, strength in relationships
+                    if source in dimensions and target in dimensions
+                ],
+            })
+        if schema_file != 'agentic_soc_framework_v1.json':
+            framework = load_schema_data(schema_file)
+            dimensions = framework.get('dimensions', {}) if isinstance(framework, dict) else {}
+            return jsonify({
+                'relationship_types': {},
+                'dim_config': {
+                    code: {
+                        'plane': dimension.get('plane', ''),
+                        'short': code,
+                    }
+                    for code, dimension in dimensions.items()
+                },
+                'relationships': [],
+            })
+        data = read_dataset('static/asmf_orbital_map.json')
         return jsonify(data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -6986,15 +7451,17 @@ def get_docs(doc_id):
     """Serve a docs JSON file from static/ by safe doc_id."""
     if doc_id not in _ALLOWED_DOCS:
         return jsonify({'error': 'Not found'}), 404
-    filepath = os.path.join(os.path.dirname(__file__), 'static', f'docs_{doc_id}.json')
-    if not os.path.exists(filepath):
-        return jsonify({'error': 'Not found'}), 404
+    relative_path = f'static/docs_{doc_id}.json'
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = read_dataset(relative_path)
         return jsonify(data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+def create_app():
+    """Return the configured Flask gateway application."""
+    return app
 
 
 if __name__ == '__main__':

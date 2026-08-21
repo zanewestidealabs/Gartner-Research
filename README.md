@@ -1,4 +1,26 @@
-# DFIR Vendor Analysis Web Application
+# Gartner Research Platform
+
+The local application is a Flask API/UI gateway backed by a secured,
+loopback-only Apache CouchDB instance. It supports DFIR, MDR, Preemptive
+Cybersecurity, CNAPP, AI TRiSM, Offensive Security, Product Market Readiness,
+and Agentic SOC research workflows.
+
+## Current quick start
+
+```powershell
+Set-Location C:\Gartner
+.\.venv\Scripts\Activate.ps1
+python -m flask --app app run --host 127.0.0.1 --port 5000
+```
+
+Open `http://127.0.0.1:5000`. The ignored `.env` must contain the local gateway
+credentials and `DATA_BACKEND=couchdb`. See
+[`docs/local-development.md`](docs/local-development.md) for bootstrap,
+verification, backup, restore, and troubleshooting commands.
+
+The JSON files retained in the repository are migration/rollback sources, not
+the active persistence layer. Browser clients never connect directly to
+CouchDB.
 
 A comprehensive web application for analyzing and filtering Digital Forensics & Incident Response (DFIR) vendors based on capabilities, specializations, and market positioning.
 

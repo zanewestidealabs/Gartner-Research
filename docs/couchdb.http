@@ -1,0 +1,22 @@
+@gateway = http://127.0.0.1:5000
+@couchdb = http://127.0.0.1:5984
+
+### Gateway liveness
+GET {{gateway}}/api/health/live
+
+### Gateway readiness (includes CouchDB)
+GET {{gateway}}/api/health/ready
+
+### Active schemas through the gateway
+GET {{gateway}}/api/schema-files
+
+### Reports through the gateway
+GET {{gateway}}/api/reports
+
+### CouchDB server identity (no credentials)
+GET {{couchdb}}/
+
+### This must remain unauthorized without credentials
+GET {{couchdb}}/_all_dbs
+
+# Keep secrets in .env. Do not add Authorization headers or passwords here.
