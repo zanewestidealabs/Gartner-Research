@@ -57,3 +57,77 @@ def test_filter_options_returns_each_requested_field() -> None:
 
     assert response.status_code == 200
     assert set(response.get_json()) == {"region", "specialization", "ir_focus_type"}
+
+
+@pytest.mark.parametrize(
+    ("schema_file", "dimension_count", "relationship_count"),
+    [
+        ("agentic_soc_framework_v1.json", 11, 31),
+        ("agentic_enterprise_operations_framework_v1.json", 11, 28),
+    ],
+)
+def test_framework_maps_are_schema_scoped_and_preserve_connectors(
+    client, schema_file: str, dimension_count: int, relationship_count: int
+) -> None:
+    framework_response = client.get("/api/asmf-framework", query_string={"schema": schema_file})
+    orbital_response = client.get("/api/asmf-orbital-map", query_string={"schema": schema_file})
+
+    assert framework_response.status_code == 200
+    assert orbital_response.status_code == 200
+
+    framework = framework_response.get_json()
+    orbital_map = orbital_response.get_json()
+    dimensions = framework["dimensions"]
+
+    assert len(dimensions) == dimension_count
+    assert len(orbital_map["relationships"]) == relationship_count
+    assert all(
+        relationship["from"] in dimensions
+        and relationship["to"] in dimensions
+        and relationship["type"] in orbital_map["relationship_types"]
+        for relationship in orbital_map["relationships"]
+    )
+
+
+def test_schema_catalog_includes_all_frameworks() -> None:
+    response = app.test_client().get("/api/schema-files")
+
+    assert response.status_code == 200
+    framework_files = {
+        schema["filename"]
+        for schema in response.get_json()["schemas"]
+        if schema["kind"] == "framework"
+    }
+    assert {
+        "agentic_soc_framework_v1.json",
+        "agentic_enterprise_operations_framework_v1.json",
+    } <= framework_files
+
+
+def test_apef_remains_a_dedicated_ecosystem_report(client) -> None:
+    schema_response = client.get("/api/schema-files")
+    graph_response = client.get("/api/apef-graph")
+    framework_response = client.get(
+        "/api/asmf-framework",
+        query_string={"schema": "AI_platform_ecosystem_framework_v1.json"},
+    )
+    orbital_response = client.get(
+        "/api/asmf-orbital-map",
+        query_string={"schema": "AI_platform_ecosystem_framework_v1.json"},
+    )
+
+    assert schema_response.status_code == 200
+    assert graph_response.status_code == 200
+    assert framework_response.status_code == 400
+    assert orbital_response.status_code == 400
+    apec = next(
+        schema
+        for schema in schema_response.get_json()["schemas"]
+        if schema["filename"] == "AI_platform_ecosystem_framework_v1.json"
+    )
+    graph = graph_response.get_json()
+
+    assert apec["kind"] == "apef"
+    assert apec["structure"] == "apef"
+    assert len(graph["vendors"]) == 7
+    assert graph["edges"]

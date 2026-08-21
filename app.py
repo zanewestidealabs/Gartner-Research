@@ -183,7 +183,7 @@ SCHEMA_REGISTRY = {
     'Schema_Template_MQ_Gap.json': {'top_key': 'mq_gap_schema_template_v1.0', 'structure': 'flat'},
     'agentic_soc_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
     'agentic_enterprise_operations_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
-    'AI_platform_ecosystem_framework_v1.json': {'top_key': None, 'structure': 'asmf'},
+    'AI_platform_ecosystem_framework_v1.json': {'top_key': None, 'structure': 'apef'},
     'Buyer_Voice_Schema_1_0.json': {'top_key': None, 'structure': 'flat'},
     'OpenAI_Buyer_Data_Analysis_Schema.json': {'top_key': None, 'structure': 'buyer_voice'},
     'ServiceNow_Buyer_Data_Analysis_Schema.json': {'top_key': None, 'structure': 'buyer_voice'},
@@ -290,7 +290,7 @@ def _strip_schema_notes(body):
     return body
 
 def _schema_structure(schema_file=None):
-    """Return 'nested', 'flat', 'asmf', 'method', or 'buyer_voice' for the given schema."""
+    """Return the registered structure for the given schema."""
     if schema_file is None:
         schema_file = app_state.current_schema_file
     reg = SCHEMA_REGISTRY.get(schema_file)
@@ -615,7 +615,7 @@ def get_metadata():
             proof_v = proof_scale.get(k, '')
             # Combine both scales: "GTM: X | Proof: Y"
             score_legend[str(k)] = f'GTM: {v} | Proof: {proof_v}'
-    elif _schema_structure(schema_file) in {'asmf', 'method', 'buyer_voice'}:
+    elif _schema_structure(schema_file) in {'asmf', 'apef', 'method', 'buyer_voice'}:
         score_legend = {}
     else:
         score_legend = dict(SCORE_LEGEND)
@@ -636,7 +636,7 @@ def get_metadata():
     field_metadata = {k: v for k, v in FIELD_METADATA.items() if k not in all_known_pillar_codes}
     pillars_in_schema = {}
     schema_structure = _schema_structure(schema_file)
-    if schema_structure == 'asmf' and 'dimensions' in schema:
+    if schema_structure in {'asmf', 'apef'} and 'dimensions' in schema:
         for code, dim in schema['dimensions'].items():
             pillars_in_schema[code] = {
                 'name': dim.get('name', code),
@@ -866,6 +866,15 @@ def get_vendor_files():
                 'current': '',
                 'current_schema': active_schema
             })
+        if (
+            SCHEMA_REGISTRY.get(active_schema, {}).get('structure') == 'asmf'
+        ):
+            app_state.current_vendor_file = ''
+            return jsonify({
+                'files': [],
+                'current': '',
+                'current_schema': active_schema
+            })
         active_project = _detect_project(active_schema)
         available_files = []
         app_dir = os.path.dirname(__file__)
@@ -964,7 +973,7 @@ def switch_vendor_file():
         # Keep explicitly-selected framework schema pinned for framework flows.
         # Frontend sends the active schema while switching vendor files.
         schema_switched = False
-        if schema_hint in SCHEMA_REGISTRY and SCHEMA_REGISTRY.get(schema_hint, {}).get('structure') == 'asmf':
+        if schema_hint in SCHEMA_REGISTRY and SCHEMA_REGISTRY.get(schema_hint, {}).get('structure') in {'asmf', 'apef'}:
             if app_state.current_schema_file != schema_hint:
                 app_state.current_schema_file = schema_hint
                 schema_switched = True
@@ -1059,6 +1068,7 @@ def get_schema_files():
                 'display': display,
                 'kind': (
                     'framework' if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'asmf'
+                    else 'apef' if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'apef'
                     else 'buyer_voice' if SCHEMA_REGISTRY.get(fn, {}).get('structure') == 'buyer_voice'
                     else 'schema'
                 ),
@@ -1087,10 +1097,9 @@ def switch_schema():
     app_state.current_schema_file = new_schema
     schema_structure = SCHEMA_REGISTRY.get(new_schema, {}).get('structure')
     if schema_structure == 'asmf':
-        if new_schema == 'AI_platform_ecosystem_framework_v1.json':
-            app_state.current_vendor_file = 'ai_platform_ecosystem_vendors_v1.json'
-        else:
-            app_state.current_vendor_file = ''
+        app_state.current_vendor_file = ''
+    elif schema_structure == 'apef':
+        app_state.current_vendor_file = 'ai_platform_ecosystem_vendors_v1.json'
     elif schema_structure in {'method', 'buyer_voice'}:
         app_state.current_vendor_file = ''
     return jsonify({
@@ -2074,6 +2083,301 @@ def get_buyer_voice_reports():
             'datasets': datasets,
             'reports': reports,
         })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+def _buyer_voice_payload_for_schema(schema_file):
+    if schema_file == 'OpenAI_Buyer_Data_Analysis_Schema.json':
+        allowed_outcomes = {'openai', 'method'}
+        allowed_dataset_ids = {'openai_2026_ytd'}
+    elif schema_file == 'ServiceNow_Buyer_Data_Analysis_Schema.json':
+        allowed_outcomes = {'servicenow', 'method'}
+        allowed_dataset_ids = {'servicenow_commercial_2026_ytd'}
+    else:
+        allowed_outcomes = {'openai', 'servicenow', 'method'}
+        allowed_dataset_ids = set(BUYER_VOICE_DATASETS.keys())
+
+    datasets = {
+        dataset_id: _summarize_buyer_voice_dataset(dataset_id, config)
+        for dataset_id, config in BUYER_VOICE_DATASETS.items()
+        if dataset_id in allowed_dataset_ids
+    }
+    # Reuse the route's report definitions without making an HTTP call by asking
+    # the route-level machinery for all static report metadata would be overkill;
+    # the PPTX only needs slide outcome labels, so derive them from schema identity.
+    if schema_file == 'ServiceNow_Buyer_Data_Analysis_Schema.json':
+        output_areas = [
+            'Commercial-friction discovery',
+            'Supplied-category matrix',
+            'Renewal cost and contract leverage',
+            'AI-native pricing and packaging',
+            'ROI proof gap',
+            'Cost-offset tactics and sensitivity review',
+        ]
+    else:
+        output_areas = [
+            'Full-corpus buyer questions',
+            'Enterprise AI Assistants market cut',
+            'Enterprise AI Coding Agents market cut',
+            'Governance and data protection',
+            'Adoption and ROI proof',
+            'Commercial terms and renewal questions',
+        ]
+    return {
+        'schema': schema_file,
+        'datasets': datasets,
+        'output_areas': output_areas,
+        'allowed_outcomes': allowed_outcomes,
+    }
+
+
+def _bv_add_textbox(slide, text, left, top, width, height, font_size=14, bold=False, color=(31, 41, 55)):
+    from pptx.util import Inches, Pt
+    from pptx.dml.color import RGBColor
+
+    box = slide.shapes.add_textbox(Inches(left), Inches(top), Inches(width), Inches(height))
+    tf = box.text_frame
+    tf.clear()
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    run = p.add_run()
+    run.text = str(text or '')
+    run.font.size = Pt(font_size)
+    run.font.bold = bold
+    run.font.color.rgb = RGBColor(*color)
+    return box
+
+
+def _bv_add_title(slide, title, subtitle=None):
+    _bv_add_textbox(slide, title, 0.55, 0.35, 12.2, 0.45, font_size=24, bold=True, color=(15, 23, 42))
+    if subtitle:
+        _bv_add_textbox(slide, subtitle, 0.58, 0.82, 12.0, 0.35, font_size=11, color=(71, 85, 105))
+
+
+def _bv_add_bullets(slide, items, left, top, width, height, font_size=12):
+    from pptx.util import Inches, Pt
+    from pptx.dml.color import RGBColor
+
+    box = slide.shapes.add_textbox(Inches(left), Inches(top), Inches(width), Inches(height))
+    tf = box.text_frame
+    tf.clear()
+    tf.word_wrap = True
+    for idx, item in enumerate(items or []):
+        p = tf.paragraphs[0] if idx == 0 else tf.add_paragraph()
+        p.text = str(item)
+        p.level = 0
+        p.font.size = Pt(font_size)
+        p.font.color.rgb = RGBColor(31, 41, 55)
+    return box
+
+
+def _bv_add_bar_rows(slide, items, left, top, width, row_height=0.28, max_items=8, color=(37, 99, 235)):
+    from pptx.util import Inches
+    from pptx.dml.color import RGBColor
+
+    rows = (items or [])[:max_items]
+    max_count = max([int(row.get('count', 0) or 0) for row in rows] + [1])
+    for idx, row in enumerate(rows):
+        y = top + idx * row_height
+        label = str(row.get('name', ''))[:34]
+        count = int(row.get('count', 0) or 0)
+        _bv_add_textbox(slide, label, left, y, 2.5, row_height, font_size=8, color=(51, 65, 85))
+        track = slide.shapes.add_shape(1, Inches(left + 2.65), Inches(y + 0.06), Inches(width - 3.15), Inches(0.09))
+        track.fill.solid()
+        track.fill.fore_color.rgb = RGBColor(226, 232, 240)
+        track.line.color.rgb = RGBColor(226, 232, 240)
+        bar_w = max(0.05, (width - 3.15) * (count / max_count))
+        bar = slide.shapes.add_shape(1, Inches(left + 2.65), Inches(y + 0.06), Inches(bar_w), Inches(0.09))
+        bar.fill.solid()
+        bar.fill.fore_color.rgb = RGBColor(*color)
+        bar.line.color.rgb = RGBColor(*color)
+        _bv_add_textbox(slide, str(count), left + width - 0.42, y - 0.01, 0.45, row_height, font_size=8, color=(71, 85, 105))
+
+
+def _bv_add_theme_table(slide, themes, left, top, width, height, max_items=6):
+    from pptx.util import Inches, Pt
+    from pptx.dml.color import RGBColor
+
+    rows = min(len(themes or []), max_items) + 1
+    cols = 4
+    table_shape = slide.shapes.add_table(rows, cols, Inches(left), Inches(top), Inches(width), Inches(height))
+    table = table_shape.table
+    headers = ['Theme', 'Signal', 'Spread', 'Analyst interpretation']
+    for c, header in enumerate(headers):
+        cell = table.cell(0, c)
+        cell.text = header
+        cell.fill.solid()
+        cell.fill.fore_color.rgb = RGBColor(15, 23, 42)
+        cell.text_frame.paragraphs[0].runs[0].font.color.rgb = RGBColor(255, 255, 255)
+        cell.text_frame.paragraphs[0].runs[0].font.size = Pt(8)
+        cell.text_frame.paragraphs[0].runs[0].font.bold = True
+    table.columns[0].width = Inches(width * 0.30)
+    table.columns[1].width = Inches(width * 0.12)
+    table.columns[2].width = Inches(width * 0.14)
+    table.columns[3].width = Inches(width * 0.44)
+    for r, theme in enumerate((themes or [])[:max_items], start=1):
+        interp = theme.get('lens', '')
+        values = [
+            theme.get('name', ''),
+            str(theme.get('match_count', 0)),
+            theme.get('qualitative_spread', ''),
+            interp,
+        ]
+        for c, value in enumerate(values):
+            cell = table.cell(r, c)
+            cell.text = str(value)[:180]
+            for p in cell.text_frame.paragraphs:
+                for run in p.runs:
+                    run.font.size = Pt(7)
+                    run.font.color.rgb = RGBColor(31, 41, 55)
+    return table_shape
+
+
+def _bv_export_pptx(schema_file):
+    from io import BytesIO
+    from pptx import Presentation
+    from pptx.util import Inches, Pt
+    from pptx.dml.color import RGBColor
+
+    payload = _buyer_voice_payload_for_schema(schema_file)
+    dataset_id, dataset = next(iter(payload['datasets'].items()))
+    themes = dataset.get('theme_analysis', [])
+    is_servicenow = schema_file == 'ServiceNow_Buyer_Data_Analysis_Schema.json'
+    org = 'ServiceNow' if is_servicenow else 'OpenAI'
+
+    prs = Presentation()
+    prs.slide_width = Inches(13.333)
+    prs.slide_height = Inches(7.5)
+    blank = prs.slide_layouts[6]
+
+    # Title slide
+    slide = prs.slides.add_slide(blank)
+    bg = slide.background
+    bg.fill.solid()
+    bg.fill.fore_color.rgb = RGBColor(248, 250, 252)
+    _bv_add_textbox(slide, f'{org} Buyer Voice Analysis', 0.7, 1.25, 11.8, 0.7, font_size=32, bold=True, color=(15, 23, 42))
+    _bv_add_textbox(slide, dataset.get('scope', ''), 0.72, 2.05, 10.8, 0.5, font_size=15, color=(71, 85, 105))
+    _bv_add_textbox(slide, f"{dataset.get('record_count')} records · {dataset.get('date_start')} to {dataset.get('date_end')}", 0.72, 2.78, 8.8, 0.35, font_size=14, bold=True, color=(37, 99, 235))
+    _bv_add_bullets(slide, payload['output_areas'], 0.95, 3.55, 7.5, 2.5, font_size=14)
+
+    # Dataset slide
+    slide = prs.slides.add_slide(blank)
+    _bv_add_title(slide, 'Dataset Overview', 'Source corpus and top-level buyer footprint.')
+    _bv_add_textbox(slide, f"Source: {dataset.get('source_file')}", 0.65, 1.25, 12.0, 0.25, font_size=10, color=(71, 85, 105))
+    _bv_add_textbox(slide, str(dataset.get('record_count')), 0.8, 1.85, 1.8, 0.55, font_size=28, bold=True, color=(37, 99, 235))
+    _bv_add_textbox(slide, 'Records', 0.85, 2.38, 1.5, 0.25, font_size=10, color=(71, 85, 105))
+    _bv_add_textbox(slide, str(len(dataset.get('months', []))), 3.0, 1.85, 1.8, 0.55, font_size=28, bold=True, color=(37, 99, 235))
+    _bv_add_textbox(slide, 'Months', 3.05, 2.38, 1.5, 0.25, font_size=10, color=(71, 85, 105))
+    _bv_add_textbox(slide, 'Top regions', 0.75, 3.0, 2.5, 0.3, font_size=14, bold=True)
+    _bv_add_bar_rows(slide, dataset.get('top_regions'), 0.75, 3.38, 5.4, max_items=6)
+    _bv_add_textbox(slide, 'Top sectors', 6.85, 3.0, 2.5, 0.3, font_size=14, bold=True)
+    _bv_add_bar_rows(slide, dataset.get('top_industries'), 6.85, 3.38, 5.4, max_items=6, color=(8, 145, 178))
+
+    # Composition slide
+    slide = prs.slides.add_slide(blank)
+    _bv_add_title(slide, 'Buyer Composition', 'Who is represented in the inquiry corpus.')
+    _bv_add_textbox(slide, 'Top roles', 0.75, 1.25, 2.5, 0.3, font_size=14, bold=True)
+    _bv_add_bar_rows(slide, dataset.get('top_roles'), 0.75, 1.65, 5.4, max_items=8, color=(147, 51, 234))
+    _bv_add_textbox(slide, 'Interaction types', 6.85, 1.25, 2.5, 0.3, font_size=14, bold=True)
+    _bv_add_bar_rows(slide, dataset.get('top_interaction_subtypes'), 6.85, 1.65, 5.4, max_items=8, color=(234, 88, 12))
+    _bv_add_textbox(slide, 'Buying stage / Buysmart', 0.75, 4.3, 3.0, 0.3, font_size=14, bold=True)
+    _bv_add_bar_rows(slide, dataset.get('top_buysmart_stages'), 0.75, 4.7, 5.4, max_items=5, color=(22, 163, 74))
+    _bv_add_textbox(slide, 'Account market', 6.85, 4.3, 2.5, 0.3, font_size=14, bold=True)
+    _bv_add_bar_rows(slide, dataset.get('top_account_markets'), 6.85, 4.7, 5.4, max_items=5, color=(220, 38, 38))
+
+    # Theme momentum slide
+    slide = prs.slides.add_slide(blank)
+    _bv_add_title(slide, 'Theme Momentum', 'Monthly signal volume by theme.')
+    months = [m.get('name') for m in dataset.get('months', [])]
+    max_count = max([point.get('count', 0) for theme in themes for point in theme.get('monthly_counts', [])] + [1])
+    plot_left, plot_top, plot_w, plot_h = 0.85, 1.45, 11.4, 4.7
+    # axes
+    slide.shapes.add_shape(1, Inches(plot_left), Inches(plot_top + plot_h), Inches(plot_w), Inches(0.01)).fill.solid()
+    palette = [(37, 99, 235), (220, 38, 38), (22, 163, 74), (147, 51, 234), (234, 88, 12), (8, 145, 178)]
+    for idx, theme in enumerate(themes[:6]):
+        counts = {p.get('name'): p.get('count', 0) for p in theme.get('monthly_counts', [])}
+        points = []
+        for m_idx, month in enumerate(months):
+            x = plot_left + (m_idx / max(len(months) - 1, 1)) * plot_w
+            y = plot_top + plot_h - ((counts.get(month, 0) / max_count) * plot_h)
+            points.append((x, y, counts.get(month, 0), month))
+        color = palette[idx % len(palette)]
+        for p1, p2 in zip(points, points[1:]):
+            line = slide.shapes.add_connector(1, Inches(p1[0]), Inches(p1[1]), Inches(p2[0]), Inches(p2[1]))
+            line.line.color.rgb = RGBColor(*color)
+            line.line.width = Pt(2.2)
+        for x, y, count, month in points:
+            dot = slide.shapes.add_shape(9, Inches(x - 0.045), Inches(y - 0.045), Inches(0.09), Inches(0.09))
+            dot.fill.solid()
+            dot.fill.fore_color.rgb = RGBColor(255, 255, 255)
+            dot.line.color.rgb = RGBColor(*color)
+            dot.line.width = Pt(1.3)
+        _bv_add_textbox(slide, theme.get('name', '')[:42], 0.85 + (idx % 2) * 6.0, 6.25 + (idx // 2) * 0.24, 5.6, 0.22, font_size=8, color=color)
+    for m_idx, month in enumerate(months):
+        x = plot_left + (m_idx / max(len(months) - 1, 1)) * plot_w
+        _bv_add_textbox(slide, str(month)[5:], x - 0.12, 6.0, 0.3, 0.2, font_size=8, color=(71, 85, 105))
+
+    # Themes slide
+    slide = prs.slides.add_slide(blank)
+    _bv_add_title(slide, 'Question / Friction Themes', 'Top overlapping buyer signal groups.')
+    _bv_add_theme_table(slide, themes, 0.55, 1.22, 12.25, 5.8, max_items=7)
+
+    # Analyst review slide
+    slide = prs.slides.add_slide(blank)
+    _bv_add_title(slide, 'Analyst Review', 'Evidence posture, readiness, and representative signals.')
+    read = (
+        'Commercial figures, negotiation leverage, and cost-offset tactics need provenance and sensitivity review.'
+        if is_servicenow else
+        'Supply-side records, ambiguous GPT references, and competitor mentions need filtering before conclusions are written.'
+    )
+    _bv_add_textbox(slide, read, 0.75, 1.25, 11.8, 0.55, font_size=15, bold=True, color=(15, 23, 42))
+    bullets = []
+    for theme in themes[:5]:
+        refs = ', '.join([f"Ref {ex.get('reference')}" for ex in theme.get('examples', [])[:3]])
+        bullets.append(f"{theme.get('name')}: {theme.get('match_count')} signal records. {refs}")
+    _bv_add_bullets(slide, bullets, 0.85, 2.1, 11.6, 3.8, font_size=11)
+
+    # Analyst summary slide
+    slide = prs.slides.add_slide(blank)
+    _bv_add_title(slide, 'Analyst Summary', 'Narrative interpretation and recommended slide story.')
+    executive = (
+        f'The {org} corpus reads as a commercial-friction and economics analysis. It should explain where buyers experience pressure, not whether the platform is good or bad.'
+        if is_servicenow else
+        f'The {org} corpus reads as an enterprise buyer-question and adoption analysis. It should explain what buyers are trying to decide, govern, fund, compare, or prove.'
+    )
+    _bv_add_textbox(slide, executive, 0.75, 1.25, 11.7, 0.7, font_size=15, bold=True, color=(15, 23, 42))
+    story = [
+        'Start with corpus scope and buyer composition.',
+        'Lead with the dominant buyer signals.',
+        'Show momentum and regional concentration where it changes interpretation.',
+        'Deep dive into the highest-confidence themes.',
+        'Close with validation caveats and analyst handling notes.',
+    ]
+    _bv_add_textbox(slide, 'Recommended story', 0.85, 2.35, 4.0, 0.3, font_size=15, bold=True)
+    _bv_add_bullets(slide, story, 0.9, 2.78, 5.6, 2.7, font_size=12)
+    _bv_add_textbox(slide, 'Best-supported output areas', 7.0, 2.35, 4.0, 0.3, font_size=15, bold=True)
+    _bv_add_bullets(slide, payload['output_areas'], 7.05, 2.78, 5.5, 2.7, font_size=12)
+
+    buf = BytesIO()
+    prs.save(buf)
+    buf.seek(0)
+    filename = f'{org}_Buyer_Voice_Report.pptx'
+    return send_file(
+        buf,
+        mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        as_attachment=True,
+        download_name=filename
+    )
+
+
+@app.route('/api/buyervoice/export-pptx', methods=['GET'])
+def export_buyer_voice_pptx():
+    schema_file = request.args.get('schema', app_state.current_schema_file)
+    if schema_file not in {'OpenAI_Buyer_Data_Analysis_Schema.json', 'ServiceNow_Buyer_Data_Analysis_Schema.json'}:
+        schema_file = 'OpenAI_Buyer_Data_Analysis_Schema.json'
+    try:
+        return _bv_export_pptx(schema_file)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -7918,6 +8222,9 @@ def get_asmf_framework():
     """Return the selected framework schema data for framework views."""
     schema_file = request.args.get('schema', app_state.current_schema_file)
 
+    if SCHEMA_REGISTRY.get(schema_file, {}).get('structure') == 'apef':
+        return jsonify({'error': 'APEF uses its dedicated ecosystem report API'}), 400
+
     # If the active schema is not framework-shaped, fall back to the default
     # ASMF schema so framework views can still render in a read-only mode.
     if schema_file not in SCHEMA_REGISTRY or SCHEMA_REGISTRY.get(schema_file, {}).get('structure') != 'asmf':
@@ -8100,16 +8407,18 @@ def get_asmf_orbital_map():
     """Return the orbital map compatible with the selected framework."""
     try:
         schema_file = request.args.get('schema', app_state.current_schema_file)
+        if SCHEMA_REGISTRY.get(schema_file, {}).get('structure') == 'apef':
+            return jsonify({'error': 'APEF uses its dedicated ecosystem graph API'}), 400
+        relationship_types = {
+            'data_flow': {'color': '#06b6d4', 'label': 'Data Flow', 'abbr': 'DF', 'dash': []},
+            'execution': {'color': '#8b5cf6', 'label': 'Execution', 'abbr': 'EX', 'dash': []},
+            'feedback': {'color': '#10b981', 'label': 'Feedback', 'abbr': 'FB', 'dash': [4, 4]},
+            'governance': {'color': '#ef4444', 'label': 'Governance', 'abbr': 'GV', 'dash': [6, 3]},
+            'augmentation': {'color': '#f59e0b', 'label': 'Augmentation', 'abbr': 'AU', 'dash': [3, 6]},
+        }
         if schema_file == 'agentic_enterprise_operations_framework_v1.json':
             framework = load_schema_data(schema_file)
             dimensions = framework.get('dimensions', {}) if isinstance(framework, dict) else {}
-            relationship_types = {
-                'data_flow': {'color': '#06b6d4', 'label': 'Data Flow', 'abbr': 'DF', 'dash': []},
-                'execution': {'color': '#8b5cf6', 'label': 'Execution', 'abbr': 'EX', 'dash': []},
-                'feedback': {'color': '#10b981', 'label': 'Feedback', 'abbr': 'FB', 'dash': [4, 4]},
-                'governance': {'color': '#ef4444', 'label': 'Governance', 'abbr': 'GV', 'dash': [6, 3]},
-                'augmentation': {'color': '#f59e0b', 'label': 'Augmentation', 'abbr': 'AU', 'dash': [3, 6]},
-            }
             relationships = [
                 ('OBS', 'RPL', 'Operational telemetry and dependency context initiate reasoning and planning.', 'data_flow', 3),
                 ('OBS', 'OKG', 'Live signals enrich the operational graph with current service, asset, and dependency state.', 'data_flow', 3),
@@ -8176,7 +8485,7 @@ def get_asmf_orbital_map():
 
 
 # Allowed doc IDs to prevent path traversal
-_ALLOWED_DOCS = {'precyber_methodology', 'architecture', 'buyervoice_templates'}
+_ALLOWED_DOCS = {'precyber_methodology', 'architecture', 'buyervoice_templates', 'asaf_market_notes'}
 
 @app.route('/api/docs/<doc_id>', methods=['GET'])
 def get_docs(doc_id):

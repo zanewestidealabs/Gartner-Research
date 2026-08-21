@@ -46,6 +46,10 @@ function isCurrentBuyerVoiceSchema() {
     return getCurrentSchemaStructure() === 'buyer_voice';
 }
 
+function isCurrentAPEFSchema() {
+    return getCurrentSchemaStructure() === 'apef' || appState.currentSchemaFile === 'AI_platform_ecosystem_framework_v1.json';
+}
+
 function isCurrentASMFAdoptionSchema() {
     return isCurrentASMFSchema() && appState.currentSchemaFile !== 'ai_platform_ecosystem_framework_v1.json';
 }
@@ -1442,6 +1446,9 @@ function setupEventListeners() {
     // Dark mode toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     if (darkModeToggle) darkModeToggle.addEventListener('click', toggleDarkMode);
+
+    const buyerVoiceExportBtn = document.getElementById('buyer-voice-export-pptx');
+    if (buyerVoiceExportBtn) buyerVoiceExportBtn.addEventListener('click', exportBuyerVoiceReportsPPTX);
 
     // Initialize ranking controls on dashboard
     initRankingControls();
@@ -4678,10 +4685,12 @@ function filterReportsTabsBySchema() {
     const currentSchema = (appState.currentSchemaFile || '').trim();
     const isASMFAdoption = isCurrentASMFAdoptionSchema();
     const isBuyerVoice = isCurrentBuyerVoiceSchema();
+    const isAPEF = isCurrentAPEFSchema();
     const allTabs = document.querySelectorAll('.reports-tab');
     let activeVisible = false;
     const asmfAllowedTabs = new Set(['legend-report', 'asmf-matrix', 'asmf-graph']);
     const buyerVoiceAllowedTabs = new Set(['legend-report', 'buyer-voice-reports']);
+    const apefAllowedTabs = new Set(['legend-report', 'apef-platform']);
     if (currentSchema === 'agentic_soc_framework_v1.json') {
         asmfAllowedTabs.add('asaf-positioning');
     }
@@ -4696,7 +4705,11 @@ function filterReportsTabsBySchema() {
         if (!shouldHide && isBuyerVoice && !buyerVoiceAllowedTabs.has(tab.dataset.reportTab)) {
             shouldHide = true;
         }
-        if (!shouldHide && requiredSchema && !allowedSchemas.includes(currentSchema)) {
+        if (!shouldHide && isAPEF && !apefAllowedTabs.has(tab.dataset.reportTab)) {
+            shouldHide = true;
+        }
+        const allowsFramework = allowedSchemas.includes('framework') && isCurrentASMFSchema();
+        if (!shouldHide && requiredSchema && !allowsFramework && !allowedSchemas.includes(currentSchema)) {
             shouldHide = true;
         }
         if (shouldHide) {
@@ -4714,7 +4727,8 @@ function filterReportsTabsBySchema() {
 
     // If the previously active tab is now hidden, activate the first visible tab
     if (!activeVisible) {
-        const firstVisible = document.querySelector('.reports-tab[style=""], .reports-tab:not([style])');
+        const firstVisible = Array.from(document.querySelectorAll('.reports-tab'))
+            .find(tab => tab.style.display !== 'none');
         if (firstVisible) {
             firstVisible.classList.add('active');
             activateReportTab(firstVisible.dataset.reportTab);
@@ -4745,7 +4759,8 @@ function filterNavBySchema() {
         // Hide schema-specific items when not on that schema
         if (item.dataset.requiresSchema) {
             const allowedSchemas = item.dataset.requiresSchema.split(',').map(s => s.trim()).filter(Boolean);
-            if (!allowedSchemas.includes(currentSchema)) {
+            const allowsFramework = allowedSchemas.includes('framework') && isCurrentASMFSchema();
+            if (!allowsFramework && !allowedSchemas.includes(currentSchema)) {
                 shouldHide = true;
             }
         }
@@ -4759,6 +4774,10 @@ function filterNavBySchema() {
         }
 
         if (isBuyerVoice && !['legend', 'reports'].includes(item.dataset.view)) {
+            shouldHide = true;
+        }
+
+        if (isCurrentAPEFSchema() && !['legend', 'reports'].includes(item.dataset.view)) {
             shouldHide = true;
         }
 
@@ -4780,8 +4799,9 @@ function filterNavBySchema() {
 
     // If the active nav item was hidden, switch to the first visible view
     if (activeHidden) {
-        // Prefer legend or reports when no vendor data
-        const fallback = document.querySelector('.nav-item[data-view="legend"]:not([style*="none"])') ||
+        // Prefer the framework rail for ASMF schemas; otherwise prefer legend/reports when no vendor data.
+        const fallback = (isCurrentASMFSchema() ? document.querySelector('.nav-item[data-view="asmf"]:not([style*="none"])') : null) ||
+                          document.querySelector('.nav-item[data-view="legend"]:not([style*="none"])') ||
                           document.querySelector('.nav-item[data-view="reports"]:not([style*="none"])') ||
                           document.querySelector('.nav-item[data-view]:not([style*="none"])');
         if (fallback) {
@@ -4922,6 +4942,8 @@ function activateReportTab(tabId) {
         }
     } else if (tabId === 'asaf-positioning') {
         populateASAFPositioning();
+    } else if (tabId === 'apef-platform') {
+        populateAPEFReportView();
     } else if (tabId.startsWith('report-')) {
         const reportId = tabId.replace('report-', '');
         populateMarketInsightReport(reportId);
@@ -5727,6 +5749,12 @@ async function populateBuyerVoiceReports() {
     } catch (error) {
         body.innerHTML = `<p class="report-empty">Buyer Voice reports could not be loaded: ${escapeHtml(error.message)}</p>`;
     }
+}
+
+function exportBuyerVoiceReportsPPTX() {
+    const schema = appState.currentSchemaFile || '';
+    const schemaParam = schema ? `?schema=${encodeURIComponent(schema)}` : '';
+    window.location.href = `/api/buyervoice/export-pptx${schemaParam}`;
 }
 
 function populateBuyerVoiceLegendReport(body, schemaLabel, intentEl, titleEl) {
@@ -14665,9 +14693,11 @@ async function populateASMFOrbital() {
 
     // ── Load data (framework + relationship map) ──────────────────────────
     try {
+        const schemaFile = appState.currentSchemaFile || '';
+        const schemaParam = schemaFile ? `?schema=${encodeURIComponent(schemaFile)}` : '';
         const toFetch = [];
-        if (!_asmfFramework)  toFetch.push(fetch('/api/asmf-framework').then(r=>r.json()).then(d=>{ _asmfFramework=d; }));
-        if (!_asmfOrbitalMap) toFetch.push(fetch('/api/asmf-orbital-map').then(r=>r.json()).then(d=>{ _asmfOrbitalMap=d; }));
+        if (!_asmfFramework)  toFetch.push(fetch(`/api/asmf-framework${schemaParam}`).then(r=>r.json()).then(d=>{ _asmfFramework=d; }));
+        if (!_asmfOrbitalMap) toFetch.push(fetch(`/api/asmf-orbital-map${schemaParam}`).then(r=>r.json()).then(d=>{ _asmfOrbitalMap=d; }));
         if (toFetch.length) await Promise.all(toFetch);
     } catch(e) {
         el.innerHTML = `<p style="color:#ef4444;padding:20px;">${escapeHtml(String(e))}</p>`;
@@ -15876,6 +15906,7 @@ let _asmfRadarResizeTimer = null;
 
 function resetASMFVisualizations() {
     _asmfFramework = null;
+    _asmfOrbitalMap = null;
     _asmfGraph = null;
 
     [
@@ -16471,9 +16502,11 @@ async function populateASMFGraph() {
 
     try {
         await _loadForceGraph3D();
+        const schemaFile = appState.currentSchemaFile || '';
+        const schemaParam = schemaFile ? `?schema=${encodeURIComponent(schemaFile)}` : '';
         const toFetch = [];
-        if (!_asmfFramework) toFetch.push(fetch('/api/asmf-framework').then(r => r.json()).then(d => { _asmfFramework = d; }));
-        if (!_asmfOrbitalMap) toFetch.push(fetch('/api/asmf-orbital-map').then(r => r.json()).then(d => { _asmfOrbitalMap = d; }));
+        if (!_asmfFramework) toFetch.push(fetch(`/api/asmf-framework${schemaParam}`).then(r => r.json()).then(d => { _asmfFramework = d; }));
+        if (!_asmfOrbitalMap) toFetch.push(fetch(`/api/asmf-orbital-map${schemaParam}`).then(r => r.json()).then(d => { _asmfOrbitalMap = d; }));
         if (toFetch.length) await Promise.all(toFetch);
     } catch (e) {
         container.innerHTML = `<div style="color:#ef4444;padding:24px;">Error: ${escapeHtml(String(e))}</div>`;
@@ -33416,7 +33449,7 @@ function exportCNAPPMarketInsightHTML() {
     // ── Fetch docs JSON ────────────────────────────────────────────────────
     async function loadDocs(docId) {
         activeDocId = docId;
-        bodyEl.classList.toggle('ebook-mode', docId === 'asaf_ebook');
+        bodyEl.classList.toggle('ebook-mode', docId === 'asaf_ebook' || docId === 'asaf_market_notes');
         if (docsCache[docId]) { renderPanel(docsCache[docId]); return; }
         bodyEl.innerHTML  = '<div class="docs-view-loading">Loading documentation…</div>';
         if (navListEl) navListEl.innerHTML = '';
