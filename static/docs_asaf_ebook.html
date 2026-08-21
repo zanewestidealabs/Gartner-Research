@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ASAF Ebook Export — June 09, 2026</title>
+<title>ASAF Ebook Export — June 10, 2026</title>
 <style>
     /* ── Docs view layout ──────────────────────────────────── */
     .docs-view-layout {
@@ -172,17 +172,18 @@
 
     /* ── Worksheet Wizard ──────────────────────────────────────── */
     .ws-wizard { margin: 0; }
+    .ebook-mode .ws-wizard { background: var(--ws-card-bg); border-radius: 14px; padding: 28px 28px 24px; border: 1px solid var(--ws-border); margin: 4px 0 40px; }
     /* Progress bar */
-    .ws-progress { display: flex; align-items: flex-start; gap: 0; margin: 0 0 26px; padding: 14px 18px; background: rgba(0,0,0,0.22); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); flex-wrap: nowrap; overflow-x: auto; }
+    .ws-progress { display: flex; align-items: flex-start; gap: 0; margin: 0 0 26px; padding: 14px 18px; background: var(--ws-progress-bg); border-radius: 10px; border: 1px solid var(--ws-progress-border); flex-wrap: nowrap; overflow-x: auto; }
     .ws-progress-step { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 62px; cursor: default; }
     .ws-progress-step-done { cursor: pointer; opacity: 0.7; }
     .ws-progress-step-done:hover { opacity: 1; }
-    .ws-progress-dot { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--text-secondary); background: rgba(255,255,255,0.04); flex-shrink: 0; }
+    .ws-progress-dot { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--ws-input-border); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--text-secondary); background: var(--ws-surface); flex-shrink: 0; }
     .ws-progress-step-active .ws-progress-dot { background: rgba(99,102,241,0.85); border-color: rgba(129,140,248,0.9); color: #fff; }
     .ws-progress-step-done .ws-progress-dot { background: rgba(52,211,153,0.2); border-color: rgba(52,211,153,0.55); color: rgba(52,211,153,0.9); }
     .ws-progress-label { font-size: 9px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-secondary); opacity: .6; white-space: nowrap; }
     .ws-progress-step-active .ws-progress-label { color: rgba(165,180,252,0.9); opacity: 1; }
-    .ws-progress-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); align-self: flex-start; margin-top: 12px; min-width: 10px; }
+    .ws-progress-line { flex: 1; height: 1px; background: var(--ws-slider-track); align-self: flex-start; margin-top: 12px; min-width: 10px; }
     .ws-progress-line-done { background: rgba(52,211,153,0.35); }
     /* Panel */
     .ws-panel { }
@@ -195,49 +196,53 @@
     .ws-field-wide { grid-column: 1 / -1; }
     .ws-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-secondary); opacity: .85; }
     .ws-req { color: rgba(251,113,133,0.9); }
-    .ws-input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--text-primary); outline: none; font-family: inherit; transition: border-color .15s, background .15s; width: 100%; box-sizing: border-box; }
+    .ws-input { background: var(--ws-input-bg); border: 1px solid var(--ws-input-border); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--text-primary); outline: none; font-family: inherit; transition: border-color .15s, background .15s; width: 100%; box-sizing: border-box; }
+    .ws-input::placeholder, .ws-textarea::placeholder { color: var(--ws-placeholder); }
     .ws-input:focus { border-color: rgba(99,102,241,0.65); background: rgba(99,102,241,0.06); }
     .ws-input-sm { font-size: 12px; padding: 5px 10px; }
-    .ws-textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--text-primary); outline: none; font-family: inherit; resize: vertical; transition: border-color .15s, background .15s; width: 100%; box-sizing: border-box; }
+    .ws-textarea { background: var(--ws-input-bg); border: 1px solid var(--ws-input-border); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--text-primary); outline: none; font-family: inherit; resize: vertical; transition: border-color .15s, background .15s; width: 100%; box-sizing: border-box; }
     .ws-textarea:focus { border-color: rgba(99,102,241,0.65); background: rgba(99,102,241,0.06); }
     .ws-textarea-sm { font-size: 12px; }
-    .ws-select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--text-primary); outline: none; font-family: inherit; cursor: pointer; width: 100%; box-sizing: border-box; }
+    .ws-select { background: var(--ws-select-bg); border: 1px solid var(--ws-input-border); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--text-primary); outline: none; font-family: inherit; cursor: pointer; width: 100%; box-sizing: border-box; }
+    body.dark-mode .ws-select { color-scheme: dark; }
+    .ws-select option { background: var(--ws-select-bg); color: var(--text-primary); }
     .ws-select:focus { border-color: rgba(99,102,241,0.65); }
+    .ws-select-sm { font-size: 11px; padding: 4px 8px; margin-top: 5px; color: var(--text-secondary); }
     /* Buttons */
     .ws-btn { padding: 9px 18px; border-radius: 7px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: opacity .15s, background .15s; white-space: nowrap; }
     .ws-btn-primary { background: linear-gradient(135deg, rgba(99,102,241,0.9) 0%, rgba(59,130,246,0.85) 100%); color: #fff; }
     .ws-btn-primary:hover { opacity: .88; }
-    .ws-btn-secondary { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: var(--text-primary); }
-    .ws-btn-secondary:hover { background: rgba(255,255,255,0.12); }
+    .ws-btn-secondary { background: var(--ws-surface); border: 1px solid var(--ws-border); color: var(--text-primary); }
+    .ws-btn-secondary:hover { background: var(--ws-surface-raised); }
     .ws-btn-save { background: linear-gradient(135deg, rgba(52,211,153,0.9) 0%, rgba(16,185,129,0.85) 100%); color: #0f172a; font-weight: 700; }
     .ws-btn-error { background: rgba(239,68,68,0.45) !important; color: #fff !important; }
     .ws-btn-success { background: linear-gradient(135deg, rgba(52,211,153,0.9) 0%, rgba(16,185,129,0.85) 100%) !important; color: #0f172a !important; }
     .ws-btn:disabled { opacity: .6; cursor: default; }
     .ws-export-link { display: inline-flex; align-items: center; text-decoration: none; }
-    .ws-nav-row { display: flex; align-items: center; gap: 10px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .ws-nav-row { display: flex; align-items: center; gap: 10px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--ws-border-subtle); }
     .ws-nav-spacer { flex: 1; }
     /* Score slider */
     .ws-slider-wrap { margin: 0 0 20px; }
     .ws-slider-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-secondary); opacity: .85; margin-bottom: 10px; }
     .ws-stage-row { display: flex; gap: 4px; margin-bottom: 8px; }
-    .ws-stage-cell { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 5px 2px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.08); transition: all .15s; }
+    .ws-stage-cell { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 5px 2px; border-radius: 5px; border: 1px solid var(--ws-border-subtle); transition: all .15s; }
     .ws-stage-num { font-size: 13px; font-weight: 800; color: var(--text-secondary); }
     .ws-stage-lbl { font-size: 7.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-secondary); opacity: .55; }
     .ws-stage-cell-active .ws-stage-num { font-size: 15px; }
     .ws-stage-cell-active .ws-stage-lbl { opacity: 1; }
-    .ws-slider { -webkit-appearance: none; width: 100%; height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; outline: none; margin: 4px 0 6px; cursor: pointer; }
+    .ws-slider { -webkit-appearance: none; width: 100%; height: 5px; background: var(--ws-slider-track); border-radius: 3px; outline: none; margin: 4px 0 6px; cursor: pointer; }
     .ws-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: rgba(99,102,241,0.9); cursor: pointer; border: 2px solid rgba(255,255,255,0.75); }
     .ws-slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: rgba(99,102,241,0.9); cursor: pointer; border: 2px solid rgba(255,255,255,0.75); box-sizing: border-box; }
     .ws-stage-desc { font-size: 12px; font-style: italic; min-height: 18px; margin-top: 2px; }
     /* Dimension navigator */
     .ws-dim-nav { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
-    .ws-dim-dot { padding: 4px 9px; border-radius: 5px; border: 1.5px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); font-size: 10px; font-weight: 700; color: var(--text-secondary); cursor: pointer; transition: all .15s; letter-spacing: .05em; }
-    .ws-dim-dot:hover { background: rgba(255,255,255,0.08); }
+    .ws-dim-dot { padding: 4px 9px; border-radius: 5px; border: 1.5px solid var(--ws-border); background: var(--ws-surface); font-size: 10px; font-weight: 700; color: var(--text-secondary); cursor: pointer; transition: all .15s; letter-spacing: .05em; }
+    .ws-dim-dot:hover { background: var(--ws-surface-raised); }
     .ws-dim-dot-active { border-color: var(--plane-color, rgba(99,102,241,0.7)); background: rgba(99,102,241,0.15); color: var(--text-primary); }
     .ws-dim-dot-done::after { content: '✓'; font-size: 8px; margin-left: 3px; opacity: .7; }
     /* Dimension card */
-    .ws-dim-card { border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
-    .ws-dim-header { padding: 14px 16px 12px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .ws-dim-card { border-radius: 10px; border: 1px solid var(--ws-border); overflow: hidden; }
+    .ws-dim-header { padding: 14px 16px 12px; border-bottom: 1px solid var(--ws-border-subtle); }
     .ws-dim-header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .ws-plane-badge { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
     .ws-dim-progress { font-size: 11px; color: var(--text-secondary); opacity: .55; }
@@ -246,17 +251,17 @@
     .ws-dim-body { padding: 16px; display: flex; flex-direction: column; gap: 0; }
     /* Summary */
     .ws-stat-chips { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 18px; }
-    .ws-stat-chip { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 8px; padding: 12px 14px; }
+    .ws-stat-chip { background: var(--ws-surface); border: 1px solid var(--ws-border-subtle); border-radius: 8px; padding: 12px 14px; }
     .ws-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-secondary); opacity: .7; margin-bottom: 5px; }
     .ws-stat-value { font-size: 22px; font-weight: 800; color: var(--text-primary); line-height: 1; margin-bottom: 4px; }
     .ws-stat-sub { font-size: 11px; color: var(--text-secondary); opacity: .65; }
-    .ws-chart-wrap { background: rgba(0,0,0,0.22); border-radius: 8px; padding: 14px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.07); }
+    .ws-chart-wrap { background: var(--ws-progress-bg); border-radius: 8px; padding: 14px; margin-bottom: 18px; border: 1px solid var(--ws-border-subtle); }
     .ws-interp { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.22); border-radius: 8px; padding: 14px 16px; margin-bottom: 4px; }
     .ws-interp-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: rgba(165,180,252,0.8); margin: 0 0 10px; }
     .ws-interp-item { font-size: 13px; color: var(--text-secondary); margin: 6px 0; line-height: 1.5; }
     /* Vendor diagnostic */
     .ws-diag-list { display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
-    .ws-diag-row { display: flex; gap: 12px; padding: 11px 13px; background: rgba(255,255,255,0.03); border-radius: 7px; border: 1px solid rgba(255,255,255,0.07); }
+    .ws-diag-row { display: flex; gap: 12px; padding: 11px 13px; background: var(--ws-surface); border-radius: 7px; border: 1px solid var(--ws-border-subtle); }
     .ws-diag-num { font-size: 12px; font-weight: 700; color: rgba(99,102,241,0.7); min-width: 18px; padding-top: 2px; }
     .ws-diag-body { flex: 1; min-width: 0; }
     .ws-diag-q { font-size: 13px; color: var(--text-primary); margin-bottom: 8px; line-height: 1.45; }
@@ -269,11 +274,11 @@
     .ws-radio-no    { color: rgba(251,113,133,0.9); }
     /* Buyer eval */
     .ws-buyer-section { margin-bottom: 22px; }
-    .ws-buyer-cat { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: rgba(165,180,252,0.85); margin: 0 0 10px; padding-bottom: 7px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .ws-buyer-cat { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: rgba(99,102,241,0.85); margin: 0 0 10px; padding-bottom: 7px; border-bottom: 1px solid var(--ws-border-subtle); }
     .ws-buyer-row { margin-bottom: 12px; }
     .ws-buyer-q { font-size: 13px; color: var(--text-secondary); margin-bottom: 5px; line-height: 1.45; }
     /* Save */
-    .ws-save-preview { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 5px; }
+    .ws-save-preview { background: var(--ws-surface); border: 1px solid var(--ws-border-subtle); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 5px; }
     .ws-save-line { font-size: 13px; color: var(--text-secondary); }
     .ws-save-lk { font-weight: 600; color: var(--text-primary); opacity: .75; }
     .ws-save-lv { color: var(--text-secondary); }
@@ -281,8 +286,8 @@
 
     /* ── Assessment type toggle ───────────────────────────────── */
     .ws-type-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
-    .ws-type-card { padding: 12px 14px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all .15s; }
-    .ws-type-card:hover { background: rgba(255,255,255,0.07); }
+    .ws-type-card { padding: 12px 14px; border-radius: 8px; border: 1.5px solid var(--ws-input-border); background: var(--ws-surface); cursor: pointer; transition: all .15s; }
+    .ws-type-card:hover { background: var(--ws-surface-raised); }
     .ws-type-card-active { border-color: rgba(99,102,241,0.7) !important; background: rgba(99,102,241,0.12) !important; }
     .ws-type-card-label { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
     .ws-type-card-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.45; }
@@ -290,7 +295,7 @@
     /* ── Sub-dimension sliders ────────────────────────────────── */
     .ws-sub-section { margin-bottom: 20px; }
     .ws-sub-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); opacity: .7; margin-bottom: 10px; }
-    .ws-sub-slider-wrap { margin-bottom: 10px; padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 6px; border: 1px solid rgba(255,255,255,0.07); }
+    .ws-sub-slider-wrap { margin-bottom: 10px; padding: 10px 12px; background: var(--ws-surface); border-radius: 6px; border: 1px solid var(--ws-border-subtle); }
     .ws-sub-slider-top { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
     .ws-sub-id { font-size: 10px; font-weight: 700; color: rgba(99,102,241,0.85); letter-spacing: .05em; flex-shrink: 0; }
     .ws-sub-name { font-size: 12px; font-weight: 600; color: var(--text-primary); flex: 1; }
@@ -301,14 +306,14 @@
     .ws-slider-sub::-moz-range-thumb { width: 14px !important; height: 14px !important; }
 
     /* ── Dimension score chip (computed avg) ─────────────────── */
-    .ws-dim-score-chip { display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: rgba(0,0,0,0.25); border-radius: 7px; margin-top: 12px; border: 1px solid rgba(255,255,255,0.07); }
+    .ws-dim-score-chip { display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: var(--ws-progress-bg); border-radius: 7px; margin-top: 12px; border: 1px solid var(--ws-border-subtle); }
     .ws-dim-score-eyebrow { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-secondary); opacity: .65; flex-shrink: 0; }
     .ws-dim-score-val { font-size: 22px; font-weight: 800; line-height: 1; }
     .ws-dim-score-lbl { font-size: 12px; font-weight: 600; }
 
     /* ── Vendor coverage grid ─────────────────────────────────── */
     .ws-cov-section { margin-bottom: 24px; }
-    .ws-cov-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 7px; border: 1px solid rgba(255,255,255,0.07); margin-bottom: 6px; flex-wrap: wrap; }
+    .ws-cov-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; background: var(--ws-surface); border-radius: 7px; border: 1px solid var(--ws-border-subtle); margin-bottom: 6px; flex-wrap: wrap; }
     .ws-cov-dim { display: flex; align-items: center; gap: 8px; min-width: 200px; }
     .ws-cov-id { font-size: 10px; font-weight: 700; letter-spacing: .05em; border: 1px solid; border-radius: 4px; padding: 2px 6px; flex-shrink: 0; }
     .ws-cov-name { font-size: 12px; color: var(--text-secondary); }
@@ -559,7 +564,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 1</h2>
 <p>If the tiered SOC is ending, the next question is not which tool wins inside the old structure. It is what architectural model replaces L1, L2, and L3—and why that model better describes the future of security operations.</p></div></div>
-<div class="docs-tab-content" id="sect-foundations"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">FRAMEWORK FOUNDATIONS</span><h2 class="docs-chapter-title">Stages &amp; Principles</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><p>﻿# ASAF Framework Foundations: Stages, Principles, and Governing Logic</p>
+<div class="docs-tab-content" id="sect-foundations"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">FRAMEWORK FOUNDATIONS</span><h2 class="docs-chapter-title">Stages &amp; Principles</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;planes&quot;, &quot;label&quot;: &quot;ASAF Framework \u2014 11 Dimensions Across Three Operating Planes&quot;, &quot;subtitle&quot;: &quot;6 Maturity Stages  \u2022  8 Governing Principles  \u2022  11 Operational Dimensions&quot;}"></div><div class="docs-markdown"><p>﻿# ASAF Framework Foundations: Stages, Principles, and Governing Logic</p>
 <p><strong>Working Draft — Agentic SOC Architecture Framework (ASAF) | Framework Reference</strong></p>
 <hr />
 <h2>Why a Foundation Section Exists</h2>
@@ -757,7 +762,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 <p><strong>Wave 2 — Operational Core:</strong> RSN (reasoning), AGT (agent coordination), ACT (autonomous action), and OPS (operational model). With the foundation in place, these four dimensions define the operational capability of the system.</p>
 <p><strong>Wave 3 — Sustainment and Governance:</strong> LRN (learning loops), HUM (human governance roles), MET (measurement), and TRN (transformation management). These dimensions sustain and improve the system over time and ensure the human organization can govern what it has built.</p>
 <p>This sequencing is not mandatory — organizations will find variation based on existing capabilities. But programs that attempt to build Wave 3 capabilities before Wave 1 foundations are in place consistently fail to achieve durable autonomous operations.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_1"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 1</span><h2 class="docs-chapter-title">The Three Operating Planes</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 1 — The Three Operating Planes</h2>
+<div class="docs-tab-content" id="sect-chapter_1"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 1</span><h2 class="docs-chapter-title">The Three Operating Planes</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;planes&quot;, &quot;label&quot;: &quot;ASAF Architecture \u2014 Three Operating Planes&quot;, &quot;subtitle&quot;: &quot;Sensing, Reasoning, and Control replace L1, L2, and L3&quot;}"></div><div class="docs-markdown"><h2>Chapter 1 — The Three Operating Planes</h2>
 <p>The tiered SOC was a labor model before it was a theory. It described how work moved through human specialization: initial triage, deeper investigation, and escalation into more expert handling. For a long period, that model was useful because it aligned with the real constraints of the operation. Humans had to inspect signals, interpret evidence, form judgments, and decide what to do next. The architecture of the SOC was therefore organized around how human effort was allocated and escalated.</p>
 <p>That is precisely why the model now fails.</p>
 <p>The problem is not that L1, L2, and L3 were always wrong. The problem is that they are no longer the right abstraction for the system that advanced enterprises are building. A tier model tells you who handles work. It does not tell you how a security operation behaves as a control system. It does not explain how signals are produced, how hypotheses are formed, how actions are bounded, or how governance shapes runtime behavior. It describes a staffing structure, not an operational architecture.</p>
@@ -891,7 +896,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 2</h2>
 <p>If Sensing is the first plane, the next question is what kind of output the new architecture actually requires. That is where the argument goes next: from the plane model itself to the new capability floor of the Sensing Fabric.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_2"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 2</span><h2 class="docs-chapter-title">Sensing Fabric</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 2 — Sensing Fabric</h2>
+<div class="docs-tab-content" id="sect-chapter_2"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 2</span><h2 class="docs-chapter-title">Sensing Fabric</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;SEN&quot;, &quot;label&quot;: &quot;SEN \u2014 Sensing Fabric &amp; Detection Architecture&quot;, &quot;subtitle&quot;: &quot;Continuous adversary-validated signal production&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;RSN&quot;, &quot;label&quot;: &quot;feeds hypothesis engine&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;LRN&quot;, &quot;label&quot;: &quot;detection events feed learning&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;writes observed signals&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;LRN&quot;, &quot;label&quot;: &quot;receives detection improvements&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;learning&quot;}, {&quot;to&quot;: &quot;TRN&quot;, &quot;label&quot;: &quot;receives instrumentation investment&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;context&quot;}], &quot;vendor_types&quot;: [&quot;EDR / XDR&quot;, &quot;NDR / NPMD&quot;, &quot;Cloud Telemetry&quot;, &quot;Detection Engineering&quot;, &quot;Deception / Honeypot&quot;]}"></div><div class="docs-markdown"><h2>Chapter 2 — Sensing Fabric</h2>
 <p>If the three-plane model replaces the tiered SOC, then the first practical question is what the system should actually receive as input. That question sounds obvious, but it is where much of the market still slips back into legacy thinking.</p>
 <p>In the older architecture, the input layer of security operations was effectively the alert. Sensors produced alerts, alerts entered queues, analysts triaged them, and the rest of the operating model formed around the challenge of deciding which alerts deserved deeper human attention. Even when products improved fidelity, correlation, or prioritization, the architecture remained fundamentally alert-centric. The goal was better alert management.</p>
 <p>ASAF argues that this is no longer enough.</p>
@@ -973,7 +978,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 3</h2>
 <p>Once the system begins receiving richer signals, the central problem is no longer alert volume. It is how the operation interprets those signals, forms judgments, and decides what they mean. That is the work of the Reasoning plane.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_3"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 3</span><h2 class="docs-chapter-title">Reasoning Architecture</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 3 — Reasoning Architecture</h2>
+<div class="docs-tab-content" id="sect-chapter_3"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 3</span><h2 class="docs-chapter-title">Reasoning Architecture</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;RSN&quot;, &quot;label&quot;: &quot;RSN \u2014 Reasoning &amp; Planning&quot;, &quot;subtitle&quot;: &quot;Hypothesis-driven inference replaces alert investigation&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;directs execution&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;hypothesis&quot;}, {&quot;to&quot;: &quot;OPS&quot;, &quot;label&quot;: &quot;operational routing directives&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;hypothesis&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;writes hypotheses and conclusions&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;SEN&quot;, &quot;label&quot;: &quot;receives signals&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;reads adversary and asset context&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;OPS&quot;, &quot;label&quot;: &quot;receives exposure prioritization&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}], &quot;vendor_types&quot;: [&quot;SIEM&quot;, &quot;AI Investigation Platforms&quot;, &quot;Threat Intel&quot;, &quot;UEBA / Behavioral Analytics&quot;]}"></div><div class="docs-markdown"><h2>Chapter 3 — Reasoning Architecture</h2>
 <p>Once a security operation stops treating alerts as the final unit of input, it must confront a harder question: how should the system actually think?</p>
 <p>That question sits at the center of the Reasoning plane. It is also where the break with the traditional SOC becomes most visible.</p>
 <p>In the older model, investigation is largely alert-centric. An alert fires. Someone looks at it. Additional facts are gathered. The case may escalate. Another person adds more context, makes a judgment, and decides whether the alert represents a real incident or a tolerable anomaly. That process can be improved with correlation, enrichment, case management, and workflow automation. But the architecture remains the same: the system is still organized around evaluating alerts one at a time or in loosely related bundles.</p>
@@ -1061,7 +1066,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 4</h2>
 <p>If the system can form judgments, the next question is whether it can act on them without creating legal, operational, or governance blowback. That is the problem the Control plane must solve through bounded autonomy.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_4"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 4</span><h2 class="docs-chapter-title">Agent Execution (AGT &amp; ACT)</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 4 — Agent Execution</h2>
+<div class="docs-tab-content" id="sect-chapter_4"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 4</span><h2 class="docs-chapter-title">Agent Execution (AGT &amp; ACT)</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;AGT&quot;, &quot;label&quot;: &quot;AGT \u2014 Agent Architecture &amp; Coordination  |  ACT \u2014 Autonomous Action &amp; Response&quot;, &quot;subtitle&quot;: &quot;Bounded autonomy within governed authority scope&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;agent coordination signals&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;writes actions and outcomes&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;returns audit telemetry&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;RSN&quot;, &quot;label&quot;: &quot;receives reasoning outputs&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;hypothesis&quot;}, {&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;receives authority constraints&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;authority&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;reads operational context&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;context&quot;}], &quot;vendor_types&quot;: [&quot;SOAR / Orchestration&quot;, &quot;Automated Containment&quot;, &quot;Remediation Platforms&quot;, &quot;Agent Runtime&quot;]}"></div><div class="docs-markdown"><h2>Chapter 4 — Agent Execution</h2>
 <p>The modern security market still talks about automation as if the category were self-explanatory. It is not.</p>
 <p>Automation can mean scripted playbooks. It can mean orchestration across tools. It can mean preapproved remediation steps. It can mean workflow acceleration with a human always kept in the loop. All of those may be useful. None of them, by themselves, explains the real architectural challenge of the Control plane.</p>
 <p>ASAF uses a sharper idea: <strong>bounded autonomy</strong>.</p>
@@ -1144,7 +1149,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 5</h2>
 <p>Once a system can sense, reason, and act, it needs a shared place to retain evidence, policy objects, adversary context, and operational memory. Without that spine, the loop cannot compound. That is why the next chapter turns to the Security Knowledge Graph.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_ops"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 5</span><h2 class="docs-chapter-title">Operational Interaction Model</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>The Chapter in One Claim</h2>
+<div class="docs-tab-content" id="sect-chapter_ops"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 5</span><h2 class="docs-chapter-title">Operational Interaction Model</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;OPS&quot;, &quot;label&quot;: &quot;OPS \u2014 Operational Interaction Model&quot;, &quot;subtitle&quot;: &quot;Non-linear graph replaces linear escalation chain&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;operational routing signal&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;writes operational state&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;RSN&quot;, &quot;label&quot;: &quot;receives reasoning directives&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;hypothesis&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;receives exposure context&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;LRN&quot;, &quot;label&quot;: &quot;receives DFIR learning feedback&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;learning&quot;}, {&quot;to&quot;: &quot;HUM&quot;, &quot;label&quot;: &quot;receives intent signals&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}], &quot;vendor_types&quot;: [&quot;SOAR / Orchestration&quot;, &quot;CTEM / EASM&quot;, &quot;DFIR Platforms&quot;, &quot;Workflow Automation&quot;]}"></div><div class="docs-markdown"><h2>The Chapter in One Claim</h2>
 <p>The escalation chain is not a governance structure. It is a throughput management workaround — a mechanism for routing decisions through the organization because the organization has no other way to move decisions without moving people. When agentic systems can reason, act, and coordinate without human hand-offs, the escalation chain does not become faster. It becomes unnecessary.</p>
 <p>The <strong>OPS: Operational Interaction Model</strong> dimension describes the structural change in how security operations are organized when escalation is no longer the primary coordination mechanism. The shift is from linear workflows — sequential, human-gated, queue-driven — to a dynamic, non-linear operational graph where exposure management, detection, response, and DFIR operate as concurrent, interconnected functions.</p>
 <p>This dimension does not describe a new tool. It describes a new way of thinking about operational architecture — and why the architecture matters as much as the capability.</p>
@@ -1268,7 +1273,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 <h2>Bridge: From Operational Model to Integration</h2>
 <p>The eleven dimensions of ASAF do not operate independently. Each dimension produces signals consumed by others. OPS makes those signal flows operationally coherent — it is the architecture that determines how signals from SEN become inputs to RSN, how RSN outputs become directives for ACT, how ACT outcomes return to SKG and LRN.</p>
 <p>The final chapter in this series — <strong>Chapter 11: The Integration Model</strong> — takes the perspective of the full system and describes how all eleven dimensions connect, what the complete signal topology looks like, and what organizations actually need to build to make the framework operational at the scale of a live security program.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_5"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 6</span><h2 class="docs-chapter-title">Security Knowledge Graph</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 5 — Security Knowledge Graph</h2>
+<div class="docs-tab-content" id="sect-chapter_5"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 6</span><h2 class="docs-chapter-title">Security Knowledge Graph</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;SKG \u2014 Security Knowledge Graph&quot;, &quot;subtitle&quot;: &quot;Shared operational intelligence spine&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;RSN&quot;, &quot;label&quot;: &quot;context for reasoning&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;context for execution&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;knowledge for governance decisions&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;OPS&quot;, &quot;label&quot;: &quot;exposure model for prioritization&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;SEN&quot;, &quot;label&quot;: &quot;receives observed signals&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;receives action outcomes&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;LRN&quot;, &quot;label&quot;: &quot;receives learning updates&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;learning&quot;}], &quot;vendor_types&quot;: [&quot;Threat Intel Platforms&quot;, &quot;Data Lake / SIEM&quot;, &quot;Knowledge Graph DBs&quot;, &quot;Context Enrichment&quot;]}"></div><div class="docs-markdown"><h2>Chapter 5 — Security Knowledge Graph</h2>
 <p>By the time a reader reaches this chapter, the outline of the replacement architecture should already be clear.</p>
 <p>The system no longer begins with queues and escalations. It begins with sensing, reasoning, and control. Signals are produced continuously. Judgments are formed against richer context. Actions are executed within bounded authority. Governance is no longer something that sits politely outside the machinery.</p>
 <p>At that point, one question becomes unavoidable: where does the system keep its memory?</p>
@@ -1356,7 +1361,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 6</h2>
 <p>If the graph stores policy objects, authority context, and evidence chains, then governance is no longer something that lives outside the system. It becomes part of runtime behavior itself. That is the subject of the next chapter.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_6"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 7</span><h2 class="docs-chapter-title">Governance &amp; Ethics</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 6 — Governance &amp; Ethics</h2>
+<div class="docs-tab-content" id="sect-chapter_6"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 7</span><h2 class="docs-chapter-title">Governance &amp; Ethics</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;GOV \u2014 Ethics, Governance &amp; Authority&quot;, &quot;subtitle&quot;: &quot;Runtime control signals, not policy documentation&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;authority constraints on execution&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;authority&quot;}, {&quot;to&quot;: &quot;AGT&quot;, &quot;label&quot;: &quot;authority scope per agent class&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;authority&quot;}, {&quot;to&quot;: &quot;HUM&quot;, &quot;label&quot;: &quot;governance signals for oversight&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;MET&quot;, &quot;label&quot;: &quot;receives performance evidence&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;HUM&quot;, &quot;label&quot;: &quot;receives policy intent&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;receives knowledge for decisions&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;receives audit telemetry&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}], &quot;vendor_types&quot;: [&quot;GRC / Risk Platforms&quot;, &quot;AI Safety / Guardrails&quot;, &quot;Policy Automation&quot;, &quot;Audit Logging&quot;]}"></div><div class="docs-markdown"><h2>Chapter 6 — Governance &amp; Ethics</h2>
 <p>By the time a security operation begins to behave like a governed control system, governance can no longer remain a document set that lives outside the machinery. That is the central claim of this chapter.</p>
 <p>In a traditional SOC, governance often appears at a distance from operations. Policies are written. Control frameworks are reviewed. Audit committees ask for evidence after the fact. Security leaders define approval paths and exception processes. But the operating core of the system still depends mainly on people making judgments within those broad boundaries. Governance, in that model, is important but external. It supervises the operation more than it inhabits it.</p>
 <p>That arrangement becomes unstable once the system starts sensing continuously, reasoning over shared context, and taking bounded action at machine speed. At that point, the enterprise can no longer rely on policy documents and post hoc review alone. It needs governance to operate as a <strong>runtime control signal</strong>.</p>
@@ -1441,7 +1446,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 7</h2>
 <p>Once governance and shared intelligence are part of runtime, the remaining operational dimensions stop being periodic management functions and start becoming live control signals. The first of those is exposure posture.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_7"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 8</span><h2 class="docs-chapter-title">Continuous Threat Exposure</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 7 — Continuous Threat Exposure</h2>
+<div class="docs-tab-content" id="sect-chapter_7"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 8</span><h2 class="docs-chapter-title">Continuous Threat Exposure</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;OPS&quot;, &quot;label&quot;: &quot;OPS \u2014 Exposure-driven Operational Prioritization&quot;, &quot;subtitle&quot;: &quot;Live exposure posture as an operational signal (OPS-02)&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;RSN&quot;, &quot;label&quot;: &quot;exposure prioritization signals&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;risk posture evidence&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;exposure model contributions&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;SEN&quot;, &quot;label&quot;: &quot;receives detected exposure telemetry&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;receives asset and vuln context&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;context&quot;}], &quot;vendor_types&quot;: [&quot;EASM / CTEM&quot;, &quot;Vulnerability Management&quot;, &quot;Red Team Automation&quot;, &quot;Attack Surface Analytics&quot;]}"></div><div class="docs-markdown"><h2>Chapter 7 — Continuous Threat Exposure</h2>
 <p>For years, many security teams have treated exposure as a reporting discipline. They scan the environment, collect findings, rank issues by severity or CVSS logic, distribute remediation lists, and revisit the results on a periodic cadence. That model is familiar, institutionally accepted, and deeply legacy.</p>
 <p>ASAF argues that it is also no longer sufficient.</p>
 <p>In an agentic security architecture, exposure posture cannot remain a periodic assessment artifact. It must become a <strong>live operational signal</strong>. That is the core shift of this chapter.</p>
@@ -1525,7 +1530,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 8</h2>
 <p>As more of the operation moves into the system itself, the human role changes. The next question is not whether people disappear, but what they stop doing and what they become more responsible for.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_8"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 9</span><h2 class="docs-chapter-title">Human Interface &amp; Oversight</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 8 — Human Interface &amp; Oversight</h2>
+<div class="docs-tab-content" id="sect-chapter_8"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 9</span><h2 class="docs-chapter-title">Human Interface &amp; Oversight</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;HUM&quot;, &quot;label&quot;: &quot;HUM \u2014 Human Roles &amp; Governance Interface&quot;, &quot;subtitle&quot;: &quot;Intent, governance, and exception handling&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;policy intent&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;OPS&quot;, &quot;label&quot;: &quot;operational scope and intent&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;exception directives&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;authority&quot;}, {&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;receives governance signals&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;MET&quot;, &quot;label&quot;: &quot;receives performance evidence&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;receives context for decisions&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;context&quot;}], &quot;vendor_types&quot;: [&quot;Analyst Workbench&quot;, &quot;Security Copilots&quot;, &quot;Console / UX Platforms&quot;, &quot;Oversight Interfaces&quot;]}"></div><div class="docs-markdown"><h2>Chapter 8 — Human Interface &amp; Oversight</h2>
 <p>The easiest way to misunderstand agentic security operations is to think the human question is mainly about elimination. Will analysts disappear? Will teams shrink? Will the machine replace the person?</p>
 <p>Those questions are emotionally understandable and strategically incomplete.</p>
 <p>ASAF makes a different argument. The human role is not simply removed. It is <strong>redefined</strong>. The center of gravity moves from manual queue handling and routine investigation toward intent, exception handling, authority design, governance oversight, and legitimacy review.</p>
@@ -1619,7 +1624,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 9</h2>
 <p>Once the human is no longer the center of throughput, the legacy metrics of the SOC begin to collapse as well. The next chapter asks how performance should be measured in an agentic system.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_9"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 10</span><h2 class="docs-chapter-title">Measurement &amp; Metrics</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 9 — Measurement &amp; Metrics</h2>
+<div class="docs-tab-content" id="sect-chapter_9"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 10</span><h2 class="docs-chapter-title">Measurement &amp; Metrics</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;MET&quot;, &quot;label&quot;: &quot;MET \u2014 Metrics, Audit &amp; Assurance&quot;, &quot;subtitle&quot;: &quot;Governance evidence, not activity throughput&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;evidence for governance&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;TRN&quot;, &quot;label&quot;: &quot;stage advancement indicators&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;HUM&quot;, &quot;label&quot;: &quot;performance evidence for oversight&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;receives execution outcomes&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;SEN&quot;, &quot;label&quot;: &quot;receives signal quality data&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;LRN&quot;, &quot;label&quot;: &quot;receives learning metrics&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;learning&quot;}], &quot;vendor_types&quot;: [&quot;SIEM Dashboards&quot;, &quot;Security Scorecards&quot;, &quot;Outcome Analytics&quot;, &quot;Exec Reporting&quot;]}"></div><div class="docs-markdown"><h2>Chapter 9 — Measurement &amp; Metrics</h2>
 <p>Every operating model reveals itself through what it chooses to measure.</p>
 <p>For the traditional SOC, the core metrics were unsurprising. Mean time to detect. Mean time to respond. Alert volume. False positive rate. Analyst throughput. Ticket closure efficiency. These measures were not arbitrary. They matched the architecture. If the system is organized around queues, escalations, and human processing capacity, then throughput and response timing become natural proxies for performance.</p>
 <p>ASAF argues that these are increasingly <strong>Stage 0 metrics</strong>.</p>
@@ -1701,7 +1706,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 10</h2>
 <p>Once the enterprise can measure the new operating model, it can finally manage the transformation into it. The next chapter asks how organizations and vendors move across ASAF stages in practice.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_lrn"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 11</span><h2 class="docs-chapter-title">Learning &amp; Continuous DFIR</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>The Chapter in One Claim</h2>
+<div class="docs-tab-content" id="sect-chapter_lrn"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 11</span><h2 class="docs-chapter-title">Learning &amp; Continuous DFIR</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;LRN&quot;, &quot;label&quot;: &quot;LRN \u2014 Learning &amp; Continuous DFIR&quot;, &quot;subtitle&quot;: &quot;Continuous learning closes the cybernetic loop&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;SEN&quot;, &quot;label&quot;: &quot;detection improvements fed back&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;learning&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;knowledge graph evolution&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;learning&quot;}, {&quot;to&quot;: &quot;MET&quot;, &quot;label&quot;: &quot;learning metrics&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;SEN&quot;, &quot;label&quot;: &quot;receives detection events&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;ACT&quot;, &quot;label&quot;: &quot;receives execution outcomes&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;receives intelligence context&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;context&quot;}], &quot;vendor_types&quot;: [&quot;Threat Intel Platforms&quot;, &quot;DFIR / Forensics&quot;, &quot;ML / AI Feedback Loops&quot;, &quot;Detection Engineering&quot;]}"></div><div class="docs-markdown"><h2>The Chapter in One Claim</h2>
 <p>Most security operations programs treat learning as a project activity: run a post-incident review, write up findings, update a runbook, maybe create a new detection rule. The findings live in a document. The document is rarely read. The learning does not happen.</p>
 <p>In a mature agentic SOC, learning is an operational function — as continuous and automatic as detection itself. Every incident, near-miss, and threat intelligence update is processed by a dedicated learning architecture that feeds improvements directly back into the detection fabric, reasoning engine, and Security Knowledge Graph. The system does not wait for a quarterly review to improve. It improves in real time, at machine speed, from every operational event that passes through it.</p>
 <p>This dimension — <strong>LRN: Learning &amp; Continuous DFIR</strong> — closes the cybernetic loop. Without it, the SOC senses, reasons, and acts, but does not get measurably better. With it, every adversary encounter makes the system more capable of detecting the next one.</p>
@@ -1807,7 +1812,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 <h2>Bridge: From Learning to the Operational Model</h2>
 <p>LRN ensures the system improves from what it has experienced. But improvement is only valuable if the operational model that acts on what the system knows is itself well-designed.</p>
 <p>The next dimension in the framework — <strong>OPS: Operational Interaction Model</strong> — addresses exactly this: not how the system learns, but how it structures the operational execution of what it knows. The shift from linear escalation chains to a non-linear, exposure-driven operational graph is the structural change that allows the learning capabilities described in this chapter to actually translate into faster, better-coordinated security operations.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_10"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 12</span><h2 class="docs-chapter-title">Transformation Management</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 10 — Transformation Management</h2>
+<div class="docs-tab-content" id="sect-chapter_10"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 12</span><h2 class="docs-chapter-title">Transformation Management</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;dimension&quot;, &quot;dimension&quot;: &quot;TRN&quot;, &quot;label&quot;: &quot;TRN \u2014 Transformation Readiness&quot;, &quot;subtitle&quot;: &quot;Stage advancement as structural architecture&quot;, &quot;connections&quot;: [{&quot;to&quot;: &quot;SEN&quot;, &quot;label&quot;: &quot;instrumentation investment&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;SKG&quot;, &quot;label&quot;: &quot;roadmap encoding&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;context&quot;}, {&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;stage requirement signals&quot;, &quot;direction&quot;: &quot;out&quot;, &quot;signal_type&quot;: &quot;signal&quot;}, {&quot;to&quot;: &quot;MET&quot;, &quot;label&quot;: &quot;receives progress indicators&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;outcome&quot;}, {&quot;to&quot;: &quot;GOV&quot;, &quot;label&quot;: &quot;receives policy maturity signals&quot;, &quot;direction&quot;: &quot;in&quot;, &quot;signal_type&quot;: &quot;signal&quot;}], &quot;vendor_types&quot;: [&quot;MSSP / MDR Services&quot;, &quot;Security Consultancies&quot;, &quot;Platform CSM / PS&quot;, &quot;Enablement Tools&quot;]}"></div><div class="docs-markdown"><h2>Chapter 10 — Transformation Management</h2>
 <p>By this point in the book, the reader understands the architecture. The remaining question is execution at the organizational level.</p>
 <p>How do enterprises actually move from the old model to the new one?</p>
 <p>How do vendors become structurally embedded in that journey?</p>
@@ -1893,7 +1898,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
 </ul>
 <h2>Bridge to Chapter 11</h2>
 <p>Once the reader understands the stages, the dimensions, and the transition path, the final question remains: how do all of these capabilities behave as one system? The answer is the integration model.</p></div></div>
-<div class="docs-tab-content" id="sect-chapter_11"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 13</span><h2 class="docs-chapter-title">The Integration Model</h2><span class="docs-chapter-accent"></span></div><div class="docs-markdown"><h2>Chapter 11 — The Integration Model</h2>
+<div class="docs-tab-content" id="sect-chapter_11"><div class="docs-chapter-header"><span class="docs-chapter-eyebrow">CHAPTER 13</span><h2 class="docs-chapter-title">The Integration Model</h2><span class="docs-chapter-accent"></span></div><div class="docs-asaf-viz-placeholder" data-viz="{&quot;type&quot;: &quot;asaf_viz&quot;, &quot;mode&quot;: &quot;loop&quot;, &quot;label&quot;: &quot;The Cybernetic Loop \u2014 All 11 Dimensions&quot;, &quot;subtitle&quot;: &quot;Continuous bidirectional signal exchange across Sensing, Reasoning, and Control planes&quot;}"></div><div class="docs-markdown"><h2>Chapter 11 — The Integration Model</h2>
 <p>A framework can remain abstract until the reader sees how its parts behave together.</p>
 <p>That is the purpose of this chapter.</p>
 <p>By now, the book has described the planes, the dimensions, the governance logic, the measurement model, the human redesign, and the transformation path. But the deepest claim of ASAF has always been stronger than a list of capabilities. The framework argues that these dimensions form a <strong>continuous bidirectional signal loop</strong>. They do not merely coexist. They interact.</p>
@@ -2133,8 +2138,8 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
             dims:Object.fromEntries(DIMS.map(d=>[d.id,{subs:Object.fromEntries(d.subs.map(s=>[s.id,0])),evidence:'',blocker:'',tgt:3}])),
             context:{
                 governance_readiness:'',tech_investments:'',org_readiness:'',exec_sponsorship:'',timeline:'',
-                portfolio_coverage:Object.fromEntries(DIMS.map(d=>[d.id,{coverage:'',notes:''}])),
-                stage_range:'',portfolio_gaps:'',roadmap:'',differentiation:'',
+                portfolio_coverage:Object.fromEntries(DIMS.map(d=>[d.id,{coverage:'',stage:'',notes:''}])),
+                portfolio_gaps:'',roadmap:'',differentiation:'',
             },
             priorities:{p1:'',p2:'',p3:'',blockers:'',success_looks_like:''},
             savedFile:'',
@@ -2363,14 +2368,14 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
                         const t=mk('span',`ws-radio-opt ws-radio-${opt.toLowerCase()}`,opt);lbl.appendChild(r);lbl.appendChild(t);rr.appendChild(lbl);
                     });
                     right.appendChild(rr);
+                    const stageSel=document.createElement('select');stageSel.className='ws-select ws-select-sm';
+                    ['','Stage 0–1 (Traditional → Assisted)','Stage 1–2 (Assisted → Supervised)','Stage 2–3 (Supervised → Directed)','Stage 3–4 (Directed → Agent-First)','Stage 4–5 (Agent-First → Fully Agentic)','Broad — multiple stages'].forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o||'— Stage served —';op.selected=state.context.portfolio_coverage[d.id].stage===o;stageSel.appendChild(op);});
+                    stageSel.addEventListener('change',()=>{state.context.portfolio_coverage[d.id].stage=stageSel.value;});
+                    right.appendChild(stageSel);
                     right.appendChild(inp('ws-input ws-input-sm','Relevant products or gap notes…',state.context.portfolio_coverage[d.id].notes,v=>{state.context.portfolio_coverage[d.id].notes=v;}));
                     row.appendChild(right);covSection.appendChild(row);
                 });
                 f.appendChild(covSection);
-                const stageRow=mk('div','ws-field');stageRow.appendChild(mk('label','ws-label','Primary Stage Range Served'));
-                const sel=document.createElement('select');sel.className='ws-select';
-                ['','Stage 0–1 (Traditional to Assisted)','Stage 1–2 (Assisted to Supervised)','Stage 2–3 (Supervised to Directed)','Stage 3–4 (Directed to Agent-First)','Stage 4–5 (Agent-First to Fully Agentic)','Broad portfolio — multiple stages'].forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o||'— Select —';op.selected=state.context.stage_range===o;sel.appendChild(op);});
-                sel.addEventListener('change',()=>{state.context.stage_range=sel.value;});stageRow.appendChild(sel);f.appendChild(stageRow);
                 [{key:'portfolio_gaps',label:'Portfolio Gaps vs ASAF Requirements',ph:'Where are the biggest gaps in your portfolio relative to ASAF?'},
                  {key:'roadmap',label:'Product Roadmap for ASAF Alignment',ph:'What is on the roadmap to address higher-maturity ASAF requirements?'},
                  {key:'differentiation',label:'Portfolio Differentiation Story',ph:'What makes your portfolio differentiated within the ASAF model?'},
@@ -2437,7 +2442,7 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
                 state.step=0;state.dimIdx=0;state.assessmentType='internal';
                 Object.assign(state.profile,{company:'',business_unit:'',assessment_date:today,owner:'',participants:'',objective:''});
                 DIMS.forEach(d=>{state.dims[d.id]={subs:Object.fromEntries(d.subs.map(s=>[s.id,0])),evidence:'',blocker:'',tgt:3};});
-                state.context={governance_readiness:'',tech_investments:'',org_readiness:'',exec_sponsorship:'',timeline:'',portfolio_coverage:Object.fromEntries(DIMS.map(d=>[d.id,{coverage:'',notes:''}])),stage_range:'',portfolio_gaps:'',roadmap:'',differentiation:''};
+                state.context={governance_readiness:'',tech_investments:'',org_readiness:'',exec_sponsorship:'',timeline:'',portfolio_coverage:Object.fromEntries(DIMS.map(d=>[d.id,{coverage:'',stage:'',notes:''}])),portfolio_gaps:'',roadmap:'',differentiation:''};
                 state.priorities={p1:'',p2:'',p3:'',blockers:'',success_looks_like:''};
                 render();
             }));
@@ -2453,8 +2458,162 @@ body { background: var(--bg-primary) !important; color: var(--text-primary) !imp
         }
         render(); return wrap;
     }
+    function _buildAsafVizSvg(container, data) {
+        const W = 700, H = 310, PH = H / 3, LW = 68;
+        const NS = 'http://www.w3.org/2000/svg';
+        function mk(tag, attrs, text) {
+            const el = document.createElementNS(NS, tag);
+            for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, String(v));
+            if (text !== undefined) el.textContent = text;
+            return el;
+        }
+        // All 11 ASAF dimensions — Sensing / Reasoning / Control planes
+        const DIMS = {
+            SEN: { x: 185, y: PH * 0.5, pi: 0 }, LRN: { x: 560, y: PH * 0.5, pi: 0 },
+            RSN: { x: 150, y: PH * 1.5, pi: 1 }, OPS: { x: 280, y: PH * 1.5, pi: 1 }, SKG: { x: 410, y: PH * 1.5, pi: 1 }, MET: { x: 545, y: PH * 1.5, pi: 1 },
+            ACT: { x: 120, y: PH * 2.5, pi: 2 }, AGT: { x: 230, y: PH * 2.5, pi: 2 }, GOV: { x: 345, y: PH * 2.5, pi: 2 }, HUM: { x: 460, y: PH * 2.5, pi: 2 }, TRN: { x: 575, y: PH * 2.5, pi: 2 },
+        };
+        const PLANES = [
+            { label: 'SENSING',   fill: 'rgba(14,165,233,0.08)',  stroke: 'rgba(14,165,233,0.22)',  tc: 'rgba(56,189,248,0.8)' },
+            { label: 'REASONING', fill: 'rgba(139,92,246,0.08)', stroke: 'rgba(139,92,246,0.22)', tc: 'rgba(167,139,250,0.8)' },
+            { label: 'CONTROL',   fill: 'rgba(239,68,68,0.08)',  stroke: 'rgba(239,68,68,0.22)',  tc: 'rgba(252,165,165,0.8)' },
+        ];
+        // 6 signal / communication types between dimensions
+        const SIGNAL_TYPES = {
+            signal:     { stroke: 'rgba(56,189,248,0.70)',  dash: '0'   },
+            hypothesis: { stroke: 'rgba(129,140,248,0.75)', dash: '0'   },
+            authority:  { stroke: 'rgba(251,113,133,0.80)', dash: '6,3' },
+            outcome:    { stroke: 'rgba(52,211,153,0.70)',  dash: '0'   },
+            context:    { stroke: 'rgba(251,191,36,0.70)',  dash: '3,2' },
+            learning:   { stroke: 'rgba(74,222,128,0.70)',  dash: '8,4' },
+        };
+        const svg = mk('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', style: 'display:block;max-height:310px' });
+
+        // Plane bands + labels
+        PLANES.forEach((p, i) => {
+            svg.appendChild(mk('rect', { x: LW + 4, y: i * PH + 2, width: W - LW - 12, height: PH - 4, rx: 6, fill: p.fill, stroke: p.stroke, 'stroke-width': 1 }));
+            svg.appendChild(mk('text', { x: LW - 2, y: i * PH + PH / 2, 'text-anchor': 'end', 'dominant-baseline': 'middle', 'font-size': 9, 'font-weight': 700, 'letter-spacing': '0.07em', fill: p.tc }, p.label));
+        });
+
+        const featured = data.mode === 'dimension' ? (data.dimension || null) : null;
+        const connMap = new Map();
+        if (featured && data.connections) data.connections.forEach(c => connMap.set(c.to, c));
+
+        // Draw a bezier curve between two dimension nodes
+        function drawCurve(fromId, toId, strokeColor, dash) {
+            const fp = DIMS[fromId], tp = DIMS[toId];
+            if (!fp || !tp) return;
+            const mx = (fp.x + tp.x) / 2;
+            const controlY = fp.pi !== tp.pi ? (fp.y + tp.y) / 2 - Math.abs(fp.x - tp.x) * 0.12 : (fp.y + tp.y) / 2;
+            svg.appendChild(mk('path', { d: `M${fp.x},${fp.y} Q${mx},${controlY} ${tp.x},${tp.y}`, stroke: strokeColor, 'stroke-width': 1.5, fill: 'none', 'stroke-dasharray': dash || '0' }));
+        }
+
+        if (data.mode === 'dimension' && featured && data.connections) {
+            data.connections.forEach(c => {
+                const from = c.direction === 'out' ? featured : c.to;
+                const to   = c.direction === 'out' ? c.to    : featured;
+                const sig = c.signal_type && SIGNAL_TYPES[c.signal_type]
+                    ? SIGNAL_TYPES[c.signal_type]
+                    : { stroke: c.direction === 'out' ? 'rgba(99,102,241,0.55)' : 'rgba(34,197,94,0.45)', dash: c.direction === 'in' ? '5,3' : '0' };
+                drawCurve(from, to, sig.stroke, sig.dash);
+            });
+        }
+        if (data.mode === 'loop') {
+            [['SEN','RSN','signal'],['SEN','LRN','signal'],['LRN','SKG','learning'],['LRN','SEN','learning'],
+             ['RSN','ACT','hypothesis'],['RSN','SKG','outcome'],['ACT','SKG','outcome'],['ACT','GOV','outcome'],
+             ['ACT','LRN','outcome'],['SKG','RSN','context'],['SKG','ACT','context'],['SKG','GOV','context'],
+             ['GOV','ACT','authority'],['GOV','AGT','authority'],['HUM','GOV','signal'],
+             ['MET','GOV','outcome'],['TRN','SEN','context'],['OPS','ACT','signal'],
+             ['SKG','OPS','context'],['RSN','OPS','hypothesis'],['AGT','ACT','signal'],
+            ].forEach(([f, t, type]) => {
+                const sig = SIGNAL_TYPES[type] || { stroke: 'rgba(99,102,241,0.32)', dash: '0' };
+                drawCurve(f, t, sig.stroke.replace(/,[\d.]+\)$/, ',0.32)'), sig.dash);
+            });
+        }
+
+        // Dimension nodes
+        Object.entries(DIMS).forEach(([dim, pos]) => {
+            const isFeat = dim === featured;
+            const isConn = connMap.has(dim);
+            const isLoop = data.mode === 'loop';
+            const isPlan = data.mode === 'planes';
+            const r = isFeat ? 22 : 14;
+            const pc = PLANES[pos.pi];
+            if (isFeat) svg.appendChild(mk('circle', { cx: pos.x, cy: pos.y, r: 30, fill: 'rgba(59,130,246,0.14)' }));
+            const fill = isFeat ? 'rgba(59,130,246,0.82)' : (isPlan || isLoop) ? pc.fill.replace('0.08','0.28') : isConn ? 'rgba(99,102,241,0.22)' : 'rgba(30,41,59,0.65)';
+            const stroke = isFeat ? '#60a5fa' : (isPlan || isLoop) ? pc.stroke : isConn ? 'rgba(99,102,241,0.5)' : 'rgba(71,85,105,0.45)';
+            svg.appendChild(mk('circle', { cx: pos.x, cy: pos.y, r, fill, stroke, 'stroke-width': isFeat ? 2 : 1 }));
+            const textFill = isFeat ? '#fff' : (isPlan || isLoop) ? pc.tc : isConn ? 'rgba(199,210,254,0.9)' : 'rgba(100,116,139,0.55)';
+            svg.appendChild(mk('text', { x: pos.x, y: pos.y, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': isFeat ? 11 : 9, 'font-weight': 700, fill: textFill }, dim));
+        });
+
+        container.appendChild(svg);
+    }
+
+    // Builds the abbreviation key panel showing all 11 ASAF dimensions
+    function _buildAsafVizKey() {
+        const DIM_INFO = [
+            { id: 'SEN', name: 'Sensing Fabric & Detection',    pi: 0 },
+            { id: 'LRN', name: 'Learning & Continuous DFIR',    pi: 0 },
+            { id: 'RSN', name: 'Reasoning & Planning',          pi: 1 },
+            { id: 'OPS', name: 'Operational Interaction Model', pi: 1 },
+            { id: 'SKG', name: 'Security Knowledge Graph',      pi: 1 },
+            { id: 'MET', name: 'Metrics, Audit & Assurance',    pi: 1 },
+            { id: 'ACT', name: 'Autonomous Action & Response',  pi: 2 },
+            { id: 'AGT', name: 'Agent Architecture & Coord.',   pi: 2 },
+            { id: 'GOV', name: 'Ethics, Governance & Authority',pi: 2 },
+            { id: 'HUM', name: 'Human Roles & Interface',       pi: 2 },
+            { id: 'TRN', name: 'Transformation Readiness',      pi: 2 },
+        ];
+        const PLANE_COLORS = ['rgba(56,189,248,0.85)', 'rgba(167,139,250,0.85)', 'rgba(252,165,165,0.85)'];
+        const key = document.createElement('div');
+        key.className = 'docs-asaf-viz-key';
+        DIM_INFO.forEach(d => {
+            const row = document.createElement('div');
+            row.className = 'docs-asaf-viz-key-row';
+            const badge = document.createElement('span');
+            badge.className = 'docs-asaf-viz-key-badge';
+            badge.style.cssText = `background:${PLANE_COLORS[d.pi]};`;
+            badge.textContent = d.id;
+            const name = document.createElement('span');
+            name.className = 'docs-asaf-viz-key-name';
+            name.textContent = d.name;
+            row.appendChild(badge);
+            row.appendChild(name);
+            key.appendChild(row);
+        });
+        return key;
+    }
+
+  function renderAsafViz(block) {
+    var wrap = document.createElement("div");
+    wrap.className = "docs-asaf-viz";
+    if (block.label) { var lbl = document.createElement("div"); lbl.className = "docs-asaf-viz-label"; lbl.textContent = block.label; wrap.appendChild(lbl); }
+    if (block.subtitle) { var sub = document.createElement("div"); sub.className = "docs-asaf-viz-subtitle"; sub.textContent = block.subtitle; wrap.appendChild(sub); }
+    var body = document.createElement("div"); body.className = "docs-asaf-viz-body";
+    var svgWrap = document.createElement("div"); svgWrap.className = "docs-asaf-viz-svg-wrap";
+    _buildAsafVizSvg(svgWrap, block); body.appendChild(svgWrap); body.appendChild(_buildAsafVizKey()); wrap.appendChild(body);
+    if (block.vendor_types && block.vendor_types.length) {
+      var row = document.createElement("div"); row.className = "docs-asaf-viz-tags";
+      (block.vendor_types || []).forEach(function(vt) { var chip = document.createElement("span"); chip.className = "docs-asaf-viz-tag"; chip.textContent = vt; row.appendChild(chip); });
+      wrap.appendChild(row);
+    }
+    var leg = document.createElement("div"); leg.className = "docs-asaf-viz-legend";
+    [["rgba(56,189,248,0.80)","0","Telemetry / Signal"],["rgba(129,140,248,0.85)","0","Hypothesis / Directive"],["rgba(251,113,133,0.85)","6,3","Authority / Constraint"],["rgba(52,211,153,0.80)","0","Outcome / Evidence"],["rgba(251,191,36,0.80)","3,2","Context / Knowledge"],["rgba(74,222,128,0.80)","8,4","Learning / Feedback"]].forEach(function(e) {
+      var item = document.createElement("div"); item.className = "docs-asaf-viz-legend-item";
+      var line = document.createElement("span"); line.className = "docs-asaf-viz-legend-line";
+      line.style.cssText = e[1] !== "0" ? "background:linear-gradient(90deg,"+e[0]+" 60%,transparent 60%);background-size:8px 2px;" : "background:"+e[0]+";";
+      item.appendChild(line); item.appendChild(document.createTextNode(e[2])); leg.appendChild(item);
+    }); wrap.appendChild(leg); return wrap;
+  }
+  function renderAllViz() {
+    document.querySelectorAll(".docs-asaf-viz-placeholder").forEach(function(ph) {
+      try { var d = JSON.parse(ph.getAttribute("data-viz")); ph.parentNode.replaceChild(renderAsafViz(d), ph); } catch(e) {}
+    });
+  }
   var wsRoot = document.getElementById("ws-export-root");
   if (wsRoot) wsRoot.appendChild(buildWorksheetWizard());
+  renderAllViz();
 })();
 </script>
 </body>
