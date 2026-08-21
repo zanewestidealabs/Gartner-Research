@@ -8402,6 +8402,11 @@ def get_apef_graph():
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/export/asaf-ebook', methods=['GET'])
+def serve_asaf_ebook():
+    """Serves the static ASAF HTML ebook file directly."""
+    return send_from_directory('static', 'docs_asaf_ebook.html')
+
 @app.route('/api/asmf-orbital-map', methods=['GET'])
 def get_asmf_orbital_map():
     """Return the orbital map compatible with the selected framework."""
