@@ -33449,7 +33449,7 @@ function exportCNAPPMarketInsightHTML() {
     // ── Fetch docs JSON ────────────────────────────────────────────────────
     async function loadDocs(docId) {
         activeDocId = docId;
-        bodyEl.classList.toggle('ebook-mode', docId === 'asaf_ebook' || docId === 'asaf_market_notes');
+        bodyEl.classList.toggle('ebook-mode', docId === 'asaf_market_notes');
         if (docsCache[docId]) { renderPanel(docsCache[docId]); return; }
         bodyEl.innerHTML  = '<div class="docs-view-loading">Loading documentation…</div>';
         if (navListEl) navListEl.innerHTML = '';
@@ -34238,6 +34238,17 @@ function exportCNAPPMarketInsightHTML() {
             case 'interactive_worksheet': return buildWorksheetWizard();
             case 'heading': { const el = document.createElement('h3'); el.className = 'docs-heading'; el.textContent = block.value; return el; }
             case 'text':    { const el = document.createElement('p');  el.className = 'docs-text';    el.textContent = block.value; return el; }
+            case 'embedded_html': {
+                const wrap = document.createElement('div');
+                wrap.className = 'docs-embedded-html-wrap';
+                const frame = document.createElement('iframe');
+                frame.className = 'docs-embedded-html-frame';
+                frame.src = block.src || '';
+                frame.title = block.title || 'Embedded document';
+                frame.loading = 'lazy';
+                wrap.appendChild(frame);
+                return wrap;
+            }
             case 'markdown': {
                 const wrap = document.createElement('div');
                 wrap.className = 'docs-markdown';

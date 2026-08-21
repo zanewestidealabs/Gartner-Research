@@ -100,6 +100,8 @@ def add_write_revision_etag(response):
 # Remove injected debug code from responses
 @app.after_request
 def remove_debug_code(response):
+    if response.direct_passthrough:
+        return response
     if response.mimetype == 'text/html':
         data = response.get_data(as_text=True)
         # Remove debug script and panel
