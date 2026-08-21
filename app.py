@@ -8490,7 +8490,7 @@ def get_asmf_orbital_map():
 
 
 # Allowed doc IDs to prevent path traversal
-_ALLOWED_DOCS = {'precyber_methodology', 'architecture', 'buyervoice_templates', 'asaf_market_notes'}
+_ALLOWED_DOCS = {'precyber_methodology', 'architecture', 'buyervoice_templates', 'asaf_market_notes', 'asaf_ebook'}
 
 @app.route('/api/docs/<doc_id>', methods=['GET'])
 def get_docs(doc_id):

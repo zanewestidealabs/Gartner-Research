@@ -57,6 +57,7 @@
     {"path": "static/docs_buyervoice_templates.json", "kind": "report_definition", "market": "buyer_voice", "cycle": "2026", "version": "templates-current", "status": "active", "reason": "Direct source for /api/docs/buyervoice_templates."},
     {"path": "static/docs_architecture.json", "kind": "report_definition", "market": "architecture", "cycle": "2026", "version": "architecture-current", "status": "active", "reason": "Direct source for /api/docs/architecture."},
     {"path": "static/docs_asaf_market_notes.json", "kind": "report_definition", "market": "agentic_soc", "cycle": "2026", "version": "notes-current", "status": "active", "reason": "Direct source for /api/docs/asaf_market_notes."},
+    {"path": "static/docs_asaf_ebook.json", "kind": "report_definition", "market": "agentic_soc", "cycle": "2026", "version": "ebook-current", "status": "active", "reason": "Direct source for /api/docs/asaf_ebook."},
     {"path": "Reports/846698_market_insight.json", "kind": "report_definition", "market": "agentic_ai", "cycle": "2026", "version": "846698", "status": "active", "reason": "Direct source for /api/report/846698 and /api/reports."},
 
     {"path": "CNAPP MQ Evidence Ledger.json", "kind": "evidence_excerpt", "market": "cnapp_mq", "cycle": "2026", "version": "current", "status": "active", "reason": "Resolved review item: 261-record evidence ledger."},
